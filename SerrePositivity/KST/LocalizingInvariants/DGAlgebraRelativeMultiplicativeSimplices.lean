@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
 abbrev simplexComonoid (n : SimplexCategory) :=
-  (EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).obj n
+  (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).obj n
 
 def multiplicativeMappingBasePoint {A B : Mon (Complex R)} (s : A ⟶ B) :
     (multiplicativeMappingSimplices R A B) _⦋0⦌ :=
@@ -40,7 +40,7 @@ def multiplicativeMappingBase {A B : Mon (Complex R)} (s : A ⟶ B) :
       change s ≫ convolutionConstantMap R (simplexComonoid R n.unop) B =
         (s ≫ convolutionConstantMap R (simplexComonoid R m.unop) B) ≫
           convolutionPrecompose R
-            ((EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).map f.unop) B
+            ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).map f.unop) B
       rw [Category.assoc, convolutionConstantMap_precompose] }
 
 lemma multiplicativeMappingBase_app {A B : Mon (Complex R)} (s : A ⟶ B)

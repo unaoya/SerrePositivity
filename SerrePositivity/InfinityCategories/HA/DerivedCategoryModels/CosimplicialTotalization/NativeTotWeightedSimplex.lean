@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
@@ -25,7 +25,7 @@ variable {A : Type u} [CommRing A]
 /-- 元の図式射を、同じAsSmall添字の閉零図式の射へ送る。 -/
 def liftedClosedDiagramMap {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
     liftedClosedDiagram X ⟶ liftedClosedDiagram Y :=
-  Functor.whiskerRight (Functor.whiskerLeft AsSmall.down f) (complexToClosed A)
+  Functor.whiskerRight (Functor.whiskerLeft AsSmall.down f) (_root_.SerrePositivity.ComplexLimits.complexToClosed A)
 
 /-- 同じ指定BK入力を、元の射列の初区間へ制限する。 -/
 def nativeTotWeightedPrefix (X : CosimplicialObject (Complex A)) {n : ℕ}
@@ -52,7 +52,7 @@ theorem nativeTotWeightedPrefix_dinaturality
             (ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X))) SSet.opFunctor) =
       nativeTotWeightedPrefix Y σ ≫ Functor.whiskerLeft σ
         (Functor.whiskerRight
-          (weightedConeHomSourceMap ((complexToClosed A).map ((productTotalFunctor A).map f))
+          (weightedConeHomSourceMap ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((productTotalFunctor A).map f))
             (liftedClosedDiagram Y)) SSet.opFunctor) := by
   have h := congrArg (fun η => prefixOverWeight σ ≫ Functor.whiskerLeft σ η)
     (liftedEnrichedBousfieldKanCone_dinaturality f)
@@ -66,7 +66,7 @@ def nativeTotWeightedSimplexMap
     StrictSimplexMap A (Complex A) (nativeTotWeightedSimplexData X σ)
       (nativeTotWeightedSimplexData Y σ) :=
   weightedConeComparisonStrictMap (liftedClosedDiagramMap f)
-    ((complexToClosed A).map ((productTotalFunctor A).map f))
+    ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((productTotalFunctor A).map f))
     (nativeTotWeightedPrefix X σ) (nativeTotWeightedPrefix Y σ)
     (nativeTotWeightedPrefix_dinaturality f σ)
 

@@ -26,9 +26,9 @@ variable (A : Type u) [CommRing A] (B : CofibrantAlgebra A)
 lemma cofibrantUnderlying_ordinary_vertex :
     (cofibrantAlgebraUnderlyingDerivedSource A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)) =
-    (ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.obj.carrier) := by
-  apply congrArg ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌))
+  apply congrArg ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌))
   exact ComposableArrows.ext₀ rfl
 
 /-- 概要：実 U の元の全源同型を、同じ底の複体頂点との実同型にする。
@@ -38,7 +38,7 @@ def cofibrantForgetOrdinaryVertexIso :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))))
-      ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.obj.carrier)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (cAlgForgetDerived_sourceIso A)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)) ≪≫

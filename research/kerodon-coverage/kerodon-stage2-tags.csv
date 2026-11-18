@@ -12,7 +12,7 @@ SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean,SerrePositivity.EIn
 SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean,SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence,3.3.6.7,00ZH,tagged
 SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean,SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence,3.3.6.8,00ZJ,tagged
 SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean,SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence,3.3.7.4,0104,tagged
-SerrePositivity/EInfinity/Hammock/WeakTensor.lean,SerrePositivity.EInfinity.Hammock.weakTensor,3.1.7.23,02L2,tagged
+SerrePositivity/InfinityCategories/HA/ModelCategoryComparison/Hammock/WeakTensor.lean,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.weakTensor,3.1.7.23,02L2,tagged
 SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean,SerrePositivity.SimplicialModel.AnodyneKanReplacement.factorization,3.1.8.1,00UV,tagged
 SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean,SerrePositivity.SimplicialModel.boundaryGenerators_leftClass,1.5.5.14,0077,tagged
 SerrePositivity/HomotopicalAlgebra/Simplicial/PiZeroLocalization.lean,SerrePositivity.SimplicialModel.PiZeroLocalization.classEquiv,1.2.1.19,00GQ,tagged

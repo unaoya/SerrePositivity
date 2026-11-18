@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.Morphism
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Morphism
 public import SerrePositivity.EInfinity.BarrattEccles.AugmentationComposition
 
 /-!
@@ -31,7 +31,7 @@ variable (A : Type u) [CommRing A]
 方針：対称列の自然変換と単位・全ての部分合成の保存を束ねる。
 規約：arity 0 を含み、任意の可換基礎環 A に対して定義する。
 使われ方：Com 代数の E 代数への制限の係数の射となる。 -/
-def augmentation : operad A ⟶ commutativeOperad A where
+def augmentation : operad A ⟶ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeOperad A where
   map := augmentationSequence A
   unit := unit_augmentation A
   comp := partialComposition_augmentation A

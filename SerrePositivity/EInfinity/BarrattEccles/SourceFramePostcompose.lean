@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameRoofComparison
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPostcompose
-public import SerrePositivity.EInfinity.Hammock.ReducedPointActions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReducedPointActions
 
 /-!
 # 元の source frame 比較の終域自然性
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock SerrePositivity.SimplicialModel
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra) {Y Z : (operad A).Algebra}
 
@@ -32,7 +32,7 @@ def sourceFramePostcomposeIndexMap (g : Y ⟶ Z) :
 def algebraReducedHammockPostcompose (g : Y ⟶ Z) :
     algebraReducedHammock A X Y ⟶ algebraReducedHammock A X Z := by
   let := modelCategory A
-  exact reducedPostcomposeMap (weakEquivalences (operad A).Algebra) X g
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedPostcomposeMap (weakEquivalences (operad A).Algebra) X g
 
 lemma sourceFrameReducedHammockNerveMap_postcompose (g : Y ⟶ Z) :
     sourceFramePostcomposeIndexMap A X g ≫ sourceFrameReducedHammockNerveMap A X Z =
@@ -48,7 +48,7 @@ lemma sourceFrameReducedHammockNerveMap_postcompose (g : Y ⟶ Z) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences (operad A).Algebra) g) at h
   have h' := congrArg (fun k => k ≫ (algebraHammockReductionIso A X Z).hom) h
   rw [← sourceFrameLeftRoofNerveMap_normalization, ← sourceFrameLeftRoofNerveMap_normalization]
-  dsimp only [algebraReducedHammockPostcompose, reducedPostcomposeMap]
+  dsimp only [algebraReducedHammockPostcompose, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedPostcomposeMap]
   simpa only [algebraHammockReductionIso, Category.assoc, Iso.hom_inv_id_assoc] using h'
 
 lemma sourceFramePostcomposeIndexMap_augmentation (g : Y ⟶ Z) :

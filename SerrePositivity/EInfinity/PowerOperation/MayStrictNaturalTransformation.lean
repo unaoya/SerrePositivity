@@ -21,7 +21,7 @@ variable (p : ℕ) [Fact p.Prime]
 
 /-- 厳密 BE 代数の全整数次数のホモロジー可換群関手。 -/
 def mayStrictHomology (n : ℤ) : (operad (ZMod p)).Algebra ⥤ AddCommGrpCat :=
-  Operad.Algebra.forget (operad (ZMod p)) ⋙
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad (ZMod p)) ⋙
     homologyFunctor (ModuleCat (ZMod p)) (.up ℤ) (-n) ⋙
       forget₂ (ModuleCat (ZMod p)) AddCommGrpCat
 

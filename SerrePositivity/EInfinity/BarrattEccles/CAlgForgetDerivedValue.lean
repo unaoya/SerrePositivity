@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
-public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SemifreeResolutionValue
 
 /-!
 # 元の全 E 代数の U の実値と同じ底の複体
@@ -26,44 +26,44 @@ variable (A : Type u) [CommRing A]
 lemma cofibrantAlgebraUnderlyingDerivedSource_vertex
     (X : (cofibrantAlgebraRelativeCategory A).category) :
     (cofibrantAlgebraUnderlyingDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (ComplexLimits.complexSemifreeResolutionValue A
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A
         ((cofibrantAlgebraDKForget A).obj X)) := by
   have h : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋0⦌)
-      ((nerveMap (ComplexLimits.complexToClosed A)).app (Opposite.op ⦋0⦌)
+      ((nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed A)).app (Opposite.op ⦋0⦌)
         ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((cofibrantAlgebraDKForget A).obj X) := by
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv (A := A) (D := Complex A)).injective
     rfl
-  change (ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
+  change (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
     ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Complex A)).app (Opposite.op ⦋0⦌)
-      ((nerveMap (ComplexLimits.complexToClosed A)).app (Opposite.op ⦋0⦌)
+      ((nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed A)).app (Opposite.op ⦋0⦌)
         ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))) = _
-  rw [h, ComplexLimits.complexSemifreeResolutionInfinity_vertex]
+  rw [h, _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity_vertex]
 
 def cAlgForgetDerived_sourceValueVertexIso
     (X : (cofibrantAlgebraRelativeCategory A).category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (ComplexLimits.complexSemifreeResolutionValue A
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A
         ((cofibrantAlgebraDKForget A).obj X))) :=
   cAlgForgetDerived_sourceVertexIso A X ≪≫ eqToIso
     (congrArg HomotopyCategory.mk (cofibrantAlgebraUnderlyingDerivedSource_vertex A X))
 
 def cAlgForgetDerivedValue (X : (operad A).Algebra) : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A :=
-  ComplexLimits.complexSemifreeResolutionValue A
+  _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A
     ((cofibrantAlgebraDKForget A).obj ((cofibrantAlgebraDKReplacement A).obj X))
 
 def cAlgForgetDerivedValueAugmentation (X : (operad A).Algebra) :
     (cAlgForgetDerivedValue A X).val ⟶ X.carrier :=
-  ComplexLimits.complexSemifreeResolutionValueAugmentation A
+  _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValueAugmentation A
     ((cofibrantAlgebraDKForget A).obj ((cofibrantAlgebraDKReplacement A).obj X)) ≫
       (framedLimitProbeComparison A X).hom
 
 lemma cAlgForgetDerivedValueAugmentation_quasiIso (X : (operad A).Algebra) :
     QuasiIso (cAlgForgetDerivedValueAugmentation A X) := by
-  have hq : QuasiIso (ComplexLimits.complexSemifreeResolutionValueAugmentation A
+  have hq : QuasiIso (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValueAugmentation A
       ((cofibrantAlgebraDKForget A).obj ((cofibrantAlgebraDKReplacement A).obj X))) :=
-    ComplexLimits.complexSemifreeResolutionValueAugmentation_quasiIso A _
+    _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValueAugmentation_quasiIso A _
   have hp := framedLimitProbeComparison_quasiIso A X
   change QuasiIso (_ ≫ (framedLimitProbeComparison A X).hom)
   infer_instance

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.RightMixedFamily
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SourceRoofFamily
-public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
-public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakArrowActionEquivalences
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakAnodyneLocalization
 
 /-!
 概要：実 right frame Hom と元の hammock Hom を全標的の自然同型で比較する。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v uD vD
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy
 open _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
@@ -109,7 +109,7 @@ def sourceRoofReplacedIso :
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.sourceRoofFamily q)) AnodyneHomotopy.anodyneQ
   have : ∀ Y, IsIso (t.app Y) := fun Y => by
     have := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement_isFibrant r Y
-    exact _root_.SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak _
+    exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first q _ r cof)
   have : IsIso t := NatIso.isIso_of_isIso_app _
   exact asIso t
@@ -124,7 +124,7 @@ def hammockReplacementFamilyIso :
   let t := Functor.whiskerRight (Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r)
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (weakEquivalences C) X)) AnodyneHomotopy.anodyneQ
   have : ∀ Y, IsIso (t.app Y) := fun Y =>
-    (WeakArrow.postcompositionIso ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakArrow.postcompositionIso ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)
       (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit_trivialCofibration r Y).2 X AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
   have : IsIso t := NatIso.isIso_of_isIso_app _

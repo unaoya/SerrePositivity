@@ -44,9 +44,9 @@ lemma weightedCotensorCarrierHomEquiv_app (F : K ⥤ (operad A).Algebra)
     ((((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
       ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier)
         (f.hom ≫ (weightedCotensorCarrierIso A K F W).hom).op).app k).app n) x =
-      (Operad.Algebra.forget (operad A)).op.map
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op.map
         ((((weightedCotensorHomEquiv A K F W Y f).app k).app n) x) := by
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   let S := FrameWeightRealization.source Kᵒᵖ (rightFrameDiagram A K F)
   let V := (FrameWeightRealization.weightsEquivalence Kᵒᵖ).functor.obj
@@ -76,9 +76,9 @@ lemma weightedCotensorCarrierHomEquiv_app (F : K ⥤ (operad A).Algebra)
 規約：元の coneToFramedLimit と既存の framedLimitCarrierIso を使う。
 使われ方：通常の極限比較を忘却した同じ射による導来比較。 -/
 lemma carrierConeToFramedLimit_forget (F : K ⥤ (operad A).Algebra) (c : Cone F) :
-    carrierConeToFramedLimit A K F ((Operad.Algebra.forget (operad A)).mapCone c) =
+    carrierConeToFramedLimit A K F ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).mapCone c) =
       (coneToFramedLimit A K F c).hom := by
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   let d : Cone ((Diagram.forget A K).obj F) := U.mapCone c
   let f := coneToFramedLimit A K F c
   let i := framedLimitCarrierIso A K F

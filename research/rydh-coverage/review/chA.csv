@@ -1,0 +1,14 @@
+number,status,declarations,reason,axioms,check,partial_kind
+A.1,none,,"原典 PDF p.34, y=725.7。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.1 / review/check/none-search.csv,
+A.2,partial,AlgebraicGeometry.FormallyUnramified.isOpenImmersion_diagonal @ ../SerrePositivity/.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/FormallyUnramified.lean:123,"原典 PDF p.35, y=119.0。エタール射は局所有限型かつ形式的不分岐なので、スキームの場合には (i) の対角射が開埋め込みになり、底変換で (ii) の切断も開埋め込みになる。代数空間の一般性を含まない。",静的なソース照合。公理の閉包は未計測。,theorem.A.2 / 宣言の型,component
+A.3,none,,"原典 PDF p.35, y=262.6。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.3 / review/check/none-search.csv,
+A.4,none,,"原典 PDF p.35, y=352.3。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.4 / review/check/none-search.csv,
+A.5,none,,"原典 PDF p.35, y=551.6。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.5 / review/check/none-search.csv,
+A.6,none,,"原典 PDF p.35, y=628.3。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.6 / review/check/none-search.csv,
+A.7,none,,"原典 PDF p.36, y=187.6。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.7 / review/check/none-search.csv,
+A.8,none,,"原典 PDF p.37, y=205.2。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.8 / review/check/none-search.csv,
+A.9,none,,"原典 PDF p.37, y=265.5。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.9 / review/check/none-search.csv,
+A.10,none,,"原典 PDF p.37, y=351.7。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.10 / review/check/none-search.csv,
+A.11,none,,"原典 PDF p.37, y=427.8。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.11 / review/check/none-search.csv,
+A.12,none,,"原典 PDF p.37, y=503.8。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.12 / review/check/none-search.csv,
+A.13,none,,"原典 PDF p.37, y=644.7。henselian・étale・algebraic space・properの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.A.13 / review/check/none-search.csv,

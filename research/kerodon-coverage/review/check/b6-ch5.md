@@ -1,0 +1,315 @@
+# KB-W1 / B6 第5章
+
+原文の項目と現在のソースの型による紙の再照合。Lean・ビルド・鍵は使っていない。
+
+対象 297行。partial 179、none 118。判定後：partial 85、none 209、own 3。
+
+既存 own・both・mathlib 48行の全既存フィールドは変更なし。既存7列の末尾に partial_kind を追加し、対象外行は空欄とした。区切り・改行と対象外行の既存引用符を保存した。verdict・axioms・check も変更していない。古いcheck欄は今回のkernel検査結果ではない。
+
+## 全対象行の判定・変更一覧
+
+状態不変でも型/原文の再判定を記録した。各 reason の詳細はCSVと同じ。原文全文・候補の型・検索はgit外の章別証拠。
+
+| 番号 | 旧→新 | partial_kind | 理由 |
+| --- | --- | --- | --- |
+| 5.1.1.11 | partial → partial | component | 底がKanなので像の全辺は可逆。isInvertibleEdge_iff_isCartesianEdgeは原文の(1)⇔(2)を同じ辺について直接与える。(3)との同値は引用した型だけにはない。 |
+| 5.1.1.14 | partial → partial | component | isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibrationは原文後半の同じ相対coslice比較のiff。cartesian/slice側は別なので含めない。 |
+| 5.1.1.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と元の辺・双対の slice・普通の fibered categoryを照合。coslice の辺の q′-cartesian 性を元の辺で判定する結果。通常の pullback での保存では coslice の join 制約を扱わない。 |
+| 5.1.1.16 | partial → none |  | 引用はcocartesian辺eの始点へのcoslice制限であり、原文のcartesian辺eと任意A⊆Bの相対cosliceの終点持ち上げの判定ではない。双対で別の射。 |
+| 5.1.2.1 | partial → none |  | IsStronglyCartesianは通常圏のHom集合の普遍性。原文の準圏の指定Kan写像空間の四角への比較がなく、同じ射のホモトピーpullback判定を直接与えない。 |
+| 5.1.2.2 | partial → none |  | IsStronglyCartesianの通常圏の定義は、原文の脈体のcartesian辺とのiffの片側ではない。nerve比較をする宣言を欠く。 |
+| 5.1.2.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の Hom の引き戻し・薄い底の場合・写像空間の比較を照合。半順序の nerve 上で、各 X の写像空間に対する合成が hKan で同型となる cartesian 辺の判定。薄い nerve の inner 性と区別した。 |
+| 5.1.2.5 | partial → partial | component | A=Δ¹、eを非退化辺とするとisCocartesianEdge_iff_of_functorIsoは原文後半の同じFun(Δ¹,C)内同型でのcocartesian性のiffを直接与える。cartesian側は含めない。 |
+| 5.1.2.6 | partial → partial | direction | IsCartesianEdge.compはp-cartesianかつ像がq-cartesianから合成に対しcartesianというiffの順方向を直接返す。逆方向は引用にない。 |
+| 5.1.3.1 | partial → none |  | Mathlibの弱いIsCartesian/IsCocartesianと、底の辺Δ¹への引き戻し後のcartesian辺を比較する型がない。通常圏の類似の定義だけでは数えない。 |
+| 5.1.3.7 | partial → none |  | 引用は大域的なcartesian辺の三角形の取消し。原文の局所cartesian性との比較がなく、gが大域的という仮定だけから同じ局所iffを直接返さない。 |
+| 5.1.3.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：区間 Δ¹ の持ち上げ・一方が大域的な三角形・ファイバー写像空間を照合。指定した底辺と終点に大域 cartesian な持ち上げがあるとき、局所 cartesian な別の持ち上げも大域的となる結論。通常の持ち上げの一意性だけでは局所性から始められない。 |
+| 5.1.3.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：区間 Δ¹ の持ち上げ・一方が大域的な三角形・ファイバー写像空間を照合。底の辺を固定した局所 cartesian の写像空間判定。単一ファイバー上の pinched Hom の同型は合成による比較射を与えない。 |
+| 5.1.3.11 | partial → none |  | 引用は区間上のcocartesian辺を保つ二つの図式のcoslice写像間の同値の輸送。原文の一つの局所cartesian辺の合成作用の判定とは別の射。 |
+| 5.1.4.8 | partial → partial | direction | cartesianFibration_pullback_sndに各σ:Δⁿ→Sを代入すれば原文の順方向そのもの。全ての単体上から大域性を回収する逆は含まない。 |
+| 5.1.4.9 | partial → none |  | 引用はcocartesian fibrationのequivalence lifting。原文のcartesian fibrationからisofibrationという主張とは向きが異なり、反転でisofibrationを輸送する比較を引用型は与えない。 |
+| 5.1.4.11 | partial → partial | component | 底Kanは準圏で、cocartesianFibration_kanEquivalenceLiftingとisofibrationの二条件のiffにより原文(3)⇒(1)が直接得られる。三条件全体の同値ではない。 |
+| 5.1.4.12 | partial → none |  | 引用はcocartesianなhorn liftingと全空間Eでの可逆性のiff。原文はcartesian辺と退化辺上の厳密fiber内での可逆性であり、fiber包含との比較を欠く。 |
+| 5.1.4.13 | partial → partial | stronger-hyp | 底Sを準圏に強めると現本体のisCartesianEdge_triangle_longEdgeとisCartesianEdge_triangle_first_of_second_longを同じσとgに適用し、原文のfがcartesian iff hがcartesianを直接得る。一般の単体集合の底ではない。 |
+| 5.1.4.14 | partial → partial | component | cartesianFibration_compは原文の合成のcartesian fibration性、IsCartesianEdge.compは辺の判定の十分条件を直接与える。辺の必要条件は含まない。 |
+| 5.1.4.15 | partial → partial | component | rightFibration_iff_cartesianFibration_all_edgesは同じqについて原文(1)⇔(2)そのもの。(3)の全fiber Kanとの同値は含まない。 |
+| 5.1.4.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対 slice/coslice・充満な全空間の部分複体・Kan・左右反転を照合。全辺が q-cartesian な単体で張る部分複体が右ファイブレーションとなる主張。通常の quasicategory core は可逆辺で張る。 |
+| 5.1.4.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対 slice/coslice・充満な全空間の部分複体・Kan・左右反転を照合。充満部分複体で cartesian lift の始点を選べる場合の制限と辺の判定。任意の底変換とは全空間の部分複体に沿う点が異なる。 |
+| 5.1.4.18 | partial → partial | component | qをtrivial Kan fibrationに強めればsliceOverPostcomp_trivialKanFibrationは原文(1)の同じslice後合成がtrivial Kan、従ってcartesian fibrationと直接与える。一般のqと(2)は含めない。 |
+| 5.1.4.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対 slice/coslice・充満な全空間の部分複体・Kan・左右反転を照合。coslice の制限比較で、像の辺が q-cartesian なら比較射に対しても cartesian となる主張。単なる coslice 制限の内ファイブレーション性では辺ごとの条件が出ない。 |
+| 5.1.4.20 | partial → partial | component | qをtrivial Kan fibrationに強めればtrivialKanFibration_sliceUnderPostcompは原文(1)の同じcoslice後合成がtrivial Kan、従ってcartesian fibrationと直接与える。一般のqと(2)は含めない。 |
+| 5.1.4.21 | partial → partial | component | 全空間と底を準圏、F₀をinner fibration、各fiber上のF₀にもinvertible target liftingを追加するとcartesianFibration_pullback_overは原文と同じ合成射のcartesian fibration性を直接与える。辺の必要条件と元のF₁だけの仮定への一般化は含まない。 |
+| 5.1.4.22 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対 slice/coslice・充満な全空間の部分複体・Kan・左右反転を照合。cartesian 辺を保つ底上の射と f の coslice を組み合わせた pullback 比較の cartesian 性。pullback.snd の閉性の型では比較射が異なる。 |
+| 5.1.5.1 | partial → none |  | IsPreFiberedは通常圏での弱いcartesian持ち上げ。原文の単体集合のinner fibrationとΔ¹に制限した局所cartesian辺の条件への比較がない。 |
+| 5.1.5.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian な fibration で、任意の三角形の辺の条件から個々の辺の大域 cartesian 性を判定。合成・取消しの型は最初から大域的な辺を使う。 |
+| 5.1.5.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian fibration の大域化と、局所 cartesian 辺が三角形で合成に閉じることの同値。大域的な合成補題と区別した。 |
+| 5.1.5.11 | partial → partial | direction | cartesianFibration_pullback_sndはn≤2の全σにも直接適用でき、原文の順方向を与える。低次元だけからの逆判定は含まない。 |
+| 5.1.5.12 | partial → partial | component | qを大域cartesian fibrationに強めるとrightFibration_iff_cartesianFibration_all_edgesは原文(1)⇔(4)を直接返す。locallyの定義と(2),(3)の同値は含まない。 |
+| 5.1.5.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian fibration を図式に沿う slice 比較に移し、局所 cartesian 辺を同定する主張。slice 内ファイブレーションの型だけでは局所性の判定がない。 |
+| 5.1.5.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian fibration の局所 κ-small 性と各頂点ファイバーの局所 κ-small 性の同値。ファイバーの ∞ 圏性に濃度はない。 |
+| 5.1.5.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian fibration の本質的 κ-small 性を全頂点ファイバーで判定。universe lift の型に任意の非可算 κ はない。 |
+| 5.1.5.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。非可算正則 κ の下で、局所 cartesian isofibration の全空間と各ファイバーの本質的 κ-small 性を比較。ファイバーごとの同値判定は濃度評価ではない。 |
+| 5.1.5.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian fibration の n-faithful 性とファイバーの局所 (n−2)-truncation の比較。full faithfulness とファイバーの可縮性だけでは次数一般を扱わない。 |
+| 5.1.5.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。右ファイブレーションの n-faithful 性と各ファイバーの (n−1)-truncation の同値。right fibration の Kan ファイバー補題は任意次数を判定しない。 |
+| 5.1.5.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Δ¹・Δ² 上の大域化・ファイバーの小ささ・切断・右左の双対と sliceを照合。局所 cartesian な二射の四角で、各ファイバーでの局所 cartesian 条件を使う比較。通常の pullback の cartesian 性とは四角の仮定が違う。 |
+| 5.1.6.1 | partial → partial | special | 底射を恒等、両縦射をKan fibrationに制限すればleft fibrationでもあり、isQCatEquivalence_of_leftFibration_fibersは同じ全空間射Fの同値をfiberの同値から直接与える。一般cartesian版やiff全体ではない。 |
+| 5.1.6.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同じ底・Δ¹ の特例・圏同値での辺の移送・普通の圏と反転を照合。両縦が isofibration、両横が ∞ 圏同値の四角で cartesian と cocartesian をそれぞれ移す結果。同型な全空間間の辺の保存より広い。 |
+| 5.1.6.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同じ底・Δ¹ の特例・圏同値での辺の移送・普通の圏と反転を照合。isofibration の四角で両横の ∞ 圏同値から右・左ファイブレーション性を保存・反映。反対圏で左右を交換する定理はこの四角を扱わない。 |
+| 5.1.6.4 | partial → partial | special | 同じ底上のKan fibration間に制限すれば両縦射はleft/right fibration。leftFibration_isQCatEquivalence_iff_fibersは同じFと同じKan fiberの同値のiffを直接返す。rightのみ・底を変える一般の場合は含まない。 |
+| 5.1.6.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：同じ底・Δ¹ の特例・圏同値での辺の移送・普通の圏と反転を照合。内ファイブレーションの四角で、充満忠実性を使い像辺から元の cartesian 性を反映する結果。通常圏の strongly cartesian の型とは入力が異なる。 |
+| 5.1.6.6 | partial → none |  | 引用は同じpの下でFunctorIsoによってcocartesian辺を移す型。原文の二つのisofibrationと上下の圏同値に沿うcartesian性の移送とは別の図式。 |
+| 5.1.6.7 | partial → none |  | 引用は区間上のcocartesian liftに基づく充満忠実性。原文のcartesian lift・任意の充満忠実な底射・局所cartesian性と同じ条件を直接述べない。 |
+| 5.1.7.1 | partial → partial | component | left fibrationと準圏の底に制限しFが前合成同値なら、exists_relativeFunctorInverse_of_precompositionEquivalenceは底上の逆射と二つの相対Functor空間での同型を直接構成する。原文の相対逆の構成成分で、任意inner fibrationの述語全体は含まない。 |
+| 5.1.7.5 | partial → partial | stronger-hyp | 底を準圏、U,Vをleft fibrationに強め、Fの前合成同値を仮定するとexists_relativeFunctorInverse_of_precompositionEquivalenceが原文(2)の底上の相対逆と相対単位・余単位を直接返す。一般isofibrationへの拡張と(1)は含まない。 |
+| 5.1.7.8 | partial → none |  | 引用のiffの右辺は頂点fiberの同値であり、原文の左辺の底上の相対逆の存在ではない。全空間同値とfiber同値の比較だけを原文の相対逆のiffとして数えない。 |
+| 5.1.7.9 | partial → partial | component | 底準圏・両縦left fibrationに制限すると、原文(4)は特に全頂点fiberの同値を含む。relativeFunctorPost_isQCatEquivalence_on_baseに恒等底射を代入すれば同じ相対Functor後合成の同値(2)を直接返す。全四条件のiffは含まない。 |
+| 5.1.7.10 | partial → none |  | 引用の結論は全空間Fの本質的全射性・圏同値。原文が判定するのは底上の相対逆の存在で、同値から相対逆へ進む比較が引用型にない。証明の部品だけを数えない。 |
+| 5.1.7.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：left fibration の場合・Δ¹・各ファイバーの場合・相対同値と引き戻しを照合。同型な F,G に沿う isofibration の二つの引き戻しの底 C 上の比較。通常の pullback が変数の厳密な同型を保つ型では、∞ 圏の Fun 内の同型を扱わない。 |
+| 5.1.7.13 | partial → none |  | 引用の相対逆は二つの合成と恒等の同型のみ。原文(2)が指定するG∘F=idの厳密等式とF上で恒等になる相対同型の正規化を直接与えない。 |
+| 5.1.7.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：left fibration の場合・Δ¹・各ファイバーの場合・相対同値と引き戻しを照合。底上で同値な二つの内ファイブレーション間で各種 fibration・covering の性質を比較する結果。op による左右交換はこの相対同値と異なる。 |
+| 5.1.7.15 | partial → none |  | 引用はleft fibrationの全空間同値とfiber同値のiff。原文のcartesian fibrationの相対逆とcartesian辺保存の判定とは、射の型・比較対象が異なる。 |
+| 5.1.7.16 | partial → none |  | 引用はleft fibrationの前合成同値と相対逆。right fibrationの同じ射への反転と相対Functor空間の比較が型にないため、双対の類似だけでは数えない。 |
+| 5.2.0.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の離散 opfibration・左ファイブレーション・hC 値・双対と Set 値を照合。left covering に対する離散ファイバーと一意な辺の持ち上げによる輸送関数。左ファイブレーションの輸送関手に一意な持ち上げの仮定はない。 |
+| 5.2.0.3 | partial → none |  | homotopyTransportの値域はhQCat。原文は離散fiberをSetに送る一意な関手で、hQCatからそのSet値輸送へ比較する型がない。別の値域の類似構成。 |
+| 5.2.0.4 | partial → none |  | homotopyTransportはhQCat値であり、原文が名付けるleft coveringのSet値の表現ではない。同じ対象の定義として直接使えない。 |
+| 5.2.1.1 | partial → partial | special | qをleft fibrationに制限するとihom_map_leftFibrationは同じ内部Hom後合成をleft fibration、従ってcocartesian fibrationと直接返す。原文(1′)の特殊形のみ。 |
+| 5.2.1.3 | partial → none |  | 引用はcocartesian辺全体から始点評価への射。原文はcartesian辺全体から終点評価の像Zへの射であり、同じ射の制限とは言えない。 |
+| 5.2.1.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：関手空間の点ごとの評価・通常圏の指数化・右側・相対版を照合。点ごとの評価と Fun(B,q) の cocartesian 辺の比較。内部 Hom の内ファイブレーション性には評価した辺ごとの判定がない。 |
+| 5.2.2.1 | partial → none |  | IsCocartesianとFiberの定義だけでは原文が要求するf_!関手・自然変換・一意性のいずれも直接構成しない。 |
+| 5.2.2.2 | partial → none |  | IsCocartesianという射の述語は、原文が名付けるfiber間の共変輸送関手ではない。関手構成への比較がない。 |
+| 5.2.2.5 | partial → partial | stronger-hyp | 底を準圏、Uをcocartesian fibrationに強めるとisEdgeTransport_identityは同じ退化辺に沿うfiber恒等が輸送であることを直接返す。任意のinner fibrationではない。 |
+| 5.2.2.8 | partial → partial | component | edgeTransport_isTransportは原文の輸送の存在を直接返し、IsEdgeTransport.functorIsoは任意の二つの輸送の同型を返す。同型な任意候補も輸送になる逆は含まない。 |
+| 5.2.2.10 | partial → none |  | cocartesianLiftSpaceは指定始点と底を固定した持ち上げの空間。原文の任意の個別prism Hに対する点ごとのcocartesianという述語との頂点対応が引用した型にはない。空間の名前だけを定義のcomponentとしない。 |
+| 5.2.2.13 | partial → partial | component | cocartesianLiftSpace_isContractibleKanは任意の始点・底のprismを固定した持ち上げ空間を可縮Kanと直接返す。特に頂点があり、原文(1)のcocartesian liftを与える。(2)の任意の同型な終点の厳密実現は含まない。 |
+| 5.2.2.15 | partial → partial | stronger-hyp | Uをcartesian fibrationに強めるとcartesianEdgeTransportとそのwitnessは、同じ辺に沿う反変輸送と両端・底の等式および全頂点のcartesianなprismを直接構成する。任意inner fibrationと任意候補の述語全体は含まない。 |
+| 5.2.2.17 | partial → partial | component | 現本体のcartesianEdgeTransport_witnessは一般の底の各辺について同じ反変輸送の存在を直接返す。原文第一結論のみで、任意の輸送の同型類の一意性は含まない。 |
+| 5.2.2.18 | partial → partial | component | cartesianEdgeTransportとそのwitnessは原文が許す代表f*の選択とそのprismを直接与える。全ての候補が一つの同型類になる結論は含まない。 |
+| 5.2.2.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底辺が可逆な場合・左右の輸送の合成・Kan・離散の場合を照合。Kan fibration の同じ底辺に沿う共変・反変輸送が hQCat で互いに逆。invertibleLeftTransport の共変側の同値だけでは両者を比較しない。 |
+| 5.2.2.20 | partial → none |  | 引用は底の可逆辺に沿うleft fibrationの輸送の同値性。原文は任意の射のKan fibration性を全辺の輸送で判定するiffであり、可逆辺だけの証明部品ではその方向を直接与えない。 |
+| 5.2.2.21 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：底辺が可逆な場合・左右の輸送の合成・Kan・離散の場合を照合。covering と左右輸送の可逆性による判定。Quiver.IsCovering は simplicial covering の全次元の一意持ち上げと異なる。 |
+| 5.2.3.4 | partial → partial | special | relativeJoinInr_emptySource_isIsoはCが空かつG=idのとき原文の同じ右包含が同型と直接返す。任意Gおよび左包含の結論は含まない。 |
+| 5.2.3.9 | partial → partial | special | relativeJoinPullbackMap_isPullbackはD=E、G=idの場合の同じrelative joinの底変換四角そのもの。任意の二つの因子には一般化しない。 |
+| 5.2.3.12 | partial → partial | special | E′=Δ⁰に制限するとrelative joinは通常join、比較はjoinDiagonalとなり、joinDiagonal_innerFibrationが同じ射のinner性を直接返す。一般のUの相対版は含まない。 |
+| 5.2.3.13 | partial → partial | special | C′=C,D′=D,E′=Δ⁰、W:E→Δ⁰に制限すると原文の射はrelative joinから通常joinへの第一射影。relativeJoin_fst_innerFibrationが同じ射を直接扱う。 |
+| 5.2.3.15 | partial → partial | component | relativeJoinProjection_cocartesianFibrationは原文第一結論の同じrelative joinからΔ¹への射影について直接の型。prismがFの輸送を表す第二結論は引用にない。 |
+| 5.2.3.16 | partial → none |  | 引用はrelative joinのΔ¹への射影と両端での公式。原文の任意の誘導射Wに対するcocartesian辺の結論は含まず、構造の部品にとどまる。 |
+| 5.2.3.17 | partial → none |  | relativeJoin_crossing_isCocartesianはΔ¹への構造射と混合辺だけ。原文の一般Wがcocartesian fibrationである結論や同じWの全辺のiffを直接与えない。 |
+| 5.2.3.18 | partial → partial | component | relativeJoinProjection_cocartesianFibrationは原文の最初の結論、crossing補題は混合辺が像の同型に対応する場合の十分条件を直接返す。三場合全体のiffは含まない。 |
+| 5.2.3.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：相対 join の一方が点・左右の collage・普通の圏の Grothendieckを照合。相対 join から Δ¹ への cartesian fibration と、G を反変輸送として表す結論。左側の cocartesian collage だけでは G を与える右側の比較がない。 |
+| 5.2.4.1 | partial → partial | direction | mappingCylinder_isPrecompositionEquivalenceは原文の三条件を仮定して同じpushoutからMへの比較射を圏同値にするので、categorical pushoutとなる十分方向。逆とUのcocartesian性は含まない。 |
+| 5.2.4.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：標準 collage・写像円柱・指定した端点の輸送・反対・通常圏を照合。Δ¹ 上の cocartesian fibration で指定した F が輸送を表すことと、F と id を端に持つ関手 R の条件の同値。標準 collage の端点公式は任意の U,F の判定を与えない。 |
+| 5.2.4.6 | partial → partial | special | X=Δ⁰に制限すればisPrecompositionEquivalence_fatJoinComparison_pointは原文の同じfat joinから通常joinへの比較の圏同値性を直接返す。任意Xの厳密pushoutの型だけは数えない。 |
+| 5.2.4.7 | partial → partial | special | Y′=Yで右縦射が恒等の場合、relativeJoinCylinderComparison_naturalityは同じ二つの比較と誘導射の可換式を返す。写像円柱の誘導射と両比較の前合成同値を二対三で移せば、原文の同じrelativeJoinLeftMapの圏同値を直接得る。任意の右縦射の自然性は含まない。 |
+| 5.2.5.1 | partial → partial | stronger-hyp | 底を準圏に強めるとIsEdgeTransport.compは任意に与えた二つの輸送の合成を同じ長辺の輸送と直接返す。一般の単体集合の底は含まない。 |
+| 5.2.5.2 | partial → partial | stronger-hyp | 底を準圏に強めればhomotopyTransportとそのuniqueは原文と同じfiber・辺の輸送を値とするhQCat値の関手と一意性を直接与える。 |
+| 5.2.5.7 | partial → none |  | op側のcocartesian構造と共変homotopyTransportはあるが、原文のhCの反対から元のfiberへ値を取る反変関手との比較がない。別の対象の共変関手だけでは数えない。 |
+| 5.2.6.8 | partial → none |  | elementsFunctorとGrothendieck.functorは関手の構成。原文のOver Cへの充満忠実性を結論しないため証明の材料にとどまる。 |
+| 5.2.7.1 | partial → partial | component | monodromyFunctorは原文の分類関手の対象部分、すなわち各被覆からπ≤1(S)上のSet値のモノドロミー表現を直接作る。被覆間の射を含む分類関手全体と圏同値は含まない。 |
+| 5.2.7.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値圏 of elements・covering と基本群oid・Space 値の特例を照合。left covering が hC 上の Set 値 transport の Grothendieck 構成の nerve の pullback に同型。Space 値 unstraightening の同値は離散構成との厳密な同型ではない。 |
+| 5.2.7.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値圏 of elements・covering と基本群oid・Space 値の特例を照合。LCov_C と Fun(hC,Set) の通常圏同値。left fibration の ∞ 圏分類では値域が Space である。 |
+| 5.2.7.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値圏 of elements・covering と基本群oid・Space 値の特例を照合。left covering の pullback・一意持ち上げ等による同値条件。左ホーンに対する LeftFibration は一意性を求めない。 |
+| 5.2.7.5 | partial → none |  | grothendieckTypeToCatは二つの通常圏の構成の比較同値。原文のCat_{/C}への充満忠実性とleft/right coveringによる本質的像の判定を直接述べない。 |
+| 5.2.7.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値圏 of elements・covering と基本群oid・Space 値の特例を照合。Kan 複体上の covering と基本群oid の Set 値関手の通常圏同値。Space 値分類や projection_isCovering の個別構成はこの同値を与えない。 |
+| 5.2.8.1 | partial → partial | special | left fibrationに制限するとFiberTransportFamilyのprism・start・finish・over_baseとparametrizedFiberTransportが原文の同じ区間写像空間をパラメータとする輸送を構成する。全辺がcocartesianなので点ごとの条件も直接満たす。 |
+| 5.2.8.4 | partial → partial | special | left fibrationに制限するとparametrizedFiberTransportFamilyのprismと両端・底の等式が原文の輸送の存在を直接与える。任意の同型な候補についてのiffは含まない。 |
+| 5.2.8.6 | partial → none |  | 引用はop側のfibrationと非パラメーターのホモトピー圏の共変輸送。原文の元のHom空間からfiber間の関手空間への反変の射を直接構成しない。 |
+| 5.2.8.7 | partial → none |  | cosliceTransportPointHomはホモトピー圏の点の作用、coherentCompositionReverseTransport_parametrizedIsoは反対向きのcoherent nerveの比較。原文のConstruction 4.6.8.9の同じ合成射との比較がなく、別模型の類似だけは数えない。 |
+| 5.2.8.8 | partial → none |  | parametrizedFiberTransportと各辺での比較だけでは、原文の二つのパラメーターを持つ合成四角の可換性を直接返さない。合成を結ぶ型が要る。 |
+| 5.2.8.9 | partial → partial | component | 底準圏上のhomotopyTransportは原文が最後に指定するunderlying ordinary functorの構成を直接与え、その辺での作用も一致する。hKan豊穣のHom作用・合成の整合性は含まない。 |
+| 5.2.8.11 | partial → partial | component | parametrizedFiberTransportは原文の豊穣関手の各Hom作用、すなわち同じ区間HomからKanなfiber間の関手空間への射を直接与える。豊穣関手の合成・単位を束ねる主張は含まない。 |
+| 5.2.8.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：反対圏の辺の輸送・一点と写像空間の評価・豊穣と通常の hCを照合。cartesian fibration の op から作る hQCat 豊穣反変 transport の一意性。op のファイブレーション性と通常の hTr の一意性からは豊穣な型が得られない。 |
+| 5.3.1.7 | partial → own |  | cocartesianStrictTransportEvaluate_trivialKanFibrationは原文の同じstrict transportの各恒等射評価がtrivial Kan fibrationという結論全体。原文には輸送の自然性を要求する追加結論はなく、従来のpartialの理由を訂正する。 |
+| 5.3.1.8 | partial → partial | component | cocartesianStrictTransportEvaluate_isQCatEquivalenceは原文の指定された自然同型の各対象の成分が同値であることを直接与える。辺との自然性と成分の組立ては含まない。 |
+| 5.3.1.9 | partial → partial | special | 標的U′をleft fibrationに制限するとstrictTransportPostToLeftFibrationが同じcocartesian strict transport間の後合成を直接構成し、原文(2)の制限を与える。一般の標的とiff全体は含まない。 |
+| 5.3.1.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：恒等射での評価・辺ごとの輸送と hQCat・通常圏の輸送を照合。相対関手圏で cartesian 辺を保つ頂点で張る充満部分圏と cartesian section の記法。coCartesian 用の section だけでは反対側の定義がそろわない。 |
+| 5.3.1.21 | partial → partial | special | Uをleft fibrationに制限すると全辺はcocartesianで、相対Functor空間とcocartesian section空間は同じ条件になる。trivialKanFibration_relativeHom_of_leftAnodyneは同じ制限射のtrivial Kan性を直接返す。 |
+| 5.3.1.23 | partial → partial | stronger-hyp | C^◁を準圏と仮定すれば、そのcone pointをIsInitialVertexとしてcocartesianSectionsEvaluate_trivialKanFibrationに代入し、同じ評価射のtrivial Kan性を直接得る。一般の単体集合Cの錐は含まない。 |
+| 5.3.2.2 | partial → partial | special | 添字圏が一点である場合、simplicialReplacementConstantLift_isIsoはその唯一のF(c)から同じhomotopy colimitへの射が同型と直接返す。任意の離散圏の直和は含まない。 |
+| 5.3.2.12 | partial → none |  | assemblyの構成と添字変更のpullbackは、原文の始点を除いた鎖と貼り合わせる指定四角のpushout性とは別の主張。射があるだけをそのcomponentとしない。 |
+| 5.3.2.17 | partial → partial | stronger-hyp | 図式をKan値、各成分をIsQCatEquivalenceに強めれば、simplicialReplacementMap_isPrecompositionEquivalenceとIsPrecompositionEquivalence.isWeakHomotopyEquivalenceから同じ全空間射の弱ホモトピー同値が直接得られる。一般の単体集合値ではない。 |
+| 5.3.2.18 | none → partial | stronger-hyp | 図式をKan値に強めるとsimplicialReplacementMap_isPrecompositionEquivalenceは原文の同じ自然変換のhomotopy colimitへの誘導射を圏同値と直接返す。一般の単体集合値図式には及ばない。 |
+| 5.3.2.19 | partial → partial | component | simplicialReplacementUnderEvaluationは原文の各cについての同じN(Under c)×F(c)からhomotopy colimitへの射f_cを直接構成する。currying後の自然変換全体は含まない。 |
+| 5.3.2.20 | partial → none |  | strictDiagramMappingScaffoldIsoは相対Functor空間との同型。原文は絶対Functor空間と指定Gの豊穣Homの同型であり、同じ対象へ比較する型がない。 |
+| 5.3.2.21 | partial → none |  | 引用はE→N(C)を指定した相対Homの全単射。原文の絶対的な右随伴の指定Gとは異なり、自然性もこの型にはない。 |
+| 5.3.2.23 | partial → partial | component | strictDiagramScaffoldHomEquivは原文と同じhomotopy colimitを始域とする底上の射と、weak transportへの自然変換のHom全単射を直接与える。両変数の自然性・随伴としての構造全体は含まない。 |
+| 5.3.3.15 | partial → partial | special | Gを定値Δ⁰、Fを準圏値に制限するとweightedNerveProjection_cocartesianFibrationは原文(1)の同じ射を直接扱う。一般の相対weighted nerveと辺の判定は含まない。 |
+| 5.3.3.16 | partial → partial | component | weightedNerveProjection_cocartesianFibrationは原文(1)そのもの。底N(C)が準圏なので全空間の準圏性も従う。(2)の任意(f,e)のiffは含まない。 |
+| 5.3.3.18 | partial → partial | special | Gを定値Δ⁰、FをKan値に制限すればweightedNerveProjection_leftFibrationは原文の同じ誘導射のleft fibration性を直接返す。 |
+| 5.3.3.20 | partial → partial | stronger-hyp | 両図式がKan値ならweightedNerveMap_isPrecompositionEquivalenceは原文のlevelwise圏同値⇒同じweightedNerveMapが圏同値という方向を直接返す。任意図式と逆は含まない。 |
+| 5.3.3.23 | partial → none |  | leftStrictTransportDiagramはUnderからの相対Functor空間。原文はOverのnerveのpullbackであり、さらにEからweighted nerveへの指定単位を構成する。引用は別の図式と逆向きのHom対応。 |
+| 5.3.3.24 | partial → none |  | 引用の全単射はF→strict transportとreplacement→Eの間。原文のG_E→FとE→weighted nerveの間とは左右の対象と向きが異なる。 |
+| 5.3.3.25 | partial → none |  | replacementとstrict transportのHom対応は、原文のweighted nerveを右随伴とする随伴ではない。別の関手の随伴候補だけをpartialとしない。 |
+| 5.3.3.26 | partial → none |  | 引用はKan値weighted nerveと相対Functor空間の比較射の圏同値。原文の任意EについてのG_Eの豊穣Homとの厳密同型は別の射であり、同値でもその成分ではない。 |
+| 5.3.4.1 | partial → partial | component | cocartesianScaffoldHorizontalEdgeは任意のF・底射f・頂点xから、係数が退化辺const xである原文の水平辺を直接構成する。全ての辺が水平であるための判定は含まない。 |
+| 5.3.4.2 | partial → partial | stronger-hyp | 各F(c)を準圏に強めたCocartesianScaffoldは底上の等式・水平辺のcocartesian性・全fiberの同値という原文三条件を同じλに課す。一般の単体集合値は含まない。 |
+| 5.3.4.18 | partial → partial | stronger-hyp | 図式を準圏値に強めればtautScaffold_isCocartesianScaffoldは同じFのweighted nerve射影とtaut scaffoldを直接与える。一般図式は含まない。 |
+| 5.3.4.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：定値・同型の図式・成分別の同値・ホモトピー余極限からの比較を照合。各 F(u) が left covering のとき hocolim から weighted nerve への λ_t が同型。tautScaffold の一般の前合成同値や左ファイブレーション性はこの厳密同型ではない。 |
+| 5.3.4.22 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：定値・同型の図式・成分別の同値・ホモトピー余極限からの比較を照合。全ての作用が単体集合の同型の図式で λ_t の厳密な性質を主張。定値図式での weighted nerve の同型は非定値な同型図式を含まない。 |
+| 5.3.4.23 | partial → partial | special | 添字groupoidを一点に限るとsimplicialReplacementPoint_kanComplexは同じhomotopy colimitのKan性を直接返す。 |
+| 5.3.5.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan 値・左ファイブレーション・成分ごとの同値と合成・1圏の Grothendieckを照合。QCat 値の図式間の levelwise equivalence のジグザグによる述語。単一の componentwise 比較とは同値関係の定義が異なる。 |
+| 5.3.5.2 | partial → none |  | 引用は一つのKan値図式のweighted nerveとstrict transportの合成のunit同型。原文の任意の二図式のlevelwiseジグザグ同値と相対fibration同値のiffは直接述べない。 |
+| 5.3.5.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan 値・左ファイブレーション・成分ごとの同値と合成・1圏の Grothendieckを照合。QCat 値の図式の levelwise equivalence の反射・対称・推移。単一の自然変換の成分ごとの QCat 同値の合成則ではジグザグの述語を定めない。 |
+| 5.3.5.6 | partial → none |  | 引用はstrict transportの∞圏での同値やscaffoldの比較。原文のlevelwise equivalenceのジグザグ商とfibrationの相対逆による商の全単射へ移す比較は引用型にない。 |
+| 5.3.5.7 | partial → partial | stronger-hyp | Fを準圏値に強めるとCocartesianScaffold.isPrecompositionEquivalenceは同じλに対する原文(1)⇒(2)を直接返す。任意の図式と逆方向は含まない。 |
+| 5.3.5.8 | partial → own |  | cocartesianUniversalScaffold_isPrecompositionEquivalenceは原文の同じuniversal scaffold λ_uそのものの圏同値性を全てのcocartesian fibrationについて直接返す。原文はweighted nerveへの復元を結論していないので従来のpartial理由を訂正する。 |
+| 5.3.5.9 | partial → partial | stronger-hyp | Fを準圏値に強めればtautScaffold_isPrecompositionEquivalence_of_quasicategoryは原文の同じλ_tの圏同値性を直接返す。 |
+| 5.3.5.11 | partial → none |  | 引用のcocartesianStrictTransportMappingSpaceMapはcocartesian辺を保つ射の空間と両方strict transportの豊穣Homの比較。原文は全相対Functor空間と標的weak transportへのHomで、同じθである比較がない。 |
+| 5.3.6.1 | partial → partial | special | cocartesian側、C′=C、底の圏同値をinner anodyneに制限すると、引用は同じpullback projectionの圏同値性を直接返す。一般のcategorical equivalence全体は含まない。 |
+| 5.3.6.3 | partial → partial | special | 添字を有限鎖、Bをそのnerve、fを指定inner horn包含に限ればreplacementNerveHorn_preimage_innerAnodyneは同じ逆像包含のinner anodyne性(2)を直接返す。 |
+| 5.3.6.5 | partial → partial | stronger-hyp | Fを準圏値に強めればCocartesianScaffold.overPullback_isPrecompositionEquivalenceは任意Sへの同じscaffoldの底変換射の圏同値性を直接返す。 |
+| 5.3.6.6 | partial → partial | component | cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalenceは原文のcocartesian fibrationの場合そのもの。cartesian側は含まない。 |
+| 5.3.6.7 | partial → partial | component | Vに全単射な前合成同値に対する持ち上げを追加するとfiberwiseHomPostcomp_innerFibrationは原文の同じV′のinner性を直接返す。cartesian fibration性の一条件のみで、cartesian辺の判定は含まない。 |
+| 5.3.6.9 | partial → partial | component | fiberwiseHomProjection_cartesianFibrationは原文(1)、fiberwiseHom_isCartesianEdge_of_invertingは原文(2)の十分条件を同じ射・辺について直接返す。必要条件は含まない。 |
+| 5.3.6.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：片側が Kan・左ファイブレーション・反対と cartesian 判定・一点・写像の移送を照合。前項の fiberwise Fun fibration の反変輸送は U の共変輸送との前合成。一般の評価や単一ファイバー同型に底辺に沿うこの作用がない。 |
+| 5.3.6.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：片側が Kan・左ファイブレーション・反対と cartesian 判定・一点・写像の移送を照合。U の hQCat 値 homotopy transport と fiberwise Fun の反変輸送の両立。homotopyTransport の共変の合成だけでは指定 Fun との比較がない。 |
+| 5.3.6.12 | partial → none |  | fiberwiseHomPostcomp_innerFibrationは射全体のinner性。原文は指定した辺eのV′-cartesian性であり、inner性はこの辺の結論の一部を直接与えない。 |
+| 5.3.6.13 | partial → none |  | 引用はV′が両側の底への射影に対するcartesian辺を保つこと。原文はV′の指定辺への持ち上げの存在で、保存性と持ち上げは別の結論。 |
+| 5.3.7.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。矢印 ∞ 圏で ev₀(e) の U-cocartesian 性から組になった評価射に対する V-cocartesian 性を得る主張。点評価の保存だけでは逆の向きの主張を与えない。 |
+| 5.3.7.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。cocartesian fibration の四角が誘導する oriented fiber product の辺の性質。通常の pullback に対する保存は矢印対象の評価を含まない。 |
+| 5.3.7.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。向き付き引き戻しの二射影の fibration と、片側射影の cartesian 辺の判定。laxPullbackProjection の型には辺の判定がない。 |
+| 5.3.7.4 | partial → partial | special | 底C=Δ⁰に限ると原文の相対比較射Vは同じconeRestriction。cocartesianHornFibration_coneRestrictionとhorn/cartesian条件の比較で同じfibration性を与え、apex可逆ならcocartesianという十分方向も直接ある。 |
+| 5.3.7.5 | partial → partial | component | cocartesianHornFibration_coneRestrictionは原文(1)のfibration性、hasCocartesianHornLifting_coneRestriction_of_apexは辺の十分条件を直接与える。逆方向と(2)全体は含まない。 |
+| 5.3.7.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。辺 f に沿う coslice 等の図式と共変輸送が作る四角の比較。join の前合成による制限だけでは transport と同定できない。 |
+| 5.3.7.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。対角 δ の制限が、cocartesian 辺保存関手に対して自明 Kan ファイブレーション。相対 Fun の restriction 一般の型に保存部分圏がない。 |
+| 5.3.7.9 | partial → partial | component | fiberwiseHomCurryにA=C、a=id、HをDへの第二射影として代入すれば、恒等Dをcurryした原文最初のsectionを直接構成し、projection補題が底上の等式を返す。Resのpullbackとcocartesian部分への制限全体は含まない。 |
+| 5.3.7.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。cocartesian V と cartesian U に対する Res の cocartesian 性とその辺の判定。通常の functor category の fibration の型に Res の保存条件がない。 |
+| 5.3.7.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：一点の coslice と矢印圏・相対関手と保存辺の部分圏・通常圏の pullback–pushforwardを照合。Res の普遍性を cocartesian 辺を保存する両相対関手圏の比較として述べる結論。通常の pullback–pushforward 随伴の型はこの充満部分圏に制限しない。 |
+| 5.3.8.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan ファイブレーションの最小性・Δ¹・Δⁿ と最小模型・通常圏の骨格を照合。各 Δⁿ 上の pullback が minimal ∞ 圏である内ファイブレーションの述語。minimal Kan fibration の定義とは対象が異なる。 |
+| 5.3.8.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan ファイブレーションの最小性・Δ¹・Δⁿ と最小模型・通常圏の骨格を照合。半順序で添字付けた minimal 値図式の weighted nerve の minimal 性。weighted nerve の内ファイブレーション性に minimality の結論がない。 |
+| 5.3.8.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan ファイブレーションの最小性・Δ¹・Δⁿ と最小模型・通常圏の骨格を照合。任意の通常圏で添字付けた minimal 値図式の weighted nerve 射影の相対 minimal 性。半順序の nerve の薄さだけでは一般に及ばない。 |
+| 5.3.8.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan ファイブレーションの最小性・Δ¹・Δⁿ と最小模型・通常圏の骨格を照合。Δⁿ 上の cocartesian fibration の全空間の minimal 性と最小な値を持つ表示等の同値。輸送の strictification は値の minimal 性を要求しない。 |
+| 5.3.8.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan ファイブレーションの最小性・Δ¹・Δⁿ と最小模型・通常圏の骨格を照合。Kan fibration の二種の相対 minimality の同値。個別の minimal model の変形レトラクトからは各 Δⁿ 上の最小性の比較が出ない。 |
+| 5.3.8.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan ファイブレーションの最小性・Δ¹・Δⁿ と最小模型・通常圏の骨格を照合。任意の内ファイブレーションに対して指定された minimal 部分複体とその比較を取る結果。minimal Kan 複体の構成では Kan の仮定が強い。 |
+| 5.4.1.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan の hc nerve・普通の双圏・Duskin・薄さ付きの内外ホーンを照合。外ホーンの指定された薄い三角形条件を含む ∞-bicategory の定義。Quasicategory は内ホーン、Mathlib の Bicategory は対象・1射・2射の構造。 |
+| 5.4.1.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan の hc nerve・普通の双圏・Duskin・薄さ付きの内外ホーンを照合。任意の ∞ 圏が ∞-bicategory の公理を満たす含意。通常圏の Bicategory インスタンスは単体集合のホーン条件を述べない。 |
+| 5.4.1.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan の hc nerve・普通の双圏・Duskin・薄さ付きの内外ホーンを照合。Duskin nerve の ∞-bicategory 公理。局所 Kan な simplicial category の coherent nerve の Quasicategory は別の nerve と仮定。 |
+| 5.4.2.1 | none → partial | component | InnerFibrationは全inner hornの持ち上げを要求するので、原文の第一条件（像の隣接三角形がthinの場合のinner horn持ち上げ）を直接与える。第二条件の全恒等辺のcartesian/cocartesian性をこの型だけから数えず、定義全体とのiffではない。 |
+| 5.4.2.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏の場合の内ファイブレーション・左右 pinched の比較・通常双圏と薄い 2 面を照合。interior fibration が像で薄い 2-単体を反映する主張。thin nerve の「thin」は通常圏の射の一意性を指す。 |
+| 5.4.2.8 | partial → none |  | 引用は準圏性まで。原文の∞-bicategoryはthinな2単体の条件と指定退化面を持つ外hornの延長も課し、準圏の内horn充填性の型だけがその全条件を直接返すわけではない。準圏から∞-bicategoryへの比較を欠く。 |
+| 5.4.2.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏の場合の内ファイブレーション・左右 pinched の比較・通常双圏と薄い 2 面を照合。interior fibration が合成に閉じること。Mathlib の Fibration.comp はモデル圏の射クラスの閉性。 |
+| 5.4.2.10 | partial → none |  | pinchedHomMap_rightFibrationは右pinched模型の射のright fibration性。原文の右模型はleft、左模型はrightという二結論であり、左右の対応・反転した射を比較する型なしには同じ射の結論ではない。 |
+| 5.4.3.1 | partial → partial | stronger-hyp | Cを準圏に強めるとslice/coslice射影はそれぞれright/left fibration、従ってinner fibrationであり、原文の指定した二射のinterior horn持ち上げ条件を直接満たす。 |
+| 5.4.3.4 | partial → none |  | 引用は準圏性まで。原文の∞-bicategoryはthinな2単体の条件と指定退化面を持つ外hornの延長も課し、準圏の内horn充填性の型だけがその全条件を直接返すわけではない。準圏から∞-bicategoryへの比較を欠く。 |
+| 5.4.3.5 | partial → partial | stronger-hyp | Cを準圏に強めるとpinchedHomとpinchedHomLeftはともにKan、従って準圏であり、原文の二つのpinched写像空間の結論を直接満たす。 |
+| 5.4.3.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏で slice/coslice の特例・左右 pinched の Kan 性・薄い 2 面を固定した joinを照合。K₀⊂K に沿う slice 比較の指定ホーン持ち上げから薄い三角形を固定した join の充填を得る結論。通常の join anodyne は薄さを要求しない。 |
+| 5.4.3.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏で slice/coslice の特例・左右 pinched の Kan 性・薄い 2 面を固定した joinを照合。指定した頂点からの三角形の薄さを課した slice 射影の持ち上げ。right fibration の普遍性では個別三角形の薄さが指定されない。 |
+| 5.4.3.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏で slice/coslice の特例・左右 pinched の Kan 性・薄い 2 面を固定した joinを照合。K₀ に固定した slice 比較で Δ¹⋆{x} の三角形条件を満たす延長。quasicategory の restriction の型には薄い条件がない。 |
+| 5.4.4.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏で薄さを自動化・左右 slice の条件・普通の双圏の 2-cellを照合。薄い 2-単体と各 slice/coslice での局所 cartesian・cocartesian 条件等の同値。通常の辺の cartesian 性は ∞-bicategory の三角形を分類しない。 |
+| 5.4.4.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：∞ 圏で薄さを自動化・左右 slice の条件・普通の双圏の 2-cellを照合。slice の辺 u に対する局所 cartesian 性を元の三角形の薄さで判定。isCartesianEdge の通常の pullback には元の薄さの述語がない。 |
+| 5.4.5.1 | partial → none |  | 通常双圏のPithという型と、原文の単体的∞-bicategoryの全2面がthinとなる部分複体とのnerve比較を欠く。同名の類似構成だけでは数えない。 |
+| 5.4.5.6 | partial → none |  | MathlibのPithの各Homがgroupoidという型は通常双圏のもの。原文の指定単体的pithが準圏という結論へ移す比較がない。 |
+| 5.4.5.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：普通の双圏 Pith・∞ 圏 core と反対・局所 Kan と薄い面を照合。3-単体の指定 2-面に対する inner exchange の述語。三角形での cartesian 辺の合成には 2-面の所属条件がない。 |
+| 5.4.5.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：普通の双圏 Pith・∞ 圏 core と反対・局所 Kan と薄い面を照合。薄い三角形全体が inner exchange を満たす結論。通常圏での可換三角形と任意の ∞-bicategory の薄い 2-面を区別した。 |
+| 5.4.5.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：普通の双圏 Pith・∞ 圏 core と反対・局所 Kan と薄い面を照合。Pith(C) を介して定める ∞-bicategory の同型辺。IsInvertibleEdge の型だけでは Pith に属するという定義を与えない。 |
+| 5.4.5.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：普通の双圏 Pith・∞ 圏 core と反対・局所 Kan と薄い面を照合。Pith の左右 pinched Hom と元の pinched Hom の core の厳密な同型。一般の左右 pinched 比較は pith と core の交換を述べない。 |
+| 5.4.5.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：普通の双圏 Pith・∞ 圏 core と反対・局所 Kan と薄い面を照合。slice と Pith の pullback の内ファイブレーション性と薄さを用いる辺の判定。一般の Pith を持たない slice の射影型とは異なる。 |
+| 5.4.6.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の同型・弱同値の合成・∞ 圏の可逆辺・薄い面と 4 単体を照合。3-単体で二つの合成辺の所属から六つの辺の所属を要求する述語。MorphismProperty.HasTwoOutOfThreeProperty は三辺の条件。 |
+| 5.4.6.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の同型・弱同値の合成・∞ 圏の可逆辺・薄い面と 4 単体を照合。∞ 圏で同型辺が 3-単体上の two-out-of-six を満たす結果。hQCat の圏同値の二取三は扱う射と条件が異なる。 |
+| 5.4.6.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の同型・弱同値の合成・∞ 圏の可逆辺・薄い面と 4 単体を照合。two-out-of-six と恒等辺の包含から全同型辺を含む結論。通常の RespectsIso は同型辺の包含を別に仮定するか、別種の条件。 |
+| 5.4.6.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の同型・弱同値の合成・∞ 圏の可逆辺・薄い面と 4 単体を照合。4-単体の指定した 2-面の四取五による T の述語。射の三取二や群の五補題は面の所属を扱わない。 |
+| 5.4.6.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の同型・弱同値の合成・∞ 圏の可逆辺・薄い面と 4 単体を照合。薄い 2-単体の四取五。Mathlib の group_five_lemma は完全列上の同型で、4-単体の面を扱わない。 |
+| 5.4.6.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の同型・弱同値の合成・∞ 圏の可逆辺・薄い面と 4 単体を照合。退化面の包含などの仮定下での T の四取五の判定。退化単体の一般補題は指定面の所属関係を比較しない。 |
+| 5.4.7.1 | partial → none |  | pseudofunctorToPithは通常双圏のpseudofunctorを制限する構成。原文の単体集合の射がthin2単体を保つという述語ではない。 |
+| 5.4.7.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の関手・∞ 圏と core の比較・左右 slice/coslice の特殊化を照合。薄さ保存を指定退化三角形・任意の辺への条件などで判定する同値。普通の nerve の関手性ではこの述語を特徴づけない。 |
+| 5.4.7.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の関手・∞ 圏と core の比較・左右 slice/coslice の特殊化を照合。interior fibration の薄さ保存と Pith の pullback 四角・誘導射の性質。core の induced map の型は 1-面の可逆性に基づく。 |
+| 5.4.7.11 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の関手・∞ 圏と core の比較・左右 slice/coslice の特殊化を照合。∞-bicategory の slice/coslice 射影を薄い面の延長で判定する結果。通常の slice/coslice の反転同型には薄さがない。 |
+| 5.4.7.12 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の関手・∞ 圏と core の比較・左右 slice/coslice の特殊化を照合。Pith の点上の slice 射影の cartesian 性と Pith(C)_{/Z} の非充満な像。通常の slice の全部分複体の議論とは異なる。 |
+| 5.4.7.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常双圏の関手・∞ 圏と core の比較・左右 slice/coslice の特殊化を照合。K₀⊂K に沿う slice/coslice の射が ∞-bicategory functor となる薄さ保存。普通の restriction は単体集合射で薄さを指定しない。 |
+| 5.4.8.1 | partial → none |  | 引用は準圏性まで。原文の∞-bicategoryはthinな2単体の条件と指定退化面を持つ外hornの延長も課し、準圏の内horn充填性の型だけがその全条件を直接返すわけではない。準圏から∞-bicategoryへの比較を欠く。 |
+| 5.4.8.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・hc nerve・2 単体と 1 射の比較・内外ホーンと coreを照合。hc nerve の 2-単体を表す μ:g∘f→h が enriched Hom で可逆なら、その三角形が薄いという主張。2-単体の構成だけでは薄さ判定を持たない。 |
+| 5.4.8.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・hc nerve・2 単体と 1 射の比較・内外ホーンと coreを照合。最終ホーンと標準単体の Path の指定 Hom 比較を部分立方体で同定。内ホーンの necklace 分解は最終ホーンの指定 Hom ではない。 |
+| 5.4.8.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・hc nerve・2 単体と 1 射の比較・内外ホーンと coreを照合。最後の三角形を同型に送る hc nerve の外ホーンの延長。局所 Kan の hc nerve の ∞ 圏性は内ホーンを扱う。 |
+| 5.4.8.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・hc nerve・2 単体と 1 射の比較・内外ホーンと coreを照合。locally quasicategory な豊穣関手の hc nerve が薄さを保存する結果。coherentNerveMap は射を作るが薄い 2-単体に関する述語がない。 |
+| 5.4.8.7 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・hc nerve・2 単体と 1 射の比較・内外ホーンと coreを照合。hc nerve の三角形が薄いことと enriched Hom の比較辺 μ が同型であることの同値。局所 Kan の比較では μ の可逆性を特徴づけない。 |
+| 5.4.8.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・hc nerve・2 単体と 1 射の比較・内外ホーンと coreを照合。各 enriched Hom の core を取る構成の hc nerve と、元の hc nerve の Pith の厳密同型。coherentNerveCoreIso は可逆な 1-辺で張る core を扱う。 |
+| 5.4.9.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan の比較・hC の通常圏版・左右 pinchedを照合。locally Kan な C で hC の同型と比較した enriched Hom の π₀ 上の図式。既存の hC と hc nerve の同型に指定された三角形の可換性はない。 |
+| 5.4.9.2 | partial → none |  | coherentHomIntervalComparisonの同値はinterval写像空間への比較。原文の指定θはleft-pinchedへの射で、さらに豊穣輸送との自然同型を要求する。同じθと自然性への比較が引用型にない。 |
+| 5.5.1.1 | partial → none |  | Overは通常圏のsliceであり、原文の豊穣sliceのHomを単体集合の厳密fiberで作る構成への比較がない。通常圏の同名構成だけでは数えない。 |
+| 5.5.1.3 | partial → none |  | Underは通常圏のcosliceであり、原文の豊穣cosliceの単体集合のHomの厳密fiberへの比較がない。 |
+| 5.5.1.8 | partial → partial | component | WithInitialは通常圏の場合に原文の対象集合Ob(C)⊔{X₀}を直接構成する。単体豊穣Homとその合成まで含む錐の全構成ではない。 |
+| 5.5.1.9 | partial → partial | component | WithTerminalは通常圏の場合に原文の対象集合Ob(C)⊔{Y₀}を直接構成する。単体豊穣Homと合成は含まない。 |
+| 5.5.1.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の slice・錐・単体豊穣 slice と一点・局所 Kan・hc nerve の比較を照合。豊穣 slice/coslice の錐から C への指定 contraction functor。単体集合の join の評価は豊穣な関手ではない。 |
+| 5.5.1.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の slice・錐・単体豊穣 slice と一点・局所 Kan・hc nerve の比較を照合。豊穣錐上の関手と指定頂点の豊穣 slice/coslice への関手の対応。通常の Over/Under の普遍性では enriched functor を量化しない。 |
+| 5.5.1.17 | partial → none |  | coherentCosliceFiberComparisonは一つの豊穣Homからcosliceのfiberへの射。原文は豊穣slice/cosliceのcoherent nerve全体からの比較関手であり、指定射への制限との比較が引用型にない。 |
+| 5.5.1.21 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の slice・錐・単体豊穣 slice と一点・局所 Kan・hc nerve の比較を照合。豊穣 coslice の hc nerve 比較の圏同値性を合成 Hom の仮定から導く結論。単一の Kan ファイバーの比較は全 coslice の同値ではない。 |
+| 5.5.1.22 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏の slice・錐・単体豊穣 slice と一点・局所 Kan・hc nerve の比較を照合。豊穣 coslice の指定の充満部分圏への制限での比較の充満忠実性。coherent nerve の後合成の関手性からはこの仮定付き判定が出ない。 |
+| 5.5.2.6 | partial → partial | component | pointedSpaceFiberValueEquivalenceは各Sの頂点で、原文の輸送の値となるfiberとそのKan複体の同値を直接与える。豊穣関手の逆であるためのHom作用と自然性は含まない。 |
+| 5.5.2.8 | partial → none |  | coherentPointedFiberComparisonは各Kのfiberからの射。原文の全coslice比較関手の制限がこの射という比較がなく、その全関手の同値を直接結論しない。 |
+| 5.5.2.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：点付き Kan の hc nerve・各ファイバーの比較・通常群と nerveを照合。点付き Kan の hc nerve と S_* のホモトピー圏の同型。KST の pointedKanHomotopyClass_comparison は指定辺の同値関係を比較するが両圏の比較同型を構成しない。 |
+| 5.5.2.13 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：点付き Kan の hc nerve・各ファイバーの比較・通常群と nerveを照合。G↦BG の N(Group)→S_* の充満忠実性。KST の群の nerve の座標計算と通常 nerve の充満忠実性は点付き空間の写像空間を比較しない。 |
+| 5.5.3.1 | partial → own |  | QuasicategoryObjectとQCatは小さい準圏を対象とし、qCat_sHomはHomがFunctor空間のcoreに一致すると明示する。qCat_simplicialCategoryはcore関手で合成を移送し、CatInfinityはそのcoherent nerve。原文の全構成を直接与える。 |
+| 5.5.3.9 | partial → partial | component | quasicategoryCoreFunctorは原文のcoreの対象・通常の射への作用を直接与え、準圏上では値がKan。豊穣Hom上の作用とcoherent nerve間の射への組立ては含まない。 |
+| 5.5.3.11 | partial → none |  | CatInfinity.{u}は宇宙による小ささ。原文の指定κのκ-smallを満たす頂点で張るfull subcategoryとκ⁺の型への対応がない。 |
+| 5.5.3.13 | partial → none |  | SpaceInfinity.{u}は宇宙版であり、原文の数値κとκ⁺で指定したKan複体のfull subcategoryへの比較がない。 |
+| 5.5.3.15 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：n＝0・通常圏の nerve・QC の対角・完全忠実性・切断と小ささを照合。QC の射としての n-truncation と対象対の写像空間の条件。CatInfinity の fully faithful は写像空間の同値に関する別述語。 |
+| 5.5.3.16 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：n＝0・通常圏の nerve・QC の対角・完全忠実性・切断と小ささを照合。QC 内の mono と、充満忠実性や像での同型の条件との同値。SSet.Mono は各次数での集合の単射。 |
+| 5.5.3.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：n＝0・通常圏の nerve・QC の対角・完全忠実性・切断と小ささを照合。充満忠実な F を QC の辺として見たときの ∞ 圏の mono 性。fully faithful は F 自体の写像空間だけに関する。 |
+| 5.5.3.19 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：n＝0・通常圏の nerve・QC の対角・完全忠実性・切断と小ささを照合。QC の対象としての C の n-truncation と局所 n-truncation を結ぶ同値条件。通常の coskeletal や π 群の型では QC の写像空間を評価しない。 |
+| 5.5.3.21 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：n＝0・通常圏の nerve・QC の対角・完全忠実性・切断と小ささを照合。QC の対象の n-truncation から局所 n-truncation への含意と条件付きの逆。局所条件だけを述べる補題では QC の対象としての述語がない。 |
+| 5.5.4.2 | partial → none |  | CatInfinityはHomのcoreを取った局所Kanな圏のnerve。原文の太字QCはcoreを取る前の関手準圏をHomに持つ別の対象であり、その∞-bicategory性ではない。 |
+| 5.5.4.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：局所 Kan・core の場合・濃度と universe lift・通常双圏と Duskinを照合。本質的 κ-small な対象で張る太字 QC_{<κ} の ∞-bicategory。宇宙上限の lift と、任意の濃度 κ での部分圏を区別した。 |
+| 5.5.5.6 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値に制限・一点の QC coslice と輸送・普通の双圏の Pithを照合。点付き QCat の hc nerve と QC_* の全空間を結ぶ比較の ∞ 圏同値。relativeHomCosliceComparison は left fibration 分類圏の固定対象上の比較。 |
+| 5.5.5.8 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値に制限・一点の QC coslice と輸送・普通の双圏の Pithを照合。太字 QC の Δ⁰ 上の coslice としての太字 QC_Obj。通常の QC の coslice では 2-射の情報を落とす。 |
+| 5.5.5.9 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値に制限・一点の QC coslice と輸送・普通の双圏の Pithを照合。太字 QC_Obj が ∞-bicategory で太字 QC への射が interior fibration。普通の coslice 射影は interior を述べない。 |
+| 5.5.5.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値に制限・一点の QC coslice と輸送・普通の双圏の Pithを照合。太字 QC_Obj の Pith としての QC_Obj。quasicategory core は Pith と違い可逆辺で切る。 |
+| 5.5.5.11 | partial → none |  | pointedSpaceProjectionの全空間は空間のcoslice。原文はQCの対象を分類する全空間であり、空間側が指定四角のpullbackである比較なしには同じ射の特殊化ではない。 |
+| 5.5.5.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：空間値に制限・一点の QC coslice と輸送・普通の双圏の Pithを照合。QC_Obj→QC の homotopy transport と hQC→hQCat の指定した同値。一般の homotopyTransport はこの普遍 fibration を指定しない。 |
+| 5.6.0.2 | partial → none |  | 有限鎖上のcocartesianStraighteningCoherentMapの圏同値はあるが、原文の指定積分の構成と相対fibration同値類・Functor coreのπ₀の全単射へ比較する型がない。分類の模型の同値だけをそのまま数えない。 |
+| 5.6.0.6 | partial → partial | stronger-hyp | 底Cを準圏に強めればleftStraighteningInfinityMap_isQCatEquivalenceはleft fibrationと空間値図式の同じ分類の∞圏同値を直接与える。従ってcoreの頂点の同型類の全単射を与える。非準圏の底の単射側は含まない。 |
+| 5.6.1.16 | partial → none |  | Mathlibの型は反変CoGrothendieckの選んだcartesian lift。原文の共変Grothendieckの一般(f,u)のcocartesian性とuの同型性のiffとは別の射と述語。 |
+| 5.6.1.17 | partial → partial | component | MathlibのCoGrothendieck忘却のIsFibered instanceは原文後半の反変版射影がcartesian fibrationという結論そのもの。共変版は含まない。 |
+| 5.6.2.1 | partial → none |  | leftUnstraighteningはSpaceInfinityとpointedSpaceProjectionのpullback。原文のN^hc(Set_Δ)とそのΔ⁰-cosliceのpullbackとは別の対象で、二つの普遍射影を比較する型がない。 |
+| 5.6.2.2 | partial → none |  | 引用は空間の普遍left fibrationのpullback。原文のQC_Objの普遍cocartesian fibrationとのpullback比較がなく、QC値の同じ積分の特殊形だと直接同定できない。 |
+| 5.6.2.3 | partial → none |  | leftUnstraightening_quasicategoryは空間の普遍射影のpullbackの準圏性。原文のQC_Objによる積分と同じ対象になる比較がない。 |
+| 5.6.2.4 | partial → none |  | SpaceInfinityによるleftUnstraighteningは原文のQC値の積分の定義と値域・普遍射影が異なり、指定対象を同定する比較がない。 |
+| 5.6.2.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Space 値・底辺ごとの比較・通常圏 Grothendieck と nerve・全図式の自然性を照合。通常圏上の strictly unital Cat 値図式の ∞ 版 Grothendieck 構成と通常の圏 of elements の nerve の標準同型。番号引用の base change や vertexFiberPullback はこの nerve 比較を述べない。 |
+| 5.6.2.21 | partial → none |  | leftUnstraighteningMapは図式の厳密等式で与えた底変換の射。原文のFunctor空間の同型から底上の相対逆を持つ比較を返す型ではない。 |
+| 5.6.2.22 | partial → none |  | leftStraighteningInfinityCounitは分類図式間のFunctorIso。原文の指定した比較θ_Cと豊穣homotopyTransportの自然同型に結ぶ型がなく、別のunit/counitだけを数えない。 |
+| 5.6.2.23 | partial → none |  | 引用はstraightening counitとfiber同値を束ねたLeftTransportRepresentation。原文の各辺の作用・任意の選んだ共変輸送と指定θ_Cからなる四角の可換性の型はない。 |
+| 5.6.2.24 | partial → none |  | 引用はFunctor空間の辺F→Gをunstraighteningの全空間射へ移し、その各bの作用をpointed-space輸送と比較する。原文の一つのFの底の辺C→DとhC上の自然性とは異なる図式。 |
+| 5.6.3.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値の圏 of elements・普通の nerve 比較・Space 値の特例を照合。∞ 版 ∫_C F から通常 Grothendieck 圏の nerve への指定 T の一意性。weighted nerve の射影にはこの通常圏への比較がない。 |
+| 5.6.3.2 | partial → none |  | grothendieckTypeToCatは通常圏の二つの構成の圏同値。原文の積分のホモトピー圏からの指定した厳密同型との比較がない。 |
+| 5.6.3.3 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値の圏 of elements・普通の nerve 比較・Space 値の特例を照合。left covering を hC 上の通常圏 of elements で判定する二条件。LeftFibration の分類は離散ファイバーの厳密な covering 判定ではない。 |
+| 5.6.3.4 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値の圏 of elements・普通の nerve 比較・Space 値の特例を照合。通常圏上の strictly unital Cat 値図式で ∞ 版 ∫ の nerve 比較 T が同型。一般の weighted nerve の定値図式比較は任意の bicategorical 図式を扱わない。 |
+| 5.6.3.5 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Set 値の圏 of elements・普通の nerve 比較・Space 値の特例を照合。通常の Cat の pith に由来する図式について ∫_C F の射影の性質を強める結果。一般の cocartesian straightening の型にこの因子化がない。 |
+| 5.6.4.1 | partial → none |  | exists_kanWeightedUnstraighteningUnitはKan値図式に対する選択された比較の存在、reversed比較は反転した係数。原文のmin(S\{x})による指定θの単体上の公式との比較がなく、同じ構成の特殊形ではない。 |
+| 5.6.4.8 | partial → none |  | strictKanUnstraighteningComparisonの始域係数はsHom(Δ⁰,F(c))の反転、原文はF(c)そのもの。原文の指定θとの比較式がないため、反転模型上の同値を同じ射の結論として数えない。 |
+| 5.6.5.1 | partial → none |  | LeftTransportRepresentationはSpaceInfinity値とfiberごとの同値を束ねる。原文のQC_Objによる四角と相対逆を持つ比較射の定義への同定がなく、類似の表現データにとどまる。 |
+| 5.6.5.12 | partial → none |  | 引用はSpaceInfinity・pointed-spaceによるleft transport表現の厳密延長。原文のQC_Objによる指定四角と同じ表現空間になる比較がない。任意の余デカルト表現をそのまま延長しない。 |
+| 5.6.5.13 | partial → none |  | 引用の延長は空間値のleft transport表現で、原文のQC値表現の指定射影との比較がない。left fibrationに制限しても、与えられたQC値表現が同じ空間値データとは限らない。 |
+| 5.6.5.14 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan/Space 値の分類・通常圏の Grothendieck・充満部分圏・各頂点を照合。全ファイバーに同値な代表を含む充満部分圏 Q へ分類関手を落とす存在。Space 値の small unstraightening は任意の Q への因子化を与えない。 |
+| 5.6.5.15 | partial → none |  | 空間値のtransportWitnessSpaceが可縮という型は、原文の任意の二つのQC値表現の間のFunctorIsoを直接返さない。表現の値域・証人空間の比較を欠く。 |
+| 5.6.5.16 | partial → none |  | leftStraighteningInfinityMapと表現のnonemptyは空間値の構成。原文のQC値の表現の全同型類と、同型な任意候補も表現である条件への比較がない。 |
+| 5.6.5.18 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan/Space 値の分類・通常圏の Grothendieck・充満部分圏・各頂点を照合。通常の小圏 C について hc nerve が原文の指定した図式の二集合の間に全単射を誘導する結論。coherentProduct の比較同値は指定集合の全単射を与えない。 |
+| 5.6.5.20 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan/Space 値の分類・通常圏の Grothendieck・充満部分圏・各頂点を照合。inner covering と所定の Q を通る ∫_C F の厳密同型による分類。内ファイブレーションの底上の ∞ 圏同値と、ここでの covering の厳密同型は区別した。 |
+| 5.6.5.21 | partial → none |  | Grothendieckの型と反変射影のfibered instanceだけでは、原文の与えられた共変fibrationを指定同型で復元するiffのいずれの方向も直接返さない。 |
+| 5.6.5.22 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：Kan/Space 値の分類・通常圏の Grothendieck・充満部分圏・各頂点を照合。通常の groupoid opfibration と Cat 値図式の Grothendieck 構成に同型であることの同値。Mathlib の Grothendieck は分裂の構成を与えるがこの分類を述べない。 |
+| 5.6.6.1 | partial → none |  | IsCorepresentableSmallSpaceFunctorは共変Hom関手とのFunctorIsoの存在。原文は指定頂点xで評価した同じ写像空間作用の同値性であり、その頂点による同値との比較が型にない。 |
+| 5.6.6.2 | partial → none |  | representablePresheafInfinityはHom前層の構成。原文の指定頂点が表現を与える述語とその存在の定義は直接与えない。 |
+| 5.6.6.10 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：点付き左ファイブレーションの特例・局所 Kan・通常の Yoneda・反対と輸送を照合。hKan 豊穣圏と反対圏での指定した表現可能関手の関係。通常の EnrichedCategory の Hom と op の定義だけでは hKan 値の比較がない。 |
+| 5.6.6.13 | partial → none |  | 共変Hom関手とcoslice分類の同型はあるが、原文の指定頂点でのcorepresentabilityとその存在・一意性を返す型へ比較されていない。関手があるだけを表現可能性の証明としない。 |
+| 5.6.6.14 | partial → partial | component | homInfinityCovariantとcovariantRepresentableInfinityは原文の共変Hom(X,−)の候補を具体的な図式として直接構成する。指定頂点によるcorepresentabilityと局所小な大きいC全体、二変数での比較は含まない。 |
+| 5.6.6.17 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：点付き左ファイブレーションの特例・局所 Kan・通常の Yoneda・反対と輸送を照合。hc nerve 上の Space 値関手を、指定点が representable にするための条件。Yoneda の普遍性や一点の評価だけではこの enriched 側の特徴付けが出ない。 |
+| 5.6.6.19 | partial → none |  | IsInitialVertex.exists_cosliceLiftは始対象から任意A→XをXのcosliceへ持ち上げる型。原文のC_{X/}→Dの相対同値・評価のtrivial Kan性・π₀全単射とは別の対象と射。 |
+| 5.6.6.20 | partial → partial | direction | QCatEquivalence.map_isInitialVertexは原文のFが同値なら指定始対象の像も始対象となる方向を同じFについて直接返す。左ファイブレーションの仮定すら不要。逆は含まない。 |
+| 5.6.6.21 | partial → partial | component | parametrizedFiberTransport_evaluate_isQCatEquivalence_of_initialVertexは原文(1)の始対象⇒同じパラメーター付き輸送を指定点で評価した射の同値、という方向を直接返す。逆・豊穣表現可能性の各iffは含まない。 |
+| 5.6.7.1 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーション・アノダインの特例・指数化と底変換・ファイバーと宇宙の特例を照合。C の部分複体上の指定同型を延長する cocartesian fibration の四角。通常の底変換の pullback 同型は任意の部分複体からの延長ではない。 |
+| 5.6.7.2 | none → none |  | B6再検索（現本体・ロックMathlib、移動後を含む）：左ファイブレーション・アノダインの特例・指数化と底変換・ファイバーと宇宙の特例を照合。部分複体上の cocartesian fibration とファイバーの条件を持つ引き戻しによる延長。指定した底上の分類の型では延長先を作らない。 |
+| 5.6.7.3 | partial → none |  | 引用は既に大きい底の上にあるleft fibrationの表現を延長する。原文は底と全空間のfibration自体をinner anodyneな底変更で拡張する存在であり、対象が異なる。 |
+| 5.6.7.5 | partial → partial | stronger-hyp | 底を準圏に強めるとcocartesianFibration_kanEquivalenceLiftingは同じUのequivalence liftingを直接与え、inner性と可逆辺の持ち上げというisofibration判定に一致する。 |
+| 5.6.7.6 | partial → partial | special | 底の圏同値をinner anodyneに制限するとcocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalenceは同じpullback projectionの圏同値性を直接返す。任意の圏同値への一般化は含まない。 |
+| 5.6.7.7 | partial → none |  | HasSmallSimplexFibers.essentiallySmallは宇宙版の頂点fiberの小ささ。原文の数値κとcf(κ)、全空間のessentiallyκ-smallとのiffのいずれの方向も直接返さない。 |
+| 5.6.7.8 | partial → partial | stronger-hyp | 底を準圏、U,Vをleft fibrationに強めれば、圏同値Fを前合成同値へ移しexists_relativeFunctorInverse_of_precompositionEquivalenceで同じFの底上の相対逆と相対単位・余単位を直接得る。一般cocartesian版と逆は含まない。 |
+| 5.6.8.1 | partial → none |  | transportWitnessSpaceは空間値のleft transportの証人全体。原文TWはQC値表現の証人全体であり、Uがleft fibrationでも任意QC値表現を空間値データに同定する比較なしには同じ部分単体集合にならない。 |
+| 5.6.8.3 | partial → none |  | 可縮性の型は空間値のtransportWitnessSpace。原文のQC値表現全体のTWとの比較がないので、left fibrationに制限しても同じTWの可縮性とは言えない。 |
+| 5.6.8.5 | partial → none |  | 引用のIsRepresentationは空間値left transportのfiber同値条件。原文のQC_Objによる指定四角が表現になる条件との同定がない。頂点全射での検出は類似の判定。 |
+| 5.6.8.6 | partial → none |  | 引用は空間値LeftTransportSquareの表現条件を可逆辺に沿って保つ。原文のQC値の全四角のMとそのreplete部分TWは別の対象で、同定する比較がない。 |
+| 5.6.8.7 | partial → none |  | Kan性の型は空間値left transportの証人空間。原文のQC値の全表現のTWとの比較を欠くため、同じ対象の特殊形の結論ではない。 |
+| 5.6.8.9 | partial → none |  | 引用の制限写像は空間値TW間。原文のQC値TWの指定制限射との比較がなく、余極限から極限への保存の主張も含まない。 |
+| 5.6.8.10 | partial → none |  | 引用のfibration性とinner anodyneでのtrivial性は空間値TWの制限。原文のQC値のTWの制限と同じ射である比較がない。 |
+| 5.6.9.1 | partial → none |  | 引用は一点上の空間値証人空間を関手空間として区間境界へ制限する射。原文のΔ¹上の一般cocartesian fibrationのQC値TWの制限への同定がない。 |
+| 5.6.9.2 | partial → none |  | 引用は一点上のleft fibrationの空間値証人空間。原文の任意の準圏EのQC値TWと比較する型がなく、EがKanという制限だけでは同じ証人空間にならない。 |
+
+## 検査
+
+原文は Kerodon 公式小節の各項目Tagで照合。none は現本体・ロックしたMathlibを再検索し、近隣項目のソース・双対/限定版の候補も照合した。Archiveの宣言をown・partialの根拠にはしていない。宣言の存在と型はソースでの確認で、kernel確認ではない。

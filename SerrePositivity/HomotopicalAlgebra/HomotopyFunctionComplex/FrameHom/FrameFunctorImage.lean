@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPostcompose
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
-public import SerrePositivity.EInfinity.Hammock.RelativeColimitMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeColimitMap
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.HomotopyFunctionComplex
 variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   {W : MorphismProperty C} [W.IsMultiplicative]
@@ -121,11 +121,11 @@ lemma frameLeftRoofNerveMap_functorImage :
 方針：同じ二列の nerve 等式と元の余極限標準射の自然性を合成する。
 規約：元の全比較射を保持。使われ方：ambient 弱比較からの反映。 -/
 lemma frameLeftRoofColimitMap_functorImage :
-    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap W A p hp hA (Y := Y) ≫ Relative.colimitMap F X Y =
+    _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap W A p hp hA (Y := Y) ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y =
       nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageIndex F A Y) ≫
         _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap V (A ⋙ F.functor) (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageAugmentation F A p)
           (fun n => F.map _ (hp n)) (fun f => F.map _ (hA f)) := by
-  rw [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap, Category.assoc, Relative.graphInclusion_colimitMap]
+  rw [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.graphInclusion_colimitMap]
   change _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap W A p hp hA (Y := Y) ≫
     nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F) ≫ _ = _
   rw [← Category.assoc, _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap_functorImage, Category.assoc]

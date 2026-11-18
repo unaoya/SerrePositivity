@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorStandardInclusion
-public import SerrePositivity.EInfinity.Operad.TensorPowerSeparationAppend
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorPowerSeparationAppend
 
 /-!
 # 指定 Hopf 入力の標準語での分離
@@ -18,7 +18,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory MonoidalCategory Limits
 open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
-attribute [local implicit_reducible] Operad.freeAlgebra
+attribute [local implicit_reducible] _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.freeAlgebra
 variable (R : Type u) [CommRing R] (X Y : Complex R)
 
 /-- 左の生成元の後ろに指定単位入力を置く、L13 の式 eL。 -/
@@ -43,7 +43,7 @@ lemma freeHopfComparisonInput_standard_separation (m n : ℕ)
     (binaryTensorStandardPowersIso X Y m n).inv ≫
       binaryTensorWordInclusion X Y (m + n) (binaryTensorStandardPattern m n) ≫
       TensorPowers.map (freeHopfComparisonInput (hopf R) h0 X Y) (m + n) ≫
-      (tensorPowerSeparation ((operad R).freeAlgebra X).carrier
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation ((operad R).freeAlgebra X).carrier
         ((operad R).freeAlgebra Y).carrier (m + n)).hom =
     freeLeftUnitExtension R X m n ⊗ₘ freeRightUnitExtension R Y m n := by
   rw [binaryTensorStandardPowersIso_inclusion]
@@ -58,12 +58,12 @@ lemma freeHopfComparisonInput_standard_separation (m n : ℕ)
     TensorPowers.map (((operad R).schurUnit Y) ≫
     (λ_ ((operad R).freeAlgebra Y).carrier).inv ≫
       ((hopfTensorUnitMap (hopf R) h0 ((operad R).freeAlgebra X)).hom ⊗ₘ 𝟙 _)) n) ≫
-    (appendIso _ m n).hom ≫ (tensorPowerSeparation _ _ (m + n)).hom = _
+    (appendIso _ m n).hom ≫ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation _ _ (m + n)).hom = _
   erw [rightUnitor_inv_naturality_assoc ((operad R).schurUnit X),
     whiskerRight_comp_tensorHom,
     leftUnitor_inv_naturality_assoc ((operad R).schurUnit Y), whiskerLeft_comp_tensorHom]
   erw [Category.comp_id, Category.comp_id]
-  rw [tensorPowerSeparation_append, tensorHom_comp_tensorHom_assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation_append, tensorHom_comp_tensorHom_assoc,
     tensorPowerSeparation_insert_right, tensorPowerSeparation_insert_left]
   rw [reassoc_of% tensorμ_unit_insert]
   simp only [freeLeftUnitExtension, freeRightUnitExtension,

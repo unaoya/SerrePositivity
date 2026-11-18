@@ -41,11 +41,11 @@ instance originalFunctor_faithful :
 lemma originalFunctor_middle_trivial (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (sourceWord n m) X Y) :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration.property (originalFunctor.obj S) := by
   have h := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.insertBetween_cut_inserted (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryWord n) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryWord m) .backward
-  have he := (wordMap n m).cut_source_target_of_eq (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m) h
-  change trivialCofibrations C (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.column (wordMap n m) S (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m))
+  have he := (wordMap n m).cut_source_target_of_eq (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m) h
+  change trivialCofibrations C (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.column (wordMap n m) S (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m))
   have hc := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.column_eqToHom_of_cut_eq (wordMap n m) S
-    (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m) h he
-  have : IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.column (wordMap n m) S (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m)) := by
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m) h he
+  have : IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.column (wordMap n m) S (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m)) := by
     rw [hc]
     infer_instance
   exact (trivialCofibrations C).of_isIso _

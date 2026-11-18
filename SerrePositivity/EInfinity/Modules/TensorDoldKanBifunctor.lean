@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
@@ -43,7 +43,7 @@ def moduleDoldKanHomBifunctor :
     (ModuleCategory A D)ᵒᵖ ⥤ ModuleCategory A D ⥤ SSet.{u} :=
   eHomFunctor (Complex A) (ModuleCategory A D) ⋙
     (Functor.whiskeringRight (ModuleCategory A D) (Complex A) SSet.{u}).obj
-      (truncatedDoldKanFunctor A)
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A)
 
 /-- 概要：同じ全単体 frame Hom は元の dg Hom の実 Dold–Kan と二変数自然に同型。
 方針：同じ標的自然同型に始域射の自然性を付ける。
@@ -59,14 +59,14 @@ def moduleTensorHomDoldKanBifunctorIso :
     funext n
     apply ConcreteCategory.hom_ext
     intro f
-    change normalizedSimplexHomEquiv A
+    change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
       (moduleHom A D (ForgetEnrichment.to (Complex A) Q.unop)
         (ForgetEnrichment.to (Complex A) N)) n.unop
       (moduleParamCurry A D
         (moduleTensorLeftMap A D
           ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n.unop)) g.unop ≫ f)) = _
     rw [moduleParamCurry_sourceMap A D (M := Q.unop) (P := P.unop) (N := N)]
-    exact normalizedSimplexHomEquiv_postcomp A n.unop (moduleParamCurry A D f)
+    exact _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv_postcomp A n.unop (moduleParamCurry A D f)
       (eHomWhiskerRight (Complex A) g.unop N))
 
 end SerrePositivity.EInfinity.Modules

@@ -37,8 +37,8 @@ lemma gammaUnitCircle_shift_class :
 /-- 指定 H⁰ 写像の単位での値は、符号を保持した実単位自己同型の類。 -/
 lemma gammaSuspensionH0Map_unit :
     gammaSuspensionH0Map A (𝟙_ (Complex A))
-      (HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)) =
-      HomologyZero.unitClass (𝟙_ (Complex A)) (signedUnitDeshiftAutomorphism A).hom := by
+      (_root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)) =
+      _root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (signedUnitDeshiftAutomorphism A).hom := by
   dsimp only [gammaSuspensionH0Map, Function.comp_apply]
   rw [gammaBasedPiZeroCohomologyEquiv_symm_unit, gammaUnitVertexClass_map_adjoint]
   change (((homologyFunctor (ModuleCat A) (.up ℤ) 0).shiftIso
@@ -52,7 +52,7 @@ lemma gammaSuspensionH0Map_unit :
       (-Multiplicative.toAdd (gammaPiCohomologyEquiv A ((𝟙_ (Complex A))⟦(1 : ℤ)⟧) 0
         (pointedGroupMap 0 ((gammaPointedFunctor A).map (unitShiftAutomorphism A).hom)
           (unitCircleClass A)))) =
-      HomologyZero.unitClass (𝟙_ (Complex A)) (-(unitDeshiftAutomorphism A).hom)
+      _root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (-(unitDeshiftAutomorphism A).hom)
   rw [map_neg, map_neg]
   exact congrArg (fun x : (𝟙_ (Complex A)).homology 0 => -x)
     (gammaUnitShiftAction_cohomology A)

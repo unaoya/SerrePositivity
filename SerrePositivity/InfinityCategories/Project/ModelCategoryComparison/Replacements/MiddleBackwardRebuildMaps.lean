@@ -23,9 +23,9 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {n m : ℕ} {X Y : C}
   {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y}
 
 lemma rebuilt_map_left (f : S ⟶ T) (i : Fin (n + 1)) :
-    HEq ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f).app (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex n m i))
-      (f.app (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex n m i)) := by
-  dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyFunctor.zigzagFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyMaps.zigzagMap, _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex]
+    HEq ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f).app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftVertex n m i))
+      (f.app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftVertex n m i)) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyFunctor.zigzagFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyMaps.zigzagMap, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftVertex]
   apply HEq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendVertical.app_left_heq (b := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryWord m) _ _ _)
   apply HEq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendVertical.app_left_heq (b := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) _ _ _)
   dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendMorphisms.map]
@@ -34,11 +34,11 @@ lemma rebuilt_map_left (f : S ⟶ T) (i : Fin (n + 1)) :
   rfl
 
 lemma rebuilt_map_right (f : S ⟶ T) (i : Fin (m + 1)) :
-    HEq ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f).app (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex n m i))
-      (f.app (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex n m i)) := by
-  dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyFunctor.zigzagFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyMaps.zigzagMap, _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex]
+    HEq ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f).app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.rightVertex n m i))
+      (f.app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.rightVertex n m i)) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyFunctor.zigzagFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyMaps.zigzagMap, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.rightVertex]
   apply HEq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendVertical.app_right_heq
-    (a := _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftWithMiddle n) (b := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryWord m) _ _ ?_
+    (a := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftWithMiddle n) (b := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryWord m) _ _ ?_
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.leftVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.forwardWord m) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) i))
   · dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendMorphisms.map]
     apply HEq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendVertical.app_left_heq (a := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.forwardWord m)
@@ -46,7 +46,7 @@ lemma rebuilt_map_right (f : S ⟶ T) (i : Fin (m + 1)) :
     rfl
   · apply HEq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendVertical.app_right_heq (b := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)
       _ _ ?_ (Fin.last 1))
-    · exact (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryComparison_first (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightPathMap f) (fun i => f.app_mem _)
+    · exact (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryComparison_first (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Extract.rightPathMap f) (fun i => f.app_mem _)
         (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.rightLeg.app S) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.rightLeg.app T) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.rightLeg_mem S) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.rightLeg_mem T)
         (𝟙 Y) ((weakEquivalences C).id_mem _) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.rightLeg.naturality f).symm).symm
     · exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryComparison_last _ _ _ _ _ _ _ _ _
@@ -63,7 +63,7 @@ lemma hom_last_heq_id {w : _root_.SerrePositivity.InfinityCategories.Kerodon.Adj
 
 lemma rebuilt_map_app (f : S ⟶ T) (j : Fin ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length + 1)) :
     HEq ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f).app j) (f.app j) := by
-  apply _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.vertex_cases n m
+  apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.vertex_cases n m
     (P := fun j => HEq ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f).app j) (f.app j))
   · exact (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardRebuildMaps.hom_first_heq_id (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuildFunctor.map f)).trans (hom_first_heq_id f).symm
   · exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardRebuildMaps.rebuilt_map_left f

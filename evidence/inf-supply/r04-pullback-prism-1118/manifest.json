@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pullback-prism-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pullback-prism-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "f5dde4776767a0fc22a1b66a1da280edb32aa7bbde41b31bdc212ef904290c96",
+   "bytes": 785
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "4636a383f1da2c93462b846ef71d4c864e15717648e6150eac0c12fadb01df76",
+   "bytes": 3752
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "ea8f429aea65ac6a2ae96055f96c4960e89b35da83d45bdb13b1eb39511045c8",
+   "bytes": 367
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "1dba31f6fddec515f3127e4704f525e12c9bcbc80e9a14831dcd06f4e858ba92",
+   "bytes": 1365
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "530dbe2e1d6b261551999ed687954bb34c8d0030a6d23e986e566f3aa19d3ee9",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "5c7688669470fcdfa06ee1ce42ff01d8c5ade02cc19ae111b771025656912875",
+   "bytes": 151
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "3daceb8fab82a455df53293d0e8eedd5140ca1f833eb3930dc588c41db13300f",
+   "bytes": 526
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 11043
+}

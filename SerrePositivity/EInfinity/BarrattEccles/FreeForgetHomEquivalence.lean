@@ -26,20 +26,20 @@ variable (A : Type u) [CommRing A]
 
 lemma freeHomFromLeft_homotopyEquivalence (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeHomFromLeft A).app X).app B) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have := free_isLeftQuillen A
   have := isFibrant A B
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameCommon_left_homotopyEquivalence (operad A).freeAlgebraFunctor
     (CosimplicialFrameFamily.ofResolution
       (cosimplicialResolutionFamily (carrierProbeFactorization A)))
-    (ComplexLimits.framedLimitProbeFunctor A) (ComplexLimits.framedLimitProbe_cofibrant A)
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) (_root_.SerrePositivity.ComplexLimits.framedLimitProbe_cofibrant A)
     (mappingCofibrantFactorization A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A)) X B
 
 lemma freeHomFromRight_homotopyEquivalence (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeHomFromRight A).app X).app B) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   letI : CategoryTheory.Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   let := modelCategory A
   have := free_isLeftQuillen A
@@ -47,31 +47,31 @@ lemma freeHomFromRight_homotopyEquivalence (X : (Complex A)ᵒᵖ) (B : (operad 
   have := (operad A).freeAlgebraAdjunction.isRightAdjoint
   have := forget_isRightQuillen A
   have := isFibrant A B
-  have : IsFibrant ((Operad.Algebra.forget (operad A)).obj B) :=
+  have : IsFibrant ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).obj B) :=
     SerrePositivity.Quillen.isFibrant_obj
-    (Operad.Algebra.forget (operad A)) B
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) B
   let qC := cosimplicialResolutionFamily (carrierProbeFactorization A)
-  let Q := ComplexLimits.framedLimitProbeFunctor A
-  let ε := ComplexLimits.framedLimitProbeComparisonNatTrans A
+  let Q := _root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A
+  let ε := _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparisonNatTrans A
   let P := CosimplicialFrameFamily.ofResolution qC
   let e := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
     (Q ⋙ qC.obj) (𝟭 (operad A).Algebra)
   have hε : ∀ X, weakEquivalences (Complex A) (ε.app X) :=
-    ComplexLimits.framedLimitProbeComparison_quasiIso A
+    _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison_quasiIso A
   have h1 := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionHomSourceRestriction_homotopyEquivalence qC Q ε
-    (Operad.Algebra.forget (operad A)) hε X B
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) hε X B
   have h2 := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.homotopyEquivalence_of_isIso ((e.inv.app X).app B)
   have h3 := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameCommon_right_homotopyEquivalence (operad A).freeAlgebraFunctor
-    P Q (ComplexLimits.framedLimitProbe_cofibrant A) (mappingCofibrantFactorization A)
+    P Q (_root_.SerrePositivity.ComplexLimits.framedLimitProbe_cofibrant A) (mappingCofibrantFactorization A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A)) X B
   have : KanComplex (((qC.obj.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙
       (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-        (Operad.Algebra.forget (operad A))).obj X).obj B) := freeHomRight_kanComplex A X B
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))).obj X).obj B) := freeHomRight_kanComplex A X B
   have : KanComplex (((((Q ⋙ qC.obj).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙
       (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-        (Operad.Algebra.forget (operad A))).obj X).obj B)) :=
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))).obj X).obj B)) :=
     freeHomRight_kanComplex A (Opposite.op (Q.obj X.unop)) B
-  have : KanComplex (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionRightFrameHom (R := Operad.Algebra.forget (operad A))
+  have : KanComplex (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionRightFrameHom (R := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
       (Q ⋙ qC.obj) (𝟭 (operad A).Algebra)).obj X).obj B) :=
     freeHomRight_kanComplex A (Opposite.op (Q.obj X.unop)) B
   have : KanComplex (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionLeftFrameHom (L := (operad A).freeAlgebraFunctor)

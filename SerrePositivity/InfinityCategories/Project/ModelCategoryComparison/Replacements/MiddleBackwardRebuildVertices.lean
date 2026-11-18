@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardExtractFamily
-public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositionCases
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackwardPositionCases
 
 /-!
 # 元の固定語から抽出した図式の全頂点の再構成
@@ -30,23 +30,23 @@ def rebuildFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFu
 
 lemma rebuilt_leftVertex (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y)
     (i : Fin (n + 1)) :
-    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S).vertex (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex n m i) = S.vertex (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex n m i) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S).vertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftVertex n m i) = S.vertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftVertex n m i) := by
   dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family.zigzagObj, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.family, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.obj, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryBlock,
-    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryBlock, _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj]
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryBlock, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.leftVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj]
   simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertices.vertex_left, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertices.vertex_right]
   rfl
 
 lemma rebuilt_rightVertex (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y)
     (i : Fin (m + 1)) :
-    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S).vertex (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex n m i) = S.vertex (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex n m i) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S).vertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.rightVertex n m i) = S.vertex (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.rightVertex n m i) := by
   dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family.zigzagObj, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.family, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.obj, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryBlock,
-    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryBlock, _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj]
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryBlock, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.rightVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj]
   simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertices.vertex_right, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertices.vertex_left]
   rfl
 
 lemma rebuilt_vertex (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y)
     (j : Fin ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length + 1)) : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S).vertex j = S.vertex j := by
-  apply _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.vertex_cases n m (P := fun j => (rebuilt S).vertex j = S.vertex j)
+  apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.vertex_cases n m (P := fun j => (rebuilt S).vertex j = S.vertex j)
   · exact (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S).first.trans S.first.symm
   · exact rebuilt_leftVertex S
   · exact rebuilt_rightVertex S

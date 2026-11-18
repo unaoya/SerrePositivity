@@ -14,7 +14,7 @@ public import SerrePositivity.EInfinity.PowerOperation.ComplexHammockSource
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.EInfinity.PowerOperation
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 同じ閉零射と半自由評価を使う、二つの通常導来源の全単体上の等式。 -/
 lemma complexDerivedEvaluation_eq_ordinarySource :
-    complexDerivedEvaluation A = complexOrdinaryDerivedSource A := by
+    complexDerivedEvaluation A = _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
   rfl
 
 /-- 元の複体hammockの比較は、指定された同じ実評価へ全関手同型で戻る。 -/

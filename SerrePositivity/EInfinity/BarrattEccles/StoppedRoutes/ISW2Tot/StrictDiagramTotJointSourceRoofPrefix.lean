@@ -55,20 +55,20 @@ theorem strictBETotJointSourceRoofKanComparison_prefix
     _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofNerveMap W q.obj q.augmentation q.augmentation_weakEquivalence
       (fun f => q.homotopicallyConstant f)).app n σ
   change (SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _).app n
-    ((_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso W X Y).hom.app n
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso W X Y).hom.app n
       ((graphInclusion W X Y LeftRoof.word).app n τ)) =
     (SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _).app n
-      ((graphInclusion (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.weak W)
+      ((graphInclusion (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
         ((AsSmall.up : (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra ⥤ AsSmall.{u+1} (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra).obj X)
         ((AsSmall.up : (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra ⥤ AsSmall.{u+1} (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra).obj Y)
         LeftRoof.word).app n ((nerveMap (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofFrameZigzag A P)).app n σ))
-  rw [_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso_graph_point]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso_graph_point]
   have h := congrArg (fun f => f.app n σ) (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofFrameZigzag_nerve A P)
-  change τ ⋙ RelativeZigzagFunctor.functor (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.up W) =
+  change τ ⋙ RelativeZigzagFunctor.functor (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.up W) =
     (nerveMap (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofFrameZigzag A P)).app n σ at h
   exact congrArg (fun z =>
     (SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _).app n
-      ((graphInclusion (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.weak W)
+      ((graphInclusion (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
         ((AsSmall.up : (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra ⥤ AsSmall.{u+1} (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra).obj X)
         ((AsSmall.up : (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra ⥤ AsSmall.{u+1} (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra).obj Y)
         LeftRoof.word).app n z)) h

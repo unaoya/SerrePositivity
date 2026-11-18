@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
@@ -31,7 +31,7 @@ lemma strictRawModuleTensorElementPinchedMap_evaluation
         (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
         (ForgetEnrichment.to (Complex A) Q) x) =
     strictRawModuleTensorElementEvaluationIndexNerveMap A X P Q x ≫
-      normalizedTensorElementPinchedMap A
+      _root_.SerrePositivity.ComplexLimits.normalizedTensorElementPinchedMap A
         ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
         ((moduleEvaluation A _ x).obj Q) := by
   have h := moduleTensorHomPinchedIso_evaluation A _
@@ -41,7 +41,7 @@ lemma strictRawModuleTensorElementPinchedMap_evaluation
     _ = strictRawModuleTensorElementParameterMap A X P Q ≫
       (SSet.uliftFunctor.{u + 1, u}.map
         (strictRawModuleTensorEvaluationHomMap A X P Q x) ≫
-        (normalizedTensorPinchedIso A
+        (_root_.SerrePositivity.ComplexLimits.normalizedTensorPinchedIso A
           ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
           ((moduleEvaluation A _ x).obj Q)).hom) := by
       exact hp.symm

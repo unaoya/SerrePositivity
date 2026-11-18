@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomComparison
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedProbeHomComparison
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomFrames
 
 /-!
@@ -23,7 +23,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 def freeNormalizedProbeFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) :=
-  ComplexLimits.normalizedProbeTensorFrame A ⋙
+  _root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A ⋙
     (Functor.whiskeringRight SimplexCategory (Complex A) (operad A).Algebra).obj
       (operad A).freeAlgebraFunctor
 
@@ -31,30 +31,30 @@ def freeNormalizedProbeAugmentation :
     freeNormalizedProbeFrame A ⟶ freeProbeFunctor A ⋙ Functor.const SimplexCategory where
   app X :=
     { app n := (operad A).freeAlgebraFunctor.map
-        (((ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n)
+        (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n)
       naturality n m f := by
         change (operad A).freeAlgebraFunctor.map
-            (((ComplexLimits.normalizedProbeTensorFrame A).obj X).map f) ≫
+            (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A).obj X).map f) ≫
           (operad A).freeAlgebraFunctor.map
-            (((ComplexLimits.normalizedProbeTensorAugmentation A).app X).app m) =
+            (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).app m) =
           (operad A).freeAlgebraFunctor.map
-            (((ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n) ≫ 𝟙 _
+            (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n) ≫ 𝟙 _
         rw [Category.comp_id, ← Functor.map_comp]
         exact congrArg (operad A).freeAlgebraFunctor.map
-          ((((ComplexLimits.normalizedProbeTensorAugmentation A).app X).naturality f).trans
+          ((((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).naturality f).trans
             (Category.comp_id _)) }
   naturality X Y f := by
     apply NatTrans.ext
     funext n
     change (operad A).freeAlgebraFunctor.map
-        (((ComplexLimits.normalizedProbeTensorFrame A).map f).app n) ≫
+        (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A).map f).app n) ≫
       (operad A).freeAlgebraFunctor.map
-        (((ComplexLimits.normalizedProbeTensorAugmentation A).app Y).app n) =
+        (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app Y).app n) =
       (operad A).freeAlgebraFunctor.map
-        (((ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n) ≫
-      (operad A).freeAlgebraFunctor.map ((ComplexLimits.framedLimitProbeFunctor A).map f)
+        (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n) ≫
+      (operad A).freeAlgebraFunctor.map ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).map f)
     rw [← Functor.map_comp, ← Functor.map_comp]
     exact congrArg (operad A).freeAlgebraFunctor.map
-      (congr_app ((ComplexLimits.normalizedProbeTensorAugmentation A).naturality f) n)
+      (congr_app ((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).naturality f) n)
 
 end SerrePositivity.EInfinity.BarrattEccles

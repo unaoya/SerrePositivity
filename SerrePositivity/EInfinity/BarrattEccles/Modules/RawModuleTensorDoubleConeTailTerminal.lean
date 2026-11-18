@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -27,7 +27,7 @@ lemma strictRawModuleTensorDoubleConeTail_hom_last {n : ℕ}
     HEq ((strictRawModuleTensorDoubleConeTail A X P Q c).hom I a b k hI ha hb hk)
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (A := A) (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) ((strictRawModuleTensorElementAugmentation A X P Q).app
         (c.obj ((Fin.last n).predAboveOrderHom a))) k) := by
-  let α := doubleConeTailOrderHom n
+  let α := _root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom n
   have hLast : Fin.last (n + 1) ∈ I := by rw [← hbl, hb]; exact I.max'_mem _
   have hi : Set.InjOn α (I : Set (Fin (n + 2))) := by
     change Set.InjOn (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom
@@ -44,7 +44,7 @@ lemma strictRawModuleTensorDoubleConeTail_hom_last {n : ℕ}
   have hkI : k = 2 - ((I.image α).card : ℤ) := by
     rw [Finset.card_image_of_injOn hi]
     exact hk
-  have hbl' : α b = Fin.last (n + 2) := by rw [hbl]; exact doubleConeTailOrderHom_last n
+  have hbl' : α b = Fin.last (n + 2) := by rw [hbl]; exact _root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom_last n
   have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.min_ne_last I hI
   rw [strictRawModuleTensorDoubleConeTail, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data,
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi]
@@ -56,7 +56,7 @@ lemma strictRawModuleTensorDoubleConeTail_hom_last {n : ℕ}
     intro i j h
     subst j
     rfl
-  have hv := ht _ _ (doubleConeTailOrderHom_predAbove n a han)
+  have hv := ht _ _ (_root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom_predAbove n a han)
   change HEq _ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (A := A) (D := RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) ((strictRawModuleTensorElementAugmentation A X P Q).app
       (c.obj ((Fin.last n).predAboveOrderHom a))) k) at hv
   exact he.trans hv

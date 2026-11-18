@@ -26,15 +26,15 @@ def derivedFreeProbeVertex (x : (_root_.SerrePositivity.InfinityCategories.HA.De
   cAlgVertex A ((freeProbeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A x).val)
 
 def derivedFreeProbeSourceIso (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A x).val)) x :=
-  ComplexLimits.complexOrdinaryDerivedSource_semifreeVertexIso A
+  _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource_semifreeVertexIso A
     (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A x) ≪≫
       eqToIso (congrArg HomotopyCategory.mk
         ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv A).symm_apply_apply x))
 
 def freeProbeDerivedUnitComponent (X : Complex A) :
-    (HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app
+    (HomotopyCategory.mk ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app
       (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) : hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
       HomotopyCategory.mk ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
         (cAlgVertex A ((freeProbeFunctor A).obj X))) :=

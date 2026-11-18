@@ -47,7 +47,7 @@ def constantDiagramSourcePiZeroEquiv (Y : (Complex A))
     let Q := (weakEquivalences (K ⥤ (Complex A))).Q
     SSet.π₀ ((constantDiagramSourceHom A K Y).obj F) ≃
       (Q.obj ((Functor.const K).obj Y) ⟶ Q.obj F) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
@@ -71,7 +71,7 @@ lemma constantDiagramSourcePiZeroEquiv_mk (Y : (Complex A))
       (SSet.mapπ₀ ((constantDiagramFrameHomIso A K Y).app F).hom (SSet.π₀.mk f)) =
       ((constantDiagramLocalizedIso A K).app Y).inv ≫
         Q.map (constantDiagramFrameZeroIso A K Y).inv ≫ Q.map f := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
@@ -107,7 +107,7 @@ lemma constantDiagramSourcePiZeroEquiv_target (Y : (Complex A))
     constantDiagramSourcePiZeroEquiv A K Y G
       (SSet.mapπ₀ ((constantDiagramSourceHom A K Y).map g) z) =
       constantDiagramSourcePiZeroEquiv A K Y F z ≫ Q.map g := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q

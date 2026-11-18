@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixNaturality
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoofPrefixNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofPrefixHomotopy
 
 /-!
@@ -32,7 +32,7 @@ lemma cofibrantSourceRoofProductCommaPrefixHomotopy_underMap
         (cofibrantAlgebraRelativeCategory A).weakEquivalences
         ((cofibrantSourceRoofProductCommaDiagram A X Y b).map a))
         (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
-  Hammock.LeftRoof.Prefix.arrowHomotopy_underMap
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Prefix.arrowHomotopy_underMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)

@@ -23,7 +23,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) {X B : Mon (Complex R)}
-  (q : X ⟶ B) (hq : EInfinity.projectiveFibrations R q.hom)
+  (q : X ⟶ B) (hq : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R q.hom)
 
 include hq
 
@@ -41,7 +41,7 @@ lemma multiplicativeCellMapping_smallHorn_lift (n : ℕ) (i : Fin (n + 2))
   exact multiplicativeCellMapping_small_lift R A q (SSet.horn (n + 1) i).ι
     (relativeConvolutionRestriction_fibration R q _ hq)
     (relativeConvolutionRestriction_quasiIso R q _
-      (EInfinity.AlexanderWhitney.normalizedHornInclusion_quasiIso R n i)) a b hab
+      (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.normalizedHornInclusion_quasiIso R n i)) a b hab
 
 lemma multiplicativeCellMapping_fibration :
     Fibration (multiplicativeMappingPostcompose R (cellResolution R A) q) := by

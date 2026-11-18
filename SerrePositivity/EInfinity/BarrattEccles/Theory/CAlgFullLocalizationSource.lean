@@ -39,7 +39,7 @@ def allAlgebraRelativeCategory : _root_.SerrePositivity.InfinityCategories.Kerod
   category := Cat.of (ULiftHom.{u + 1} (operad A).Algebra)
   weakEquivalences := (quasiIso (ModuleCat A) (.up ℤ)).inverseImage
     ((ULiftHom.down.{u, u + 1, u + 1} (C := (operad A).Algebra)) ⋙
-      Operad.Algebra.forget (operad A))
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
   isMultiplicative := inferInstance
 
 /-- 全相対圏から元の代数圏への通常の忘却。 -/

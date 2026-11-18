@@ -14,6 +14,9 @@ python3 blueprint/scripts/gen_kerodon.py 1
 cd blueprint
 zsh ../../scripts/refactor/with_build_lock.sh --class impl --wait 3600 -- lake exe vbp build
 # 出力：blueprint/_out/site/html-multi/
+cd .. && python3 blueprint/scripts/style_site.py blueprint/_out/site/html-multi
 ```
+
+見た目は `blueprint/style/serre.css`・`serre.js`（配色・書体・ノードのカード・目次の木）で、Verso の出力には手を入れず、ビルドの後に `style_site.py` が各ページに読み込ませる（ユーザー承認 11-18）。CSS・JS を直したときはビルドし直さず、`style_site.py` をかけ直すだけでよい。
 
 本体の多くのモジュールと Verso の一式をコンパイルするので、昼の時間帯には流さない（`coordination.md` §2）。

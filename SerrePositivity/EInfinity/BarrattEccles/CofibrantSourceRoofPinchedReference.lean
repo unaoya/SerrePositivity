@@ -50,7 +50,7 @@ lemma cofibrantSourceRoofProductHomMap_weak_of_reference_homotopy
     SSet.anodyneExtensions.Q_inverts H
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [h]
-  exact Hammock.anodyneQ_map_isIso_of_weak _
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _
     (cofibrantSourceRoofProductPinchedReferenceMap_weak A X Y b)
 
 lemma cofibrantSourceRoofMap_isLeftCofinal_of_reference_homotopy

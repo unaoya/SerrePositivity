@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.DoubleConeIndex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoubleConeIndex
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorDoubleConeSimplex
 
 /-!
@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -24,14 +24,14 @@ variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
 lemma strictRawModuleTensorDoubleConeSimplex_obj_reindex {n m : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (i : Fin (m + 3)) :
-    (strictRawModuleTensorDoubleConeSimplex A X P Q c).obj (doubleConeOrderHom θ i) =
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).obj (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ i) =
       (strictRawModuleTensorDoubleConeSimplex A X P Q
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).obj i := by
   induction i using Fin.lastCases with
-  | last => rw [doubleConeOrderHom_last, strictRawModuleTensorDoubleConeSimplex_last,
+  | last => rw [_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom_last, strictRawModuleTensorDoubleConeSimplex_last,
       strictRawModuleTensorDoubleConeSimplex_last]
   | cast i =>
-    rw [doubleConeOrderHom_castSucc]
+    rw [_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom_castSucc]
     change moduleRightConeObj A (dgAlgebraCategory A ((assocForget A).obj X)) (strictRawModuleTensorConeSimplex A X P Q c) ((strictRawModuleProbeFunctor A X).obj P)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom i).castSucc =
       moduleRightConeObj A (dgAlgebraCategory A ((assocForget A).obj X)) (strictRawModuleTensorConeSimplex A X P Q
@@ -41,16 +41,16 @@ lemma strictRawModuleTensorDoubleConeSimplex_obj_reindex {n m : ℕ}
 
 lemma strictRawModuleTensorDoubleConeSimplex_pullback_front {n m : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    ((strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeOrderHom θ)).pullback
+    ((strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ)).pullback
       Fin.castSuccOrderEmb.toOrderHom =
       (strictRawModuleTensorDoubleConeSimplex A X P Q
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).pullback
         Fin.castSuccOrderEmb.toOrderHom := by
-  have hindex : (doubleConeOrderHom θ).comp Fin.castSuccOrderEmb.toOrderHom =
+  have hindex : (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ).comp Fin.castSuccOrderEmb.toOrderHom =
       Fin.castSuccOrderEmb.toOrderHom.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom) := by
     apply DFunLike.ext
     intro i
-    exact doubleConeOrderHom_castSucc θ i
+    exact _root_.SerrePositivity.ComplexLimits.doubleConeOrderHom_castSucc θ i
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp, hindex, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp,
     strictRawModuleTensorDoubleConeSimplex_front, strictRawModuleTensorDoubleConeSimplex_front,
     strictRawModuleTensorConeSimplex_pullback_map]

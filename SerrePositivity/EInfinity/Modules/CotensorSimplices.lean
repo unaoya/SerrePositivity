@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.CotensorScalar
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainComonoid
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainComonoid
 public import Mathlib.CategoryTheory.Whiskering
 
 /-!
@@ -51,7 +51,7 @@ abbrev moduleCotensorSimplices (M : ModuleCategory A D) :
 lemma moduleCotensorSimplices_obj_eval (M : ModuleCategory A D)
     (n : SimplexCategoryᵒᵖ) (x : D) :
     (moduleEvaluation A D x).obj ((moduleCotensorSimplices A D M).obj n) =
-      homComplex A (SerrePositivity.EInfinity.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n.unop))
+      homComplex A (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n.unop))
         ((moduleEvaluation A D x).obj M) := rfl
 
 /-- 概要：同じ面・退化の作用は元の正規化鎖写像による前合成。
@@ -61,7 +61,7 @@ lemma moduleCotensorSimplices_map_eval (M : ModuleCategory A D)
     {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) (x : D) :
     (moduleEvaluation A D x).map ((moduleCotensorSimplices A D M).map f) =
       homPrecompose
-        (SerrePositivity.EInfinity.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map f.unop))
+        (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map f.unop))
         ((moduleEvaluation A D x).obj M) :=
   moduleCotensorPreMap_eval A D _ M x
 
@@ -72,7 +72,7 @@ lemma moduleCotensorSimplicesFunctor_map_eval {M N : ModuleCategory A D} (g : M 
     (n : SimplexCategoryᵒᵖ) (x : D) :
     (moduleEvaluation A D x).map (((moduleCotensorSimplicesFunctor A D).map g).app n) =
       homPostcompose
-        (SerrePositivity.EInfinity.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n.unop))
+        (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n.unop))
         ((moduleEvaluation A D x).map g) :=
   moduleCotensorMap_eval A D _ g x
 

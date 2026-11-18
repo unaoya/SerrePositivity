@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoofPrefixEndpoints
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativeRoofComparison
 
 /-!
@@ -34,19 +34,19 @@ def cofibrantSourceRoofProductCommaPrefixHomotopy : SSet.Homotopy
         (cofibrantAlgebraRelativeCategory A).weakEquivalences
         ((cofibrantSourceRoofProductCommaEvaluation A X Y b).app s))
         (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
-  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (Hammock.LeftRoof.Prefix.arrowHomotopy
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Prefix.arrowHomotopy
     (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
     (cofibrantSourceRoofProductCommaRightLeg A X Y b)
     (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) s) rfl
-  rw [Hammock.LeftRoof.Prefix.restrictedRoofMap_eq_precomp]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Prefix.restrictedRoofMap_eq_precomp]
   exact Category.assoc _ _ _
 
 lemma cofibrantSourceRoofProductCommaPrefixHomotopy_h :
     (cofibrantSourceRoofProductCommaPrefixHomotopy A X Y b s).h =
-    (Hammock.LeftRoof.Prefix.graphHomotopy
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Prefix.graphHomotopy
       (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation A X Y b)

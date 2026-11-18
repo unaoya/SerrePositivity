@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames
-public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncatedDoldKanFunctor
 public import SerrePositivity.HomologicalAlgebra.NegativeExtendTruncationAdjunction
 public import Mathlib.CategoryTheory.Adjunction.Whiskering
 public import Mathlib.Algebra.Category.ModuleCat.Adjunctions
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory AlgebraicTopology
-open SerrePositivity.HomologicalAlgebra SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.HomologicalAlgebra _root_.SerrePositivity.ComplexLimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A]
 
@@ -26,7 +26,7 @@ def freeNegativeChainsAdjunction :
     ((Functor.whiskeringRight SimplexCategoryᵒᵖ (Type u) (ModuleCat A)).obj
       (ModuleCat.free A) ⋙ normalizedMooreComplex (ModuleCat A) ⋙
         ComplexShape.embeddingDownNat.extendFunctor (ModuleCat A)) ⊣
-      truncatedDoldKanFunctor A :=
+      _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A :=
   (Adjunction.whiskerRight SimplexCategoryᵒᵖ (ModuleCat.adj A)).comp
     ((Abelian.DoldKan.equivalence : SimplicialObject (ModuleCat A) ≌
       ChainComplex (ModuleCat A) ℕ).toAdjunction.comp
@@ -36,7 +36,7 @@ def freeNegativeChainsAdjunction :
 def freeNegativeChainsDiagramAdjunction (J : Type v) [Category.{w} J] :
     freeNegativeChainsDiagramFunctor A J ⊣
       (Functor.whiskeringRight J (CochainComplex (ModuleCat A) ℤ) SSet.{u}).obj
-        (truncatedDoldKanFunctor A) :=
+        (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) :=
   Adjunction.whiskerRight J (freeNegativeChainsAdjunction A)
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

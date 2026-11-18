@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardFamilyMaps
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagLaws
-public import SerrePositivity.EInfinity.Hammock.ForwardPathZigzagLaws
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ForwardPathZigzagLaws
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagMovingAppendFixedLaws
 
 /-!
@@ -28,7 +28,7 @@ variable {D : Type u'} [Category.{v'} D] {C : Type u} [Category.{v} C] [ModelCat
 lemma zigzagMap_id (d : D) : F.zigzagMap (𝟙 d) = 𝟙 (F.zigzagObj d) := by
   unfold _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyMaps.zigzagMap
   simp only [F.left.map_id, F.right.map_id, NatTrans.id_app,
-    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryComparison, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryComparison, _root_.SerrePositivity.EInfinity.Hammock.ForwardPath.movingHom_id,
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryComparison, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryComparison, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ForwardPath.movingHom_id,
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.movingHom_id (W := weakEquivalences C) (X := X)
       (Y := (F.left.obj d).obj 0),
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.movingHom_id (W := weakEquivalences C)

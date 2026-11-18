@@ -1,0 +1,34 @@
+{
+ "key": "bs",
+ "dir": "BS",
+ "title": "BS（Bhatt–Scholze, Prisms and prismatic cohomology、著者版）",
+ "modules": [
+  "Section1",
+  "Section2",
+  "Section3",
+  "Section4",
+  "Section5",
+  "Section6",
+  "Section7",
+  "Section8",
+  "Section9",
+  "Section10",
+  "Section11",
+  "Section12",
+  "Section13",
+  "Section14",
+  "Section15",
+  "Section16",
+  "Section17",
+  "Section18"
+ ],
+ "stats": {
+  "partial": 46,
+  "linked": 77,
+  "none": 134,
+  "nolink": 134,
+  "interface": 6,
+  "own": 25,
+  "with-note": 131
+ }
+}

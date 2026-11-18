@@ -53,7 +53,7 @@ set_option maxHeartbeats 400000 in
 lemma framedLimitCarrierIso_naturality {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
     ((framedLimitFunctor A K).map f).hom ≫ (framedLimitCarrierIso A K G).hom =
       (framedLimitCarrierIso A K F).hom ≫ (carrierFramedLimitFunctor A K).map f := by
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   let a : rightFrameDiagram A K G ⟶ rightFrameDiagram A K F :=
     (rightFrameDiagramFamily A K).map f.op
@@ -75,7 +75,7 @@ lemma framedLimitCarrierIso_naturality {F G : K ⥤ (operad A).Algebra} (f : F �
 規約：元の framedLimitCarrierIso の同じ成分。
 使われ方：底の局所化 Hom の後合成の照合。 -/
 def framedLimitCarrierNatIso :
-    framedLimitFunctor A K ⋙ Operad.Algebra.forget (operad A) ≅ carrierFramedLimitFunctor A K :=
+    framedLimitFunctor A K ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) ≅ carrierFramedLimitFunctor A K :=
   NatIso.ofComponents (framedLimitCarrierIso A K) (fun f => framedLimitCarrierIso_naturality A K f)
 
 end SerrePositivity.EInfinity.BarrattEccles

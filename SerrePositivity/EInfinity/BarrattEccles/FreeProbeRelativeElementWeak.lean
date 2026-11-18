@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
@@ -31,7 +31,7 @@ lemma freeProbeRelativeElementRoofMap_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeProbeRelativeElementRoofMap A X B) := by
   have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (cofibrantAlgebraHammockColimitInclusionMap A (freeProbeElementCofibrantSource A X) B) :=
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (reducedColimitIso _ _ _)).isWeakHomotopyEquivalence.comp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso _ _ _)).isWeakHomotopyEquivalence.comp
       (cofibrantAlgebraHammockInclusionMap_weak A _ _)
   apply hi.cancel_right
   rw [freeProbeRelativeElementRoofMap_image]

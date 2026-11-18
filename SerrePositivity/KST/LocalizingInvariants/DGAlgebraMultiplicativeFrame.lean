@@ -31,7 +31,7 @@ def convolutionConstantNatTrans (B : Mon (Complex R)) :
 
 def multiplicativeSimplicesAugmentation (B : Mon (Complex R)) :
     (Functor.const SimplexCategoryᵒᵖ).obj B ⟶ multiplicativeSimplices R B :=
-  Functor.whiskerLeft (EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).op
+  Functor.whiskerLeft (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).op
     (convolutionConstantNatTrans R B)
 
 def convolutionTargetFunctor :
@@ -63,7 +63,7 @@ def multiplicativeSimplicesConstant :
   Functor.whiskerRight (convolutionConstantFamily R)
     ((Functor.whiskeringLeft SimplexCategoryᵒᵖ (Comon (Complex R))ᵒᵖ
       (Mon (Complex R))).obj
-        (EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).op)
+        (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).op)
 
 lemma multiplicativeSimplicesAugmentation_quasiIso (B : Mon (Complex R))
     (n : SimplexCategoryᵒᵖ) :

@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open AlgebraicTopology AlgebraicTopology.DoldKan HomologicalComplex
@@ -27,13 +27,13 @@ theorem freeProductAlexanderWhitney_right_augmentation (A : Type u) [CommRing A]
   freeProductAlexanderWhitney φ Z
       ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) ≫
     (𝟙 (freeNegativeChains (A := A) Z) ⊗ₘ
-      (normalizedSimplexCochainContraction A n).hom) ≫
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom) ≫
     (ρ_ (freeNegativeChains (A := A) Z)).hom =
     freeNegativeChainsMap (A := A)
       (fst Z ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n))) := by
   let Y := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)
   let ε : freeNegativeChains (A := A) Y ⟶ 𝟙_ (CochainComplex (ModuleCat A) ℤ) :=
-    (normalizedSimplexCochainContraction A n).hom
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom
   change freeProductAlexanderWhitney φ Z Y ≫ (𝟙 _ ⊗ₘ ε) ≫ (ρ_ _).hom =
     freeNegativeChainsMap (A := A) (fst Z Y)
   have haug (j : ℕ) (hj : j ≠ 0) :

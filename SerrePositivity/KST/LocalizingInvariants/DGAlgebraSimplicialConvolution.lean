@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSimplexConstant
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedColimits
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedColimits
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.CategoryTheory.Limits.Preserves.Opposites
 
@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
 def simplicialConvolution (B : Mon (Complex R)) : SSet.{0}ᵒᵖ ⥤ Mon (Complex R) :=
-  (EInfinity.AlexanderWhitney.cochainComonFunctor R).op ⋙ convolutionContravariant R B
+  (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainComonFunctor R).op ⋙ convolutionContravariant R B
 
 lemma simplicialConvolution_forget (B : Mon (Complex R)) :
     simplicialConvolution R B ⋙ Mon.forget (Complex R) =
@@ -32,7 +32,7 @@ lemma simplicialConvolution_forget (B : Mon (Complex R)) :
 
 instance simplicialConvolution_preservesLimitsOfShape (B : Mon (Complex R))
     (J : Type) [Category.{0} J] : PreservesLimitsOfShape J (simplicialConvolution R B) := by
-  have := EInfinity.ComplexLimits.normalizedFunctor_preservesSmallColimits R
+  have := _root_.SerrePositivity.ComplexLimits.normalizedFunctor_preservesSmallColimits R
   have : PreservesLimitsOfShape J (EInfinity.BarrattEccles.normalizedFunctor R).op :=
     preservesLimitsOfShape_op J _
   let : PreservesLimitsOfShape J (simplicialConvolution R B ⋙ Mon.forget (Complex R)) := by

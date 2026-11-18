@@ -16,14 +16,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 lemma extendTruncationHomEquiv_symm_add (P : ChainComplex (ModuleCat A) ℕ)
     (K : Complex A) (f g : P ⟶ K.truncLE' (ComplexShape.embeddingUpIntLE 0)) :
-    (extendTruncationHomEquiv P K).symm (f + g) =
-      (extendTruncationHomEquiv P K).symm f +
-        (extendTruncationHomEquiv P K).symm g := by
+    (_root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K).symm (f + g) =
+      (_root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K).symm f +
+        (_root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K).symm g := by
   change ((ComplexShape.embeddingUpIntLE 0).extendFunctor (ModuleCat A)).map (f + g) ≫
     (K.truncLEIso (ComplexShape.embeddingUpIntLE 0)).inv ≫ K.ιTruncLE 0 = _
   simp only [Functor.map_add, Preadditive.add_comp]
@@ -31,40 +31,40 @@ lemma extendTruncationHomEquiv_symm_add (P : ChainComplex (ModuleCat A) ℕ)
 
 lemma extendTruncationHomEquiv_add (P : ChainComplex (ModuleCat A) ℕ)
     (K : Complex A) (f g : P.extend (ComplexShape.embeddingUpIntLE 0) ⟶ K) :
-    extendTruncationHomEquiv P K (f + g) =
-      extendTruncationHomEquiv P K f + extendTruncationHomEquiv P K g := by
-  apply (extendTruncationHomEquiv P K).symm.injective
+    _root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K (f + g) =
+      _root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K f + _root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K g := by
+  apply (_root_.SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv P K).symm.injective
   rw [Equiv.symm_apply_apply, extendTruncationHomEquiv_symm_add,
     Equiv.symm_apply_apply, Equiv.symm_apply_apply]
 
 lemma normalizedChainsHomEquiv_add (S : SSet.{0}) (K : Complex A)
     (f g : (BarrattEccles.normalizedFunctor A).obj S ⟶ K) :
-    normalizedChainsHomEquiv A S K (f + g) =
-      normalizedChainsHomEquiv A S K f + normalizedChainsHomEquiv A S K g := by
+    _root_.SerrePositivity.ComplexLimits.normalizedChainsHomEquiv A S K (f + g) =
+      _root_.SerrePositivity.ComplexLimits.normalizedChainsHomEquiv A S K f + _root_.SerrePositivity.ComplexLimits.normalizedChainsHomEquiv A S K g := by
   have ht (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ))
       (he : e = ComplexShape.embeddingUpIntLE 0) (P : ChainComplex (ModuleCat A) ℕ)
       (f g : P.extend e ⟶ K) :
-      extendTruncationHomEquivOfShape A e he P K (f + g) =
-        extendTruncationHomEquivOfShape A e he P K f +
-          extendTruncationHomEquivOfShape A e he P K g := by
+      _root_.SerrePositivity.ComplexLimits.extendTruncationHomEquivOfShape A e he P K (f + g) =
+        _root_.SerrePositivity.ComplexLimits.extendTruncationHomEquivOfShape A e he P K f +
+          _root_.SerrePositivity.ComplexLimits.extendTruncationHomEquivOfShape A e he P K g := by
     subst e
     exact extendTruncationHomEquiv_add A P K f g
   have : (Abelian.DoldKan.equivalence : SimplicialObject (ModuleCat A) ≌
       ChainComplex (ModuleCat A) ℕ).functor.Additive :=
     Functor.additive_of_preserves_binary_products _
   change Abelian.DoldKan.equivalence.toAdjunction.homEquiv _ _
-    (normalizedChainsTruncationHomEquiv A S K (f + g)) = _
-  rw [show normalizedChainsTruncationHomEquiv A S K (f + g) =
-    normalizedChainsTruncationHomEquiv A S K f +
-      normalizedChainsTruncationHomEquiv A S K g from ht _ _ _ f g]
+    (_root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A S K (f + g)) = _
+  rw [show _root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A S K (f + g) =
+    _root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A S K f +
+      _root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A S K g from ht _ _ _ f g]
   exact Abelian.DoldKan.equivalence.toAdjunction.homAddEquiv_add _ _ _ _
 
 lemma gammaProbeEquiv_add (K : Complex A) (n : SimplexCategory)
     (f g : (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n) ⟶ K) :
-    normalizedSimplexHomEquiv A K n (f + g) =
-      normalizedSimplexHomEquiv A K n f + normalizedSimplexHomEquiv A K n g := by
-  change linearizedSimplexHomEquiv A _ n
-    (normalizedChainsHomEquiv A (SSet.stdSimplex.obj n) K (f + g)) = _
+    _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n (f + g) =
+      _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n f + _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n g := by
+  change _root_.SerrePositivity.ComplexLimits.linearizedSimplexHomEquiv A _ n
+    (_root_.SerrePositivity.ComplexLimits.normalizedChainsHomEquiv A (SSet.stdSimplex.obj n) K (f + g)) = _
   rw [normalizedChainsHomEquiv_add]
   rfl
 

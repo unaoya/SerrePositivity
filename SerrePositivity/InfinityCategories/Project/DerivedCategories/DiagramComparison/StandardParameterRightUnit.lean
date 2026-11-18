@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory HomologicalComplex AlgebraicTopology AlgebraicTopology.DoldKan
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial TensorProduct
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 /-- 零鎖次数の標準単体増大写像を通すと右単位子は元の値を返す。 -/
@@ -23,7 +23,7 @@ theorem standardParameter_right_unit (A : Type u) [CommRing A]
     let W := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n) ⋙ ModuleCat.free A
     (ρ_ P).hom.f q (ιTensorObj P (𝟙_ (CochainComplex (ModuleCat A) ℤ)) q (-(r : ℤ)) q
       (by subst r; simp) (x ⊗ₜ[A]
-      (normalizedSimplexCochainContraction A n).hom.f (-(r : ℤ))
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom.f (-(r : ℤ))
         ((((normalizedMooreComplex (ModuleCat A)).obj W).extendXIso
           ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
           ((PInftyToNormalizedMooreComplex W).f r (ModuleCat.freeMk a))))) = x := by

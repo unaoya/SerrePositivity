@@ -29,32 +29,32 @@ lemma freeHomLeft_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
 
 lemma freeHomRight_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
     SSet.KanComplex (((complexSourceFrameHom A).obj X).obj B.carrier) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   letI : CategoryTheory.Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   let := modelCategory A
   have := forget_isRightQuillen A
   have := (operad A).freeAlgebraAdjunction.isRightAdjoint
   have := isFibrant A B
   have : IsFibrant B.carrier := SerrePositivity.Quillen.isFibrant_obj
-    (Operad.Algebra.forget (operad A)) B
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) B
   let qC := cosimplicialResolutionFamily (carrierProbeFactorization A)
   exact cosimplicialHom_kanComplex _ (qC.cofibrant X.unop)
     (qC.atObject X.unop).homotopicallyConstant B.carrier
 
 lemma freeHomMiddle_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
     SSet.KanComplex (((freeHomMiddle A).obj X).obj B) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have := free_isLeftQuillen A
   have := isFibrant A B
   let qC := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let P := CosimplicialFrameFamily.ofResolution qC
-  let Q := ComplexLimits.framedLimitProbeFunctor A
+  let Q := _root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A
   let qD := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
   have ha : ∀ X n, weakEquivalences (operad A).Algebra
       (((freeHomImageAugmentation A).app X).app n) :=
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameAugmentation_weak (operad A).freeAlgebraFunctor P Q
-      (ComplexLimits.framedLimitProbe_cofibrant A)
+      (_root_.SerrePositivity.ComplexLimits.framedLimitProbe_cofibrant A)
   exact cosimplicialHom_kanComplex _
     (FrameOverFunctor.commonObj_cofibrant (mappingCofibrantFactorization A) qD
       (freeProbeFunctor A) (freeHomImageFrame A) (freeHomImageAugmentation A) X.unop)

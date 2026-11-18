@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeNormalizedDoldKanComparison
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedOrdinaryDerivedHom
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedOrdinaryDerivedHom
 
 /-!
 # 同じ半自由標的を通る実自由 Hom と D(R) Hom の接合 span
@@ -23,8 +23,8 @@ variable (A : Type u) [CommRing A]
 
 abbrev freeDerivedHomTestSpace (X : Complex A) (B : (operad A).Algebra) : SSet.{u + 1} :=
   SSet.uliftFunctor.{u + 1, u}.obj
-    (((ComplexLimits.normalizedProbeTensorHom A).obj (Opposite.op X)).obj
-      (ComplexLimits.complexSemifreeResolutionValue A B.carrier).val)
+    (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorHom A).obj (Opposite.op X)).obj
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val)
 
 abbrev freeDerivedHomCommonSpace (X : Complex A) (B : (operad A).Algebra) : SSet.{u + 1} :=
   SSet.uliftFunctor.{u + 1, u}.obj (((freeNormalizedHomMiddle A).obj (Opposite.op X)).obj B)
@@ -34,11 +34,11 @@ abbrev freeDerivedHomStandardSpace (X : Complex A) (B : (operad A).Algebra) : SS
     ((((freeProbeFunctor A).op ⋙ sourceFrameHom A).obj (Opposite.op X)).obj B)
 
 def freeDerivedHomToCommonSmall (X : Complex A) (B : (operad A).Algebra) :
-    (((ComplexLimits.normalizedProbeTensorHom A).obj (Opposite.op X)).obj
-      (ComplexLimits.complexSemifreeResolutionValue A B.carrier).val) ⟶
+    (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorHom A).obj (Opposite.op X)).obj
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val) ⟶
     (((freeNormalizedHomMiddle A).obj (Opposite.op X)).obj B) :=
-  ComplexLimits.normalizedProbeTargetReplacementMap A X B.carrier ≫
-    (ComplexLimits.normalizedProbeHomDoldKanIso A X B.carrier).hom ≫
+  _root_.SerrePositivity.ComplexLimits.normalizedProbeTargetReplacementMap A X B.carrier ≫
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeHomDoldKanIso A X B.carrier).hom ≫
       (((freeNormalizedHomFromDoldKan A).app (Opposite.op X)).app B)
 
 def freeDerivedHomToCommon (X : Complex A) (B : (operad A).Algebra) :
@@ -52,9 +52,9 @@ def freeDerivedHomFromStandard (X : Complex A) (B : (operad A).Algebra) :
 def freeDerivedHomToUnderlying (X : Complex A) (B : (operad A).Algebra) :
     freeDerivedHomTestSpace A X B ⟶
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
-      ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
-      ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+      ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B.carrier)) :=
-  ComplexLimits.normalizedOrdinaryDerivedHomMap A X B.carrier
+  _root_.SerrePositivity.ComplexLimits.normalizedOrdinaryDerivedHomMap A X B.carrier
 
 end SerrePositivity.EInfinity.BarrattEccles

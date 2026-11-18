@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.NegativeTensorBaseChange
 public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChangeNaturality
-public import SerrePositivity.EInfinity.NegativeTensor.Naturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.NegativeTensor.Naturality
 
 /-!
 概要：指定負次数テンソル底変換の比較が二つの鎖写像に自然であることを示す。
@@ -32,7 +32,7 @@ theorem negativeTensorBaseChangeIso_naturality
   let e := ComplexShape.embeddingDownNat
   have h0 := (mapExtendNatIso F e).inv.naturality (HomologicalComplex.tensorHom f g)
   have h1 := congrArg ((F.mapHomologicalComplex (.up ℤ)).map)
-    (EInfinity.NegativeTensor.comparison_natural f g)
+    (_root_.SerrePositivity.NegativeTensor.comparison_natural f g)
   simp only [Functor.map_comp] at h1
   have h2 := cochainTensorBaseChangeIso_naturality φ (extendMap f e) (extendMap g e)
   have hf := (mapExtendNatIso F e).hom.naturality f

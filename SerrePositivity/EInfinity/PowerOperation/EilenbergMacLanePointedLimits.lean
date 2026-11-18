@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 instance gammaPointedKan (M : Complex A) : SSet.KanComplex (gammaPointed A M).right :=
@@ -32,7 +32,7 @@ instance gammaPointedFunctorObjKan (M : Complex A) :
 lemma gammaPointedFunctor_preservesFiniteLimits :
     PreservesFiniteLimits (gammaPointedFunctor A) := by
   have : PreservesFiniteLimits (gammaPointedFunctor A ⋙ PointedSimplicialSet.forget) := by
-    change PreservesFiniteLimits (truncatedDoldKanFunctor A)
+    change PreservesFiniteLimits (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A)
     exact gammaFunctor_preservesFiniteLimits A
   exact preservesFiniteLimits_of_reflects_of_preserves
     (gammaPointedFunctor A) PointedSimplicialSet.forget

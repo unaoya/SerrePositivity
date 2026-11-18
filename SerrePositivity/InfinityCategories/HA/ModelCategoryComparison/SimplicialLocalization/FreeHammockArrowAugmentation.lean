@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowZero
-public import SerrePositivity.EInfinity.Hammock.RelativeFixedArrow
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeFixedArrow
 
 /-!
 # 共通始域の元の射の左比較による回収
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open scoped _root_.Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
@@ -40,7 +40,7 @@ lemma freeHammockArrowZero_augmentation (f : X ⟶ Y) :
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint C.weakEquivalences f (op ⦋0⦌) := by
   change ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y).app (op ⦋0⦌)).app (op ⦋0⦌)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint _ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero C f) (op ⦋0⦌)) = _
-  have h := Relative.fixedColimitMap_arrowPoint
+  have h := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.fixedColimitMap_arrowPoint
     ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app (op ⦋0⦌))
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C (op ⦋0⦌) X)
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C (op ⦋0⦌) Y)

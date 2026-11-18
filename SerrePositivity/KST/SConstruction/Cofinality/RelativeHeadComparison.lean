@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
-open SerrePositivity.EInfinity.Hammock.DoubleSimplicial
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicial
 
 /-- 概要：元の相対旗の対角実現を先頭 S 方向でも実現する。
 方針：残りの全多次数を固定した元の図式へ対角関手を適用する。
@@ -53,7 +53,7 @@ lemma completionRelativeHeadWideEvaluation_isWeak_of_input (r : ℕ)
   have hτ (n : SimplexCategoryᵒᵖ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (τ.app n) :=
     completionRelativeFlagWideEvaluation_isWeak_of_input (r + 1)
       ((completionCokernelHeadIndex r ι).obj n) f hf (input n)
-  exact diagonalFunctor_map_weak τ hτ
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicial.diagonalFunctor_map_weak τ hτ
 
 /-- 概要：Sp-8 (1)・(2) 入力下で元の相対先頭実現の二次以上は一意。
 方針：元の評価の Kan 置換の π 単射性で同じ wide 実現の消滅を引き戻す。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.Modules.TensorHomEvaluation
 public import SerrePositivity.EInfinity.Modules.TensorHomPinched
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorPinchedIso
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorPinchedIso
 
 /-!
 概要：同じ全加群 frame の評価は元の Dold–Kan・pinched 座標と可換。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 variable (A : Type u) [CommRing A] (D : Type) [DGCategory A D] [Small.{u} D]
 
@@ -24,16 +24,16 @@ variable (A : Type u) [CommRing A] (D : Type) [DGCategory A D] [Small.{u} D]
 規約：HA 1.3.1.13、全次数。使われ方：元の pinched 単体の実評価。 -/
 lemma moduleTensorHomPinchedIso_evaluation (P Q : ModuleCategory A D) (x : D) :
     SSet.uliftFunctor.{u + 1, u}.map (moduleTensorEvaluationHomMap A D P Q x) ≫
-      (normalizedTensorPinchedIso A ((moduleEvaluation A D x).obj P)
+      (_root_.SerrePositivity.ComplexLimits.normalizedTensorPinchedIso A ((moduleEvaluation A D x).obj P)
         ((moduleEvaluation A D x).obj Q)).hom =
     SSet.uliftFunctor.{u + 1, u}.map (moduleTensorHomDoldKanIso A D P Q).hom ≫
       (moduleDoldKanPinchedIso A D P Q).hom ≫
         pinchedHomChainMap (moduleHomπ A D (ForgetEnrichment.to (Complex A) P)
           (ForgetEnrichment.to (Complex A) Q) x) := by
-  dsimp only [normalizedTensorPinchedIso, Iso.trans_hom, Functor.mapIso_hom]
+  dsimp only [_root_.SerrePositivity.ComplexLimits.normalizedTensorPinchedIso, Iso.trans_hom, Functor.mapIso_hom]
   rw [← Category.assoc, ← SSet.uliftFunctor.map_comp,
     ← moduleTensorHomDoldKanIso_evaluation, SSet.uliftFunctor.map_comp, Category.assoc]
-  have h := doldKanHomPinchedIso_chainMap (R := A) (D := RightModule A D) (E := Complex A)
+  have h := _root_.SerrePositivity.ComplexLimits.doldKanHomPinchedIso_chainMap (R := A) (D := RightModule A D) (E := Complex A)
     (x := ForgetEnrichment.to (Complex A) P)
     (y := ForgetEnrichment.to (Complex A) Q)
     (x' := (ForgetEnrichment.to (Complex A) P).obj (op x))

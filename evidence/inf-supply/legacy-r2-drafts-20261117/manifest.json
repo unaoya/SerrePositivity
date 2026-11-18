@@ -1,0 +1,34 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/legacy-r2-drafts-20261117",
+ "commit": "a848e5cd1",
+ "made_by": "read-only backup with source SHA inventory; no R2 edits or builds",
+ "note": "",
+ "files": [
+  {
+   "path": "HomWeightYonedaUnitPointEvaluation.lean",
+   "sha256": "43f2cb5d4b091bd61c95fd9ef9d5c64fe3c30db3a1c36e0b9000175dc22fd651",
+   "bytes": 3740
+  },
+  {
+   "path": "HomWeightYonedaUnitSquare.lean",
+   "sha256": "8ae31bb44a6934cd78842b5eab57d163c198ee0ee3fc3ecf34643ff52531847b",
+   "bytes": 5792
+  },
+  {
+   "path": "HomWeightYonedaUnitSquareNormalized.lean",
+   "sha256": "30d97e06dd365a618b04101268b671e2b3637fde9a594d23929553991fea7060",
+   "bytes": 6928
+  },
+  {
+   "path": "HomWeightYonedaUnitValues.lean",
+   "sha256": "c45569ed9c3dfbf2e9aab315815c047c1c4cfd7467157234ad0fde6be2d2519b",
+   "bytes": 3792
+  },
+  {
+   "path": "inventory.json",
+   "sha256": "351721e82da7fe3f4bfc1e742fd1a269829870aa4ca94e79c03dc4dd067e4dd4",
+   "bytes": 1497
+  }
+ ],
+ "total_bytes": 21749
+}

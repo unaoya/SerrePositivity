@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementTra
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementReference
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementWeak
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.PinchedFamilyWeakDetection
-public import SerrePositivity.EInfinity.ComplexLimits.ProbeKProjectiveValues
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ProbeKProjectiveValues
 
 /-!
 # 指定複体 hammock 比較の同じ pinched 誘導射の弱同値性
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
 open FullFaithfulAndEssentiallySurjectiveFunctors (pinchedHomMap)
@@ -38,24 +38,24 @@ lemma complexRelativeElementDerivedPinchedMap_reference_family (X Y : Complex A)
     ((complexRelativeElementDerivedRoof_arrow A X Y).trans
       (complexRelativeElementReferencePinchedMap_roof_arrow A X Y).symm)
 
-lemma complexRelativeElementDerivedPinchedMap_weak (X Y : KProjectiveComplex A) :
+lemma complexRelativeElementDerivedPinchedMap_weak (X Y : _root_.SerrePositivity.ComplexLimits.KProjectiveComplex A) :
     IsWeakHomotopyEquivalence (complexRelativeElementDerivedPinchedMap A X.val Y.val) :=
   _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.pinchedFamily_weak_of_intervalFamilyHom_eq _ _
     (complexRelativeElementReferencePinchedMap_weak A X Y)
     (complexRelativeElementDerivedPinchedMap_reference_family A X.val Y.val)
 
 lemma complexHammockDerivedComparison_probe_pinched_weak
-    (X : Complex A) (Y : KProjectiveComplex A) :
+    (X : Complex A) (Y : _root_.SerrePositivity.ComplexLimits.KProjectiveComplex A) :
     IsWeakHomotopyEquivalence (pinchedHomMap (complexHammockDerivedComparison A)
       ((complexHammockSource A).app (Opposite.op ⦋0⦌)
-        (ComposableArrows.mk₀ ((complexRelativeUp A).obj ((framedLimitProbeFunctor A).obj X))))
+        (ComposableArrows.mk₀ ((complexRelativeUp A).obj ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))))
       ((complexHammockSource A).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ ((complexRelativeUp A).obj Y.val)))) := by
-  have hd := complexRelativeElementDerivedPinchedMap_weak A (framedLimitKProjectiveProbe A X) Y
-  dsimp only [framedLimitKProjectiveProbe, complexRelativeElementDerivedPinchedMap] at hd
+  have hd := complexRelativeElementDerivedPinchedMap_weak A (_root_.SerrePositivity.ComplexLimits.framedLimitKProjectiveProbe A X) Y
+  dsimp only [_root_.SerrePositivity.ComplexLimits.framedLimitKProjectiveProbe, complexRelativeElementDerivedPinchedMap] at hd
   rw [← Category.assoc] at hd
   have he := (complexRelativeElementEndpointEquivalence A
-    ((framedLimitProbeFunctor A).obj X) Y.val).isQCatEquivalence.isWeakHomotopyEquivalence
+    ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y.val).isQCatEquivalence.isWeakHomotopyEquivalence
   have hc := he.cancel_right hd
   exact (complexRelativeElementHammockPinchedMap_weak A X Y.val).cancel_left hc
 

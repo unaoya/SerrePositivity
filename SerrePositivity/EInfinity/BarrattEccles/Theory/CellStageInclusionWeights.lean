@@ -84,7 +84,7 @@ lemma cellStageMap_preserves (hX : IsInitial X) {j k : J} (h : j ≤ k) :
   have he := congrArg (fun z => z.hom.f i x)
     (Operad.cellStageErasedFreeIso_naturality c hX h)
   change ek.hom ((c.F.map (homOfLE h)).hom.f i x) =
-    ((schurFunctor A (sequence A)).map (Operad.cellStageGeneratorCoproductMap c h)).f i
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).map (Operad.cellStageGeneratorCoproductMap c h)).f i
       (ej.hom x) at he
   change ek.hom ((c.F.map (homOfLE h)).hom.f i x) ∈ _
   rw [he]

@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -120,7 +120,7 @@ theorem cosimplicialModuleConeFamily_boundaries :
       ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ 𝟙 _) ≫
       cosimplicialModuleConeFamily A =
         snd (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (ModuleCat.{u} A))) ≫
-          nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A ∧
+          nerveMap (discreteCochainFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A ∧
     (joinInr (Δ[0] : SSet.{u+1})
       ((SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)) ⊗ₘ 𝟙 _) ≫
       cosimplicialModuleConeFamily A = discreteTotEvaluationFamily A := by
@@ -128,7 +128,7 @@ theorem cosimplicialModuleConeFamily_boundaries :
   · have hv := congrArg SSet.yonedaEquiv.symm (discreteCochainFunctorCone_vertex A)
     rw [JoinCone.vertex_eq, Equiv.symm_apply_apply] at hv
     have hh := discreteTotFunctorVertex_curry_fst
-      (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A)
+      (nerveMap (discreteCochainFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)
     have hhv := congrArg SSet.yonedaEquiv.symm hh
     rw [Equiv.symm_apply_apply] at hhv
     rw [← hhv] at hv

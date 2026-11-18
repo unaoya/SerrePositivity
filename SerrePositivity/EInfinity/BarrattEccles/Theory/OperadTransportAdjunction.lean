@@ -35,7 +35,7 @@ variable {S T : Type u} [CommRing S] [CommRing T]
   {L : Complex S ⥤ Complex T} {R : Complex T ⥤ Complex S}
   [L.LaxBraided] [IsIso (ε L)] [∀ X Y, IsIso (μ L X Y)] [R.LaxBraided] (a : L ⊣ R)
   (ha : let _ : L.Monoidal := Functor.Monoidal.ofLaxMonoidal L; a.IsMonoidal)
-  {P : Operad S} {Q : Operad T}
+  {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad S} {Q : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad T}
   (l : LaxComparison L Q P) (r : LaxComparison R P Q)
   [∀ n, IsIso (l.arity n)]
 
@@ -97,13 +97,13 @@ def transportAdjunction
           invFun g := ⟨(a.homEquiv X.carrier Y.carrier).symm g.hom,
             fun n => (transportAlgebraHom_mate a ha l r h X Y _ n).mpr (by
               simpa only [Equiv.apply_symm_apply] using g.comm n)⟩
-          left_inv g := AlgebraHom.ext (Equiv.symm_apply_apply _ _)
-          right_inv g := AlgebraHom.ext (Equiv.apply_symm_apply _ _) }
+          left_inv g := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext (Equiv.symm_apply_apply _ _)
+          right_inv g := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext (Equiv.apply_symm_apply _ _) }
       homEquiv_naturality_left_symm f g := by
-        apply AlgebraHom.ext
+        apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
         exact a.homEquiv_naturality_left_symm f.hom g.hom
       homEquiv_naturality_right f g := by
-        apply AlgebraHom.ext
+        apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
         exact a.homEquiv_naturality_right f.hom g.hom }
 
 end SerrePositivity.EInfinity.Operad

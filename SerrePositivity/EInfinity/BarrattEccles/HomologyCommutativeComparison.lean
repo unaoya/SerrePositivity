@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyOperations
-public import SerrePositivity.EInfinity.Operad.AlgebraRestriction
-public import SerrePositivity.EInfinity.Operad.CommutativeAlgebra
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraRestriction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeAlgebra
 
 /-!
 # 可換モノイド複体を制限した E 代数の H⁰ 演算
@@ -35,11 +35,11 @@ variable {A : Type u} [CommRing A] (X : Complex A) [MonObj X] [IsCommMonObj X]
 規約：零入力も含む全 arity。
 使われ方：H⁰ の演算を通常の可換代数の演算と比較する。 -/
 lemma homologyOperation_commutative (n : ℕ) :
-    homologyOperation (Operad.restrictAlgebraObj (augmentation A)
-      (commutativeAlgebraOfMonoid X)) n = powerProduct X n := by
+    homologyOperation (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebraObj (augmentation A)
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraOfMonoid X)) n = _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct X n := by
   change (λ_ (power X n)).inv ≫ (aritySection A n ▷ power X n) ≫
     ((augmentation A).map.app (FiniteBijection.of n) ▷ power X n) ≫
-    (λ_ (power X n)).hom ≫ powerProduct X n = _
+    (λ_ (power X n)).hom ≫ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct X n = _
   rw [← comp_whiskerRight_assoc, aritySection_augmentation, id_whiskerRight,
     Category.id_comp, Iso.inv_hom_id_assoc]
 
@@ -48,11 +48,11 @@ lemma homologyOperation_commutative (n : ℕ) :
 規約：実際の複体射としての等式。
 使われ方：離散 E 代数の H⁰ の積が元の積を与えることの比較。 -/
 lemma homologyBinary_commutative :
-    homologyBinary (Operad.restrictAlgebraObj (augmentation A)
-      (commutativeAlgebraOfMonoid X)) = μ[X] := by
+    homologyBinary (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebraObj (augmentation A)
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraOfMonoid X)) = μ[X] := by
   rw [homologyBinary, homologyOperation_commutative]
-  change (X ◁ (oneIso X).inv) ≫ (X ◁ powerProduct X 1) ≫ μ[X] = μ[X]
-  rw [powerProduct_one, ← whiskerLeft_comp_assoc, Iso.inv_hom_id,
+  change (X ◁ (oneIso X).inv) ≫ (X ◁ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct X 1) ≫ μ[X] = μ[X]
+  rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct_one, ← whiskerLeft_comp_assoc, Iso.inv_hom_id,
     whiskerLeft_id, Category.id_comp]
 
 /-- 概要：Com から制限した E 代数の零入力射は元の単位（BF §1、BM §1）。
@@ -60,8 +60,8 @@ lemma homologyBinary_commutative :
 規約：実際の nullary 演算。
 使われ方：離散 E 代数の H⁰ の単位の比較。 -/
 lemma homologyNullary_commutative :
-    homologyOperation (Operad.restrictAlgebraObj (augmentation A)
-      (commutativeAlgebraOfMonoid X)) 0 = η[X] :=
+    homologyOperation (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebraObj (augmentation A)
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraOfMonoid X)) 0 = η[X] :=
   homologyOperation_commutative X 0
 
 end SerrePositivity.EInfinity.BarrattEccles

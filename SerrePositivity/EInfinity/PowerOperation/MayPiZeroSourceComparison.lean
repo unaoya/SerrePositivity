@@ -25,14 +25,14 @@ open scoped Simplicial
 def mayModuleHomologySourceIso (k : Type u) [CommRing k] (i : ℤ) :
     ordinaryAlgebraHoSource k ⋙
       hoMap (cAlgForgetDerived k) ⋙ cohomologyOnHo k i ≅
-        Operad.Algebra.forget (operad k) ⋙
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad k) ⋙
           HomologicalComplex.homologyFunctor (ModuleCat k) (.up ℤ) i := by
   let A := k
   let L := ordinaryAlgebraHoSource A
   let Q := algebraCAlgSource A
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   let I := ordinaryToHoNerve (operad A).Algebra
-  let D := ComplexLimits.complexOrdinaryDerivedSource A
+  let D := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
   let H := cohomologyOnHo A i
   let a := (hoMapCompIso Q (cAlgForgetDerived A)).symm ≪≫
     (algebraCAlgSource_underlyingDerivedIso A).toNatIso ≪≫ hoMapCompIso (nerveMap U) D
@@ -43,7 +43,7 @@ def mayModuleHomologySourceIso (k : Type u) [CommRing k] (i : ℤ) :
   have c : (I ⋙ hoMap (nerveMap U)) ⋙ hoMap D ⋙ H ≅
       U ⋙ HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) i := by
     exact Functor.isoWhiskerRight (ordinaryToHoNerve_naturalIso U) _ ≪≫
-      Functor.isoWhiskerLeft U (ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A i)
+      Functor.isoWhiskerLeft U (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A i)
   exact b ≪≫ c
 
 /-- 台の加法群へ忘れて得る比較は、同じ指定された源の比較。 -/
@@ -55,7 +55,7 @@ lemma mayModuleHomologySourceIso_forget (k : Type u) [CommRing k] (n : ℤ) :
 def mayPiZeroSourceRight (k : Type u) [CommRing k] :
     ordinaryAlgebraHoSource k ⋙ barrattEcclesPi0 k ⋙
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule k ≅
-        Operad.Algebra.forget (operad k) ⋙
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad k) ⋙
           HomologicalComplex.homologyFunctor (ModuleCat k) (.up ℤ) 0 :=
   (Functor.associator _ _ _).symm ≪≫
     Functor.isoWhiskerRight (barrattEcclesPi0_sourceIso k) _ ≪≫ strictPiZero_forgetIso k
@@ -90,7 +90,7 @@ lemma mayPiZeroForget_source_apply (k : Type u) [CommRing k] (X : (operad k).Alg
   congrArg (fun η => η.app X a) (mayPiZeroForget_source_square k)
 
 local instance mayPiZeroSourceCommRing {k : Type u} [CommRing k] (X : (operad k).Algebra) :
-    CommRing ((Operad.Algebra.forget (operad k) ⋙
+    CommRing ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad k) ⋙
       HomologicalComplex.homologyFunctor (ModuleCat k) (.up ℤ) 0).obj X) := homologyCommRing X
 
 /-- 厳密な零次環の台の比較は、同じ H⁰ の積を保つ。 -/

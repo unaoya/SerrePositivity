@@ -32,10 +32,10 @@ variable (A : Type u) [CommRing A]
 規約：元の複体の cofibrancy は不要。
 使われ方：前合成の式から試験始域の置換を消す。 -/
 def carrierFramedLimitProbeLocalizedIso :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
     carrierFramedLimitProbeFunctor A ⋙ Q ≅ Q := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let Q := (weakEquivalences (Complex A)).Q
   have h (Y : (Complex A)) : IsIso (Q.map (((carrierFramedLimitProbeComparison A).app Y))) :=
     Localization.inverts Q (weakEquivalences (Complex A)) _

@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory MonoidalCategory CochainComplex HomComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped TensorProduct
 variable (A : Type u) [CommRing A] {J : Type u} [SmallCategory J]
 local notation "E" => functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)
@@ -33,14 +33,14 @@ theorem freeTensorStandardSimplexIso_hom_app (W : J ⥤ SSet.{u})
 /-- 指定自由tensor Hom同型の逆射の各点は同じ正規化Hom同値の逆転置。 -/
 theorem freeTensorDiagramHomIso_inv_app (W : J ⥤ SSet.{u})
     (Q : J ⥤ Complex A) (n : SimplexCategory)
-    (α : ((truncatedDoldKanFunctor A).obj
+    (α : ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj
       (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
         ((E).obj Q))).obj (Opposite.op n)) (j : J) :
     ((freeTensorDiagramHomIso A Q W).inv.app (Opposite.op n) α).app j =
       ((diagramTensorLinearHomEquiv (freeNegativeChainsDiagram (A := A) W) Q
         ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
           (SSet.stdSimplex.obj n))).symm
-        ((normalizedSimplexHomEquiv A
+        ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
           (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
             ((E).obj Q)) n).symm α)).app j := by
   change ((freeTensorStandardSimplexIso A J W).hom.app n).app j ≫ _ = _
@@ -50,7 +50,7 @@ theorem freeTensorDiagramHomIso_inv_app (W : J ⥤ SSet.{u})
 /-- 元の自由tensor Hom逆射の斉次tensor成分とそのKoszul符号。 -/
 theorem freeTensorDiagramHomIso_inv_component (W : J ⥤ SSet.{u})
     (Q : J ⥤ Complex A) (m : SimplexCategory)
-    (α : ((truncatedDoldKanFunctor A).obj
+    (α : ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj
       (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
         ((E).obj Q))).obj (Opposite.op m)) (j : J)
     (i q n : ℤ) (hn : i + q = n)
@@ -64,7 +64,7 @@ theorem freeTensorDiagramHomIso_inv_component (W : J ⥤ SSet.{u})
           (SSet.stdSimplex.obj m)) i q n hn (y ⊗ₜ[A] x)) =
       (i * q).negOnePow •
         (diagramCochainAt (freeNegativeChainsDiagram (A := A) W) Q
-          (((normalizedSimplexHomEquiv A
+          (((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
             (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
               ((E).obj Q)) m).symm α).f q x) j).v i n hn y := by
   rw [freeTensorDiagramHomIso_inv_app]
@@ -72,7 +72,7 @@ theorem freeTensorDiagramHomIso_inv_component (W : J ⥤ SSet.{u})
     (freeNegativeChainsDiagram (A := A) W) Q
     ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
       (SSet.stdSimplex.obj m))
-    ((normalizedSimplexHomEquiv A
+    ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
       (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
         ((E).obj Q)) m).symm α) j i q n hn y x
 
@@ -82,20 +82,20 @@ theorem freeTensorDiagramHomIso_inv_map_component (W : J ⥤ SSet.{u})
     (g : K ⟶ linearHomComplex A ((E).obj
       (freeNegativeChainsDiagram (A := A) W)) ((E).obj Q))
     (m : SimplexCategory)
-    (α : ((truncatedDoldKanFunctor A).obj K).obj (Opposite.op m))
+    (α : ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj K).obj (Opposite.op m))
     (j : J) (i q n : ℤ) (hn : i + q = n)
     (y : ((freeNegativeChainsDiagram (A := A) W).obj j).X i)
     (x : ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
       (SSet.stdSimplex.obj m)).X q) :
     (((freeTensorDiagramHomIso A Q W).inv.app (Opposite.op m)
-      (((truncatedDoldKanFunctor A).map g).app (Opposite.op m) α)).app j).f n
+      (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map g).app (Opposite.op m) α)).app j).f n
       (HomologicalComplex.ιTensorObj
         ((freeNegativeChainsDiagram (A := A) W).obj j)
         ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
           (SSet.stdSimplex.obj m)) i q n hn (y ⊗ₜ[A] x)) =
       (i * q).negOnePow •
         (diagramCochainAt (freeNegativeChainsDiagram (A := A) W) Q
-          (g.f q (((normalizedSimplexHomEquiv A K m).symm α).f q x)) j).v i n hn y := by
+          (g.f q (((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K m).symm α).f q x)) j).v i n hn y := by
   rw [freeTensorDiagramHomIso_inv_component, normalizedSimplexHomEquiv_symm_map]
   rfl
 

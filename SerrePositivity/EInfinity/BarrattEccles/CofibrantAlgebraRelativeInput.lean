@@ -99,7 +99,7 @@ def cofibrantAlgebraDKReplacementRelative :
 使われ方：U の単体的局所化による関手化の入力。 -/
 def cofibrantAlgebraDKForget :
     (cofibrantAlgebraRelativeCategory A).category ⥤ Complex A :=
-  cofibrantAlgebraDKInclusion A ⋙ Operad.Algebra.forget (operad A)
+  cofibrantAlgebraDKInclusion A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
 
 /-- 概要：DK 入力の忘却は複体の擬同型を保つ相対関手（BM 命題 4.1）。
 方針：元の指定矢の同じ底の擬同型を使う。

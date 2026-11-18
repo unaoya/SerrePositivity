@@ -28,9 +28,9 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits _root_.HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded
 
-attribute [local irreducible] rightFrameFamily ComplexLimits.rightFrameFamily
+attribute [local irreducible] rightFrameFamily _root_.SerrePositivity.ComplexLimits.rightFrameFamily
   carrierFramedLimitComparisonIso carrierFramedLimitDerivedHomEquiv
-  ComplexLimits.framedLimitDerivedHomEquiv framedLimitFunctor ComplexLimits.framedLimitFunctor
+  _root_.SerrePositivity.ComplexLimits.framedLimitDerivedHomEquiv framedLimitFunctor _root_.SerrePositivity.ComplexLimits.framedLimitFunctor
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -40,29 +40,29 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：底の導来極限比較を自然同型に束ねる。 -/
 lemma carrierFramedLimitComparisonIso_naturality {F G : K ⥤ (operad A).Algebra}
     (g : F ⟶ G) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
-    Q.map ((ComplexLimits.framedLimitFunctor A K).map ((Diagram.forget A K).map g)) ≫
+    Q.map ((_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).map ((Diagram.forget A K).map g)) ≫
         (carrierFramedLimitComparisonIso A K G).hom =
       (carrierFramedLimitComparisonIso A K F).hom ≫
         Q.map ((framedLimitFunctor A K).map g).hom := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   let Q := (weakEquivalences (Complex A)).Q
   let QD := (weakEquivalences (K ⥤ Complex A)).Q
   let Fc := (Diagram.forget A K).obj F
   let Gc := (Diagram.forget A K).obj G
   let gc := (Diagram.forget A K).map g
-  let Y := (ComplexLimits.framedLimitFunctor A K).obj Fc
-  let eF := ComplexLimits.framedLimitDerivedHomEquiv A K Y Fc
-  let eG := ComplexLimits.framedLimitDerivedHomEquiv A K Y Gc
+  let Y := (_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).obj Fc
+  let eF := _root_.SerrePositivity.ComplexLimits.framedLimitDerivedHomEquiv A K Y Fc
+  let eG := _root_.SerrePositivity.ComplexLimits.framedLimitDerivedHomEquiv A K Y Gc
   let z := eF.symm (𝟙 (Q.obj Y))
   have hz : eF z = 𝟙 (Q.obj Y) := eF.apply_symm_apply _
-  have hc : eG (z ≫ QD.map gc) = Q.map ((ComplexLimits.framedLimitFunctor A K).map gc) :=
-    (ComplexLimits.framedLimitDerivedHomEquiv_target A K Y gc z).trans
-      ((congrArg (fun t => t ≫ Q.map ((ComplexLimits.framedLimitFunctor A K).map gc)) hz).trans
+  have hc : eG (z ≫ QD.map gc) = Q.map ((_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).map gc) :=
+    (_root_.SerrePositivity.ComplexLimits.framedLimitDerivedHomEquiv_target A K Y gc z).trans
+      ((congrArg (fun t => t ≫ Q.map ((_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).map gc)) hz).trans
         (Category.id_comp _))
-  have he : eG.symm (Q.map ((ComplexLimits.framedLimitFunctor A K).map gc)) =
+  have he : eG.symm (Q.map ((_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).map gc)) =
       z ≫ QD.map gc := by
     simpa only [Equiv.symm_apply_apply] using (congrArg eG.symm hc).symm
   have hF : (carrierFramedLimitComparisonIso A K F).hom =
@@ -78,19 +78,19 @@ lemma carrierFramedLimitComparisonIso_naturality {F G : K ⥤ (operad A).Algebra
 規約：複体図式全体の計算関手を忘却図式へ制限する。
 使われ方：E 代数の一般 homotopy 極限の底の計算。 -/
 def carrierFramedLimitComparisonNatIso :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
-    Diagram.forget A K ⋙ ComplexLimits.framedLimitFunctor A K ⋙ Q ≅
-      framedLimitFunctor A K ⋙ Operad.Algebra.forget (operad A) ⋙ Q := by
-  let := projectiveModelCategory A
+    Diagram.forget A K ⋙ _root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K ⋙ Q ≅
+      framedLimitFunctor A K ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) ⋙ Q := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let Q := (weakEquivalences (Complex A)).Q
   dsimp only
   refine NatIso.ofComponents (fun F => ?_) ?_
-  · change Q.obj ((ComplexLimits.framedLimitFunctor A K).obj
+  · change Q.obj ((_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).obj
       ((Diagram.forget A K).obj F)) ≅ Q.obj ((framedLimitFunctor A K).obj F).carrier
     exact carrierFramedLimitComparisonIso A K F
   · intro F G g
-    change Q.map ((ComplexLimits.framedLimitFunctor A K).map ((Diagram.forget A K).map g)) ≫
+    change Q.map ((_root_.SerrePositivity.ComplexLimits.framedLimitFunctor A K).map ((Diagram.forget A K).map g)) ≫
         (carrierFramedLimitComparisonIso A K G).hom =
       (carrierFramedLimitComparisonIso A K F).hom ≫
         Q.map ((framedLimitFunctor A K).map g).hom
@@ -101,7 +101,7 @@ def carrierFramedLimitComparisonNatIso :
 規約：忘却した元の図式の普通の局所化像で評価する。
 使われ方：E2a-4 の一般右導来極限比較の界面。 -/
 def framedLimitCarrierDerivedIso (F : K ⥤ (operad A).Algebra) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
@@ -111,11 +111,11 @@ def framedLimitCarrierDerivedIso (F : K ⥤ (operad A).Algebra) :
       RF.IsRightDerivedFunctor β (weakEquivalences (K ⥤ Complex A)) →
       (Q.obj ((framedLimitFunctor A K).obj F).carrier ≅
         RF.obj (QD.obj ((Diagram.forget A K).obj F))) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   dsimp only
   intro RF β hRF
   exact (carrierFramedLimitComparisonIso A K F).symm ≪≫
-    ComplexLimits.framedLimitDerivedIso A K ((Diagram.forget A K).obj F) RF β hRF
+    _root_.SerrePositivity.ComplexLimits.framedLimitDerivedIso A K ((Diagram.forget A K).obj F) RF β hRF
 
 end SerrePositivity.EInfinity.BarrattEccles

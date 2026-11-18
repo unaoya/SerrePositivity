@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 同じ smart 切断・Γ・零基点による全関手。 -/
@@ -30,9 +30,9 @@ lemma gammaPointedPair_naturality {K L K' L' : Complex A}
     gammaPointedPair A K L ≫ (gammaPointedFunctor A).map (a ⊗ₘ b) := by
   apply Under.UnderMorphism.ext
   simp only [Under.comp_right, PointedObject.prodMap_right]
-  change (((truncatedDoldKanFunctor A).map a) ⊗ₘ
-    ((truncatedDoldKanFunctor A).map b)) ≫ gammaPair A K' L' =
-      gammaPair A K L ≫ (truncatedDoldKanFunctor A).map (a ⊗ₘ b)
+  change (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map a) ⊗ₘ
+    ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map b)) ≫ gammaPair A K' L' =
+      gammaPair A K L ≫ (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (a ⊗ₘ b)
   exact gammaPair_naturality A a b
 
 /-- 同じ smash 商を用いた二項評価は両変数で自然。 -/

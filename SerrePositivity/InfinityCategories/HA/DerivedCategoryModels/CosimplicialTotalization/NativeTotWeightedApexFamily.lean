@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -47,11 +47,11 @@ theorem nativeTotWeightedCellFunctor_apex {n : ℕ}
     (σ : ComposableArrows (AsSmall.{u} SimplexCategory) n) :
     nativeTotWeightedCellFunctor A σ ⋙ strictSimplexPullbackFunctor A (Complex A)
         (SimplexCategory.const ⦋0⦌ ⦋n+1⦌ 0).toOrderHom =
-      productTotalFunctor A ⋙ complexToClosed A ⋙ nativeTotClosedVertexFunctor A := by
+      productTotalFunctor A ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A ⋙ nativeTotClosedVertexFunctor A := by
   have hs (X : CosimplicialObject (Complex A)) :
       ((nativeTotWeightedCellFunctor A σ).obj X).val.pullback
           (SimplexCategory.const ⦋0⦌ ⦋n+1⦌ 0).toOrderHom =
-        (((productTotalFunctor A ⋙ complexToClosed A ⋙ nativeTotClosedVertexFunctor A).obj X).val) := by
+        (((productTotalFunctor A ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A ⋙ nativeTotClosedVertexFunctor A).obj X).val) := by
     apply Simplex.vertexEquiv.injective
     rfl
   apply CategoryTheory.Functor.hext
@@ -71,7 +71,7 @@ def nativeTotApexFamily :
     nerve (CosimplicialObject (Complex A)) ⊗ (Δ[0] : SSet.{u+1}) ⟶
       dgNerve A (Complex A) :=
   strictSimplexFunctorEvaluation A (Complex A)
-    (productTotalFunctor A ⋙ complexToClosed A ⋙ nativeTotClosedVertexFunctor A)
+    (productTotalFunctor A ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A ⋙ nativeTotClosedVertexFunctor A)
 
 /-- セル族を初点へ制限すると、同じ全Tot頂点族になる。 -/
 theorem nativeTotWeightedCellFamily_apex {n : ℕ}

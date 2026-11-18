@@ -1,0 +1,5 @@
+number,status,declarations,reason,axioms,check,partial_kind
+1.1,none,,"原典 PDF p.2, y=373.9。Witt・Grassmannian・line bundleの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.1 / review/check/none-search.csv,
+1.2,none,,"原典 PDF p.2, y=549.3。Witt・Grassmannian・line bundleの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.2 / review/check/none-search.csv,
+1.3,none,,"原典 PDF p.3, y=359.4。Witt・Grassmannian・line bundleの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.3 / review/check/none-search.csv,
+1.4,none,,"原典 PDF p.3, y=405.1。Witt・Grassmannian・line bundleの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.4 / review/check/none-search.csv,

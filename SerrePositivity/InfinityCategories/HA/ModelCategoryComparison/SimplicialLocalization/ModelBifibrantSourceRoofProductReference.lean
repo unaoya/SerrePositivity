@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Simp
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantSourceRoofProductCone
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantFramePinchedWeak
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexUniverseProjectionWeak
-public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakArrowActionEquivalences
 
 /-!
 概要：元の積単体の全族から指定次数の同じ pinched Hom への弱な基準射を作る。
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped _root_.Simplicial
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.SimplicialModel
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
@@ -53,7 +53,7 @@ def modelBifibrantSourceRoofDegreePrecompose :=
 規約：元の実射。使われ方：同じ全積単体の弱比較。 -/
 lemma modelBifibrantSourceRoofDegreePrecompose_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegreePrecompose X Y q b) :=
-  WeakArrow.precompose_forward_isWeakHomotopyEquivalence
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakArrow.precompose_forward_isWeakHomotopyEquivalence
     ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q).app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRoofDegree X Y q b))
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation_weak X q _) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
 

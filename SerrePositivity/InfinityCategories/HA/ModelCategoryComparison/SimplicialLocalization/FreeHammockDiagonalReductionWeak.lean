@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalWeak
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonal
-public import SerrePositivity.EInfinity.Hammock.WordDiagonalProper
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WordDiagonalProper
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialColimit
-public import SerrePositivity.EInfinity.Hammock.WeakProperColimit
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakProperColimit
 
 /-!
 # 元の自由 hammock 対角の左比較射自身の弱同値性
@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.InfinityCategories
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 def freeHammockDiagonalColimitIso :
@@ -53,10 +53,10 @@ lemma freeHammockDiagonalColimitIso_augmentation :
   rfl
 lemma freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y) := by
-  have hc := weakProperColimitMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y)
-    (FixedObjectDiagram.wordDiagonalDiagram_proper (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) C
+  have hc := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.weakProperColimitMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectDiagram.wordDiagonalDiagram_proper (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) C
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C) (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) X Y)
-    (graphDiagram_proper C.weakEquivalences X Y)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphDiagram_proper C.weakEquivalences X Y)
     (fun w => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation_weak C w X Y)
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalColimitIso C X Y)).isWeakHomotopyEquivalence.cancel_left
@@ -66,5 +66,5 @@ lemma freeHammockDiagonalReduction_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y) :=
   (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence C X Y).comp
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
-      (reducedColimitIso C.weakEquivalences X Y)).isWeakHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso C.weakEquivalences X Y)).isWeakHomotopyEquivalence
 end SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization

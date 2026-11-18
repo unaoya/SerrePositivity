@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientMonoidAction
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
-public import SerrePositivity.EInfinity.HomologyZero.SinglePairingValue
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.SinglePairingValue
 public import SerrePositivity.EInfinity.Interface.Theory
 
 /-!

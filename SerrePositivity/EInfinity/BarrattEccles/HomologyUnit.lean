@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCommutativity
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCompositeHomotopy
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyUnary
-public import SerrePositivity.EInfinity.HomologyZero.NullaryInput
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.NullaryInput
 
 /-!
 # E 代数の実際の H⁰ の積の単位則
@@ -47,7 +47,7 @@ def homologyBinaryLeftUnitHomotopy (X : (operad A).Algebra) :
       (homologyUnaryHomotopy X).compLeft (oneIso X.carrier).inv
   have hc := (homologyCompositionHomotopy X 1 0 0).compLeft (oneIso X.carrier).inv
   rw [← hb] at hc
-  rw [reassoc_of% (HomologyZero.nullaryBinaryInsertion X.carrier (homologyOperation X 0))] at hc
+  rw [reassoc_of% (_root_.SerrePositivity.HomologyZero.nullaryBinaryInsertion X.carrier (homologyOperation X 0))] at hc
   simpa only [homologyBinary, Category.assoc] using (hu.symm.trans hc).symm
 
 /-- 概要：E 代数の実際の H⁰ の積は左単位を持つ（BF §1、BM §1）。
@@ -56,13 +56,13 @@ def homologyBinaryLeftUnitHomotopy (X : (operad A).Algebra) :
 使われ方：H⁰ の環の単位公理。 -/
 lemma homologyProduct_one_left (X : (operad A).Algebra) (x : X.carrier.homology 0) :
     homologyProduct X (homologyOne X) x = x := by
-  obtain ⟨f, rfl⟩ := HomologyZero.unitClass_surjective X.carrier x
-  change HomologyZero.pairingValue (homologyBinary X)
-    (HomologyZero.unitClass X.carrier (homologyOperation X 0))
-    (HomologyZero.unitClass X.carrier f) = _
-  rw [HomologyZero.pairingValue_class]
-  apply (HomologyZero.unitClass_eq_iff X.carrier _ _).mpr
-  have he : HomologyZero.unitPairing (homologyBinary X) (homologyOperation X 0) f =
+  obtain ⟨f, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier x
+  change _root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary X)
+    (_root_.SerrePositivity.HomologyZero.unitClass X.carrier (homologyOperation X 0))
+    (_root_.SerrePositivity.HomologyZero.unitClass X.carrier f) = _
+  rw [_root_.SerrePositivity.HomologyZero.pairingValue_class]
+  apply (_root_.SerrePositivity.HomologyZero.unitClass_eq_iff X.carrier _ _).mpr
+  have he : _root_.SerrePositivity.HomologyZero.unitPairing (homologyBinary X) (homologyOperation X 0) f =
       f ≫ (λ_ X.carrier).inv ≫ (homologyOperation X 0 ▷ X.carrier) ≫ homologyBinary X := by
     change (λ_ (𝟙_ (Complex A))).inv ≫ (homologyOperation X 0 ⊗ₘ f) ≫ homologyBinary X = _
     rw [tensorHom_def']

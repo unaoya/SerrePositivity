@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.AnodyneComponents
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents
 public import SerrePositivity.EInfinity.BarrattEccles.KanDKMappingSpaceNaturality
 
 /-!
@@ -18,20 +18,20 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization Hammock
+open CategoryTheory Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 
 variable (A : Type u) [CommRing A]
 
 def mappingSpaceReducedHammockComponentsIso (X Y : (operad A).Algebra) :
     SSet.π₀ (SSet.uliftFunctor.{u + 1, u}.obj (((mappingSpace A).obj (op X)).obj Y)) ≅
       SSet.π₀ (algebraReducedHammock A X Y) :=
-  AnodyneComponents.iso (mappingSpaceReducedHammockComparisonIso A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso (mappingSpaceReducedHammockComparisonIso A X Y)
 
 lemma mappingSpaceReducedHammockComponentsIso_fac (X Y : (operad A).Algebra) :
     SSet.π₀Functor.map (mappingSpaceIndexAugmentation A X Y) ≫
         (mappingSpaceReducedHammockComponentsIso A X Y).hom =
       SSet.π₀Functor.map (mappingSpaceReducedHammockNerveMap A X Y) :=
-  AnodyneComponents.iso_fac _ _ _ (mappingSpaceReducedHammockComparisonIso_fac A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso_fac _ _ _ (mappingSpaceReducedHammockComparisonIso_fac A X Y)
 
 def cofibrantAlgebraDKMappingSpaceComponentsIso
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
@@ -39,35 +39,35 @@ def cofibrantAlgebraDKMappingSpaceComponentsIso
       SSet.π₀ (SSet.uliftFunctor.{u + 1, u}.obj
         (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X))).obj
           ((cofibrantAlgebraDKInclusion A).obj Y))) :=
-  AnodyneComponents.iso (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y)
 
 lemma cofibrantAlgebraDKMappingSpaceComponentsIso_hammock
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom ≫
         (mappingSpaceReducedHammockComponentsIso A ((cofibrantAlgebraDKInclusion A).obj X)
           ((cofibrantAlgebraDKInclusion A).obj Y)).hom =
-      (AnodyneComponents.iso (cofibrantAlgebraDKHammockComparisonIso A X Y)).hom := by
-  have h := congrArg AnodyneComponents.map
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso (cofibrantAlgebraDKHammockComparisonIso A X Y)).hom := by
+  have h := congrArg _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map
     (cofibrantAlgebraDKMappingSpaceComparisonIso_hammock A X Y)
   simpa only [cofibrantAlgebraDKMappingSpaceComponentsIso,
-    mappingSpaceReducedHammockComponentsIso, AnodyneComponents.map_comp,
-    ← AnodyneComponents.iso_hom] using h
+    mappingSpaceReducedHammockComponentsIso, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map_comp,
+    ← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso_hom] using h
 
 def cAlgMappingSpaceComponentsIso (X Y : CAlgSimplicialCategory A) :
     SSet.π₀ (SimplicialCategory.sHom X Y) ≅
       SSet.π₀ (SSet.uliftFunctor.{u + 1, u}.obj
         (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X))).obj
           ((cofibrantAlgebraDKInclusion A).obj Y))) :=
-  AnodyneComponents.iso (cAlgMappingSpaceComparisonIso A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso (cAlgMappingSpaceComparisonIso A X Y)
 
 lemma cAlgMappingSpaceComponentsIso_unit (X Y : CAlgSimplicialCategory A) :
     SSet.π₀Functor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
         (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComponentsIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom := by
-  have h := congrArg AnodyneComponents.map (cAlgMappingSpaceComparisonIso_unit A X Y)
+  have h := congrArg _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map (cAlgMappingSpaceComparisonIso_unit A X Y)
   simpa only [cAlgMappingSpaceComponentsIso, cofibrantAlgebraDKMappingSpaceComponentsIso,
-    AnodyneComponents.map_comp, AnodyneComponents.map_actual,
-    ← AnodyneComponents.iso_hom] using h
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map_comp, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map_actual,
+    ← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso_hom] using h
 
 end SerrePositivity.EInfinity.BarrattEccles

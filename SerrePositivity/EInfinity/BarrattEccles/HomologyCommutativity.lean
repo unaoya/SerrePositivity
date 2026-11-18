@@ -30,7 +30,7 @@ variable {A : Type u} [CommRing A]
 lemma homologyProduct_comm (X : (operad A).Algebra) (x y : X.carrier.homology 0) :
     homologyProduct X x y = homologyProduct X y x :=
   (congrArg (fun f => f x y)
-    (HomologyZero.pairing_homotopy (homologyBinaryCommutativityHomotopy X))).trans
-      (HomologyZero.pairing_braiding (homologyBinary X) x y)
+    (_root_.SerrePositivity.HomologyZero.pairing_homotopy (homologyBinaryCommutativityHomotopy X))).trans
+      (_root_.SerrePositivity.HomologyZero.pairing_braiding (homologyBinary X) x y)
 
 end SerrePositivity.EInfinity.BarrattEccles

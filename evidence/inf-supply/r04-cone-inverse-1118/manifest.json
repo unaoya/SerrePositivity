@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-cone-inverse-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/r04-cone-inverse-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "4652ec9be0f0688fedea1e8a37784a22a2daac38aa89cc7b29d8cd78247162dc",
+   "bytes": 1441
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "b06c20a965d33fe9f791089e53ba0747b60657094bfe685baa60617c33ad858e",
+   "bytes": 203324
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "4b7f176fb00b4a7a362f6712cf5504aa103912daed5d1fc9be92e75da0161f8c",
+   "bytes": 824
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "63f50114d7cd477addc041f97078afb2e1fcab5c20be0e2083a53bdd0453586e",
+   "bytes": 1397
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "553e98008d89636f9f708b3f72dd688ead4fd0a538facde35526782edad65044",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "329dbe983f721c8e557602f3dba0f8ce0df593aca55d151fef4deb781514fe78",
+   "bytes": 168
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "05450b2531402091b98b2ecb9472a4689e64d1582371d4b83c05fffe41fc7334",
+   "bytes": 543
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 211794
+}

@@ -23,7 +23,7 @@ variable (R : Type u) [CommRing R] (X Y : Complex R)
 lemma schurArityOrbitIso_standard_quotient (m n : ℕ) :
     ((operad R).arity (m + n) ◁ ((binaryTensorStandardPowersIso X Y m n).inv ≫
       binaryTensorWordInclusion X Y (m + n) (binaryTensorStandardPattern m n))) ≫
-    arityCoinvariantComplexQuotient (schurDiagram R (sequence R) (X ⊞ Y)) (m + n) ≫
+    arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) (X ⊞ Y)) (m + n) ≫
       (schurArityOrbitIso X Y (m + n)).hom =
     (β_ ((operad R).arity (m + n)) (power X m ⊗ power Y n)).hom ≫
     coinvariantTotalQuotient
@@ -59,10 +59,10 @@ lemma freeStandardSource_binaryOrbit (m n : ℕ) :
     (orbitStandardCoefficientIso X Y m n).inv ≫
       Sigma.ι (fun p : ℕ × ℕ => orbitCoefficientComplex X Y (p.1 + p.2)
         (ULift.up ⟨p.1, by omega⟩)) (m, n) := by
-  simp only [freeStandardSource, schurι, schurBinaryOrbitIso, Iso.trans_hom,
+  simp only [freeStandardSource, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι, schurBinaryOrbitIso, Iso.trans_hom,
     Iso.symm_hom, Category.assoc, schurComplexArityIso]
   rw [reassoc_of% (arityCoinvariantComplexIso_ι
-    (schurDiagram R (sequence R) (X ⊞ Y)) (m + n)), Sigma.ι_mapIso_hom_assoc]
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) (X ⊞ Y)) (m + n)), Sigma.ι_mapIso_hom_assoc]
   rw [reassoc_of% (schurArityOrbitIso_standard_quotient R X Y m n)]
   simp only [sigmaSigmaIso_hom, Sigma.ι_comp_desc_assoc]
   erw [Sigma.ι_reindex_inv binaryTensorCountIndexEquiv.symm

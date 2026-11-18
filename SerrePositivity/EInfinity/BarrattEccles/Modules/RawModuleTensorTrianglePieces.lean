@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.ConeTriangleIndex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConeTriangleIndex
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementEvaluatedColumn
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConeSimplex
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementPinchedEvaluation
@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
@@ -33,29 +33,29 @@ def strictRawModuleTensorTriangleObj {n : ℕ}
 def strictRawModuleTensorTriangleFront {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n :=
-  (strictRawModuleTensorConeSimplex A X P Q c).pullback (coneTriangleFrontIndex τ)
+  (strictRawModuleTensorConeSimplex A X P Q c).pullback (_root_.SerrePositivity.ComplexLimits.coneTriangleFrontIndex τ)
 
 def strictRawModuleTensorTriangleBack {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n :=
-  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (strictRawModuleTensorElementEvaluatedColumn A X P Q c)).pullback (coneTriangleBackIndex τ)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (strictRawModuleTensorElementEvaluatedColumn A X P Q c)).pullback (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ)
 
 def strictRawModuleTensorTrianglePinched {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n :=
   ((strictRawModuleTensorElementPinchedMap A X P Q).app (Opposite.op ⦋n⦌) c).val.pullback
-    (coneTriangleBackIndex τ)
+    (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ)
 
 lemma strictRawModuleTensorTriangleFront_obj {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i ≠ 2) :
     (strictRawModuleTensorTriangleFront A X P Q c τ).obj i =
       strictRawModuleTensorTriangleObj A X P Q c τ i := by
-  change strictRawModuleTensorConeObj A X P Q c (coneTriangleFrontIndex τ i) = _
+  change strictRawModuleTensorConeObj A X P Q c (_root_.SerrePositivity.ComplexLimits.coneTriangleFrontIndex τ i) = _
   by_cases hz : τ i = 0
-  · rw [coneTriangleFrontIndex_zero τ i hz, strictRawModuleTensorConeObj_zero]
+  · rw [_root_.SerrePositivity.ComplexLimits.coneTriangleFrontIndex_zero τ i hz, strictRawModuleTensorConeObj_zero]
     simp only [strictRawModuleTensorTriangleObj, hz, ↓reduceIte]
-  · rw [coneTriangleFrontIndex_ne_zero τ i hz, strictRawModuleTensorConeObj_succ]
+  · rw [_root_.SerrePositivity.ComplexLimits.coneTriangleFrontIndex_ne_zero τ i hz, strictRawModuleTensorConeObj_succ]
     simp only [strictRawModuleTensorTriangleObj, hz, hi, ↓reduceIte]
 
 lemma strictRawModuleTensorTriangleBack_obj {n : ℕ}
@@ -64,11 +64,11 @@ lemma strictRawModuleTensorTriangleBack_obj {n : ℕ}
     (strictRawModuleTensorTriangleBack A X P Q c τ).obj i =
       strictRawModuleTensorTriangleObj A X P Q c τ i := by
   change ForgetEnrichment.to (Complex A)
-    ((strictRawModuleTensorElementEvaluatedColumn A X P Q c).obj (coneTriangleBackIndex τ i)) = _
+    ((strictRawModuleTensorElementEvaluatedColumn A X P Q c).obj (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ i)) = _
   by_cases ht : τ i = 2
-  · rw [coneTriangleBackIndex_two τ i ht, strictRawModuleTensorElementEvaluatedColumn_obj_last]
+  · rw [_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex_two τ i ht, strictRawModuleTensorElementEvaluatedColumn_obj_last]
     simp [strictRawModuleTensorTriangleObj, ht]
-  · rw [coneTriangleBackIndex_ne_two τ i ht,
+  · rw [_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex_ne_two τ i ht,
       strictRawModuleTensorElementEvaluatedColumn_obj_castSucc]
     simp only [strictRawModuleTensorTriangleObj, hi, ht, ↓reduceIte]
 
@@ -79,8 +79,8 @@ lemma strictRawModuleTensorTrianglePinched_obj_zero {n : ℕ}
       strictRawModuleTensorTriangleObj A X P Q c τ i := by
   have ht : τ i ≠ 2 := by rw [hi]; decide
   change ((strictRawModuleTensorElementPinchedMap A X P Q).app (Opposite.op ⦋n⦌) c).val.obj
-    (coneTriangleBackIndex τ i) = _
-  rw [coneTriangleBackIndex_ne_two τ i ht, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.source_obj]
+    (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ i) = _
+  rw [_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex_ne_two τ i ht, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.source_obj]
   simp only [strictRawModuleTensorTriangleObj, hi, ↓reduceIte]
 
 lemma strictRawModuleTensorTrianglePinched_obj_two {n : ℕ}
@@ -89,8 +89,8 @@ lemma strictRawModuleTensorTrianglePinched_obj_two {n : ℕ}
     (strictRawModuleTensorTrianglePinched A X P Q c τ).obj i =
       strictRawModuleTensorTriangleObj A X P Q c τ i := by
   change ((strictRawModuleTensorElementPinchedMap A X P Q).app (Opposite.op ⦋n⦌) c).val.obj
-    (coneTriangleBackIndex τ i) = _
-  rw [coneTriangleBackIndex_two τ i hi, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.target_obj]
+    (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ i) = _
+  rw [_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex_two τ i hi, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.target_obj]
   simp [strictRawModuleTensorTriangleObj, hi]
 
 end SerrePositivity.EInfinity.BarrattEccles

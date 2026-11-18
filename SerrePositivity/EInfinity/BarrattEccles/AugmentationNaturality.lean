@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.AugmentationCochainValues
 public import SerrePositivity.EInfinity.BarrattEccles.NormalizedRightAction
 public import SerrePositivity.EInfinity.BarrattEccles.OperadStructure
-public import SerrePositivity.EInfinity.Operad.Commutative
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Commutative
 
 /-!
 # augmentation の対称列の自然性と単位保存
@@ -67,7 +67,7 @@ lemma complexRightAction_augmentation (n : ℕ) (σ : Equiv.Perm (Fin n)) :
 方針：各 arity の収縮の順方向の射を用い、右作用との両立性を適用する。
 規約：終域は Com の定数対称列である。
 使われ方：可換オペラッドへの射の底の自然変換となる。 -/
-def augmentationSequence : (sequence A) ⟶ (commutativeOperad A).sequence where
+def augmentationSequence : (sequence A) ⟶ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeOperad A).sequence where
   app X := complexAugmentation A (FiniteBijection.card X)
   naturality {X Y} f := by
     obtain rfl := FiniteBijection.object_eq_of_hom f

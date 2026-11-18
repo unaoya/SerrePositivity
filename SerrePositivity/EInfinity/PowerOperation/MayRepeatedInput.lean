@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.InsertionZero
-public import SerrePositivity.EInfinity.Operad.UnitPowers
-public import SerrePositivity.EInfinity.HomologyZero.PairingRepresentatives
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.InsertionZero
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.UnitPowers
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.PairingRepresentatives
 
 /-!
 # May の D₀ の対角入力と二項作用への代入
@@ -30,13 +30,13 @@ def repeatedUnitInput (f : 𝟙_ C ⟶ X) : ∀ n : ℕ, 𝟙_ C ⟶ power X n
 /-- 同じ対角入力は、単位の標準縮約と同じテンソル冪の射によって得られる。 -/
 lemma repeatedUnitInput_eq (f : 𝟙_ C ⟶ X) (n : ℕ) :
     repeatedUnitInput f n =
-      (tensorUnitPowerIso C n).inv ≫ SerrePositivity.TensorPowers.map f n := by
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitPowerIso C n).inv ≫ SerrePositivity.TensorPowers.map f n := by
   induction n with
   | zero =>
     change 𝟙 (𝟙_ C) = 𝟙 (𝟙_ C) ≫ 𝟙 (𝟙_ C)
     simp
   | succ n ih =>
-    simp only [repeatedUnitInput, tensorUnitPowerIso, Iso.trans_inv,
+    simp only [repeatedUnitInput, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitPowerIso, Iso.trans_inv,
       whiskerLeftIso_inv, SerrePositivity.TensorPowers.map, ih, Category.assoc,
       whiskerLeft_comp_tensorHom]
 
@@ -54,7 +54,7 @@ attribute [local implicit_reducible] SerrePositivity.TensorPowers.power
 /-- 単位係数による第二位置の代入を、同じ尾への作用として読む。 -/
 lemma unitSecondInsertion (n : ℕ) (θ : power K n ⟶ K) :
     (λ_ (power K (1 + n))).inv ≫
-      tensorInsertionAction K (𝟙_ (Complex A)) 1 n 1 ((λ_ (power K n)).hom ≫ θ) =
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction K (𝟙_ (Complex A)) 1 n 1 ((λ_ (power K n)).hom ≫ θ) =
     eqToHom (congrArg (power K) (Nat.one_add n)) ≫ (K ◁ θ) ≫
       (K ◁ (oneIso K).inv) := by
   have ha : appendIso K n 0 = ρ_ (power K n) :=
@@ -87,7 +87,7 @@ lemma unitSecondInsertion (n : ℕ) (θ : power K n ⟶ K) :
 lemma repeatedUnitInput_secondInsertion (f : 𝟙_ (Complex A) ⟶ K) (n : ℕ)
     (θ : power K n ⟶ K) :
     repeatedUnitInput f (1 + n) ≫ (λ_ (power K (1 + n))).inv ≫
-      tensorInsertionAction K (𝟙_ (Complex A)) 1 n 1 ((λ_ (power K n)).hom ≫ θ) =
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction K (𝟙_ (Complex A)) 1 n 1 ((λ_ (power K n)).hom ≫ θ) =
     (λ_ (𝟙_ (Complex A))).inv ≫ (f ⊗ₘ (repeatedUnitInput f n ≫ θ)) ≫
       (K ◁ (oneIso K).inv) := by
   rw [unitSecondInsertion, ← Category.assoc, repeatedUnitInput_index f (Nat.one_add n)]

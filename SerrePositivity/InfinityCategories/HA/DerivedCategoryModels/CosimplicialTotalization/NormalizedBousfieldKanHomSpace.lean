@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
@@ -42,8 +42,8 @@ instance homToNormalizedBousfieldKan_quasiIso (P : Complex A)
 def normalizedBousfieldKanHomSpaceComparison (P : Complex A)
     (X : CosimplicialObject (Complex A)) :
     doldKanHomSpace (R := A) (D := Complex A) P ((productTotalFunctor A).obj X) ⟶
-      (truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom ((homDiagramFunctor P).obj X)) :=
-  (truncatedDoldKanFunctor A).map (homToNormalizedBousfieldKan P X)
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom ((homDiagramFunctor P).obj X)) :=
+  (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (homToNormalizedBousfieldKan P X)
 
 /-- 同じ指定全単体比較は単体的ホモトピー同値である。 -/
 theorem normalizedBousfieldKanHomSpaceComparison_equivalence (P : Complex A)

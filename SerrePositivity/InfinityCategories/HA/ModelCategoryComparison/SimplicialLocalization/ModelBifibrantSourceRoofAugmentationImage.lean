@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped _root_.Simplicial
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.Opposite _root_.SSet _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.Opposite _root_.SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)

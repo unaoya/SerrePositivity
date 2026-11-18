@@ -24,24 +24,24 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def freeProbeDerivedUnitAmbientHom (X : Complex A) :
-    (HomotopyCategory.mk ((ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
+    (HomotopyCategory.mk ((_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))) :
         hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
-      HomotopyCategory.mk ((ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
+      HomotopyCategory.mk ((_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier)) :=
-  (ComplexLimits.complexOrdinaryAmbientVertexIso A
-    ((ComplexLimits.framedLimitProbeFunctor A).obj X)).inv ≫
+  (_root_.SerrePositivity.ComplexLimits.complexOrdinaryAmbientVertexIso A
+    ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)).inv ≫
     freeProbeDerivedUnitRecoveredHom A X ≫
-      (ComplexLimits.complexOrdinaryAmbientVertexIso A
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryAmbientVertexIso A
         ((freeProbeFunctor A).obj X).carrier).hom
 
 lemma freeProbeDerivedUnitAmbientHom_eq (X : Complex A) :
     freeProbeDerivedUnitAmbientHom A X =
-    (hoFunctor.map (ComplexLimits.complexSemifreeResolutionInfinity A)).toFunctor.map
+    (hoFunctor.map (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A)).toFunctor.map
       (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
-        ((ComplexLimits.complexToClosed A).map
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           ((operad A).freeAlgebraAdjunction.unit.app
-            ((ComplexLimits.framedLimitProbeFunctor A).obj X))))) := by
+            ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))))) := by
   dsimp only [freeProbeDerivedUnitAmbientHom]
   rw [freeProbeDerivedUnitRecoveredHom_eq]
   exact freeProbeUnitHom_ambient A X

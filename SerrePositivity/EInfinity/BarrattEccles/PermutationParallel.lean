@@ -42,14 +42,14 @@ lemma permutationComposition_parallel_assoc (m n k : ℕ) (i j : Fin (m + 2)) (h
   intro x
   change Fin.cast ht (permutationComposition (m + n) k sL P υ (Fin.cast ht.symm x)) =
     permutationComposition (m + k) n sR Q τ x
-  obtain ⟨b, rfl⟩ := (operadInsertionEquiv (m + k) n sR).symm.surjective x
+  obtain ⟨b, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv (m + k) n sR).symm.surjective x
   cases b with
   | inl b =>
     change Fin.cast ht
       (permutationComposition (m + n) k sL P υ
         (Fin.cast ht.symm (remainingPosition (m + k) n sR b))) =
       permutationComposition (m + k) n sR Q τ (remainingPosition (m + k) n sR b)
-    obtain ⟨a, ha⟩ := (operadInsertionEquiv (m + 1) k j).symm.surjective
+    obtain ⟨a, ha⟩ := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv (m + 1) k j).symm.surjective
       (Fin.cast (by omega : m + k + 1 = m + 1 + k) b.val)
     cases a with
     | inl a =>

@@ -52,7 +52,7 @@ lemma cofibrantAlgebraCoefficientExtension_forgetNerve :
 def barrattEcclesBaseChange_forget_of_sourceIso
     (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (cofibrantAlgebraForgetNerve S ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f) ≫
-        ComplexLimits.complexOrdinaryDerivedSource T)
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource T)
       (cofibrantAlgebraUnderlyingDerivedSource S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange f)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesBaseChange f ≫ cAlgForgetDerived T)
       (cAlgForgetDerived S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityBaseChange f) := by
@@ -60,7 +60,7 @@ def barrattEcclesBaseChange_forget_of_sourceIso
   let L := nerveMap (cofibrantAlgebraDKCoefficientExtension f)
   let U := cofibrantAlgebraForgetNerve S
   let B := nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f)
-  let Q := ComplexLimits.complexOrdinaryDerivedSource T
+  let Q := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource T
   have e₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (cAlgLocalizationSource S ≫ barrattEcclesBaseChange f ≫ cAlgForgetDerived T)
       (L ≫ cAlgLocalizationSource T ≫ cAlgForgetDerived T) := by

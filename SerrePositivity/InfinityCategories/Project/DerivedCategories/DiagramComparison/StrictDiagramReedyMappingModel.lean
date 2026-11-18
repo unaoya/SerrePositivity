@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalization
-public import SerrePositivity.EInfinity.ProjectiveModel
+public import SerrePositivity.HomotopicalAlgebra.Complexes.ProjectiveModel
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 
 /-!
@@ -28,7 +28,7 @@ local instance isw1StrictDiagramReedyMappingModelLocal2 : HasProducts.{0} (Compl
 /-- Hovey §5.2のReedyモデルを元のΔ・Δᵒᵖ図式圏で使う。 -/
 @[instance_reducible]
 def strictDiagramReedyModelCategory : ModelCategory (StrictComplexDiagram A d) := by
-  letI := EInfinity.projectiveModelCategory A
+  letI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   cases d with
   | simplicial => exact Reedy.simplexOpModelCategory (Complex A)
   | cosimplicial => exact Reedy.simplexModelCategory (Complex A)

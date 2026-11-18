@@ -20,7 +20,7 @@
 | ⑤b BS 実装 → ③-b ∞ 供給 b | Codex | BS-D69 **完了**（停止点 3 を 11-12 に main へ、登録 a34a840f7）→ Δ・Δᵒᵖ の橋（G10、幾何学的実現） | `SerrePositivity-bs-d68`・`math/inf-supply-b`（main から） | `stage-ii/inf-supply-b/inf-supply-w2.md` | IS-W2 段 0 |
 | ⑤c BS 実装 → ③-a ∞ 供給 a | Codex | BS-W17 **完了**（停止点 5 を 11-12 に main へ）→ G8 の四角形・G14・G9 | `SerrePositivity-bs-classical`・`math/inf-supply`（main から） | `stage-ii/inf-supply-w1.md` | IS-W1 段 0 |
 | ⑤d M15・G12 | Codex | M15（descendability）→ G12（CAlg の presentability）。⑤a の M14 と並べるため 11-14 に新設 | `SerrePositivity-bs-m15`・`math/bs-m15` | `bhatt-scholze/instructions/bhatt-scholze-codex-m15.md` |
-| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
+| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/consolidation/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
@@ -38,6 +38,8 @@
    - **掃除（11-02 決定）**：`lake cache clean` は空きが 150 GB を切ったときだけ、全ビルドのない時刻に、全 worktree が温まった状態で行い、直後に main で `lake build` を走らせて現行の成果物を登録し直す。定期的な掃除はしない（11-02：22 GB・331,250 本、空き 455 GB）。
 4d. **verify が時間のガードで止まったとき（11-17）**：全監査が成功していて sorry の閉包の段だけが残った場合は、同じ HEAD で `lake env lean scripts/refactor/audit_sorries.lean` を単独で確かめ、二つのログを報告に並べて PASS として扱う（gate は機械では non-gate になる）。昼に長い枠を取り直さない。
 4e. **昼の取り込みは短い塊で（11-17、ユーザー承認 B）**：調整役の取り込みは昼でも、鍵（coord）を短い塊で取り直して行ってよい。計測は監査 1 本ずつ、ビルドは `gtimeout` で 10 分の塊、監査は一束 12 分程度（並列 6・メモリ 40 GB）の束に分け、sorry の閉包は単独。同じ HEAD で全監査の束と sorry の閉包がすべて通れば verify PASS として扱う（4d と同じ合成の判定。道具は調整役の scratchpad の `day_merge.py`）。
+4f. **本体の全体を import するプロセスは、マシン全体で同時に二本まで（11-17 夜）**：root を import する Lean のプロセスは一本で十数万のファイルを開く。三本以上が重なると Mac 全体の上限（kern.maxfiles 491,520）に当たり、他のレーンの鍵待ち・ビルド・監査が `Too many open files in system` で落ちる（11-17 23:14）。夜の二つの枠の片方が使われている間は、採取などの並列の読み手を一本にする。調整役の重い単発の計測は、bulk の採取が走っていないときに流す。
+4g. **昼も二つの鍵にできる（11-18、ユーザーの意向）**：`with_build_lock.sh` は、共有のファイル `$TMPDIR/serre-lake-build.day-capacity` が 2 のとき、昼（JST 8〜23 時）も二つの枠を使う（既定は 1。夜は従来どおり 2）。条件：レーンごとに impl・bulk は一本ずつ、全体を読むプロセスは 4f どおり二本まで。**調整役が root や全監査を回すときは、このファイルを 1 に書いてから始め、終わったら 2 に戻す**。空きメモリ（free＋inactive）が 8 GB を切るか、swap が 12 GB を超えると、スクリプトが自動で 1 として扱う。各レーンは `git merge main` で新しいスクリプトを入れる（古い写しは枠 0 だけを使うので、混ざっても安全）。
 4c. **取り込みはまとめて（11-17）**：複数のレーンの停止点が近いときは、同じ夜に取り込んで root＋verify を一回にする（`stage-ii/build-cost-plan.md` B5）。
 4b. **main の作業木の規則（11-04 決定、事故の後）**：main の作業木では Lean の編集もビルドもしない（取り込みと温めは Claude だけ）。main に直接コミットするセッション（BS の記録など）は、必ず `git commit --only <自分のファイル>` で、`git add -A`・`git commit -a` を使わない。11-04 に B4 の未コミットの削除（`Pair/Tower.lean`）が BS の記録コミット 38e6d889a に巻き込まれ、babef8b23 で復元した。
 4a. **小さなビルドの規則（11-02 19:40 決定）**：変更したファイルと直接の importer までの小さなビルド（数百本以下）は、**下流ビルド・verify が走っていなければ合図なしで行ってよい**。確認は `ps -axo command= | grep "[l]ake build"` が空であることと、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build …` で鍵が取れること（取れなければ待つ）。下流・verify の時間帯（暦 §3）には行わない。全ビルド（下流・verify）は従来どおり暦と合図。
@@ -129,6 +131,8 @@
 **規則**：作業木はレーンごとに一つ、名前はレーン（`SerrePositivity-<レーン>`）。枝は main に入れたら消す。保存比較の「前」の木（`/private/tmp`）は段の終わりに消す。取り込まない枝はタグ（`archive/<枝>-<日付>`）を打ってから消す。`/private/tmp/oe-w1-before-30ae8948f` は ③-b の OE-W1 段 1 の保存比較が終わるまで残す。
 
 **⑧ 引用文献（11-17 新設、ユーザー決定）**：本論文が引用する文献の対応表とブループリント。最初は CLMST（指示書 `stage-ii/cited/clmst-coverage.md`、worktree `SerrePositivity-cited`、枝 `research/cited-coverage`）。紙だけでビルドなし。
+
+**⑥ スキーム論は閉じた（11-18 0 時）**：2g-2（89 署名）・2h（16）・2i（71、G-A6-1 の組み立て `cech_exact_of_arcCover_perfect`、`AlgebraicGeometry/ArcRouteB/`）を main に入れた（1fb2c6dcc・72bc75e8b）。作業木と枝は削除。BS17 Thm 4.1 の残りの一般性は作らない（BS17 の対応表で partial）。drafts の G-A6-1 の引用の置き換えは BS の整理のレーンで。
 
 **⑦ IC-W1（11-17 開始）**：worktree `SerrePositivity-ic`、枝 `refactor/infinity-consolidation`（今夜取り込む `merge/night-2026-11-17` から）。指示書 `stage-ii/consolidation/infinity-consolidation-w1.md`。IC-1 の段 0（紙）から。Lean の適用は夜。
 

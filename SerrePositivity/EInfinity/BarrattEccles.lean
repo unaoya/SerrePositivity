@@ -116,7 +116,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionInsertio
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionParallel
 public import SerrePositivity.EInfinity.BarrattEccles.InverseSlotPermutations
 public import SerrePositivity.EInfinity.BarrattEccles.OperadStructure
-public import SerrePositivity.EInfinity.Operad.Commutative
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Commutative
 public import SerrePositivity.EInfinity.BarrattEccles.AugmentationValues
 public import SerrePositivity.EInfinity.BarrattEccles.AugmentationCochainValues
 public import SerrePositivity.EInfinity.BarrattEccles.AugmentationNaturality

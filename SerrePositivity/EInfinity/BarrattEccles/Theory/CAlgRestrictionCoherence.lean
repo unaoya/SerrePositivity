@@ -39,7 +39,7 @@ def algebraCAlgSourceNatIso (A : Type u) [CommRing A] {I : Type (u + 1)} [Catego
     {F G : I ⥤ (operad A).Algebra} (η : F ≅ G) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap F ≫ algebraCAlgSource A) (nerveMap G ≫ algebraCAlgSource A) :=
   algebraCAlgSourceNatTransIso A η.hom fun i => by
-    change QuasiIso ((Operad.Algebra.forget (operad A)).map (η.hom.app i))
+    change QuasiIso ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).map (η.hom.app i))
     infer_instance
 
 /-- 恒等環準同型による導来係数制限は恒等と自然同型。 -/

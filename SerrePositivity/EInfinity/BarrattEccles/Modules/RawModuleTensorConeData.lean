@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementSelected
-public import SerrePositivity.EInfinity.ComplexLimits.ConeWithoutFirst
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeObjects
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConeWithoutFirst
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorConeObjects
 
 /-!
 # 元の全加群 frame 図式と選択 cochain を接合した cone データ
@@ -19,8 +19,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
-open ConeHeadIndex
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -63,9 +63,9 @@ lemma strictRawModuleTensorConeObj_ne_zero {n : ℕ}
     (i : Fin (n + 2)) (hi : i ≠ 0) :
     strictRawModuleTensorConeObj A X P Q c i =
       ForgetEnrichment.to (Complex A)
-        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (coneTailOrderHom n i))) := by
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (_root_.SerrePositivity.ComplexLimits.coneTailOrderHom n i))) := by
   obtain ⟨j, rfl⟩ := Fin.exists_succ_eq.mpr hi
-  rw [strictRawModuleTensorConeObj_succ, coneTailOrderHom_succ]
+  rw [strictRawModuleTensorConeObj_succ, _root_.SerrePositivity.ComplexLimits.coneTailOrderHom_succ]
 
 /-- 概要：元の frame 列を同じ dg nerve の通常単体として保持する。
 方針：元の末尾写像の後に同じ全図式を合成する。
@@ -73,7 +73,7 @@ lemma strictRawModuleTensorConeObj_ne_zero {n : ℕ}
 def strictRawModuleTensorConeOrdinarySimplex {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
     Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (n + 1) :=
-  closedNerveSimplex ((coneTailOrderHom n).monotone.functor ⋙ c ⋙
+  closedNerveSimplex ((_root_.SerrePositivity.ComplexLimits.coneTailOrderHom n).monotone.functor ⋙ c ⋙
     strictRawModuleTensorElementDiagram A X P Q)
 
 /-- 概要：同じ通常単体の対象は元の末尾 frame 対象。
@@ -83,7 +83,7 @@ lemma strictRawModuleTensorConeOrdinarySimplex_obj {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (i : Fin (n + 2)) :
     (strictRawModuleTensorConeOrdinarySimplex A X P Q c).obj i =
       ForgetEnrichment.to (Complex A)
-        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (coneTailOrderHom n i))) := rfl
+        ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (_root_.SerrePositivity.ComplexLimits.coneTailOrderHom n i))) := rfl
 
 /-- 概要：元の通常成分と選択した高次 cochain を同じ実 cone データへ接合する。
 方針：先端を含む成分を元の次数符号で移送し、他は同じ通常単体を保持する。
@@ -101,15 +101,15 @@ def strictRawModuleTensorConeData {n : ℕ}
     · have h0 : (0 : Fin (n + 2)) ∈ I := by
         rw [← ha0, ha]
         exact I.min'_mem _
-      have hJ := withoutFirst_nonempty hI h0
-      have hc := card_withoutFirst I h0
-      have hk' : k = 1 - ((withoutFirst I).card : ℤ) := by omega
-      have hb' : b = ((withoutFirst I).max' hJ).succ :=
-        hb.trans (max_withoutFirst I hI h0).symm
+      have hJ := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0
+      have hc := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0
+      have hk' : k = 1 - ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card : ℤ) := by omega
+      have hb' : b = ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).max' hJ).succ :=
+        hb.trans (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.max_withoutFirst I hI h0).symm
       exact cast (by rw [ha0, strictRawModuleTensorConeObj_zero, hb',
         strictRawModuleTensorConeObj_succ])
         (k.negOnePow •
-          strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (withoutFirst I) k hJ hk')
+          strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) k hJ hk')
     · exact cast (by
         rw [strictRawModuleTensorConeOrdinarySimplex_obj, strictRawModuleTensorConeOrdinarySimplex_obj,
           strictRawModuleTensorConeObj_ne_zero A X P Q c a ha0,

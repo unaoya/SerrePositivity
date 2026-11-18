@@ -110,6 +110,6 @@ def homotopyPullback {X Y Z : (operad A).Algebra} (f : X ⟶ Z) (g : Y ⟶ Z) :
 def homotopyPullbackCarrierIso {X Y Z : (operad A).Algebra}
     (f : X ⟶ Z) (g : Y ⟶ Z) :
     (homotopyPullback A f g).carrier ≅ pullback (fibrationReplacement A f).p.hom g.hom :=
-  PreservesPullback.iso (Operad.Algebra.forget (operad A)) _ _
+  PreservesPullback.iso (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) _ _
 
 end SerrePositivity.EInfinity.BarrattEccles

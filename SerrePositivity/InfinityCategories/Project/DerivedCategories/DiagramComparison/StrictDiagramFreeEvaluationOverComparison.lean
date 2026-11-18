@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.DiagramModel
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance overComparison_complexModel : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance overComparison_complexModel : ModelCategory (Complex A) := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance overComparison_diagramModel : ModelCategory (StrictComplexDiagram A d) :=
   strictDiagramReedyModelCategory A d
 local instance overComparison_colimits : HasColimitsOfSize.{u, u} (Complex A) :=

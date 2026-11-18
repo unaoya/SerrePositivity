@@ -122,8 +122,8 @@ lemma binaryTensorStandardPattern_block_fixed (m n : ℕ)
   rw [binaryTensorWord_smul_eq_iff]
   intro i
   induction i using Fin.addCases with
-  | left i => simp [blockEquiv_apply_left, binaryTensorStandardPattern]
-  | right i => simp [blockEquiv_apply_right, binaryTensorStandardPattern]
+  | left i => simp [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_left, binaryTensorStandardPattern]
+  | right i => simp [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_right, binaryTensorStandardPattern]
 
 end SerrePositivity.EInfinity
 end BinaryTensorStandardPattern
@@ -173,10 +173,10 @@ lemma binaryTensorStandard_fix_eq_block :
   intro i
   induction i using Fin.addCases with
   | left i =>
-    rw [blockEquiv_apply_left]
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_left]
     exact (binaryTensorStandardLeftPerm_apply m n σ h i).symm
   | right i =>
-    rw [blockEquiv_apply_right]
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_right]
     exact (binaryTensorStandardRightPerm_apply m n σ h i).symm
 
 /-- 指定された二色部分群は、標準パターンの安定化群そのものである。 -/

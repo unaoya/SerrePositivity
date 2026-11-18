@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZero
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.OrdinaryHoComposition
-public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StrictHomology
 
 /-!
 # 導来代数の π₀ と複体の H⁰ の比較
@@ -44,13 +44,13 @@ variable (A : Type u) [CommRing A]
 /-- The underlying module of the strict H⁰ algebra is the ordinary H⁰ module. -/
 def strictPiZero_forgetIso :
     strictPiZero A ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A ≅
-      Operad.Algebra.forget (operad A) ⋙
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) ⋙
         HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) 0 := by
   let e := commAlgCatEquivUnder (CommRingCat.of A)
   let U := forget₂ (CommAlgCat.{u} A) (AlgCat.{u} A) ⋙
     forget₂ (AlgCat.{u} A) (ModuleCat.{u} A)
   have h : homologyAlgebraFunctor A ⋙ U =
-      Operad.Algebra.forget (operad A) ⋙
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) ⋙
         HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) 0 := by
     refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
     intro X Y g
@@ -67,9 +67,9 @@ def barrattEcclesPi0_forget :
   let L := ordinaryAlgebraHoSource A
   let W := ordinaryAlgebraWeak A
   let Q := algebraCAlgSource A
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   let I := ordinaryToHoNerve (operad A).Algebra
-  let D := ComplexLimits.complexOrdinaryDerivedSource A
+  let D := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
   let H := cohomologyOnHo A 0
   letI := ordinaryAlgebraHoSource_isLocalization A
   apply (Localization.fullyFaithfulWhiskeringLeft L W (ModuleCat A)).preimageIso
@@ -82,7 +82,7 @@ def barrattEcclesPi0_forget :
   have c : (I ⋙ hoMap (nerveMap U)) ⋙ hoMap D ⋙ H ≅
       U ⋙ HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) 0 := by
     exact Functor.isoWhiskerRight (ordinaryToHoNerve_naturalIso U) _ ≪≫
-      Functor.isoWhiskerLeft U (ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A 0)
+      Functor.isoWhiskerLeft U (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A 0)
   exact (Functor.associator _ _ _).symm ≪≫
     Functor.isoWhiskerRight (barrattEcclesPi0_sourceIso A) _ ≪≫
     strictPiZero_forgetIso A ≪≫ c.symm ≪≫ b.symm

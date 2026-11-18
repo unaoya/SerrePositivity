@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
@@ -26,10 +26,10 @@ variable (A : Type u) [CommRing A]
 open SSet.modelCategoryQuillen in
 /-- シフトをまだ入れていない Γ も、同じ dg Hom の線形充填により Kan である。 -/
 instance gammaUnderlyingKan (M : Complex A) :
-    SSet.KanComplex ((truncatedDoldKanFunctor A).obj M) := by
+    SSet.KanComplex ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj M) := by
   let e : DifferentialGradedCategories.doldKanHomSpace
-      (R := A) (𝟙_ (Complex A)) M ≅ (truncatedDoldKanFunctor A).obj M :=
-    (truncatedDoldKanFunctor A).mapIso (MonoidalClosed.unitIsoSelf (C := Complex A) (X := M))
+      (R := A) (𝟙_ (Complex A)) M ≅ (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj M :=
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).mapIso (MonoidalClosed.unitIsoSelf (C := Complex A) (X := M))
   exact HomotopicalAlgebra.isFibrant_of_fibration e.inv
 
 /-- 指定された Γ の正規化射は、同じ非負鎖写像と準同型性が同値。 -/
@@ -47,7 +47,7 @@ lemma gammaNormalizedMap_quasiIso_iff
 /-- Γ の台の全基点 π 同型は、同じ smart 切断の準同型性と同値である。 -/
 lemma gammaMap_kanPiIsomorphism_iff {M N : Complex A} (f : M ⟶ N) :
     SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
-      ((truncatedDoldKanFunctor A).map f) ↔
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f) ↔
     QuasiIso (HomologicalComplex.truncLE'Map f (ComplexShape.embeddingUpIntLE 0)) := by
   have : SSet.KanComplex (moduleUnderlyingSSet (gammaModule A M)) :=
     gammaUnderlyingKan A M

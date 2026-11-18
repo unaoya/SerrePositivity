@@ -1,0 +1,178 @@
+{
+  "scheme_head": "cac6b317dddf6f1d5d023ca0f00e5867db7e54fe",
+  "new_modules": [
+    "SerrePositivity.AlgebraicGeometry.DegreeOneChartCompatibility",
+    "SerrePositivity.AlgebraicGeometry.DegreeOneChartExt",
+    "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChange",
+    "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChangeFormula",
+    "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneNormalizationNaturality",
+    "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneOverlap",
+    "SerrePositivity.AlgebraicGeometry.HomogeneousEvaluationScaling",
+    "SerrePositivity.AlgebraicGeometry.ProjectiveAwayStructureMap",
+    "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientChart",
+    "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientChartPullback",
+    "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientMap",
+    "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientPullback",
+    "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientStructureMap",
+    "SerrePositivity.AlgebraicGeometry.SegreChartCompatibility",
+    "SerrePositivity.AlgebraicGeometry.SegreChartEquiv",
+    "SerrePositivity.AlgebraicGeometry.SegreChartForwardLaws",
+    "SerrePositivity.AlgebraicGeometry.SegreChartInverse",
+    "SerrePositivity.AlgebraicGeometry.SegreColumnDescent",
+    "SerrePositivity.AlgebraicGeometry.SegreColumnEvaluation",
+    "SerrePositivity.AlgebraicGeometry.SegreCoordinateMinors",
+    "SerrePositivity.AlgebraicGeometry.SegreNormalizedCoordinates",
+    "SerrePositivity.AlgebraicGeometry.SegreOverlapCoordinates",
+    "SerrePositivity.AlgebraicGeometry.SegreRowDescent"
+  ],
+  "direct_importers": [
+    {
+      "path": "SerrePositivity/AlgebraicGeometry.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.DegreeOneChartCompatibility",
+        "SerrePositivity.AlgebraicGeometry.DegreeOneChartExt",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChange",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChangeFormula",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneNormalizationNaturality",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneOverlap",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousEvaluationScaling",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveAwayStructureMap",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientChart",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientChartPullback",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientMap",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientPullback",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientStructureMap",
+        "SerrePositivity.AlgebraicGeometry.SegreChartCompatibility",
+        "SerrePositivity.AlgebraicGeometry.SegreChartEquiv",
+        "SerrePositivity.AlgebraicGeometry.SegreChartForwardLaws",
+        "SerrePositivity.AlgebraicGeometry.SegreChartInverse",
+        "SerrePositivity.AlgebraicGeometry.SegreColumnDescent",
+        "SerrePositivity.AlgebraicGeometry.SegreColumnEvaluation",
+        "SerrePositivity.AlgebraicGeometry.SegreCoordinateMinors",
+        "SerrePositivity.AlgebraicGeometry.SegreNormalizedCoordinates",
+        "SerrePositivity.AlgebraicGeometry.SegreOverlapCoordinates",
+        "SerrePositivity.AlgebraicGeometry.SegreRowDescent"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/DegreeOneChartCompatibility.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.DegreeOneChartExt",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneOverlap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/HomogeneousDegreeOneBaseChangeFormula.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChange"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/HomogeneousDegreeOneOverlap.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.ProjectiveAwayStructureMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCoefficientChart.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.DegreeOneChartExt",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChangeFormula",
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneNormalizationNaturality",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCoefficientChartPullback.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientChart"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCoefficientMap.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneBaseChange"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCoefficientPullback.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientChartPullback",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientStructureMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/ProjectiveCoefficientStructureMap.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.ProjectiveAwayStructureMap",
+        "SerrePositivity.AlgebraicGeometry.ProjectiveCoefficientMap"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreChartCompatibility.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.DegreeOneChartCompatibility",
+        "SerrePositivity.AlgebraicGeometry.SegreChartInverse",
+        "SerrePositivity.AlgebraicGeometry.SegreOverlapCoordinates"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreChartEquiv.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.DegreeOneChartExt",
+        "SerrePositivity.AlgebraicGeometry.SegreChartForwardLaws",
+        "SerrePositivity.AlgebraicGeometry.SegreChartInverse"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreChartForwardLaws.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.SegreNormalizedCoordinates",
+        "SerrePositivity.AlgebraicGeometry.SegreRowDescent"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreChartInverse.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.SegreCoordinateMinors",
+        "SerrePositivity.AlgebraicGeometry.SegreRowDescent"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreColumnDescent.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.SegreColumnEvaluation"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreColumnEvaluation.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.HomogeneousEvaluationScaling"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreCoordinateMinors.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.SegreNormalizedCoordinates"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreOverlapCoordinates.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.HomogeneousDegreeOneOverlap",
+        "SerrePositivity.AlgebraicGeometry.SegreCoordinateMinors"
+      ]
+    },
+    {
+      "path": "SerrePositivity/AlgebraicGeometry/SegreRowDescent.lean",
+      "imports_new_modules": [
+        "SerrePositivity.AlgebraicGeometry.SegreColumnDescent"
+      ]
+    }
+  ],
+  "outside_planned_targets": [],
+  "scope": "Core Lean and scripts; drafts excluded. Literal candidate search followed by parsed import filtering.",
+  "build_not_yet_run": true,
+  "snapshot_phase": "pre-merge-import-scope",
+  "source_head": "cac6b317dddf6f1d5d023ca0f00e5867db7e54fe"
+}

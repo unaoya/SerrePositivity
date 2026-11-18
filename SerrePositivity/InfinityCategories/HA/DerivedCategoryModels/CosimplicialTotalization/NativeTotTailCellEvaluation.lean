@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -35,7 +35,7 @@ def nativeTotClosedEvaluationNerve :
       ((SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))) ⟶
         nerve (ClosedCategory A (Complex A)) where
   app _ := ↾fun p => ((p.2.down ⋙ AsSmall.down).prod' p.1) ⋙
-    evaluationUncurried SimplexCategory (Complex A) ⋙ complexToClosed A
+    evaluationUncurried SimplexCategory (Complex A) ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A
   naturality _ _ _ := by
     apply ConcreteCategory.hom_ext
     intro p
@@ -48,7 +48,7 @@ theorem nativeTotTailCellEvaluation_diagonal {n : ℕ}
     (strictSimplexFunctorEvaluation A (Complex A) (nativeTotTailCellFunctor A σ)).app
       (Opposite.op ⦋n⦌) (d, ULift.up (𝟙 ⦋n⦌)) =
     closedNerveSimplex (((σ ⋙ AsSmall.down).prod' d) ⋙
-      evaluationUncurried SimplexCategory (Complex A) ⋙ complexToClosed A) := by
+      evaluationUncurried SimplexCategory (Complex A) ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A) := by
   change ((strictSimplexCellFamily A (Complex A) n).orderedSimplexFamily
     (d ⋙ nativeTotTailCellFunctor A σ) (ULift.up (𝟙 ⦋n⦌))).diagonal = _
   apply Simplex.ext
@@ -71,14 +71,14 @@ theorem nativeTotTailCellEvaluation_diagonal {n : ℕ}
     by_cases hk0 : k = 0
     · subst hk0
       change compose A
-        (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
+        (closedHomEquiv A (Complex A) _ _ ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           ((d.map (homOfLE hab)).app (AsSmall.down.obj (σ.obj b))))).val
-        (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
+        (closedHomEquiv A (Complex A) _ _ ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           ((d.obj a).map (AsSmall.down.map (σ.map (homOfLE hab)))))).val _ =
-        (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
+        (closedHomEquiv A (Complex A) _ _ ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           ((((d.obj a).map (AsSmall.down.map (σ.map (homOfLE hab))))) ≫
             (d.map (homOfLE hab)).app (AsSmall.down.obj (σ.obj b))))).val
-      rw [← closedHom_comp, ← (complexToClosed A).map_comp]
+      rw [← closedHom_comp, ← (_root_.SerrePositivity.ComplexLimits.complexToClosed A).map_comp]
     · change compose A _ (closedNerveHom _ k) (add_zero k) = closedNerveHom _ k
       rw [closedNerveHom_of_ne _ _ hk0, closedNerveHom_of_ne _ _ hk0, compose_zero]
 

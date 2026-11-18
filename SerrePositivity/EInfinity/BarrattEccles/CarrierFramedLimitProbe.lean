@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.ProjectiveModel
+public import SerrePositivity.HomotopicalAlgebra.Complexes.ProjectiveModel
 public import SerrePositivity.HomotopicalAlgebra.Generated.Replacement
 
 /-!
@@ -30,13 +30,13 @@ variable (A : Type u) [CommRing A]
 規約：実際の射影モデルを局所的に選ぶ。
 使われ方：底の試験始域を全複体に関手的に選ぶ。 -/
 def carrierProbeFactorization :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     MorphismProperty.FunctorialFactorizationData
       (cofibrations (Complex A)) (trivialFibrations (Complex A)) := by
-  let := projectiveModelCategory A
-  have := projectiveModelCategory_cofibrantlyGenerated A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  have := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
   have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
-    (projectiveGeneratingCofibrations A) (projectiveGeneratingTrivialCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A) (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A)
   exact MorphismProperty.functorialFactorizationData _ _
 
 /-- 概要：底の右錐の試験始域の置換関手（Hovey §5）。
@@ -44,7 +44,7 @@ def carrierProbeFactorization :
 規約：任意の複体と元の複体射に関手的。
 使われ方：底の右錐の始域自然性。 -/
 def carrierFramedLimitProbeFunctor : Complex A ⥤ Complex A := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact ModelReplacement.initialArrows (Complex A) ⋙ (carrierProbeFactorization A).Z
 
 /-- 概要：元の複体を試す具体的な cofibrant 複体（Hovey §5）。
@@ -59,7 +59,7 @@ abbrev carrierFramedLimitProbe (Y : Complex A) : Complex A :=
 規約：全複体射に自然な元の射。
 使われ方：局所化後に試験始域の置換を消す。 -/
 def carrierFramedLimitProbeComparison : carrierFramedLimitProbeFunctor A ⟶ 𝟭 (Complex A) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact
     { app := fun Y => ((carrierProbeFactorization A).factorizationData (initial.to Y)).p
       naturality := by
@@ -72,9 +72,9 @@ def carrierFramedLimitProbeComparison : carrierFramedLimitProbeFunctor A ⟶ �
 規約：元の複体の cofibrancy は要求しない。
 使われ方：底の右錐の Kan 性と π₀ 比較の具体的条件。 -/
 lemma carrierFramedLimitProbe_cofibrant (Y : Complex A) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     IsCofibrant (carrierFramedLimitProbe A Y) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let d := (carrierProbeFactorization A).factorizationData (initial.to Y)
   change IsCofibrant d.Z
   exact (isCofibrant_iff_of_isInitial d.i initialIsInitial).mpr ⟨d.hi⟩
@@ -85,7 +85,7 @@ lemma carrierFramedLimitProbe_cofibrant (Y : Complex A) :
 使われ方：元の複体の局所化 Hom を回収する。 -/
 lemma carrierFramedLimitProbeComparison_quasiIso (Y : Complex A) :
     QuasiIso ((carrierFramedLimitProbeComparison A).app Y) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact ((carrierProbeFactorization A).factorizationData (initial.to Y)).hp.2
 
 end SerrePositivity.EInfinity.BarrattEccles

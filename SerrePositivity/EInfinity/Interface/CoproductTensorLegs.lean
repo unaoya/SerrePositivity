@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Interface.TensorUnitClasses
-public import SerrePositivity.EInfinity.NativeBinaryCoconeHom
+public import SerrePositivity.HomologicalAlgebra.Complexes.NativeBinaryCoconeHom
 
 /-!
 # 余積とテンソルの比較の二脚の条件
@@ -45,10 +45,10 @@ def TensorCoproductLegCompatibility : Prop :=
     (unitY : 𝟙_ (Complex S) ⟶
         (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
     NormalizedTensorUnit S E x ηx unitX ∧ NormalizedTensorUnit S E y ηy unitY ∧
-    (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeLeftHom c) ≫
+    (hoFunctor.map (E.forget S)).toFunctor.map (_root_.SerrePositivity.NativeBinaryCoconeHom.binaryCoconeLeftHom c) ≫
         (tensorComparisonAtCocone S E x y P c hv θ).hom =
       derivedTensorInlHom S (atVertex (E.forget S) x) (atVertex (E.forget S) y) unitY ∧
-    (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeRightHom c) ≫
+    (hoFunctor.map (E.forget S)).toFunctor.map (_root_.SerrePositivity.NativeBinaryCoconeHom.binaryCoconeRightHom c) ≫
         (tensorComparisonAtCocone S E x y P c hv θ).hom =
       derivedTensorInrHom S (atVertex (E.forget S) x) (atVertex (E.forget S) y) unitX
 

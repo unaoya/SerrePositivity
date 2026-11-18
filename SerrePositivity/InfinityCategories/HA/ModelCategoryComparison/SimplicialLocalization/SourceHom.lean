@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.Interface.Core
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNerveSource
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockArrowPoint
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComponents
-public import SerrePositivity.EInfinity.Hammock.CoherentComponents
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.CoherentComponents
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveLocalObjects
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.NerveHomEdgeNaturality
@@ -192,7 +192,7 @@ lemma localizationStrictHom_represent {X Y : C.category}
   obtain ⟨f, hf⟩ := h (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHomPiZeroEquiv C X Y
     (SSet.π₀.mk (SimplicialCategory.homEquiv' _ _ k)))
   refine ⟨f, ?_⟩
-  have he := _root_.SerrePositivity.EInfinity.Hammock.coherentEdge_homMk_eq_of_components (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C f) k
+  have he := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.coherentEdge_homMk_eq_of_components (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom C f) k
     ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationHomPiZeroEquiv C X Y).injective
       ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanLocalizationStrictHom_components C f).trans hf))
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom] at he

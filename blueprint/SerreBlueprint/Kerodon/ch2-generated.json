@@ -1,0 +1,19 @@
+{
+ "chapter": "2",
+ "modules": [
+  "Section2_1",
+  "Section2_2",
+  "Section2_3",
+  "Section2_4",
+  "Section2_5"
+ ],
+ "stats": {
+  "nolink-none": 121,
+  "linked": 86,
+  "nolink-mathlib": 5,
+  "nolink-partial": 1,
+  "with-uses": 23,
+  "with-note": 5,
+  "with-note-intro": 3
+ }
+}

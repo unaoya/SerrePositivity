@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.OperadAugmentation
-public import SerrePositivity.EInfinity.Operad.AlgebraRestriction
-public import SerrePositivity.EInfinity.Operad.DiscreteCommutative
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraRestriction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.DiscreteCommutative
 
 /-!
 # 離散可換代数の実際の E 代数構造
@@ -31,7 +31,7 @@ variable (A : Type u) [CommRing A]
 規約：元の単位・積と底の複体・射を使い、全 arity を含む。
 使われ方：E2a-4 の離散可換代数と E2b の離散対象。 -/
 def discreteAlgebraFunctor : CommAlgCat.{u} A ⥤ (operad A).Algebra :=
-  discreteCommutativeFunctor A ⋙ Operad.restrictAlgebra (augmentation A)
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.discreteCommutativeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebra (augmentation A)
 
 /-- 概要：離散 E 代数の底は元の加群の零次複体（BF §1）。
 方針：二つの関手の対象成分を評価する。
@@ -57,7 +57,7 @@ lemma discreteAlgebraFunctor_map {B D : CommAlgCat.{u} A} (f : B ⟶ D) :
 lemma discreteAlgebraFunctor_action (B : CommAlgCat.{u} A) (n : ℕ) :
     ((discreteAlgebraFunctor A).obj B).action n =
       ((augmentation A).map.app (FiniteBijection.of n) ▷
-        power ((discreteCommutativeFunctor A).obj B).carrier n) ≫
-      ((discreteCommutativeFunctor A).obj B).action n := rfl
+        power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.discreteCommutativeFunctor A).obj B).carrier n) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.discreteCommutativeFunctor A).obj B).action n := rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

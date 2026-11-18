@@ -18,7 +18,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.KST.LocalizingInvariants
 attribute [local instance] HasDerivedCategory.standard

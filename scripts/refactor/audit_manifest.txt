@@ -106,3 +106,4 @@ scripts/audit_stage4_contract.lean
 scripts/audit_triangulated_k0_shift_shared.lean
 scripts/audit_bhatt_scholze_stage2.lean
 scripts/audit_citations.lean
+scripts/audit_infinity_sheaves.lean

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionInitialLifting
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellAugmentation
-public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
+public import SerrePositivity.DifferentialGraded.Algebras.ModelCategory
 public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
 
 /-!
@@ -22,7 +22,7 @@ open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
 
 lemma cellResolution_isCofibrant : IsCofibrant (cellResolution R A) := by
   apply (cofibration_iff _).mpr

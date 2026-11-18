@@ -22,7 +22,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles.Diagram
 
 open CategoryTheory Limits HomotopicalAlgebra
-open Operad.AlgebraDiagram
+open _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -35,9 +35,9 @@ def projectiveModelCategory : ModelCategory (K ⥤ (operad A).Algebra) := by
   let := BarrattEccles.modelCategory A
   have := modelCategory_cofibrantlyGenerated A
   exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory
-    (free (operad A) K) (evaluation (operad A) K) (adjunction (operad A) K)
-    ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-    ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.free (operad A) K) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.adjunction (operad A) K)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
     (freeCells_acyclic A K)
 
 /-- 概要：小図式の弱同値は各頂点の底の擬同型（BM 命題 4.1）。
@@ -75,9 +75,9 @@ lemma cofibrantlyGenerated :
   let := BarrattEccles.modelCategory A
   have := modelCategory_cofibrantlyGenerated A
   exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory_generated
-    (free (operad A) K) (evaluation (operad A) K) (adjunction (operad A) K)
-    ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-    ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.free (operad A) K) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.adjunction (operad A) K)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
     (freeCells_acyclic A K)
 
 /-- 概要：すべての小さい E 代数図式は射影モデルで fibrant（BM 命題 4.1）。
@@ -95,7 +95,7 @@ lemma isFibrant (F : K ⥤ (operad A).Algebra) :
   intro k
   have := BarrattEccles.isFibrant A (F.obj k)
   have h := (isFibrant_iff_of_isTerminal ((terminal.from F).app k)
-    (terminalIsTerminal.isTerminalObj (evaluation (operad A) K k) _)).mp inferInstance
+    (terminalIsTerminal.isTerminalObj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K k) _)).mp inferInstance
   exact h.mem
 
 end SerrePositivity.EInfinity.BarrattEccles.Diagram

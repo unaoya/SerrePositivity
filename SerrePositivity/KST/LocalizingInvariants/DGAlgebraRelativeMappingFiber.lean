@@ -54,7 +54,7 @@ end Fiber
 
 section Derived
 variable (A : Mon (Complex R)) {X B : Mon (Complex R)} (q : X ⟶ B)
-  (hq : EInfinity.projectiveFibrations R q.hom) (s : cellResolution R A ⟶ B)
+  (hq : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R q.hom) (s : cellResolution R A ⟶ B)
 
 def relativeMultiplicativeCellMappingDerivedFiberMap :
     relativeMultiplicativeMappingSimplices R q s ⟶

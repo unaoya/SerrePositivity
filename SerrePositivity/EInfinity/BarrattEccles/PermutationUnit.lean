@@ -24,9 +24,9 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 使われ方：外側置換が一入力の挿入によって変わらないことを示す。 -/
 lemma insertionEquiv_one_symm_left (m : ℕ) (i : Fin (m + 1))
     (j : {j : Fin (m + 1) // j ≠ i}) :
-    (operadInsertionEquiv m 1 i).symm (Sum.inl j) = j.val := by
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m 1 i).symm (Sum.inl j) = j.val := by
   apply Fin.ext
-  simp only [operadInsertionEquiv, Equiv.coe_fn_symm_mk]
+  simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv, Equiv.coe_fn_symm_mk]
   split_ifs <;> rfl
 
 /-- 概要：一入力の挿入の外側置換は元の置換である（Berger–Fresse §0.10）。
@@ -34,19 +34,19 @@ lemma insertionEquiv_one_symm_left (m : ℕ) (i : Fin (m + 1))
 規約：挿入位置 i は任意である。
 使われ方：置換の部分合成の右単位則となる。 -/
 lemma outerPermutation_arity_one (m : ℕ) (i : Fin (m + 1))
-    (σ : Equiv.Perm (Fin (m + 1))) : operadOuterPermutation m 1 i σ = σ := by
+    (σ : Equiv.Perm (Fin (m + 1))) : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m 1 i σ = σ := by
   apply Equiv.ext
   intro x
-  obtain ⟨j, rfl⟩ := (operadInsertionEquiv m 1 i).symm.surjective x
+  obtain ⟨j, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m 1 i).symm.surjective x
   cases j with
   | inl j =>
-    rw [operadOuterPermutation_remaining, insertionEquiv_one_symm_left,
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation_remaining, insertionEquiv_one_symm_left,
       insertionEquiv_one_symm_left]
     rfl
   | inr j =>
     have hj : j = 0 := Fin.eq_zero j
     subst j
-    exact operadOuterPermutation_inside m 1 i σ 0
+    exact _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation_inside m 1 i σ 0
 
 /-- 概要：一入力の恒等置換を代入しても外側の置換は変わらない（Berger–Fresse §0.10）。
 方針：内側の単位置換の延長を消し、一入力の外側置換の公式を使う。
@@ -54,7 +54,7 @@ lemma outerPermutation_arity_one (m : ℕ) (i : Fin (m + 1))
 使われ方：shuffle の右単位則を各頂点で証明する。 -/
 @[simp] lemma permutationComposition_right_unit (m : ℕ) (i : Fin (m + 1))
     (σ : Equiv.Perm (Fin (m + 1))) : permutationComposition m 1 i σ 1 = σ := by
-  rw [permutationComposition, operadInnerPermutation_one, mul_one, outerPermutation_arity_one]
+  rw [permutationComposition, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation_one, mul_one, outerPermutation_arity_one]
 
 /-- 概要：一入力の外側の恒等置換への代入は内側の置換である（Berger–Fresse §0.10）。
 方針：全入力が挿入区間に属することから内側置換の区間内の公式を適用する。
@@ -68,7 +68,7 @@ lemma permutationComposition_left_unit (n : ℕ) (τ : Equiv.Perm (Fin n)) (x : 
     apply Fin.ext
     simp only [Fin.val_zero, Nat.zero_add]
     rfl
-  rw [permutationComposition, outerPermutation_one, one_mul, hx, operadInnerPermutation_inside]
+  rw [permutationComposition, outerPermutation_one, one_mul, hx, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation_inside]
   have hj : Fin.cast (Nat.zero_add n)
       (⟨(0 : Fin 1).val + j.val, by have h := j.isLt; omega⟩ : Fin (0 + n)) = j := by
     apply Fin.ext

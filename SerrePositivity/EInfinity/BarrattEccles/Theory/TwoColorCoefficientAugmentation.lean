@@ -56,8 +56,8 @@ lemma twoColorLeftCoefficient_augmentation (m n : ℕ) :
       (augmentation A).map.app (FiniteBijection.of (m + n)) := by
   have h := (augmentation A).map.naturality
     (FiniteBijection.homOfEquiv (X := FiniteBijection.of (m + n))
-      (Y := FiniteBijection.of (n + m)) (operadBlockSwap m n))
-  change (operad A).arityBijectionMap (operadBlockSwap m n) ≫
+      (Y := FiniteBijection.of (n + m)) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n))
+  change (operad A).arityBijectionMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n) ≫
     (augmentation A).map.app (FiniteBijection.of (n + m)) =
       (augmentation A).map.app (FiniteBijection.of (m + n)) ≫ 𝟙 _ at h
   unfold twoColorLeftCoefficient

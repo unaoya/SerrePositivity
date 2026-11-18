@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory MonoidalCategory CochainComplex HomComplex HomologicalComplex AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open scoped TensorProduct
 variable {A : Type u} [CommRing A]
@@ -24,7 +24,7 @@ local notation "V" => Functor.flip (Functor.obj SimplicialObject.opFunctor bousf
 /-- 同じA12像をA09のtensor逆射へ入れた全斉次tensor成分は元の錐代表との実合成。 -/
 theorem reflectedBKFreeTensor_inverse_component (P : Complex A)
     (X : CosimplicialObject (Complex A)) (m : SimplexCategory)
-    (α : ((truncatedDoldKanFunctor A).obj
+    (α : ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj
       (homComplex A P ((productTotalFunctor A).obj X))).obj (Opposite.op m))
     (n : ℕ) (p r : ℤ) (hr : p - n = r)
     (j : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ))
@@ -37,7 +37,7 @@ theorem reflectedBKFreeTensor_inverse_component (P : Complex A)
       (reflectedNormalizedBKSmallHomIso A Y).hom
     let t := (freeTensorDiagramHomIso A (normalizedBKSmallDiagram A Y)
       (reflectedNormalizedBKSmallWeight A)).inv.app (Opposite.op m)
-        (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m) α)
+        (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map γ).app (Opposite.op m) α)
     let σ := (normalizedLinearWeightDiagramIso A V).inv ≫
       extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
         ComplexShape.embeddingDownNat
@@ -50,7 +50,7 @@ theorem reflectedBKFreeTensor_inverse_component (P : Complex A)
         (z := (doubleOppositeDiagram X).obj (AsSmall.down.obj j))
         ((((σ ≫ normalizedBousfieldKanConeRepresentative X).f (-(n : ℤ))).app
           (AsSmall.down.obj j)) w)
-        (((normalizedSimplexHomEquiv A (homComplex A P ((productTotalFunctor A).obj X)) m).symm
+        (((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (homComplex A P ((productTotalFunctor A).obj X)) m).symm
           α).f p x) (by omega) := by
   dsimp only
   let Y := (homDiagramFunctor P).obj X
@@ -58,7 +58,7 @@ theorem reflectedBKFreeTensor_inverse_component (P : Complex A)
   let Q := normalizedBKSmallDiagram A Y
   let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
     (reflectedNormalizedBKSmallHomIso A Y).hom
-  let β := ((normalizedSimplexHomEquiv A
+  let β := ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
     (homComplex A P ((productTotalFunctor A).obj X)) m).symm α).f p x
   let σ := (normalizedLinearWeightDiagramIso A V).inv ≫
     extendMap (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))

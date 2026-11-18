@@ -20,7 +20,7 @@ open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A B : Mon (Complex R))
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
 
 /-- 同じ元の全 ordinary Hom 単位は、AW と選択 right frame の実比較後に一致する。 -/
 lemma multiplicativeCellMappingPinchedEquivalence_unit_Q :
@@ -79,8 +79,8 @@ def nativeCellOrdinaryPoint (f : cellResolution R A ⟶ B) :
 lemma nativeCellOrdinaryPoint_chosenRight (f : cellResolution R A ⟶ B) :
     nativeCellOrdinaryPoint R A B f ≫ (nativeCellChosenRightMappingUnitLarge R A).app B =
       _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint
-        ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
-        (EInfinity.DGAlgebra.rightFrameFamily R) f 0 := by
+        ((_root_.SerrePositivity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
+        (_root_.SerrePositivity.DGAlgebra.rightFrameFamily R) f 0 := by
   rw [nativeCellOrdinaryPoint, SSet.const_comp]
   rfl
 

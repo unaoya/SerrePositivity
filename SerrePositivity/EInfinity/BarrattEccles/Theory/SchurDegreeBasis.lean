@@ -59,7 +59,7 @@ def schurDegreeBasis (P : SymmetricSequence (Complex A)) (K : Complex A) (i : �
     {I : (n : ℕ) → {a : ℤ × ℤ // a.1 + a.2 = i} → Type u}
     (b : ∀ n a, Module.Basis (I n a) A
       (schurArityBidegreeRepresentation P K i n a).ρ.Coinvariants) :
-    Module.Basis (Σ n, Σ a, I n a) A (((schurFunctor A P).obj K).X i) := by
+    Module.Basis (Σ n, Σ a, I n a) A (((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P).obj K).X i) := by
   classical
   let V n a := ModuleCat.of A (schurArityBidegreeRepresentation P K i n a).ρ.Coinvariants
   exact (moduleCoproductBasis (fun n => ∐ (V n))

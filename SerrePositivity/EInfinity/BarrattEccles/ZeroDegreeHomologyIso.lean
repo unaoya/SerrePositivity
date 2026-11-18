@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeHomologyProduct
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeComAlgebra
-public import SerrePositivity.EInfinity.Operad.CommutativeMonoidOperations
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeMonoidOperations
 
 /-!
 # 零次集中 E 代数と同じ H⁰ の離散像の代数同型
@@ -20,38 +20,38 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded HomologyZero Operad.Algebra
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.HomologyZero _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra
 variable (A : Type u) [CommRing A]
 variable (B : (operad A).Algebra) [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0]
 
 def zeroDegreeHomologyComHom :
-    zeroDegreeComAlgebra A B ⟶ (discreteCommutativeFunctor A).obj (homologyCommAlgebra B) := by
-  apply commutativeHomOfUnitBinary _ _ (zeroDegreeToSingle B.carrier)
-  · change homologyOperation B 0 ≫ zeroDegreeToSingle B.carrier =
-      commutativeUnit (commutativeAlgebraOfMonoid
+    zeroDegreeComAlgebra A B ⟶ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.discreteCommutativeFunctor A).obj (homologyCommAlgebra B) := by
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.commutativeHomOfUnitBinary _ _ (_root_.SerrePositivity.HomologyZero.zeroDegreeToSingle B.carrier)
+  · change homologyOperation B 0 ≫ _root_.SerrePositivity.HomologyZero.zeroDegreeToSingle B.carrier =
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.commutativeUnit (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraOfMonoid
         (((CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-          (moduleCommMonoid A (homologyCommAlgebra B))).X))
-    rw [commutativeUnit_ofMonoid]
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A (homologyCommAlgebra B))).X))
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.commutativeUnit_ofMonoid]
     exact (zeroDegreeToSingle_nullary B).trans (homologyNullary_discrete A _)
-  · change homologyBinary B ≫ zeroDegreeToSingle B.carrier =
-      (zeroDegreeToSingle B.carrier ⊗ₘ zeroDegreeToSingle B.carrier) ≫
-        commutativeBinary (commutativeAlgebraOfMonoid
+  · change homologyBinary B ≫ _root_.SerrePositivity.HomologyZero.zeroDegreeToSingle B.carrier =
+      (_root_.SerrePositivity.HomologyZero.zeroDegreeToSingle B.carrier ⊗ₘ _root_.SerrePositivity.HomologyZero.zeroDegreeToSingle B.carrier) ≫
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.commutativeBinary (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraOfMonoid
           (((CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-            (moduleCommMonoid A (homologyCommAlgebra B))).X))
-    rw [commutativeBinary_ofMonoid]
+            (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A (homologyCommAlgebra B))).X))
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.commutativeBinary_ofMonoid]
     rw [← homologyBinary_discrete]
     exact zeroDegreeToSingle_binary B
 
 def zeroDegreeHomologyComIso :
-    zeroDegreeComAlgebra A B ≅ (discreteCommutativeFunctor A).obj (homologyCommAlgebra B) :=
-  isoOfCarrierIso
+    zeroDegreeComAlgebra A B ≅ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.discreteCommutativeFunctor A).obj (homologyCommAlgebra B) :=
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso
     (X := zeroDegreeComAlgebra A B)
-    (Y := (discreteCommutativeFunctor A).obj (homologyCommAlgebra B))
-    (zeroDegreeHomologyIso B.carrier) (zeroDegreeHomologyComHom A B).comm
+    (Y := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.discreteCommutativeFunctor A).obj (homologyCommAlgebra B))
+    (_root_.SerrePositivity.HomologyZero.zeroDegreeHomologyIso B.carrier) (zeroDegreeHomologyComHom A B).comm
 
 def zeroDegreeHomologyAlgebraIso :
     B ≅ (discreteAlgebraFunctor A).obj (homologyCommAlgebra B) :=
   (zeroDegreeComRestrictionIso A B).symm ≪≫
-    (Operad.restrictAlgebra (augmentation A)).mapIso (zeroDegreeHomologyComIso A B)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebra (augmentation A)).mapIso (zeroDegreeHomologyComIso A B)
 
 end SerrePositivity.EInfinity.BarrattEccles

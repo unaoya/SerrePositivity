@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainDiagonal
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexTensorHom
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainDiagonal
 
 /-!
 # 有限標準単体上の二つの評価の積
@@ -24,7 +24,7 @@ def simplexPairEvaluation {K L : Complex A} (n : SimplexCategory)
     (f : (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n) ⟶ K)
     (g : (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n) ⟶ L) :
     (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n) ⟶ K ⊗ L :=
-  AlexanderWhitney.cochainDiagonal A (SSet.stdSimplex.obj n) ≫ (f ⊗ₘ g)
+  _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal A (SSet.stdSimplex.obj n) ≫ (f ⊗ₘ g)
 
 set_option maxHeartbeats 800000 in
 -- 正規化 AW と複体のテンソルの同じ型の照合を kernel でも検査するため。
@@ -39,8 +39,8 @@ lemma simplexPairEvaluation_precomp {K L : Complex A} {n m : SimplexCategory}
       ((BarrattEccles.normalizedFunctor A).map (SSet.stdSimplex.map θ) ≫ f)
       ((BarrattEccles.normalizedFunctor A).map (SSet.stdSimplex.map θ) ≫ g) := by
   dsimp only [simplexPairEvaluation]
-  rw [← Category.assoc, AlexanderWhitney.cochainDiagonal_natural, Category.assoc]
-  change AlexanderWhitney.cochainDiagonal A (SSet.stdSimplex.obj n) ≫
+  rw [← Category.assoc, _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_natural, Category.assoc]
+  change _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal A (SSet.stdSimplex.obj n) ≫
     (((BarrattEccles.normalizedFunctor A).map (SSet.stdSimplex.map θ)) ⊗ₘ
       ((BarrattEccles.normalizedFunctor A).map (SSet.stdSimplex.map θ))) ≫ (f ⊗ₘ g) = _
   rw [tensorHom_comp_tensorHom]

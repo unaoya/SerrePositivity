@@ -60,29 +60,29 @@ private lemma complexBaseChangeDG_map_ofHom {X Y : Complex S} (g : X ⟶ Y) :
   rfl
 
 private lemma complexBaseChangeDG_closedNerveHom {X Y : Complex S} (g : X ⟶ Y) (k : ℤ) :
-    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f).map X Y).f k (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed S).map g) k) =
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g)) k := by
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f).map X Y).f k (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map g) k) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g)) k := by
   by_cases h : k = 0
   · subst k
     rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero]
     change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f).map X Y).f 0
-        (cycleFromUnit (homComplex S X Y) ((complexToClosed S).map g)).val =
+        (cycleFromUnit (homComplex S X Y) ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map g)).val =
       (cycleFromUnit (homComplex T ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).obj X) ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).obj Y))
-        ((complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g))).val
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g))).val
     rw [← complexClosedHomEquiv_cochain, ← complexClosedHomEquiv_cochain]
     change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f).map X Y).f 0
-        (Cochain.ofHom ((closedToComplex S).map ((complexToClosed S).map g))) =
+        (Cochain.ofHom ((closedToComplex S).map ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map g))) =
       Cochain.ofHom ((closedToComplex T).map
-        ((complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g)))
-    rw [complexToClosed_map, complexToClosed_map]
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g)))
+    rw [_root_.SerrePositivity.ComplexLimits.complexToClosed_map, _root_.SerrePositivity.ComplexLimits.complexToClosed_map]
     exact complexBaseChangeDG_map_ofHom f g
   · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ _ h, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ _ h, map_zero]
 
 /-- 閉零射の列の係数拡大は、通常の複体の項別係数拡大に一致する。 -/
 lemma complexClosedNerve_extension :
-    (nerveMap (complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S)) ≫
+    (nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed S) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S)) ≫
       complexExtensionNerve f =
-    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f) ≫ nerveMap (complexToClosed T) ≫
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f) ≫ nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed T) ≫
       _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
@@ -97,8 +97,8 @@ lemma complexClosedNerve_extension :
     exact I.min'_le _ (I.max'_mem _)
   let g := Γ.map (homOfLE hab)
   change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChangeDG f).map (Γ.obj a) (Γ.obj b)).f k
-    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed S).map g) k) =
-      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g)) k
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map g) k) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map g)) k
   exact complexBaseChangeDG_closedNerveHom f g k
 
 /-- 半自由複体の係数拡大を全複体へ含めた写像は、全複体の写像に一致する。 -/

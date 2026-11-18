@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.OperadTensorComparison
-public import SerrePositivity.EInfinity.Operad.Basic
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Basic
 
 /-!
 # オペラッド代数の lax braided 関手に沿う移送
@@ -31,11 +31,11 @@ open CategoryTheory MonoidalCategory DifferentialGraded TensorPowers
 open Functor.LaxMonoidal
 
 variable {S T : Type u} [CommRing S] [CommRing T]
-  {P : Operad S} {Q : Operad T} {F : Complex T ⥤ Complex S} [F.LaxBraided]
+  {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad S} {Q : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad T} {F : Complex T ⥤ Complex S} [F.LaxBraided]
 
 /-- lax braided 関手を介した arity ごとのオペラッドの比較。 -/
 structure LaxComparison (F : Complex T ⥤ Complex S) [F.LaxBraided]
-    (P : Operad S) (Q : Operad T) where
+    (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad S) (Q : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad T) where
   arity (n : ℕ) : P.arity n ⟶ F.obj (Q.arity n)
   permutation (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     LaxComparisonSquare F (arity n) (arity n)
@@ -101,7 +101,7 @@ lemma transportAction_comp (X : Q.Algebra) (m n : ℕ)
         transportAction k X (m + n) =
       (α_ (P.arity (m + 1)) (P.arity n)
         (power (F.obj X.carrier) (m + n))).hom ≫
-      (P.arity (m + 1) ◁ tensorInsertionAction
+      (P.arity (m + 1) ◁ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction
         (F.obj X.carrier) (P.arity n) m n i
           (transportAction k X n)) ≫ transportAction k X (m + 1) := by
   let c := k.arity
@@ -148,10 +148,10 @@ def transport : Q.Algebra ⥤ P.Algebra where
       rw [Category.assoc, ← F.map_comp, g.comm]
       simp only [F.map_comp, reassoc_of% h] }
   map_id X := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     exact F.map_id X.carrier
   map_comp {_ _ _} g h := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     exact F.map_comp g.hom h.hom
 
 end SerrePositivity.EInfinity.Operad

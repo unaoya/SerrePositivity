@@ -37,7 +37,7 @@ lemma erasedDiskSphereSplitting_s_f (n : ℤ) :
   simp only [complexDiskGradedSection, Cochain.single_v]
 
 namespace Operad
-variable {P : Operad A} {X Y : P.Algebra} {f : X ⟶ Y}
+variable {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A} {X Y : P.Algebra} {f : X ⟶ Y}
   (c : AttachCells.{u} (fun n => P.freeAlgebraFunctor.map (complexSphereToDisk A n)) f)
 
 /-- Reindexing the erased attachment changes its cell by the inverse free comparison. -/

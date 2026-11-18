@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.PointedSimplicialSet
 variable (A : Type u) [CommRing A]
 
@@ -59,7 +59,7 @@ lemma gammaSmashPair_right_unit (K : Complex A) :
   apply Under.UnderMorphism.ext
   change (ρ_ X).inv.right ≫ (X ◁ u).right ≫
     (gammaSmashPair A K (𝟙_ (Complex A))).right ≫
-      ((truncatedDoldKanFunctor A).map (ρ_ K).hom) = 𝟙 X.right
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (ρ_ K).hom) = 𝟙 X.right
   rw [pointedSmashRightUnitor_inv]
   simp only [Category.assoc]
   slice_lhs 2 4 => exact hu

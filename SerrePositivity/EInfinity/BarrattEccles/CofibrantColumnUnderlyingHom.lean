@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDerivedForgetSource
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomRecovery
-public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponent
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DerivedNatTransComponent
 /-! 概要：cofibrant 相対列の忘却後の全通常射を元の複体円柱へ回収する。
 方針：Hom 持ち上げを元の忘却と交換し、同じ全パラメータを下げる。
 規約：元の代数射・複体射と全円柱を保持する。
@@ -21,7 +21,7 @@ variable (A : Type u) [CommRing A]
 方針：同じ包含と通常忘却を合成する。
 規約：底の cofibrancy を要求しない。使われ方：全 Hom 宇宙回収。 -/
 def cofibrantAlgebraOrdinaryForget : CofibrantAlgebra A ⥤ Complex A :=
-  cofibrantAlgebraInclusion A ⋙ Operad.Algebra.forget (operad A)
+  cofibrantAlgebraInclusion A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
 
 /-- 概要：同じ導来源は Hom を上げた元の忘却から厳密に回収される。
 方針：全単体列と元の通常射を比較する。
@@ -29,12 +29,12 @@ def cofibrantAlgebraOrdinaryForget : CofibrantAlgebra A ⥤ Complex A :=
 lemma cofibrantAlgebraUnderlyingDerivedSource_eq_lifted :
     cofibrantAlgebraUnderlyingDerivedSource A =
       nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.lifted (cofibrantAlgebraOrdinaryForget A)) ≫
-        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (Complex A) ≫ ComplexLimits.complexOrdinaryDerivedSource A := by
+        _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (Complex A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro Γ
-  apply congrArg ((ComplexLimits.complexOrdinaryDerivedSource A).app n)
+  apply congrArg ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app n)
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -49,7 +49,7 @@ lemma cofibrantColumnUnderlyingHom_arrow {I : Type (u + 1)} [Category.{u} I]
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedNatTrans (C := I) (D := CofibrantAlgebra A) a)) =
     Arrow.mk ((hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I)).app
       (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor.map
-      (ComplexLimits.complexOrdinaryDerivedNatTransHom A
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransHom A
         (Functor.whiskerRight a (cofibrantAlgebraOrdinaryForget A)))) := by
   rw [cofibrantAlgebraUnderlyingDerivedSource_eq_lifted]
   rw [_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom_whiskerRight]
@@ -59,6 +59,6 @@ lemma cofibrantColumnUnderlyingHom_arrow {I : Type (u + 1)} [Category.{u} I]
   rw [ha]
   exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.liftedHom_postcomp_arrow I
     (Functor.whiskerRight a (cofibrantAlgebraOrdinaryForget A))
-    (ComplexLimits.complexOrdinaryDerivedSource A)
+    (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)
 
 end SerrePositivity.EInfinity.BarrattEccles

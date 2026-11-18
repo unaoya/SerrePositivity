@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (q : CofibrantResolution (C := C) simplex X) (Y : C)
@@ -38,7 +38,7 @@ include r cof in
 規約：第二分解を仮定しない。使われ方：元の全 frame 比較。 -/
 lemma resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_first :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap q Y ≫
-      graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) := by
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) := by
   rw [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap_normalization]
   have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y))) :=
@@ -56,13 +56,13 @@ include r cof in
 lemma resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap q Y) := by
   have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      (reducedColimitIso (weakEquivalences C) X Y).hom :=
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences C) X Y).hom :=
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
   apply hi.cancel_right
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap q Y ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word ≫
-      (reducedColimitIso (weakEquivalences C) X Y).hom)
-  rw [reducedColimitIso_hom_fac]
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences C) X Y).hom)
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac]
   exact _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_first q Y r cof
 
 end SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom

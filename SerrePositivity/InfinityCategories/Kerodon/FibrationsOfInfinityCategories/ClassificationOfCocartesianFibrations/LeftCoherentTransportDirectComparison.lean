@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationSpanStrictification
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCoherentComparison
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftCoherentTransportReconstruction
 
 /-!
@@ -42,7 +43,7 @@ noncomputable def leftCoherentTransportDirectComparison
     {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p] :
     (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraightening (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p) :=
-  (exists_leftCoherentTransport_directComparison p).choose
+  scaffoldCoherentComparison p
 
 /-- 概要：直接の coherent transport 比較は元の底の持ち上げを厳密に保つ。
 方針：選択した比較の存在証明の底上の条件を取り出す。
@@ -54,7 +55,7 @@ lemma leftCoherentTransportDirectComparison_projection
     leftCoherentTransportDirectComparison p ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransport p) =
       (SSet.uliftFunctor.{u + 1, u}).map p :=
-  (exists_leftCoherentTransport_directComparison p).choose_spec.1
+  scaffoldCoherentComparison_projection p
 
 /-- 概要：直接の coherent transport 比較は前合成同値。
 方針：選択した底上の比較の同値性を取り出す。
@@ -64,7 +65,7 @@ lemma leftCoherentTransportDirectComparison_isPrecompositionEquivalence
     {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence (leftCoherentTransportDirectComparison p) :=
-  (exists_leftCoherentTransport_directComparison p).choose_spec.2
+  scaffoldCoherentComparison_isPrecompositionEquivalence p
 
 /-- 概要：直接の coherent transport 比較は全空間の quasicategory の同値。
 方針：quasicategory 間の前合成同値から同値の逆データを回収する。

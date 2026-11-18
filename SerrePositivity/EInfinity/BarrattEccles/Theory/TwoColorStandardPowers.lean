@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorInputComponents
-public import SerrePositivity.EInfinity.Operad.TensorFamilySplitAt
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorFamilySplitAt
 
 /-!
 # 標準二色入力と二つのテンソル冪
@@ -41,12 +41,12 @@ def binaryTensorStandardPowersIso (m n : ℕ) :
     binaryTensorWordObj X Y (m + n) (binaryTensorStandardPattern m n) ≅
       power X m ⊗ power Y n :=
   binaryTensorWordFamilyIso X Y (m + n) (binaryTensorStandardPattern m n) ≪≫
-    tensorFamilySplitAt m n (fun i => binaryTensorColorObj X Y
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilySplitAt m n (fun i => binaryTensorColorObj X Y
       (binaryTensorWordColors (m + n) (binaryTensorStandardPattern m n) i)) ≪≫
     tensorIso
-      (eqToIso ((congrArg (tensorFamily m) (binaryTensorStandard_left_family X Y m n)).trans
-        (tensorFamily_const X m)))
-      (eqToIso ((congrArg (tensorFamily n) (binaryTensorStandard_right_family X Y m n)).trans
-        (tensorFamily_const Y n)))
+      (eqToIso ((congrArg (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily m) (binaryTensorStandard_left_family X Y m n)).trans
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily_const X m)))
+      (eqToIso ((congrArg (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n) (binaryTensorStandard_right_family X Y m n)).trans
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily_const Y n)))
 
 end SerrePositivity.EInfinity

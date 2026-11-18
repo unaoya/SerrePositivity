@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitAmbientHom
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDerivedPrecompositionFamily
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorDerivedPrecompositionFamily
 
 /-!
 # 元の導来単位が表す実正規化 Hom 前合成の全族
@@ -20,35 +20,35 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma freeProbeDerivedUnitNormalizedHom_family (X Y : Complex A) (K : SSet.{u + 1})
     (g : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj
-      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (_root_.SerrePositivity.ComplexLimits.normalizedSimplexTensor A
         ((freeProbeFunctor A).obj X).carrier)).obj Y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ SSet.uliftFunctor.{u + 1, u}.map
-      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexTensorFamily A).map
         ((operad A).freeAlgebraAdjunction.unit.app
-          ((ComplexLimits.framedLimitProbeFunctor A).obj X)))).app Y) ≫
-      (normalizedTensorPinchedIso A ((ComplexLimits.framedLimitProbeFunctor A).obj X) Y).hom ≫
+          ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)))).app Y) ≫
+      (_root_.SerrePositivity.ComplexLimits.normalizedTensorPinchedIso A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y).hom ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
-      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (complexSemifreeResolutionInfinity A)
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (freeProbeDerivedUnitAmbientHom A X) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫
-        (normalizedTensorPinchedIso A ((freeProbeFunctor A).obj X).carrier Y).hom ≫
+        (_root_.SerrePositivity.ComplexLimits.normalizedTensorPinchedIso A ((freeProbeFunctor A).obj X).carrier Y).hom ≫
         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (complexSemifreeResolutionInfinity A)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A)
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) := by
   rw [freeProbeDerivedUnitAmbientHom_eq]
-  exact normalizedTensorHom_precomp_family_map A (complexSemifreeResolutionInfinity A)
+  exact _root_.SerrePositivity.ComplexLimits.normalizedTensorHom_precomp_family_map A (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A)
     (X := ((freeProbeFunctor A).obj X).carrier)
-    (X' := (ComplexLimits.framedLimitProbeFunctor A).obj X) Y
+    (X' := (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y
     ((operad A).freeAlgebraAdjunction.unit.app
-      ((ComplexLimits.framedLimitProbeFunctor A).obj X)) K g
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)) K g
 
 end SerrePositivity.EInfinity.BarrattEccles

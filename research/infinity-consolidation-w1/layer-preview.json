@@ -1,0 +1,18 @@
+{
+  "missing_baseline_tiers": [],
+  "method": "existing checker with temporary Consumers fallback only for absent baseline metadata; no config edits",
+  "baseline_count": 172,
+  "preview_count": 172,
+  "new": [],
+  "removed": [],
+  "baseline_kinds": {
+    "reverse-section": 63,
+    "tier-order": 23,
+    "unresolved-import": 86
+  },
+  "preview_kinds": {
+    "reverse-section": 63,
+    "tier-order": 23,
+    "unresolved-import": 86
+  }
+}

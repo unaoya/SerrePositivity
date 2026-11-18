@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -37,7 +37,7 @@ def derivedTotConeFamily :
   (β_ _ _).hom ≫
     (nerve (CosimplicialObject (Complex A)) ◁
       joinMap (𝟙 (Δ[0] : SSet.{u+1})) nativeTotIndexIso.inv) ≫
-        nativeTotJoinFamily A ≫ complexSemifreeResolutionInfinity A
+        nativeTotJoinFamily A ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A
 
 /-- 同じ全族の固定パラメータ制限は、元の同じ全strict Tot錐。 -/
 theorem derivedTotConeFamily_at_lift (X : CosimplicialObject (Complex A)) :
@@ -59,11 +59,11 @@ theorem derivedTotConeFamily_at_lift (X : CosimplicialObject (Complex A)) :
     intro τ
     rfl
   have h := congrArg (fun k => k ≫ nativeTotJoinFamily A ≫
-    complexSemifreeResolutionInfinity A) he
+    _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) he
   simp only [Category.assoc] at h
   have ht := congrArg (fun k =>
     joinMap (𝟙 (Δ[0] : SSet.{u+1})) nativeTotIndexIso.inv ≫ k ≫
-      complexSemifreeResolutionInfinity A) (nativeTotJoinFamily_at A X)
+      _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) (nativeTotJoinFamily_at A X)
   simp only [Category.assoc] at ht
   rw [strictDerivedTotCone, joinConeOfDiagramEq_val]
   exact h.trans ht
@@ -95,7 +95,7 @@ theorem derivedTotConeFamily_at (X : CosimplicialObject (Complex A)) :
 /-- D04：頂点族の図式射の像は、同じ積Tot関手の像そのもの。 -/
 theorem derivedTotConeFamily_map {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
     (derivedTotVertexFamily A).app (Opposite.op ⦋1⦌) (nerve.edgeMk f).edge =
-      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
         (nerve.edgeMk ((productTotalFunctor A).map f)).edge :=
   derivedTotVertexFamily_map A f
 

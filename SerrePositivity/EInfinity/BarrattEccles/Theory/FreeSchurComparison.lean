@@ -39,7 +39,7 @@ variable (X Y : Complex A)
 
 /-- 和の入力の実際の Schur 複体を、左右の入力数で添字づけた軌道直和へ運ぶ。 -/
 def schurBinaryOrbitIso :
-    (schurFunctor A (sequence A)).obj (X ⊞ Y) ≅
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj (X ⊞ Y) ≅
       ∐ (fun p : ℕ × ℕ => orbitCoefficientComplex X Y (p.1 + p.2)
         (ULift.up ⟨p.1, by omega⟩)) :=
   schurComplexArityIso (sequence A) (X ⊞ Y) ≪≫ Sigma.mapIso (schurArityOrbitIso X Y) ≪≫
@@ -49,17 +49,17 @@ def schurBinaryOrbitIso :
 
 /-- 二つの Schur 複体のテンソルを、元の arity 成分の二添字直和へ同定する。 -/
 def schurTensorArityIso :
-    (schurFunctor A (sequence A)).obj X ⊗ (schurFunctor A (sequence A)).obj Y ≅
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj X ⊗ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj Y ≅
       ∐ (fun p : ℕ × ℕ =>
-        arityCoinvariantComplex (schurDiagram A (sequence A) X) p.1 ⊗
-          arityCoinvariantComplex (schurDiagram A (sequence A) Y) p.2) :=
+        arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) X) p.1 ⊗
+          arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) Y) p.2) :=
   tensorIso (schurComplexArityIso (sequence A) X) (schurComplexArityIso (sequence A) Y) ≪≫
     tensorCoproductPairIso _ _
 
 /-- 指定二色係数射を束ねて得る、自由 Schur 複体の鎖ホモトピー同値。 -/
 def freeSchurCoefficientHomotopyEquiv :
-    HomotopyEquiv ((schurFunctor A (sequence A)).obj (X ⊞ Y))
-      ((schurFunctor A (sequence A)).obj X ⊗ (schurFunctor A (sequence A)).obj Y) :=
+    HomotopyEquiv ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj (X ⊞ Y))
+      ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj X ⊗ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj Y) :=
   (HomotopyEquiv.ofIso (schurBinaryOrbitIso X Y)).trans
     ((complexCoproductHomotopyEquiv (A := A) (fun p : ℕ × ℕ =>
       orbitCoefficientComparisonEquiv X Y p.1 p.2)).trans

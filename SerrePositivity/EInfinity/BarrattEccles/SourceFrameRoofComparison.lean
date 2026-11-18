@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Opposite Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A]
 
@@ -38,18 +38,18 @@ lemma sourceFrameLeftRoofNerveMap_normalization (X Y : (operad A).Algebra) :
   let q := (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X
   have h := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionLeftRoofNerveMap_normalization q Y
   change sourceFrameLeftRoofNerveMap A X Y ≫
-      graphNormalization (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
     sourceFrameSpecialHammockNerveMap A X Y ≫
       algebraSpecialThreeArrowInclusionNerveMap A X Y ≫ nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor ≫
-        graphNormalization (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow at h
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow at h
   change sourceFrameLeftRoofNerveMap A X Y ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word ≫
-        (reducedColimitIso (weakEquivalences (operad A).Algebra) X Y).hom = _
-  rw [reducedColimitIso_hom_fac, h]
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences (operad A).Algebra) X Y).hom = _
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac, h]
   change _ = sourceFrameSpecialHammockNerveMap A X Y ≫
     algebraSpecialThreeArrowInclusionNerveMap A X Y ≫ nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow ≫
-        (reducedColimitIso (weakEquivalences (operad A).Algebra) X Y).hom
-  rw [reducedColimitIso_hom_fac]
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences (operad A).Algebra) X Y).hom
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac]
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open AlgebraicTopology AlgebraicTopology.DoldKan HomologicalComplex

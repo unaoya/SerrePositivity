@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet _root_.HomotopicalAlgebra
-open Hammock SerrePositivity.Reedy
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock SerrePositivity.Reedy
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
@@ -29,7 +29,7 @@ def cofibrantAlgebraHammockColimitInclusionMap :
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) ⟶
     algebraReducedHammock A X.obj Y.obj :=
-  (reducedColimitIso (cofibrantAlgebraRelativeCategory A).weakEquivalences
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (show (cofibrantAlgebraRelativeCategory A).category from X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       cofibrantAlgebraHammockInclusionMap A _ _
@@ -45,15 +45,15 @@ lemma cofibrantAlgebraHammockColimitInclusionMap_graph (w : _root_.SerrePositivi
       algebraHammockGraphInclusion A w X.obj Y.obj ≫
         (algebraHammockReductionIso A X.obj Y.obj).hom := by
   let := modelCategory A
-  change _ ≫ ((reducedColimitIso _ _ _).hom ≫ cofibrantAlgebraHammockInclusionMap A _ _) = _
-  rw [← Category.assoc, reducedColimitIso_hom_fac]
+  change _ ≫ ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso _ _ _).hom ≫ cofibrantAlgebraHammockInclusionMap A _ _) = _
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac]
   have h := cofibrantAlgebraHammockInclusionMap_normalization A
     (show (cofibrantAlgebraRelativeCategory A).category from X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y) w
   exact h.trans (congrArg (fun g => cofibrantAlgebraHammockGraphInclusionMap A
     (show (cofibrantAlgebraRelativeCategory A).category from X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y) w ≫ g)
-    (reducedColimitIso_hom_fac (weakEquivalences (operad A).Algebra) X.obj Y.obj w).symm)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac (weakEquivalences (operad A).Algebra) X.obj Y.obj w).symm)
 
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 

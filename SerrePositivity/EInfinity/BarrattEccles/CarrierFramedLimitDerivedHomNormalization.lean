@@ -39,7 +39,7 @@ lemma carrierFramedLimitConePiZeroEquiv_coneClass (F : K ⥤ (operad A).Algebra)
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
     carrierFramedLimitConePiZeroEquiv A K c.pt F (carrierFramedLimitConeClass A K F c) = QD.map
       c.π := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   let QD := (weakEquivalences (K ⥤ Complex A)).Q
   let f : (Functor.const K).obj (carrierFramedLimitProbe A c.pt) ⟶ (Diagram.forget A K).obj F :=
@@ -72,13 +72,13 @@ lemma carrierFramedLimitConePiZeroEquiv_coneClass (F : K ⥤ (operad A).Algebra)
 使われ方：通常の極限比較を持つ右導来関手の普遍性。 -/
 lemma carrierFramedLimitDerivedHomEquiv_cone (F : K ⥤ (operad A).Algebra) (c : Cone
   ((Diagram.forget A K).obj F)) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
     carrierFramedLimitDerivedHomEquiv A K c.pt F (QD.map c.π) =
       Q.map (carrierConeToFramedLimit A K F c) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   dsimp only
   rw [← carrierFramedLimitConePiZeroEquiv_coneClass A K F c]
@@ -94,18 +94,18 @@ lemma carrierFramedLimitDerivedHomEquiv_cone (F : K ⥤ (operad A).Algebra) (c :
 使われ方：元の極限比較と底の導来極限比較の接続。 -/
 lemma carrierFramedLimitDerivedHomEquiv_forgetCone (F : K ⥤ (operad A).Algebra)
     (c : Cone F) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
     carrierFramedLimitDerivedHomEquiv A K c.pt.carrier F
-        (QD.map ((Operad.Algebra.forget (operad A)).mapCone c).π) =
+        (QD.map ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).mapCone c).π) =
       Q.map (coneToFramedLimit A K F c).hom := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   dsimp only
   exact (carrierFramedLimitDerivedHomEquiv_cone A K F
-    ((Operad.Algebra.forget (operad A)).mapCone c)).trans
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).mapCone c)).trans
       (congrArg ((weakEquivalences (Complex A)).Q.map)
         (carrierConeToFramedLimit_forget A K F c))
 

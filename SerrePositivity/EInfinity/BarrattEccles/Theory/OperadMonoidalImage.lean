@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.LaxTensorComparison
-public import SerrePositivity.EInfinity.Operad.Basic
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Basic
 
 /-!
 # Lax braided 関手によるオペラッドの移送
@@ -62,12 +62,16 @@ end LaxComparisonSquare
 
 namespace Operad
 variable {S T : Type u} [CommRing S] [CommRing T]
-  (P : Operad S) (F : Complex S ⥤ Complex T) [F.LaxBraided]
+  (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad S) (F : Complex S ⥤ Complex T) [F.LaxBraided]
 
 /-- The transported partial composition, with its specified tensor comparison. -/
 def monoidalImageComp (m n : ℕ) (i : Fin (m + 1)) :
     F.obj (P.arity (m + 1)) ⊗ F.obj (P.arity n) ⟶ F.obj (P.arity (m + n)) :=
   μ F _ _ ≫ F.map (P.comp m n i)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (monoidalImageComp)
+
 
 lemma monoidalImageComp_square (m n : ℕ) (i : Fin (m + 1)) :
     LaxComparisonSquare F (laxTensorComparison F (𝟙 _) (𝟙 _)) (𝟙 _)
@@ -94,8 +98,12 @@ lemma monoidalImageTensorCast_square {m n : ℕ} (h : m = n) (k : ℕ) :
   cases h
   simp [LaxComparisonSquare]
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (monoidalImageComp_square monoidalImageUnit_square monoidalImageCast_square monoidalImageTensorCast_square)
+
+
 /-- A lax braided functor sends a symmetric operad to a symmetric operad. -/
-def monoidalImage : Operad T where
+def monoidalImage : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad T where
   sequence := P.sequence ⋙ F
   unit := ε F ≫ F.map P.unit
   comp := P.monoidalImageComp F
@@ -125,9 +133,9 @@ def monoidalImage : Operad T where
     have h₂ := LaxComparisonSquare.comp F (P.monoidalImageComp_square F m n i)
       (show LaxComparisonSquare F (𝟙 _) (𝟙 _)
         (F.map (P.sequence.map (FiniteBijection.permutation (m + n)
-          (operadInnerPermutation m n i τ))))
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i τ))))
         (P.sequence.map (FiniteBijection.permutation (m + n)
-          (operadInnerPermutation m n i τ))) by simp [LaxComparisonSquare])
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i τ))) by simp [LaxComparisonSquare])
     exact LaxComparisonSquare.paths F _ h₁ h₂ (P.inner_equivariance m n i τ)
   outer_equivariance m n i σ := by
     have hp : LaxComparisonSquare F (𝟙 _) (𝟙 _)
@@ -140,9 +148,9 @@ def monoidalImage : Operad T where
     have h₂ := LaxComparisonSquare.comp F (P.monoidalImageComp_square F m n i)
       (show LaxComparisonSquare F (𝟙 _) (𝟙 _)
         (F.map (P.sequence.map (FiniteBijection.permutation (m + n)
-          (operadOuterPermutation m n i σ))))
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i σ))))
         (P.sequence.map (FiniteBijection.permutation (m + n)
-          (operadOuterPermutation m n i σ))) by simp [LaxComparisonSquare])
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i σ))) by simp [LaxComparisonSquare])
     exact LaxComparisonSquare.paths F _ h₁ h₂ (P.outer_equivariance m n i σ)
   nested_assoc m n k i j := by
     let a := 𝟙 (F.obj (P.arity (m + 1)))
@@ -180,6 +188,10 @@ def monoidalImage : Operad T where
                 (P.monoidalImageComp_square F (m + k) n ⟨i.val, by omega⟩)
                 (P.monoidalImageCast_square F (by omega : m + k + n = m + n + k)))))))
     exact LaxComparisonSquare.paths F _ h₁ h₂ (P.parallel_assoc m n k i j hij)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (monoidalImage)
+
 
 end Operad
 end SerrePositivity.EInfinity

@@ -26,24 +26,24 @@ open SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
 def freeHomSourceFrame : Complex A ⥤ (SimplexCategory ⥤ Complex A) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj
 
 def complexSourceFrameHom : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
   (freeHomSourceFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def freeHomImageFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) :=
-  (ComplexLimits.framedLimitProbeFunctor A ⋙ freeHomSourceFrame A) ⋙
+  (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A ⋙ freeHomSourceFrame A) ⋙
     (Functor.whiskeringRight SimplexCategory (Complex A) (operad A).Algebra).obj
       (operad A).freeAlgebraFunctor
 
 def freeHomImageAugmentation :
     freeHomImageFrame A ⟶ freeProbeFunctor A ⋙ Functor.const SimplexCategory := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameAugmentation (operad A).freeAlgebraFunctor
     (CosimplicialFrameFamily.ofResolution
       (cosimplicialResolutionFamily (carrierProbeFactorization A)))
-    (ComplexLimits.framedLimitProbeFunctor A)
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A)
 
 def freeHomCommonFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) := by
   let := modelCategory A

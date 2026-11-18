@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.MapExtendComplex
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
-public import SerrePositivity.EInfinity.NegativeTensor.Comparison
+public import SerrePositivity.HomologicalAlgebra.Complexes.NegativeTensor.Comparison
 
 /-!
 概要：係数拡大した自然数鎖テンソルの負次数延長を、移した両因子のテンソルへ結ぶ。
@@ -30,7 +30,7 @@ def negativeTensorBaseChangeIso :
   (mapExtendIso (ModuleCat.extendScalars φ) ComplexShape.embeddingDownNat
     (HomologicalComplex.tensorObj K L)).symm ≪≫
   ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)).mapIso
-    (EInfinity.NegativeTensor.comparison K L) ≪≫
+    (_root_.SerrePositivity.NegativeTensor.comparison K L) ≪≫
   cochainTensorBaseChangeIso φ (K.extend ComplexShape.embeddingDownNat)
     (L.extend ComplexShape.embeddingDownNat) ≪≫
   tensorIso (mapExtendIso (ModuleCat.extendScalars φ) ComplexShape.embeddingDownNat K)

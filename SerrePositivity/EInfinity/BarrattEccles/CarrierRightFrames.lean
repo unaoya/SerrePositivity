@@ -31,10 +31,10 @@ variable (A : Type u) [CommRing A]
 規約：モデル構造は局所的に選び、追加の入力にはしない。
 使われ方：同じ右 frame の底での Reedy cofibrancy。 -/
 lemma forgetOp_isLeftQuillen :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := modelCategory A
-    SerrePositivity.Quillen.IsLeftQuillen (Operad.Algebra.forget (operad A)).op := by
-  let := projectiveModelCategory A
+    SerrePositivity.Quillen.IsLeftQuillen (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have h := forget_isRightQuillen A
   exact ⟨fun _ _ f hf => h.map_fibrations f.unop hf,
@@ -45,18 +45,18 @@ lemma forgetOp_isLeftQuillen :
 規約：各次数・作用素は元の同じ射。
 使われ方：底の重み付き end とその Hom の係数。 -/
 def carrierRightFrame (X : (operad A).Algebra) : SimplexCategory ⥤ (Complex A)ᵒᵖ :=
-  rightFrame A X ⋙ (Operad.Algebra.forget (operad A)).op
+  rightFrame A X ⋙ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op
 
 /-- 概要：底の右 frame は反対圏で Reedy cofibrant（Hovey §5.2）。
 方針：反対忘却の左随伴性と左 Quillen 性で元の latching 比較を移す。
 規約：底の元の複体の cofibrancy は不要。
 使われ方：底の frame Hom の Kan 性と重み付き実現の π₀ 比較。 -/
 lemma carrierRightFrame_cofibrant (X : (operad A).Algebra) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     reedyLeft simplex (cofibrations (Complex A)ᵒᵖ) (initial.to (carrierRightFrame A X)) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have : U.op.IsLeftAdjoint := (operad A).freeAlgebraAdjunction.op.isLeftAdjoint
   have := forgetOp_isLeftQuillen A
   exact leftQuillen_frame_reedyCofibrant U.op (rightFrame A X) (rightFrame_cofibrant A X)
@@ -67,9 +67,9 @@ lemma carrierRightFrame_cofibrant (X : (operad A).Algebra) :
 使われ方：底の重み付き錐の π₀ の局所化 Hom 比較。 -/
 lemma carrierRightFrame_homotopicallyConstant (X : (operad A).Algebra)
     {n m : SimplexCategory} (f : n ⟶ m) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     weakEquivalences (Complex A)ᵒᵖ ((carrierRightFrame A X).map f) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   exact rightFrame_homotopicallyConstant A X f
 
@@ -81,7 +81,7 @@ def carrierRightFrameAugmentation (X : (operad A).Algebra) :
     carrierRightFrame A X ⟶ (Functor.const SimplexCategory).obj (op X.carrier) := by
   let := modelCategory A
   exact Functor.whiskerRight ((rightFrameFamily A).augmentation.app (op X))
-    (Operad.Algebra.forget (operad A)).op
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op
 
 /-- 概要：底の augmentation は各次数で擬同型（Hovey §5.2）。
 方針：同じ元の右 frame 比較の擬同型性を使う。

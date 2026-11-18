@@ -57,14 +57,14 @@ def schurArityBidegreeRepresentation (P : SymmetricSequence (Complex A)) (K : Co
 def schurArityDegreeBidegreeIso (P : SymmetricSequence (Complex A)) (K : Complex A)
     (i : ℤ) (n : ℕ) :
     arityDiagramCoinvariants
-      (schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i) n ≅
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i) n ≅
       ∐ (fun a => ModuleCat.of A (schurArityBidegreeRepresentation P K i n a).ρ.Coinvariants) :=
   tensorDegreeCoinvariantsIso (finiteBijectionComplexAction P n)
     (finiteBijectionComplexAction (TensorPowers.bijectionFunctor K) n) i
 
 /-- The actual Schur degree decomposes into arity and bidegree coinvariants. -/
 def schurDegreeBidegreeIso (P : SymmetricSequence (Complex A)) (K : Complex A) (i : ℤ) :
-    ((schurFunctor A P).obj K).X i ≅
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P).obj K).X i ≅
       ∐ (fun n : ℕ => ∐ (fun a =>
         ModuleCat.of A (schurArityBidegreeRepresentation P K i n a).ρ.Coinvariants)) :=
   schurDegreeArityIso P K i ≪≫ Sigma.mapIso (schurArityDegreeBidegreeIso P K i)

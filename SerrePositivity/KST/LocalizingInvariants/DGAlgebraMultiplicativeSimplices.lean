@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionContravariant
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainComonoid
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainComonoid
 public import Mathlib.CategoryTheory.Whiskering
 
 /-!
@@ -33,17 +33,17 @@ def convolutionTargetNatTrans {B C : Mon (Complex R)} (g : B ⟶ C) :
 
 def multiplicativeSimplices (B : Mon (Complex R)) :
     SimplexCategoryᵒᵖ ⥤ Mon (Complex R) :=
-  (EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).op ⋙
+  (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).op ⋙
     convolutionContravariant R B
 
 def multiplicativeSimplicesMap {B C : Mon (Complex R)} (g : B ⟶ C) :
     multiplicativeSimplices R B ⟶ multiplicativeSimplices R C :=
-  Functor.whiskerLeft (EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).op
+  Functor.whiskerLeft (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).op
     (convolutionTargetNatTrans R g)
 
 lemma multiplicativeSimplices_obj_X (B : Mon (Complex R)) (n : SimplexCategoryᵒᵖ) :
     ((multiplicativeSimplices R B).obj n).X =
-      homComplex R (EInfinity.AlexanderWhitney.cochains R (SSet.stdSimplex.obj n.unop)) B.X := rfl
+      homComplex R (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains R (SSet.stdSimplex.obj n.unop)) B.X := rfl
 
 def multiplicativeMappingSimplices (A B : Mon (Complex R)) : SSet.{u} :=
   multiplicativeSimplices R B ⋙ coyoneda.obj (Opposite.op A)

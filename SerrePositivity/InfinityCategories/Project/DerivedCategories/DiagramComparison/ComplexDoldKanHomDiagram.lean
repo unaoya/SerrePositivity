@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DoldKanClosedPostcomposition
-public import SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPostcomposition
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ComplexPinchedPostcomposition
 
 /-!
 概要：複体の Γ Hom 関手を、同じ閉射圏の豊穣 Hom 関手と全自然同型で結ぶ。
@@ -27,15 +27,15 @@ def complexDoldKanHomFunctor (P : Complex A) : Complex A ⥤ SSet.{u} :=
 
 /-- 指定 Γ 同型を、豊穣 Hom と元の複体の Hom の全関手同型にする。 -/
 def complexDoldKanHomIso (P : Complex A) :
-    SerrePositivity.EInfinity.ComplexLimits.complexToClosed A ⋙
+    _root_.SerrePositivity.ComplexLimits.complexToClosed A ⋙
       (SimplicialCategory.sHomFunctor (ClosedCategory A (Complex A))).obj
         (op (ForgetEnrichment.of (Complex A) P)) ≅ complexDoldKanHomFunctor A P :=
   NatIso.ofComponents (fun Q => doldKanSimplicialHomIso (R := A)
     (ForgetEnrichment.of (Complex A) P) (ForgetEnrichment.of (Complex A) Q)) (by
       intro Q T f
       have h := doldKanSimplicialHomIso_postcomposition A (Complex A) P Q T
-        ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map f)
-      rw [SerrePositivity.EInfinity.ComplexLimits.complexToClosed_postcomposition] at h
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map f)
+      rw [_root_.SerrePositivity.ComplexLimits.complexToClosed_postcomposition] at h
       exact h)
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

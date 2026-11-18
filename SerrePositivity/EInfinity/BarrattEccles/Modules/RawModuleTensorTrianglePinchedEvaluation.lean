@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementPinchedEvaluationValues
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorTrianglePieces
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTrianglePieces
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorTrianglePieces
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.DGWalkingHomPinchedGeneral
 
 /-!
@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -34,7 +34,7 @@ lemma strictRawModuleTensorElementPinchedMap_simplex_evaluation {n : ℕ}
     (x : dgAlgebraCategory A ((assocForget A).obj X)) :
     ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c).val.map
       (moduleEvaluationDG A _ x) =
-    ((normalizedTensorElementPinchedMap A
+    ((_root_.SerrePositivity.ComplexLimits.normalizedTensorElementPinchedMap A
       ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
       ((moduleEvaluation A _ x).obj Q)).app (op ⦋n⦌)
       (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x)).val :=
@@ -53,15 +53,15 @@ lemma strictRawModuleTensorTrianglePinched_evaluation {n : ℕ}
     (x : dgAlgebraCategory A ((assocForget A).obj X)) :
     (strictRawModuleTensorTrianglePinched A X P Q c τ).toSimplexData.map
       (moduleEvaluationDG A _ x) =
-    (normalizedTensorTrianglePinched A
+    (_root_.SerrePositivity.ComplexLimits.normalizedTensorTrianglePinched A
       ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
       ((moduleEvaluation A _ x).obj Q)
       (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x) τ).toSimplexData :=
   (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map_pullback
     ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c).val.toSimplexData
-    (moduleEvaluationDG A _ x) (coneTriangleBackIndex τ)).trans
+    (moduleEvaluationDG A _ x) (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ)).trans
       (congrArg (fun s : Simplex A (Complex A) (n + 1) =>
-        s.toSimplexData.pullback (coneTriangleBackIndex τ))
+        s.toSimplexData.pullback (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ))
         (strictRawModuleTensorElementPinchedMap_simplex_evaluation A X P Q c x))
 
 end SerrePositivity.EInfinity.BarrattEccles

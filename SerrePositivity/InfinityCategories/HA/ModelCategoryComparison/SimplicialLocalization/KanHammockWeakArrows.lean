@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockSourceFunctor
-public import SerrePositivity.EInfinity.Hammock.CoherentComponents
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.CoherentComponents
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakArrowRoundTripComposition
 
 /-!
@@ -19,14 +19,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories
+open _root_.CategoryTheory _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.InfinityCategories
 open _root_.SerrePositivity.SimplicialModel
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y)
   (hf : C.weakEquivalences f)
 
 def kanHammockBackward : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y ⟶
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X :=
-  (exInfinityEnrichedUnit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)).forget.map
+  (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinityEnrichedUnit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)).forget.map
     (ForgetEnrichment.homOf SSet.{u} (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C) (X := Y) (Y := X)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf))
 
@@ -34,7 +34,7 @@ lemma kanHammock_source_homotopy :
     Nonempty (SSet.Homotopy
       (eHomEquiv SSet (𝟙 ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X)))
       (eHomEquiv SSet ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).map f ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockBackward C f hf))) := by
-  let U := (exInfinityEnrichedUnit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)).forget
+  let U := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinityEnrichedUnit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)).forget
   let a := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockSourceFunctor C).map f
   let b := ForgetEnrichment.homOf SSet.{u} (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C) (X := Y) (Y := X)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf)
@@ -59,7 +59,7 @@ lemma kanHammock_target_homotopy :
     Nonempty (SSet.Homotopy
       (eHomEquiv SSet (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockBackward C f hf ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).map f))
       (eHomEquiv SSet (𝟙 ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y)))) := by
-  let U := (exInfinityEnrichedUnit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)).forget
+  let U := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinityEnrichedUnit (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C)).forget
   let a := (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockSourceFunctor C).map f
   let b := ForgetEnrichment.homOf SSet.{u} (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C) (X := Y) (Y := X)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf)
@@ -94,7 +94,7 @@ lemma kanHammockSourceFunctor_weak_invertible :
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a b).toTruncated
       _ = SSet.Truncated.HomotopyCategory.homMk
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj X))).toTruncated :=
-        (coherentEdge_homMk_eq_of_homotopy _ _ hu).symm
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.coherentEdge_homMk_eq_of_homotopy _ _ hu).symm
       _ = 𝟙 _ := by simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id, SSet.Edge.toTruncated_id,
         SSet.Truncated.HomotopyCategory.homMk_id]
   · calc
@@ -103,7 +103,7 @@ lemma kanHammockSourceFunctor_weak_invertible :
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct b a).toTruncated
       _ = SSet.Truncated.HomotopyCategory.homMk
           (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor C).obj Y))).toTruncated :=
-        coherentEdge_homMk_eq_of_homotopy _ _ hc
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.coherentEdge_homMk_eq_of_homotopy _ _ hc
       _ = 𝟙 _ := by simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id, SSet.Edge.toTruncated_id,
         SSet.Truncated.HomotopyCategory.homMk_id]
 

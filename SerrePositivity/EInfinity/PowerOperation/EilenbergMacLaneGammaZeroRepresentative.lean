@@ -26,7 +26,7 @@ lemma gammaPiZeroTruncationEquiv_mk (M : Complex A)
     (x : (gammaModule A M).obj (Opposite.op ⦋0⦌)) :
     gammaPiZeroTruncationEquiv A M (SSet.π₀.mk x) =
       (chainZeroClass (M.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom
-        ((ComplexLimits.gammaDegreeZeroIso
+        ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso
           (M.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom x) := by
   let L := M.truncLE' (ComplexShape.embeddingUpIntLE 0)
   let W := gammaModule A M
@@ -45,8 +45,8 @@ lemma gammaPiZeroTruncationEquiv_mk (M : Complex A)
   rw [mooreDegreeZeroIso_eq]
   change (homologyMap c.hom 0).hom
     ((chainZeroClass ((normalizedMooreComplex (ModuleCat A)).obj W)).hom
-      ((ComplexLimits.mooreDegreeZeroIso W).inv.hom x)) =
-    (chainZeroClass L).hom (c.hom.f 0 ((ComplexLimits.mooreDegreeZeroIso W).inv.hom x))
+      ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).inv.hom x)) =
+    (chainZeroClass L).hom (c.hom.f 0 ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).inv.hom x))
   exact h
 
 end SerrePositivity.EInfinity.PowerOperation

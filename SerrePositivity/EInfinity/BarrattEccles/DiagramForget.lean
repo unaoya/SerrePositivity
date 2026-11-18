@@ -30,7 +30,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 規約：添字の対象と射を変更しない。
 使われ方：一般図式の底の比較。 -/
 def forget : (K ⥤ (operad A).Algebra) ⥤ (K ⥤ Complex A) :=
-  (Functor.whiskeringRight K _ _).obj (Operad.Algebra.forget (operad A))
+  (Functor.whiskeringRight K _ _).obj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
 
 /-- 概要：複体図式の頂点ごとの擬同型のクラス（Hovey §2.3）。
 方針：すべての評価で擬同型を要求する。

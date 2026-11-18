@@ -23,8 +23,8 @@ variable (C : Type u) [Category.{v} C] [ModelCategory C]
 規約：同じ元の包含自身。使われ方：全 C の指定局所化への Hom 比較。 -/
 lemma modelCofibrantToModel_colimitMap_weak
     (X Y : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCofibrantRelativeCategory C).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C) X Y) :=
-  _root_.SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C) X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelSmallCounit C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelSmallCounit_weak C)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCounit C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCounit_weak C) X Y
 
@@ -33,8 +33,8 @@ lemma modelCofibrantToModel_colimitMap_weak
 規約：元の置換関手自身。使われ方：同じ Hom 比較の逆側。 -/
 lemma modelToCofibrant_colimitMap_weak
     (X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C) X Y) :=
-  _root_.SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C) X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCounit C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCounit_weak C)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelSmallCounit C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelSmallCounit_weak C) X Y
 
@@ -54,8 +54,8 @@ include r in
 規約：同じ元の相対包含自身。使われ方：元の bifibrant frame の弱比較。 -/
 lemma modelBifibrantToModel_colimitMap_weak
     (X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap modelBifibrantToModelRelative X Y) := by
-  rw [modelBifibrantToModelRelative, _root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap_comp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap modelBifibrantToModelRelative X Y) := by
+  rw [modelBifibrantToModelRelative, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap_comp]
   exact (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrant_colimitMap_weak r X Y).comp
     (modelCofibrantToModel_colimitMap_weak C _ _)
 

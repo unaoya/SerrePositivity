@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
@@ -41,9 +41,9 @@ lemma cofibrantAlgebraDKHigherPiZeroEquiv_eq :
   let D := (cofibrantAlgebraInclusion A).obj Y
   let raw := cofibrantAlgebraDKMappingSpaceComponentsIso A x y
   let mh := mappingSpaceReducedHammockComponentsIso A B D
-  let native := AnodyneComponents.iso
+  let native := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) x y)
-  let alg := AnodyneComponents.iso (cofibrantAlgebraDKHammockComparisonIso A x y)
+  let alg := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso (cofibrantAlgebraDKHammockComparisonIso A x y)
   let v := algebraReducedHammockPiZeroValue A B D
   apply Equiv.ext
   intro z
@@ -52,10 +52,10 @@ lemma cofibrantAlgebraDKHigherPiZeroEquiv_eq :
   have hh := ConcreteCategory.congr_hom
     (cofibrantAlgebraDKMappingSpaceComponentsIso_hammock A x y) z
   change mh.hom (raw.hom z) = alg.hom z at hh
-  have hf := congrArg AnodyneComponents.map
+  have hf := congrArg _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map
     (cofibrantAlgebraDKHammockComparisonIso_factorization A x y)
-  simp only [AnodyneComponents.map_comp, AnodyneComponents.map_actual,
-    ← AnodyneComponents.iso_hom] at hf
+  simp only [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map_comp, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.map_actual,
+    ← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AnodyneComponents.iso_hom] at hf
   have hfp := ConcreteCategory.congr_hom hf z
   change alg.hom z = SSet.mapπ₀ (cofibrantAlgebraHammockInclusionMap A x y)
     (native.hom z) at hfp

@@ -1,0 +1,9 @@
+number,status,declarations,reason,axioms,check,partial_kind
+B.1,partial,SerrePositivity.CommutativeAlgebra.isUniversalHomeomorphism_bijective_of_perfect_reduced @ SerrePositivity/CommutativeAlgebra/UniversalHomeomorphism/Basic.lean:528,"原典 PDF p.38, y=237.6。完全標数 p の環 A と被約環 B に対するアフィン普遍同相では環準同型が全単射になる。絶対弱正規性の判定のアフィン完全環の場合で、一般の被約スキーム・代数空間の定義や正規化の構成までは含まない。",静的なソース照合。公理の閉包は未計測。,theorem.B.1 / 宣言の型,special
+B.2,none,,"原典 PDF p.38, y=360.8。weak normalization・universal homeomorphism・subintegral・reducedの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.B.2 / review/check/none-search.csv,
+B.3,partial,SerrePositivity.CommutativeAlgebra.IsUniversalHomeomorphism @ SerrePositivity/CommutativeAlgebra/UniversalHomeomorphism/Basic.lean:45,"原典 PDF p.38, y=558.9。環射の整性・素点での全単射性・剰余体の純非分離性により Spec の普遍同相を表す。単射を入力にすれば weakly subintegral な拡大の条件に対応する。最大のそのような部分拡大の構成は含まない。",静的なソース照合。公理の閉包は未計測。,theorem.B.3 / 宣言の型,component
+B.4,none,,"原典 PDF p.38, y=738.7。weak normalization・universal homeomorphism・subintegral・reducedの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.B.4 / review/check/none-search.csv,
+B.5,none,,"原典 PDF p.39, y=272.7。weak normalization・universal homeomorphism・subintegral・reducedの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.B.5 / review/check/none-search.csv,
+B.6,none,,"原典 PDF p.39, y=431.6。weak normalization・universal homeomorphism・subintegral・reducedの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.B.6 / review/check/none-search.csv,
+B.7,none,,"原典 PDF p.40, y=266.8。weak normalization・universal homeomorphism・subintegral・reducedの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.B.7 / review/check/none-search.csv,
+B.8,none,,"原典 PDF p.40, y=340.3。weak normalization・universal homeomorphism・subintegral・reducedの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.B.8 / review/check/none-search.csv,

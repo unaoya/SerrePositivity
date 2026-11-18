@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteEmbedding
-public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransIso
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DerivedNatTransIso
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitProbeFunctor
 
 /-!
@@ -26,35 +26,35 @@ variable (A : Type u) [CommRing A]
 
 lemma algebraCAlgReplacementNerve_forget :
     algebraCAlgReplacementNerve A ≫ cofibrantAlgebraForgetNerve A =
-      nerveMap (framedLimitProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) := by
+      nerveMap (framedLimitProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro Γ
   change (Γ ⋙ cofibrantAlgebraDKReplacement A) ⋙
-    (cofibrantAlgebraDKInclusion A ⋙ Operad.Algebra.forget (operad A)) = _
+    (cofibrantAlgebraDKInclusion A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) = _
   rw [Functor.assoc, ← Functor.assoc (cofibrantAlgebraDKReplacement A),
     cofibrantAlgebraDKReplacement_comp_inclusion]
   rfl
 
 def algebraUnderlyingDerivedSource : nerve (operad A).Algebra ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
-  nerveMap (Operad.Algebra.forget (operad A)) ≫ ComplexLimits.complexOrdinaryDerivedSource A
+  nerveMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
 
 def algebraReplacementUnderlyingDerivedIso :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgReplacementNerve A ≫ cofibrantAlgebraUnderlyingDerivedSource A)
       (algebraUnderlyingDerivedSource A) := by
   let η := Functor.whiskerRight (framedLimitProbeComparisonNatTrans A)
-    (Operad.Algebra.forget (operad A))
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
   have hη (X : (operad A).Algebra) : QuasiIso (η.app X) :=
     framedLimitProbeComparison_quasiIso A X
   have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-      (nerveMap (framedLimitProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
-        ComplexLimits.complexOrdinaryDerivedSource A) (algebraUnderlyingDerivedSource A) := by
+      (nerveMap (framedLimitProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) (algebraUnderlyingDerivedSource A) := by
     simpa only [Functor.id_comp, algebraUnderlyingDerivedSource] using
-      ComplexLimits.complexOrdinaryDerivedNatTransIso A η hη
+      _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransIso A η hη
   have he : algebraCAlgReplacementNerve A ≫ cofibrantAlgebraUnderlyingDerivedSource A =
-      nerveMap (framedLimitProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
-        ComplexLimits.complexOrdinaryDerivedSource A := by
+      nerveMap (framedLimitProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
     rw [cofibrantAlgebraUnderlyingDerivedSource, ← Category.assoc,
       algebraCAlgReplacementNerve_forget]
   exact eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) he) ≪≫ e

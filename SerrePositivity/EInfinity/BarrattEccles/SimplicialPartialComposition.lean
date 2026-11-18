@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwapFaces
-public import SerrePositivity.EInfinity.Shuffle.Simplices
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.Shuffle.Simplices
 
 /-!
 # Barratt–Eccles の単体的部分合成
@@ -60,11 +60,11 @@ def simplicialPartialComposition (m n : ℕ) (i : Fin (m + 1)) :
 lemma simplicialPartialComposition_shuffle (m n : ℕ) (i : Fin (m + 1)) {p q : ℕ}
     (s : ShufflePath p q) (x : (simplicial (m + 1)) _⦋p⦌) (y : (simplicial n) _⦋q⦌) :
     (simplicialPartialComposition m n i).app _
-        (Shuffle.simplex (simplicial (m + 1)) (simplicial n) s x y) =
+        (_root_.SerrePositivity.SimplicialChains.Shuffle.simplex (simplicial (m + 1)) (simplicial n) s x y) =
       shuffleSimplex m n i s x y := by
   apply (simplexEquiv (m + n) (p + q)).injective
   funext j
-  simp only [Shuffle.simplex, simplexEquiv_simplicialPartialComposition,
+  simp only [_root_.SerrePositivity.SimplicialChains.Shuffle.simplex, simplexEquiv_simplicialPartialComposition,
     simplexEquiv_map, simplexEquiv_shuffleSimplex]
   rfl
 

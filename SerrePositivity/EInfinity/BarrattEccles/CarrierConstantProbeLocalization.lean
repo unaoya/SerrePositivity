@@ -36,7 +36,7 @@ def carrierConstantProbeLocalizedNatIso :
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (K ⥤ (Complex A))).Q
     carrierFramedLimitProbeFunctor A ⋙ Functor.const K ⋙ Q ≅ Functor.const K ⋙ Q := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
   let T := Functor.const K ⋙ Q

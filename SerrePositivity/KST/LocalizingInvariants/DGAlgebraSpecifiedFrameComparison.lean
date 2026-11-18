@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenFrameCoherent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinityVertices
-public import SerrePositivity.EInfinity.DGAlgebra.FrameComparison
+public import SerrePositivity.DifferentialGraded.Algebras.FrameComparison
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.NerveULiftHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveAsSmall
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource
@@ -25,7 +25,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
 
 /-- 同じ全対象・全射の二つの宇宙表示の実 nerve 同型。 -/
 def nativeModelInfinityPresentationIso :
@@ -83,7 +83,7 @@ def nativeFrameLocalizationComparison :
     _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.CoherentLocalizationComparison
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))))
       (nativeModelQuasiIsoInfinityMap R) :=
-  EInfinity.DGAlgebra.frameLocalizationComparison R (nativeModelQuasiIsoInfinityMap R)
+  _root_.SerrePositivity.DGAlgebra.frameLocalizationComparison R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R)
 
 /-- 元の cell 源と任意標的の選択 right frame は、元の局所化の pinched Hom と同値。 -/
@@ -92,7 +92,7 @@ def nativeCellSpecifiedFramePinchedEquivalence (A B : Mon (Complex R)) :
       ((nativeCellChosenRightLargeKanFunctor R A).obj B).obj
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (quasiIsoInfinityVertex R (cellResolution R A))
         (quasiIsoInfinityVertex R B)) := by
-  exact EInfinity.DGAlgebra.framePinchedEquivalence R (nativeModelQuasiIsoInfinityMap R)
+  exact _root_.SerrePositivity.DGAlgebra.framePinchedEquivalence R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R) (cellResolution R A)
     (cellResolution_isCofibrant R A) B
 
@@ -101,12 +101,12 @@ def nativeCellSpecifiedFramePinchedEquivalence (A B : Mon (Complex R)) :
 def nativeCellFrameHammockCoherentComparison (A : Mon (Complex R)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram
-        ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
-        (EInfinity.DGAlgebra.rightFrameFamily R) 0)
+        ((_root_.SerrePositivity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
+        (_root_.SerrePositivity.DGAlgebra.rightFrameFamily R) 0)
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockCoherentDiagram
-        ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
-        (EInfinity.DGAlgebra.rightFrameFamily R) 6) :=
-  (EInfinity.DGAlgebra.frameCoherentComparison R (nativeModelQuasiIsoInfinityMap R)
+        ((_root_.SerrePositivity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
+        (_root_.SerrePositivity.DGAlgebra.rightFrameFamily R) 6) :=
+  (_root_.SerrePositivity.DGAlgebra.frameCoherentComparison R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R) (cellResolution R A)
     (cellResolution_isCofibrant R A)).1
 
@@ -115,8 +115,8 @@ lemma nativeCellSpecifiedFramePinchedEquivalence_unit_Q (A B : Mon (Complex R))
     (f : cellResolution R A ⟶ B) :
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockUnitPoint
-        ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
-        (EInfinity.DGAlgebra.rightFrameFamily R) f 0 ≫
+        ((_root_.SerrePositivity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
+        (_root_.SerrePositivity.DGAlgebra.rightFrameFamily R) f 0 ≫
           (nativeCellSpecifiedFramePinchedEquivalence R A B).hom) =
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
@@ -128,7 +128,7 @@ lemma nativeCellSpecifiedFramePinchedEquivalence_unit_Q (A B : Mon (Complex R))
         ((nativeFrameLocalizationComparison R).pinchedEquivalence
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) (cellResolution R A)))
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) B))).hom) :=
-  EInfinity.DGAlgebra.framePinchedEquivalence_unit_Q R (nativeModelQuasiIsoInfinityMap R)
+  _root_.SerrePositivity.DGAlgebra.framePinchedEquivalence_unit_Q R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R) (cellResolution R A)
     (cellResolution_isCofibrant R A) B f
 

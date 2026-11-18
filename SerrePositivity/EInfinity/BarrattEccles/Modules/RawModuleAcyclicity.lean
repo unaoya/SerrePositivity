@@ -50,7 +50,7 @@ lemma strictRawModuleBiprodInl_quasiIso (X : (operad A).Algebra)
 文献：Keller, Theorem 3.2 (1) の構成の成分。 -/
 lemma strictRawModuleFibrations_llp_quasiIso (X : (operad A).Algebra)
     {M N : strictRawModuleCategory A X} (f : M ⟶ N)
-    (hf : ((projectiveFibrations A).inverseImage (strictRawModuleUnderlying X)).llp f) :
+    (hf : ((_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A).inverseImage (strictRawModuleUnderlying X)).llp f) :
     moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) f := by
   let D := dgAlgebraCategory A ((assocForget A).obj X)
   let K := moduleDiskCover A D N
@@ -68,7 +68,7 @@ lemma strictRawModuleFibrations_llp_quasiIso (X : (operad A).Algebra)
     rw [h₁, h₂]
     simp only [Category.id_comp, zero_comp, add_zero]
 
-  have hp : (projectiveFibrations A).inverseImage (strictRawModuleUnderlying X) p := by
+  have hp : (_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A).inverseImage (strictRawModuleUnderlying X) p := by
     intro n y
     obtain ⟨z, hz⟩ := moduleDiskCoverπ_degreewiseSurjective A D N
       (Opposite.op DGAlgebraPoint.star) n y

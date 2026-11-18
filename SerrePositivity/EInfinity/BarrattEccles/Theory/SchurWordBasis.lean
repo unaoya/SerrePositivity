@@ -78,7 +78,7 @@ abbrev SchurWordIndex (I : ℤ → Type u) (i : ℤ) :=
 /-- A word basis for each degree of the actual free Barratt–Eccles algebra carrier. -/
 def schurWordBasis {K : Complex A} {I : ℤ → Type u}
     (b : ∀ i, Module.Basis (I i) A (K.X i)) (i : ℤ) :
-    Module.Basis (SchurWordIndex I i) A (((schurFunctor A (sequence A)).obj K).X i) :=
+    Module.Basis (SchurWordIndex I i) A (((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K).X i) :=
   schurDegreeBasis (sequence A) K i (schurWordPieceBasis b i)
 
 /-- The finite list of homogeneous inputs of a Schur word basis index. -/

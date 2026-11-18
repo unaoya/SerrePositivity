@@ -41,7 +41,7 @@ local instance : HasColimitsOfSize.{0, u} (Complex A) :=
 規約：同じ生成分解と重みを全対象・全射に使う。
 使われ方：定値図式の局所化後の射の計算。 -/
 def constantDiagramReplacement : (Complex A) ⥤ K ⥤ (Complex A) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj ⋙
     Realization.family ⋙
       (Functor.whiskeringLeft K SSet.{u} (Complex A)).obj (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
@@ -51,7 +51,7 @@ def constantDiagramReplacement : (Complex A) ⥤ K ⥤ (Complex A) := by
 規約：元の複体の射に厳密に自然。
 使われ方：定値図式とその cofibrant 置換を局所化で比較する。 -/
 def constantDiagramComparison : constantDiagramReplacement A K ⟶ Functor.const K := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   refine
     { app := fun Y => _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison (q.obj.obj Y) K
@@ -68,7 +68,7 @@ def constantDiagramComparison : constantDiagramReplacement A K ⟶ Functor.const
 lemma constantDiagramReplacement_isCofibrant (Y : (Complex A)) :
     let := projectiveModelCategory A K
     IsCofibrant ((constantDiagramReplacement A K).obj Y) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   apply _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealization_isCofibrant K (q.obj.obj Y) (q.cofibrant Y)
@@ -83,7 +83,7 @@ lemma constantDiagramReplacement_isCofibrant (Y : (Complex A)) :
 使われ方：定値図式と置換図式を同じ局所化対象へ同定する。 -/
 lemma constantDiagramComparison_quasiIso (Y : (Complex A)) (k : K) :
     QuasiIso (((constantDiagramComparison A K).app Y).app k) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameComparison_weakEquivalence (q.obj.obj Y) K
     (q.cofibrant Y) (q.atObject Y).homotopicallyConstant _
@@ -106,7 +106,7 @@ lemma constantDiagramComparison_weakEquivalence (Y : (Complex A)) :
 lemma constantDiagramReplacement_map_quasiIso {Y Z : (Complex A)} (f : Y ⟶ Z)
     (hf : QuasiIso f) (k : K) :
     QuasiIso (((constantDiagramReplacement A K).map f).app k) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   have : WeakEquivalence (((constantDiagramComparison A K).app Y).app k) :=
     ⟨constantDiagramComparison_quasiIso A K Y k⟩
   have : WeakEquivalence (((constantDiagramComparison A K).app Z).app k) :=
@@ -123,11 +123,11 @@ lemma constantDiagramReplacement_map_quasiIso {Y Z : (Complex A)} (f : Y ⟶ Z)
 規約：図式の自然変換と重みの自然変換を全成分で同定する。
 使われ方：定値図式を始域とする導来 Hom の重み付き表示。 -/
 def constantDiagramHomEquiv (Y : (Complex A)) (F : K ⥤ (Complex A)) :
-    let := SerrePositivity.EInfinity.projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let B := (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y
     ((constantDiagramReplacement A K).obj Y ⟶ F) ≃
       (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K ⟶ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseFrameHom K B).obj F) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseRealizationAdjunction K
     ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y)).homEquiv _ F
 

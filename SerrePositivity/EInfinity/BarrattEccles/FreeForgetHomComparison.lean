@@ -32,15 +32,15 @@ def freeHomFromLeft : (freeProbeFunctor A).op ⋙ sourceFrameHom A ⟶ freeHomMi
 
 def freeHomFromRight : complexSourceFrameHom A ⋙
     (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-      (Operad.Algebra.forget (operad A)) ⟶ freeHomMiddle A := by
-  let := projectiveModelCategory A
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ⟶ freeHomMiddle A := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   let qC := cosimplicialResolutionFamily (carrierProbeFactorization A)
-  let Q := ComplexLimits.framedLimitProbeFunctor A
-  let ε := ComplexLimits.framedLimitProbeComparisonNatTrans A
+  let Q := _root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A
+  let ε := _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparisonNatTrans A
   let e := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
     (Q ⋙ qC.obj) (𝟭 (operad A).Algebra)
-  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionHomSourceRestriction qC Q ε (Operad.Algebra.forget (operad A)) ≫
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionHomSourceRestriction qC Q ε (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
     e.inv ≫ FrameOverFunctor.homRight (mappingCofibrantFactorization A)
       (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
       (freeProbeFunctor A) (freeHomImageFrame A) (freeHomImageAugmentation A)

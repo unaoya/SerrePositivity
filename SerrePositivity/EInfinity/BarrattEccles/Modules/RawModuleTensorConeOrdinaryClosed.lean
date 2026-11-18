@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -28,7 +28,7 @@ lemma strictRawModuleTensorConeData_hom_ordinary_closed {n : ℕ}
     (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hab : a ≤ b) :
     HEq ((strictRawModuleTensorConeData A X P Q c).hom I a b 0 hI ha hb hk)
       (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ ((strictRawModuleTensorElementDiagram A X P Q).map
-          (c.map (homOfLE ((coneTailOrderHom n).monotone hab))))).val := by
+          (c.map (homOfLE ((_root_.SerrePositivity.ComplexLimits.coneTailOrderHom n).monotone hab))))).val := by
   exact (strictRawModuleTensorConeData_hom_ordinary A X P Q c I a b 0 hI ha hb hk ha0).trans
     (heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero _))
 

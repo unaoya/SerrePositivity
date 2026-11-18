@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.CosimplicialModuleCone
-public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StrictHomology
 
 /-!
 概要：元のweighted Totセルの全図式射・全高次単体の評価族。
@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -39,7 +39,7 @@ def cosimplicialModuleCone_homology (M : CosimplicialObject (ModuleCat.{u} A)) (
     derivedInfinityHomology A i (cosimplicialModuleCone A M).vertex ≃ₗ[A]
       ((discreteCochainFunctor A).obj M).homology i := by
   rw [cosimplicialModuleCone_vertex]
-  exact ((complexOrdinaryDerivedSourceHomologyIso A i).app
+  exact ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A i).app
     ((discreteCochainFunctor A).obj M)).toLinearEquiv
 
 end SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization

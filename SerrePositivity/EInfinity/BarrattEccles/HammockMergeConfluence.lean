@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockReduction
-public import SerrePositivity.EInfinity.Hammock.MergeMergeConfluence
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MergeMergeConfluence
 
 /-!
 # 任意の可換環上の元の隣接合成の局所合流
@@ -36,7 +36,7 @@ lemma algebraHammockMergeRaw_reduction {k : ℕ} (d : Fin (k + 2) → _root_.Ser
     algebraHammockRawReduction A X Y ⟨⟨k + 2, d⟩, τ⟩
       (algebraHammockMergeRaw A X Y d p hp τ) := by
   let := modelCategory A
-  exact Hammock.Reduction.merge d p hp τ
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Reduction.merge d p hp τ
 
 /-- 同じ位置・接した位置・離れた位置の合成を全次数で同時に扱う。 -/
 lemma algebraHammockMergeMerge_join {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
@@ -49,6 +49,6 @@ lemma algebraHammockMergeMerge_join {k : ℕ} (d : Fin (k + 2) → _root_.SerreP
       Relation.ReflGen (algebraHammockRawReduction A X Y)
         (algebraHammockMergeRaw A X Y d q hq τ) r := by
   let := modelCategory A
-  exact Hammock.merge_merge_join (weakEquivalences (operad A).Algebra) X Y d p q hp hq τ
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.merge_merge_join (weakEquivalences (operad A).Algebra) X Y d p q hp hq τ
 
 end SerrePositivity.EInfinity.BarrattEccles

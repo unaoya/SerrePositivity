@@ -24,7 +24,7 @@ lemma moduleTensorEvaluationFrameIso_augmentation (P : ModuleCategory A D) (x : 
     (moduleTensorEvaluationFrameIso A D P x).hom.app n ≫
       (moduleEvaluation A D x).map ((moduleTensorSimplicesAugmentation A D P).app n) =
     (𝟙 ((moduleEvaluation A D x).obj P) ⊗ₘ
-      AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)) ≫
+      _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)) ≫
         (ρ_ ((moduleEvaluation A D x).obj P)).hom := by
   rw [moduleTensorSimplicesAugmentation_eval]
   change (signedSwap _ _).hom ≫ (_ ≫ _) = _

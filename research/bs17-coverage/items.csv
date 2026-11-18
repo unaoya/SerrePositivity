@@ -1,0 +1,172 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+1.1,Theorem,Witt ベクトル・アフィン Grassmannian の射影性,1,,,,high,,,,BS17
+1.2,Theorem,完全スキーム上の v 降下,1,,,,high,,,,BS17
+1.3,Theorem,the · perfection · proper · surjective · assume,1,,,,high,,,,BS17
+1.4,Remark,previous · version · this · was · stated,1,,,,high,,,,BS17
+2.1,Definition,v 被覆と細分,2,,,,high,,,,BS17
+2.2,Remark,the · name · v-cover · besides · similarity,2,,,,high,,,,BS17
+2.3,Example,v 被覆の例,2,,,,high,,,,BS17
+2.4,Theorem,有限表示 v 被覆の開被覆–固有細分,2,,,,high,,,,BS17
+2.5,Definition,固有全射の帰納的レベル,2,,,,high,,,,BS17
+2.6,Lemma,有限の帰納的レベルの存在,2,,,,high,,,,BS17
+2.7,Definition,h 位相,2,,,,high,,,,BS17
+2.8,Proposition,presheaf · sets · h-sheaf · and · only,2,,,,high,,,,BS17
+2.9,Theorem,空間値 h 降下の判定,2,,,,high,,,,BS17
+2.10,Lemma,合成と普遍降下,2,,,,high,,,,BS17
+2.11,Corollary,sheaf · abelian · groups · assume · for,2,,,,high,,,,BS17
+2.12,Lemma,アフィン v 被覆の有限表示模型,2,,,,high,,,,BS17
+2.13,Definition,for · qcqs · base · the · v-topology,2,,,,high,,,,BS17
+2.14,Corollary,presheaf · n-truncated · spaces · for · assume,2,,,,high,,,,BS17
+2.15,Corollary,sheaf · abelian · groups · assume · for,2,,,,high,,,,BS17
+3.1,Definition,完全スキームと完全化,3,,,,high,,,,BS17
+3.2,Definition,perf · the · category · perfect · qcqs,3,,,,high,,,,BS17
+3.3,Remark,avoid · set-theoretic · issues · the · defining,3,,,,high,,,,BS17
+3.4,Lemma,not · necessarily · qcqs · over · the,3,,,,high,,,,BS17
+3.5,Lemma,for · any · qcqs · pullback · along,3,,,,high,,,,BS17
+3.6,Lemma,and · line · bundle · ample · only,3,,,,high,,,,BS17
+3.7,Theorem,any · with · perfection · perf · equivalence,3,,,,high,,,,BS17
+3.8,Lemma,普遍同相と完全化,3,,,,high,,,,BS17
+3.9,Remark,the · context · this · paper · different,3,,,,high,,,,BS17
+3.10,Definition,perfect · the · perfectly · finitely · presented,3,,,,high,,,,BS17
+3.11,Proposition,perf · the · conditions · are · covering,3,,,,high,,,,BS17
+3.12,Proposition,cofiltered · inverse · system · perf · with,3,,,,high,,,,BS17
+3.13,Proposition,perfectly · finitely · presented · perf · any,3,,,,high,,,,BS17
+3.14,Definition,perfectly · finitely · presented · perf · proper,3,,,,high,,,,BS17
+3.15,Corollary,perfectly · finitely · presented · perf · with,3,,,,high,,,,BS17
+3.16,Lemma,完全環上の正次数 Tor の消滅,3,,,,high,,,,BS17
+3.17,Remark,the · shows · any · quotient · perfect,3,,,,high,,,,BS17
+3.18,Lemma,pullback · diagram · perf · for · any,3,,,,high,,,,BS17
+4.1,Theorem,Witt ベクトル束の v コホモロジーと v-stack,4,,,,high,,,,BS17
+4.2,Remark,this · the · v-topology · perf · subcanonical,4,,,,high,,,,BS17
+4.3,Remark,warn · the · reader · does · not,4,,,,high,,,,BS17
+4.4,Corollary,fix · perfect · qcqs · and · vect,4,,,,high,,,,BS17
+4.5,Proposition,presheaf · spaces · perf · the · defined,4,,,,high,,,,BS17
+4.6,Lemma,完全化した固有変更の fppf コホモロジー,4,,,,high,,,,BS17
+5.1,Construction,for · any · pic · the · groupoid,5,,,,high,,,,BS17
+5.2,Proposition,the · functor · pic · stack · v-topology,5,,,,high,,,,BS17
+5.3,Proposition,natural · functorial · det · pic · connective,5,,,,high,,,,BS17
+5.4,Remark,the · determinant · pic · does · not,5,,,,high,,,,BS17
+5.5,Theorem,regular · and · closed · subscheme · the,5,,,,high,,,,BS17
+5.6,Corollary,assume · for · the · perfection · regular,5,,,,high,,,,BS17
+5.7,Theorem,natural · functorial · perf · det · connective,5,,,,high,,,,BS17
+6.1,Proposition,proper · surjective · perfectly · finitely · presented,6,,,,high,,,,BS17
+6.2,Lemma,qcqs · v-cover · each · connected · component,6,,,,high,,,,BS17
+6.3,Lemma,perfect · valuation · with · ordered · abelian,6,,,,high,,,,BS17
+6.4,Lemma,perfect · valuation · specv · proper · perfectly,6,,,,high,,,,BS17
+6.5,Remark,the · more · generally · replacing · condition,6,,,,high,,,,BS17
+6.6,Lemma,and · non-zero · divisor · complex,6,,,,high,,,,BS17
+6.7,Remark,for · perfect · valuation · exist · complexes,6,,,,high,,,,BS17
+6.8,Theorem,proper · perfectly · finitely · presented · perf,6,,,,high,,,,BS17
+6.9,Lemma,proper · surjective · perfectly · finitely · presented,6,,,,high,,,,BS17
+6.10,Corollary,proper · perfectly · finitely · presented · perfect,6,,,,high,,,,BS17
+6.11,Lemma,perfect · field · and · finite · length,6,,,,high,,,,BS17
+6.12,Remark,the · period · this · paper · was,6,,,,high,,,,BS17
+6.13,Theorem,proper · surjective · perfectly · finitely · presented,6,,,,high,,,,BS17
+6.14,Lemma,complete · nonarchimedean · field · spherically · and,6,,,,high,,,,BS17
+7.1,Definition,the · set · sequences · non-negative · integers,7,,,,high,,,,BS17
+7.2,Definition,fix · perfect · field · finitely · generated,7,,,,high,,,,BS17
+7.3,Lemma,perfect · and · finitely · generated · module,7,,,,high,,,,BS17
+7.4,Remark,one · can · compute · the · rank,7,,,,high,,,,BS17
+7.5,Lemma,and · eventually · decreasing · sequences · nonnega-,7,,,,high,,,,BS17
+7.6,Definition,for · any · perfect · finite · projective,7,,,,high,,,,BS17
+7.7,Lemma,finitely · generated · p-torsion · module · projective,7,,,,high,,,,BS17
+7.8,Lemma,perfect · and · finitely · generated · r-module,7,,,,high,,,,BS17
+7.9,Lemma,perfect · and · isogeny · finite · projective,7,,,,high,,,,BS17
+7.10,Definition,perfect · finitely · generated · p-power · torsion,7,,,,high,,,,BS17
+7.11,Proposition,the · demazure · moduli · problem · representable,7,,,,high,,,,BS17
+7.12,Remark,the · special · case · can · presented,7,,,,high,,,,BS17
+7.13,Lemma,and · the · image · dem · locus,7,,,,high,,,,BS17
+7.14,Lemma,perfect · field · and · finite-dimensional · k-vector,7,,,,high,,,,BS17
+8.1,Definition,for · any · sequence · non-negative · integers,8,,,,high,,,,BS17
+8.2,Theorem,zhu · the · functor · represented · perfection,8,,,,high,,,,BS17
+8.3,Theorem,the · functor · representable · proper · perfectly,8,,,,high,,,,BS17
+8.4,Definition,the · demazure · resolution · dem · v-sheaves,8,,,,high,,,,BS17
+8.5,Remark,the · perfectly · finitely · presented · surjective,8,,,,high,,,,BS17
+8.6,Proposition,the · functor · represents · associating · perf,8,,,,high,,,,BS17
+8.7,Example,the · case · and · each · vector,8,,,,high,,,,BS17
+8.8,Theorem,line · bundle · the · det · restriction,8,,,,high,,,,BS17
+8.9,Lemma,the · statements · are · true · about,8,,,,high,,,,BS17
+8.10,Lemma,the · line · bundle · pic · strictly,8,,,,high,,,,BS17
+8.11,Lemma,the · line · bundle · briefly · meaning,8,,,,high,,,,BS17
+(1),Equation,Witt Grassmannian の直積記述,8,,,,high,,,,BS17
+9.1,Definition,the · p-adic · loop · group · functor,9,,,,high,,,,BS17
+9.2,Proposition,the · functor · representable · affine · perfect,9,,,,high,,,,BS17
+9.3,Remark,one · can · define · and · non-perfect,9,,,,high,,,,BS17
+9.4,Definition,the · affine · grassmannian · fpqc · quotient,9,,,,high,,,,BS17
+9.5,Proposition,for · any · perfect · k-algebra · the,9,,,,high,,,,BS17
+9.6,Corollary,the · affine · grassmannian · can · written,9,,,,high,,,,BS17
+9.7,Proposition,zhu · assume · parahoric · are · canonical,9,,,,high,,,,BS17
+10.1,Proposition,the · affine · grassmannian · parametrizes · finite,10,,,,high,,,,BS17
+10.2,Definition,the · functor · perfect · k-algebras · with,10,,,,high,,,,BS17
+10.3,Proposition,short · exact · sequence · zariski · sheaves,10,,,,high,,,,BS17
+10.4,Proposition,the · extension · pushout · steinberg · along,10,,,,high,,,,BS17
+10.5,Proposition,for · any · the · representation · infinite-dimensional,10,,,,high,,,,BS17
+10.6,Question,can · one · construct · explicit · nonzero,10,,,,high,,,,BS17
+11.1,Definition,the · h-topology · perf · topology · generated,11,,,,high,,,,BS17
+11.2,Theorem,regard · perf · etc · presheaves · spaces,11,,,,high,,,,BS17
+11.3,Remark,the · follows · formally · perfection · algebra,11,,,,high,,,,BS17
+11.4,Remark,close · analogue · h-descent · for · perfect,11,,,,high,,,,BS17
+11.5,Remark,gives · fully · faithful · inclusion · perf,11,,,,high,,,,BS17
+11.6,Proposition,perfect · simplicial · commtuative · algebra · discrete,11,,,,high,,,,BS17
+11.7,Remark,the · analogous · cosimplicial · statement · false,11,,,,high,,,,BS17
+11.8,Remark,can · deduced · from · the · more,11,,,,high,,,,BS17
+11.9,Corollary,derived · with · underlying · perf · classical,11,,,,high,,,,BS17
+11.10,Lemma,the · collection · perfect · closed · colimits,11,,,,high,,,,BS17
+11.11,Remark,this · fails · and · are · perfect,11,,,,high,,,,BS17
+11.12,Theorem,h-cover · noetherian · with · derived · cech,11,,,,high,,,,BS17
+11.13,Remark,applies · all · quasi-coherent · complexes · and,11,,,,high,,,,BS17
+11.14,Definition,calg · descendable · tot · pro-isomorphism · a-modules,11,,,,high,,,,BS17
+11.15,Theorem,mat · stable · homotopy · theory · and,11,,,,high,,,,BS17
+11.16,Remark,assume · the · derived · category · abelian,11,,,,high,,,,BS17
+11.17,Lemma,composable · calg · and · are · descendable,11,,,,high,,,,BS17
+11.18,Definition,calg · descendable · index · null-homotopic · the,11,,,,high,,,,BS17
+11.19,Example,and · faithfully · flat · the · fibre,11,,,,high,,,,BS17
+11.20,Lemma,calg · descendable · and · only · index,11,,,,high,,,,BS17
+11.21,Example,discrete · and · locally · nilpotent · ideal,11,,,,high,,,,BS17
+11.22,Lemma,filtered · category · inverse · limits · over,11,,,,high,,,,BS17
+11.23,Lemma,fix · qcqs · finite · open · cover,11,,,,high,,,,BS17
+11.24,Remark,mathew · shows · faithfully · flat · discrete,11,,,,high,,,,BS17
+11.25,Proposition,h-cover · noetherian · descend- · able · the,11,,,,high,,,,BS17
+11.26,Theorem,finitely · presented · noetherian · discrete · h-cover,11,,,,high,,,,BS17
+11.27,Theorem,h-cover · perf · descendable,11,,,,high,,,,BS17
+11.28,Corollary,proper · surjective · finitely · presented · isomorphism,11,,,,high,,,,BS17
+11.29,Proposition,perfectly · finitely · presented · perfect · algebras,11,,,,high,,,,BS17
+11.30,Lemma,h-cover · perf · bounded,11,,,,high,,,,BS17
+11.31,Proposition,perfectly · finitely · presented · k-algebra · has,11,,,,high,,,,BS17
+11.32,Remark,for · any · perf · each · has,11,,,,high,,,,BS17
+11.33,Remark,for · any · perfectly · finitely · presented,11,,,,high,,,,BS17
+11.34,Remark,the · homological · properties · perfections · noetherian,11,,,,high,,,,BS17
+11.35,Corollary,kunz · noetherian · algebra · regular · and,11,,,,high,,,,BS17
+11.36,Lemma,the · perfection · finitely · presented · k-algebra,11,,,,high,,,,BS17
+(2),Equation,導来逆極限とテンソルの比較,11,,,,high,,,,BS17
+(3),Equation,切断を通した導来逆極限の比較,11,,,,high,,,,BS17
+(4),Equation,切断テンソル系からの復元,11,,,,high,,,,BS17
+11.37,Lemma,for · any · perf · and · the,11,,,,high,,,,BS17
+11.38,Lemma,topos · relatively · n-truncated · for · integer,11,,,,high,,,,BS17
+11.39,Remark,the · effectivity · hyperdescent · bit · abstract,11,,,,high,,,,BS17
+11.40,Theorem,the · functor · h-sheaf · spectra · can,11,,,,high,,,,BS17
+11.41,Proposition,the · functor · h-sheaf · spectra · convenient,11,,,,high,,,,BS17
+11.42,Notation,all · occurrences · derived · geometry · this,11,,,,high,,,,BS17
+11.43,Lemma,derived · pullback · along · induces · isomorphism,11,,,,high,,,,BS17
+11.44,Remark,consequence · and · the · formula · one,11,,,,high,,,,BS17
+11.45,Lemma,cartesian · square · qcqs · with · affine,11,,,,high,,,,BS17
+(5),Equation,完全構造層の爆発三角,11,,,,high,,,,BS17
+(6),Equation,有理 Witt 係数の爆発三角,11,,,,high,,,,BS17
+12.1,Definition,symmetric · monoidal · category · strict · the,12,,,,high,,,,BS17
+12.2,Example,fix · commutative · the · groupoid · vect,12,,,,high,,,,BS17
+12.3,Proposition,natural · symmetric · monoidal · functor · det,12,,,,high,,,,BS17
+12.4,Definition,fin · the · category · finite · pointed,12,,,,high,,,,BS17
+12.5,Construction,symmetric · monoidal · groupoid · define · monoid,12,,,,high,,,,BS17
+12.6,Remark,here · defined · actual · functor · from,12,,,,high,,,,BS17
+12.7,Definition,monoid · grouplike · the · commutative · group,12,,,,high,,,,BS17
+12.8,Definition,the · category · connective · spectra · limit,12,,,,high,,,,BS17
+12.9,Theorem,natural · equivalence · categories · mon · may-thomason,12,,,,high,,,,BS17
+12.10,Proposition,mon · k-connected · connected · the · natural,12,,,,high,,,,BS17
+12.11,Remark,group · always · grouplike · monoid · connected,12,,,,high,,,,BS17
+12.12,Corollary,the · full · subcategory · mon · reflective,12,,,,high,,,,BS17
+12.13,Definition,symmetric · monoidal · category · the · k-theory,12,,,,high,,,,BS17
+12.14,Definition,symmetric · monoidal · category · picard · groupoid,12,,,,high,,,,BS17
+12.15,Proposition,symmetric · monoidal · groupoid · picard · and,12,,,,high,,,,BS17
+12.16,Definition,commutative · the · k-theory · spectrum · vect,12,,,,high,,,,BS17
+12.17,Corollary,natural · functorial · det · pic · connective,12,,,,high,,,,BS17
+12.18,Proposition,the · natural · det · pic · presheaves,12,,,,high,,,,BS17

@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -30,7 +30,7 @@ lemma strictRawModuleTensorElementSelectedCochainAtMax_reindex_noninjective {m n
       ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) J k hJ hk = 0 := by
   let r := J.card - 1
   have hc : J.card = r + 1 := by have := Finset.card_pos.mpr hJ; dsimp only [r]; omega
-  let ε := normalizedTensorElementSelectionOfCard J r hc
+  let ε := _root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard J r hc
   let φ := ε ≫ θ
   let c' := (SimplexCategory.toCat.map θ).toFunctor ⋙ c
   have hφ : ¬Function.Injective φ.toOrderHom := by
@@ -75,7 +75,7 @@ lemma strictRawModuleTensorElementSelectedCochainAtMax_reindex_noninjective {m n
   have hy : ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c'.obj (J.max' hJ))) =
       ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c'.obj (ε.toOrderHom (Fin.last r)))) :=
     congrArg (fun i => ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c'.obj i)))
-      (normalizedTensorElementSelectionOfCard_last J r hc hJ).symm
+      (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard_last J r hc hJ).symm
   have h0 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (x := (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))) (x' := (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))) (k := k) (l := k) rfl hy rfl
   exact eq_of_heq (he.trans ((heq_of_eq hz').trans h0.symm))
 

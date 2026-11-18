@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (J : Type v) [Category.{w} J]
@@ -21,25 +21,25 @@ theorem standardParameter_constant (n : SimplexCategory) (ε : Fin 2) :
     (liftedStandardSimplexParameter J ⋙ freeNegativeChainsDiagramFunctor A J).map
       (SimplexCategory.const n ⦋1⦌ ε) =
     (standardParameterAugmentation A J).app n ≫ normalizedIntervalEndpoint A J ε := by
-  let c := (normalizedSimplexCochainContraction A ⦋0⦌).hom
+  let c := (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A ⦋0⦌).hom
   letI : IsIso c := by
     dsimp only [c]
-    rw [← SerrePositivity.EInfinity.AlexanderWhitney.cochainCounit_stdSimplex_eq_contraction]
-    exact SerrePositivity.EInfinity.AlexanderWhitney.cochainCounit_stdSimplexZero_isIso A
+    rw [← _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplex_eq_contraction]
+    exact _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplexZero_isIso A
   apply NatTrans.ext
   funext j
   change (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
     (SSet.stdSimplex.map (SimplexCategory.const n ⦋1⦌ ε)) =
-      (normalizedSimplexCochainContraction A n).hom ≫
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom ≫
         ((asIso c).inv ≫ (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
           (SSet.stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋1⦌ ε)))
   have hc : (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
       (SSet.stdSimplex.map (SimplexCategory.const n ⦋0⦌ 0)) =
-      (normalizedSimplexCochainContraction A n).hom ≫ (asIso c).inv := by
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom ≫ (asIso c).inv := by
     apply (cancel_mono c).mp
     have hi : (asIso c).inv ≫ c = 𝟙 _ := (asIso c).inv_hom_id
     rw [Category.assoc, hi, Category.comp_id]
-    exact normalizedSimplexCochainContraction_naturality A (SimplexCategory.const n ⦋0⦌ 0)
+    exact _root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction_naturality A (SimplexCategory.const n ⦋0⦌ 0)
   have ht : SimplexCategory.const n ⦋1⦌ ε =
       SimplexCategory.const n ⦋0⦌ 0 ≫ SimplexCategory.const ⦋0⦌ ⦋1⦌ ε := by
     ext i

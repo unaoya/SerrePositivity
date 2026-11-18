@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementDerivedRoofComparison
-public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveElementRoofWeak
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.KProjectiveElementRoofWeak
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerveHomLiftIso
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SliceTransport.PinchedEndpointFamilyArrow
 
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet MonoidalClosed
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 open SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof
@@ -35,41 +35,41 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma complexRelativeDerivedSource_vertex :
     (complexRelativeDerivedSource A).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ ((complexRelativeUp A).obj X)) =
-      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X) :=
-  congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌))
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X) :=
+  congrArg ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌))
     (ComposableArrows.ext₀ rfl)
 
 def complexRelativeElementReferencePinchedMap :=
-  (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (normalizedTensorElementIndex A X Y) ≫
-    normalizedTensorElementOrdinaryPinchedMap A X Y) ≫
+  (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A X Y) ≫
+    _root_.SerrePositivity.ComplexLimits.normalizedTensorElementOrdinaryPinchedMap A X Y) ≫
       (pinchedEndpointIso (complexRelativeDerivedSource_vertex A X).symm
         (complexRelativeDerivedSource_vertex A Y).symm).hom
 
 lemma complexRelativeElementReferencePinchedMap_roof_arrow :
-    let I := normalizedTensorElementIndex A X Y
+    let I := _root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A X Y
     let T := (hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I)).app
       (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (intervalFamilyHom (complexRelativeElementReferencePinchedMap A X Y ≫
       MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
-      Arrow.mk (T.map (normalizedTensorElementDerivedRoof A X Y)) := by
-  let I := normalizedTensorElementIndex A X Y
+      Arrow.mk (T.map (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementDerivedRoof A X Y)) := by
+  let I := _root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A X Y
   let T := (hoFunctor.map ((pre (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I)).app
     (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
-  have hn := (congrArg Arrow.mk (normalizedTensorElementOrdinaryPinchedMap_family A X Y)).trans
-    (normalizedTensorElementDerivedRoofFamily_arrow A X Y)
+  have hn := (congrArg Arrow.mk (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementOrdinaryPinchedMap_family A X Y)).trans
+    (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementDerivedRoofFamily_arrow A X Y)
   have hp := congrArg T.mapArrow.obj hn
   have he := pinchedEndpointFamily_arrow (complexRelativeDerivedSource_vertex A X).symm
     (complexRelativeDerivedSource_vertex A Y).symm
-    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I ≫ normalizedTensorElementOrdinaryPinchedMap A X Y)
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down I ≫ _root_.SerrePositivity.ComplexLimits.normalizedTensorElementOrdinaryPinchedMap A X Y)
   refine he.trans ?_
   simpa only [T, I, Functor.mapArrow_obj, Arrow.mk_hom, nerveVertex, Category.assoc,
     intervalFamilyHom_precomp, intervalFamilyHomPrecomp] using hp
 
-lemma complexRelativeElementReferencePinchedMap_weak (X Y : KProjectiveComplex A) :
+lemma complexRelativeElementReferencePinchedMap_weak (X Y : _root_.SerrePositivity.ComplexLimits.KProjectiveComplex A) :
     IsWeakHomotopyEquivalence (complexRelativeElementReferencePinchedMap A X.val Y.val) := by
   have hi := (MorphismSpaces.isPrecompositionEquivalence_of_iso
-    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homLiftIso (normalizedTensorElementIndex A X.val Y.val))).isWeakHomotopyEquivalence
-  have hp := normalizedTensorElementOrdinaryPinchedMap_weak A X Y
+    (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.homLiftIso (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A X.val Y.val))).isWeakHomotopyEquivalence
+  have hp := _root_.SerrePositivity.ComplexLimits.normalizedTensorElementOrdinaryPinchedMap_weak A X Y
   have he := (MorphismSpaces.isPrecompositionEquivalence_of_iso
     (pinchedEndpointIso (complexRelativeDerivedSource_vertex A X.val).symm
       (complexRelativeDerivedSource_vertex A Y.val).symm)).isWeakHomotopyEquivalence

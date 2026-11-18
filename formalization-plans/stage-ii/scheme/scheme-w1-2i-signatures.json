@@ -1,0 +1,952 @@
+[
+  {
+    "id": "U01",
+    "sig": "def arcBaseChangeHom {A B T : Type u} [CommRing A] [CommRing B]\n    [CommRing T] (f : A →+* B) (g : A →+* T) :\n    letI := f.toAlgebra; letI := g.toAlgebra\n    T →+* T ⊗[A] B",
+    "deps": [],
+    "lo": 5,
+    "hi": 12,
+    "ref": "形式化用：指定した底変換の射",
+    "api": "CommRingCat.tensorProd、Algebra.TensorProduct.includeLeft",
+    "why": "同じ構造射を使い、存在命題から選ばない。",
+    "risk": false
+  },
+  {
+    "id": "U02",
+    "sig": "def PerfectRingCechUniversalExact (p : ℕ)\n    {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) : Prop :=\n  ∀ (T : Type u) [CommRing T] [PerfectRing T p] (g : A →+* T),\n    Cech.IsCechExact (Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom f g)))",
+    "deps": [
+      "U01"
+    ],
+    "lo": 5,
+    "hi": 10,
+    "ref": "BM18 Prop 4.8 の O に特殊化した補助述語",
+    "api": "Cech.IsCechExact @ HomologicalAlgebra/Cech/Basic.lean",
+    "why": "非平坦な底変換も量化する。plain な完全性からの推論はしない。",
+    "risk": false
+  },
+  {
+    "id": "U03",
+    "sig": "def IsArcHom {A B : Type u} [CommRing A] [CommRing B]\n    (f : A →+* B) : Prop :=\n  ∀ (V : CommRingCat.{u}) [IsDomain V] [ValuationRing V],\n    ringKrullDim V ≤ 1 → ∀ k : A →+* V,\n    ∃ (W : CommRingCat.{u}) (hW : IsDomain W),\n      letI : IsDomain W := hW\n      ValuationRing W ∧ ringKrullDim W ≤ 1 ∧\n      ∃ (e : V →+* W) (l : B →+* W), e.FaithfullyFlat ∧ l.comp f = e.comp k",
+    "deps": [],
+    "lo": 5,
+    "hi": 12,
+    "ref": "BM18 Def 1.2、正本の族の一射版",
+    "api": "ArcRouteB.ValuativeCoverFamily @ drafts/A6/ArcRouteB.lean:31",
+    "why": "階数を保つ元の証人をそのまま使う。",
+    "risk": false
+  },
+  {
+    "id": "U04",
+    "sig": "theorem isArcHom_pi_iff {A : Type u} [CommRing A]\n    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]\n    (f : ∀ i, A →+* B i) :\n    IsArcHom (RingHom.pi f) ↔ IsArcCoverFamilyCharP B f",
+    "deps": [
+      "U03",
+      "T02"
+    ],
+    "lo": 25,
+    "hi": 60,
+    "ref": "BM18 Def 1.2、有限族と一射の橋",
+    "api": "exists_factor_evalRingHom_of_isDomain、isAffineVCoverFamily_iff_pi @ AG/AffineVCoverFamily.lean",
+    "why": "G0 の積から整域への因子化の同じ証人で rank の仮定も保つ。",
+    "risk": false
+  },
+  {
+    "id": "U05",
+    "sig": "theorem isArcHom_baseChange {A B T : Type u} [CommRing A]\n    [CommRing B] [CommRing T] (f : A →+* B) (g : A →+* T)\n    (hf : IsArcHom f) : IsArcHom (arcBaseChangeHom f g)",
+    "deps": [
+      "U01",
+      "U03"
+    ],
+    "lo": 20,
+    "hi": 45,
+    "ref": "BM18 §2 の被覆の底変換",
+    "api": "coefficientTensorLift @ CommutativeAlgebra/PerfectRing.lean:82",
+    "why": "付値拡大を変えず、二つの射の可換性で tensor lift を作る。",
+    "risk": false
+  },
+  {
+    "id": "U06",
+    "sig": "theorem isArcHom_of_refinement {A B C : Type u} [CommRing A]\n    [CommRing B] [CommRing C] (f : A →+* B) (g : A →+* C)\n    (r : B →+* C) (hr : r.comp f = g) (hg : IsArcHom g) : IsArcHom f",
+    "deps": [
+      "U03"
+    ],
+    "lo": 8,
+    "hi": 18,
+    "ref": "BM18 Prop 4.8 (1) の有限表示模型への移行",
+    "api": "IsArcHom の証人",
+    "why": "持ち上げた射と r を合成するだけ。",
+    "risk": false
+  },
+  {
+    "id": "U07",
+    "sig": "theorem perfectRingCechUniversalExact_baseChange (p : ℕ)\n    {A B T : Type u} [CommRing A] [CommRing B] [CommRing T]\n    [PerfectRing T p] (f : A →+* B) (g : A →+* T)\n    (hf : PerfectRingCechUniversalExact p f) :\n    PerfectRingCechUniversalExact p (arcBaseChangeHom f g)",
+    "deps": [
+      "U01",
+      "U02"
+    ],
+    "lo": 25,
+    "hi": 65,
+    "ref": "形式化用：普遍完全性の代入則",
+    "api": "Algebra.TensorProduct の結合・単位同型、Cech.ringCechExact_iff_of_iso",
+    "why": "任意の T 代数への二回の底変換と一回の底変換を同じ標準射で比較。",
+    "risk": false
+  },
+  {
+    "id": "U08",
+    "sig": "theorem perfectRingCechUniversalExact_of_flat_factor (p : ℕ)\n    {A B W : Type u} [CommRing A] [CommRing B] [CommRing W]\n    (f : A →+* B) (e : A →+* W) (l : B →+* W)\n    (he : e.FaithfullyFlat) (hl : l.comp f = e) :\n    PerfectRingCechUniversalExact p f",
+    "deps": [
+      "U02"
+    ],
+    "lo": 35,
+    "hi": 90,
+    "ref": "BM18 Prop 4.8 (2)、切断後の忠実平坦反映",
+    "api": "Cech.isCechExact_of_retraction、isCechExact_baseChange_iff @ HomologicalAlgebra/Cech/",
+    "why": "T→T⊗A W は忠実平坦で、そこで B の Cech に同じ l による切断がある。",
+    "risk": false
+  },
+  {
+    "id": "U09",
+    "sig": "theorem perfectTensor_of_primeCast_eq_zero (p : ℕ) [Fact p.Prime]\n    (A T B : Type u) [CommRing A] [CommRing T] [CommRing B]\n    [Algebra A T] [Algebra A B] [PerfectRing A p] [PerfectRing T p]\n    [PerfectRing B p] (hp : (p : A) = 0) : PerfectRing (T ⊗[A] B) p",
+    "deps": [],
+    "lo": 35,
+    "hi": 65,
+    "ref": "形式化用：零環も含む完全 tensor",
+    "api": "perfectCoefficientTensor_perfectRing、正本の private perfectTensor_of_p_eq_zero @ ArcRouteB.lean",
+    "why": "正本の既存の零環分岐を移し、本体に狭い CharP を追加しない。",
+    "risk": false
+  },
+  {
+    "id": "M01",
+    "sig": "theorem frobeniusDirectLimit_primeCast_eq_zero\n    (p : ℕ) (hp : p.Prime) (A : Type u) [CommRing A] (hA : (p : A) = 0) :\n    (p : FrobeniusDirectLimit A p hp hA) = 0",
+    "deps": [],
+    "lo": 5,
+    "hi": 12,
+    "ref": "形式化用：完全化の係数",
+    "api": "frobeniusDirectLimitOf @ AG/FrobeniusDirectLimit.lean:54",
+    "why": "段0の環準同型で p=0 を移す。",
+    "risk": false
+  },
+  {
+    "id": "M02",
+    "sig": "theorem frobeniusDirectLimit_perfectRing\n    (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A] (hA : (p : A) = 0) :\n    PerfectRing (FrobeniusDirectLimit A p (Fact.out : p.Prime) hA) p",
+    "deps": [
+      "M01"
+    ],
+    "lo": 55,
+    "hi": 130,
+    "ref": "BM18 Prop 4.8 (1)、有限表示環の完全化",
+    "api": "frobeniusDirectLimitOf_eq_iff @ AG/FrobeniusDirectLimit.lean:66",
+    "why": "根は一段後の同じ元。単射性は有限段の等式判定で一段をずらす。",
+    "risk": true
+  },
+  {
+    "id": "M03",
+    "sig": "def frobeniusDirectLimitDesc (p : ℕ) [Fact p.Prime]\n    {C D : Type u} [CommRing C] [CommRing D] [PerfectRing D p]\n    (hC : (p : C) = 0) (hD : (p : D) = 0) (f : C →+* D) :\n    FrobeniusDirectLimit C p (Fact.out : p.Prime) hC →+* D",
+    "deps": [],
+    "lo": 8,
+    "hi": 18,
+    "ref": "形式化用：完全な値域への延長",
+    "api": "frobeniusDirectLimitMap @ AG/FrobeniusDirectLimitMap.lean:26、perfectFrobeniusLimitEquiv @ AG/PerfectFrobeniusDirectLimit.lean",
+    "why": "Frob(f) と H01 の元の D への同型を合成。",
+    "risk": false
+  },
+  {
+    "id": "M04",
+    "sig": "theorem frobeniusDirectLimitDesc_comp_of_zero (p : ℕ) [Fact p.Prime]\n    {C D : Type u} [CommRing C] [CommRing D] [PerfectRing D p]\n    (hC : (p : C) = 0) (hD : (p : D) = 0) (f : C →+* D) :\n    (frobeniusDirectLimitDesc p hC hD f).comp\n      (frobeniusDirectLimitOf C p (Fact.out : p.Prime) hC 0) = f",
+    "deps": [
+      "M03"
+    ],
+    "lo": 8,
+    "hi": 20,
+    "ref": "形式化用：延長が元の射を保つ法則",
+    "api": "frobeniusDirectLimitMap_of、perfectFrobeniusLimitEquiv_comp_of_zero",
+    "why": "段0の二つの既存法則の代入。",
+    "risk": false
+  },
+  {
+    "id": "M05",
+    "sig": "def finitePresentationModelUnderDiagram (A B : Type u)\n    [CommRing A] [CommRing B] [Algebra A B] :\n    FinitePresentationModelIndex A B ⥤ Under (CommRingCat.of A)",
+    "deps": [],
+    "lo": 20,
+    "hi": 50,
+    "ref": "BM18 Prop 4.8 (1) の元の模型",
+    "api": "finitePresentationModelSmallDiagram @ AG/FinitePresentationModelCategory.lean:80",
+    "why": "同じ SmallModel の各対象に元の代数構造射を付ける。新しい模型を choose しない。",
+    "risk": false
+  },
+  {
+    "id": "M06",
+    "sig": "def finitePresentationModelUnderCocone (A B : Type u)\n    [CommRing A] [CommRing B] [Algebra A B] :\n    Cocone (finitePresentationModelUnderDiagram A B)",
+    "deps": [
+      "M05"
+    ],
+    "lo": 12,
+    "hi": 30,
+    "ref": "形式化用：同じ模型の指定脚",
+    "api": "finitePresentationModelSmallCocone @ AG/FinitePresentationModelCategory.lean:84",
+    "why": "点は Under.mk(ofHom(algebraMap A B))、脚は既存 cocone の脚。",
+    "risk": false
+  },
+  {
+    "id": "M07",
+    "sig": "def finitePresentationModelUnderCoconeIsColimit (A B : Type u)\n    [CommRing A] [CommRing B] [Algebra A B] :\n    IsColimit (finitePresentationModelUnderCocone A B)",
+    "deps": [
+      "M06"
+    ],
+    "lo": 20,
+    "hi": 55,
+    "ref": "形式化用：模型を Under へ保った余極限",
+    "api": "finitePresentationModelSmallCoconeIsColimit @ AG/FinitePresentationModelColimit.lean:94",
+    "why": "filtered な添字と Under の忘却の connected 余極限で同じ脚を保つ。",
+    "risk": false
+  },
+  {
+    "id": "M08",
+    "sig": "def perfectedModelDiagram (p : ℕ) [Fact p.Prime]\n    (A B : Type u) [CommRing A] [CommRing B] [Algebra A B]\n    [PerfectRing A p] (hp : (p : A) = 0) :\n    FinitePresentationModelIndex A B ⥤ Under (CommRingCat.of A)",
+    "deps": [
+      "M02",
+      "M05",
+      "I00"
+    ],
+    "lo": 45,
+    "hi": 100,
+    "ref": "BM18 Prop 4.8 (1)、同じ有限表示模型の完全化",
+    "api": "frobeniusDirectLimitMap_comp/id @ AG/FrobeniusDirectLimitMap.lean:71,82",
+    "why": "j の終域は同じ Cj の Frob 順極限。源は元の A、単位は Of0∘unitj。",
+    "risk": true
+  },
+  {
+    "id": "M09",
+    "sig": "def perfectedModelCocone (p : ℕ) [Fact p.Prime]\n    (A B : Type u) [CommRing A] [CommRing B] [Algebra A B]\n    [PerfectRing A p] [PerfectRing B p] (hp : (p : A) = 0) :\n    Cocone (perfectedModelDiagram p A B hp)",
+    "deps": [
+      "M03",
+      "M04",
+      "M08"
+    ],
+    "lo": 20,
+    "hi": 55,
+    "ref": "形式化用：完全化した模型の指定脚",
+    "api": "H01 自然性、M03",
+    "why": "点は元の A→B、脚は χB∘Frob(model→B)。",
+    "risk": false
+  },
+  {
+    "id": "M10",
+    "sig": "def perfectedModelCoconeIsColimit (p : ℕ) [Fact p.Prime]\n    (A B : Type u) [CommRing A] [CommRing B] [Algebra A B]\n    [PerfectRing A p] [PerfectRing B p] (hp : (p : A) = 0) :\n    IsColimit (perfectedModelCocone p A B hp)",
+    "deps": [
+      "M07",
+      "M09"
+    ],
+    "lo": 60,
+    "hi": 150,
+    "ref": "BM18 Prop 4.8 (1)、完全化と模型の余極限の交換",
+    "api": "frobeniusArrowFamilyTargetCoconeIsColimit @ AG/FrobeniusArrowFamilyColimit.lean:20",
+    "why": "既存の Fubini を適用し H01 で源と終点を元へ戻す。Noether 帰着なし。",
+    "risk": true
+  },
+  {
+    "id": "M11",
+    "sig": "theorem perfectedModel_isArcHom (p : ℕ) [Fact p.Prime]\n    {A B : Type u} [CommRing A] [CommRing B] [Algebra A B]\n    [PerfectRing A p] [PerfectRing B p] (hp : (p : A) = 0)\n    (hf : IsArcHom (algebraMap A B)) (j : FinitePresentationModelIndex A B) :\n    IsArcHom ((perfectedModelDiagram p A B hp).obj j).hom.hom",
+    "deps": [
+      "U06",
+      "M09"
+    ],
+    "lo": 10,
+    "hi": 25,
+    "ref": "BM18 Prop 4.8 (1)、被覆の細分",
+    "api": "perfectedModelCocone の脚、U06",
+    "why": "元の arc 被覆 B に向かう指定脚がそのまま細分。有限段の判定の降下を仮定しない。",
+    "risk": false
+  },
+  {
+    "id": "M12",
+    "sig": "theorem perfectRingCechUniversalExact_of_filtered_models\n    (p : ℕ) {A : Type u} [CommRing A]\n    {J : Type u} [SmallCategory J] [IsFiltered J]\n    (D : J ⥤ Under (CommRingCat.of A)) (c : Cocone D) (hc : IsColimit c)\n    (hD : ∀ j, PerfectRingCechUniversalExact p (D.obj j).hom.hom) :\n    PerfectRingCechUniversalExact p c.pt.hom.hom",
+    "deps": [
+      "U02"
+    ],
+    "lo": 45,
+    "hi": 100,
+    "ref": "BM18 Prop 4.8 (1)、構造層に特殊化",
+    "api": "Cech.isCechExact_colimit @ HomologicalAlgebra/Cech/Filtered.lean:99",
+    "why": "各 T への tensor は余極限を保つ。指定脚の Arrow 余極限を使う。",
+    "risk": true
+  },
+  {
+    "id": "I00",
+    "sig": "def perfectedAlgebraUnit (p : ℕ) [Fact p.Prime]\n    (V C : Type u) [CommRing V] [CommRing C] [Algebra V C]\n    (hp : (p : V) = 0) :\n    V →+* FrobeniusDirectLimit C p (Fact.out : p.Prime)\n      (by rw [← map_natCast (algebraMap V C), hp, map_zero])",
+    "deps": [],
+    "lo": 6,
+    "hi": 15,
+    "ref": "形式化用：同じ模型の完全化への単位",
+    "api": "frobeniusDirectLimitOf @ AG/FrobeniusDirectLimit.lean:54",
+    "why": "定義は Of0.comp(algebraMap V C)。M08 の各対象でも同じ式。",
+    "risk": false
+  },
+  {
+    "id": "I01",
+    "sig": "def intervalRingSpectrumOrderIso {V : Type u} [CommRing V]\n    {a b : PrimeSpectrum V} (h : a ≤ b) :\n    PrimeSpectrum (ValuationIntervalRing h) ≃o Set.Icc a b",
+    "deps": [],
+    "lo": 45,
+    "hi": 110,
+    "ref": "BM18 Def 4.6 の区間とスペクトルの照合",
+    "api": "IsLocalization.AtPrime.primeSpectrumOrderIso @ Mathlib/RingTheory/Localization/AtPrime/Basic.lean:150、Ideal.primeSpectrumQuotientOrderIsoZeroLocus @ Spectrum/Prime/RingHom.lean:265",
+    "why": "商と局所化の既存の順序同型を合成する。",
+    "risk": true
+  },
+  {
+    "id": "I02",
+    "sig": "theorem intervalRing_krullDim_le_one_of_no_prime_between\n    {V : Type u} [CommRing V] {a b : PrimeSpectrum V} (h : a ≤ b)\n    (hgap : ∀ c : PrimeSpectrum V, a ≤ c → c ≤ b → c = a ∨ c = b) :\n    ringKrullDim (ValuationIntervalRing h) ≤ 1",
+    "deps": [
+      "I01"
+    ],
+    "lo": 15,
+    "hi": 40,
+    "ref": "BM18 Prop 4.8 (2)、隣接する端点",
+    "api": "Order.krullDim_le_one_iff、I01",
+    "why": "区間の素点は端点二つだけなので長さ2の真の鎖がない。",
+    "risk": false
+  },
+  {
+    "id": "I03",
+    "sig": "def intervalRingOfFullSpectrumEquiv {V : Type u} [CommRing V]\n    [IsDomain V] [ValuationRing V] (a b : PrimeSpectrum V)\n    (ha : a.asIdeal = ⊥) (hb : b.asIdeal = IsLocalRing.maximalIdeal V)\n    (h : a ≤ b) : ValuationIntervalRing h ≃ₐ[V] V",
+    "deps": [],
+    "lo": 25,
+    "hi": 65,
+    "ref": "形式化用：全スペクトルの区間環を元へ戻す",
+    "api": "intervalRingLift、intervalRing_hom_ext @ ValuationInterval/Basic.lean:64,83",
+    "why": "下端の商は零イデアル、上端の外は既に単元。元の構造射を逆とする。",
+    "risk": false
+  },
+  {
+    "id": "I04",
+    "sig": "theorem exists_fp_residue_point_of_perfectedArc\n    (p : ℕ) [Fact p.Prime] {V C : Type u} [CommRing V] [IsDomain V]\n    [ValuationRing V] [CommRing C] [Algebra V C] [Algebra.FinitePresentation V C]\n    (hV : IsAbsolutelyIntegrallyClosed V) [PerfectRing V p] (hp : (p : V) = 0)\n    (hf : IsArcHom (perfectedAlgebraUnit p V C hp)) (a : PrimeSpectrum V) :\n    ∃ g : C →ₐ[V] a.asIdeal.ResidueField, True",
+    "deps": [
+      "U03",
+      "I00",
+      "Q01"
+    ],
+    "lo": 60,
+    "hi": 160,
+    "ref": "BM18 Prop 4.8 (3),(4)、剰余体の点",
+    "api": "IsAbsolutelyIntegrallyClosed.primeResidue_isAlgClosed @ ValuationInterval/Basic.lean:122、Mathlib の弱 Nullstellensatz",
+    "why": "arc の階数0試験で fiber が非零。代数閉剰余体上の有限型代数に点を取る。",
+    "risk": true
+  },
+  {
+    "id": "I05",
+    "sig": "theorem exists_right_interval_fp_section\n    {V C : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CommRing C] [Algebra V C] [Algebra.FinitePresentation V C]\n    (a : PrimeSpectrum V) (hne : ∃ b, a < b)\n    (hdense : ∀ b, a < b → ∃ c, a < c ∧ c < b)\n    (g : C →ₐ[V] a.asIdeal.ResidueField) :\n    ∃ (b : PrimeSpectrum V) (hab : a < b), Nonempty (C →ₐ[V] ValuationIntervalRing hab.le)",
+    "deps": [],
+    "lo": 35,
+    "hi": 85,
+    "ref": "BM18 Prop 4.8 (3)",
+    "api": "exists_intervalRingFactor_of_finitePresentation @ ValuationInterval/FinitePresentation.lean:43、exists_primeAbove_not_mem @ Endpoint.lean:24",
+    "why": "既存の上からの区間族の ideal 条件を代入。元の C を変えず有限表示で因子化。",
+    "risk": false
+  },
+  {
+    "id": "I06",
+    "sig": "theorem exists_left_interval_fp_section\n    {V C : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CommRing C] [Algebra V C] [Algebra.FinitePresentation V C]\n    (b : PrimeSpectrum V) (hne : ∃ a, a < b)\n    (hdense : ∀ a, a < b → ∃ c, a < c ∧ c < b)\n    (g : C →ₐ[V] b.asIdeal.ResidueField) :\n    ∃ (a : PrimeSpectrum V) (hab : a < b), Nonempty (C →ₐ[V] ValuationIntervalRing hab.le)",
+    "deps": [],
+    "lo": 35,
+    "hi": 85,
+    "ref": "BM18 Prop 4.8 (4)",
+    "api": "exists_intervalRingFactor_of_finitePresentation @ ValuationInterval/FinitePresentation.lean:43、exists_primeBelow_mem @ Endpoint.lean:53",
+    "why": "I05 と双対の既存の下からの区間族。",
+    "risk": false
+  },
+  {
+    "id": "I07",
+    "sig": "theorem perfectedAlgebraUnit_universalExact_of_section\n    (p : ℕ) [Fact p.Prime] {V C D : Type u} [CommRing V] [CommRing C]\n    [CommRing D] [Algebra V C] [Algebra V D] [PerfectRing D p]\n    (hp : (p : V) = 0) (g : C →ₐ[V] D) :\n    PerfectRingCechUniversalExact p\n      (arcBaseChangeHom (perfectedAlgebraUnit p V C hp) (algebraMap V D))",
+    "deps": [
+      "U08",
+      "M03",
+      "M04",
+      "I00"
+    ],
+    "lo": 30,
+    "hi": 75,
+    "ref": "BM18 Prop 4.8 (3),(4)、点の延長と切断",
+    "api": "frobeniusDirectLimitDesc、Cech.isCechExact_of_retraction",
+    "why": "g を完全な D まで延長し tensor の切断を作る。D の任意の底変換でも切断が残る。",
+    "risk": false
+  },
+  {
+    "id": "O01",
+    "sig": "def intervalTensorLocalizationEquiv {V : Type u} [CommRing V]\n    {a b d : PrimeSpectrum V} (hab : a ≤ b) (hbd : b ≤ d) :\n    ValuationIntervalRing (hab.trans hbd) ⊗[V] Localization.AtPrime b.asIdeal\n      ≃ₐ[V] ValuationIntervalRing hab",
+    "deps": [],
+    "lo": 45,
+    "hi": 110,
+    "ref": "BM18 Prop 4.8 (5)、区間上の局所化の照合",
+    "api": "intervalRingLift/hom_ext、Algebra.TensorProduct.lift",
+    "why": "同じ V の元で両側を評価して逆を確かめる。下端を正規化する choose はない。",
+    "risk": true
+  },
+  {
+    "id": "O02",
+    "sig": "def intervalTensorQuotientEquiv {V : Type u} [CommRing V]\n    {a c d : PrimeSpectrum V} (hac : a ≤ c) (hcd : c ≤ d) :\n    ValuationIntervalRing (hac.trans hcd) ⊗[V] (V ⧸ c.asIdeal)\n      ≃ₐ[V] ValuationIntervalRing hcd",
+    "deps": [],
+    "lo": 45,
+    "hi": 110,
+    "ref": "BM18 Prop 4.8 (5)、区間上の閉制限の照合",
+    "api": "intervalRingLift/hom_ext、Ideal.Quotient.lift、TensorProduct.lift",
+    "why": "下端の商と上端の逆元の同じ普遍性を比較。",
+    "risk": true
+  },
+  {
+    "id": "O03",
+    "sig": "def intervalTensorIntersectionEquiv {V : Type u} [CommRing V]\n    {a c b d : PrimeSpectrum V} (hac : a ≤ c) (hcb : c ≤ b) (hbd : b ≤ d) :\n    ValuationIntervalRing (hac.trans (hcb.trans hbd)) ⊗[V] ValuationIntervalRing hcb\n      ≃ₐ[V] ValuationIntervalRing hcb",
+    "deps": [],
+    "lo": 45,
+    "hi": 110,
+    "ref": "BM18 Prop 4.8 (5)、交わりの照合",
+    "api": "intervalRingLift/hom_ext、TensorProduct.lift",
+    "why": "既に区間 [c,b] で成り立つ単位と零関係を使う。",
+    "risk": true
+  },
+  {
+    "id": "O04",
+    "sig": "def overlapTensorModuleComplex {V T : Type u} [CommRing V] [CommRing T]\n    [Algebra V T] {a b : PrimeSpectrum V} (h : a ≤ b) :\n    ShortComplex (ModuleCat.{u} T)",
+    "deps": [],
+    "lo": 40,
+    "hi": 95,
+    "ref": "BM18 Prop 4.8 (5)、図式(6)の T 係数",
+    "api": "Arc.overlapModuleComplex @ Arc/Milnor/ArcIntervalOverlap.lean:80",
+    "why": "項は T、(T⊗V V_b)×(T⊗V V/a)、T⊗V V[a,b]。写像は元の単位と制限の差。",
+    "risk": false
+  },
+  {
+    "id": "O05",
+    "sig": "theorem overlapTensorModuleComplex_shortExact\n    (p : ℕ) [Fact p.Prime] {V T : Type u} [CommRing V] [IsDomain V]\n    [ValuationRing V] [CommRing T] [Algebra V T] [PerfectRing V p]\n    [PerfectRing T p] (hp : (p : V) = 0)\n    {a b : PrimeSpectrum V} (h : a ≤ b) :\n    (overlapTensorModuleComplex (T := T) h).ShortExact",
+    "deps": [
+      "U09",
+      "O04"
+    ],
+    "lo": 70,
+    "hi": 170,
+    "ref": "BM18 Prop 4.8 (5)、Milnor の Tor 消滅",
+    "api": "Arc.overlapModuleComplex_shortExact @ ArcIntervalOverlap.lean:96、Arc.valuationRing_milnorSquare_perfect @ ArcValuationMilnor.lean:87、ArcMilnorTensor",
+    "why": "任意の T は平坦と仮定しない。完全環どうしの Tor 消滅で短完全性を保存。",
+    "risk": true
+  },
+  {
+    "id": "O06",
+    "sig": "theorem perfectRingCechUniversalExact_of_overlap\n    (p : ℕ) [Fact p.Prime] {V B : Type u} [CommRing V] [IsDomain V]\n    [ValuationRing V] [CommRing B] [PerfectRing V p] [PerfectRing B p]\n    (hp : (p : V) = 0) (f : V →+* B) {a b : PrimeSpectrum V} (h : a ≤ b)\n    (hl : PerfectRingCechUniversalExact p (arcBaseChangeHom f\n      (algebraMap V (Localization.AtPrime b.asIdeal))))\n    (hq : PerfectRingCechUniversalExact p (arcBaseChangeHom f (Ideal.Quotient.mk a.asIdeal)))\n    (hr : PerfectRingCechUniversalExact p (arcBaseChangeHom f\n      (algebraMap V (ValuationIntervalRing h)))) : PerfectRingCechUniversalExact p f",
+    "deps": [
+      "U02",
+      "U09",
+      "O05",
+      "L02",
+      "L03",
+      "L04",
+      "L05"
+    ],
+    "lo": 65,
+    "hi": 160,
+    "ref": "BM18 Prop 4.8 (5)、構造層の普遍版",
+    "api": "Arc.acyclic_of_tensorShortExact、moduleCech_tor_subsingleton @ ArcCechMilnor.lean:52、cechExact_baseChange_iff_tensorCochain @ :32",
+    "why": "各完全 T 上の moduleCech に O05 を使い、三つの底変換を tensor 結合で照合。",
+    "risk": true
+  },
+  {
+    "id": "O07",
+    "sig": "def GoodArcInterval (p : ℕ) {V B : Type u} [CommRing V] [CommRing B]\n    (f : V →+* B) (a b : PrimeSpectrum V) : Prop :=\n  ∀ h : a ≤ b, PerfectRingCechUniversalExact p\n    (arcBaseChangeHom f (algebraMap V (ValuationIntervalRing h)))",
+    "deps": [
+      "U02"
+    ],
+    "lo": 5,
+    "hi": 12,
+    "ref": "BM18 Lemma 4.7 に渡す述語",
+    "api": "U02、ValuationIntervalRing @ Basic.lean:38",
+    "why": "区間ごとに完全な係数の全てを量化する。",
+    "risk": false
+  },
+  {
+    "id": "O08",
+    "sig": "theorem goodArcInterval_sub (p : ℕ) {V B : Type u} [CommRing V] [CommRing B]\n    (f : V →+* B) {a b c d : PrimeSpectrum V}\n    (h : GoodArcInterval p f a b) (hac : a ≤ c) (hcd : c ≤ d) (hdb : d ≤ b)\n    [PerfectRing (ValuationIntervalRing hcd) p] : GoodArcInterval p f c d",
+    "deps": [
+      "U07",
+      "O07",
+      "L01"
+    ],
+    "lo": 30,
+    "hi": 70,
+    "ref": "BM18 Lemma 4.7 の sub 法則",
+    "api": "intervalRingMap @ Basic.lean:92、tensor 結合同型",
+    "why": "区間の同じ制限射へ U07 を代入し、二回と一回の底変換を比較。",
+    "risk": false
+  },
+  {
+    "id": "O09",
+    "sig": "theorem goodArcInterval_glue (p : ℕ) [Fact p.Prime]\n    {V B : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CommRing B] [PerfectRing V p] [PerfectRing B p] (hp : (p : V) = 0)\n    (f : V →+* B) {a b c d : PrimeSpectrum V} (hac : a ≤ c) (hcb : c ≤ b)\n    (hbd : b ≤ d) (h₁ : GoodArcInterval p f a b) (h₂ : GoodArcInterval p f c d) :\n    GoodArcInterval p f a d",
+    "deps": [
+      "O01",
+      "O02",
+      "O03",
+      "O06",
+      "O08",
+      "L05"
+    ],
+    "lo": 75,
+    "hi": 180,
+    "ref": "BM18 Lemma 4.7 の glue、Prop 4.8 (5)",
+    "api": "O01–03、O06、tensor associator",
+    "why": "任意の V[a,d] 代数 T へ正規化した係数の短完全列を適用。三つの指定同型で比較。",
+    "risk": true
+  },
+  {
+    "id": "I08",
+    "sig": "theorem goodArcInterval_of_rank_le_one (p : ℕ) [Fact p.Prime]\n    {V B : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CommRing B] [PerfectRing V p] [PerfectRing B p] (hp : (p : V) = 0)\n    (f : V →+* B) (hf : IsArcHom f) {a b : PrimeSpectrum V} (h : a ≤ b)\n    (hdim : ringKrullDim (ValuationIntervalRing h) ≤ 1) : GoodArcInterval p f a b",
+    "deps": [
+      "U05",
+      "U08",
+      "U09",
+      "O07"
+    ],
+    "lo": 30,
+    "hi": 70,
+    "ref": "BM18 Prop 4.8 (2)",
+    "api": "valuationRing_interval/perfectRing_interval @ Basic.lean:104,128",
+    "why": "区間環自身で arc を試し、忠実平坦な付値拡大上の切断を U08 に渡す。",
+    "risk": false
+  },
+  {
+    "id": "I09",
+    "sig": "theorem goodArcInterval_right (p : ℕ) [Fact p.Prime]\n    {V C : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CommRing C]\n    [Algebra V C] [Algebra.FinitePresentation V C] [PerfectRing V p]\n    (hV : IsAbsolutelyIntegrallyClosed V) (hp : (p : V) = 0)\n    (hf : IsArcHom (perfectedAlgebraUnit p V C hp)) {a b : PrimeSpectrum V}\n    (hab : a < b) : ∃ c, a < c ∧ GoodArcInterval p (perfectedAlgebraUnit p V C hp) a c",
+    "deps": [
+      "I02",
+      "I04",
+      "I05",
+      "I07",
+      "I08",
+      "M02"
+    ],
+    "lo": 50,
+    "hi": 120,
+    "ref": "BM18 Prop 4.8 (3)、Lemma 4.7 right",
+    "api": "exists_primeAbove_not_mem、finitePresentation factor、I08",
+    "why": "直後の点があれば I02/I08、なければ I04/I05/I07。場合分けも署名内に含める。",
+    "risk": true
+  },
+  {
+    "id": "I10",
+    "sig": "theorem goodArcInterval_left (p : ℕ) [Fact p.Prime]\n    {V C : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CommRing C]\n    [Algebra V C] [Algebra.FinitePresentation V C] [PerfectRing V p]\n    (hV : IsAbsolutelyIntegrallyClosed V) (hp : (p : V) = 0)\n    (hf : IsArcHom (perfectedAlgebraUnit p V C hp)) {a b : PrimeSpectrum V}\n    (hab : a < b) : ∃ c, c < b ∧ GoodArcInterval p (perfectedAlgebraUnit p V C hp) c b",
+    "deps": [
+      "I02",
+      "I04",
+      "I06",
+      "I07",
+      "I08",
+      "M02"
+    ],
+    "lo": 50,
+    "hi": 120,
+    "ref": "BM18 Prop 4.8 (4)、Lemma 4.7 left",
+    "api": "exists_primeBelow_mem、finitePresentation factor、I08",
+    "why": "直前の点と稠密な下側の二場合を I09 と別に照合。",
+    "risk": true
+  },
+  {
+    "id": "I11",
+    "sig": "theorem perfectedFpArc_universalExact (p : ℕ) [Fact p.Prime]\n    {V C : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CommRing C]\n    [Algebra V C] [Algebra.FinitePresentation V C] [PerfectRing V p]\n    (hV : IsAbsolutelyIntegrallyClosed V) (hp : (p : V) = 0)\n    (hf : IsArcHom (perfectedAlgebraUnit p V C hp)) :\n    PerfectRingCechUniversalExact p (perfectedAlgebraUnit p V C hp)",
+    "deps": [
+      "I03",
+      "I08",
+      "I09",
+      "I10",
+      "O08",
+      "O09",
+      "M02"
+    ],
+    "lo": 35,
+    "hi": 85,
+    "ref": "BM18 Prop 4.8、Lemma 4.7 の適用",
+    "api": "valuationIntervalProperty_of_localExtensions @ ValuationInterval/Zorn.lean:99",
+    "why": "point は I08、sub は O08、right/left は I09/I10、glue は O09。全区間を I03 で元へ戻す。",
+    "risk": false
+  },
+  {
+    "id": "I12",
+    "sig": "theorem aicValuationArc_universalExact (p : ℕ) [Fact p.Prime]\n    {V B : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CommRing B]\n    [PerfectRing V p] [PerfectRing B p] (hV : IsAbsolutelyIntegrallyClosed V)\n    (hp : (p : V) = 0) (f : V →+* B) (hf : IsArcHom f) :\n    PerfectRingCechUniversalExact p f",
+    "deps": [
+      "I11",
+      "M10",
+      "M11",
+      "M12"
+    ],
+    "lo": 35,
+    "hi": 85,
+    "ref": "BM18 Prop 4.8 (1) の完結、O の場合",
+    "api": "既存 finitePresentationModelSmallCoconeIsColimit と M10/M12",
+    "why": "f.toAlgebra の同じ模型に I11、filtered 余極限で元の B へ戻す。",
+    "risk": false
+  },
+  {
+    "id": "P00",
+    "sig": "theorem perfectRing_pi_of_primeCast_eq_zero (p : ℕ) [Fact p.Prime]\n    {ι : Type u} (V : ι → Type u) [∀ i, CommRing (V i)] [∀ i, PerfectRing (V i) p]\n    (hp : ∀ i, (p : V i) = 0) : PerfectRing (∀ i, V i) p",
+    "deps": [],
+    "lo": 8,
+    "hi": 25,
+    "ref": "形式化用：任意積・空積の完全性",
+    "api": "finitePi_primePower_bijective @ AG/PerfectAffineVCoverCech.lean（有限性の仮定なし）",
+    "why": "2h の点ごとの全単射性を PerfectRing へ戻す。空積の CharP は要求しない。",
+    "risk": false
+  },
+  {
+    "id": "P01",
+    "sig": "theorem perfectRingCechUniversalExact_of_ultraproducts\n    (p : ℕ) [Fact p.Prime] {ι : Type u} (R : ι → Type u)\n    [∀ i, CommRing (R i)] [PerfectRing (∀ i, R i) p]\n    [∀ U : Ultrafilter ι, PerfectRing (RingUltraproduct R U) p]\n    {B : Type u} [CommRing B] (hp : (p : ∀ i, R i) = 0)\n    (f : (∀ i, R i) →+* B)\n    (hU : ∀ U : Ultrafilter ι, PerfectRingCechUniversalExact p\n      (arcBaseChangeHom f (algebraMap (∀ i, R i) (RingUltraproduct R U)))) :\n    PerfectRingCechUniversalExact p f",
+    "deps": [
+      "U02",
+      "U09",
+      "L02"
+    ],
+    "lo": 90,
+    "hi": 210,
+    "ref": "BM18 Lemma 3.25 の O・完全係数での普遍版",
+    "api": "subsingleton_of_ultraproduct_tensor @ Arc/Descent/ArcCechUltraproduct.lean:34、Cech.moduleCech_acyclic_iff、平坦な homology base change",
+    "why": "任意の T の H を積環へ係数制限する。T_U⊗T H≅R_U⊗R H を指定結合同型で比較し零性を検出。",
+    "risk": true
+  },
+  {
+    "id": "P02",
+    "sig": "theorem aicValuationProductArc_universalExact\n    (p : ℕ) [Fact p.Prime] {ι : Type u} (V : ι → Type u)\n    [∀ i, CommRing (V i)] [∀ i, IsDomain (V i)] [∀ i, ValuationRing (V i)]\n    [∀ i, PerfectRing (V i) p] (hV : ∀ i, IsAbsolutelyIntegrallyClosed (V i))\n    (hp : ∀ i, (p : V i) = 0) {B : Type u} [CommRing B] [PerfectRing B p]\n    (f : (∀ i, V i) →+* B) (hf : IsArcHom f) : PerfectRingCechUniversalExact p f",
+    "deps": [
+      "P00",
+      "P01",
+      "I12",
+      "U05",
+      "U09"
+    ],
+    "lo": 40,
+    "hi": 100,
+    "ref": "BM18 Prop 4.8 から積への移行、Lemma 3.25",
+    "api": "valuationRing_ultraproduct/aic_ultraproduct/perfectRing_ultraproduct_of_aic @ CommutativeAlgebra/Ultraproduct/Basic.lean:58,95,101",
+    "why": "超積上の arc 被覆へ I12、任意の完全 T へ P01。空の積も零性検出の量化で処理。",
+    "risk": false
+  },
+  {
+    "id": "P03",
+    "sig": "def probeCechFirstFactor {A : Type u} [CommRing A] (n : ℕ) :\n    (∀ t : Arc.ValuationProbeIndex A, Arc.ValuationProbe A t) →+*\n      ((Cech.underCech (Under.mk (CommRingCat.ofHom\n        (Arc.valuationProbeProductMap A)))).right.obj ⦋n⦌).right",
+    "deps": [],
+    "lo": 6,
+    "hi": 18,
+    "ref": "形式化用：積射の正次数の指定係数射",
+    "api": "Cech.underCechInclusion @ HomologicalAlgebra/Cech/BaseChange.lean:60",
+    "why": "定義は同じ ⦋n⦌ の第0因子 inclusion の right.hom。",
+    "risk": false
+  },
+  {
+    "id": "P04",
+    "sig": "theorem probeCechFirstFactor_comp {A : Type u} [CommRing A] (n : ℕ) :\n    (probeCechFirstFactor (A := A) n).comp (Arc.valuationProbeProductMap A) =\n      ((Cech.underCech (Under.mk (CommRingCat.ofHom\n        (Arc.valuationProbeProductMap A)))).right.obj ⦋n⦌).hom.hom",
+    "deps": [
+      "P03"
+    ],
+    "lo": 5,
+    "hi": 15,
+    "ref": "形式化用：源の一致",
+    "api": "Under の射の可換性、Cech.underCechInclusion",
+    "why": "Under の可換三角形そのもの。",
+    "risk": false
+  },
+  {
+    "id": "P05",
+    "sig": "def probeChangeToTermIso {A B : Type u} [CommRing A] [CommRing B]\n    (f : A →+* B) (n : ℕ) :\n    Cech.changeToTerm (Under.mk (CommRingCat.ofHom (Arc.valuationProbeProductMap A)))\n      (Under.mk (CommRingCat.ofHom f)) (n + 1) ≅\n    Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom\n      (arcBaseChangeHom f (Arc.valuationProbeProductMap A))\n      (probeCechFirstFactor (A := A) n)))",
+    "deps": [
+      "P03",
+      "P04",
+      "U01",
+      "L01"
+    ],
+    "lo": 45,
+    "hi": 115,
+    "ref": "形式化用：B1 に渡す正次数の二回の底変換",
+    "api": "Cech.changeToTerm @ Composition.lean:54、tensor associator",
+    "why": "指定した第0因子で R_n を R 代数とし、R_n⊗R(R⊗A B) と R_n⊗A B を Arrow として比較。",
+    "risk": true
+  },
+  {
+    "id": "P06",
+    "sig": "theorem probeArc_positiveRows (p : ℕ) [Fact p.Prime]\n    {A B : Type u} [CommRing A] [CommRing B] [PerfectRing A p] [PerfectRing B p]\n    (hp : (p : A) = 0) (f : A →+* B) (hf : IsArcHom f) :\n    ∀ j, 0 < j → Cech.IsCechExact (Cech.changeToTerm\n      (Under.mk (CommRingCat.ofHom (Arc.valuationProbeProductMap A)))\n      (Under.mk (CommRingCat.ofHom f)) j)",
+    "deps": [
+      "P02",
+      "P05",
+      "U05",
+      "U09"
+    ],
+    "lo": 35,
+    "hi": 85,
+    "ref": "BM18 Lemma 3.4、B1 の一方の軸の消去",
+    "api": "Arc.valuationProbe_aic/product_perfectRing @ ArcValuationProduct.lean:66,133、Cech.cechConerve_perfectRing",
+    "why": "積へ底変換した被覆に P02。正次数の完全な R_j への普遍完全性を P05 で移す。",
+    "risk": false
+  },
+  {
+    "id": "T00",
+    "sig": "abbrev ValuativeCoverFamily (rank : CommRingCat.{u} → Prop)\n    {A : Type u} [CommRing A] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, A →+* B i) : Prop :=\n  SerrePositivity.AlgebraicGeometry.ValuativeCoverFamily rank B f",
+    "deps": [],
+    "lo": 5,
+    "hi": 12,
+    "ref": "正本 ArcRouteB.lean:31 と同じ量化",
+    "api": "AG.ValuativeCoverFamily @ AG/AffineVCoverFamily.lean",
+    "why": "正本の witness・rank を一切変えず、既存定義を別名で使う。",
+    "risk": false
+  },
+  {
+    "id": "T01",
+    "sig": "def IsVCoverFamily {A : Type u} [CommRing A] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, A →+* B i) : Prop :=\n  ValuativeCoverFamily (fun _ => True) B f",
+    "deps": [
+      "T00"
+    ],
+    "lo": 3,
+    "hi": 6,
+    "ref": "正本 ArcRouteB.lean:41、BS17 Def 2.1",
+    "api": "T00",
+    "why": "同じ定義の移設。",
+    "risk": false
+  },
+  {
+    "id": "T02",
+    "sig": "def IsArcCoverFamilyCharP {A : Type u} [CommRing A] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, A →+* B i) : Prop :=\n  ValuativeCoverFamily (fun V => ringKrullDim V ≤ 1) B f",
+    "deps": [
+      "T00"
+    ],
+    "lo": 3,
+    "hi": 6,
+    "ref": "正本 ArcRouteB.lean:46、BM18 Def 1.2",
+    "api": "T00",
+    "why": "p 完備 arc 位相の別定義へ置き換えない。",
+    "risk": false
+  },
+  {
+    "id": "T03",
+    "sig": "def affineFamilyCech {A : Type u} [CommRing A] {ι : Type u} [Finite ι]\n    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, A →+* B i) :\n    CosimplicialObject.Augmented CommRingCat.{u} :=\n  (Arrow.mk (CommRingCat.ofHom (RingHom.pi f))).augmentedCechConerve",
+    "deps": [],
+    "lo": 4,
+    "hi": 8,
+    "ref": "正本 ArcRouteB.lean:51、元の有限族の増大項",
+    "api": "元の積への一射",
+    "why": "同じ定義の移設。",
+    "risk": false
+  },
+  {
+    "id": "T04",
+    "sig": "def BS17VCechInput (p : ℕ) [Fact p.Prime] : Prop :=\n  ∀ {A : Type u} [CommRing A] [CharP A p] [PerfectRing A p]\n    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]\n    [∀ i, CharP (B i) p] [∀ i, PerfectRing (B i) p]\n    (f : ∀ i, A →+* B i), IsVCoverFamily B f →\n    Cech.AugmentedRingCechExact (affineFamilyCech B f)",
+    "deps": [
+      "T01",
+      "T03"
+    ],
+    "lo": 7,
+    "hi": 12,
+    "ref": "正本 ArcRouteB.lean:58、G-A6-1a",
+    "api": "AG.cech_exact_of_vCover_perfect @ AG/PerfectAffineVCoverCech.lean",
+    "why": "2h で量化・述語の一致を検証する入口。",
+    "risk": false
+  },
+  {
+    "id": "T05",
+    "sig": "def ArcRouteBGoal (p : ℕ) [Fact p.Prime] : Prop :=\n  ∀ {A : Type u} [CommRing A] [CharP A p] [PerfectRing A p]\n    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]\n    [∀ i, CharP (B i) p] [∀ i, PerfectRing (B i) p]\n    (f : ∀ i, A →+* B i), IsArcCoverFamilyCharP B f →\n    Cech.AugmentedRingCechExact (affineFamilyCech B f)",
+    "deps": [
+      "T02",
+      "T03"
+    ],
+    "lo": 7,
+    "hi": 12,
+    "ref": "正本 ArcRouteB.lean:67、G-A6-1",
+    "api": "ArcSheafProperty.lean の cech_exact_of_arcCover_perfect",
+    "why": "最終型の正本をそのまま保持する。",
+    "risk": false
+  },
+  {
+    "id": "T06",
+    "sig": "theorem bs17VCechInput (p : ℕ) [Fact p.Prime] : BS17VCechInput.{u} p",
+    "deps": [
+      "T04"
+    ],
+    "lo": 3,
+    "hi": 8,
+    "ref": "BS17 Thm 4.1(i)、2h の出口",
+    "api": "AG.cech_exact_of_vCover_perfect @ AG/PerfectAffineVCoverCech.lean",
+    "why": "2h の定理へ引数を渡すだけ。",
+    "risk": false
+  },
+  {
+    "id": "V01",
+    "sig": "theorem cechExact_of_affineVCover_from_BS17\n    (p : ℕ) [Fact p.Prime] (hBS17 : BS17VCechInput.{u} p)\n    {A B : Type u} [CommRing A] [CommRing B] [CharP A p] [CharP B p]\n    [PerfectRing A p] [PerfectRing B p] (f : A →+* B) (hf : Arc.IsAffineVCover f) :\n    Cech.IsCechExact (Arrow.mk (CommRingCat.ofHom f))",
+    "deps": [
+      "T04"
+    ],
+    "lo": 20,
+    "hi": 35,
+    "ref": "正本 ArcRouteB.lean:75 の条件付き補題の移設",
+    "api": "RingEquiv.piUnique、Cech.ringCechExact_iff_of_iso",
+    "why": "正本の一元族と積の Arrow 同型の証明を native 名で再検証。",
+    "risk": false
+  },
+  {
+    "id": "V02",
+    "sig": "theorem cechExact_of_perfectAffineVCover_from_BS17\n    (p : ℕ) [Fact p.Prime] (hBS17 : BS17VCechInput.{u} p)\n    {A B : Type u} [CommRing A] [CommRing B] [PerfectRing A p] [PerfectRing B p]\n    (hp : (p : A) = 0) (f : A →+* B) (hf : Arc.IsAffineVCover f) :\n    Cech.IsCechExact (Arrow.mk (CommRingCat.ofHom f))",
+    "deps": [
+      "V01"
+    ],
+    "lo": 35,
+    "hi": 60,
+    "ref": "正本 ArcRouteB.lean:96 の零環を含む入口",
+    "api": "正本の zero/nontrivial 分岐、Cech.isCechExact_of_retraction",
+    "why": "同じ零環分岐を保持して CharP の非零性を外へ仮定しない。",
+    "risk": false
+  },
+  {
+    "id": "V03",
+    "sig": "theorem cechExact_valuationProbeProduct_from_BS17 (p : ℕ) [Fact p.Prime]\n    (hBS17 : BS17VCechInput.{u} p) (A : Type u) [CommRing A]\n    [PerfectRing A p] (hp : (p : A) = 0) :\n    Cech.IsCechExact (Arrow.mk (CommRingCat.ofHom (Arc.valuationProbeProductMap A)))",
+    "deps": [
+      "V02"
+    ],
+    "lo": 8,
+    "hi": 18,
+    "ref": "正本 ArcRouteB.lean:125、B5 の入力",
+    "api": "Arc.valuationProbeProduct_vCover @ ArcValuationProduct.lean:123",
+    "why": "既存の v 被覆と完全性を V02 へ代入。",
+    "risk": false
+  },
+  {
+    "id": "V04",
+    "sig": "theorem isAffineVCover_tensor {A B D : Type u}\n    [CommRing A] [CommRing B] [CommRing D] [Algebra A B] [Algebra A D]\n    (h : Arc.IsAffineVCover (algebraMap A B)) :\n    Arc.IsAffineVCover (algebraMap D (D ⊗[A] B))",
+    "deps": [],
+    "lo": 20,
+    "hi": 35,
+    "ref": "正本 ArcRouteB.lean:134 の底変換の法則",
+    "api": "coefficientTensorLift、AG の被覆の底変換",
+    "why": "元の付値拡大と tensor lift を保った移設。",
+    "risk": false
+  },
+  {
+    "id": "V05",
+    "sig": "theorem cechExact_valuationProbeProduct_tensor_from_BS17\n    (p : ℕ) [Fact p.Prime] (hBS17 : BS17VCechInput.{u} p)\n    (A D : Type u) [CommRing A] [CommRing D] [Algebra A D]\n    [PerfectRing A p] [PerfectRing D p] (hp : (p : A) = 0) :\n    let R := ∀ t : Arc.ValuationProbeIndex A, Arc.ValuationProbe A t\n    letI : Algebra A R := (Arc.valuationProbeProductMap A).toAlgebra\n    Cech.IsCechExact (Arrow.mk (CommRingCat.ofHom (algebraMap D (D ⊗[A] R))))",
+    "deps": [
+      "V02",
+      "V04",
+      "U09"
+    ],
+    "lo": 12,
+    "hi": 28,
+    "ref": "正本 ArcRouteB.lean:172、B1 のもう一方の軸",
+    "api": "Arc.valuationProbeProduct_perfectRing、V02",
+    "why": "任意の完全 D で v 被覆を底変換し BS17 を適用。",
+    "risk": false
+  },
+  {
+    "id": "V06",
+    "sig": "theorem cechExact_of_valuationProbeTests (p : ℕ) [Fact p.Prime]\n    (hBS17 : BS17VCechInput.{u} p) {A : Type u} [CommRing A]\n    (B : Under (CommRingCat.of A)) [PerfectRing A p] [PerfectRing B.right p]\n    (hp : (p : A) = 0)\n    (hrow : ∀ j, 0 < j → Cech.IsCechExact (Cech.changeToTerm\n      (Under.mk (CommRingCat.ofHom (Arc.valuationProbeProductMap A))) B j)) :\n    Cech.IsCechExact (Arrow.mk B.hom)",
+    "deps": [
+      "V03",
+      "V05"
+    ],
+    "lo": 25,
+    "hi": 45,
+    "ref": "正本 ArcRouteB.lean:190、BM18 Lemma 3.4",
+    "api": "Cech.isCechExact_iff_of_tensorCech @ Composition.lean:137",
+    "why": "正本の条件付き証明を移す。他方の軸は V05、hrow は P06 で供給。",
+    "risk": false
+  },
+  {
+    "id": "B01",
+    "sig": "theorem cechExact_of_arcHom_perfect (p : ℕ) [Fact p.Prime]\n    {A B : Type u} [CommRing A] [CommRing B] [PerfectRing A p] [PerfectRing B p]\n    (hp : (p : A) = 0) (f : A →+* B) (hf : IsArcHom f) :\n    Cech.IsCechExact (Arrow.mk (CommRingCat.ofHom f))",
+    "deps": [
+      "P06",
+      "V06",
+      "T06"
+    ],
+    "lo": 8,
+    "hi": 20,
+    "ref": "BM18 Prop 4.8 の O 版と B1 の最終合成",
+    "api": "P06 と V06、2h",
+    "why": "正次数の行と BS17 の列を同じ二重 Cech で消去する。",
+    "risk": false
+  },
+  {
+    "id": "B02",
+    "sig": "theorem cech_exact_of_arcCover_perfect\n    (p : ℕ) [Fact p.Prime] : ArcRouteBGoal.{u} p",
+    "deps": [
+      "B01",
+      "U04",
+      "T05",
+      "P00"
+    ],
+    "lo": 12,
+    "hi": 28,
+    "ref": "G-A6-1、正本 ArcRouteBGoal",
+    "api": "有限族と積への一射の橋、P00",
+    "why": "元の有限族の積の完全性を使い B01 へ渡す。最終 conerve と増大項を変えない。",
+    "risk": false
+  },
+  {
+    "id": "Q01",
+    "sig": "theorem nonempty_algHom_of_isAlgClosed (k C : Type u) [Field k]\n    [IsAlgClosed k] [CommRing C] [Nontrivial C] [Algebra k C]\n    [Algebra.FiniteType k C] : Nonempty (C →ₐ[k] k)",
+    "deps": [],
+    "lo": 40,
+    "hi": 100,
+    "ref": "BM18 Prop 4.8 (3),(4) で使う弱 Nullstellensatz",
+    "api": "MvPolynomial.eq_vanishingIdeal_singleton_of_isMaximal @ Mathlib/RingTheory/Nullstellensatz.lean:151、Algebra.FiniteType の多項式表示",
+    "why": "有限生成表示の真の核を含む極大イデアルを一点の評価へ送り、元の代数への因子化を取る。",
+    "risk": true
+  },
+  {
+    "id": "L01",
+    "sig": "def arcBaseChangeTransIso {A B T S : Type u}\n    [CommRing A] [CommRing B] [CommRing T] [CommRing S]\n    (f : A →+* B) (g : A →+* T) (h : T →+* S) (k : A →+* S)\n    (hk : h.comp g = k) :\n    Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom f k)) ≅\n      Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom (arcBaseChangeHom f g) h))",
+    "deps": [
+      "U01"
+    ],
+    "lo": 30,
+    "hi": 90,
+    "ref": "形式化用：既存の押し出しの合成則を、指定した環の射のArrow同型へ束ねる",
+    "api": "CommRingCat.tensorProdIsoPushout @ .lake/packages/mathlib/Mathlib/Algebra/Category/Ring/Under/Basic.lean:160、Under.pushoutComp @ .lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Over/Pullback.lean:252",
+    "why": "tensorの加群構造を直接castせず、元の係数射と同じ押し出しの合成を使う。係数の合成の等式hkもArrow同型を作る前に処理する。",
+    "risk": false
+  },
+  {
+    "id": "L02",
+    "sig": "def arcBaseChangeArrowIso {A : Type u} [CommRing A]\n    (B : Under (CommRingCat.of A)) (D : Type u) [CommRing D] [Algebra A D] :\n    Arrow.mk (CommRingCat.ofHom (arcBaseChangeHom B.hom.hom (algebraMap A D))) ≅\n      Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of A) (CommRingCat.of D)).obj B).hom",
+    "deps": [
+      "U01"
+    ],
+    "lo": 20,
+    "hi": 70,
+    "ref": "形式化用：元の環射の底変換とB1のUnderの底変換の同じArrowの照合",
+    "api": "toAlgebra_algebraMap @ .lake/packages/mathlib/Mathlib/Algebra/Algebra/Defs.lean:262、CommRingCat.tensorProd @ .lake/packages/mathlib/Mathlib/Algebra/Category/Ring/Under/Basic.lean:127",
+    "why": "構造射から派生した代数構造と与えられた代数構造の既存の等式を、Arrow同型として先に処理する。選ばれたČech余極限の内部を簡約しない。",
+    "risk": false
+  },
+  {
+    "id": "L03",
+    "sig": "theorem intervalCoefficient_primeQuotient_perfect (p : ℕ) [Fact p.Prime] {V : Type u}\n    [CommRing V] [IsDomain V] [ValuationRing V] [PerfectRing V p]\n    (hp : (p : V) = 0) (a : PrimeSpectrum V) :\n    PerfectRing (V ⧸ a.asIdeal) p",
+    "deps": [],
+    "lo": 25,
+    "hi": 80,
+    "ref": "既存の係数移送の法則の抽出。BM18 Prop4.8(5)の係数",
+    "api": "Arc.perfectRing_primeResidue @ SerrePositivity/BhattScholze/Perfectoidization/Arc/Milnor/ArcMilnorTensor.lean:92（証明内の同じ商のPerfectRing）、perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128",
+    "why": "既存の証明内で構成済みの、商への根の移送と既約な商のreduced性を、そのまま名前付きの係数法則として抽出する。",
+    "risk": false
+  },
+  {
+    "id": "L04",
+    "sig": "theorem intervalCoefficient_primeLocalization_perfect (p : ℕ) [Fact p.Prime] {V : Type u}\n    [CommRing V] [IsDomain V] [ValuationRing V] [PerfectRing V p]\n    (hp : (p : V) = 0) (a : PrimeSpectrum V) :\n    PerfectRing (Localization.AtPrime a.asIdeal) p",
+    "deps": [],
+    "lo": 25,
+    "hi": 80,
+    "ref": "既存の係数移送の法則の抽出。BM18 Prop4.8(5)の係数",
+    "api": "perfectRing_interval @ SerrePositivity/CommutativeAlgebra/ValuationInterval/Basic.lean:128–151（同じ局所化の根と分母の構成）",
+    "why": "既存の区間環の証明の局所化の構成を、下端の商を取らない同じ係数で使う。分母の根が同じ素イデアルの外にあるという既存の計算を保つ。",
+    "risk": false
+  },
+  {
+    "id": "L05",
+    "sig": "theorem cechExact_of_overlapTensor_coefficients (p : ℕ) [Fact p.Prime]\n    {V T : Type u} [CommRing V] [IsDomain V] [ValuationRing V]\n    [CommRing T] [Algebra V T] [PerfectRing V p] [PerfectRing T p]\n    (B : Under (CommRingCat.of T)) [PerfectRing B.right p] (hp : (p : V) = 0)\n    {a b : PrimeSpectrum V} (h : a ≤ b)\n    (hl : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)\n      (CommRingCat.of (T ⊗[V] Localization.AtPrime b.asIdeal))).obj B).hom))\n    (hq : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)\n      (CommRingCat.of (T ⊗[V] (V ⧸ a.asIdeal)))).obj B).hom))\n    (hr : Cech.IsCechExact (Arrow.mk ((CommRingCat.tensorProd (CommRingCat.of T)\n      (CommRingCat.of (T ⊗[V] ValuationIntervalRing h))).obj B).hom)) :\n    Cech.IsCechExact (Arrow.mk B.hom)",
+    "deps": [
+      "O05",
+      "U09"
+    ],
+    "lo": 50,
+    "hi": 120,
+    "ref": "形式化用：O06の既存moduleCechの係数検出の適用を、同じ入力で独立させる。BM18 Prop4.8(5)",
+    "api": "Arc.cechExact_of_overlapTensor @ Arc/Descent/ArcCechOverlap.lean:30、Arc.acyclic_of_tensorShortExact @ Arc/Milnor/ArcMilnorDetection.lean:92、Arc.moduleCech_tor_subsingleton @ Arc/Milnor/ArcCechMilnor.lean:52",
+    "why": "O05の同じT上の列を同じmoduleCechへtensorし、既存のTor消滅とunitの同型で戻す。O06で予定していた適用の分割で、新しい数学や仮定を足さない。",
+    "risk": false
+  }
+]

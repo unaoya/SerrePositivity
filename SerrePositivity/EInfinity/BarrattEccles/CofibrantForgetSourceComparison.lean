@@ -43,14 +43,14 @@ lemma cofibrantUnderlying_component_transport (X Y : CofibrantAlgebra A)
       (eqToIso (congrArg HomotopyCategory.mk (cofibrantUnderlying_ordinary_vertex A Y))).hom =
     Truncated.HomotopyCategory.homMk
       ((nerve.edgeMk ((cofibrantAlgebraDKForget A).map f)).map
-        (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
-  have he := congrArg ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌))
+        (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
+  have he := congrArg ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌))
     (cofibrantAlgebraForgetNerve_mk₁ A f)
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
     (cofibrantUnderlying_ordinary_vertex A X) (cofibrantUnderlying_ordinary_vertex A Y)
     ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated
     ((nerve.edgeMk ((cofibrantAlgebraDKForget A).map f)).map
-      (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated he
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated he
 
 /-- 概要：元の cofibrant 射の実 U 像は同じ通常複体の頂点比較と可換。
 方針：同じ全源正方形を元の通常忘却の端点輸送へ接続する。
@@ -63,14 +63,14 @@ lemma cofibrantForgetOrdinary_component_square (X Y : CofibrantAlgebra A)
       (cofibrantForgetOrdinaryVertexIso A Y).hom =
     (cofibrantForgetOrdinaryVertexIso A X).hom ≫ Truncated.HomotopyCategory.homMk
       ((nerve.edgeMk ((cofibrantAlgebraDKForget A).map f)).map
-        (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
+        (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
   let ex := eqToIso (congrArg HomotopyCategory.mk (cofibrantUnderlying_ordinary_vertex A X))
   let ey := eqToIso (congrArg HomotopyCategory.mk (cofibrantUnderlying_ordinary_vertex A Y))
   let g := Truncated.HomotopyCategory.homMk
     ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated
   let h := Truncated.HomotopyCategory.homMk
     ((nerve.edgeMk ((cofibrantAlgebraDKForget A).map f)).map
-      (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated
   have ht : ex.inv ≫ g ≫ ey.hom = h := cofibrantUnderlying_component_transport A X Y f
   have ht' : g ≫ ey.hom = ex.hom ≫ h := by
     rw [← ht]
@@ -105,7 +105,7 @@ lemma cofibrantReplacement_forget_ordinary_arrow (B : CofibrantAlgebra A) :
         ((cofibrantAlgebraReplacement A).obj B.obj)).hom ≫
       Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (framedLimitProbeComparison A B.obj).hom).map
-          (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
+          (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
   let R := (cofibrantAlgebraReplacement A).obj B.obj
   let f : ULiftHom.objUp.{u + 1, u + 1} R ⟶ ULiftHom.objUp.{u + 1, u + 1} B :=
     (cofibrantDKComparison A).app (ULiftHom.objUp.{u + 1, u + 1} B)

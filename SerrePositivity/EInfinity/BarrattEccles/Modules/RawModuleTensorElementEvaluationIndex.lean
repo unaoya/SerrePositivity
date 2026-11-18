@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.Modules.TensorFrameEvaluation
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementDiagram
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorElementDiagram
 
 /-!
 概要：元の全加群 frame の要素図式を、対象ごとの複体の要素図式に送る。
@@ -17,7 +17,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 attribute [local instance] uliftCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -28,7 +28,7 @@ variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
 def strictRawModuleTensorElementEvaluationIndex
     (x : dgAlgebraCategory A ((assocForget A).obj X)) :
     strictRawModuleTensorElementIndex A X P Q ⥤
-      normalizedTensorElementIndex A
+      _root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A
         ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
         ((moduleEvaluation A _ x).obj Q) :=
   ULiftHom.down ⋙ ULift.downFunctor ⋙
@@ -41,7 +41,7 @@ def strictRawModuleTensorElementEvaluationIndex
 def strictRawModuleTensorElementEvaluationDiagramIso
     (x : dgAlgebraCategory A ((assocForget A).obj X)) :
     strictRawModuleTensorElementEvaluationIndex A X P Q x ⋙
-      normalizedTensorElementDiagram A
+      _root_.SerrePositivity.ComplexLimits.normalizedTensorElementDiagram A
         ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
         ((moduleEvaluation A _ x).obj Q) ≅
       strictRawModuleTensorElementDiagram A X P Q ⋙ moduleEvaluation A _ x :=
@@ -60,7 +60,7 @@ lemma strictRawModuleTensorElementEvaluationDiagramIso_evaluation
         (moduleEvaluation A _ x)).hom =
       CategoryTheory.Functor.whiskerLeft
         (strictRawModuleTensorElementEvaluationIndex A X P Q x)
-        (normalizedTensorElementEvaluation A
+        (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementEvaluation A
           ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
           ((moduleEvaluation A _ x).obj Q)) := by
   apply NatTrans.ext

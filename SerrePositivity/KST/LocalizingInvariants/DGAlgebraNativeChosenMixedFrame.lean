@@ -21,8 +21,8 @@ open SerrePositivity.HomotopyFunctionComplex SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
-  EInfinity.DGAlgebra.hasFiniteLimits EInfinity.DGAlgebra.hasTerminal
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
+  _root_.SerrePositivity.DGAlgebra.hasFiniteLimits _root_.SerrePositivity.DGAlgebra.hasTerminal
 
 def nativeCellChosenMixedMappingFunctor : Mon (Complex R) ⥤ SSet.{u} :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameDiagram (nativeModelRightResolutionFamily R) ⋙
@@ -60,7 +60,7 @@ def nativeCellChosenMixedRight : nativeCellChosenRightMappingFunctor R A ⟶
 
 lemma nativeCellChosenMixedLeft_anodyneImage_isIso (B : Mon (Complex R)) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((nativeCellChosenMixedLeft R A).app B)) := by
-  have : IsFibrant B := EInfinity.DGAlgebra.allFibrant R B
+  have : IsFibrant B := _root_.SerrePositivity.DGAlgebra.allFibrant R B
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftComparison_isIso (nativeCellSourceFrame R A)
     ((nativeModelSourceResolutionFamily R).cofibrant (cellResolution R A))
     ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameUnit (nativeModelRightResolutionFamily R)).app B)

@@ -4,7 +4,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHo
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.FrameSpanNerve
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ResolutionSpecialSpans
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrow
-public import SerrePositivity.EInfinity.Hammock.ReducedColimit
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReducedColimit
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialThreeArrowComparison
 
 /-!
@@ -74,16 +74,16 @@ lemma resolutionLeftRoofNerveMap_insert :
   rfl
 
 lemma resolutionLeftRoofNerveMap_normalization :
-    resolutionLeftRoofNerveMap q Y ≫ _root_.SerrePositivity.EInfinity.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
+    resolutionLeftRoofNerveMap q Y ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
       _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameElementSpanNerveMap (trivialFibrations C) (trivialCofibrations C)
         q.obj q.augmentation (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionAugmentation_trivialFibration q) (𝟙 Y)
           ((trivialCofibrations C).id_mem Y) ≫
         nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SpecialThreeArrowComparison.inclusion X Y) ≫ nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor ≫
-          _root_.SerrePositivity.EInfinity.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow := by
-  have h := _root_.SerrePositivity.EInfinity.Hammock.graphNormalization_naturality (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.insertRightIdentity
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow := by
+  have h := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization_naturality (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.insertRightIdentity
   change nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.insertRightIdentity) ≫
-    _root_.SerrePositivity.EInfinity.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow =
-      _root_.SerrePositivity.EInfinity.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word at h
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word at h
   rw [← h, ← Category.assoc, resolutionLeftRoofNerveMap_insert]
   simp only [Category.assoc]
 

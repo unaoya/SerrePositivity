@@ -96,3 +96,9 @@ python3 -B -m unittest discover -s research/kerodon-coverage/review/check -p 'te
 別プロジェクトのビルドと SerrePositivity のモジュール単位のビルドは待たない。
 SerrePositivity の全ビルド・verify が稼働中の場合、またはビルドロック取得が
 終了コード75で失敗した場合は10秒後に再試行する。ロック競合時のログは試行ごとに残す。
+
+## KB-W1 / B6（2026-11-17）：partial・none の紙の再照合
+
+`b6-ch<N>.md` は対象全行の判定・変更一覧、`b6-own-issues.md` は書換え対象外の own・both・mathlib で見つけた誤りの問題票。原文の項目Tagと現在の宣言のソースの仮定・結論を並べ、§8.1の「同じ対象・射について直接導ける部分」だけをpartialにする。保持するpartialはspecial・direction・stronger-hyp・componentの一つを記す。Archiveの宣言はown・partialの根拠にしない。
+
+KB-W1ではソースを読むだけで、ここにある旧段1スクリプトのLean実行・kernelの確認・ビルド・鍵の取得を行わない。既存CSVのaxioms/checkは過去の記録のままで今回の検証結果ではない。新しい大きい原文採取・候補型・検索・比較結果はgit外 `~/serre-evidence/cited/kerodon-b6/`、目録だけを `evidence/cited/kerodon-b6/manifest.json` に保存する。

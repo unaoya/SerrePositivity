@@ -42,3 +42,10 @@
 2. A2・B2・C1（A1 の次の夜）：runner の gate の条件、`import` の実験、RSS の数え方。
 3. A3・A4・B1・B4：IC-W1 の指示書に入れる（∞ の分）。BS・K は再開時。
 4. B3：計画どおり。B5：`coordination.md` §2 に一行。
+
+## 4. 結果（2026-11-17）
+
+- **A1 済み**（main 35988dd08）：f1 539 秒・21.8 GB → 47 秒・3.7 GB、f1b 45 秒・14.3 GB → 18 秒・2.7 GB、core 39 秒・13.8 GB → 15 秒・2.6 GB。106 監査は二束・計約 17 分（並列 6）、最長は `audit_axioms` の 10.2 GB。原因は別環境の再 import で、書き換えの際に `open Lean in` の位置と置換の範囲の誤りが二つ出た（直した）。
+- **B2 は効かない**：Lean v4.35.0-rc4 の小さな Lake のプロジェクト（`A` の定理の証明だけを変える。`public import` の `Pub`、非公開の `import` の `Priv`、その下流の `Down`）で、証明だけの変更でも `Pub`・`Priv`・`Down` が全部再ビルドされた。今の Lake は上流の .olean が変われば下流を作り直すので、非公開の import で再ビルドは減らない。B2 は閉じる（Lake が公開の部分だけで判断するようになったら試し直す）。
+- **B3（BR54）は枝 `coord/br54-citation-registry`（5f49475d5）**：略号表・版・照会コマンドを `Util/CitationRegistry.lean` に移した。取り込みの一回だけ `Util/Citation` の importer の再ビルドが要る（IC-1 と同じ回に）。
+- **A2・C1**：verify が約 17 分になったので後回し（取り込みが一日に何度もある日が続けば A2 を入れる）。

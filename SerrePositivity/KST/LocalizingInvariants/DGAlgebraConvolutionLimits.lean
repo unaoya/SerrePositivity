@@ -39,7 +39,7 @@ instance convolutionFunctor_preservesLimitsOfShape (H : Comon (Complex R))
 lemma multiplicativeSimplicesFunctor_evaluation (n : SimplexCategoryᵒᵖ) :
     multiplicativeSimplicesFunctor R ⋙ (evaluation SimplexCategoryᵒᵖ (Mon (Complex R))).obj n =
       convolutionFunctor R
-        ((EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).obj n.unop) := rfl
+        ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).obj n.unop) := rfl
 
 instance multiplicativeSimplicesFunctor_preservesLimitsOfShape
     (J : Type v) [Category.{w} J] [HasLimitsOfShape J (Complex R)] :

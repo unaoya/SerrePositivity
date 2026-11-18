@@ -66,7 +66,7 @@ lemma restrictionUnitMap_surjective (K : Complex T) :
 to the original class. -/
 lemma restrictionUnitMap_class {K : Complex T} (a : 𝟙_ (Complex T) ⟶ K) :
     ((exactCochainHomologyIso M 0).hom.app K)
-      (unitClass ((R).obj K) (restrictionUnitMap f a)) = unitClass K a := by
+      (_root_.SerrePositivity.HomologyZero.unitClass ((R).obj K) (restrictionUnitMap f a)) = _root_.SerrePositivity.HomologyZero.unitClass K a := by
   let x := cycleFromUnit ((R).obj K) (restrictionUnitMap f a)
   let y := cycleFromUnit K a
   let c : ((R).obj K).cycles 0 ⟶ (M).obj (K.cycles 0) := ((K.sc 0).mapCyclesIso M).hom
@@ -92,8 +92,8 @@ lemma restrictionUnitMap_class {K : Complex T} (a : 𝟙_ (Complex T) ⟶ K) :
       _ = x.val := congrArg (fun m => m x) (actualCycles_i ((R).obj K))
       _ = y.val := restrictionUnitMap_cycle f a
       _ = _ := (congrArg (fun m => m y) (actualCycles_i K)).symm
-  change e ((ModuleCat.ofHom (classMap ((R).obj K))) x) =
-    (ModuleCat.ofHom (classMap K)) y
+  change e ((ModuleCat.ofHom (_root_.SerrePositivity.HomologyZero.classMap ((R).obj K))) x) =
+    (ModuleCat.ofHom (_root_.SerrePositivity.HomologyZero.classMap K)) y
   rw [← actualCycles_π, ← actualCycles_π]
   change (((R).obj K).homologyπ 0 ≫ e) ((actualCycles ((R).obj K)).hom x) =
     K.homologyπ 0 ((actualCycles K).hom y)

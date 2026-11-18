@@ -28,7 +28,7 @@ def sourceFamily : _root_.SerrePositivity.InfinityCategories.Project.ModelCatego
 lemma sourceFamily_middle_trivial (S : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardTrivialCofibration.Objects (C := C) (n := n) (m := m) (X := X) (Y := Y)) :
     trivialCofibrations C (sourceFamily.middle.app S) := by
   have h := (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardExtractFamily.family.middleColumn_property (trivialCofibrations C) S.obj)
-  change trivialCofibrations C ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S.obj).arrow (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m)) ↔
+  change trivialCofibrations C ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rebuilt S.obj).arrow (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m)) ↔
     trivialCofibrations C (sourceFamily.middle.app S) at h
   rw [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardRebuildArrows.rebuilt_eq] at h
   exact h.mp S.property
