@@ -11019,3 +11019,98 @@ R12a.1 の紙の改行だけで区切った `let F・G・a・t` → 各束縛に
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,695 から 30,812 行。
 
 一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R06.2 の指定された重みの射での中断と引き継ぎ
+
+R04 と R05 の終端を検証した。R06.1 は承認済みの小さい要素圏の写像で通り、R06.3 は元の指定切断の射に対して通った。前から作業木にあった 8 本は、対象ビルド、台帳型への代入、小監査を順に通してコミット済み。R06.3 は `f759229cd`、R09.1 は `48fd708ce`、R12a.1 は `7b5728e2c`。新規 21 モジュールの各小監査は標準三公理のみ。main の `657048b94` を `77ba42820` で取り込み、昼の二枠と ③-a の整理券一枚を確認した。
+
+一覧：済み 60／全体 96（うち追加 61）
+
+現在の停止理由は、R06.2 の証明に要る指定添字の照合一本の補正見込みが 800 行を超えること。R05 の大域比較の自然性は、元の重み付き切断の辺の類を native の右 Kan 延長まで移す。R06.3S は、同じ底上の比較が与えられた後の頂点の合成を閉じる。その間で、元の φ の実辺に沿って変わる二つの指定 Yoneda 添字を、同じ係数図式の上で照合する必要がある。既存の `rightKan_actualIndexArrow_transportConeIso` は同じ頂点で添字の包含を変える法則なので、この面を供給しない。
+
+不足する面を以下の型で切り出した。一時ファイルで型検査済み。二つの `def` は証明すべき条件の記法であり、検証済みの定理や本体への追加ではない。`he₀` と `he₁` は元の離散埋め込みの頂点仕様と辺の端点から供給する。R06.2 の仮定に足さない。
+
+```lean
+import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsNativeLimitGlobalComparison
+import SerrePositivity.InfinityCategories.Sheaves.NativeLeftSectionsTransportCone
+import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsOriginalLeftLimit
+import SerrePositivity.InfinityCategories.Sheaves.DiscretePresheafHom
+open CategoryTheory Limits SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+set_option autoImplicit false
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+open SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding
+open SerrePositivity.InfinityCategories.Sheaves
+open SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories
+
+universe u
+noncomputable def rightKanMovingIndexFace
+    {J K X : SSet.{u}} (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁) : Prop :=
+  let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+  let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+  let a₀ := j₀ ≫ pullback.fst q₀ δ
+  let a₁ := j₁ ≫ pullback.fst q₁ δ
+  let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+  let r₀ := sliceUnderRestrict e (stdSimplex.δ (1 : Fin 2)) ≫
+    eqToHom (congrArg sliceUnder he₀)
+  let r₁ := sliceUnderRestrict e (stdSimplex.δ (0 : Fin 2)) ≫
+    eqToHom (congrArg sliceUnder he₁)
+  ∃ (w : J ⟶ sliceUnder e)
+    (h₀ : (w ≫ r₀) ≫ q₀ = p)
+    (h₁ : a₀ ≫ q₀ = p),
+    w ≫ r₁ = a₁ ∧
+      Nonempty (VertexIso (relativeFunctorVertex q₀ p (w ≫ r₀) h₀)
+        (relativeFunctorVertex q₀ p a₀ h₁))
+
+
+noncomputable def discreteWeightedSectionsMovingIndexCondition
+    {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) : Prop :=
+  let U := SSet.uliftFunctor.{u + 1, u}
+  let b := nerveOppositeIso (C := C)
+  let F := U.map b.hom ≫ discretePresheaf P
+  let G := U.map b.hom ≫ discretePresheaf Q
+  let a := U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf P)).hom ≫
+    U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ)) ≫
+    U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf Q)).inv
+  let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+  let e := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated
+  let e' := (edgeOp e).map ((truncation 2).map
+    ((SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv))
+  let η : (Δ[1] : SSet.{u + 1}) ⟶ (PresheafInfinity (nerve C)).op :=
+    SSet.yonedaEquiv.symm e'.edge
+  ∀ (he₀ : stdSimplex.δ (1 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex G)))
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex F))),
+    rightKanMovingIndexFace δ η he₀ he₁
+      (a ≫ leftElementsRightKanComparison G) (leftElementsRightKanComparison F)
+```
+
+再利用する本体の境目は以下のとおり。
+
+- `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison` は大域比較の同じ成分を返す（`SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean:80`）。
+- `leftElementsRightKanComparison_projection` は各頂点での指定比較の射影を返す（`SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54`）。`exists_relativeEdgeCosliceLift` は既に指定された合成三角形を持ち上げる（`SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean:70`）。
+- `yonedaPresheafEvaluation_postcomposeIso` は固定した表現可能の全写像空間で、実辺の後合成と係数作用を照合する（`SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/YonedaPresheafEvaluationPostcomposition.lean:33`）。`presheafDensityIdentityValue_factorization` は同じ密度変換を恒等点上で計算する（`SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean:49`）。離散 fiber への反映で進む場合も、二つの指定スライス写像の fiber 読み出しをこの因子分解と照合する証明が残る。
+- `rightKan_actualIndexArrow_transportConeIso` の出発点・終点は同じ `v`（`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean:210`）。今回必要な `v₀`・`v₁` 間の実辺は条件の `η`。
+
+指定した同じ面を証明する比較一本の未計上の見込みは素 450〜650 行、係数 2 で 900〜1,300 行。内訳は、元の密度変換の値と後合成の全族の照合 160〜220 行、同じ底へ移した二つの添字の規格化 120〜180 行、同じ実辺上の持ち上げと始点側の相対同型の回収 170〜250 行。固定した表現可能の比較だけを使うと全添字上の指定された面が得られず、800 行以内の別経路は確認できていない。台帳の未完分だけの見込みは累計 32,902〜34,512 行。この面を含めると 33,802〜35,812 行で、上端は外枠 35,681 行を 131 行超える。今回のタイプ検査は不足の型の確認までとし、署名台帳への追加と証明には着手していない。
+
+引き継ぎ：
+
+- 対象 14 署名の終端で済んだものは R04・R05。未完は R06・R08・R09-Cech・R09・R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。部分補題の検証状況は署名台帳の現在表に反映済み。
+- main 取り込み済みの 28,221 行を基準に、新規 21 本で 2,591 行、累計 30,812 行。検証済み 21 署名の素の見込み 1,310〜2,210 行、補正 2,620〜4,420 行。R04.5 は実測 381 行に対し補正上端 320 行。R06.3 は追加照合 3 本を含め 516 行。
+- 旧 R2 の未追跡 4 本はそのまま。追跡ファイルの未コミット差分や今回の未追跡 Lean 下書きはない。R16・R17、S7、旧 R2・R3 は実装範囲外のまま。
+
+一覧：済み 60／全体 96（うち追加 61）
