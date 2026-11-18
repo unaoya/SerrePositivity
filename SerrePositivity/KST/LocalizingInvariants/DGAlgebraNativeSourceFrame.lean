@@ -20,19 +20,19 @@ open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory EInfinity.DGAlgebra.hasColimits
-  EInfinity.DGAlgebra.hasFiniteLimits
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory _root_.SerrePositivity.DGAlgebra.hasColimits
+  _root_.SerrePositivity.DGAlgebra.hasFiniteLimits
 
 def nativeModelCofibrationFactorization :
     MorphismProperty.FunctorialFactorizationData (cofibrations (Mon (Complex R)))
       (trivialFibrations (Mon (Complex R))) := by
   have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
-      (EInfinity.DGAlgebra.generatingCofibrations (R := R))
-      (EInfinity.DGAlgebra.generatingTrivialCofibrations (R := R)) :=
-    EInfinity.DGAlgebra.modelCategory_cofibrantlyGenerated R
+      (_root_.SerrePositivity.DGAlgebra.generatingCofibrations (R := R))
+      (_root_.SerrePositivity.DGAlgebra.generatingTrivialCofibrations (R := R)) :=
+    _root_.SerrePositivity.DGAlgebra.modelCategory_cofibrantlyGenerated R
   have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
-    (EInfinity.DGAlgebra.generatingCofibrations (R := R))
-    (EInfinity.DGAlgebra.generatingTrivialCofibrations (R := R))
+    (_root_.SerrePositivity.DGAlgebra.generatingCofibrations (R := R))
+    (_root_.SerrePositivity.DGAlgebra.generatingTrivialCofibrations (R := R))
   exact MorphismProperty.functorialFactorizationData _ _
 
 def nativeModelSourceResolutionFamily : CofibrantResolutionFamily (C := Mon (Complex R)) simplex :=

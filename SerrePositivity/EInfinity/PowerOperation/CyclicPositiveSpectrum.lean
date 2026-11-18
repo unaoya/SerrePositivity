@@ -66,7 +66,7 @@ def cyclicPositiveRelativeHomMorphism : LocalizerMorphism
   functor := boundedCyclicRelativeDown p k ⋙ cyclicPositiveBoundedHomFunctor p k ⋙
     complexRelativeUp k
   map _ _ f hf := by
-    let := projectiveModelCategory k
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory k
     exact (HomologicalComplex.mem_quasiIso_iff _).mp
       ((cyclicPositiveBoundedHomLocalizer p k).map ((boundedCyclicRelativeDown p k).map f) hf)
 

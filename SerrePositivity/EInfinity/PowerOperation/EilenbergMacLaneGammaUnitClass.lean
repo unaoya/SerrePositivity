@@ -18,7 +18,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory HomologicalComplex MonoidalCategory
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 同じ π₀/H⁰ 比較の零単体の値は、同じ閉元の実ホモロジー類である。 -/
@@ -26,22 +26,22 @@ lemma gammaPiZeroCohomologyEquiv_mk_cycle (M : Complex A)
     (x : (gammaModule A M).obj (Opposite.op ⦋0⦌)) :
     gammaPiZeroCohomologyEquiv A M (SSet.π₀.mk x) =
       (M.homologyπ 0).hom ((smartTruncationZeroCycleMap A M).hom
-        ((gammaDegreeZeroIso (M.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom x)) := by
+        ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso (M.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom x)) := by
   change (smartTruncationHomologyIso A M 0).hom.hom
     (gammaPiZeroTruncationEquiv A M (SSet.π₀.mk x)) = _
   rw [gammaPiZeroTruncationEquiv_mk]
   exact congrArg (fun k => k.hom
-    ((gammaDegreeZeroIso (M.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom x))
+    ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso (M.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom x))
     (smartTruncationZeroCycleMap_homologyπ A M).symm
 
 /-- 指定単位の閉元を実 cycles で計算する。 -/
 lemma gammaUnitSimplex_zero_cycle :
     (smartTruncationZeroCycleMap A (𝟙_ (Complex A))).hom
-      ((gammaDegreeZeroIso ((𝟙_ (Complex A)).truncLE'
+      ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso ((𝟙_ (Complex A)).truncLE'
         (ComplexShape.embeddingUpIntLE 0))).hom.hom (gammaUnitSimplex A ⦋0⦌)) =
       (zeroCyclesActualIso (𝟙_ (Complex A))).hom (cycleFromUnit (𝟙_ (Complex A)) (𝟙 _)) := by
   let I := 𝟙_ (Complex A)
-  let z := (gammaDegreeZeroIso (I.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom
+  let z := (_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso (I.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom.hom
     (gammaUnitSimplex A ⦋0⦌)
   apply (ModuleCat.mono_iff_injective
     (I.iCycles 0 ≫ (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom)).mp inferInstance
@@ -49,9 +49,9 @@ lemma gammaUnitSimplex_zero_cycle :
     ((smartTruncationZeroCycleMap A I ≫ I.iCycles 0).hom z) = _
   rw [smartTruncationZeroCycleMap_iCycles]
   have h : (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom
-      ((truncationExtendedZeroInclusion A (ComplexShape.embeddingUpIntLE 0) rfl
+      ((_root_.SerrePositivity.ComplexLimits.truncationExtendedZeroInclusion A (ComplexShape.embeddingUpIntLE 0) rfl
         (by simp) I).hom z) = (1 : A) := by
-    simpa only [embeddingDownNat_eq_upIntLE_zero] using gammaUnitSimplex_zero_coefficient A
+    simpa only [_root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero] using gammaUnitSimplex_zero_coefficient A
   rw [h]
   have hi := congrArg (fun k => k.hom (cycleFromUnit I (𝟙 I))) (zeroCyclesActualIso_i I)
   change (I.iCycles 0).hom ((zeroCyclesActualIso I).hom.hom (cycleFromUnit I (𝟙 I))) =
@@ -64,7 +64,7 @@ lemma gammaUnitSimplex_zero_cycle :
 /-- 同じ指定 π₀/H⁰ 比較は AW 単位の成分を元の単位類へ送る。 -/
 lemma gammaPiZeroCohomologyEquiv_unit :
     gammaPiZeroCohomologyEquiv A (𝟙_ (Complex A)) (SSet.π₀.mk (gammaUnitSimplex A ⦋0⦌)) =
-      HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _) := by
+      _root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _) := by
   rw [gammaPiZeroCohomologyEquiv_mk_cycle, gammaUnitSimplex_zero_cycle]
   exact congrArg (fun k => k.hom (cycleFromUnit (𝟙_ (Complex A)) (𝟙 _)))
     (zeroCyclesActualIso_homologyπ (𝟙_ (Complex A)))

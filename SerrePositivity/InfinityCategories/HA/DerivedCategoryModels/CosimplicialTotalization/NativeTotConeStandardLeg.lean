@@ -32,7 +32,7 @@ variable {A : Type u} [CommRing A]
 theorem nativeDGCone_standardLeg (X : CosimplicialObject (Complex A)) (n : SimplexCategory) :
     (derivedConeLeg (nativeDGCone X) (ULift.up (nerveVertex (AsSmall.up.obj n)))).edge =
       (dgClosedEdge A (Complex A)
-        ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           (standardLeg A X n))).edge := by
   rw [nativeDGCone_leg_simplex]
   apply Simplex.edgeEquiv.injective
@@ -50,7 +50,7 @@ theorem nativeDGCone_standardLeg (X : CosimplicialObject (Complex A)) (n : Simpl
       (((liftedEnrichedBousfieldKanCone X).app (AsSmall.up.obj n)).app
         (Opposite.op ⦋0⦌) (nerveVertex (Over.mk (𝟙 (AsSmall.up.obj n))))) =
       (closedHomEquiv A (Complex A) _ _
-        ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           (standardLeg A X n))).val
     let j := Opposite.op (Opposite.op n)
     let s : (((Functor.flip (SimplicialObject.opFunctor.obj bousfieldKanSetWeight)) ⋙
@@ -66,13 +66,13 @@ theorem nativeDGCone_standardLeg (X : CosimplicialObject (Complex A)) (n : Simpl
     erw [← h]
     have hc : CochainComplex.HomComplex.Cochain.ofHom (standardLeg A X n) =
         (closedHomEquiv A (Complex A) _ _
-          ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map
+          ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
             (standardLeg A X n))).val := by
       have h := complexClosedHomEquiv_cochain A T (X.obj n)
-        ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map (standardLeg A X n))
-      have hf := SerrePositivity.EInfinity.ComplexLimits.complexToClosed_map A (standardLeg A X n)
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map (standardLeg A X n))
+      have hf := _root_.SerrePositivity.ComplexLimits.complexToClosed_map A (standardLeg A X n)
       change complexClosedHomEquiv A T (X.obj n)
-        ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map (standardLeg A X n)) =
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map (standardLeg A X n)) =
           standardLeg A X n at hf
       rw [hf] at h
       exact h

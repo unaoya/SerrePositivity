@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.HomotopyModels.ModulePiZeroMoore
-public import SerrePositivity.EInfinity.ComplexLimits.DoldKanZeroIso
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoldKanZeroIso
 
 /-!
 # 実 π₀/Moore 比較の零単体の代表元での計算
@@ -22,7 +22,7 @@ variable {A : Type u} [CommRing A]
 
 /-- 二つの既存の零次数 Moore 同型は、同じ実包含から作られている。 -/
 lemma mooreDegreeZeroIso_eq (W : SimplicialObject (ModuleCat A)) :
-    moduleMooreDegreeZeroIso W = ComplexLimits.mooreDegreeZeroIso W := by
+    moduleMooreDegreeZeroIso W = _root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W := by
   apply Iso.ext
   rfl
 

@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 open SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries
@@ -42,7 +42,7 @@ variable (X : J ⥤ SSet.{u}) (Q : J ⥤ CochainComplex (ModuleCat A) ℤ)
 /-- 積重みの自由鎖からの Hom と、元の実 Γ 図式の重み付き切断の全単体同型。 -/
 def freeProductSectionsHomIso :
     (cosimplicialHom (freeProductFrame A X (liftedStandardSimplexParameter J))).obj Q ≅
-      weightedSections X (Q ⋙ truncatedDoldKanFunctor A) :=
+      weightedSections X (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) :=
   ((adjunctionHomIsoSameUniverse
     ((weightedSectionsAdjunction X).comp (freeNegativeChainsDiagramAdjunction A J))
       (SSet.stdSimplex.{0} ⋙ SSet.uliftFunctor.{u,0})).app Q) ≪≫

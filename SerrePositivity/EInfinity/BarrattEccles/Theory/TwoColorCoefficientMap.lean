@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorCoefficientProjections
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorResolutionComparison
 public import SerrePositivity.EInfinity.BarrattEccles.Hopf
-public import SerrePositivity.EInfinity.Operad.HopfComponents
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.HopfComponents
 
 /-!
 # 二色の実際の係数比較射

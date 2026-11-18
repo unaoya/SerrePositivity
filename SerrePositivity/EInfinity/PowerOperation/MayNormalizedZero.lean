@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.HomologyZero
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.HomologyZero
 variable {k : Type u} [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
 variable (X : (operad k).Algebra)
 
@@ -67,7 +67,7 @@ local instance mayNormalizedZeroCommRing : CommRing (X.carrier.homology 0) := ho
 
 /-- ν(0)=1 の場合の、全次数の構成と既存 D₀ の計算の一致。 -/
 lemma mayNormalizedClass_zero_unit (f : 𝟙_ (Complex k) ⟶ X.carrier) :
-    mayNormalizedClass p X 0 1 (cycleFromUnit X.carrier f) = unitClass X.carrier f ^ p := by
+    mayNormalizedClass p X 0 1 (cycleFromUnit X.carrier f) = _root_.SerrePositivity.HomologyZero.unitClass X.carrier f ^ p := by
   have hn : 0 ≤ mayZeroIndex p 0 := by rw [mayZeroIndex_zero]
   have hi : (mayZeroIndex p 0).toNat = 0 := by rw [mayZeroIndex_zero]; rfl
   have hd : -(0 : ℤ) + mayRepeatedDegree 0 p = 0 :=
@@ -85,7 +85,7 @@ lemma mayNormalizedClass_zero_unit (f : 𝟙_ (Complex k) ⟶ X.carrier) :
 /-- 全次数の同じ規格化された P⁰ は、実 H⁰ の環で p 乗。 -/
 lemma mayNormalizedHomology_zero_value (x : X.carrier.homology 0) :
     mayNormalizedHomology p X 0 1 x = x ^ p := by
-  obtain ⟨f, rfl⟩ := unitClass_surjective X.carrier x
+  obtain ⟨f, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier x
   have hh := mayNormalizedHomology_class p X 0 1 (cycleFromUnit X.carrier f)
   exact hh.trans (mayNormalizedClass_zero_unit p X f)
 

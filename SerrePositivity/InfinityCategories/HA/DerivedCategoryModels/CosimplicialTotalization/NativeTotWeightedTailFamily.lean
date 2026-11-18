@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -44,8 +44,8 @@ def nativeTotTailCellFunctor {n : ℕ}
     intro i
     apply Subtype.ext
     change (closedHomEquiv A (Complex A) _ _
-      ((complexToClosed A).map ((f ≫ g).app (AsSmall.down.obj (σ.obj i))))).val = _
-    rw [NatTrans.comp_app, (complexToClosed A).map_comp]
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((f ≫ g).app (AsSmall.down.obj (σ.obj i))))).val = _
+    rw [NatTrans.comp_app, (_root_.SerrePositivity.ComplexLimits.complexToClosed A).map_comp]
     exact closedHom_comp (A := A) (D := Complex A) _ _
 
 /-- 元のweightedセルの底の面は、同じ閉零評価のHA単体。 -/

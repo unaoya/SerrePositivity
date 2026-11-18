@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanComparisonNerves
-public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.RelativeForwardSimplex
-public import SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeCompositionPoints
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeForwardSimplex
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ExInfinityWeakMap
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.InfinityCategories
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   (F : LocalizerMorphism C.weakEquivalences D.weakEquivalences)
@@ -28,27 +28,27 @@ variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctor
 規約：Hom 射は元の colimitMap。使われ方：元の Kan 化への全族の入力。 -/
 def relativeHammockEnriched : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.HammockObjects D) where
   obj X := F.functor.obj X
-  map X Y := Relative.colimitMap F X Y
+  map X Y := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y
   map_id X := by
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro x
     cases x
-    exact Relative.colimitUnit_point F X n
+    exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitUnit_point F X n
   map_comp X Y Z := by
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro x
-    exact Relative.composePoint_map F x.1 x.2
+    exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.composePoint_map F x.1 x.2
 
 /-- 概要：元の全 hammock 比較を同じ Ex∞ で Kan 化する。
 方針：元の豊穣関手へ既存の monoidal 移送を適用する。
 規約：元の全合成を保つ。使われ方：同じ coherent nerve 比較。 -/
 def relativeKanHammockEnriched :
     EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockObjects C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockObjects D) :=
-  exInfinityEnrichedFunctor (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched F)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinityEnrichedFunctor (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeHammockEnriched F)
 
 /-- 概要：同じ Kan 豊穣比較を元の通常化された豊穣圏へ送る。
 方針：ForgetEnrichment の元の Hom 構造を使う。
@@ -67,18 +67,18 @@ def relativeKanHammockNerve : _root_.SerrePositivity.InfinityCategories.HA.Model
 方針：定義を読む。
 規約：全 Hom で定義上の一致。使われ方：同じ比較射の弱同値判定。 -/
 lemma relativeKanHammockEnriched_map (X Y : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory C) :
-    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockEnriched F).map X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Relative.colimitMap F X Y) := rfl
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockEnriched F).map X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y) := rfl
 
 /-- 概要：全 Hom の弱同値性は元の coherent nerve 比較の充満忠実性を与える。
 方針：同じ Ex∞ の弱同値保存と Kan Whitehead を適用する。
 規約：元の全比較を保持。使われ方：包含の全図式の同値判定。 -/
 lemma relativeKanHammockNerve_fullyFaithful
-    (hF : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap F X Y)) :
+    (hF : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y)) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve F) := by
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockFunctor F)).mpr
   intro X Y
-  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Relative.colimitMap F X Y))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y))
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
-    (exInfinity_map_weak _ (hF X Y))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinity_map_weak _ (hF X Y))
 
 end SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization

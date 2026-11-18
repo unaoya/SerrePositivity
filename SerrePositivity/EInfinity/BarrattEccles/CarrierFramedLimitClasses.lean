@@ -46,10 +46,10 @@ def carrierFramedLimitMapClass (F : K ⥤ (operad A).Algebra) {Y : Complex A}
 使われ方：忘却した通常錐の比較射との照合。 -/
 lemma carrierFramedLimitHomPiZeroEquiv_mapClass (F : K ⥤ (operad A).Algebra) {Y : Complex A}
     (f : Y ⟶ ((framedLimitFunctor A K).obj F).carrier) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
     carrierFramedLimitHomPiZeroEquiv A K F Y (carrierFramedLimitMapClass A K F f) = Q.map f := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let Q := (weakEquivalences (Complex A)).Q
   have : Q.op.IsLocalization (weakEquivalences (Complex A)ᵒᵖ) := by
     rw [weakEquivalences_op]

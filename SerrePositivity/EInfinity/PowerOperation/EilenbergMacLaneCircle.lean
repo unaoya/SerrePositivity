@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneGammaSmash
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneCohomotopy
-public import SerrePositivity.EInfinity.HomologyZero.Classes
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.Classes
 public import SerrePositivity.KST.Spectra.SphereSimplex
 
 /-!
@@ -39,7 +39,7 @@ def unitCircleClass :
       (0 : ((levelModuleFunctor A 1).obj (𝟙_ (Complex A))).obj
         (Opposite.op (SimplexCategory.mk 0))) :=
   (levelPiCohomologyEquivAt A (𝟙_ (Complex A)) 0 1 0 (by decide)).symm
-    (Multiplicative.ofAdd (HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)))
+    (Multiplicative.ofAdd (_root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)))
 
 /-- 複体変数によらず一度だけ選ぶ基本円の代表。 -/
 def unitCircle : PointedSimplicialSet.circle.{u} ⟶
@@ -57,7 +57,7 @@ lemma unitCircle_class :
 lemma unitCircle_homology :
     levelPiCohomologyEquivAt A (𝟙_ (Complex A)) 0 1 0 (by decide)
       (unitCircleClass A) =
-    Multiplicative.ofAdd (HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)) :=
+    Multiplicative.ofAdd (_root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)) :=
   (levelPiCohomologyEquivAt A (𝟙_ (Complex A)) 0 1 0 (by decide)).apply_symm_apply _
 
 end SerrePositivity.EInfinity.PowerOperation

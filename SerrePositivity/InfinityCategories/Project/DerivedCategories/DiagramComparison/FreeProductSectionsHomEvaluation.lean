@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] {J : Type u} [SmallCategory J]
@@ -53,7 +53,7 @@ theorem freeProductSectionsHomIso_uncurry (W : J ⥤ SSet.{u}) (Q : J ⥤ Comple
   let h := ((weightedSectionsAdjunction W).comp (freeNegativeChainsDiagramAdjunction A J)).homEquiv
     ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) Q f
   have he : (freeProductSectionsHomIso A W Q).hom.app (Opposite.op n) f =
-      (liftedStandardSimplexHomIso (weightedSections W (Q ⋙ truncatedDoldKanFunctor A))).hom.app
+      (liftedStandardSimplexHomIso (weightedSections W (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A))).hom.app
         (Opposite.op n) h := rfl
   rw [he, liftedStandardSimplexHomIso_yoneda]
   exact weightedFreeChainsAdjunction_uncurry A W _ Q f

@@ -19,7 +19,7 @@ open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance isw1StrictDiagramEvaluationFramesLocal1 : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance isw1StrictDiagramEvaluationFramesLocal1 : ModelCategory (Complex A) := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance isw1StrictDiagramEvaluationFramesLocal2 : HasLimitsOfSize.{0, 0} (Complex A) :=
   ⟨fun _ _ => HomologicalComplex.instHasLimitsOfShape⟩
 local instance isw1StrictDiagramEvaluationFramesLocal3 : HasColimitsOfSize.{0, 0} (Complex A) :=

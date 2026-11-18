@@ -2,7 +2,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantForgetSourceComparison
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FunctorComparison.FunctorIsoEvaluationArrow
-public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponentArrow
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DerivedNatTransComponentArrow
 /-!
 概要：元の全代数の忘却比較の成分を、同じ置換 augmentation の導来像へ回収する。
 方針：元の全源同型を評価し、等式輸送を全 Arrow で保持して比較する。
@@ -27,26 +27,26 @@ lemma algebraReplacementUnderlyingDerivedIso_component_arrow (B : (operad A).Alg
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (algebraReplacementUnderlyingDerivedIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (framedLimitProbeComparison A B).hom).map
-          (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
+          (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
   let a := Functor.whiskerRight (framedLimitProbeComparisonNatTrans A)
-    (Operad.Algebra.forget (operad A))
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
   have ha (Z : (operad A).Algebra) : QuasiIso (a.app Z) :=
     framedLimitProbeComparison_quasiIso A Z
   have he : algebraCAlgReplacementNerve A ≫ cofibrantAlgebraUnderlyingDerivedSource A =
-      nerveMap (framedLimitProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
-        ComplexLimits.complexOrdinaryDerivedSource A := by
+      nerveMap (framedLimitProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
     rw [cofibrantAlgebraUnderlyingDerivedSource, ← Category.assoc,
       algebraCAlgReplacementNerve_forget]
   let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
-      (nerveMap (framedLimitProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
-        ComplexLimits.complexOrdinaryDerivedSource A) (algebraUnderlyingDerivedSource A) :=
-    ComplexLimits.complexOrdinaryDerivedNatTransIso A a ha
+      (nerveMap (framedLimitProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) (algebraUnderlyingDerivedSource A) :=
+    _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransIso A a ha
   have hd : algebraReplacementUnderlyingDerivedIso A =
       eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) he) ≪≫ e := rfl
   rw [hd, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp,
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate_eqToIso_hom he (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)]
   refine (Arrow.arrow_mk_eqToHom_comp _ _).trans ?_
-  exact ComplexLimits.complexOrdinaryDerivedNatTransIso_component_arrow A a ha B
+  exact _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransIso_component_arrow A a ha B
 
 /-- 概要：通常複体頂点への比較は同じ全源同型の成分と全 Arrow として一致する。
 方針：元の頂点等式の後合成輸送を Arrow の同じ射へ戻す。
@@ -68,7 +68,7 @@ lemma algebraCAlgSource_underlyingDerivedIso_component_arrow (B : (operad A).Alg
     Arrow.mk ((cofibrantForgetOrdinaryVertexIso A ((cofibrantAlgebraReplacement A).obj B)).hom ≫
       Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk (framedLimitProbeComparison A B).hom).map
-          (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
+          (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
   have hs := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate_precomp_arrow (cAlgForgetDerived_sourceIso A)
     (algebraCAlgReplacementNerve A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
   have hv := congrArg (fun v => (Arrow.mk

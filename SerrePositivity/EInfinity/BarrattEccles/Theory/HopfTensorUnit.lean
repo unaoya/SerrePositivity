@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory
 open DifferentialGraded TensorPowers
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 attribute [local implicit_reducible] TensorPowers.power SerrePositivity.SymmetricSequence
   SerrePositivity.SymmetricSequence.level
@@ -34,7 +34,7 @@ attribute [local implicit_reducible] TensorPowers.power SerrePositivity.Symmetri
 /-- BF §1.1.4 の二列分離は一次冪の指定単位子と可換。 -/
 @[reassoc]
 lemma tensorPowerSeparation_one (V W : Complex A) :
-    (tensorPowerSeparation V W 1).hom ≫ ((oneIso V).hom ⊗ₘ (oneIso W).hom) =
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W 1).hom ≫ ((oneIso V).hom ⊗ₘ (oneIso W).hom) =
       (oneIso (V ⊗ W)).hom := by
   rw [tensorPowerSeparation_succ_hom, tensorPowerSeparation_zero_hom]
   simpa only [oneIso, power, Category.assoc] using (tensor_right_unitality V W).symm

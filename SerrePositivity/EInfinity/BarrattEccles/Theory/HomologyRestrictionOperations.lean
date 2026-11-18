@@ -30,7 +30,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded TensorPowers HomologyZero
+open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded TensorPowers _root_.SerrePositivity.HomologyZero
 open Functor.LaxMonoidal
 
 variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
@@ -40,9 +40,9 @@ local notation "M" => ModuleCat.restrictScalars f
 
 private def restrictionAritySectionHomotopy (n : ℕ) :
     Homotopy (aritySection S n ≫ coefficientComplexMap f n)
-      (restrictionUnitMap f (aritySection T n)) := by
+      (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f (aritySection T n)) := by
   let a := aritySection S n ≫ coefficientComplexMap f n
-  let b := restrictionUnitMap f (aritySection T n)
+  let b := _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f (aritySection T n)
   let e := complexContraction T n
   have h₁ : a ≫ (R).map e.hom = ε R := by
     have hc := coefficientComplexMap_augmentation f n
@@ -65,8 +65,8 @@ private def restrictionAritySectionHomotopy (n : ℕ) :
 
 private lemma restrictedUnitPairing {K L N : Complex T} (m : K ⊗ L ⟶ N)
     (a : 𝟙_ (Complex T) ⟶ K) (b : 𝟙_ (Complex T) ⟶ L) :
-    unitPairing (μ R K L ≫ (R).map m) (restrictionUnitMap f a) (restrictionUnitMap f b) =
-      restrictionUnitMap f (unitPairing m a b) := by
+    _root_.SerrePositivity.HomologyZero.unitPairing (μ R K L ≫ (R).map m) (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f a) (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f b) =
+      _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f (_root_.SerrePositivity.HomologyZero.unitPairing m a b) := by
   change (λ_ (𝟙_ (Complex S))).inv ≫
       ((ε R ≫ (R).map a) ⊗ₘ (ε R ≫ (R).map b)) ≫ μ R K L ≫ (R).map m =
     ε R ≫ (R).map ((λ_ (𝟙_ (Complex T))).inv ≫ (a ⊗ₘ b) ≫ m)
@@ -80,7 +80,7 @@ private lemma restrictedUnitPairing {K L N : Complex T} (m : K ⊗ L ⟶ N)
 private lemma restrictedOperation_value (X : (operad T).Algebra) (n : ℕ)
     (a : 𝟙_ (Complex S) ⟶ power ((R).obj X.carrier) n) :
     a ≫ homologyOperation ((coefficientRestriction f).obj X) n =
-      unitPairing (μ R ((operad T).arity n) (power X.carrier n) ≫ (R).map (X.action n))
+      _root_.SerrePositivity.HomologyZero.unitPairing (μ R ((operad T).arity n) (power X.carrier n) ≫ (R).map (X.action n))
         (aritySection S n ≫ coefficientComplexMap f n)
         (a ≫ laxPowerComparison R X.carrier n) := by
   change a ≫ (λ_ _).inv ≫ (aritySection S n ▷ _) ≫
@@ -94,22 +94,22 @@ private lemma restrictedOperation_value (X : (operad T).Algebra) (n : ℕ)
 private lemma restrictedOperation_class (X : (operad T).Algebra) (n : ℕ)
     (a : 𝟙_ (Complex S) ⟶ power ((R).obj X.carrier) n)
     (b : 𝟙_ (Complex T) ⟶ power X.carrier n)
-    (h : a ≫ laxPowerComparison R X.carrier n = restrictionUnitMap f b) :
+    (h : a ≫ laxPowerComparison R X.carrier n = _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f b) :
     ((exactCochainHomologyIso M 0).hom.app X.carrier)
-      (unitClass ((R).obj X.carrier) (a ≫ homologyOperation ((coefficientRestriction f).obj X) n)) =
-      unitClass X.carrier (b ≫ homologyOperation X n) := by
+      (_root_.SerrePositivity.HomologyZero.unitClass ((R).obj X.carrier) (a ≫ homologyOperation ((coefficientRestriction f).obj X) n)) =
+      _root_.SerrePositivity.HomologyZero.unitClass X.carrier (b ≫ homologyOperation X n) := by
   let k := μ R ((operad T).arity n) (power X.carrier n) ≫ (R).map (X.action n)
   rw [restrictedOperation_value, h]
-  have he : unitClass ((R).obj X.carrier)
-      (unitPairing k (aritySection S n ≫ coefficientComplexMap f n) (restrictionUnitMap f b)) =
-        unitClass ((R).obj X.carrier)
-          (unitPairing k (restrictionUnitMap f (aritySection T n)) (restrictionUnitMap f b)) :=
-    (unitClass_eq_iff _ _ _).mpr
-      ⟨unitPairingHomotopy k (restrictionAritySectionHomotopy f n)
-        (Homotopy.refl (restrictionUnitMap f b))⟩
-  rw [he, restrictedUnitPairing, restrictionUnitMap_class]
+  have he : _root_.SerrePositivity.HomologyZero.unitClass ((R).obj X.carrier)
+      (_root_.SerrePositivity.HomologyZero.unitPairing k (aritySection S n ≫ coefficientComplexMap f n) (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f b)) =
+        _root_.SerrePositivity.HomologyZero.unitClass ((R).obj X.carrier)
+          (_root_.SerrePositivity.HomologyZero.unitPairing k (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f (aritySection T n)) (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f b)) :=
+    (_root_.SerrePositivity.HomologyZero.unitClass_eq_iff _ _ _).mpr
+      ⟨_root_.SerrePositivity.HomologyZero.unitPairingHomotopy k (restrictionAritySectionHomotopy f n)
+        (Homotopy.refl (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f b))⟩
+  rw [he, restrictedUnitPairing, _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap_class]
   congr 1
-  simp only [unitPairing, LinearMap.coe_mk, AddHom.coe_mk, homologyOperation]
+  simp only [_root_.SerrePositivity.HomologyZero.unitPairing, LinearMap.coe_mk, AddHom.coe_mk, homologyOperation]
   rw [leftUnitor_inv_naturality_assoc, ← id_tensorHom, ← tensorHom_id,
     tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
 
@@ -118,8 +118,8 @@ lemma restrictedHomologyOne (X : (operad T).Algebra) :
     ((exactCochainHomologyIso M 0).hom.app X.carrier)
       (homologyOne ((coefficientRestriction f).obj X)) = homologyOne X := by
   change ((exactCochainHomologyIso M 0).hom.app X.carrier)
-    (unitClass ((R).obj X.carrier) (homologyOperation ((coefficientRestriction f).obj X) 0)) =
-      unitClass X.carrier (homologyOperation X 0)
+    (_root_.SerrePositivity.HomologyZero.unitClass ((R).obj X.carrier) (homologyOperation ((coefficientRestriction f).obj X) 0)) =
+      _root_.SerrePositivity.HomologyZero.unitClass X.carrier (homologyOperation X 0)
   simpa only [Category.id_comp] using
     restrictedOperation_class f X 0 (𝟙 _) (𝟙 _) (by
       change 𝟙 _ ≫ ε R = ε R ≫ (R).map (𝟙 _)
@@ -144,21 +144,21 @@ lemma restrictedHomologyProduct (X : (operad T).Algebra)
     (x y : ((coefficientRestriction f).obj X).carrier.homology 0) :
     let e : ((coefficientRestriction f).obj X).carrier.homology 0 ⟶
       (M).obj (X.carrier.homology 0) := (exactCochainHomologyIso M 0).hom.app X.carrier
-    e (pairingValue (homologyBinary ((coefficientRestriction f).obj X)) x y) =
-      pairingValue (homologyBinary X) (e x) (e y) := by
-  obtain ⟨a', rfl⟩ := unitClass_surjective ((R).obj X.carrier) x
-  obtain ⟨b', rfl⟩ := unitClass_surjective ((R).obj X.carrier) y
-  obtain ⟨a, rfl⟩ := restrictionUnitMap_surjective f X.carrier a'
-  obtain ⟨b, rfl⟩ := restrictionUnitMap_surjective f X.carrier b'
+    e (_root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary ((coefficientRestriction f).obj X)) x y) =
+      _root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary X) (e x) (e y) := by
+  obtain ⟨a', rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective ((R).obj X.carrier) x
+  obtain ⟨b', rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective ((R).obj X.carrier) y
+  obtain ⟨a, rfl⟩ := _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap_surjective f X.carrier a'
+  obtain ⟨b, rfl⟩ := _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap_surjective f X.carrier b'
   let Y := (coefficientRestriction f).obj X
   let E : ((R).obj X.carrier).homology 0 ⟶ (M).obj (X.carrier.homology 0) :=
     (exactCochainHomologyIso M 0).hom.app X.carrier
-  let aₛ := restrictionUnitMap f a
-  let bₛ := restrictionUnitMap f b
-  let s := unitPairing ((R).obj X.carrier ◁ (oneIso ((R).obj X.carrier)).inv) aₛ bₛ
-  let t := unitPairing (X.carrier ◁ (oneIso X.carrier).inv) a b
-  have h : s ≫ laxPowerComparison R X.carrier 2 = restrictionUnitMap f t := by
-    simp only [s, t, unitPairing, LinearMap.coe_mk, AddHom.coe_mk, Category.assoc]
+  let aₛ := _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f a
+  let bₛ := _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f b
+  let s := _root_.SerrePositivity.HomologyZero.unitPairing ((R).obj X.carrier ◁ (oneIso ((R).obj X.carrier)).inv) aₛ bₛ
+  let t := _root_.SerrePositivity.HomologyZero.unitPairing (X.carrier ◁ (oneIso X.carrier).inv) a b
+  have h : s ≫ laxPowerComparison R X.carrier 2 = _root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap f t := by
+    simp only [s, t, _root_.SerrePositivity.HomologyZero.unitPairing, LinearMap.coe_mk, AddHom.coe_mk, Category.assoc]
     let U := 𝟙_ (Complex S)
     let v : U ⟶ (R).obj X.carrier ⊗ (R).obj X.carrier := (λ_ U).inv ≫ (aₛ ⊗ₘ bₛ)
     have hv : (λ_ U).inv ≫ (aₛ ⊗ₘ bₛ) ≫
@@ -169,21 +169,21 @@ lemma restrictedHomologyProduct (X : (operad T).Algebra)
       simpa only [v, Category.assoc] using
         congrArg (fun k => v ≫ k) (restrictedPowerTwo f X.carrier)
     exact hv.trans (restrictedUnitPairing f (X.carrier ◁ (oneIso X.carrier).inv) a b)
-  have hs : unitPairing (homologyBinary Y) aₛ bₛ = s ≫ homologyOperation Y 2 := by
-    simp only [s, unitPairing, LinearMap.coe_mk, AddHom.coe_mk, homologyBinary, Category.assoc]
+  have hs : _root_.SerrePositivity.HomologyZero.unitPairing (homologyBinary Y) aₛ bₛ = s ≫ homologyOperation Y 2 := by
+    simp only [s, _root_.SerrePositivity.HomologyZero.unitPairing, LinearMap.coe_mk, AddHom.coe_mk, homologyBinary, Category.assoc]
     rfl
-  have ht : unitPairing (homologyBinary X) a b = t ≫ homologyOperation X 2 := by
-    simp only [t, unitPairing, LinearMap.coe_mk, AddHom.coe_mk, homologyBinary, Category.assoc]
-  have hl := pairingValue_class (homologyBinary Y) aₛ bₛ
-  have hr := pairingValue_class (homologyBinary X) a b
+  have ht : _root_.SerrePositivity.HomologyZero.unitPairing (homologyBinary X) a b = t ≫ homologyOperation X 2 := by
+    simp only [t, _root_.SerrePositivity.HomologyZero.unitPairing, LinearMap.coe_mk, AddHom.coe_mk, homologyBinary, Category.assoc]
+  have hl := _root_.SerrePositivity.HomologyZero.pairingValue_class (homologyBinary Y) aₛ bₛ
+  have hr := _root_.SerrePositivity.HomologyZero.pairingValue_class (homologyBinary X) a b
   rw [hs] at hl
   rw [ht] at hr
   calc
-    _ = E (unitClass ((R).obj X.carrier) (s ≫ homologyOperation Y 2)) := congrArg E hl
-    _ = unitClass X.carrier (t ≫ homologyOperation X 2) :=
+    _ = E (_root_.SerrePositivity.HomologyZero.unitClass ((R).obj X.carrier) (s ≫ homologyOperation Y 2)) := congrArg E hl
+    _ = _root_.SerrePositivity.HomologyZero.unitClass X.carrier (t ≫ homologyOperation X 2) :=
       restrictedOperation_class f X 2 s t h
-    _ = pairingValue (homologyBinary X) (unitClass X.carrier a) (unitClass X.carrier b) := hr.symm
-    _ = _ := congrArg₂ (pairingValue (homologyBinary X))
-      (restrictionUnitMap_class f a).symm (restrictionUnitMap_class f b).symm
+    _ = _root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary X) (_root_.SerrePositivity.HomologyZero.unitClass X.carrier a) (_root_.SerrePositivity.HomologyZero.unitClass X.carrier b) := hr.symm
+    _ = _ := congrArg₂ (_root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary X))
+      (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap_class f a).symm (_root_.SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap_class f b).symm
 
 end SerrePositivity.EInfinity.BarrattEccles

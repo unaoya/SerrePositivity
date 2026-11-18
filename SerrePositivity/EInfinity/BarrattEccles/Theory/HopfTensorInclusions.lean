@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory Limits
 open DifferentialGraded TensorPowers
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 
 /-- HA 3.2.4.7 の単位射は任意の代数射に沿って自然。 -/
@@ -53,9 +53,9 @@ lemma hopfTensorInl_naturality (hP : P.Hopf)
     (h0 : IsIso (hP.counit.map.app (FiniteBijection.of 0)))
     {X Y X' Y' : P.Algebra} (f : X ⟶ X') (g : Y ⟶ Y') :
     f ≫ hopfTensorInl hP h0 X' Y' = hopfTensorInl hP h0 X Y ≫ hopfTensorMap hP f g := by
-  have hu := congrArg Operad.AlgebraHom.hom (hopfTensorUnitMap_naturality hP h0 g)
+  have hu := congrArg _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.hom (hopfTensorUnitMap_naturality hP h0 g)
   change (hopfTensorUnitMap hP h0 Y).hom ≫ g.hom = (hopfTensorUnitMap hP h0 Y').hom at hu
-  apply Operad.AlgebraHom.ext
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
   change f.hom ≫ (ρ_ X'.carrier).inv ≫ (𝟙 X'.carrier ⊗ₘ (hopfTensorUnitMap hP h0 Y').hom) =
     ((ρ_ X.carrier).inv ≫ (𝟙 X.carrier ⊗ₘ (hopfTensorUnitMap hP h0 Y).hom)) ≫
       (f.hom ⊗ₘ g.hom)
@@ -68,9 +68,9 @@ lemma hopfTensorInr_naturality (hP : P.Hopf)
     (h0 : IsIso (hP.counit.map.app (FiniteBijection.of 0)))
     {X Y X' Y' : P.Algebra} (f : X ⟶ X') (g : Y ⟶ Y') :
     g ≫ hopfTensorInr hP h0 X' Y' = hopfTensorInr hP h0 X Y ≫ hopfTensorMap hP f g := by
-  have hu := congrArg Operad.AlgebraHom.hom (hopfTensorUnitMap_naturality hP h0 f)
+  have hu := congrArg _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.hom (hopfTensorUnitMap_naturality hP h0 f)
   change (hopfTensorUnitMap hP h0 X).hom ≫ f.hom = (hopfTensorUnitMap hP h0 X').hom at hu
-  apply Operad.AlgebraHom.ext
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
   change g.hom ≫ (λ_ Y'.carrier).inv ≫ ((hopfTensorUnitMap hP h0 X').hom ⊗ₘ 𝟙 Y'.carrier) =
     ((λ_ Y.carrier).inv ≫ ((hopfTensorUnitMap hP h0 X).hom ⊗ₘ 𝟙 Y.carrier)) ≫
       (f.hom ⊗ₘ g.hom)

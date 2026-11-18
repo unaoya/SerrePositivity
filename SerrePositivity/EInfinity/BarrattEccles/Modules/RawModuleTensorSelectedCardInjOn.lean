@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorSelectedCard
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorSelectionInjOn
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorSelectionInjOn
 
 /-!
 概要：明示次数の選択 cochain を、元の集合上単射な作用素の像の選択 cochain と比較する。
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -34,11 +34,11 @@ lemma strictRawModuleTensorElementSelectedCochainAtMaxOfCard_image_of_injOn {n m
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
         J k hJ hk r hc) := by
   have hcol :
-      (SimplexCategory.toCat.map (normalizedTensorElementSelectionOfCard (J.image θ.toOrderHom) r
+      (SimplexCategory.toCat.map (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard (J.image θ.toOrderHom) r
         (by rw [Finset.card_image_of_injOn hi]; exact hc))).toFunctor ⋙ c =
-      (SimplexCategory.toCat.map (normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙
+      (SimplexCategory.toCat.map (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) := by
-    have hs := normalizedTensorElementSelectionOfCard_image_of_injOn J θ hc hi
+    have hs := _root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard_image_of_injOn J θ hc hi
     have hf := congrArg (fun θ : ⦋r⦌ ⟶ ⦋n⦌ =>
       (SimplexCategory.toCat.map θ).toFunctor ⋙ c) hs
     exact hf.trans (by simp only [CategoryTheory.Functor.map_comp]; rfl)

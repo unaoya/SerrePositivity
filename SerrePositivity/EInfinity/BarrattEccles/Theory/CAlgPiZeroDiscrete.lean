@@ -30,7 +30,7 @@ universe u
 
 namespace SerrePositivity.EInfinity.BarrattEccles
 
-open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded SSet HomologyZero
+open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded SSet _root_.SerrePositivity.HomologyZero
 open SerrePositivity.InfinityCategories
 
 variable {A : Type u} [CommRing A]
@@ -40,37 +40,37 @@ private abbrev X (B : CommAlgCat.{u} A) := (discreteAlgebraFunctor A).obj B
 
 private def discreteHomologyLinearEquiv (B : CommAlgCat.{u} A) :
     (X B).carrier.homology 0 ≃ₗ[A] B :=
-  (componentHomologyLinearEquiv (cochainSingleZero (M B))).symm.trans
+  (_root_.SerrePositivity.HomologyZero.componentHomologyLinearEquiv (cochainSingleZero (M B))).symm.trans
     (singleObjXSelf (.up ℤ) 0 (M B)).toLinearEquiv
 
 private lemma discreteHomologyLinearEquiv_class (B : CommAlgCat.{u} A)
     (f : 𝟙_ (Complex A) ⟶ (X B).carrier) :
-    discreteHomologyLinearEquiv B (unitClass (X B).carrier f) = singleValue (M B) f := by
+    discreteHomologyLinearEquiv B (_root_.SerrePositivity.HomologyZero.unitClass (X B).carrier f) = _root_.SerrePositivity.HomologyZero.singleValue (M B) f := by
   let K := cochainSingleZero (M B)
   change (singleObjXSelf (.up ℤ) 0 (M B)).hom
-    ((componentHomologyLinearEquiv K).symm (unitClass K f)) =
+    ((_root_.SerrePositivity.HomologyZero.componentHomologyLinearEquiv K).symm (_root_.SerrePositivity.HomologyZero.unitClass K f)) =
       (singleObjXSelf (.up ℤ) 0 (M B)).hom (cycleFromUnit K f).val
-  rw [← componentHomologyLinearEquiv_unit, LinearEquiv.symm_apply_apply]
+  rw [← _root_.SerrePositivity.HomologyZero.componentHomologyLinearEquiv_unit, LinearEquiv.symm_apply_apply]
 
 private lemma discreteHomologyLinearEquiv_one (B : CommAlgCat.{u} A) :
     discreteHomologyLinearEquiv B (homologyOne (X B)) = 1 := by
   rw [homologyOne, discreteHomologyLinearEquiv_class, homologyNullary_discrete]
-  change singleValue (M B) ((CochainComplex.singleFunctor (ModuleCat A) 0).map
+  change _root_.SerrePositivity.HomologyZero.singleValue (M B) ((CochainComplex.singleFunctor (ModuleCat A) 0).map
     (ModuleCat.ofHom (Algebra.linearMap A B))) = 1
-  rw [← Category.id_comp ((CochainComplex.singleFunctor (ModuleCat A) 0).map _), singleValue_map]
+  rw [← Category.id_comp ((CochainComplex.singleFunctor (ModuleCat A) 0).map _), _root_.SerrePositivity.HomologyZero.singleValue_map]
   exact map_one (algebraMap A B)
 
 private lemma discreteHomologyLinearEquiv_mul (B : CommAlgCat.{u} A)
     (x y : (X B).carrier.homology 0) :
-    discreteHomologyLinearEquiv B (pairingValue (homologyBinary (X B)) x y) =
+    discreteHomologyLinearEquiv B (_root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary (X B)) x y) =
       discreteHomologyLinearEquiv B x * discreteHomologyLinearEquiv B y := by
-  obtain ⟨f, rfl⟩ := unitClass_surjective (X B).carrier x
-  obtain ⟨g, rfl⟩ := unitClass_surjective (X B).carrier y
-  simp only [pairingValue_class, discreteHomologyLinearEquiv_class, homologyBinary_discrete]
-  change singleValue (M B) (unitPairing ((cochainSingleTensorIso _ _).hom ≫
+  obtain ⟨f, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective (X B).carrier x
+  obtain ⟨g, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective (X B).carrier y
+  simp only [_root_.SerrePositivity.HomologyZero.pairingValue_class, discreteHomologyLinearEquiv_class, homologyBinary_discrete]
+  change _root_.SerrePositivity.HomologyZero.singleValue (M B) (_root_.SerrePositivity.HomologyZero.unitPairing ((cochainSingleTensorIso _ _).hom ≫
     (CochainComplex.singleFunctor (ModuleCat A) 0).map
       (ModuleCat.ofHom (LinearMap.mul' A B))) f g) = _
-  exact singlePairing_value (M B) (M B) (M B)
+  exact _root_.SerrePositivity.HomologyZero.singlePairing_value (M B) (M B) (M B)
     (ModuleCat.ofHom (LinearMap.mul' A B)) f g
 
 private def discreteHomologyAlgebraEquiv (B : CommAlgCat.{u} A) :
@@ -89,12 +89,12 @@ def discreteHomologyAlgebraIso (A : Type u) [CommRing A] :
   intro B D g
   apply ConcreteCategory.hom_ext
   intro x
-  obtain ⟨f, rfl⟩ := unitClass_surjective (X B).carrier x
+  obtain ⟨f, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective (X B).carrier x
   change discreteHomologyLinearEquiv D
-    (homologyMap ((discreteAlgebraFunctor A).map g).hom 0 (unitClass (X B).carrier f)) =
-      g.hom (discreteHomologyLinearEquiv B (unitClass (X B).carrier f))
-  rw [unitClass_naturality, discreteHomologyLinearEquiv_class,
-    discreteHomologyLinearEquiv_class, discreteAlgebraFunctor_map, singleValue_map]
+    (homologyMap ((discreteAlgebraFunctor A).map g).hom 0 (_root_.SerrePositivity.HomologyZero.unitClass (X B).carrier f)) =
+      g.hom (discreteHomologyLinearEquiv B (_root_.SerrePositivity.HomologyZero.unitClass (X B).carrier f))
+  rw [_root_.SerrePositivity.EInfinity.HomologyZero.unitClass_naturality, discreteHomologyLinearEquiv_class,
+    discreteHomologyLinearEquiv_class, discreteAlgebraFunctor_map, _root_.SerrePositivity.HomologyZero.singleValue_map]
   rfl
 
 set_option maxHeartbeats 900000 in

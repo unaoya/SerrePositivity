@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakAnodyneLocalization
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.RoofTerminalEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.RoofTerminalFiberCofinality
 
@@ -28,7 +28,7 @@ lemma terminalFiberEvaluation_weak {E B : SSet.{u}} [SSet.Quasicategory B]
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence R.evaluation := by
   let Q := AnodyneHomotopy.anodyneQ
   have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.roofLeftFibration_terminalFiber_isRightCofinal p t ht).isWeakHomotopyEquivalence
-  have : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p t)) := _root_.SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak _ hi
+  have : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p t)) := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _ hi
   have h := AnodyneHomotopy.map_homotopy_eq Q SSet.anodyneExtensions.Q_inverts R.homotopy
   have hc : IsIso (Q.map R.evaluation ≫ Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p t)) := by
     rw [← Q.map_comp, ← h]

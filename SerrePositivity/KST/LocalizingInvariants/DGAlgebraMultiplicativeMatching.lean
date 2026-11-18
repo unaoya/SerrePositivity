@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSimplicialConvolution
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexReedy
-public import SerrePositivity.EInfinity.HomRestriction
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexReedy
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomRestriction
 public import Mathlib.AlgebraicTopology.ModelCategory.Opposite
 
 /-!
@@ -27,8 +27,8 @@ def multiplicativeMatchingRestriction (B : Mon (Complex R)) (n : SimplexCategory
   ((latchingComparison simplex n).app (multiplicativeSimplices R B).rightOp).unop
 
 lemma multiplicativeSimplices_matching_fibration (B : Mon (Complex R)) (n : SimplexCategory) :
-    EInfinity.projectiveFibrations R (multiplicativeMatchingRestriction R B n).hom := by
-  let := EInfinity.projectiveModelCategory R
+    _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R (multiplicativeMatchingRestriction R B n).hom := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory R
   let F : SSet.{0} ⥤ (Mon (Complex R))ᵒᵖ := (simplicialConvolution R B).rightOp
   let P : MorphismProperty (Mon (Complex R))ᵒᵖ :=
     (cofibrations (Complex R)ᵒᵖ).inverseImage (Mon.forget (Complex R)).op
@@ -40,12 +40,12 @@ lemma multiplicativeSimplices_matching_fibration (B : Mon (Complex R)) (n : Simp
     rw [← _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso_fac n]
     infer_instance
   have hf : P (F.map ((latchingComparison simplex n).app SSet.stdSimplex)) := by
-    change EInfinity.projectiveFibrations R
+    change _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R
       ((MonoidalClosed.pre ((EInfinity.BarrattEccles.normalizedFunctor R).map
         ((latchingComparison simplex n).app SSet.stdSimplex))).app B.X)
     rw [convolutionPre_eq_homPrecompose]
-    exact EInfinity.homPrecompose_projectiveFibration _
-      (EInfinity.ComplexLimits.normalizedMonomorphism_cofibration R _) B.X
+    exact _root_.SerrePositivity.HomRestriction.homPrecompose_projectiveFibration _
+      (_root_.SerrePositivity.ComplexLimits.normalizedMonomorphism_cofibration R _) B.X
   have hd : SSet.stdSimplex ⋙ F = (multiplicativeSimplices R B).rightOp := rfl
   have hi := latchingComparison_preservedIso simplex F SSet.stdSimplex n
   rw [hd] at hi

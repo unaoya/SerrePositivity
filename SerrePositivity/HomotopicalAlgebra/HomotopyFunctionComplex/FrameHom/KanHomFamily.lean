@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ExInfinityWeakMap
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramCoherentNerve
 
@@ -52,7 +52,7 @@ lemma kanHomFamilyMap_isQCatEquivalence {F G : C ⥤ SSet.{w}} (η : F ⟶ G)
     (hη : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app X)) (X : C) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamilyMap η).app X) := by
   change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (η.app X))
-  exact (_root_.SerrePositivity.EInfinity.Hammock.exInfinity_map_weak _ (hη X)).isSimplicialHomotopyEquivalence.isQCatEquivalence
+  exact (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinity_map_weak _ (hη X)).isSimplicialHomotopyEquivalence.isQCatEquivalence
 
 /-- 概要：同じ全 Hom 族の coherent な空間値図式を回収する。
 方針：元の strict Kan 値図式の実現を使う。

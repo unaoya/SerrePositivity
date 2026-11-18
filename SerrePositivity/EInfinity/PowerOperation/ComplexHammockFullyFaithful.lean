@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
@@ -36,7 +36,7 @@ lemma complexHammockDerivedComparison_afterProbe_fullyFaithful :
       ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (complexRelativeProbeMorphism A)).app (Opposite.op ⦋0⦌) y)) := by
     rw [complexHammockProbe_vertex, complexHammockProbe_vertex]
     exact complexHammockDerivedComparison_probe_pinched_weak A (complexHammockOriginalObject A x)
-      (framedLimitKProjectiveProbe A (complexHammockOriginalObject A y))
+      (_root_.SerrePositivity.ComplexLimits.framedLimitKProjectiveProbe A (complexHammockOriginalObject A y))
   exact hp.comp hk.isSimplicialHomotopyEquivalence
 
 /-- 指定 sourceIso を持つ元の全複体の比較は、全写像空間で充満忠実である。 -/

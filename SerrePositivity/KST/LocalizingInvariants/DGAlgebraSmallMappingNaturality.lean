@@ -22,12 +22,12 @@ variable (R : Type u) [CommRing R]
 
 def simplicialConvolutionTargetNatTrans {B C : Mon (Complex R)} (q : B ⟶ C) :
     simplicialConvolution R B ⟶ simplicialConvolution R C :=
-  Functor.whiskerLeft (EInfinity.AlexanderWhitney.cochainComonFunctor R).op
+  Functor.whiskerLeft (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainComonFunctor R).op
     (convolutionTargetNatTrans R q)
 
 def simplicialConvolutionConstant (B : Mon (Complex R)) :
     (Functor.const SSet.{0}ᵒᵖ).obj B ⟶ simplicialConvolution R B :=
-  Functor.whiskerLeft (EInfinity.AlexanderWhitney.cochainComonFunctor R).op
+  Functor.whiskerLeft (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainComonFunctor R).op
     (convolutionConstantNatTrans R B)
 
 lemma smallMultiplicativeMappingCurry_precompose {A B : Mon (Complex R)} {K L : SSet.{0}}
@@ -76,9 +76,9 @@ lemma smallMultiplicativeMappingCurry_constant {A B : Mon (Complex R)} {K : SSet
   intro z
   change ULift.{u, 0} (K.obj n) at z
   change (s ≫ convolutionConstantMap R
-      ((EInfinity.AlexanderWhitney.cochainComonFunctor R).obj K) B) ≫
+      ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainComonFunctor R).obj K) B) ≫
       convolutionPrecompose R
-        ((EInfinity.AlexanderWhitney.cochainComonFunctor R).map
+        ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainComonFunctor R).map
           (SSet.yonedaEquiv.{0}.symm z.down)) B =
     s ≫ convolutionConstantMap R (simplexComonoid R n.unop) B
   rw [Category.assoc, convolutionConstantMap_precompose]

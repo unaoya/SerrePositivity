@@ -17,22 +17,22 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 /-- 元の AW 零単体余単位を、その既証の逆射と束ねる。 -/
 def zeroSimplexCounitIso :
     (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj ⦋0⦌) ≅ 𝟙_ (Complex A) := by
-  have := AlexanderWhitney.cochainCounit_stdSimplexZero_isIso A
-  exact asIso (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj ⦋0⦌))
+  have := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplexZero_isIso A
+  exact asIso (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj ⦋0⦌))
 
 /-- Γ の頂点と単位からの複体射の、指定された全単射。 -/
 def gammaVertexUnitHomEquiv (M : Complex A) :
     (gammaModule A M).obj (Opposite.op ⦋0⦌) ≃ (𝟙_ (Complex A) ⟶ M) where
   toFun x := (zeroSimplexCounitIso A).inv ≫
-    (normalizedSimplexHomEquiv A M ⦋0⦌).symm x
-  invFun f := normalizedSimplexHomEquiv A M ⦋0⦌ ((zeroSimplexCounitIso A).hom ≫ f)
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A M ⦋0⦌).symm x
+  invFun f := _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A M ⦋0⦌ ((zeroSimplexCounitIso A).hom ≫ f)
   left_inv x := by
     dsimp only
     rw [← Category.assoc, Iso.hom_inv_id, Category.id_comp, Equiv.apply_symm_apply]
@@ -44,27 +44,27 @@ def gammaVertexUnitHomEquiv (M : Complex A) :
 lemma gammaVertexUnitHomEquiv_naturality {M N : Complex A} (f : M ⟶ N)
     (x : (gammaModule A M).obj (Opposite.op ⦋0⦌)) :
     gammaVertexUnitHomEquiv A N
-      (((truncatedDoldKanFunctor A).map f).app (Opposite.op ⦋0⦌) x) =
+      (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f).app (Opposite.op ⦋0⦌) x) =
     gammaVertexUnitHomEquiv A M x ≫ f := by
   change (zeroSimplexCounitIso A).inv ≫
-    (normalizedSimplexHomEquiv A N ⦋0⦌).symm
-      (((truncatedDoldKanFunctor A).map f).app (Opposite.op ⦋0⦌) x) = _
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A N ⦋0⦌).symm
+      (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f).app (Opposite.op ⦋0⦌) x) = _
   rw [gammaProbeEquiv_symm_postcomp, ← Category.assoc]
   rfl
 
 /-- 指定単位の頂点の像で、全ての Γ の頂点を厳密に回収できる。 -/
 lemma gammaUnit_vertex_generates (M : Complex A)
     (x : (gammaModule A M).obj (Opposite.op ⦋0⦌)) :
-    ((truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
+    ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
       (Opposite.op ⦋0⦌) (gammaUnitSimplex A ⦋0⦌) = x := by
-  change ((truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
+  change ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
     (Opposite.op ⦋0⦌)
-      (normalizedSimplexHomEquiv A (𝟙_ (Complex A)) ⦋0⦌
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (𝟙_ (Complex A)) ⦋0⦌
         (zeroSimplexCounitIso A).hom) = x
-  erw [← normalizedSimplexHomEquiv_postcomp]
-  change normalizedSimplexHomEquiv A M ⦋0⦌
+  erw [← _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv_postcomp]
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A M ⦋0⦌
     ((zeroSimplexCounitIso A).hom ≫ (zeroSimplexCounitIso A).inv ≫
-      (normalizedSimplexHomEquiv A M ⦋0⦌).symm x) = x
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A M ⦋0⦌).symm x) = x
   rw [Iso.hom_inv_id_assoc, Equiv.apply_symm_apply]
 
 end SerrePositivity.EInfinity.PowerOperation

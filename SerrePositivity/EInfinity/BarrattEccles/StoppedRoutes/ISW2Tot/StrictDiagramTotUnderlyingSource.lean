@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot
 open _root_.CategoryTheory _root_.SSet
 open _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
-open _root_.SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped _root_.Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -25,7 +25,7 @@ variable (A : Type u) [CommRing A]
 def strictBETotUnderlyingSourceIso :
     FunctorIso (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotVertex A ≫ _root_.SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived A)
       (nerveMap (_root_.SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor A (AsSmall.{u} SimplexCategory) ⋙
-        _root_.SerrePositivity.EInfinity.Operad.Algebra.forget (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A)) ≫ complexOrdinaryDerivedSource A) := by
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A)) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) := by
   exact (_root_.SerrePositivity.EInfinity.BarrattEccles.algebraCAlgSource_underlyingDerivedIso A).precomp
     (nerveMap (_root_.SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor A (AsSmall.{u} SimplexCategory)))
 

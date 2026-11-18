@@ -1,0 +1,68 @@
+module
+
+public import SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.CornerTraces
+public import SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.VertexErasure
+
+/-!
+模型。文献の定義との比較は後で
+# 経路の一頂点の削除と出力の面
+
+Berger–Fresse §2.2.7、M14 L09a。
+各色の列の削除位置を、経路の指定頂点より前の同色の個数で読む。
+-/
+
+@[expose] public noncomputable section
+namespace SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts
+
+/-- 指定頂点より前の同色の出現数。 -/
+def vertexRank {m q r : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.Cut m q) (v : Fin (m + 1) → Fin r)
+    (c : Fin r) (k : Fin (m + q + 1)) : ℕ :=
+  (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c ((List.ofFn (fun i => (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v i, s.vertical i))).take k.val)).length
+
+/-- 一つの経路の頂点の削除を、各色の出力列で表す。 -/
+def deletedVerticesList {m q r : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) (c : Fin r) : List (Fin (q + 1)) :=
+  if _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v k = c then (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.verticesList s v c).eraseIdx (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.vertexRank s v c k)
+  else _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.verticesList s v c
+
+/-- C26：出力の面を取ることと、経路の頂点を削除してから色を選ぶことは一致。 -/
+lemma deletedVerticesList_eq_selectColor {m q r : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) (c : Fin r) :
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedVerticesList s v k c = _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedTrace s v k) := by
+  unfold _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedVerticesList _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedTrace
+  rw [← _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.eraseIdx_ofFn (fun i => (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v i, s.vertical i)) k,
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor_eraseIdx, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.verticesList_eq_selectColor]
+  simp only [List.getElem?_ofFn, k.isLt, dite_eq_left, Option.map_some, Option.some.injEq]
+  rfl
+
+/-- C27：交換した角の中間頂点を削除した出力の全ての色の列は一致。 -/
+lemma deletedVerticesList_swapSteps {m q r : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (c : Fin r) :
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedVerticesList (s.swapSteps a b) v b.castSucc c =
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedVerticesList s v b.castSucc c := by
+  rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedVerticesList_eq_selectColor, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.deletedVerticesList_eq_selectColor,
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor_deletedTrace_swapSteps s v a b hab c]
+
+/-- C28：指定頂点の色の面番号は、その色の出力列の範囲内にある。 -/
+lemma vertexRank_lt_length {m q r : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.vertexRank s v (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v k) k < (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.verticesList s v (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v k)).length := by
+  let l := List.ofFn (fun i => (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v i, s.vertical i))
+  let c := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.label s v k
+  have hk : k.val < l.length := by simpa only [l, List.length_ofFn] using k.isLt
+  have hs : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c l = _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c (l.take k.val) ++
+      (s.vertical k :: _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c (l.drop (k.val + 1))) := by
+    calc
+      _ = _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c (l.take k.val ++ l.drop k.val) :=
+        congrArg (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c) (List.take_append_drop k.val l).symm
+      _ = _ := by
+        rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor_append, List.drop_eq_getElem_cons hk, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor_cons]
+        simp only [l, List.getElem_ofFn, c, ite_true]
+  rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.verticesList_eq_selectColor]
+  have he := congrArg List.length hs
+  simp only [List.length_append, List.length_cons] at he
+  change (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c (l.take k.val)).length < (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.selectColor c l).length
+  omega
+
+end SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts

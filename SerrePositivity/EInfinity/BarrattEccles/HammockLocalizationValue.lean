@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Opposite Hammock
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -28,30 +28,30 @@ def algebraReducedHammockValue (X Y : (operad A).Algebra) :
       ((weakEquivalences (operad A).Algebra).Q.obj X ⟶
         (weakEquivalences (operad A).Algebra).Q.obj Y) := by
   let := modelCategory A
-  exact UniverseValue.reducedValue (weakEquivalences (operad A).Algebra).Q
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue.reducedValue (weakEquivalences (operad A).Algebra).Q
     (weakEquivalences (operad A).Algebra).Q_inverts X Y
 
 lemma algebraReducedHammockValue_reduction (X Y : (operad A).Algebra) :
     let := modelCategory A
     (algebraHammockReductionIso A X Y).hom ≫ algebraReducedHammockValue A X Y =
-      UniverseValue.colimitValue (weakEquivalences (operad A).Algebra).Q
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue.colimitValue (weakEquivalences (operad A).Algebra).Q
         (weakEquivalences (operad A).Algebra).Q_inverts X Y := by
   let := modelCategory A
-  change (reducedColimitIso (weakEquivalences (operad A).Algebra) X Y).hom ≫
-    (reducedAugmentation (weakEquivalences (operad A).Algebra) X Y ≫ _) = _
-  rw [← reducedColimitIso_inv, Iso.hom_inv_id_assoc]
+  change (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences (operad A).Algebra) X Y).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedAugmentation (weakEquivalences (operad A).Algebra) X Y ≫ _) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_inv, Iso.hom_inv_id_assoc]
 
 lemma mappingSpaceReducedHammockNerveMap_value (X Y : (operad A).Algebra) :
     let := modelCategory A
     mappingSpaceReducedHammockNerveMap A X Y ≫ algebraReducedHammockValue A X Y =
       mappingSpaceHammockGraphNerveMap A X Y ≫
-        UniverseValue.graphMap (weakEquivalences (operad A).Algebra).Q
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue.graphMap (weakEquivalences (operad A).Algebra).Q
           (weakEquivalences (operad A).Algebra).Q_inverts := by
   let := modelCategory A
   rw [mappingSpaceReducedHammockNerveMap, Category.assoc, algebraReducedHammockValue_reduction]
   change (mappingSpaceHammockGraphNerveMap A X Y ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences (operad A).Algebra) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow) ≫ _ = _
-  rw [Category.assoc, UniverseValue.graphInclusion_colimitValue]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue.graphInclusion_colimitValue]
 
 lemma mappingSpaceReducedHammockNerveMap_value_zero (X Y : (operad A).Algebra)
     (f : (((mappingSpace A).obj (op X)).obj Y) _⦋0⦌) :

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.TensorSimplices
-public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncatedDoldKanFunctor
 
 /-!
 # 同じ加群の全 source frame Hom と元の dg Hom の Dold–Kan
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
 open DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
@@ -50,7 +50,7 @@ def moduleTensorSimplexHomEquiv (P N : ModuleCategory A D) (n : SimplexCategory)
         (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) N)).obj (op n) :=
   (moduleTensorHomEquiv A D P ((BarrattEccles.normalizedFunctor A).obj
     (SSet.stdSimplex.obj n)) N).trans
-      (normalizedSimplexHomEquiv A
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
         (moduleHom A D (ForgetEnrichment.to (Complex A) P)
           (ForgetEnrichment.to (Complex A) N)) n)
 
@@ -65,14 +65,14 @@ def moduleTensorHomDoldKanIso (P N : ModuleCategory A D) :
     intro n m f
     apply ConcreteCategory.hom_ext
     intro α
-    change normalizedSimplexHomEquiv A
+    change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
       (moduleHom A D (ForgetEnrichment.to (Complex A) P)
         (ForgetEnrichment.to (Complex A) N)) m.unop
       (moduleParamCurry A D
         (tensorModuleMap ((BarrattEccles.normalizedFunctor A).map (SSet.stdSimplex.map f.unop))
           (ForgetEnrichment.to (Complex A) P) ≫ α)) = _
     rw [moduleParamCurry_precompose A D (P := P) (N := N)]
-    exact normalizedSimplexHomEquiv_naturality A _ f.unop _)
+    exact _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv_naturality A _ f.unop _)
 
 /-- 概要：同じ全単体 Hom 比較は元の全ての標的加群射に自然な同型。
 方針：転置の後合成自然性と実 Dold–Kan の同じ chain map を使う。
@@ -80,18 +80,18 @@ def moduleTensorHomDoldKanIso (P N : ModuleCategory A D) :
 def moduleTensorHomDoldKanNatIso (P : ModuleCategory A D) :
     cosimplicialHom ((moduleTensorSimplicesFunctor A D).obj P) ≅
       (eHomFunctor (Complex A) (ModuleCategory A D)).obj (op P) ⋙
-        truncatedDoldKanFunctor A :=
+        _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A :=
   NatIso.ofComponents (moduleTensorHomDoldKanIso A D P) (by
     intro M N g
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro f
-    change normalizedSimplexHomEquiv A
+    change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A
       (moduleHom A D (ForgetEnrichment.to (Complex A) P)
         (ForgetEnrichment.to (Complex A) N)) n.unop (moduleParamCurry A D (f ≫ g)) = _
     rw [moduleParamCurry_postcompose A D (M := P) (N := M) (P := N)]
-    exact normalizedSimplexHomEquiv_postcomp A n.unop (moduleParamCurry A D f)
+    exact _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv_postcomp A n.unop (moduleParamCurry A D f)
       (eHomWhiskerLeft (Complex A) P g))
 
 end SerrePositivity.EInfinity.Modules

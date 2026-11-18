@@ -31,13 +31,13 @@ variable {A : Type u} [CommRing A]
 @[reassoc]
 lemma schurι_degree_arity_hom (P : SymmetricSequence (Complex A))
     (K : Complex A) (i : ℤ) (n : ℕ) :
-    (schurι A P K n).f i ≫ (schurDegreeArityIso P K i).hom =
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i ≫ (schurDegreeArityIso P K i).hom =
       arityDiagramQuotient
-        (schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i) n ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i) n ≫
         Sigma.ι (arityDiagramCoinvariants
-          (schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i)) n := by
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i)) n := by
   let E := HomologicalComplex.eval (ModuleCat A) (.up ℤ) i
-  let F := schurDiagram A P K
+  let F := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K
   change E.map (colimit.ι F (FiniteBijection.of n)) ≫
     ((preservesColimitIso E F).hom ≫
       ((colimit.isColimit (F ⋙ E)).coconePointUniqueUpToIso
@@ -73,7 +73,7 @@ lemma schurBidegree_quotient_naturality (P : SymmetricSequence (Complex A))
     (K : Complex A) (i : ℤ) (n : ℕ) (a : {a : ℤ × ℤ // a.1 + a.2 = i}) :
     ιTensorObj (P.level n) (TensorPowers.power K n) a.1.1 a.1.2 i a.2 ≫
       arityDiagramQuotient
-        (schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i) n =
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i) n =
     ModuleCat.ofHom (Representation.Coinvariants.mk
       (schurArityBidegreeRepresentation P K i n a).ρ) ≫
       (Rep.coinvariantsFunctor A (ULift.{u} (Equiv.Perm (Fin n)))).map
@@ -88,7 +88,7 @@ lemma schurBidegree_quotient_naturality (P : SymmetricSequence (Complex A))
 lemma schurBidegree_inclusion_hom (P : SymmetricSequence (Complex A))
     (K : Complex A) (i : ℤ) (n : ℕ) (a : {a : ℤ × ℤ // a.1 + a.2 = i}) :
     ιTensorObj (P.level n) (TensorPowers.power K n) a.1.1 a.1.2 i a.2 ≫
-      (schurι A P K n).f i ≫ (schurDegreeBidegreeIso P K i).hom =
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i ≫ (schurDegreeBidegreeIso P K i).hom =
     ModuleCat.ofHom (Representation.Coinvariants.mk
       (schurArityBidegreeRepresentation P K i n a).ρ) ≫
       Sigma.ι (fun a => ModuleCat.of A
@@ -113,12 +113,12 @@ lemma schurBidegree_inclusion_inv (P : SymmetricSequence (Complex A))
           (schurArityBidegreeRepresentation P K i n a).ρ.Coinvariants) a
           (Representation.Coinvariants.mk
             (schurArityBidegreeRepresentation P K i n a).ρ (u ⊗ₜ[A] v)))) =
-      (schurι A P K n).f i
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i
         (ιTensorObj (P.level n) (TensorPowers.power K n) a.1.1 a.1.2 i a.2 (u ⊗ₜ[A] v)) := by
   apply (schurDegreeBidegreeIso P K i).toLinearEquiv.injective
   change ((schurDegreeBidegreeIso P K i).inv ≫ (schurDegreeBidegreeIso P K i).hom) _ =
     (ιTensorObj (P.level n) (TensorPowers.power K n) a.1.1 a.1.2 i a.2 ≫
-      (schurι A P K n).f i ≫ (schurDegreeBidegreeIso P K i).hom) _
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i ≫ (schurDegreeBidegreeIso P K i).hom) _
   rw [Iso.inv_hom_id, schurBidegree_inclusion_hom]
   rfl
 

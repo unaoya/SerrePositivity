@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConeNonedgeCut
-public import SerrePositivity.EInfinity.ComplexLimits.ConePenultimate
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConePenultimate
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.BoundaryDecomposition
 
 /-!
@@ -17,9 +17,9 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.Modules
+open _root_.SerrePositivity.ComplexLimits SerrePositivity.EInfinity.Modules
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -43,10 +43,10 @@ lemma strictRawModuleTensorConeData_cutCompose_of_ne_penultimate {n : ℕ}
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
     (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (j : Fin (n + 2)) (hj : j ∈ I)
-    (haj : a < j) (hjb : j < b) (hne : j ≠ penultimate I hI) :
+    (haj : a < j) (hjb : j < b) (hne : j ≠ _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.penultimate I hI) :
     (strictRawModuleTensorConeData A X P Q c).cutCompose I a b k j = 0 := by
   apply strictRawModuleTensorConeData_cutCompose_of_nonedge A X P Q c I a b k hI ha hb hk j hj haj hjb
   intro hc
-  exact hne ((right_card_two_iff_penultimate I hI j hj (by rw [← hb]; exact hjb)).mp hc)
+  exact hne ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.right_card_two_iff_penultimate I hI j hj (by rw [← hb]; exact hjb)).mp hc)
 
 end SerrePositivity.EInfinity.BarrattEccles

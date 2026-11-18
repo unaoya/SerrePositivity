@@ -10,22 +10,22 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SerrePositivity.DifferentialGraded ComplexLimits
+open CategoryTheory SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 
 /-- 概要：同じ要素圏の複体列から自由列の底への元の単位。
 方針：各実 tensor 対象に同じ随伴単位を適用する。
 規約：全射に自然。使われ方：二つの全族正方形の共通辺。 -/
 def freeProbeElementUnitColumn :
-    normalizedTensorElementDiagram A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
-      (complexSemifreeResolutionValue A B.carrier).val ⟶
-    freeProbeElementColumn A X B ⋙ Operad.Algebra.forget (operad A) where
+    _root_.SerrePositivity.ComplexLimits.normalizedTensorElementDiagram A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val ⟶
+    freeProbeElementColumn A X B ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) where
   app s := (operad A).freeAlgebraAdjunction.unit.app
-    ((normalizedTensorElementDiagram A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
-      (complexSemifreeResolutionValue A B.carrier).val).obj s)
+    ((_root_.SerrePositivity.ComplexLimits.normalizedTensorElementDiagram A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val).obj s)
   naturality _ _ f := (operad A).freeAlgebraAdjunction.unit.naturality
-    ((normalizedTensorElementDiagram A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
-      (complexSemifreeResolutionValue A B.carrier).val).map f)
+    ((_root_.SerrePositivity.ComplexLimits.normalizedTensorElementDiagram A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val).map f)
 
 /-- 概要：元の全 augmentation と単位の自然変換正方形。
 方針：保存済みの元の全成分公式を自然変換等式へ戻す。
@@ -33,12 +33,12 @@ def freeProbeElementUnitColumn :
 lemma freeProbeElementUnitColumn_augmentation :
     freeProbeElementUnitColumn A X B ≫
       Functor.whiskerRight (freeProbeElementColumnAugmentation A X B)
-        (Operad.Algebra.forget (operad A)) =
-    normalizedTensorElementAugmentation A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
-      (complexSemifreeResolutionValue A B.carrier).val ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) =
+    _root_.SerrePositivity.ComplexLimits.normalizedTensorElementAugmentation A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val ≫
       (Functor.const (freeProbeElementIndex A X B)).map
         ((operad A).freeAlgebraAdjunction.unit.app
-          ((ComplexLimits.framedLimitProbeFunctor A).obj X)) := by
+          ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)) := by
   apply NatTrans.ext
   funext s
   exact freeProbeElementColumnAugmentation_unit A X B s
@@ -49,11 +49,11 @@ lemma freeProbeElementUnitColumn_augmentation :
 lemma freeProbeElementUnitColumn_evaluation :
     freeProbeElementUnitColumn A X B ≫
       Functor.whiskerRight (freeProbeElementColumnEvaluation A X B)
-        (Operad.Algebra.forget (operad A)) =
-    normalizedTensorElementEvaluation A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
-      (complexSemifreeResolutionValue A B.carrier).val ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) =
+    _root_.SerrePositivity.ComplexLimits.normalizedTensorElementEvaluation A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val ≫
       (Functor.const (freeProbeElementIndex A X B)).map
-        (complexSemifreeResolutionValueAugmentation A B.carrier) := by
+        (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValueAugmentation A B.carrier) := by
   apply NatTrans.ext
   funext s
   exact freeProbeElementColumnEvaluation_unit A X B s

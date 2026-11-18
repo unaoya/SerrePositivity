@@ -40,7 +40,7 @@ lemma carrierFramedLimitConePiZeroEquiv_source {Y Z : Complex A} (f : Y ⟶ Z)
     carrierFramedLimitConePiZeroEquiv A K Y F
         (SSet.mapπ₀ ((carrierFramedLimitConeSourceMap A K f).app F) z) =
       Q.map ((Functor.const K).map f) ≫ carrierFramedLimitConePiZeroEquiv A K Z F z := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   let Q := (weakEquivalences (K ⥤ Complex A)).Q
   let P := carrierFramedLimitProbeFunctor A

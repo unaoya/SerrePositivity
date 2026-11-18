@@ -23,7 +23,7 @@ variable (R : Type u) [CommRing R] {X B : Mon (Complex R)}
 
 lemma simplicialConvolutionTargetNatTrans_hom :
     ((simplicialConvolutionTargetNatTrans R q).app (op K)).hom =
-      homPostcompose (EInfinity.AlexanderWhitney.cochains R K) q.hom := rfl
+      homPostcompose (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains R K) q.hom := rfl
 
 lemma simplicialConvolutionRestriction_hom :
     ((simplicialConvolution R X).map f.op).hom =
@@ -34,7 +34,7 @@ lemma simplicialConvolutionRestriction_hom :
 lemma relativeConvolutionRestriction_original_isPullback :
     IsPullback (relativeConvolutionRestrictionFst R q f).hom
       (relativeConvolutionRestrictionSnd R q f).hom
-      (homPostcompose (EInfinity.AlexanderWhitney.cochains R K) q.hom)
+      (homPostcompose (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains R K) q.hom)
       (homPrecompose ((EInfinity.BarrattEccles.normalizedFunctor R).map f) B.X) := by
   have h := relativeConvolutionRestriction_underlying_isPullback R q f
   rw [simplicialConvolutionTargetNatTrans_hom, simplicialConvolutionRestriction_hom] at h
@@ -42,7 +42,7 @@ lemma relativeConvolutionRestriction_original_isPullback :
 
 def relativeConvolutionRestrictionUnderlyingIso :
     (relativeConvolutionRestrictionTarget R q f).X ≅
-      pullback (homPostcompose (EInfinity.AlexanderWhitney.cochains R K) q.hom)
+      pullback (homPostcompose (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains R K) q.hom)
         (homPrecompose ((EInfinity.BarrattEccles.normalizedFunctor R).map f) B.X) :=
   (relativeConvolutionRestriction_original_isPullback R q f).isoPullback
 

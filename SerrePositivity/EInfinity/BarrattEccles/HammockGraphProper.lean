@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbeddingRange
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
-public import SerrePositivity.EInfinity.Hammock.ProperDiagram
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ProperDiagram
 
 /-!
 # 任意の可換環上の元の E 代数の graph 図式の proper 性
@@ -62,9 +62,9 @@ lemma algebraHammockGraphMap_range_iff_identityOutside {a b : _root_.SerrePositi
 
 /-- 元の実際の E 代数の全語の図式は、Dwyer–Kan §4.4 の意味で proper。 -/
 lemma algebraHammockGraphDiagram_proper (X Y : (operad A).Algebra) :
-    Hammock.ProperDiagram (algebraHammockGraphDiagram A X Y) := by
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ProperDiagram (algebraHammockGraphDiagram A X Y) := by
   let := modelCategory A
-  exact Hammock.graphDiagram_proper (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphDiagram_proper (weakEquivalences (operad A).Algebra) X Y
 
 lemma algebraHammockGraphIntersection_range {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ c) (g : b ⟶ c)
     (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
@@ -84,14 +84,14 @@ def algebraHammockGraphIntersectionComparison {a b c : _root_.SerrePositivity.In
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g))).toFunctor ⟶
         (Subfunctor.range ((algebraHammockGraphDiagram A X Y).map f) ⊓
           Subfunctor.range ((algebraHammockGraphDiagram A X Y).map g)).toFunctor :=
-  Hammock.ProperDiagram.intersectionComparison (algebraHammockGraphDiagram_proper A X Y) f g hf hg
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ProperDiagram.intersectionComparison (algebraHammockGraphDiagram_proper A X Y) f g hf hg
 
 lemma algebraHammockGraphIntersectionComparison_isIso {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
     (f : a ⟶ c) (g : b ⟶ c)
     (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
     (X Y : (operad A).Algebra) :
     IsIso (algebraHammockGraphIntersectionComparison A f g hf hg X Y) :=
-  Hammock.ProperDiagram.intersectionComparison_isIso (algebraHammockGraphDiagram_proper A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ProperDiagram.intersectionComparison_isIso (algebraHammockGraphDiagram_proper A X Y)
     f g hf hg
 
 lemma algebraHammockGraphIntersectionComparison_fac {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
@@ -103,7 +103,7 @@ lemma algebraHammockGraphIntersectionComparison_fac {a b c : _root_.SerrePositiv
           Subfunctor.range ((algebraHammockGraphDiagram A X Y).map g)).ι =
       (Subfunctor.range ((algebraHammockGraphDiagram A X Y).map
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g))).ι :=
-  Hammock.ProperDiagram.intersectionComparison_fac (algebraHammockGraphDiagram_proper A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ProperDiagram.intersectionComparison_fac (algebraHammockGraphDiagram_proper A X Y)
     f g hf hg
 
 end SerrePositivity.EInfinity.BarrattEccles

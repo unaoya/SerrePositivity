@@ -39,15 +39,15 @@ def normalizedGammaHomologyIso (d : ℕ) :
 
 /-- Γ の成分を、同じ smart 切断の H₀ と比較する。 -/
 def gammaPiZeroTruncationEquiv (M : Complex A) :
-    SSet.π₀ ((ComplexLimits.truncatedDoldKanFunctor A).obj M) ≃
+    SSet.π₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj M) ≃
       (M.truncLE' (ComplexShape.embeddingUpIntLE 0)).homology 0 :=
   (modulePiZeroMooreEquiv (gammaModule A M)).trans
     ((normalizedGammaHomologyIso A 0).app M).toLinearEquiv.toEquiv
 
 lemma gammaPiZeroTruncationEquiv_naturality {M N : Complex A} (f : M ⟶ N)
-    (a : SSet.π₀ ((ComplexLimits.truncatedDoldKanFunctor A).obj M)) :
+    (a : SSet.π₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj M)) :
     gammaPiZeroTruncationEquiv A N
-      (SSet.mapπ₀ ((ComplexLimits.truncatedDoldKanFunctor A).map f) a) =
+      (SSet.mapπ₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f) a) =
       (homologyMap (truncLE'Map f (ComplexShape.embeddingUpIntLE 0)) 0).hom
         (gammaPiZeroTruncationEquiv A M a) := by
   change ((normalizedGammaHomologyIso A 0).app N).hom.hom
@@ -59,19 +59,19 @@ lemma gammaPiZeroTruncationEquiv_naturality {M N : Complex A} (f : M ⟶ N)
 
 /-- 元の Γ の成分は、元の複体の H⁰ と全単射で対応する。 -/
 def gammaPiZeroCohomologyEquiv (M : Complex A) :
-    SSet.π₀ ((ComplexLimits.truncatedDoldKanFunctor A).obj M) ≃ M.homology 0 :=
+    SSet.π₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj M) ≃ M.homology 0 :=
   (gammaPiZeroTruncationEquiv A M).trans
     ((smartTruncationHomologyIso A M 0) ≪≫
       (show M.homology (-(0 : ℤ)) ≅ M.homology 0 from Iso.refl _)).toLinearEquiv.toEquiv
 
 lemma gammaPiZeroCohomologyEquiv_naturality {M N : Complex A} (f : M ⟶ N)
-    (a : SSet.π₀ ((ComplexLimits.truncatedDoldKanFunctor A).obj M)) :
+    (a : SSet.π₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj M)) :
     gammaPiZeroCohomologyEquiv A N
-      (SSet.mapπ₀ ((ComplexLimits.truncatedDoldKanFunctor A).map f) a) =
+      (SSet.mapπ₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f) a) =
       (homologyMap f 0).hom (gammaPiZeroCohomologyEquiv A M a) := by
   change (smartTruncationHomologyIso A N 0).hom.hom
     (gammaPiZeroTruncationEquiv A N
-      (SSet.mapπ₀ ((ComplexLimits.truncatedDoldKanFunctor A).map f) a)) = _
+      (SSet.mapπ₀ ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f) a)) = _
   rw [gammaPiZeroTruncationEquiv_naturality]
   exact congrArg (fun k => k.hom (gammaPiZeroTruncationEquiv A M a))
     (smartTruncationHomologyIso_naturality f 0)

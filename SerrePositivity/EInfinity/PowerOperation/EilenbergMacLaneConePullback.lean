@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory CategoryTheory.Limits CochainComplex MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 元の回転 cone の短複体は、既存の次数別 splitting により短完全。 -/
@@ -32,26 +32,26 @@ lemma coneRotateShortComplex_shortExact {M N : Complex A} (f : M ⟶ N) :
 
 /-- 零複体の Γ は、同じ有限極限保存により終対象である。 -/
 def gammaZeroIsTerminal :
-    IsTerminal ((truncatedDoldKanFunctor A).obj (HomologicalComplex.zero : Complex A)) := by
+    IsTerminal ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (HomologicalComplex.zero : Complex A)) := by
   have := gammaFunctor_preservesFiniteLimits A
-  exact IsTerminal.isTerminalObj (truncatedDoldKanFunctor A)
+  exact IsTerminal.isTerminalObj (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A)
     (HomologicalComplex.zero : Complex A) HomologicalComplex.isZero_zero.isTerminal
 
 /-- 零複体の Γ と通常の一点の標準同型。 -/
 def gammaZeroIso :
-    (truncatedDoldKanFunctor A).obj (HomologicalComplex.zero : Complex A) ≅ 𝟙_ SSet.{u} :=
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (HomologicalComplex.zero : Complex A) ≅ 𝟙_ SSet.{u} :=
   (gammaZeroIsTerminal A).uniqueUpToIso CartesianMonoidalCategory.isTerminalTensorUnit
 
 /-- 指定 cone の strict fiber は、元の Γ の四射からなる引き戻しである。 -/
 lemma gammaCone_isPullback {M N : Complex A} (f : M ⟶ N) :
-    IsPullback ((truncatedDoldKanFunctor A).map (mappingCone.inr f))
-      ((truncatedDoldKanFunctor A).map (0 : N ⟶ (HomologicalComplex.zero : Complex A)))
-      ((truncatedDoldKanFunctor A).map (mappingCone.triangle f).mor₃)
-      ((truncatedDoldKanFunctor A).map
+    IsPullback ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (mappingCone.inr f))
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (0 : N ⟶ (HomologicalComplex.zero : Complex A)))
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (mappingCone.triangle f).mor₃)
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map
         (0 : (HomologicalComplex.zero : Complex A) ⟶ M⟦(1 : ℤ)⟧)) := by
   have := gammaFunctor_preservesFiniteLimits A
   have h := shortExact_isPullback_zero (coneRotateShortComplex_shortExact A f)
     (HomologicalComplex.zero : Complex A) HomologicalComplex.isZero_zero
-  exact (truncatedDoldKanFunctor A).map_isPullback h
+  exact (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map_isPullback h
 
 end SerrePositivity.EInfinity.PowerOperation

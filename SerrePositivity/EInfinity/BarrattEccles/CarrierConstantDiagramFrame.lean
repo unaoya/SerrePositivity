@@ -40,12 +40,12 @@ local instance : HasColimitsOfSize.{0, u} (Complex A) :=
 規約：図式と複体のモデルを局所的に選ぶ。
 使われ方：図式の frame の境界持ち上げ。 -/
 lemma trivialFibration_app :
-    let := SerrePositivity.EInfinity.projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := projectiveModelCategory A K
     ∀ {F G : K ⥤ (Complex A)} (p : F ⟶ G),
       trivialFibrations (K ⥤ (Complex A)) p →
       ∀ k, trivialFibrations (Complex A) (p.app k) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   dsimp only
   intro F G p hp k
@@ -57,11 +57,11 @@ lemma trivialFibration_app :
 規約：全射は元の複体の同じ複体射で判定する。
 使われ方：図式の frame のホーン持ち上げ。 -/
 lemma fibration_app :
-    let := SerrePositivity.EInfinity.projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := projectiveModelCategory A K
     ∀ {F G : K ⥤ (Complex A)} (p : F ⟶ G),
       Fibration p → ∀ k, Fibration (p.app k) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   dsimp only
   intro F G p hp k
@@ -73,7 +73,7 @@ lemma fibration_app :
 使われ方：定値図式の導来 Hom の二変数の比較。 -/
 def constantDiagramFrameFamily :
     (Complex A) ⥤ SimplexCategory ⥤ K ⥤ (Complex A) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj ⋙
     Realization.family ⋙ Functor.whiskeringRight K SSet.{u} (Complex A) ⋙
       (Functor.whiskeringLeft SimplexCategory (K ⥤ SSet.{u}) (K ⥤ (Complex A))).obj
@@ -92,7 +92,7 @@ abbrev constantDiagramFrame (Y : (Complex A)) :
 使われ方：定値図式からの導来 Hom と右 frame の錐の比較。 -/
 def constantDiagramSourceHom (Y : (Complex A)) :
     (K ⥤ (Complex A)) ⥤ SSet.{u} := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseWeightedHom K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y)
 
@@ -102,7 +102,7 @@ def constantDiagramSourceHom (Y : (Complex A)) :
 使われ方：図式の局所化 Hom の重み付き錐表示。 -/
 def constantDiagramFrameHomIso (Y : (Complex A)) :
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (constantDiagramFrame A K Y) ≅ constantDiagramSourceHom A K Y := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y)
 
@@ -113,7 +113,7 @@ def constantDiagramFrameHomIso (Y : (Complex A)) :
 def constantDiagramFrameZeroIso (Y : (Complex A)) :
     (constantDiagramFrame A K Y).obj (SimplexCategory.mk 0) ≅
       (constantDiagramReplacement A K).obj Y := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameZeroIso K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.obj Y)
 
@@ -125,7 +125,7 @@ lemma constantDiagramFrame_reedyCofibrant (Y : (Complex A)) :
     let := projectiveModelCategory A K
     reedyLeft simplex (cofibrations (K ⥤ (Complex A)))
       (initial.to (constantDiagramFrame A K Y)) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame_reedyCofibrant K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
@@ -140,7 +140,7 @@ lemma constantDiagramFrame_homotopicallyConstant (Y : (Complex A))
     {n m : SimplexCategory} (f : n ⟶ m) :
     let := projectiveModelCategory A K
     weakEquivalences (K ⥤ (Complex A)) ((constantDiagramFrame A K Y).map f) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrame_homotopicallyConstant K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
@@ -153,7 +153,7 @@ lemma constantDiagramFrame_homotopicallyConstant (Y : (Complex A))
 使われ方：定値図式からの実際の導来写像空間の比較。 -/
 lemma constantDiagramSourceHom_kanComplex (Y : (Complex A))
     (F : K ⥤ (Complex A)) : SSet.KanComplex ((constantDiagramSourceHom A K Y).obj F) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   apply _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneSpace_kanComplex K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
     (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight_cofibrant K)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ModelCategory
-public import SerrePositivity.EInfinity.Operad.AlgebraDiagramSmallness
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraDiagramSmallness
 public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
 
 /-!
@@ -22,7 +22,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles.Diagram
 
 open CategoryTheory Limits HomotopicalAlgebra
-open Operad.AlgebraDiagram
+open _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -31,16 +31,16 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 規約：自由像そのものの合併を使う。
 使われ方：図式の第一の小対象分解。 -/
 abbrev generatingCofibrations : MorphismProperty (K ⥤ (operad A).Algebra) :=
-  generators (operad A) K
-    ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.generators (operad A) K
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
 
 /-- 概要：図式モデルの生成 trivial cofibration のクラス（BM 命題 4.1）。
 方針：零から disk への射を自由代数と各頂点の自由図式へ移す。
 規約：図式は任意の小圏上の通常の関手。
 使われ方：図式の第二の小対象分解と非循環性。 -/
 abbrev generatingTrivialCofibrations : MorphismProperty (K ⥤ (operad A).Algebra) :=
-  generators (operad A) K
-    ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.generators (operad A) K
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
 
 set_option synthInstance.maxHeartbeats 40000 in
 /-- 概要：自由図式の生成 trivial cofibration は全頂点で trivial（BM 命題 4.1）。
@@ -51,24 +51,24 @@ lemma generatingTrivialCofibrations_component (l : K) :
     let := modelCategory A
     generatingTrivialCofibrations A K ≤
       (trivialCofibrations (operad A).Algebra).inverseImage
-        (evaluation (operad A) K l) := by
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K l) := by
   let := modelCategory A
   have := modelCategory_cofibrantlyGenerated A
   change generatingTrivialCofibrations A K ≤
-    (trivialCofibrations (operad A).Algebra).inverseImage (evaluation (operad A) K l)
+    (trivialCofibrations (operad A).Algebra).inverseImage (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K l)
   intro X Y f hf
-  change (⨆ k, ((projectiveGeneratingTrivialCofibrations A).strictMap
-    (operad A).freeAlgebraFunctor).strictMap (free (operad A) K k)) f at hf
+  change (⨆ k, ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap
+    (operad A).freeAlgebraFunctor).strictMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.free (operad A) K k)) f at hf
   rw [MorphismProperty.iSup_iff] at hf
   obtain ⟨k, hf⟩ := hf
   cases hf with
   | @map X Y f hf =>
     have ht : trivialCofibrations (operad A).Algebra f :=
-      (((projectiveGeneratingTrivialCofibrations A).strictMap
+      (((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap
         (operad A).freeAlgebraFunctor).le_llp_rlp.trans
           (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated
-            ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-            ((projectiveGeneratingTrivialCofibrations A).strictMap
+            ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+            ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap
               (operad A).freeAlgebraFunctor)).symm.le) _ hf
     have : Cofibration f := ⟨ht.1⟩
     have : WeakEquivalence f := ⟨ht.2⟩
@@ -81,14 +81,14 @@ lemma generatingTrivialCofibrations_component (l : K) :
 lemma freeCells_acyclic :
     let := modelCategory A
     SerrePositivity.Quillen.relativeCells.{u} (generatingTrivialCofibrations A K) ≤
-      ModelGeneration.EvaluationFamily.detected (evaluation (operad A) K)
+      ModelGeneration.EvaluationFamily.detected (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K)
         (weakEquivalences (operad A).Algebra) := by
   let := modelCategory A
   change SerrePositivity.Quillen.relativeCells.{u} (generatingTrivialCofibrations A K) ≤
-    ModelGeneration.EvaluationFamily.detected (evaluation (operad A) K)
+    ModelGeneration.EvaluationFamily.detected (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K)
       (weakEquivalences (operad A).Algebra)
   intro X Y f hf l
-  have h := ModelGeneration.relativeCells_map_le (evaluation (operad A) K l) _
+  have h := ModelGeneration.relativeCells_map_le (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraDiagram.evaluation (operad A) K l) _
     (trivialCofibrations (operad A).Algebra)
     (generatingTrivialCofibrations_component A K l) f hf
   have hc : SerrePositivity.Quillen.relativeCells.{u}

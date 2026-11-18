@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -33,9 +33,9 @@ lemma strictRawModuleTensorDoubleConeTail_eq_closed {n : ℕ}
     induction i using Fin.lastCases with
     | last =>
       change (strictRawModuleTensorDoubleConeSimplex A X P Q c).obj
-        (doubleConeTailOrderHom n (Fin.last (n + 1))) =
+        (_root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom n (Fin.last (n + 1))) =
         (ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementAugmentedColumn A X P Q c).obj (Fin.last (n + 1))))
-      rw [doubleConeTailOrderHom_last, strictRawModuleTensorDoubleConeSimplex_last,
+      rw [_root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom_last, strictRawModuleTensorDoubleConeSimplex_last,
         strictRawModuleTensorElementAugmentedColumn_obj_last]
     | cast i => exact congrArg (fun s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) n => s.obj i) hf
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext

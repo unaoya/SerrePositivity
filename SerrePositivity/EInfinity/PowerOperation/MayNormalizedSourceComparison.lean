@@ -29,9 +29,9 @@ def mayNormalizedHomologySourceIso (k : Type u) [CommRing k] (n : ℤ) :
   let A := k
   let L := ordinaryAlgebraHoSource A
   let Q := algebraCAlgSource A
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   let I := ordinaryToHoNerve (operad A).Algebra
-  let D := ComplexLimits.complexOrdinaryDerivedSource A
+  let D := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
   let H := cohomologyOnHo A (-n)
   let V := forget₂ (ModuleCat A) AddCommGrpCat
   let a := (hoMapCompIso Q (cAlgForgetDerived A)).symm ≪≫
@@ -43,7 +43,7 @@ def mayNormalizedHomologySourceIso (k : Type u) [CommRing k] (n : ℤ) :
   have c : (I ⋙ hoMap (nerveMap U)) ⋙ hoMap D ⋙ H ≅
       U ⋙ HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) (-n) := by
     exact Functor.isoWhiskerRight (ordinaryToHoNerve_naturalIso U) _ ≪≫
-      Functor.isoWhiskerLeft U (ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A (-n))
+      Functor.isoWhiskerLeft U (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A (-n))
   exact Functor.isoWhiskerRight (b ≪≫ c) V
 
 end SerrePositivity.EInfinity.PowerOperation

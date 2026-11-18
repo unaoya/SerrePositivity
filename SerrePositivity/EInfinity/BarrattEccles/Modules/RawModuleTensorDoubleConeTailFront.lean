@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementAugmentedColumnMaps
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorDoubleConeMap
-public import SerrePositivity.EInfinity.ComplexLimits.DoubleConeTailIndex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoubleConeTailIndex
 
 /-!
 概要：通常終端付き列と二重 cone の末尾単体は、どちらも同じ元の全 frame 前面を持つ。
@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -43,17 +43,17 @@ lemma strictRawModuleTensorElementAugmentedColumn_closed_front {n : ℕ}
 def strictRawModuleTensorDoubleConeTail {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (n + 1) :=
-  (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeTailOrderHom n)
+  (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (_root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom n)
 
 lemma strictRawModuleTensorDoubleConeTail_front {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
     (strictRawModuleTensorDoubleConeTail A X P Q c).pullback Fin.castSuccOrderEmb.toOrderHom =
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ strictRawModuleTensorElementDiagram A X P Q) := by
-  have hindex : (doubleConeTailOrderHom n).comp Fin.castSuccOrderEmb.toOrderHom =
+  have hindex : (_root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom n).comp Fin.castSuccOrderEmb.toOrderHom =
       Fin.castSuccOrderEmb.toOrderHom.comp (Fin.succOrderEmb (n + 1)).toOrderHom := by
     apply DFunLike.ext
     intro i
-    exact doubleConeTailOrderHom_castSucc n i
+    exact _root_.SerrePositivity.ComplexLimits.doubleConeTailOrderHom_castSucc n i
   rw [strictRawModuleTensorDoubleConeTail, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp, hindex, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp,
     strictRawModuleTensorDoubleConeSimplex_front, strictRawModuleTensorConeSimplex_tail]
 

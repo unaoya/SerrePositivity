@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Hopf
-public import SerrePositivity.EInfinity.IntervalCuts.CoalgebraInterval
-public import SerrePositivity.EInfinity.Operad.IntervalModelCategory
+public import SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.CoalgebraInterval
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.IntervalModelCategory
 
 /-!
 # 実際の Barratt–Eccles 代数の転送モデル構造
@@ -32,7 +32,7 @@ variable (A : Type u) [CommRing A]
 使われ方：E 代数の導来圏と CAlg_R の具体的なモデル。 -/
 @[instance_reducible]
 def modelCategory : ModelCategory (operad A).Algebra :=
-  Operad.intervalModelCategory (hopf A) (IntervalCuts.coalgebraInterval A)
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.intervalModelCategory (hopf A) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.coalgebraInterval A)
 
 /-- 概要：具体的な E 代数の弱同値は忘却後の擬同型（BM 命題 4.1）。
 方針：具体区間を代入した転送モデル構造の弱同値類を評価する。
@@ -40,8 +40,8 @@ def modelCategory : ModelCategory (operad A).Algebra :=
 使われ方：E 代数の弱同値を底の複体で判定する。 -/
 lemma modelCategory_weakEquivalences :
     @weakEquivalences (operad A).Algebra _ (modelCategory A).categoryWithWeakEquivalences =
-      (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (Operad.Algebra.forget (operad A)) :=
-  Operad.intervalModelCategory_weakEquivalences (hopf A) (IntervalCuts.coalgebraInterval A)
+      (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) :=
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.intervalModelCategory_weakEquivalences (hopf A) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.coalgebraInterval A)
 
 /-- 概要：具体的な E 代数の fibration は忘却後の全次数全射（BM 命題 4.1）。
 方針：具体区間を代入した転送モデル構造の fibration 類を評価する。
@@ -49,8 +49,8 @@ lemma modelCategory_weakEquivalences :
 使われ方：底の複体で E 代数の fibration を判定する。 -/
 lemma modelCategory_fibrations :
     @fibrations (operad A).Algebra _ (modelCategory A).categoryWithFibrations =
-      (projectiveFibrations A).inverseImage (Operad.Algebra.forget (operad A)) :=
-  Operad.intervalModelCategory_fibrations (hopf A) (IntervalCuts.coalgebraInterval A)
+      (_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A).inverseImage (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) :=
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.intervalModelCategory_fibrations (hopf A) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.coalgebraInterval A)
 
 /-- 概要：具体的な E 代数のモデル構造は自由像の生成類で生成される（BM 命題 4.1）。
 方針：抽象転送の小対象性と生成類判定へ具体区間を代入する。
@@ -59,18 +59,18 @@ lemma modelCategory_fibrations :
 lemma modelCategory_cofibrantlyGenerated :
     let := modelCategory A
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
-      ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-      ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor) :=
-  Operad.intervalModelCategory_cofibrantlyGenerated (hopf A) (IntervalCuts.coalgebraInterval A)
+      ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+      ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor) :=
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.intervalModelCategory_cofibrantlyGenerated (hopf A) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.coalgebraInterval A)
 
 /-- 概要：具体的な E 代数の忘却関手は右 Quillen（BM 命題 4.1）。
 方針：完全な右転送の保存定理へ具体区間を代入する。
 規約：底と代数のモデル構造を局所的に選ぶ。
 使われ方：E2a-4 の導来忘却と E2b の U : CAlg_R → D(R)。 -/
 lemma forget_isRightQuillen :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := modelCategory A
-    SerrePositivity.Quillen.IsRightQuillen (Operad.Algebra.forget (operad A)) :=
-  Operad.intervalModelCategory_forget_isRightQuillen (hopf A) (IntervalCuts.coalgebraInterval A)
+    SerrePositivity.Quillen.IsRightQuillen (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) :=
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.intervalModelCategory_forget_isRightQuillen (hopf A) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.coalgebraInterval A)
 
 end SerrePositivity.EInfinity.BarrattEccles

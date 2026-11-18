@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfComparison
-public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.FreeAlgebraAdjunction
 public import Mathlib.Algebra.Homology.QuasiIso
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
@@ -20,8 +20,8 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory Limits MonoidalCategory
 open SerrePositivity.DifferentialGraded
-attribute [local implicit_reducible] Operad.freeAlgebraFunctor
-variable {A : Type u} [CommRing A] {P : Operad A}
+attribute [local implicit_reducible] _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.freeAlgebraFunctor
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
   [HasBinaryCoproducts P.Algebra] (X Y : Complex A)
 
 /-- 自由関手の標準余積比較を、同じ二項直和に正規化する。 -/
@@ -60,15 +60,15 @@ lemma freeSumCoproductIso_hopfComparison (hP : P.Hopf)
   apply coprod.hom_ext
   · rw [← Category.assoc, freeSumCoproductIso_inl,
       hopfCoproductComparison, coprod.inl_desc]
-    apply Operad.Algebra.freeAlgebraHom_ext
-    change P.schurUnit X ≫ (schurFunctor A P.sequence).map biprod.inl ≫
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.freeAlgebraHom_ext
+    change P.schurUnit X ≫ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P.sequence).map biprod.inl ≫
       (freeHopfComparison hP h0 X Y).hom = _
     rw [← P.schurUnit_naturality_assoc]
     exact freeHopfComparison_left hP h0 X Y
   · rw [← Category.assoc, freeSumCoproductIso_inr,
       hopfCoproductComparison, coprod.inr_desc]
-    apply Operad.Algebra.freeAlgebraHom_ext
-    change P.schurUnit Y ≫ (schurFunctor A P.sequence).map biprod.inr ≫
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.freeAlgebraHom_ext
+    change P.schurUnit Y ≫ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P.sequence).map biprod.inr ≫
       (freeHopfComparison hP h0 X Y).hom = _
     rw [← P.schurUnit_naturality_assoc]
     exact freeHopfComparison_right hP h0 X Y
@@ -80,9 +80,9 @@ lemma hopfCoproductComparison_quasiIso_of_free (hP : P.Hopf)
     QuasiIso
       (hopfCoproductComparison hP h0 (P.freeAlgebra X) (P.freeAlgebra Y)).hom := by
   have hi : IsIso (freeSumCoproductIso (P := P) X Y).hom.hom :=
-    inferInstanceAs (IsIso ((Operad.Algebra.forget P).map
+    inferInstanceAs (IsIso ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P).map
       (freeSumCoproductIso (P := P) X Y).hom))
-  have he := congrArg Operad.AlgebraHom.hom
+  have he := congrArg _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.hom
     (freeSumCoproductIso_hopfComparison X Y hP h0)
   change (freeSumCoproductIso (P := P) X Y).hom.hom ≫
     (freeHopfComparison hP h0 X Y).hom = _ at he

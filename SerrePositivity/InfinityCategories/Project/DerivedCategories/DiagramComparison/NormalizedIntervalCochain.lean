@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalRawChain
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedChainsHom
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedChainsHom
 /-!
 概要：二つの閉零次値とその境界を持つ同じ正規化区間の評価。
 方針：smart切断への鎖写像を、既存の零延長・切断の随伴で戻す。
@@ -21,7 +21,7 @@ def normalizedIntervalCochainMap (A : Type u) [CommRing A]
     (hw : (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).d 1 0 w = y - x) :
     (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
       (SSet.stdSimplex.obj ⦋1⦌) ⟶ H :=
-  (SerrePositivity.EInfinity.ComplexLimits.normalizedChainsTruncationHomEquiv A
+  (_root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A
     (SSet.stdSimplex.obj ⦋1⦌) H).symm
     (intervalNormalizedChainMap A (H.truncLE' (ComplexShape.embeddingUpIntLE 0)) x y w hw)
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

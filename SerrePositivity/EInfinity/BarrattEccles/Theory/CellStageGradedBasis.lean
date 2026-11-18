@@ -34,7 +34,7 @@ open CategoryTheory Limits HomotopicalAlgebra DifferentialGraded
 
 namespace Operad
 
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
   {J : Type u} [LinearOrder J] [OrderBot J] [SuccOrder J] [WellFoundedLT J]
   {X Y : P.Algebra} {f : X ⟶ Y}
   (c : RelativeCellComplex.{u}
@@ -65,14 +65,14 @@ def cellStageErasedFreeIso (hX : IsInitial X) (j : J) :
 /-- Each actual carrier degree is the degree of the original Schur free algebra. -/
 def cellStageSchurDegreeIso (hX : IsInitial X) (j : J) (i : ℤ) :
     (c.F.obj j).carrier.X i ≅
-      ((schurFunctor A P.sequence).obj (∐ (cellStageGeneratorSpheres c j))).X i := by
-  let e := (Algebra.forget P.erase).mapIso (cellStageErasedFreeIso c hX j)
-  change ((Algebra.forget P.erase).obj (P.eraseAlgebra.obj (c.F.obj j))).X i ≅
-    ((Algebra.forget P.erase).obj (P.eraseAlgebra.obj
+      ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P.sequence).obj (∐ (cellStageGeneratorSpheres c j))).X i := by
+  let e := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).mapIso (cellStageErasedFreeIso c hX j)
+  change ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).obj (P.eraseAlgebra.obj (c.F.obj j))).X i ≅
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).obj (P.eraseAlgebra.obj
       (P.freeAlgebraFunctor.obj (∐ (cellStageGeneratorSpheres c j))))).X i
   exact (HomologicalComplex.eval (ModuleCat A) (.up ℤ) i).mapIso
-    (X := (Algebra.forget P.erase).obj (P.eraseAlgebra.obj (c.F.obj j)))
-    (Y := (Algebra.forget P.erase).obj (P.eraseAlgebra.obj
+    (X := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).obj (P.eraseAlgebra.obj (c.F.obj j)))
+    (Y := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).obj (P.eraseAlgebra.obj
       (P.freeAlgebraFunctor.obj (∐ (cellStageGeneratorSpheres c j))))) e
 
 end Operad

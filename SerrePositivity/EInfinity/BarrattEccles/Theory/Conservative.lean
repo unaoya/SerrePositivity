@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
-public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StrictHomology
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraLocalization
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.ULiftRelativeLocalization
@@ -36,7 +36,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory _root_.HomotopicalAlgebra SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open ComplexLimits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open _root_.SerrePositivity.ComplexLimits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -79,15 +79,15 @@ lemma cofibrantAlgebraDK_Q_map_surjective
 
 /-- 厳密複体の導来像が可逆なら、元の写像は擬同型。 -/
 lemma complexOrdinaryDerivedSource_reflects_quasiIso {X Y : Complex A} (f : X ⟶ Y)
-    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) :
     QuasiIso f := by
   let B := ordinaryToHoNerve (Complex A)
-  let L := hoMap (complexOrdinaryDerivedSource A)
+  let L := hoMap (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)
   have hL : IsIso (L.map (B.map f)) := h
   refine (quasiIso_iff f).mpr (fun i => (quasiIsoAt_iff_isIso_homologyMap f i).mpr ?_)
   let H := cohomologyOnHo A i
   let K := HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) i
-  let e : B ⋙ L ⋙ H ≅ K := complexOrdinaryDerivedSourceHomologyIso A i
+  let e : B ⋙ L ⋙ H ≅ K := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSourceHomologyIso A i
   have hm : IsIso ((B ⋙ L ⋙ H).map f) := H.map_isIso (L.map (B.map f))
   have hn := NatIso.naturality_2 e.symm f
   have hi : IsIso ((e.app X).inv ≫ (B ⋙ L ⋙ H).map f ≫ (e.app Y).hom) := inferInstance
@@ -117,12 +117,12 @@ lemma cAlgLocalizationSource_map_reflects_weak
   have hc : IsIso ((η.app _).inv ≫ (hoMap (L ≫ U)).map a ≫ (η.app _).hom) := inferInstance
   have hg : IsIso ((hoMap G).map a) := hn ▸ hc
   have hg' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
-      ((nerve.edgeMk φ).map (complexOrdinaryDerivedSource A)).toTruncated := by
+      ((nerve.edgeMk φ).map (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated := by
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)
       (e := ((nerve.edgeMk f).map G).toTruncated) ?_).mp hg
-    change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+    change (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
       ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)) =
-      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ φ)
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ φ)
     rw [cofibrantAlgebraForgetNerve_mk₁]
   exact complexOrdinaryDerivedSource_reflects_quasiIso A φ hg'
 

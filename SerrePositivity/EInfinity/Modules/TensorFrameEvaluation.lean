@@ -13,14 +13,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
 /-- 概要：複体の標準 frame と元の加群 frame の評価は全単体で自然に同型。
 方針：同じ符号付き交換を成分とする。
 規約：HA 1.3.1.13、全作用素。使われ方：元の対象表示の移送。 -/
 def moduleTensorEvaluationFrameIso (P : ModuleCategory A D) (x : D) :
-    normalizedSimplexTensor A ((moduleEvaluation A D x).obj P) ≅
+    _root_.SerrePositivity.ComplexLimits.normalizedSimplexTensor A ((moduleEvaluation A D x).obj P) ≅
       ((moduleTensorSimplicesFunctor A D).obj P) ⋙ moduleEvaluation A D x :=
   NatIso.ofComponents (fun n => signedSwap ((moduleEvaluation A D x).obj P)
     ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n))) (by

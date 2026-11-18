@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -36,8 +36,8 @@ lemma strictRawModuleTensorConeData_hom_mixed {n : ℕ}
     (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
     HEq ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk)
-      (k.negOnePow • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (withoutFirst I) k
-        (withoutFirst_nonempty hI h0) (by have := card_withoutFirst I h0; omega)) := by
+      (k.negOnePow • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) k
+        (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0) (by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; omega)) := by
   dsimp only [strictRawModuleTensorConeData]
   rw [dite_eq_left ha0]
   exact cast_heq _ _

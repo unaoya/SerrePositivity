@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory HomologicalComplex
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.HomologyZero
+open SerrePositivity.EInfinity.BarrattEccles _root_.SerrePositivity.HomologyZero
 
 variable {k : Type u} [CommRing k]
 local instance mayHomologyCommRing (X : (operad k).Algebra) :
@@ -30,21 +30,21 @@ variable (X : (operad k).Algebra) (p : ℕ) [NeZero p]
 
 /-- May Proposition 2.3(iii)：同じ D₀ を選んだ代表へ適用した零次の値。 -/
 def mayDZeroHomology (x : X.carrier.homology 0) : X.carrier.homology 0 :=
-  mayDZeroRepresentative X p (representative X.carrier x)
+  mayDZeroRepresentative X p (_root_.SerrePositivity.HomologyZero.representative X.carrier x)
 
 lemma mayDZeroHomology_value (x : X.carrier.homology 0) :
     mayDZeroHomology X p x = x ^ p := by
-  rw [mayDZeroHomology, mayDZeroRepresentative_value, representative_class]
+  rw [mayDZeroHomology, mayDZeroRepresentative_value, _root_.SerrePositivity.HomologyZero.representative_class]
 
 /-- 選び直した代表射にも、同じ係数を使った値が一致する。 -/
 lemma mayDZeroRepresentative_independent
     (f g : 𝟙_ (Complex k) ⟶ X.carrier)
-    (h : unitClass X.carrier f = unitClass X.carrier g) :
+    (h : _root_.SerrePositivity.HomologyZero.unitClass X.carrier f = _root_.SerrePositivity.HomologyZero.unitClass X.carrier g) :
     mayDZeroRepresentative X p f = mayDZeroRepresentative X p g := by
   rw [mayDZeroRepresentative_value, mayDZeroRepresentative_value, h]
 
 lemma mayDZeroHomology_representative (f : 𝟙_ (Complex k) ⟶ X.carrier) :
-    mayDZeroHomology X p (unitClass X.carrier f) = mayDZeroRepresentative X p f := by
+    mayDZeroHomology X p (_root_.SerrePositivity.HomologyZero.unitClass X.carrier f) = mayDZeroRepresentative X p f := by
   rw [mayDZeroHomology_value, mayDZeroRepresentative_value]
 
 /-- May Proposition 2.3(iii) の零次の値は全厳密 BE 射に自然。 -/

@@ -23,13 +23,13 @@ variable (A : Type u) [CommRing A]
 
 lemma freeDerivedHomToCommonSmall_homotopyEquivalence (X : Complex A) (B : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (freeDerivedHomToCommonSmall A X B) := by
-  have := ComplexLimits.normalizedProbeTensorHom_kanComplex A (Opposite.op X)
-    (ComplexLimits.complexSemifreeResolutionValue A B.carrier).val
-  have := ComplexLimits.normalizedProbeTensorHom_kanComplex A (Opposite.op X) B.carrier
+  have := _root_.SerrePositivity.ComplexLimits.normalizedProbeTensorHom_kanComplex A (Opposite.op X)
+    (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.carrier).val
+  have := _root_.SerrePositivity.ComplexLimits.normalizedProbeTensorHom_kanComplex A (Opposite.op X) B.carrier
   have := freeNormalizedHomMiddle_kanComplex A (Opposite.op X) B
-  have h₁ := ComplexLimits.normalizedProbeTargetReplacementMap_homotopyEquivalence A X B.carrier
+  have h₁ := _root_.SerrePositivity.ComplexLimits.normalizedProbeTargetReplacementMap_homotopyEquivalence A X B.carrier
   have h₂ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialHomotopyEquivalence_iso_hom
-    (ComplexLimits.normalizedProbeHomDoldKanIso A X B.carrier)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeHomDoldKanIso A X B.carrier)
   have h₃ := freeNormalizedHomFromDoldKan_homotopyEquivalence A (Opposite.op X) B
   exact h₁.comp (h₂.comp h₃)
 
@@ -45,6 +45,6 @@ lemma freeDerivedHomFromStandard_homotopyEquivalence (X : Complex A) (B : (opera
 
 lemma freeDerivedHomToUnderlying_homotopyEquivalence (X : Complex A) (B : (operad A).Algebra) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (freeDerivedHomToUnderlying A X B) :=
-  ComplexLimits.normalizedOrdinaryDerivedHomMap_homotopyEquivalence A X B.carrier
+  _root_.SerrePositivity.ComplexLimits.normalizedOrdinaryDerivedHomMap_homotopyEquivalence A X B.carrier
 
 end SerrePositivity.EInfinity.BarrattEccles

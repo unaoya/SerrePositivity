@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.CommutativeAlgebra
-public import SerrePositivity.EInfinity.Operad.AlgebraRestriction
-public import SerrePositivity.EInfinity.Operad.AlgebraIso
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeAlgebra
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraRestriction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraIso
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ZeroArity
 public import SerrePositivity.EInfinity.BarrattEccles.Hopf
@@ -31,15 +31,15 @@ namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory Limits
 open DifferentialGraded TensorPowers
 open scoped ZeroObject
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 attribute [local implicit_reducible] TensorPowers.power SerrePositivity.SymmetricSequence
   SerrePositivity.SymmetricSequence.level
 
 /-- BF §1.1.4 の余単位に沿ってテンソル単位の可換代数を制限する。 -/
 def hopfTensorUnitObject (hP : P.Hopf) : P.Algebra :=
-  Operad.restrictAlgebraObj hP.counit
-    (commutativeAlgebraOfMonoid (𝟙_ (Complex A)))
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebraObj hP.counit
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraOfMonoid (𝟙_ (Complex A)))
 
 /-- 零入力の余単位が同型なら、BF §1.1.4 の単位代数は厳密な始対象である。 -/
 def hopfTensorUnitIsInitial (hP : P.Hopf)
@@ -51,18 +51,18 @@ def hopfTensorUnitIsInitial (hP : P.Hopf)
     change IsIso ((hP.counit.map.app (FiniteBijection.of 0) ▷ 𝟙_ (Complex A)) ≫
       (λ_ (𝟙_ (Complex A))).hom ≫ 𝟙 (𝟙_ (Complex A)))
     infer_instance
-  let f : P.freeAlgebra (0 : Complex A) ⟶ U := Operad.Algebra.liftHom _ 0
-  let j := schurι A P.sequence (0 : Complex A) 0
+  let f : P.freeAlgebra (0 : Complex A) ⟶ U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.liftHom _ 0
+  let j := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P.sequence (0 : Complex A) 0
   have hj : IsIso j := BarrattEccles.schurι_zero_isIso A P.sequence
   have he : j ≫ f.hom = U.action 0 := by
     change j ≫ U.schurLift (0 : (0 : Complex A) ⟶ U.carrier) = U.action 0
-    rw [Operad.Algebra.ι_schurLift]
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.ι_schurLift]
     change (𝟙 (P.arity 0) ⊗ₘ 𝟙 (𝟙_ (Complex A))) ≫ U.action 0 = U.action 0
     rw [id_tensorHom, whiskerLeft_id, Category.id_comp]
   have : IsIso (j ≫ f.hom) := by rw [he]; exact hU
   have : IsIso f.hom := IsIso.of_isIso_comp_left j f.hom
   let e : P.freeAlgebra (0 : Complex A) ≅ U :=
-    Operad.Algebra.isoOfCarrierIso (asIso f.hom) f.comm
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso (asIso f.hom) f.comm
   have : P.freeAlgebraFunctor.IsLeftAdjoint := P.freeAlgebraAdjunction.isLeftAdjoint
   have hi : IsInitial (P.freeAlgebra (0 : Complex A)) :=
     (isZero_zero (Complex A)).isInitial.isInitialObj P.freeAlgebraFunctor _

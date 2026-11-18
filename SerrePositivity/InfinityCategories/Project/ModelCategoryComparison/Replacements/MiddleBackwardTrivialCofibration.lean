@@ -27,7 +27,7 @@ open _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {n m : ℕ} {X Y : C}
 
 def property : ObjectProperty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (weakEquivalences C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m) X Y) :=
-  fun S => trivialCofibrations C (S.arrow (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m))
+  fun S => trivialCofibrations C (S.arrow (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m))
 
 abbrev Objects := (property (C := C) (n := n) (m := m) (X := X) (Y := Y)).FullSubcategory
 

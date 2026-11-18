@@ -35,7 +35,10 @@ open Functor.LaxMonoidal
 variable {A : Type u} [CommRing A]
 
 /-- 微分を消したオペラッド。各 arity と部分合成を次数ごとに保つ。 -/
-def Operad.erase (P : Operad A) : Operad A :=
+def Operad.erase (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A) : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A :=
   P.monoidalImage (eraseDifferential A)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (erase)
 
 end SerrePositivity.EInfinity

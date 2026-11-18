@@ -29,7 +29,7 @@ def strictBETotForgetDiagram :
   (Functor.whiskeringLeft SimplexCategory (AsSmall.{u} SimplexCategory)
     (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra).obj AsSmall.up ⋙
       (Functor.whiskeringRight SimplexCategory (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra
-        (SerrePositivity.DifferentialGraded.Complex A)).obj (_root_.SerrePositivity.EInfinity.Operad.Algebra.forget (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A))
+        (SerrePositivity.DifferentialGraded.Complex A)).obj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A))
 
 /-- 台の図式への射は、元の同じ評価の複体射。 -/
 theorem strictBETotForgetDiagram_map

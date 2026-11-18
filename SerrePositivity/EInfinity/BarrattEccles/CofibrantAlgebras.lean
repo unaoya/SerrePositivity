@@ -48,7 +48,7 @@ def cofibrantAlgebraInclusion : CofibrantAlgebra A ⥤ (operad A).Algebra := by
 使われ方：相対圏としての単体的局所化の入力。 -/
 def cofibrantAlgebraWeakEquivalences : MorphismProperty (CofibrantAlgebra A) :=
   (HomologicalComplex.quasiIso (ModuleCat A) (.up ℤ)).inverseImage
-    (cofibrantAlgebraInclusion A ⋙ Operad.Algebra.forget (operad A))
+    (cofibrantAlgebraInclusion A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
 
 /-- 概要：相対圏の弱同値は恒等射と合成で閉じる（Dwyer–Kan）。
 方針：元の複体の擬同型の乗法性を包含・忘却の逆像へ移す。

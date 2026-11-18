@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.Modules.FreeHammockCoefficientNerve
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.SourceHom
-public import SerrePositivity.EInfinity.Hammock.RelativeFixedArrow
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeFixedArrow
 
 /-!
 # 同じ局所化の係数作用による指定生成射の保存
@@ -53,7 +53,7 @@ lemma freeHammockArrowZero_coefficient (f : X ⟶ Y) :
     (arrowPoint ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj (op ⦋0⦌)).weakEquivalences
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero C f) (op ⦋0⦌)) = _
   rw [freeHammockCoefficient_fixedColimitMap]
-  have h := Hammock.Relative.fixedColimitMap_arrowPoint ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap F).app (op ⦋0⦌))
+  have h := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.fixedColimitMap_arrowPoint ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap F).app (op ⦋0⦌))
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F (op ⦋0⦌) X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionMap_object F (op ⦋0⦌) Y)
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero C f) (op ⦋0⦌)
   rw [freeResolutionArrowZero_coefficient] at h

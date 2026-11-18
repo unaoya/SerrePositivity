@@ -41,9 +41,9 @@ def barrattEcclesRestrict_forget :
       (cAlgForgetDerived T ≫ ComplexLimits.barrattEcclesRestrictD f) := by
   apply algebraCAlgSource_descendIso T
   let R := ComplexLimits.barrattEcclesRestrictD f
-  let N := nerveMap (Operad.Algebra.forget (operad T))
+  let N := nerveMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad T))
   let K := nerveMap (ScalarExtension.restriction f)
-  let Q := ComplexLimits.complexOrdinaryDerivedSource S
+  let Q := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource S
   let r := nerveMap (coefficientRestriction f)
   have e₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource T ≫ barrattEcclesRestrict f ≫ cAlgForgetDerived S)
       (r ≫ algebraCAlgSource S ≫ cAlgForgetDerived S) := by

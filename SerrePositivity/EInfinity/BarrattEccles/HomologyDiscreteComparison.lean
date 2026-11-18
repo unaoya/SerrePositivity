@@ -34,9 +34,9 @@ variable (A : Type u) [CommRing A]
 lemma homologyBinary_discrete (B : CommAlgCat.{u} A) :
     homologyBinary ((discreteAlgebraFunctor A).obj B) =
       ((CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-        (moduleCommMonoid A B)).mon.mul := by
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A B)).mon.mul := by
   let M := (CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-    (moduleCommMonoid A B)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A B)
   let := M.mon
   have := M.comm
   exact homologyBinary_commutative M.X
@@ -48,9 +48,9 @@ lemma homologyBinary_discrete (B : CommAlgCat.{u} A) :
 lemma homologyNullary_discrete (B : CommAlgCat.{u} A) :
     homologyOperation ((discreteAlgebraFunctor A).obj B) 0 =
       ((CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-        (moduleCommMonoid A B)).mon.one := by
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A B)).mon.one := by
   let M := (CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-    (moduleCommMonoid A B)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A B)
   let := M.mon
   have := M.comm
   exact homologyNullary_commutative M.X

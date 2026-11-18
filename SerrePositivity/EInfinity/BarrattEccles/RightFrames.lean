@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ModelCategory
-public import SerrePositivity.EInfinity.OppositeFactorization
+public import SerrePositivity.HomotopicalAlgebra.ModelCategory.OppositeFactorization
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
 public import Mathlib.AlgebraicTopology.ModelCategory.Opposite
 
@@ -38,12 +38,12 @@ def rightFrameFactorization :
   let := modelCategory A
   have := modelCategory_cofibrantlyGenerated A
   have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
-    ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-    ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
   change MorphismProperty.FunctorialFactorizationData
     (cofibrations (operad A).Algebraᵒᵖ) (trivialFibrations (operad A).Algebraᵒᵖ)
   rw [cofibrations_op, trivialFibrations_op]
-  exact OppositeFactorization.opposite (MorphismProperty.functorialFactorizationData
+  exact _root_.SerrePositivity.OppositeFactorization.OppositeFactorization.opposite (MorphismProperty.functorialFactorizationData
     (trivialCofibrations (operad A).Algebra) (fibrations (operad A).Algebra))
 
 /-- 概要：実際の E 代数の右 frame の関手的な族（Hovey §5.2）。

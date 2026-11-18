@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 open
@@ -44,8 +44,8 @@ lemma gammaLoopFunctor_preservesZeroMorphisms :
 
 open SSet.modelCategoryQuillen in
 lemma gammaLoopMap_fibration {M N : Complex A} (p : M ⟶ N)
-    (hp : projectiveFibrations A p) : Fibration ((gammaLoopFunctor A).map p).right := by
-  have hs : projectiveFibrations A (p⟦(1 : ℤ)⟧') := by
+    (hp : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations A p) : Fibration ((gammaLoopFunctor A).map p).right := by
+  have hs : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations A (p⟦(1 : ℤ)⟧') := by
     intro n
     exact hp (n + 1)
   have : Fibration (((gammaPointedFunctor A).map (p⟦(1 : ℤ)⟧')).right) :=

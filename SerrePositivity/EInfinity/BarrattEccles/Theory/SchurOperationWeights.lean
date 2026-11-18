@@ -44,7 +44,7 @@ lemma preserves_schurOperationGenerator {K : Complex A} (b : ComplexWeightBasis 
     (∑ j, s j) ((operad A).composition n s)).tensor (preserves_powerFamilyIso b n s)
   have h₄ := preserves_schurι b (∑ j, s j)
   have h := h₁.comp (h₂.comp (h₃.comp h₄))
-  simp only [Operad.schurOperationGenerator, id_tensorHom] at h ⊢
+  simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.schurOperationGenerator, id_tensorHom] at h ⊢
   exact h
 
 end SerrePositivity.EInfinity.BarrattEccles

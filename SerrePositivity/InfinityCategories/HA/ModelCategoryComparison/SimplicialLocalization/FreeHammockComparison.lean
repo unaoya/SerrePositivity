@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockLocalizedObjects
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonal
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.Hom
-public import SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationEvaluation
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectLocalizationEvaluation
 
 /-!
 # 元の自由 hammock の対角から既存 DK Hom への右比較

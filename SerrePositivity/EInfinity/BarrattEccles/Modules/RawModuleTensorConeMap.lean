@@ -16,8 +16,8 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -57,7 +57,7 @@ lemma strictRawModuleTensorConeData_pullback_map {n m : ℕ}
     cases h
     by_cases ha0 : a = 0
     · have h0 : (0 : Fin (m + 2)) ∈ I := by rw [← ha0, ha]; exact I.min'_mem _
-      by_cases hi : Set.InjOn θ.toOrderHom ((withoutFirst I) : Set (Fin (m + 1)))
+      by_cases hi : Set.InjOn θ.toOrderHom ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) : Set (Fin (m + 1)))
       · exact strictRawModuleTensorConeData_pullback_hom_mixed_of_injOn
           A X P Q c θ I a b k hI ha hb hk ha0 h0 hi
       · exact strictRawModuleTensorConeData_pullback_hom_mixed_not_inj

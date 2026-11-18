@@ -15,8 +15,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
-open CategoryTheory _root_.HomotopicalAlgebra Hammock
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
@@ -26,11 +26,11 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma complexRelativeElementRoofMap_weak :
     IsWeakHomotopyEquivalence
-      (complexRelativeElementRoofMap A ((framedLimitProbeFunctor A).obj X) Y) := by
-  let := projectiveModelCategory A
+      (complexRelativeElementRoofMap A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y) := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   have hi := (isPrecompositionEquivalence_of_iso
-    (AsSmallComparison.colimitIso (weakEquivalences (Complex A))
-      ((framedLimitProbeFunctor A).obj X) Y).symm).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso (weakEquivalences (Complex A))
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y).symm).isWeakHomotopyEquivalence
   apply hi.cancel_right
   have h := (isPrecompositionEquivalence_of_iso
     (complexRelativeElementIndexIso A X Y)).isWeakHomotopyEquivalence.comp
@@ -39,18 +39,18 @@ lemma complexRelativeElementRoofMap_weak :
 
 lemma complexRelativeElementHammockPinchedMap_weak :
     IsWeakHomotopyEquivalence
-      (complexRelativeElementHammockPinchedMap A ((framedLimitProbeFunctor A).obj X) Y) := by
+      (complexRelativeElementHammockPinchedMap A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y) := by
   have hu := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
     (exInfinityUnit.app
       (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
         (complexRelativeCategory A).weakEquivalences
-        ((complexRelativeUp A).obj ((framedLimitProbeFunctor A).obj X))
+        ((complexRelativeUp A).obj ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))
         ((complexRelativeUp A).obj Y)))
     (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
   change IsWeakHomotopyEquivalence
-    ((complexRelativeElementRoofMap A ((framedLimitProbeFunctor A).obj X) Y ≫
+    ((complexRelativeElementRoofMap A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y ≫
       exInfinityUnit.app _) ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (complexRelativeCategory A)
-        ((complexRelativeUp A).obj ((framedLimitProbeFunctor A).obj X))
+        ((complexRelativeUp A).obj ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))
         ((complexRelativeUp A).obj Y))
   exact ((complexRelativeElementRoofMap_weak A X Y).comp hu).comp
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_weak _ _ _)

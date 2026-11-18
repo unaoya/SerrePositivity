@@ -32,7 +32,7 @@ namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory Limits HomotopicalAlgebra
 open DifferentialGraded
 
-variable {A : Type u} [CommRing A] {P : Operad A} {X Y : P.Algebra} {g : X ⟶ Y}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A} {X Y : P.Algebra} {g : X ⟶ Y}
   (c : AttachCells.{w} (fun n => P.freeAlgebraFunctor.map (complexSphereToDisk A n)) g)
 
 /-- 付加された disk の下の生成元の像。 -/
@@ -59,7 +59,7 @@ lemma attachedGenerator_d (i : c.ι) :
       _ = (c.cofan₁.inj i ≫ c.m) ≫ c.g₂ := by rw [c.hm, Category.assoc]
       _ = _ := by rw [Category.assoc, ← c.isPushout.w, Category.assoc]
   have h' : f ≫ a.homEquiv _ _ d =
-      a.homEquiv _ _ b ≫ (Algebra.forget P).map g := by
+      a.homEquiv _ _ b ≫ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P).map g := by
     rw [← a.homEquiv_naturality_left, ← a.homEquiv_naturality_right, h]
   change Y.carrier.d (c.π i) (c.π i + 1) (complexDiskHomEquiv A _ _ (a.homEquiv _ _ d)) =
     g.hom.f (c.π i + 1) (complexSphereHomEquiv A _ _ (a.homEquiv _ _ b)).val

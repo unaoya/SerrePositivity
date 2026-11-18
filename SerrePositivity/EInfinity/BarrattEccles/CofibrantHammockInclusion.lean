@@ -22,18 +22,18 @@ open CategoryTheory _root_.HomotopicalAlgebra
 open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 def algebraHammockHomLiftIso (X Y : (operad A).Algebra) :
-    Hammock.reducedSimplicialSet (algebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedSimplicialSet (algebraRelativeCategory A).weakEquivalences
       (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1} Y) ≅ algebraReducedHammock A
         X Y := by
   let := modelCategory A
-  exact Hammock.HomLift.reducedIso (C := (operad A).Algebra)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.HomLift.reducedIso (C := (operad A).Algebra)
     (weakEquivalences (operad A).Algebra) X Y
 variable (X Y : (cofibrantAlgebraRelativeCategory A).category)
 def cofibrantAlgebraHammockInclusionMap :
-    Hammock.reducedSimplicialSet (cofibrantAlgebraRelativeCategory A).weakEquivalences X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedSimplicialSet (cofibrantAlgebraRelativeCategory A).weakEquivalences X Y ⟶
       algebraReducedHammock A ((cofibrantAlgebraDKInclusion A).obj X)
         ((cofibrantAlgebraDKInclusion A).obj Y) :=
-  Hammock.Relative.reducedMap (cofibrantToAlgebraDKRelative A) X Y ≫
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.reducedMap (cofibrantToAlgebraDKRelative A) X Y ≫
     (algebraHammockHomLiftIso A ((cofibrantAlgebraDKInclusion A).obj X)
       ((cofibrantAlgebraDKInclusion A).obj Y)).hom
 lemma cofibrantAlgebraHammockInclusionMap_weak :
@@ -49,7 +49,7 @@ def cofibrantAlgebraHammockGraphInclusionMap (w : _root_.SerrePositivity.Infinit
         ((cofibrantAlgebraDKInclusion A).obj Y) := by
   let := modelCategory A
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap (cofibrantToAlgebraDKRelative A) X Y).app w ≫
-    (Hammock.HomLift.graphIso (C := (operad A).Algebra) (weakEquivalences (operad A).Algebra)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.HomLift.graphIso (C := (operad A).Algebra) (weakEquivalences (operad A).Algebra)
       w ((cofibrantAlgebraDKInclusion A).obj X) ((cofibrantAlgebraDKInclusion A).obj Y)).hom
 lemma cofibrantAlgebraHammockGraphInclusionMap_app (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n : SimplexCategoryᵒᵖ)
     (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y).obj n) :

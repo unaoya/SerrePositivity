@@ -53,10 +53,10 @@ theorem integerNegativeTensorBaseChangeIso_ι (i j n : ℕ) (h : i + j = n) :
   simp only [comp_f, Functor.mapHomologicalComplex_map_f]
   erw [mapExtendIso_inv_f _ _ _ (i := n) rfl]
   simp only [Category.assoc, Iso.inv_hom_id_assoc,
-    EInfinity.NegativeTensor.comparison_hom_f_neg, Functor.map_comp]
+    _root_.SerrePositivity.NegativeTensor.comparison_hom_f_neg, Functor.map_comp]
   simp only [← Functor.map_comp_assoc]
-  simp only [EInfinity.NegativeTensor.xIso, Iso.inv_hom_id_assoc]
-  rw [EInfinity.NegativeTensor.ι_degreeMap, Functor.map_comp]
+  simp only [_root_.SerrePositivity.NegativeTensor.xIso, Iso.inv_hom_id_assoc]
+  rw [_root_.SerrePositivity.NegativeTensor.ι_degreeMap, Functor.map_comp]
   simp only [Category.assoc]
   change _ ≫ (ModuleCat.extendScalars φ).map (ιTensorObj _ _ _ _ _ _) ≫
     (cochainTensorBaseChangeXIso φ _ _ _).hom ≫ _ = _
@@ -70,13 +70,13 @@ theorem integerNegativeTensorBaseChangeIso_ι (i j n : ℕ) (h : i + j = n) :
   · apply (cancel_mono ((Kφ).extendXIso ComplexShape.embeddingDownNat
       (i := i) (i' := -(i : ℤ)) rfl).hom).1
     erw [Category.assoc, mapExtendIso_hom_f]
-    simp only [EInfinity.NegativeTensor.xIso, ← Functor.map_comp,
+    simp only [_root_.SerrePositivity.NegativeTensor.xIso, ← Functor.map_comp,
       Iso.inv_hom_id]
     exact (ModuleCat.extendScalars φ).map_id _
   · apply (cancel_mono ((Lφ).extendXIso ComplexShape.embeddingDownNat
       (i := j) (i' := -(j : ℤ)) rfl).hom).1
     erw [Category.assoc, mapExtendIso_hom_f]
-    simp only [EInfinity.NegativeTensor.xIso, ← Functor.map_comp,
+    simp only [_root_.SerrePositivity.NegativeTensor.xIso, ← Functor.map_comp,
       Iso.inv_hom_id]
     exact (ModuleCat.extendScalars φ).map_id _
 

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
 open scoped Simplicial
@@ -55,19 +55,19 @@ theorem strictCosimplicialEvaluationNerve_at (X : CosimplicialObject (Complex A)
 def derivedTotEvaluationFamily :
     (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⊗
       nerve (CosimplicialObject (Complex A)) ⟶ derivedInfinityCategory A :=
-  strictCosimplicialEvaluationNerve A ≫ complexOrdinaryDerivedSource A
+  strictCosimplicialEvaluationNerve A ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
 
 /-- 元の積Tot全関手の同じ導来像。 -/
 def derivedTotVertexFamily :
     nerve (CosimplicialObject (Complex A)) ⟶ derivedInfinityCategory A :=
-  nerveMap (productTotalFunctor A) ≫ complexOrdinaryDerivedSource A
+  nerveMap (productTotalFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
 
 /-- 図式射の頂点辺は、同じ積Tot関手の像そのもの。 -/
 theorem derivedTotVertexFamily_map {X Y : CosimplicialObject (Complex A)} (f : X ⟶ Y) :
     (derivedTotVertexFamily A).app (Opposite.op ⦋1⦌) (nerve.edgeMk f).edge =
-      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
         (nerve.edgeMk ((productTotalFunctor A).map f)).edge := by
-  change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
     ((nerveMap (productTotalFunctor A)).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)) = _
   rw [nerveMap_app_mk₁]
   rfl

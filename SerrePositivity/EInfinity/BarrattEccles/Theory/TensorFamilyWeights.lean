@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorPowerWordWeights
-public import SerrePositivity.EInfinity.Operad.TensorFamily
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorFamily
 
 /-!
 # 有限テンソル族の次数付き基底と重み
@@ -36,7 +36,7 @@ def familyGradedIndex : ∀ (n : ℕ), (Fin n → ℤ → Type u) → ℤ → Ty
 /-- The recursively chosen basis on the actual finite tensor family. -/
 def familyGradedBasis : ∀ (n : ℕ) {V : Fin n → Complex A} {I : Fin n → ℤ → Type u},
     (∀ j i, Module.Basis (I j i) A ((V j).X i)) →
-    ∀ i, Module.Basis (familyGradedIndex n I i) A ((tensorFamily n V).X i)
+    ∀ i, Module.Basis (familyGradedIndex n I i) A ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V).X i)
   | 0, _, _, _, i => unitDegreeBasis i
   | n + 1, _, _, b, i =>
       tensorGradedBasis (b 0) (familyGradedBasis n (fun j => b j.succ)) i
@@ -57,10 +57,10 @@ lemma tensorFamilyMap_mem_basisWeightSpan (n : ℕ)
     (f : ∀ j, V j ⟶ W j)
     (hf : ∀ j i z, (f j).f i (b j i z) ∈
       basisWeightSpan (c j i) (fun z => v j ⟨i, z⟩) (w j ⟨i, z⟩)) :
-    ∀ (i : ℤ) (N : ℕ) {x : (tensorFamily n V).X i},
+    ∀ (i : ℤ) (N : ℕ) {x : (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V).X i},
       x ∈ basisWeightSpan (familyGradedBasis n b i)
         (fun z => familyGradedWeight n w ⟨i, z⟩) N →
-      (tensorFamilyMap n f).f i x ∈ basisWeightSpan (familyGradedBasis n c i)
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap n f).f i x ∈ basisWeightSpan (familyGradedBasis n c i)
         (fun z => familyGradedWeight n v ⟨i, z⟩) N := by
   induction n with
   | zero => intro i N x hx; exact hx
@@ -70,7 +70,7 @@ lemma tensorFamilyMap_mem_basisWeightSpan (n : ℕ)
       (c 0) (familyGradedBasis n (fun j => c j.succ))
       (w 0) (familyGradedWeight n (fun j => w j.succ))
       (v 0) (familyGradedWeight n (fun j => v j.succ))
-      (f 0) (tensorFamilyMap n (fun j => f j.succ)) (hf 0)
+      (f 0) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap n (fun j => f j.succ)) (hf 0)
       (fun i z => ih (fun j => b j.succ) (fun j => c j.succ)
         (fun j => w j.succ) (fun j => v j.succ) (fun j => f j.succ)
         (fun j => hf j.succ) i _

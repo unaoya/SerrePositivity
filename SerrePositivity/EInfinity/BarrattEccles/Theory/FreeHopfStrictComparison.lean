@@ -19,7 +19,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory MonoidalCategory HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
-attribute [local implicit_reducible] Operad.freeAlgebra
+attribute [local implicit_reducible] _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.freeAlgebra
 variable (R : Type u) [CommRing R] (X Y : Complex R)
 
 /-- 指定標準語上で、実際の Hopf 射は指定二色係数射と等しい。 -/

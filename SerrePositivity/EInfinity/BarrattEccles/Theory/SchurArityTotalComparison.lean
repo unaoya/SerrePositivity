@@ -21,7 +21,7 @@ variable {A : Type u} [CommRing A] (P : SymmetricSequence (Complex A)) (K : Comp
 
 /-- 実際の Schur 図式の作用は、係数と入力の二つの作用の対角作用である。 -/
 lemma schurDiagramComplexAction (n : ℕ) :
-    finiteBijectionComplexAction (schurDiagram A P K) n =
+    finiteBijectionComplexAction (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K) n =
       tensorComplexAction (finiteBijectionComplexAction P n)
         (finiteBijectionComplexAction (bijectionFunctor K) n) := by
   ext g
@@ -29,7 +29,7 @@ lemma schurDiagramComplexAction (n : ℕ) :
 
 /-- 一つの arity の指定商は、テンソル余不変の全複体に同定される。 -/
 def schurArityTotalIso (n : ℕ) :
-    arityCoinvariantComplex (schurDiagram A P K) n ≅
+    arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K) n ≅
       coinvariantTensorTotal (finiteBijectionComplexAction P n)
         (finiteBijectionComplexAction (bijectionFunctor K) n) :=
   ((Rep.coinvariantsFunctor A (ULift.{u} (Equiv.Perm (Fin n)))).mapHomologicalComplex
@@ -40,20 +40,20 @@ def schurArityTotalIso (n : ℕ) :
 
 /-- 元の Schur 複体の、全整数次数と両方の微分を保つ arity ごとの全複体表示。 -/
 def schurArityTotalIsoSum :
-    (schurFunctor A P).obj K ≅ ∐ (fun n : ℕ =>
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P).obj K ≅ ∐ (fun n : ℕ =>
       coinvariantTensorTotal (finiteBijectionComplexAction P n)
         (finiteBijectionComplexAction (bijectionFunctor K) n)) :=
   schurComplexArityIso P K ≪≫ Sigma.mapIso (schurArityTotalIso P K)
 
 /-- 元の Schur 生成元は、指定 arity 商の後の指定成分と直和包含へ送られる。 -/
 lemma schurArityTotalIsoSum_ι (n : ℕ) :
-    schurι A P K n ≫ (schurArityTotalIsoSum P K).hom =
-      arityCoinvariantComplexQuotient (schurDiagram A P K) n ≫
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n ≫ (schurArityTotalIsoSum P K).hom =
+      arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K) n ≫
         (schurArityTotalIso P K n).hom ≫
           Sigma.ι (fun r : ℕ => coinvariantTensorTotal (finiteBijectionComplexAction P r)
             (finiteBijectionComplexAction (bijectionFunctor K) r)) n := by
-  change colimit.ι (schurDiagram A P K) (FiniteBijection.of n) ≫
-    ((arityCoinvariantComplexIso (schurDiagram A P K)).hom ≫
+  change colimit.ι (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K) (FiniteBijection.of n) ≫
+    ((arityCoinvariantComplexIso (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K)).hom ≫
       (Sigma.mapIso (schurArityTotalIso P K)).hom) = _
   rw [← Category.assoc, arityCoinvariantComplexIso_ι, Category.assoc, Sigma.ι_mapIso_hom]
 

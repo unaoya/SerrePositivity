@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory AlgebraicTopology HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
@@ -23,23 +23,23 @@ variable (A : Type u) [CommRing A]
 /-- 同じ正規化標準単体Homの逆射は指定自由随伴の逆射である。 -/
 theorem normalizedSimplexHomEquiv_symm_freeAdjunction (H : Complex A)
     (n : SimplexCategory)
-    (α : ((truncatedDoldKanFunctor A).obj H).obj (Opposite.op n)) :
-    (normalizedSimplexHomEquiv A H n).symm α =
+    (α : ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H).obj (Opposite.op n)) :
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A H n).symm α =
       ((freeNegativeChainsAdjunction A).homEquiv
         ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H).symm
-        ((liftedStandardSimplexHomIso ((truncatedDoldKanFunctor A).obj H)).inv.app
+        ((liftedStandardSimplexHomIso ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H)).inv.app
           (Opposite.op n) α) := by
-  apply (normalizedSimplexHomEquiv A H n).injective
+  apply (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A H n).injective
   rw [Equiv.apply_symm_apply]
   have h := normalizedSimplexHomEquiv_via_freeAdjunction A H n
     (((freeNegativeChainsAdjunction A).homEquiv
       ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H).symm
-        ((liftedStandardSimplexHomIso ((truncatedDoldKanFunctor A).obj H)).inv.app
+        ((liftedStandardSimplexHomIso ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H)).inv.app
           (Opposite.op n) α))
   rw [Equiv.apply_symm_apply] at h
   have hi := ConcreteCategory.congr_hom
     (Iso.inv_hom_id_app (liftedStandardSimplexHomIso
-      ((truncatedDoldKanFunctor A).obj H)) (Opposite.op n)) α
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H)) (Opposite.op n)) α
   exact hi.symm.trans h
 
 /-- 同じ標準単体Hom同型の逆射則を任意の台単体集合で固定する。 -/
@@ -57,9 +57,9 @@ theorem normalizedSimplexHomEquiv_symm_standard_generator
       standardHomSpace (R := A) x y) (n : ℕ)
     (s : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)).obj
       (Opposite.op ⦋n⦌)) :
-    ((normalizedSimplexHomEquiv A (homObject A D x y) m).symm
+    ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (homObject A D x y) m).symm
       ((liftedStandardSimplexHomIso
-        ((truncatedDoldKanFunctor A).obj (homObject A D x y))).hom.app (Opposite.op m)
+        ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (homObject A D x y))).hom.app (Opposite.op m)
           (f ≫ standardDoldKanSpaceMap x y))).f (-(n : ℤ))
             (freeNegativeGenerator
               ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) n s) =

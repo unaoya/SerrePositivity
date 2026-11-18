@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.WeakEquivalence
 
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.RowComparison
-public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicialWeak
 
 /-!
 概要：一般 core 旗の対角評価の弱ホモトピー同値。
@@ -20,14 +20,14 @@ open CategoryTheory SSet
 open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
-open EInfinity.Hammock.DoubleSimplicial
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicial
 
 /-- 一般の quasicategory の定数 core 旗包含は弱ホモトピー同値。 -/
 lemma inclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.inclusion C) := by
   have hconst := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso C).symm).isWeakHomotopyEquivalence
-  have hrow := diagonalFunctor_map_weak (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.bisimplicialInclusion C)
+  have hrow := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicial.diagonalFunctor_map_weak (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.bisimplicialInclusion C)
     (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.rowInclusion_isWeakHomotopyEquivalence C)
   have htranspose := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonalTransposeIso C)).isWeakHomotopyEquivalence

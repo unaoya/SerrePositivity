@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneTruncation
-public import SerrePositivity.EInfinity.ComplexLimits.TruncationInclusionNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncationInclusionNaturality
 
 /-!
 # smart 切断の π/H 比較の元の複体射に対する自然性
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory HomologicalComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable {A : Type u} [CommRing A]
 
 lemma smartTruncationHomologyIso_naturality {M N : Complex A} (f : M ⟶ N) (d : ℕ) :
@@ -36,7 +36,7 @@ lemma smartTruncationHomologyIso_naturality {M N : Complex A} (f : M ⟶ N) (d :
       homologyMap (M.truncLEIso e).inv (-(d : ℤ)) ≫
         homologyMap (truncLEMap f e) (-(d : ℤ)) := by
     simpa only [homologyMap_comp] using congrArg
-      (fun k => homologyMap k (-(d : ℤ))) (truncLEIso_inv_naturality f e)
+      (fun k => homologyMap k (-(d : ℤ))) (_root_.SerrePositivity.EInfinity.ComplexLimits.truncLEIso_inv_naturality f e)
   have hi : homologyMap (truncLEMap f e) (-(d : ℤ)) ≫
       homologyMap (ιTruncLE N e) (-(d : ℤ)) =
       homologyMap (ιTruncLE M e) (-(d : ℤ)) ≫ homologyMap f (-(d : ℤ)) := by

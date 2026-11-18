@@ -39,13 +39,13 @@ lemma partialComposition_diagonal (m n : ℕ) (i : Fin (m + 1)) :
           (complex A n) (complex A n)).hom ≫
         HomologicalComplex.tensorHom (partialComposition A m n i) (partialComposition A m n i) := by
   simp only [partialComposition_eq_generalShuffle, complexDiagonal]
-  rw [Category.assoc, AlexanderWhitney.cochainDiagonal_natural]
-  rw [← Category.assoc, Shuffle.cochainMap_diagonal]
+  rw [Category.assoc, _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_natural]
+  rw [← Category.assoc, _root_.SerrePositivity.SimplicialChains.Shuffle.cochainMap_diagonal]
   change _ = _ ≫ _ ≫
-    ((Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n) ≫
-        AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i)) ⊗ₘ
-      (Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n) ≫
-        AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i)))
+    ((_root_.SerrePositivity.SimplicialChains.Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n) ≫
+        _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i)) ⊗ₘ
+      (_root_.SerrePositivity.SimplicialChains.Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n) ≫
+        _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i)))
   rw [← tensorHom_comp_tensorHom]
   simp only [Category.assoc]
   rfl

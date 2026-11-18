@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Simp
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalReductionWeak
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveMap
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.NerveWeakVertexIso
-public import SerrePositivity.EInfinity.Hammock.RelativeEquivalenceWeak
-public import SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalenceWeak
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ExInfinityWeakMap
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulEquivalence
 
 /-!
@@ -35,7 +35,7 @@ variable {C D : RelativeCategory.{u}} (F : C ⟶ D)
 方針：元の augmentation と比較の可換正方形に二対三則を使う。
 規約：同じ localizationHomMap。使われ方：元の全 nerve 作用の充満忠実性。 -/
 lemma localizationHomMap_weak_of_hammock (X Y : C.category)
-    (h : IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+    (h : IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y)) :
     IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap F X Y) := by
   have hm : IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y) := by
     apply (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence D
@@ -51,7 +51,7 @@ lemma localizationHomMap_weak_of_hammock (X Y : C.category)
 方針：同じ Kan 化した Hom 射の弱同値性を nerve の判定に渡す。
 規約：元の実関手。使われ方：加群族の局所化模型の比較。 -/
 lemma localizationNerveMap_fullyFaithful_of_hammock
-    (h : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y)) :
+    (h : ∀ X Y, IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y)) :
     IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F) := by
   apply (coherentNerveMap_isFullyFaithful_iff
     (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory C) (D := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanLocalizationCategory D)
@@ -61,7 +61,7 @@ lemma localizationNerveMap_fullyFaithful_of_hammock
     (SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationHomMap F X Y))
   exact (isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
-    (Hammock.exInfinity_map_weak _ (localizationHomMap_weak_of_hammock F X Y (h X Y)))
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinity_map_weak _ (localizationHomMap_weak_of_hammock F X Y (h X Y)))
 
 variable (G : D ⟶ C)
 /-- 概要：同じ弱余単位は実局所化関手の本質的全射性を与える（HTT §1.1.5）。
@@ -81,7 +81,7 @@ lemma localizationNerveMap_essentiallySurjective_of_counit
 方針：充満忠実性と本質的全射性を組み合わせる。
 規約：元の実関手自身の同値性。使われ方：加群族の底の模型移送。 -/
 lemma localizationNerveMap_isQCatEquivalence_of_hammock_counit
-    (h : ∀ X Y, IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap F X Y))
+    (h : ∀ X Y, IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y))
     (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category)
     (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
     IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F) :=
@@ -97,6 +97,6 @@ lemma localizationNerveMap_isQCatEquivalence_of_weak_comparisons
     (ε : G.functor ⋙ F.functor ⟶ 𝟭 D.category) (hε : ∀ Y, D.weakEquivalences (ε.app Y)) :
     IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationNerveMap F) :=
   localizationNerveMap_isQCatEquivalence_of_hammock_counit F G
-    (Hammock.RelativeEquivalence.colimitMap_weak F G η hη ε hε) ε hε
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak F G η hη ε hε) ε hε
 
 end SerrePositivity.EInfinity.Modules

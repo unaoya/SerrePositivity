@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementColumn
-public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitProbeFunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.FramedLimitProbeFunctor
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RelativeHammockNerveEquivalence
-public import SerrePositivity.EInfinity.Hammock.RelativeNaturalWeakComparison
-public import SerrePositivity.EInfinity.Hammock.RelativeFunctorLaws
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeNaturalWeakComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeFunctorLaws
 
 /-!
 # 同じ cofibrant probe による全複体 hammock の自己同値
@@ -18,36 +18,36 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
-open CategoryTheory Hammock
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (A : Type u) [CommRing A]
 
 def complexRelativeProbeMorphism : LocalizerMorphism
     (complexRelativeCategory A).weakEquivalences (complexRelativeCategory A).weakEquivalences where
-  functor := complexRelativeDown A ⋙ framedLimitProbeFunctor A ⋙ complexRelativeUp A
-  map _ _ f hf := framedLimitProbeFunctor_map_quasiIso A ((complexRelativeDown A).map f) hf
+  functor := complexRelativeDown A ⋙ _root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A ⋙ complexRelativeUp A
+  map _ _ f hf := _root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor_map_quasiIso A ((complexRelativeDown A).map f) hf
 
 def complexRelativeProbeAugmentation :
     (complexRelativeProbeMorphism A).functor ⟶ 𝟭 (complexRelativeCategory A).category where
   app Z := (complexRelativeUp A).map
-    (framedLimitProbeComparison A ((complexRelativeDown A).obj Z))
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison A ((complexRelativeDown A).obj Z))
   naturality X Y f := by
     apply ULift.ext
-    exact (framedLimitProbeComparisonNatTrans A).naturality ((complexRelativeDown A).map f)
+    exact (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparisonNatTrans A).naturality ((complexRelativeDown A).map f)
 
 lemma complexRelativeProbeAugmentation_weak (Z : (complexRelativeCategory A).category) :
     (complexRelativeCategory A).weakEquivalences ((complexRelativeProbeAugmentation A).app Z) :=
-  framedLimitProbeComparison_quasiIso A ((complexRelativeDown A).obj Z)
+  _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison_quasiIso A ((complexRelativeDown A).obj Z)
 
 lemma complexRelativeProbeMorphism_hom_weak (X Y : (complexRelativeCategory A).category) :
-    IsWeakHomotopyEquivalence (Relative.colimitMap (complexRelativeProbeMorphism A) X Y) := by
-  apply (RelativeNatural.weak_iff (F := complexRelativeProbeMorphism A)
+    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap (complexRelativeProbeMorphism A) X Y) := by
+  apply (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeNatural.weak_iff (F := complexRelativeProbeMorphism A)
     (G := LocalizerMorphism.id (complexRelativeCategory A).weakEquivalences)
     (complexRelativeProbeAugmentation A)
     (complexRelativeProbeAugmentation_weak A) X Y).mpr
-  rw [Relative.colimitMap_id]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap_id]
   exact isWeakHomotopyEquivalence_id _
 
 lemma complexHammockProbe_isQCatEquivalence :

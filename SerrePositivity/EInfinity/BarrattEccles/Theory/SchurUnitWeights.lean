@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.SchurWeightedBasis
-public import SerrePositivity.EInfinity.Operad.AlgebraEvaluation
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraEvaluation
 
 /-!
 # 自由生成元の包含と入力の重み
@@ -52,7 +52,7 @@ lemma preserves_schurUnit (b : ComplexWeightBasis K) :
     (preserves_id (b.power 1))
   have h₄ := preserves_schurι b 1
   have h := h₁.comp (h₂.comp (h₃.comp h₄))
-  simp only [Operad.schurUnit, tensorHom_id] at h ⊢
+  simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.schurUnit, tensorHom_id] at h ⊢
   exact h
 
 end SerrePositivity.EInfinity.BarrattEccles

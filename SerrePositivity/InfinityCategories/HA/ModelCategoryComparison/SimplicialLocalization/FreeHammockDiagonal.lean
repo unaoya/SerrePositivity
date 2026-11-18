@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockAugmentation
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal
-public import SerrePositivity.EInfinity.Hammock.ReducedColimit
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReducedColimit
 
 /-!
 # 元の自由相対解像の hammock の対角と左比較
@@ -37,11 +37,11 @@ lemma freeHammockDiagonalAugmentation_app (C : _root_.SerrePositivity.InfinityCa
   rfl
 
 def freeHammockDiagonalReduction (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Y ⟶ _root_.SerrePositivity.EInfinity.Hammock.reducedSimplicialSet C.weakEquivalences X Y :=
-  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y ≫ (_root_.SerrePositivity.EInfinity.Hammock.reducedColimitIso C.weakEquivalences X Y).hom
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Y ⟶ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedSimplicialSet C.weakEquivalences X Y :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso C.weakEquivalences X Y).hom
 
 lemma freeHammockDiagonalReduction_fac (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
-    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y ≫ (_root_.SerrePositivity.EInfinity.Hammock.reducedColimitIso C.weakEquivalences X Y).inv =
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y ≫ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso C.weakEquivalences X Y).inv =
       _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y := by
   simp only [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction, Category.assoc, Iso.hom_inv_id, Category.comp_id]
 

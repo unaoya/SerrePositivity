@@ -47,7 +47,7 @@ lemma constantDiagramFrameHomIso_source {Y Z : (Complex A)} (f : Y ⟶ Z)
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((constantDiagramFrameFamily A K).map f)).app F ≫
         ((constantDiagramFrameHomIso A K Y).app F).hom =
       ((constantDiagramFrameHomIso A K Z).app F).hom ≫ (constantDiagramSourceMap A K f).app F := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   exact _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.pointwiseTensorFrameHomIso_source K (q.obj.map f)
     (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K) F
@@ -59,7 +59,7 @@ private lemma prefix_source {Y Z : (Complex A)} (f : Y ⟶ Z) :
         Q.map (((constantDiagramFrameFamily A K).map f).app (SimplexCategory.mk 0)) =
       Q.map ((Functor.const K).map f) ≫ ((constantDiagramLocalizedIso A K).app Z).inv ≫
         Q.map (constantDiagramFrameZeroIso A K Z).inv := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
   have hz : (constantDiagramFrameZeroIso A K Y).inv ≫
@@ -86,7 +86,7 @@ lemma constantDiagramSourcePiZeroEquiv_source {Y Z : (Complex A)} (f : Y ⟶ Z)
     constantDiagramSourcePiZeroEquiv A K Y F
         (SSet.mapπ₀ ((constantDiagramSourceMap A K f).app F) z) =
       Q.map ((Functor.const K).map f) ≫ constantDiagramSourcePiZeroEquiv A K Z F z := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := projectiveModelCategory A K
   let Q := (weakEquivalences (K ⥤ (Complex A))).Q
   let e := (SSet.π₀Functor.mapIso ((constantDiagramFrameHomIso A K Z).app F)).toEquiv

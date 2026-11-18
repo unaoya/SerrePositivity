@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorFirstBlock
-public import SerrePositivity.EInfinity.Operad.InsertionZero
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.InsertionZero
 
 /-!
 # テンソル演算の先頭代入との比較
@@ -33,15 +33,15 @@ attribute [local implicit_reducible] TensorPowers.power
 /-- BF §1.1.4 の二列分離は、指定された先頭代入射と可換。 -/
 lemma tensorInsertionAction_separation_zero (V W C C₁ C₂ : Complex A) (m n : ℕ)
     (d : C ⟶ C₁ ⊗ C₂) (a : C₁ ⊗ power V n ⟶ V) (b : C₂ ⊗ power W n ⟶ W) :
-    tensorInsertionAction (V ⊗ W) C m n 0
-      ((d ⊗ₘ (tensorPowerSeparation V W n).hom) ≫ tensorμ _ _ _ _ ≫ (a ⊗ₘ b)) ≫
-        (tensorPowerSeparation V W (m + 1)).hom =
-      (d ⊗ₘ (tensorPowerSeparation V W (m + n)).hom) ≫ tensorμ _ _ _ _ ≫
-        (tensorInsertionAction V C₁ m n 0 a ⊗ₘ tensorInsertionAction W C₂ m n 0 b) := by
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction (V ⊗ W) C m n 0
+      ((d ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W n).hom) ≫ tensorμ _ _ _ _ ≫ (a ⊗ₘ b)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W (m + 1)).hom =
+      (d ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W (m + n)).hom) ≫ tensorμ _ _ _ _ ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction V C₁ m n 0 a ⊗ₘ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction W C₂ m n 0 b) := by
   have h := tensorFirstAction_separation V W C C₁ C₂ n m d a b
   simp only [tensorFirstAction, Category.assoc] at h
-  simp only [tensorInsertionAction_zero, Category.assoc]
-  rw [h, whiskerLeft_comp_tensorHom_assoc, tensorPowerSeparation_index V W (Nat.add_comm m n),
+  simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction_zero, Category.assoc]
+  rw [h, whiskerLeft_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation_index V W (Nat.add_comm m n),
     ← tensorHom_comp_whiskerLeft_assoc, tensorμ_natural_right_assoc,
     tensorHom_comp_tensorHom]
 

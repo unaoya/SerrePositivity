@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDoldKanHomDiagram
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardClosedPrecomposition
-public import SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPrecomposition
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ComplexPinchedPrecomposition
 
 /-!
 概要：指定Γ Hom同型は同じ閉射の実豊穣前合成を保つ。
@@ -24,7 +24,7 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D]
 theorem standardChainMap_closedPrecomposition (x y z : D)
     (f : ForgetEnrichment.of (Complex R) x ⟶ ForgetEnrichment.of (Complex R) y) :
     Functor.whiskerRight
-      (SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap
+      (_root_.SerrePositivity.ComplexLimits.standardModuleChainMap
         (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z)))
       (forget (ModuleCat R)) =
     eHomWhiskerRight SSet f (ForgetEnrichment.of (Complex R) z) := by
@@ -34,9 +34,9 @@ theorem standardChainMap_closedPrecomposition (x y z : D)
   apply ConcreteCategory.hom_ext
   intro s
   apply Subtype.ext
-  change ((SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap
+  change ((_root_.SerrePositivity.ComplexLimits.standardModuleChainMap
     (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z))).app n s).val = _
-  rw [SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap_val]
+  rw [_root_.SerrePositivity.ComplexLimits.standardModuleChainMap_val]
   funext i
   rcases i with ⟨⟨J, k⟩, hJ, hk⟩
   change (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z)).f k
@@ -58,13 +58,13 @@ theorem doldKanSimplicialHomIso_precomposition (x y z : D)
               (ComplexShape.embeddingUpIntLE 0))) (forget (ModuleCat R)) := by
   rw [← standardChainMap_closedPrecomposition]
   exact congrArg (fun g => Functor.whiskerRight g (forget (ModuleCat R)))
-    (SerrePositivity.EInfinity.ComplexLimits.standardDoldKanModuleIso_chainMap
+    (_root_.SerrePositivity.ComplexLimits.standardDoldKanModuleIso_chainMap
       (eHomWhiskerRight (Complex R) f (ForgetEnrichment.of (Complex R) z)))
 
 /-- 元の複体射の指定Γ Hom比較は、元の豊穣前合成を厳密に保つ。 -/
 theorem complexDoldKanHomIso_precomposition {A : Type u} [CommRing A]
     {P Q : Complex A} (f : P ⟶ Q) (T : Complex A) :
-    eHomWhiskerRight SSet ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map f)
+    eHomWhiskerRight SSet ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map f)
         (ForgetEnrichment.of (Complex A) T) ≫ (complexDoldKanHomIso A P).hom.app T =
       (complexDoldKanHomIso A Q).hom.app T ≫
         Functor.whiskerRight
@@ -72,8 +72,8 @@ theorem complexDoldKanHomIso_precomposition {A : Type u} [CommRing A]
             (truncLE'Map (homPrecompose f T) (ComplexShape.embeddingUpIntLE 0)))
           (forget (ModuleCat A)) := by
   have h := doldKanSimplicialHomIso_precomposition A (Complex A) P Q T
-    ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map f)
-  rw [SerrePositivity.EInfinity.ComplexLimits.complexToClosed_precomposition] at h
+    ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map f)
+  rw [_root_.SerrePositivity.ComplexLimits.complexToClosed_precomposition] at h
   exact h
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

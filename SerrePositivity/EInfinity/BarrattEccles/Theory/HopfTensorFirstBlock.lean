@@ -34,13 +34,13 @@ attribute [local implicit_reducible] TensorPowers.power
 @[reassoc]
 lemma tensorPowerSeparation_append_inv (V W : Complex A) (n m : ℕ) :
     (appendIso (V ⊗ W) n m).inv ≫
-      ((tensorPowerSeparation V W n).hom ⊗ₘ (tensorPowerSeparation V W m).hom) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W n).hom ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W m).hom) ≫
         tensorμ _ _ _ _ =
-      (tensorPowerSeparation V W (n + m)).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W (n + m)).hom ≫
         ((appendIso V n m).inv ⊗ₘ (appendIso W n m).inv) := by
   apply (cancel_epi (appendIso (V ⊗ W) n m).hom).mp
   simp only [← Category.assoc]
-  rw [tensorPowerSeparation_append]
+  rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation_append]
   simp only [Category.assoc, tensorHom_comp_tensorHom, Iso.hom_inv_id,
     tensorHom_id, id_whiskerRight, Category.comp_id, Category.id_comp]
 
@@ -54,9 +54,9 @@ def tensorFirstAction (V C : Complex A) (n m : ℕ) (a : C ⊗ power V n ⟶ V) 
 lemma tensorFirstAction_separation (V W C C₁ C₂ : Complex A) (n m : ℕ)
     (d : C ⟶ C₁ ⊗ C₂) (a : C₁ ⊗ power V n ⟶ V) (b : C₂ ⊗ power W n ⟶ W) :
     tensorFirstAction (V ⊗ W) C n m
-      ((d ⊗ₘ (tensorPowerSeparation V W n).hom) ≫ tensorμ _ _ _ _ ≫ (a ⊗ₘ b)) ≫
-        (tensorPowerSeparation V W (m + 1)).hom =
-      (d ⊗ₘ (tensorPowerSeparation V W (n + m)).hom) ≫ tensorμ _ _ _ _ ≫
+      ((d ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W n).hom) ≫ tensorμ _ _ _ _ ≫ (a ⊗ₘ b)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W (m + 1)).hom =
+      (d ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W (n + m)).hom) ≫ tensorμ _ _ _ _ ≫
         (tensorFirstAction V C₁ n m a ⊗ₘ tensorFirstAction W C₂ n m b) := by
   rw [tensorPowerSeparation_succ_hom]
   unfold tensorFirstAction

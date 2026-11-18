@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory MonoidalCategory CochainComplex HomComplex HomologicalComplex AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -48,7 +48,7 @@ theorem reflectedBKNormalizedSections_uncurry
       (liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm
         ((normalizedWeightSectionMap A (reflectedNormalizedBKSmallWeight A)
           (normalizedBKSmallDiagram A Y) φ).app (Opposite.op m)
-            (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
+            (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
               ((standardDoldKanSpaceMap (R := A) P T).app (Opposite.op m) α))))).app j =
       (g ⊗ₘ f) ≫ (β_ _ _).hom ≫ standardComposition (R := A) P T Q ≫
         standardDoldKanSpaceMap P Q := by
@@ -66,7 +66,7 @@ theorem reflectedBKNormalizedSections_uncurry
     (reflectedNormalizedBKSmallHomIso A Y).hom
   let W := reflectedNormalizedBKSmallWeight A
   let H := normalizedBKSmallDiagram A Y
-  let β := ((truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
+  let β := ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
     ((standardDoldKanSpaceMap (R := A) P T).app (Opposite.op m) α)
   apply (Equiv.injective (((freeNegativeChainsAdjunction A).homEquiv (S ⊗ B)
     (homObject A (Complex A) P Q)).symm))

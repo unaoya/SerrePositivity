@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 lemma cofibrantAlgebraHammockInclusionMap_value :
@@ -28,7 +28,7 @@ lemma cofibrantAlgebraHammockInclusionMap_value :
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y) ≫
       algebraReducedHammockValue A ((cofibrantAlgebraInclusion A).obj X)
         ((cofibrantAlgebraInclusion A).obj Y) =
-    Zigzag.Value.reducedValue (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Zigzag.Value.reducedValue (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
         (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q_inverts
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y) ≫
       (Functor.const SimplexCategoryᵒᵖ).map (↾cofibrantAlgebraDKHoHomMap A X Y) := by
@@ -36,22 +36,22 @@ lemma cofibrantAlgebraHammockInclusionMap_value :
   let W := (cofibrantAlgebraRelativeCategory A).weakEquivalences
   let x := cofibrantAlgebraDKObject A X
   let y := cofibrantAlgebraDKObject A Y
-  apply (cancel_epi (reducedColimitIso W x y).hom).1
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso W x y).hom).1
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph_hom_ext
   intro w
   simp only [← Category.assoc]
-  rw [reducedColimitIso_hom_fac, cofibrantAlgebraHammockInclusionMap_normalization]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac, cofibrantAlgebraHammockInclusionMap_normalization]
   dsimp only [algebraReducedHammockValue]
   rw [Category.assoc]
   change cofibrantAlgebraHammockGraphInclusionMap A x y w ≫
-      (graphNormalization (weakEquivalences (operad A).Algebra)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences (operad A).Algebra)
         ((cofibrantAlgebraDKInclusion A).obj x) ((cofibrantAlgebraDKInclusion A).obj y) w ≫
-        UniverseValue.reducedValue (weakEquivalences (operad A).Algebra).Q
+        _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue.reducedValue (weakEquivalences (operad A).Algebra).Q
           (weakEquivalences (operad A).Algebra).Q_inverts
           ((cofibrantAlgebraDKInclusion A).obj x) ((cofibrantAlgebraDKInclusion A).obj y)) =
-    (graphNormalization W x y w ≫ Zigzag.Value.reducedValue W.Q W.Q_inverts x y) ≫
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization W x y w ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Zigzag.Value.reducedValue W.Q W.Q_inverts x y) ≫
       (Functor.const SimplexCategoryᵒᵖ).map (↾cofibrantAlgebraDKHoHomMap A X Y)
-  rw [UniverseValue.graphNormalization_reducedValue, Zigzag.Value.graphNormalization_reducedValue]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue.graphNormalization_reducedValue, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Zigzag.Value.graphNormalization_reducedValue]
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -59,7 +59,7 @@ lemma cofibrantAlgebraHammockInclusionMap_value :
   exact cofibrantAlgebraZigzagValue_inclusion A w X Y (σ.obj 0)
 
 lemma cofibrantAlgebraHammockInclusionMap_components_value
-    (z : SSet.π₀ (reducedSimplicialSet
+    (z : SSet.π₀ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedSimplicialSet
       (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) :
     let := modelCategory A
@@ -68,7 +68,7 @@ lemma cofibrantAlgebraHammockInclusionMap_components_value
         (SSet.mapπ₀ (cofibrantAlgebraHammockInclusionMap A
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) z) =
       cofibrantAlgebraDKHoHomMap A X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents
-        (Zigzag.Value.reducedValue (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
+        (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Zigzag.Value.reducedValue (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
           (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q_inverts
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) z) := by
   let := modelCategory A

@@ -25,7 +25,7 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory
 open DifferentialGraded TensorPowers
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 attribute [local implicit_reducible] TensorPowers.power SerrePositivity.SymmetricSequence
   SerrePositivity.SymmetricSequence.level
@@ -34,17 +34,17 @@ attribute [local implicit_reducible] TensorPowers.power SerrePositivity.Symmetri
 @[reassoc]
 lemma tensorPowerSeparation_naturality {V W V' W' : Complex A}
     (f : V ⟶ V') (g : W ⟶ W') (n : ℕ) :
-    map (f ⊗ₘ g) n ≫ (tensorPowerSeparation V' W' n).hom =
-      (tensorPowerSeparation V W n).hom ≫ (map f n ⊗ₘ map g n) := by
+    map (f ⊗ₘ g) n ≫ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V' W' n).hom =
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W n).hom ≫ (map f n ⊗ₘ map g n) := by
   induction n with
   | zero =>
     change 𝟙 _ ≫ (λ_ (𝟙_ (Complex A))).inv =
       (λ_ (𝟙_ (Complex A))).inv ≫ (𝟙 _ ⊗ₘ 𝟙 _)
     rw [Category.id_comp, tensorHom_id, id_whiskerRight, Category.comp_id]
   | succ n ih =>
-    simp only [map, tensorPowerSeparation, Iso.trans_hom, whiskerLeftIso_hom, Category.assoc]
+    simp only [map, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation, Iso.trans_hom, whiskerLeftIso_hom, Category.assoc]
     rw [tensorHom_comp_whiskerLeft_assoc, ih, ← whiskerLeft_comp_tensorHom_assoc]
-    exact congrArg (fun k => ((V ⊗ W) ◁ (tensorPowerSeparation V W n).hom) ≫ k)
+    exact congrArg (fun k => ((V ⊗ W) ◁ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W n).hom) ≫ k)
       (tensorμ_natural f g (map f n) (map g n))
 
 /-- BF §1.1.4 のテンソル演算は両因子の全ての代数射と可換。 -/

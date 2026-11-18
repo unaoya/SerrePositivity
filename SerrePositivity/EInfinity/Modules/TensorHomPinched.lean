@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.TensorHomUniversal
-public import SerrePositivity.EInfinity.ComplexLimits.DoldKanPinchedChainNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoldKanPinchedChainNaturality
 
 /-!
 # 同じ全加群の普遍評価族と元の dg nerve の pinched Hom
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
 open DifferentialGradedCategories
@@ -46,7 +46,7 @@ lemma moduleDoldKanPinchedIso_postcomp (P : ModuleCategory A D)
         (moduleDoldKanPinchedIso A D P N').hom =
     (moduleDoldKanPinchedIso A D P N).hom ≫
       pinchedHomChainMap (eHomWhiskerLeft (Complex A) P h) :=
-  doldKanHomPinchedIso_chainMap (D := RightModule A D) (E := RightModule A D)
+  _root_.SerrePositivity.ComplexLimits.doldKanHomPinchedIso_chainMap (D := RightModule A D) (E := RightModule A D)
     (x := ForgetEnrichment.to (Complex A) P) (y := ForgetEnrichment.to (Complex A) N)
     (x' := ForgetEnrichment.to (Complex A) P) (y' := ForgetEnrichment.to (Complex A) N')
     (eHomWhiskerLeft (Complex A) P h)

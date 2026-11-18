@@ -42,7 +42,7 @@ def freeHammockCoefficientEnriched :
 def kanFreeHammockCoefficientFunctor :
     EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockCategory C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockCategory D) :=
   (show EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockObjects C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanFreeHammockObjects D) from
-    Hammock.exInfinityEnrichedFunctor.{u, u, u, u, u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinityEnrichedFunctor.{u, u, u, u, u}
       (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects C) (D := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects D) (freeHammockCoefficientEnriched F))
 
 /-- 概要：同じ自由 hammock の係数作用の全 nerve（HTT §1.1.5）。
@@ -62,7 +62,7 @@ lemma kanFreeHammockCoefficient_augmentation :
   change (exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y) ≫
     exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation D (F.functor.obj X) (F.functor.obj Y))) ≫ 𝟙 _ =
     exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y) ≫
-      exInfinity.map (Hammock.Relative.colimitMap F X Y)
+      exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y)
   rw [Category.comp_id, ← exInfinity.map_comp, ← exInfinity.map_comp,
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_augmentation]
 

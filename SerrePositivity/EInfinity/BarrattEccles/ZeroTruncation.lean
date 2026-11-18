@@ -3,7 +3,7 @@ module
 
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.ConnectiveCover
-public import SerrePositivity.EInfinity.Operad.ZeroTruncation
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.ZeroTruncation
 
 /-!
 # 実 E 代数の零次集中模型と元の切断二射
@@ -24,11 +24,11 @@ open CategoryTheory DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 def zeroTruncation (B : (operad A).Algebra) [B.carrier.IsStrictlyLE 0] : (operad A).Algebra :=
-  Operad.Algebra.zeroTruncation (arity_nonpositive A) B
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.zeroTruncation (arity_nonpositive A) B
 
 def zeroTruncationProjection (B : (operad A).Algebra) [B.carrier.IsStrictlyLE 0] :
     B ⟶ zeroTruncation A B :=
-  Operad.Algebra.zeroTruncationProjection (arity_nonpositive A) B
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.zeroTruncationProjection (arity_nonpositive A) B
 
 lemma connectiveCover_nonpositive (B : (operad A).Algebra) :
     (connectiveCover A B).carrier.IsStrictlyLE 0 := by
@@ -47,12 +47,12 @@ def zeroDegreeModelProjection (B : (operad A).Algebra) :
 lemma zeroDegreeModel_nonpositive (B : (operad A).Algebra) :
     (zeroDegreeModel A B).carrier.IsStrictlyLE 0 := by
   let := connectiveCover_nonpositive A B
-  exact Operad.Algebra.zeroTruncation_nonpositive (arity_nonpositive A) (connectiveCover A B)
+  exact _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.zeroTruncation_nonpositive (arity_nonpositive A) (connectiveCover A B)
 
 lemma zeroDegreeModel_nonnegative (B : (operad A).Algebra) :
     (zeroDegreeModel A B).carrier.IsStrictlyGE 0 := by
   let := connectiveCover_nonpositive A B
-  exact Operad.Algebra.zeroTruncation_nonnegative (arity_nonpositive A) (connectiveCover A B)
+  exact _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.zeroTruncation_nonnegative (arity_nonpositive A) (connectiveCover A B)
 
 lemma zeroDegreeModelProjection_quasiIso (B : (operad A).Algebra)
     [B.carrier.IsLE 0] [B.carrier.IsGE 0] : QuasiIso (zeroDegreeModelProjection A B).hom := by
@@ -62,7 +62,7 @@ lemma zeroDegreeModelProjection_quasiIso (B : (operad A).Algebra)
     change (connectiveCover A B).carrier.IsSupported (ComplexShape.embeddingUpIntGE 0)
     exact (HomologicalComplex.isSupported_iff_of_quasiIso
       (connectiveCoverInclusion A B).hom (ComplexShape.embeddingUpIntGE 0)).mpr inferInstance
-  exact Operad.Algebra.zeroTruncationProjection_quasiIso
+  exact _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.zeroTruncationProjection_quasiIso
     (arity_nonpositive A) (connectiveCover A B)
 
 end SerrePositivity.EInfinity.BarrattEccles

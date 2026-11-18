@@ -24,10 +24,10 @@ variable {A : Type u} [CommRing A]
 /-- 元の同じ第0頂点の標準脚は、指定された出力分解の同じ一次単体で写る。 -/
 theorem nativeDerivedCone_standardLeg (X : CosimplicialObject (Complex A)) (n : SimplexCategory) :
     (derivedConeLeg (nativeDerivedCone X) (ULift.up (nerveVertex (AsSmall.up.obj n)))).edge =
-      (SerrePositivity.EInfinity.ComplexLimits.complexSemifreeResolutionInfinity A).app
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A).app
         (Opposite.op ⦋1⦌)
         (dgClosedEdge A (Complex A)
-          ((SerrePositivity.EInfinity.ComplexLimits.complexToClosed A).map
+          ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
             (standardLeg A X n))).edge := by
   rw [nativeDerivedCone, derivedConeLeg_mapJoinCone, nativeDGCone_standardLeg]
 

@@ -81,8 +81,8 @@ lemma twoColorCoefficientTarget_schurQuotient :
       (twoColorTargetSchurIso R X Y m n).hom =
     (twoColorCoefficientComparison R m n ▷ (power X m ⊗ power Y n)) ≫
     tensorμ ((operad R).arity m) ((operad R).arity n) (power X m) (power Y n) ≫
-      (arityCoinvariantComplexQuotient (schurDiagram R (sequence R) X) m ⊗ₘ
-        arityCoinvariantComplexQuotient (schurDiagram R (sequence R) Y) n) := by
+      (arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) X) m ⊗ₘ
+        arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) Y) n) := by
   apply (cancel_mono ((schurArityInputCoinvariantIso R X m).hom ⊗ₘ
     (schurArityInputCoinvariantIso R Y n).hom)).1
   simp only [Category.assoc]
@@ -93,7 +93,7 @@ lemma twoColorCoefficientTarget_schurQuotient :
     (twoColorCoefficientComparison R m n) (𝟙 (power X m ⊗ power Y n))
   simp only [tensorHom_def, whiskerLeft_id, Category.comp_id, id_whiskerRight,
     Category.id_comp] at h
-  rw [← reassoc_of% h, reassoc_of% tensorμ_braiding, tensorHom_comp_tensorHom]
+  rw [← reassoc_of% h, reassoc_of% _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorμ_braiding, tensorHom_comp_tensorHom]
 
 end BarrattEccles
 

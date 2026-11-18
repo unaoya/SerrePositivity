@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -39,7 +39,7 @@ lemma strictRawModuleTensorConeData_tail {n : ℕ}
       (by rw [Finset.card_image_of_injective _ (Fin.succ_injective _)]; exact hk) a.succ_ne_zero
     have hp := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toSimplexData
       (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveSimplex_pullback
-        ((coneTailOrderHom n).monotone.functor ⋙ c ⋙
+        ((_root_.SerrePositivity.ComplexLimits.coneTailOrderHom n).monotone.functor ⋙ c ⋙
           strictRawModuleTensorElementDiagram A X P Q)
         (Fin.succOrderEmb (n + 1)).toOrderHom)
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data] at hp

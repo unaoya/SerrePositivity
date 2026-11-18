@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneGammaZeroRepresentative
-public import SerrePositivity.EInfinity.ComplexLimits.ExtendedTruncationZeroInclusion
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ExtendedTruncationZeroInclusion
 
 /-!
 # smart 切断の零次の元を元の閉元とホモロジー類へ戻す
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory HomologicalComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 非負鎖複体の類写像は、実 cycles の零次数同型によっても計算できる。 -/
@@ -38,7 +38,7 @@ def smartTruncationZeroCycleMap (M : Complex A) :
 @[reassoc]
 lemma smartTruncationZeroCycleMap_iCycles (M : Complex A) :
     smartTruncationZeroCycleMap A M ≫ M.iCycles 0 =
-      truncationExtendedZeroInclusion A (ComplexShape.embeddingUpIntLE 0) rfl (by simp) M := by
+      _root_.SerrePositivity.ComplexLimits.truncationExtendedZeroInclusion A (ComplexShape.embeddingUpIntLE 0) rfl (by simp) M := by
   simp only [smartTruncationZeroCycleMap, Category.assoc, cyclesMap_i, cyclesMap_i_assoc,
     extendCyclesIso_inv_iCycles_assoc, ChainComplex.cycles₀Iso, iCyclesIso_inv_hom_id_assoc]
   rfl

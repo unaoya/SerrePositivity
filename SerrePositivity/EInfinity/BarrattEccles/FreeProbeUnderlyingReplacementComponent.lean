@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom ComplexLimits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom _root_.SerrePositivity.ComplexLimits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A)
 
@@ -84,8 +84,8 @@ private lemma relativeChosenIso_def : freeProbeRelativeChosenSourceIso A X =
 private lemma derivedUnderlyingIso_def : freeProbeDerivedUnitUnderlyingVertexIso A X =
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (freeProbeCAlgSource_vertexIso A X) (cAlgForgetDerived A)).symm ≪≫
       _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (freeProbeUnderlyingDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≪≫
-        complexDiagramDerivedVertexIso A
-          (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X := rfl
+        _root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+          (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X := rfl
 
 private lemma hom_comp_arrow_congr {C : Type*} [Category* C] {a b c : C}
     {f g : a ⟶ b} (h : f = g) (k : b ⟶ c) : Arrow.mk (f ≫ k) = Arrow.mk (g ≫ k) :=
@@ -120,11 +120,11 @@ lemma freeProbeUnderlyingDerivedSourceIso_component_arrow :
       Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk
           (framedLimitProbeComparison A (freeProbeElementCofibrantSource A X).obj).hom).map
-          (complexOrdinaryDerivedSource A)).toTruncated) := by
+          (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
   let e := (algebraCAlgSource_underlyingDerivedIso A).precomp (nerveMap (freeProbeFunctor A))
   have he : nerveMap (freeProbeFunctor A) ≫ algebraUnderlyingDerivedSource A =
-      nerveMap (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
-        complexOrdinaryDerivedSource A := by
+      nerveMap (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
     rw [algebraUnderlyingDerivedSource, ← Category.assoc, freeProbeUnderlyingNerve_eq]
   have hd : freeProbeUnderlyingDerivedSourceIso A = e ≪≫
       eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) he) := rfl
@@ -154,7 +154,7 @@ lemma freeProbeRelativeFullSourceIso_forget_ordinary_arrow :
       Truncated.HomotopyCategory.homMk
         ((nerve.edgeMk
           (framedLimitProbeComparison A (freeProbeElementCofibrantSource A X).obj).hom).map
-          (complexOrdinaryDerivedSource A)).toTruncated) := by
+          (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
   refine (mappedTransportArrow (hoFunctor.map (cAlgForgetDerived A)).toFunctor
     (congrArg HomotopyCategory.mk (freeProbeCAlgSource_relativeReplacement_vertex A X))
     _ _ _ (freeProbeRelativeFullSourceIso_hom A X)).trans ?_
@@ -168,15 +168,15 @@ lemma freeProbeRelativeFullSourceIso_forget_underlying_arrow :
         (freeProbeRelativeFullSourceIso A X).hom ≫
       (cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X)).hom) =
     Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
-      (complexDiagramDerivedVertexIso A
-        (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom) := by
+      (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+        (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X).hom) := by
   have hd : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫ (complexDiagramDerivedVertexIso A
-          (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫ (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+          (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X).hom) =
       Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) := by
-    exact complexDiagramDerivedVertexIso_comp_arrow A
-      (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X _
+    exact _root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso_comp_arrow A
+      (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X _
   exact (freeProbeRelativeFullSourceIso_forget_ordinary_arrow A X).trans
     (hd.trans (freeProbeUnderlyingDerivedSourceIso_component_arrow A X)).symm
 
@@ -191,14 +191,14 @@ lemma freeProbeRelativeChosenSourceIso_forget_underlying_arrow :
   refine (vertexIso_map_hom_comp_arrow (cAlgForgetDerived A) (relativeChosenIso_def A X)
     (cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X)).hom).trans ?_
   exact (chosenFullFunctorTransportArrow
-    (V := nerveMap (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
-      complexOrdinaryDerivedSource A)
+    (V := nerveMap (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ≫
+      _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)
     (freeProbeCAlgSource A) (cAlgForgetDerived A)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) (freeProbeCAlgSource_vertexIso A X) (freeProbeRelativeFullSourceIso A X)
     (cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X))
     (freeProbeUnderlyingDerivedSourceIso A)
-    (complexDiagramDerivedVertexIso A
-      (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X)
+    (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+      (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X)
     (freeProbeRelativeFullSourceIso_forget_underlying_arrow A X)).trans
       (vertexIso_hom_arrow (derivedUnderlyingIso_def A X)).symm
 
@@ -206,10 +206,10 @@ lemma freeProbeRelativeChosenSourceIso_forget_underlying_arrow :
 方針：標準単位の端点回収式と同じ置換比較の忘却正方形を接続する。
 規約：標準単位を選び直さない。使われ方：標準単位比較自身の弱同値性。 -/
 lemma freeProbeRelativeChosenSourceIso_unit_triangle :
-    (complexProbeDerivedSourceVertexIso A X).hom ≫ freeProbeDerivedUnitComponent A X ≫
+    (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A X).hom ≫ freeProbeDerivedUnitComponent A X ≫
       (hoFunctor.map (cAlgForgetDerived A)).toFunctor.map
         (freeProbeRelativeChosenSourceIso A X).hom = freeProbeRelativeUnitHom A X := by
-  refine unitEndpointArrowCancel (complexProbeDerivedSourceVertexIso A X)
+  refine unitEndpointArrowCancel (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A X)
     (freeProbeDerivedUnitComponent A X)
     ((hoFunctor.map (cAlgForgetDerived A)).toFunctor.map
       (freeProbeRelativeChosenSourceIso A X).hom)

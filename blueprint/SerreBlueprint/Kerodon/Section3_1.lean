@@ -4,7 +4,7 @@ import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
-import SerrePositivity.EInfinity.Hammock.WeakTensor
+import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakTensor
 import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
 import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorRestrictionFibration
@@ -535,7 +535,7 @@ B6：現本体・固定Mathlibを再検索。確認済み・なし。引用は�
 
 :::
 
-:::proposition "kerodon_3_1_7_23" (lean := "SerrePositivity.EInfinity.Hammock.weakTensor")
+:::proposition "kerodon_3_1_7_23" (lean := "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.weakTensor")
 Kerodon Proposition 3.1.7.23（[Tag 02L2](https://kerodon.net/tag/02L2)）。対応表の状態：本体にある。
 
 仮定：単体集合の二写像 f,g が IsWeakHomotopyEquivalence（Kerodon と一致）。結論：点ごとの直積の写像 f ⊗ₘ g が IsWeakHomotopyEquivalence（一致）。

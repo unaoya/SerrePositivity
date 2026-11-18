@@ -24,8 +24,8 @@ open SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
-  EInfinity.DGAlgebra.hasFiniteLimits EInfinity.DGAlgebra.hasTerminal
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
+  _root_.SerrePositivity.DGAlgebra.hasFiniteLimits _root_.SerrePositivity.DGAlgebra.hasTerminal
 
 local instance : HasInitial (Mon (Complex R))ᵒᵖ := hasInitial_op_of_hasTerminal
 
@@ -39,7 +39,7 @@ lemma multiplicativeSimplices_reedyFibrant (B : Mon (Complex R)) :
   intro n
   apply ((cofibrations (Mon (Complex R))ᵒᵖ).arrow_iso_iff
     (latchingInitialArrowIso simplex n (multiplicativeSimplices R B).rightOp)).mp
-  change EInfinity.projectiveFibrations R (multiplicativeMatchingRestriction R B n).hom
+  change _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R (multiplicativeMatchingRestriction R B n).hom
   exact multiplicativeSimplices_matching_fibration R B n
 
 lemma multiplicativeSimplicesAugmentation_weakEquivalence

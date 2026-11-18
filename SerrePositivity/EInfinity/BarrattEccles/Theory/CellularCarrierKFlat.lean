@@ -71,9 +71,9 @@ lemma cofibrantCarrierKFlat_of_cellStages
   dsimp only
   let := modelCategory A
   let P := operad A
-  let I := (projectiveGeneratingCofibrations A).strictMap P.freeAlgebraFunctor
-  let J := (projectiveGeneratingTrivialCofibrations A).strictMap P.freeAlgebraFunctor
-  let U := Operad.Algebra.forget P
+  let I := (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap P.freeAlgebraFunctor
+  let J := (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap P.freeAlgebraFunctor
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P
   let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J := modelCategory_cofibrantlyGenerated A
   let : HasCoproducts.{u} P.Algebra := fun α =>
     (inferInstance : HasColimitsOfSize.{u, u} P.Algebra).has_colimits_of_shape (Discrete α)

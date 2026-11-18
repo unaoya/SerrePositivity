@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.SimplexDataPullbackLocal
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SimplexDataPullbackLocal
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorTriangleComponents
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementEvaluatedColumnMaps
 
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -49,18 +49,18 @@ lemma strictRawModuleTensorTriangleFront_Back_hom {n : ℕ}
     (h0 : ∀ i ∈ I, τ i ≠ 0) (h2 : ∀ i ∈ I, τ i ≠ 2) :
     HEq ((strictRawModuleTensorTriangleFront A X P Q c τ).hom I a b k hI ha hb hk)
       ((strictRawModuleTensorTriangleBack A X P Q c τ).hom I a b k hI ha hb hk) := by
-  have hf := simplexData_pullback_hom_eqOn
+  have hf := _root_.SerrePositivity.ComplexLimits.simplexData_pullback_hom_eqOn
     (strictRawModuleTensorConeSimplex A X P Q c).toSimplexData
-    (coneTriangleFrontIndex τ) (Fin.succOrderEmb (n + 1)).toOrderHom
-    I a b k hI ha hb hk (fun i hi => coneTriangleFrontIndex_ne_zero τ i (h0 i hi))
+    (_root_.SerrePositivity.ComplexLimits.coneTriangleFrontIndex τ) (Fin.succOrderEmb (n + 1)).toOrderHom
+    I a b k hI ha hb hk (fun i hi => _root_.SerrePositivity.ComplexLimits.coneTriangleFrontIndex_ne_zero τ i (h0 i hi))
   change HEq ((strictRawModuleTensorTriangleFront A X P Q c τ).hom I a b k hI ha hb hk)
     (((strictRawModuleTensorConeSimplex A X P Q c).pullback
       (Fin.succOrderEmb (n + 1)).toOrderHom).hom I a b k hI ha hb hk) at hf
   rw [strictRawModuleTensorConeSimplex_tail] at hf
-  have he := simplexData_pullback_hom_eqOn
+  have he := _root_.SerrePositivity.ComplexLimits.simplexData_pullback_hom_eqOn
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (strictRawModuleTensorElementEvaluatedColumn A X P Q c)).toSimplexData
-    (coneTriangleBackIndex τ) Fin.castSuccOrderEmb.toOrderHom
-    I a b k hI ha hb hk (fun i hi => coneTriangleBackIndex_ne_two τ i (h2 i hi))
+    (_root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex τ) Fin.castSuccOrderEmb.toOrderHom
+    I a b k hI ha hb hk (fun i hi => _root_.SerrePositivity.ComplexLimits.coneTriangleBackIndex_ne_two τ i (h2 i hi))
   change HEq ((strictRawModuleTensorTriangleBack A X P Q c τ).hom I a b k hI ha hb hk)
     (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (strictRawModuleTensorElementEvaluatedColumn A X P Q c)).pullback Fin.castSuccOrderEmb.toOrderHom).hom
       I a b k hI ha hb hk) at he

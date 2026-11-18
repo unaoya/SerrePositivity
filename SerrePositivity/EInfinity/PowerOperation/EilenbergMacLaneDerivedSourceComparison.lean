@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneDerivedFunctor
 public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeNerveUp
-public import SerrePositivity.EInfinity.ComplexLimits.SemifreeClosedDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SemifreeClosedDerivedComparison
 
 /-!
 # 実 V_A の元の全複体・半自由閉零圏上の全始域比較
@@ -17,14 +17,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 variable (A : Type u) [CommRing A]
 
 /-- V_A は元の全複体の通常図式へ、同じ全関手の同型で戻る。 -/
 def eilenbergMacLaneDerived_ordinarySourceIso :
-    FunctorIso (complexOrdinaryDerivedSource A ≫ eilenbergMacLaneDerived A)
+    FunctorIso (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A ≫ eilenbergMacLaneDerived A)
       (eilenbergMacLaneOrdinaryNative A) := by
   simpa only [complexRelativeDerivedSource, complexRelativeSpectrumSource, ← Category.assoc,
     complexRelativeNerveUp_down, Category.id_comp] using
@@ -34,13 +34,13 @@ def eilenbergMacLaneDerived_ordinarySourceIso :
 def eilenbergMacLaneDerived_semifreeSourceIso :
     FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫ eilenbergMacLaneDerived A)
       (nerveMap (semifreeClosedToComplex A) ≫ eilenbergMacLaneOrdinaryNative A) := by
-  have h₁ := FunctorIso.postcomp (semifreeClosedDerivedSourceIso A).symm
+  have h₁ := FunctorIso.postcomp (_root_.SerrePositivity.ComplexLimits.semifreeClosedDerivedSourceIso A).symm
     (eilenbergMacLaneDerived A)
   have h₂ := (eilenbergMacLaneDerived_ordinarySourceIso A).precomp
     (nerveMap (semifreeClosedToComplex A))
   have h₁' : FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A) ≫ eilenbergMacLaneDerived A)
       (nerveMap (semifreeClosedToComplex A) ≫
-        (complexOrdinaryDerivedSource A ≫ eilenbergMacLaneDerived A)) := by
+        (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A ≫ eilenbergMacLaneDerived A)) := by
     simpa only [Category.assoc] using h₁
   exact h₁'.trans h₂
 

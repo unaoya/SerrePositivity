@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -34,7 +34,7 @@ lemma strictRawModuleTensorDoubleConeTerminalValue_reindex {n m : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (i : Fin (m + 3)) (k : ℤ) (hi : i ≠ Fin.last (m + 2)) :
     HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q c
-        ((Fin.last (n + 1)).predAboveOrderHom (doubleConeOrderHom θ i))) k)
+        ((Fin.last (n + 1)).predAboveOrderHom (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ i))) k)
       (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (strictRawModuleTensorConeAugmentationAt A X P Q
           ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
           ((Fin.last (m + 1)).predAboveOrderHom i)) k) := by
@@ -44,7 +44,7 @@ lemma strictRawModuleTensorDoubleConeTerminalValue_reindex {n m : ℕ}
     intro a b h
     subst b
     rfl
-  exact (ht _ _ (doubleConeOrderHom_predAbove θ i hi)).trans
+  exact (ht _ _ (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom_predAbove θ i hi)).trans
     (strictRawModuleTensorConeAugmentationClosed_reindex A X P Q c θ _ k)
 
 end SerrePositivity.EInfinity.BarrattEccles

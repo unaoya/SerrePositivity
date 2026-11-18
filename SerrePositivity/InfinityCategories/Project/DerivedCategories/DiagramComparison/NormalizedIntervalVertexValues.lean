@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalCycleData
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedHomZeroRawEvaluation
-public import SerrePositivity.EInfinity.ComplexLimits.TruncationZeroCyclesInclusion
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedHomZeroRawEvaluation
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncationZeroCyclesInclusion
 /-!
 概要：指定正規化区間の零次生成元での実評価。
 方針：既存のsmart切断Homの零次回収式で同じ値を戻す。
@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory HomologicalComplex AlgebraicTopology
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A]
@@ -24,7 +24,7 @@ def normalizedIntervalVertexGenerator (ε : Fin 2) :
     (SSet.stdSimplex.obj ⦋1⦌)
   (((normalizedMooreComplex (ModuleCat A)).obj W).extendXIso ComplexShape.embeddingDownNat
     (show ComplexShape.embeddingDownNat.f 0 = (0 : ℤ) from rfl)).inv
-      ((mooreDegreeZeroIso W).inv (ModuleCat.freeMk (ULift.up
+      ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).inv (ModuleCat.freeMk (ULift.up
         (SSet.stdSimplex.objEquiv.symm (SimplexCategory.const ⦋0⦌ ⦋1⦌ ε)))))
 /-- 同じ区間写像の頂点生成元での値。 -/
 theorem normalizedIntervalCochainMapOfBoundary_vertex
@@ -37,20 +37,20 @@ theorem normalizedIntervalCochainMapOfBoundary_vertex
     (SSet.stdSimplex.obj ⦋1⦌)
   let a := SSet.stdSimplex.objEquiv.symm (SimplexCategory.const ⦋0⦌ ⦋1⦌ ε)
   have h := ConcreteCategory.congr_hom
-    (normalizedChainsTruncationHomEquiv_zero A (SSet.stdSimplex.obj ⦋1⦌) H
+    (_root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv_zero A (SSet.stdSimplex.obj ⦋1⦌) H
       (normalizedIntervalCochainMapOfBoundary A H x y hx hy w hw))
-    ((mooreDegreeZeroIso W).inv (ModuleCat.freeMk (ULift.up a)))
+    ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).inv (ModuleCat.freeMk (ULift.up a)))
   dsimp only [normalizedIntervalCochainMapOfBoundary, normalizedIntervalCochainMap] at h
   rw [Equiv.apply_symm_apply] at h
   simp only [ModuleCat.comp_apply] at h
-  rw [truncationExtendedZeroInclusion_cycles] at h
+  rw [_root_.SerrePositivity.ComplexLimits.truncationExtendedZeroInclusion_cycles] at h
   dsimp only [intervalNormalizedChainMap] at h
   simp only [HomologicalComplex.comp_f, ModuleCat.comp_apply] at h
   change H.iCycles 0 ((H.truncLE'XIsoCycles (ComplexShape.embeddingUpIntLE 0)
     (by simp) ((ComplexShape.boundaryLE_embeddingUpIntLE_iff 0 0).mpr rfl)).hom
     (intervalVertexEvaluation A _ (intervalTruncCycle A H x hx)
       (intervalTruncCycle A H y hy)
-      ((mooreDegreeZeroIso W).hom ((mooreDegreeZeroIso W).inv
+      ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).hom ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).inv
         (ModuleCat.freeMk (ULift.up a)))))) = _ at h
   rw [Iso.inv_hom_id_apply] at h
   dsimp only [intervalVertexEvaluation] at h

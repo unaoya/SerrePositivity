@@ -56,7 +56,7 @@ lemma mayPrimeFieldPowerZero_zero_source (X : (operad (MayPrimeField.{u} p)).Alg
   intro a
   let _ : CommRing ((mayNormalizedStrictHomology (MayPrimeField.{u} p) 0).obj X) :=
     homologyCommRing X
-  let _ : CommRing ((Operad.Algebra.forget (operad (MayPrimeField.{u} p)) ⋙
+  let _ : CommRing ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad (MayPrimeField.{u} p)) ⋙
     HomologicalComplex.homologyFunctor (ModuleCat (MayPrimeField.{u} p)) (.up ℤ) 0).obj X) :=
       homologyCommRing X
   let e := (mayNormalizedHomologySourceIso (MayPrimeField.{u} p) 0).app X

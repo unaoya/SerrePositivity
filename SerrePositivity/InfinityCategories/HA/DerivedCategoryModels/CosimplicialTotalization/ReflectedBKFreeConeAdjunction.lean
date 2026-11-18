@@ -86,7 +86,7 @@ theorem reversedWeightPointwiseBousfieldKanCone_free_inverse_app_f
 /-- 自由鎖図式随伴の逆射の各点は、同じ自由鎖随伴の逆射。 -/
 theorem freeNegativeChainsDiagramAdjunction_symm_app {J : Type*} [Category* J]
     (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
-    (f : W ⟶ Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A) (j : J) :
+    (f : W ⟶ Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) (j : J) :
     (((freeNegativeChainsDiagramAdjunction A J).homEquiv W Q).symm f).app j =
       ((freeNegativeChainsAdjunction A).homEquiv (W.obj j) (Q.obj j)).symm (f.app j) := by
   simp only [freeNegativeChainsDiagramAdjunction, Adjunction.homEquiv_symm_apply,

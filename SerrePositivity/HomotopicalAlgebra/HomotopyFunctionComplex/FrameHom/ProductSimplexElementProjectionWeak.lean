@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.ProductSimplexProjection
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.FiniteShapes.ProductSimplexLiftedOver
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameIndexAugmentation
-public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakAnodyneLocalization
 
 /-!
 # 元の積単体の反対要素圏から第一成分への弱射影
@@ -48,7 +48,7 @@ lemma firstNerveMap_augmentation : _root_.SerrePositivity.HomotopicalAlgebra.Hom
 lemma firstNerveMap_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexLiftedOver.firstNerveMap M n)) := by
   let Q := AnodyneHomotopy.anodyneQ
-  have hP := _root_.SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak _
+  have hP := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection_weak M (ULift.down n).len)
   have := UniverseLift.anodyneQ_map_isIso_of_small _ hP
   have := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1} M

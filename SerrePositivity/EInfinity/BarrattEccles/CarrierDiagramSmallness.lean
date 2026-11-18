@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.ProjectiveModel
+public import SerrePositivity.HomotopicalAlgebra.Complexes.ProjectiveModel
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
 public import Mathlib.CategoryTheory.Adjunction.Evaluation
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Finite
@@ -74,7 +74,7 @@ lemma freeFamily_smallObjectArgument {ι : Type v} [Small.{u} ι] {S T : ι → 
 規約：任意の可換環と小圏。
 使われ方：cofibration・trivial fibration 分解。 -/
 instance generatingCofibrations_smallObjectArgument :
-    (generators A K (projectiveGeneratingCofibrations A)).HasSmallObjectArgument.{u} :=
+    (generators A K (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A)).HasSmallObjectArgument.{u} :=
   freeFamily_smallObjectArgument A K (complexSphereToDisk A)
 /-- 概要：図式の生成 trivial cofibration の小対象性（Hovey §2.1・§2.3）。
 方針：零複体の有限表示性を使う。
@@ -82,7 +82,7 @@ instance generatingCofibrations_smallObjectArgument :
 使われ方：trivial cofibration・fibration 分解。 -/
 instance generatingTrivialCofibrations_smallObjectArgument :
     (generators A K
-      (projectiveGeneratingTrivialCofibrations A)).HasSmallObjectArgument.{u} :=
+      (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A)).HasSmallObjectArgument.{u} :=
   freeFamily_smallObjectArgument A K
     (fun n : ℤ => (0 : (HomologicalComplex.zero : Complex A) ⟶ complexDisk A n))
 

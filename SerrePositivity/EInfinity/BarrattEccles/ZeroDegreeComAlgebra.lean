@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeAction
-public import SerrePositivity.EInfinity.Operad.AlgebraOperadEpi
-public import SerrePositivity.EInfinity.Operad.AlgebraIso
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraOperadEpi
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraIso
 
 /-!
 # 零次集中 E 代数の元の底の Com 代数構造
@@ -28,14 +28,14 @@ lemma augmentation_epi (n : ℕ) : Epi ((augmentation A).map.app (FiniteBijectio
 
 variable (B : (operad A).Algebra) [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0]
 
-def zeroDegreeComAlgebra : (commutativeOperad A).Algebra :=
-  Operad.Algebra.ofOperadEpi (augmentation A) (augmentation_epi A) B
+def zeroDegreeComAlgebra : (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeOperad A).Algebra :=
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.ofOperadEpi (augmentation A) (augmentation_epi A) B
     (zeroDegreeComAction B) (zeroDegreeAction_factor B)
 
 def zeroDegreeComRestrictionIso :
-    Operad.restrictAlgebraObj (augmentation A) (zeroDegreeComAlgebra A B) ≅ B := by
-  apply Operad.Algebra.isoOfCarrierIso
-    (X := Operad.restrictAlgebraObj (augmentation A) (zeroDegreeComAlgebra A B))
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebraObj (augmentation A) (zeroDegreeComAlgebra A B) ≅ B := by
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso
+    (X := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebraObj (augmentation A) (zeroDegreeComAlgebra A B))
     (Y := B) (Iso.refl B.carrier)
   intro n
   change (((augmentation A).map.app (FiniteBijection.of n) ▷ power B.carrier n) ≫

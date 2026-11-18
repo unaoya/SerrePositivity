@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockObjects
-public import SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationValue
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectLocalizationValue
 
 /-!
 # 自由 hammock と既存 DK Hom の対象表示の照合
@@ -32,7 +32,7 @@ lemma freeResolutionObject_localized (C : _root_.SerrePositivity.InfinityCategor
   rfl
 
 def freeHammockLocalizationObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
-    _root_.SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) C.category where
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectDiagram.LocalizationObjects (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) C.category where
   original := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C
   original_naturality := fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X
   localized := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizedFreeResolutionObject C

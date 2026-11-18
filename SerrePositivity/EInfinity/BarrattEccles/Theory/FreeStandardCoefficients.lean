@@ -24,7 +24,7 @@ def freeStandardSource :
   ((operad R).arity (m + n) ◁
     ((binaryTensorStandardPowersIso X Y m n).inv ≫
       binaryTensorWordInclusion X Y (m + n) (binaryTensorStandardPattern m n))) ≫
-    schurι R (sequence R) (X ⊞ Y) (m + n)
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) (X ⊞ Y) (m + n)
 
 /-- 指定 Hopf 二色係数射を、元の左右の Schur 生成射へ送る射。 -/
 def freeStandardTarget :
@@ -32,7 +32,7 @@ def freeStandardTarget :
       ((operad R).freeAlgebra X).carrier ⊗ ((operad R).freeAlgebra Y).carrier :=
   (twoColorCoefficientComparison R m n ▷ (power X m ⊗ power Y n)) ≫
     tensorμ ((operad R).arity m) ((operad R).arity n) (power X m) (power Y n) ≫
-      (schurι R (sequence R) X m ⊗ₘ schurι R (sequence R) Y n)
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) X m ⊗ₘ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) Y n)
 
 /-- 共通の標準語を前合成すると、厳密な比較は指定入力への実際の作用となる。 -/
 lemma freeStandardSource_hopfComparison_arity
@@ -45,7 +45,7 @@ lemma freeStandardSource_hopfComparison_arity
         (hopfTensorAlgebra (hopf R) ((operad R).freeAlgebra X)
           ((operad R).freeAlgebra Y)).action (m + n) := by
   have h := freeHopfComparison_arity (hopf R) h0 X Y (m + n)
-  change schurι R (sequence R) (X ⊞ Y) (m + n) ≫
+  change _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) (X ⊞ Y) (m + n) ≫
     (freeHopfComparison (hopf R) h0 X Y).hom = _ at h
   simp only [freeStandardSource, Category.assoc, whiskerLeft_comp]
   rw [h]

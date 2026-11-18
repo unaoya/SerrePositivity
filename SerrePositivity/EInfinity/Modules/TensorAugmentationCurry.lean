@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.TensorAugmentationFamily
-public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorAugmentationCurryZero
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedHomZeroRawEvaluation
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.SimplexCounitContraction
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorAugmentationCurryZero
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedHomZeroRawEvaluation
 
 /-!
 # 元の加群 augmentation の転置と同じ恒等閉射
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite MonoidalCategory HomologicalComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
@@ -48,12 +48,12 @@ lemma moduleParamCurry_unit (P : ModuleCategory A D) :
 規約：HA 1.3.1.13、全単体。使われ方：元の零次像の直接評価。 -/
 lemma moduleTensorAugmentation_curry (P : ModuleCategory A D) (n : SimplexCategory) :
     moduleParamCurry A D ((moduleTensorSimplicesAugmentation A D P).app n) =
-      AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ≫
+      _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ≫
         ForgetEnrichment.homTo (Complex A) (C := RightModule A D) (X := P) (Y := P) (𝟙 P) := by
   exact (moduleParamCurry_precompose A D
-    (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n))
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n))
     (moduleTensorUnitIso A D (ForgetEnrichment.to (Complex A) P)).hom).trans
-    (congrArg (fun f => AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ≫ f)
+    (congrArg (fun f => _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ≫ f)
       (moduleParamCurry_unit A D P))
 
 /-- 概要：元の零次生成元での augmentation の転置は同じ恒等閉 cochain。
@@ -61,28 +61,28 @@ lemma moduleTensorAugmentation_curry (P : ModuleCategory A D) (n : SimplexCatego
 規約：HA 1.3.1.13、元の閉射。使われ方：実 Γ 像の恒等辺への較正。 -/
 lemma moduleTensorAugmentation_curry_zero (P : ModuleCategory A D) :
     (moduleParamCurry A D ((moduleTensorSimplicesAugmentation A D P).app ⦋0⦌)).f 0
-      (normalizedSimplexZeroGenerator A) =
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexZeroGenerator A) =
     (closedHomEquiv A (RightModule A D) P P (𝟙 P)).val := by
   rw [moduleTensorAugmentation_curry]
   change (ForgetEnrichment.homTo (Complex A) (𝟙 P)).f 0
-    ((AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj ⦋0⦌)).f 0
-      (normalizedSimplexZeroGenerator A)) = _
-  rw [AlexanderWhitney.cochainCounit_stdSimplex_eq_contraction]
+    ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj ⦋0⦌)).f 0
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexZeroGenerator A)) = _
+  rw [_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplex_eq_contraction]
   exact (congrArg (fun z => (ForgetEnrichment.homTo (Complex A) (𝟙 P)).f 0 z)
-    (normalizedSimplexCochainAugmentation_zero_generator_eq A)).trans (by rfl)
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainAugmentation_zero_generator_eq A)).trans (by rfl)
 
 /-- 概要：元の実 Γ 零次像を同じ単射な直接評価で戻すと元の恒等閉 cochain。
 方針：検証済みの正規化 Hom の直接評価と元の転置の生成元評価を合成する。
 規約：HA 1.3.1.13、元の Γ・包含・同型。使われ方：同じ標準恒等頂点との照合。 -/
 lemma moduleTensorAugmentation_gamma_zero_raw (P : ModuleCategory A D) :
-    truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
-      embeddingDownNat_eq_upIntLE_zero rfl
+    _root_.SerrePositivity.ComplexLimits.truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero rfl
       (moduleHom A D (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))
-      ((gammaDegreeZeroIso ((moduleHom A D (ForgetEnrichment.to (Complex A) P)
+      ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso ((moduleHom A D (ForgetEnrichment.to (Complex A) P)
         (ForgetEnrichment.to (Complex A) P)).truncLE'
           (ComplexShape.embeddingUpIntLE 0))).hom (moduleTensorAugmentationDoldKanVertex A D P)) =
     (closedHomEquiv A (RightModule A D) P P (𝟙 P)).val :=
-  (normalizedSimplexHomEquiv_zero_raw A _
+  (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv_zero_raw A _
     (moduleParamCurry A D ((moduleTensorSimplicesAugmentation A D P).app ⦋0⦌))).trans
       (moduleTensorAugmentation_curry_zero A D P)
 

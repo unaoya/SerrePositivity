@@ -40,7 +40,7 @@ local notation "R" => ScalarExtension.restriction
 abbrev discreteCoefficientMonoid (A : Type u) [CommRing A] (B : RingAlgebra A) :
     CommMon (Complex A) :=
   (CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon.obj
-    (moduleCommMonoid A ((underAlgFunctor A).obj B))
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.moduleCommMonoid A ((underAlgFunctor A).obj B))
 
 /-- 零次モノイドの単位は、元の通常代数の 1 を表す。 -/
 lemma discreteCoefficientMonoid_unit_zero (A : Type u) [CommRing A] (B : RingAlgebra A) :

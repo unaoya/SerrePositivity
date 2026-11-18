@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeAWProjectedEvaluation
-public import SerrePositivity.EInfinity.ComplexLimits.StandardDoldKanZeroRawEvaluation
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StandardDoldKanZeroRawEvaluation
 
 /-!
 # 指定自由正規化 Hom の零次数評価
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory AlgebraicTopology DifferentialGraded MonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
 open DifferentialGradedCategories
 open scoped Simplicial
@@ -29,8 +29,8 @@ variable {R : Type u} [CommRing R]
 方針：同じ包含の後で射影の因子分解を使う。
 規約：単体的加群は任意。使われ方：HA 1.2.4 の指定生成元の零次数評価。 -/
 theorem mooreProjection_zero_eq (W : SimplicialObject (ModuleCat R)) :
-    (DoldKan.PInftyToNormalizedMooreComplex W).f 0 = (mooreDegreeZeroIso W).inv := by
-  apply (cancel_mono (mooreDegreeZeroIso W).hom).mp
+    (DoldKan.PInftyToNormalizedMooreComplex W).f 0 = (_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).inv := by
+  apply (cancel_mono (_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso W).hom).mp
   rw [Iso.inv_hom_id]
   change (DoldKan.PInftyToNormalizedMooreComplex W).f 0 ≫
     (inclusionOfMooreComplexMap W).f 0 = 𝟙 _
@@ -46,8 +46,8 @@ theorem normalizedFreeHomEquiv_symm_zero_eval (S : SSet.{u})
     (f : S ⟶ (Abelian.DoldKan.Γ.obj K) ⋙ forget (ModuleCat R))
     (s : S.obj (Opposite.op ⦋0⦌)) :
     (((freeMooreChainsAdjunction (R := R)).homEquiv S K).symm f).f 0
-      ((mooreDegreeZeroIso (S ⋙ ModuleCat.free R)).inv (ModuleCat.freeMk s)) =
-    (gammaDegreeZeroIso K).hom (f.app _ s) := by
+      ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso (S ⋙ ModuleCat.free R)).inv (ModuleCat.freeMk s)) =
+    (_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso K).hom (f.app _ s) := by
   have h := normalizedFreeHomEquiv_symm_projected_eval S K f 0 s
   rw [mooreProjection_zero_eq, mooreProjection_zero_eq] at h
   exact h
@@ -62,7 +62,7 @@ theorem normalizedFreeStandardHom_zero_eval (S : SSet.{u}) (x y : D)
     (homObject R D x y).iCycles 0
       ((connectiveHomComplex_zeroIso (R := R) x y).hom
         ((normalizedFreeStandardHom S x y f).f 0
-          ((mooreDegreeZeroIso (S ⋙ ModuleCat.free R)).inv (ModuleCat.freeMk s)))) =
+          ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso (S ⋙ ModuleCat.free R)).inv (ModuleCat.freeMk s)))) =
     standardTopEval (R := R) x y 0 (f.app _ s) := by
   let t : S ⟶ (Abelian.DoldKan.Γ.obj (connectiveHomComplex (R := R) x y)) ⋙
       forget (ModuleCat R) := f ≫ standardDoldKanSpaceMap x y
@@ -70,11 +70,11 @@ theorem normalizedFreeStandardHom_zero_eval (S : SSet.{u}) (x y : D)
     (connectiveHomComplex (R := R) x y) t s
   have hp := congrArg (fun a => (homObject R D x y).iCycles 0
     ((connectiveHomComplex_zeroIso (R := R) x y).hom a)) h
-  have he := standardDoldKanModuleIso_zero_raw (R := R) x y (f.app _ s)
-  rw [truncationExtendedZeroInclusion_cycles] at he
+  have he := _root_.SerrePositivity.ComplexLimits.standardDoldKanModuleIso_zero_raw (R := R) x y (f.app _ s)
+  rw [_root_.SerrePositivity.ComplexLimits.truncationExtendedZeroInclusion_cycles] at he
   change (homObject R D x y).iCycles 0
     ((connectiveHomComplex_zeroIso (R := R) x y).hom
-      ((gammaDegreeZeroIso (connectiveHomComplex (R := R) x y)).hom
+      ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso (connectiveHomComplex (R := R) x y)).hom
         ((standardDoldKanModuleIso (R := R) x y).hom.app (Opposite.op ⦋0⦌)
           (f.app _ s)))) = _ at he
   dsimp only [t, standardDoldKanSpaceMap, NatTrans.comp_app, Functor.whiskerRight_app] at hp
@@ -91,7 +91,7 @@ theorem normalizedFreeStandardAW_zero_eval (S T : SSet.{u}) (x y z : D)
     (homObject R D x z).iCycles 0
       ((connectiveHomComplex_zeroIso (R := R) x z).hom
         ((normalizedFreeStandardHom (S ⊗ T) x z h).f 0
-          ((mooreDegreeZeroIso ((S ⊗ T) ⋙ ModuleCat.free R)).inv
+          ((_root_.SerrePositivity.ComplexLimits.mooreDegreeZeroIso ((S ⊗ T) ⋙ ModuleCat.free R)).inv
             (ModuleCat.freeMk (s, t)))) ) =
     ∑ j : (Finset.univ : Finset (Fin 1)),
       awTerm (g.app _ s).val (f.app _ t).val Finset.univ j 0 (by simp) := by

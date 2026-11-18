@@ -48,16 +48,16 @@ attribute [local implicit_reducible] operad sequence
 /-- 零入力の指定族を増大に通すと、元の単位族の縮約の逆射になる。 -/
 lemma nullaryInputFamily_augmentation (n : ℕ) :
     nullaryInputFamily A n ≫
-      tensorFamilyMap n (fun _ => (augmentation A).map.app (FiniteBijection.of 0)) =
-        (tensorUnitFamilyIso A n).inv := by
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap n (fun _ => (augmentation A).map.app (FiniteBijection.of 0)) =
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).inv := by
   have h : (augmentation A).map.app (FiniteBijection.of 0) =
       (nullaryCoefficientIso A).hom := by
     rw [augmentation_app]
     rfl
   rw [h]
   unfold nullaryInputFamily
-  rw [Category.assoc, ← tensorFamilyMap_comp]
-  simp only [Iso.inv_hom_id, tensorFamilyMap_id, Category.comp_id]
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap_comp]
+  simp only [Iso.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap_id, Category.comp_id]
 
 /-- 先頭の入力を零入力へ代入する指定射は、実際の増大を保つ。 -/
 lemma nullaryPrefixDelete_augmentation (n k : ℕ) :
@@ -68,19 +68,19 @@ lemma nullaryPrefixDelete_augmentation (n k : ℕ) :
       (augmentation A).map.app (FiniteBijection.of k) =
       (augmentation A).map.app (FiniteBijection.of ((∑ _ : Fin n, 0) + k)) := by
     have h := Operad.Hom.component_index_eq (augmentation A) hsum
-    dsimp only [commutativeOperad, Operad.arity, SerrePositivity.SymmetricSequence.level] at h
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeOperad, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arity, SerrePositivity.SymmetricSequence.level] at h
     simpa only [eqToHom_refl, Category.comp_id] using h
   unfold nullaryPrefixDelete
   simp only [Category.assoc]
-  dsimp only [Operad.arity, SerrePositivity.SymmetricSequence.level] at he ⊢
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arity, SerrePositivity.SymmetricSequence.level] at he ⊢
   rw [he, ← Operad.Hom.composeFirstInputs_naturality,
     coefficientUnitInsert_map_assoc, nullaryInputFamily_augmentation,
     commutativeComposeFirstInputs_eq]
   simp only [coefficientUnitInsert, Category.assoc]
   change (augmentation A).map.app (FiniteBijection.of (n + k)) ≫
     (ρ_ (𝟙_ (Complex A))).inv ≫
-      ((𝟙_ (Complex A)) ◁ (tensorUnitFamilyIso A n).inv) ≫
-        ((𝟙_ (Complex A)) ◁ (tensorUnitFamilyIso A n).hom) ≫
+      ((𝟙_ (Complex A)) ◁ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).inv) ≫
+        ((𝟙_ (Complex A)) ◁ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).hom) ≫
           (ρ_ (𝟙_ (Complex A))).hom = _
   rw [← whiskerLeft_comp_assoc, Iso.inv_hom_id, whiskerLeft_id, Category.id_comp,
     Iso.inv_hom_id, Category.comp_id]

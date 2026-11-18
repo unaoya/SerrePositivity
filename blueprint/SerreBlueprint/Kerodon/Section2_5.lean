@@ -18,7 +18,7 @@ import Mathlib.CategoryTheory.Functor.Const
 import Mathlib.CategoryTheory.SingleObj
 import SerrePositivity.DifferentialGraded.Category.Basic
 import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
-import SerrePositivity.EInfinity.AlexanderWhitney.Unnormalized
+import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.Unnormalized
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWChainMap
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ConnectiveHom
@@ -532,7 +532,7 @@ Kerodon Proposition 2.5.7.8（[Tag 00RP](https://kerodon.net/tag/00RP)）。対�
 
 B6：σ\_rawBilinear\_left/right は単体集合由来の shuffle が正規化への射影後に消える式。原文の C(A⊗B) における退化部分群への所属を結論せず、対象と商の比較が必要。
 
-宣言：`SerrePositivity.EInfinity.Shuffle.σ_rawBilinear_left`、`SerrePositivity.EInfinity.Shuffle.σ_rawBilinear_right`
+宣言：`SerrePositivity.SimplicialChains.Shuffle.σ_rawBilinear_left`、`SerrePositivity.SimplicialChains.Shuffle.σ_rawBilinear_right`
 
 :::
 
@@ -575,7 +575,7 @@ Kerodon Corollary 2.5.7.15（[Tag 00RW](https://kerodon.net/tag/00RW)）。対�
 
 B6：chainMap は EZ の候補鎖写像の構成で、擬同型性の結論成分を持たない。原文の命題の証明部品にとどまる。
 
-宣言：`SerrePositivity.EInfinity.Shuffle.chainMap`
+宣言：`SerrePositivity.SimplicialChains.Shuffle.chainMap`
 
 :::
 
@@ -616,7 +616,7 @@ Kerodon Proposition 2.5.8.3（[Tag 00S3](https://kerodon.net/tag/00S3)）。対�
 
 :::
 
-:::proposition "kerodon_2_5_8_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality, SerrePositivity.EInfinity.AlexanderWhitney.rawComponent_coassoc")
+:::proposition "kerodon_2_5_8_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality, SerrePositivity.SimplicialChains.AlexanderWhitney.rawComponent_coassoc")
 Kerodon Proposition 2.5.8.4（[Tag 00S4](https://kerodon.net/tag/00S4)）。対応表の状態：一部。
 
 B6：alexanderWhitney\_naturality は単体 Z 加群の二変数に関する原文の非正規化 AW の自然性を直接述べる。colax 構造の自然性成分のみで、一般の余単位・余結合は含まない。
@@ -628,7 +628,7 @@ Kerodon Proposition 2.5.8.5（[Tag 00S5](https://kerodon.net/tag/00S5)）。対�
 
 B6：aw\_degeneracy\_not\_mono は切断した単体写像のいずれかが退化する組合せ補題。restrictToNormalized も核型への制限であり、原文の指定 K\_\* への像の所属を直接述べない。
 
-宣言：`SerrePositivity.EInfinity.AlexanderWhitney.aw_degeneracy_not_mono`、`SerrePositivity.EInfinity.AlexanderWhitney.restrictToNormalized`
+宣言：`SerrePositivity.SimplicialChains.AlexanderWhitney.aw_degeneracy_not_mono`、`SerrePositivity.SimplicialChains.AlexanderWhitney.restrictToNormalized`
 
 :::
 
@@ -646,7 +646,7 @@ Kerodon Proposition 2.5.8.7（[Tag 00S7](https://kerodon.net/tag/00S7)）。対�
 
 B6：normalizedAlexanderWhitney\_naturality は核型 Ñ での式、diagonal の余結合・余単位は対角を合成した別の射の式。原文の商型 N の一般の colax 構造の直接の成分とは数えない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney_naturality`、`SerrePositivity.EInfinity.AlexanderWhitney.diagonal_coassoc`、`SerrePositivity.EInfinity.AlexanderWhitney.diagonal_left_counit`
+宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney_naturality`、`SerrePositivity.SimplicialChains.AlexanderWhitney.diagonal_coassoc`、`SerrePositivity.SimplicialChains.AlexanderWhitney.diagonal_left_counit`
 
 :::
 

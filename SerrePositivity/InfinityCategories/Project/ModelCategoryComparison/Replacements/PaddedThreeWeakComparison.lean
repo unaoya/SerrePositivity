@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.PaddedForwardDiagramComparison
-public import SerrePositivity.EInfinity.Hammock.WeakProperColimit
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakProperColimit
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PaddedComparisonRecovery
 
 /-!
@@ -26,9 +26,9 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
 include cof in
 lemma paddedForwardColimitMap_isWeakHomotopyEquivalence :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      (colim.map (_root_.SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y))) :=
-  _root_.SerrePositivity.EInfinity.Hammock.weakProperColimitMap _ (_root_.SerrePositivity.EInfinity.Hammock.graphDiagram_proper (weakEquivalences C) X Y).paddedForward
-    (_root_.SerrePositivity.EInfinity.Hammock.graphDiagram_proper (weakEquivalences C) X Y).padding
+      (colim.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.paddedForwardDiagramMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y))) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.weakProperColimitMap _ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphDiagram_proper (weakEquivalences C) X Y).paddedForward
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphDiagram_proper (weakEquivalences C) X Y).padding
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedForwardDiagramMap_isWeakHomotopyEquivalence X Y cof)
 
 include cof in

@@ -23,7 +23,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -50,23 +50,23 @@ theorem derivedTotConeFamily_right :
       Category.assoc, id_tensorHom, ← whiskerLeft_comp, joinInr_joinMap,
       whiskerLeft_comp]
   have h := congrArg (fun k => k ≫ nativeTotJoinFamily A ≫
-    complexSemifreeResolutionInfinity A) he
+    _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) he
   simp only [Category.assoc] at h
   have ht := congrArg (fun k =>
       (β_ _ _).hom ≫ (nerve (CosimplicialObject (Complex A)) ◁ nativeTotIndexIso.inv) ≫
-        k ≫ complexSemifreeResolutionInfinity A) (nativeTotJoinFamily_right A)
+        k ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) (nativeTotJoinFamily_right A)
   simp only [Category.assoc] at ht
   have hev : (β_ _ _).hom ≫
       (nerve (CosimplicialObject (Complex A)) ◁ nativeTotIndexIso.inv) ≫
         nativeTotClosedEvaluationNerve A =
-      strictCosimplicialEvaluationNerve A ≫ nerveMap (complexToClosed A) := by
+      strictCosimplicialEvaluationNerve A ≫ nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed A) := by
     apply SSet.hom_ext
     intro n
     apply ConcreteCategory.hom_ext
     intro τ
     rfl
   have hev' := congrArg (fun k => k ≫ closedNerveInclusion A (Complex A) ≫
-    complexSemifreeResolutionInfinity A) hev
+    _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) hev
   simp only [Category.assoc] at hev'
   exact (h.trans ht).trans hev'
 

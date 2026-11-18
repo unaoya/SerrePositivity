@@ -19,28 +19,28 @@ variable (R : Type u) [CommRing R] (X Y : Complex R) (m n : ℕ)
 
 /-- テンソル側の表示同型は、左右の元の生成射を同じ arity の指定商へ送る。 -/
 lemma schurTensorArityIso_generators :
-    (schurι R (sequence R) X m ⊗ₘ schurι R (sequence R) Y n) ≫
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) X m ⊗ₘ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) Y n) ≫
       (schurTensorArityIso X Y).hom =
-    (arityCoinvariantComplexQuotient (schurDiagram R (sequence R) X) m ⊗ₘ
-      arityCoinvariantComplexQuotient (schurDiagram R (sequence R) Y) n) ≫
+    (arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) X) m ⊗ₘ
+      arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) Y) n) ≫
         Sigma.ι (fun p : ℕ × ℕ =>
-          arityCoinvariantComplex (schurDiagram R (sequence R) X) p.1 ⊗
-          arityCoinvariantComplex (schurDiagram R (sequence R) Y) p.2) (m, n) := by
-  simp only [schurTensorArityIso, Iso.trans_hom, tensorIso_hom, tensorCoproductPairIso, schurι]
+          arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) X) p.1 ⊗
+          arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) Y) p.2) (m, n) := by
+  simp only [schurTensorArityIso, Iso.trans_hom, tensorIso_hom, tensorCoproductPairIso, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι]
   rw [tensorHom_comp_tensorHom_assoc]
   simp only [schurComplexArityIso, arityCoinvariantComplexIso_ι]
   rw [← tensorHom_comp_tensorHom_assoc, tensorCoproductDesc_ι]
 
 /-- 実際の arity の商を入力優先の表示へ送ると、同じテンソル余不変の商となる。 -/
 lemma schurArityInputCoefficientIso_quotient (K : Complex R) (r : ℕ) :
-    arityCoinvariantComplexQuotient (schurDiagram R (sequence R) K) r ≫
+    arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) K) r ≫
       (schurArityInputCoefficientIso R K r).hom =
     (β_ ((operad R).arity r) (SerrePositivity.TensorPowers.power K r)).hom ≫
       coinvariantTotalQuotient
         (finiteBijectionComplexAction (bijectionFunctor K) r) (arityComplexAction R r) := by
   let ρ := finiteBijectionComplexAction (bijectionFunctor K) r
   let σ := finiteBijectionComplexAction (sequence R) r
-  let d := finiteBijectionComplexAction (schurDiagram R (sequence R) K) r
+  let d := finiteBijectionComplexAction (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) K) r
   let F :=
     (forget₂ (Rep.{u} R (ULift.{u} (Equiv.Perm (Fin r)))) (ModuleCat R)).mapHomologicalComplex
       (.up ℤ)
@@ -69,7 +69,7 @@ lemma schurArityInputCoefficientIso_quotient (K : Complex R) (r : ℕ) :
   have hh := congrArg (fun q => q ≫ Q.app
     (representationCochainComplex (tensorComplexAction ρ σ))) he
   have hb := hn.trans (by simpa only [Category.assoc] using hh)
-  have hi : arityCoinvariantComplexQuotient (schurDiagram R (sequence R) K) r ≫
+  have hi : arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) K) r ≫
       (schurArityTotalIso (sequence R) K r).hom ≫
         (coinvariantTensorTotalSwapIso σ ρ).hom =
       (β_ ((operad R).arity r) (power K r)).hom ≫ coinvariantTotalQuotient ρ σ := by
@@ -103,7 +103,7 @@ lemma schurArityInputCoefficientIso_quotient (K : Complex R) (r : ℕ) :
 
 /-- 入力優先の余不変表示は、元の arity 商を同じ対角作用の商へ送る。 -/
 lemma schurArityInputCoinvariantIso_quotient (K : Complex R) (r : ℕ) :
-    arityCoinvariantComplexQuotient (schurDiagram R (sequence R) K) r ≫
+    arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) K) r ≫
       (schurArityInputCoinvariantIso R K r).hom =
     (β_ ((operad R).arity r) (power K r)).hom ≫
       (representationCochainForgetIso (tensorComplexAction

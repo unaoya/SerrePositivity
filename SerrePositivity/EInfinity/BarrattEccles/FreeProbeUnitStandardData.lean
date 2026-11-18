@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -28,9 +28,9 @@ abbrev freeProbeUnitComplex (x : (_root_.SerrePositivity.InfinityCategories.HA.D
 方針：既存の probe 比較と既存の半自由頂点表示を合成する。
 規約：元の両比較を保持。使われ方：標準単位基準族の始域輸送。 -/
 def freeProbeUnitSourceIso (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj (freeProbeUnitComplex A x)))) x :=
-  complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj (freeProbeUnitComplex A x)))) x :=
+  _root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x) ≪≫
     derivedFreeProbeSourceIso A x
 
 /-- 概要：既存 CAlg_R 頂点の同じ cofibrant 相対圏での表示。
@@ -59,7 +59,7 @@ private lemma standardUnitTriangleOfData {C : Type*} [Category* C]
 
 private lemma unitSourceIso_def (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
     freeProbeUnitSourceIso A x =
-      complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x) ≪≫
+      _root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x) ≪≫
         derivedFreeProbeSourceIso A x := rfl
 
 private lemma standardUnitHom_def (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
@@ -76,7 +76,7 @@ lemma freeProbeUnitStandard_triangle (x : (_root_.SerrePositivity.InfinityCatego
         (freeProbeRelativeChosenSourceIso A (freeProbeUnitComplex A x)).hom =
     freeProbeRelativeUnitHom A (freeProbeUnitComplex A x) := by
   exact standardUnitTriangleOfData
-    (complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x))
+    (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A (freeProbeUnitComplex A x))
     (derivedFreeProbeSourceIso A x)
     (freeProbeDerivedUnitComponent A (freeProbeUnitComplex A x))
     ((hoFunctor.map (cAlgForgetDerived A)).toFunctor.map

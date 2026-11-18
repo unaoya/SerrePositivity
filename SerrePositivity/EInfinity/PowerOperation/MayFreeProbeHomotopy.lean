@@ -25,7 +25,7 @@ variable (k : Type u) [CommRing k]
 
 /-- 元の自由 probe の全次数ホモロジー関手。 -/
 def mayFreeProbeHomologyFunctor (i : ℤ) : Complex k ⥤ ModuleCat k :=
-  freeProbeFunctor k ⋙ SerrePositivity.EInfinity.Operad.Algebra.forget (operad k) ⋙
+  freeProbeFunctor k ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad k) ⋙
     homologyFunctor (ModuleCat k) (.up ℤ) i
 
 lemma mayFreeProbeHomologyFunctor_inverts (i : ℤ) :

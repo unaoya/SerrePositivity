@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.AlgebraRelativeComparisons
-public import SerrePositivity.EInfinity.Hammock.RelativeEquivalenceWeak
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalenceWeak
 
 /-!
 # 元の包含・置換による hammock Hom 射自身の弱同値性
@@ -20,24 +20,24 @@ open CategoryTheory SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 lemma cofibrantToAlgebraDK_colimitMap_weak
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap (cofibrantToAlgebraDKRelative A) X Y) :=
-  Hammock.RelativeEquivalence.colimitMap_weak (cofibrantToAlgebraDKRelative A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap (cofibrantToAlgebraDKRelative A) X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak (cofibrantToAlgebraDKRelative A)
     (algebraToCofibrantDKRelative A) (cofibrantDKComparison A) (cofibrantDKComparison_weak A)
     (algebraDKComparison A) (algebraDKComparison_weak A) X Y
 lemma algebraToCofibrantDK_colimitMap_weak (X Y : (algebraRelativeCategory A).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Hammock.Relative.colimitMap (algebraToCofibrantDKRelative A) X Y) :=
-  Hammock.RelativeEquivalence.colimitMap_weak (algebraToCofibrantDKRelative A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap (algebraToCofibrantDKRelative A) X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak (algebraToCofibrantDKRelative A)
     (cofibrantToAlgebraDKRelative A) (algebraDKComparison A) (algebraDKComparison_weak A)
     (cofibrantDKComparison A) (cofibrantDKComparison_weak A) X Y
 lemma cofibrantToAlgebraDK_reducedMap_weak
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Hammock.Relative.reducedMap (cofibrantToAlgebraDKRelative A) X Y) :=
-  Hammock.RelativeEquivalence.reducedMap_weak (cofibrantToAlgebraDKRelative A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.reducedMap (cofibrantToAlgebraDKRelative A) X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.reducedMap_weak (cofibrantToAlgebraDKRelative A)
     (algebraToCofibrantDKRelative A) (cofibrantDKComparison A) (cofibrantDKComparison_weak A)
     (algebraDKComparison A) (algebraDKComparison_weak A) X Y
 lemma algebraToCofibrantDK_reducedMap_weak (X Y : (algebraRelativeCategory A).category) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Hammock.Relative.reducedMap (algebraToCofibrantDKRelative A) X Y) :=
-  Hammock.RelativeEquivalence.reducedMap_weak (algebraToCofibrantDKRelative A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.reducedMap (algebraToCofibrantDKRelative A) X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.reducedMap_weak (algebraToCofibrantDKRelative A)
     (cofibrantToAlgebraDKRelative A) (algebraDKComparison A) (algebraDKComparison_weak A)
     (cofibrantDKComparison A) (cofibrantDKComparison_weak A) X Y
 end SerrePositivity.EInfinity.BarrattEccles

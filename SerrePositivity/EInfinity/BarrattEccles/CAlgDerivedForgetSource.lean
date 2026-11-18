@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraRelativeInput
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
-public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.OrdinaryDerivedSource
 
 /-!
 # 元の E 代数忘却から既存 D(R) への実反転関手
@@ -43,7 +43,7 @@ lemma cofibrantAlgebraForgetNerve_mk₁
 
 def cofibrantAlgebraUnderlyingDerivedSource :
     nerve (cofibrantAlgebraRelativeCategory A).category ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
-  cofibrantAlgebraForgetNerve A ≫ ComplexLimits.complexOrdinaryDerivedSource A
+  cofibrantAlgebraForgetNerve A ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
 
 lemma cofibrantAlgebraUnderlyingDerivedSource_map_weak
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y)
@@ -52,14 +52,14 @@ lemma cofibrantAlgebraUnderlyingDerivedSource_map_weak
       ((nerve.edgeMk f).map (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated := by
   have hq : QuasiIso ((cofibrantAlgebraDKForget A).map f) :=
     (cofibrantAlgebraDKForgetRelative A).map f hf
-  have h := ComplexLimits.complexOrdinaryDerivedSource_map_weak A
+  have h := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource_map_weak A
     ((cofibrantAlgebraDKForget A).map f) hq
   apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := ((nerve.edgeMk
     ((cofibrantAlgebraDKForget A).map f)).map
-      (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) ?_).mp h
-  change (ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) ?_).mp h
+  change (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
       (ComposableArrows.mk₁ ((cofibrantAlgebraDKForget A).map f)) =
-    (ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+    (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
       ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f))
   rw [cofibrantAlgebraForgetNerve_mk₁]
 

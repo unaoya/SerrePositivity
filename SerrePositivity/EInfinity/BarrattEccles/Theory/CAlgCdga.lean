@@ -45,9 +45,9 @@ def barrattEcclesOfCdga : nerve (CommMon (Complex A)) ⟶ CAlg_R A :=
 /-- 厳密な可換 dg 代数の底は元の複体の導来像。 -/
 def barrattEcclesOfCdga_forget :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesOfCdga A ≫ cAlgForgetDerived A)
-      (nerveMap (CommMon.forget (Complex A)) ≫ ComplexLimits.complexOrdinaryDerivedSource A) := by
+      (nerveMap (CommMon.forget (Complex A)) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) := by
   let F := cdgaAlgebraFunctor A
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have h : nerveMap F ≫ nerveMap U = nerveMap (CommMon.forget (Complex A)) := by
     apply SSet.hom_ext
     intro n
@@ -77,7 +77,7 @@ theorem cdgaDiscreteNerve_eq :
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j g
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
-  apply Operad.AlgebraHom.ext
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
   rfl
 
 /-- 次数零の cdga の像は元の離散代数の埋め込みに一致する。 -/

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -24,11 +24,11 @@ variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
 
 lemma strictRawModuleTensorDoubleConeData_pullback_map {n m : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (strictRawModuleTensorDoubleConeSimplex A X P Q c).toSimplexData.pullback (doubleConeOrderHom θ) =
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).toSimplexData.pullback (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ) =
       (strictRawModuleTensorDoubleConeSimplex A X P Q
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).toSimplexData := by
   have ho : ((strictRawModuleTensorDoubleConeSimplex A X P Q c).toSimplexData.pullback
-      (doubleConeOrderHom θ)).obj =
+      (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ)).obj =
       (strictRawModuleTensorDoubleConeSimplex A X P Q
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).obj := by
     funext i
@@ -37,7 +37,7 @@ lemma strictRawModuleTensorDoubleConeData_pullback_map {n m : ℕ}
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomFamily.heq_of_pointwise ho
   intro I a b k hI ha hb hk
   by_cases hbl : b = Fin.last (m + 2)
-  · by_cases hi : Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))
+  · by_cases hi : Set.InjOn (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ) (I : Set (Fin (m + 3)))
     · exact strictRawModuleTensorDoubleConeSimplex_pullback_hom_terminal_injOn
         A X P Q c θ I a b k hI ha hb hk hbl hi
     · exact strictRawModuleTensorDoubleConeSimplex_pullback_hom_terminal_not_inj
@@ -49,7 +49,7 @@ lemma strictRawModuleTensorDoubleConeData_pullback_map {n m : ℕ}
 
 lemma strictRawModuleTensorDoubleConeSimplex_pullback_map {n m : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeOrderHom θ) =
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (_root_.SerrePositivity.ComplexLimits.doubleConeOrderHom θ) =
       strictRawModuleTensorDoubleConeSimplex A X P Q ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data]

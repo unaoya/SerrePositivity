@@ -21,7 +21,7 @@ open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.T
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance valueKanModel : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance valueKanModel : ModelCategory (Complex A) := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance valueKanInitial : HasInitial (Complex A) :=
   (isZero_zero (Complex A)).isInitial.hasInitial
 

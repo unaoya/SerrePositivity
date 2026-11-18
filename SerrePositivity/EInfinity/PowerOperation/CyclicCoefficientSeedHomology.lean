@@ -23,7 +23,7 @@ variable (p : ℕ) [NeZero p] (k : Type u) [CommRing k] [CharP k p]
 lemma powerOperationCoefficientSeed_homology_value :
     (cyclicResolutionSingleHomologyIso p
       (Rep.trivial k (PowerOperationCyclicGroup.{u} p) k) 0).hom
-      (HomologyZero.unitClass (powerOperationCoefficientHomComplex p k)
+      (_root_.SerrePositivity.HomologyZero.unitClass (powerOperationCoefficientHomComplex p k)
         (powerOperationCoefficientSeed p k)) = 1 := by
   let H := powerOperationCoefficientHomComplex p k
   let A := Rep.trivial k (PowerOperationCyclicGroup.{u} p) k
@@ -33,7 +33,7 @@ lemma powerOperationCoefficientSeed_homology_value :
   rw [zeroCyclesActualIso_homologyπ, zeroCyclesActualIso_i] at heq
   have hv := congrArg (fun f => f (cycleFromUnit H (powerOperationCoefficientSeed p k))) heq
   change (cyclicResolutionSingleHomologyIso p A 0).hom
-      (HomologyZero.unitClass H (powerOperationCoefficientSeed p k)) =
+      (_root_.SerrePositivity.HomologyZero.unitClass H (powerOperationCoefficientSeed p k)) =
     cyclicResolutionSingleDegreeEquiv p A 0
       (cycleFromUnit H (powerOperationCoefficientSeed p k)).val at hv
   exact hv.trans (powerOperationCoefficientSeed_value p k)
@@ -41,12 +41,12 @@ lemma powerOperationCoefficientSeed_homology_value :
 /-- 同じ実鎖写像の類は、先に固定した周期係数模型の指定負一次類へ送られる。 -/
 lemma powerOperationCoefficientSeed_matches_class :
     (cyclicResolutionCoefficientClassIso (k := k) p).hom
-      (HomologyZero.unitClass (powerOperationCoefficientHomComplex p k)
+      (_root_.SerrePositivity.HomologyZero.unitClass (powerOperationCoefficientHomComplex p k)
         (powerOperationCoefficientSeed p k)) = powerOperationTateCoefficientClass p k := by
   change (powerOperationTateCoefficientHomologyIso p k (-1)).inv
       ((cyclicResolutionSingleHomologyIso p
         (Rep.trivial k (PowerOperationCyclicGroup.{u} p) k) 0).hom
-        (HomologyZero.unitClass (powerOperationCoefficientHomComplex p k)
+        (_root_.SerrePositivity.HomologyZero.unitClass (powerOperationCoefficientHomComplex p k)
           (powerOperationCoefficientSeed p k))) =
     (powerOperationTateCoefficientHomologyIso p k (-1)).inv 1
   exact congrArg (fun x => (powerOperationTateCoefficientHomologyIso p k (-1)).inv x)

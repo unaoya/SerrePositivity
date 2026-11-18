@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.StrictDiagramTotJointSourceRoofFrame
-public import SerrePositivity.EInfinity.Hammock.AsSmallComposition
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComposition
 
 /-!
 状態：D81により停止したBE模型のIS-W2 Tot経路。既存の到達点の保管用。
@@ -44,7 +44,7 @@ theorem strictBETotJointSourceRoofFrameZigzag_nerve
         (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointRoofResolution A P).augmentation
         (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointRoofResolution A P).augmentation_weakEquivalence
         (fun f => (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointRoofResolution A P).homotopicallyConstant f) ≫
-      (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.graphIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.graphIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
         (_root_.SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe A (AsSmall.down.obj P).1.unop)
         ((rightFrameReplacement (_root_.SerrePositivity.EInfinity.BarrattEccles.rightFrameFamily A)).obj (AsSmall.down.obj P).2)
         LeftRoof.word).hom =

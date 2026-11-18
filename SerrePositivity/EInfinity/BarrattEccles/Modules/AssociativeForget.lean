@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StandardCoefficient
-public import SerrePositivity.EInfinity.HomologyZero.TernaryInput
-public import SerrePositivity.EInfinity.HomologyZero.NullaryInput
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.TernaryInput
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.NullaryInput
 public import Mathlib.CategoryTheory.Monoidal.Mon
-public import SerrePositivity.EInfinity.Operad.CommutativeBinaryCriterion
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeBinaryCriterion
 
 /-!
 # Barratt–Eccles 代数の結合的 dg 代数への忘却
@@ -53,7 +53,7 @@ lemma standardOperation_composite (X : (operad A).Algebra)
     (m n : ℕ) (i : Fin (m+1)) :
     standardOperation X (m+n) =
       (λ_ (power X.carrier (m+n))).inv ≫
-      tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
         ((λ_ (power X.carrier n)).hom ≫ standardOperation X n) ≫
       standardOperation X (m+1) := by
   have h := coefficientOperation_comp X m n i
@@ -68,13 +68,13 @@ lemma standardBinary_assoc (X : (operad A).Algebra) :
     (standardBinary X ▷ X.carrier) ≫ standardBinary X =
       (α_ X.carrier X.carrier X.carrier).hom ≫
         (X.carrier ◁ standardBinary X) ≫ standardBinary X := by
-  have hl := congrArg (fun f => HomologyZero.ternaryInput X.carrier ≫ f)
+  have hl := congrArg (fun f => _root_.SerrePositivity.HomologyZero.ternaryInput X.carrier ≫ f)
     (standardOperation_composite X 1 2 0)
-  have hr := congrArg (fun f => HomologyZero.ternaryInput X.carrier ≫ f)
+  have hr := congrArg (fun f => _root_.SerrePositivity.HomologyZero.ternaryInput X.carrier ≫ f)
     (standardOperation_composite X 1 2 1)
   simp only [Nat.reduceAdd] at hl hr
-  rw [HomologyZero.binaryAssociativityLeftInput] at hl
-  rw [HomologyZero.binaryAssociativityRightInput] at hr
+  rw [_root_.SerrePositivity.HomologyZero.binaryAssociativityLeftInput] at hl
+  rw [_root_.SerrePositivity.HomologyZero.binaryAssociativityRightInput] at hr
   exact hl.symm.trans hr
 
 /-- 概要：標準零入力作用は積の左単位（Berger–Fresse §1.1.3）。
@@ -89,9 +89,9 @@ lemma standardBinary_one_mul (X : (operad A).Algebra) :
   simp only [Iso.inv_hom_id] at h
   change 𝟙 X.carrier = (oneIso X.carrier).inv ≫
     (λ_ (power X.carrier 1)).inv ≫
-    tensorInsertionAction X.carrier (𝟙_ (Complex A)) 1 0 0
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction X.carrier (𝟙_ (Complex A)) 1 0 0
       ((λ_ (𝟙_ (Complex A))).hom ≫ standardOperation X 0) ≫ standardOperation X 2 at h
-  rw [reassoc_of% (HomologyZero.nullaryBinaryInsertion X.carrier (standardOperation X 0))] at h
+  rw [reassoc_of% (_root_.SerrePositivity.HomologyZero.nullaryBinaryInsertion X.carrier (standardOperation X 0))] at h
   apply (cancel_epi (λ_ X.carrier).inv).mp
   simpa only [standardBinary, Category.assoc, Iso.inv_hom_id] using h.symm
 
@@ -107,14 +107,14 @@ lemma standardBinary_mul_one (X : (operad A).Algebra) :
   simp only [Iso.inv_hom_id] at h
   change 𝟙 X.carrier = (oneIso X.carrier).inv ≫
     (λ_ (power X.carrier 1)).inv ≫
-    tensorInsertionAction X.carrier (𝟙_ (Complex A)) 1 0 1
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction X.carrier (𝟙_ (Complex A)) 1 0 1
       ((λ_ (𝟙_ (Complex A))).hom ≫ standardOperation X 0) ≫ standardOperation X 2 at h
   have he : (oneIso X.carrier).inv ≫ (λ_ (power X.carrier 1)).inv ≫
-      tensorInsertionAction X.carrier (𝟙_ (Complex A)) 1 0 1
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction X.carrier (𝟙_ (Complex A)) 1 0 1
         ((λ_ (𝟙_ (Complex A))).hom ≫ standardOperation X 0) =
       (ρ_ X.carrier).inv ≫ (X.carrier ◁ standardOperation X 0) ≫
         (X.carrier ◁ (oneIso X.carrier).inv) := by
-    simp only [tensorInsertionAction, Fin.val_one, appendIso, oneIso, power,
+    simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction, Fin.val_one, appendIso, oneIso, power,
       Iso.trans_inv, Iso.trans_hom, whiskerLeftIso_inv, whiskerLeftIso_hom,
       eqToIso.inv, eqToIso.hom, eqToHom_refl, Category.id_comp, Category.comp_id,
       comp_whiskerRight, whiskerLeft_comp, Category.assoc]
@@ -162,7 +162,7 @@ def associativeAlgebraMap {X Y : (operad A).Algebra} (f : X ⟶ Y) :
       change (X.carrier ◁ (oneIso X.carrier).inv) ≫ standardOperation X 2 ≫ f.hom =
         (f.hom ⊗ₘ f.hom) ≫ (Y.carrier ◁ (oneIso Y.carrier).inv) ≫ standardOperation Y 2
       rw [standardOperation_map, ← Category.assoc,
-        Operad.Algebra.binaryInput_naturality, Category.assoc])
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.binaryInput_naturality, Category.assoc])
 
 variable (A)
 /-- 概要：BE 代数から同じ台の結合的 dg 代数への忘却（Berger–Fresse §1.1.3）。
@@ -178,6 +178,6 @@ def assocForget : (operad A).Algebra ⥤ Mon (Complex A) where
 方針：対象・全射を同じにした定義を比較。規約：関手そのものの等式。
 使われ方：台の擬同型性を指定した dg 代数射へ運ぶ。 -/
 lemma assocForget_forget : assocForget A ⋙ Mon.forget (Complex A) =
-    Operad.Algebra.forget (operad A) := rfl
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) := rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

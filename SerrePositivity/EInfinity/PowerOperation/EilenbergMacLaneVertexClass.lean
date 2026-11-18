@@ -18,20 +18,20 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 lemma gammaPiZeroCohomologyEquiv_mk (M : Complex A)
     (x : (gammaModule A M).obj (Opposite.op ⦋0⦌)) :
     gammaPiZeroCohomologyEquiv A M (SSet.π₀.mk x) =
-      HomologyZero.unitClass M (gammaVertexUnitHomEquiv A M x) := by
+      _root_.SerrePositivity.HomologyZero.unitClass M (gammaVertexUnitHomEquiv A M x) := by
   have h := gammaPiZeroCohomologyEquiv_naturality A (gammaVertexUnitHomEquiv A M x)
     (SSet.π₀.mk (gammaUnitSimplex A ⦋0⦌))
   rw [gammaPiZeroCohomologyEquiv_unit, HomologyZero.unitClass_naturality] at h
   change gammaPiZeroCohomologyEquiv A M
-    (SSet.π₀.mk (((truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
+    (SSet.π₀.mk (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
       (Opposite.op ⦋0⦌) (gammaUnitSimplex A ⦋0⦌))) =
-      HomologyZero.unitClass M (𝟙 _ ≫ gammaVertexUnitHomEquiv A M x) at h
+      _root_.SerrePositivity.HomologyZero.unitClass M (𝟙 _ ≫ gammaVertexUnitHomEquiv A M x) at h
   simpa only [gammaUnit_vertex_generates, Category.id_comp] using h
 
 end SerrePositivity.EInfinity.PowerOperation

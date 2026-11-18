@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 @[expose] public noncomputable section
 universe u v w
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SSet _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SSet _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.SimplicialModel
 
 /-- 概要：同じ QCat 同値の指定逆は anodyne 反転後にも右逆。
@@ -50,7 +50,7 @@ include cof in
 規約：同じ元の辺。使われ方：選択した逆との一意な照合。 -/
 lemma rightFrameHammockKanEdge_Q_isIso (i : Fin 6) (Y : AsSmall.{max u v} C) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdge q r i).app Y)) :=
-  anodyneQ_map_isIso_of_weak _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanEdge_isQCatEquivalence q r cof i Y).isWeakHomotopyEquivalence
 
 include cof in

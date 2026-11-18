@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Cotensor
-public import SerrePositivity.EInfinity.FrameRealizationLifting
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameRealizationLifting
 
 /-!
 # 右 frame の余テンソルの fibration
@@ -36,7 +36,7 @@ lemma cotensor_map_fibration (X : (operad A).Algebra)
     let := modelCategory A
     Fibration ((cotensor A X).map i.op) := by
   let := modelCategory A
-  exact ⟨FrameRealizationLifting.map_monomorphism (rightFrame A X)
+  exact ⟨_root_.SerrePositivity.FrameRealizationLifting.FrameRealizationLifting.map_monomorphism (rightFrame A X)
     (rightFrame_cofibrant A X) i hi⟩
 
 /-- 概要：anodyne 射に沿う余テンソルは自明 fibration（BM 命題 4.1、Hovey §5.4）。
@@ -48,7 +48,7 @@ lemma cotensor_map_trivialFibration (X : (operad A).Algebra)
     let := modelCategory A
     trivialFibrations (operad A).Algebra ((cotensor A X).map i.op) := by
   let := modelCategory A
-  exact FrameRealizationLifting.map_anodyne (rightFrame A X)
+  exact _root_.SerrePositivity.FrameRealizationLifting.FrameRealizationLifting.map_anodyne (rightFrame A X)
     (rightFrame_cofibrant A X) (fun f => rightFrame_homotopicallyConstant A X f) i hi
 
 end SerrePositivity.EInfinity.BarrattEccles

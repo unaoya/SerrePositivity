@@ -44,15 +44,15 @@ private lemma actualCycles_i (K : Complex A) :
   simp [actualCycles]
 
 private lemma actualCycles_π (K : Complex A) :
-    (actualCycles K).hom ≫ K.homologyπ 0 = ModuleCat.ofHom (classMap K) := by
-  simp only [actualCycles, Iso.trans_hom, Iso.symm_hom, Category.assoc, classMap,
-    quotientIso, Iso.trans_inv, ModuleCat.ofHom_hom]
+    (actualCycles K).hom ≫ K.homologyπ 0 = ModuleCat.ofHom (_root_.SerrePositivity.HomologyZero.classMap K) := by
+  simp only [actualCycles, Iso.trans_hom, Iso.symm_hom, Category.assoc, _root_.SerrePositivity.HomologyZero.classMap,
+    _root_.SerrePositivity.HomologyZero.quotientIso, Iso.trans_inv, ModuleCat.ofHom_hom]
   rw [← HomologicalComplex.π_homologyIsoSc'_inv,
     ShortComplex.moduleCatCyclesIso_inv_π_assoc]
 
 /-- 単位複体からの射が定める零次の類は、値の複体について自然。 -/
 lemma unitClass_naturality (g : K ⟶ L) (a : 𝟙_ (Complex A) ⟶ K) :
-    homologyMap g 0 (unitClass K a) = unitClass L (a ≫ g) := by
+    homologyMap g 0 (_root_.SerrePositivity.HomologyZero.unitClass K a) = _root_.SerrePositivity.HomologyZero.unitClass L (a ≫ g) := by
   let x := cycleFromUnit K a
   let y := cycleFromUnit L (a ≫ g)
   have hy : cyclesMap g 0 ((actualCycles K).hom x) = (actualCycles L).hom y := by
@@ -63,8 +63,8 @@ lemma unitClass_naturality (g : K ⟶ L) (a : 𝟙_ (Complex A) ⟶ K) :
       _ = g.f 0 x.val := congrArg (g.f 0) (congrArg (fun m => m x) (actualCycles_i K))
       _ = y.val := (cycleFromUnit_postcomp a g).symm
       _ = _ := (congrArg (fun m => m y) (actualCycles_i L)).symm
-  change homologyMap g 0 ((ModuleCat.ofHom (classMap K)) x) =
-    (ModuleCat.ofHom (classMap L)) y
+  change homologyMap g 0 ((ModuleCat.ofHom (_root_.SerrePositivity.HomologyZero.classMap K)) x) =
+    (ModuleCat.ofHom (_root_.SerrePositivity.HomologyZero.classMap L)) y
   rw [← actualCycles_π, ← actualCycles_π]
   change homologyMap g 0 (K.homologyπ 0 ((actualCycles K).hom x)) =
     L.homologyπ 0 ((actualCycles L).hom y)
@@ -106,20 +106,20 @@ private lemma homologyBinary_naturality (g : X ⟶ Y) :
 lemma homologyOne_naturality (g : X ⟶ Y) :
     homologyMap g.hom 0 (homologyOne X) = homologyOne Y := by
   rw [homologyOne, HomologyZero.unitClass_naturality, ← homologyOperation_naturality]
-  change HomologyZero.unitClass Y.carrier (𝟙 _ ≫ homologyOperation Y 0) =
-    HomologyZero.unitClass Y.carrier (homologyOperation Y 0)
-  exact congrArg (HomologyZero.unitClass Y.carrier) (Category.id_comp _)
+  change _root_.SerrePositivity.HomologyZero.unitClass Y.carrier (𝟙 _ ≫ homologyOperation Y 0) =
+    _root_.SerrePositivity.HomologyZero.unitClass Y.carrier (homologyOperation Y 0)
+  exact congrArg (_root_.SerrePositivity.HomologyZero.unitClass Y.carrier) (Category.id_comp _)
 
 /-- 厳密代数の射は Berger–Fresse §1 の零次の積を保つ。 -/
 lemma homologyProduct_naturality (g : X ⟶ Y) (x y : X.carrier.homology 0) :
-    homologyMap g.hom 0 (HomologyZero.pairingValue (homologyBinary X) x y) =
-      HomologyZero.pairingValue (homologyBinary Y) (homologyMap g.hom 0 x)
+    homologyMap g.hom 0 (_root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary X) x y) =
+      _root_.SerrePositivity.HomologyZero.pairingValue (homologyBinary Y) (homologyMap g.hom 0 x)
         (homologyMap g.hom 0 y) := by
-  obtain ⟨a, rfl⟩ := HomologyZero.unitClass_surjective X.carrier x
-  obtain ⟨b, rfl⟩ := HomologyZero.unitClass_surjective X.carrier y
-  simp only [HomologyZero.pairingValue_class, HomologyZero.unitClass_naturality]
+  obtain ⟨a, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier x
+  obtain ⟨b, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier y
+  simp only [_root_.SerrePositivity.HomologyZero.pairingValue_class, HomologyZero.unitClass_naturality]
   congr 1
-  simp only [HomologyZero.unitPairing, LinearMap.coe_mk, AddHom.coe_mk]
+  simp only [_root_.SerrePositivity.HomologyZero.unitPairing, LinearMap.coe_mk, AddHom.coe_mk]
   simp only [Category.assoc, ← homologyBinary_naturality, ← tensorHom_comp_tensorHom_assoc]
 
 /-- 厳密代数の H⁰ を、Berger–Fresse §1 の可換代数として取る関手。 -/

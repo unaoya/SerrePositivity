@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.Basic
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Basic
 public import SerrePositivity.EInfinity.BarrattEccles.Sequence
 public import SerrePositivity.EInfinity.BarrattEccles.InverseSlotPermutations
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionEquivariance
@@ -37,7 +37,7 @@ set_option maxHeartbeats 800000 in
 方針：構成済みの複体、単位と部分合成に、各法則の証明を組み合わせる。
 規約：arity 0 を含み、全ての合成は非有界整数コチェイン複体の射である。
 使われ方：E∞ dg 代数の圏と忘却関手を定義する。 -/
-def operad : Operad A where
+def operad : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A where
   sequence := sequence A
   unit := unit A
   comp := partialComposition A
@@ -45,12 +45,12 @@ def operad : Operad A where
   comp_unit := partialComposition_right_unit A
   inner_equivariance m n i σ := by
     simp only [sequence_map_permutation A n σ,
-      sequence_map_permutation A (m + n) (operadInnerPermutation m n i σ)]
+      sequence_map_permutation A (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i σ)]
     rw [← innerPermutation_inv m n i σ]
     exact partialComposition_inner_rightAction A m n i σ⁻¹
   outer_equivariance m n i σ := by
     simp only [sequence_map_permutation A (m + 1) σ,
-      sequence_map_permutation A (m + n) (operadOuterPermutation m n i σ)]
+      sequence_map_permutation A (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i σ)]
     rw [← outerPermutation_inv m n i σ]
     have h := partialComposition_outer_rightAction A m n (σ i) σ⁻¹
     have hs : σ⁻¹ (σ i) = i := σ.symm_apply_apply i

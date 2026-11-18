@@ -19,7 +19,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
 
 def nativeCellMappingUnit :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ordinaryHomFamily (cellResolution R A) ⟶

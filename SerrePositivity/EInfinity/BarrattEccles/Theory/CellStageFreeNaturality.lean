@@ -24,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory Limits HomologicalComplex HomotopicalAlgebra DifferentialGraded
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
   {J : Type u} [LinearOrder J] [OrderBot J] [SuccOrder J] [WellFoundedLT J]
   {X Y : P.Algebra} {f : X ⟶ Y}
   (c : RelativeCellComplex.{u}
