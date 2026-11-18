@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,812行。外枠：35,681行。係数：2。
+既計上の累計：30,916行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -73,7 +73,7 @@
 |R12a.2|pending|—|80〜130|160〜260|
 |R12a|pending|—|15〜35|30〜70|
 |R12b|pending|—|10〜25|20〜50|
-|R13b.1|pending|—|90〜150|180〜300|
+|R13b.1|verified|104|0〜0|0〜0|
 |R13b|pending|—|15〜30|30〜60|
 |R14.1|pending|—|50〜90|100〜180|
 |R14|pending|—|20〜40|40〜80|
@@ -2788,7 +2788,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `sectionsMap_isInvertible_iff` @ SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean:62
 
 ### R13b.1 — discreteHom_precomposition_sections_detects_locality
-親：R13b。状態：紙のみ（pending）。依存：R13a。
+親：R13b。状態：検証済み。依存：R13a。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u}

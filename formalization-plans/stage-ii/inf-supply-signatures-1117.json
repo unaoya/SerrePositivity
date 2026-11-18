@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30812,
+  "verified_lean_lines": 30916,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -4233,6 +4233,11 @@
           "name": "setWeightTensorSections_shapeIso",
           "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightTensorSectionsNaturality.lean",
           "line": 26
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsLocality.lean",
+          "line": 46,
+          "name": "discreteHom_precomposition_sections_detects_locality"
         }
       ],
       "literature": "HTT 5.5.4.20・6.2.2.6。小さい通常のsiteの離散重みでの局所Hom。",
@@ -4246,13 +4251,35 @@
       ],
       "method": "G8四角形の指定precompositionの全族比較を使い、同じsectionsの極限値を空間の頂点評価で読む。単なる対象同値の存在では判定しない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R13b",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/discreteHom_isLocalForHom_of_localEquiv.lean",
-      "note": "G8四角形の指定precompositionの全族比較を使い、同じsectionsの極限値を空間の頂点評価で読む。単なる対象同値の存在では判定しない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsLocality.lean",
+      "note": "G8四角形の指定precompositionの全族比較を使い、同じsectionsの極限値を空間の頂点評価で読む。単なる対象同値の存在では判定しない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 104,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsLocality.lean": "8372eeb50f8b99bd4c3188d7ab68351aa17f73b3d22a9f9ed44cec385140e318"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "31800edf19482ad00c720e8fcc80277e5f4be53db8c9415cc896baefdb949dcd",
+        "receipt": "/tmp/is-stage5/R13b.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r13b-1-1118/manifest.json"
     },
     {
       "id": "R13b",
