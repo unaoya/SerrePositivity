@@ -12731,3 +12731,28 @@ R06 は完了。指定した錐を共通に使い、二面を合成してから�
 この R06 の実装は計525行（154＋280＋91）。直前の紙の素の見込みは460〜595行、補正上端は1,190行。累計35,427行、外枠36,138行まで711行。14の最終署名のうち R04・R05・R06 が済み、残りは11。次は R08。旧 R2 の未追跡4本はそのまま。
 
 一覧：済み 90／全体 122（うち追加 87）
+
+### 11-18：R08 と R09-Cech の実装前の照合
+
+**R08.1 → R08。** (j) は反対・宇宙変更・nerve の頂点同値で (j_0:\mathrm{AsSmall}(\Delta^{op})) に戻す。(\phi_j=(\mathrm{relativeCechDiagonal}\ f).\mathrm{app}\ j_0:P\to D_j)。元の `weightedSections_relativeCechDiagonalHom` を (\theta)、(\phi_j) の離散 nerve の辺を元の切断関手で反変に読んだ類を (r_j) と置く。
+
+1. 必要な成分式は `Arrow.mk (functorHomEvaluate θ j) = Arrow.mk r_j`。元の対角のホモトピーに `discreteRelativeCechDiagonalHomotopy_component` を適用し、`kanHomotopyOpposite_vertex_edge` と後合成の頂点評価で同じ一次単体を得る。定値図式の端点の型移送は、定値図式の等号で一般化してから消去する。既存の `WeightedSectionsCechConePrism.lean:174` の計算は private なので、ここでは公開の評価則で同じ計算を局所的に行う。
+2. `sectionsOfDiagram_hasLimit` を (P,D_j) に適用する。(e_Z=(\texttt{weightedSections_discrete}\ \ldots\ Z).\mathrm{hom})、(m_j=[\mathrm{sectionsOf\_map}(\phi_j)]) とすると R06 は (r_j\,;\,e_P=e_{D_j}\,;\,m_j)。`relativeCechDiagonal_sections_isInvertible` が同じ (m_j) の可逆性を与える。右辺の合成が可逆なので `isIso_comp_right_iff` で (r_j) が可逆。先の `Arrow.mk` の等号で可逆性を (\theta_j) に移す。
+3. 全体の R08 は `functorHom_isIso_of_components` に R08.1 を入れる。`functorHomEvaluate` の両端を移す `eqToHom` は同型なので、成分の可逆性から生の評価関手で写した類の可逆性が出る。
+
+**R09-Cech.2 → R09-Cech。** (H) を両極限錐 (A,d) の間の実円柱とし、(e_H) を対応する関手圏の辺とする。元の制限 `coneRestriction` で写した (e_H) の類を、`functorHomotopyPrecomp_hom` と図式面 (h_D) から `Arrow.mk` の等号で同じ対角 (\theta) に照合する。R08 を (g=\mathrm{toRange}\ f) に適用してこの制限辺を可逆とする。両錐の極限性を `terminalBoundaryLifting_coneRestriction_of_isLimitCone` に入れ、`isInvertibleEdge_of_terminalBoundaries` で同じ (e_H) の可逆性を得る。頂点評価は可逆性を保ち、頂点面 (h_V) で得る一次単体は指定した (\rho) の辺。最後は R09-Cech.1 の (H,\rho) をそのまま入れ、`cechConstantCone_isLimit` と同じ頂点辺の HEq を使って元の `toRange` の辺へ戻す。新しい比較を選び直さない。
+
+使う宣言の所在は台帳の既存欄に加え、`Kerodon/LargeInfinityCategories/PresentableInfinityCategories/FullyFaithfulHomComparison.lean:26`、`Project/LocalizationAndKanExtensionAuxiliaries/Quasicategory/RelativeBoundaryInvertibility.lean:48`（いずれも `SerrePositivity/InfinityCategories/` 内）。主張・仮定は台帳どおり。R08 の補正上端は310行、R09-Cech の補正上端は330行。現在の累計35,427行から両組を足した上端は36,067行。R08 の実測後に R09-Cech の着手可否を再計算する。
+
+一覧：済み 90／全体 122（うち追加 87）
+
+### 11-18：R08.1・R08 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R08.1|134|80〜120|160〜240|10,745|7|
+|R08|44|15〜35|30〜70|10,746|3|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,427 から 35,605 行。
+
+一覧：済み 92／全体 122（うち追加 87）

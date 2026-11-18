@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 35427,
+  "verified_lean_lines": 35605,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3728,6 +3728,11 @@
           "name": "relativeCechDiagonal_sections_isInvertible",
           "path": "SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean",
           "line": 35
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalComponentIso.lean",
+          "line": 102,
+          "name": "weightedSections_relativeCechDiagonalHom_component_isIso"
         }
       ],
       "literature": "HTT 6.2.2.6、小さい通常のsiteのČech層条件への特殊化。",
@@ -3741,13 +3746,35 @@
       ],
       "method": "全円柱の成分の既存式をR06に入れ、同じ対角成分のsectionsOf_mapの可逆性を使う。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R08",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_relativeCechDiagonalHom_isIso.lean",
-      "note": "全円柱の成分の既存式をR06に入れ、同じ対角成分のsectionsOf_mapの可逆性を使う。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalComponentIso.lean",
+      "note": "全円柱の成分の既存式をR06に入れ、同じ対角成分のsectionsOf_mapの可逆性を使う。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 134,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 7,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalComponentIso.lean": "4689eb073324773f3fd9dc1ec6df4dd8f9462d034d7c496585706aa1f58f055e"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "85872c1f57dcb9093399d9ff478ba535d0c020a63dbb288740323b2b2d725f87",
+        "receipt": "/tmp/is-stage5/R08.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r08-1-1118/manifest.json"
     },
     {
       "id": "R08",
@@ -3761,6 +3788,11 @@
           "name": "relativeCechDiagonal_sections_isInvertible",
           "path": "SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean",
           "line": 35
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalIso.lean",
+          "line": 32,
+          "name": "weightedSections_relativeCechDiagonalHom_isIso"
         }
       ],
       "literature": "HTT 6.2.2.6、小さい通常のsiteのČech層条件への特殊化。",
@@ -3772,9 +3804,9 @@
         30,
         70
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_relativeCechDiagonalHom_isIso.lean",
-      "note": "",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalIso.lean",
+      "note": " 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -3793,7 +3825,29 @@
       "method": "元の全自然変換について、既存の点ごと可逆性判定を使う。点の比較を集め直さない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R08",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 44,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalIso.lean": "2f0d938a10875271206864a93bcd565d1ff0e05c361563064715802e3c94bb60"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "5b9a1291217b45c6fd2e63f85937e05387b196d032335f8bd2c01c9347b89a43",
+        "receipt": "/tmp/is-stage5/R08/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r08-1118/manifest.json"
     },
     {
       "id": "R09-Cech.1",
