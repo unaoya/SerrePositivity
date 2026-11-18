@@ -1,0 +1,59 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-canonical-prism-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/r04-canonical-prism-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "68339ebf638d8a6092662c14e9fd6007116681af2fd0068c1bac89e0a8479d9c",
+   "bytes": 1493
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "de63f42c50aa31090a5df14081f0f5d65ccfb2101cbbd86e38439c1603e48c72",
+   "bytes": 7340
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "6e8afecb8dd9bcbf23c5e693a5cf8dde10c7201b55e63515486778bcaeca2819",
+   "bytes": 3086
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "17dc3fc735d0a4e52331bbb0c835378af5b122121d5949cf379aee017f3486f7",
+   "bytes": 768
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "2553588549768337bad7e221ab182d2455fbcdad18e105314899cbe2a1fac126",
+   "bytes": 1296
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "553e98008d89636f9f708b3f72dd688ead4fd0a538facde35526782edad65044",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "a38fed854dbff143344154299991ebad8be8ac0e5dd1e4a684d4ad45ef2dc065",
+   "bytes": 116
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "f1fa079eebe66027690f1357f7a77d078b6e9f6d7ea7cc125e119439b0ea8904",
+   "bytes": 491
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 18687
+}

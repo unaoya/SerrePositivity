@@ -1,0 +1,59 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-opposite-verified-1117",
+ "commit": "f65d4fe87",
+ "made_by": "native opposite interval law target build and one-declaration fresh axiom audit",
+ "note": "No existing declaration body, assumption, Lean budget changed",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "f9cb26cd59f1166bb5749a0ff8cb110332d63d70055a0237cb7d5f6e939a5a55",
+   "bytes": 757
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "batch.log",
+   "sha256": "c59aa2ad9c11a2843ff816e61796786ba8579aeb3ea8bb5259325d4a7ec66b3c",
+   "bytes": 4308997
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "6a813fb0ce18dc265fce24d30efb7d4805901eafc0bd416c3666055200ca5389",
+   "bytes": 339
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "6bef549954b60ef09aa675a9ec22934ab4ccdf9ccef38d57f3f964868093e6b8",
+   "bytes": 1341
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "530dbe2e1d6b261551999ed687954bb34c8d0030a6d23e986e566f3aa19d3ee9",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "94cf418b95958bf8ae0de73d3519c086e6b33bf288ab7cf0f29338ecfd2f9d90",
+   "bytes": 133
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "80d2958bab5ca35a3acb13d6667fdae343fff34766a2325bef8381e4446a0b77",
+   "bytes": 9186
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "c210d01affec566b201d9a947e3d49651b260bbfb1a3e38028157dcb1242f254",
+   "bytes": 513
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4325363
+}

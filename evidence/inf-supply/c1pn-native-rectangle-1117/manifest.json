@@ -1,0 +1,79 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-native-rectangle-1117",
+ "commit": "",
+ "made_by": "c1pn-native-rectangle-1117/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "44b2eea1350b8f728089edd5a1ea458e013bd5d1445327a7f1674dbeda9e2ee1",
+   "bytes": 35013
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "78fc43dffe219ea7f03a0e8581efbc13679e8b4fdb0b4785dc73aee31e5d8ba0",
+   "bytes": 4517920
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "dde9172d0f93fb7270d3f827319016c0d7f96175aade4743abf3f32f2d0874a6",
+   "bytes": 4512070
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "b5d6f6be9ad17a88dc90c3faff7ada317ed8705c864bbfbd4774b221521e0932",
+   "bytes": 4536271
+  },
+  {
+   "path": "build-4.log",
+   "sha256": "a7a866e23933b41d074f06eb6089f2a153ed30ca1da5b5733f9fdef9194464cc",
+   "bytes": 4506252
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "61b6e2221a643a232e5e7814cb44628329bfa52596dcb433d2b66910fe0a414e",
+   "bytes": 24453
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "5b63712319a78320e71b4c12d36b6d276ce638a5df96de1774762f1fa1b3cc69",
+   "bytes": 1396
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "a266cbbf43843777730e5977287bc382023747428ce997f32738551e1f5728f7",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "a234399e00a687ca2f1b21e4d45c3b39c55e79eae9a554185ac4ecf1e9281b99",
+   "bytes": 165
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "4fcddd5973c735aea0b9abd412e7a24072e17a3d1c707035c8a8919ad5861b40",
+   "bytes": 14600
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "ee00ade5b86fab5dcdcb030386e4aeba1e4d9d402d15e2cf8a30467128a5954e",
+   "bytes": 14600
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "013319b0be25da853ea1dae5ffea6f1e4d77e7114060f12e0df69960653b4d8c",
+   "bytes": 541
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 18167379
+}

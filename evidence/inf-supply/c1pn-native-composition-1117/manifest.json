@@ -1,0 +1,69 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-native-composition-1117",
+ "commit": "46eb44e10",
+ "made_by": "target build and fresh-environment two-declaration axiom audit",
+ "note": "P3-C1PN proof laws only; parent pending; no Lean budget increase",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "102f2199059f200832c5530bc96c40b9e6362b3a3fab4b1a403858292ba69432",
+   "bytes": 1327
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "batch-result.json",
+   "sha256": "7e2f2c6ada595909aa3931582714b009dd2d5dbcf6f0274f812e57b08a83bfbe",
+   "bytes": 126
+  },
+  {
+   "path": "batch.log",
+   "sha256": "480c38ad6a492ba3ecc3a6b94c945a5875462e56c80c7e7741ce3e64373e9940",
+   "bytes": 4313572
+  },
+  {
+   "path": "batch.py",
+   "sha256": "a3688e0e22284ead6239fe10dc22087c3f1767e80f424dcb5bc30421dca445a3",
+   "bytes": 950
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "df54f1253a5310ccdc8b84fa5231f59a9a2d7c1e67219d4e8569f0adcd8275d4",
+   "bytes": 694
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "aca4b375ba73a9a344c52f8e413226085e45c2e4907050508173d08ffdb81f47",
+   "bytes": 1356
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "553e98008d89636f9f708b3f72dd688ead4fd0a538facde35526782edad65044",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "94a6b21f60b18b3367a12507a23f0144dcac017a029d04e30bf34738830f56c2",
+   "bytes": 143
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "b0ae60ba2fc1f7ce75120848c5ea9739c48fbd6408ddc50b03a413097e4b0429",
+   "bytes": 9186
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "901439a38a29a35024dc6b1eaaa1d249373d1e6ad460a0bd03f97f292bb947bb",
+   "bytes": 519
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4331970
+}

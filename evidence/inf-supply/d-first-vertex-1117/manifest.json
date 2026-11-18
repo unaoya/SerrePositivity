@@ -1,0 +1,89 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/d-first-vertex-1117",
+ "commit": "",
+ "made_by": "d-first-vertex-1117/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "abd20053f1cc1041c1f1b40b94a79e823d6773184cd83421d1aedc7564b2e6e7",
+   "bytes": 11884
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "e2764941e791bd22b216b7aab735e38994b4d8c0e5160027910189c0224930f0",
+   "bytes": 4578515
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "af02838f165d7254d35e51d77b7608f1f435a55137b6a27644d29c1d3bc741d2",
+   "bytes": 4581705
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "866c734facbb83021d0e59052c2166db532851a5ab320e1617b6d8dda9e0c458",
+   "bytes": 4580957
+  },
+  {
+   "path": "build-4.log",
+   "sha256": "718a1ec48a86493225e46213b4d77e5f4ea43f6973ddcc9b6a857ac68ab2e578",
+   "bytes": 4580517
+  },
+  {
+   "path": "build-5.log",
+   "sha256": "4660da7a686f561fc5caa341ec6c73d65d98551788352b39c85fc6765abab5d1",
+   "bytes": 4587389
+  },
+  {
+   "path": "build-6.log",
+   "sha256": "b4de5a4697db8c496d4c4857028c53e7075460af6fd355553cf8fc43df131d06",
+   "bytes": 4591417
+  },
+  {
+   "path": "build-7.log",
+   "sha256": "7271212fafbbdea12ee490865f285d2a186fdefed70178d370340189ba291821",
+   "bytes": 4579691
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "2e0d9e3b373afd08a160063f617aec011f39ff42949a4c38e3d5cd017162735d",
+   "bytes": 7550
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "22e62136aadca206d5a2adbd8fafcb4d8126171921dab00e5b1095f8d1be7abe",
+   "bytes": 2332
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "c0a8f45ec20f8f029a362a54ff4cb9727d4413fc67150f71e693197937837350",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "8c66a2d8bb746309af379c8e7ecf2c913b985934bbd292578c8706321ea32320",
+   "bytes": 647
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "ac7714cf6c0cb75adb036511d36f64a70cf596c45729989f27b8c55ac8ec68e1",
+   "bytes": 16984
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "7f17b88580eacd5b3edfd9272a8a76f1d2fabd2c5c5a2d4817873a1dbeb3bee6",
+   "bytes": 1233
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 32124919
+}

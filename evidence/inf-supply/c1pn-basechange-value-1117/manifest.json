@@ -1,0 +1,64 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-basechange-value-1117",
+ "commit": "4fc50560d",
+ "made_by": "target build, fresh single-declaration axiom audit, signature DAG check",
+ "note": "Base change value normalization for arbitrary parameters; P3-C1PNG still pending",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "ce4f0e7c8fca90fa3e9072e8997930c4131f8d3bbef3473a4d9d807a2eb1f1ae",
+   "bytes": 726
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "3fa12c62d17b04345f636e15fe0dd096dd5f79e9fd377c62a81df4d9cf7eb61f",
+   "bytes": 4364706
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "ab3148fb3d7dd891e597f38656749d6d81da719cb4f8701dd2765e7ef07ade5d",
+   "bytes": 308
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "b73d35c8d90338ef0edcbc7f064a32dcd61e2d2733e3ec681cf91cf644ce588c",
+   "bytes": 1312
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "530dbe2e1d6b261551999ed687954bb34c8d0030a6d23e986e566f3aa19d3ee9",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "2eaa631e3e0c4caf13f0bb8bd545d36e42536b4aab7a59fe22cadd4812816c69",
+   "bytes": 118
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "2bc9103ea4f10d6af46633ffaad7dd1ca603f5aabff4d294dd4c119b0af5b460",
+   "bytes": 12380
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "412ab866d1d098503779050e7be8b21f8664291cb7fb65b4998c12619267d5fa",
+   "bytes": 12380
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "f7ec09f061a0bbb715784c6b8b6354f0e12756ea2f2df8849c3ac664e778330e",
+   "bytes": 498
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4396525
+}

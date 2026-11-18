@@ -1,0 +1,74 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-opposite-naturality-1117",
+ "commit": "0b6fd49f4",
+ "made_by": "target build, fresh thirteen-declaration axiom audit and signature DAG check",
+ "note": "Specified opposite coefficient naturality complete; exact registered signature",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "5cf053c01cfebafb6bc4bc0428e0fbe3b42d91a122bd6d53ec200bf2c8d52863",
+   "bytes": 10041
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "9a3a0043d78cf28a99ad899b66d45db6263b1da8f2ee7b102bf09fd082c78764",
+   "bytes": 4324927
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "f528eacf97a2141cdb61c8a6d467f1120200608d071fd76d58e94dc449514e3b",
+   "bytes": 4327678
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "6d42441f1ddfb832b169c376c455ccbc452cf4c6722ae094a2cfc70dc703deed",
+   "bytes": 4324628
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "c0f0b14f8520d4420bc8deaa8273614c84a1ce7bd5f79682859ad1766a2a4864",
+   "bytes": 6247
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "7779615d0a042c3f2089bc1fb9b6176995beb8d63e12db37b1aad41392b49f32",
+   "bytes": 1339
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "ccb532652a97b21a3cb5428d9ee8a9d18a32595b27fd3dc19412fc327bbfcb2e",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "1165d7a813f6538a80708e9a918bc429fec968f5784b3893d4588328425a339b",
+   "bytes": 130
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "81c4c31372898381283c9a438b9ded8c6397221a7af7cff0465c1984cfd0cec7",
+   "bytes": 12363
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "a0441530d4c652a10ef3fb3018bd6b9e7502d83915b947e5cadb3b97b43d3315",
+   "bytes": 11704
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "e70211a5ffe5085236214dc4986e6599dc8c16c3970b314eb5bb75ea6b17988d",
+   "bytes": 511
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 13023666
+}

@@ -1,0 +1,89 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-transport-normalization-3-1117",
+ "commit": "3ba1ac4c5",
+ "made_by": "target build and fresh axiom audit; complete proposed signature #check; proposal DAG check",
+ "note": "C1PN pending; pause for unlisted P3-C1PNV proof law, not a completion checkpoint",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "26eb0e2a43a04226f43bcfce2e9b6c7d29d1945eb039e4f3cd66316a53d5be43",
+   "bytes": 1808
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "batch-result.json",
+   "sha256": "fc97c7fc4c2f2cc8561fd7b2ac0fea88413ccddebabf445f9c05aaa66841377f",
+   "bytes": 56
+  },
+  {
+   "path": "batch.log",
+   "sha256": "9e08a0cac6e635264efc8ee39bd435110fe42651ec237e857745967b16379355",
+   "bytes": 4398977
+  },
+  {
+   "path": "batch.py",
+   "sha256": "a72e8566b81bf8425fc71556c50c0debb883ae3f88a0854409fdb13d4bec3a29",
+   "bytes": 477
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "90ddb49bcec8c041e2b31a453b4a68251dd25a17b971926eec426348717f1a62",
+   "bytes": 1054
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "e8887c78b5110734ea4d3fa9771c2c494c704fc8bcf4d9c595d0aad28b26fd13",
+   "bytes": 1425
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "1fe171e2e7fe53defab44ca1c0281f80cc8d473e828e740acebdfc73f0f29add",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "a3a5d243f7802b35b6e14421259a2be074029074b68450be2a1c8c5d6a15bfa5",
+   "bytes": 170
+  },
+  {
+   "path": "proposal-dag.json",
+   "sha256": "b2d88fdfb49c3825ed898c3f74b0417df2cf151512504fdb06768fc45ade8d03",
+   "bytes": 596
+  },
+  {
+   "path": "sigma-factorization-proposal.json",
+   "sha256": "1307bcae32973898eda87bfb0f252442d5de425ef067d3b329817e73fb8171e6",
+   "bytes": 1401
+  },
+  {
+   "path": "sigma-factorization-type.lean",
+   "sha256": "770adadb81b19f581656c906b1b925378150beea34f50b3b730538253746270b",
+   "bytes": 2669
+  },
+  {
+   "path": "sigma-factorization-type.log",
+   "sha256": "fe0f05d631e8ea3aac6c4ce7f0744bb9d5e3898656bb80ca18cf809998dc5ea6",
+   "bytes": 720
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "59905ec947b4910e3bfe8dc51d4382ed0fbd6bb88d2cfacf28949d8dcf08f01e",
+   "bytes": 9186
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "fe9c5a6d8386c10d0ed133ea6139c5d0dbcb068eef73d3aa9290fe5b83398c1d",
+   "bytes": 550
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4423186
+}

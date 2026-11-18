@@ -1,0 +1,34 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1p-prefix324-20261117",
+ "commit": "e2fec6929",
+ "made_by": "locked target builds and fresh-environment per-module axiom audit",
+ "note": "C1P remains pending; source fingerprints included in receipts",
+ "files": [
+  {
+   "path": "math6-target-audit-result.json",
+   "sha256": "a822e424e326f9c0ade910337afa2a9bbe1d9148f03bc157640a42be1be24da8",
+   "bytes": 1569
+  },
+  {
+   "path": "metadata5-target-audit-result.json",
+   "sha256": "fd77db8c20fd884df2e58d9c89c89d4ffc007e1f18f0ae27ba2d98de1754bf99",
+   "bytes": 1215
+  },
+  {
+   "path": "oe-import-scan.json",
+   "sha256": "6590dd4f04d47acdfaf99b7a1396d0d85d6565d631e3a75cfe11feea2420e4b5",
+   "bytes": 82
+  },
+  {
+   "path": "prefix324-target-audit-result.json",
+   "sha256": "f819a9daf3534a390752bcc330f2401e9e95423d4468b10cf909d9af00aaa451",
+   "bytes": 541
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "9b05338921ec00272953a34ca3e0a6897cdb191acf419be11c89d421927bc2bd",
+   "bytes": 7891
+  }
+ ],
+ "total_bytes": 11298
+}

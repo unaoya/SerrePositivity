@@ -1,0 +1,69 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/e-global-1117",
+ "commit": "",
+ "made_by": "e-global-1117/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "ac47402c8e1aae2f93442d9df2864f323da0ef3760b6f736b4861b031d4db231",
+   "bytes": 833
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "7e7a6ef3211ff5d2a716eee4096c86ad319964a0ba76c5acecc842a557909105",
+   "bytes": 4584507
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "c025987e85debb9c44b6f7b4dfadb16f7f459697b48c899541eadbd52e244add",
+   "bytes": 4584829
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "bbaa9b1d8d5b3d4f3a383f04223e9890746ff8c55478b06686ac2f1f7f498dbc",
+   "bytes": 4582023
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "f47b92ddf4d115fca4ce927d7f2d344159a1283aba95c9869e9586a705369c0a",
+   "bytes": 415
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "91dfc96387f4a374bf886be23b617345de3a3cbd1464f2333bec47e2f557ec25",
+   "bytes": 1393
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "530dbe2e1d6b261551999ed687954bb34c8d0030a6d23e986e566f3aa19d3ee9",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "e0ab819912b595c4495780a954e86471322f7c7a70656343887a56aae4972959",
+   "bytes": 170
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "bfedaaf242ca4f15dce2babceef0729aac58d82d31065c3b7a8a2e1e6241fc79",
+   "bytes": 16984
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "9cc732a1b86badfc286dc7270810083eb89c71aec529f8f50be45aa8edbb9552",
+   "bytes": 545
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 13775796
+}
