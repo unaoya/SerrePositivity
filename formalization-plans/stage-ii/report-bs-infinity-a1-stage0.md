@@ -12918,23 +12918,23 @@ R14.1 の局所頂点の照合を明示する。`r.IsLocal z` は単位成分の
 
 ### 11-18：一般の Coverage の実装前の照合（R16・R17）
 
-(B=\mathrm{Sieve.generate}(R)\le S)。R16.1 は `Over U` の対象と射をそのまま使う包含、R16.2 はその包含に沿う `sieveCone S` の制限の等式。R16.3 は各 (t\in S) について `Coverage.pullback t.obj.hom` の細分 (T_t) と `coverageRefinement_generate_le` を使い、`hF` の極限錐を一緒に返す。選んだ (T_t) を函手の値とはしない。
+$B=\mathrm{Sieve.generate}(R)\le S$。R16.1 は `Over U` の対象と射をそのまま使う包含、R16.2 はその包含に沿う `sieveCone S` の制限の等式。R16.3 は各 $t\in S$ について `Coverage.pullback t.obj.hom` の細分 $T_t$ と `coverageRefinement_generate_le` を使い、`hF` の極限錐を一緒に返す。選んだ $T_t$ を函手の値とはしない。
 
-R16.4〜6 の指定の射を (p=`pinchedHomMap r c d`) とする。既存の `trivialKanFibration_exists_section` と `qCatEquivalenceOfTrivialKanFibration` に渡せる入力は、次の全パラメータでの持ち上げである。
+R16.4〜6 の指定の射を `p := pinchedHomMap r c d` とする。既存の `trivialKanFibration_exists_section` と `qCatEquivalenceOfTrivialKanFibration` に渡せる入力は、次の全パラメータでの持ち上げである。
 
 ```lean
 ∀ n : ℕ, HasLiftingProperty (SSet.boundary n).ι (pinchedHomMap r c d)
 ```
 
-この入力を証明する経路なら、逆射は一つの同値の `inv` として固定される。R16.5 はその単位のホモトピー代表、R16.6 は同じ右逆の等式から定値ホモトピーを得る。逆射とその二つの法則を独立に選ばない。弱同値を既存の写像空間の判定から得る経路でも、同じ元の (p) に対する一つのホモトピー同値から三署名を取り出す必要がある。
+この入力を証明する経路なら、逆射は一つの同値の `inv` として固定される。R16.5 はその単位のホモトピー代表、R16.6 は同じ右逆の等式から定値ホモトピーを得る。逆射とその二つの法則を独立に選ばない。弱同値を既存の写像空間の判定から得る経路でも、同じ元の `p` に対する一つのホモトピー同値から三署名を取り出す必要がある。
 
-不足しているのは (T_t) の局所極限から、この指定境界の全体に対する解を作る段階。任意の (t) で (B_t=B.\mathrm{pullback}(t.\mathrm{obj.hom})) 上の値が分かれば、包含の右 Kan の局所極限判定に渡す筋はある。ただし `IsLimitCone (nativeRestrictionCone F B_t)` は R16.9 そのもので、R16.4 へ入力すると循環する。元の細分の結論 `Sieve.generate T_t ≤ B_t` は共終性を含まない。Fiorenza–Schreiber–Stasheff, [Theorem A.1 と Lemma A.1](https://arxiv.org/pdf/1011.4735#page=85) の局所化の筋も確認した。補うべき箇所は、表現可能前層の合併に向かう貼り合わせが任意の交叉・重なりを含めてホモトピー押し出しを計算すること。局所細分それぞれにある因子分解から、その貼り合わせを仮定することはできない。本体に同じ全境界の補題は見つかっていない。R16.4〜6 の既存見積もりはこの補題を確立できるまで保留する。
+不足しているのは $T_t$ の局所極限から、この指定境界の全体に対する解を作る段階。任意の $t$ で $B_t=B.\mathrm{pullback}(t.\mathrm{obj.hom})$ 上の値が分かれば、包含の右 Kan の局所極限判定に渡す筋はある。ただし `IsLimitCone (nativeRestrictionCone F B_t)` は R16.9 そのもので、R16.4 へ入力すると循環する。元の細分の結論 `Sieve.generate T_t ≤ B_t` は共終性を含まない。Fiorenza–Schreiber–Stasheff, [Theorem A.1 と Lemma A.1](https://arxiv.org/pdf/1011.4735#page=85) の局所化の筋も確認した。補うべき箇所は、表現可能前層の合併に向かう貼り合わせが任意の交叉・重なりを含めてホモトピー押し出しを計算すること。局所細分それぞれにある因子分解から、その貼り合わせを仮定することはできない。本体に同じ全境界の補題は見つかっていない。R16.4〜6 の既存見積もりはこの補題を確立できるまで保留する。
 
-R16.7 は二つのホモトピーから元の `pinchedHomMap` を同値とし、R16.8 は指定の (B) の極限錐の終性を充満忠実な (r) で反映する。R16.9 は引き戻しの細分の包含に R16.8 を適用する。R16 は係数と同じ宇宙の `AsSmall` site に移してから指定全錐で戻す。R17.1 と R17 は全引き戻しの降下を `isSheaf_toGrothendieck_iff_universallyDescending` に渡す。循環を避けるため、先に独立な R16.1〜3 を検証する。
+R16.7 は二つのホモトピーから元の `pinchedHomMap` を同値とし、R16.8 は指定の $B$ の極限錐の終性を充満忠実な `r` で反映する。R16.9 は引き戻しの細分の包含に R16.8 を適用する。R16 は係数と同じ宇宙の `AsSmall` site に移してから指定全錐で戻す。R17.1 と R17 は全引き戻しの降下を `isSheaf_toGrothendieck_iff_universallyDescending` に渡す。循環を避けるため、先に独立な R16.1〜3 を検証する。
 
 一覧：済み 110／全体 122（うち追加 87）
 
-貼り合わせの不足は三点の鎖 (0<1<2) でも見える。各対象の基本被覆を (0\to i) の一本とし、(B=\langle0\to2\rangle)、(S=\top) とする。(S\setminus B) の二つの射 (1\to2,2\to2) はどちらも (0) からの細分を持つ。しかし、それぞれの表現可能前層を、その細分の生成篩だけを使って (B) に貼った押し出しを対象 (1) で評価すると、二つの点が残る。(S(1)) は一点。従ってこの押し出しを (S) と同一視する段階は、細分の選択だけでは成立しない。この例は Coverage の結論への反例ではなく、指定された貼り合わせの計算に欠けている重なりを示す。
+貼り合わせの不足は三点の鎖 $0<1<2$ でも見える。各対象の基本被覆を $0\to i$ の一本とし、$B=\langle0\to2\rangle$、$S=\top$ とする。$S\setminus B$ の二つの射 $1\to2,2\to2$ はどちらも $0$ からの細分を持つ。しかし、それぞれの表現可能前層を、その細分の生成篩だけを使って $B$ に貼った押し出しを対象 $1$ で評価すると、二つの点が残る。(S$1$) は一点。従ってこの押し出しを $S$ と同一視する段階は、細分の選択だけでは成立しない。この例は Coverage の結論への反例ではなく、指定された貼り合わせの計算に欠けている重なりを示す。
 
 ### 11-18：R16.1・R16.2・R16.3 の対象検証
 
