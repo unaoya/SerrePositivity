@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30507,
+  "verified_lean_lines": 30695,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5646,6 +5646,11 @@
           "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean",
           "line": 238,
           "name": "sectionsConeMap_homMk_unique"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitComparisonRestrictionSquare.lean",
+          "line": 93,
+          "name": "limitVertexIso_restrictionSquare"
         }
       ],
       "literature": "HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。",
@@ -5659,13 +5664,35 @@
       ],
       "method": "固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。",
       "specified_compatibility": "同じ指定構成・頂点・射を保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R06",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "existing construction comparison",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitComparisonRestrictionSquare.lean",
-      "note": "固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。 型の検証は対象ビルドとともに行う。"
+      "note": "固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。 型の検証は対象ビルドとともに行う。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 188,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 11,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitComparisonRestrictionSquare.lean": "2d62fb1a5b4e6c9e2cbc9359df0715c4440c32645ab50bbd72ad764b53024617"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "88e0a4241b9bf573454bb1e64c9a04c4b233b31b6228473385bbbaa6b47d3398",
+        "receipt": "/tmp/is-stage5/R06.3S/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-3s-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,507行。外枠：35,681行。係数：2。
+既計上の累計：30,695行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -104,7 +104,7 @@
 |R15-Unit.0b|verified|39|0〜0|0〜0|
 |R06.3N|verified|93|0〜0|0〜0|
 |R06.3P|verified|118|0〜0|0〜0|
-|R06.3S|pending|—|150〜230|300〜460|
+|R06.3S|verified|188|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -3679,7 +3679,7 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `slice_iso_from_family` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean:156
 
 ### R06.3S — limitVertexIso_restrictionSquare
-親：R06。状態：紙のみ（pending）。依存：R06.3N・R06.3P。
+親：R06。状態：検証済み。依存：R06.3N・R06.3P。
 
 ```lean
 ∀ {A B A' B' S X : SSet.{u}} [Quasicategory A] [Quasicategory B]
