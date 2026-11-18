@@ -3,8 +3,8 @@
   "source_head": "7e9743b30",
   "scope": "11-19：R16・R17 は引き戻しで安定な被覆系と Pretopology に限定。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 37145,
-  "final_cap": 36138,
+  "verified_lean_lines": 37222,
+  "final_cap": 37400,
   "checkpoint_report_lines": 28500,
   "factor": 2,
   "no_main_merge": false,
@@ -8405,10 +8405,19 @@
         30,
         60
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean",
       "note": "指定された T を取り、生成篩の等式で hF の錐を元の実引き戻し篩の錐に移す。",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "actual_lean_lines": 17,
+      "verification_1119": {
+        "path": "SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean",
+        "line": 25,
+        "approved_type": "030347283",
+        "build": "PASS",
+        "axioms": "propext, Classical.choice, Quot.sound",
+        "cite": "HTT 6.2.2.6 (partial := special)"
+      }
     },
     {
       "id": "R17s",
@@ -8438,10 +8447,19 @@
         40,
         70
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean",
       "note": "普遍降下での同値を使う。順方向は恒等射、逆方向は各 f に R16s を適用する。",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "actual_lean_lines": 19,
+      "verification_1119": {
+        "path": "SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean",
+        "line": 42,
+        "approved_type": "030347283",
+        "build": "PASS",
+        "axioms": "propext, Classical.choice, Quot.sound",
+        "cite": "HTT 6.2.2.6 (partial := special)"
+      }
     },
     {
       "id": "R17p",
@@ -8486,10 +8504,19 @@
         50,
         90
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean",
       "note": "引き戻し族 pullbackArrows を T とする。R17s を toCoverage に適用し、生成位相と被覆族を元の Pretopology に戻す。",
-      "additional_mathematics": false
+      "additional_mathematics": false,
+      "actual_lean_lines": 18,
+      "verification_1119": {
+        "path": "SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean",
+        "line": 61,
+        "approved_type": "030347283",
+        "build": "PASS",
+        "axioms": "propext, Classical.choice, Quot.sound",
+        "cite": "HTT 6.2.2.6 (partial := special)"
+      }
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
@@ -9126,11 +9153,7 @@
       "R17.1",
       "R17"
     ],
-    "pending": [
-      "R16s",
-      "R17s",
-      "R17p"
-    ],
+    "pending": [],
     "baseline": 37145,
     "estimated_bare_lines": [
       60,
@@ -9145,6 +9168,23 @@
       37365
     ],
     "proposed_cap": 37600,
-    "approved": false
+    "approved": true,
+    "approved_cap": 37400,
+    "approval_commit": "67465a72e",
+    "verified": [
+      "R16s",
+      "R17s",
+      "R17p"
+    ],
+    "actual_added_lines": 77,
+    "actual_total": 37222
+  },
+  "stable_coverage_completion_1119": {
+    "verified": 116,
+    "total": 116,
+    "out_of_scope": 9,
+    "audited_declarations": 3,
+    "build_jobs": 9265,
+    "shared_lines": 23
   }
 }
