@@ -1,0 +1,31 @@
+{
+  "signature": "R06.3S",
+  "declaration": "limitVertexIso_restrictionSquare",
+  "target_build": {
+    "jobs": 2485,
+    "sha256": "a01faae1ee7ba64bf3873f5b5919e9e3e66f06766d9b6840226a4187537ce3a3",
+    "receipt": "/tmp/is-stage5/R06.3S/build-20.log"
+  },
+  "type_check": {
+    "sha256": "88e0a4241b9bf573454bb1e64c9a04c4b233b31b6228473385bbbaa6b47d3398",
+    "receipt": "/tmp/is-stage5/R06.3S/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "e07b522607cdb646288c56141f63b012d9beb504d487b13aaa9a29ae987dcede",
+    "receipt": "/tmp/is-stage5/R06.3S/target-audit-result.json",
+    "modules": 1,
+    "declarations": 11,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitComparisonRestrictionSquare.lean": "2d62fb1a5b4e6c9e2cbc9359df0715c4440c32645ab50bbd72ad764b53024617"
+    }
+  }
+}
