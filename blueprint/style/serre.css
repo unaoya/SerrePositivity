@@ -99,3 +99,6 @@ pre.docstring { font-family: var(--verso-text-font-family); font-size: 0.84rem; 
 /* 数式 */
 .katex { font-size: 1.06em; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.2rem 0; }
+
+/* 目次：今いる節（serre.js が付ける） */
+nav#toc a.sp-current { border-left-color: var(--sp-accent); background: var(--sp-accent-soft); color: var(--sp-navy); font-weight: 600; }
