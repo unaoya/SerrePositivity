@@ -1,7 +1,7 @@
 # 現在地
 
-- 段：**NB-W4 段2 完了**。
-- 一覧：済み 2／全体 4 段。
+- 段：**NB-W4 段3 完了**。
+- 一覧：済み 3／全体 4 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
 - 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
 
@@ -329,3 +329,7 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段2　本論文の補足
 
 [原稿の段落表](../../../research/paper-coverage/notes/README.md)に「はじめに」・解説 §1–§2・付録 B–E の転記先を記録した。新規 254 ブロックを 4 項目・1 節と補足へ配し、NB-W2 の保留 22 ブロックを解説 §4–§6 の補足へ移した。補足は計 10 ファイル。付録 A は対象外。未確認と明記された議論は断り書きごと残し、省いた実装状況・照合時点は段落表の前に列挙した。[証拠目録](../../../evidence/cited/nb-w4-supplement/manifest.json)。
+
+### 段3　v 降下の依存
+
+[route-edges.csv](../../../research/bs17-coverage/route-edges.csv) に 49 項目を対象とする明示参照 112 辺を記録した。BS17 4.1 を含めて 16 項目に到達し、残る 33 項目は [BS17 README](../../../research/bs17-coverage/README.md#本体の-v-降下の依存nb-w4) に列挙した。経路 B の BM18 4.8 は `bs17VCechInput` を通じて BS17 4.1 を使う。辺の参照行・番号・重複・循環の有無と到達範囲を静的に確認した。[証拠目録](../../../evidence/cited/nb-w4-route/manifest.json)。
