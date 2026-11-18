@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 28540,
+  "verified_lean_lines": 28719,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2738,6 +2738,11 @@
           "name": "limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean",
           "line": 39
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackLimitActualArrow.lean",
+          "line": 117,
+          "name": "leftPullback_limitVertexIso_eq_actualArrow"
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -2751,13 +2756,35 @@
       ],
       "method": "任意の同じ中間極限で元の三因子を計算し、RIと合成則でaの比較へ戻す。中間極限のchoose値は比較の中で消す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R04",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/（新規ファイル、実装時に分割）",
-      "note": "任意の同じ中間極限で元の三因子を計算し、RIと合成則でaの比較へ戻す。中間極限のchoose値は比較の中で消す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackLimitActualArrow.lean",
+      "note": "任意の同じ中間極限で元の三因子を計算し、RIと合成則でaの比較へ戻す。中間極限のchoose値は比較の中で消す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 179,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackLimitActualArrow.lean": "53460346e8089abade43788c7474ecdd82e1cc24e3683dd5e18bf69d297ed254"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "423237f0ef33c13175055daa224c37e9f5e596bce3d6a35d54f5d06724864308",
+        "receipt": "/tmp/is-stage5/R04.4/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r04-4-1118/manifest.json"
     },
     {
       "id": "R04.5",

@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：28,540行。外枠：35,681行。係数：2。
+既計上の累計：28,719行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -51,7 +51,7 @@
 |R04.1|verified|84|0〜0|0〜0|
 |R04.2|verified|235|0〜0|0〜0|
 |R04.3|pending|—|90〜150|180〜300|
-|R04.4|pending|—|80〜130|160〜260|
+|R04.4|verified|179|0〜0|0〜0|
 |R04.5|pending|—|90〜160|180〜320|
 |R04.6|pending|—|40〜80|80〜160|
 |R04|pending|753|25〜45|50〜90|
@@ -2071,7 +2071,7 @@ let q := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram pg
 - `smallUnstraighteningFunctorHom_comp_iso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningFunctorHomComposition.lean:28
 
 ### R04.4 — leftPullback_limitVertexIso_eq_actualArrow
-親：R04。状態：紙のみ（pending）。依存：R04.1・R04.3・R04-RI。
+親：R04。状態：検証済み。依存：R04.1・R04.3・R04-RI。
 
 ```lean
 ∀ {E B K : SSet.{u}} [Quasicategory B] [Quasicategory K]
