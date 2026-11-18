@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：29,459行。外枠：35,681行。係数：2。
+既計上の累計：29,526行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -54,7 +54,7 @@
 |R04.4|verified|179|0〜0|0〜0|
 |R04.5|verified|381|0〜0|0〜0|
 |R04.6|verified|86|0〜0|0〜0|
-|R04|pending|753|25〜45|50〜90|
+|R04|verified|67|0〜0|0〜0|
 |R05.1|verified|99|0〜0|0〜0|
 |R05|pending|—|60〜100|120〜200|
 |R06.1|pending|—|80〜130|160〜260|
@@ -2196,7 +2196,7 @@ let d := (restrictJoinCone t.cone a).cast he
 - `limitVertexIso_hom_eq_coneEdge` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsLimitNaturality.lean:27
 
 ### R04 — rightKanIndexTransport_valueHom
-親：R04。状態：紙のみ（pending）。依存：R04.1・R04.2・R04.3・R04.4・R04.6。
+親：R04。状態：検証済み。依存：R04.1・R04.2・R04.3・R04.4・R04.6。
 
 ```lean
 ∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]

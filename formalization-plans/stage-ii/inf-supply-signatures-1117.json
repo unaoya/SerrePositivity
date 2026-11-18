@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 29459,
+  "verified_lean_lines": 29526,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2969,6 +2969,11 @@
           "name": "limitVertexIsoOfOverEquivalence_span_middle",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitSpan.lean",
           "line": 38
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexTransportValue.lean",
+          "line": 36,
+          "name": "rightKanIndexTransport_valueHom"
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -2980,9 +2985,9 @@
         50,
         90
       ],
-      "status": "pending",
+      "status": "verified",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexTransportValue.lean",
-      "note": "200行超。指定e・元の余単位の類・同じ錐を保持。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 内部で選んだ中間二極限は既存のOverEquivalenceLimitCompositionで消去する。型は報告に記録し、各200行未満の証明分割として二本の新規補助へ置く。choose値・元の主張・仮定・main本文は変えない。 復元・指定底変換の照合はP3-EとfunctorIso_whisker_exchangeを同じeに適用して進める。各200行未満の法則の型・既存参照は報告へ記録。 三本の補助218行が同時の対象ビルド・6宣言の小監査を通過。R04本体は未完で、署名を済みにはしない。残りの見込みは安全側に元の補正上端800を保持し、既計上218行は今後二度数えない。 相対逆射による任意の錐の移送56行を追加検証。累計部分274行、元の頂点と相対単位を保持する。R04本体は未完。 指定底ホモトピーの引き戻しprism・cosliceの全錐prism・元の右Kan局所形状への接続の三本199行を対象検証。aの同値性・元の分類像の一致・輸送終点の照合は未完。 指定同型の類を保つ関手空間での持ち上げと引き戻しへの接続140行を検証。射aの同値性自体はまだ未完。 R04-PRは別署名として完成（254行）。pointed同型から元の指定辺のprismを回収する70行をR04の短い証明分割に計上。原典の指定νと射aを保持する。 R04-NPも別署名として完成（124行）。同じaに対して全空間側の指定像とR04-PRの比較を同時に保持する接続70行を部分計上。元の復元spanへの接続と余単位の比較は引き続き未完。",
+      "note": "200行超。指定e・元の余単位の類・同じ錐を保持。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 内部で選んだ中間二極限は既存のOverEquivalenceLimitCompositionで消去する。型は報告に記録し、各200行未満の証明分割として二本の新規補助へ置く。choose値・元の主張・仮定・main本文は変えない。 復元・指定底変換の照合はP3-EとfunctorIso_whisker_exchangeを同じeに適用して進める。各200行未満の法則の型・既存参照は報告へ記録。 三本の補助218行が同時の対象ビルド・6宣言の小監査を通過。R04本体は未完で、署名を済みにはしない。残りの見込みは安全側に元の補正上端800を保持し、既計上218行は今後二度数えない。 相対逆射による任意の錐の移送56行を追加検証。累計部分274行、元の頂点と相対単位を保持する。R04本体は未完。 指定底ホモトピーの引き戻しprism・cosliceの全錐prism・元の右Kan局所形状への接続の三本199行を対象検証。aの同値性・元の分類像の一致・輸送終点の照合は未完。 指定同型の類を保つ関手空間での持ち上げと引き戻しへの接続140行を検証。射aの同値性自体はまだ未完。 R04-PRは別署名として完成（254行）。pointed同型から元の指定辺のprismを回収する70行をR04の短い証明分割に計上。原典の指定νと射aを保持する。 R04-NPも別署名として完成（124行）。同じaに対して全空間側の指定像とR04-PRの比較を同時に保持する接続70行を部分計上。元の復元spanへの接続と余単位の比較は引き続き未完。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "original_bare_lines": [
         250,
@@ -3212,7 +3217,29 @@
       "method": "NPの同じa・L・相対比較を一度だけ取り出し、R04.1〜6を同じデータへ適用する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R04",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 67,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanIndexTransportValue.lean": "cab8365b985d2ca62f9697914868c6b8153b605f90147734cb672b40946a76fd"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "9665d4691967686c8f648d4a46c426c77cfe3c92b28aa694f1d24bb5f8bc1b3e",
+        "receipt": "/tmp/is-stage5/R04/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r04-1118/manifest.json"
     },
     {
       "id": "R05.1",
