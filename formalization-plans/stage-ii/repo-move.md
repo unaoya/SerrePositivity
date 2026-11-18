@@ -9,8 +9,7 @@
 
 ## 1. 移すもの
 
-- `~/Documents/LEAN_Projects.nosync/SerrePositivity`（main）と作業木（その時点の `SerrePositivity-*`）、`SerrePositivity-blueprint-site`。
-- **未決**：`LEAN_Projects.nosync/` には他のプロジェクト（AG、BSDConverse、arxiv_formalization など約 20）もある。フォルダごと `~/LEAN_Projects/` に移すか、SerrePositivity だけ移すか（ユーザーに確認）。
+- **フォルダごと移す（ユーザー決定 11-18、案 A）**：`~/Documents/LEAN_Projects.nosync/` の中身（SerrePositivity と作業木、`SerrePositivity-blueprint-site`、他のプロジェクト約 20：AG、BSDConverse、arxiv_formalization など）を全部 `~/LEAN_Projects/` へ。他のプロジェクトの git の作業木・エディタ・チャットも場所が変わるので、移す前に開いている作業がないことをユーザーに確かめる。他のプロジェクトの Claude Code のメモリ（`~/.claude/projects/` に LEAN-Projects の名前のものが 10）も、同じく新しいパスの名前へ写す。
 - `/private/tmp` の作業木（⑦ の移動前の環境など）、`~/.cache/lake`、`~/serre-evidence` は領域の外なので動かさない。
 
 ## 2. 手順
