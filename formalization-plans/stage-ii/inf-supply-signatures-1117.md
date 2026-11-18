@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,062行。外枠：35,681行。係数：2。
+既計上の累計：30,273行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -102,8 +102,8 @@
 |R15a.3|pending|—|40〜70|80〜140|
 |R15-Unit.0a|verified|71|0〜0|0〜0|
 |R15-Unit.0b|verified|39|0〜0|0〜0|
-|R06.3N|pending|—|45〜90|90〜180|
-|R06.3P|pending|—|85〜130|170〜260|
+|R06.3N|verified|93|0〜0|0〜0|
+|R06.3P|verified|118|0〜0|0〜0|
 |R06.3S|pending|—|150〜230|300〜460|
 
 <!-- current-signature-state:end -->
@@ -3629,7 +3629,7 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 
 
 ### R06.3N — sliceRestrictAlong_comp
-親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
 
 ```lean
 ∀ {A B X : SSet.{u}} {p : A ⟶ X} {q : B ⟶ X} {D : SSet.{u}} {r : D ⟶ X}
@@ -3650,7 +3650,7 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `restrictSectionsFunctor_comp` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsRestriction.lean:80
 
 ### R06.3P — restrictJoinCone_relativeIso_projection
-親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
 
 ```lean
 ∀ {A B K X : SSet.{u}} [Quasicategory X]

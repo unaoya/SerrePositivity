@@ -1,0 +1,31 @@
+{
+  "signature": "R06.3P",
+  "declaration": "restrictJoinCone_relativeIso_projection",
+  "target_build": {
+    "jobs": 2481,
+    "sha256": "15e526807030b7c07f8bdf72148b6899dc663d9648ae9c2825bdc63a6f82a324",
+    "receipt": "/tmp/is-stage5/R06.3P/build-20.log"
+  },
+  "type_check": {
+    "sha256": "f952e4a9b67e620e7274d8b55027c4e2f9ba8b23bdac14c8eb4759d091e40bf6",
+    "receipt": "/tmp/is-stage5/R06.3P/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "0b860b7d079f39f3dd335be45d6809723be440d3ddf8aa78f90da972e04f2729",
+    "receipt": "/tmp/is-stage5/R06.3P/target-audit-result.json",
+    "modules": 1,
+    "declarations": 3,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeIsoConeProjection.lean": "b7e46876e717ef36aa451f1e54dfddc11e7023bb00ed82f3c397f4cde0b8f6a8"
+    }
+  }
+}

@@ -3,7 +3,7 @@
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 96,
-  "verified_count": 54,
+  "verified_count": 56,
   "additional_count": 61,
   "deferred_count": 12,
   "edge_count": 157,
@@ -107,22 +107,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    1530,
-    2630
+    1400,
+    2410
   ],
   "active_corrected_lines": [
-    3060,
-    5260
+    2800,
+    4820
   ],
   "deferred_corrected_lines": [
     1060,
     1920
   ],
   "active_completion_corrected_lines": [
-    33122,
-    35322
+    33073,
+    35093
   ],
-  "ledger_sha256": "2d2d39f2f45efcc46a11dca89950e5e2cc30f88b713ad17e536e2d9e44a65992",
+  "ledger_sha256": "b53a18170fd6b32648d4793f24f100fce9b926ec4c139a7d046d92e833c92549",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -273,6 +273,8 @@
     "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransComponent.lean": "6f50298263daf618b8803732a17b8fb1a12da1155ec6d43e25152e5530f92618",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SliceProjectionLaws.lean": "9531a1d30b3fb14966e396b8096325c39b6f3c165610e8d321d1ee390956d5ca",
     "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsRestriction.lean": "382881cd77eee86efb3b031ef0e576f68c5316dcd574c9bcc84ed3bf8ad4d948",
+    "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/NormalizedSliceRestriction.lean": "c7d2f56747270e27049987e61ae4c7ba4f28d5f379ba8c949fe9178d58e38873",
+    "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeIsoConeProjection.lean": "b7e46876e717ef36aa451f1e54dfddc11e7023bb00ed82f3c397f4cde0b8f6a8",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean": "3fee1ea3d507e70dc0700530ded886f9883d426450d523095710b75063059eb6"
   }
 }

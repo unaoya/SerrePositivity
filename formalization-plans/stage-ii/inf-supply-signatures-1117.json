@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30062,
+  "verified_lean_lines": 30273,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5458,6 +5458,11 @@
           "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsRestriction.lean",
           "line": 80,
           "name": "restrictSectionsFunctor_comp"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/NormalizedSliceRestriction.lean",
+          "line": 45,
+          "name": "sliceRestrictAlong_comp"
         }
       ],
       "literature": "HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。",
@@ -5471,13 +5476,35 @@
       ],
       "method": "同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。",
       "specified_compatibility": "同じ指定構成・頂点・射を保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R06",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "existing construction comparison",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/NormalizedSliceRestriction.lean",
-      "note": "同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。 型の検証は対象ビルドとともに行う。"
+      "note": "同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。 型の検証は対象ビルドとともに行う。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 93,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 8,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/NormalizedSliceRestriction.lean": "c7d2f56747270e27049987e61ae4c7ba4f28d5f379ba8c949fe9178d58e38873"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "65793afc0b129b41f111f0c245cf98dd68d6537db018b11e61791d2f042a692a",
+        "receipt": "/tmp/is-stage5/R06.3N/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-3n-1118/manifest.json"
     },
     {
       "id": "R06.3P",
@@ -5494,6 +5521,11 @@
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean",
           "line": 156,
           "name": "slice_iso_from_family"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeIsoConeProjection.lean",
+          "line": 58,
+          "name": "restrictJoinCone_relativeIso_projection"
         }
       ],
       "literature": "HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。",
@@ -5507,13 +5539,35 @@
       ],
       "method": "同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。",
       "specified_compatibility": "同じ指定構成・頂点・射を保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R06",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "existing construction comparison",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeIsoConeProjection.lean",
-      "note": "同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。 型の検証は対象ビルドとともに行う。"
+      "note": "同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。 型の検証は対象ビルドとともに行う。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 118,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeIsoConeProjection.lean": "b7e46876e717ef36aa451f1e54dfddc11e7023bb00ed82f3c397f4cde0b8f6a8"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "f952e4a9b67e620e7274d8b55027c4e2f9ba8b23bdac14c8eb4759d091e40bf6",
+        "receipt": "/tmp/is-stage5/R06.3P/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-3p-1118/manifest.json"
     },
     {
       "id": "R06.3S",
