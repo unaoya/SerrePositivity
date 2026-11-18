@@ -35,35 +35,9 @@ import SerreBlueprint.BS.Section15
 import SerreBlueprint.BS.Section16
 import SerreBlueprint.BS.Section17
 import SerreBlueprint.BS.Section18
-import SerreBlueprint.BS17.Section1
-import SerreBlueprint.BS17.Section2
-import SerreBlueprint.BS17.Section3
-import SerreBlueprint.BS17.Section4
-import SerreBlueprint.BS17.Section5
-import SerreBlueprint.BS17.Section6
-import SerreBlueprint.BS17.Section7
-import SerreBlueprint.BS17.Section8
-import SerreBlueprint.BS17.Section9
-import SerreBlueprint.BS17.Section10
-import SerreBlueprint.BS17.Section11
-import SerreBlueprint.BS17.Section12
-import SerreBlueprint.BM18.Section1
-import SerreBlueprint.BM18.Section2
-import SerreBlueprint.BM18.Section3
-import SerreBlueprint.BM18.Section4
-import SerreBlueprint.BM18.Section5
-import SerreBlueprint.BM18.Section6
-import SerreBlueprint.BM18.Section7
-import SerreBlueprint.Rydh.Section1
-import SerreBlueprint.Rydh.Section2
-import SerreBlueprint.Rydh.Section3
-import SerreBlueprint.Rydh.Section4
-import SerreBlueprint.Rydh.Section5
-import SerreBlueprint.Rydh.Section6
-import SerreBlueprint.Rydh.Section7
-import SerreBlueprint.Rydh.Section8
-import SerreBlueprint.Rydh.SectionA
-import SerreBlueprint.Rydh.SectionB
+import SerreBlueprint.VDescent.BS17
+import SerreBlueprint.VDescent.BM18
+import SerreBlueprint.VDescent.Rydh
 import SerreBlueprint.Kerodon.Section1_1
 import SerreBlueprint.Kerodon.Section1_2
 import SerreBlueprint.Kerodon.Section1_3
@@ -141,9 +115,7 @@ Lean の宣言に結ぶのは、原典どおりと判定したもの（本体・
 - 本論文：75 項目（本体 37、一部 8、未証明の入力に依存 13、なし 17）
 - CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）：147 項目（本体 4、一部 20、未証明の入力に依存 6、なし 117）
 - BS（Bhatt–Scholze, Prisms and prismatic cohomology、著者版）：211 項目（本体 25、一部 46、未証明の入力に依存 6、なし 134）
-- BS17（Bhatt–Scholze, Projectivity of the Witt vector affine Grassmannian, arXiv 1507.06490v3）：171 項目（本体 2、一部 9、なし 160）
-- BM18（Bhatt–Mathew, The arc-topology, arXiv 1807.04725v4）：171 項目（本体 8、Mathlib 1、一部 14、なし 148）
-- Rydh（Submersions and effective descent of étale morphisms, arXiv 0710.2488v3）：111 項目（Mathlib 2、一部 13、なし 96）
+- v 降下（BS17 Theorem 4.1 (i) への経路：BS17・BM18・Rydh の必要な項目）：49 項目（本体 10、Mathlib 3、一部 36）
 - Kerodon 第 1 章 The Language of ∞-Categories：180 項目（本体 20、Mathlib 83、両方 9、一部 18、なし 50）
 - Kerodon 第 2 章 Examples of ∞-Categories：213 項目（本体 19、Mathlib 40、一部 33、なし 121）
 - Kerodon 第 3 章 Kan Complexes：339 項目（本体 48、Mathlib 17、一部 42、なし 232）
@@ -208,55 +180,15 @@ tag := "part-bs"
 {include 1 SerreBlueprint.BS.Section17}
 {include 1 SerreBlueprint.BS.Section18}
 
-# BS17（Bhatt–Scholze, Projectivity of the Witt vector affine Grassmannian, arXiv 1507.06490v3）
+# v 降下（BS17 Theorem 4.1 (i) への経路：BS17・BM18・Rydh の必要な項目）
 %%%
 number := false
-tag := "part-bs17"
+tag := "part-vdescent"
 %%%
 
-{include 1 SerreBlueprint.BS17.Section1}
-{include 1 SerreBlueprint.BS17.Section2}
-{include 1 SerreBlueprint.BS17.Section3}
-{include 1 SerreBlueprint.BS17.Section4}
-{include 1 SerreBlueprint.BS17.Section5}
-{include 1 SerreBlueprint.BS17.Section6}
-{include 1 SerreBlueprint.BS17.Section7}
-{include 1 SerreBlueprint.BS17.Section8}
-{include 1 SerreBlueprint.BS17.Section9}
-{include 1 SerreBlueprint.BS17.Section10}
-{include 1 SerreBlueprint.BS17.Section11}
-{include 1 SerreBlueprint.BS17.Section12}
-
-# BM18（Bhatt–Mathew, The arc-topology, arXiv 1807.04725v4）
-%%%
-number := false
-tag := "part-bm18"
-%%%
-
-{include 1 SerreBlueprint.BM18.Section1}
-{include 1 SerreBlueprint.BM18.Section2}
-{include 1 SerreBlueprint.BM18.Section3}
-{include 1 SerreBlueprint.BM18.Section4}
-{include 1 SerreBlueprint.BM18.Section5}
-{include 1 SerreBlueprint.BM18.Section6}
-{include 1 SerreBlueprint.BM18.Section7}
-
-# Rydh（Submersions and effective descent of étale morphisms, arXiv 0710.2488v3）
-%%%
-number := false
-tag := "part-rydh"
-%%%
-
-{include 1 SerreBlueprint.Rydh.Section1}
-{include 1 SerreBlueprint.Rydh.Section2}
-{include 1 SerreBlueprint.Rydh.Section3}
-{include 1 SerreBlueprint.Rydh.Section4}
-{include 1 SerreBlueprint.Rydh.Section5}
-{include 1 SerreBlueprint.Rydh.Section6}
-{include 1 SerreBlueprint.Rydh.Section7}
-{include 1 SerreBlueprint.Rydh.Section8}
-{include 1 SerreBlueprint.Rydh.SectionA}
-{include 1 SerreBlueprint.Rydh.SectionB}
+{include 1 SerreBlueprint.VDescent.BS17}
+{include 1 SerreBlueprint.VDescent.BM18}
+{include 1 SerreBlueprint.VDescent.Rydh}
 
 # Kerodon 第 1 章 The Language of ∞-Categories
 %%%

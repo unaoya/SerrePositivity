@@ -15,7 +15,7 @@ def review_counts(pattern, col):
     return c
 p = json.load(open(f'{B}/Paper/paper-generated.json'))
 parts.append(('part-paper', '本論文', [f'Paper.{m}' for m in p['modules']], line(review_counts('research/paper-coverage/review/ch*.csv', 'status'))))
-for key in ['clmst', 'bs', 'bs17', 'bm18', 'rydh']:
+for key in ['clmst', 'bs', 'vdescent']:
     d = [x for x in glob.glob(f'{B}/*/generated.json') if json.load(open(x))['key'] == key]
     if not d: continue
     g = json.load(open(d[0]))
