@@ -144,6 +144,22 @@ Kerodon Definition 4.7.3.1（[Tag 02H7](https://kerodon.net/tag/02H7)）。対�
 
 仮定：∞ 圏 X と頂点 x（Kerodon と一致）。結論：終対象は全ての y から x への右 pinched Hom が可縮 Kan、始対象は x から全ての y への intervalMappingSpace が可縮 Kan と同値（一致）。
 
+*定理 8.2 （始対象の写像空間による特徴づけ）*
+
+quasicategory $`C` の頂点 $`x` について、次は同値である。
+
+- $`x` は始対象である（定義 8.1）。
+
+- すべての頂点 $`y` について $`\mathrm{Hom}^L_C(x,y)`（定義 7.1）は可縮である（定義 5.4）。
+
+*定理 8.4 （終対象の写像空間による特徴づけ）*
+
+quasicategory $`C` の頂点 $`y` について、次は同値である。
+
+- $`y` は終対象である（定義 8.3）。
+
+- すべての頂点 $`x` について $`\mathrm{Hom}^R_C(x,y)`（定義 7.1）は可縮である（定義 5.4）。
+
 :::
 
 :::proposition "kerodon_4_7_3_6"
@@ -189,6 +205,14 @@ Kerodon Proposition 4.7.3.11（[Tag 06R1](https://kerodon.net/tag/06R1)）。対
 Kerodon Corollary 4.7.3.12（[Tag 06R2](https://kerodon.net/tag/06R2)）。対応表の状態：本体にある。
 
 仮定：∞ 圏 X と頂点 x（Lean が弱い：任意の単体集合で成立）。結論：始対象⇔coslice の射影が自明 Kan ファイブレーション、終対象⇔slice の射影が自明 Kan ファイブレーション（一致）。
+
+*定義 8.1 （始対象）*
+
+quasicategory $`C` の頂点 $`x` が始対象であるとは、コスライスの射影 $`C_{x/}\to C`（定義 4.7）が trivial Kan fibration（定義 5.3）であることをいう。
+
+*定義 8.3 （終対象）*
+
+quasicategory $`C` の頂点 $`y` が終対象であるとは、スライスの射影 $`C_{/y}\to C`（定義 4.7）が trivial Kan fibration（定義 5.3）であることをいう。
 
 :::
 
@@ -509,7 +533,7 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：n�
 
 :::
 
-# 4.7.7 \$n\$-Categories
+# 4.7.7 n-Categories
 
 %%%
 number := false

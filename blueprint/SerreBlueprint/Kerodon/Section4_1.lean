@@ -34,6 +34,11 @@ Kerodon Definition 4.1.1.1（[Tag 01BA](https://kerodon.net/tag/01BA)）。対�
 
 仮定：単体集合の任意の射 q:X→S（Kerodon と一致）。結論：0\<i\<n の内ホーン包含すべてに対する右持ち上げ性を InnerFibration q とする（一致）。
 
+*定義 5.3 （fibration）*
+
+- 名前　／　包含
+- inner fibration　／　$`\Lambda^n_i\subseteq\Delta^n`（$`0<i<n`）
+
 :::
 
 :::proposition "kerodon_4_1_1_10" (uses := "kerodon_1_1_0_6, kerodon_1_3_4_1, kerodon_1_4_0_1")

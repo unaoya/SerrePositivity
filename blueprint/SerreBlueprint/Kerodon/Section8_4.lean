@@ -222,7 +222,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：前層の�
 
 :::
 
-# 8.4.4 Example: The Universal Property of \$\\operatorname\{\\mathcal\{S\}\}\$
+# 8.4.4 Example: The Universal Property of S
 
 %%%
 number := false

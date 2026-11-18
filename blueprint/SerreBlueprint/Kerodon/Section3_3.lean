@@ -21,7 +21,7 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
-#doc (Manual) "3.3 The $\operatorname{Ex}^{\infty }$ Functor" =>
+#doc (Manual) "3.3 The Ex^∞ Functor" =>
 %%%
 number := false
 tag := "kerodon-3-3"
@@ -272,7 +272,7 @@ B6：現本体・固定Mathlibを再検索。subdivisionLastVertexMap は λ\_X 
 
 :::
 
-# 3.3.5 Comparison of \$X\$ with \$\\operatorname\{Ex\}(X)\$
+# 3.3.5 Comparison of X with Ex(X)
 
 %%%
 number := false
@@ -350,7 +350,7 @@ B6：現本体・固定Mathlibを再検索。orderSubtypeNerve\_anodyne は部�
 
 :::
 
-# 3.3.6 The \$\\operatorname\{Ex\}\^\{\\infty \}\$ Functor
+# 3.3.6 The Ex\^∞ Functor
 
 %%%
 number := false

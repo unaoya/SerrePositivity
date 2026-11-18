@@ -13,10 +13,12 @@
  ],
  "stats": {
   "linked": 136,
+  "with-note": 11,
   "nolink-partial": 130,
   "with-uses": 205,
   "nolink-none": 318,
   "nolink-mathlib": 3,
+  "with-note-intro": 5,
   "nolink-own": 1
  }
 }

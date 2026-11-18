@@ -388,10 +388,22 @@ tag := "kerodon-4-6-5"
 
 Kerodon [Tag 01KW](https://kerodon.net/tag/01KW)
 
+*定義 13.2 （写像空間への作用）*
+
+単体的集合の射 $`f\colon C\to D` と頂点 $`x,y` について、$`\mathrm{Hom}^R_C(x,y)` の $`n` 単体 $`\sigma\colon\Delta^n\star\Delta^0\to C` を $`f\circ\sigma` に送ることで、射
+
+$$`f_*\colon\mathrm{Hom}^R_C(x,y)\to\mathrm{Hom}^R_D(f(x),f(y))`
+
+を定める（$`\mathrm{Hom}^R` は定義 7.1）。
+
 :::definition "kerodon_4_6_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeft")
 Kerodon Construction 4.6.5.1（[Tag 01KX](https://kerodon.net/tag/01KX)）。対応表の状態：本体にある。
 
 仮定：単体集合 X と頂点 x,y（Kerodon と一致）。結論：右 pinched は X\_\{/y\} の x 上、左 pinched は X\_\{x/\} の y 上のファイバーに当たる模型（一致）。
+
+*定義 7.1 （写像空間 $`\mathrm{Hom}^L`、$`\mathrm{Hom}^R`）*
+
+単体的集合 $`C` の頂点 $`x,y` について、コスライスの射影 $`C_{x/}\to C` の $`y` 上のファイバーを $`\mathrm{Hom}^L_C(x,y)`、スライスの射影 $`C_{/y}\to C` の $`x` 上のファイバーを $`\mathrm{Hom}^R_C(x,y)` とおく（スライス・コスライスとその射影は定義 4.5・定義 4.7、ファイバーは定義 6.2）。
 
 :::
 
@@ -399,6 +411,10 @@ Kerodon Construction 4.6.5.1（[Tag 01KX](https://kerodon.net/tag/01KX)）。対
 Kerodon Proposition 4.6.5.5（[Tag 01L0](https://kerodon.net/tag/01L0)）。対応表の状態：本体にある。
 
 仮定：Quasicategory X と頂点 x,y（Kerodon と一致）。結論：pinchedHom x y と pinchedHomLeft x y はともに KanComplex（一致）。
+
+*定理 7.2 （写像空間は Kan 複体）*
+
+$`C` が quasicategory なら、頂点 $`x,y` について $`\mathrm{Hom}^L_C(x,y)` と $`\mathrm{Hom}^R_C(x,y)`（定義 7.1）は Kan 複体である。
 
 :::
 

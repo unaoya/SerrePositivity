@@ -13,6 +13,8 @@
   "linked": 56,
   "nolink-none": 318,
   "with-uses": 186,
-  "nolink-partial": 145
+  "nolink-partial": 145,
+  "with-note-intro": 1,
+  "with-note": 2
  }
 }

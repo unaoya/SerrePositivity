@@ -11,7 +11,7 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
-#doc (Manual) "6.1 Adjunctions in $2$-Categories" =>
+#doc (Manual) "6.1 Adjunctions in 2-Categories" =>
 %%%
 number := false
 tag := "kerodon-6-1"

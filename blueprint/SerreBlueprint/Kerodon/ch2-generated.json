@@ -12,6 +12,8 @@
   "nolink-partial": 33,
   "nolink-mathlib": 5,
   "linked": 54,
-  "with-uses": 23
+  "with-uses": 23,
+  "with-note": 5,
+  "with-note-intro": 1
  }
 }

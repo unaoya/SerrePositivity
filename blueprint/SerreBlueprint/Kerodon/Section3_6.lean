@@ -171,7 +171,7 @@ B6：現本体・固定Mathlibを再検索。被覆写像のホモトピー持�
 
 :::
 
-# 3.6.4 The Unit Map \$u: X \\rightarrow \\operatorname\{Sing\}\_\{\\bullet \}(\|X\|)\$
+# 3.6.4 The Unit Map u: X → Sing\_• (\|X\|)
 
 %%%
 number := false

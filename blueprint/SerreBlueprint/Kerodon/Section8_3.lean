@@ -37,6 +37,10 @@ tag := "kerodon-8-3-1"
 
 Kerodon [Tag 03M2](https://kerodon.net/tag/03M2)
 
+*定理 15.2 （Yoneda の補題）*
+
+$`C` を小さい quasicategory とする。
+
 :::proposition "kerodon_8_3_1_1" (lean := "CategoryTheory.coyonedaEquiv, CategoryTheory.yonedaEquiv")
 Kerodon Proposition 8.3.1.1（[Tag 03M3](https://kerodon.net/tag/03M3)）。対応表の状態：Mathlib にある。
 
@@ -57,6 +61,10 @@ SpaceInfinityの定義は原文の指定F,G,X,ηを入力に取らず、評価�
 Kerodon Proposition 8.3.1.3（[Tag 03M5](https://kerodon.net/tag/03M5)）。対応表の状態：一部。
 
 原文の圏を小準圏の反対圏、Fを標準representablePresheafInfinity、ηを恒等射の頂点に指定すると、yonedaPresheafEvaluation\_isQCatEquivalenceは同じ標準Yoneda評価の同値を直接返す。任意の(F,η)へは広げない。
+
+*定理 15.2 （Yoneda の補題）*
+
+- 前層 $`F`（定義 14.2）と頂点 $`y` について、$`\mathrm{Hom}^R_{\mathcal P(C)}(h_y,F)` と $`F(y)` はホモトピー同値である。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaPresheafEvaluation_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representablePresheafInfinity`
 
@@ -176,10 +184,22 @@ tag := "kerodon-8-3-3"
 
 Kerodon [Tag 03MR](https://kerodon.net/tag/03MR)
 
+*注意 （大きさ）*
+
+$`\mathcal S` は小さくない（第 3 章の注意）ので、$`\mathcal P(C)` も小さくない単体的集合である。前層 $`F` の頂点 $`x` での値 $`F(x)` は $`\mathcal S` の頂点、つまり小さい Kan 複体である。
+
 :::definition "kerodon_8_3_3_1" (uses := "kerodon_1_4_0_1")
 Kerodon Definition 8.3.3.1（[Tag 046B](https://kerodon.net/tag/046B)）。対応表の状態：一部。
 
 twistedArrowHomInfinityは原文のTw couplingの標準left straighteningを実際に構成し、一つのHom-functorの構成成分を直接与える。任意のHの輸送表現性という条件の全定義はこの宣言だけに含まない。
+
+*定義 12.5 （関手 $`\mathrm{Map}_C`）*
+
+$`C` を小さい quasicategory とする。定理 12.4 と上の注意により、射影 $`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C` は小さいファイバーをもつ左 fibration なので、その straightening（定義 11.3）
+
+$$`\mathrm{Map}_C=\mathrm{St}\bigl(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\bigr)\colon C^{\mathrm{op}}\times C\to\mathcal S`
+
+を $`C` の写像空間の関手と定める。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity`
 
@@ -226,6 +246,14 @@ Kerodon Definition 8.3.3.9（[Tag 03NF](https://kerodon.net/tag/03NF)）。対�
 
 小さいCではyonedaInfinityMapとcoyonedaInfinityMapは同じ標準Hom関手をcurryした共変・反変のYoneda関手を直接構成する。任意の指定hがYonedaであるという述語の全定義は含まない。
 
+*定義 14.4 （Yoneda 埋め込み）*
+
+小さい quasicategory $`C` について、$`\mathrm{Map}_C` と成分の入れ替え $`C\times C^{\mathrm{op}}\cong C^{\mathrm{op}}\times C` の合成 $`C\times C^{\mathrm{op}}\to\mathcal S` に、定理 2.4 の全単射で対応する射を
+
+$$`j\colon C\to\mathcal P(C)`
+
+と書き、Yoneda 埋め込みという。頂点 $`y` について $`j(y)=h_y`（定義 14.3）である。
+
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coyonedaInfinityMap`
 
 :::
@@ -243,6 +271,10 @@ SpaceInfinityの宇宙指定は原文の特定κで切ったS\_\<κではなく�
 Kerodon Theorem 8.3.3.13（[Tag 03NJ](https://kerodon.net/tag/03NJ)）。対応表の状態：一部。
 
 Cを宇宙で小さく標準Yonedaに指定すれば、yonedaInfinityMap\_isFullyFaithfulとcoyonedaInfinityMap\_isFullyFaithfulは原文の両方の充満忠実性を直接返す。本質的像の全特徴付けと任意に選んだYoneda関手は含まない。
+
+*定理 15.2 （Yoneda の補題）*
+
+- Yoneda 埋め込み $`j\colon C\to\mathcal P(C)`（定義 14.4）は充満忠実（定義 13.3）である。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap_isFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coyonedaInfinityMap_isFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coyonedaInfinityMap`
 

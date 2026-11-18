@@ -92,6 +92,14 @@ Kerodon Construction 1.4.2.2（[Tag 003N](https://kerodon.net/tag/003N)）。対
 
 仮定：任意の単体集合 X（Kerodon と一致）。結論：opFunctor.obj X は単体圏の順序反転から誘導した関手で X を前合成した反対単体集合（一致）。
 
+*定義 12.1 （反対の単体的集合）*
+
+$`\theta\colon[m]\to[n]` について $`\theta^{\mathrm{rev}}\colon[m]\to[n]` を $`\theta^{\mathrm{rev}}(i)=n-\theta(m-i)` で定める。単体的集合 $`X` の反対 $`X^{\mathrm{op}}` を
+
+$$`X^{\mathrm{op}}([n])=X([n]),\qquad X^{\mathrm{op}}(\theta)=X(\theta^{\mathrm{rev}})`
+
+で定める。単体的集合の射 $`f\colon X\to Y` について、同じ成分の写像で $`f^{\mathrm{op}}\colon X^{\mathrm{op}}\to Y^{\mathrm{op}}` を定める。単体的集合の射 $`X^{\mathrm{op}}\to Y` と射 $`X\to Y^{\mathrm{op}}` は、同じ成分の写像として一対一に対応する。
+
 :::
 
 :::proposition "kerodon_1_4_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.quasicategory_op, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.hornReverseIso")

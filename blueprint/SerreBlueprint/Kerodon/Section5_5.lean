@@ -15,7 +15,7 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
-#doc (Manual) "5.5 The ∞-Category $\operatorname{\mathcal{QC}}$" =>
+#doc (Manual) "5.5 The ∞-Category QC" =>
 %%%
 number := false
 tag := "kerodon-5-5"

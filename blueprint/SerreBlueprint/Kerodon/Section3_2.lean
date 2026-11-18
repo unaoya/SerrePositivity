@@ -165,7 +165,7 @@ B6：定義された群の台は独自の境界定値単体の商で、原文の
 
 :::
 
-# 3.2.3 The Group Structure on \$\\pi \_\{n\}(X,x)\$
+# 3.2.3 The Group Structure on π \_n(X,x)
 
 %%%
 number := false

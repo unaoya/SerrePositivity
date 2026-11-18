@@ -88,7 +88,7 @@ B6：現本体・固定Mathlibを再検索。双圏の擬関手による Duskin 
 
 :::
 
-# 2.3.3 Thin \$2\$-Simplices of a Duskin Nerve
+# 2.3.3 Thin 2-Simplices of a Duskin Nerve
 
 %%%
 number := false

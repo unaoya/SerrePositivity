@@ -41,10 +41,26 @@ Kerodon の 1.5 節（[Tag 0055](https://kerodon.net/tag/0055)）の項目と、
 
 単体的集合の射 $`q\colon E\to B` が、次の表の包含のすべてに対して右持ち上げ性質（定義 5.2）をもつとき、それぞれ次のように呼ぶ（horn は定義 1.7）。
 
+*定義 6.1 （ファイバー積）*
+
+単体的集合の射 $`f\colon X\to Z`、$`g\colon Y\to Z` について、単体的集合 $`X\times_ZY` を
+
+$$`(X\times_ZY)([m])=\{(x,y)\in X([m])\times Y([m])\mid f(x)=g(y)\}`
+
+で定め、$`\theta` は成分ごとに作用させる。これは積 $`X\times Y`（定義 2.1）の部分単体的集合（定義 1.4）である。射影 $`X\times_ZY\to X`、$`X\times_ZY\to Y` を成分への射影で定める。
+
+*注意 （引き戻し）*
+
+$`X\times_ZY` と二つの射影は、単体的集合の圏における $`f` と $`g` の引き戻しである。単体的集合の極限は段ごとに集合の極限として計算できる。
+
 :::definition "kerodon_1_5_0_1" (lean := "SSet, SSet.Quasicategory")
 Kerodon Definition 1.5.0.1（[Tag 0056](https://kerodon.net/tag/0056)）。対応表の状態：Mathlib にある。
 
 仮定：二つの準圏 C,D（Kerodon と一致）。結論：SSet での射 C ⟶ D が原文の関手。Quasicategory が両端の条件で、射には追加データがない（一致）。
+
+*定義 11.1 （関手）*
+
+単体的集合 $`B` と quasicategory $`D` について、$`B` から $`D` への関手とは単体的集合の射 $`B\to D` のことである。関手の全体は $`\mathrm{Fun}(B,D)`（定義 2.2）の頂点の全体である。
 
 :::
 
@@ -176,6 +192,10 @@ Kerodon Theorem 1.5.3.7（[Tag 0066](https://kerodon.net/tag/0066)）。対応�
 
 仮定：任意の単体集合 A と準圏 X（Kerodon と一致）。結論：instQuasicategoryObjIhom は (ihom A).obj X が準圏であることを与える（一致）。
 
+*定理 14.1 （関手の ∞ 圏）*
+
+$`K` を単体的集合、$`D` を quasicategory とすると、$`\mathrm{Fun}(K,D)`（定義 2.2）は quasicategory である。
+
 宣言：`SSet.instQuasicategoryObjIhom`
 
 :::
@@ -184,6 +204,10 @@ Kerodon Theorem 1.5.3.7（[Tag 0066](https://kerodon.net/tag/0066)）。対応�
 Kerodon Definition 1.5.3.8（[Tag 0067](https://kerodon.net/tag/0067)）。対応表の状態：Mathlib にある。
 
 仮定：準圏 C,D（Lean が弱い：ihom の準圏性には標的 D の準圏性だけでよい）。結論：準圏 (ihom C).obj D が Fun(C,D)。instQuasicategoryObjIhom がその準圏構造を与える（一致）。
+
+*定義 14.2 （前層の ∞ 圏）*
+
+小さい quasicategory $`C` について、$`\mathcal P(C)=\mathrm{Fun}(C^{\mathrm{op}},\mathcal S)` とおく（反対は定義 12.1、$`\mathcal S` は定義 3.7）。定理 14.1 により $`\mathcal P(C)` は quasicategory である。その頂点 $`F\colon C^{\mathrm{op}}\to\mathcal S` を前層という。
 
 宣言：`SSet.instQuasicategoryObjIhom`
 

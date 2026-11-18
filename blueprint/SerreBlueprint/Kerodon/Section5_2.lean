@@ -327,7 +327,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対 join
 
 :::
 
-# 5.2.4 Fibrations over the \$1\$-Simplex
+# 5.2.4 Fibrations over the 1-Simplex
 
 %%%
 number := false

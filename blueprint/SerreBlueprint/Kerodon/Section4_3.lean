@@ -143,10 +143,30 @@ tag := "kerodon-4-3-3"
 
 Kerodon [Tag 016K](https://kerodon.net/tag/016K)
 
+*定義 4.1 （有限全順序集合での値 $`X^+`）*
+
+有限な全順序集合 $`I`（空でもよい）について、$`I` が空でなければ $`|I|=n+1` として唯一の順序同型 $`r_I\colon I\xrightarrow{\cong}[n]` をとる。単体的集合 $`X` について
+
+$$`X^+(I)=\begin{cases}X([n])&(I\ne\varnothing)\\ \{\ast\}&(I=\varnothing)\end{cases}`
+
+とおく。順序を保つ写像 $`\alpha\colon I\to J` について、$`I\ne\varnothing` なら $`X^+(\alpha)=X(r_J\circ\alpha\circ r_I^{-1})\colon X^+(J)\to X^+(I)`、$`I=\varnothing` なら一点集合への唯一の写像とする。
+
+*注意 （段ごとの公式）*
+
+$`[n]` の始切片は $`\varnothing`、$`\{0,\dots,p\}`（$`0\le p<n`）、$`[n]` のいずれかなので、定義 4.3 は段ごとには
+
+$$`(K\star L)([n])=L([n])\ \sqcup\bigsqcup_{p+1+q=n}K([p])\times L([q])\ \sqcup\ K([n])`
+
+となる（Kerodon Remark 4.3.3.19）。$`I=\varnothing` の成分が $`L([n])`、$`I=\{0,\dots,p\}` の成分が $`K([p])\times L([q])`、$`I=[n]` の成分が $`K([n])` である。この表示で $`\theta` の作用を書くと、$`\theta` の像が $`I` と $`[n]\setminus I` のどちらに入るかで場合分けが要る。
+
 :::definition "kerodon_4_3_3_1" (lean := "Topology.IsLowerSet")
 Kerodon Notation 4.3.3.1（[Tag 016L](https://kerodon.net/tag/016L)）。対応表の状態：Mathlib にある。
 
 仮定：線形順序の部分集合 I（Lean が弱い：IsLowerSet に必要なのは LE だけ）。結論：j∈I かつ i≤j なら i∈I となる下方閉性（一致）。
+
+*定義 4.2 （始切片）*
+
+全順序集合 $`J` の部分集合 $`I` が始切片であるとは、$`i\in I`、$`j\le i` なら $`j\in I` となることをいい、$`I\sqsubseteq J` と書く（空集合と $`J` 自身も始切片である）。順序を保つ写像 $`\theta\colon J'\to J` と始切片 $`I\sqsubseteq J` について、$`\theta^{-1}(I)\sqsubseteq J'` である。
 
 :::
 
@@ -179,6 +199,18 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 Kerodon Construction 4.3.3.13（[Tag 016Y](https://kerodon.net/tag/016Y)）。対応表の状態：一部。
 
 join と joinMap はcanonicalな増大の初期区間の分割式で原文のjoinの単体と射を直接構成する。Lin上の関手圏との可換図式を束ねる同型は含まない。
+
+*定義 4.3 （単体的集合の join）*
+
+単体的集合 $`K,L` の join $`K\star L` を
+
+$$`(K\star L)([n])=\bigsqcup_{I\sqsubseteq[n]}K^+(I)\times L^+([n]\setminus I)`
+
+で定める（$`K^+`、$`L^+` は定義 4.1、始切片は定義 4.2）。$`\theta\colon[m]\to[n]` は、$`I` の成分の元 $`(\sigma,\tau)` を、$`I'=\theta^{-1}(I)` の成分の元
+
+$$`\bigl(K^+(\theta|_{I'})(\sigma),\ L^+(\theta|_{[m]\setminus I'})(\tau)\bigr)`
+
+に送る。ここで $`\theta|_{I'}\colon I'\to I`、$`\theta|_{[m]\setminus I'}\colon[m]\setminus I'\to[n]\setminus I` は $`\theta` の制限である。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso`
 
@@ -267,10 +299,26 @@ tag := "kerodon-4-3-5"
 
 Kerodon [Tag 017V](https://kerodon.net/tag/017V)
 
+*定義 4.6 （恒等頂点）*
+
+単体的集合 $`B` の頂点 $`b\colon\Delta^0\to B` について、合成 $`\Delta^0\star\Delta^0\to\Delta^0\xrightarrow{b}B` は $`\Delta^0` 上で $`b` となるので、コスライス $`B_{b/}` の頂点を定める。これを $`\mathrm{id}_b` と書く。スライス $`B_{/b}` の頂点 $`\mathrm{id}_b` も同様に定める（定義 4.5）。
+
+*注意 （大きさ）*
+
+定義 4.5 は $`X`、$`K` の大きさを問わず、$`X_{/p}([n])` は集合 $`\mathrm{Hom}_{\mathrm{sSet}}(\Delta^n\star K,X)` の部分集合である。$`X` と $`K` が小さければ $`X_{/p}`、$`X_{p/}` も小さい。定義 4.1 では有限全順序集合の全体を一つの圏としては使わず、個々の $`I` と $`\alpha` に対して値を定めているだけである。
+
 :::definition "kerodon_4_3_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection")
 Kerodon Construction 4.3.5.1（[Tag 017W](https://kerodon.net/tag/017W)）。対応表の状態：本体にある。
 
 仮定：単体集合間の任意の f:K→X（Kerodon と一致）。結論：sliceOver f の n 単体は f を延長する Δⁿ⋆K→X。構造写像は左因子に沿った前合成（一致）。
+
+*定義 4.5 （スライスとコスライス）*
+
+単体的集合 $`X,K` と射 $`p\colon K\to X` について、単体的集合 $`X_{/p}` と $`X_{p/}` を
+
+$$`X_{/p}([n])=\{\sigma\colon\Delta^n\star K\to X\mid\sigma\circ\iota_K=p\},\qquad X_{p/}([n])=\{\sigma\colon K\star\Delta^n\to X\mid\sigma\circ\iota_K=p\}`
+
+で定め、$`\theta\colon[m]\to[n]` はそれぞれ $`\theta_*\star\mathrm{id}_K`、$`\mathrm{id}_K\star\theta_*` の前合成で作用させる（$`\theta_*` は定義 2.2、$`\star` と $`\iota_K` は定義 4.3・定義 4.4）。$`X_{/p}` をスライス、$`X_{p/}` をコスライスという。
 
 :::
 
@@ -340,6 +388,10 @@ Kerodon [Tag 018E](https://kerodon.net/tag/018E)
 Kerodon Proposition 4.3.6.1（[Tag 018F](https://kerodon.net/tag/018F)）。対応表の状態：本体にある。
 
 仮定：Quasicategory X と任意の f:K→X（Kerodon と一致）。結論：slice の射影は RightFibration、coslice の射影は LeftFibration。したがって両始域は ∞ 圏（一致）。
+
+*定理 4.8 （quasicategory のスライス）*
+
+$`X` を quasicategory（定義 1.8）、$`K` を単体的集合、$`p\colon K\to X` を射とする。このとき $`X_{/p}` と $`X_{p/}` は quasicategory である（Kerodon Proposition 4.3.6.1）。
 
 :::
 

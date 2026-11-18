@@ -18,6 +18,14 @@ tag := "kerodon-5-6"
 
 Kerodon の 5.6 節（[Tag 027M](https://kerodon.net/tag/027M)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
+*定義 11.2 （小さいファイバー）*
+
+単体的集合の射 $`q\colon E\to B` が小さいファイバーをもつとは、$`B` のすべての頂点 $`b` について、ファイバー $`E_b`（定義 6.2）が小さい（冒頭の規約）ことをいう。
+
+*注意 （直観と大きさ）*
+
+$`\mathrm{St}(q)` は頂点 $`b` をファイバー $`E_b` に、辺 $`b\to b'` を左 fibration の持ち上げで得られる $`E_b\to E_{b'}` に送る関手である。$`\mathcal S` の対象は小さい Kan 複体なので、値が $`\mathcal S` に入るためにファイバーが小さいことを仮定する。$`B` は quasicategory でなくてよく、大きさも問わない。
+
 :::theorem "kerodon_5_6_0_2" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_6_5_12, kerodon_5_6_5_15")
 Kerodon Theorem 5.6.0.2（[Tag 028K](https://kerodon.net/tag/028K)）。対応表の状態：なし。
 
@@ -31,6 +39,14 @@ Kerodon Theorem 5.6.0.2（[Tag 028K](https://kerodon.net/tag/028K)）。対応�
 Kerodon Corollary 5.6.0.6（[Tag 028T](https://kerodon.net/tag/028T)）。対応表の状態：一部。
 
 底Cを準圏に強めればleftStraighteningInfinityMap\_isQCatEquivalenceはleft fibrationと空間値図式の同じ分類の∞圏同値を直接与える。従ってcoreの頂点の同型類の全単射を与える。非準圏の底の単射側は含まない。
+
+*定義 11.3 （straightening）*
+
+単体的集合 $`B` 上の左 fibration（定義 5.3）$`q\colon E\to B` で小さいファイバーをもつもの（定義 11.2）に、関手（定義 11.1）
+
+$$`\mathrm{St}(q)\colon B\to\mathcal S`
+
+を対応させる操作を straightening という（$`\mathcal S` は定義 3.7）。構成は後の章で与える。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isEssentiallySurjective`
 
@@ -91,7 +107,7 @@ MathlibのCoGrothendieck忘却のIsFibered instanceは原文後半の反変版�
 
 :::
 
-# 5.6.2 Elements of \$\\operatorname\{\\mathcal\{QC\}\}\$-Valued Functors
+# 5.6.2 Elements of QC-Valued Functors
 
 %%%
 number := false
@@ -372,6 +388,14 @@ IsCorepresentableSmallSpaceFunctorは共変Hom関手とのFunctorIsoの存在。
 Kerodon Variant 5.6.6.2（[Tag 038B](https://kerodon.net/tag/038B)）。対応表の状態：なし。
 
 representablePresheafInfinityはHom前層の構成。原文の指定頂点が表現を与える述語とその存在の定義は直接与えない。
+
+*定義 14.3 （表現可能前層）*
+
+小さい quasicategory $`C` の頂点 $`y` について、前層 $`h_y` を合成
+
+$$`h_y\colon C^{\mathrm{op}}\cong C^{\mathrm{op}}\times\Delta^0\xrightarrow{\ \mathrm{id}\times y\ }C^{\mathrm{op}}\times C\xrightarrow{\ \mathrm{Map}_C\ }\mathcal S`
+
+で定め、$`y` が表現する前層という（$`\mathrm{Map}_C` は定義 12.5）。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representablePresheafInfinity`
 

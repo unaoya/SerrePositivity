@@ -35,6 +35,10 @@ Kerodon Definition 2.4.1.1（[Tag 00JR](https://kerodon.net/tag/00JR)）。対�
 
 仮定：対象型 C（Kerodon と一致。Lean では Hom の 0 単体から得る普通圏の構造も入力し、豊穣化との整合を課す）。結論：各組の単体集合 sHom、積からの合成と単位、結合・単位条件を備える（一致）。
 
+*定義 2.7 （単体的圏）*
+
+単体的圏とは、対象の集合と、対象 $`x,y` ごとの単体的集合 $`\mathcal C(x,y)`、単体的集合の射としての合成 $`\mathcal C(y,z)\times\mathcal C(x,y)\to\mathcal C(x,z)`、恒等射 $`\mathrm{id}_x\in\mathcal C(x,x)([0])` の組で、合成が結合的かつ単位的であるものをいう。
+
 :::
 
 :::definition "kerodon_2_4_1_3" (uses := "kerodon_1_1_0_6")
@@ -69,6 +73,10 @@ Kerodon Definition 2.4.1.11（[Tag 00K1](https://kerodon.net/tag/00K1)）。対�
 
 仮定：単体集合で豊穣化した C, D（Kerodon と一致。EnrichedFunctor は任意の基礎モノイダル圏 V でも使える）。結論：対象の写像と各 Hom の単体写像が豊穣合成と恒等を保存する（一致）。
 
+*定義 3.1 （単体的関手）*
+
+単体的圏 $`\mathcal C,\mathcal D` の間の単体的関手 $`F\colon\mathcal C\to\mathcal D` とは、対象の対応 $`x\mapsto F(x)` と、対象 $`x,y` ごとの単体的集合の射 $`F_{x,y}\colon\mathcal C(x,y)\to\mathcal D(F(x),F(y))` の組で、合成と恒等射を保つものをいう。単体的圏と単体的関手のなす圏を $`\mathrm{sCat}` と書く。
+
 :::
 
 :::proposition "kerodon_2_4_1_13"
@@ -87,10 +95,30 @@ tag := "kerodon-2-4-3"
 
 Kerodon [Tag 00KM](https://kerodon.net/tag/00KM)
 
+*定理 3.5 （関手性）*
+
+単体的関手 $`F\colon\mathcal C\to\mathcal D` に後合成 $`\sigma\mapsto F\circ\sigma` を対応させることで、$`N^{hc}` は関手 $`\mathrm{sCat}\to\mathrm{sSet}` になる。
+
+*注意 （大きさ）*
+
+定理 3.5 の $`\mathrm{sCat}` と $`\mathrm{sSet}` は、大きさを制限しない、すべての単体的圏（対象が集合をなすもの）とすべての単体的集合の圏である。どちらも対象の全体は集合にならず、各 $`\mathrm{Hom}` は集合だが小さいとは限らない。$`N^{hc}` を単体的集合として定めるのに必要なのは $`\mathcal C` の対象が集合をなすことで、$`\mathcal C` が小さいことは要らない。
+
 :::definition "kerodon_2_4_3_1" (uses := "kerodon_2_3_5_1")
 Kerodon Notation 2.4.3.1（[Tag 00KN](https://kerodon.net/tag/00KN)）。対応表の状態：なし。
 
 B6：原文は逆包含順の有限鎖の nerve。SimplicialThickening と pathInteriorEquiv は包含順の別模型で、次数・合成を保つ原文との比較がないため、その模型の同型だけでは partial にしない。
+
+*定義 3.3 （$`\mathfrak C[\Delta^n]`）*
+
+$`n\ge0` について、単体的圏 $`\mathfrak C[\Delta^n]` を次で定める。
+
+- 対象：$`0,1,\dots,n`。
+
+- 射の単体的集合：$`i\le j` なら $`\mathfrak C\Delta^n=N(P_{ij})`。ここで $`P_{ij}` は $`\{i,j\}\subseteq S\subseteq\{i,i+1,\dots,j\}` をみたす部分集合 $`S` の全体に包含で順序を入れた半順序集合。$`i>j` なら空。
+
+- 合成：和集合 $`P_{jk}\times P_{ij}\to P_{ik}`、$`(T,S)\mapsto T\cup S` が誘導する射 $`N(P_{jk})\times N(P_{ij})\to N(P_{ik})`。恒等射は $`\{i\}\in P_{ii}`。
+
+$`\theta\colon[m]\to[n]` について、単体的関手 $`\mathfrak C[\theta]\colon\mathfrak C[\Delta^m]\to\mathfrak C[\Delta^n]` を、対象を $`i\mapsto\theta(i)`、射を $`S\mapsto\theta(S)` で定める。これにより関手 $`\mathfrak C\colon\Delta\to\mathrm{sCat}` が得られる。
 
 宣言：`CategoryTheory.SimplicialThickening`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.path_hom_iff`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathInteriorEquiv`
 
@@ -100,6 +128,14 @@ B6：原文は逆包含順の有限鎖の nerve。SimplicialThickening と pathI
 Kerodon Definition 2.4.3.5（[Tag 00KS](https://kerodon.net/tag/00KS)）。対応表の状態：なし。
 
 B6：SimplicialNerve の定義域は包含順の thickening。原文の逆包含 Path による関手集合との比較が単体構造まで必要で、似た nerve の定義だけでは原文の構成を直接得ない。
+
+*定義 3.4 （homotopy coherent nerve）*
+
+単体的圏 $`\mathcal C` について、単体的集合 $`N^{hc}(\mathcal C)` を
+
+$$`N^{hc}(\mathcal C)([n])=\mathrm{Hom}_{\mathrm{sCat}}(\mathfrak C[\Delta^n],\mathcal C),\qquad N^{hc}(\mathcal C)(\theta)(\sigma)=\sigma\circ\mathfrak C[\theta]`
+
+で定める。
 
 宣言：`CategoryTheory.SimplicialNerve`
 
@@ -213,6 +249,10 @@ Kerodon [Tag 00LH](https://kerodon.net/tag/00LH)
 Kerodon Theorem 2.4.5.1（[Tag 00LJ](https://kerodon.net/tag/00LJ)）。対応表の状態：本体にある。
 
 仮定：単体圏 C で、任意の X,Y の sHom X Y が KanComplex（Kerodon と一致）。結論：SimplicialNerve C が Quasicategory、すなわちすべての内角を充填する（一致）。
+
+*定理 3.6 （局所 Kan なら quasicategory）*
+
+単体的圏 $`\mathcal C` のすべての射の単体的集合 $`\mathcal C(x,y)` が Kan 複体であるとき（$`\mathcal C` は局所 Kan であるという）、$`N^{hc}(\mathcal C)` は quasicategory である。
 
 :::
 

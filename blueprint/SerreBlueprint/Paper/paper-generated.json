@@ -9,8 +9,10 @@
  ],
  "stats": {
   "nolink-interface": 13,
+  "with-note": 44,
   "nolink-partial": 8,
   "nolink-none": 17,
+  "with-note-intro": 5,
   "linked": 37,
   "ext-nolink-table": 18,
   "ext-linked": 4,

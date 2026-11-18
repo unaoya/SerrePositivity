@@ -175,6 +175,10 @@ Kerodon Definition 4.8.3.1（[Tag 01JH](https://kerodon.net/tag/01JH)）。対�
 
 仮定：∞ 圏間の関手 F（Lean が弱い：述語は任意の単体集合の射）。結論：任意の頂点対に対し右 pinched の写像空間の射が単体的ホモトピー同値。区間模型との比較を通した条件（一致）。
 
+*定義 13.3 （充満忠実）*
+
+quasicategory の間の関手 $`f\colon C\to D` が充満忠実であるとは、すべての頂点 $`x,y` について $`f_*\colon\mathrm{Hom}^R_C(x,y)\to\mathrm{Hom}^R_D(f(x),f(y))`（定義 13.2）がホモトピー同値（定義 13.1）であることをいう（両辺は定理 7.2 により Kan 複体である）。
+
 :::
 
 :::proposition "kerodon_4_8_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.reflects_isInvertibleEdge, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsFullyFaithful.reflects_isTerminalVertex")
@@ -476,7 +480,7 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：n 
 
 :::
 
-# 4.8.6 Digression: \$n\$-Categorical Fibrations
+# 4.8.6 Digression: n-Categorical Fibrations
 
 %%%
 number := false

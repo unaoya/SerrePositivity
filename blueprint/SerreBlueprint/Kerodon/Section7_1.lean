@@ -195,6 +195,14 @@ tag := "kerodon-7-1-3"
 
 Kerodon [Tag 02JA](https://kerodon.net/tag/02JA)
 
+*定義 9.1 （極限と余極限）*
+
+$`C` を quasicategory、$`K` を単体的集合、$`p\colon K\to C` を射とする。定理 4.8 によりスライス $`C_{/p}` とコスライス $`C_{p/}`（定義 4.5）は quasicategory である。
+
+*注意 （錐）*
+
+$`C_{/p}` の頂点は、$`K` 上で $`p` となる射 $`\Delta^0\star K\to C`、つまり $`p` 上の錐である。極限はその中の終対象、余極限は $`C_{p/}` の頂点（$`K\star\Delta^0\to C`、余錐）の中の始対象である。
+
 :::proposition "kerodon_7_1_3_1" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_2_8_6, kerodon_5_2_8_7, kerodon_5_6_6_21")
 Kerodon Proposition 7.1.3.1（[Tag 02W7](https://kerodon.net/tag/02W7)）。対応表の状態：なし。
 
@@ -227,12 +235,20 @@ Kerodon Definition 7.1.3.4（[Tag 02JM](https://kerodon.net/tag/02JM)）。対�
 
 仮定：K 上の p と左 join からの延長 c。述語の形成自体は Quasicategory C を要求しない（Lean が弱い）。結論：IsLimitCone c は sliceOver p の頂点 c が IsTerminalVertex（原文と一致）。
 
+*定義 9.1 （極限と余極限）*
+
+- $`C_{/p}` の頂点で終対象（定義 8.3）であるものを $`p` の極限という。
+
 :::
 
 :::definition "kerodon_7_1_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone")
 Kerodon Variant 7.1.3.5（[Tag 02JN](https://kerodon.net/tag/02JN)）。対応表の状態：本体にある。
 
 仮定：K 上の p と右 join からの延長 d。述語の形成自体は Quasicategory C を要求しない（Lean が弱い）。結論：IsColimitCone d は sliceUnder p の頂点 d が IsInitialVertex（原文と一致）。
+
+*定義 9.1 （極限と余極限）*
+
+- $`C_{p/}` の頂点で始対象（定義 8.1）であるものを $`p` の余極限という。
 
 :::
 

@@ -302,9 +302,9 @@ Kerodon Construction 1.2.4.1（[Tag 000U](https://kerodon.net/tag/000U)）。対
 
 $`n\ge1`、$`0\le i\le n` とする。$`\Delta^n` の部分単体的集合 $`\Lambda^n_i` を、次のどちらかの書き方で定める。
 
-1. \*\*部分単体的集合として直接\*\*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`。
+1. *部分単体的集合として直接*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`。
 
-2. \*\*面の和として\*\*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`。
+2. *面の和として*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`。
 
 両者は一致する。$`\theta([m])\cup\{i\}\ne[n]` は、$`\theta([m])` に含まれない $`j\ne i` があること、つまりある $`j\ne i` について $`\theta\in\partial_j\Delta^n([m])` であることと同じだからである。
 

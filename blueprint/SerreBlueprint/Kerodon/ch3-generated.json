@@ -10,9 +10,11 @@
  ],
  "stats": {
   "linked": 60,
+  "with-note": 5,
   "nolink-mathlib": 5,
   "nolink-none": 232,
   "with-uses": 107,
-  "nolink-partial": 42
+  "nolink-partial": 42,
+  "with-note-intro": 1
  }
 }

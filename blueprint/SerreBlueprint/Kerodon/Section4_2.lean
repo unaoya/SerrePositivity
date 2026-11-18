@@ -30,10 +30,34 @@ tag := "kerodon-4-2-1"
 
 Kerodon [Tag 01GT](https://kerodon.net/tag/01GT)
 
+*定義 6.2 （頂点上のファイバー）*
+
+単体的集合 $`B` の頂点とは $`B([0])` の元のことであり、米田の補題により射 $`\Delta^0\to B` と同一視する。単体的集合の射 $`q\colon E\to B` と頂点 $`b\colon\Delta^0\to B` について、ファイバー積（定義 6.1）
+
+$$`E_b=E\times_B\Delta^0`
+
+を $`q` の $`b` 上のファイバーという。
+
+*注意 （ファイバーの具体形）*
+
+$`\Delta^0` は各段が一点なので、$`c_m\colon[m]\to[0]` を唯一の射として、$`E_b` は $`E` の部分単体的集合
+
+$$`E_b([m])=\{e\in E([m])\mid q(e)=B(c_m)(b)\}`
+
+と同一視できる。
+
 :::definition "kerodon_4_2_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibrations")
 Kerodon Definition 4.2.1.1（[Tag 00T9](https://kerodon.net/tag/00T9)）。対応表の状態：本体にある。
 
 仮定：単体集合間の任意の射 f（Kerodon と一致）。結論：LeftFibration は 0≤i\<n、RightFibration は 0\<i≤n のホーンに対する右持ち上げ性（一致）。
+
+*定義 5.3 （fibration）*
+
+- 名前　／　包含
+- 左 fibration　／　$`\Lambda^n_i\subseteq\Delta^n`（$`0\le i<n`）
+
+- 名前　／　包含
+- 右 fibration　／　$`\Lambda^n_i\subseteq\Delta^n`（$`0<i\le n`）
 
 :::
 
@@ -223,6 +247,26 @@ tag := "kerodon-4-2-5"
 %%%
 
 Kerodon [Tag 0152](https://kerodon.net/tag/0152)
+
+*定義 10.2 （恒等頂点での評価）*
+
+単体的集合の射 $`q\colon E\to B` と頂点 $`b` について、$`B_{b/}` を射影 $`B_{b/}\to B`（定義 4.7）で $`B` 上の単体的集合とみる。射
+
+$$`\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{b/},E)\to E_b`
+
+を、$`n` 単体 $`f\colon B_{b/}\times\Delta^n\to E` を $`f\circ(\mathrm{id}_b\times\mathrm{id}_{\Delta^n})\colon\Delta^0\times\Delta^n\cong\Delta^n\to E` に送ることで定める（$`\mathrm{id}_b` は定義 4.6、$`E_b` は定義 6.2）。$`q\circ f` は $`B_{b/}\to B` を経由するので、像は $`b` の上にある。スライス $`B_{/b}` についても同様に $`\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{/b},E)\to E_b` を定める。
+
+*定理 10.3 （fibration 版 Yoneda）*
+
+$`B` を単体的集合、$`b` をその頂点、$`q\colon E\to B` を射とする。
+
+- $`q` が左 fibration（定義 5.3）なら、$`\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{b/},E)\to E_b`（定義 10.2）は trivial Kan fibration である。
+
+- $`q` が右 fibration なら、$`\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{/b},E)\to E_b` は trivial Kan fibration である。
+
+*注意 （大きさ）*
+
+$`\mathrm{Fun}_{/S}(K,X)` は $`K`、$`X`、$`S` の大きさを問わず単体的集合であり、$`K` と $`X` が小さければ小さい。定理 10.3 で $`B` は quasicategory でなくてよい。
 
 :::proposition "kerodon_4_2_5_1"
 Kerodon Proposition 4.2.5.1（[Tag 00TP](https://kerodon.net/tag/00TP)）。対応表の状態：本体にある。

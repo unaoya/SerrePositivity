@@ -10,10 +10,19 @@ ch = sys.argv[1]
 K = 'research/kerodon-coverage'
 OUT = 'blueprint/SerreBlueprint/Kerodon'
 # 見出し
+def plain_title(s):
+    """見出しの TeX を平文に（Verso の題は文字列なので、TeX の \\ は書けない）。"""
+    def tex(m):
+        x = m.group(1)
+        x = x.replace('\\infty', '∞').replace('\\rightarrow', '→').replace('\\bullet', '•').replace('\\pi', 'π')
+        x = re.sub(r'\\(?:operatorname|mathcal|mathrm|mathbf|mathbb)\s*', '', x)
+        x = re.sub(r'\\[A-Za-z]+', '', x)
+        return re.sub(r'\s+', ' ', x.replace('{', '').replace('}', '').replace('_ ', '_')).strip()
+    return re.sub(r'\$([^$]*)\$', tex, s)
 toc = {}
 for l in open(f'{K}/toc.md', encoding='utf-8'):
     m = re.match(r'\s*- (?:Chapter )?([0-9]+(?:\.[0-9]+)*) \[([0-9A-Z]{4})\] (.*)$', l)
-    if m: toc[m.group(1)] = (m.group(2), m.group(3).replace('$\\infty $', '∞').replace('$\\infty$', '∞'))
+    if m: toc[m.group(1)] = (m.group(2), plain_title(m.group(3)))
 tags = {r['number']: r['tag'] for r in csv.DictReader(open(f'{K}/item-tags.csv', encoding='utf-8'))}
 kinds = {r['number']: r['kind'] for r in csv.DictReader(open(f'{K}/items.csv', encoding='utf-8'))}
 rows = list(csv.DictReader(open(f'{K}/review/ch{ch}.csv', encoding='utf-8')))
@@ -55,36 +64,10 @@ KIND = {'Definition': 'definition', 'Notation': 'definition', 'Construction': 'd
 def esc(s):
     return re.sub(r'([\\*_`\[\]{}#$<>|~^])', r'\\\1', s)
 
-# NB-W1（11-17）：research/kerodon-coverage/notes/<番号>.md の原稿をノードの本文に入れる（試し）。
-# Markdown → Verso：HTML コメントと追跡用 <a id> を落とし、## 見出しは太字の段落に、\( \)・\[ \] は Verso の数式 $`…`$・$$`…`$$ に、
-# pipe table は箇条書きに。冒頭の題・Tag 行・照合先の行は（ノードの頭と重なるので）落とす。
-
-def esc_text(s):
-    """原稿の一行を Verso の本文に：Markdown のリンクは表示文言だけに、\\( \\)・\\[ \\] は数式に、それ以外はエスケープ。"""
-    s = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', s)
-    parts = re.split(r'(\\\(.+?\\\)|\\\[.+?\\\])', s)
-    out = []
-    for p in parts:
-        if p.startswith('\\(') and p.endswith('\\)'): out.append('$`' + p[2:-2].strip() + '`')
-        elif p.startswith('\\[') and p.endswith('\\]'): out.append('$$`' + p[2:-2].strip() + '`')
-        else: out.append(esc(p))
-    return ''.join(out)
+# NB-W1（11-17）：research/kerodon-coverage/notes/<番号>.md の原稿をノードの本文に入れる（変換は notes_md.py）。
+import notes_md
 NOTES = f'{K}/notes'
-def note_body(n):
-    fp = f'{NOTES}/{n}.md'
-    if not os.path.exists(fp): return None
-    out = []; in_table = False
-    for l in open(fp, encoding='utf-8'):
-        s = l.rstrip('\n')
-        if s.startswith('# ') or s.startswith('<!--') or s.startswith('<a id=') or s.startswith('Kerodon [') or s.startswith('照合先'): continue
-        if s.startswith('## '): out.append('*' + esc_text(s[3:].strip()) + '*\n'); continue
-        if s.startswith('|'):
-            cells = [c.strip() for c in s.strip().strip('|').split('|')]
-            if all(re.fullmatch(r':?-+:?', c) for c in cells if c): continue
-            out.append('- ' + '　／　'.join(esc_text(c) for c in cells)); continue
-        out.append(esc_text(s))
-    text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
-    return text + '\n' if text else None
+def note_body(n): return notes_md.note_body(f'{NOTES}/{n}.md', skip=('Kerodon [', '照合先'))
 
 # 依存の辺：P⁰ の項目の閉包（research/p0-lurie/item-closure/edges.csv）のうち Kerodon → Kerodon の辺を (uses := …) に
 ALLNUM = set()

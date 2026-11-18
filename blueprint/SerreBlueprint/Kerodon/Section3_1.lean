@@ -46,6 +46,11 @@ Kerodon Definition 3.1.1.1（[Tag 00T1](https://kerodon.net/tag/00T1)）。対�
 
 仮定：任意の単体集合の射 p : X ⟶ S（Kerodon と一致）。結論：Fibration p は、すべての次元 n\>0 とすべての番号 i のホーン包含を集めた J に対する右持ち上げ性 J.rlp p と同値（一致）。
 
+*定義 5.3 （fibration）*
+
+- 名前　／　包含
+- Kan fibration　／　$`\Lambda^n_i\subseteq\Delta^n`（$`n\ge1`、$`0\le i\le n`）
+
 :::
 
 # 3.1.2 Anodyne Morphisms
@@ -139,6 +144,10 @@ Kerodon Corollary 3.1.3.4（[Tag 00TN](https://kerodon.net/tag/00TN)）。対応
 
 仮定：任意の単体集合 B と Kan 複体 X（Kerodon と一致）。結論：内部 Hom (ihom B).obj X が KanComplex（一致）。
 
+*定理 2.9 （$`\mathcal Kan` の射の単体的集合は Kan 複体）*
+
+Kan 複体 $`X,Y` について、$`\mathcal Kan(X,Y)=\mathrm{Fun}(X,Y)` は Kan 複体である。
+
 宣言：`SSet.instKanComplexObjIhom`
 
 :::
@@ -163,6 +172,14 @@ Kerodon Corollary 3.1.3.6（[Tag 00UT](https://kerodon.net/tag/00UT)）。対応
 Kerodon Construction 3.1.3.7（[Tag 01AB](https://kerodon.net/tag/01AB)）。対応表の状態：本体にある。
 
 仮定：単体集合の写像 i, f, q, g と、両方の条件を課す場合の可換性 f≫q=i≫g（Kerodon と一致）。結論：後合成を g に固定した頂点ファイバーと、その中で i への制限を f に固定したファイバー。底を終対象とした場合に前合成だけのファイバーを得る（一致）。
+
+*定義 10.1 （相対関手空間）*
+
+単体的集合の射 $`r\colon K\to S`、$`q\colon X\to S` について、$`r` を $`\mathrm{Fun}(K,S)` の頂点とみて（$`K\times\Delta^0\cong K`）、ファイバー（定義 6.2）
+
+$$`\mathrm{Fun}_{/S}(K,X)=\mathrm{Fun}(K,X)\times_{\mathrm{Fun}(K,S)}\Delta^0`
+
+を相対関手空間という（$`q_*` の $`r` 上のファイバー。定義 2.3）。その $`n` 単体は $`q\circ f=r\circ\mathrm{pr}_K` をみたす射 $`f\colon K\times\Delta^n\to X` である。
 
 :::
 
@@ -297,10 +314,30 @@ tag := "kerodon-3-1-6"
 
 Kerodon [Tag 01YX](https://kerodon.net/tag/01YX)
 
+*注意 （$`\mathcal S` の大きさ）*
+
+$`\mathcal Kan` の対象は小さい Kan 複体で、その全体は $`\mathbb U` の部分集合として集合をなすが、小さくはない。したがって $`\mathcal S` は単体的集合だが小さくない。一方、小さい Kan 複体 $`X,Y` について $`\mathcal Kan(X,Y)=\mathrm{Fun}(X,Y)` は小さい（宇宙は直積と冪集合で閉じている）。
+
 :::definition "kerodon_3_1_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.kanObject_simplicialCategory")
 Kerodon Construction 3.1.6.1（[Tag 00TZ](https://kerodon.net/tag/00TZ)）。対応表の状態：本体にある。
 
 仮定：固定した宇宙の単体集合（Kerodon と一致）。結論：Kan 複体を対象、内部 Hom を豊穣 Hom とする KanObject の coherent nerve が SpaceInfinity（一致。Lean の coherent nerve は Ch 2 で記録した包含順の規約）。
+
+*定義 2.8 （Kan 複体のなす単体的圏 $`\mathcal Kan`）*
+
+単体的圏 $`\mathcal Kan` を次で定める。
+
+- 対象：小さい Kan 複体（定義 1.9、冒頭の規約）。
+
+- 射の単体的集合：$`\mathcal Kan(X,Y)=\mathrm{Fun}(X,Y)`（定義 2.2）。
+
+- 合成と恒等射：定義 2.5。
+
+定理 2.6 によりこれは単体的圏である。
+
+*定義 3.7 （空間の ∞ 圏 $`\mathcal S`）*
+
+$`\mathcal S=N^{hc}(\mathcal Kan)` と定める（$`\mathcal Kan` は定義 2.8）。定理 2.9 により $`\mathcal Kan` は局所 Kan なので、定理 3.6 により $`\mathcal S` は quasicategory である。
 
 :::
 
@@ -340,6 +377,10 @@ Kerodon [Tag 00U1](https://kerodon.net/tag/00U1)
 Kerodon Definition 3.1.7.1（[Tag 00U2](https://kerodon.net/tag/00U2)）。対応表の状態：一部。
 
 B6：IsSimplicialHomotopyEquivalence は同じ f,g の両合成について一段の区間ホモトピーを持つ場合を直接表す。原文の有限鎖によるホモトピーより強い仮定に限定。
+
+*定義 13.1 （ホモトピー同値）*
+
+Kan 複体の射 $`f\colon X\to Y` がホモトピー同値であるとは、射 $`g\colon Y\to X` と射 $`h\colon X\times\Delta^1\to X`、$`k\colon Y\times\Delta^1\to Y` で、$`h` の $`X\times\{0\}`、$`X\times\{1\}` への制限がそれぞれ $`g\circ f`、$`\mathrm{id}_X`、$`k` の $`Y\times\{0\}`、$`Y\times\{1\}` への制限がそれぞれ $`f\circ g`、$`\mathrm{id}_Y` となるものが存在することをいう。Kan 複体 $`X,Y` の間にホモトピー同値があるとき、$`X` と $`Y` はホモトピー同値であるという。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence`
 

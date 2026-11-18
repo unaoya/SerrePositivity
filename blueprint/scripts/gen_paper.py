@@ -42,6 +42,9 @@ STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本
 by_sec = collections.defaultdict(list)
 for r in items: by_sec[r['section'].split('.')[0]].append(r)
 stats = collections.Counter(); modules = []
+# NB-W2（11-18）：research/paper-coverage/notes/<番号>.md の原稿（解説から移した本文）を項目に、<節>.md を節の頭に入れる
+import notes_md
+def note_body(n): return notes_md.note_body(f'{P}/notes/{n}.md', skip=('原典 ', '照合先'))
 for sec in sorted(by_sec, key=int):
     imports = set(); body = []
     subs = collections.defaultdict(list)
@@ -66,6 +69,8 @@ for sec in sorted(by_sec, key=int):
             body.append(f':::{KIND.get(r["kind"], "proposition")} "{label(n)}"{opts}')
             body.append(f'**{KINDJA.get(r["kind"], r["kind"])} {esc(n)}**　{esc(title)}。対応表の状態：{STATUS.get(st, st)}。\n')
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
+            if (nb := note_body(n)):
+                stats['with-note'] += 1; body.append(nb)
             decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
             if decls and not linked:
                 body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
@@ -76,7 +81,9 @@ for sec in sorted(by_sec, key=int):
     hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
           ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
            f'#doc (Manual) "§{sec} {heads.get(sec, "")}" =>', '%%%', 'number := false', f'tag := "paper-{sec}"', '%%%', '',
-           f'本論文 §{sec} の項目と、本体の宣言との対応。本文は対応表（`research/paper-coverage`）の照合の理由で、論文の本文の写しではない。\n']
+           f'本論文 §{sec} の項目と、本体の宣言との対応。各項目の頭は対応表（`research/paper-coverage`）の照合の理由、その下は解説から移した本文（あるものだけ）。\n']
+    if (nb := note_body(sec)):
+        stats['with-note-intro'] += 1; hdr.append(nb)
     open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
     modules.append(mod)
 # 引用した結果（external.csv）：CLMST は CLMST の部にノードがあるので除く

@@ -48,10 +48,22 @@ tag := "kerodon-8-1-1"
 
 Kerodon [Tag 03JF](https://kerodon.net/tag/03JF)
 
+*注意 （大きさ）*
+
+$`C` が小さければ $`\mathrm{Tw}(C)` は小さく、射影 $`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C` は小さいファイバーをもつ（定義 11.2）。
+
 :::definition "kerodon_8_1_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrow")
 Kerodon Construction 8.1.1.1（[Tag 03JG](https://kerodon.net/tag/03JG)）。対応表の状態：本体にある。
 
 仮定：C : SSet。∞圏性の仮定なし（Kerodon と一致）。結論：TwistedArrow C は edgewiseWeight の各重みから C への写像で作る単体集合。重みは \[n\]ᵒᵖ⋆\[n\] を表す（原文の Tw(C) と一致）。
+
+*定義 12.2 （twisted arrow $`\mathrm{Tw}(C)`）*
+
+単体的集合 $`C` について、単体的集合 $`\mathrm{Tw}(C)` を
+
+$$`\mathrm{Tw}(C)([n])=\mathrm{Hom}_{\mathrm{sSet}}\bigl((\Delta^n)^{\mathrm{op}}\star\Delta^n,\ C\bigr)`
+
+で定め、$`\theta\colon[m]\to[n]` は $`(\theta_*)^{\mathrm{op}}\star\theta_*\colon(\Delta^m)^{\mathrm{op}}\star\Delta^m\to(\Delta^n)^{\mathrm{op}}\star\Delta^n` の前合成で作用させる（反対は定義 12.1、join とその関手性は定義 4.3・定義 4.4、$`\theta_*` は定義 2.2）。
 
 :::
 
@@ -78,6 +90,14 @@ Kerodon Notation 8.1.1.6（[Tag 03JK](https://kerodon.net/tag/03JK)）。対応�
 
 仮定：任意の C : SSet（Kerodon と一致）。結論：edgewiseLeft と edgewiseRight は重みの左半分と右半分への制限で、それぞれ Cᵒᵖ と C に値を取る。twistedArrowProjection はその積への射（λ₋ と λ₊ に一致）。
 
+*定義 12.3 （$`\mathrm{Tw}(C)` の射影）*
+
+$`n` 単体 $`\sigma\colon(\Delta^n)^{\mathrm{op}}\star\Delta^n\to C` について、包含 $`\iota_{(\Delta^n)^{\mathrm{op}}}`、$`\iota_{\Delta^n}`（定義 4.4）への制限は射 $`(\Delta^n)^{\mathrm{op}}\to C` と $`\Delta^n\to C` である。前者を定義 12.1 の対応で $`\Delta^n\to C^{\mathrm{op}}` とみて、射
+
+$$`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C`
+
+を定める（積は定義 2.1。$`\Delta^n` からの射と $`n` 単体は米田の補題で同一視する）。
+
 :::
 
 :::proposition "kerodon_8_1_1_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseDualityIso, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseDuality_right, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseDuality_left") (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6")
@@ -98,6 +118,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：任意の�
 Kerodon Proposition 8.1.1.11（[Tag 03JQ](https://kerodon.net/tag/03JQ)）。対応表の状態：本体にある。
 
 仮定：C : SSet と Quasicategory C（Kerodon と一致）。結論：twistedArrowProjection\_leftFibration は (λ₋,λ₊) に当たる積への射の LeftFibration（原文と一致）。
+
+*定理 12.4 （$`\mathrm{Tw}(C)` は左 fibration）*
+
+$`C` が quasicategory なら、射影 $`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C`（定義 12.3）は左 fibration（定義 5.3）である。
 
 :::
 
@@ -424,7 +448,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：押し出�
 
 :::
 
-# 8.1.5 Thin \$2\$-Simplices of \$\\operatorname\{Cospan\}(\\operatorname\{\\mathcal\{C\}\})\$
+# 8.1.5 Thin 2-Simplices of Cospan(C)
 
 %%%
 number := false
@@ -506,7 +530,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常 span
 
 :::
 
-# 8.1.7 Comparing \$\\operatorname\{\\mathcal\{C\}\}\$ with \$\\operatorname\{Cospan\}(\\operatorname\{\\mathcal\{C\}\})\$
+# 8.1.7 Comparing C with Cospan(C)
 
 %%%
 number := false

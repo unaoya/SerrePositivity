@@ -11,6 +11,8 @@
  ],
  "stats": {
   "linked": 46,
+  "with-note-intro": 3,
+  "with-note": 7,
   "nolink-partial": 74,
   "with-uses": 167,
   "nolink-none": 363
