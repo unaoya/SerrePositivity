@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,028行。外枠：35,681行。係数：2。
+既計上の累計：30,062行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -97,7 +97,7 @@
 |R16|deferred_next_checkpoint|—|60〜100|120〜200|
 |R17.1|deferred_next_checkpoint|—|15〜30|30〜60|
 |R17|deferred_next_checkpoint|—|10〜25|20〜50|
-|R15-Unit.3|pending|—|10〜25|20〜50|
+|R15-Unit.3|verified|34|0〜0|0〜0|
 |R15-Unit.4|pending|—|35〜65|70〜130|
 |R15a.3|pending|—|40〜70|80〜140|
 |R15-Unit.0a|verified|71|0〜0|0〜0|
@@ -3440,7 +3440,7 @@ IsFullyFaithful r
 - `isSheaf_toGrothendieck_iff_universallyDescending` @ SerrePositivity/InfinityCategories/Sheaves/CoverageUniversalDescent.lean:23
 
 ### R15-Unit.3 — discreteSheafificationUnitHom
-親：R15-Unit。状態：紙のみ（pending）。依存：R15-Unit.1。
+親：R15-Unit。状態：検証済み。依存：R15-Unit.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]

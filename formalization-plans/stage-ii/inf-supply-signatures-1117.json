@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30028,
+  "verified_lean_lines": 30062,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5202,6 +5202,11 @@
           "name": "resizedNatTransMap",
           "path": "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean",
           "line": 30
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitHom.lean",
+          "line": 25,
+          "name": "discreteSheafificationUnitHom"
         }
       ],
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
@@ -5215,13 +5220,35 @@
       ],
       "method": "ordinarySheafificationUnit_postHomotopyの全辺の類を固定する定義。弱い存在命題からηを選ばない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
-      "note": "ordinarySheafificationUnit_postHomotopyの全辺の類を固定する定義。弱い存在命題からηを選ばない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitHom.lean",
+      "note": "ordinarySheafificationUnit_postHomotopyの全辺の類を固定する定義。弱い存在命題からηを選ばない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 34,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitHom.lean": "41181b6eeaeeb6026322b2cf31dc2590ea4d974c1a47c2d2a7c3dc993d51f99b"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "a512350cad103f9db323a00c2f2a44f69d8a33bceacd6f55a6b61589a46925c3",
+        "receipt": "/tmp/is-stage5/R15-Unit.3/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-3-1118/manifest.json"
     },
     {
       "id": "R15-Unit.4",
