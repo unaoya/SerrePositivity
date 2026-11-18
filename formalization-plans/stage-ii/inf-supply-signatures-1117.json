@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 29932,
+  "verified_lean_lines": 30028,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -4314,6 +4314,11 @@
           "name": "resizedNatTransMap",
           "path": "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean",
           "line": 30
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/OrdinarySheafificationUnitHomotopy.lean",
+          "line": 31,
+          "name": "ordinarySheafificationUnit_postHomotopy"
         }
       ],
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
@@ -4327,13 +4332,35 @@
       ],
       "method": "largeNerveNatTransHomotopyで通常のtoSheafify全単位の円柱を作り、元のIで後合成する。元のnerveの同じ高次単体上で端点を正規化し、Homのサイズ変更の仮定を置かない。",
       "specified_compatibility": "新しい選択は不要。同じ全自然変換の円柱を一度だけ取る。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
-      "note": "largeNerveNatTransHomotopyで通常のtoSheafify全単位の円柱を作り、元のIで後合成する。元のnerveの同じ高次単体上で端点を正規化し、Homのサイズ変更の仮定を置かない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/OrdinarySheafificationUnitHomotopy.lean",
+      "note": "largeNerveNatTransHomotopyで通常のtoSheafify全単位の円柱を作り、元のIで後合成する。元のnerveの同じ高次単体上で端点を正規化し、Homのサイズ変更の仮定を置かない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 52,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/OrdinarySheafificationUnitHomotopy.lean": "161614c3e3ec3526e65d2168a510f38cdb2180369d67f74dc0abf1749f25e95a"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "c3cb15e314fbed79c70d02199fb8f6de296682e0f6b5a6d985889f113c1b1beb",
+        "receipt": "/tmp/is-stage5/R15-Unit.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-1-1118/manifest.json"
     },
     {
       "id": "R15-Unit.2",
@@ -4353,6 +4380,11 @@
           "name": "discretePresheafHom_eq_normalized",
           "path": "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean",
           "line": 36
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/OrdinarySheafificationUnitComponent.lean",
+          "line": 28,
+          "name": "ordinarySheafificationUnit_postHomotopy_component"
         }
       ],
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
@@ -4366,13 +4398,35 @@
       ],
       "method": "全円柱の同じ成分を先に計算し、後でηの仕様に使う。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
-      "note": "全円柱の同じ成分を先に計算し、後でηの仕様に使う。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/OrdinarySheafificationUnitComponent.lean",
+      "note": "全円柱の同じ成分を先に計算し、後でηの仕様に使う。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 44,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/OrdinarySheafificationUnitComponent.lean": "b7e6495cb2a5cfd3bf8fec08241085dfa41e76a13b7e58305b5dad8de69a0cd4"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "5562397edc5ca3bd1ec0c3e9dd885e8c0aa01255ded3f0d81209f4f16344bfc2",
+        "receipt": "/tmp/is-stage5/R15-Unit.2/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-2-1118/manifest.json"
     },
     {
       "id": "R15-Unit",

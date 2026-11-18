@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：29,932行。外枠：35,681行。係数：2。
+既計上の累計：30,028行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -77,8 +77,8 @@
 |R13b|pending|—|15〜30|30〜60|
 |R14.1|pending|—|50〜90|100〜180|
 |R14|pending|—|20〜40|40〜80|
-|R15-Unit.1|pending|—|30〜60|60〜120|
-|R15-Unit.2|pending|—|40〜70|80〜140|
+|R15-Unit.1|verified|52|0〜0|0〜0|
+|R15-Unit.2|verified|44|0〜0|0〜0|
 |R15-Unit|pending|—|15〜30|30〜60|
 |R15a.1|pending|—|80〜140|160〜280|
 |R15a.2|pending|—|60〜110|120〜220|
@@ -2885,7 +2885,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `reflective_isIso_map_iff_localHom` @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:80
 
 ### R15-Unit.1 — ordinarySheafificationUnit_postHomotopy
-親：R15-Unit。状態：紙のみ（pending）。依存：R15-Unit.0a。
+親：R15-Unit。状態：検証済み。依存：R15-Unit.0a。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]
@@ -2908,7 +2908,7 @@ SSet.Homotopy I (nerveMap S ≫ I)
 - `resizedNatTransMap` @ SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean:30
 
 ### R15-Unit.2 — ordinarySheafificationUnit_postHomotopy_component
-親：R15-Unit。状態：紙のみ（pending）。依存：R15-Unit.1・R15-Unit.0b。
+親：R15-Unit。状態：検証済み。依存：R15-Unit.1・R15-Unit.0b。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]
