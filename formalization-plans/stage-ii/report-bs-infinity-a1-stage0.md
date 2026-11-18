@@ -11114,3 +11114,175 @@ noncomputable def discreteWeightedSectionsMovingIndexCondition
 - 旧 R2 の未追跡 4 本はそのまま。追跡ファイルの未コミット差分や今回の未追跡 Lean 下書きはない。R16・R17、S7、旧 R2・R3 は実装範囲外のまま。
 
 一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R06.2 の始点側の相対同型への帰着
+
+前節の型を出発点に、次の四件を Lean の一時ファイルで検証した。再掲するコードは前節の型と import に続けて検査できる。各補題の公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+
+- `discreteWeightedSectionsMovingIndex_endpoints` は元の離散埋め込みの頂点仕様と `fixedPresheafShapeIso_op_inv_vertex` から `he₀`・`he₁` を供給する。
+- `discreteWeightedSectionsMovingIndex_projections` は `smallLeftUnstraighteningBaseIso_projection`・`smallUnstraighteningFunctorHom_projection`・`leftElementsRightKanComparison_projection` から二つの指定添字射の射影の一致を供給する。
+- `rightKanMovingIndex_target_section` は既存の `cosliceEdgeSection` から指定した `w` を作り、終点で `a₁` に一致し、始点の二射が同じ底に乗ることを示す。
+- `rightKanMovingIndexFace_of_selectedSource` は残りの始点側の相対同型があれば、前節の面全体が得られることを示す。
+
+残りは `rightKanMovingIndex_selectedSource` を前節の元の離散前層の実辺と添字射に特殊化した命題。固定した Yoneda 表現可能の後合成比較と、元の密度変換の始点側を、共通の添字全体の上で照合する。終点の切断の構成と両端・射影の確認を見積もりから外し、なおこの照合一本は素 290〜440 行、補正 580〜880 行の見込み。見込みの上端が 800 行を超えるため、ここを中断点とする。検証した四件は証明の分割としてこの報告に収録し、本体の追加行数へは計上していない。
+
+```lean
+theorem discreteWeightedSectionsMovingIndex_endpoints
+    {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let F := U.map b.hom ≫ discretePresheaf P
+    let G := U.map b.hom ≫ discretePresheaf Q
+    let e := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated
+    let e' := (edgeOp e).map ((truncation 2).map
+      ((SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv))
+    let η : (Δ[1] : SSet.{u + 1}) ⟶ (PresheafInfinity (nerve C)).op :=
+      SSet.yonedaEquiv.symm e'.edge
+    (stdSimplex.δ (1 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex G))) ∧
+    (stdSimplex.δ (0 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex F))) := by
+  intro U b F G e e' η
+  dsimp only [η]
+  rw [stdSimplex.δ_comp_yonedaEquiv_symm, stdSimplex.δ_comp_yonedaEquiv_symm]
+  constructor
+  · apply congrArg SSet.yonedaEquiv.symm
+    refine e'.src_eq.trans ?_
+    change (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv.app _
+      (SSet.opObjEquiv.symm ((discretePresheafInclusion C).val.app _ (nerveVertex Q))) = _
+    rw [(discretePresheafInclusion C).property.1 Q]
+    exact fixedPresheafShapeIso_op_inv_vertex C (discretePresheaf Q)
+  · apply congrArg SSet.yonedaEquiv.symm
+    refine e'.tgt_eq.trans ?_
+    change (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv.app _
+      (SSet.opObjEquiv.symm ((discretePresheafInclusion C).val.app _ (nerveVertex P))) = _
+    rw [(discretePresheafInclusion C).property.1 P]
+    exact fixedPresheafShapeIso_op_inv_vertex C (discretePresheaf P)
+#print axioms discreteWeightedSectionsMovingIndex_endpoints
+
+theorem discreteWeightedSectionsMovingIndex_projections
+    {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let F := U.map b.hom ≫ discretePresheaf P
+    let G := U.map b.hom ≫ discretePresheaf Q
+    let a := U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf P)).hom ≫
+      U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ)) ≫
+      U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf Q)).inv
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    (a ≫ leftElementsRightKanComparison G) ≫
+        rightKanProjection δ (SSet.opObjEquiv.symm (functorVertex G)) =
+      leftElementsRightKanComparison F ≫
+        rightKanProjection δ (SSet.opObjEquiv.symm (functorVertex F)) := by
+  intro U b F G a δ
+  change (a ≫ leftElementsRightKanComparison G) ≫ rightKanProjection _ _ =
+    leftElementsRightKanComparison F ≫ rightKanProjection _ _
+  rw [Category.assoc, leftElementsRightKanComparison_projection,
+    leftElementsRightKanComparison_projection]
+  rw [← Category.assoc]
+  apply congrArg (fun k => k ≫ (uliftOppositeIso (nerve C)).hom)
+  let α := discretePresheafHom φ
+  let i := smallLeftUnstraighteningBaseIso b (discretePresheaf P)
+  let j := smallLeftUnstraighteningBaseIso b (discretePresheaf Q)
+  have hJ : j.inv ≫ smallLeftUnstraighteningProjection G =
+      smallLeftUnstraighteningProjection (discretePresheaf Q) ≫ b.inv := by
+    apply (cancel_epi j.hom).mp
+    rw [Iso.hom_inv_id_assoc, ← Category.assoc, smallLeftUnstraighteningBaseIso_projection,
+      Category.assoc, Iso.hom_inv_id, Category.comp_id]
+  have he : (i.hom ≫ smallUnstraighteningFunctorHom α ≫ j.inv) ≫
+      smallLeftUnstraighteningProjection G = smallLeftUnstraighteningProjection F := by
+    simp only [Category.assoc]
+    rw [hJ, ← Category.assoc (smallUnstraighteningFunctorHom α),
+      smallUnstraighteningFunctorHom_projection, ← Category.assoc i.hom,
+      smallLeftUnstraighteningBaseIso_projection, Category.assoc, Iso.hom_inv_id, Category.comp_id]
+  change (U.map i.hom ≫ U.map (smallUnstraighteningFunctorHom α) ≫ U.map j.inv) ≫
+    U.map (smallLeftUnstraighteningProjection G) = _
+  simp only [← CategoryTheory.Functor.map_comp]
+  exact congrArg U.map he
+#print axioms discreteWeightedSectionsMovingIndex_projections
+
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+theorem rightKanMovingIndex_target_section
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁) :
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+    let r₀ := sliceUnderRestrict e (stdSimplex.δ (1 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₀)
+    let r₁ := sliceUnderRestrict e (stdSimplex.δ (0 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₁)
+    let w := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e)
+    w ≫ r₁ = a₁ ∧ (w ≫ r₀) ≫ q₀ = p ∧ a₀ ≫ q₀ = p := by
+  intro q₀ q₁ a₀ a₁ p r₀ r₁ w
+  let s₁ := eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e
+  have h₁ : s₁ ≫ r₁ = 𝟙 _ := by
+    dsimp only [s₁, r₁]
+    simp only [Category.assoc]
+    rw [← Category.assoc (cosliceEdgeSection e), cosliceEdgeSection_target,
+      Category.id_comp, eqToHom_trans, eqToHom_refl]
+  have hnorm (x : Δ[0] ⟶ X) (i : Δ[0] ⟶ Δ[1]) (h : i ≫ e = x) :
+      (sliceUnderRestrict e i ≫ eqToHom (congrArg sliceUnder h)) ≫ sliceUnderProjection x =
+        sliceUnderProjection e := by
+    subst x
+    simp only [eqToHom_refl, Category.comp_id]
+    exact sliceUnderRestrict_projection e i
+  have hr₀ : r₀ ≫ q₀ = sliceUnderProjection e := hnorm _ _ he₀
+  have hr₁ : r₁ ≫ q₁ = sliceUnderProjection e := hnorm _ _ he₁
+  have hpa₀ : a₀ ≫ q₀ = p := by
+    change (j₀ ≫ pullback.fst q₀ δ) ≫ q₀ = (j₀ ≫ pullback.snd q₀ δ) ≫ δ
+    simp only [Category.assoc, pullback.condition]
+  have hpa₁ : a₁ ≫ q₁ = p := by
+    change (j₁ ≫ pullback.fst q₁ δ) ≫ q₁ = (j₀ ≫ pullback.snd q₀ δ) ≫ δ
+    rw [Category.assoc, pullback.condition, ← Category.assoc]
+    exact congrArg (fun k => k ≫ δ) hj.symm
+  change (a₁ ≫ s₁) ≫ r₁ = a₁ ∧ ((a₁ ≫ s₁) ≫ r₀) ≫ q₀ = p ∧ a₀ ≫ q₀ = p
+  refine ⟨?_, ?_, hpa₀⟩
+  · rw [Category.assoc, h₁, Category.comp_id]
+  · rw [Category.assoc (a₁ ≫ s₁), hr₀, ← hr₁, ← Category.assoc (a₁ ≫ s₁),
+      Category.assoc a₁, h₁, Category.comp_id, hpa₁]
+
+noncomputable def rightKanMovingIndex_selectedSource
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁) : Prop :=
+  let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+  let a₀ := j₀ ≫ pullback.fst q₀ δ
+  let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+  let r₀ := sliceUnderRestrict e (stdSimplex.δ (1 : Fin 2)) ≫
+    eqToHom (congrArg sliceUnder he₀)
+  let hw := rightKanMovingIndex_target_section δ e he₀ he₁ j₀ j₁ hj
+  let w := (j₁ ≫ pullback.fst (sliceUnderProjection (SSet.yonedaEquiv.symm v₁)) δ) ≫
+    (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e)
+  Nonempty (VertexIso (relativeFunctorVertex q₀ p (w ≫ r₀) hw.2.1)
+    (relativeFunctorVertex q₀ p a₀ hw.2.2))
+
+theorem rightKanMovingIndexFace_of_selectedSource
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (hsource : rightKanMovingIndex_selectedSource δ e he₀ he₁ j₀ j₁ hj) :
+    rightKanMovingIndexFace δ e he₀ he₁ j₀ j₁ := by
+  let hw := rightKanMovingIndex_target_section δ e he₀ he₁ j₀ j₁ hj
+  exact ⟨_, hw.2.1, hw.2.2, hw.1, hsource⟩
+
+#print axioms rightKanMovingIndex_target_section
+#print axioms rightKanMovingIndexFace_of_selectedSource
+```
+
+今回の本体の累計は 30,812 行。済み・未完の終端署名と実測の内訳は前節の引き継ぎどおり。未追跡は旧 R2 の四本のみ。
+
+一覧：済み 60／全体 96（うち追加 61）
