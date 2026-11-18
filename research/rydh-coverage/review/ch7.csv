@@ -1,0 +1,7 @@
+number,status,declarations,reason,axioms,check,partial_kind
+7.1,none,,"原典 PDF p.27, y=607.5。weakly normal・schematic image・representable・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.7.1 / review/check/none-search.csv,
+7.2,none,,"原典 PDF p.28, y=218.1。weakly normal・schematic image・representable・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.7.2 / review/check/none-search.csv,
+7.3,none,,"原典 PDF p.28, y=546.8。weakly normal・schematic image・representable・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.7.3 / review/check/none-search.csv,
+7.4,none,,"原典 PDF p.28, y=699.8。weakly normal・schematic image・representable・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.7.4 / review/check/none-search.csv,
+7.5,none,,"原典 PDF p.30, y=231.1。weakly normal・schematic image・representable・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.7.5 / review/check/none-search.csv,
+7.6,none,,"原典 PDF p.30, y=346.0。weakly normal・schematic image・representable・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.7.6 / review/check/none-search.csv,

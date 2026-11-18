@@ -1,0 +1,74 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/rydh",
+ "commit": "223ac6e1e4f4a7e93fd31fbf2fc7ce97dedf1926",
+ "made_by": "CC-W3: pdftotext -layout/-bbox-layout; parse.py, build.py, validate.py; static Lean source review",
+ "note": "Rydh arXiv 0710.2488v3; PDF in sibling sources/ with SHA in toc.md; extracted text, source signatures and candidate search; no Lean execution",
+ "files": [
+  {
+   "path": "bm-titles.tsv",
+   "sha256": "09b88ffd25ba577f54675223aff0708aef3e94f0ce44f1372dfc5c15164a7e22",
+   "bytes": 3589
+  },
+  {
+   "path": "build.py",
+   "sha256": "38f36ee7660db2763a0113c365b4a7a4347fdea7b945435f4a8a29bdce446b40",
+   "bytes": 18918
+  },
+  {
+   "path": "judgments.py",
+   "sha256": "a41d33d4a57bbe7378e5ba949477348d66a406513a85569e5552114d64283e61",
+   "bytes": 16969
+  },
+  {
+   "path": "parse.py",
+   "sha256": "01e1baf0352835e375f846399a9905c7c49ddeb11d2853755acd1791cf9fd2a5",
+   "bytes": 4826
+  },
+  {
+   "path": "rydh-anchors.json",
+   "sha256": "e7f98d08b08f88d4e542af5bf51855a57b004f441ba77eaeb19cbbbaa0b4e39f",
+   "bytes": 2383
+  },
+  {
+   "path": "rydh-parsed.json",
+   "sha256": "2b190c815af9bf0cd21c7e21bfe47e7ca1d41212e614c891948cdb85c5e70e69",
+   "bytes": 192913
+  },
+  {
+   "path": "rydh-search.json.gz",
+   "sha256": "b1369467f6b5de3db6630404cbfecea61b72bd6bb6e4cee48dffdf5d3369f70a",
+   "bytes": 470352
+  },
+  {
+   "path": "rydh-signatures.json",
+   "sha256": "500a6d1474835b6e24e7c5c3c61b39e8dcabbce25cf6435bd5ac117e89cd5f63",
+   "bytes": 10437
+  },
+  {
+   "path": "rydh-summary.json",
+   "sha256": "6001f2839fdef1eb9dab30e59924b9e59304f6e7418fcac85fb468231cf6fb24",
+   "bytes": 272
+  },
+  {
+   "path": "rydh-titles.tsv",
+   "sha256": "a76459c797c838d7efaba7c6ee1c70efe35ec2d04bd4656db73dd29f1fc35786",
+   "bytes": 4413
+  },
+  {
+   "path": "rydh.txt",
+   "sha256": "9ffb1bd7b8cac66e05244af0f45d276ff26e73a1e442dfb6f1f7aa6dc5e3c0fb",
+   "bytes": 139207
+  },
+  {
+   "path": "rydh.xml",
+   "sha256": "66d092e7a0fe84d1ec0a919f6e88819e14758683c825c26e484cd543cde3dc4a",
+   "bytes": 2789340
+  },
+  {
+   "path": "validate.py",
+   "sha256": "dd8441582a67d38b22ccd4faebc0db6c11a7d85f2b1b62595d3ea1c926b640d5",
+   "bytes": 1708
+  }
+ ],
+ "total_bytes": 3655327
+}

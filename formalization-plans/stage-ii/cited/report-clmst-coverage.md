@@ -1,9 +1,9 @@
 # 現在地
 
-- 段：**CC-W3 BM18 完了**。
-- 一覧：済み 2／全体 3 文献（BS17・BM18）。
+- 段：**CC-W3 完了、停止**。
+- 一覧：済み 3／全体 3 文献（BS17・BM18・Rydh）。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。対象ソースは main `5cbfd7bb1` の取り込み後の `223ac6e1e`。
-- 次：Rydh の対応表。
+- 次：追加作業なし。
 - 紙のみ。照合は Lean ソースの型を静的に読んだ。PDF と抽出・検索の証拠は git 外に置いた。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
@@ -286,9 +286,11 @@ READMEに旧→新の全遷移と段0へ渡す所見（site/模型の比較、PD
 | 文献 | 項目（うち表示式） | own | mathlib | both | partial | interface | none | 内部辺／外部辺 | 証拠目録 | コミット |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
 | [BS17](../../../research/bs17-coverage/README.md) | 171（6） | 2 | 0 | 0 | 9 | 0 | 160 | 190／106 | [manifest.json](../../../evidence/cited/bs17/manifest.json) | `bd4ec5804` |
-| [BM18](../../../research/bm18-coverage/README.md) | 171（21） | 8 | 1 | 0 | 14 | 0 | 148 | 260／155 | [manifest.json](../../../evidence/cited/bm18/manifest.json) | このコミット |
+| [BM18](../../../research/bm18-coverage/README.md) | 171（21） | 8 | 1 | 0 | 14 | 0 | 148 | 260／155 | [manifest.json](../../../evidence/cited/bm18/manifest.json) | `e75278448` |
+| [Rydh](../../../research/rydh-coverage/README.md) | 111（0） | 0 | 2 | 0 | 13 | 0 | 96 | 151／115 | [manifest.json](../../../evidence/cited/rydh/manifest.json) | このコミット |
 
 - BS17 4.1 は n=1・E=O・アフィン有限族の増大 Čech 完全性を `partial / special` とした。原文の Witt 係数の一般性・サイトのコホモロジー・v-stack との差を行に記した。
 - BM18 4.8 は完全標数 p のアフィン構造層の G-A6-1 経路 B を `partial / special` とした。任意の ∞ 圏値の finitary v-sheaf の arc 降下との差を行に記した。
+- Rydh 3.10 のアフィン基底の fppf–proper 細分は `partial / special`。3.12 の準コンパクト開被覆–固有細分は対応を確認できず `none`。
 
 none は本体・固定版 Mathlib のソース検索で対応が確認できなかった行。CSV 構造、目録と review の番号の一致、none 検索の全件、辺の参照先、採用した宣言の所在を検査した。

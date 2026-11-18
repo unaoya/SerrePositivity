@@ -1,0 +1,4 @@
+number,status,declarations,reason,axioms,check,partial_kind
+4.1,none,,"原典 PDF p.16, y=496.2。locally closed・constructible・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.1 / review/check/none-search.csv,
+4.2,none,,"原典 PDF p.17, y=166.3。locally closed・constructible・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.2 / review/check/none-search.csv,
+4.3,none,,"原典 PDF p.17, y=400.2。locally closed・constructible・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.3 / review/check/none-search.csv,
