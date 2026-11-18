@@ -1,6 +1,6 @@
 # 現在地
 
-- 段：**NB-W4 段4　BS 77 項目 完了、次は Kerodon 第1章**。
+- 段：**NB-W4 段4　Kerodon 第4章まで完了**。
 - 一覧：済み 3／全体 4 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
 - 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
@@ -343,3 +343,5 @@ v 降下の 49 項目（BS17 11、BM18 23、Rydh 15）は版を固定した PDF 
 CLMST v4 の 30 項目は全件に記入した。正規化長を定める塔が未完備の場合と、導来・古典完備化の条件を原典の記法に沿って区別した。[証拠目録](../../../evidence/cited/nb-w4-statements-clmst/manifest.json)。
 
 BS 著者版の 77 項目は全件に記入した。定義・同値・構成の仮定は原則として同じ項目内に記し、長い比較定理では原典の設定や仮定番号も示した。[証拠目録](../../../evidence/cited/nb-w4-statements-bs/manifest.json)。
+
+Kerodon は第1章 130、第2章 92、第3章 107、第4章 270 の計 599 項目を、各 Tag ページの本文に照合して記入した。章ごとにコミットし、対象番号と出力番号の一致を確認した。ここまで空欄はない。次は第5〜10章の 737 項目。[Kerodon の主張表](../../../research/kerodon-coverage/statements.csv)・[証拠目録](../../../evidence/cited/nb-w4-statements-kerodon/manifest.json)。
