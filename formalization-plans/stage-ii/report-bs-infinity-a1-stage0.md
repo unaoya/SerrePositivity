@@ -10785,3 +10785,9 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 R04.3・R04.5 は対象診断の途中。R04.3 は前合成像の端点の等式まで進み、型移送の最終合成で底上の可換性の引数が残った。R04.5 は型の明示と補助の検査後、主証明に入った直後の余分な `dsimp only` で停止した。R09.1 は射影での合成の書き換えを局所化する段が残る。未検証の新規 Lean は8本で、R04.3・5・6・終端、R05 終端、R09.1、R15-Unit.0a・.0b。旧 R2 の未追跡4本には触れていない。R16・17、S7、R2・R3 は未着手のまま。14の終端署名は未完で、今回の中断は完成の停止点ではない。
 
 一覧：済み 43／全体 93（うち追加 58）
+
+### 11-18：R06.1 の型訂正を適用
+
+11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。
+
+一覧：済み 43／全体 93（うち追加 58）

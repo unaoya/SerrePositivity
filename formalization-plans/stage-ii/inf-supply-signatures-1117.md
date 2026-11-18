@@ -2293,11 +2293,13 @@ let d := (restrictJoinCone t.cone a).cast he
 
 11-18 型検査：紙の b は持ち上げた終域と小さい始域の宇宙が異なり合成できない。同じ小さい要素圏の射 `nerveMap φ.mapElements` による b に修正する案は型検査済み。終端 R06 の型・仮定は保つ。承認まで下の台帳型を保持する。
 
+11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。
+
 ```lean
 ∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
 let q := smallLeftUnstraighteningProjection (discretePresheaf Q)
 let a := SetWeight.elementsComparisonNatural P ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ)
-let b := SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q
+let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 ∃ (ha : a ≫ q = SetWeight.projection P) (hb : b ≫ q = SetWeight.projection P),
  Nonempty (VertexIso (relativeFunctorVertex q (SetWeight.projection P) a ha)
    (relativeFunctorVertex q (SetWeight.projection P) b hb))

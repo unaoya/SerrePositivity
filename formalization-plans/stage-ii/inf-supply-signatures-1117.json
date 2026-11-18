@@ -3250,7 +3250,7 @@
     {
       "id": "R06.1",
       "name": "discreteElementsComparison_specifiedHom",
-      "full_type": "∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\nlet q := smallLeftUnstraighteningProjection (discretePresheaf Q)\nlet a := SetWeight.elementsComparisonNatural P ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ)\nlet b := SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q\n∃ (ha : a ≫ q = SetWeight.projection P) (hb : b ≫ q = SetWeight.projection P),\n Nonempty (VertexIso (relativeFunctorVertex q (SetWeight.projection P) a ha)\n   (relativeFunctorVertex q (SetWeight.projection P) b hb))",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\nlet q := smallLeftUnstraighteningProjection (discretePresheaf Q)\nlet a := SetWeight.elementsComparisonNatural P ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ)\nlet b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q\n∃ (ha : a ≫ q = SetWeight.projection P) (hb : b ≫ q = SetWeight.projection P),\n Nonempty (VertexIso (relativeFunctorVertex q (SetWeight.projection P) a ha)\n   (relativeFunctorVertex q (SetWeight.projection P) b hb))",
       "dependencies": [],
       "existing": [
         {
@@ -3291,7 +3291,7 @@
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean",
-      "note": "G8の同じ指定作用の全族比較を、元の集合重み・実射φに特殊化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 対象環境の型検査で、SetWeight.elementsMap φ は ULift N(∫P) → ULift N(∫Q)、SetWeight.elementsComparisonNatural Q は N(∫Q) を始域とするため、紙の b は合成できない。提案は b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q。この合成だけは Lean で型検査済み。終端 R06 の型と仮定は保つ。紙の型の修正は承認待ち。"
+      "note": "G8の同じ指定作用の全族比較を、元の集合重み・実射φに特殊化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 対象環境の型検査で、SetWeight.elementsMap φ は ULift N(∫P) → ULift N(∫Q)、SetWeight.elementsComparisonNatural Q は N(∫Q) を始域とするため、紙の b は合成できない。提案は b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q。この合成だけは Lean で型検査済み。終端 R06 の型と仮定は保つ。型の修正を承認済み。11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。"
     },
     {
       "id": "R06.2",
