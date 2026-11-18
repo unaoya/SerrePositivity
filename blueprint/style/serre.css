@@ -71,10 +71,10 @@ main .prev-next-buttons a:hover { color: var(--sp-accent); }
 
 /* ノード（定義・定理など） */
 .bp_wrapper { background: var(--sp-surface); border: 1px solid var(--sp-rule); border-left: 4px solid var(--sp-accent);
-  border-radius: 6px; box-shadow: 0 1px 2px rgba(23,48,74,0.05); margin: 1.3rem 0 0.4rem; overflow: hidden; }
+  border-radius: 6px; box-shadow: 0 1px 2px rgba(23,48,74,0.05); margin: 1.3rem 0 0.4rem; overflow: visible; }
 .bp_wrapper.bp_kind_theorem, .bp_wrapper.bp_kind_proposition, .bp_wrapper.bp_kind_lemma_, .bp_wrapper.bp_kind_corollary { border-left-color: var(--sp-ok); }
 .bp_wrapper.bp_kind_definition { border-left-color: var(--sp-accent); }
-.bp_heading { background: #f7f5f0; border-bottom: 1px solid var(--sp-rule); padding: 0.35rem 0.8rem; }
+.bp_heading { background: #f7f5f0; border-bottom: 1px solid var(--sp-rule); padding: 0.35rem 0.8rem; border-radius: 0 6px 0 0; }
 .bp_caption { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sp-accent); }
 .bp_wrapper.bp_kind_theorem .bp_caption, .bp_wrapper.bp_kind_proposition .bp_caption,
 .bp_wrapper.bp_kind_lemma_ .bp_caption, .bp_wrapper.bp_kind_corollary .bp_caption { color: var(--sp-ok); }
@@ -102,3 +102,9 @@ pre.docstring { font-family: var(--verso-text-font-family); font-size: 0.84rem; 
 
 /* 目次：今いる節（serre.js が付ける） */
 nav#toc a.sp-current { border-left-color: var(--sp-accent); background: var(--sp-accent-soft); color: var(--sp-navy); font-weight: 600; }
+
+/* 定理・補題の本文は立体（日本語の斜体は読みにくい）。強調の em だけ斜体のまま */
+.bp_wrapper .bp_content, .bp_wrapper .bp_content p, .bp_wrapper .bp_content li,
+.bp_wrapper [class*="thmcontent"], .bp_wrapper [class*="thmcontent"] p { font-style: normal; }
+/* 依存の一覧などの浮き出しはカードの上に出す */
+.bp_preview_panel, .bp_code_summary_preview_panel, .tippy-box { z-index: 50; }
