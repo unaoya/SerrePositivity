@@ -1,6 +1,6 @@
 # 現在地
 
-- 段：**NB-W4 段3 完了**。
+- 段：**NB-W4 段4　v 降下 49 項目 完了**。
 - 一覧：済み 3／全体 4 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
 - 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
@@ -333,3 +333,7 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段3　v 降下の依存
 
 [route-edges.csv](../../../research/bs17-coverage/route-edges.csv) に 49 項目を対象とする明示参照 112 辺を記録した。BS17 4.1 を含めて 16 項目に到達し、残る 33 項目は [BS17 README](../../../research/bs17-coverage/README.md#本体の-v-降下の依存nb-w4) に列挙した。経路 B の BM18 4.8 は `bs17VCechInput` を通じて BS17 4.1 を使う。辺の参照行・番号・重複・循環の有無と到達範囲を静的に確認した。[証拠目録](../../../evidence/cited/nb-w4-route/manifest.json)。
+
+### 段4　主張の一行
+
+v 降下の 49 項目（BS17 11、BM18 23、Rydh 15）は版を固定した PDF の見出し本文・図式に照合し、全件に記入した。BS17 4.1 は原典の Witt 係数での導来大域切断と v スタック性、BM18 4.8 は原典の余切断対象でコンパクト生成される値域での主張を収めた。[証拠目録](../../../evidence/cited/nb-w4-statements-vdescent/manifest.json)。
