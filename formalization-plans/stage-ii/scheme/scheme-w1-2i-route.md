@@ -4,11 +4,11 @@
 
 2026-11-17、math/scheme。2g-2は数学cc1d70c10・報告6f1996722、2hは数学7971aefe8・完成報告27e593ae5。**2iのLeanの追加はしていない。この紙と署名データを提出して停止する。** 指示書末尾「先に段0の紙を出して止まる」による停止で、承認待ちを2hの作業へ遡らせない。
 
-型の正本は [ArcRouteB.lean](../bhatt-scholze/drafts/A6/ArcRouteB.lean)。最終型は同じ `ArcRouteBGoal`、G-A6-1（完全F_p代数の有限族のarc被覆の、元の積への一射の増大Čech完全性）。[a6-design](../bhatt-scholze/design/a6-design.md) §4の経路BをOに特殊化する。BM18 Thm1.7・∞・一般W_n・有限射影E・非affineへの拡張は使わない。2hでBS17入力と本体の完全性述語の定義的な一致を検証済み。
+型の正本は [ArcRouteB.lean](../../bhatt-scholze/drafts/A6/ArcRouteB.lean)。最終型は同じ `ArcRouteBGoal`、G-A6-1（完全F_p代数の有限族のarc被覆の、元の積への一射の増大Čech完全性）。[a6-design](../../bhatt-scholze/design/a6-design.md) §4の経路BをOに特殊化する。BM18 Thm1.7・∞・一般W_n・有限射影E・非affineへの拡張は使わない。2hでBS17入力と本体の完全性述語の定義的な一致を検証済み。
 
 ## 組み立てと、既存の入口の点検
 
-[BM18 Prop4.8とLemma4.7](https://arxiv.org/pdf/1807.04725v4#page=28) の構造層の場合を、以下の代数的な補題で組み立てる。対応番号は各署名に記した。補題の型・設計・見積りはこの形式化のための計画である。詳しい既存の紙は [BS-W12報告](../bhatt-scholze/reports/report-codex-w12.md) §2.1・§2.2。
+[BM18 Prop4.8とLemma4.7](https://arxiv.org/pdf/1807.04725v4#page=28) の構造層の場合を、以下の代数的な補題で組み立てる。対応番号は各署名に記した。補題の型・設計・見積りはこの形式化のための計画である。詳しい既存の紙は [BS-W12報告](../../bhatt-scholze/reports/report-codex-w12.md) §2.1・§2.2。
 
 1. Uは元の一射のarc判定と、任意の完全係数への底変換後のČech完全性を固定する。有限族と一射は同じ積・同じ付値拡大で比較する。
 2. Mは**既存の有限表示模型**をそのまま使う。FinitePresentationModelCategory/Filtered/Colimitは一般の基底で使え、Noether仮定はない。対象は既存SmallModel、脚は元の代数射のまま。有限表示模型の完全化がarc被覆なのは、元のBへ向かう指定脚による細分のためであり、模型の被覆判定を有限段へ降ろす循環はない。
@@ -140,7 +140,7 @@ DFSで **66頂点・109辺、循環0**。次のトポロジカル順で進めら
 ```python
 import json
 from pathlib import Path
-n = json.loads(Path('formalization-plans/stage-ii/scheme-w1-2i-signatures.json').read_text())
+n = json.loads(Path('formalization-plans/stage-ii/scheme/scheme-w1-2i-signatures.json').read_text())
 a = {x['id']: x for x in n}
 assert len(a) == len(n)
 active, done = set(), set()

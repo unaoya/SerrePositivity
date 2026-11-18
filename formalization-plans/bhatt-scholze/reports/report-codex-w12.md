@@ -4,7 +4,7 @@
 
 ## B1 の配置と⑥との照合
 
-`main` の `AlgebraicGeometry/` を `cech`・`čech`・`amitsur` と忠実平坦降下で検索し、⑥の `math/scheme`（`ed493953e`）の差分と作業木も確認した。増大 Amitsur 複体の完全性、切断、または二重 Čech 複体による消去に当たる実装は見つからなかった。既存の忠実平坦降下は Mittag–Leffler 性や射影性に関するもの。⑥の 2g の報告には第一象限の二重複体の設計がある。[⑥の停止点 2a 報告 §5](../../stage-ii/scheme-w1-2a-report.md#5-段-2g2h--全次数の判定と-affine-への出口)
+`main` の `AlgebraicGeometry/` を `cech`・`čech`・`amitsur` と忠実平坦降下で検索し、⑥の `math/scheme`（`ed493953e`）の差分と作業木も確認した。増大 Amitsur 複体の完全性、切断、または二重 Čech 複体による消去に当たる実装は見つからなかった。既存の忠実平坦降下は Mittag–Leffler 性や射影性に関するもの。⑥の 2g の報告には第一象限の二重複体の設計がある。[⑥の停止点 2a 報告 §5](../../stage-ii/scheme/scheme-w1-2a-report.md#5-段-2g2h--全次数の判定と-affine-への出口)
 
 B1 の新規ファイルは `SerrePositivity/HomologicalAlgebra/Cech/` に置く案で進められる。`HomologicalAlgebra/Cosimplicial/SplitCechConerve` に `cechAugmentation_retraction`・`cechSplitHomotopy`・`cechSplitCochainEquiv` があるので、切断の収縮に再利用する。`KST/Descent/DoubleCechDescent` は空間値の極限比較。共有側は第一象限の複体の比較を切り出し、⑥の前層複体と⑤a の affine 環の両方から使える形にする。⑤b の差分・作業木にも対象パスの重複はない。
 

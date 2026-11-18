@@ -1239,7 +1239,7 @@ G1・G2共用部品込み本体 **7,850 行**、入口込み **7,990 行**。一
 一覧：済み 10／全体 14（うち追加 5）。
 
 
-同じ三重交叉の比較のアトラス模型への適用（着手前の型、見込み80〜180行）：`OpenAtlasModelData.tripleComparison` は元の三重交叉 (Uᵢ×ₓUⱼ)×[Uᵢ](Uᵢ×ₓUₖ) から模型の三重交叉 Vᵢⱼ⁰×[Uᵢ⁰]Vᵢₖ⁰ への実際の射。`isPullback_tripleComparison` と `isPullback_tripleComparison_toBase` はチャート上・係数基底上の Cartesian 性、`finitePresentation_triple` は模型の三重交叉が係数基底上 qcqs・局所有限表示であること。既存の二重交叉の比較とファイバー積の法則の適用で、親項目は増やさない。
+同じ三重交叉の比較のアトラス模型への適用（着手前の型、見込み80〜180行）：`OpenAtlasModelData.tripleComparison` は元の三重交叉 (Uᵢ×ₓUⱼ)×[Uᵢ](../Uᵢ×ₓUₖ) から模型の三重交叉 Vᵢⱼ⁰×[Uᵢ⁰]Vᵢₖ⁰ への実際の射。`isPullback_tripleComparison` と `isPullback_tripleComparison_toBase` はチャート上・係数基底上の Cartesian 性、`finitePresentation_triple` は模型の三重交叉が係数基底上 qcqs・局所有限表示であること。既存の二重交叉の比較とファイバー積の法則の適用で、親項目は増やさない。
 
 
 B01 の元の有限個の射の明示（着手前の型、見込み100〜220行）：`OpenAtlasModelData.diagonalArrow` は Uᵢ→Uᵢ×ₓUᵢ→Vᵢᵢ⁰、`reverseArrow` は Uᵢ×ₓUⱼ の反転を経由する Vⱼᵢ⁰ への射、`tripleArrow` は元の三重交叉から Uⱼ×ₓUₖ を経由する Vⱼₖ⁰ への射。それぞれ `_toBase` で元の係数基底への構造射との可換式を証明する。三種の射を固定した有限表示の模型へ実際に渡し、有限個の射の降下に必要な入力を供給する既存の対角・反転・pullback の法則。親項目は増やさない。

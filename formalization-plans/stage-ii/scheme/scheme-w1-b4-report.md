@@ -15,7 +15,7 @@
 - 取り込み後の小さい監査：全対象 **289 モジュールの読み込みを確認し、生成宣言を含む 2,269 宣言、標準三公理のみ**。対象外の全プロジェクトの宣言は監査していない。終了コード 0。
 - ビルド・採取・監査は共有の鍵 `--class impl --wait 3600`。同時の待ちは常に一つ。昼の採取は 280 秒以内の組に分け、通常ビルド・監査も一回 30 分以内。作業用の脚本と診断は worktree 内 `scheme-drafts/b4/` に保持した。
 
-対象一覧は [files.json](scheme-w1-b4/files.json)、取り込み前の全体検証は [full-before-summary.json](scheme-w1-b4/full-before-summary.json)、取り込み後の結果とログ・監査ソースの SHA-256 は [after-merge-summary.json](scheme-w1-b4/after-merge-summary.json)。この報告を含む先端を B4 の取り込み点とする。
+対象一覧は [files.json](../../../evidence/scheme/scheme-w1-b4/files.json)、取り込み前の全体検証は [full-before-summary.json](../../../evidence/scheme/scheme-w1-b4/full-before-summary.json)、取り込み後の結果とログ・監査ソースの SHA-256 は [after-merge-summary.json](../../../evidence/scheme/scheme-w1-b4/after-merge-summary.json)。この報告を含む先端を B4 の取り込み点とする。
 
 I03・I04 の既存 API の照合は [整射近似のメモ](scheme-w1-2g-integral-colimit-note.md)。共同全射性の未検証の Lean は `scheme-drafts/IntegralModelColimit.lean` にある。B4 完了後に検証してから本体に移す。2g-1 の主項目は 7／12 のままで、一般の細分と Noether 模型の構成を完了扱いにしない。
 
@@ -26,9 +26,9 @@ I03・I04 の既存 API の照合は [整射近似のメモ](scheme-w1-2g-integr
 - worktree：`SerrePositivity-scheme`、枝：`math/scheme`。
 - 検証済み数学の先端：`122ac972cd74c5d1d2a04ca623dab53f921c6c37`。
 - 基準：`c5c4436c0`。観測した main：`efa846fe81f40ac663cff5af62f55b901763d676`（B3 `16d6b4547` を含む）。
-- 対象は基準から枝で追加・変更した Lean 289 本。drafts を除き、全て AlgebraicGeometry 配下。提供された 284 本に、その後に検証済みの IntegralModel 系 5 本を加えた。全一覧は [files.json](scheme-w1-b4/files.json)。
+- 対象は基準から枝で追加・変更した Lean 289 本。drafts を除き、全て AlgebraicGeometry 配下。提供された 284 本に、その後に検証済みの IntegralModel 系 5 本を加えた。全一覧は [files.json](../../../evidence/scheme/scheme-w1-b4/files.json)。
 - main の B4-README と citation-attributes.md §14 に従い、共有の `bulk_namespace.py` を使った。展開した `namespace-rewrite-map.json` は modules 5,337、namespaces 45、declarations 19。通常 import の module-map との照合は該当 0。
-- 全 289 本の SHA-256 と採取前 HEAD を [collection-state.json](scheme-w1-b4/collection-state.json) に保存した。失敗後にも全バイトが不変であることを確認した。Lean の修正、資源上限の変更、採取器の変更は行っていない。
+- 全 289 本の SHA-256 と採取前 HEAD を [collection-state.json](../../../evidence/scheme/scheme-w1-b4/collection-state.json) に保存した。失敗後にも全バイトが不変であることを確認した。Lean の修正、資源上限の変更、採取器の変更は行っていない。
 
 ## 完了した採取とプレビュー
 
@@ -84,7 +84,7 @@ SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean:30:
 
 ## 再開時の検証結果：一つ解消、一つ未解消
 
-`projectivePerfCechH0Difference` について、局所的に `backward.isDefEq.respectTransparency true` とする 1 行の変更だけを採用する。型・定義本体・名前に変更はない。同期 collect は既定の 200,000 heartbeats のまま成功し、その capture を使った rewrite は保留 0・差分 0。対象ビルド（SquareData と直接の importer SquareZero）は 3,379 ジョブ成功。この 2 モジュールの小さい監査は生成宣言を含む 48 宣言、標準三公理のみ。検証記録のハッシュは [verified-square-fix.json](scheme-w1-b4/verified-square-fix.json)。全体の採取・プレビュー確認済みは重複なしで 181／289 本になった。
+`projectivePerfCechH0Difference` について、局所的に `backward.isDefEq.respectTransparency true` とする 1 行の変更だけを採用する。型・定義本体・名前に変更はない。同期 collect は既定の 200,000 heartbeats のまま成功し、その capture を使った rewrite は保留 0・差分 0。対象ビルド（SquareData と直接の importer SquareZero）は 3,379 ジョブ成功。この 2 モジュールの小さい監査は生成宣言を含む 48 宣言、標準三公理のみ。検証記録のハッシュは [verified-square-fix.json](../../../evidence/scheme/scheme-w1-b4/verified-square-fix.json)。全体の採取・プレビュー確認済みは重複なしで 181／289 本になった。
 
 `ProjectivePerfectAffineCechComparison` は未解消。局所的な透明性設定、アフィン性・被覆性の証明の分割、対角のアフィン性の共有、比較の前半・後半の分割、合成の中間対象の明示を、いずれも上限を増やさず試した。分割した宣言は通るが、最終的な `projectivePerfectAffineCechHomologyIso` の同期採取は `abstract nested proofs` で 200,000 heartbeats に達する。最後の中間対象の明示と局所設定の試行も同じ位置で失敗した。
 
@@ -98,7 +98,7 @@ SerrePositivity/AlgebraicGeometry/ProjectivePerfectAffineCechComparison.lean:30:
 
 今回、この 30 本も含めて、標準の `checked_capture` で schema・module・原ソース全バイトの一致を改めて検査し、ファイル単位で重複を除いて別の `covered-before-index` に集約した。失敗した組全体を成功扱いにはしていない。失敗したファイルの capture は存在せず、集約にも含めていない。採取器の SHA-256 は全 287 本で一種類だった。
 
-この明示的な **287 本の部分一覧**に対して公式の `bulk_namespace.py rewrite` を再実行し、全 287 本の保留 0・ソース差分 0 本／0 行を確認した。参照は 254,747 件、commands は 2,272 件。[確認済みの一覧](scheme-w1-b4/covered-files.json)、[不足の一覧](scheme-w1-b4/missing-files.json)、[集計とハッシュ](scheme-w1-b4/covered-summary.json)を保存した。これは全 289 本の検収の代わりではない。
+この明示的な **287 本の部分一覧**に対して公式の `bulk_namespace.py rewrite` を再実行し、全 287 本の保留 0・ソース差分 0 本／0 行を確認した。参照は 254,747 件、commands は 2,272 件。[確認済みの一覧](../../../evidence/scheme/scheme-w1-b4/covered-files.json)、[不足の一覧](../../../evidence/scheme/scheme-w1-b4/missing-files.json)、[集計とハッシュ](../../../evidence/scheme/scheme-w1-b4/covered-summary.json)を保存した。これは全 289 本の検収の代わりではない。
 
 残る失敗は次の二つ。
 
@@ -133,7 +133,7 @@ B4 の全 289 本が揃い、main 取り込みと対象ビルド・小監査が�
 
 Rees の成分と自然性の証明を分離し、レコードの暗黙引数を元と同じ指定に直した版で、既定の 200,000 heartbeats の同期 collect が成功した。単独の rewrite も保留 0・差分 0。成分と自然性の本文は字下げを除いて元と同一であることを照合した。
 
-対象ビルド（ReesClosedCechThickeningFrobenius と直接の importer ReesClosedCechThickeningNaturality）は 3,058 ジョブ成功。この二モジュールの小監査は 17 宣言・標準三公理のみで、終了コード 0。記録は [verified-rees-split.json](scheme-w1-b4/verified-rees-split.json)。既存の型・名前は保持し、追加は元の app フィールドを分離した定義と、その自然性の証明だけ。
+対象ビルド（ReesClosedCechThickeningFrobenius と直接の importer ReesClosedCechThickeningNaturality）は 3,058 ジョブ成功。この二モジュールの小監査は 17 宣言・標準三公理のみで、終了コード 0。記録は [verified-rees-split.json](../../../evidence/scheme/scheme-w1-b4/verified-rees-split.json)。既存の型・名前は保持し、追加は元の app フィールドを分離した定義と、その自然性の証明だけ。
 
 追加で試した、元の写像との rfl の比較例はカーネルの deterministic timeout になった。比較例とそのログを診断用に残し、成功とは数えない。公理監査はこの追加例から切り離して再実行し、終了コード 0 を確認した。新しい成分の本文と元の app の本文の直接照合、及び元の自然性の証明との直接照合はどちらも一致した。
 
@@ -153,9 +153,9 @@ IsAffineOpen の X の明示だけでも上限に達した（retry-affine-11）�
 
 三つの Čech H の対象を名前で共有し、前半・後半の比較の戻り型も同じ対象で共有した版で、最後の Proj の同期 collect が成功した（retry-affine-12）。公開する元の比較の型は保持する。追加は既存の対象と比較の型・証明の分割のみ。新しい数学的仮定や、選択で別の比較を作る構成は導入しない。
 
-この Proj モジュールの通常ビルドは 3,280 ジョブ成功、小監査は生成宣言を含む 17 宣言・標準三公理のみ、終了コード 0。[検証記録](scheme-w1-b4/verified-affine-compact.json)。
+この Proj モジュールの通常ビルドは 3,280 ジョブ成功、小監査は生成宣言を含む 17 宣言・標準三公理のみ、終了コード 0。[検証記録](../../../evidence/scheme/scheme-w1-b4/verified-affine-compact.json)。
 
-全 289 本の完全な capture を、標準の schema・module・原ソース全バイト一致の検査で再集約した。採取器は全て同じ一版。不足 0。本来の全 289 本の一覧で公式 rewrite を再実行し、**保留 0、改名によるソース差分 0 本／0 行**を確認した。参照 257,809 件、commands 2,298 件。[全体の取り込み前集計](scheme-w1-b4/full-before-summary.json)。最初から対象の JSON に含まれていたファイルだけで、下書きは含めない。
+全 289 本の完全な capture を、標準の schema・module・原ソース全バイト一致の検査で再集約した。採取器は全て同じ一版。不足 0。本来の全 289 本の一覧で公式 rewrite を再実行し、**保留 0、改名によるソース差分 0 本／0 行**を確認した。参照 257,809 件、commands 2,298 件。[全体の取り込み前集計](../../../evidence/scheme/scheme-w1-b4/full-before-summary.json)。最初から対象の JSON に含まれていたファイルだけで、下書きは含めない。
 
 改名とは別に、同期 elaboration を既定の上限で通すために変更した自レーンの Lean は三本。122ac972c との比較で、SquareData は +1/-0 行、ProjectivePerfectAffineCechComparison は +73/-10 行、ReesClosedCechThickeningFrobenius は +53/-34 行。型の共有、既存の証明の分割、局所の透明性設定であり、既存の名前・数学的仮定は保持した。三本の import は元と一致し、他の 286 本も全バイト一致のままなので、最初の通常 import の module-map 照合で該当 0 だったことも変わらない。
 

@@ -26,7 +26,7 @@ rewrite と差分確認は鍵の外で実行した。
 
 ```sh
 klw1=/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout
-files=formalization-plans/stage-ii/scheme-klw1-followup-files.json
+files=formalization-plans/stage-ii/scheme/scheme-klw1-followup-files.json
 base=formalization-plans/stage-ii/scheme-drafts/klw1-followup-1112-fixed
 python3 "$klw1/scripts/refactor/klw1_namespace.py" collect \
   --root "$PWD" --files "$files" --output "$base/before_index"

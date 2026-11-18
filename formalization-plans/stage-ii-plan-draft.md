@@ -118,7 +118,7 @@ BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに�
 ### 5.1.2 追記（11-07、ユーザー）：K を後回しにし、Kerodon・∞・BS に集中
 
 - **K 理論（目標 B）は後回し**。① ∞ 中核（Verdier 商 M1・M2・M7、K 基盤の入口）は止める。K の計画は、対応表 `research/k-coverage/`（問題 10 件）をもとに、改めて相談して見直す。
-- **⑥ スキーム論は BS17 Thm 4.1 (i) の経路に絞る**（`stage-ii/scheme-w1.md` §6）。
+- **⑥ スキーム論は BS17 Thm 4.1 (i) の経路に絞る**（`stage-ii/scheme/scheme-w1.md` §6）。
 - **KL-W1 を先に**（(a)）。③ ∞ 供給は KL-W1 が main に入ってから始める。
 - **⑤ BS 実装は二本**：⑤a（BS-DOC1 → BS-W11 → BM18 の経路 B、枝 `math/bs-impl`）、⑤b（D68 の直接証明、`bhatt-scholze/instructions/bhatt-scholze-codex-d68.md`、枝 `math/bs-d68`）。
 - 今すぐ始めるもの：⑤a・⑤b・⑥。Kerodon の確認は続け、終わったら KL-W1、その後に ③。

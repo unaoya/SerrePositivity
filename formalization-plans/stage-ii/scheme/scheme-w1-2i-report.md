@@ -147,7 +147,7 @@ O06で予定した既存APIの適用をL05として型付きで[台帳](scheme-w
 
 - 31モジュールは全て`AlgebraicGeometry/ArcRouteB/`に置き、入口`SerrePositivity/AlgebraicGeometry.lean`へ登録した。元の入口は同一バイトの接頭辞のまま、末尾のimport登録だけを足した。
 - 最終対象ビルド：ArcCoverCechと直接importer、**5,778ジョブ成功**（`scheme-drafts/2i-arc-exit-native-4.log`）。root・下流全ビルドは実施していない。
-- 再実行可能な小さい検証：`lake env lean formalization-plans/stage-ii/scheme-w1-2i-verify.lean`。正本drafts/A6/ArcRouteB.leanの定義とArcRouteBGoalをそのまま別名前空間へ抜き出し、出口を実際に適用して型を確認した。未完成drafts全体へのimportや、型を弱める置き換えはない。
+- 再実行可能な小さい検証：`lake env lean formalization-plans/stage-ii/scheme/scheme-w1-2i-verify.lean`。正本drafts/A6/ArcRouteB.leanの定義とArcRouteBGoalをそのまま別名前空間へ抜き出し、出口を実際に適用して型を確認した。未完成drafts全体へのimportや、型を弱める置き換えはない。
 - 同じ検証で31モジュールの全所有195宣言（private・生成補助を含む）の公理閉包が成功。**標準三公理のみ**：propext、Classical.choice、Quot.sound。sorry・新しい公理・native_decide・リソース上限の増加なし。
 - 本体2,268行＋入口62行＝**2,330行**。検証スクリプト107行を含めても**2,437行／9,000行**。4,500行の途中報告基準へ達する前に完成した。完了後の追加見込み0。
 - 全て共有鍵`with_build_lock.sh --class impl --wait 3600`、待ちは一つ、ビルド・監査の間だけ保持。ファイル記述子不足で待機プロセスが二度終了したが、Leanを起動していないことを確かめてから同じ共有鍵で取り直し、最終ビルドと検証は成功した。
