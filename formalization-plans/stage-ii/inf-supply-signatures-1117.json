@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 34557,
+  "verified_lean_lines": 34785,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3483,7 +3483,8 @@
         "R06.2Ca",
         "R06.2Cc",
         "R06.2Cm",
-        "R06.2Ct"
+        "R06.2Ct",
+        "R06.2Cg"
       ],
       "existing": [
         {
@@ -7473,6 +7474,77 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2ct-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cg",
+      "name": "weightedSections_nativeLimitIso_hom_transportGlobal",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]\n    (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)\n    (P : (PresheafCat C SpaceInfinity.{u}).op _⦋0⦌),\n    let a := fixedYonedaDomainIso C\n    let b := (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).symm\n    let O' := a.inv ≫ O\n    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))\n    let δ₀ := nativeSetShapeOppositeYoneda C\n    let hw := nativeSetShapeOppositeYoneda_square C\n    ∀ {G : (PresheafInfinity (nerve C)).op ⟶ E}\n      (α : SSet.Homotopy (δ ≫ G) O')\n      (hα : IsRightKanExtension δ O' G α)\n      (h : a.hom ≫ O' = O)\n      (t : RightKanConeTransport δ O' G α (b.hom.app (Opposite.op ⦋0⦌) P))\n      (ht : IsLimitCone t.cone),\n    let β := rightKanCounitIsoSquare a b hw α\n    let hβ := kanRightKanExtension_of_isoSquare a b hw α hα\n    let β' : SSet.Homotopy (δ₀ ≫ (b.hom ≫ G)) O := h ▸ β\n    let hβ' : IsRightKanExtension δ₀ O (b.hom ≫ G) β' := by\n      exact (show ∀ (O₀ O₁ : Presheaf C E) (hs : O₀ = O₁)\n        (g : SSet.Homotopy (δ₀ ≫ (b.hom ≫ G)) O₀),\n        IsRightKanExtension δ₀ O₀ (b.hom ≫ G) g →\n        IsRightKanExtension δ₀ O₁ (b.hom ≫ G) (hs ▸ g) from\n        fun _ _ hs _ hg => by cases hs; exact hg) _ _ h β hβ\n    (weightedSections_nativeLimitIso O hE P t.cone ht).hom =\n      functorHomEvaluate (weightedSections_nativeShape_comparison O hE β' hβ').hom P ≫\n        eqToHom (congrArg HomotopyCategory.mk t.cone_vertex).symm",
+      "dependencies": [
+        "R05",
+        "R06.2Ct"
+      ],
+      "existing": [
+        {
+          "name": "weightedSections_nativeShapeLimitIso_hom_eq_globalComparison",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean",
+          "line": 80
+        },
+        {
+          "name": "rightKanTransportIsoSquare_cone_val",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanShapeIsoData.lean",
+          "line": 66
+        },
+        {
+          "name": "limitVertexIso_hom_comp_diagramEq",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/DiagramEqLimitVertexComposition.lean",
+          "line": 31
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean",
+          "line": 187,
+          "name": "weightedSections_nativeLimitIso_hom_transportGlobal"
+        }
+      ],
+      "literature": "Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定大域比較。",
+      "bare_lines": [
+        190,
+        260
+      ],
+      "corrected_lines": [
+        380,
+        520
+      ],
+      "method": "元の右 Kan 輸送の極限頂点比較を、固定 Yoneda の形状同型を経由して大域比較の成分へ結ぶ。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean",
+      "note": "元の右 Kan 輸送の極限頂点比較を、固定 Yoneda の形状同型を経由して大域比較の成分へ結ぶ。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 228,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 13,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean": "cc3c0b46a41aae4f109790f64a8f246490d208fefa148ce2d324c317c1129ab2"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "709ad4cffd2483da750a78ea69b0da3c429650cdf3530a25236bd3a91797c822",
+        "receipt": "/tmp/is-stage5/R06.2Cg/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cg-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

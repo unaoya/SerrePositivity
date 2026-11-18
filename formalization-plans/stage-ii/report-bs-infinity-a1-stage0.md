@@ -12520,3 +12520,61 @@ lemma rightKan_transport_apex_eval
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,354 から 34,557 行。
 
 一覧：済み 85／全体 119（うち追加 84）
+
+
+### R06.2Cg — weightedSections_nativeLimitIso_hom_transportGlobal
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2Ct。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
+    (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
+    (P : (PresheafCat C SpaceInfinity.{u}).op _⦋0⦌),
+    let a := fixedYonedaDomainIso C
+    let b := (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).symm
+    let O' := a.inv ≫ O
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let δ₀ := nativeSetShapeOppositeYoneda C
+    let hw := nativeSetShapeOppositeYoneda_square C
+    ∀ {G : (PresheafInfinity (nerve C)).op ⟶ E}
+      (α : SSet.Homotopy (δ ≫ G) O')
+      (hα : IsRightKanExtension δ O' G α)
+      (h : a.hom ≫ O' = O)
+      (t : RightKanConeTransport δ O' G α (b.hom.app (Opposite.op ⦋0⦌) P))
+      (ht : IsLimitCone t.cone),
+    let β := rightKanCounitIsoSquare a b hw α
+    let hβ := kanRightKanExtension_of_isoSquare a b hw α hα
+    let β' : SSet.Homotopy (δ₀ ≫ (b.hom ≫ G)) O := h ▸ β
+    let hβ' : IsRightKanExtension δ₀ O (b.hom ≫ G) β' := by
+      exact (show ∀ (O₀ O₁ : Presheaf C E) (hs : O₀ = O₁)
+        (g : SSet.Homotopy (δ₀ ≫ (b.hom ≫ G)) O₀),
+        IsRightKanExtension δ₀ O₀ (b.hom ≫ G) g →
+        IsRightKanExtension δ₀ O₁ (b.hom ≫ G) (hs ▸ g) from
+        fun _ _ hs _ hg => by cases hs; exact hg) _ _ h β hβ
+    (weightedSections_nativeLimitIso O hE P t.cone ht).hom =
+      functorHomEvaluate (weightedSections_nativeShape_comparison O hE β' hβ').hom P ≫
+        eqToHom (congrArg HomotopyCategory.mk t.cone_vertex).symm
+```
+
+素：190〜260行。係数2：380〜520行。
+
+元の右 Kan 輸送の極限頂点比較を、固定 Yoneda の形状同型を経由して大域比較の成分へ結ぶ。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定大域比較。
+
+使う既存の宣言：
+
+- `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean:80
+- `rightKanTransportIsoSquare_cone_val` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanShapeIsoData.lean:66
+- `limitVertexIso_hom_comp_diagramEq` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/DiagramEqLimitVertexComposition.lean:31
+
+一覧：済み 85／全体 120（うち追加 85）
+
+### 11-18：R06.2Cg の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cg|228|190〜260|380〜520|7,600|13|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,557 から 34,785 行。
+
+一覧：済み 86／全体 120（うち追加 85）
