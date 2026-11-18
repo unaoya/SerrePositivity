@@ -2291,6 +2291,8 @@ let d := (restrictJoinCone t.cone a).cast he
 ### R06.1 — discreteElementsComparison_specifiedHom
 親：R06。状態：紙のみ（pending）。依存：なし（既存APIのみ）。
 
+11-18 型検査：紙の b は持ち上げた終域と小さい始域の宇宙が異なり合成できない。同じ小さい要素圏の射 `nerveMap φ.mapElements` による b に修正する案は型検査済み。終端 R06 の型・仮定は保つ。承認まで下の台帳型を保持する。
+
 ```lean
 ∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
 let q := smallLeftUnstraighteningProjection (discretePresheaf Q)

@@ -10769,3 +10769,19 @@ R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を�
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 28,719 から 28,818 行。
 
 一覧：済み 43／全体 93（うち追加 58）
+
+### 11-18：R06.1 の台帳型の不一致で中断
+
+main の 5cbfd7bb1 を 4be243f57 で取り込み、新しい InfinitySheaves の入口と監査を確認した。今回の検証済みは R04.2（fc0f90c9b）、R04.4（0c346ce08）、R05.1（cbcf273d0）。前回の R04.1 と合わせて 28,818 行。今回の3本は実測 513 行、素の見込み 200〜340 行、補正 400〜680 行。台帳の残りの補正上端は 6,320 行で、累計見込み上端は 35,138 行。外枠 35,681 行の区切りには達していない。
+
+R06.1 の紙で指定された `b` の合成を対象環境で型検査した。 `SetWeight.elementsMap φ` の終域は `U.obj (nerve Q.Elements)`（宇宙 u+1）で、`SetWeight.elementsComparisonNatural Q` の始域は `nerve Q.Elements`（宇宙 u）。結果は `Application type mismatch`。参照は SetSectionsNaturality.lean:192 と :45。R06.1 の比較は下げた相対写像空間で行うので、初めから小さい要素圏の射を使う次の訂正を提案する。
+
+```lean
+let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
+```
+
+この合成は Lean で `nerve P.Elements ⟶ smallLeftUnstraightening (spaceDiagram Q)` と型検査できる。元の `SetWeight.elementsMap φ` はこの `nerveMap φ.mapElements` を持ち上げた射。訂正が要るのは途中の R06.1 の添字で、終端の R06 の主張・仮定に変更は生じない。台帳型の変更が要る場合の指示に従いここで中断し、型は承認まで保持する。
+
+R04.3・R04.5 は対象診断の途中。R04.3 は前合成像の端点の等式まで進み、型移送の最終合成で底上の可換性の引数が残った。R04.5 は型の明示と補助の検査後、主証明に入った直後の余分な `dsimp only` で停止した。R09.1 は射影での合成の書き換えを局所化する段が残る。未検証の新規 Lean は8本で、R04.3・5・6・終端、R05 終端、R09.1、R15-Unit.0a・.0b。旧 R2 の未追跡4本には触れていない。R16・17、S7、R2・R3 は未着手のまま。14の終端署名は未完で、今回の中断は完成の停止点ではない。
+
+一覧：済み 43／全体 93（うち追加 58）
