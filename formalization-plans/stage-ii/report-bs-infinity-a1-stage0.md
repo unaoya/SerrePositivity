@@ -12173,3 +12173,64 @@ R04・R05 の終端と、R06.2F・M の指定添字の局所面まで完了。�
 追跡ファイルに未コミットの変更なし。旧 R2 の未追跡 Lean 4 本（HomWeightYonedaUnitPointEvaluation・Square・SquareNormalized・Values）は作業木に残した。
 
 一覧：済み 78／全体 112（うち追加 77）
+
+
+### 11-18：R06.2 の再開に向けた指定余単位の直接計算
+
+前回の停止点から、同じ指定余単位を射の類で直接計算する経路を点検した。下の四式は一時ファイルで型検査済みで、標準三公理のみ。ここで `m` は区間上の同じ標準錐の射、`α` と `β` はそれぞれの元の余単位を同じ添字へ制限した類に当たる。
+
+```lean
+lemma movingCone_counit_comp
+    {K X : SSet.{u}} [Quasicategory X] {p q r : K ⟶ X}
+    (c : JoinCone p) (d : JoinCone q) (m : FunctorHom c.val d.val)
+    (α : FunctorHom p r) (β : FunctorHom q r)
+    (h : kanFunctorHomCongr c.property d.property
+      ((hoFunctor.map ((pre (joinInr (Δ[0] : SSet.{u}) K)).app X)).toFunctor.map m) ≫ β = α) :
+    constantFunctorHomMap K
+      (functorHomEvaluate m (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) K))) ≫
+        (coneCounitHom d ≫ β) = coneCounitHom c ≫ α
+
+lemma cone_apex_eq_of_counit_fac
+    {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} {c d : JoinCone p}
+    (hd : IsLimitCone d)
+    (k : (SSet.HomotopyCategory.mk c : hoFunctor.obj (sliceOver p)) ⟶
+      SSet.HomotopyCategory.mk d)
+    (a : (SSet.HomotopyCategory.mk c.vertex : hoFunctor.obj X) ⟶
+      SSet.HomotopyCategory.mk d.vertex)
+    (h : constantFunctorHomMap K a ≫ coneCounitHom d = coneCounitHom c) :
+    a = (hoFunctor.map (sliceOverProjection p)).toFunctor.map k
+
+lemma rightKan_transport_counit_comp
+    {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v) :
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    constantFunctorHomMap L (functorHomEvaluate g
+        (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L))) ≫ coneCounitHom t.cone =
+      coneCounitHom c ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+
+lemma rightKan_transport_apex_eval
+    {K C D : SSet.{u}} {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v) :
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    let vc : c.vertex = F.app (Opposite.op ⦋0⦌) v := rightKanCanonicalCone_vertex δ F v
+    functorHomEvaluate g (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L)) ≫
+        eqToHom (congrArg HomotopyCategory.mk t.cone_vertex) =
+      eqToHom (congrArg HomotopyCategory.mk vc)
+```
+
+- `rightKan_transport_counit_comp` と `rightKan_transport_apex_eval` は同じ指定輸送の `.diagram_hom` と `.apex_hom` を使う。この二式で、指定輸送の終端の余単位を標準錐の余単位と元の余単位の合成として扱える。
+- `coneCounitHom_shapeRestriction` で同じ添字に制限し、`movingCone_counit_comp` を適用する。最後は `cone_apex_eq_of_counit_fac` で、台帳にある任意の比較錐の射と同じ頂点射を得る。全辺を改めて cocartesian に持ち上げる工程を省ける候補。
+- R06.2M の指定区間から作る実際の標準錐の両端、始点の相対同型を除いた後の図式側の恒等射、固定 Yoneda の形状同型を経由する R05 の比較は、この経路でも照合が必要。四式の検証だけでは、残りのまとまりの補正上端を2,143行以下と見積もる根拠がそろっていない。
+
+本体・台帳の型・累計33,538行は維持。外枠35,681行の区切りは前の停止点のとおり。前の見積もりで R06.2 の次のまとまりを再開するなら累計36,138行までの枠が要る。
+
+一覧：済み 78／全体 112（うち追加 77）
