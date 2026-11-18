@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：28,992行。外枠：35,681行。係数：2。
+既計上の累計：29,459行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -52,8 +52,8 @@
 |R04.2|verified|235|0〜0|0〜0|
 |R04.3|verified|174|0〜0|0〜0|
 |R04.4|verified|179|0〜0|0〜0|
-|R04.5|pending|—|90〜160|180〜320|
-|R04.6|pending|—|40〜80|80〜160|
+|R04.5|verified|381|0〜0|0〜0|
+|R04.6|verified|86|0〜0|0〜0|
 |R04|pending|753|25〜45|50〜90|
 |R05.1|verified|99|0〜0|0〜0|
 |R05|pending|—|60〜100|120〜200|
@@ -2110,7 +2110,9 @@ let z := leftStraighteningInfinityReconstruction pf ≫
 - `limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean:39
 
 ### R04.5 — rightKan_actualIndexArrow_transportConeIso
-親：R04。状態：紙のみ（pending）。依存：R04.2。
+親：R04。状態：検証済み。依存：R04.2。
+
+11-18 型照合：`VertexIso s.cone d` と暗黙の頂点射影 → `VertexIso (X := sliceOver (rightKanDiagram δ O v)) s.cone d` と `hoFunctor.obj D`・制限錐を明示した頂点射影。含意は同じで、暗黙引数の探索の時間切れを避ける。明示した型は Lean で検証済み。
 
 ```lean
 ∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]
@@ -2128,11 +2130,11 @@ let b := (e.postcomp G).hom ≫
 let he : a ≫ rightKanDiagram δ' O v = rightKanDiagram δ O v := by
  dsimp only [rightKanDiagram]; rw [← Category.assoc, ha]
 let d := (restrictJoinCone t.cone a).cast he
-∃ k : VertexIso s.cone d,
- eqToHom (congrArg HomotopyCategory.mk s.cone_vertex.symm) ≫
+∃ k : VertexIso (X := sliceOver (rightKanDiagram δ O v)) s.cone d,
+ eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D)) s.cone_vertex.symm) ≫
    (hoFunctor.map (sliceOverProjection (rightKanDiagram δ O v))).toFunctor.map k.hom ≫
-   eqToHom (congrArg HomotopyCategory.mk
-     ((JoinCone.vertex_cast _ he).trans
+   eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))
+     ((JoinCone.vertex_cast (restrictJoinCone t.cone a) he).trans
        ((restrictJoinCone_vertex t.cone a).trans t.cone_vertex))) =
    𝟙 (HomotopyCategory.mk (G.app _ v))
 ```
@@ -2154,7 +2156,7 @@ let d := (restrictJoinCone t.cone a).cast he
 - `RightKanConeTransport` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/Definition.lean:31
 
 ### R04.6 — rightKan_actualIndexArrow_valueHom
-親：R04。状態：紙のみ（pending）。依存：R04.5。
+親：R04。状態：検証済み。依存：R04.5。
 
 ```lean
 ∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]

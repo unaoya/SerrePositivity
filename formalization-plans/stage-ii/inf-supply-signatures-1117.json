@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 28992,
+  "verified_lean_lines": 29459,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2816,7 +2816,7 @@
     {
       "id": "R04.5",
       "name": "rightKan_actualIndexArrow_transportConeIso",
-      "full_type": "∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]\n {δ δ' : K ⟶ C} (e : FunctorIso δ δ') (O : K ⟶ D) (G : C ⟶ D)\n (β : SSet.Homotopy (δ' ≫ G) O) (v : C _⦋0⦌),\nlet p := sliceUnderProjection (SSet.yonedaEquiv.symm v)\nlet b := (e.postcomp G).hom ≫\n Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)\n∀ (a : rightKanShape δ v ⟶ rightKanShape δ' v)\n (ha : a ≫ rightKanProjection δ' v = rightKanProjection δ v)\n (l : FunctorIso (pullback.fst p δ) (a ≫ pullback.fst p δ'))\n (hl : HEq (l.postcomp p) (e.precomp (rightKanProjection δ v)))\n (s : RightKanConeTransport δ O G (functorHomHomotopy b) v)\n (t : RightKanConeTransport δ' O G β v),\nlet he : a ≫ rightKanDiagram δ' O v = rightKanDiagram δ O v := by\n dsimp only [rightKanDiagram]; rw [← Category.assoc, ha]\nlet d := (restrictJoinCone t.cone a).cast he\n∃ k : VertexIso s.cone d,\n eqToHom (congrArg HomotopyCategory.mk s.cone_vertex.symm) ≫\n   (hoFunctor.map (sliceOverProjection (rightKanDiagram δ O v))).toFunctor.map k.hom ≫\n   eqToHom (congrArg HomotopyCategory.mk\n     ((JoinCone.vertex_cast _ he).trans\n       ((restrictJoinCone_vertex t.cone a).trans t.cone_vertex))) =\n   𝟙 (HomotopyCategory.mk (G.app _ v))",
+      "full_type": "∀ {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D]\n {δ δ' : K ⟶ C} (e : FunctorIso δ δ') (O : K ⟶ D) (G : C ⟶ D)\n (β : SSet.Homotopy (δ' ≫ G) O) (v : C _⦋0⦌),\nlet p := sliceUnderProjection (SSet.yonedaEquiv.symm v)\nlet b := (e.postcomp G).hom ≫\n Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)\n∀ (a : rightKanShape δ v ⟶ rightKanShape δ' v)\n (ha : a ≫ rightKanProjection δ' v = rightKanProjection δ v)\n (l : FunctorIso (pullback.fst p δ) (a ≫ pullback.fst p δ'))\n (hl : HEq (l.postcomp p) (e.precomp (rightKanProjection δ v)))\n (s : RightKanConeTransport δ O G (functorHomHomotopy b) v)\n (t : RightKanConeTransport δ' O G β v),\nlet he : a ≫ rightKanDiagram δ' O v = rightKanDiagram δ O v := by\n dsimp only [rightKanDiagram]; rw [← Category.assoc, ha]\nlet d := (restrictJoinCone t.cone a).cast he\n∃ k : VertexIso (X := sliceOver (rightKanDiagram δ O v)) s.cone d,\n eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D)) s.cone_vertex.symm) ≫\n   (hoFunctor.map (sliceOverProjection (rightKanDiagram δ O v))).toFunctor.map k.hom ≫\n   eqToHom (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj D))\n     ((JoinCone.vertex_cast (restrictJoinCone t.cone a) he).trans\n       ((restrictJoinCone_vertex t.cone a).trans t.cone_vertex))) =\n   𝟙 (HomotopyCategory.mk (G.app _ v))",
       "dependencies": [
         "R04.2"
       ],
@@ -2835,6 +2835,11 @@
           "name": "RightKanConeTransport",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/Definition.lean",
           "line": 31
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean",
+          "line": 210,
+          "name": "rightKan_actualIndexArrow_transportConeIso"
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -2848,13 +2853,35 @@
       ],
       "method": "同じlのcoslice prismをs・tの固定頂点の輸送族と貼り合わせる。hlにより底のホモトピーの類は同じb。二つの指定輸送の差を固定頂点のslice内の同型として保つ。",
       "specified_compatibility": "hl・元のβ・元のbを全て保持。任意の錐の頂点同型では代用しない。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R04",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/（新規ファイル、実装時に分割）",
-      "note": "同じlのcoslice prismをs・tの固定頂点の輸送族と貼り合わせる。hlにより底のホモトピーの類は同じb。二つの指定輸送の差を固定頂点のslice内の同型として保つ。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean",
+      "note": "同じlのcoslice prismをs・tの固定頂点の輸送族と貼り合わせる。hlにより底のホモトピーの類は同じb。二つの指定輸送の差を固定頂点のslice内の同型として保つ。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 型照合：`VertexIso s.cone d` と暗黙の頂点射影 → `VertexIso (X := sliceOver (rightKanDiagram δ O v)) s.cone d` と `hoFunctor.obj D`・制限錐を明示した頂点射影。含意は同じで、暗黙引数の探索の時間切れを避ける。明示した型は Lean で検証済み。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 381,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 14,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean": "0c78535b5a26f36350753a5d28a08b24a56083eb43c87a093590ece28c579e98"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "6094f1d853460407c7e8834fe116232b5ab17ad792a381c30ae87e04741d402b",
+        "receipt": "/tmp/is-stage5/R04.5/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r04-5-1118/manifest.json"
     },
     {
       "id": "R04.6",
@@ -2873,6 +2900,11 @@
           "name": "limitVertexIso_hom_eq_coneEdge",
           "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsLimitNaturality.lean",
           "line": 27
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexValue.lean",
+          "line": 44,
+          "name": "rightKan_actualIndexArrow_valueHom"
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -2886,13 +2918,35 @@
       ],
       "method": "同じ制限錐へのkを極限比較の一意性へ入れ、頂点のcastを式で消す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R04",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/（新規ファイル、実装時に分割）",
-      "note": "同じ制限錐へのkを極限比較の一意性へ入れ、頂点のcastを式で消す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexValue.lean",
+      "note": "同じ制限錐へのkを極限比較の一意性へ入れ、頂点のcastを式で消す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 86,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexValue.lean": "348fced2117e005cdf1c7ecee574d8ac031c1d1061831b19757feff428fa7904"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "1ae5ccdef915f240fd0fc0d4e1e021ad95bc3630598f562377d34b98309558d1",
+        "receipt": "/tmp/is-stage5/R04.6/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r04-6-1118/manifest.json"
     },
     {
       "id": "R04",
