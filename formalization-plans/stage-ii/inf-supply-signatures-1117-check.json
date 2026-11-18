@@ -2,11 +2,11 @@
   "success": true,
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
-  "signature_count": 120,
-  "verified_count": 86,
-  "additional_count": 85,
+  "signature_count": 121,
+  "verified_count": 87,
+  "additional_count": 86,
   "deferred_count": 12,
-  "edge_count": 213,
+  "edge_count": 216,
   "acyclic": true,
   "topological_order": [
     "R01",
@@ -107,6 +107,7 @@
     "R06.2Cm",
     "R06.2Ct",
     "R06.2Cg",
+    "R06.2Cl",
     "R06.2",
     "R06",
     "R08.1",
@@ -143,10 +144,10 @@
     1920
   ],
   "active_completion_corrected_lines": [
-    36515,
-    37885
+    36632,
+    38002
   ],
-  "ledger_sha256": "7ec9ae0f94dfd5a8e448c0fe86aa58b90bcb2d7a3187fe5777a5a059e1798cbc",
+  "ledger_sha256": "2528e6266cd16c434c47090cef1bf1e765e25a6bda9626ecee57fcc24c22343e",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -378,6 +379,8 @@
     "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean": "60cc2db2212fdb1e43b1a45f170cc2af9aa5df42d52e5abddbefacbe0be02e8b",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanShapeIsoData.lean": "e69b8e7c6635adc0c7f1081a1d37241c41a413703583f259644ab0d0edcc630a",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/DiagramEqLimitVertexComposition.lean": "c9505eddbc6d5f3e74729b7f3a7966175d95aef12b27279a53c40c59ba28d5a4",
-    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean": "cc3c0b46a41aae4f109790f64a8f246490d208fefa148ce2d324c317c1129ab2"
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean": "cc3c0b46a41aae4f109790f64a8f246490d208fefa148ce2d324c317c1129ab2",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean": "4f2255b7f675086b8074f707fbd85ed24164576c23fa4cb9da40208aba08faec",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean": "c10984e0cf367f24e0a06bd4e4daba0057675db98a05df7e3615b803320dc5be"
   }
 }

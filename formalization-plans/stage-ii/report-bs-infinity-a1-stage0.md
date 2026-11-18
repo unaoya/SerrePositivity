@@ -12578,3 +12578,60 @@ lemma rightKan_transport_apex_eval
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,557 から 34,785 行。
 
 一覧：済み 86／全体 120（うち追加 85）
+
+
+### R06.2Cl — nativeLeftSectionsTransport_apexMap
+親：R06。状態：紙のみ（pending）。依存：R06.2Ct・R06.2M。
+
+```lean
+∀ {A : SSet.{u}} [Quasicategory A]
+    {P Q : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}}
+    {E : SSet.{u + 1}} [Quasicategory E]
+    (O : ((SSet.uliftFunctor.{u + 1, u}).obj A).op ⟶ E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let δ := SSet.opFunctor.map (yonedaInfinityMap A)
+    let v₀ := SSet.opObjEquiv.symm (functorVertex Q)
+    let v₁ := SSet.opObjEquiv.symm (functorVertex P)
+    ∀ (e : (PresheafInfinity A).op.Edge v₀ v₁)
+      (a : U.obj (smallLeftUnstraightening P) ⟶ U.obj (smallLeftUnstraightening Q)),
+    let j₀ := a ≫ leftElementsRightKanComparison Q
+    let j₁ := leftElementsRightKanComparison P
+    ∀ (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+      (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+        e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)
+      (h : a ≫ nativeLeftSectionsDiagram Q O = nativeLeftSectionsDiagram P O),
+    let c := nativeLeftSectionsTransportCone Q O hE
+    let d := nativeLeftSectionsTransportCone P O hE
+    let rc := (restrictJoinCone c a).cast h
+    let hc := ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex c a)).trans
+      (nativeLeftSectionsTransportCone_vertex Q O hE)
+    let hd := nativeLeftSectionsTransportCone_vertex P O hE
+    ∀ (k : (HomotopyCategory.mk rc : hoFunctor.obj (sliceOver (nativeLeftSectionsDiagram P O))) ⟶
+      HomotopyCategory.mk d),
+    Arrow.mk (Truncated.HomotopyCategory.homMk (e.map (nativeWeightedSections O hE)).toTruncated) =
+      Arrow.mk ((hoFunctor.map (sliceOverProjection (nativeLeftSectionsDiagram P O))).toFunctor.map k)
+```
+
+素：95〜140行。係数2：190〜280行。
+
+指定右 Kan 輸送を小さい left 全空間へ制限すると、元の比較錐の射に同じ頂点射が出る。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）、HTT 5.1.5.6 の指定局所極限。
+
+使う既存の宣言：
+
+- `rightKanMovingIndex_transportApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean:161
+- `nativeLeftSectionsTransportCone_vertex` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:54
+- `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
+
+一覧：済み 86／全体 121（うち追加 86）
+
+### 11-18：R06.2Cl の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cl|117|95〜140|190〜280|5,972|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,785 から 34,902 行。
+
+一覧：済み 87／全体 121（うち追加 86）

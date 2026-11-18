@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Cl",
+  "declaration": "nativeLeftSectionsTransport_apexMap",
+  "target_build": {
+    "jobs": 5972,
+    "sha256": "0831e02af134731a07561a12d0fac4fba73f77995c1b4a8d5d26dda34e6c98f4",
+    "receipt": "/tmp/is-stage5/R06.2Cl/build-1.log"
+  },
+  "type_check": {
+    "sha256": "a601f8c819ee64c10e3a17f1b5d06caddb09d3cdd9e812008fa99b3a1cee1ca2",
+    "receipt": "/tmp/is-stage5/R06.2Cl/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "48ebaf649fbd1ab559daf86d6bbc0cb5acf76c2feea6d07f4dc7822882a758cf",
+    "receipt": "/tmp/is-stage5/R06.2Cl/target-audit-result.json",
+    "modules": 1,
+    "declarations": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean": "c10984e0cf367f24e0a06bd4e4daba0057675db98a05df7e3615b803320dc5be"
+    }
+  }
+}

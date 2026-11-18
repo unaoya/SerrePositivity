@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 34785,
+  "verified_lean_lines": 34902,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3484,7 +3484,8 @@
         "R06.2Cc",
         "R06.2Cm",
         "R06.2Ct",
-        "R06.2Cg"
+        "R06.2Cg",
+        "R06.2Cl"
       ],
       "existing": [
         {
@@ -7545,6 +7546,77 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2cg-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cl",
+      "name": "nativeLeftSectionsTransport_apexMap",
+      "full_type": "∀ {A : SSet.{u}} [Quasicategory A]\n    {P Q : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}}\n    {E : SSet.{u + 1}} [Quasicategory E]\n    (O : ((SSet.uliftFunctor.{u + 1, u}).obj A).op ⟶ E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),\n    let U := SSet.uliftFunctor.{u + 1, u}\n    let δ := SSet.opFunctor.map (yonedaInfinityMap A)\n    let v₀ := SSet.opObjEquiv.symm (functorVertex Q)\n    let v₁ := SSet.opObjEquiv.symm (functorVertex P)\n    ∀ (e : (PresheafInfinity A).op.Edge v₀ v₁)\n      (a : U.obj (smallLeftUnstraightening P) ⟶ U.obj (smallLeftUnstraightening Q)),\n    let j₀ := a ≫ leftElementsRightKanComparison Q\n    let j₁ := leftElementsRightKanComparison P\n    ∀ (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)\n      (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)\n        e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)\n      (h : a ≫ nativeLeftSectionsDiagram Q O = nativeLeftSectionsDiagram P O),\n    let c := nativeLeftSectionsTransportCone Q O hE\n    let d := nativeLeftSectionsTransportCone P O hE\n    let rc := (restrictJoinCone c a).cast h\n    let hc := ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex c a)).trans\n      (nativeLeftSectionsTransportCone_vertex Q O hE)\n    let hd := nativeLeftSectionsTransportCone_vertex P O hE\n    ∀ (k : (HomotopyCategory.mk rc : hoFunctor.obj (sliceOver (nativeLeftSectionsDiagram P O))) ⟶\n      HomotopyCategory.mk d),\n    Arrow.mk (Truncated.HomotopyCategory.homMk (e.map (nativeWeightedSections O hE)).toTruncated) =\n      Arrow.mk ((hoFunctor.map (sliceOverProjection (nativeLeftSectionsDiagram P O))).toFunctor.map k)",
+      "dependencies": [
+        "R06.2Ct",
+        "R06.2M"
+      ],
+      "existing": [
+        {
+          "name": "rightKanMovingIndex_transportApex",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean",
+          "line": 161
+        },
+        {
+          "name": "nativeLeftSectionsTransportCone_vertex",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean",
+          "line": 54
+        },
+        {
+          "name": "leftElementsRightKanComparison_projection",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean",
+          "line": 54
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean",
+          "line": 63,
+          "name": "nativeLeftSectionsTransport_apexMap"
+        }
+      ],
+      "literature": "Kerodon Definition 7.3.1.2（Tag 02Y9）、HTT 5.1.5.6 の指定局所極限。",
+      "bare_lines": [
+        95,
+        140
+      ],
+      "corrected_lines": [
+        190,
+        280
+      ],
+      "method": "指定右 Kan 輸送を小さい left 全空間へ制限すると、元の比較錐の射に同じ頂点射が出る。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean",
+      "note": "指定右 Kan 輸送を小さい left 全空間へ制限すると、元の比較錐の射に同じ頂点射が出る。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 117,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean": "c10984e0cf367f24e0a06bd4e4daba0057675db98a05df7e3615b803320dc5be"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "a601f8c819ee64c10e3a17f1b5d06caddb09d3cdd9e812008fa99b3a1cee1ca2",
+        "receipt": "/tmp/is-stage5/R06.2Cl/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cl-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

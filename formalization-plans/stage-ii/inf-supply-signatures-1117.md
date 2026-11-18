@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：34,785行。外枠：36,138行。係数：2。
+既計上の累計：34,902行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -129,6 +129,7 @@
 |R06.2Cm|verified|98|0〜0|0〜0|
 |R06.2Ct|verified|203|0〜0|0〜0|
 |R06.2Cg|verified|228|0〜0|0〜0|
+|R06.2Cl|verified|117|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2353,7 +2354,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct・R06.2Cg。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct・R06.2Cg・R06.2Cl。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4581,3 +4582,48 @@ R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,53
 - `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean:80
 - `rightKanTransportIsoSquare_cone_val` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanShapeIsoData.lean:66
 - `limitVertexIso_hom_comp_diagramEq` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/DiagramEqLimitVertexComposition.lean:31
+
+
+### R06.2Cl — nativeLeftSectionsTransport_apexMap
+親：R06。状態：検証済み。依存：R06.2Ct・R06.2M。
+
+```lean
+∀ {A : SSet.{u}} [Quasicategory A]
+    {P Q : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}}
+    {E : SSet.{u + 1}} [Quasicategory E]
+    (O : ((SSet.uliftFunctor.{u + 1, u}).obj A).op ⟶ E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let δ := SSet.opFunctor.map (yonedaInfinityMap A)
+    let v₀ := SSet.opObjEquiv.symm (functorVertex Q)
+    let v₁ := SSet.opObjEquiv.symm (functorVertex P)
+    ∀ (e : (PresheafInfinity A).op.Edge v₀ v₁)
+      (a : U.obj (smallLeftUnstraightening P) ⟶ U.obj (smallLeftUnstraightening Q)),
+    let j₀ := a ≫ leftElementsRightKanComparison Q
+    let j₁ := leftElementsRightKanComparison P
+    ∀ (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+      (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+        e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)
+      (h : a ≫ nativeLeftSectionsDiagram Q O = nativeLeftSectionsDiagram P O),
+    let c := nativeLeftSectionsTransportCone Q O hE
+    let d := nativeLeftSectionsTransportCone P O hE
+    let rc := (restrictJoinCone c a).cast h
+    let hc := ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex c a)).trans
+      (nativeLeftSectionsTransportCone_vertex Q O hE)
+    let hd := nativeLeftSectionsTransportCone_vertex P O hE
+    ∀ (k : (HomotopyCategory.mk rc : hoFunctor.obj (sliceOver (nativeLeftSectionsDiagram P O))) ⟶
+      HomotopyCategory.mk d),
+    Arrow.mk (Truncated.HomotopyCategory.homMk (e.map (nativeWeightedSections O hE)).toTruncated) =
+      Arrow.mk ((hoFunctor.map (sliceOverProjection (nativeLeftSectionsDiagram P O))).toFunctor.map k)
+```
+
+素：95〜140行。係数2：190〜280行。
+
+指定右 Kan 輸送を小さい left 全空間へ制限すると、元の比較錐の射に同じ頂点射が出る。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）、HTT 5.1.5.6 の指定局所極限。
+
+使う既存の宣言：
+
+- `rightKanMovingIndex_transportApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean:161
+- `nativeLeftSectionsTransportCone_vertex` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:54
+- `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
