@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：36,506行。外枠：36,138行。係数：2。
+既計上の累計：36,756行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -80,8 +80,8 @@
 |R15-Unit.1|verified|52|0〜0|0〜0|
 |R15-Unit.2|verified|44|0〜0|0〜0|
 |R15-Unit|verified|97|0〜0|0〜0|
-|R15a.1|pending|—|80〜140|160〜280|
-|R15a.2|pending|—|60〜110|120〜220|
+|R15a.1|verified|136|0〜0|0〜0|
+|R15a.2|verified|114|0〜0|0〜0|
 |R15a|pending|—|20〜35|40〜70|
 |R15b|pending|—|20〜40|40〜80|
 |R15c|pending|—|40〜80|80〜160|
@@ -3003,7 +3003,7 @@ let I := (discretePresheafInclusion C).val
 - `resizedNatTransMap` @ SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean:30
 
 ### R15a.1 — discreteSheafification_mate_exists_specified
-親：R15a。状態：紙のみ（pending）。依存：R15-Unit。
+親：R15a。状態：検証済み。依存：R15-Unit。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]
@@ -3043,7 +3043,7 @@ let I := (discretePresheafInclusion C).val
 - `sheafificationReindexSpecified_unit` @ SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedUnit.lean:27
 
 ### R15a.2 — discreteSheafification_specifiedMate_isIso
-親：R15a。状態：紙のみ（pending）。依存：R15a.1。
+親：R15a。状態：検証済み。依存：R15a.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]
