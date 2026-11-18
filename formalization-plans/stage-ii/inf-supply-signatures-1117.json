@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 34052,
+  "verified_lean_lines": 34354,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3480,7 +3480,9 @@
         "R06.2Pr",
         "R06.2Cu",
         "R06.2Cn",
-        "R06.2Ca"
+        "R06.2Ca",
+        "R06.2Cc",
+        "R06.2Cm"
       ],
       "existing": [
         {
@@ -7251,6 +7253,149 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2ca-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cc",
+      "name": "coneOfCosliceMap_counit_relativeIso",
+      "full_type": "∀ {J X D : SSet.{u}} [Quasicategory X] [Quasicategory D]\n    (v : X _⦋0⦌) (G : X ⟶ D)\n    {a : J ⟶ X} (f g : J ⟶ sliceUnder (SSet.yonedaEquiv.symm v))\n    (hf : f ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) = a)\n    (hg : g ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) = a)\n    (i : VertexIso\n      (relativeFunctorVertex (sliceUnderProjection (SSet.yonedaEquiv.symm v)) a f hf)\n      (relativeFunctorVertex (sliceUnderProjection (SSet.yonedaEquiv.symm v)) a g hg)),\n    let h₀ : f ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G = a ≫ G :=\n      (Category.assoc _ _ _).symm.trans (congrArg (· ≫ G) hf)\n    let h₁ : g ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G = a ≫ G :=\n      (Category.assoc _ _ _).symm.trans (congrArg (· ≫ G) hg)\n    coneCounitAtApex (coneOfCosliceMap f G h₀) (coneOfCosliceMap_atApex f G h₀) =\n      coneCounitAtApex (coneOfCosliceMap g G h₁) (coneOfCosliceMap_atApex g G h₁)",
+      "dependencies": [
+        "R06.2Ca",
+        "R06.2M"
+      ],
+      "existing": [
+        {
+          "name": "relativeFunctorVertexIsoImage_postcomp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/RelativeFunctorVertexIsoProjection.lean",
+          "line": 34
+        },
+        {
+          "name": "exists_cosliceHomotopyConePrism",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean",
+          "line": 52
+        },
+        {
+          "name": "coneCounitAtApex_cast",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean",
+          "line": 94
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean",
+          "line": 136,
+          "name": "coneOfCosliceMap_counit_relativeIso"
+        }
+      ],
+      "literature": "Kerodon §4.6.6（Tag 04J1）の区間と join の比較。HTT 5.1.5.6 で使う形状照合。",
+      "bare_lines": [
+        175,
+        245
+      ],
+      "corrected_lines": [
+        350,
+        490
+      ],
+      "method": "指定始点の下で同じ底に写る相対同型は、指定頂点での錐の余単位を保つ。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean",
+      "note": "指定始点の下で同じ底に写る相対同型は、指定頂点での錐の余単位を保つ。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 204,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 8,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean": "4a5b6bf68dec4810891f6f150a90ea7264dbd7f5fd4e1ffcd0e9f5d6ed2fe8ef"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "4dcaae24a13613760d5383017f35681346ab4b8e853edd12addbe9830b04806e",
+        "receipt": "/tmp/is-stage5/R06.2Cc/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cc-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cm",
+      "name": "rightKanMovingIndex_cosliceCounit",
+      "full_type": "∀ {J K X D : SSet.{u}} [Quasicategory X] [Quasicategory D]\n    (δ : K ⟶ X) (G : X ⟶ D) {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)\n    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)\n    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)\n      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁),\n    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)\n    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)\n    let a₀ := j₀ ≫ pullback.fst q₀ δ\n    let a₁ := j₁ ≫ pullback.fst q₁ δ\n    let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ\n    ∀ (h₀ : a₀ ≫ q₀ ≫ G = p ≫ G) (h₁ : a₁ ≫ q₁ ≫ G = p ≫ G),\n    constantFunctorHomMap J (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ≫\n      coneCounitAtApex (coneOfCosliceMap a₁ G h₁) (coneOfCosliceMap_atApex a₁ G h₁) =\n    coneCounitAtApex (coneOfCosliceMap a₀ G h₀) (coneOfCosliceMap_atApex a₀ G h₀)",
+      "dependencies": [
+        "R06.2Cc",
+        "R06.2Cn",
+        "R06.2M"
+      ],
+      "existing": [
+        {
+          "name": "movingConePrism_counit_naturality",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean",
+          "line": 99
+        },
+        {
+          "name": "coneOfCosliceMap_counit_relativeIso",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean",
+          "line": 136
+        },
+        {
+          "name": "sliceUnderUncurry_restrict",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SliceMap.lean",
+          "line": 197
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean",
+          "line": 54,
+          "name": "rightKanMovingIndex_cosliceCounit"
+        }
+      ],
+      "literature": "Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 に使う動く添字の照合。",
+      "bare_lines": [
+        85,
+        135
+      ],
+      "corrected_lines": [
+        170,
+        270
+      ],
+      "method": "元の区間に沿う頂点射は、共通の添字に制限した二つの標準錐の余単位を可換にする。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean",
+      "note": "元の区間に沿う頂点射は、共通の添字に制限した二つの標準錐の余単位を可換にする。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 98,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 4,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean": "4337afb1c9a8ec4c542842556fe0ae726a6829ae29f983f3f45a720e4c9aae5e"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "871c01756ed2b455ce4b97457de1168bafe419255c3f29fc65362ff2fe321966",
+        "receipt": "/tmp/is-stage5/R06.2Cm/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cm-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

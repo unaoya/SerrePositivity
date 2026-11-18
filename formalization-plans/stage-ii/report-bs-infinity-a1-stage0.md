@@ -12386,3 +12386,84 @@ lemma rightKan_transport_apex_eval
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 33,825 から 34,052 行。
 
 一覧：済み 82／全体 116（うち追加 81）
+
+
+### R06.2Cc — coneOfCosliceMap_counit_relativeIso
+親：R06。状態：紙のみ（pending）。依存：R06.2Ca・R06.2M。
+
+```lean
+∀ {J X D : SSet.{u}} [Quasicategory X] [Quasicategory D]
+    (v : X _⦋0⦌) (G : X ⟶ D)
+    {a : J ⟶ X} (f g : J ⟶ sliceUnder (SSet.yonedaEquiv.symm v))
+    (hf : f ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) = a)
+    (hg : g ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) = a)
+    (i : VertexIso
+      (relativeFunctorVertex (sliceUnderProjection (SSet.yonedaEquiv.symm v)) a f hf)
+      (relativeFunctorVertex (sliceUnderProjection (SSet.yonedaEquiv.symm v)) a g hg)),
+    let h₀ : f ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G = a ≫ G :=
+      (Category.assoc _ _ _).symm.trans (congrArg (· ≫ G) hf)
+    let h₁ : g ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G = a ≫ G :=
+      (Category.assoc _ _ _).symm.trans (congrArg (· ≫ G) hg)
+    coneCounitAtApex (coneOfCosliceMap f G h₀) (coneOfCosliceMap_atApex f G h₀) =
+      coneCounitAtApex (coneOfCosliceMap g G h₁) (coneOfCosliceMap_atApex g G h₁)
+```
+
+素：175〜245行。係数2：350〜490行。
+
+指定始点の下で同じ底に写る相対同型は、指定頂点での錐の余単位を保つ。
+
+原典：Kerodon §4.6.6（Tag 04J1）の区間と join の比較。HTT 5.1.5.6 で使う形状照合。
+
+使う既存の宣言：
+
+- `relativeFunctorVertexIsoImage_postcomp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/RelativeFunctorVertexIsoProjection.lean:34
+- `exists_cosliceHomotopyConePrism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean:52
+- `coneCounitAtApex_cast` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:94
+
+一覧：済み 82／全体 117（うち追加 82）
+
+
+### R06.2Cm — rightKanMovingIndex_cosliceCounit
+親：R06。状態：紙のみ（pending）。依存：R06.2Cc・R06.2Cn・R06.2M。
+
+```lean
+∀ {J K X D : SSet.{u}} [Quasicategory X] [Quasicategory D]
+    (δ : K ⟶ X) (G : X ⟶ D) {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁),
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+    ∀ (h₀ : a₀ ≫ q₀ ≫ G = p ≫ G) (h₁ : a₁ ≫ q₁ ≫ G = p ≫ G),
+    constantFunctorHomMap J (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ≫
+      coneCounitAtApex (coneOfCosliceMap a₁ G h₁) (coneOfCosliceMap_atApex a₁ G h₁) =
+    coneCounitAtApex (coneOfCosliceMap a₀ G h₀) (coneOfCosliceMap_atApex a₀ G h₀)
+```
+
+素：85〜135行。係数2：170〜270行。
+
+元の区間に沿う頂点射は、共通の添字に制限した二つの標準錐の余単位を可換にする。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 に使う動く添字の照合。
+
+使う既存の宣言：
+
+- `movingConePrism_counit_naturality` @ SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean:99
+- `coneOfCosliceMap_counit_relativeIso` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean:136
+- `sliceUnderUncurry_restrict` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SliceMap.lean:197
+
+一覧：済み 82／全体 118（うち追加 83）
+
+### 11-18：R06.2Cc・R06.2Cm の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cc|204|175〜245|350〜490|3,962|8|
+|R06.2Cm|98|85〜135|170〜270|3,991|4|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,052 から 34,354 行。
+
+一覧：済み 84／全体 118（うち追加 83）
