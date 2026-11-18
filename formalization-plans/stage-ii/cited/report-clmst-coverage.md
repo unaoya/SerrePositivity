@@ -1,10 +1,10 @@
 # 現在地
 
-- 段：**NB-W2 完了、停止**。
-- 一覧：済み 2／全体 2 段。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `8036157a8` を取り込んだ。
-- 次：追加作業なし。
-- 凍結 exposition の転記と静的照合。
+- 段：**NB-W3 段1 完了**。
+- 一覧：済み 1／全体 2 段。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `b21c0c183` を取り込んだ。
+- 次：段2 の未処理 ∞ 圏ノートの分類と転記。
+- 凍結原稿の転記と静的照合。Lean・exposition・生成器・review は変更せず、ビルドと鍵の使用なし。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -308,3 +308,9 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段2　本論文
 
 解説 §3〜§9 の 380 ブロックを [段落の行き先](../../../research/paper-coverage/notes/README.md) に記録した。項目原稿 44、節原稿 5、保留 22 ブロック。付録は対象外。原典の項目の番号を使い、参照に出る解説内の番号は区別した。[証拠目録](../../../evidence/cited/notes-paper/manifest.json)。
+
+## NB-W3
+
+### 段1　BS
+
+[原稿の規則と行き先](../../../research/bs-coverage/notes/README.md)に八章と導入の転記を記録した。項目原稿 131、節原稿 8。本文 812 ブロックを転記し、原典番号を確定できない 9 ブロックは [issues.md](../../../research/bs-coverage/notes/issues.md) に全文を保留した。状態・候補・凡例等の除外は README に記した。[証拠目録](../../../evidence/cited/notes-bs/manifest.json)。
