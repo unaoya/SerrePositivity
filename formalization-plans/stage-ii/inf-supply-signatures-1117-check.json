@@ -2,11 +2,11 @@
   "success": true,
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
-  "signature_count": 121,
-  "verified_count": 87,
-  "additional_count": 86,
+  "signature_count": 122,
+  "verified_count": 88,
+  "additional_count": 87,
   "deferred_count": 12,
-  "edge_count": 216,
+  "edge_count": 218,
   "acyclic": true,
   "topological_order": [
     "R01",
@@ -108,6 +108,7 @@
     "R06.2Ct",
     "R06.2Cg",
     "R06.2Cl",
+    "R06.2Cf",
     "R06.2",
     "R06",
     "R08.1",
@@ -144,10 +145,10 @@
     1920
   ],
   "active_completion_corrected_lines": [
-    36632,
-    38002
+    36786,
+    38156
   ],
-  "ledger_sha256": "2528e6266cd16c434c47090cef1bf1e765e25a6bda9626ecee57fcc24c22343e",
+  "ledger_sha256": "6f4ea9bc4705acaad7f238681ed9748e716e33314fa2b445e711b8206b64f29a",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -381,6 +382,7 @@
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/DiagramEqLimitVertexComposition.lean": "c9505eddbc6d5f3e74729b7f3a7966175d95aef12b27279a53c40c59ba28d5a4",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean": "cc3c0b46a41aae4f109790f64a8f246490d208fefa148ce2d324c317c1129ab2",
     "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean": "4f2255b7f675086b8074f707fbd85ed24164576c23fa4cb9da40208aba08faec",
-    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean": "c10984e0cf367f24e0a06bd4e4daba0057675db98a05df7e3615b803320dc5be"
+    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsApexMap.lean": "c10984e0cf367f24e0a06bd4e4daba0057675db98a05df7e3615b803320dc5be",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalNativeFactor.lean": "06025d4175320646f060f594b5ec5ca560050052fdf2a84d9d73feb8e1d6cde4"
   }
 }

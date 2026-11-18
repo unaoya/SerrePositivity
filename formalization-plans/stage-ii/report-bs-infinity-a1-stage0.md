@@ -12635,3 +12635,82 @@ lemma rightKan_transport_apex_eval
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,785 から 34,902 行。
 
 一覧：済み 87／全体 121（うち追加 86）
+
+### 11-18：R06 の実装前の照合
+
+終端の型は、台帳の R06.2 と R06 を正本とする。以下の射はすべて値域のホモトピー圏で考える。(W) は元の `weightedSections O hE`、(G) は係数を固定 Yoneda 始域の逆同型で移した `nativeWeightedSections`。(Z=P,Q) とし、(g_Z:W_Z\to G_Z) は同じ指定余単位から得た大域比較の成分。(C_Z) は `nativeLeftSectionsTransportCone` を元の係数の図式へ型移送した錐、(D_Z) は R06.2 の引数の錐、(\epsilon_Z:G_Z\to C_Z.\mathrm{vertex}) は頂点の等号による射、(\ell_Z:C_Z.\mathrm{vertex}\to D_Z.\mathrm{vertex}) は固定形状同型に沿う極限の比較とする。
+
+1. **添字と係数を固定する。** (p_Z=U(\pi_{N Z})\,;\,U(i.\mathrm{hom}))、(q_Z=U(\pi_Z))、(f_Z=U(\mathrm{baseIso}_Z)) と置く。射 (b:P_{\rm native}\to Q_{\rm native}) は (f_P\,;\,a\,;\,f_Q^{-1})。(b\,;\,f_Q=f_P\,;\,a)、(f_Z\,;\,q_Z=p_Z)、(a\,;\,q_Q=q_P) を明示する。係数の一致には `fixedYonedaDomainIso` の定義から `(uliftOppositeIso (nerve C)).hom ≫ (fixedYonedaDomainIso C).inv = U.map i.hom` を使う。これは同型の積の逆と `Iso.hom_inv_id_assoc` の計算。四角形補題の引数順は `p P, p Q, q P, q Q, b, a, (f P).hom, (f Q).hom, hb, ha, hfP, hfQ`。指定した四角形の同型は (b\,;\,f_Q=f_P\,;\,a) を相対関手の頂点へ移した等号から作る。
+2. **R06.2 の元の値を分解する。** (I_Z=(\texttt{weightedSections_originalLeftLimitIso}\;\ldots).\mathrm{hom}) に対し (I_Z=g_Z\,;\,\epsilon_Z\,;\,\ell_Z)。単体で検査済みの試作 `originalLeftLimitIso_hom_nativeRestriction` と既存の `weightedSections_nativeLimitIso_hom_transportGlobal` を接続する。中間の RightKanConeTransport の頂点を (t_Z) とすると、(t_Z\to G_Z) と (C_Z.\mathrm{vertex}\to G_Z) の等号が入る。補題の右辺を当てた後、連接する二つの `eqToHom` を `eqToHom_trans` でまとめ、逆向きの頂点等号を相殺する。大域比較の同じ成分 (g_Z) を共通に取り、比較全体を `rfl` に任せない。
+3. **R06.2 の二面を貼る。** (r) は元の辺、(c_P,c_Q) はその端点の正規化、(\nu:G_Q\to G_P) は native の辺、(k_0:D_Q.\mathrm{vertex}\to D_P.\mathrm{vertex}) は指定の錐の射を頂点へ写したもの。
+   - 第一面は `Arrow.mk (r ≫ cP ≫ gP) = Arrow.mk (gQ ≫ ν)`。端点を正規化した辺の比較 `homMk_transport` の後、`functorHomEvaluate_edge_naturality` と `nativeDiscreteEdge_opSimplex` を使う。
+   - 第二面は `Arrow.mk (ν ≫ εP ≫ ℓP) = Arrow.mk (εQ ≫ ℓQ ≫ k₀)`。移送前の錐の射を `nativeLeftSectionsTransport_apexMap` で同定し、係数の等号で slice 射を移す。移した射を `limitVertexIso_restrictionSquare` に入れる。この補題の等式は `ℓQ ≫ k₀ = normalizedSliceHom _ s ≫ ℓP` の向き。端点の `eqToHom` を除く操作は `Arrow.mk` の等式の中だけで行う。
+   - 両面を、引数の型が小さいカテゴリの結合則で合成する。最後は元の両辺が同じ始域と終域にあることを固定してから `Arrow.mk_injective` を適用し、`r ≫ cP ≫ IP = cQ ≫ IQ ≫ k₀` を得る。
+4. **R06 の終端は同じ錐で消去する。** (e_Z) を元の `weightedSections_discrete` の射、(d_Z) を `discreteSectionsLeftComparison` の射、(z_Z=c_Z\,;\,I_Z)、(m) を `sectionsOf_map` の類とする。R06.2 と R06.3 に渡す `h,dP,dQ,hdP,hdQ,k` を同じ局所名で固定する。R06.2 の帰結を、最初に同じ局所名 `r,cP,cQ,IP,IQ,k₀` の非再結合の式として取り出す。次に (r\,;\,z_P=z_Q\,;\,k_0)、(e_Z\,;\,d_Z=z_Z)（`weightedSections_discrete_hom_fac`）、(d_Q\,;\,k_0=m\,;\,d_P)（R06.3）を明示的に順につなぎ、右の (d_P) を消去する。試作で時間切れだった、R06.2 の適用と `Category.assoc` を一式で推論する形を避ける。
+
+|検証するまとまり|素の見込み|係数2の上端|
+|---|---:|---:|
+|値の分解（既存の試作を含む）|130〜150行|300行|
+|係数の一致・二面・R06.2 の合成|250〜325行|650行|
+|R06 の消去|80〜120行|240行|
+|合計|460〜595行|1,190行|
+
+現時点は累計34,902行。補正後の上端を足すと36,092行で、外枠36,138行との差は46行。これは試作とログからの見込みであり、二面の接続と終端の型検査は未検証。編集再開時は上の順に各まとまりを検証し、予定の上端を増やす必要が出たら次のまとまりに入る前に再計算する。計算上限と終端の型・仮定は従来どおり。今回は紙のみ。
+
+一覧：済み 87／全体 121（うち追加 86）
+
+
+### R06.2Cf — originalLeftLimitIso_hom_nativeRestriction
+親：R06。状態：紙のみ（pending）。依存：R06.2Cg。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
+    (O : Presheaf C E)
+    (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
+    (F : Presheaf C SpaceInfinity.{u}),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let P := U.map b.hom ≫ F
+    let O' := (fixedYonedaDomainIso C).inv ≫ O
+    let f := U.mapIso (smallLeftUnstraighteningBaseIso b F)
+    let p := U.map (smallLeftUnstraighteningProjection P) ≫ U.map b.hom
+    let q := U.map (smallLeftUnstraighteningProjection F)
+    let v := SSet.opObjEquiv.symm (functorVertex P)
+    let t := nativeWeightedSections_valueTransport O' hE v
+    let ht := nativeWeightedSections_valueTransport_isLimit O' hE v
+    let hc := nativeLeftSectionsTransportCone_isLimit P O' hE
+    let c := nativeLeftSectionsTransportCone P O' hE
+    ∀ (hp : p ≫ O = nativeLeftSectionsDiagram P O')
+      (hf : f.hom ≫ q = p) (d : JoinCone (q ≫ O)) (hd : IsLimitCone d),
+    let c' := c.cast hp.symm
+    (weightedSections_originalLeftLimitIso O hE F d hd).hom =
+      (weightedSections_nativeLimitIso O hE (SSet.opObjEquiv.symm (functorVertex F)) t.cone ht).hom ≫
+        eqToHom (congrArg HomotopyCategory.mk (t.cone_vertex.trans
+          ((JoinCone.vertex_cast c hp.symm).trans (nativeLeftSectionsTransportCone_vertex P O' hE)).symm)) ≫
+        (limitVertexIsoOfOverEquivalence f.hom (isPrecompositionEquivalence_of_iso f).isQCatEquivalence
+          hf O c' d (hc.cast hp.symm) hd).hom
+```
+
+素：130〜150行。係数2：260〜300行。
+
+元の指定した極限値の比較を、native の値の頂点移送と固定形状同型に沿う制限に分解する。
+
+原典：HTT 5.1.5.6（双対）、指定した右 Kan 拡張の値の比較。
+
+使う既存の宣言：
+
+- `weightedSections_originalLeftLimitIso_hom_comp` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean:32
+- `nativeLeftSectionsValueIso_hom_transportCone` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:77
+- `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
+
+一覧：済み 87／全体 122（うち追加 87）
+
+### 11-18：R06.2Cf の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cf|154|130〜150|260〜300|7,614|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,902 から 35,056 行。
+
+一覧：済み 88／全体 122（うち追加 87）

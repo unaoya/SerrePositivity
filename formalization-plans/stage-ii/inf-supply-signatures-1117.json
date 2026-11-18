@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 34902,
+  "verified_lean_lines": 35056,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3485,7 +3485,8 @@
         "R06.2Cm",
         "R06.2Ct",
         "R06.2Cg",
-        "R06.2Cl"
+        "R06.2Cl",
+        "R06.2Cf"
       ],
       "existing": [
         {
@@ -7617,6 +7618,76 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2cl-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cf",
+      "name": "originalLeftLimitIso_hom_nativeRestriction",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]\n    (O : Presheaf C E)\n    (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)\n    (F : Presheaf C SpaceInfinity.{u}),\n    let U := SSet.uliftFunctor.{u + 1, u}\n    let b := nerveOppositeIso (C := C)\n    let P := U.map b.hom ≫ F\n    let O' := (fixedYonedaDomainIso C).inv ≫ O\n    let f := U.mapIso (smallLeftUnstraighteningBaseIso b F)\n    let p := U.map (smallLeftUnstraighteningProjection P) ≫ U.map b.hom\n    let q := U.map (smallLeftUnstraighteningProjection F)\n    let v := SSet.opObjEquiv.symm (functorVertex P)\n    let t := nativeWeightedSections_valueTransport O' hE v\n    let ht := nativeWeightedSections_valueTransport_isLimit O' hE v\n    let hc := nativeLeftSectionsTransportCone_isLimit P O' hE\n    let c := nativeLeftSectionsTransportCone P O' hE\n    ∀ (hp : p ≫ O = nativeLeftSectionsDiagram P O')\n      (hf : f.hom ≫ q = p) (d : JoinCone (q ≫ O)) (hd : IsLimitCone d),\n    let c' := c.cast hp.symm\n    (weightedSections_originalLeftLimitIso O hE F d hd).hom =\n      (weightedSections_nativeLimitIso O hE (SSet.opObjEquiv.symm (functorVertex F)) t.cone ht).hom ≫\n        eqToHom (congrArg HomotopyCategory.mk (t.cone_vertex.trans\n          ((JoinCone.vertex_cast c hp.symm).trans (nativeLeftSectionsTransportCone_vertex P O' hE)).symm)) ≫\n        (limitVertexIsoOfOverEquivalence f.hom (isPrecompositionEquivalence_of_iso f).isQCatEquivalence\n          hf O c' d (hc.cast hp.symm) hd).hom",
+      "dependencies": [
+        "R06.2Cg"
+      ],
+      "existing": [
+        {
+          "name": "weightedSections_originalLeftLimitIso_hom_comp",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean",
+          "line": 32
+        },
+        {
+          "name": "nativeLeftSectionsValueIso_hom_transportCone",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean",
+          "line": 77
+        },
+        {
+          "name": "limitVertexIsoOfOverEquivalence_hom_restriction",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean",
+          "line": 45
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalNativeFactor.lean",
+          "line": 75,
+          "name": "originalLeftLimitIso_hom_nativeRestriction"
+        }
+      ],
+      "literature": "HTT 5.1.5.6（双対）、指定した右 Kan 拡張の値の比較。",
+      "bare_lines": [
+        130,
+        150
+      ],
+      "corrected_lines": [
+        260,
+        300
+      ],
+      "method": "元の指定した極限値の比較を、native の値の頂点移送と固定形状同型に沿う制限に分解する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalNativeFactor.lean",
+      "note": "元の指定した極限値の比較を、native の値の頂点移送と固定形状同型に沿う制限に分解する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 154,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalNativeFactor.lean": "06025d4175320646f060f594b5ec5ca560050052fdf2a84d9d73feb8e1d6cde4"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "03a2530c91876ccd717b11a3b4136ba84a3eca6b946ff244a57042d169eaa214",
+        "receipt": "/tmp/is-stage5/R06.2Cf/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cf-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

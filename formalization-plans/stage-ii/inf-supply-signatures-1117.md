@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：34,902行。外枠：36,138行。係数：2。
+既計上の累計：35,056行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -130,6 +130,7 @@
 |R06.2Ct|verified|203|0〜0|0〜0|
 |R06.2Cg|verified|228|0〜0|0〜0|
 |R06.2Cl|verified|117|0〜0|0〜0|
+|R06.2Cf|verified|154|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2354,7 +2355,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct・R06.2Cg・R06.2Cl。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct・R06.2Cg・R06.2Cl・R06.2Cf。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4627,3 +4628,47 @@ R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,53
 - `rightKanMovingIndex_transportApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean:161
 - `nativeLeftSectionsTransportCone_vertex` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:54
 - `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
+
+
+### R06.2Cf — originalLeftLimitIso_hom_nativeRestriction
+親：R06。状態：検証済み。依存：R06.2Cg。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
+    (O : Presheaf C E)
+    (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
+    (F : Presheaf C SpaceInfinity.{u}),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let P := U.map b.hom ≫ F
+    let O' := (fixedYonedaDomainIso C).inv ≫ O
+    let f := U.mapIso (smallLeftUnstraighteningBaseIso b F)
+    let p := U.map (smallLeftUnstraighteningProjection P) ≫ U.map b.hom
+    let q := U.map (smallLeftUnstraighteningProjection F)
+    let v := SSet.opObjEquiv.symm (functorVertex P)
+    let t := nativeWeightedSections_valueTransport O' hE v
+    let ht := nativeWeightedSections_valueTransport_isLimit O' hE v
+    let hc := nativeLeftSectionsTransportCone_isLimit P O' hE
+    let c := nativeLeftSectionsTransportCone P O' hE
+    ∀ (hp : p ≫ O = nativeLeftSectionsDiagram P O')
+      (hf : f.hom ≫ q = p) (d : JoinCone (q ≫ O)) (hd : IsLimitCone d),
+    let c' := c.cast hp.symm
+    (weightedSections_originalLeftLimitIso O hE F d hd).hom =
+      (weightedSections_nativeLimitIso O hE (SSet.opObjEquiv.symm (functorVertex F)) t.cone ht).hom ≫
+        eqToHom (congrArg HomotopyCategory.mk (t.cone_vertex.trans
+          ((JoinCone.vertex_cast c hp.symm).trans (nativeLeftSectionsTransportCone_vertex P O' hE)).symm)) ≫
+        (limitVertexIsoOfOverEquivalence f.hom (isPrecompositionEquivalence_of_iso f).isQCatEquivalence
+          hf O c' d (hc.cast hp.symm) hd).hom
+```
+
+素：130〜150行。係数2：260〜300行。
+
+元の指定した極限値の比較を、native の値の頂点移送と固定形状同型に沿う制限に分解する。
+
+原典：HTT 5.1.5.6（双対）、指定した右 Kan 拡張の値の比較。
+
+使う既存の宣言：
+
+- `weightedSections_originalLeftLimitIso_hom_comp` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean:32
+- `nativeLeftSectionsValueIso_hom_transportCone` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:77
+- `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
