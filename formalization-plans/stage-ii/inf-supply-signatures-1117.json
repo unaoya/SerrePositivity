@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 29526,
+  "verified_lean_lines": 29689,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3380,6 +3380,11 @@
           "name": "setWeightElementsUnstraightening_naturality",
           "path": "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean",
           "line": 49
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteElementsComparisonSpecifiedHom.lean",
+          "line": 44,
+          "name": "discreteElementsComparison_specifiedHom"
         }
       ],
       "literature": "HTT 5.1.5.6（双対）。指定値比較の自然性の法則。",
@@ -3393,13 +3398,35 @@
       ],
       "method": "G8の同じ指定作用の全族比較を、元の集合重み・実射φに特殊化する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R06",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean",
-      "note": "G8の同じ指定作用の全族比較を、元の集合重み・実射φに特殊化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 対象環境の型検査で、SetWeight.elementsMap φ は ULift N(∫P) → ULift N(∫Q)、SetWeight.elementsComparisonNatural Q は N(∫Q) を始域とするため、紙の b は合成できない。提案は b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q。この合成だけは Lean で型検査済み。終端 R06 の型と仮定は保つ。型の修正を承認済み。11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteElementsComparisonSpecifiedHom.lean",
+      "note": "G8の同じ指定作用の全族比較を、元の集合重み・実射φに特殊化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 対象環境の型検査で、SetWeight.elementsMap φ は ULift N(∫P) → ULift N(∫Q)、SetWeight.elementsComparisonNatural Q は N(∫Q) を始域とするため、紙の b は合成できない。提案は b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q。この合成だけは Lean で型検査済み。終端 R06 の型と仮定は保つ。型の修正を承認済み。11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 163,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteElementsComparisonSpecifiedHom.lean": "e4598c85ce2087ced6625d97ab957f8c8e6321c3b8c8b3fb6cc04409121518ec"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "9735b57585a672475e4bda858c8289abe3411152d8783ac12a4448fb7a2428f3",
+        "receipt": "/tmp/is-stage5/R06.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-1-1118/manifest.json"
     },
     {
       "id": "R06.2",

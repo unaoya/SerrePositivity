@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：29,526行。外枠：35,681行。係数：2。
+既計上の累計：29,689行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -57,7 +57,7 @@
 |R04|verified|67|0〜0|0〜0|
 |R05.1|verified|99|0〜0|0〜0|
 |R05|pending|—|60〜100|120〜200|
-|R06.1|pending|—|80〜130|160〜260|
+|R06.1|verified|163|0〜0|0〜0|
 |R06.2|pending|—|90〜150|180〜300|
 |R06.3|pending|—|80〜130|160〜260|
 |R06|pending|—|20〜40|40〜80|
@@ -2291,7 +2291,7 @@ let d := (restrictJoinCone t.cone a).cast he
 - `rightKanHomUniversalIso_hom_fac` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/UniversalProperty.lean:83
 
 ### R06.1 — discreteElementsComparison_specifiedHom
-親：R06。状態：紙のみ（pending）。依存：なし（既存APIのみ）。
+親：R06。状態：検証済み。依存：なし（既存APIのみ）。
 
 11-18 型検査：紙の b は持ち上げた終域と小さい始域の宇宙が異なり合成できない。同じ小さい要素圏の射 `nerveMap φ.mapElements` による b に修正する案は型検査済み。終端 R06 の型・仮定は保つ。承認まで下の台帳型を保持する。
 

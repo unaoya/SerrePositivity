@@ -3,7 +3,7 @@
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 93,
-  "verified_count": 47,
+  "verified_count": 48,
   "additional_count": 58,
   "deferred_count": 12,
   "edge_count": 154,
@@ -104,22 +104,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    1555,
-    2725
+    1475,
+    2595
   ],
   "active_corrected_lines": [
-    3110,
-    5450
+    2950,
+    5190
   ],
   "deferred_corrected_lines": [
     1060,
     1920
   ],
   "active_completion_corrected_lines": [
-    32636,
-    34976
+    32639,
+    34879
   ],
-  "ledger_sha256": "8e2e9c3f2314ac400b6eb908f2c0ea9cc027847c2a13e457ab0d09945f12a71c",
+  "ledger_sha256": "a56230dd253f0cc00e6338ed2369cfc030c0853b194d4622d4c676ea5a9770a2",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -222,6 +222,7 @@
     "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/CommonWeightedNativeHomAction.lean": "0182e09c02b3a6473dc33a0960dd299e927f29c5b61b27781859f0004a85ac4f",
     "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean": "ceb0ed24848423d1ba9a39059895ccfecf806096ce5bfe01efebc144714bf169",
     "SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean": "de8d1351011b1588ef60a26696dc544f73736cdc329f7e165ded3efefb6cd1cb",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscreteElementsComparisonSpecifiedHom.lean": "e4598c85ce2087ced6625d97ab957f8c8e6321c3b8c8b3fb6cc04409121518ec",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscreteFactorization.lean": "b25ca0764beb40de7690306a31f27316a7945fbac0fc8597cb86eb0671a3a685",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean": "c038f52fda15065600b28aac8ff7d20e830b6dfb53e5e20c8fc4658fb00a07b1",
     "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsLeftComparison.lean": "e75875d555837cf502b27bd46315147632309c36de660a1ccbe98ce78ab14d7e",
