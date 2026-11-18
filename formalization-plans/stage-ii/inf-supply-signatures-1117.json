@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 28305,
+  "verified_lean_lines": 28540,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2625,6 +2625,11 @@
           "name": "unliftSimplicialHomotopy",
           "path": "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniverseMorphismDown.lean",
           "line": 43
+        },
+        {
+          "name": "nativePullbackLift_descend_specified",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackLiftDescent.lean",
+          "line": 199
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -2638,13 +2643,35 @@
       ],
       "method": "持ち上げ関手の写像空間の充満忠実性で同じLを戻す。像の等式を先に証明してからp後合成の式を反映する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R04",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/（新規ファイル、実装時に分割）",
-      "note": "持ち上げ関手の写像空間の充満忠実性で同じLを戻す。像の等式を先に証明してからp後合成の式を反映する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 ユーザー承認：R04.2 に ha : a ≫ pullback.snd p g = pullback.snd p f を追加。exists_nativePullbackRepresentationArrowComparison が同じ a とともに供給する。終端 R04 の型は不変。 R04.2 の型内に letI : Quasicategory E := quasicategory_of_innerFibration p を明示。元の p の LeftFibration と底の Quasicategory から供給し、追加仮定はない。 R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を外す。呼ぶ側の p が左ファイブレーションなので quasicategory_of_innerFibration p で同じ準圏性を供給する。"
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackLiftDescent.lean",
+      "note": "持ち上げ関手の写像空間の充満忠実性で同じLを戻す。像の等式を先に証明してからp後合成の式を反映する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 ユーザー承認：R04.2 に ha : a ≫ pullback.snd p g = pullback.snd p f を追加。exists_nativePullbackRepresentationArrowComparison が同じ a とともに供給する。終端 R04 の型は不変。 R04.2 の型内に letI : Quasicategory E := quasicategory_of_innerFibration p を明示。元の p の LeftFibration と底の Quasicategory から供給し、追加仮定はない。 R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を外す。呼ぶ側の p が左ファイブレーションなので quasicategory_of_innerFibration p で同じ準圏性を供給する。 元の等式と供給済みの ha を使う型で、対象ビルド・承認型への代入・小監査を検証済み。",
+      "actual_lines": 235,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 17,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackLiftDescent.lean": "c82fdac06c9ab104e1d7f7e3daccf8e90b1e0e3fbb6881fb178eab8f3f02eebb"
+        }
+      },
+      "verification_receipt": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/target-audit-result.json",
+      "approved_type_check": {
+        "success": true,
+        "source": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/expected-type.lean",
+        "sha256": "e355bc14dba0f85e464f7291a0b3b01281a6aaa6f71e08a91f2d24042e008328"
+      }
     },
     {
       "id": "R04.3",

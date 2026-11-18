@@ -3,7 +3,7 @@
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 93,
-  "verified_count": 40,
+  "verified_count": 41,
   "additional_count": 58,
   "deferred_count": 12,
   "edge_count": 154,
@@ -104,22 +104,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    2000,
-    3500
+    1920,
+    3360
   ],
   "active_corrected_lines": [
-    4000,
-    7000
+    3840,
+    6720
   ],
   "deferred_corrected_lines": [
     1060,
     1920
   ],
   "active_completion_corrected_lines": [
-    32305,
-    35305
+    32380,
+    35260
   ],
-  "ledger_sha256": "a5b716fd0ca5ff6e6844b5f36c783d7d6bba7bcd3b6295673e0fb049fb7a3ee0",
+  "ledger_sha256": "68fe2ef47c1bc796d22c4c842406f64c72dab4a3174357dcb4ff574c3ecdb7e8",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -200,6 +200,7 @@
     "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniverseMorphismUp.lean": "d92e6e2e92e0c23a1812fd8128a2525a68d7a06572bb783c37a856b18e8e456f",
     "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithfulPostcomposition.lean": "b120989bb1103fb23bd802d92b4e3d5034d07c244ee2771aa45579d716af7137",
     "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniverseMorphismDown.lean": "3216447fc4c91cfd5eda7dc23e7548a22c55103ef314b568ad3fc7c407757590",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackLiftDescent.lean": "c82fdac06c9ab104e1d7f7e3daccf8e90b1e0e3fbb6881fb178eab8f3f02eebb",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackRepresentationComparison.lean": "795faec125de915963d92209e3364235f23debec873194c476e1caabc8645ab1",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningFunctorHomComposition.lean": "539b5ace4e67f8be8e7d90eda854f79dc4a60e6aa7692402ca449c15c89a1dd0",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftStraighteningLimitVertexComputations.lean": "a09b9a3db0e13801131ad4b91cb0ca311a4db6dffe4befab077ab4fc238ff619",

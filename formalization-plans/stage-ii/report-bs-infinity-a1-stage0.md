@@ -10741,3 +10741,11 @@ pullback.conditionと結合則の後には `(a ≫ pullback.snd p g) ≫ g = pul
 R04.2 の型内に letI : Quasicategory E := quasicategory_of_innerFibration p を明示。元の p の LeftFibration と底の Quasicategory から供給し、追加仮定はない。
 
 R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を外す。呼ぶ側の p が左ファイブレーションなので quasicategory_of_innerFibration p で同じ準圏性を供給する。
+
+### 11-18：R04.2 の指定持ち上げの降下を検証
+
+対象ビルド（3,033 jobs）、台帳の型への代入、小監査（17 宣言、標準三公理のみ）を通過。上げ下げと前・後合成は元の辺の類で計算し、同じ a・L・底の指定同型を保持した。端点の等式 ha は元の比較が返す同じ a の射影式を使う。元の終端 R04 の型と計算上限はそのまま。
+
+実測 235 行、素 80〜140 行、補正 160〜280 行。累計 28,305 ＋ 235 ＝ 28,540 行。R04.3 以降は検証の途中。
+
+一覧：済み 41／全体 93（うち追加 58）
