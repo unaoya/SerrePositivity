@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 31598,
+  "verified_lean_lines": 31777,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3463,7 +3463,8 @@
         "R05",
         "R06.2N",
         "R06.2L",
-        "R06.2C"
+        "R06.2C",
+        "R06.2K"
       ],
       "existing": [
         {
@@ -5988,6 +5989,74 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2c-1118/manifest.json"
+    },
+    {
+      "id": "R06.2K",
+      "name": "rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq",
+      "full_type": "∀ {K X : SSet.{u + 1}} [Quasicategory X]\n    {D : Type u} [SmallCategory D] (P : D ⥤ Type u)\n    (δ : K ⟶ X) (v : X _⦋0⦌),\n    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} D :=\n      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up\n    ∀ (i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements))\n      (b : K ⟶ nerve (AsSmall.{u + 1} D)),\n    i ≫ nerveMap p = rightKanProjection δ v ≫ b →\n    ∀ (x y : (rightKanShape δ v) _⦋0⦌)\n      (hxy : (rightKanProjection δ v).app _ x = (rightKanProjection δ v).app _ y),\n    let q := sliceUnderProjection (SSet.yonedaEquiv.symm v)\n    let k := (rightKanProjection δ v).app _ x\n    let s : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=\n      ⟨(pullback.fst q δ).app _ x, by\n        rw [pinchedConstant_zero]\n        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition\n        exact ConcreteCategory.congr_hom (NatTrans.congr_app hc _) x⟩\n    let t : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=\n      ⟨(pullback.fst q δ).app _ y, by\n        rw [pinchedConstant_zero]\n        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition\n        exact (ConcreteCategory.congr_hom (NatTrans.congr_app hc _) y).trans\n          (congrArg (fun z => δ.app (Opposite.op ⦋0⦌) z) hxy.symm)⟩\n    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ s) =\n      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ t) →\n    i.app _ x = i.app _ y",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "cosliceFiber_nonempty_edge_of_homotopicL",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean",
+          "line": 39
+        },
+        {
+          "name": "cosliceFiber_nonempty_iso_of_homMk_eq",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean",
+          "line": 113
+        },
+        {
+          "name": "rightKanShape",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/Shapes.lean",
+          "line": 32
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean",
+          "line": 130,
+          "name": "rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq"
+        }
+      ],
+      "literature": "HTT 1.2.2・3.3.2、Kerodon §4.6.5（Tag 01KW）の固定終点の写像空間。",
+      "bare_lines": [
+        125,
+        205
+      ],
+      "corrected_lines": [
+        250,
+        410
+      ],
+      "method": "同じ底の点にある二つの右 Kan 頂点が同じ coslice の辺の類を表せば、要素圏の頂点として一致する。",
+      "specified_compatibility": "指定の同じ始終点の辺の類と右 Kan 射影を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean",
+      "note": "同じ底の点にある二つの右 Kan 頂点が同じ coslice の辺の類を表せば、要素圏の頂点として一致する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 179,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 8,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean": "328dd30a61cb09031778122c905414dad20651298acb637540e526cc5e9e3b01"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "b3d65cb0a02ed90b31dd049424a432417ace32410d25e857d4f8667b7d6b0559",
+        "receipt": "/tmp/is-stage5/R06.2K/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2k-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

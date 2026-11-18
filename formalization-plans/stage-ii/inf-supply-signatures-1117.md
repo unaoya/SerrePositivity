@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：31,598行。外枠：35,681行。係数：2。
+既計上の累計：31,777行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -108,6 +108,7 @@
 |R06.2N|verified|122|0〜0|0〜0|
 |R06.2L|verified|124|0〜0|0〜0|
 |R06.2C|verified|117|0〜0|0〜0|
+|R06.2K|verified|179|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2332,7 +2333,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3809,3 +3810,48 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
 - `exists_relativeFunctorInverse_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorInverse.lean:25
 - `elementsComparisonNatural_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:51
+
+
+### R06.2K — rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
+
+```lean
+∀ {K X : SSet.{u + 1}} [Quasicategory X]
+    {D : Type u} [SmallCategory D] (P : D ⥤ Type u)
+    (δ : K ⟶ X) (v : X _⦋0⦌),
+    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} D :=
+      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up
+    ∀ (i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements))
+      (b : K ⟶ nerve (AsSmall.{u + 1} D)),
+    i ≫ nerveMap p = rightKanProjection δ v ≫ b →
+    ∀ (x y : (rightKanShape δ v) _⦋0⦌)
+      (hxy : (rightKanProjection δ v).app _ x = (rightKanProjection δ v).app _ y),
+    let q := sliceUnderProjection (SSet.yonedaEquiv.symm v)
+    let k := (rightKanProjection δ v).app _ x
+    let s : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=
+      ⟨(pullback.fst q δ).app _ x, by
+        rw [pinchedConstant_zero]
+        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition
+        exact ConcreteCategory.congr_hom (NatTrans.congr_app hc _) x⟩
+    let t : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=
+      ⟨(pullback.fst q δ).app _ y, by
+        rw [pinchedConstant_zero]
+        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition
+        exact (ConcreteCategory.congr_hom (NatTrans.congr_app hc _) y).trans
+          (congrArg (fun z => δ.app (Opposite.op ⦋0⦌) z) hxy.symm)⟩
+    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ s) =
+      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ t) →
+    i.app _ x = i.app _ y
+```
+
+素：125〜205行。係数2：250〜410行。
+
+同じ底の点にある二つの右 Kan 頂点が同じ coslice の辺の類を表せば、要素圏の頂点として一致する。
+
+原典：HTT 1.2.2・3.3.2、Kerodon §4.6.5（Tag 01KW）の固定終点の写像空間。
+
+使う既存の宣言：
+
+- `cosliceFiber_nonempty_edge_of_homotopicL` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean:39
+- `cosliceFiber_nonempty_iso_of_homMk_eq` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean:113
+- `rightKanShape` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/Shapes.lean:32

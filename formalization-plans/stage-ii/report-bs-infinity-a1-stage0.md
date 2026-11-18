@@ -11509,3 +11509,60 @@ R13b.1 と R09-Cech.1 は R06.2 に依存しないので先に検証した。R13
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,481 から 31,598 行。
 
 一覧：済み 65／全体 99（うち追加 64）
+
+
+### R06.2K — rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {K X : SSet.{u + 1}} [Quasicategory X]
+    {D : Type u} [SmallCategory D] (P : D ⥤ Type u)
+    (δ : K ⟶ X) (v : X _⦋0⦌),
+    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} D :=
+      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up
+    ∀ (i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements))
+      (b : K ⟶ nerve (AsSmall.{u + 1} D)),
+    i ≫ nerveMap p = rightKanProjection δ v ≫ b →
+    ∀ (x y : (rightKanShape δ v) _⦋0⦌)
+      (hxy : (rightKanProjection δ v).app _ x = (rightKanProjection δ v).app _ y),
+    let q := sliceUnderProjection (SSet.yonedaEquiv.symm v)
+    let k := (rightKanProjection δ v).app _ x
+    let s : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=
+      ⟨(pullback.fst q δ).app _ x, by
+        rw [pinchedConstant_zero]
+        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition
+        exact ConcreteCategory.congr_hom (NatTrans.congr_app hc _) x⟩
+    let t : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=
+      ⟨(pullback.fst q δ).app _ y, by
+        rw [pinchedConstant_zero]
+        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition
+        exact (ConcreteCategory.congr_hom (NatTrans.congr_app hc _) y).trans
+          (congrArg (fun z => δ.app (Opposite.op ⦋0⦌) z) hxy.symm)⟩
+    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ s) =
+      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ t) →
+    i.app _ x = i.app _ y
+```
+
+素：125〜205行。係数2：250〜410行。
+
+同じ底の点にある二つの右 Kan 頂点が同じ coslice の辺の類を表せば、要素圏の頂点として一致する。
+
+原典：HTT 1.2.2・3.3.2、Kerodon §4.6.5（Tag 01KW）の固定終点の写像空間。
+
+使う既存の宣言：
+
+- `cosliceFiber_nonempty_edge_of_homotopicL` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean:39
+- `cosliceFiber_nonempty_iso_of_homMk_eq` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean:113
+- `rightKanShape` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/Shapes.lean:32
+
+一覧：済み 65／全体 100（うち追加 65）
+
+### 11-18：R06.2K の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2K|179|125〜205|250〜410|2,743|8|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,598 から 31,777 行。
+
+一覧：済み 66／全体 100（うち追加 65）

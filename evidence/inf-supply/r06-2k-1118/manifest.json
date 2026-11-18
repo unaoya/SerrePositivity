@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2K",
+  "declaration": "rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq",
+  "target_build": {
+    "jobs": 2743,
+    "sha256": "cb1ff76ef5e331cd0c59e7600256ece2254faedc60045277330578344da9ba14",
+    "receipt": "/tmp/is-stage5/R06.2K/build-2.log"
+  },
+  "type_check": {
+    "sha256": "b3d65cb0a02ed90b31dd049424a432417ace32410d25e857d4f8667b7d6b0559",
+    "receipt": "/tmp/is-stage5/R06.2K/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "d4befdc7755d2f9ce6a72827dffe1b3ff66eab8d06f426e526b0c7205baefe33",
+    "receipt": "/tmp/is-stage5/R06.2K/target-audit-result.json",
+    "modules": 1,
+    "declarations": 8,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean": "328dd30a61cb09031778122c905414dad20651298acb637540e526cc5e9e3b01"
+    }
+  }
+}
