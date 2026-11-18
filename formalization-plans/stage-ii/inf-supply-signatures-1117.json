@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 32157,
+  "verified_lean_lines": 32241,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3468,7 +3468,8 @@
         "R06.2D",
         "R06.2V",
         "R06.2B",
-        "R06.2T"
+        "R06.2T",
+        "R06.2A"
       ],
       "existing": [
         {
@@ -6371,6 +6372,76 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2t-1118/manifest.json"
+    },
+    {
+      "id": "R06.2A",
+      "name": "smallUnstraighteningPointedBase_action",
+      "full_type": "∀ {B D : SSet.{u}} (i : B ≅ D)\n    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}\n    (a : FunctorHom F G) (b : B _⦋0⦌),\n    let U := SSet.uliftFunctor.{u + 1, u}\n    let F' := U.map i.hom ≫ F\n    let G' := U.map i.hom ≫ G\n    let L := smallLeftUnstraighteningBaseIso i F\n    let R := smallLeftUnstraighteningBaseIso i G\n    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv\n    ∀ hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F',\n    ∀ s : (vertexFiber (smallLeftUnstraighteningProjection F') b) _⦋0⦌,\n    let t := (vertexFiberMap (smallLeftUnstraighteningProjection F')\n      (smallLeftUnstraighteningProjection G') m hm b).app (Opposite.op ⦋0⦌) s\n    cosliceFiberPointHom (smallUnstraighteningPointedImage F' b s) ≫\n      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) =\n    cosliceFiberPointHom (smallUnstraighteningPointedImage G' b t)",
+      "dependencies": [
+        "R06.2B"
+      ],
+      "existing": [
+        {
+          "name": "smallUnstraighteningPointedImage_baseMap",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedBaseChange.lean",
+          "line": 45
+        },
+        {
+          "name": "smallUnstraighteningFunctorHom_pointHom",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointHom.lean",
+          "line": 25
+        },
+        {
+          "name": "smallLeftUnstraighteningBaseIso_projection",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseIso.lean",
+          "line": 32
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean",
+          "line": 33,
+          "name": "smallUnstraighteningPointedBase_action"
+        }
+      ],
+      "literature": "Kerodon Remark 5.6.2.18（Tag 0271）の頂点における底変換の法則。",
+      "bare_lines": [
+        90,
+        150
+      ],
+      "corrected_lines": [
+        180,
+        300
+      ],
+      "method": "底を同型で移した指定の小さい unstraightening の射は、pointed 値のホモトピー圏で同じ成分射として作用する。",
+      "specified_compatibility": "元の底変換射と両方の指定 pointed 値を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean",
+      "note": "底を同型で移した指定の小さい unstraightening の射は、pointed 値のホモトピー圏で同じ成分射として作用する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 84,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean": "5557327e0a33afda250acf128b95b9b3e11a51b0a2f6ad111cd4e5009df867c1"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "31b57c3c7a11976eb279593f8d5805132da1388a856ef0165baf1210c2d9e9db",
+        "receipt": "/tmp/is-stage5/R06.2A/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2a-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

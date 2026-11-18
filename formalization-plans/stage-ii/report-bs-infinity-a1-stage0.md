@@ -11777,3 +11777,50 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,058 から 32,157 行。
 
 一覧：済み 70／全体 104（うち追加 69）
+
+
+### R06.2A — smallUnstraighteningPointedBase_action
+親：R06。状態：紙のみ（pending）。依存：R06.2B。
+
+```lean
+∀ {B D : SSet.{u}} (i : B ≅ D)
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}
+    (a : FunctorHom F G) (b : B _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F' := U.map i.hom ≫ F
+    let G' := U.map i.hom ≫ G
+    let L := smallLeftUnstraighteningBaseIso i F
+    let R := smallLeftUnstraighteningBaseIso i G
+    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv
+    ∀ hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F',
+    ∀ s : (vertexFiber (smallLeftUnstraighteningProjection F') b) _⦋0⦌,
+    let t := (vertexFiberMap (smallLeftUnstraighteningProjection F')
+      (smallLeftUnstraighteningProjection G') m hm b).app (Opposite.op ⦋0⦌) s
+    cosliceFiberPointHom (smallUnstraighteningPointedImage F' b s) ≫
+      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) =
+    cosliceFiberPointHom (smallUnstraighteningPointedImage G' b t)
+```
+
+素：90〜150行。係数2：180〜300行。
+
+底を同型で移した指定の小さい unstraightening の射は、pointed 値のホモトピー圏で同じ成分射として作用する。
+
+原典：Kerodon Remark 5.6.2.18（Tag 0271）の頂点における底変換の法則。
+
+使う既存の宣言：
+
+- `smallUnstraighteningPointedImage_baseMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedBaseChange.lean:45
+- `smallUnstraighteningFunctorHom_pointHom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointHom.lean:25
+- `smallLeftUnstraighteningBaseIso_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseIso.lean:32
+
+一覧：済み 70／全体 105（うち追加 70）
+
+### 11-18：R06.2A の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2A|84|90〜150|180〜300|3,408|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,157 から 32,241 行。
+
+一覧：済み 71／全体 105（うち追加 70）
