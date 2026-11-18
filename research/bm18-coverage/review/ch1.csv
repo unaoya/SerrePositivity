@@ -1,0 +1,23 @@
+number,status,declarations,reason,axioms,check,partial_kind
+1.1,partial,SerrePositivity.AlgebraicGeometry.IsSchemeVCover @ SerrePositivity/AlgebraicGeometry/SchemeVCover.lean:19 | SerrePositivity.AlgebraicGeometry.IsAffineVCoverFamily @ SerrePositivity/AlgebraicGeometry/AffineVCover.lean:37,"原典 PDF p.2, y=447.9。忠実平坦な付値環拡大によるスキームの射の v 被覆判定と、アフィン有限族の定義を持つ。全スキーム上の Grothendieck 位相の被覆族までの定義は見出していない。",静的なソース照合。公理の閉包は未計測。,theorem.1.1 / 宣言の型,component
+(1),partial,SerrePositivity.AlgebraicGeometry.IsSchemeVCover @ SerrePositivity/AlgebraicGeometry/SchemeVCover.lean:19,"原典 PDF p.2, y=513.6。一射の v 被覆に対する付値環拡大と持ち上げの可換性を合成等式で表している。",静的なソース照合。公理の閉包は未計測。,equation.1.1 / 宣言の型,special
+1.2,partial,SerrePositivity.AlgebraicGeometry.ArcRouteB.IsArcHom @ SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean:75 | SerrePositivity.AlgebraicGeometry.ArcRouteB.IsArcCoverFamilyCharP @ SerrePositivity/AlgebraicGeometry/ArcRouteB/Definitions.lean:33 | SerrePositivity.AlgebraicGeometry.ArcRouteB.isArcHom_pi_iff @ SerrePositivity/AlgebraicGeometry/ArcRouteB/CoverLaws.lean:21,"原典 PDF p.3, y=125.2。アフィンの射と有限アフィン族を rank ≤ 1 の付値環で判定する。一般の qcqs スキームの射および全スキーム上の arc 位相は型に含まれない。",静的なソース照合。公理の閉包は未計測。,theorem.1.2 / 宣言の型,special
+1.3,none,,"原典 PDF p.3, y=278.8。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.3 / review/check/none-search.csv,
+1.4,none,,"原典 PDF p.3, y=420.4。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.4 / review/check/none-search.csv,
+1.5,none,,"原典 PDF p.4, y=96.3。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.5 / review/check/none-search.csv,
+1.6,none,,"原典 PDF p.4, y=246.2。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.6 / review/check/none-search.csv,
+1.7,none,,"原典 PDF p.4, y=392.7。原典の finitary D(ℤ) 値関手の一般の判定は本体・Mathlib で確認できなかった。計画下の drafts/A6/ArcSheafProperty.lean:179 の affine・coconnective 版には sorry がある。G-A6-1 の構造層への適用は 4.8 を参照。",静的なソース照合。公理の閉包は未計測。,theorem.1.7 / review/check/none-search.csv,
+1.8,none,,"原典 PDF p.5, y=96.3。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.8 / review/check/none-search.csv,
+1.9,none,,"原典 PDF p.5, y=183.3。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.9 / review/check/none-search.csv,
+1.10,none,,"原典 PDF p.5, y=234.4。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.10 / review/check/none-search.csv,
+1.11,none,,"原典 PDF p.5, y=357.2。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.11 / review/check/none-search.csv,
+(2),none,,"原典 PDF p.5, y=400.9。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,equation.1.2 / review/check/none-search.csv,
+1.12,none,,"原典 PDF p.5, y=549.4。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.12 / review/check/none-search.csv,
+1.13,none,,"原典 PDF p.5, y=581.0。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.13 / review/check/none-search.csv,
+1.14,none,,"原典 PDF p.6, y=138.9。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.14 / review/check/none-search.csv,
+(3),none,,"原典 PDF p.6, y=181.0。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,equation.1.3 / review/check/none-search.csv,
+1.15,none,,"原典 PDF p.6, y=337.2。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.15 / review/check/none-search.csv,
+1.16,none,,"原典 PDF p.6, y=367.8。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.16 / review/check/none-search.csv,
+1.17,none,,"原典 PDF p.6, y=453.0。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.17 / review/check/none-search.csv,
+1.18,none,,"原典 PDF p.6, y=526.2。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.18 / review/check/none-search.csv,
+1.19,none,,"原典 PDF p.7, y=257.4。arc-cover・valuation・descent・excisionの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.1.19 / review/check/none-search.csv,
