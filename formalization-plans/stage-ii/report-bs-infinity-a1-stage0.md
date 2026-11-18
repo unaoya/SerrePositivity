@@ -12315,3 +12315,74 @@ lemma rightKan_transport_apex_eval
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 33,538 から 33,825 行。
 
 一覧：済み 80／全体 114（うち追加 79）
+
+
+### R06.2Cn — movingConePrism_counit_naturality
+親：R06。状態：紙のみ（pending）。依存：R06.2Pr・R06.2Cu。
+
+```lean
+∀ {J X D : SSet.{u}} [Quasicategory D] {v₀ v₁ : X _⦋0⦌}
+    (e : X.Edge v₀ v₁) (G : X ⟶ D) (w : J ⟶ sliceUnder (SSet.yonedaEquiv.symm e.edge))
+    {p : J ⟶ D} (c d : JoinCone p)
+    (h₀ : joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = c.val)
+    (h₁ : joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = d.val)
+    (hp : (w ≫ sliceUnderProjection (SSet.yonedaEquiv.symm e.edge)) ≫ G = p),
+    ∃ a : (HomotopyCategory.mk c.vertex : hoFunctor.obj D) ⟶ HomotopyCategory.mk d.vertex,
+      Arrow.mk a = Arrow.mk (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ∧
+      constantFunctorHomMap J a ≫ coneCounitHom d = coneCounitHom c
+```
+
+素：105〜150行。係数2：210〜300行。
+
+指定区間が与える頂点射は、共通図式の二つの端点の余単位を結ぶ。
+
+原典：Kerodon §4.6.6（Tag 04J1）と §7.3（Tag 02Y9）。HTT 5.1.5.6 で使う指定余単位の自然性。
+
+使う既存の宣言：
+
+- `movingConePrism_boundaries` @ SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean:151
+- `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
+- `functorHomEvaluate_homotopy` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/Homotopy/HomotopyRepresentative.lean:62
+
+一覧：済み 80／全体 115（うち追加 80）
+
+
+### R06.2Ca — rightKan_transport_counit_atApex
+親：R06。状態：紙のみ（pending）。依存：R06.2Cu。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v),
+    let c := rightKanCanonicalCone δ F v
+    coneCounitAtApex t.cone t.cone_vertex =
+      coneCounitAtApex c (rightKanCanonicalCone_vertex δ F v) ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+素：90〜125行。係数2：180〜250行。
+
+指定輸送の余単位を元の頂点に正規化し、同じ添字による制限と図式の等式での移送を計算する。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送。
+
+使う既存の宣言：
+
+- `rightKan_transport_counit_comp` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:72
+- `rightKan_transport_apex_eval` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:97
+- `coneCounitHom_shapeRestriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitShapeRestriction.lean:31
+
+一覧：済み 80／全体 116（うち追加 81）
+
+### 11-18：R06.2Cn・R06.2Ca の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cn|126|105〜150|210〜300|3,951|5|
+|R06.2Ca|101|90〜125|180〜250|3,952|9|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 33,825 から 34,052 行。
+
+一覧：済み 82／全体 116（うち追加 81）

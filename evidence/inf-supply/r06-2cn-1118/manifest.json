@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Cn",
+  "declaration": "movingConePrism_counit_naturality",
+  "target_build": {
+    "jobs": 3951,
+    "sha256": "ee9a5aed5c1ca9f7a6452dfc3836a67ae57a14f06415da513e66bb8ca2c105fc",
+    "receipt": "/tmp/is-stage5/R06.2Cn/build-1.log"
+  },
+  "type_check": {
+    "sha256": "8e065d61062f17e6a1c90db40c7f149688daddeb5ab47789879a218208aeff70",
+    "receipt": "/tmp/is-stage5/R06.2Cn/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "149020453bf3d9b45cc425cd7b9c5fdaba0c7308dd8cbead503bbeee829c6987",
+    "receipt": "/tmp/is-stage5/R06.2Cn/target-audit-result.json",
+    "modules": 1,
+    "declarations": 5,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean": "1cf005a5208ee3b5516a2755762c49b5bad085be027a68ab33a2b594d0241453"
+    }
+  }
+}

@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 33825,
+  "verified_lean_lines": 34052,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3478,7 +3478,9 @@
         "R06.2F",
         "R06.2M",
         "R06.2Pr",
-        "R06.2Cu"
+        "R06.2Cu",
+        "R06.2Cn",
+        "R06.2Ca"
       ],
       "existing": [
         {
@@ -7108,6 +7110,147 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2cu-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cn",
+      "name": "movingConePrism_counit_naturality",
+      "full_type": "∀ {J X D : SSet.{u}} [Quasicategory D] {v₀ v₁ : X _⦋0⦌}\n    (e : X.Edge v₀ v₁) (G : X ⟶ D) (w : J ⟶ sliceUnder (SSet.yonedaEquiv.symm e.edge))\n    {p : J ⟶ D} (c d : JoinCone p)\n    (h₀ : joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = c.val)\n    (h₁ : joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = d.val)\n    (hp : (w ≫ sliceUnderProjection (SSet.yonedaEquiv.symm e.edge)) ≫ G = p),\n    ∃ a : (HomotopyCategory.mk c.vertex : hoFunctor.obj D) ⟶ HomotopyCategory.mk d.vertex,\n      Arrow.mk a = Arrow.mk (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ∧\n      constantFunctorHomMap J a ≫ coneCounitHom d = coneCounitHom c",
+      "dependencies": [
+        "R06.2Pr",
+        "R06.2Cu"
+      ],
+      "existing": [
+        {
+          "name": "movingConePrism_boundaries",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean",
+          "line": 151
+        },
+        {
+          "name": "coneCounitHom_morphism_naturality",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean",
+          "line": 27
+        },
+        {
+          "name": "functorHomEvaluate_homotopy",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/Homotopy/HomotopyRepresentative.lean",
+          "line": 62
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean",
+          "line": 99,
+          "name": "movingConePrism_counit_naturality"
+        }
+      ],
+      "literature": "Kerodon §4.6.6（Tag 04J1）と §7.3（Tag 02Y9）。HTT 5.1.5.6 で使う指定余単位の自然性。",
+      "bare_lines": [
+        105,
+        150
+      ],
+      "corrected_lines": [
+        210,
+        300
+      ],
+      "method": "指定区間が与える頂点射は、共通図式の二つの端点の余単位を結ぶ。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean",
+      "note": "指定区間が与える頂点射は、共通図式の二つの端点の余単位を結ぶ。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 126,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean": "1cf005a5208ee3b5516a2755762c49b5bad085be027a68ab33a2b594d0241453"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "8e065d61062f17e6a1c90db40c7f149688daddeb5ab47789879a218208aeff70",
+        "receipt": "/tmp/is-stage5/R06.2Cn/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cn-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Ca",
+      "name": "rightKan_transport_counit_atApex",
+      "full_type": "∀ {K C D : SSet.{u}} [Quasicategory D]\n    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}\n    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}\n    (t : RightKanConeTransport δ F₀ F α v),\n    let c := rightKanCanonicalCone δ F v\n    coneCounitAtApex t.cone t.cone_vertex =\n      coneCounitAtApex c (rightKanCanonicalCone_vertex δ F v) ≫\n        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map\n          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))",
+      "dependencies": [
+        "R06.2Cu"
+      ],
+      "existing": [
+        {
+          "name": "rightKan_transport_counit_comp",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean",
+          "line": 72
+        },
+        {
+          "name": "rightKan_transport_apex_eval",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean",
+          "line": 97
+        },
+        {
+          "name": "coneCounitHom_shapeRestriction",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitShapeRestriction.lean",
+          "line": 31
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean",
+          "line": 46,
+          "name": "rightKan_transport_counit_atApex"
+        }
+      ],
+      "literature": "Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送。",
+      "bare_lines": [
+        90,
+        125
+      ],
+      "corrected_lines": [
+        180,
+        250
+      ],
+      "method": "指定輸送の余単位を元の頂点に正規化し、同じ添字による制限と図式の等式での移送を計算する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean",
+      "note": "指定輸送の余単位を元の頂点に正規化し、同じ添字による制限と図式の等式での移送を計算する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 101,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 9,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean": "7e8970c8b72fd2db20df5c539b5300d5d3d6be02846f2a5bf76059812355252f"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "5efddd7dcfe76cafd7d4d9f3325d76d09565c85c8b2cd7f3d957a637042e8dc8",
+        "receipt": "/tmp/is-stage5/R06.2Ca/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2ca-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

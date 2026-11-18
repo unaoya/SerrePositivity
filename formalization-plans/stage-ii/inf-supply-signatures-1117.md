@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：33,825行。外枠：36,138行。係数：2。
+既計上の累計：34,052行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -123,6 +123,8 @@
 |R06.2M|verified|264|0〜0|0〜0|
 |R06.2Pr|verified|165|0〜0|0〜0|
 |R06.2Cu|verified|122|0〜0|0〜0|
+|R06.2Cn|verified|126|0〜0|0〜0|
+|R06.2Ca|verified|101|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2347,7 +2349,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4366,3 +4368,59 @@ R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,53
 - `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
 - `coneCounitHom_coneMorphism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeMorphismBoundary.lean:54
 - `coneCounitHom_bijective` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ConeCounitHomUniversal.lean:86
+
+
+### R06.2Cn — movingConePrism_counit_naturality
+親：R06。状態：検証済み。依存：R06.2Pr・R06.2Cu。
+
+```lean
+∀ {J X D : SSet.{u}} [Quasicategory D] {v₀ v₁ : X _⦋0⦌}
+    (e : X.Edge v₀ v₁) (G : X ⟶ D) (w : J ⟶ sliceUnder (SSet.yonedaEquiv.symm e.edge))
+    {p : J ⟶ D} (c d : JoinCone p)
+    (h₀ : joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = c.val)
+    (h₁ : joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = d.val)
+    (hp : (w ≫ sliceUnderProjection (SSet.yonedaEquiv.symm e.edge)) ≫ G = p),
+    ∃ a : (HomotopyCategory.mk c.vertex : hoFunctor.obj D) ⟶ HomotopyCategory.mk d.vertex,
+      Arrow.mk a = Arrow.mk (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ∧
+      constantFunctorHomMap J a ≫ coneCounitHom d = coneCounitHom c
+```
+
+素：105〜150行。係数2：210〜300行。
+
+指定区間が与える頂点射は、共通図式の二つの端点の余単位を結ぶ。
+
+原典：Kerodon §4.6.6（Tag 04J1）と §7.3（Tag 02Y9）。HTT 5.1.5.6 で使う指定余単位の自然性。
+
+使う既存の宣言：
+
+- `movingConePrism_boundaries` @ SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean:151
+- `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
+- `functorHomEvaluate_homotopy` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/Homotopy/HomotopyRepresentative.lean:62
+
+
+### R06.2Ca — rightKan_transport_counit_atApex
+親：R06。状態：検証済み。依存：R06.2Cu。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v),
+    let c := rightKanCanonicalCone δ F v
+    coneCounitAtApex t.cone t.cone_vertex =
+      coneCounitAtApex c (rightKanCanonicalCone_vertex δ F v) ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+素：90〜125行。係数2：180〜250行。
+
+指定輸送の余単位を元の頂点に正規化し、同じ添字による制限と図式の等式での移送を計算する。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送。
+
+使う既存の宣言：
+
+- `rightKan_transport_counit_comp` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:72
+- `rightKan_transport_apex_eval` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:97
+- `coneCounitHom_shapeRestriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitShapeRestriction.lean:31
