@@ -1,0 +1,7 @@
+number,status,declarations,reason,axioms,check,partial_kind
+4.1,partial,SerrePositivity.AlgebraicGeometry.cech_exact_of_vCover_perfect @ SerrePositivity/AlgebraicGeometry/PerfectAffineVCoverCech.lean:51 | SerrePositivity.AlgebraicGeometry.perfectAffineVCover_cechExact @ SerrePositivity/AlgebraicGeometry/PerfectFrobeniusCechComparison.lean:44,"原典 PDF p.15, y=314.7。4.1(i) の n=1、E=O、完全なアフィン環の有限 v 被覆族に対する増大 Čech 完全性。W_n（n>1）・W・任意の有限射影係数、サイト上の RΓ_v との比較および (ii) の v-stack は型に含まれない。",静的なソース照合。公理の閉包は未計測。,印刷見出し / 宣言の型,special
+4.2,none,,"原典 PDF p.15, y=403.3。Čech・v-cover・Witt・vector bundle・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.2 / review/check/none-search.csv,
+4.3,none,,"原典 PDF p.15, y=462.1。Čech・v-cover・Witt・vector bundle・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.3 / review/check/none-search.csv,
+4.4,none,,"原典 PDF p.15, y=606.7。Čech・v-cover・Witt・vector bundle・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.4 / review/check/none-search.csv,
+4.5,none,,"原典 PDF p.15, y=686.8。Čech・v-cover・Witt・vector bundle・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.4.5 / review/check/none-search.csv,
+4.6,none,,"原典 PDF p.16, y=327.3。射影模型の完全構造層の Čech 正方形はあるが、原典の RΓ_fppf の三角との比較および任意のベクトル束係数は型にない。",静的なソース照合。公理の閉包は未計測。,theorem.4.6 / review/check/none-search.csv,

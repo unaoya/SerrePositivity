@@ -1,0 +1,69 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/bm18",
+ "commit": "223ac6e1e4f4a7e93fd31fbf2fc7ce97dedf1926",
+ "made_by": "CC-W3: pdftotext -layout/-bbox-layout; parse.py, build.py, validate.py; static Lean source review",
+ "note": "BM18 arXiv 1807.04725v4; PDF in sibling sources/ with SHA in toc.md; extracted text, source signatures and candidate search; no Lean execution",
+ "files": [
+  {
+   "path": "bm-titles.tsv",
+   "sha256": "09b88ffd25ba577f54675223aff0708aef3e94f0ce44f1372dfc5c15164a7e22",
+   "bytes": 3589
+  },
+  {
+   "path": "bm18-anchors.json",
+   "sha256": "d9f1c1bd0695180d6cdcb192ca0bffdad721548bb561f898841ce72b2fa96fd3",
+   "bytes": 4073
+  },
+  {
+   "path": "bm18-parsed.json",
+   "sha256": "85603caeda5d192903b8300cb058b79490f09d8d95ec96935b25c06a97fdd8be",
+   "bytes": 319359
+  },
+  {
+   "path": "bm18-search.json.gz",
+   "sha256": "49e4947f5270773b2331f4c98f22f8631110ee262bc891dfe78746ac5aae5a0a",
+   "bytes": 854200
+  },
+  {
+   "path": "bm18-signatures.json",
+   "sha256": "047f0e0352c6d794be8c4251d352bc434ba06b173c49267888a4618bf38f557b",
+   "bytes": 13781
+  },
+  {
+   "path": "bm18-summary.json",
+   "sha256": "9760938773f848ff77c8c90369f265b3a99990793278c88f2a534db588cd95a2",
+   "bytes": 258
+  },
+  {
+   "path": "bm18.txt",
+   "sha256": "f39cf02068e4625e3e67dcbe88a4ba38a4c238ae59bef7dcf48bb3f737138adf",
+   "bytes": 237444
+  },
+  {
+   "path": "bm18.xml",
+   "sha256": "aaefd5da8ee551f9837666741ba040cbfcd2b0443f65b4f508233d95d4da7c12",
+   "bytes": 4349492
+  },
+  {
+   "path": "build.py",
+   "sha256": "da9ce241e71a59888b068a62403caaff22fd459101e276d5ef9d2ec0aeb9c3e6",
+   "bytes": 18528
+  },
+  {
+   "path": "judgments.py",
+   "sha256": "805fe71f18847da7ebb2ca2d4e38f1c2089dd31fd9040079ae2744f7e2eb8f98",
+   "bytes": 14955
+  },
+  {
+   "path": "parse.py",
+   "sha256": "01e1baf0352835e375f846399a9905c7c49ddeb11d2853755acd1791cf9fd2a5",
+   "bytes": 4826
+  },
+  {
+   "path": "validate.py",
+   "sha256": "dd8441582a67d38b22ccd4faebc0db6c11a7d85f2b1b62595d3ea1c926b640d5",
+   "bytes": 1708
+  }
+ ],
+ "total_bytes": 5822213
+}

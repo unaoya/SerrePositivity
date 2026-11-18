@@ -50,7 +50,24 @@ def jst_hour():
     # SERRE_LOCK_HOUR overrides the clock for tests only.
     h=os.environ.get('SERRE_LOCK_HOUR')
     return int(h) if h else datetime.datetime.now(JST).hour
-def capacity(hour): return 1 if 8<=hour<23 else 2
+# Daytime capacity (11-18): the shared file serre-lake-build.day-capacity holds 1 or 2 (default 1).
+# The coordinator writes 1 while it runs root builds or full audits. Memory pressure forces 1:
+# free+inactive memory under 8 GB or swap used over 12 GB. Night (JST 23-8) stays 2.
+def memory_pressure():
+    try:
+        out=subprocess.run(['vm_stat'],capture_output=True,text=True,timeout=5).stdout
+        page=int(re.search(r'page size of (\d+)',out).group(1))
+        pages=sum(int(re.search(rf'{k}:\s+(\d+)',out).group(1)) for k in ('Pages free','Pages inactive','Pages speculative'))
+        swap=subprocess.run(['sysctl','-n','vm.swapusage'],capture_output=True,text=True,timeout=5).stdout
+        used=float(re.search(r'used = ([\d.]+)M',swap).group(1))/1024
+        return pages*page<8e9 or used>12
+    except Exception:
+        return False
+def capacity(hour):
+    if not 8<=hour<23: return 2
+    try: want=int((base/'serre-lake-build.day-capacity').read_text().strip())
+    except Exception: want=1
+    return 2 if want==2 and not memory_pressure() else 1
 queue=base/'serre-lake-build.queue'
 # Serialize owner publication/reaping, ticket publication and the acquire decision.
 # The small guard file stays; kernel flock is released even on SIGKILL.
