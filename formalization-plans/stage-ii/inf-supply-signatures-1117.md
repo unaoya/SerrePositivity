@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：32,971行。外枠：35,681行。係数：2。
+既計上の累計：33,538行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -119,6 +119,8 @@
 |R06.2J|verified|107|0〜0|0〜0|
 |R06.2I|verified|87|0〜0|0〜0|
 |R06.2P|verified|203|0〜0|0〜0|
+|R06.2F|verified|303|0〜0|0〜0|
+|R06.2M|verified|264|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2343,7 +2345,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4226,3 +4228,73 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `nativeDiscreteEdge_evaluation_hom` @ SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean:61
 - `compStruct_nonempty_of_homMk_fac` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/InvertibleEdgeLifting.lean:157
 - `compStructOp` @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/Opposite.lean:159
+
+
+### R06.2F — rightKanMovingIndex_pointComp_of_projectedLegs
+親：R06。状態：検証済み。依存：R06.2N・R06.2J。
+
+```lean
+∀ {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁),
+    let η := SSet.yonedaEquiv.symm e.edge
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    (∀ (d : J _⦋0⦌) (y : X _⦋0⦌)
+      (g : (vertexFiber q₀ y) _⦋0⦌) (h : (vertexFiber q₁ y) _⦋0⦌),
+      g.val = a₀.app _ d → h.val = a₁.app _ d →
+      Truncated.HomotopyCategory.homMk e.toTruncated ≫
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ y h) =
+          Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ y g)) →
+    ∀ (he₀ : stdSimplex.δ (1 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₀)
+      (he₁ : stdSimplex.δ (0 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₁),
+    let k := j₀ ≫ rightKanProjection δ v₀
+    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫ eqToHom (congrArg sliceUnder he₀)
+    let hw := rightKanMovingIndex_target_section δ η he₀ he₁ j₀ j₁ hj
+    let w := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection η)
+    ∀ d : J _⦋0⦌,
+    let l := pullback.lift (w ≫ r₀) k hw.2.1
+    let xx := l.app (Opposite.op ⦋0⦌) d
+    let zz := (rightKanProjection δ v₀).app (Opposite.op ⦋0⦌) xx
+    ∀ (f g : (vertexFiber q₀ (δ.app _ zz)) _⦋0⦌),
+    f.val = (pullback.fst q₀ δ).app _ xx → g.val = a₀.app _ d →
+    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
+      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ g)
+```
+
+素：245〜375行。係数2：490〜750行。
+
+区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。
+
+原典：Kerodon §4.6 の slice と join、§7.3（Tag 02Y9）。HTT 5.1.5.6 の局所比較の境界計算。
+
+使う既存の宣言：
+
+- `cosliceEdgeSection_target` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean:31
+- `cosliceIntervalNormalized_homMk` @ SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean:54
+- `relativeFunctorIso_of_pullback_nerve_readout` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean:94
+
+
+### R06.2M — discreteWeightedSectionsMovingIndex_actual
+親：R06。状態：検証済み。依存：R06.2F・R06.2K・R06.2P。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
+    discreteWeightedSectionsMovingIndexCondition φ
+```
+
+素：170〜295行。係数2：340〜590行。
+
+元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。
+
+原典：Kerodon §9.3（Tag 06FR）、§7.3（Tag 02Y9）。HTT 5.1.5.6 の指定離散重みの比較。
+
+使う既存の宣言：
+
+- `discreteRightKan_projectedLegs_comp` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean:158
+- `exists_discreteRightKan_nerve_readout` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean:48
+- `rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean:130
+- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:262

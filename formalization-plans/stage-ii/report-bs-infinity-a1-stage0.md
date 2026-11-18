@@ -12057,3 +12057,88 @@ R06.2D・V・B・T・A・O は計616行（素の見込み550〜855行）。R06.2
 指定余単位への接続には次の既存の射を使える見通し。区間上の添字の余錐を `joinTensorLeft` と `sliceUnderUncurry` で固定形状上の錐の辺にし、右辺の図式成分を同じ射影から出す。その辺を、固定形状での余単位に沿って `cocartesianPathSpaceSource_trivialKanFibration` または `cocartesianHomotopy_extend` で持ち上げる。両端の既存輸送との比較に `exists_kanTransportEndVertexIso_with_factorization_of_homMk_eq`、頂点の計算に `RightKanConeTransport.apex_hom`、元の大域比較には R05 を使う計画。この接続は未検証。
 
 一覧：済み 76／全体 110（うち追加 75）
+
+
+### R06.2F — rightKanMovingIndex_pointComp_of_projectedLegs
+親：R06。状態：紙のみ（pending）。依存：R06.2N・R06.2J。
+
+```lean
+∀ {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁),
+    let η := SSet.yonedaEquiv.symm e.edge
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    (∀ (d : J _⦋0⦌) (y : X _⦋0⦌)
+      (g : (vertexFiber q₀ y) _⦋0⦌) (h : (vertexFiber q₁ y) _⦋0⦌),
+      g.val = a₀.app _ d → h.val = a₁.app _ d →
+      Truncated.HomotopyCategory.homMk e.toTruncated ≫
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ y h) =
+          Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ y g)) →
+    ∀ (he₀ : stdSimplex.δ (1 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₀)
+      (he₁ : stdSimplex.δ (0 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₁),
+    let k := j₀ ≫ rightKanProjection δ v₀
+    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫ eqToHom (congrArg sliceUnder he₀)
+    let hw := rightKanMovingIndex_target_section δ η he₀ he₁ j₀ j₁ hj
+    let w := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection η)
+    ∀ d : J _⦋0⦌,
+    let l := pullback.lift (w ≫ r₀) k hw.2.1
+    let xx := l.app (Opposite.op ⦋0⦌) d
+    let zz := (rightKanProjection δ v₀).app (Opposite.op ⦋0⦌) xx
+    ∀ (f g : (vertexFiber q₀ (δ.app _ zz)) _⦋0⦌),
+    f.val = (pullback.fst q₀ δ).app _ xx → g.val = a₀.app _ d →
+    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
+      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ g)
+```
+
+素：245〜375行。係数2：490〜750行。
+
+区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。
+
+原典：Kerodon §4.6 の slice と join、§7.3（Tag 02Y9）。HTT 5.1.5.6 の局所比較の境界計算。
+
+使う既存の宣言：
+
+- `cosliceEdgeSection_target` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean:31
+- `cosliceIntervalNormalized_homMk` @ SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean:54
+- `relativeFunctorIso_of_pullback_nerve_readout` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean:94
+
+一覧：済み 76／全体 111（うち追加 76）
+
+
+### R06.2M — discreteWeightedSectionsMovingIndex_actual
+親：R06。状態：紙のみ（pending）。依存：R06.2F・R06.2K・R06.2P。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
+    discreteWeightedSectionsMovingIndexCondition φ
+```
+
+素：170〜295行。係数2：340〜590行。
+
+元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。
+
+原典：Kerodon §9.3（Tag 06FR）、§7.3（Tag 02Y9）。HTT 5.1.5.6 の指定離散重みの比較。
+
+使う既存の宣言：
+
+- `discreteRightKan_projectedLegs_comp` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean:158
+- `exists_discreteRightKan_nerve_readout` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean:48
+- `rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean:130
+- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:262
+
+一覧：済み 76／全体 112（うち追加 77）
+
+### 11-18：R06.2F・R06.2M の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2F|303|245〜375|490〜750|2,702|16|
+|R06.2M|264|170〜295|340〜590|7,631|7|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,971 から 33,538 行。
+
+一覧：済み 78／全体 112（うち追加 77）

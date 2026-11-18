@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 32971,
+  "verified_lean_lines": 33538,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3474,7 +3474,9 @@
         "R06.2Y",
         "R06.2J",
         "R06.2I",
-        "R06.2P"
+        "R06.2P",
+        "R06.2F",
+        "R06.2M"
       ],
       "existing": [
         {
@@ -6816,6 +6818,154 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2p-1118/manifest.json"
+    },
+    {
+      "id": "R06.2F",
+      "name": "rightKanMovingIndex_pointComp_of_projectedLegs",
+      "full_type": "∀ {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)\n    {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)\n    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)\n    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁),\n    let η := SSet.yonedaEquiv.symm e.edge\n    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)\n    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)\n    let a₀ := j₀ ≫ pullback.fst q₀ δ\n    let a₁ := j₁ ≫ pullback.fst q₁ δ\n    (∀ (d : J _⦋0⦌) (y : X _⦋0⦌)\n      (g : (vertexFiber q₀ y) _⦋0⦌) (h : (vertexFiber q₁ y) _⦋0⦌),\n      g.val = a₀.app _ d → h.val = a₁.app _ d →\n      Truncated.HomotopyCategory.homMk e.toTruncated ≫\n        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ y h) =\n          Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ y g)) →\n    ∀ (he₀ : stdSimplex.δ (1 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₀)\n      (he₁ : stdSimplex.δ (0 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₁),\n    let k := j₀ ≫ rightKanProjection δ v₀\n    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫ eqToHom (congrArg sliceUnder he₀)\n    let hw := rightKanMovingIndex_target_section δ η he₀ he₁ j₀ j₁ hj\n    let w := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection η)\n    ∀ d : J _⦋0⦌,\n    let l := pullback.lift (w ≫ r₀) k hw.2.1\n    let xx := l.app (Opposite.op ⦋0⦌) d\n    let zz := (rightKanProjection δ v₀).app (Opposite.op ⦋0⦌) xx\n    ∀ (f g : (vertexFiber q₀ (δ.app _ zz)) _⦋0⦌),\n    f.val = (pullback.fst q₀ δ).app _ xx → g.val = a₀.app _ d →\n    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =\n      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ g)",
+      "dependencies": [
+        "R06.2N",
+        "R06.2J"
+      ],
+      "existing": [
+        {
+          "name": "cosliceEdgeSection_target",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean",
+          "line": 31
+        },
+        {
+          "name": "cosliceIntervalNormalized_homMk",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean",
+          "line": 54
+        },
+        {
+          "name": "relativeFunctorIso_of_pullback_nerve_readout",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean",
+          "line": 94
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean",
+          "line": 262,
+          "name": "rightKanMovingIndex_pointComp_of_projectedLegs"
+        }
+      ],
+      "literature": "Kerodon §4.6 の slice と join、§7.3（Tag 02Y9）。HTT 5.1.5.6 の局所比較の境界計算。",
+      "bare_lines": [
+        245,
+        375
+      ],
+      "corrected_lines": [
+        490,
+        750
+      ],
+      "method": "区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean",
+      "note": "区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 303,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 16,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "2f37e9fe1e6ff0909dae6d28d56e3bc7337880e7d9fb903b6d1a02d2e84a6a42"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "ef30b8c298836948bffa22cde6c64ef65bde3dca94401718f5397be8d3e4c7a5",
+        "receipt": "/tmp/is-stage5/R06.2F/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2f-1118/manifest.json"
+    },
+    {
+      "id": "R06.2M",
+      "name": "discreteWeightedSectionsMovingIndex_actual",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\n    discreteWeightedSectionsMovingIndexCondition φ",
+      "dependencies": [
+        "R06.2F",
+        "R06.2K",
+        "R06.2P"
+      ],
+      "existing": [
+        {
+          "name": "discreteRightKan_projectedLegs_comp",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean",
+          "line": 158
+        },
+        {
+          "name": "exists_discreteRightKan_nerve_readout",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean",
+          "line": 48
+        },
+        {
+          "name": "rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean",
+          "line": 130
+        },
+        {
+          "name": "rightKanMovingIndex_pointComp_of_projectedLegs",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean",
+          "line": 262
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean",
+          "line": 243,
+          "name": "discreteWeightedSectionsMovingIndex_actual"
+        }
+      ],
+      "literature": "Kerodon §9.3（Tag 06FR）、§7.3（Tag 02Y9）。HTT 5.1.5.6 の指定離散重みの比較。",
+      "bare_lines": [
+        170,
+        295
+      ],
+      "corrected_lines": [
+        340,
+        590
+      ],
+      "method": "元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean",
+      "note": "元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 264,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 7,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean": "e52cb9b5b929c8ca0f9781bac6f61bf9b9963ce5145ca75a67e846d4c3adf915"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "84f9c31f7859c456dc0f44ad22e45d269ff6a68f11d927fdf1e36629070e98f5",
+        "receipt": "/tmp/is-stage5/R06.2M/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2m-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
