@@ -2601,7 +2601,7 @@
     {
       "id": "R04.2",
       "name": "nativePullbackLift_descend_specified",
-      "full_type": "∀ {E B K : SSet.{u}} [Quasicategory B] [Quasicategory K]\n (p : E ⟶ B) [LeftFibration p]\n (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))\n {f g : K ⟶ B} (e : FunctorIso f g),\nlet U := SSet.uliftFunctor.{u + 1, u}\n∀ (a : pullback p f ⟶ pullback p g)\n (L : FunctorIso (U.map (pullback.fst p f)) (U.map (a ≫ pullback.fst p g)))\n (hL : HEq (L.postcomp (U.map p))\n   ((functorIso_ulift.{u, u + 1} e).precomp (U.map (pullback.snd p f)))),\n ∃ l : FunctorIso (pullback.fst p f) (a ≫ pullback.fst p g),\n   HEq (functorIso_ulift.{u, u + 1} l) L ∧\n   HEq (l.postcomp p) (e.precomp (pullback.snd p f))",
+      "full_type": "∀ {E B K : SSet.{u}} [Quasicategory B] [Quasicategory K] [Quasicategory E]\n (p : E ⟶ B) [LeftFibration p]\n (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))\n {f g : K ⟶ B} (e : FunctorIso f g),\nlet U := SSet.uliftFunctor.{u + 1, u}\n∀ (a : pullback p f ⟶ pullback p g)\n (ha : a ≫ pullback.snd p g = pullback.snd p f)\n (L : FunctorIso (U.map (pullback.fst p f)) (U.map (a ≫ pullback.fst p g)))\n (hL : HEq (L.postcomp (U.map p))\n   ((functorIso_ulift.{u, u + 1} e).precomp (U.map (pullback.snd p f)))),\n ∃ l : FunctorIso (pullback.fst p f) (a ≫ pullback.fst p g),\n   HEq (functorIso_ulift.{u, u + 1} l) L ∧\n   HEq (l.postcomp p) (e.precomp (pullback.snd p f))",
       "dependencies": [
         "R04-NP"
       ],
@@ -2644,7 +2644,7 @@
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
       "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/（新規ファイル、実装時に分割）",
-      "note": "持ち上げ関手の写像空間の充満忠実性で同じLを戻す。像の等式を先に証明してからp後合成の式を反映する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "note": "持ち上げ関手の写像空間の充満忠実性で同じLを戻す。像の等式を先に証明してからp後合成の式を反映する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18 ユーザー承認：R04.2 に ha : a ≫ pullback.snd p g = pullback.snd p f を追加。exists_nativePullbackRepresentationArrowComparison が同じ a とともに供給する。終端 R04 の型は不変。 R04.2 の型内に letI : Quasicategory E := quasicategory_of_innerFibration p を明示。元の p の LeftFibration と底の Quasicategory から供給し、追加仮定はない。 R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を外す。呼ぶ側の p が左ファイブレーションなので quasicategory_of_innerFibration p で同じ準圏性を供給する。"
     },
     {
       "id": "R04.3",

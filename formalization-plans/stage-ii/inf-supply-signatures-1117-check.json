@@ -119,7 +119,7 @@
     32305,
     35305
   ],
-  "ledger_sha256": "9770dc99844b4b2b24fe4f3ef5c55e461038d04b87d72a1374a58a03d67be2d1",
+  "ledger_sha256": "a5b716fd0ca5ff6e6844b5f36c783d7d6bba7bcd3b6295673e0fb049fb7a3ee0",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",

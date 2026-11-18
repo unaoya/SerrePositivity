@@ -10730,3 +10730,14 @@ pullback.conditionと結合則の後には `(a ≫ pullback.snd p g) ≫ g = pul
 宇宙下降の試作は既存の uliftFunctorSpaceIso.inv と downFunctor の合成である。共有鍵を待つ間に端点の不足を特定したため、試作の整理券を取り消した。試作は未検証であり、`~/serre-evidence/inf-supply/r04-2-1118/NativePullbackLiftDescent-draft.lean` に保持した。R04.2以降は未計上。旧R2の未追跡4本は変更せず、今回の検証済みコードと報告はコミットする。main は取り込み完了の連絡待ち。
 
 一覧：済み 40／全体 93（うち追加 58）。
+
+
+### 11-18：R04.2の再開
+
+11-18 ユーザー承認：R04.2 に ha : a ≫ pullback.snd p g = pullback.snd p f を追加。exists_nativePullbackRepresentationArrowComparison が同じ a とともに供給する。終端 R04 の型は不変。
+
+一覧：済み 40／全体 93（うち追加 58）。
+
+R04.2 の型内に letI : Quasicategory E := quasicategory_of_innerFibration p を明示。元の p の LeftFibration と底の Quasicategory から供給し、追加仮定はない。
+
+R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を外す。呼ぶ側の p が左ファイブレーションなので quasicategory_of_innerFibration p で同じ準圏性を供給する。

@@ -1984,15 +1984,18 @@ let z := rF ≫ smallUnstraighteningFunctorHom ν.hom
 - `exists_nativePullbackRepresentationArrowComparison` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackRepresentationArrowComparison.lean:35
 
 ### R04.2 — nativePullbackLift_descend_specified
+
+11-18 ユーザー承認：R04.2 に ha : a ≫ pullback.snd p g = pullback.snd p f を追加。exists_nativePullbackRepresentationArrowComparison が同じ a とともに供給する。終端 R04 の型は不変。
 親：R04。状態：紙のみ（pending）。依存：R04-NP。
 
 ```lean
-∀ {E B K : SSet.{u}} [Quasicategory B] [Quasicategory K]
+∀ {E B K : SSet.{u}} [Quasicategory B] [Quasicategory K] [Quasicategory E]
  (p : E ⟶ B) [LeftFibration p]
  (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
  {f g : K ⟶ B} (e : FunctorIso f g),
 let U := SSet.uliftFunctor.{u + 1, u}
 ∀ (a : pullback p f ⟶ pullback p g)
+ (ha : a ≫ pullback.snd p g = pullback.snd p f)
  (L : FunctorIso (U.map (pullback.fst p f)) (U.map (a ≫ pullback.fst p g)))
  (hL : HEq (L.postcomp (U.map p))
    ((functorIso_ulift.{u, u + 1} e).precomp (U.map (pullback.snd p f)))),
