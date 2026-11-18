@@ -4,7 +4,7 @@
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
   "verified_lean_lines": 33538,
-  "final_cap": 35681,
+  "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
   "no_main_merge": false,
@@ -7576,5 +7576,10 @@
     ],
     "next_group_upper_total": 36138,
     "scope": "same terminal signature; no work on R16, R17, S7, R2 or R3"
+  },
+  "cap_resume_1118": {
+    "approved_limit": 36138,
+    "scope": "同じ型で R06.2 の指定余単位と大域比較をつなぐ",
+    "previous_limit": 35681
   }
 }

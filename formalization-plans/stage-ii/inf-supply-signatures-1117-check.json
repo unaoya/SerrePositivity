@@ -138,7 +138,7 @@
     35268,
     36638
   ],
-  "ledger_sha256": "71f2f5a1c1760b8ccf8c89493d23db376bf9068c36d1ef824cbf8913fff64257",
+  "ledger_sha256": "ca2c629bd825522abc30e39f87faf19be84720358685fb854531576378993ff2",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
