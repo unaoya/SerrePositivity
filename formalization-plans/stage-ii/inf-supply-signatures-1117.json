@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 36285,
+  "verified_lean_lines": 36344,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -4802,6 +4802,11 @@
           "name": "reflective_isIso_map_iff_localHom",
           "path": "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean",
           "line": 80
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceSheafification.lean",
+          "line": 32,
+          "name": "localEquiv_of_sheafifyIso"
         }
       ],
       "literature": "HTT 5.5.4.15・6.2.2.7。指定された反射による局所同値の反転。",
@@ -4813,9 +4818,9 @@
         40,
         80
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/localEquiv_of_sheafifyIso.lean",
-      "note": "",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceSheafification.lean",
+      "note": " 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -4833,7 +4838,29 @@
       "method": "同じreflectorに包含を後合成し、discretePresheafHom_eq_normalizedの端点等式だけで元の辺へ戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R14",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 59,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 4,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceSheafification.lean": "a0c3115e8e958aed099c7f946eed9715c67c204069fe3c1f72636335772b89e1"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "2b3ddf2ab5c0ad5bccc0c9f0be880c7b9cecde8b93b1ee5edd6f1933c73f0703",
+        "receipt": "/tmp/is-stage5/R14/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r14-1118/manifest.json"
     },
     {
       "id": "R15-Unit.1",

@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：36,285行。外枠：36,138行。係数：2。
+既計上の累計：36,344行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -76,7 +76,7 @@
 |R13b.1|verified|104|0〜0|0〜0|
 |R13b|verified|46|0〜0|0〜0|
 |R14.1|verified|56|0〜0|0〜0|
-|R14|pending|—|20〜40|40〜80|
+|R14|verified|59|0〜0|0〜0|
 |R15-Unit.1|verified|52|0〜0|0〜0|
 |R15-Unit.2|verified|44|0〜0|0〜0|
 |R15-Unit|pending|—|15〜30|30〜60|
@@ -2893,7 +2893,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `sheafificationFunctor` @ SerrePositivity/InfinityCategories/Sheaves/Sheafify.lean:22
 
 ### R14 — localEquiv_of_sheafifyIso
-親：R14。状態：紙のみ（pending）。依存：R14.1。
+親：R14。状態：検証済み。依存：R14.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C],
