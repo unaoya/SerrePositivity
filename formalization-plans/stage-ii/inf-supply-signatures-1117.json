@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 36344,
+  "verified_lean_lines": 36506,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5015,12 +5015,17 @@
           "name": "resizedNatTransMap",
           "path": "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean",
           "line": 30
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitSpecified.lean",
+          "line": 75,
+          "name": "exists_discreteSheafificationUnitHom"
         }
       ],
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitSpecified.lean",
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
-      "note": "usual unitを元のnerveのuncurryの全円柱として実現する。Homの宇宙を拡大する仮定を置かない。全ηを一度構成し、成分を選んで集めない。",
-      "status": "pending",
+      "note": "usual unitを元のnerveのuncurryの全円柱として実現する。Homの宇宙を拡大する仮定を置かない。全ηを一度構成し、成分を選んで集めない。 対象ビルド・台帳型への代入・小監査を通過。",
+      "status": "verified",
       "additional_mathematics": true,
       "approval": "11-17夕の一括事前承認：一本の補正上端800以内、着手群の上端を足して29000を超える前に区切る。",
       "pre_decomposition_1118": {
@@ -5040,7 +5045,29 @@
       "method": "ηを同じ全円柱の類とする。成分式はR15-Unit.2、層化後の可逆性はR14と全関手の点ごと判定。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 97,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 4,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitSpecified.lean": "b4d9ea2af55ec4b67b38db23b7101821d9ccec87a6a2dde43a25fabb838ed9fd"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "3e2ed45ee658b9c0b8d47f402f59167aacbf7df13affd8496c4c4ab47023cdb8",
+        "receipt": "/tmp/is-stage5/R15-Unit/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-1118/manifest.json"
     },
     {
       "id": "R15a.1",
@@ -5829,6 +5856,11 @@
           "name": "isLocalEquivSet_toSheafify",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SetLocalEquivalence.lean",
           "line": 38
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitInverted.lean",
+          "line": 40,
+          "name": "discreteSheafificationUnitHom_post_isIso"
         }
       ],
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
@@ -5842,13 +5874,35 @@
       ],
       "method": "同じ全円柱を層化で送った像にR14を各成分で適用し、全関手の可逆性へ戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
-      "note": "同じ全円柱を層化で送った像にR14を各成分で適用し、全関手の可逆性へ戻す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitInverted.lean",
+      "note": "同じ全円柱を層化で送った像にR14を各成分で適用し、全関手の可逆性へ戻す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 65,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitInverted.lean": "a2a1a9c3c1340225a1e7bcabdff9275b8a33a6f76f0c0da4c7da2cf7aa6c73b0"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "5cb682695bdd6c77f302932f7ddccdf6791e228e3acd87d1fdd4ec6448032cea",
+        "receipt": "/tmp/is-stage5/R15-Unit.4/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-4-1118/manifest.json"
     },
     {
       "id": "R15a.3",

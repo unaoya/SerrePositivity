@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：36,344行。外枠：36,138行。係数：2。
+既計上の累計：36,506行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -79,7 +79,7 @@
 |R14|verified|59|0〜0|0〜0|
 |R15-Unit.1|verified|52|0〜0|0〜0|
 |R15-Unit.2|verified|44|0〜0|0〜0|
-|R15-Unit|pending|—|15〜30|30〜60|
+|R15-Unit|verified|97|0〜0|0〜0|
 |R15a.1|pending|—|80〜140|160〜280|
 |R15a.2|pending|—|60〜110|120〜220|
 |R15a|pending|—|20〜35|40〜70|
@@ -98,7 +98,7 @@
 |R17.1|deferred_next_checkpoint|—|15〜30|30〜60|
 |R17|deferred_next_checkpoint|—|10〜25|20〜50|
 |R15-Unit.3|verified|34|0〜0|0〜0|
-|R15-Unit.4|pending|—|35〜65|70〜130|
+|R15-Unit.4|verified|65|0〜0|0〜0|
 |R15a.3|pending|—|40〜70|80〜140|
 |R15-Unit.0a|verified|71|0〜0|0〜0|
 |R15-Unit.0b|verified|39|0〜0|0〜0|
@@ -2967,7 +2967,7 @@ let I := (discretePresheafInclusion C).val
 - `discretePresheafHom_eq_normalized` @ SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean:36
 
 ### R15-Unit — exists_discreteSheafificationUnitHom
-親：R15-Unit。状態：紙のみ（pending）。依存：R15-Unit.2・R15-Unit.3・R15-Unit.4。
+親：R15-Unit。状態：検証済み。依存：R15-Unit.2・R15-Unit.3・R15-Unit.4。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]
@@ -3496,7 +3496,7 @@ FunctorHom I (nerveMap S ≫ I)
 - `resizedNatTransMap` @ SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean:30
 
 ### R15-Unit.4 — discreteSheafificationUnitHom_post_isIso
-親：R15-Unit。状態：紙のみ（pending）。依存：R15-Unit.2・R15-Unit.3・R14。
+親：R15-Unit。状態：検証済み。依存：R15-Unit.2・R15-Unit.3・R14。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C]

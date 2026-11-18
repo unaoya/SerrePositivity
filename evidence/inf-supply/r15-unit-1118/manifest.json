@@ -1,0 +1,31 @@
+{
+  "signature": "R15-Unit",
+  "declaration": "exists_discreteSheafificationUnitHom",
+  "target_build": {
+    "jobs": 10777,
+    "sha256": "264059e5b7c410d4cc5a0385addcc962eb04d16cd4ce764c998b1888b2cd3fd9",
+    "receipt": "/tmp/is-stage5/R15-Unit/build-1.log"
+  },
+  "type_check": {
+    "sha256": "3e2ed45ee658b9c0b8d47f402f59167aacbf7df13affd8496c4c4ab47023cdb8",
+    "receipt": "/tmp/is-stage5/R15-Unit/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "9d5e7b83f3a887d00f77f726695e9b70351f749ddaed8b8567c8e204fad1b2ce",
+    "receipt": "/tmp/is-stage5/R15-Unit/target-audit-result.json",
+    "modules": 1,
+    "declarations": 4,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitSpecified.lean": "b4d9ea2af55ec4b67b38db23b7101821d9ccec87a6a2dde43a25fabb838ed9fd"
+    }
+  }
+}
