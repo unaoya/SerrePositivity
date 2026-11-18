@@ -1,0 +1,28 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/nb-w4-statements-kerodon",
+ "commit": "802b8752ce8bd9fb0fbdd693300e003e64ce488e",
+ "made_by": "NB-W4 static source review",
+ "files": [
+  {
+   "path": "kerodon-sources.json",
+   "sha256": "26116eec706658fac776c7d2f620e41442c2e5c32adbd12508f30b69c35bb3e3",
+   "bytes": 237011
+  },
+  {
+   "path": "kerodon-tag-pages.tar.gz",
+   "sha256": "9ff32450b4e863292366b79f84796ff53d4307d076c0c52531fe0346675a61ca",
+   "bytes": 1010193
+  },
+  {
+   "path": "fetch-kerodon.py",
+   "sha256": "b5dd4859a80e4d0415b56bc28b56687e0a4351cf9e4850be8636f745a0d0faac",
+   "bytes": 1882
+  },
+  {
+   "path": "read-kerodon.py",
+   "sha256": "b654cd41e70f34de84c006fd5a413f63f1fef04c52f43fcd1d7b8d2f7dfb7726",
+   "bytes": 1948
+  }
+ ],
+ "total_bytes": 1251034
+}

@@ -1,0 +1,18 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/nb-w4-statements-paper",
+ "commit": "802b8752ce8bd9fb0fbdd693300e003e64ce488e",
+ "made_by": "NB-W4 static source review",
+ "files": [
+  {
+   "path": "paper-statement-audit.json",
+   "sha256": "cf41421480bc2165a5c65837a15bcc2b11a10a173cf6ffa1e8f4f5d9daaa3d98",
+   "bytes": 160
+  },
+  {
+   "path": "paper-statement-source-index.json",
+   "sha256": "6fe0902aac7be140c5fb735549d61b0531fb939e2d2ac7d4c1d129b09c15a07d",
+   "bytes": 3698
+  }
+ ],
+ "total_bytes": 3858
+}

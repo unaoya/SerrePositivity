@@ -1,0 +1,59 @@
+number,statement_ja
+1.1,"\((R,\mathfrak m)\) を次元 \(d\) の可換ネーター正則局所環とする。非零有限生成 \(R\) 加群 \(M,N\) のテンソル積が有限長で \(\dim_R M+\dim_R N=d\) なら、Serre の交点重複度 \(\chi^R(M,N)\) は狭義に正である。"
+Figure 1,"二度のノルム比較により、最初に \(|G_D|a_Da_E\chi^R(D,E)=\sum_\sigma c_\sigma\) とし、続いて各 \(\sigma\) について \(|G_E|c_\sigma=\sum_\gamma b_{\sigma,\gamma}>0\) を得る。最初は \(A_D\subset D'\) での通常の台つき比較、次は \(A_E\subset E'\) での漸近比較で、厳密な下界には一様な消去冪と生成元数を用いる。"
+2.1,"完備ネーター局所環 \((B,\mathfrak b,k)\) から、剰余体が \(k\) の代数閉包で極大イデアルが \(\mathfrak bB'\) となる完備ネーター局所環 \(B'\) への平坦局所射がある。任意の有限 \(B\) 加群の \(\mathfrak b^a\) 商の長さは \(a\ge1\) で保存され、次元・有限長・環の正則性も保存される。テンソル積が有限長の有限加群対ではすべての Tor の長さも保存される。"
+2.2,"\(D\) を次元 \(h>0\) の完備ネーター局所整域で剰余体 \(k\) が標数 \(p>0\) の完全体とすると、剰余体に恒等射を誘導する有限かつ生成点で分離的な正則部分環 \(A\subset D\) がとれる。\(\operatorname{char}D=p\) では \(A=k[[t_1,\ldots,t_h]]\)、標数零では \(A=W(k)[[t_2,\ldots,t_h]]\) で \(t_1=p\) とし、\((t_1,\ldots,t_h)\) は \(D\) のパラメータ系かつ \(A\) の正則パラメータ系になる。"
+(2.1),"補題 2.2 で選んだ基底環 \(A\) のパラメータの整合する根をとり、\(A_n=A[t_1^{1/p^n},\ldots,t_h^{1/p^n}]\) とする。未完備の塔の極限を \(\Lambda=\varinjlim_n A_n\) とおく。"
+2.3,各 \(A_n\) は剰余体 \(k\) をもつ完備正則局所環で、\(b\ge a\) なら \(A_b\) は \(A_a\) 上階数 \(p^{(b-a)h}\) の自由加群である。\(\mathfrak m_A\) のある冪で消える \(\Lambda\) 加群上に非負加法的な長さがあり、有限表示の場合は有限段の長さを \(p^{nh}\) で割り、有限生成の場合は有限表示全射からの下限、一般には有限生成部分加群からの上限で求まる。混標数の場合、\(p\) 進完備化上の固定冪で消える加群を \(\Lambda\) に制限しても長さは同じである。
+(2.2),塔の段 \(A_n\) 上の有限長加群 \(V_n\) から降りてくる有限表示加群の正規化長は、\(\lambda_\infty(V_n\otimes_{A_n}\Lambda)=p^{-nh}\operatorname{length}_{A_n}(V_n)\) である。
+(2.3),\(\mathfrak m_A\) のある冪で消える任意の \(\Lambda\) 加群 \(V\) の正規化長は、有限生成部分加群 \(V_0\subseteq V\) の長さ \(\lambda_\infty(V_0)\) の上限である。
+2.4,加群が \(\mathfrak m_A\) の一つの冪で一様に消えるとき、長さ零の加群の和・直和・有向余極限は長さ零で、増大和の長さは各段の長さの上限である。また各段の長さが零に近づく直系の余極限も長さ零である。
+2.5,"補題 2.2 の \(D\) と選んだ有限・生成点で分離的な基底 \(A\) に対し、塔 \(\Lambda\) と両立する \(D\) 代数 \(C_D\) があり、\(\mathfrak d\) のある冪で消える加群には制限による非負加法的長さ \(\lambda_D=\lambda_\infty\) が入る。任意のパラメータ系 \(z\) と \(v\ge1\) に対し、\(z^v\) の正次数 Koszul ホモロジーは長さ零で、商の長さは \(v^h e((z),D)\) となり、基底のパラメータでは \(v^h\operatorname{rank}_A D\) になる。有限段・下限・上限による計算は、塔上の加群に対して使える。"
+(2.4),"定理 2.5 の長さ代数では、\(D\) の任意のパラメータ系 \(z\)、\(v\ge1\)、\(i>0\) に対し、\(\lambda_D H_i(z_1^v,\ldots,z_h^v;C_D)=0\) である。"
+(2.5),"定理 2.5 の任意の \(D\) のパラメータ系 \(z\) と \(v\ge1\) に対して、\(\lambda_D(C_D/(z_1^v,\ldots,z_h^v)C_D)=v^h e((z),D)\) であり、右辺は有限かつ正である。"
+(2.6),"定理 2.5 の基底 \(A\) の正則パラメータ \(t_1,\ldots,t_h\) では、\(v\ge1\) に対して \(\lambda_D(C_D/(t_1^v,\ldots,t_h^v)C_D)=v^h\operatorname{rank}_A D\) となる。"
+(2.7),標数 \(p\) で \(C_D=D_{\mathrm{perf}}\)、\(B_q=\Lambda\otimes_{A^{1/q}}D^{1/q}\) とおくと、すべての \(q=p^n\) に共通の非零 \(g\in A\) があって、\(gC_D\subseteq B_1\) かつ \(g^{1/q}C_D\subseteq B_q\) となる。
+(2.8),"定理 2.5 の標数 \(p\) の構成で、極大イデアルに準素なイデアル \(H\subset D\) について \(\lambda_D(C_D/HC_D)\) は \(H\) の Hilbert–Kunz 重複度 \(e_{\mathrm{HK}}(H,D)\) に等しい。"
+2.6,"定理 2.5 の設定で \(r=\operatorname{rank}_A D\) とし、\(V\) を有限長 \(A\) 加群とする。\(i>0\) で \(\lambda_D\operatorname{Tor}_i^A(V,C_D)=0\)、かつ \(\lambda_D(V\otimes_A C_D)=r\operatorname{length}_A V\) で、剰余商 \(C_D/\mathfrak d C_D\) の長さは正である。"
+3.1,\(A\) を有限 Krull 次元の可換ネーター \(\mathbf Z_{(p)}\) 代数、\(J\supseteq(p)\) をイデアル、\(H\) を中心的 \(A\) 作用をもつ連結結合 \(A\) 代数とする。有限可換 \(A\) 代数 \(T\) が \(A\) 上の有限群 \(G\) 作用をもち、\(\operatorname{Spec}T\to\operatorname{Spec}A\) が全射で各幾何ファイバー上の作用が推移的なら、引き戻しは台 \(V(J)\) つき有理 K 理論 \(K^J(H)_{\mathbf Q}\simeq(K^J(H\otimes_A^{\mathbf L}T)_{\mathbf Q})^{hG}\) を与える。従って有理 \(K_0^J\) から上の \(G\) 不変部分への写像は全射となる。
+(3.2),定理 3.1 の有限全射と幾何ファイバー上の推移的な有限群作用の下で、引き戻しは \(K_0^J(H)\otimes\mathbf Q\longrightarrow(K_0^J(H\otimes_A^{\mathbf L}T)\otimes\mathbf Q)^G\) を全射にする。
+(3.9),完備正則局所基底 \(A\) の正則パラメータ \(z\) と、同じ剰余体をもつ有限局所整域拡大 \(T\) に対する長さ代数 \(C\) に課す条件は、各 \(v\ge1\) について \(\lambda H_i(z^v;C)=0\)（\(i>0\)）および \(\lambda(C/(z^v)C)=v^e\operatorname{rank}_A T\) である。
+3.4,§3.4 の有限局所拡大・長さの設定と式 (3.9) の下で、任意の有限長 \(A\) 加群 \(V\) の \(C\) との正次数 Tor の長さは零、テンソル積の長さは \(\operatorname{rank}_A T\) と \(\operatorname{length}_A V\) の積であり、すべて有限である。
+(3.10),"式 (3.9) の仮定の下で有限長 \(A\) 加群 \(V\) に対して、\(\lambda\operatorname{Tor}_i^A(V,C)=0\)（\(i>0\)）かつ \(\lambda(V\otimes_A C)=r\operatorname{length}_A V\) となる。ここで \(r=\operatorname{rank}_A T\) である。"
+3.5,§3.4 の基底と長さの条件の下で、\(T\) に作用する有限群 \(G\) が \(\operatorname{Spec}T\to\operatorname{Spec}A\) の各幾何ファイバーで推移的とする。閉点に台をもつ完全 \(T\) 複体の通常および長さ \(\lambda\) による Euler 評価は有限で、\(K_0\) 上の準同型を与え、各 \(G\) 共役和で一致する。さらに基底からの像と任意の \(G\) 不変有理類でも一致する。
+(3.11),補題 3.5 の仮定の下で、閉点に台をもつ完全 \(T\) 複体 \(P\) について、\(\sum_{g\in G}\chi_T(g^*P)=\sum_{g\in G}\chi_C(g^*P)\) が成り立つ。
+(3.13),補題 3.5 の設定で、閉点に台をもつ完全 \(A\) 複体 \(Q\) を \(T\) へ導来底変換すると、長さ \(\lambda\) による評価は \(\chi_C(Q\otimes_A^{\mathbf L}T)=r\sum_j(-1)^j\operatorname{length}_A H_j(Q)\) である。
+(3.14),同じ \(Q\) の \(T\) への導来底変換の通常 Euler 評価は、\(\chi_T(Q\otimes_A^{\mathbf L}T)=r\sum_j(-1)^j\operatorname{length}_A H_j(Q)\) である。
+3.6,ノルム比較は長さ \(\lambda\) の \(G\) 不変性を仮定しない。保証される等式は共役類の和に対するものであり、各共役の評価は個別に一致するとは限らない。
+(4.1),\(A\) を剰余標数 \(p\) の優秀正則局所 \(\mathbf Z_{(p)}\) 代数、\(T\) を同じ剰余体をもつ有限局所整域、\(z\) を \(A\) の正則パラメータ系とする。漸近比較の長さに課すのは、任意の \(v\ge1\) に対し \(i>0\) で \(\lambda H_i(z^v;C)=0\) となり、\(\lambda(C/(z^v)C)=v^{\dim A}\operatorname{rank}_A T\) となる条件である。
+4.2,台つき部分圏を \(S_S\)、誤差の厚い部分圏を \(N_S\) とすると、自然な完全関手 \(S_S/(S_S\cap N_S)\to D_S/N_S\) は充満忠実である。この部分商を冪等完備化すると、商の中で台が \(J\) にある部分圏 \(P_S^J\) になる。
+4.3,台つき漸近圏 \(P_T^J\) から通常長・\(C\) 上の長さの Serre 商へのホモロジー関手があり、一様に台をもつ持ち上げではそれぞれ元のホモロジー列・\(C\) とのテンソルのホモロジー列を与える。得られる長さは非負有限で有限範囲に集中し、交代和は \(K_0(P_T^J)\to\mathbf R\) を定める。商で台をもつ自由複体列には Koszul テンソルによる二項係数公式 (4.2) が成り立つ。
+(4.2),有界自由複体列 \(F_n\) が商で台をもち、\(z^v\) がその像に零で作用するなら、\((1+t)^e\sum_i b_i(F)t^i=\sum_i t^i\lim_{n\to\mathcal U}\operatorname{len}H_i(K_v\otimes_A F_n)/s_n\) である。\(C\) による評価では右辺の複体をさらに \(C\) とテンソルし、長さを \(\lambda\) で測る。
+4.4,"完備性を課さない §4 の基底と式 (4.1) の長さの下で、任意の有限長 \(A\) 加群 \(V\) に対し、正次数の \(\operatorname{Tor}^A(V,C)\) は長さ零、テンソル積の長さは \(r\operatorname{length}_A V\) となり、これらは \(J\) のある冪で消える。"
+4.5,台つき漸近圏の任意の \(X\in P_A^J\) について、\(\chi_{\mathrm{ord}}(X\otimes_A^{\mathbf L}T)=r\chi_A(X)=\chi_C(X\otimes_A^{\mathbf L}T)\) が成り立つ。局所化前に持ち上がらない冪等射で定まる直和因子にも適用できる。
+(4.5),\(T\) の有限自由 \(A\) 分解 \(P_\bullet\) と、ホモロジー上の冪等射の像 \(V_b\) による交代和 \(\sum_u(-1)^u\operatorname{rank}_A(P_u)\sum_b(-1)^b\operatorname{length}_A V_b\) は、\(r=\operatorname{rank}_A T\) を後者の和に掛けたものに等しい。
+4.7,§4 の基底・係数・長さの設定と (4.1) の下で、有限群 \(G\) が \(T\) に \(A\) 上で作用し、\(\operatorname{Spec}T\to\operatorname{Spec}A\) が全射で幾何ファイバーごとに作用が推移的とする。任意の \(X\in P_T^J\) について \(\sum_{g\in G}\chi_{\mathrm{ord}}(gX)=\sum_{g\in G}\chi_C(gX)\) となる。
+5.1,"定理 1.1 の証明には、正則局所環 \(R\) が完備で剰余体が標数 \(p>0\) の代数閉体、\(D=R/P\) と \(E=R/Q\) が素イデアル商で \(P+Q\) が極大イデアルに準素な場合で十分である。ここで \(\dim D,\dim E\) はともに正で和は \(\dim R\) である。"
+(5.1),"次元 \(d\) の正則局所環 \(R\) 上の有限加群 \(V,W\) について、テンソル積が有限長で \(\dim V+\dim W<d\) なら \(\chi^R(V,W)=0\) である。"
+(5.2),"各 \(\sigma\in G_D\) について \(R\to D'\xrightarrow{\sigma} D'\to C_D\) で作用を入れ、\(c_\sigma=\sum_{i=0}^d(-1)^i\lambda_D\operatorname{Tor}_i^R(C_D,E')\) と定める。"
+5.2,"§5.1 の設定で式 (5.2) の各長さは有限であり、\(|G_D|a_Da_E\chi^R(D,E)=\sum_{\sigma\in G_D}c_\sigma\) が成り立つ。"
+(5.3),"最初のノルム比較は、\(|G_D|\) と拡大の階数 \(a_D,a_E\) を掛けた交点重複度 \(\chi^R(D,E)\) が、\(G_D\) の各 \(\sigma\) でひねった評価 \(c_\sigma\) の総和に等しいことを述べる。"
+(5.4),"補題 5.1 の素イデアル対に対し、\(Q\) の中から \(h=\dim D\) 個の元 \(x_1,\ldots,x_h\) を取り、\(R\) の正則列であると同時に、その像が \(D\) のパラメータ系になるようにできる。"
+(5.5),"\(I_\sigma\) を \(x\) のねじれた像が \(D'\) に生成するパラメータ・イデアル、\(U=C/I_\sigma C\) とすると、\(0<\lambda(U)=e(I_\sigma,D')<\infty\) となる。同じ作用で作る Koszul ホモロジーの正次数部分は \(\lambda\) で測ると零である。"
+(5.6),\(B=R/(x)\) の極大イデアルのある冪 \(\mathfrak m_B^a\) が、ねじれた作用をもつ \(D'/I_\sigma\) を消す。この同じ冪は \(U\) および任意の \(D'/I_\sigma\) 加群を消す。
+5.3,"§5.2 のパラメータ商 \(B,U\) に対し、任意の有限 \(B\) 加群 \(L\) と各次数で \(\lambda\operatorname{Tor}_i^B(U,L)=\lambda\operatorname{Tor}_i^R(C,L)\) は有限である。共通の値は \(i>l=\dim E\) で零となる。"
+(5.7),"有限 \(B\) 加群 \(L\) について、有限な値 \(\tau_i(L)\) は \(\lambda\operatorname{Tor}_i^B(U,L)\) と \(\lambda\operatorname{Tor}_i^R(C,L)\) の双方に等しく、\(i>l\) で零となる。"
+(5.8),有限段の環を \(S_j=A_j\otimes_A(D'/I_\sigma)\)、極限を \(S=\Lambda\otimes_A(D'/I_\sigma)\) とおく。\(U\) の塔とパラメータ商からの可換な二作用はこの \(S\) の作用にまとまり、有限段へ降ろしたときも \(B\) 作用を保つ。
+5.4,"\(U\) に対し、\(\mathfrak m_B^a\) で一様に消える有限長 \(B\) 加群 \(M_n\) と正整数 \(s_n\to\infty\) があって、正規化した長さは \(\lambda(U)\)、\(L=k,E'\) との全次数の Tor 長は \(\tau_i(L)\) にそれぞれ通常極限で収束する。最小生成元数を \(s_n\) で割った値も \(\nu_\sigma\) に収束し、\(\nu_\sigma\ge\lambda(U)/\operatorname{length}_B(B/\mathfrak m_B^a)>0\) となる。"
+(5.9),補題 5.4 で選ぶ近似 \(M_n\) の正規化長 \(\operatorname{length}_B(M_n)/s_n\) は、通常極限で \(\lambda(U)\) に収束する。
+(5.10),"同じ近似について任意の \(i\ge0\) と \(L=k,E'\) に対し、\(\operatorname{length}_B\operatorname{Tor}_i^B(M_n,L)/s_n\to\tau_i(L)\) となる。"
+(5.11),\(M_n\) の最小生成元数 \(\beta_0(M_n)\) を \(s_n\) で割った値は \(\nu_\sigma\) に収束し、\(\nu_\sigma\ge\lambda(U)/\operatorname{length}_B(B/\mathfrak m_B^a)>0\) が成り立つ。
+(5.12),"有限表示近似 \(P_\epsilon\to U\) の核・余核を \(K_\epsilon,W_\epsilon\)、\(L\) の自由分解の階数を \(r_i(L)\) とする。\(i\) 次 Tor の長さの差の絶対値は \((r_i+r_{i-1})\lambda(K_\epsilon)+(r_{i+1}+r_i)\lambda(W_\epsilon)\) 以下である。"
+(5.13),有限近似 \(M_n\) の極小自由 \(B\) 分解では、固定次数 \(i\) の階数は \(O(s_n)\)、\(i>l\) なら \(o(s_n)\) となる。
+5.5,"近似 \(M_n\) の極小自由分解を次数 \(0,\ldots,l\) で切り、\(\gamma\in G_E\) でひねって \(E'\) へ延長した複体列は、漸近圏で閉点に台をもつ。通常 Euler 評価は、各 \(\gamma\) について \(c_\sigma\) に等しい。"
+(5.14),"極小自由分解の切り詰めで零ホモトピーの残す誤差は次数 \(l\) にあり、\(F_{n,l}\xrightarrow{h_l}F_{n,l+1}^{\infty}\xrightarrow{d_{l+1}}F_{n,l}\) と因数分解する。中間項の階数は \(o(s_n)\) なので、誤差は漸近商で零になる。"
+(5.15),第二の長さ代数 \(C_E\) の剰余商の長さ \(\eta_E=\lambda_E(C_E/\mathfrak m_{E'} C_E)\) は、有限かつ狭義に正である。
+(5.16),\(r_E=\operatorname{rank}_{A_E} E'\)、\(t_E=\operatorname{length}_{E'}(E'/\mathfrak q_E)\) とすると、\(r_E\le t_E\eta_E\) が成り立つ。
+5.6,"補題 5.5 のねじった切り詰め分解列の \(\lambda_E\) による Euler 評価 \(b_{\sigma,\gamma}\) は、\(b_{\sigma,\gamma}\ge\nu_\sigma\eta_E\ge\frac{\lambda_D(U)}{\operatorname{length}_B(B/\mathfrak m_B^a)}\frac{r_E}{t_E}>0\) を満たす。"
+(5.17),\(\lambda_E\) による評価は、正規化最小生成元数の極限 \(\nu_\sigma\) と剰余長 \(\eta_E\) の積以上であり、その積は \(\lambda_D(U)r_E/(\operatorname{length}_B(B/\mathfrak m_B^a)t_E)\) という正の量以上である。
+(5.18),"第二のノルム比較により、各 \(\sigma\in G_D\) に対し \(|G_E|c_\sigma=\sum_{\gamma\in G_E}b_{\sigma,\gamma}>0\) となる。"

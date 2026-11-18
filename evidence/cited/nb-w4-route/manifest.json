@@ -1,0 +1,38 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/nb-w4-route",
+ "commit": "802b8752ce8bd9fb0fbdd693300e003e64ce488e",
+ "made_by": "NB-W4 static source review",
+ "files": [
+  {
+   "path": "primary.py",
+   "sha256": "c989ed92dff8881e4b1cf0dfdccf9db754c53447d3099862460bf7da869f4137",
+   "bytes": 1843
+  },
+  {
+   "path": "route.py",
+   "sha256": "4e7e36f5e23a6dbf12a6590cac1ed822d0ead54f973d78c98aa2b5eeb697dfd2",
+   "bytes": 9712
+  },
+  {
+   "path": "route-publish.py",
+   "sha256": "5a7e2ecd22a6d4be48d2483f0af38b18dd30779cd5457fa5b74c7755aca35dea",
+   "bytes": 4191
+  },
+  {
+   "path": "route-candidates.json",
+   "sha256": "33f73ca911acb41d4a8157cb3f449542dee1f1947474e9695497b82e2302486c",
+   "bytes": 175790
+  },
+  {
+   "path": "route-summary.txt",
+   "sha256": "a6ef7b4559331ec5e15c3d3003aa29711655af66d363a119591c9df136983f1b",
+   "bytes": 14151
+  },
+  {
+   "path": "route-audit.json",
+   "sha256": "13f759b8f74c23a4898ff8493cf6607cdd63a965fe52951e001af568bdab0a11",
+   "bytes": 956
+  }
+ ],
+ "total_bytes": 206643
+}
