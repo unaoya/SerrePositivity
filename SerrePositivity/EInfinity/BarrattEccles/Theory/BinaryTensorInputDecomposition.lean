@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColors
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColorAction
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorBicone
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.RepresentationComplex
-public import SerrePositivity.EInfinity.Operad.TensorFamilyAdjacentTail
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorFamilyAdjacentTail
 public import Mathlib.GroupTheory.Perm.Fin
 
 /-!
@@ -47,7 +47,7 @@ def binaryTensorColorInclusion : ∀ b, binaryTensorColorObj X Y b ⟶ X ⊞ Y
 /-- 再帰的な入力語のテンソルを、色の有限族のテンソルへ同定する。 -/
 def binaryTensorWordFamilyIso : ∀ n (w : BinaryTensorWord n),
     binaryTensorWordObj X Y n w ≅
-      tensorFamily n (fun i => binaryTensorColorObj X Y (binaryTensorWordColors n w i))
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n (fun i => binaryTensorColorObj X Y (binaryTensorWordColors n w i))
   | 0, _ => Iso.refl _
   | n + 1, .inl w => whiskerLeftIso X (binaryTensorWordFamilyIso n w)
   | n + 1, .inr w => whiskerLeftIso Y (binaryTensorWordFamilyIso n w)
@@ -55,7 +55,7 @@ def binaryTensorWordFamilyIso : ∀ n (w : BinaryTensorWord n),
 /-- 語の指定包含は、有限族の指定生成射に一致する。 -/
 lemma binaryTensorWordFamilyIso_inclusion : ∀ n (w : BinaryTensorWord n),
     (binaryTensorWordFamilyIso X Y n w).hom ≫
-      tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
         (binaryTensorColorInclusion X Y) n (binaryTensorWordColors n w) =
       binaryTensorWordInclusion X Y n w := by
   intro n
@@ -66,12 +66,12 @@ lemma binaryTensorWordFamilyIso_inclusion : ∀ n (w : BinaryTensorWord n),
     cases w with
     | inl w =>
       change (X ◁ (binaryTensorWordFamilyIso X Y n w).hom) ≫
-        (biprod.inl ⊗ₘ tensorFamilyGenerator _ _ _ n (binaryTensorWordColors n w)) =
+        (biprod.inl ⊗ₘ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator _ _ _ n (binaryTensorWordColors n w)) =
           biprod.inl ⊗ₘ binaryTensorWordInclusion X Y n w
       rw [← id_tensorHom, tensorHom_comp_tensorHom, Category.id_comp, ih]
     | inr w =>
       change (Y ◁ (binaryTensorWordFamilyIso X Y n w).hom) ≫
-        (biprod.inr ⊗ₘ tensorFamilyGenerator _ _ _ n (binaryTensorWordColors n w)) =
+        (biprod.inr ⊗ₘ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator _ _ _ n (binaryTensorWordColors n w)) =
           biprod.inr ⊗ₘ binaryTensorWordInclusion X Y n w
       rw [← id_tensorHom, tensorHom_comp_tensorHom, Category.id_comp, ih]
 
@@ -96,10 +96,10 @@ lemma binaryTensorWordColors_adjacent (n : ℕ) (i : Fin n)
 
 /-- 色の関数を等式で移した有限テンソル族の生成射の照合。 -/
 lemma binaryTensorGenerator_index_eq {n : ℕ} {s t : Fin n → Bool} (h : s = t) :
-    eqToHom (congrArg (fun s => tensorFamily n (fun j => binaryTensorColorObj X Y (s j))) h) ≫
-      tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
+    eqToHom (congrArg (fun s => _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n (fun j => binaryTensorColorObj X Y (s j))) h) ≫
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
         (binaryTensorColorInclusion X Y) n t =
-      tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
         (binaryTensorColorInclusion X Y) n s := by
   subst t
   simp
@@ -109,9 +109,9 @@ def binaryTensorWordAdjacentIso (n : ℕ) (i : Fin n) (w : BinaryTensorWord (n +
     binaryTensorWordObj X Y (n + 1) w ≅
       binaryTensorWordObj X Y (n + 1) (adjacentTransposition i • w) :=
   binaryTensorWordFamilyIso X Y (n + 1) w ≪≫
-    tensorFamilyAdjacentIso n
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso n
       (fun j => binaryTensorColorObj X Y (binaryTensorWordColors (n + 1) w j)) i ≪≫
-    eqToIso (congrArg (fun s => tensorFamily (n + 1)
+    eqToIso (congrArg (fun s => _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily (n + 1)
       (fun j => binaryTensorColorObj X Y (s j))) (binaryTensorWordColors_adjacent n i w)) ≪≫
     (binaryTensorWordFamilyIso X Y (n + 1) (adjacentTransposition i • w)).symm
 
@@ -125,22 +125,22 @@ lemma binaryTensorWordAdjacentIso_inclusion (n : ℕ) (i : Fin n)
   simp only [binaryTensorWordAdjacentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.hom,
     Category.assoc, Iso.inv_hom_id_assoc]
   rw [binaryTensorGenerator_index_eq X Y (binaryTensorWordColors_adjacent n i w)]
-  have h := tensorFamilyAdjacentIso_generator (X ⊞ Y) n
+  have h := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso_generator (X ⊞ Y) n
     (fun j => binaryTensorColorObj X Y (binaryTensorWordColors (n + 1) w j))
     (fun j => binaryTensorColorInclusion X Y (binaryTensorWordColors (n + 1) w j)) i
-  have hh : (tensorFamilyAdjacentIso n
+  have hh : (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso n
       (fun j => binaryTensorColorObj X Y (binaryTensorWordColors (n + 1) w j)) i).hom ≫
-      tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
         (binaryTensorColorInclusion X Y) (n + 1)
         (fun j => binaryTensorWordColors (n + 1) w (adjacentTransposition i j)) =
-      tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator (X ⊞ Y) (binaryTensorColorObj X Y)
         (binaryTensorColorInclusion X Y) (n + 1) (binaryTensorWordColors (n + 1) w) ≫
           (adjacentIso (X ⊞ Y) n i).hom := by
-    have hid := tensorFamilyGenerator_reindex (X ⊞ Y) (binaryTensorColorObj X Y)
+    have hid := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator_reindex (X ⊞ Y) (binaryTensorColorObj X Y)
       (binaryTensorColorInclusion X Y) (binaryTensorWordColors (n + 1) w)
       (n + 1) (fun j => j)
     rw [← hid] at h
-    simpa only [tensorFamilyGenerator_reindex] using h
+    simpa only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator_reindex] using h
   rw [hh, ← Category.assoc, binaryTensorWordFamilyIso_inclusion]
 
 end SerrePositivity.EInfinity

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficientAction
-public import SerrePositivity.EInfinity.HomologyZero.BinaryInput
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.BinaryInput
 
 /-!
 # E 代数の演算は入力置換で鎖ホモトピック
@@ -76,7 +76,7 @@ def homologyBinaryCommutativityHomotopy (X : (operad A).Algebra) :
   rw [← whisker_exchange_assoc] at h
   have hn := (leftUnitor_inv_naturality
     (permutationAction X.carrier 2 (Coxeter.adjacentTransposition (0 : Fin 1))).asIso.hom).symm
-  rw [reassoc_of% hn, reassoc_of% (HomologyZero.binaryInput_braiding X.carrier).symm] at h
+  rw [reassoc_of% hn, reassoc_of% (_root_.SerrePositivity.HomologyZero.binaryInput_braiding X.carrier).symm] at h
   simpa only [homologyBinary, homologyOperation, Category.assoc] using h
 
 end SerrePositivity.EInfinity.BarrattEccles

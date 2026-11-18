@@ -56,7 +56,7 @@ lemma eraseDifferentialPower_hom_value (K : Complex A) {I : ℤ → Type u}
     rfl
 
 namespace Operad
-variable {P : Operad A}
+variable {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 
 /-- Erasing the differential preserves an operation on arbitrary specified homogeneous inputs. -/
 lemma eraseAlgebra_action_value (X : P.Algebra) {I : ℤ → Type u}

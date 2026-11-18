@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementParameter
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementEvaluationIndex
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementParameter
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorElementParameter
 
 /-!
 概要：元の全要素圏の終端パラメータ族と各対象での frame Hom 評価は可換。
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 open scoped Simplicial
@@ -29,7 +29,7 @@ variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
 def strictRawModuleTensorEvaluationHomMap
     (x : dgAlgebraCategory A ((assocForget A).obj X)) :
     (((strictRawModuleProbeTensorHom A X).obj (op P)).obj Q) ⟶
-      (cosimplicialHom (normalizedSimplexTensor A
+      (cosimplicialHom (_root_.SerrePositivity.ComplexLimits.normalizedSimplexTensor A
         ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P)))).obj
         ((moduleEvaluation A _ x).obj Q) :=
   moduleTensorEvaluationHomMap A _ ((strictRawModuleProbeFunctor A X).obj P) Q x
@@ -40,7 +40,7 @@ def strictRawModuleTensorEvaluationHomMap
 def strictRawModuleTensorElementEvaluationIndexNerveMap
     (x : dgAlgebraCategory A ((assocForget A).obj X)) :
     nerve (strictRawModuleTensorElementIndex A X P Q) ⟶
-      nerve (normalizedTensorElementIndex A
+      nerve (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A
         ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
         ((moduleEvaluation A _ x).obj Q)) where
   app _ := ↾fun c => c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x
@@ -60,7 +60,7 @@ lemma strictRawModuleTensorElementParameterMap_evaluation
       SSet.uliftFunctor.{u + 1, u}.map
         (strictRawModuleTensorEvaluationHomMap A X P Q x) =
     strictRawModuleTensorElementEvaluationIndexNerveMap A X P Q x ≫
-      normalizedTensorElementParameterMap A
+      _root_.SerrePositivity.ComplexLimits.normalizedTensorElementParameterMap A
         ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
         ((moduleEvaluation A _ x).obj Q) := by
   apply NatTrans.ext
@@ -73,7 +73,7 @@ lemma strictRawModuleTensorElementParameterMap_evaluation
   let g := (strictRawModuleTensorElementEvaluation A X P Q).app (c.obj (Fin.last n))
   change ULift.up (α.app (op ⦋n⦌)
       (((strictRawModuleProbeTensorFrame A X).obj P).map θ ≫ g)) =
-    ULift.up ((normalizedSimplexTensor A
+    ULift.up ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexTensor A
       ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))).map θ ≫
         α.app (op ((strictRawModuleTensorElementDegree A X P Q).obj (c.obj (Fin.last n)))) g)
   exact congrArg (ULift.up : _ → ULift.{u + 1} _)

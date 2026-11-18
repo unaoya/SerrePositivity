@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.Schur
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Schur
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
 public import Mathlib.RepresentationTheory.Coinvariants
 
@@ -122,11 +122,11 @@ def arityDiagramCoconeIsColimit : IsColimit (arityDiagramCocone F) where
 /-- The degree of the actual Schur complex is the coproduct of the arity coinvariants. -/
 def schurDegreeArityIso (P : SymmetricSequence (DifferentialGraded.Complex A))
     (K : DifferentialGraded.Complex A) (i : ℤ) :
-    ((schurFunctor A P).obj K).X i ≅
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P).obj K).X i ≅
       ∐ (arityDiagramCoinvariants
-        (schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i)) := by
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K ⋙ HomologicalComplex.eval (ModuleCat A) (.up ℤ) i)) := by
   let E := HomologicalComplex.eval (ModuleCat A) (.up ℤ) i
-  let F := schurDiagram A P K
+  let F := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K
   exact preservesColimitIso E F ≪≫
     (colimit.isColimit (F ⋙ E)).coconePointUniqueUpToIso
       (arityDiagramCoconeIsColimit (F ⋙ E))

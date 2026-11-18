@@ -4,7 +4,7 @@ import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism
-import SerrePositivity.EInfinity.Hammock.WeakFiniteSubsetColimit
+import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakFiniteSubsetColimit
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.AcyclicFiber
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.AcyclicKanLifting
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryNormalization
@@ -584,7 +584,7 @@ Kerodon Proposition 3.2.8.3（[Tag 00XE](https://kerodon.net/tag/00XE)）。対�
 
 :::
 
-:::corollary "kerodon_3_2_8_4" (lean := "SerrePositivity.EInfinity.Hammock.finiteSubsetColimit_isWeaklyContractible, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise") (uses := "kerodon_1_1_0_6")
+:::corollary "kerodon_3_2_8_4" (lean := "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.finiteSubsetColimit_isWeaklyContractible, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise") (uses := "kerodon_1_1_0_6")
 Kerodon Corollary 3.2.8.4（[Tag 03PK](https://kerodon.net/tag/03PK)）。対応表の状態：一部。
 
 B6：finiteSubsetColimit\_isWeaklyContractible は任意の型 Q の有限部分集合の圏を添字にした filtered colimit に対し、原文と同じ弱可縮性の結論を直接返す。任意の filtered 小圏は含まない。

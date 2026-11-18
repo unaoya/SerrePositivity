@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientRestriction
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientRestrictionCoherence
-public import SerrePositivity.EInfinity.Operad.AlgebraIso
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraIso
 
 /-!
 # 厳密な代数の係数制限の関手性
@@ -82,7 +82,7 @@ lemma coefficientRestriction_comp_action (X : (operad W).Algebra) (n : ℕ) :
     simpa only [Category.assoc] using congrArg (fun k => (c ⊗ₘ p) ≫ k ≫ t) (μ_natural V d q))
 
 /-- 恒等関手上の標準比較は、オペラッド代数の作用を変えない。 -/
-def operadTransportIdentityIso {A : Type u} [CommRing A] (P : Operad A)
+def operadTransportIdentityIso {A : Type u} [CommRing A] (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A)
     (F : Complex A ⥤ Complex A) [b : F.LaxBraided] (k : Operad.LaxComparison F P P)
     (hF : F = 𝟭 (Complex A))
     (hε : HEq (ε F) (𝟙 (𝟙_ (Complex A))))
@@ -102,7 +102,7 @@ def operadTransportIdentityIso {A : Type u} [CommRing A] (P : Operad A)
       let Z := X ⊗ power X n
       exact (congrArg (fun t : Z ⟶ Z => t ≫ 𝟙 Z)
         (MonoidalCategory.whiskerLeft_id X (power X n))).trans (Category.id_comp _)
-  refine NatIso.ofComponents (fun X => Operad.Algebra.isoOfCarrierIso (Iso.refl _) fun n => ?_) ?_
+  refine NatIso.ofComponents (fun X => _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso (Iso.refl _) fun n => ?_) ?_
   · change (laxTensorComparison (𝟭 (Complex A)) (k.arity n)
       (laxPowerComparison (𝟭 (Complex A)) X.carrier n) ≫ X.action n) ≫ 𝟙 _ =
         (𝟙 (P.arity n) ⊗ₘ TensorPowers.map (𝟙 X.carrier) n) ≫ X.action n
@@ -114,7 +114,7 @@ def operadTransportIdentityIso {A : Type u} [CommRing A] (P : Operad A)
     exact (Category.comp_id _).trans
       (congrArg (fun k : Z ⟶ Z => k ≫ X.action n) (Category.comp_id t))
   · intro X Y a
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     change a.hom ≫ 𝟙 _ = 𝟙 _ ≫ a.hom
     rw [Category.comp_id, Category.id_comp]
 
@@ -140,12 +140,12 @@ def coefficientRestrictionIdIso (S : Type u) [CommRing S] :
 /-- 厳密係数制限の合成比較。 -/
 def coefficientRestrictionCompIso :
     coefficientRestriction (g.comp f) ≅ coefficientRestriction g ⋙ coefficientRestriction f := by
-  refine NatIso.ofComponents (fun X => Operad.Algebra.isoOfCarrierIso (Iso.refl _) fun n => ?_) ?_
+  refine NatIso.ofComponents (fun X => _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso (Iso.refl _) fun n => ?_) ?_
   · simp only [Iso.refl_hom, Category.comp_id, TensorPowers.map_id, tensorHom_id,
       id_whiskerRight, Category.id_comp]
     exact coefficientRestriction_comp_action f g X n
   · intro X Y k
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     change (R (g.comp f)).map k.hom ≫ 𝟙 _ = 𝟙 _ ≫ (R (g.comp f)).map k.hom
     rw [Category.comp_id, Category.id_comp]
 

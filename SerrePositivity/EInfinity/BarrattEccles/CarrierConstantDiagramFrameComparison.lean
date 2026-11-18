@@ -85,7 +85,7 @@ lemma constantDiagramFrameZeroIso_naturality {Y Z : (Complex A)} (f : Y ⟶ Z) :
     ((constantDiagramFrameFamily A K).map f).app (SimplexCategory.mk 0) ≫
         (constantDiagramFrameZeroIso A K Z).hom =
       (constantDiagramFrameZeroIso A K Y).hom ≫ (constantDiagramReplacement A K).map f := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := Reedy.cosimplicialResolutionFamily (carrierProbeFactorization A)
   apply NatTrans.ext
   funext k

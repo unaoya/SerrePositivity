@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory
 open AlgebraicTopology AlgebraicTopology.DoldKan HomologicalComplex
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] {J : Type v} [Category.{w} J]
 variable (W : J ⥤ SSet.{u}) (φ : simplicialRingCoefficient.{u} →+* A)
@@ -37,7 +37,7 @@ theorem productFrameCoaction_counit :
         (snd (W.obj j) (((P).obj n).obj j))) ≫
       freeProductAlexanderWhitney φ ((W.obj j) ⊗ ((P).obj n).obj j)
         (((P).obj n).obj j)) ≫
-      (𝟙 _ ⊗ₘ (normalizedSimplexCochainContraction A n).hom) ≫
+      (𝟙 _ ⊗ₘ (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom) ≫
         (ρ_ _).hom = 𝟙 _
 
   simp only [Category.assoc]
@@ -60,7 +60,7 @@ theorem tensorFrameCoaction_counit :
   let B := freeNegativeChains (A := A) (W.obj j)
   let C := freeNegativeChains (A := A) Y
   let ε : C ⟶ 𝟙_ (CochainComplex (ModuleCat A) ℤ) :=
-    (normalizedSimplexCochainContraction A n).hom
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom
   let δ : C ⟶ C ⊗ C := freeNegativeChainsMap (A := A) (lift (𝟙 Y) (𝟙 Y)) ≫
     freeProductAlexanderWhitney φ Y Y
   have hd : δ ≫ (𝟙 C ⊗ₘ ε) ≫ (ρ_ C).hom = 𝟙 C := by

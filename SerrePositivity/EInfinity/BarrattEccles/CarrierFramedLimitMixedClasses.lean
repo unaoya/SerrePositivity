@@ -47,7 +47,7 @@ lemma carrierSourceRightConeComparisonIso_strictClass (F : K ⥤ (operad A).Alge
       SSet.mapπ₀ (carrierRightSimplicialConeIso A K c.pt F).hom
         (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
           (carrierStrictSimplicialConeFamily A K F c)) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let P := carrierFramedLimitProbe A c.pt
   have := carrierFramedLimitProbe_cofibrant A c.pt

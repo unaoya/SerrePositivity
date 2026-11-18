@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ReducedHammockWeakComparison
-public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakAnodyneLocalization
 
 /-!
 # 元の Map^h と同じ reduced hammock の高次比較
@@ -23,7 +23,7 @@ def mappingSpaceReducedHammockComparisonIso :
         (SSet.uliftFunctor.{u + 1, u}.obj (((mappingSpace A).obj (op X)).obj Y)) ≅
       AnodyneHomotopy.anodyneQ.obj (algebraReducedHammock A X Y) := by
   have := mappingSpaceIndexAugmentation_localized_isIso A X Y
-  have := Hammock.anodyneQ_map_isIso_of_weak (mappingSpaceReducedHammockNerveMap A X Y)
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak (mappingSpaceReducedHammockNerveMap A X Y)
     (mappingSpaceReducedHammockNerveMap_isWeakHomotopyEquivalence A X Y)
   exact (asIso (AnodyneHomotopy.anodyneQ.map (mappingSpaceIndexAugmentation A X Y))).symm ≪≫
     asIso (AnodyneHomotopy.anodyneQ.map (mappingSpaceReducedHammockNerveMap A X Y))

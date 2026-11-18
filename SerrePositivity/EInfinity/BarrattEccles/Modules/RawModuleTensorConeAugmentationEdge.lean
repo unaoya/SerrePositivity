@@ -18,10 +18,10 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -34,13 +34,13 @@ lemma strictRawModuleTensorConeAugmentationAt_compose_mixed_pair {n : ℕ}
       ((strictRawModuleTensorConeData A X P Q c).hom I a b 0 hI ha hb hk) (add_zero 0))
       (closedHomEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) _ _ (𝟙 ((strictRawModuleProbeFunctor A X).obj P))).val := by
   rw [modulePostcompose_graded]
-  have hJ := withoutFirst_nonempty hI h0
-  have hc : (withoutFirst I).card = 1 := by have := card_withoutFirst I h0; omega
+  have hJ := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0
+  have hc : (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card = 1 := by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; omega
   have hp := strictRawModuleTensorConeAugmentationAt_postcompose_mixed
     A X P Q c I a b 0 hI ha hb hk ha0 h0
   simp only [Int.negOnePow_zero, one_smul] at hp
   exact hp.trans (heq_of_eq
     (strictRawModuleTensorElementSelectedCochainAtMax_augmentation_vertex
-      A X P Q c (withoutFirst I) hJ hc))
+      A X P Q c (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) hJ hc))
 
 end SerrePositivity.EInfinity.BarrattEccles

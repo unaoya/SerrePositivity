@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.Morphism
-public import SerrePositivity.EInfinity.Operad.IteratedCompositionEquivariance
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Morphism
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.IteratedCompositionEquivariance
 
 /-!
 # オペラッド射と反復合成の一段
@@ -29,7 +29,7 @@ open SerrePositivity.DifferentialGraded
 attribute [local implicit_reducible] SerrePositivity.SymmetricSequence
   SerrePositivity.SymmetricSequence.level
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
-variable {A : Type u} [CommRing A] {P Q : Operad A} (f : P ⟶ Q)
+variable {A : Type u} [CommRing A] {P Q : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A} (f : P ⟶ Q)
 
 /-- オペラッド射の成分は arity の等式による移送と可換。 -/
 @[reassoc]
@@ -55,7 +55,7 @@ lemma composeFirstInputInsertion_naturality (n k l : ℕ) :
     (f.map.app (FiniteBijection.of (n + 1 + k)) ⊗ₘ f.map.app (FiniteBijection.of l)) ≫
       Q.composeFirstInputInsertion n k l =
     P.composeFirstInputInsertion n k l ≫ f.map.app (FiniteBijection.of (n + (k + l))) := by
-  unfold composeFirstInputInsertion
+  unfold _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.composeFirstInputInsertion
   simp only [Category.assoc]
   rw [component_tensor_index_eq_assoc f (by omega : n + 1 + k = n + k + 1) l,
     ← reassoc_of% (f.comp (n + k) l ⟨n, by omega⟩),

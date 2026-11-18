@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAlternating
-public import SerrePositivity.EInfinity.Hammock.LengthBoundary
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LengthBoundary
 
 /-!
 # 任意の可換環上の元の長さ境界と貼り合わせ射
@@ -26,11 +26,11 @@ variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
 def algebraHammockLengthBoundary (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (algebraHammockGraph A c X Y).Subcomplex :=
-  Hammock.lengthBoundary (algebraHammockGraphDiagram A X Y) n c
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.lengthBoundary (algebraHammockGraphDiagram A X Y) n c
 
 def algebraHammockLengthBoundaryToStage (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (algebraHammockLengthBoundary A X Y n c).toFunctor ⟶ algebraHammockLengthStage A X Y n :=
-  Hammock.lengthBoundaryToStage (algebraHammockGraphDiagram_proper A X Y) n c
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.lengthBoundaryToStage (algebraHammockGraphDiagram_proper A X Y) n c
 
 lemma algebraHammockLengthBoundaryToStage_app (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (k : SimplexCategoryᵒᵖ) (x : ((algebraHammockLengthBoundary A X Y n c).toFunctor).obj k)
@@ -39,7 +39,7 @@ lemma algebraHammockLengthBoundaryToStage_app (n : ℕ) (c : _root_.SerrePositiv
     (hσ : (algebraHammockGraphMap A f X Y).app k σ = x.val) :
     (algebraHammockLengthBoundaryToStage A X Y n c).app k x =
       (algebraHammockLengthStageInclusion A X Y n a ha).app k σ :=
-  Hammock.lengthBoundaryStageValue_eq (algebraHammockGraphDiagram_proper A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.lengthBoundaryStageValue_eq (algebraHammockGraphDiagram_proper A X Y)
     n c k x ha f hf σ hσ
 
 lemma algebraHammockLengthBoundary_square {n m : ℕ} (h : n ≤ m)
@@ -47,7 +47,7 @@ lemma algebraHammockLengthBoundary_square {n m : ℕ} (h : n ≤ m)
     algebraHammockLengthBoundaryToStage A X Y n c ≫ algebraHammockLengthTransition A X Y h =
       (algebraHammockLengthBoundary A X Y n c).ι ≫
         algebraHammockLengthStageInclusion A X Y m c hc :=
-  Hammock.lengthBoundary_square (algebraHammockGraphDiagram_proper A X Y) h c hc
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.lengthBoundary_square (algebraHammockGraphDiagram_proper A X Y) h c hc
 
 lemma algebraHammockAlternatingGraphMap_mono {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
     (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.IsAlternating a) (f : a ⟶ b) : Mono (algebraHammockGraphMap A f X Y) :=

@@ -27,7 +27,7 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory
 open DifferentialGraded TensorPowers
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 attribute [local implicit_reducible] TensorPowers.power SerrePositivity.SymmetricSequence
   SerrePositivity.SymmetricSequence.level
@@ -35,12 +35,12 @@ attribute [local implicit_reducible] TensorPowers.power SerrePositivity.Symmetri
 /-- BF §1.1.4 の右余単位から得る代数の右単位同型。 -/
 def hopfTensorRightUnitor (hP : P.Hopf) (X : P.Algebra) :
     hopfTensorAlgebra hP X (hopfTensorUnitObject hP) ≅ X := by
-  refine Operad.Algebra.isoOfCarrierIso (ρ_ X.carrier) ?_
+  refine _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso (ρ_ X.carrier) ?_
   intro n
   have h := tensorActionRightCounit (hP.diagonalComponent n)
     (hP.counit.map.app (FiniteBijection.of n))
-    (tensorPowerSeparation X.carrier (𝟙_ (Complex A)) n).hom (X.action n)
-    (powerProduct (𝟙_ (Complex A)) n) (hP.right_counit n)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation X.carrier (𝟙_ (Complex A)) n).hom (X.action n)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct (𝟙_ (Complex A)) n) (hP.right_counit n)
   rw [tensorPowerSeparation_rightUnit] at h
   rw [id_tensorHom]
   exact h
@@ -48,12 +48,12 @@ def hopfTensorRightUnitor (hP : P.Hopf) (X : P.Algebra) :
 /-- BF §1.1.4 の左余単位から得る代数の左単位同型。 -/
 def hopfTensorLeftUnitor (hP : P.Hopf) (X : P.Algebra) :
     hopfTensorAlgebra hP (hopfTensorUnitObject hP) X ≅ X := by
-  refine Operad.Algebra.isoOfCarrierIso (λ_ X.carrier) ?_
+  refine _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso (λ_ X.carrier) ?_
   intro n
   have h := tensorActionLeftCounit (hP.diagonalComponent n)
     (hP.counit.map.app (FiniteBijection.of n))
-    (tensorPowerSeparation (𝟙_ (Complex A)) X.carrier n).hom (X.action n)
-    (powerProduct (𝟙_ (Complex A)) n) (hP.left_counit n)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation (𝟙_ (Complex A)) X.carrier n).hom (X.action n)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct (𝟙_ (Complex A)) n) (hP.left_counit n)
   rw [tensorPowerSeparation_leftUnit] at h
   rw [id_tensorHom]
   exact h

@@ -27,7 +27,7 @@ universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded TensorPowers
 open scoped TensorProduct
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 
 /-- Erasing the differential preserves the evaluation of every specified homogeneous word. -/
 lemma eraseAlgebra_action_basis (X : P.Algebra) {I : ℤ → Type u}

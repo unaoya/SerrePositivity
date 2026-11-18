@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyOperations
-public import SerrePositivity.EInfinity.HomologyZero.PairingHomotopy
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.PairingHomotopy
 
 /-!
 # E 代数の H⁰ の積は係数の切断の選択によらない
@@ -59,9 +59,9 @@ lemma coefficientPairing_independent (X : (operad A).Algebra)
     (a b : 𝟙_ (Complex A) ⟶ (operad A).arity 2)
     (hab : a ≫ (augmentation A).map.app (FiniteBijection.of 2) =
       b ≫ (augmentation A).map.app (FiniteBijection.of 2)) :
-    HomologyZero.pairing (coefficientBinary X a) =
-      HomologyZero.pairing (coefficientBinary X b) :=
-  HomologyZero.pairing_homotopy
+    _root_.SerrePositivity.HomologyZero.pairing (coefficientBinary X a) =
+      _root_.SerrePositivity.HomologyZero.pairing (coefficientBinary X b) :=
+  _root_.SerrePositivity.HomologyZero.pairing_homotopy
     (coefficientBinaryHomotopy X (coefficientHomotopy A 2 a b hab))
 
 /-- 概要：H⁰ の積は augmentation が一である任意の係数で計算できる（BF §1）。
@@ -71,7 +71,7 @@ lemma coefficientPairing_independent (X : (operad A).Algebra)
 lemma homologyProduct_eq_pairing (X : (operad A).Algebra)
     (a : 𝟙_ (Complex A) ⟶ (operad A).arity 2)
     (ha : a ≫ (augmentation A).map.app (FiniteBijection.of 2) = 𝟙 _) :
-    homologyProduct X = HomologyZero.pairing (coefficientBinary X a) :=
+    homologyProduct X = _root_.SerrePositivity.HomologyZero.pairing (coefficientBinary X a) :=
   coefficientPairing_independent X (aritySection A 2) a
     ((aritySection_augmentation A 2).trans ha.symm)
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficient
-public import SerrePositivity.EInfinity.HomologyZero.PairingLinear
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.PairingLinear
 
 /-!
 # E 代数の実際の H⁰ の積と単位の元
@@ -45,13 +45,13 @@ def homologyBinary (X : (operad A).Algebra) : X.carrier ⊗ X.carrier ⟶ X.carr
 使われ方：H⁰ の可換環構造と分配法則。 -/
 def homologyProduct (X : (operad A).Algebra) :
     X.carrier.homology 0 →ₗ[A] X.carrier.homology 0 →ₗ[A] X.carrier.homology 0 :=
-  HomologyZero.pairing (homologyBinary X)
+  _root_.SerrePositivity.HomologyZero.pairing (homologyBinary X)
 
 /-- 概要：E 代数の H⁰ の単位の候補となる元（BF §1）。
 方針：arity 零の作用を単位からの射として H⁰ の類へ送る。
 規約：実際の nullary 演算を使う。
 使われ方：H⁰ の環の単位と単位則。 -/
 def homologyOne (X : (operad A).Algebra) : X.carrier.homology 0 :=
-  HomologyZero.unitClass X.carrier (homologyOperation X 0)
+  _root_.SerrePositivity.HomologyZero.unitClass X.carrier (homologyOperation X 0)
 
 end SerrePositivity.EInfinity.BarrattEccles

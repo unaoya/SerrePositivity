@@ -23,7 +23,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -32,11 +32,11 @@ variable (A : Type u) [CommRing A]
 
 /-- 同じ全Tot頂点族を元の通常導来入口で読む。 -/
 theorem nativeTotApexFamily_derived :
-    nativeTotApexFamily A ≫ complexSemifreeResolutionInfinity A =
+    nativeTotApexFamily A ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A =
       fst (nerve (CosimplicialObject (Complex A))) (Δ[0] : SSet.{u+1}) ≫
         derivedTotVertexFamily A := by
   unfold nativeTotApexFamily
-  erw [nativeTotClosedVertexEvaluation_full A (productTotalFunctor A ⋙ complexToClosed A)]
+  erw [nativeTotClosedVertexEvaluation_full A (productTotalFunctor A ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A)]
   rfl
 
 /-- D02の左境界：標準零単体からの射影で同じ全Tot関手へ戻る。 -/
@@ -59,11 +59,11 @@ theorem derivedTotConeFamily_left :
     rw [← Category.assoc, BraidedCategory.braiding_naturality,
       Category.assoc, id_tensorHom, ← whiskerLeft_comp, joinInl_joinMap, Category.id_comp]
   have h := congrArg (fun k => k ≫ nativeTotJoinFamily A ≫
-    complexSemifreeResolutionInfinity A) he
+    _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) he
   simp only [Category.assoc] at h
   have ht := congrArg (fun k =>
       (β_ (Δ[0] : SSet.{u+1}) (nerve (CosimplicialObject (Complex A)))).hom ≫
-        k ≫ complexSemifreeResolutionInfinity A) (nativeTotJoinFamily_apex A)
+        k ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) (nativeTotJoinFamily_apex A)
   simp only [Category.assoc] at ht
   have h' := h.trans ht
   rw [nativeTotApexFamily_derived] at h'

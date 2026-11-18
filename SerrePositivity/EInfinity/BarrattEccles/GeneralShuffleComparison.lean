@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.SimplicialPartialComposition
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleChainMap
-public import SerrePositivity.EInfinity.Shuffle.CochainMap
-public import SerrePositivity.EInfinity.NegativeTensor.BinaryEvaluation
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.Shuffle.CochainMap
+public import SerrePositivity.HomologicalAlgebra.Complexes.NegativeTensor.BinaryEvaluation
 
 /-!
 # 一般 shuffle と既存 BE 部分合成の比較
@@ -36,10 +36,10 @@ variable (A : Type u) [CommRing A]
 使われ方：既存の BE 部分合成の生成元公式との比較。 -/
 lemma generalShuffle_value (m n : ℕ) (i : Fin (m + 1)) (p q : ℕ)
     (x : (simplicial (m + 1)) _⦋p⦌) (y : (simplicial n) _⦋q⦌) :
-    (AlexanderWhitney.chainMap A (simplicialPartialComposition m n i)).f (p + q)
-        (Shuffle.value A (simplicial (m + 1)) (simplicial n) p q x y) =
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.chainMap A (simplicialPartialComposition m n i)).f (p + q)
+        (_root_.SerrePositivity.SimplicialChains.Shuffle.value A (simplicial (m + 1)) (simplicial n) p q x y) =
       shuffleValue A m n i p q x y := by
-  simp only [Shuffle.value, map_sum, map_zsmul, AlexanderWhitney.chainMap_generator,
+  simp only [_root_.SerrePositivity.SimplicialChains.Shuffle.value, map_sum, map_zsmul, _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.chainMap_generator,
     simplicialPartialComposition_shuffle, shuffleValue]
   rfl
 
@@ -49,52 +49,52 @@ lemma generalShuffle_value (m n : ℕ) (i : Fin (m + 1)) (p q : ℕ)
 使われ方：Hopf 対角と既存 BE 部分合成の可換性。 -/
 lemma partialComposition_eq_generalShuffle (m n : ℕ) (i : Fin (m + 1)) :
     partialComposition A m n i =
-      Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n) ≫
-        AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i) := by
-  apply (cancel_epi (NegativeTensor.comparison (normalizedChains A (m + 1))
+      _root_.SerrePositivity.SimplicialChains.Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n) ≫
+        _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i) := by
+  apply (cancel_epi (_root_.SerrePositivity.NegativeTensor.comparison (normalizedChains A (m + 1))
     (normalizedChains A n)).hom).1
   apply HomologicalComplex.hom_ext
   intro j
   by_cases hj : 0 < j
-  · exact (NegativeTensor.isZero_positive (NatTensor.tensor (normalizedChains A (m + 1))
+  · exact (_root_.SerrePositivity.NegativeTensor.isZero_positive (_root_.SerrePositivity.NatTensor.tensor (normalizedChains A (m + 1))
       (normalizedChains A n)) j hj).eq_of_src _ _
   obtain ⟨k, rfl⟩ : ∃ k : ℕ, j = -(k : ℤ) := ⟨(-j).toNat, by omega⟩
-  apply (cancel_epi (NegativeTensor.xIso (NatTensor.tensor (normalizedChains A (m + 1))
+  apply (cancel_epi (_root_.SerrePositivity.NegativeTensor.xIso (_root_.SerrePositivity.NatTensor.tensor (normalizedChains A (m + 1))
     (normalizedChains A n)) k).inv).1
   apply mapBifunctor.hom_ext
   intro p q hpq
   change p + q = k at hpq
   subst k
-  apply Shuffle.tensor_generator_hom_ext A (simplicial (m + 1)) (simplicial n) p q
+  apply _root_.SerrePositivity.SimplicialChains.Shuffle.tensor_generator_hom_ext A (simplicial (m + 1)) (simplicial n) p q
   intro x y
   let v := ιTensorObj (normalizedChains A (m + 1)) (normalizedChains A n) p q (p + q) rfl
-    (AlexanderWhitney.generator A (simplicial (m + 1)) p x ⊗ₜ[A]
-      AlexanderWhitney.generator A (simplicial n) q y)
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.generator A (simplicial (m + 1)) p x ⊗ₜ[A]
+      _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.generator A (simplicial n) q y)
   change (partialComposition A m n i).f (-((p + q : ℕ) : ℤ))
-      ((NegativeTensor.comparison (normalizedChains A (m + 1)) (normalizedChains A n)).hom.f
+      ((_root_.SerrePositivity.NegativeTensor.comparison (normalizedChains A (m + 1)) (normalizedChains A n)).hom.f
         (-((p + q : ℕ) : ℤ))
-        ((NegativeTensor.xIso (NatTensor.tensor (normalizedChains A (m + 1))
+        ((_root_.SerrePositivity.NegativeTensor.xIso (_root_.SerrePositivity.NatTensor.tensor (normalizedChains A (m + 1))
           (normalizedChains A n)) (p + q)).inv v)) =
-    (AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i)).f (-((p + q : ℕ) : ℤ))
-      ((Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n)).f (-((p + q : ℕ) : ℤ))
-        ((NegativeTensor.comparison (normalizedChains A (m + 1)) (normalizedChains A n)).hom.f
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (simplicialPartialComposition m n i)).f (-((p + q : ℕ) : ℤ))
+      ((_root_.SerrePositivity.SimplicialChains.Shuffle.cochainMap A (simplicial (m + 1)) (simplicial n)).f (-((p + q : ℕ) : ℤ))
+        ((_root_.SerrePositivity.NegativeTensor.comparison (normalizedChains A (m + 1)) (normalizedChains A n)).hom.f
           (-((p + q : ℕ) : ℤ))
-          ((NegativeTensor.xIso (NatTensor.tensor (normalizedChains A (m + 1))
+          ((_root_.SerrePositivity.NegativeTensor.xIso (_root_.SerrePositivity.NatTensor.tensor (normalizedChains A (m + 1))
             (normalizedChains A n)) (p + q)).inv v)))
-  simp only [v, NegativeTensor.comparison_neg_inv_apply, NegativeTensor.degreeMap_ι_tmul,
-    Shuffle.cochainMap]
+  simp only [v, _root_.SerrePositivity.NegativeTensor.comparison_neg_inv_apply, _root_.SerrePositivity.NegativeTensor.degreeMap_ι_tmul,
+    _root_.SerrePositivity.SimplicialChains.Shuffle.cochainMap]
   erw [partialComposition_neg_tmul A m n i p q]
-  erw [NegativeTensor.binaryMap_neg_tmul
-    (Shuffle.chainMap A (simplicial (m + 1)) (simplicial n)) p q (p + q) rfl]
-  have hs := congrArg (fun g => g (AlexanderWhitney.generator A (simplicial (m + 1)) p x ⊗ₜ[A]
-    AlexanderWhitney.generator A (simplicial n) q y))
-      (Shuffle.ι_chainMap A (simplicial (m + 1)) (simplicial n) p q)
-  rw [show (Shuffle.chainMap A (simplicial (m + 1)) (simplicial n)).f (p + q) v =
-      Shuffle.value A (simplicial (m + 1)) (simplicial n) p q x y from
-    hs.trans (Shuffle.component_generators A _ _ p q x y)]
-  change _ = (extendMap (AlexanderWhitney.chainMap A (simplicialPartialComposition m n i))
+  erw [_root_.SerrePositivity.NegativeTensor.binaryMap_neg_tmul
+    (_root_.SerrePositivity.SimplicialChains.Shuffle.chainMap A (simplicial (m + 1)) (simplicial n)) p q (p + q) rfl]
+  have hs := congrArg (fun g => g (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.generator A (simplicial (m + 1)) p x ⊗ₜ[A]
+    _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.generator A (simplicial n) q y))
+      (_root_.SerrePositivity.SimplicialChains.Shuffle.ι_chainMap A (simplicial (m + 1)) (simplicial n) p q)
+  rw [show (_root_.SerrePositivity.SimplicialChains.Shuffle.chainMap A (simplicial (m + 1)) (simplicial n)).f (p + q) v =
+      _root_.SerrePositivity.SimplicialChains.Shuffle.value A (simplicial (m + 1)) (simplicial n) p q x y from
+    hs.trans (_root_.SerrePositivity.SimplicialChains.Shuffle.component_generators A _ _ p q x y)]
+  change _ = (extendMap (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.chainMap A (simplicialPartialComposition m n i))
     ComplexShape.embeddingDownNat).f (-((p + q : ℕ) : ℤ)) _
-  rw [NegativeTensor.extendMap_neg_inv_apply, generalShuffle_value]
+  rw [_root_.SerrePositivity.NegativeTensor.extendMap_neg_inv_apply, generalShuffle_value]
   change (complexXIso A (m + n) (p + q)).inv
       (shuffleBilinear A m n i p q
         ((complexXIso A (m + 1) p).hom

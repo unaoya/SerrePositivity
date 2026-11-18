@@ -46,7 +46,7 @@ def discreteAlgebraCoefficientRestrictionIso :
       (discreteRestrictionCarrierIso f B) (discreteRestrictionMonoid_unit f B)
       (discreteRestrictionMonoid_mul f B)) ?_
   intro B C g
-  apply Operad.AlgebraHom.ext
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
   apply HomologicalComplex.hom_ext
   intro i
   let M (B : RingAlgebra T) := ModuleCat.of S
@@ -77,7 +77,7 @@ def barrattEcclesDiscrete_restrict :
       (discreteCAlgUnderEmbedding T ≫ barrattEcclesRestrict f) := by
   let η := discreteAlgebraCoefficientRestrictionIso f
   let e := algebraCAlgSourceNatTransIso S η.hom fun B => by
-    change QuasiIso ((Operad.Algebra.forget (operad S)).map (η.hom.app B))
+    change QuasiIso ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad S)).map (η.hom.app B))
     infer_instance
   let r := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (barrattEcclesRestrict_sourceIso f).symm (nerveMap (D T))
   exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e ≪≫ r) rfl (Category.assoc _ _ _).symm

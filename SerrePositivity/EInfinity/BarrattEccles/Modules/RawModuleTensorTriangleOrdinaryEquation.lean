@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.SimplexDataLocalEquation
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SimplexDataLocalEquation
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorTriangleMiddle
 
 /-!
@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -24,7 +24,7 @@ lemma strictRawModuleTensorTriangleData_equation_front {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (τ : Fin (n + 1) →o Fin 3) (I : Finset (Fin (n + 1)))
     (h2 : ∀ i ∈ I, τ i ≠ 2) : (strictRawModuleTensorTriangleData A X P Q c τ).Equation I := by
-  apply simplexData_equation_of_agreementOn _ (strictRawModuleTensorTriangleFront A X P Q c τ) I
+  apply _root_.SerrePositivity.ComplexLimits.simplexData_equation_of_agreementOn _ (strictRawModuleTensorTriangleFront A X P Q c τ) I
   · intro i hi
     exact (strictRawModuleTensorTriangleFront_obj A X P Q c τ i (h2 i hi)).symm
   · intro J hJI a b k hJ ha hb hk
@@ -36,7 +36,7 @@ lemma strictRawModuleTensorTriangleData_equation_back {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (τ : Fin (n + 1) →o Fin 3) (I : Finset (Fin (n + 1)))
     (h0 : ∀ i ∈ I, τ i ≠ 0) : (strictRawModuleTensorTriangleData A X P Q c τ).Equation I := by
-  apply simplexData_equation_of_agreementOn _ (strictRawModuleTensorTriangleBack A X P Q c τ) I
+  apply _root_.SerrePositivity.ComplexLimits.simplexData_equation_of_agreementOn _ (strictRawModuleTensorTriangleBack A X P Q c τ) I
   · intro i hi
     exact (strictRawModuleTensorTriangleBack_obj A X P Q c τ i (h0 i hi)).symm
   · intro J hJI a b k hJ ha hb hk

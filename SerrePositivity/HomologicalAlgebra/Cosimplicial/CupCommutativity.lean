@@ -7,7 +7,7 @@ import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.D
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerLinearizationDesc
 import Mathlib.AlgebraicTopology.ExtraDegeneracy
 import Mathlib.Algebra.Algebra.Bilinear
-import SerrePositivity.EInfinity.NatTensor.Symmetry
+import SerrePositivity.HomologicalAlgebra.Complexes.NatTensor.Symmetry
 
 /-!
 # コホモロジー上の cup 積の次数付き可換性
@@ -37,7 +37,7 @@ namespace SerrePositivity.Cosimplicial
 
 set_option backward.isDefEq.respectTransparency false
 
-attribute [local instance] SerrePositivity.EInfinity.NatTensor.shapeSymmetry
+attribute [local instance] _root_.SerrePositivity.NatTensor.shapeSymmetry
 
 local notation "F" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor
 local notation "Tens" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensor

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CubeEvaluation
-public import SerrePositivity.EInfinity.ComplexLimits.DoldKanHomChainMaps
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoldKanHomChainMaps
 
 /-!
 概要：既存の立方体の旗の評価は、同じHom鎖写像による係数移送に自然。
@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open scoped Simplicial
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
@@ -24,11 +24,11 @@ variable {x y : D} {x' y' : E}
 /-- 標準最上位成分の評価は元のHom鎖写像と可換。 -/
 theorem standardTopEval_chainMap (f : homObject R D x y ⟶ homObject R E x' y')
     (m : ℕ) (s : StandardSimplex R x y m) :
-    standardTopEval x' y' m ((standardModuleChainMap f).app (Opposite.op ⦋m⦌) s) =
+    standardTopEval x' y' m ((_root_.SerrePositivity.ComplexLimits.standardModuleChainMap f).app (Opposite.op ⦋m⦌) s) =
       f.f (-(m : ℤ)) (standardTopEval x y m s) := by
-  change ((standardModuleChainMap f).app (Opposite.op ⦋m⦌) s).val.component
+  change ((_root_.SerrePositivity.ComplexLimits.standardModuleChainMap f).app (Opposite.op ⦋m⦌) s).val.component
     Finset.univ (-(m : ℤ)) Finset.univ_nonempty (by simp) = _
-  rw [standardModuleChainMap_val]
+  rw [_root_.SerrePositivity.ComplexLimits.standardModuleChainMap_val]
   rfl
 
 /-- 各最大旗の同じ評価は元のHom鎖写像と可換。 -/
@@ -36,7 +36,7 @@ theorem cubeFlagEvaluation_chainMap {T : Type u} {m : ℕ} (e : Fin m ≃ T)
     (f : homObject R D x y ⟶ homObject R E x' y')
     (φ : SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube T ⟶
       standardHomSpace (R := R) x y) :
-    cubeFlagEvaluation e (φ ≫ Functor.whiskerRight (standardModuleChainMap f)
+    cubeFlagEvaluation e (φ ≫ Functor.whiskerRight (_root_.SerrePositivity.ComplexLimits.standardModuleChainMap f)
       (forget (ModuleCat R))) = f.f (-(m : ℤ)) (cubeFlagEvaluation e φ) := by
   exact standardTopEval_chainMap f m _
 
@@ -45,7 +45,7 @@ theorem cubeEvaluation_chainMap {T : Type u} {m : ℕ} (e : Fin m ≃ T)
     (f : homObject R D x y ⟶ homObject R E x' y')
     (φ : SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube T ⟶
       standardHomSpace (R := R) x y) :
-    cubeEvaluation e (φ ≫ Functor.whiskerRight (standardModuleChainMap f)
+    cubeEvaluation e (φ ≫ Functor.whiskerRight (_root_.SerrePositivity.ComplexLimits.standardModuleChainMap f)
       (forget (ModuleCat R))) = f.f (-(m : ℤ)) (cubeEvaluation e φ) := by
   unfold cubeEvaluation
   rw [map_sum]

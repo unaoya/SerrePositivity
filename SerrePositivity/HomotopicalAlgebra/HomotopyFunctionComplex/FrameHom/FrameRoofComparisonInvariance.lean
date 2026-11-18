@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.HomotopyFunctionComplex _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] {X Y : C}
   (A' A : SimplexCategory ⥤ C) (α : A' ⟶ A)

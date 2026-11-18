@@ -11,7 +11,7 @@ for value in setup.split(os.pathsep):
  p=Path(value);search.append(str(p if p.is_absolute() else V/p))
 env=dict(os.environ,LEAN_PATH=str(T)+os.pathsep+os.pathsep.join(search))
 prefix=subprocess.check_output(['lake','env','lean','--print-prefix'],cwd=V,text=True).strip();lean=str(Path(prefix)/'bin/lean')
-positive='''import SerrePositivity.Util.Citation
+positive='''import SerrePositivity.Util.CitationRegistry
 namespace Fixture
 @[cite HTT "5.5.2.9"] def exactValue : Nat := 1
 @[cite HA "1.1.1.1" (partial := special) "objects restricted"] theorem specialCase : True := trivial
@@ -29,14 +29,18 @@ end Fixture
 def run(name,text,expect,flags=()):
  p=T/(name+'.lean');p.write_text(text);r=subprocess.run([lean,*flags,p.name],cwd=T,env=env,text=True,capture_output=True);(T/(name+'.log')).write_text(r.stdout+r.stderr);assert (r.returncode==0)==expect,(name,r.stdout,r.stderr);results.append({'case':name,'rc':r.returncode});return r.stdout
 out=run('Fixture',positive,True,('-o','Fixture.olean'));records=[json.loads(x) for x in out.splitlines() if x.startswith('{')];assert len([r for r in records if r['key']=='HTT'])==1;assert {r['relation'] for r in records if r['key']=='HA'}=={'special','direction','stronger-hyp'};assert any(r['key']=='Kerodon' for r in records);assert all(r['line'] and r['module']=='Fixture' for r in records)
-imported=run('Imported','import Fixture\n#cite_tags HTT\n#cite_tags BS19\n',True);assert 'Fixture.exactValue' in imported and '"relation":"component"' in imported
-for name,attr in [('unknown','cite UNKNOWN "1"'),('empty','cite HA ""'),('partial_missing','cite HA "1" (partial := special)'),('partial_blank','cite HA "1" (partial := special) "  "'),('native_cite','cite Kerodon "0000"')]:run(name,'import SerrePositivity.Util.Citation\n@['+attr+'] theorem exampleResult : True := trivial\n',False)
+imported=run('Imported','import Fixture\nimport SerrePositivity.Util.CitationRegistry\n#cite_tags HTT\n#cite_tags BS19\n',True);assert 'Fixture.exactValue' in imported and '"relation":"component"' in imported
+for name,attr in [('empty','cite HA ""'),('partial_missing','cite HA "1" (partial := special)'),('partial_blank','cite HA "1" (partial := special) "  "'),('native_cite','cite Kerodon "0000"')]:run(name,'import SerrePositivity.Util.Citation\n@['+attr+'] theorem exampleResult : True := trivial\n',False)
+run('unknown_attr','import SerrePositivity.Util.Citation\n@[cite UNKNOWN "1"] theorem exampleResult : True := trivial\n',True)
+run('unknown_registry','import SerrePositivity.Util.CitationRegistry\n@[cite UNKNOWN "1"] theorem exampleResult : True := trivial\n#cite_registry_check\n',False)
+run('known_registry','import SerrePositivity.Util.CitationRegistry\n@[cite HTT "1"] theorem exampleResult : True := trivial\n#cite_registry_check\n',True)
 run('conflict','import Fixture\nattribute [cite HTT "5.5.2.9" (partial := special) "conflict"] Fixture.exactValue\n',False)
 run('local','import Fixture\nattribute [local cite HTT "5.5.2.9"] Fixture.exactValue\n',False)
-run('ModuleMode', 'module\npublic meta import SerrePositivity.Util.Citation\n@[expose] public section\n@[cite HTT "1.2.3.4"] theorem moduleResult : True := trivial\nattribute [cite HA "1.1.1.1"] moduleResult\n#cite_tags HTT\n#cite_tags HA\n', True)
+run('ModuleMode', 'module\npublic meta import SerrePositivity.Util.Citation\npublic meta import SerrePositivity.Util.CitationRegistry\n@[expose] public section\n@[cite HTT "1.2.3.4"] theorem moduleResult : True := trivial\nattribute [cite HA "1.1.1.1"] moduleResult\n#cite_tags HTT\n#cite_tags HA\n', True)
 (T/'receipt.json').write_text(json.dumps({'seconds':round(time.monotonic()-start,3),'cases':results,'pass':True},indent=2)+'\n');print('Citation tests passed',len(results))
 
 out=run('Inspect','''import Fixture
+import SerrePositivity.Util.CitationRegistry
 import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.UniverseLiftAnodyne
 #cite_check Fixture.exactValue
 #cite_check SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.anodyneQ_map_isIso_of_weakEquivalence

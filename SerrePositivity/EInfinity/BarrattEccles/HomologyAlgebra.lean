@@ -33,8 +33,8 @@ def homologyAlgebra (X : (operad A).Algebra) :
     Algebra A (X.carrier.homology 0) := by
   let := homologyCommRing X
   exact Algebra.ofModule
-    (HomologyZero.pairingValue_smul_left (homologyBinary X))
-    (HomologyZero.pairingValue_smul_right (homologyBinary X))
+    (_root_.SerrePositivity.HomologyZero.pairingValue_smul_left (homologyBinary X))
+    (_root_.SerrePositivity.HomologyZero.pairingValue_smul_right (homologyBinary X))
 
 /-- 概要：H⁰ の代数写像は実際の nullary の類のスカラー倍（BF §1）。
 方針：元のスカラー作用を使った代数構造の単位を評価する。

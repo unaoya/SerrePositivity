@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagram
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorPartition
-public import SerrePositivity.EInfinity.Hammock.UnmarkedGeneratorValue
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGeneratorValue
 
 /-!
 # 元の自由 hammock の全次数の非指定生成文字列
@@ -26,7 +26,7 @@ def freeHammockGeneratorWordValue (C : _root_.SerrePositivity.InfinityCategories
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y).obj n ⟶
       (Functor.const SimplexCategoryᵒᵖ).obj
         (List (Quiver.Total (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).category)) :=
-  _root_.SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.colimitValue (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGenerators.colimitValue (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y)
 
 lemma freeHammockGeneratorWordValue_fac (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
@@ -34,9 +34,9 @@ lemma freeHammockGeneratorWordValue_fac (C : _root_.SerrePositivity.InfinityCate
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj n).weakEquivalences
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y) w ≫
         _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGeneratorWordValue C X Y n =
-          _root_.SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.graphValue
+          _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGenerators.graphValue
             (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences :=
-  _root_.SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.graphInclusion_colimitValue
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGenerators.graphInclusion_colimitValue
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences _ _ w
 
 end SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization

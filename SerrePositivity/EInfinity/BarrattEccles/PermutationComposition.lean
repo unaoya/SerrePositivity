@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.SlotPermutations
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.SlotPermutations
 
 /-!
 # 置換の部分合成
@@ -23,15 +23,15 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 規約：arity 0 の挿入を含む。
 使われ方：置換の部分合成の単位則を証明する。 -/
 @[simp] lemma outerPermutation_one (m n : ℕ) (i : Fin (m + 1)) :
-    operadOuterPermutation m n i 1 = 1 := by
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i 1 = 1 := by
   apply Equiv.ext
   intro x
-  apply (operadInsertionEquiv m n i).injective
-  change (operadInsertionEquiv m n i) ((operadInsertionEquiv m n i).symm
-      ((Equiv.sumCongr (operadRemainingEquiv m i 1) (Equiv.refl _))
-        (operadInsertionEquiv m n i x))) = operadInsertionEquiv m n i x
+  apply (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i).injective
+  change (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i) ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i).symm
+      ((Equiv.sumCongr (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadRemainingEquiv m i 1) (Equiv.refl _))
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i x))) = _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i x
   erw [Equiv.apply_symm_apply]
-  rcases operadInsertionEquiv m n i x with j | j <;> rfl
+  rcases _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i x with j | j <;> rfl
 
 /-- 概要：外側置換の積は挿入位置の移動を伴って合成される（Berger–Fresse §0.10）。
 方針：挿入分解の二つの成分で残りの入力の置換を合成する。
@@ -39,12 +39,12 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 使われ方：置換の部分合成の外側等変性を導く。 -/
 lemma outerPermutation_mul (m n : ℕ) (i : Fin (m + 1))
     (σ ρ : Equiv.Perm (Fin (m + 1))) :
-    operadOuterPermutation m n i (σ * ρ) =
-      operadOuterPermutation m n (ρ i) σ * operadOuterPermutation m n i ρ := by
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i (σ * ρ) =
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n (ρ i) σ * _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ := by
   ext x
-  simp only [operadOuterPermutation, Equiv.Perm.mul_def, Equiv.trans_apply,
+  simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation, Equiv.Perm.mul_def, Equiv.trans_apply,
     Equiv.apply_symm_apply]
-  rcases operadInsertionEquiv m n i x with j | j <;> rfl
+  rcases _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i x with j | j <;> rfl
 
 /-- 概要：置換 σ の入力 i へ置換 τ を代入する（Berger–Fresse §0.10、§1.1.3）。
 方針：内側の入力を τ で動かしてから外側 σ に従って挿入区間を移す。
@@ -53,7 +53,7 @@ lemma outerPermutation_mul (m n : ℕ) (i : Fin (m + 1))
 def permutationComposition (m n : ℕ) (i : Fin (m + 1))
     (σ : Equiv.Perm (Fin (m + 1))) (τ : Equiv.Perm (Fin n)) :
     Equiv.Perm (Fin (m + n)) :=
-  operadOuterPermutation m n i σ * operadInnerPermutation m n i τ
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i σ * _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i τ
 
 /-- 概要：内側の置換への右乗法は挿入区間の右作用に一致する（Berger–Fresse §0.10）。
 方針：内側置換の拡張が積を保つことを使う。
@@ -62,8 +62,8 @@ def permutationComposition (m n : ℕ) (i : Fin (m + 1))
 lemma permutationComposition_inner (m n : ℕ) (i : Fin (m + 1))
     (σ : Equiv.Perm (Fin (m + 1))) (τ κ : Equiv.Perm (Fin n)) :
     permutationComposition m n i σ (τ * κ) =
-      permutationComposition m n i σ τ * operadInnerPermutation m n i κ := by
-  rw [permutationComposition, operadInnerPermutation_mul, ← mul_assoc]
+      permutationComposition m n i σ τ * _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ := by
+  rw [permutationComposition, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation_mul, ← mul_assoc]
   rfl
 
 /-- 概要：外側の置換への右乗法は挿入位置の移動と外側右作用に一致する（Berger–Fresse §0.10）。
@@ -73,10 +73,10 @@ lemma permutationComposition_inner (m n : ℕ) (i : Fin (m + 1))
 lemma permutationComposition_outer (m n : ℕ) (i : Fin (m + 1))
     (σ ρ : Equiv.Perm (Fin (m + 1))) (τ : Equiv.Perm (Fin n)) :
     permutationComposition m n i (σ * ρ) τ =
-      permutationComposition m n (ρ i) σ τ * operadOuterPermutation m n i ρ := by
-  have h := operadInnerPermutation_outer m n i ρ τ
-  change operadOuterPermutation m n i ρ * operadInnerPermutation m n i τ =
-    operadInnerPermutation m n (ρ i) τ * operadOuterPermutation m n i ρ at h
+      permutationComposition m n (ρ i) σ τ * _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ := by
+  have h := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation_outer m n i ρ τ
+  change _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ * _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i τ =
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n (ρ i) τ * _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ at h
   rw [permutationComposition, outerPermutation_mul, mul_assoc, h, ← mul_assoc]
   rfl
 

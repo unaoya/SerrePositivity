@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.BasedWeightMaps
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorFamilyWeights
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.UnitWordWeights
-public import SerrePositivity.EInfinity.Operad.SchurComposition
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.SchurComposition
 
 /-!
 # 有限入力族の係数と入力を分離する重み保存
@@ -36,7 +36,7 @@ abbrev unit : ComplexWeightBasis (𝟙_ (Complex A)) :=
 
 /-- The weighted basis of a finite family of based complexes. -/
 abbrev family (n : ℕ) {V : Fin n → Complex A} (b : ∀ j, ComplexWeightBasis (V j)) :
-    ComplexWeightBasis (tensorFamily n V) :=
+    ComplexWeightBasis (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V) :=
   ⟨familyGradedIndex n (fun j => (b j).index),
     familyGradedBasis n (fun j => (b j).basis),
     familyGradedWeight n (fun j => (b j).weight)⟩
@@ -53,7 +53,7 @@ lemma preserves_leftUnitor_inv {K : Complex A} (b : ComplexWeightBasis K) :
 lemma preserves_familyTensorIso (n : ℕ) {V W : Fin n → Complex A}
     (b : ∀ j, ComplexWeightBasis (V j)) (c : ∀ j, ComplexWeightBasis (W j)) :
     (family n (fun j => (b j).tensor (c j))).Preserves
-      ((family n b).tensor (family n c)) (tensorFamilyTensorIso n V W).hom := by
+      ((family n b).tensor (family n c)) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyTensorIso n V W).hom := by
   induction n with
   | zero => exact preserves_leftUnitor_inv unit
   | succ n ih =>
@@ -62,7 +62,7 @@ lemma preserves_familyTensorIso (n : ℕ) {V W : Fin n → Complex A}
     have h₂ := preserves_tensorμ (b 0) (c 0)
       (family n (fun j => b j.succ)) (family n (fun j => c j.succ))
     have h := h₁.comp h₂
-    simp only [tensorFamilyTensorIso, Iso.trans_hom, whiskerLeftIso_hom,
+    simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyTensorIso, Iso.trans_hom, whiskerLeftIso_hom,
       id_tensorHom] at h ⊢
     exact h
 
@@ -112,17 +112,17 @@ lemma preserves_appendIso {K : Complex A} (b : ComplexWeightBasis K) (m n : ℕ)
 lemma preserves_powerFamilyIso {K : Complex A} (b : ComplexWeightBasis K)
     (n : ℕ) (s : Fin n → ℕ) :
     (family n (fun j => b.power (s j))).Preserves (b.power (∑ j, s j))
-      (tensorPowerFamilyIso K n s).hom := by
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso K n s).hom := by
   induction n with
   | zero =>
-    simp only [tensorPowerFamilyIso, Fin.sum_univ_zero, eqToIso_refl, Iso.refl_hom]
+    simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso, Fin.sum_univ_zero, eqToIso_refl, Iso.refl_hom]
     exact preserves_id unit
   | succ n ih =>
     have h₁ := (preserves_id (b.power (s 0))).tensor (ih (fun j => s j.succ))
     have h₂ := preserves_appendIso b (s 0) (∑ j : Fin n, s j.succ)
     have h₃ := preserves_power_eq b (Fin.sum_univ_succ s).symm
     have h := (h₁.comp h₂).comp h₃
-    simp only [tensorPowerFamilyIso, Iso.trans_hom, eqToIso.hom,
+    simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso, Iso.trans_hom, eqToIso.hom,
       whiskerLeftIso_hom, id_tensorHom] at h ⊢
     exact h
 

@@ -30,14 +30,14 @@ def smallMultiplicativeMappingCone : Cone (simplexConvolutionDensityDiagram R B 
         change a.app (op j.unop.left) ⟨SSet.yonedaEquiv.{0} j.unop.hom⟩ =
           a.app (op i.unop.left) ⟨SSet.yonedaEquiv.{0} i.unop.hom⟩ ≫
             convolutionPrecompose R
-              ((EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).map f.unop.left) B
+              ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).map f.unop.left) B
         have h := ConcreteCategory.congr_hom (a.naturality f.unop.left.op)
           (ULift.up.{u, 0} (SSet.yonedaEquiv.{0} i.unop.hom))
         change a.app (op j.unop.left)
             ⟨K.map f.unop.left.op (SSet.yonedaEquiv.{0} i.unop.hom)⟩ =
           a.app (op i.unop.left) ⟨SSet.yonedaEquiv.{0} i.unop.hom⟩ ≫
             convolutionPrecompose R
-              ((EInfinity.AlexanderWhitney.simplexCochainComonFunctor R).map f.unop.left) B at h
+              ((_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.simplexCochainComonFunctor R).map f.unop.left) B at h
         rw [SSet.yonedaEquiv_naturality, CostructuredArrow.w f.unop] at h
         exact h }
 

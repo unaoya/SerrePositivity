@@ -18,12 +18,12 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 任意の自然変換の全ての頂点の値は、同じ指定単位の頂点の値から厳密に回収できる。 -/
 lemma gammaNatural_vertex_value (F : Complex A ⥤ SSet.{u})
-    (η : truncatedDoldKanFunctor A ⟶ F) (M : Complex A)
+    (η : _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A ⟶ F) (M : Complex A)
     (x : (gammaModule A M).obj (Opposite.op ⦋0⦌)) :
     (η.app M).app (Opposite.op ⦋0⦌) x =
       (F.map (gammaVertexUnitHomEquiv A M x)).app (Opposite.op ⦋0⦌)
@@ -32,7 +32,7 @@ lemma gammaNatural_vertex_value (F : Complex A ⥤ SSet.{u})
   have h := congrArg (fun k => k.app (Opposite.op ⦋0⦌) (gammaUnitSimplex A ⦋0⦌))
     (η.naturality (gammaVertexUnitHomEquiv A M x))
   change (η.app M).app (Opposite.op ⦋0⦌)
-    (((truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
+    (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (gammaVertexUnitHomEquiv A M x)).app
       (Opposite.op ⦋0⦌) (gammaUnitSimplex A ⦋0⦌)) = _ at h
   rw [gammaUnit_vertex_generates] at h
   exact h
@@ -50,7 +50,7 @@ lemma gammaAdjointSuspension_vertex_value (M : Complex A)
 
 /-- 単位の頂点の値が一致すれば、全複体での連結成分の誘導写像は一致する。 -/
 lemma gammaNatural_piZero_eq_of_unit_vertex (F : Complex A ⥤ SSet.{u})
-    (η θ : truncatedDoldKanFunctor A ⟶ F)
+    (η θ : _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A ⟶ F)
     (h : (η.app (𝟙_ (Complex A))).app (Opposite.op ⦋0⦌) (gammaUnitSimplex A ⦋0⦌) =
       (θ.app (𝟙_ (Complex A))).app (Opposite.op ⦋0⦌) (gammaUnitSimplex A ⦋0⦌))
     (M : Complex A) : SSet.mapπ₀ (η.app M) = SSet.mapπ₀ (θ.app M) := by

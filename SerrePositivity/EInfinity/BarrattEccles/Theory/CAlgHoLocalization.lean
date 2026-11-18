@@ -149,7 +149,7 @@ def allAlgebraHoEvaluation_sourceIso :
 /-- 元の厳密代数の圏での弱同値。 -/
 abbrev ordinaryAlgebraWeak : MorphismProperty (operad A).Algebra :=
   (HomologicalComplex.quasiIso (ModuleCat A) (.up ℤ)).inverseImage
-    (Operad.Algebra.forget (operad A))
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
 
 /-- CAlg のホモトピー圏は厳密代数の弱同値による通常の局所化。 -/
 lemma ordinaryAlgebraHoSource_isLocalization :

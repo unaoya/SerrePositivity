@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) {X B : Mon (Complex R)} (q : X ⟶ B)
 
 lemma multiplicativeCellMapping_small_lift {K L : SSet.{0}} (f : K ⟶ L)
-    (hs : EInfinity.projectiveFibrations R (relativeConvolutionRestriction R q f).hom)
+    (hs : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R (relativeConvolutionRestriction R q f).hom)
     (hw : QuasiIso (relativeConvolutionRestriction R q f).hom)
     (a : SSet.uliftFunctor.{u, 0}.obj K ⟶
       multiplicativeMappingSimplices R (cellResolution R A) X)

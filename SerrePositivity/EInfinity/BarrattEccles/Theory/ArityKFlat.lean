@@ -54,11 +54,11 @@ lemma initialAlgebraCarrier_kFlat (X : (operad A).Algebra) (hX : IsInitial X) :
     complexKFlat A X.carrier := by
   let P := operad A
   let F := P.freeAlgebraFunctor
-  let U := Operad.Algebra.forget P
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P
   have : F.IsLeftAdjoint := P.freeAlgebraAdjunction.isLeftAdjoint
   let h0 : IsInitial (F.obj (0 : Complex A)) := (isZero_zero (Complex A)).isInitial.isInitialObj F _
   let e := U.mapIso (hX.uniqueUpToIso h0)
-  let j := schurι A P.sequence (0 : Complex A) 0
+  let j := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P.sequence (0 : Complex A) 0
   have : IsIso j := schurι_zero_isIso A P.sequence
   exact complexKFlat_of_iso A (e ≪≫ (asIso j).symm ≪≫ ρ_ (complex A 0))
     (complexArity_kFlat A 0)

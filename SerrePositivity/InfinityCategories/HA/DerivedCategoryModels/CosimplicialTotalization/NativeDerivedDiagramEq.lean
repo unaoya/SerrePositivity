@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open scoped Simplicial
@@ -24,14 +24,14 @@ variable {A : Type u} [CommRing A]
 /-- 同じ指定導来図式は、元のstrict図式の全単体の像に等しい。 -/
 theorem nativeDerivedDiagram_eq (X : CosimplicialObject (Complex A)) :
     nativeDerivedDiagram X = nativeTotIndexIso.hom ≫ strictCosimplicialComplexNerve X ≫
-      complexOrdinaryDerivedSource A := by
+      _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
   unfold nativeDerivedDiagram nativeDGDiagram strictCoherentDiagram
   simp only [Category.assoc]
   erw [← Category.assoc
     (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent
       (ClosedCategory A (Complex A)))
     (SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.coherentComparison)
-    (complexSemifreeResolutionInfinity A), complexClosedNerve_coherentComparison]
+    (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A), complexClosedNerve_coherentComparison]
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext

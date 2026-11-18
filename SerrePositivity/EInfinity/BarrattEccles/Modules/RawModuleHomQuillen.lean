@@ -30,8 +30,8 @@ variable (A : Type u) [CommRing A]
 lemma strictRawModuleSemifree_hom_fibration (X : (operad A).Algebra)
     {P M N : strictRawModuleCategory A X}
     (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P)
-    (p : M ⟶ N) (hp : projectiveFibrations A ((strictRawModuleUnderlying X).map p)) :
-    projectiveFibrations A (eHomWhiskerLeft (Complex A) P p) := by
+    (p : M ⟶ N) (hp : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations A ((strictRawModuleUnderlying X).map p)) :
+    _root_.SerrePositivity.ProjectiveModel.projectiveFibrations A (eHomWhiskerLeft (Complex A) P p) := by
   let D := dgAlgebraCategory A ((assocForget A).obj X)
   have hs : moduleDegreewiseSurjective A D p := by
     intro x
@@ -50,11 +50,11 @@ lemma strictRawModuleSemifree_hom_isRightQuillen (X : (operad A).Algebra)
     (P : strictRawModuleCategory A X)
     (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P) :
     letI := strictRawModuleModelCategory A X
-    letI := projectiveModelCategory A
+    letI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     SerrePositivity.Quillen.IsRightQuillen
       ((eHomFunctor (Complex A) (strictRawModuleCategory A X)).obj (op P)) := by
   let := strictRawModuleModelCategory A X
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   constructor
   · intro M N p hp
     exact strictRawModuleSemifree_hom_fibration A X hP p hp

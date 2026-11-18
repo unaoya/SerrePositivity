@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexContractionNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexContractionNaturality
 
 /-!
 概要：同じ自由正規化パラメータから、図式テンソル単位への増大写像を固定する。
@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (J : Type v) [Category.{w} J]
 
@@ -22,14 +22,14 @@ def standardParameterAugmentation :
     liftedStandardSimplexParameter J ⋙ freeNegativeChainsDiagramFunctor A J ⟶
       𝟙_ (SimplexCategory ⥤ (J ⥤ CochainComplex (ModuleCat A) ℤ)) :=
   (freeStandardSimplexParameterIso A J).hom ≫ {
-    app n := (Functor.const J).map (normalizedSimplexCochainContraction A n).hom
+    app n := (Functor.const J).map (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom
     naturality := by
       intro n m f
       apply NatTrans.ext
       funext j
       change (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
-          (SSet.stdSimplex.map f) ≫ (normalizedSimplexCochainContraction A m).hom =
-        (normalizedSimplexCochainContraction A n).hom ≫ 𝟙 _
-      simpa only [Category.comp_id] using normalizedSimplexCochainContraction_naturality A f }
+          (SSet.stdSimplex.map f) ≫ (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A m).hom =
+        (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom ≫ 𝟙 _
+      simpa only [Category.comp_id] using _root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction_naturality A f }
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

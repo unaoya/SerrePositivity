@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionConstant
-public import SerrePositivity.EInfinity.HomHomotopy
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomHomotopy
 
 /-!
 概要：畳み込みの定数射を単位内部 Hom と実前合成に照合する。

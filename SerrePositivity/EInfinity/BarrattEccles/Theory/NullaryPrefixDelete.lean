@@ -2,10 +2,10 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryFamilyAdjacent
 public import SerrePositivity.EInfinity.BarrattEccles.OperadStructure
-public import SerrePositivity.EInfinity.Operad.CompositionAdjacentEquivariance
-public import SerrePositivity.EInfinity.Operad.CompositionAdjacentValues
-public import SerrePositivity.EInfinity.Operad.CompositionTailBijection
-public import SerrePositivity.EInfinity.Operad.TensorUnitFamily
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CompositionAdjacentEquivariance
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CompositionAdjacentValues
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CompositionTailBijection
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorUnitFamily
 
 /-!
 # 先頭の入力を零入力へ代入する係数射
@@ -54,8 +54,8 @@ attribute [local implicit_reducible] operad sequence
 
 /-- 消去する各入力に代入する、零入力係数の指定された族。 -/
 def nullaryInputFamily (n : ℕ) :
-    𝟙_ (Complex A) ⟶ tensorFamily n (fun _ => (operad A).arity 0) :=
-  (tensorUnitFamilyIso A n).inv ≫ tensorFamilyMap n (fun _ => (nullaryCoefficientIso A).inv)
+    𝟙_ (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n (fun _ => (operad A).arity 0) :=
+  (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).inv ≫ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap n (fun _ => (nullaryCoefficientIso A).inv)
 
 /-- 先頭 n 個の入力を零入力へ代入して、後ろの k 入力を残す。 -/
 def nullaryPrefixDelete (n k : ℕ) : (operad A).arity (n + k) ⟶ (operad A).arity k :=
@@ -65,11 +65,11 @@ def nullaryPrefixDelete (n k : ℕ) : (operad A).arity (n + k) ⟶ (operad A).ar
 
 /-- 消去する零長ブロックの隣接交換は、出力には恒等全単射を誘導する。 -/
 lemma nullaryAdjacentOutput (n k : ℕ) (i : Fin n) :
-    operadCompositionAdjacentOutput n k (fun _ : Fin (n + 1) => 0) i = Equiv.refl _ := by
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadCompositionAdjacentOutput n k (fun _ : Fin (n + 1) => 0) i = Equiv.refl _ := by
   ext x
-  simpa only [operadAdjacentPrefixLength, Finset.sum_const_zero, Nat.add_zero,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadAdjacentPrefixLength, Finset.sum_const_zero, Nat.add_zero,
     Nat.not_lt_zero, ite_false, Equiv.refl_apply] using
-    operadCompositionAdjacentOutput_val n k (fun _ => 0) i x
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadCompositionAdjacentOutput_val n k (fun _ => 0) i x
 
 /-- 先頭の消去する入力の各隣接交換は、指定係数射を保つ。 -/
 lemma nullaryPrefixDelete_adjacent (n k : ℕ) (i : Fin n) :
@@ -77,17 +77,17 @@ lemma nullaryPrefixDelete_adjacent (n k : ℕ) (i : Fin n) :
       (FiniteBijection.blockEquiv (adjacentTransposition i) (Equiv.refl (Fin k)))) ≫
         nullaryPrefixDelete A (n + 1) k = nullaryPrefixDelete A (n + 1) k := by
   have h := (operad A).composeFirstInputs_adjacent_equivariance n k (fun _ => 0) i
-  have hzero : (tensorFamilyAdjacentIso n (fun _ : Fin (n + 1) =>
+  have hzero : (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso n (fun _ : Fin (n + 1) =>
       (operad A).arity 0) i).hom = 𝟙 _ := nullaryFamilyAdjacent_hom A n i
   rw [hzero, tensorHom_id, nullaryAdjacentOutput,
-    Operad.arityBijectionMap_refl, Category.comp_id] at h
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arityBijectionMap_refl, Category.comp_id] at h
   unfold nullaryPrefixDelete
   erw [coefficientUnitInsert_naturality_assoc]
   have hh := congrArg
     (fun t => coefficientUnitInsert _ _ (nullaryInputFamily A (n + 1)) ≫ t ≫
       eqToHom (congrArg (operad A).arity
         (by simp : (∑ _ : Fin (n + 1), 0) + k = k))) h
-  dsimp only [Operad.arity, SerrePositivity.SymmetricSequence.level] at hh ⊢
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arity, SerrePositivity.SymmetricSequence.level] at hh ⊢
   simpa only [Category.assoc] using hh
 
 /-- 先頭の消去する入力の任意の置換は、指定係数射を保つ。 -/

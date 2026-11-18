@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.MayProbeCycles
-public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.FreeAlgebraAdjunction
 
 /-!
 # May の普遍代表元の自由 probe からの評価
@@ -25,17 +25,17 @@ variable {k : Type u} [CommRing k] (X : (operad k).Algebra)
 /-- 元の複体射を、同じ自由 probe からの代数射へ持ち上げる。 -/
 def mayProbeLiftHom {K : Complex k} (f : K ⟶ X.carrier) :
     (freeProbeFunctor k).obj K ⟶ X :=
-  X.liftHom (ComplexLimits.framedLimitProbeComparison k K ≫ f)
+  X.liftHom (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison k K ≫ f)
 
 lemma mayProbeLiftHom_fac {K : Complex k} (f : K ⟶ X.carrier) :
     (freeProbeFunctor k).map f ≫ mayProbeLiftHom X (𝟙 X.carrier) = mayProbeLiftHom X f := by
-  change (operad k).freeAlgebraFunctor.map ((ComplexLimits.framedLimitProbeFunctor k).map f) ≫
-    X.liftHom (ComplexLimits.framedLimitProbeComparison k X.carrier ≫ 𝟙 _) = _
+  change (operad k).freeAlgebraFunctor.map ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor k).map f) ≫
+    X.liftHom (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison k X.carrier ≫ 𝟙 _) = _
   rw [Category.comp_id, X.liftHom_precomp]
-  have h := (ComplexLimits.framedLimitProbeComparisonNatTrans k).naturality f
-  change (ComplexLimits.framedLimitProbeFunctor k).map f ≫
-    ComplexLimits.framedLimitProbeComparison k X.carrier =
-      ComplexLimits.framedLimitProbeComparison k K ≫ f at h
+  have h := (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparisonNatTrans k).naturality f
+  change (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor k).map f ≫
+    _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison k X.carrier =
+      _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison k K ≫ f at h
   rw [h]
   rfl
 
@@ -53,7 +53,7 @@ lemma mayProbeLiftHom_homology_eq {K : Complex k} {f g : K ⟶ X.carrier}
 /-- 指定閉元を同じ probe へ持ち上げ、自由代数の生成元として含める。 -/
 def mayProbeFreeCycle (K : Complex k) (i : ℤ) (a : MayClosed K i) :
     MayClosed ((freeProbeFunctor k).obj K).carrier i :=
-  mayClosedMap ((operad k).schurUnit ((ComplexLimits.framedLimitProbeFunctor k).obj K)) i
+  mayClosedMap ((operad k).schurUnit ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor k).obj K)) i
     (mayProbeClosedLift k K i a)
 
 /-- 同じ普遍閉元を評価すると、元の閉元の厳密な像を回収する。 -/
@@ -63,11 +63,11 @@ lemma mayProbeFreeCycle_evaluation {K : Complex k} (f : K ⟶ X.carrier)
       mayClosedMap f i a := by
   apply Subtype.ext
   have hu := congrArg (fun h => h.f i (mayProbeClosedLift k K i a).val)
-    (X.schurUnit_liftHom (ComplexLimits.framedLimitProbeComparison k K ≫ f))
+    (X.schurUnit_liftHom (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison k K ≫ f))
   change (mayProbeLiftHom X f).hom.f i
-      (((operad k).schurUnit ((ComplexLimits.framedLimitProbeFunctor k).obj K)).f i
+      (((operad k).schurUnit ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor k).obj K)).f i
         (mayProbeClosedLift k K i a).val) =
-    f.f i ((ComplexLimits.framedLimitProbeComparison k K).f i
+    f.f i ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison k K).f i
       (mayProbeClosedLift k K i a).val) at hu
   have hs := congrArg Subtype.val (mayProbeClosedLift_spec k K i a)
   exact hu.trans (congrArg (f.f i) hs)

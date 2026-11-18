@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeConvolutionFibration
-public import SerrePositivity.EInfinity.ComplexLimits.PullbackHomTargetTrivial
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.PullbackHomTargetTrivial
 
 /-!
 概要：全射擬同型な標的射に対する実相対 AW 制限は擬同型。
@@ -22,10 +22,10 @@ variable (R : Type u) [CommRing R] {X B : Mon (Complex R)}
   (q : X ⟶ B) {K L : SSet.{0}} (f : K ⟶ L) [Mono f]
 
 lemma relativeConvolutionRestriction_quasiIso_of_target_trivial
-    (hs : EInfinity.projectiveFibrations R q.hom) (hq : QuasiIso q.hom) :
+    (hs : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R q.hom) (hq : QuasiIso q.hom) :
     QuasiIso (relativeConvolutionRestriction R q f).hom := by
   rw [relativeConvolutionRestriction_hom_eq]
-  have := (EInfinity.ComplexLimits.normalizedPullbackHom_target_trivialFibration
+  have := (_root_.SerrePositivity.ComplexLimits.normalizedPullbackHom_target_trivialFibration
     f q.hom hs hq).2
   infer_instance
 

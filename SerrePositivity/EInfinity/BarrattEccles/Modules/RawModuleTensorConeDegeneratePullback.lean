@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.ConePrependInjOn
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConePrependInjOn
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConeDegenerateMixed
 
 /-!
@@ -15,8 +15,8 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -35,17 +35,17 @@ lemma strictRawModuleTensorConeData_pullback_hom_mixed_not_inj {n m : ℕ}
     (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
     (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I)
-    (hn : ¬Set.InjOn θ.toOrderHom ((withoutFirst I) : Set (Fin (m + 1)))) :
+    (hn : ¬Set.InjOn θ.toOrderHom ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) : Set (Fin (m + 1)))) :
     HEq (((strictRawModuleTensorConeData A X P Q c).pullback
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom)).hom I a b k hI ha hb hk)
       ((strictRawModuleTensorConeData A X P Q ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom
         I a b k hI ha hb hk) := by
   have hni : ¬Set.InjOn (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom) (I : Set (Fin (m + 2))) :=
-    fun h => hn ((prepend_injOn_iff θ.toOrderHom I).mp h)
+    fun h => hn ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.prepend_injOn_iff θ.toOrderHom I).mp h)
   have hc : I.card ≠ 2 := by
     intro hc
-    have hcard : (withoutFirst I).card ≤ 1 := by
-      have hs := card_withoutFirst I h0
+    have hcard : (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card ≤ 1 := by
+      have hs := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0
       omega
     apply hn
     intro i hi j hj _

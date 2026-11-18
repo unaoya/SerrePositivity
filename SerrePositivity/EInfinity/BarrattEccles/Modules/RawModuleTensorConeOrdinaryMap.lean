@@ -16,9 +16,9 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -38,10 +38,10 @@ lemma strictRawModuleTensorConeData_pullback_hom_ordinary_map {n m : ℕ}
     apply Fin.le_zero_iff.mp
     rw [ha]
     exact I.min'_le 0 h
-  let J := withoutFirst I
+  let J := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I
   have hImage : J.image (Fin.succOrderEmb (m + 1)).toOrderHom = I := by
-    change (withoutFirst I).image Fin.succ = I
-    rw [image_withoutFirst, Finset.erase_eq_of_notMem h0]
+    change (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).image Fin.succ = I
+    rw [_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.image_withoutFirst, Finset.erase_eq_of_notMem h0]
   have hcard : J.card = I.card := by
     have h := congrArg Finset.card hImage
     have hi : Function.Injective (Fin.succOrderEmb (m + 1)).toOrderHom :=

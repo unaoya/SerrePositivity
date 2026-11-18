@@ -21,7 +21,7 @@ variable {A : Type u} [CommRing A]
 /-- 元の余単体図式を、同じ閉複体射の図式として扱う。 -/
 def bousfieldKanClosedDiagram (X : CosimplicialObject (Complex A)) :
     SimplexCategoryᵒᵖᵒᵖ ⥤ ClosedCategory A (Complex A) :=
-  doubleOppositeDiagram X ⋙ SerrePositivity.EInfinity.ComplexLimits.complexToClosed A
+  doubleOppositeDiagram X ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A
 
 /-- 同じ Tot から元の図式への実豊穣 Hom の全図式。 -/
 def bousfieldKanEnrichedHomSpaces (X : CosimplicialObject (Complex A)) :

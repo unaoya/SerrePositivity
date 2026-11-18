@@ -289,7 +289,7 @@ D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が
 
 | 番号 | 問題 | 扱い |
 | --- | --- | --- |
-| BR54 | `Util/Citation.lean` の略号表（`knownKeys`・`knownEditions`、`bibliography.json` から生成）が属性の定義元と同じモジュールにあり、直接 896 本が import する。略号を一つ足すだけで root がほぼ全部再ビルドになる（11-16、65 分以上、四レーンが約 1 時間止まった） | 計画：属性の定義元からキーの検査を外す。属性はキーを記録するだけにし、検査は import の連鎖に入らない検査スクリプト（`bulk_citation_registry.py --check` と同じく `bibliography.json` と環境の記録を突き合わせる）か、照会コマンド `#cite_tags` と一緒に変更の少ない別モジュールへ。夜の一括で。それまで略号の追加は夜にまとめる（`coordination.md` §2） |
+| BR54 | `Util/Citation.lean` の略号表（`knownKeys`・`knownEditions`、`bibliography.json` から生成）が属性の定義元と同じモジュールにあり、直接 896 本が import する。略号を一つ足すだけで root がほぼ全部再ビルドになる（11-16、65 分以上、四レーンが約 1 時間止まった） | **実施（2026-11-17、枝 `coord/br54-citation-registry`、取り込みは夜）**：略号表・版・照会コマンド（`#cite_tags`・`#cite_tags!`・`#cite_check`）を `Util/CitationRegistry.lean`（数学のモジュールは import しない）へ移し、属性はキーと番号を記録するだけにした。未登録のキーは `#cite_registry_check`（`scripts/audit_citations.lean`、監査の一覧に追加）で検出する。生成は `bulk_citation_registry.py` が新しいファイルに書く。以後、略号の追加は CitationRegistry と監査一本の再ビルドだけ |
 
 ## 11. 追記（2026-11-17）：弱い存在命題からの choose（BR55）
 

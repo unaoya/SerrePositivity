@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorSelectionCard
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorSelectionCard
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementSelected
 
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -28,10 +28,10 @@ def strictRawModuleTensorElementSelectedCochainAtMaxOfCard {n : ℕ}
     GradedHom A (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)) (ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (J.max' hJ)))) k :=
   cast (congrArg (fun i => (GradedHom A (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
     (ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj i))) k : Type u))
-      (normalizedTensorElementSelectionOfCard_last J r hc hJ))
+      (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard_last J r hc hJ))
     ((strictRawModuleTensorElementLinear A X P Q
       ((SimplexCategory.toCat.map
-        (normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙ c)).val.component
+        (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙ c)).val.component
         Finset.univ k Finset.univ_nonempty
         (by simpa only [Finset.card_univ, Fintype.card_fin, ← hc] using hk))
 
@@ -58,7 +58,7 @@ lemma strictRawModuleTensorElementSelectedCochainAtMaxOfCard_raw {n : ℕ}
     HEq (strictRawModuleTensorElementSelectedCochainAtMaxOfCard A X P Q c J k hJ hk r hc)
       ((strictRawModuleTensorElementLinear A X P Q
         ((SimplexCategory.toCat.map
-          (normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙ c)).val.component
+          (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementSelectionOfCard J r hc)).toFunctor ⋙ c)).val.component
             Finset.univ k Finset.univ_nonempty
             (by simpa only [Finset.card_univ, Fintype.card_fin, ← hc] using hk)) := by
   exact cast_heq _ _

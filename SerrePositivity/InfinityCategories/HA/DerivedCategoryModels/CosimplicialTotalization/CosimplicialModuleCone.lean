@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -42,7 +42,7 @@ theorem discreteCochainFunctorCone_isLimit : IsLimitCone (discreteCochainFunctor
 
 theorem discreteCochainFunctorCone_vertex :
     (discreteCochainFunctorCone A).vertex =
-      functorVertex (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A) :=
+      functorVertex (nerveMap (discreteCochainFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) :=
   (Classical.choose_spec (exists_discreteCochainFunctorCone A)).2
 
 /-- 元の全離散評価図式を固定した、点評価図式の同じ値。 -/
@@ -80,14 +80,14 @@ theorem cosimplicialModuleCone_isLimit (M : CosimplicialObject (ModuleCat.{u} A)
 /-- D06：同じ錐の頂点は整数次数へ零延長した同じ交代余面複体の像。 -/
 theorem cosimplicialModuleCone_vertex (M : CosimplicialObject (ModuleCat.{u} A)) :
     (cosimplicialModuleCone A M).vertex =
-      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
         (nerveVertex ((discreteCochainFunctor A).obj M)) := by
   rw [JoinCone.vertex_eq, cosimplicialModuleCone, joinConeOfDiagramEq_val]
   change (evaluateFunctorCone (discreteCochainFunctorCone A)
     (ComposableArrows.mk₀ M)).vertex = _
   rw [evaluateFunctorCone_vertex, discreteCochainFunctorCone_vertex,
     evaluateFunctorAt_functorVertex]
-  change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+  change (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
     ((nerveMap (discreteCochainFunctor A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ M)) = _
   rw [nerveMap_app_mk₀]

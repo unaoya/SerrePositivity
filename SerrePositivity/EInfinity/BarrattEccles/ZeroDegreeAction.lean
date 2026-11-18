@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroTruncation
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficient
-public import SerrePositivity.EInfinity.HomologyZero.TruncationRigidity
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.TruncationRigidity
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
 
 /-!
@@ -31,7 +31,7 @@ lemma zeroDegreeAction_factor [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE
     ((augmentation A).map.app (FiniteBijection.of n) ▷ power B.carrier n) ≫
       zeroDegreeComAction B n = B.action n := by
   have : (complex A n).IsStrictlyLE 0 := arity_nonpositive A n
-  have := Operad.Algebra.power_nonpositive B.carrier n
+  have := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.power_nonpositive B.carrier n
   have := KST.LocalizingInvariants.ConnectiveLift.tensor_nonpositive
     (complex A n) (power B.carrier n)
   have ht := SerrePositivity.cochainTensorHomotopyLeft
@@ -44,7 +44,7 @@ lemma zeroDegreeAction_factor [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE
     simpa only [add_zero] using cochainTensor_isStrictlyLE
       (complex A n) (power B.carrier n) 0 0
   have ht' := ht.compRight (B.action n)
-  have he := HomologyZero.nonpositive_nonnegative_homotopy_eq ht'
+  have he := _root_.SerrePositivity.HomologyZero.nonpositive_nonnegative_homotopy_eq ht'
   change (((augmentation A).map.app (FiniteBijection.of n) ≫ aritySection A n) ▷
     power B.carrier n) ≫ B.action n =
       (𝟙 ((operad A).arity n) ⊗ₘ 𝟙 (power B.carrier n)) ≫ B.action n at he

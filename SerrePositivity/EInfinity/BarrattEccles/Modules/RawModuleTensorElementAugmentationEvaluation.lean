@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -32,7 +32,7 @@ lemma strictRawModuleTensorElementEvaluationDiagramIso_augmentation
         ((strictRawModuleProbeFunctor A X).obj P) (moduleEvaluation A _ x)).hom =
       CategoryTheory.Functor.whiskerLeft
         (strictRawModuleTensorElementEvaluationIndex A X P Q x)
-        (normalizedTensorElementAugmentation A
+        (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementAugmentation A
           ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
           ((moduleEvaluation A _ x).obj Q)) := by
   apply NatTrans.ext

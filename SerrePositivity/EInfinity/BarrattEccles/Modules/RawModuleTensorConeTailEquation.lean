@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -26,10 +26,10 @@ lemma strictRawModuleTensorConeData_equation_without_zero {n : ℕ}
   have h := (strictRawModuleTensorConeData A X P Q c).equation_image_of_pullback
     (Fin.succOrderEmb (n + 1)).toOrderHom
     (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ strictRawModuleTensorElementDiagram A X P Q))
-    (strictRawModuleTensorConeData_tail A X P Q c) (withoutFirst I) (Fin.succ_injective _).injOn
-  have hi : (withoutFirst I).image (Fin.succOrderEmb (n + 1)).toOrderHom = I := by
-    change (withoutFirst I).image Fin.succ = I
-    rw [image_withoutFirst, Finset.erase_eq_of_notMem h0]
+    (strictRawModuleTensorConeData_tail A X P Q c) (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) (Fin.succ_injective _).injOn
+  have hi : (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).image (Fin.succOrderEmb (n + 1)).toOrderHom = I := by
+    change (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).image Fin.succ = I
+    rw [_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.image_withoutFirst, Finset.erase_eq_of_notMem h0]
   simpa only [hi] using h
 
 end SerrePositivity.EInfinity.BarrattEccles

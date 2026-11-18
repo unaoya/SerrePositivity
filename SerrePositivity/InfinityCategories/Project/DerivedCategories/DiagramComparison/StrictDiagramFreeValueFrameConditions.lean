@@ -15,7 +15,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
-local instance : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance : ModelCategory (Complex A) := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
 local instance : HasInitial (Complex A) := (isZero_zero (Complex A)).isInitial.hasInitial
 local instance : HasInitial (SimplexCategory ⥤ Complex A) :=

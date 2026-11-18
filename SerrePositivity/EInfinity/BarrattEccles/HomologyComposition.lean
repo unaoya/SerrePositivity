@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficientAction
-public import SerrePositivity.EInfinity.Operad.InsertionCoefficient
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.InsertionCoefficient
 
 /-!
 # H⁰ の演算に用いる係数の部分合成
@@ -57,10 +57,10 @@ lemma coefficientOperation_comp (X : (operad A).Algebra) (m n : ℕ) (i : Fin (m
     (b : 𝟙_ (Complex A) ⟶ (operad A).arity n) :
     coefficientOperation X (m + n) (coefficientComposite m n i a b) =
       (λ_ (power X.carrier (m + n))).inv ≫
-        tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
           ((b ▷ power X.carrier n) ≫ X.action n) ≫ coefficientOperation X (m + 1) a := by
   simp only [coefficientOperation, coefficientComposite, comp_whiskerRight, Category.assoc]
-  rw [X.comp_action, tensorInsertionComposition_coeff,
+  rw [X.comp_action, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionComposition_coeff,
     ← leftUnitor_tensor_inv_assoc, ← leftUnitor_inv_naturality_assoc]
 
 end SerrePositivity.EInfinity.BarrattEccles

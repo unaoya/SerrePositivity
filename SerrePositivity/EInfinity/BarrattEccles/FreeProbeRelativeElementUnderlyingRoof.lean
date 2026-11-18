@@ -39,9 +39,9 @@ lemma freeProbeRelativeElementUnderlyingEvaluation_arrow :
       (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
     Arrow.mk (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumn.hom (cofibrantAlgebraUnderlyingDerivedSource A)
       (freeProbeRelativeElementEvaluation A X B)) =
-    Arrow.mk (T.map (ComplexLimits.complexOrdinaryDerivedNatTransHom A
+    Arrow.mk (T.map (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransHom A
       (Functor.whiskerRight (freeProbeElementColumnEvaluation A X B.obj)
-        (Operad.Algebra.forget (operad A))))) := by
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))))) := by
   dsimp only
   exact cofibrantColumnUnderlyingHom_arrow A (freeProbeElementCofibrantEvaluation A X B)
 

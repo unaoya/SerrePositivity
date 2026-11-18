@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConeErasedLast
-public import SerrePositivity.EInfinity.ComplexLimits.ConeBoundarySum
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConeBoundarySum
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedRhs
 
 /-!
@@ -16,9 +16,9 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.Modules
+open _root_.SerrePositivity.ComplexLimits SerrePositivity.EInfinity.Modules
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -27,27 +27,27 @@ lemma strictRawModuleTensorConeData_linearBoundary_reindex {n : ℕ}
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ)
     (ha0 : a = 0) (hbl : b = Fin.last (n + 1)) :
     (strictRawModuleTensorConeData A X P Q c).linearBoundary I a b k =
-      ∑ j : withoutFirst I, if j.val < Fin.last n then
-        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val •
+      ∑ j : _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I, if j.val < Fin.last n then
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) j.val •
           (strictRawModuleTensorConeData A X P Q c).homOrZero (I.erase j.val.succ) a b (k + 1)
         else 0 := by
   unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.linearBoundary
   have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I a b = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I 0 (Fin.last (n + 1)) := by rw [ha0, hbl]
-  rw [hi, sum_interior_zero_last]
-  simp only [sign_succ]
+  rw [hi, _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.sum_interior_zero_last]
+  simp only [_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.sign_succ]
 
 lemma strictRawModuleTensorConeData_linearBoundary_mixed_last {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
     (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (hbl : b = Fin.last (n + 1))
-    (h0 : 0 ∈ I) (hJ : 2 ≤ (withoutFirst I).card)
-    (hkJ : k = 1 - ((withoutFirst I).card : ℤ)) :
+    (h0 : 0 ∈ I) (hJ : 2 ≤ (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card)
+    (hkJ : k = 1 - ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card : ℤ)) :
     HEq ((strictRawModuleTensorConeData A X P Q c).linearBoundary I a b k)
-      (∑ j : withoutFirst I, if j.val < Fin.last n then
-        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val • ((k + 1).negOnePow •
+      (∑ j : _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I, if j.val < Fin.last n then
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) j.val • ((k + 1).negOnePow •
           (strictRawModuleTensorElementLinear A X P Q c).val.component
-            ((withoutFirst I).erase j.val) (k + 1)
+            ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).erase j.val) (k + 1)
             (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.erase_nonempty hJ _ j.property)
             (by have := Finset.card_erase_add_one j.property; omega)) else 0) := by
   have hx : (strictRawModuleTensorConeData A X P Q c).obj a = (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)) := by
@@ -64,14 +64,14 @@ lemma strictRawModuleTensorConeData_linearBoundary_mixed_last {n : ℕ}
   by_cases hj : j.val < Fin.last n
   · simp only [ite_eq_left hj]
     have he := strictRawModuleTensorConeData_erased_succ_mixed_last A X P Q c I a b k hI ha hb hk
-      ha0 hbl h0 j.val (by simpa only [withoutFirst, Finset.mem_filter, Finset.mem_univ,
+      ha0 hbl h0 j.val (by simpa only [_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst, Finset.mem_filter, Finset.mem_univ,
         true_and] using j.property) (by rw [hbl]; exact Fin.succ_lt_succ_iff.mpr hj)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.erase_nonempty hJ _ j.property)
       (by have := Finset.card_erase_add_one j.property; omega)
     have ht : ∀ (x y x' y' : RightModule A (dgAlgebraCategory A ((assocForget A).obj X))) (hx : x = x') (hy : y = y')
         (v : GradedHom A x y (k + 1)) (w : GradedHom A x' y' (k + 1)),
-        HEq v w → HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val • v)
-          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val • w) := by
+        HEq v w → HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) j.val • v)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) j.val • w) := by
       intro x y x' y' hx hy v w hv
       subst x'
       subst y'

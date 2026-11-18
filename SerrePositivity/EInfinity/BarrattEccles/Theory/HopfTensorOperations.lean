@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.HopfComponents
-public import SerrePositivity.EInfinity.Operad.ConvolutionEquivariantEvaluation
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.HopfComponents
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.ConvolutionEquivariantEvaluation
 
 /-!
 # Hopf 対角によるテンソル上の演算
@@ -26,25 +26,25 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory
 open DifferentialGraded TensorPowers
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 attribute [local implicit_reducible] TensorPowers.power SerrePositivity.SymmetricSequence
   SerrePositivity.SymmetricSequence.level
 
 /-- BF §1.1.4 の零入力の分離の指定射。 -/
 lemma tensorPowerSeparation_zero_hom (V W : Complex A) :
-    (tensorPowerSeparation V W 0).hom = (λ_ (𝟙_ (Complex A))).inv := rfl
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W 0).hom = (λ_ (𝟙_ (Complex A))).inv := rfl
 
 /-- BF §1.1.4 の分離の後続段での指定射。 -/
 lemma tensorPowerSeparation_succ_hom (V W : Complex A) (n : ℕ) :
-    (tensorPowerSeparation V W (n + 1)).hom =
-      ((V ⊗ W) ◁ (tensorPowerSeparation V W n).hom) ≫
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W (n + 1)).hom =
+      ((V ⊗ W) ◁ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation V W n).hom) ≫
         tensorμ V W (power V n) (power W n) := rfl
 
 /-- BF §1.1.4 の対角で係数と入力を分けて得るテンソル上の演算。 -/
 def hopfTensorAction (hP : P.Hopf) (X Y : P.Algebra) (n : ℕ) :
     P.arity n ⊗ power (X.carrier ⊗ Y.carrier) n ⟶ X.carrier ⊗ Y.carrier :=
-  (hP.diagonalComponent n ⊗ₘ (tensorPowerSeparation X.carrier Y.carrier n).hom) ≫
+  (hP.diagonalComponent n ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation X.carrier Y.carrier n).hom) ≫
     tensorμ _ _ _ _ ≫ (X.action n ⊗ₘ Y.action n)
 
 /-- BF §1.1.4 の係数と入力の同時置換はテンソル演算を保つ。 -/
@@ -59,7 +59,7 @@ lemma hopfTensorAction_equivariance (hP : P.Hopf) (X Y : P.Algebra)
           P.sequence.map (FiniteBijection.permutation n σ)) :=
     hP.diagonal.map.naturality (FiniteBijection.permutation n σ)
   unfold hopfTensorAction
-  rw [tensorHom_comp_tensorHom_assoc, hd, tensorPowerSeparation_permutation,
+  rw [tensorHom_comp_tensorHom_assoc, hd, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation_permutation,
     ← tensorHom_comp_tensorHom_assoc]
   erw [tensorμ_natural_assoc]
   rw [tensorHom_comp_tensorHom, X.equivariance, Y.equivariance]

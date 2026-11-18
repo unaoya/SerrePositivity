@@ -47,7 +47,7 @@ lemma carrierSourceRightConeComparisonIso_source {Y Z : Complex A} (f : Y ⟶ Z)
         (carrierSourceRightConeComparisonIso A K Y F L hL).hom =
       (carrierSourceRightConeComparisonIso A K Z F L hL).hom ≫
         L.map ((carrierFramedLimitConeSourceMap A K f).app F) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let P := carrierFramedLimitProbeFunctor A
   let B (X : Complex A) := q.obj.obj (P.obj X)

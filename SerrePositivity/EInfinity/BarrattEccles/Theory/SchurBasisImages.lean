@@ -126,7 +126,7 @@ lemma schurWordBasis_nonpositive {K : Complex A} {I : ℤ → Type u}
     (b : ∀ i, Module.Basis (I i) A (K.X i)) (i : ℤ) (n q : ℕ)
     (x : ULift.{u} (BasedNondegenerate n q) × powerGradedIndex I n (i + q)) :
     schurWordBasis b i (schurNonpositiveWordIndex i n q x) =
-      (schurι A (sequence A) K n).f i
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i
         (ιTensorObj ((sequence A).level n) (TensorPowers.power K n)
           (-(q : ℤ)) (i + q) i (by omega)
           (equivariantBasis A n q (x.1, 1) ⊗ₜ[A]

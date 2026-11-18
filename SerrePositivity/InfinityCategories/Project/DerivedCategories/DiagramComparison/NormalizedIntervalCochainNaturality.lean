@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalChainNaturality
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedIntervalTruncationNaturality
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedHomTargetNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedHomTargetNaturality
 /-!
 概要：同じ正規化区間からのコチェイン評価は全標的射に自然。
 方針：smart切断Homの標的自然性と同じ鎖評価の自然性を合成する。
@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory HomologicalComplex CochainComplex
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A]
@@ -40,8 +40,8 @@ theorem normalizedIntervalCochainMapOfBoundary_postcomp
   dsimp only [tq] at hr
   simp only [intervalTruncCycle_naturality A q x hx hx',
     intervalTruncCycle_naturality A q y hy hy', intervalTruncEdge_naturality] at hr
-  apply (normalizedChainsTruncationHomEquiv A (SSet.stdSimplex.obj ⦋1⦌) H').injective
-  rw [normalizedChainsTruncationHomEquiv_postcomp]
+  apply (_root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A (SSet.stdSimplex.obj ⦋1⦌) H').injective
+  rw [_root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv_postcomp]
   dsimp only [normalizedIntervalCochainMapOfBoundary, normalizedIntervalCochainMap]
   rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply]
   exact hr

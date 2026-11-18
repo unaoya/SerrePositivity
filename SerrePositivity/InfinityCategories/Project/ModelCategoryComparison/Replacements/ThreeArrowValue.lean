@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrow
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionArrowComparison
-public import SerrePositivity.EInfinity.Hammock.UniverseValue
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UniverseValue
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Localizations.SpecialSpanLocalization
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.SpecialThreeArrowComparison
 

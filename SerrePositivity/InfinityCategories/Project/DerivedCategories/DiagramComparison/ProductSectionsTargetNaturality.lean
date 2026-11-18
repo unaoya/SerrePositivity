@@ -30,7 +30,7 @@ theorem freeProductSectionsHomIso_target_naturality (W : J ⥤ SSet.{u})
       (freeProductSectionsHomIso A W Q').hom =
     (freeProductSectionsHomIso A W Q).hom ≫ (weightedSectionsFunctor W).map
       ((Functor.whiskeringRight J (CochainComplex (ModuleCat A) ℤ) SSet.{u}).obj
-        (SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A) |>.map f) := by
+        (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) |>.map f) := by
   let e := adjunctionHomIsoSameUniverse
     ((weightedSectionsAdjunction W).comp (freeNegativeChainsDiagramAdjunction A J))
     (SSet.stdSimplex.{0} ⋙ SSet.uliftFunctor.{u,0})
@@ -42,6 +42,6 @@ theorem freeProductSectionsHomIso_target_naturality (W : J ⥤ SSet.{u})
   have hl := liftedStandardSimplexHomIso_naturality
     ((weightedSectionsFunctor W).map
       (((Functor.whiskeringRight J (CochainComplex (ModuleCat A) ℤ) SSet.{u}).obj
-        (SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A)).map f))
+        (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A)).map f))
   simpa only [Functor.comp_map, Functor.comp_obj, Category.assoc] using congrArg (fun z => e.hom.app Q ≫ z) hl
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

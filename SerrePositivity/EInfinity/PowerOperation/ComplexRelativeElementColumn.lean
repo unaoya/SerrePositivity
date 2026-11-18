@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexHammockSource
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorElementDiagram
 
 /-!
 # 正規化テンソルの同じ全要素屋根を全複体の相対圏へ送る
@@ -16,38 +16,38 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 abbrev complexRelativeUp : Complex A ⥤ (complexRelativeCategory A).category :=
   AsSmall.up.{u, u + 1, u + 1}
 
 abbrev complexRelativeElementIndex : Type (u + 1) :=
-  ULiftHom.{u + 1} (normalizedTensorElementIndex A X Y)
+  ULiftHom.{u + 1} (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementIndex A X Y)
 
 def complexRelativeElementColumn : complexRelativeElementIndex A X Y ⥤
     (complexRelativeCategory A).category :=
-  ULiftHom.down.{u, u + 1, u + 1} ⋙ normalizedTensorElementDiagram A X Y ⋙ complexRelativeUp A
+  ULiftHom.down.{u, u + 1, u + 1} ⋙ _root_.SerrePositivity.ComplexLimits.normalizedTensorElementDiagram A X Y ⋙ complexRelativeUp A
 
 def complexRelativeElementAugmentation : complexRelativeElementColumn A X Y ⟶
     (Functor.const _).obj ((complexRelativeUp A).obj X) :=
   Functor.whiskerLeft ULiftHom.down.{u, u + 1, u + 1}
-    (Functor.whiskerRight (normalizedTensorElementAugmentation A X Y) (complexRelativeUp A))
+    (Functor.whiskerRight (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementAugmentation A X Y) (complexRelativeUp A))
 
 def complexRelativeElementEvaluation : complexRelativeElementColumn A X Y ⟶
     (Functor.const _).obj ((complexRelativeUp A).obj Y) :=
   Functor.whiskerLeft ULiftHom.down.{u, u + 1, u + 1}
-    (Functor.whiskerRight (normalizedTensorElementEvaluation A X Y) (complexRelativeUp A))
+    (Functor.whiskerRight (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementEvaluation A X Y) (complexRelativeUp A))
 
 lemma complexRelativeElementAugmentation_weak (s : complexRelativeElementIndex A X Y) :
     (complexRelativeCategory A).weakEquivalences
       ((complexRelativeElementAugmentation A X Y).app s) :=
-  normalizedTensorElementAugmentation_quasiIso A X Y (ULiftHom.objDown s)
+  _root_.SerrePositivity.ComplexLimits.normalizedTensorElementAugmentation_quasiIso A X Y (ULiftHom.objDown s)
 
 lemma complexRelativeElementColumn_map_weak {s t : complexRelativeElementIndex A X Y}
     (f : s ⟶ t) :
     (complexRelativeCategory A).weakEquivalences
       ((complexRelativeElementColumn A X Y).map f) :=
-  normalizedTensorElementDiagram_map_quasiIso A X Y (ULiftHom.down.map f)
+  _root_.SerrePositivity.ComplexLimits.normalizedTensorElementDiagram_map_quasiIso A X Y (ULiftHom.down.map f)
 
 end SerrePositivity.EInfinity.PowerOperation

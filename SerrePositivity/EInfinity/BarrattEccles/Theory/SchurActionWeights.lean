@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.SchurPowerWordLift
-public import SerrePositivity.EInfinity.Operad.SchurAction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.SchurAction
 
 /-!
 # 自由 Barratt–Eccles 代数の演算の重み保存
@@ -33,17 +33,17 @@ variable {A : Type u} [CommRing A] {K : Complex A}
 /-- Acting on a bounded tensor of free-algebra words preserves the total original input bound. -/
 lemma schurAction_mem_basisWeightSpan (b : ComplexWeightBasis K)
     (n : ℕ) (p r i : ℤ) (h : p + r = i) (u : ((operad A).arity n).X p)
-    (N : ℕ) {v : (power ((schurFunctor A (sequence A)).obj K) n).X r}
+    (N : ℕ) {v : (power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K) n).X r}
     (hv : v ∈ basisWeightSpan (powerGradedBasis (schurWordBasis b.basis) n r)
       (powerGradedWeight (schurWeightBasis b).weight n r) N) :
     ((operad A).schurAction K n).f i
-      (ιTensorObj ((operad A).arity n) (power ((schurFunctor A (sequence A)).obj K) n)
+      (ιTensorObj ((operad A).arity n) (power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K) n)
         p r i h (u ⊗ₜ[A] v)) ∈
       basisWeightSpan (schurWordBasis b.basis i) (schurWordWeight b.weight) N := by
-  let f : (power ((schurFunctor A (sequence A)).obj K) n).X r →ₗ[A]
-      ((schurFunctor A (sequence A)).obj K).X i :=
+  let f : (power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K) n).X r →ₗ[A]
+      ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K).X i :=
     (((operad A).schurAction K n).f i).hom ∘ₗ
-      (ιTensorObj ((operad A).arity n) (power ((schurFunctor A (sequence A)).obj K) n)
+      (ιTensorObj ((operad A).arity n) (power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K) n)
         p r i h).hom ∘ₗ (TensorProduct.mk A _ _ u)
   change f v ∈ _
   apply map_mem_basisWeightSpan (powerGradedBasis (schurWordBasis b.basis) n r)
@@ -59,18 +59,18 @@ lemma schurAction_mem_basisWeightSpan (b : ComplexWeightBasis K)
   simp only [zero_add] at ho
   have heq := congrArg (fun z => z.f i
     (ιTensorObj ((operad A).arity n)
-      (tensorFamily n (fun j => (operad A).arity (s j) ⊗ power K (s j)))
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n (fun j => (operad A).arity (s j) ⊗ power K (s j)))
       p r i h (u ⊗ₜ[A] y))) ((operad A).schurInputGenerator_action K n s)
   change ((operad A).schurAction K n).f i
     ((cochainTensorMap (𝟙 ((operad A).arity n))
       ((operad A).schurInputGenerator K n s)).f i
       (ιTensorObj ((operad A).arity n)
-        (tensorFamily n (fun j => (operad A).arity (s j) ⊗ power K (s j)))
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n (fun j => (operad A).arity (s j) ⊗ power K (s j)))
         p r i h (u ⊗ₜ[A] y))) = _ at heq
   erw [cochainTensorMap_apply_ι] at heq
   simp only [HomologicalComplex.id_f, ModuleCat.id_apply, he] at heq
   change ((operad A).schurAction K n).f i
-    (ιTensorObj ((operad A).arity n) (power ((schurFunctor A (sequence A)).obj K) n)
+    (ιTensorObj ((operad A).arity n) (power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K) n)
       p r i h (u ⊗ₜ[A] powerGradedBasis (schurWordBasis b.basis) n r x)) ∈ _
   erw [heq]
   exact ho

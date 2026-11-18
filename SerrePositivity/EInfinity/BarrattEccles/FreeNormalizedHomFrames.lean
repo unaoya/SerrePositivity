@@ -47,10 +47,10 @@ def freeNormalizedHomFromTensor : freeNormalizedProbeHom A ⟶ freeNormalizedHom
     (freeProbeFunctor A) (freeNormalizedProbeFrame A) (freeNormalizedProbeAugmentation A)
 
 def freeNormalizedProbeHomAdjunctionIso :
-    freeNormalizedProbeHom A ≅ ComplexLimits.normalizedProbeTensorHom A ⋙
+    freeNormalizedProbeHom A ≅ _root_.SerrePositivity.ComplexLimits.normalizedProbeTensorHom A ⋙
       (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-        (Operad.Algebra.forget (operad A)) :=
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) :=
   _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
-    (ComplexLimits.normalizedProbeTensorFrame A) (𝟭 (operad A).Algebra)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A) (𝟭 (operad A).Algebra)
 
 end SerrePositivity.EInfinity.BarrattEccles

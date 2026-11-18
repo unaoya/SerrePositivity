@@ -35,7 +35,7 @@ lemma complexRelativeSpectrumSource_inverts :
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (complexRelativeCategory A)) := by
   apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
   intro X Y f hf
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   have : QuasiIso ((complexRelativeDown A).map f) := hf
   have h := eilenbergMacLaneOrdinaryNative_map_weak A ((complexRelativeDown A).map f)
   apply (isInvertibleEdge_congr ?_).mp h

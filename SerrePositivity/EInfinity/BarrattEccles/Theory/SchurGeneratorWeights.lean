@@ -33,14 +33,14 @@ variable {A : Type u} [CommRing A]
 lemma schurGenerator_diagonal_apply (P : SymmetricSequence (Complex A))
     (K : Complex A) (n : ℕ) (σ : Equiv.Perm (Fin n))
     (p r i : ℤ) (h : p + r = i) (u : (P.level n).X p) (v : (power K n).X r) :
-    (schurι A P K n).f i (ιTensorObj (P.level n) (power K n) p r i h
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i (ιTensorObj (P.level n) (power K n) p r i h
       ((P.map (FiniteBijection.permutation n σ)).f p u ⊗ₜ[A]
         (permutationAction K n σ).asIso.hom.f r v)) =
-      (schurι A P K n).f i (ιTensorObj (P.level n) (power K n) p r i h (u ⊗ₜ[A] v)) := by
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i (ιTensorObj (P.level n) (power K n) p r i h (u ⊗ₜ[A] v)) := by
   have he := congrArg (fun f => f.f i
     (ιTensorObj (P.level n) (power K n) p r i h (u ⊗ₜ[A] v)))
-      (schurι_diagonal A P K n σ)
-  change (schurι A P K n).f i
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι_diagonal A P K n σ)
+  change (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P K n).f i
     ((cochainTensorMap (P.map (FiniteBijection.permutation n σ))
       (permutationAction K n σ).asIso.hom).f i
         (ιTensorObj (P.level n) (power K n) p r i h (u ⊗ₜ[A] v))) = _ at he
@@ -57,12 +57,12 @@ lemma schurNormalizedGenerator_mem_basisWeightSpan (i : ℤ) (n q : ℕ)
     {v : (power K n).X (i + q)}
     (hv : v ∈ basisWeightSpan (powerGradedBasis b n (i + q))
       (powerGradedWeight w n (i + q)) N) :
-    (schurι A (sequence A) K n).f i
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i
       (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)
         (equivariantBasis A n q (a, 1) ⊗ₜ[A] v)) ∈
       basisWeightSpan (schurWordBasis b i) (schurWordWeight w) N := by
-  let f : (power K n).X (i + q) →ₗ[A] ((schurFunctor A (sequence A)).obj K).X i :=
-    ((schurι A (sequence A) K n).f i).hom ∘ₗ
+  let f : (power K n).X (i + q) →ₗ[A] ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K).X i :=
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i).hom ∘ₗ
       (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)).hom ∘ₗ
         (TensorProduct.mk A _ _ (equivariantBasis A n q (a, 1)))
   change f v ∈ _
@@ -80,18 +80,18 @@ lemma schurGenerator_mem_basisWeightSpan (i : ℤ) (n q : ℕ)
     {v : (power K n).X (i + q)}
     (hv : v ∈ basisWeightSpan (powerGradedBasis b n (i + q))
       (powerGradedWeight w n (i + q)) N) :
-    (schurι A (sequence A) K n).f i
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i
       (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)
         (u ⊗ₜ[A] v)) ∈ basisWeightSpan (schurWordBasis b i) (schurWordWeight w) N := by
   let S := basisWeightSpan (schurWordBasis b i) (schurWordWeight w) N
-  let f : (complex A n).X (-(q : ℤ)) →ₗ[A] ((schurFunctor A (sequence A)).obj K).X i :=
-    ((schurι A (sequence A) K n).f i).hom ∘ₗ
+  let f : (complex A n).X (-(q : ℤ)) →ₗ[A] ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K).X i :=
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i).hom ∘ₗ
       (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)).hom ∘ₗ
         ((TensorProduct.mk A _ _).flip v)
   have hs : Submodule.span A (Set.range (equivariantBasis A n q)) ≤ S.comap f := by
     apply Submodule.span_le.mpr
     rintro _ ⟨⟨a, g⟩, rfl⟩
-    change (schurι A (sequence A) K n).f i
+    change (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i
       (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)
         (equivariantBasis A n q (a, g) ⊗ₜ[A] v)) ∈ S
     have h := schurGenerator_diagonal_apply (sequence A) K n g
@@ -109,7 +109,7 @@ lemma schurGenerator_mem_basisWeightSpan (i : ℤ) (n q : ℕ)
 lemma schurGenerator_mem_basisWeightSpan_all (p r i : ℤ) (h : p + r = i)
     (n : ℕ) (u : ((sequence A).level n).X p) (N : ℕ) {v : (power K n).X r}
     (hv : v ∈ basisWeightSpan (powerGradedBasis b n r) (powerGradedWeight w n r) N) :
-    (schurι A (sequence A) K n).f i
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i
       (ιTensorObj ((sequence A).level n) (power K n) p r i h (u ⊗ₜ[A] v)) ∈
         basisWeightSpan (schurWordBasis b i) (schurWordWeight w) N := by
   by_cases hp : p ≤ 0

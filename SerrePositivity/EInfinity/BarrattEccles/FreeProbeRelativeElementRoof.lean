@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementRecovery
-public import SerrePositivity.EInfinity.Hammock.LeftRoofSameUniverseComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoofSameUniverseComparison
 /-! 概要：同じ要素圏上の自由列を全単体の相対 roof へ送る。
 方針：元の左脚・評価と全縦弱同値を LeftRoof の既存構成へ代入する。
 規約：同じ Hom 宇宙と全要素圏を保持する。
@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SerrePositivity.DifferentialGraded Hammock
+open CategoryTheory SerrePositivity.DifferentialGraded _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
 /-- 概要：同じ全自由列の二列 roof 図式。
@@ -32,7 +32,7 @@ def freeProbeRelativeElementRoof : freeProbeRelativeElementIndex A X B ⥤
 def freeProbeRelativeElementRoofMap : nerve (freeProbeRelativeElementIndex A X B) ⟶
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) :=
-  LeftRoof.Precompose.SameUniverse.diagramColimitMap
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B)
 
 end SerrePositivity.EInfinity.BarrattEccles

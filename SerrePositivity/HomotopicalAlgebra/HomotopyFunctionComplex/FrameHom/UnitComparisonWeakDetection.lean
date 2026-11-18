@@ -34,7 +34,7 @@ lemma unitComparison_weak_of_probe_family {K D X : SSet.{u}} [Quasicategory X]
   obtain ⟨H⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom_eq_imp_homotopy h
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts H
-  have hgQ := _root_.SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak _ (hg.comp hi)
+  have hgQ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _ (hg.comp hi)
   have hpf := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (he.symm ▸ hgQ)
   exact hp.cancel_left hpf
 

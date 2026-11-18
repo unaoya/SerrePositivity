@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorDoubleConeOverNaturality
-public import SerrePositivity.EInfinity.ComplexLimits.DoubleConeEndEdgeIndex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoubleConeEndEdgeIndex
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Homotopies.DGComparisons.DGSimplexComponentExt
 
 /-!
@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -24,7 +24,7 @@ variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
 
 lemma strictRawModuleTensorDoubleConeSimplex_end_edge {n : ℕ}
     (c : ComposableArrows (strictRawModuleTensorElementIndex A X P Q) n) :
-    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeEndEdgeOrderHom n) =
+    (strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n) =
       _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex ((Functor.const (Fin 2)).obj ((strictRawModuleProbeFunctor A X).obj P)) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgSimplexData_ext_of_components A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))
@@ -45,20 +45,20 @@ lemma strictRawModuleTensorDoubleConeSimplex_end_edge {n : ℕ}
     have hk0 : k = 0 := by simpa using hk
     subst ha0 hb1 hk0
     rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
-      (doubleConeEndEdgeOrderHom_injective n).injOn]
+      (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom_injective n).injOn]
     change HEq _ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom (𝟙 ((strictRawModuleProbeFunctor A X).obj P)) 0)
-    have hII := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two (doubleConeEndEdgeOrderHom_injective n).injOn hI
+    have hII := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom_injective n).injOn hI
     have he := moduleRightConeData_hom_last A (dgAlgebraCategory A ((assocForget A).obj X)) (strictRawModuleTensorConeSimplexAugmentation A X P Q c)
-      (Finset.univ.image (doubleConeEndEdgeOrderHom n))
-      (doubleConeEndEdgeOrderHom n 0) (doubleConeEndEdgeOrderHom n 1) 0 hII
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min (doubleConeEndEdgeOrderHom n).monotone
+      (Finset.univ.image (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n))
+      (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n 0) (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n 1) 0 hII
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n).monotone
         (by rw [ha]; exact Finset.univ.isLeast_min' _) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hII))
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max (doubleConeEndEdgeOrderHom n).monotone
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n).monotone
         (by rw [hb]; exact Finset.univ.isGreatest_max' _) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hII))
-      (by rw [Finset.card_image_of_injective _ (doubleConeEndEdgeOrderHom_injective n)]; exact hk)
-      (doubleConeEndEdgeOrderHom_one n)
-    have hi0 : (Fin.last (n + 1)).predAboveOrderHom (doubleConeEndEdgeOrderHom n 0) = 0 := by
-      rw [doubleConeEndEdgeOrderHom_zero]
+      (by rw [Finset.card_image_of_injective _ (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom_injective n)]; exact hk)
+      (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom_one n)
+    have hi0 : (Fin.last (n + 1)).predAboveOrderHom (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n 0) = 0 := by
+      rw [_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom_zero]
       change (Fin.last (n + 1)).predAbove ((0 : Fin (n + 2)).castSucc) = 0
       exact Fin.predAbove_last_castSucc
     have ht : ∀ i j : Fin (n + 2), i = j →

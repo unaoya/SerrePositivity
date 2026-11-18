@@ -17,39 +17,39 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory Opposite
 attribute [local instance] uliftCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 abbrev complexNormalizedRawIndex :=
-  ULiftHom.{u + 1} (((((normalizedProbeTensorHom A).obj (op X)).obj Y).Elements)ᵒᵖ)
+  ULiftHom.{u + 1} (((((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorHom A).obj (op X)).obj Y).Elements)ᵒᵖ)
 
 def complexRelativeElementIndexDown :
-    complexRelativeElementIndex A ((framedLimitProbeFunctor A).obj X) Y ⥤
+    complexRelativeElementIndex A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y ⥤
       complexNormalizedRawIndex A X Y :=
   ULiftHom.down.{u, u + 1, u + 1} ⋙ ULiftHom.down.{0, u + 1, u} ⋙
     ULift.downFunctor ⋙ ULiftHom.up.{0, u, u + 1}
 
 def complexRelativeElementIndexUp :
     complexNormalizedRawIndex A X Y ⥤
-      complexRelativeElementIndex A ((framedLimitProbeFunctor A).obj X) Y :=
+      complexRelativeElementIndex A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y :=
   ULiftHom.down.{0, u, u + 1} ⋙ ULift.upFunctor ⋙ ULiftHom.up.{0, u + 1, u} ⋙
     ULiftHom.up.{u, u + 1, u + 1}
 
 def complexRelativeElementIndexDownNerve :
-    nerve (complexRelativeElementIndex A ((framedLimitProbeFunctor A).obj X) Y) ⟶
+    nerve (complexRelativeElementIndex A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y) ⟶
       nerve (complexNormalizedRawIndex A X Y) where
   app _ := ↾fun Γ => Γ ⋙ complexRelativeElementIndexDown A X Y
   naturality _ _ _ := rfl
 
 def complexRelativeElementIndexUpNerve :
     nerve (complexNormalizedRawIndex A X Y) ⟶
-      nerve (complexRelativeElementIndex A ((framedLimitProbeFunctor A).obj X) Y) where
+      nerve (complexRelativeElementIndex A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y) where
   app _ := ↾fun Γ => Γ ⋙ complexRelativeElementIndexUp A X Y
   naturality _ _ _ := rfl
 
 /-- 同じ元の全要素の nerve の表示変更そのものが実同型である。 -/
 def complexRelativeElementIndexIso :
-    nerve (complexRelativeElementIndex A ((framedLimitProbeFunctor A).obj X) Y) ≅
+    nerve (complexRelativeElementIndex A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) Y) ≅
       nerve (complexNormalizedRawIndex A X Y) where
   hom := complexRelativeElementIndexDownNerve A X Y
   inv := complexRelativeElementIndexUpNerve A X Y

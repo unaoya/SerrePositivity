@@ -22,9 +22,9 @@ theorem freeProductSectionsHomIso_weight_naturality {W W' : J ⥤ SSet.{u}}
     (cosimplicialHomMap (freeProductFrameWeightMap A w (liftedStandardSimplexParameter J))).app Q ≫
       (freeProductSectionsHomIso A W' Q).hom =
     (freeProductSectionsHomIso A W Q).hom ≫
-      weightedSectionsPre w (Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A) := by
+      weightedSectionsPre w (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) := by
   let S := SSet.stdSimplex.{0} ⋙ SSet.uliftFunctor.{u,0}
-  let H := Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A
+  let H := Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A
   let e := (adjunctionHomIsoSameUniverse
     ((weightedSectionsAdjunction W).comp (freeNegativeChainsDiagramAdjunction A J)) S).app Q
   let e' := (adjunctionHomIsoSameUniverse

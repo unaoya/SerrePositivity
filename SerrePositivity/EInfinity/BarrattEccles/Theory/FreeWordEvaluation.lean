@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.EraseWordEvaluation
-public import SerrePositivity.EInfinity.Operad.SchurActionGenerators
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.SchurActionGenerators
 
 /-!
 # 自由代数の語を指定生成元で評価する式
@@ -26,17 +26,17 @@ universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded TensorPowers
 open scoped TensorProduct
-variable {A : Type u} [CommRing A] (P : Operad A) {K : Complex A} {I : ℤ → Type u}
+variable {A : Type u} [CommRing A] (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A) {K : Complex A} {I : ℤ → Type u}
 
 /-- A Schur word is the operation applied to the corresponding free generators. -/
 lemma schurGenerator_eq_actionValue (b : ∀ i, Module.Basis (I i) A (K.X i))
     (n : ℕ) (p r i : ℤ) (h : p + r = i) (u : (P.arity n).X p)
     (x : powerGradedIndex I n r) :
-    (schurι A P.sequence K n).f i (ιTensorObj (P.arity n) (power K n) p r i h
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P.sequence K n).f i (ιTensorObj (P.arity n) (power K n) p r i h
       (u ⊗ₜ[A] powerGradedBasis b n r x)) =
     (P.schurAction K n).f i
-      (ιTensorObj (P.arity n) (power ((schurFunctor A P.sequence).obj K) n) p r i h
-        (u ⊗ₜ[A] powerWordValue ((schurFunctor A P.sequence).obj K)
+      (ιTensorObj (P.arity n) (power ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P.sequence).obj K) n) p r i h
+        (u ⊗ₜ[A] powerWordValue ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P.sequence).obj K)
           (fun i z => (P.schurUnit K).f i (b i z)) n r x)) := by
   have hc := congrArg (fun z => z.f i
     (ιTensorObj (P.arity n) (power K n) p r i h

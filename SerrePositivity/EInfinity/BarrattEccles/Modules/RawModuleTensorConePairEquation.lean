@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -29,24 +29,24 @@ lemma strictRawModuleTensorConeData_equation_pair {n : ℕ}
       ((I.isLeast_min' _).unique ⟨h0, fun _ _ => Fin.zero_le _⟩)
     have hk0 : k = 0 := by omega
     subst hk0
-    have hJ := withoutFirst_nonempty hI h0
-    have hcard : (withoutFirst I).card = 1 := by have := card_withoutFirst I h0; omega
-    have hb' : b = ((withoutFirst I).max' hJ).succ :=
-      hb.trans (max_withoutFirst I hI h0).symm
+    have hJ := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0
+    have hcard : (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card = 1 := by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; omega
+    have hb' : b = ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).max' hJ).succ :=
+      hb.trans (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.max_withoutFirst I hI h0).symm
     have hx : (strictRawModuleTensorConeData A X P Q c).obj a =
         ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P) := by
       change strictRawModuleTensorConeObj A X P Q c a = _
       rw [ha0, strictRawModuleTensorConeObj_zero]
     have hy : (strictRawModuleTensorConeData A X P Q c).obj b =
         ForgetEnrichment.to (Complex A)
-          ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj ((withoutFirst I).max' hJ))) := by
+          ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).max' hJ))) := by
       change strictRawModuleTensorConeObj A X P Q c b = _
       rw [hb', strictRawModuleTensorConeObj_succ]
     have he := strictRawModuleTensorConeData_hom_mixed A X P Q c I a b 0 hI ha hb hk ha0 h0
     simp only [Int.negOnePow_zero, one_smul] at he
     have hd := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_differential_heq (A := A) hx hy rfl _ _ he
     have hz := strictRawModuleTensorElementSelectedCochainAtMax_closed A X P Q c
-      (withoutFirst I) hJ hcard
+      (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) hJ hcard
     have he0 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (k := 0 + 1) (l := 0 + 1) hx hy rfl
     have heq := eq_of_heq (hd.trans ((heq_of_eq hz).trans he0.symm))
     exact heq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.rhs_of_card_two _ I a b 0 hI ha hb hk hc).symm

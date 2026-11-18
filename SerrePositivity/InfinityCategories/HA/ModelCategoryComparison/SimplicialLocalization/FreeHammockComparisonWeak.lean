@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComparison
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeResolutionGeneratorPartition
-public import SerrePositivity.EInfinity.Hammock.FreeHammockLocalizationWeak
-public import SerrePositivity.EInfinity.Hammock.FixedObjectHomTransportIso
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FreeHammockLocalizationWeak
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectHomTransportIso
 
 /-!
 # 元の全自由次数の既存 DK Hom への右比較射の弱同値性
@@ -26,7 +26,7 @@ lemma freeHammockHomComparison_app_isWeakHomotopyEquivalence (C : _root_.SerrePo
     (X Y : C.category) (n : SimplexCategoryᵒᵖ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockHomComparison C X Y).app n) := by
   apply (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockLocalizationObjects C).colimitValue_weak_of_localizationValue n X Y
-  exact _root_.SerrePositivity.EInfinity.Hammock.free_localizationValue_isWeakHomotopyEquivalence
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.free_localizationValue_isWeakHomotopyEquivalence
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionGeneratorBase C n).weakEquivalences
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C n Y)
 

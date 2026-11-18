@@ -23,8 +23,8 @@ open SerrePositivity.HomotopyFunctionComplex SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
-  EInfinity.DGAlgebra.hasFiniteLimits EInfinity.DGAlgebra.hasTerminal
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
+  _root_.SerrePositivity.DGAlgebra.hasFiniteLimits _root_.SerrePositivity.DGAlgebra.hasTerminal
 
 def nativeCellMixedMappingFunctor : Mon (Complex R) ⥤ SSet.{u} :=
   multiplicativeSimplicesFunctor R ⋙
@@ -65,11 +65,11 @@ def nativeCellMixedRight : multiplicativeMappingFunctor R (cellResolution R A) �
 
 lemma nativeCellMixedLeft_anodyneImage_isIso (B : Mon (Complex R)) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((nativeCellMixedLeft R A).app B)) := by
-  have : IsFibrant B := EInfinity.DGAlgebra.allFibrant R B
+  have : IsFibrant B := _root_.SerrePositivity.DGAlgebra.allFibrant R B
   exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftComparison_isIso (nativeCellSourceFrame R A)
     ((nativeModelSourceResolutionFamily R).cofibrant (cellResolution R A))
     (multiplicativeSimplicesAugmentation R B)
-    (fun n => EInfinity.DGAlgebra.allFibrant R ((multiplicativeSimplices R B).obj n))
+    (fun n => _root_.SerrePositivity.DGAlgebra.allFibrant R ((multiplicativeSimplices R B).obj n))
     (multiplicativeSimplicesAugmentation_weakEquivalence R B)
 
 lemma nativeCellMixedRight_anodyneImage_isIso (B : Mon (Complex R)) :

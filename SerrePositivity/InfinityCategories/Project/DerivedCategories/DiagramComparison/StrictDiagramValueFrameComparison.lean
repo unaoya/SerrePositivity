@@ -21,7 +21,7 @@ open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A]
-local instance valueFrameModel : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance valueFrameModel : ModelCategory (Complex A) := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance valueFrameInitial : HasInitial (Complex A) :=
   (isZero_zero (Complex A)).isInitial.hasInitial
 
@@ -29,10 +29,10 @@ local instance valueFrameInitial : HasInitial (Complex A) :=
 def strictDiagramValueCofFactorization :
     MorphismProperty.FunctorialFactorizationData
       (cofibrations (Complex A)) (trivialFibrations (Complex A)) := by
-  haveI := EInfinity.projectiveModelCategory_cofibrantlyGenerated A
+  haveI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
   haveI := hasFunctorialFactorization_cofibration_trivialFibration
-    (EInfinity.projectiveGeneratingCofibrations A)
-    (EInfinity.projectiveGeneratingTrivialCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A)
   exact MorphismProperty.functorialFactorizationData _ _
 
 variable (d : StrictDiagramDirection)

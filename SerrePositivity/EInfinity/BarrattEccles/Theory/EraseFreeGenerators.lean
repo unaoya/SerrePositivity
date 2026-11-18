@@ -24,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory MonoidalCategory DifferentialGraded
-variable {A : Type u} [CommRing A] (P : Operad A)
+variable {A : Type u} [CommRing A] (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A)
 
 @[simp]
 lemma eraseAlgebra_carrier (X : P.Algebra) :
@@ -43,7 +43,7 @@ lemma eraseAlgebraAdjunction_unit_hom (X : P.Algebra) :
 @[reassoc]
 lemma eraseFreeAlgebraIso_unit (V : Complex A) :
     (eraseDifferential A).map (P.freeAlgebraAdjunction.unit.app V) ≫
-      (Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.hom.app V) =
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.hom.app V) =
         P.erase.freeAlgebraAdjunction.unit.app ((eraseDifferential A).obj V) := by
   let a := eraseDifferentialAdjunction A
   let R := cofreeCycles A
@@ -53,7 +53,7 @@ lemma eraseFreeAlgebraIso_unit (V : Complex A) :
   simp only [Adjunction.comp_unit_app] at h
   change (P.freeAlgebraAdjunction.unit.app V ≫
       (P.eraseAlgebraAdjunction.unit.app (P.freeAlgebraFunctor.obj V)).hom) ≫
-      R.map ((Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.hom.app V)) =
+      R.map ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.hom.app V)) =
     a.unit.app V ≫ R.map (P.erase.freeAlgebraAdjunction.unit.app
       ((eraseDifferential A).obj V)) at h
   rw [eraseAlgebraAdjunction_unit_hom] at h
@@ -64,17 +64,23 @@ lemma eraseFreeAlgebraIso_unit (V : Complex A) :
   simp only [CategoryTheory.Functor.id_obj, Category.assoc] at h ⊢
   exact h
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseFreeAlgebraIso_unit)
+
 /-- The inverse free algebra comparison recovers the original generating unit. -/
 @[reassoc]
 lemma eraseFreeAlgebraIso_inv_unit (V : Complex A) :
     P.erase.freeAlgebraAdjunction.unit.app ((eraseDifferential A).obj V) ≫
-      (Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.inv.app V) =
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.inv.app V) =
         (eraseDifferential A).map (P.freeAlgebraAdjunction.unit.app V) := by
-  let U := Algebra.forget P.erase
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase
   let e := P.eraseFreeAlgebraIso.app V
   have h := congrArg (fun k => k ≫ U.map e.inv) (P.eraseFreeAlgebraIso_unit V)
   erw [Category.assoc, ← U.map_comp, e.hom_inv_id, U.map_id, Category.comp_id] at h
   exact h.symm
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseFreeAlgebraIso_inv_unit)
 
 /-- The free algebra comparison intertwines the two specified free-forgetful correspondences. -/
 lemma eraseFreeAlgebraIso_homEquiv (V : Complex A) (X : P.Algebra)
@@ -84,9 +90,12 @@ lemma eraseFreeAlgebraIso_homEquiv (V : Complex A) (X : P.Algebra)
         (eraseDifferential A).map (P.freeAlgebraAdjunction.homEquiv _ _ f) := by
   simp only [Adjunction.homEquiv_unit]
   change P.erase.freeAlgebraAdjunction.unit.app ((eraseDifferential A).obj V) ≫
-    ((Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.inv.app V) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).map (P.eraseFreeAlgebraIso.inv.app V) ≫
       (eraseDifferential A).map f.hom) =
         (eraseDifferential A).map (P.freeAlgebraAdjunction.unit.app V ≫ f.hom)
   rw [eraseFreeAlgebraIso_inv_unit_assoc, CategoryTheory.Functor.map_comp]
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseFreeAlgebraIso_homEquiv)
 
 end SerrePositivity.EInfinity.Operad

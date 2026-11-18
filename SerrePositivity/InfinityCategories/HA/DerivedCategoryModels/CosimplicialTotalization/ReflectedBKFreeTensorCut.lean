@@ -18,7 +18,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory MonoidalCategory CochainComplex HomComplex HomologicalComplex AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open scoped Simplicial TensorProduct
@@ -45,7 +45,7 @@ theorem reflectedBKFreeTensor_inverse_cut (P : Complex A)
       (reflectedNormalizedBKSmallHomIso A Y).hom
     let t := (freeTensorDiagramHomIso A (normalizedBKSmallDiagram A Y)
       (reflectedNormalizedBKSmallWeight A)).inv.app (Opposite.op m)
-        (((truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
+        (((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map γ).app (Opposite.op m)
           ((standardDoldKanSpaceMap (R := A) P T).app (Opposite.op m) α))
     (t.app j).f (-(N : ℤ)) (ιTensorObj (freeNegativeChains (A := A) S)
       (freeNegativeChains (A := A) B) (-(c.val : ℤ)) (-((N - c.val : ℕ) : ℤ)) (-(N : ℤ))

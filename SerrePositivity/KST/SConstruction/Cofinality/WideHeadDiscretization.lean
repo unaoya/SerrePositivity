@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.CanonicalComponentProjection
-public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicialWeak
 
 /-!
 概要：元の全 S 多次数の wide 図式の先頭実現を成分障害へ離散化する。
@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
-open SerrePositivity.EInfinity.Hammock.DoubleSimplicial
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicial
 
 /-- 概要：元の全多次数 wide 図式から元の成分の定値図式への自然変換。
 方針：構成済みの元の成分射影と全多次数自然性を束ねる。
@@ -66,7 +66,7 @@ lemma completionWideHeadDiscretization_isWeak (r : ℕ) (ι : Fin r → SimplexC
   have hτ (n : SimplexCategoryᵒᵖ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (τ.app n) :=
     completionCanonicalComponentProjection_isWeak (r + 1)
       ((completionCokernelHeadIndex r ι).obj n) f hf
-  have hd := diagonalFunctor_map_weak τ hτ
+  have hd := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.DoubleSimplicial.diagonalFunctor_map_weak τ hτ
   exact hd.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso
     (completionCokernelHeadIndex r ι ⋙
       completionWideComponentDiagram (r + 1) f hf))).isWeakHomotopyEquivalence

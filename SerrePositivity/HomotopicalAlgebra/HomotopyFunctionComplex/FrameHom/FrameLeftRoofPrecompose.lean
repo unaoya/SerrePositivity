@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameLeftRoofPostcompose
-public import SerrePositivity.EInfinity.Hammock.LeftRoofPrecomposeHomotopy
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoofPrecomposeHomotopy
 
 /-!
 # 元の frame 比較による roof の始域自然性
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.HomotopyFunctionComplex
+open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.HomotopyFunctionComplex
 open _root_.SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   {X' X Y : C} (A' A : SimplexCategory ⥤ C)
@@ -55,7 +55,7 @@ lemma frameLeftRoofColimitMap_precompose :
     apply NatTrans.ext
     funext s
     exact NatTrans.congr_app hα (K.obj s)
-  have hc := LeftRoof.Precompose.diagramColimitMap_sourceComparison W U' U q'
+  have hc := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.diagramColimitMap_sourceComparison W U' U q'
     (fun s => hp' (K.obj s)) q (fun s => hp (K.obj s)) β f σ he
       (fun a => hA' (K.map a)) (fun a => hA (K.map a))
   exact hc

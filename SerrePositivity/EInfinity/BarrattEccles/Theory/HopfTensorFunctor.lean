@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory
 open DifferentialGraded TensorPowers
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 
 /-- BF §1.1.4 の二つの代数射のテンソルは、テンソル代数の射を与える。 -/
@@ -40,11 +40,11 @@ def hopfTensorFunctor (hP : P.Hopf) : P.Algebra × P.Algebra ⥤ P.Algebra where
   obj X := hopfTensorAlgebra hP X.1 X.2
   map f := hopfTensorMap hP f.1 f.2
   map_id X := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     change (𝟙 X.1.carrier ⊗ₘ 𝟙 X.2.carrier) = 𝟙 _
     rw [tensorHom_id, id_whiskerRight]
   map_comp f g := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     change ((f.1.hom ≫ g.1.hom) ⊗ₘ (f.2.hom ≫ g.2.hom)) =
       (f.1.hom ⊗ₘ f.2.hom) ≫ (g.1.hom ⊗ₘ g.2.hom)
     rw [tensorHom_comp_tensorHom]
@@ -54,11 +54,11 @@ def hopfTensorWith (hP : P.Hopf) (Y : P.Algebra) : P.Algebra ⥤ P.Algebra where
   obj X := hopfTensorAlgebra hP X Y
   map f := hopfTensorMap hP f (𝟙 Y)
   map_id X := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     change (𝟙 X.carrier ⊗ₘ 𝟙 Y.carrier) = 𝟙 _
     rw [tensorHom_id, id_whiskerRight]
   map_comp f g := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     change ((f.hom ≫ g.hom) ⊗ₘ 𝟙 Y.carrier) =
       (f.hom ⊗ₘ 𝟙 Y.carrier) ≫ (g.hom ⊗ₘ 𝟙 Y.carrier)
     rw [tensorHom_comp_tensorHom, Category.id_comp]

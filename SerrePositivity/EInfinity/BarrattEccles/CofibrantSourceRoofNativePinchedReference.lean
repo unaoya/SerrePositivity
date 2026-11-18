@@ -66,7 +66,7 @@ lemma cofibrantSourceRoofProductCommaNativePinchedMap_weak :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b) := by
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q]
-  exact Hammock.anodyneQ_map_isIso_of_weak _
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak _
     (cofibrantSourceRoofProductCommaReferenceMap_weak A X Y b)
 
 def cofibrantSourceRoofProductCommaNativeIntervalCell : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom

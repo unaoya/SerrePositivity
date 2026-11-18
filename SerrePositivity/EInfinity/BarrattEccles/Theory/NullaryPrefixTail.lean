@@ -40,7 +40,7 @@ lemma nullaryTailPermutation_transport (n k : ℕ) (σ : Equiv.Perm (Fin k))
   have hl : l = 0 := hs.symm.trans hz
   clear hs hz
   subst l
-  rw [blockEquiv_zero_left, finCongr_permCongr_trans]
+  rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_zero_left, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.finCongr_permCongr_trans]
   rfl
 
 /-- 零入力への代入は、残した尾の任意の置換に関して等変である。 -/
@@ -62,7 +62,7 @@ lemma nullaryPrefixDelete_tail_equivariance (n k : ℕ) (σ : Equiv.Perm (Fin k)
   have h₂ := congrArg
     (fun c => coefficientUnitInsert _ _ (nullaryInputFamily A n) ≫
       (operad A).composeFirstInputs n k (fun _ => 0) ≫ c) ht.symm
-  dsimp only [Operad.arity, SerrePositivity.SymmetricSequence.level] at h₁ h₂ ⊢
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arity, SerrePositivity.SymmetricSequence.level] at h₁ h₂ ⊢
   simp only [Category.assoc] at h₁ h₂
   simpa only [Category.assoc] using h₁.trans h₂
 

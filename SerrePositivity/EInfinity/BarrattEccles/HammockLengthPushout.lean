@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthBoundary
-public import SerrePositivity.EInfinity.Hammock.LengthStagePushout
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LengthStagePushout
 
 /-!
 # 任意の可換環上の元の長さ段階の pushout
@@ -23,35 +23,35 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
 def algebraHammockStageBoundarySum (n : ℕ) : SSet.{u + 1} :=
-  Hammock.stageBoundarySum (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageBoundarySum (algebraHammockGraphDiagram A X Y) n
 
 def algebraHammockStageTopSum (n : ℕ) : SSet.{u + 1} :=
-  Hammock.stageTopSum (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageTopSum (algebraHammockGraphDiagram A X Y) n
 
 def algebraHammockStageBoundarySumInclusion (n : ℕ) :
     algebraHammockStageBoundarySum A X Y n ⟶ algebraHammockStageTopSum A X Y n :=
-  Hammock.stageBoundarySumInclusion (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageBoundarySumInclusion (algebraHammockGraphDiagram A X Y) n
 
 def algebraHammockStageBoundaryAttach (n : ℕ) :
     algebraHammockStageBoundarySum A X Y n ⟶ algebraHammockLengthStage A X Y n :=
-  Hammock.stageBoundaryAttach n (algebraHammockGraphDiagram_proper A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageBoundaryAttach n (algebraHammockGraphDiagram_proper A X Y)
 
 def algebraHammockStageTopInclusion (n : ℕ) :
     algebraHammockStageTopSum A X Y n ⟶ algebraHammockLengthStage A X Y (n + 1) :=
-  Hammock.stageTopInclusion (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageTopInclusion (algebraHammockGraphDiagram A X Y) n
 
 lemma algebraHammockStageBoundaryAttach_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n) :
     Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n =>
       (algebraHammockLengthBoundary A X Y n a.val).toFunctor) a ≫
         algebraHammockStageBoundaryAttach A X Y n =
       algebraHammockLengthBoundaryToStage A X Y n a.val :=
-  Hammock.stageBoundaryAttach_fac n (algebraHammockGraphDiagram_proper A X Y) a
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageBoundaryAttach_fac n (algebraHammockGraphDiagram_proper A X Y) a
 
 lemma algebraHammockStageTopInclusion_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n) :
     Sigma.ι (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MaximalAlternating n => algebraHammockGraph A a.val X Y) a ≫
         algebraHammockStageTopInclusion A X Y n =
       algebraHammockLengthStageInclusion A X Y (n + 1) a.val a.property.1.le :=
-  Hammock.stageTopInclusion_fac (algebraHammockGraphDiagram A X Y) n a
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.stageTopInclusion_fac (algebraHammockGraphDiagram A X Y) n a
 
 /-- 元の前段階・二つの最大交互語・境界による、実際の次段階の pushout。 -/
 lemma algebraHammockLengthStage_isPushout (n : ℕ) :
@@ -59,6 +59,6 @@ lemma algebraHammockLengthStage_isPushout (n : ℕ) :
       (algebraHammockStageBoundarySumInclusion A X Y n)
       (algebraHammockLengthTransition A X Y (Nat.le_succ n))
       (algebraHammockStageTopInclusion A X Y n) :=
-  Hammock.lengthStage_isPushout n (algebraHammockGraphDiagram_proper A X Y)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.lengthStage_isPushout n (algebraHammockGraphDiagram_proper A X Y)
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CochainComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
@@ -20,11 +20,11 @@ variable (A : Type u) [CommRing A] {J : Type u} [SmallCategory J]
 variable (W : J ⥤ SSet.{u}) (φ : simplicialRingCoefficient.{u} →+* A)
 /-- 指定比較は標的の全図式射について同じΓ射・切断射と可換。 -/
 theorem normalizedWeightSectionMap_naturality {Q Q' : J ⥤ Complex A} (f : Q ⟶ Q') :
-    (truncatedDoldKanFunctor A).map
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map
       (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A := A) W) f) ≫
         normalizedWeightSectionMap A W Q' φ =
     normalizedWeightSectionMap A W Q φ ≫ (weightedSectionsFunctor W).map
-      ((Functor.whiskeringRight J (Complex A) SSet.{u}).obj (truncatedDoldKanFunctor A) |>.map f) := by
+      ((Functor.whiskeringRight J (Complex A) SSet.{u}).obj (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) |>.map f) := by
   let T := freeTensorFrame A W (liftedStandardSimplexParameter J)
   let P := freeProductFrame A W (liftedStandardSimplexParameter J)
   let e := freeTensorDiagramHomIso.{u,u} A Q W
@@ -32,7 +32,7 @@ theorem normalizedWeightSectionMap_naturality {Q Q' : J ⥤ Complex A} (f : Q �
   let a := freeProductHomComparison A W (liftedStandardSimplexParameter J) φ
   let p := freeProductSectionsHomIso A W Q
   let p' := freeProductSectionsHomIso A W Q'
-  let Hmap := (truncatedDoldKanFunctor A).map
+  let Hmap := (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map
     (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A := A) W) f)
   have hi : Hmap ≫ e'.inv = e.inv ≫ (cosimplicialHom T).map f := by
     have ht : (cosimplicialHom T).map f ≫ e'.hom = e.hom ≫ Hmap :=

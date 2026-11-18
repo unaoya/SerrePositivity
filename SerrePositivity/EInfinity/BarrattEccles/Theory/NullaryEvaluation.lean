@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfComparison
-public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationAll
-public import SerrePositivity.EInfinity.Operad.TensorFamilyUnitSeparation
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraEvaluationAll
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorFamilyUnitSeparation
 
 /-!
 # 零入力の族を代入する作用の照合
@@ -19,21 +19,21 @@ namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
 open scoped BigOperators
-attribute [local implicit_reducible] tensorFamily TensorPowers.power
+attribute [local implicit_reducible] _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily TensorPowers.power
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 variable {A : Type u} [CommRing A]
 
 /-- 零乗だけの族を連結する同型は、指定単位族の縮約である。 -/
 lemma tensorPowerFamilyIso_zero (K : Complex A) (n : ℕ) :
-    (tensorPowerFamilyIso K n (fun _ => 0)).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso K n (fun _ => 0)).hom ≫
       eqToHom (congrArg (power K) (by simp : (∑ _ : Fin n, 0) = 0)) =
-        (tensorUnitFamilyIso A n).hom := by
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).hom := by
   induction n with
   | zero => rfl
   | succ n ih =>
-    simp only [tensorPowerFamilyIso, Iso.trans_hom, whiskerLeftIso_hom, eqToIso.hom,
-      appendIso_zero_left, tensorUnitFamilyIso_succ_head, Category.assoc, eqToHom_trans]
-    change (𝟙_ (Complex A) ◁ (tensorPowerFamilyIso K n (fun _ => 0)).hom) ≫
+    simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso, Iso.trans_hom, whiskerLeftIso_hom, eqToIso.hom,
+      appendIso_zero_left, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso_succ_head, Category.assoc, eqToHom_trans]
+    change (𝟙_ (Complex A) ◁ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso K n (fun _ => 0)).hom) ≫
       (λ_ (power K (∑ _ : Fin n, 0))).hom ≫
         eqToHom (congrArg (power K) (by simp : (∑ _ : Fin n, 0) = 0)) = _
     rw [← leftUnitor_naturality, ← whiskerLeft_comp_assoc, ih]
@@ -41,15 +41,15 @@ lemma tensorPowerFamilyIso_zero (K : Complex A) (n : ℕ) :
 
 /-- 右側の単位を因子ごとに挿入して分離すると、単位族の逆を挿入する射になる。 -/
 lemma tensorFamilyTensorIso_insert_right (n : ℕ) (V : Fin n → Complex A) :
-    tensorFamilyMap n (fun j => (ρ_ (V j)).inv) ≫
-      (tensorFamilyTensorIso n V (fun _ => 𝟙_ (Complex A))).hom =
-    (ρ_ (tensorFamily n V)).inv ≫
-      (𝟙 (tensorFamily n V) ⊗ₘ (tensorUnitFamilyIso A n).inv) := by
-  apply (cancel_mono ((𝟙 (tensorFamily n V) ⊗ₘ (tensorUnitFamilyIso A n).hom) ≫
-    (ρ_ (tensorFamily n V)).hom)).1
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap n (fun j => (ρ_ (V j)).inv) ≫
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyTensorIso n V (fun _ => 𝟙_ (Complex A))).hom =
+    (ρ_ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V)).inv ≫
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V) ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).inv) := by
+  apply (cancel_mono ((𝟙 (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V) ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso A n).hom) ≫
+    (ρ_ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily n V)).hom)).1
   simp only [Category.assoc]
-  rw [tensorFamilyTensorIso_unit_right n V, ← tensorFamilyMap_comp]
-  simp only [Iso.inv_hom_id, tensorFamilyMap_id, tensorHom_comp_tensorHom_assoc,
+  rw [tensorFamilyTensorIso_unit_right n V, ← _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap_comp]
+  simp only [Iso.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap_id, tensorHom_comp_tensorHom_assoc,
     Category.comp_id, tensorHom_id, id_whiskerRight, Category.id_comp]
 
 namespace BarrattEccles
@@ -59,10 +59,10 @@ variable (R : Type u) [CommRing R] (K : Complex R) (m n : ℕ)
 def nullarySourceInsert :
     (operad R).arity (m + n) ⊗ power K n ⟶
       (operad R).arity (m + n) ⊗
-        (tensorFamily m (fun _ => (operad R).arity 0 ⊗ power K 0) ⊗ power K n) :=
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily m (fun _ => (operad R).arity 0 ⊗ power K 0) ⊗ power K n) :=
   (operad R).arity (m + n) ◁ ((λ_ (power K n)).inv ≫
     ((nullaryInputFamily R m ≫
-      tensorFamilyMap m (fun _ => (ρ_ ((operad R).arity 0)).inv)) ▷ power K n))
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap m (fun _ => (ρ_ ((operad R).arity 0)).inv)) ▷ power K n))
 
 /-- 指定係数の零入力代入は、係数消去の同じ射を入力冪とテンソルした射である。 -/
 lemma nullarySourceInsert_operation :
@@ -72,8 +72,8 @@ lemma nullarySourceInsert_operation :
           (by simp : (∑ _ : Fin m, 0) + n = n)) =
       nullaryPrefixDelete R m n ▷ power K n := by
   let e := eqToHom (congrArg (power K) (by simp : (∑ _ : Fin m, 0) = 0))
-  have hp : (tensorPowerFamilyIso K m (fun _ => 0)).hom =
-      (tensorUnitFamilyIso R m).hom ≫ inv e := by
+  have hp : (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso K m (fun _ => 0)).hom =
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso R m).hom ≫ inv e := by
     apply (cancel_mono e).1
     simp only [Category.assoc, IsIso.inv_hom_id, Category.comp_id]
     exact tensorPowerFamilyIso_zero K m
@@ -81,10 +81,10 @@ lemma nullarySourceInsert_operation :
     (tensorFamilyTensorIso_insert_right m (fun _ => (operad R).arity 0))
   simp only [comp_whiskerRight, whiskerLeft_comp] at hs
   let C := (operad R).arity (m + n)
-  let F := tensorFamily m (fun _ => (operad R).arity 0)
-  let U := tensorFamily m (fun _ => 𝟙_ (Complex R))
+  let F := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily m (fun _ => (operad R).arity 0)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily m (fun _ => 𝟙_ (Complex R))
   let T := power K n
-  let u := (tensorUnitFamilyIso R m).inv
+  let u := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso R m).inv
   have hm :
       (C ◁ ((𝟙 F ⊗ₘ u) ▷ T)) ≫ (C ◁ (α_ F U T).hom) ≫
         (α_ C F (U ⊗ T)).inv =
@@ -104,7 +104,7 @@ lemma nullarySourceInsert_operation :
     simp only [eqToHom_refl, IsIso.inv_id, id_whiskerRight, Category.id_comp,
       appendIso_zero_left, Iso.inv_hom_id_assoc,
       whiskerLeft_eqToHom, eqToHom_whiskerRight, eqToHom_trans]
-  dsimp only [nullarySourceInsert, Operad.iteratedOperationTensor, nullaryPrefixDelete,
+  dsimp only [nullarySourceInsert, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.iteratedOperationTensor, nullaryPrefixDelete,
     coefficientUnitInsert]
   simp only [whiskerLeft_comp, comp_whiskerRight, Category.assoc]
   dsimp only [TensorPowers.power]
@@ -130,9 +130,9 @@ lemma nullarySourceInsert_operation :
 /-- 零入力係数を各入力で評価して得る、指定された単位入力の有限族。 -/
 def nullaryUnitPower (Y : (operad R).Algebra) (a : ℕ) :
     𝟙_ (Complex R) ⟶ power Y.carrier a :=
-  (tensorUnitFamilyIso R a).inv ≫ tensorFamilyMap a (fun _ =>
+  (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso R a).inv ≫ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap a (fun _ =>
     (nullaryCoefficientIso R).inv ≫ (ρ_ ((operad R).arity 0)).inv ≫ Y.action 0) ≫
-    eqToHom (tensorFamily_const Y.carrier a)
+    eqToHom (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily_const Y.carrier a)
 
 /-- 係数消去を実際の代数の作用へ移すと、前半の入力への指定単位族の代入となる。 -/
 lemma nullaryPrefixDelete_action (Y : (operad R).Algebra) (a b : ℕ) :
@@ -144,11 +144,11 @@ lemma nullaryPrefixDelete_action (Y : (operad R).Algebra) (a b : ℕ) :
       eqToHom (congrArg (fun k => (operad R).arity k ⊗ power Y.carrier k) h) ≫
         Y.action j = Y.action i := by cases h; exact Category.id_comp _
   have hv : (nullaryInputFamily R a ≫
-      tensorFamilyMap a (fun _ => (ρ_ ((operad R).arity 0)).inv)) ≫
-      tensorFamilyGenerator Y.carrier (fun j => (operad R).arity j ⊗ power Y.carrier j)
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap a (fun _ => (ρ_ ((operad R).arity 0)).inv)) ≫
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator Y.carrier (fun j => (operad R).arity j ⊗ power Y.carrier j)
         Y.action a (fun _ => 0) = nullaryUnitPower R Y a := by
-    simp only [nullaryUnitPower, nullaryInputFamily, tensorFamilyGenerator_asMap,
-      tensorFamilyMap_comp, Category.assoc]
+    simp only [nullaryUnitPower, nullaryInputFamily, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator_asMap,
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap_comp, Category.assoc]
   calc
     _ = nullarySourceInsert R Y.carrier a b ≫
         (operad R).iteratedOperationTensor Y.carrier a b (fun _ => 0) ≫
@@ -168,9 +168,9 @@ lemma nullaryPrefixDelete_action (Y : (operad R).Algebra) (a b : ℕ) :
 /-- 指定単位射の同じ有限族として、零入力族を読む。 -/
 lemma nullaryUnitPower_eq (Y : (operad R).Algebra) (a : ℕ)
     (h0 : IsIso ((hopf R).counit.map.app (FiniteBijection.of 0))) :
-    nullaryUnitPower R Y a = (tensorUnitFamilyIso R a).inv ≫
-      tensorFamilyMap a (fun _ => (hopfTensorUnitMap (hopf R) h0 Y).hom) ≫
-        eqToHom (tensorFamily_const Y.carrier a) := by
+    nullaryUnitPower R Y a = (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitFamilyIso R a).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap a (fun _ => (hopfTensorUnitMap (hopf R) h0 Y).hom) ≫
+        eqToHom (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily_const Y.carrier a) := by
   rw [nullaryUnitPower, barrattEcclesTensorUnitMap_nullary R h0 Y]
 
 end BarrattEccles

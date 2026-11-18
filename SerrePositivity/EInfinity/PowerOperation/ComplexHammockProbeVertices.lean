@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories
@@ -33,7 +33,7 @@ lemma complexHammockProbe_vertex (x : (complexHammockNerve A) _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.relativeKanHammockNerve (complexRelativeProbeMorphism A)).app (Opposite.op ⦋0⦌) x =
       (complexHammockSource A).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ ((complexRelativeUp A).obj
-          ((framedLimitProbeFunctor A).obj (complexHammockOriginalObject A x)))) := by
+          ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj (complexHammockOriginalObject A x)))) := by
   let Z := coherentNerveObject (C := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockCategory (complexRelativeCategory A)) x
   have hx : coherentNerveVertex Z = x := coherentNerveVertex_object x
   have h₀ := congrArg

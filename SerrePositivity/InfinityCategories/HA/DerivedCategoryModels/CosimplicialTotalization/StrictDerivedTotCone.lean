@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
 open scoped Simplicial
@@ -23,12 +23,12 @@ variable {A : Type u} [CommRing A]
 /-- 同じ添字同型の逆で元のstrict図式へ戻す底図式の等式。 -/
 theorem nativeDerivedDiagram_reindex (X : CosimplicialObject (Complex A)) :
     nativeTotIndexIso.inv ≫ nativeDerivedDiagram X =
-      strictCosimplicialComplexNerve X ≫ complexOrdinaryDerivedSource A := by
+      strictCosimplicialComplexNerve X ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A := by
   rw [nativeDerivedDiagram_eq, ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
 
 /-- 元のstrict図式の同じ指定Tot錐。 -/
 def strictDerivedTotCone (X : CosimplicialObject (Complex A)) :
-    JoinCone (strictCosimplicialComplexNerve X ≫ complexOrdinaryDerivedSource A) :=
+    JoinCone (strictCosimplicialComplexNerve X ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) :=
   joinConeOfDiagramEq (nativeDerivedDiagram_reindex X)
     (restrictJoinCone (nativeDerivedCone X) nativeTotIndexIso.inv)
 

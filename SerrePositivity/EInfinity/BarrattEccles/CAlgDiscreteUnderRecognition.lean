@@ -29,7 +29,7 @@ def discreteCAlgUnderComparisonIso (B : CommAlgCat.{u} A) :
   let E := commAlgCatEquivUnder (CommRingCat.of A)
   let e := (discreteAlgebraFunctor A).mapIso (E.unitIso.app B)
   have hf : QuasiIso e.hom.hom := by
-    change QuasiIso ((Operad.Algebra.forget (operad A)).map e.hom)
+    change QuasiIso ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).map e.hom)
     infer_instance
   have h := cAlgVertexIsoOfQuasiIso A e.hom hf
   have h' := (discreteCAlgEmbedding_vertexIso A B) ≪≫ h ≪≫

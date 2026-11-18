@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainCounitLaws
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainCoassociativity
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainCounitLaws
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainCoassociativity
 public import SerrePositivity.EInfinity.BarrattEccles.AugmentationValues
 
 /-!
@@ -34,7 +34,7 @@ variable (A : Type u) [CommRing A]
 規約：既存の非有界整数コチェインテンソルを使う。
 使われ方：Hopf オペラッドの対角の arity 成分。 -/
 def complexDiagonal (n : ℕ) : complex A n ⟶ complex A n ⊗ complex A n :=
-  AlexanderWhitney.cochainDiagonal A (simplicial n)
+  _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal A (simplicial n)
 
 /-- 概要：E(n) の AW 対角は Σ_n 右作用と可換（Berger–Fresse §1.1.4）。
 方針：一般の AW 対角の自然性を同時右乗法へ適用する。
@@ -44,30 +44,30 @@ lemma complexDiagonal_rightAction (n : ℕ) (σ : Equiv.Perm (Fin n)) :
     complexRightAction A n σ ≫ complexDiagonal A n =
       complexDiagonal A n ≫
         HomologicalComplex.tensorHom (complexRightAction A n σ) (complexRightAction A n σ) :=
-  AlexanderWhitney.cochainDiagonal_natural A (rightAction n σ)
+  _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_natural A (rightAction n σ)
 
 /-- 概要：一般の AW 鎖余単位は既存の EΣ_n の収縮の順方向と一致（Berger–Fresse §1.1）。
 方針：単一複体への射を零次の生成元で比較する。
 規約：比較は鎖写像全体の等式である。
 使われ方：AW 余単位と既存の E → Com の augmentation の同定。 -/
 lemma chainCounit_eq_contraction (n : ℕ) :
-    AlexanderWhitney.counit A (simplicial n) = (normalizedChainContraction A n).hom := by
+    _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.counit A (simplicial n) = (normalizedChainContraction A n).hom := by
   apply HomologicalComplex.to_single_hom_ext
-  rw [AlexanderWhitney.counit_f_zero]
-  apply AlexanderWhitney.generator_hom_ext A (simplicial n) 0
+  rw [_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.counit_f_zero]
+  apply _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.generator_hom_ext A (simplicial n) 0
   intro x
-  change AlexanderWhitney.vertexAugmentation A (simplicial n)
-      (AlexanderWhitney.generator A (simplicial n) 0 x) =
+  change _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.vertexAugmentation A (simplicial n)
+      (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.generator A (simplicial n) 0 x) =
     (normalizedChainContraction A n).hom.f 0 (normalizedGenerator A n 0 x)
-  rw [AlexanderWhitney.vertexAugmentation_generator, normalizedAugmentation_generator_zero]
+  rw [_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.vertexAugmentation_generator, normalizedAugmentation_generator_zero]
 
 /-- 概要：整数 AW 余単位は既存の E(n) の augmentation に一致（Berger–Fresse §1.1）。
 方針：鎖余単位と収縮の一致を同じ延長と single 比較で移す。
 規約：新しい augmentation を既存のものと別に仮定しない。
 使われ方：Hopf 余単位として既存の E → Com を利用する。 -/
 lemma cochainCounit_eq_augmentation (n : ℕ) :
-    AlexanderWhitney.cochainCounit A (simplicial n) = complexAugmentation A n := by
-  rw [AlexanderWhitney.cochainCounit, chainCounit_eq_contraction]
+    _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (simplicial n) = complexAugmentation A n := by
+  rw [_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit, chainCounit_eq_contraction]
   rfl
 
 /-- 概要：E(n) の AW 対角は余結合的（Berger–Fresse §1.1.4）。
@@ -80,7 +80,7 @@ lemma complexDiagonal_coassoc (n : ℕ) :
         (HomologicalComplex.associator (complex A n) (complex A n) (complex A n)).hom =
       complexDiagonal A n ≫
         HomologicalComplex.tensorHom (𝟙 (complex A n)) (complexDiagonal A n) :=
-  AlexanderWhitney.cochainDiagonal_coassoc A (simplicial n)
+  _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_coassoc A (simplicial n)
 
 /-- 概要：E(n) の既存の augmentation は AW 対角の左余単位（Berger–Fresse §1.1.4）。
 方針：整数 AW の左余単位則で余単位と既存の augmentation の一致を使う。
@@ -90,7 +90,7 @@ lemma complexDiagonal_left_counit (n : ℕ) :
     complexDiagonal A n ≫
         HomologicalComplex.tensorHom (complexAugmentation A n) (𝟙 (complex A n)) ≫
         (HomologicalComplex.leftUnitor (complex A n)).hom = 𝟙 _ := by
-  have h := AlexanderWhitney.cochainDiagonal_left_counit A (simplicial n)
+  have h := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_left_counit A (simplicial n)
   rw [cochainCounit_eq_augmentation] at h
   exact h
 
@@ -102,7 +102,7 @@ lemma complexDiagonal_right_counit (n : ℕ) :
     complexDiagonal A n ≫
         HomologicalComplex.tensorHom (𝟙 (complex A n)) (complexAugmentation A n) ≫
         (HomologicalComplex.rightUnitor (complex A n)).hom = 𝟙 _ := by
-  have h := AlexanderWhitney.cochainDiagonal_right_counit A (simplicial n)
+  have h := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_right_counit A (simplicial n)
   rw [cochainCounit_eq_augmentation] at h
   exact h
 

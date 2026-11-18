@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockErasureConfluence
 public import SerrePositivity.EInfinity.BarrattEccles.HammockMergeConfluence
-public import SerrePositivity.EInfinity.Hammock.ReducedSimplicialSet
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReducedSimplicialSet
 
 /-!
 # 任意の可換環上の元の hammock の正規化
@@ -34,7 +34,7 @@ lemma algebraHammockMergeErase_join {k : ℕ} (d : Fin (k + 2) → _root_.SerreP
       Relation.ReflGen (algebraHammockRawReduction A X Y)
         (algebraHammockEraseRaw A X Y j τ hτ) s := by
   let := modelCategory A
-  exact Hammock.merge_erase_join (weakEquivalences (operad A).Algebra) X Y d p hp j τ hτ
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.merge_erase_join (weakEquivalences (operad A).Algebra) X Y d p hp j τ hτ
 
 lemma algebraHammockRawReduction_local_join {n : SimplexCategoryᵒᵖ}
     {r s t : algebraHammockRaw A X Y n}
@@ -42,7 +42,7 @@ lemma algebraHammockRawReduction_local_join {n : SimplexCategoryᵒᵖ}
     ∃ q, Relation.ReflGen (algebraHammockRawReduction A X Y) s q ∧
       Relation.ReflGen (algebraHammockRawReduction A X Y) t q := by
   let := modelCategory A
-  exact Hammock.reduction_local_join _ X Y n hs ht
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reduction_local_join _ X Y n hs ht
 
 lemma algebraHammockRawReduction_church_rosser {n : SimplexCategoryᵒᵖ}
     {r s t : algebraHammockRaw A X Y n}
@@ -50,7 +50,7 @@ lemma algebraHammockRawReduction_church_rosser {n : SimplexCategoryᵒᵖ}
     (ht : Relation.ReflTransGen (algebraHammockRawReduction A X Y) r t) :
     Relation.Join (Relation.ReflTransGen (algebraHammockRawReduction A X Y)) s t := by
   let := modelCategory A
-  exact Hammock.reduction_church_rosser _ X Y n hs ht
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reduction_church_rosser _ X Y n hs ht
 
 lemma algebraHammockReducedRepresentative_unique {n : SimplexCategoryᵒᵖ}
     {r s t : algebraHammockRaw A X Y n}
@@ -59,35 +59,35 @@ lemma algebraHammockReducedRepresentative_unique {n : SimplexCategoryᵒᵖ}
     (hsr : algebraHammockRawIsReduced A X Y s) (htr : algebraHammockRawIsReduced A X Y t) :
     s = t := by
   let := modelCategory A
-  exact Hammock.reduced_representative_unique _ X Y n hs ht hsr htr
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reduced_representative_unique _ X Y n hs ht hsr htr
 
 /-- 同じ元の有限縮約で得る、一意な縮約済みの代表。 -/
 def algebraHammockNormalForm {n : SimplexCategoryᵒᵖ}
     (r : algebraHammockRaw A X Y n) : algebraHammockRaw A X Y n := by
   let := modelCategory A
-  exact Hammock.normalForm _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalForm _ X Y n r
 
 lemma algebraHammockNormalForm_chain {n : SimplexCategoryᵒᵖ} (r : algebraHammockRaw A X Y n) :
     Relation.ReflTransGen (algebraHammockRawReduction A X Y) r
       (algebraHammockNormalForm A X Y r) := by
   let := modelCategory A
-  exact Hammock.normalForm_chain _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalForm_chain _ X Y n r
 
 lemma algebraHammockNormalForm_reduced {n : SimplexCategoryᵒᵖ} (r : algebraHammockRaw A X Y n) :
     algebraHammockRawIsReduced A X Y (algebraHammockNormalForm A X Y r) := by
   let := modelCategory A
-  exact Hammock.normalForm_reduced _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalForm_reduced _ X Y n r
 
 lemma algebraHammockNormalForm_eq_self {n : SimplexCategoryᵒᵖ} {r : algebraHammockRaw A X Y n}
     (hr : algebraHammockRawIsReduced A X Y r) : algebraHammockNormalForm A X Y r = r := by
   let := modelCategory A
-  exact Hammock.normalForm_eq_self _ X Y n hr
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalForm_eq_self _ X Y n hr
 
 lemma algebraHammockNormalForm_value {n : SimplexCategoryᵒᵖ} (r : algebraHammockRaw A X Y n) :
     algebraHammockRawValue A X Y (algebraHammockNormalForm A X Y r) =
       algebraHammockRawValue A X Y r := by
   let := modelCategory A
-  exact Hammock.normalForm_value _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalForm_value _ X Y n r
 
 lemma algebraHammockNormalForm_map {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
     (r : algebraHammockRaw A X Y n) :
@@ -95,27 +95,27 @@ lemma algebraHammockNormalForm_map {n m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
         (algebraHammockRawMap A X Y α (algebraHammockNormalForm A X Y r)) =
       algebraHammockNormalForm A X Y (algebraHammockRawMap A X Y α r) := by
   let := modelCategory A
-  exact Hammock.normalForm_map_normalForm _ X Y n α r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalForm_map_normalForm _ X Y n α r
 
 /-- 再縮約した全作用素を持つ、元の縮約済みの対象の単体集合。 -/
 def algebraHammockReducedSimplicialSet : SSet.{u + 1} := by
   let := modelCategory A
-  exact Hammock.reducedSimplicialSet (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedSimplicialSet (weakEquivalences (operad A).Algebra) X Y
 
 def algebraHammockNormalization :
     algebraHammockRawSimplicialSet A X Y ⟶ algebraHammockReducedSimplicialSet A X Y := by
   let := modelCategory A
-  exact Hammock.normalization (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalization (weakEquivalences (operad A).Algebra) X Y
 
 def algebraHammockReducedAugmentation :
     algebraHammockReducedSimplicialSet A X Y ⟶ algebraHammockColimitGraph A X Y := by
   let := modelCategory A
-  exact Hammock.reducedAugmentation (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedAugmentation (weakEquivalences (operad A).Algebra) X Y
 
 lemma algebraHammockNormalization_augmentation :
     algebraHammockNormalization A X Y ≫ algebraHammockReducedAugmentation A X Y =
       algebraHammockRawAugmentation A X Y := by
   let := modelCategory A
-  exact Hammock.normalization_augmentation (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.normalization_augmentation (weakEquivalences (operad A).Algebra) X Y
 
 end SerrePositivity.EInfinity.BarrattEccles

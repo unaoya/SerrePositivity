@@ -22,12 +22,12 @@ variable (A : Type u) [CommRing A]
 
 def algebraReducedHammock (X Y : (operad A).Algebra) : SSet.{u + 1} := by
   let := modelCategory A
-  exact Hammock.reducedSimplicialSet (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedSimplicialSet (weakEquivalences (operad A).Algebra) X Y
 
 def algebraHammockReductionIso (X Y : (operad A).Algebra) :
     algebraHammockColimitGraph A X Y ≅ algebraReducedHammock A X Y := by
   let := modelCategory A
-  exact Hammock.reducedColimitIso (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences (operad A).Algebra) X Y
 
 def mappingSpaceReducedHammockNerveMap (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶

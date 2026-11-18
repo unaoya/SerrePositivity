@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.ComplexHammockSource
-public import SerrePositivity.EInfinity.ComplexLimits.SemifreeClosedDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SemifreeClosedDerivedComparison
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 
 /-!
@@ -18,7 +18,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory SSet
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
 open DifferentialGradedCategories
@@ -37,12 +37,12 @@ def complexHammockDerivedComparison_valueIso (M : Semifree A) :
   have hx : (complexRelativeNerveDown A).app (Opposite.op ⦋0⦌) x =
       ComposableArrows.mk₀ M.val := ComposableArrows.ext₀ rfl
   have ep : VertexIso ((complexRelativeDerivedSource A).app (Opposite.op ⦋0⦌) x)
-      ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ M.val)) :=
+      ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ M.val)) :=
     eqToIso (congrArg HomotopyCategory.mk
-      (congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)) hx))
+      (congrArg ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)) hx))
   let z : ClosedCategory A (Semifree A) := ForgetEnrichment.of (Complex A) M
-  have e := (semifreeClosedDerivedSourceIso A).app (ComposableArrows.mk₀ z)
-  change VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+  have e := (_root_.SerrePositivity.ComplexLimits.semifreeClosedDerivedSourceIso A).app (ComposableArrows.mk₀ z)
+  change VertexIso ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
     ((nerveMap (semifreeClosedToComplex A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ z)))
     ((_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion A (Semifree A)).app (Opposite.op ⦋0⦌)
@@ -54,7 +54,7 @@ def complexHammockDerivedComparison_valueIso (M : Semifree A) :
     rw [_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion_vertex]
     rfl
   rw [hv] at e
-  change VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+  change VertexIso ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
     (ComposableArrows.mk₀ M.val)) (Simplex.vertex M) at e
   exact (complexHammockDerivedComparison_sourceIso A).app x ≪≫ ep ≪≫ e
 

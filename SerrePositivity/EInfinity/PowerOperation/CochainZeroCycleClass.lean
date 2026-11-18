@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.HomologyZero.Classes
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.Classes
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 
 /-!
@@ -34,9 +34,9 @@ lemma zeroCyclesActualIso_i (M : Complex A) :
 @[reassoc]
 lemma zeroCyclesActualIso_homologyπ (M : Complex A) :
     (zeroCyclesActualIso M).hom ≫ M.homologyπ 0 =
-      ModuleCat.ofHom (HomologyZero.classMap M) := by
+      ModuleCat.ofHom (_root_.SerrePositivity.HomologyZero.classMap M) := by
   simp only [zeroCyclesActualIso, Iso.trans_hom, Iso.symm_hom, Category.assoc,
-    HomologyZero.classMap, HomologyZero.quotientIso, Iso.trans_inv, ModuleCat.ofHom_hom]
+    _root_.SerrePositivity.HomologyZero.classMap, _root_.SerrePositivity.HomologyZero.quotientIso, Iso.trans_inv, ModuleCat.ofHom_hom]
   rw [← HomologicalComplex.π_homologyIsoSc'_inv,
     ShortComplex.moduleCatCyclesIso_inv_π_assoc]
 

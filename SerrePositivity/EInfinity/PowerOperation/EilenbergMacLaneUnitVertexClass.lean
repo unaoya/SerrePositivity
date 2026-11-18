@@ -33,7 +33,7 @@ def gammaUnitVertexClass :
 
 lemma gammaBasedPiZeroCohomologyEquiv_unit :
     gammaBasedPiZeroCohomologyEquiv A (𝟙_ (Complex A)) (gammaUnitVertexClass A) =
-      HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _) := by
+      _root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _) := by
   change gammaPiZeroCohomologyEquiv A (𝟙_ (Complex A))
     (KanHomotopyZero.equivPiZero (KanHomotopyZero.mk _)) = _
   rw [KanHomotopyZero.equivPiZero_mk]
@@ -45,7 +45,7 @@ lemma gammaBasedPiZeroCohomologyEquiv_unit :
 
 lemma gammaBasedPiZeroCohomologyEquiv_symm_unit :
     (gammaBasedPiZeroCohomologyEquiv A (𝟙_ (Complex A))).symm
-      (HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)) = gammaUnitVertexClass A := by
+      (_root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _)) = gammaUnitVertexClass A := by
   apply (gammaBasedPiZeroCohomologyEquiv A (𝟙_ (Complex A))).injective
   rw [Equiv.apply_symm_apply, gammaBasedPiZeroCohomologyEquiv_unit]
 

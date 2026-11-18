@@ -526,7 +526,7 @@ Kerodon Proposition 2.4.6.9（[Tag 00M4](https://kerodon.net/tag/00M4)）。対�
 
 B6：頂点・辺の全単射とホモトピー類の等式は比較を作る材料だが、原文の特定の U による圏同型の部分結論ではない。包含順/逆包含の nerve の比較も必要。
 
-宣言：`SerrePositivity.EInfinity.Hammock.coherentEdge_homMk_eq_of_homotopy`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeEquiv`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv`
+宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.coherentEdge_homMk_eq_of_homotopy`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeEquiv`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv`
 
 :::
 

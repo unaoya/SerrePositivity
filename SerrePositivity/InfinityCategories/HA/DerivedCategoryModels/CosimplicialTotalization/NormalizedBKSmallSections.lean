@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CochainComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
@@ -24,16 +24,16 @@ def normalizedBKCoefficientMap : ULift.{u} ℤ →+* A :=
   (Int.castRingHom A).comp (ULift.ringEquiv : ULift.{u} ℤ ≃+* ℤ).toRingHom
 /-- 元のBK Homから同じ持ち上げBK重み付き切断への指定AW比較。 -/
 def normalizedBKSmallSectionsMap (X : CosimplicialObject (Complex A)) :
-    (truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X) ⟶
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X) ⟶
       weightedSections (normalizedBKSmallWeight A)
-        (normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A) :=
-  (truncatedDoldKanFunctor A).map (normalizedBKSmallHomIso A X).hom ≫
+        (normalizedBKSmallDiagram A X ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) :=
+  (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (normalizedBKSmallHomIso A X).hom ≫
     normalizedWeightSectionMap A (normalizedBKSmallWeight A) (normalizedBKSmallDiagram A X)
       (normalizedBKCoefficientMap A)
 /-- 同じ反転前の指定比較自身が単体的ホモトピー同値。 -/
 theorem normalizedBKSmallSectionsMap_equivalence (X : CosimplicialObject (Complex A)) :
     IsSimplicialHomotopyEquivalence (normalizedBKSmallSectionsMap A X) := by
-  let e := (truncatedDoldKanFunctor A).mapIso (normalizedBKSmallHomIso A X)
+  let e := (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).mapIso (normalizedBKSmallHomIso A X)
   let f := normalizedWeightSectionMap A (normalizedBKSmallWeight A) (normalizedBKSmallDiagram A X)
     (normalizedBKCoefficientMap A)
   change IsSimplicialHomotopyEquivalence (e.hom ≫ f)

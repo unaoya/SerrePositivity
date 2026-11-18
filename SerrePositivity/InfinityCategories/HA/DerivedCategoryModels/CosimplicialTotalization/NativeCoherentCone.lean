@@ -26,7 +26,7 @@ variable {A : Type u} [CommRing A]
 /-- 元の strict 余単体図式を、係数環の宇宙の添字圏で扱う。 -/
 def liftedClosedDiagram (X : CosimplicialObject (Complex A)) :
     AsSmall.{u} SimplexCategory ⥤ ClosedCategory A (Complex A) :=
-  AsSmall.down ⋙ X ⋙ SerrePositivity.EInfinity.ComplexLimits.complexToClosed A
+  AsSmall.down ⋙ X ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A
 
 /-- 同じ元の Tot を頂点とする、持ち上げた BK 重みから実反転 Hom への射。 -/
 def liftedEnrichedBousfieldKanCone (X : CosimplicialObject (Complex A)) :

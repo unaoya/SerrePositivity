@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.RepresentationComplex
-public import SerrePositivity.EInfinity.Operad.TensorNaturality
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorNaturality
 
 /-!
 # Tate 経路の p 入力の符号付き表現複体
@@ -31,7 +31,7 @@ def tensorPowerRepresentationFunctor (n : ℕ) (σ : G →* Equiv.Perm (Fin n)) 
     Complex k ⥤ CochainComplex (Rep.{u} k G) ℤ where
   obj K := representationCochainComplex (tensorPowerComplexAction K n σ)
   map f := representationCochainMap _ _ (TensorPowers.map f n)
-    (fun g => (tensorPower_permutation_naturality k f n (σ g)).symm)
+    (fun g => (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPower_permutation_naturality k f n (σ g)).symm)
   map_id K := by
     apply HomologicalComplex.Hom.ext
     funext i

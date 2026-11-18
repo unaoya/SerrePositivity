@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.TensorHomAdjunction
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainCounit
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainCounit
 public import Mathlib.CategoryTheory.Whiskering
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
@@ -66,7 +66,7 @@ def moduleTensorSimplicesFunctor :
 規約：HA §1.3.4、全次元。使われ方：同じ全 Hom との転置。 -/
 lemma moduleTensorSimplices_obj_eval (M : ModuleCategory A D) (n : SimplexCategory) (x : D) :
     (moduleEvaluation A D x).obj (((moduleTensorSimplicesFunctor A D).obj M).obj n) =
-      AlexanderWhitney.cochains A (SSet.stdSimplex.obj n) ⊗
+      _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n) ⊗
         (moduleEvaluation A D x).obj M := rfl
 
 /-- 概要：同じ全標的の作用は単位と元の加群射のテンソル。
@@ -75,7 +75,7 @@ lemma moduleTensorSimplices_obj_eval (M : ModuleCategory A D) (n : SimplexCatego
 lemma moduleTensorSimplices_map_eval {M N : ModuleCategory A D} (f : M ⟶ N)
     (n : SimplexCategory) (x : D) :
     (moduleEvaluation A D x).map (((moduleTensorSimplicesFunctor A D).map f).app n) =
-      𝟙 (AlexanderWhitney.cochains A (SSet.stdSimplex.obj n)) ⊗ₘ
+      𝟙 (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n)) ⊗ₘ
         (moduleEvaluation A D x).map f :=
   moduleTensorLeftMap_eval A D _ f x
 
@@ -84,18 +84,18 @@ lemma moduleTensorSimplices_map_eval {M N : ModuleCategory A D} (f : M ⟶ N)
 規約：HA §1.3.4、同じ元の加群。使われ方：source frame の比較の底。 -/
 def moduleTensorSimplicesAugmentation (M : ModuleCategory A D) :
     (moduleTensorSimplicesFunctor A D).obj M ⟶ (Functor.const SimplexCategory).obj M where
-  app n := tensorModuleMap (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n))
+  app n := tensorModuleMap (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n))
     (ForgetEnrichment.to (Complex A) M) ≫
       (moduleTensorUnitIso A D (ForgetEnrichment.to (Complex A) M)).hom
   naturality n m f := by
     let L := tensorModuleFunctor (ForgetEnrichment.to (Complex A) M)
-    change L.map (AlexanderWhitney.cochainMap A (SSet.stdSimplex.map f)) ≫
-        (L.map (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj m)) ≫ _) =
-      (L.map (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)) ≫ _) ≫ 𝟙 M
+    change L.map (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map f)) ≫
+        (L.map (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj m)) ≫ _) =
+      (L.map (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)) ≫ _) ≫ 𝟙 M
     rw [Category.comp_id, ← Category.assoc, ← L.map_comp]
     exact congrArg (fun z => L.map z ≫
       (moduleTensorUnitIso A D (ForgetEnrichment.to (Complex A) M)).hom)
-      (AlexanderWhitney.cochainCounit_natural A (SSet.stdSimplex.map f))
+      (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_natural A (SSet.stdSimplex.map f))
 
 /-- 概要：同じ augmentation の評価は元の AW 余単位をテンソルした後の左単位子。
 方針：既存の二つの射の評価式を合成する。
@@ -103,10 +103,10 @@ def moduleTensorSimplicesAugmentation (M : ModuleCategory A D) :
 lemma moduleTensorSimplicesAugmentation_eval (M : ModuleCategory A D)
     (n : SimplexCategory) (x : D) :
     (moduleEvaluation A D x).map ((moduleTensorSimplicesAugmentation A D M).app n) =
-      (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ⊗ₘ
+      (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n) ⊗ₘ
         𝟙 ((moduleEvaluation A D x).obj M)) ≫ (λ_ ((moduleEvaluation A D x).obj M)).hom := by
   change (moduleEvaluation A D x).map
-      (tensorModuleMap (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n))
+      (tensorModuleMap (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n))
         (ForgetEnrichment.to (Complex A) M) ≫
           (moduleTensorUnitIso A D (ForgetEnrichment.to (Complex A) M)).hom) = _
   rw [CategoryTheory.Functor.map_comp, tensorModuleMap_eval, moduleTensorUnitIso_hom_eval]
@@ -124,7 +124,7 @@ def moduleTensorSimplicesAugmentationFamily :
     apply moduleMorphism_ext
     intro x
     let E := moduleEvaluation A D x
-    let ε := AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)
+    let ε := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)
     change E.map ((((moduleTensorSimplicesFunctor A D).map f).app n) ≫
         (moduleTensorSimplicesAugmentation A D N).app n) =
       E.map ((moduleTensorSimplicesAugmentation A D M).app n ≫ f)

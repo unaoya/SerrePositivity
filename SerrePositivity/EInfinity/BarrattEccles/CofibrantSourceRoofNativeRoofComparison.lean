@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.LeftRoofSameUniverseComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoofSameUniverseComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofProductCone
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofCornerEvaluation
 
@@ -36,7 +36,7 @@ def cofibrantSourceRoofProductCommaAugmentationRoofGraphMap :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
-  Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap _
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation_weak A X Y b)
@@ -48,7 +48,7 @@ def cofibrantSourceRoofProductCommaAugmentationRoofMap :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
-  Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation_weak A X Y b)
@@ -60,7 +60,7 @@ def cofibrantSourceRoofProductCommaEvaluationRoofMap :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       ((cofibrantDKSourceFrame A X).obj (cofibrantSourceRoofDegree A X Y b))
       (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
-  Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
@@ -83,7 +83,7 @@ lemma cofibrantSourceRoofProductCommaEvaluationRoofMap_sourceComparison :
     exact (cofibrantSourceRoofProductCommaAugmentation_triangle A X Y b).symm
   simpa only [Category.id_comp, cofibrantSourceRoofProductCommaEvaluationRoofMap,
     cofibrantSourceRoofProductCommaAugmentationRoofMap] using
-    Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap_sourceComparison
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap_sourceComparison
       (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaDiagram A X Y b)

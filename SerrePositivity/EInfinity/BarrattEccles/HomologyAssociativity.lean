@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCompositeHomotopy
-public import SerrePositivity.EInfinity.HomologyZero.TernaryInput
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.TernaryInput
 
 /-!
 # E 代数の実際の H⁰ の積の結合性
@@ -25,7 +25,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory MonoidalCategory HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
-open HomologyZero
+open _root_.SerrePositivity.HomologyZero
 
 variable {A : Type u} [CommRing A]
 
@@ -43,10 +43,10 @@ def homologyBinaryAssociativityHomotopy (X : (operad A).Algebra) :
   have hb : (λ_ (power X.carrier 2)).hom ≫ homologyOperation X 2 =
       (aritySection A 2 ▷ power X.carrier 2) ≫ X.action 2 := by
     simp only [homologyOperation, Iso.hom_inv_id_assoc]
-  have hl := (homologyCompositionHomotopy X 1 2 0).compLeft (ternaryInput X.carrier)
-  have hr := (homologyCompositionHomotopy X 1 2 1).compLeft (ternaryInput X.carrier)
-  rw [← hb, binaryAssociativityLeftInput] at hl
-  rw [← hb, binaryAssociativityRightInput] at hr
+  have hl := (homologyCompositionHomotopy X 1 2 0).compLeft (_root_.SerrePositivity.HomologyZero.ternaryInput X.carrier)
+  have hr := (homologyCompositionHomotopy X 1 2 1).compLeft (_root_.SerrePositivity.HomologyZero.ternaryInput X.carrier)
+  rw [← hb, _root_.SerrePositivity.HomologyZero.binaryAssociativityLeftInput] at hl
+  rw [← hb, _root_.SerrePositivity.HomologyZero.binaryAssociativityRightInput] at hr
   simpa only [homologyBinary, Category.assoc] using hl.symm.trans hr
 
 /-- 概要：E 代数の実際の H⁰ の積は結合的（BF §1、BM §1）。
@@ -56,24 +56,24 @@ def homologyBinaryAssociativityHomotopy (X : (operad A).Algebra) :
 lemma homologyProduct_assoc (X : (operad A).Algebra) (x y z : X.carrier.homology 0) :
     homologyProduct X (homologyProduct X x y) z =
       homologyProduct X x (homologyProduct X y z) := by
-  obtain ⟨f, rfl⟩ := unitClass_surjective X.carrier x
-  obtain ⟨g, rfl⟩ := unitClass_surjective X.carrier y
-  obtain ⟨h, rfl⟩ := unitClass_surjective X.carrier z
+  obtain ⟨f, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier x
+  obtain ⟨g, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier y
+  obtain ⟨h, rfl⟩ := _root_.SerrePositivity.HomologyZero.unitClass_surjective X.carrier z
   let μ := homologyBinary X
-  change pairingValue μ (pairingValue μ (unitClass X.carrier f) (unitClass X.carrier g))
-      (unitClass X.carrier h) =
-    pairingValue μ (unitClass X.carrier f)
-      (pairingValue μ (unitClass X.carrier g) (unitClass X.carrier h))
-  simp only [pairingValue_class]
-  apply (unitClass_eq_iff X.carrier _ _).mpr
+  change _root_.SerrePositivity.HomologyZero.pairingValue μ (_root_.SerrePositivity.HomologyZero.pairingValue μ (_root_.SerrePositivity.HomologyZero.unitClass X.carrier f) (_root_.SerrePositivity.HomologyZero.unitClass X.carrier g))
+      (_root_.SerrePositivity.HomologyZero.unitClass X.carrier h) =
+    _root_.SerrePositivity.HomologyZero.pairingValue μ (_root_.SerrePositivity.HomologyZero.unitClass X.carrier f)
+      (_root_.SerrePositivity.HomologyZero.pairingValue μ (_root_.SerrePositivity.HomologyZero.unitClass X.carrier g) (_root_.SerrePositivity.HomologyZero.unitClass X.carrier h))
+  simp only [_root_.SerrePositivity.HomologyZero.pairingValue_class]
+  apply (_root_.SerrePositivity.HomologyZero.unitClass_eq_iff X.carrier _ _).mpr
   let t := (λ_ (𝟙_ (Complex A))).inv ≫
     (((λ_ (𝟙_ (Complex A))).inv ≫ (f ⊗ₘ g)) ⊗ₘ h)
-  have hl : unitPairing μ (unitPairing μ f g) h = t ≫ (μ ▷ X.carrier) ≫ μ := by
+  have hl : _root_.SerrePositivity.HomologyZero.unitPairing μ (_root_.SerrePositivity.HomologyZero.unitPairing μ f g) h = t ≫ (μ ▷ X.carrier) ≫ μ := by
     change (λ_ (𝟙_ (Complex A))).inv ≫
       (((λ_ (𝟙_ (Complex A))).inv ≫ (f ⊗ₘ g) ≫ μ) ⊗ₘ h) ≫ μ = _
     dsimp only [t]
     monoidal
-  have hr : unitPairing μ f (unitPairing μ g h) =
+  have hr : _root_.SerrePositivity.HomologyZero.unitPairing μ f (_root_.SerrePositivity.HomologyZero.unitPairing μ g h) =
       t ≫ (α_ X.carrier X.carrier X.carrier).hom ≫ (X.carrier ◁ μ) ≫ μ := by
     change (λ_ (𝟙_ (Complex A))).inv ≫
       (f ⊗ₘ ((λ_ (𝟙_ (Complex A))).inv ≫ (g ⊗ₘ h) ≫ μ)) ≫ μ = _

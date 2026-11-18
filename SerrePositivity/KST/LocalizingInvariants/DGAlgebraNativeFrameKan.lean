@@ -24,12 +24,12 @@ open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
-  EInfinity.DGAlgebra.hasFiniteLimits EInfinity.DGAlgebra.hasTerminal
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
+  _root_.SerrePositivity.DGAlgebra.hasFiniteLimits _root_.SerrePositivity.DGAlgebra.hasTerminal
 
 lemma nativeCellSourceFrameHom_kanComplex (B : Mon (Complex R)) :
     SSet.KanComplex ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (nativeCellSourceFrame R A)).obj B) := by
-  have : IsFibrant B := EInfinity.DGAlgebra.allFibrant R B
+  have : IsFibrant B := _root_.SerrePositivity.DGAlgebra.allFibrant R B
   exact cosimplicialHom_kanComplex (nativeCellSourceFrame R A)
     ((nativeModelSourceResolutionFamily R).cofibrant (cellResolution R A))
     ((nativeModelSourceResolutionFamily R).atObject (cellResolution R A)).homotopicallyConstant B

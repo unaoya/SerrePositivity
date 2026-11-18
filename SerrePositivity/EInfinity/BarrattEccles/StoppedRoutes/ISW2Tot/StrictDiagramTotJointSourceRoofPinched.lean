@@ -55,7 +55,7 @@ def strictBETotJointSourceRoofKanComparison (P : _root_.SerrePositivity.EInfinit
           (modelRelativeCategory (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra).weakEquivalences
           (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointRoofSourceObject A P) (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointRoofTargetObject A P)) :=
   _root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofComparison A P ≫
-    (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
       (_root_.SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe A (AsSmall.down.obj P).1.unop)
       ((rightFrameReplacement (_root_.SerrePositivity.EInfinity.BarrattEccles.rightFrameFamily A)).obj (AsSmall.down.obj P).2)).hom ≫
         exInfinityUnit.app _
@@ -65,7 +65,7 @@ theorem strictBETotJointSourceRoofKanComparison_weak (P : _root_.SerrePositivity
     IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofKanComparison A P) := by
   have h₀ := _root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofComparison_isWeakHomotopyEquivalence A P
   have h₁ := (isPrecompositionEquivalence_of_iso
-    (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
       (_root_.SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe A (AsSmall.down.obj P).1.unop)
       ((rightFrameReplacement (_root_.SerrePositivity.EInfinity.BarrattEccles.rightFrameFamily A)).obj (AsSmall.down.obj P).2))).isWeakHomotopyEquivalence
   exact h₀.comp (h₁.comp (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamilyUnit_isWeakHomotopyEquivalence _))
@@ -79,7 +79,7 @@ theorem strictBETotJointSourceRoofKanComparison_unit (P : _root_.SerrePositivity
       _root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofKanComparison A P := by
   exact congrArg (fun f => _root_.SerrePositivity.EInfinity.BarrattEccles.StoppedRoutes.ISW2Tot.strictBETotJointSourceRoofComparison A P ≫ f)
     (exInfinityUnit.naturality
-      (_root_.SerrePositivity.EInfinity.Hammock.AsSmallComparison.colimitIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso (weakEquivalences (_root_.SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
         (_root_.SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe A (AsSmall.down.obj P).1.unop)
         ((rightFrameReplacement (_root_.SerrePositivity.EInfinity.BarrattEccles.rightFrameFamily A)).obj (AsSmall.down.obj P).2)).hom).symm
 

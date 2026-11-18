@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
@@ -29,11 +29,11 @@ variable {A : Type u} [CommRing A]
 def nativeDerivedDiagram (X : CosimplicialObject (Complex A)) :
     (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory)) ⟶
       derivedInfinityCategory A :=
-  nativeDGDiagram X ≫ complexSemifreeResolutionInfinity A
+  nativeDGDiagram X ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A
 
 /-- 元のTot錐の同じ全join射を、同じ出力分解で既存D(A)へ送る。 -/
 def nativeDerivedCone (X : CosimplicialObject (Complex A)) : JoinCone (nativeDerivedDiagram X) :=
-  mapJoinCone (complexSemifreeResolutionInfinity A) (nativeDGCone X)
+  mapJoinCone (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A) (nativeDGCone X)
 
 /-- 同じTot錐の出力分解の像は、既存D(A)でnative極限錐である。 -/
 theorem nativeDerivedCone_isLimit (X : CosimplicialObject (Complex A)) :
@@ -46,13 +46,13 @@ theorem nativeDerivedCone_isLimit (X : CosimplicialObject (Complex A)) :
   have h := (semifreeRingEvaluationInfinity_isQCatEquivalence A).isLimitCone_iff
     (mapJoinCone (dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A))
       (nativeDGCone X)) |>.mp hr
-  simpa only [nativeDerivedCone, complexSemifreeResolutionInfinity, mapJoinCone,
+  simpa only [nativeDerivedCone, _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity, mapJoinCone,
     Category.assoc] using h
 
 /-- 移した錐の頂点は、元の積Totの同じ指定半自由分解の頂点。 -/
 theorem nativeDerivedCone_vertex (X : CosimplicialObject (Complex A)) :
     (nativeDerivedCone X).vertex =
-      (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
         (Simplex.vertex ((productTotalFunctor A).obj X)) := by
   rw [nativeDerivedCone, mapJoinCone_vertex, nativeDGCone_vertex]
 

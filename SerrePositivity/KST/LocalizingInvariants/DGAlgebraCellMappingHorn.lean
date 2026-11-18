@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSimplicialConvolutionRestriction
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSmallMappingNaturality
-public import SerrePositivity.EInfinity.AlexanderWhitney.HornCochainContraction
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.HornCochainContraction
 
 /-!
 概要：cell 源の実乗法的写像の全標準ホーンを厳密に充填する。
@@ -28,13 +28,13 @@ def hornConvolutionRestriction :
   (simplicialConvolution R B).map (SSet.horn (n + 1) i).ι.op
 
 lemma hornConvolutionRestriction_fibration :
-    EInfinity.projectiveFibrations R (hornConvolutionRestriction R B n i).hom :=
+    _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R (hornConvolutionRestriction R B n i).hom :=
   simplicialConvolution_restriction_fibration R B (SSet.horn (n + 1) i).ι
 
 lemma hornConvolutionRestriction_quasiIso :
     QuasiIso (hornConvolutionRestriction R B n i).hom :=
   simplicialConvolution_restriction_quasiIso R B (SSet.horn (n + 1) i).ι
-    (EInfinity.AlexanderWhitney.normalizedHornInclusion_quasiIso R n i)
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.normalizedHornInclusion_quasiIso R n i)
 
 lemma exists_cellResolution_horn_lift
     (a : cellResolution R A ⟶

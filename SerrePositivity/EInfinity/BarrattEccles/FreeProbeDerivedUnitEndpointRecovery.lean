@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitVertex
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitRecoveryComponent
-public import SerrePositivity.EInfinity.ComplexLimits.ProbeDerivedSourceVertex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ProbeDerivedSourceVertex
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.Reindexing.ConstantRestrictionArrow
 /-!
 概要：既存の標準導来単位成分を、元の複体単位の同じ端点へ回収する。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom ComplexLimits
+open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A)
 
@@ -33,19 +33,19 @@ private lemma componentEndpointCancellation {C : Type*} [Category* C]
 def freeProbeDerivedUnitUnderlyingVertexIso :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       (cAlgVertex A ((freeProbeFunctor A).obj X)))
-      ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((freeProbeFunctor A).obj X).carrier)) :=
   (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (freeProbeCAlgSource_vertexIso A X) (cAlgForgetDerived A)).symm ≪≫
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (freeProbeUnderlyingDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≪≫
-      complexDiagramDerivedVertexIso A (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X
+      _root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X
 
 /-- 概要：既存の probe 始域比較は同じ全源比較の評価と通常頂点輸送。
 方針：既存の頂点成分と同じ二射の評価の一致を使う。
 規約：元の比較そのもの。使われ方：標準単位回収式の始域側。 -/
 lemma freeProbeDerivedUnit_probeVertexIso :
-    complexProbeDerivedSourceVertexIso A X =
-      (complexDiagramDerivedVertexIso A (ComplexLimits.framedLimitProbeFunctor A) X).symm ≪≫
-        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (complexProbeDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) := by
+    _root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A X =
+      (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) X).symm ≪≫
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) := by
   rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate_eq_app]
   rfl
 
@@ -53,12 +53,12 @@ lemma freeProbeDerivedUnit_probeVertexIso :
 方針：同じ評価の合成保存で元の回収式を展開する。
 規約：元の全比較の評価を保持。使われ方：標準単位成分の端点回収。 -/
 lemma freeProbeDerivedUnitFullComponent_recovery :
-    (complexDiagramDerivedVertexIso A (ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
-      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (complexProbeDerivedSourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
+    (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
       _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeDerivedUnit A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
       _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
-      (complexDiagramDerivedVertexIso A
-        (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom =
+      (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+        (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X).hom =
       freeProbeUnitOrdinaryHom A X := by
   have h := freeProbeDerivedUnitRecoveredHom_eq A X
   dsimp only [freeProbeDerivedUnitRecoveredHom] at h
@@ -69,17 +69,17 @@ lemma freeProbeDerivedUnitFullComponent_recovery :
 方針：元の全回収式の評価と同じ自由源頂点同型の逆則を使う。
 規約：標準単位・元の単位成分・実 U を保持。使われ方：単位比較の端点整合。 -/
 lemma freeProbeDerivedUnitComponent_recovery :
-    (complexProbeDerivedSourceVertexIso A X).hom ≫ freeProbeDerivedUnitComponent A X ≫
+    (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceVertexIso A X).hom ≫ freeProbeDerivedUnitComponent A X ≫
       (freeProbeDerivedUnitUnderlyingVertexIso A X).hom = freeProbeUnitOrdinaryHom A X := by
   rw [freeProbeDerivedUnit_probeVertexIso]
   refine componentEndpointCancellation
-    (complexDiagramDerivedVertexIso A (ComplexLimits.framedLimitProbeFunctor A) X).symm
-    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (complexProbeDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+    (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) X).symm
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (_root_.SerrePositivity.ComplexLimits.complexProbeDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
     (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeDerivedUnit A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
     (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (freeProbeCAlgSource_vertexIso A X) (cAlgForgetDerived A))
     (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (freeProbeUnderlyingDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
-    (complexDiagramDerivedVertexIso A
-      (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X)
+    (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+      (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X)
     (freeProbeUnitOrdinaryHom A X) ?_
   dsimp only [Iso.symm_hom, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate]
   exact freeProbeDerivedUnitFullComponent_recovery A X

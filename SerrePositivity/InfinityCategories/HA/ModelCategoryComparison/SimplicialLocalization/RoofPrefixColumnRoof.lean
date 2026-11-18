@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixFamilyTriangle
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.NerveColumnRoofNaturality
-public import SerrePositivity.EInfinity.ComplexLimits.PinchedFamilyPostcompArrow
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.PinchedFamilyPostcompArrow
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
 /-! 概要：実 hammock roof 全族の任意の後合成を元の通常列の全屋根へ戻す。
 方針：全評価三角形の両円柱を同じ後合成で送り、元の左脚の逆を保持する。
@@ -101,7 +101,7 @@ lemma native_family_postcomp_column_roof_arrow {E : SSet.{u}} [Quasicategory E]
   let T := (hoFunctor.map ((ihom (nerve I)).map F)).toFunctor
   have hn := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.native_family_eq_roof_arrow C V p hp s hV
   have hm := congrArg T.mapArrow.obj hn
-  have hl := _root_.SerrePositivity.EInfinity.ComplexLimits.pinchedFamilyPostcomp_arrow F
+  have hl := _root_.SerrePositivity.ComplexLimits.pinchedFamilyPostcomp_arrow F
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.familyMap C V p hp s hV ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap C X Y)
   refine hl.trans (hm.trans ?_)
   change Arrow.mk (T.map ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationIso C V p hp).inv ≫ _)) = _

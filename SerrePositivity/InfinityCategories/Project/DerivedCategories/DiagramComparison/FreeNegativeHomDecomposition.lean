@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedFreeHomProjectedEvaluation
-public import SerrePositivity.EInfinity.ComplexLimits.ExtendTruncationHomInclusion
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ExtendTruncationHomInclusion
 
 /-!
 概要：指定自由負次数鎖の逆随伴をMooreの逆随伴と同じ切断包含に分ける。
@@ -16,13 +16,13 @@ universe u
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory AlgebraicTopology HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 /-- 指定自由負次数鎖の逆随伴は同じMoore逆随伴と延長逆随伴の合成。 -/
 theorem freeNegativeChainsAdjunction_symm_moore (S : SSet.{u}) (H : Complex A)
-    (f : S ⟶ (truncatedDoldKanFunctor A).obj H) :
+    (f : S ⟶ (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H) :
     ((freeNegativeChainsAdjunction A).homEquiv S H).symm f =
       ((negativeExtendTruncationAdjunction (ModuleCat A)).homEquiv
         ((normalizedMooreComplex (ModuleCat A)).obj (S ⋙ ModuleCat.free A)) H).symm
@@ -38,12 +38,12 @@ theorem negativeExtendTruncationAdjunction_symm_inclusion
     (g : L ⟶ H.truncLE' (ComplexShape.embeddingUpIntLE 0)) :
     ((negativeExtendTruncationAdjunction (ModuleCat A)).homEquiv L H).symm g =
       extendMap g ComplexShape.embeddingDownNat ≫
-        truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
-          embeddingDownNat_eq_upIntLE_zero H := by
+        _root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+          _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero H := by
   have h (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ))
       (he : e = ComplexShape.embeddingUpIntLE 0) :
       (extendTruncationHomEquivOfEmbedding e he L H).symm g =
-        extendMap g e ≫ truncationExtendedInclusionOfShape A e he H := by
+        extendMap g e ≫ _root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape A e he H := by
     subst e
     rfl
   simp only [negativeExtendTruncationAdjunction, Adjunction.mkOfHomEquiv_homEquiv,
@@ -52,26 +52,26 @@ theorem negativeExtendTruncationAdjunction_symm_inclusion
 
 /-- 指定自由負次数鎖の逆射は元のMoore逆射を延長して包含したもの。 -/
 theorem freeNegativeChainsAdjunction_symm_inclusion (S : SSet.{u}) (H : Complex A)
-    (f : S ⟶ (truncatedDoldKanFunctor A).obj H) :
+    (f : S ⟶ (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H) :
     ((freeNegativeChainsAdjunction A).homEquiv S H).symm f =
       extendMap (((freeMooreChainsAdjunction (R := A)).homEquiv S
         (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).symm f)
           ComplexShape.embeddingDownNat ≫
-        truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
-          embeddingDownNat_eq_upIntLE_zero H := by
+        _root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+          _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero H := by
   rw [freeNegativeChainsAdjunction_symm_moore,
     negativeExtendTruncationAdjunction_symm_inclusion]
 
 /-- 同じ逆随伴の射影生成元は、同じΓのMoore射影と余単位で評価できる。 -/
 theorem freeNegativeChainsAdjunction_symm_generator_eval (S : SSet.{u}) (H : Complex A)
-    (f : S ⟶ (truncatedDoldKanFunctor A).obj H) (n : ℕ)
+    (f : S ⟶ (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H) (n : ℕ)
     (s : S.obj (Opposite.op ⦋n⦌)) :
     (((freeNegativeChainsAdjunction A).homEquiv S H).symm f).f (-(n : ℤ))
       (freeNegativeGenerator S n s) =
       (((H.truncLE' (ComplexShape.embeddingUpIntLE 0)).extendXIso
         ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv ≫
-        (truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
-          embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ)))
+        (_root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+          _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ)))
         (((DoldKan.PInftyToNormalizedMooreComplex
           (Abelian.DoldKan.Γ.obj (H.truncLE' (ComplexShape.embeddingUpIntLE 0)))).f n ≫
           (Abelian.DoldKan.equivalence.counitIso.hom.app
@@ -97,15 +97,15 @@ theorem freeNegativeChainsAdjunction_symm_generator_eval (S : SSet.{u}) (H : Com
   change ((L.extendXIso ComplexShape.embeddingDownNat
       (i := n) (i' := -(n : ℤ)) rfl).inv ≫
       (extendMap g ComplexShape.embeddingDownNat).f (-(n : ℤ)) ≫
-      (truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
-        embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ)))
+      (_root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+        _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ)))
       ((DoldKan.PInftyToNormalizedMooreComplex (S ⋙ ModuleCat.free A)).f n
         (ModuleCat.freeMk s)) = _
   rw [← Category.assoc, he]
   simp only [ModuleCat.comp_apply]
   exact congrArg (fun t =>
-    (truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
-      embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ))
+    (_root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape A ComplexShape.embeddingDownNat
+      _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero H).f (-(n : ℤ))
       (((H.truncLE' (ComplexShape.embeddingUpIntLE 0)).extendXIso
         ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv t))
     (normalizedFreeHomEquiv_symm_projected_eval S

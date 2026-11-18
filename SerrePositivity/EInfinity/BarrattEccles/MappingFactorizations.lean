@@ -35,8 +35,8 @@ def mappingCofibrantFactorization :
   let := modelCategory A
   have := modelCategory_cofibrantlyGenerated A
   have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
-    ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-    ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
   exact MorphismProperty.functorialFactorizationData _ _
 
 /-- 概要：導来写像空間の fibrant 側の関手的分解（BM 命題 4.1、Hovey §5）。
@@ -50,8 +50,8 @@ def mappingFibrantFactorization :
   let := modelCategory A
   have := modelCategory_cofibrantlyGenerated A
   have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
-    ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
-    ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
+    ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
   exact MorphismProperty.functorialFactorizationData _ _
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -76,7 +76,7 @@ lemma pointwiseFrameComparison_weakEquivalence {Y : C}
     𝟙 _ ≫ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso B).hom ≫ α)
   rw [Category.id_comp]
   exact (weakEquivalences C).comp_mem _ _
-    (_root_.SerrePositivity.EInfinity.FrameRealizationLifting.map_boundary_rlp_weakEquivalence B hB hconst _ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison_rlp K k))
+    (_root_.SerrePositivity.FrameRealizationLifting.FrameRealizationLifting.map_boundary_rlp_weakEquivalence B hB hconst _ (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.comparison_rlp K k))
     ((weakEquivalences C).comp_mem (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.realizationPointIso B).hom α he hα)
 
 end SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight

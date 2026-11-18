@@ -37,7 +37,7 @@ lemma permutationComposition_nested_assoc (m n k : ℕ) (i : Fin (m + 1)) (j : F
   change Fin.cast (Nat.add_assoc m n k)
     (permutationComposition (m + n) k (nestedSlot m n i j) P υ
       (Fin.cast (Nat.add_assoc m n k).symm x)) = permutationComposition m (n + k) i σ Q x
-  obtain ⟨a, rfl⟩ := (operadInsertionEquiv m (n + k) i).symm.surjective x
+  obtain ⟨a, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m (n + k) i).symm.surjective x
   cases a with
   | inl a =>
     change Fin.cast (Nat.add_assoc m n k)
@@ -62,7 +62,7 @@ lemma permutationComposition_nested_assoc (m n k : ℕ) (i : Fin (m + 1)) (j : F
     exact remainingValue_nested_outer n k (σ i).val (τ j).val (σ a.val).val
       (Nat.le_of_lt_succ (τ j).isLt) (fun h => a.property (σ.injective (Fin.ext h)))
   | inr b =>
-    obtain ⟨a, rfl⟩ := (operadInsertionEquiv n k j).symm.surjective b
+    obtain ⟨a, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv n k j).symm.surjective b
     cases a with
     | inl a =>
       change Fin.cast (Nat.add_assoc m n k)

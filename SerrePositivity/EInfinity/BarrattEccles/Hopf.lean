@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.Hopf
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Hopf
 public import SerrePositivity.EInfinity.BarrattEccles.DiagonalUnit
 public import SerrePositivity.EInfinity.BarrattEccles.OperadAugmentation
 
@@ -33,19 +33,19 @@ variable (A : Type u) [CommRing A]
 規約：有限全単射について自然であり、arity 0 も含む。
 使われ方：Hopf 対角の底の対称列射となる。 -/
 def diagonalSequence : (operad A).sequence ⟶
-    (Operad.hadamard (operad A) (operad A)).sequence where
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.hadamard (operad A) (operad A)).sequence where
   app S := complexDiagonal A (FiniteBijection.card S)
   naturality {S T} f := by
-    change AlexanderWhitney.cochainMap A (simplicialSequenceMap f) ≫
-      AlexanderWhitney.cochainDiagonal A (simplicial (FiniteBijection.card T)) =
-      AlexanderWhitney.cochainDiagonal A (simplicial (FiniteBijection.card S)) ≫ _
-    exact AlexanderWhitney.cochainDiagonal_natural A (simplicialSequenceMap f)
+    change _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (simplicialSequenceMap f) ≫
+      _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal A (simplicial (FiniteBijection.card T)) =
+      _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal A (simplicial (FiniteBijection.card S)) ≫ _
+    exact _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_natural A (simplicialSequenceMap f)
 
 /-- 概要：AW 対角は E → E ⊗ E のオペラッド射である（Berger–Fresse §1.1.4）。
 方針：対称列の自然性と単位・全ての部分合成の保存を束ねる。
 規約：終域は構成済みの Hadamard オペラッド。
 使われ方：E 代数のテンソルと E-coalgebra 区間に演算を分配する。 -/
-def hopfDiagonal : operad A ⟶ Operad.hadamard (operad A) (operad A) where
+def hopfDiagonal : operad A ⟶ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.hadamard (operad A) (operad A) where
   map := diagonalSequence A
   unit := unit_diagonal A
   comp m n i := by
@@ -65,7 +65,7 @@ lemma hopfDiagonal_app (n : ℕ) :
 方針：実際の AW オペラッド射と既存の augmentation に余代数則を束ねる。
 規約：任意の可換基礎環で定義し、余可換性は要求しない。
 使われ方：E-coalgebra 区間からの path object とモデル構造の転送。 -/
-def hopf : Operad.Hopf (operad A) where
+def hopf : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Hopf (operad A) where
   diagonal := hopfDiagonal A
   counit := augmentation A
   coassoc n := complexDiagonal_coassoc A n

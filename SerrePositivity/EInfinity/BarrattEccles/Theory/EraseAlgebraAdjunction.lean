@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.EraseOperad
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.EraseDifferentialAdjunction
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.OperadTransportAdjunction
-public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.FreeAlgebraAdjunction
 public import Mathlib.CategoryTheory.Adjunction.Unique
 
 /-!
@@ -95,7 +95,7 @@ instance cofreeCycles_laxBraided : (cofreeCycles A).LaxBraided where
 
 attribute [local irreducible] cofreeCycles
 
-variable {A} (P : Operad A)
+variable {A} (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A)
 
 /-- The identity arity comparison into the erased operad. -/
 def Operad.eraseComparison : Operad.LaxComparison (eraseDifferential A) P.erase P where
@@ -109,6 +109,9 @@ def Operad.eraseComparison : Operad.LaxComparison (eraseDifferential A) P.erase 
   comp _ _ _ := by
     simp [LaxComparisonSquare, laxTensorComparison, Operad.erase]
     rfl
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseComparison)
 
 /-- The mate of the erased arity comparison. -/
 def Operad.cofreeComparison : Operad.LaxComparison (cofreeCycles A) P P.erase where
@@ -132,9 +135,15 @@ def Operad.cofreeComparison : Operad.LaxComparison (cofreeCycles A) P P.erase wh
       ((a.unit.app X ⊗ₘ a.unit.app Y) ≫ μ R _ _) ≫ R.map (μ L X Y ≫ L.map c)
     exact adjunctionUnit_image_comp a c
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (cofreeComparison)
+
 /-- Erasing the differential of an algebra and its operations. -/
 def Operad.eraseAlgebra : P.Algebra ⥤ P.erase.Algebra :=
   Operad.transport P.eraseComparison
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseAlgebra)
 
 /-- Erasing the differential of an operad algebra is a left adjoint. -/
 def Operad.eraseAlgebraAdjunction :
@@ -151,6 +160,9 @@ def Operad.eraseAlgebraAdjunction :
   symm
   exact IsIso.inv_id
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseAlgebraAdjunction)
+
 instance Operad.eraseAlgebra_isLeftAdjoint : P.eraseAlgebra.IsLeftAdjoint :=
   P.eraseAlgebraAdjunction.isLeftAdjoint
 
@@ -161,5 +173,8 @@ def Operad.eraseFreeAlgebraIso :
   Adjunction.leftAdjointUniq
     (P.freeAlgebraAdjunction.comp P.eraseAlgebraAdjunction)
     ((eraseDifferentialAdjunction A).comp P.erase.freeAlgebraAdjunction)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseFreeAlgebraIso)
 
 end SerrePositivity.EInfinity

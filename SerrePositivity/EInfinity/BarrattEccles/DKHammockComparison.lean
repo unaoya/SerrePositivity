@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockInclusionLaws
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalReductionWeak
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockDiagonalComparisonWeak
-public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakAnodyneLocalization
 
 /-!
 # 実 DK Hom と元の全代数の hammock の高次比較
@@ -37,11 +37,11 @@ def cofibrantAlgebraDKHammockComparisonIso :
       AnodyneHomotopy.anodyneQ.obj
         (algebraReducedHammock A ((cofibrantAlgebraDKInclusion A).obj X)
           ((cofibrantAlgebraDKInclusion A).obj Y)) := by
-  have := Hammock.anodyneQ_map_isIso_of_weak
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y)
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence
       (cofibrantAlgebraRelativeCategory A) X Y)
-  have := Hammock.anodyneQ_map_isIso_of_weak (cofibrantAlgebraDiagonalHammockMap A X Y)
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak (cofibrantAlgebraDiagonalHammockMap A X Y)
     (cofibrantAlgebraDiagonalHammockMap_weak A X Y)
   exact (asIso (AnodyneHomotopy.anodyneQ.map
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y))).symm ≪≫
@@ -51,7 +51,7 @@ lemma cofibrantAlgebraDKHammockComparisonIso_fac :
         (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y) ≫
       (cofibrantAlgebraDKHammockComparisonIso A X Y).hom =
     AnodyneHomotopy.anodyneQ.map (cofibrantAlgebraDiagonalHammockMap A X Y) := by
-  have := Hammock.anodyneQ_map_isIso_of_weak
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y)
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence
       (cofibrantAlgebraRelativeCategory A) X Y)

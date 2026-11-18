@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open AlgebraicTopology AlgebraicTopology.DoldKan HomologicalComplex
@@ -44,7 +44,7 @@ theorem freeProductAlexanderWhitney_last_cut_right_augmentation
     ((negativeMooreTensorCoefficientIso φ (linearizedSpace Z) (linearizedSpace Y)).hom ≫
       (tensorIso (integerCoefficientFreeChainsIso φ Z)
         (integerCoefficientFreeChainsIso φ Y)).hom ≫
-      (𝟙 _ ⊗ₘ (normalizedSimplexCochainContraction A n).hom) ≫
+      (𝟙 _ ⊗ₘ (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom) ≫
       (ρ_ (freeNegativeChains (A := A) Z)).hom).f (-(k : ℤ)) =
     e0.hom.app (Opposite.op ⦋k⦌) ≫
       (ModuleCat.free A).map ((fst Z Y).app (Opposite.op ⦋k⦌)) ≫
@@ -55,7 +55,7 @@ theorem freeProductAlexanderWhitney_last_cut_right_augmentation
   let F := integerCoefficientExtension φ
   let T := simplicialIntegerTensor (linearizedSpace Z) (linearizedSpace Y)
   let ε : freeNegativeChains (A := A) Y ⟶ 𝟙_ (CochainComplex (ModuleCat A) ℤ) :=
-    (normalizedSimplexCochainContraction A n).hom
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A n).hom
   let e0 := Functor.isoWhiskerRight (linearizedTensorIso Z Y) F ≪≫
     integerCoefficientSimplicialFreeIso φ (Z ⊗ Y)
   let γ := (chainIntegerTensorMap (PInftyToNormalizedMooreComplex (linearizedSpace Z))

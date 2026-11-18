@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomKan
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedProbeHomKan
 
 /-!
 # 全複体の指定共通 frame の左右射と augmentation
@@ -16,54 +16,54 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.Reedy SerrePositivity.DifferentialGraded
-open SerrePositivity.HomotopyFunctionComplex SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.HomotopyFunctionComplex _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 def complexNormalizedCommonRight :
-    normalizedProbeCommonFrame A ⟶ normalizedProbeTensorFrame A := by
-  let := projectiveModelCategory A
-  exact FrameOverFunctor.right (mappingCofibrantFactorization A)
-    (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
-    (framedLimitProbeFunctor A) (normalizedProbeTensorFrame A) (normalizedProbeTensorAugmentation A)
+    _root_.SerrePositivity.ComplexLimits.normalizedProbeCommonFrame A ⟶ _root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  exact FrameOverFunctor.right (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A)
+    (cosimplicialResolutionFamily (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A))
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A)
 
 def complexNormalizedCommonAugmentation :
-    normalizedProbeCommonFrame A ⟶ framedLimitProbeFunctor A ⋙ Functor.const SimplexCategory :=
-  complexNormalizedCommonRight A ≫ normalizedProbeTensorAugmentation A
+    _root_.SerrePositivity.ComplexLimits.normalizedProbeCommonFrame A ⟶ _root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A ⋙ Functor.const SimplexCategory :=
+  complexNormalizedCommonRight A ≫ _root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A
 
 def complexNormalizedCommonLeft :
-    normalizedProbeCommonFrame A ⟶ normalizedProbeStandardFrame A := by
-  let := projectiveModelCategory A
-  exact FrameOverFunctor.left (mappingCofibrantFactorization A)
-    (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
-    (framedLimitProbeFunctor A) (normalizedProbeTensorFrame A) (normalizedProbeTensorAugmentation A)
+    _root_.SerrePositivity.ComplexLimits.normalizedProbeCommonFrame A ⟶ _root_.SerrePositivity.ComplexLimits.normalizedProbeStandardFrame A := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  exact FrameOverFunctor.left (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A)
+    (cosimplicialResolutionFamily (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A))
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A)
 
 lemma complexNormalizedCommonLeft_over :
-    let := projectiveModelCategory A
-    complexNormalizedCommonLeft A ≫ Functor.whiskerLeft (framedLimitProbeFunctor A)
-      (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).augmentation =
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+    complexNormalizedCommonLeft A ≫ Functor.whiskerLeft (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A)
+      (cosimplicialResolutionFamily (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A)).augmentation =
       complexNormalizedCommonAugmentation A := by
-  let := projectiveModelCategory A
-  exact FrameOverFunctor.over (mappingCofibrantFactorization A)
-    (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
-    (framedLimitProbeFunctor A) (normalizedProbeTensorFrame A) (normalizedProbeTensorAugmentation A)
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  exact FrameOverFunctor.over (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A)
+    (cosimplicialResolutionFamily (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A))
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A)
 
 lemma complexNormalizedCommonAugmentation_weak (X : Complex A) (n : SimplexCategory) :
     QuasiIso (((complexNormalizedCommonAugmentation A).app X).app n) := by
-  let := projectiveModelCategory A
-  have hr := FrameOverFunctor.right_weakEquivalence (mappingCofibrantFactorization A)
-    (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
-    (framedLimitProbeFunctor A) (normalizedProbeTensorFrame A)
-    (normalizedProbeTensorAugmentation A) X n
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  have hr := FrameOverFunctor.right_weakEquivalence (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A)
+    (cosimplicialResolutionFamily (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A))
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A) X n
   exact (weakEquivalences (Complex A)).comp_mem _ _ hr
-    (normalizedProbeTensorAugmentation_weak A X n)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation_weak A X n)
 
 lemma complexNormalizedCommon_map_weak (X : Complex A)
     {n m : SimplexCategory} (f : n ⟶ m) :
-    QuasiIso (((normalizedProbeCommonFrame A).obj X).map f) := by
-  let := projectiveModelCategory A
-  exact FrameOverFunctor.commonObj_homotopicallyConstant (mappingCofibrantFactorization A)
-    (cosimplicialResolutionFamily (mappingCofibrantFactorization A))
-    (framedLimitProbeFunctor A) (normalizedProbeTensorFrame A)
-    (normalizedProbeTensorAugmentation A) (normalizedProbeTensorAugmentation_weak A) X f
+    QuasiIso (((_root_.SerrePositivity.ComplexLimits.normalizedProbeCommonFrame A).obj X).map f) := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  exact FrameOverFunctor.commonObj_homotopicallyConstant (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A)
+    (cosimplicialResolutionFamily (_root_.SerrePositivity.ComplexLimits.mappingCofibrantFactorization A))
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A) (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation_weak A) X f
 
 end SerrePositivity.EInfinity.PowerOperation

@@ -64,7 +64,7 @@ def coefficientOperationHomotopy (X : (operad A).Algebra) (n : ℕ)
 def homologyCompositionHomotopy (X : (operad A).Algebra) (m n : ℕ) (i : Fin (m + 1)) :
     Homotopy (homologyOperation X (m + n))
       ((λ_ (power X.carrier (m + n))).inv ≫
-        tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
           ((aritySection A n ▷ power X.carrier n) ≫ X.action n) ≫
         homologyOperation X (m + 1)) := by
   have hc := coefficientHomotopy A (m + n) (aritySection A (m + n))

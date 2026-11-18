@@ -32,7 +32,7 @@ namespace SerrePositivity.EInfinity.Operad
 
 open CategoryTheory Limits HomotopicalAlgebra DifferentialGraded
 
-variable {A : Type u} [CommRing A] (P : Operad A)
+variable {A : Type u} [CommRing A] (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A)
 
 variable {X Y : P.Algebra} {f : X ⟶ Y}
   (c : AttachCells.{u} (fun n => P.freeAlgebraFunctor.map (complexSphereToDisk A n)) f)
@@ -48,6 +48,9 @@ def eraseAttachment :
     Arrow.isoMk (e.app (complexSphere A (n + 1))) (e.app (complexDisk A n))
       (e.hom.naturality (complexSphereToDisk A n)).symm)
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseAttachment)
+
 /-- The erased attachment freely adjoins the spheres of the new cells. -/
 def eraseAttachmentCofanIsColimit :
     let a := P.eraseAttachment c
@@ -59,5 +62,8 @@ def eraseAttachmentCofanIsColimit :
   intro n
   exact mapIsColimitOfPreservesOfIsColimit P.erase.freeAlgebraFunctor _ _
     (erasedDiskCofanIsColimit A n)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad
+  export _root_.SerrePositivity.EInfinity.Operad (eraseAttachmentCofanIsColimit)
 
 end SerrePositivity.EInfinity.Operad

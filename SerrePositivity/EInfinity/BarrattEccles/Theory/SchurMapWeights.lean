@@ -34,21 +34,21 @@ variable {A : Type u} [CommRing A] {K L : Complex A}
 lemma preserves_schurMap {b : ComplexWeightBasis K} {c : ComplexWeightBasis L}
     {f : K ⟶ L} (hf : b.Preserves c f) :
     (schurWeightBasis b).Preserves (schurWeightBasis c)
-      ((schurFunctor A (sequence A)).map f) := by
+      ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).map f) := by
   intro i N x hx
   apply map_mem_basisWeightSpan (schurWordBasis b.basis i) (schurWordBasis c.basis i)
     (schurWordWeight b.weight) (schurWordWeight c.weight)
-    (((schurFunctor A (sequence A)).map f).f i).hom ?_ N hx
+    (((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).map f).f i).hom ?_ N hx
   intro z
   obtain ⟨n, q, a, v, rfl⟩ := schurWordIndex_exists_nonpositive i z
   rw [schurWordBasis_nonpositive, schurWordWeight_nonpositive]
   have he := congrArg (fun z => z.f i
     (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)
       (equivariantBasis A n q (a, 1) ⊗ₜ[A] powerGradedBasis b.basis n (i + q) v)))
-      (schurι_naturality A (sequence A) f n)
-  change ((schurFunctor A (sequence A)).map f).f i
-    ((schurι A (sequence A) K n).f i _) =
-    (schurι A (sequence A) L n).f i
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι_naturality A (sequence A) f n)
+  change ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).map f).f i
+    ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i _) =
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) L n).f i
       ((cochainTensorMap (𝟙 ((sequence A).level n)) (TensorPowers.map f n)).f i
         (ιTensorObj ((sequence A).level n) (power K n) (-(q : ℤ)) (i + q) i (by omega)
           (equivariantBasis A n q (a, 1) ⊗ₜ[A] powerGradedBasis b.basis n (i + q) v))) at he

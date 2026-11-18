@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.DoldKanPinchedChainNaturality
-public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoldKanPinchedChainNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncatedDoldKanFunctor
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.LocalizationAndRoofs.PinchedChainMapQuasiIso
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Reflection
 
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
@@ -29,32 +29,32 @@ theorem doldKanHomSpaceChainMap_quasiIso_equivalence
     {D E : Type v} [DGCategory A D] [DGCategory A E]
     {x y : D} {x' y' : E}
     (f : homObject A D x y ⟶ homObject A E x' y') [QuasiIso f] :
-    IsSimplicialHomotopyEquivalence (doldKanHomSpaceChainMap f) := by
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.ComplexLimits.doldKanHomSpaceChainMap f) := by
   have h := (qCatEquivalenceOfIso (doldKanHomPinchedIso (R := A) x y)).isQCatEquivalence.comp
     (pinchedHomChainMap_quasiIso_equivalence f).isQCatEquivalence
   change IsQCatEquivalence ((doldKanHomPinchedIso (R := A) x y).hom ≫
     pinchedHomChainMap f) at h
-  rw [← doldKanHomPinchedIso_chainMap] at h
+  rw [← _root_.SerrePositivity.ComplexLimits.doldKanHomPinchedIso_chainMap] at h
   have hu := (qCatEquivalenceOfIso (doldKanHomPinchedIso (R := A) x' y')).isQCatEquivalence.cancel_right h
-  exact ((isQCatEquivalence_ulift_iff_of_kan (doldKanHomSpaceChainMap f)).mp hu).isSimplicialHomotopyEquivalence
+  exact ((isQCatEquivalence_ulift_iff_of_kan (_root_.SerrePositivity.ComplexLimits.doldKanHomSpaceChainMap f)).mp hu).isSimplicialHomotopyEquivalence
 
 /-- 任意複体の同じ切断 Γ を単位 Hom の Γ と比較する指定同型。 -/
 def truncatedDoldKanUnitIso (K : Complex A) :
-    (truncatedDoldKanFunctor A).obj K ≅ doldKanHomSpace (R := A) (D := Complex A)
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj K ≅ doldKanHomSpace (R := A) (D := Complex A)
       (𝟙_ (Complex A)) K :=
-  (truncatedDoldKanFunctor A).mapIso (complexUnitHomIso K)
+  (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).mapIso (complexUnitHomIso K)
 
 open SSet.modelCategoryQuillen in
 /-- 任意非有界複体の smart 切断 Γ は Kan 複体である。 -/
 instance truncatedDoldKanFunctor_kan (K : Complex A) :
-    SSet.KanComplex ((truncatedDoldKanFunctor A).obj K) :=
+    SSet.KanComplex ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj K) :=
   HomotopicalAlgebra.isFibrant_of_fibration (truncatedDoldKanUnitIso K).hom
 
 /-- 元の非有界準同型の同じ smart 切断 Γ 写像は単体的ホモトピー同値。 -/
 theorem truncatedDoldKanFunctor_quasiIso_equivalence {K L : Complex A}
     (f : K ⟶ L) [QuasiIso f] :
-    IsSimplicialHomotopyEquivalence ((truncatedDoldKanFunctor A).map f) := by
-  let T := truncatedDoldKanFunctor A
+    IsSimplicialHomotopyEquivalence ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map f) := by
+  let T := _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A
   let := complexUnitHomPostcompose_quasiIso f
   have hp := (doldKanHomSpaceChainMap_quasiIso_equivalence
     (D := Complex A) (E := Complex A) (x := 𝟙_ (Complex A)) (y := K)

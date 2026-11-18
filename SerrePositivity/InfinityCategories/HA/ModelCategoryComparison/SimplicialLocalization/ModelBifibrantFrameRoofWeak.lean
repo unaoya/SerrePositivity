@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories
 
 open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
@@ -40,7 +40,7 @@ def modelBifibrantFrameLeftRoofColimitMap :
 規約：元の全射・全比較を保持。使われ方：ambient 弱同値性の反映。 -/
 lemma modelBifibrantFrameLeftRoofColimitMap_image :
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap X Y q ≫
-      Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToModel (C := C)) X Y =
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToModel (C := C)) X Y =
         nerveMap (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameFunctorImageIndex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToModel (C := C))
           (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame X q) Y) ≫ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.resolutionLeftRoofColimitMap q Y.obj :=
   _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.frameLeftRoofColimitMap_functorImage _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantToModel (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame X q) Y

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionDiagonal
 public import SerrePositivity.EInfinity.BarrattEccles.Unit
-public import SerrePositivity.EInfinity.AlexanderWhitney.CochainVertices
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.CochainVertices
 
 /-!
 # AW 対角の単位保存
@@ -58,6 +58,6 @@ lemma unit_diagonal :
         ((singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv (1 : A)))
   rw [unit_zero_apply, one_smul, unitLeftUnitor_inv_apply]
   rw [SerrePositivity.cochainTensorMap_apply_ι, unit_zero_apply, one_smul]
-  exact AlexanderWhitney.cochainDiagonal_vertex A (simplicial 1) unitSimplex
+  exact _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainDiagonal_vertex A (simplicial 1) unitSimplex
 
 end SerrePositivity.EInfinity.BarrattEccles

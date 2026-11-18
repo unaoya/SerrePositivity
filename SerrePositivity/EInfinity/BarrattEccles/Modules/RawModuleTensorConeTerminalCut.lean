@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConePenultimateValue
-public import SerrePositivity.EInfinity.ComplexLimits.ConeFirstBoundary
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConeFirstBoundary
 
 /-!
 概要：実 cone の最後の切断を、元の普遍 cochain の終端削除成分へ同定する。
@@ -15,9 +15,9 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.Modules
+open _root_.SerrePositivity.ComplexLimits SerrePositivity.EInfinity.Modules
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -27,11 +27,11 @@ lemma strictRawModuleTensorConeData_terminal_cut_component {n : ℕ}
     (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) (ha0 : a = 0)
     (hbl : b = Fin.last (n + 1)) (h0 : 0 ∈ I)
-    (hJ : ((withoutFirst I).erase (Fin.last n)).Nonempty)
-    (hkJ : k + 1 = 1 - (((withoutFirst I).erase (Fin.last n)).card : ℤ)) :
-    HEq ((strictRawModuleTensorConeData A X P Q c).cutCompose I a b k (penultimate I hI))
+    (hJ : ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).erase (Fin.last n)).Nonempty)
+    (hkJ : k + 1 = 1 - (((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).erase (Fin.last n)).card : ℤ)) :
+    HEq ((strictRawModuleTensorConeData A X P Q c).cutCompose I a b k (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.penultimate I hI))
       ((k + 1).negOnePow • (strictRawModuleTensorElementLinear A X P Q c).val.component
-        ((withoutFirst I).erase (Fin.last n)) (k + 1) hJ hkJ) := by
+        ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).erase (Fin.last n)) (k + 1) hJ hkJ) := by
   have h := strictRawModuleTensorConeData_cutCompose_penultimate_value A X P Q c I a b k
     hI ha hb hk hc ha0 hbl h0
   have ht : ∀ (K K' : Finset (Fin (n + 1))) (he : K = K')
@@ -43,6 +43,6 @@ lemma strictRawModuleTensorConeData_terminal_cut_component {n : ℕ}
     subst K'
     rfl
   exact h.trans (heq_of_eq (congrArg (fun v => (k + 1).negOnePow • v)
-    (ht _ _ (withoutFirst_left_penultimate_last I hI (hb.symm.trans hbl)) _ hJ _ hkJ)))
+    (ht _ _ (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_left_penultimate_last I hI (hb.symm.trans hbl)) _ hJ _ hkJ)))
 
 end SerrePositivity.EInfinity.BarrattEccles

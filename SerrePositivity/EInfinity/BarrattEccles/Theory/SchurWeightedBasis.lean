@@ -56,19 +56,19 @@ abbrev arityWeightBasis (n : ℕ) : ComplexWeightBasis ((operad A).arity n) :=
 
 /-- The Schur basis is weighted by the total weight of its original inputs. -/
 abbrev schurWeightBasis {K : Complex A} (b : ComplexWeightBasis K) :
-    ComplexWeightBasis ((schurFunctor A (sequence A)).obj K) :=
+    ComplexWeightBasis ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A (sequence A)).obj K) :=
   ⟨SchurWordIndex b.index, schurWordBasis b.basis, fun x => schurWordWeight b.weight x.2⟩
 
 /-- A Schur generator preserves the total input weight, including arbitrary coefficients. -/
 lemma preserves_schurι {K : Complex A} (b : ComplexWeightBasis K) (n : ℕ) :
     ((arityWeightBasis n).tensor (b.power n)).Preserves (schurWeightBasis b)
-      (schurι A (sequence A) K n) := by
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n) := by
   intro i N x hx
   apply map_mem_basisWeightSpan
     (tensorGradedBasis (arityGradedBasis n) (powerGradedBasis b.basis n) i)
     (schurWordBasis b.basis i)
     (tensorGradedWeight (fun _ => 0) (powerGradedWeightFamily b.weight n) i)
-    (schurWordWeight b.weight) ((schurι A (sequence A) K n).f i).hom ?_ N hx
+    (schurWordWeight b.weight) ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A (sequence A) K n).f i).hom ?_ N hx
   rintro ⟨a, z, y⟩
   rw [tensorGradedBasis_apply]
   have h := schurGenerator_mem_basisWeightSpan_all b.basis b.weight

@@ -19,7 +19,7 @@ open CategoryTheory HomologicalComplex
 open SerrePositivity.EInfinity.BarrattEccles
 
 abbrev mayNormalizedStrictHomology (k : Type u) [CommRing k] (n : ℤ) :=
-  Operad.Algebra.forget (operad k) ⋙
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad k) ⋙
     homologyFunctor (ModuleCat k) (.up ℤ) (-n) ⋙ forget₂ (ModuleCat k) AddCommGrpCat
 
 variable {k : Type u} [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
