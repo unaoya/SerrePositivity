@@ -1,9 +1,9 @@
 # 現在地
 
-- 段：**NB-W2 段1 完了**。
-- 一覧：済み 1／全体 2 段。
+- 段：**NB-W2 完了、停止**。
+- 一覧：済み 2／全体 2 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `8036157a8` を取り込んだ。
-- 次：段2 の本論文の解説原稿。
+- 次：追加作業なし。
 - 凍結 exposition の転記と静的照合。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
@@ -302,3 +302,9 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 [段落の行き先](../../../research/kerodon-coverage/notes/README.md)を更新。旧保留 47 ブロックをすべて移し、t-06〜t-15 の新規 72 ブロックを追記した。全 160 ブロック中、保留は t-15 定義15.1 の未記入表示1件。項目原稿 52、節原稿 17。項目原稿には第5章以降 11 件を含む。review に行がない 4 件は README に列挙した。
 
 本体の文言・数式・旧番号を保存し、移設後のリンクを検査した。[証拠目録](../../../evidence/cited/notes-kerodon2/manifest.json)。
+
+段1 コミット `9fdd3bf63`。
+
+### 段2　本論文
+
+解説 §3〜§9 の 380 ブロックを [段落の行き先](../../../research/paper-coverage/notes/README.md) に記録した。項目原稿 44、節原稿 5、保留 22 ブロック。付録は対象外。原典の項目の番号を使い、参照に出る解説内の番号は区別した。[証拠目録](../../../evidence/cited/notes-paper/manifest.json)。

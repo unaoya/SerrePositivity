@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/notes-paper",
+ "commit": "9fdd3bf633465900f5f128e9db938bc63bc998c0",
+ "made_by": "NB-W2: parse.py, convert.py, verify.py; static comparison with frozen TeX and paper item inventory",
+ "note": "Exposition sections 3–9, 380 blocks; equations, links and Lean names verified; no Lean or Verso execution",
+ "files": [
+  {
+   "path": "audit.json",
+   "sha256": "92c5495128a462ee83dbed1f167c4fe9723dd2de9d4b8f22f9c739a9cfe7a9da",
+   "bytes": 4455
+  },
+  {
+   "path": "blocks.json",
+   "sha256": "87a1bdce3ab46de1f4aa5f91c25ad9589f80a03744e76e9f6c52aebf2b4ae6ee",
+   "bytes": 385425
+  },
+  {
+   "path": "convert.py",
+   "sha256": "adfe89e192553c6305d51bbc4ab14a0dd2a8cdb1dd90bda87d19cf6742bfbd18",
+   "bytes": 13709
+  },
+  {
+   "path": "inventory.txt",
+   "sha256": "4da6112ed1c273cddbbab6b60f51a13c0780087016429f0a5875368e042fd2c8",
+   "bytes": 61291
+  },
+  {
+   "path": "map.tsv",
+   "sha256": "f8f9c271826c0c7ae15cf803da1dc30c124b2039bd335a500239e5fffd566fc3",
+   "bytes": 1713
+  },
+  {
+   "path": "parse.py",
+   "sha256": "a3262a0d87e9c4807fe76ad6635dceb4a77491a4df3aa077f0bf623608371900",
+   "bytes": 6408
+  },
+  {
+   "path": "refs.json",
+   "sha256": "0113141ff6c7c97dc879ed41dfec67f03e84f28f6498bc61e4b01ef2dd06282c",
+   "bytes": 2652
+  },
+  {
+   "path": "validation.txt",
+   "sha256": "c6f8ef53576ffb98ccad916766ef840e1facef3fc6cef72265901e26d7502f7a",
+   "bytes": 100
+  },
+  {
+   "path": "verify.py",
+   "sha256": "042028ac683b3678daad9f0daab05c66bd117dcf8e4c00306d2c624b0c439dc8",
+   "bytes": 2897
+  }
+ ],
+ "total_bytes": 478650
+}
