@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：35,605行。外枠：36,138行。係数：2。
+既計上の累計：35,815行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -64,8 +64,8 @@
 |R08.1|verified|134|0〜0|0〜0|
 |R08|verified|44|0〜0|0〜0|
 |R09-Cech.1|verified|319|0〜0|0〜0|
-|R09-Cech.2|pending|—|70〜120|140〜240|
-|R09-Cech|pending|—|25〜45|50〜90|
+|R09-Cech.2|verified|125|0〜0|0〜0|
+|R09-Cech|verified|85|0〜0|0〜0|
 |R09.1|verified|168|0〜0|0〜0|
 |R09.2|pending|—|40〜70|80〜140|
 |R09|pending|—|25〜50|50〜100|
@@ -2555,7 +2555,7 @@ let d := constantDiagramCone cechReverseIndex.{u} E z
 - `weightedSections_rangeCech_isLimit` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCech.lean:39
 
 ### R09-Cech.2 — weightedSections_toRange_conePrism_apex_isInvertible
-親：R09-Cech。状態：紙のみ（pending）。依存：R08。
+親：R09-Cech。状態：検証済み。依存：R08。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -2593,7 +2593,7 @@ let A := mapJoinCone (weightedSections O hE)
 - `weightedSections_rangeCech_isLimit` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCech.lean:39
 
 ### R09-Cech — weightedSections_toRangeHom_isInvertible
-親：R09-Cech。状態：紙のみ（pending）。依存：R09-Cech.1・R09-Cech.2・R08。
+親：R09-Cech。状態：検証済み。依存：R09-Cech.1・R09-Cech.2・R08。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u+1}} [Quasicategory E]

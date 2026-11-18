@@ -12756,3 +12756,24 @@ R06 は完了。指定した錐を共通に使い、二面を合成してから�
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,427 から 35,605 行。
 
 一覧：済み 92／全体 122（うち追加 87）
+
+### 11-18：R09 の実装前の照合
+
+R09-Cech が通った後の二署名を先に型に沿って確認する。R09.2 は `space_isPresentable` を、元の重み付き切断と R06 の両方に入れる。(g=\mathrm{toRange}(f))、(R=\mathrm{range}(f))、(m=[\mathrm{sectionsOf\_map}\ g\ O\ h_P\ h_R]) と置く。R06 の式 (r\,;\,e_P=e_R\,;\,m) の左辺は R09-Cech と値比較 (e_P) で可逆なので、`isIso_comp_left_iff` で同じ (m) が可逆。(h_P,h_R) は署名の引数をそのまま使う。
+
+R09 は `isLocalEquivSet_iff_locallyBijective` で元の (\varphi) の局所単射・局所全射を得る。像 (R) には `sectionsOfDiagram_hasLimit space_isPresentable` を一度使う。(g:P\to R) には R09.2、(i:R\to Q) には `rangeInclusion_isLocallySurjective` と `sections_localMono_iso` を適用し、双方に同じ (h_R) を渡す。`Subfunctor.toRange_ι` と `sectionsOf_map_comp_hom` から ([\mathrm{sectionsOf\_map}\ \varphi]=[\mathrm{sectionsOf\_map}\ i]\,;\,[\mathrm{sectionsOf\_map}\ g]) を得る。両因子が可逆なので、元の辺も可逆。
+
+依存は R09.2 が R06・R09-Cech、R09 が R09.1・R09.2。型・仮定と見込みは台帳どおり。R09 組の補正上端は240行で、R09-Cech の実測を計上してから着手を判定する。
+
+一覧：済み 92／全体 122（うち追加 87）
+
+### 11-18：R09-Cech.2・R09-Cech の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R09-Cech.2|125|70〜120|140〜240|10,753|2|
+|R09-Cech|85|25〜45|50〜90|10,755|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,605 から 35,815 行。
+
+一覧：済み 94／全体 122（うち追加 87）

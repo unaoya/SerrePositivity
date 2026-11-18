@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 35605,
+  "verified_lean_lines": 35815,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3931,6 +3931,11 @@
           "name": "weightedSections_rangeCech_isLimit",
           "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCech.lean",
           "line": 39
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechApexIso.lean",
+          "line": 57,
+          "name": "weightedSections_toRange_conePrism_apex_isInvertible"
         }
       ],
       "literature": "HTT 6.2.2.6 の小さい通常 site の集合値Čech解消への特殊化。全族の極限比較の照合。",
@@ -3944,13 +3949,35 @@
       ],
       "method": "対角の全図式同型に沿い二つの同じ極限錐を比較する。頂点射はHから読み、任意の頂点同型へ置き換えない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R09-Cech",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean",
-      "note": "対角の全図式同型に沿い二つの同じ極限錐を比較する。頂点射はHから読み、任意の頂点同型へ置き換えない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechApexIso.lean",
+      "note": "対角の全図式同型に沿い二つの同じ極限錐を比較する。頂点射はHから読み、任意の頂点同型へ置き換えない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 125,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechApexIso.lean": "c7ffacfe41312f72a71f2ec1b7e98108a9c494c49eef228b1c9b07a64ca8993b"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "20ce6af6537c602c624dcd538aa3f5418497ee5253048b1e7c60af3438c8e400",
+        "receipt": "/tmp/is-stage5/R09-Cech.2/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r09-cech-2-1118/manifest.json"
     },
     {
       "id": "R09-Cech",
@@ -3979,12 +4006,17 @@
           "name": "relativeCechDiagonal_sections_isInvertible",
           "path": "SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean",
           "line": 35
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean",
+          "line": 49,
+          "name": "weightedSections_toRangeHom_isInvertible"
         }
       ],
       "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean",
       "literature": "HTT 6.2.2.6 の小さい通常 site の集合値Čech解消への特殊化。全族の極限比較の照合。",
-      "note": "局所単射な射を同じ像への点ごと全射へ分け、同じČech余錐と対角の全次数を使う。新しいchooseなし。",
-      "status": "pending",
+      "note": "局所単射な射を同じ像への点ごと全射へ分け、同じČech余錐と対角の全次数を使う。新しいchooseなし。 対象ビルド・台帳型への代入・小監査を通過。",
+      "status": "verified",
       "additional_mathematics": true,
       "approval": "11-17夕の一括事前承認：一本の補正上端800以内、着手群の上端を足して29000を超える前に区切る。",
       "pre_decomposition_1118": {
@@ -4004,7 +4036,29 @@
       "method": "定値錐をcechConstantCone_isLimitで扱い、二つのHの面の等式で同じtoRangeの辺の可逆性へ戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R09-Cech",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 85,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean": "c2cb4cefb8c04931aa0fdf686a60e718e0dc52f62822d9a624ee9f43d2cd2757"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "52d64c1ea0c78f42cca2a4ecd0e6acdb437ad1bb8464a56c3ef2dbed1e775e17",
+        "receipt": "/tmp/is-stage5/R09-Cech/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r09-cech-1118/manifest.json"
     },
     {
       "id": "R09.1",
