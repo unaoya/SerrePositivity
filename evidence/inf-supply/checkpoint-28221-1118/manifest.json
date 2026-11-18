@@ -1,0 +1,139 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/checkpoint-28221-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/checkpoint-28221-1118/final/verify.py",
+ "note": "28,221行の署名区切り。45モジュールの現在SHA成功証跡、39主宣言の引用属性、最終3モジュール25宣言監査。",
+ "files": [
+  {
+   "path": "checkpoint-audit.json",
+   "sha256": "a6b73b409fd316042576524cbe25205809de16f5ae0c60fc21948ff5e5b904b5",
+   "bytes": 15593
+  },
+  {
+   "path": "files.json",
+   "sha256": "feaa82fb746dda679d8d8e782c04b28aa6c44f3210d4d6612a7b8513357ebeeb",
+   "bytes": 6336
+  },
+  {
+   "path": "final/SiteLiftElementsShape-after.lean",
+   "sha256": "bbf5871ca8b0304921bd5c1d8e5d6d4bbe2f2d9243def1a9f10add6935e44f58",
+   "bytes": 2124
+  },
+  {
+   "path": "final/SiteLiftElementsShape-before.lean",
+   "sha256": "f9ced6ad6932e0715214671ff40fb627fcd95b1c3d0620277678857ae9099cdd",
+   "bytes": 2005
+  },
+  {
+   "path": "final/SiteLiftSectionsCone-after.lean",
+   "sha256": "d5a2412159cecf4fc9f8f9e4d4022e121e96382fead72ad97d738345f16eec23",
+   "bytes": 5493
+  },
+  {
+   "path": "final/SiteLiftSectionsCone-before.lean",
+   "sha256": "a5a7ada81f385924d69934a67784a447f2310c4d56f509180cc8e17d68df4fee",
+   "bytes": 5249
+  },
+  {
+   "path": "final/audit-after.lean",
+   "sha256": "f2532558eb75389bc31d614e9b25f650349b8bff6fde56c4b012981f356e55aa",
+   "bytes": 12311
+  },
+  {
+   "path": "final/audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "final/build-1.log",
+   "sha256": "9739d0468c933a0157605f8f0c89ff1e03b00e5f99eb71c920677df1fbd46da2",
+   "bytes": 9656717
+  },
+  {
+   "path": "final/build-2.log",
+   "sha256": "3352fa2cca12aa10a1cbc859b443cffe8f768fb445092e1470e96f95374ffaa6",
+   "bytes": 9656608
+  },
+  {
+   "path": "final/catalog-after.json",
+   "sha256": "d2c2c09fb6a8500af500868a2f11899b556adde1b07e59d1180b2c1e0a18c399",
+   "bytes": 5468
+  },
+  {
+   "path": "final/catalog-after.lean",
+   "sha256": "936a3c5b1341eb7170499cbb91049ab8d139040098c7f0e41d0581afeef44c4f",
+   "bytes": 1537
+  },
+  {
+   "path": "final/catalog-after.log",
+   "sha256": "3b355873ab1014a37f625aefad834f5762af3cc5646c82b39c9222cafae5c133",
+   "bytes": 62
+  },
+  {
+   "path": "final/expected-type.lean",
+   "sha256": "fc3d66393eb38b93372a58cc302a3dee75d0baf6fc438b2a6aa7b182329376cf",
+   "bytes": 1815
+  },
+  {
+   "path": "final/expected-type.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "path": "final/files.json",
+   "sha256": "8eed6fcab11976853d84af7921aa8e4513469edc7d5af6f019808d33a4b835b4",
+   "bytes": 242
+  },
+  {
+   "path": "final/metadata-changes.json",
+   "sha256": "22dc44d00906952eb95e019c1584268c5fd2a6ca4035594de42ae1517deb3347",
+   "bytes": 1190
+  },
+  {
+   "path": "final/primary-citations.json",
+   "sha256": "cb8bb6e84a21ed41695a3b408827935ab0b9cdb012a6b5ceaf46fe67f342ec6a",
+   "bytes": 20727
+  },
+  {
+   "path": "final/primary-citations.lean",
+   "sha256": "3bdbd3dd96d5f1bfd4c6e508893d3a5a3373049ba5bce8685e88cc558a439da4",
+   "bytes": 14961
+  },
+  {
+   "path": "final/primary-citations.log",
+   "sha256": "ae1cb396f1fb8d64f6d7a90bf9d490d85f7a3f37ae246bc8d6fb098dc9dbd9c4",
+   "bytes": 45
+  },
+  {
+   "path": "final/target-audit-result.json",
+   "sha256": "dd6531553b3207e299c65517c510e074873882e0ae843494f4ba610db4df6a63",
+   "bytes": 758
+  },
+  {
+   "path": "final/verify.py",
+   "sha256": "f2cee537fe397d8a7bf954eec3ef4c6df7b70a58e4031a65fe43fbf57849ccb2",
+   "bytes": 4594
+  },
+  {
+   "path": "preflight-1.log",
+   "sha256": "f608a5d7096c852cd909e7463e166c16b988448559514f8cf2563e6d6ee3cdfa",
+   "bytes": 9647063
+  },
+  {
+   "path": "preflight.py",
+   "sha256": "944cae76fe1d511c129f877dacdd3307a2a8e3ee35caa0251c54ebd63462e3de",
+   "bytes": 388
+  },
+  {
+   "path": "primary-citations.json",
+   "sha256": "5765495892052f02460f59ff76fa70d8fa5b417aa3bdd15057ba83518fb24c26",
+   "bytes": 20244
+  },
+  {
+   "path": "primary-citations.lean",
+   "sha256": "1c4c9ee605f8a934da2de8b857c9308dfcb19e8ac52f49db72e461ea03e6b253",
+   "bytes": 14955
+  }
+ ],
+ "total_bytes": 29096508
+}

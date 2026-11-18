@@ -1,0 +1,104 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1p-stop-signature-20261117",
+ "commit": "a848e5cd1",
+ "made_by": "locked targeted build and fresh environment audit; source SHA, metadata-only comparison, native class signature typecheck, DAG and importer checks",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "bd6fe70157769daac34021ce13b88dcb98802138f0c64635926399e385e75656",
+   "bytes": 29748
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-audit.log",
+   "sha256": "d393f7e5c0d62094717c3632c9d1374398b15636945cfc69bd0a36c9a6fcde11",
+   "bytes": 4413525
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "63ebbc4c41d2e4aeb389081cb29508faddaa76844fd76a3cdb70d5c0b3047d6f",
+   "bytes": 20736
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "d4209cee40e74e6da2a91a3100e979154ce99399bc95beee0503e79927ec5d67",
+   "bytes": 1397
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "9d21d618dfeacb4e5ce85355a70f55b6a8d6491d031bc9cc2f3089770cb72159",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "f07c204dc8073f221d21d9437d671d5753783b2e343a7cd9b6db3261a74249cf",
+   "bytes": 164
+  },
+  {
+   "path": "importer-check.json",
+   "sha256": "6811fb9055a49652ae74c9aa681a8167b146b91d04ca23829b56d6bf6cd8f095",
+   "bytes": 290
+  },
+  {
+   "path": "line-accounting.json",
+   "sha256": "4f8344ca30f76a56e87efd678c306c35905a64c936b1b245c99ed251f79ce7a4",
+   "bytes": 93
+  },
+  {
+   "path": "metadata-source-comparison.json",
+   "sha256": "815eb3bcd30abac1462a48ebcfd565e05bb68b3db7302e775e31339ef3679b07",
+   "bytes": 258
+  },
+  {
+   "path": "native-class-signature.txt",
+   "sha256": "e45426ee61ad869ba70495a5fadae2c6ed71229f169eefc65f89dd4b2e2a2006",
+   "bytes": 2058
+  },
+  {
+   "path": "native-class-typecheck-next.log",
+   "sha256": "ae8d98f1a18d9c0c1fba477f4eb0809a0859db387f13cfac2455b125096160c7",
+   "bytes": 2249
+  },
+  {
+   "path": "native-class-typecheck.lean",
+   "sha256": "7e3fe8c435af904d25da57ea81d7fff33654a269018ef1711536428d9af93c8f",
+   "bytes": 35259
+  },
+  {
+   "path": "proposed-dag-check.json",
+   "sha256": "7721aa36042c94174dfc84cae4693ac12f19409d3f228142171a1a2a5a5317a9",
+   "bytes": 591
+  },
+  {
+   "path": "proposed-native-class-signature.json",
+   "sha256": "698e31d3e2439fbf29c97a31957e51f76efa9d5a1414e8dfb0b40385696618de",
+   "bytes": 4414
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "b026b59a5c6b2217d0ae1c0d3aef653b7ecbc98557eee0e95fca384b73aad531",
+   "bytes": 7891
+  },
+  {
+   "path": "signature-check.log",
+   "sha256": "64a953a5d49b7dec6dab085977bad5afcc094a19dc105fec1e00e986f376178c",
+   "bytes": 1153
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "bcc4667da7b0ad5a71f1d7c9b5f3d33c7b2e1f4b4f091595e5d0d4d22e5dd98c",
+   "bytes": 541
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4524465
+}

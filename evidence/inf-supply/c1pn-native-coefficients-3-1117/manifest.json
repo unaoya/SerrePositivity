@@ -1,0 +1,69 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-native-coefficients-3-1117",
+ "commit": "23f8b15c9",
+ "made_by": "two-module target build, fresh thirty-one-declaration axiom audit and DAG check",
+ "note": "P3-C1PNG at unchanged approved type; two type transports handled one at a time, no budget increase",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "2a6f144779d54a4d7c4529e67abf7ced3e94d01e01ba86d4f0d9a8c536b78259",
+   "bytes": 19947
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "bc0cb59f0e2cbc8c3c93a1e04ca310d4de5d30b42c8b85e75397cd554688fb23",
+   "bytes": 4427679
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "1561c79c17e9946f8dbe3a5b12ef7be70109cb64be2248582f6cc3c9508fc88c",
+   "bytes": 4443616
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "ca3f3d79af5d41495cfe401e471a485dda89cb186a24bd2fda7a81642640154b",
+   "bytes": 4428908
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "c1fe1dd02c75820426dded84cb68d5a6456725f9761f4c8c02d92f09d7bb84ba",
+   "bytes": 13021
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "ef3adac88510afd6135b0400dc3495b5e5be307cd5b74b24f44aeb8cc14b4f39",
+   "bytes": 1720
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "7ebb3aba872afa9cc2a9ca8294eab42a4deef94bd653a80b2ba6611d97767910",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "d11e515a4ec852c4f5664bb055472b624ef59caf970b077c88e2dc743af54f18",
+   "bytes": 321
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "9556e21b9c030065c3db2c1764d2b098cbf2406e57c769436bc224486d02063f",
+   "bytes": 12812
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "9774c38f69c0750ff945497dbacdf9572507fa0b039ac2adace8a929222a267b",
+   "bytes": 774
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 13352896
+}

@@ -1,0 +1,69 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-native-precomp-1117",
+ "commit": "d25b11fcc",
+ "made_by": "target build, fresh three-declaration axiom audit and signature DAG check",
+ "note": "P3-C1PNH is an existing realization restriction law, no new assumptions or main body changes",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "212ab3dade89287a44d74d7aa0cbfab7d7ed12ab721f6c1ea6643a504533a6c8",
+   "bytes": 2418
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "0cfb6153795c9b0de95f628dcddf02434c3e024f953076be8ecbe65761eef6e2",
+   "bytes": 4320425
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "53b0a3d6b73c12eb68f8f84d037a2723be33385d2ba10ef605469a9ad1860651",
+   "bytes": 4317235
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "337fa263f01f1cf8865ab9aefccf1b35c949f139aee33ca780c94940f0ba3fbd",
+   "bytes": 1448
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "c2de9c7d795a10d6e56206df602104e1531acf58888a42694b5adde2f559adc4",
+   "bytes": 1358
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "1fe171e2e7fe53defab44ca1c0281f80cc8d473e828e740acebdfc73f0f29add",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "93dda0206bb27ca8394daf409dc4bd972dc925d06c7f272572a944358ff7cd48",
+   "bytes": 142
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "ce365c5980763db0fb67b256e9c90b2c2ff80e17427f0e75de9c705769655c80",
+   "bytes": 11083
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "65d56cf678fe86bb1e83c5f99a368b49b8ddce300c51cc8be1eec836a37377f9",
+   "bytes": 11083
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "b0d2ba64631dd16a1e3eef2d6ad7dd3a46bbf049095605b37788576d19b1e82c",
+   "bytes": 522
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 8669811
+}

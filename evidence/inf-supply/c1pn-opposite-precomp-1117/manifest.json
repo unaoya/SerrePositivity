@@ -1,0 +1,59 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-opposite-precomp-1117",
+ "commit": "afed0298d",
+ "made_by": "target build, fresh ten-declaration axiom audit and signature DAG check",
+ "note": "Specified opposite value comparison preserves ordinary index restriction",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "1c7c1d61d08627f5e60cc5662277e416308e8b355bc0d624607252ce8ab390b6",
+   "bytes": 6069
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "1d7adbbfea301207a2ee6b39a1585e74c4d32a0f66cfcaf550d331c4ec7679b1",
+   "bytes": 4330290
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "18e522da0a0ce4a0ea307fe9063938d4fa182d9cf318f119c02821678df982ab",
+   "bytes": 3531
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "0b674bccfeb48cf1714ba7e8be7b6cadcb9e270ca9ec1cba1ae40ca822d6539f",
+   "bytes": 1336
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "ad47ff28d729d19052cf91416ce028f4d60b2e19132c5c120a747431f3e6ffd3",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "c5ef56df51e380e1bd33e18c76b177f24afefd135c3af5d5db1e7161ee2d9eff",
+   "bytes": 130
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "9e70c5d031948a779b5f3026264a167809187dcb4cd50ae4fe2d1d5b2b65ff05",
+   "bytes": 12812
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "040d2aed7fb5995b566cd1b355de0eb7c15ae509c0cb33ec56d11ecba6516f26",
+   "bytes": 511
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4358777
+}

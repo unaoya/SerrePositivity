@@ -1,0 +1,79 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pnv-1117",
+ "commit": "ea95d490f",
+ "made_by": "target build and fresh owning-declaration axiom audit; signature DAG check",
+ "note": "P3-C1PNV complete at unchanged approved type; nine declarations, standard three axioms",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "74a8fc7c3b67fb19af987d8722b95c2e822957136c7c64177ef286f4acc1736a",
+   "bytes": 7614
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "53aa494f5a19900aa93a363a035a951de73e025b20dcf4b9456464c86f2953ee",
+   "bytes": 4403038
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "89137705e2238faaa505f9d3cace112e68daf3137dcfcc72ab4f1498c2776bd1",
+   "bytes": 4403189
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "bc1cc4484be48eb35a48af20b8d9074bb99d4886b4d07e3c9c76b6088ed4c988",
+   "bytes": 4400334
+  },
+  {
+   "path": "build-4.log",
+   "sha256": "56a478ea7cca5ad6bafcfe33c0dd2082501a6bb06a795d155252a155b8cb0ab4",
+   "bytes": 4399857
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "fde09c08b6cc687f3107a33482bfb729e2ba6990cf94af95a23a49c2e6c8e8bb",
+   "bytes": 5188
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "e7ecb88df9d995070aeb3b2f6abc4d6f62b8a4b39376a51c087b9fbb7f87676a",
+   "bytes": 1386
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "9ca30f5adac58644c41694c104a3012d368ab5f9fc7573c9bc51f32c4dfecaa3",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "0f5e8138f9c73437cadd12488b2860978b28e81c288c2de997b0bf8d476d5f51",
+   "bytes": 163
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "84afc3e2b83b503a885079d0ae4146bca0b688ce235c9fd8bbd8cea102879756",
+   "bytes": 10468
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "364914b0785ba478df54609a972cd0e046e785e13bf19d4c2734684ffd938e91",
+   "bytes": 10468
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "e58d3d90fdda29a0f3180195a11707b38bc7607445006cfe79beecfbda59df72",
+   "bytes": 543
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 17646345
+}

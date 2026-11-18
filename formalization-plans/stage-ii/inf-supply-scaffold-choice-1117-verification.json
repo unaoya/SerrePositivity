@@ -1,0 +1,397 @@
+{
+  "checked_utc": "2026-11-17T02:08:31.573452+00:00",
+  "phase_exit_codes": {
+    "direct-importers": 0,
+    "scope": 0,
+    "after-snapshot": 0
+  },
+  "preservation": {
+    "success": true,
+    "declarations": 5,
+    "compared": [
+      "kind",
+      "type_hash",
+      "attributes",
+      "axioms"
+    ],
+    "body_changes": [
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison"
+    ],
+    "proof_rows_excluded": 0,
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean": "643d6b6702512019cf0e2996061e5c007a11d4bbd422cf0dfc9519a90e41db7d"
+    }
+  },
+  "audit_summary": {
+    "modules": 173,
+    "declarations": 1030,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration"
+  },
+  "audit_source_sha256": {
+    "SerrePositivity/InfinityCategories/Sheaves/AsSmallSieveComparison.lean": "8400e0cc5d8349658a17d20ac7cb57ac73ddaed26bf643616f1357ea00066fa4",
+    "SerrePositivity/InfinityCategories/Sheaves/AsSmallSieveConeComparison.lean": "d4fa5eb467a4b517819e0137c42061da4abcef2f3e1c4a35b9167bba5b472490",
+    "SerrePositivity/InfinityCategories/Sheaves/AsSmallSiteInvariance.lean": "e94729b28a79c830de2a3e32d474c753d8242b82bd8fcf2bbf129888e139c160",
+    "SerrePositivity/InfinityCategories/Sheaves/AsSmallSiteShape.lean": "f291a0f7dbbabe07b3ad4f35c96262b6a8de4a5bc6ef9f0e0d52bef1fe6f2e56",
+    "SerrePositivity/InfinityCategories/Sheaves/CechCofinalityModel.lean": "8d28ca6f81183ec1a4d5f125c24edea40f897f900f4febc88838219672c8b124",
+    "SerrePositivity/InfinityCategories/Sheaves/CechCommaContraction.lean": "8e3e318cb7cd07cb11730cb7d1346ac3a5a49f0003ee4a2132e57641a2b42b7f",
+    "SerrePositivity/InfinityCategories/Sheaves/CechCommaLocalContraction.lean": "0af0a6f91a869f6343b7637d3e9b2c3255dfca5b89938f28964d104095221cd2",
+    "SerrePositivity/InfinityCategories/Sheaves/CechCommaPrefix.lean": "ef824f70143bf25b8084aae0da8f0ef383da307490001bab53459ad180978906",
+    "SerrePositivity/InfinityCategories/Sheaves/CechCommaSmallContraction.lean": "ab2eb3be6d02830c947f0fec0824d7b263ef1d8b469dcc9341dbb9857d82d7db",
+    "SerrePositivity/InfinityCategories/Sheaves/CechIndexConstantLimit.lean": "a2ddec946b9068bf8400e3edc9310c9745ec0b3a67d02f0f780161ec07c9f613",
+    "SerrePositivity/InfinityCategories/Sheaves/CechLimitLift.lean": "16a4ba14d0fc37e11620019c3b1c954892a488053284abd7c341faf5d0d63fa0",
+    "SerrePositivity/InfinityCategories/Sheaves/CechLimitRestriction.lean": "dc8f28f8e36b8a16f3c417f6c4fc75b6ab0d24ae1eae46f7dee09515240e9010",
+    "SerrePositivity/InfinityCategories/Sheaves/CechPointBousfieldKan.lean": "f4218ef0d98eabb7cbf3c24819f1a63898f8ed489f35fb34bbdf8f9834d546b3",
+    "SerrePositivity/InfinityCategories/Sheaves/CechPointElements.lean": "fc1cf8298177ffa2fdca4e33f2ed43434af2ace291c3ee34b9da19f9b6e86fdc",
+    "SerrePositivity/InfinityCategories/Sheaves/CechPowerMaps.lean": "a40c3259904349c5979a50f3b12336fe9d30457f42bb6b1a949701ba53e034aa",
+    "SerrePositivity/InfinityCategories/Sheaves/CechShape.lean": "48f42f553fee4b7538ab344d534b8fbc1b1110c16c675def57c8d2f0d114f96b",
+    "SerrePositivity/InfinityCategories/Sheaves/CechShapeCofinality.lean": "1f38b1e609ae1be41e1b9514bd8af56d3ebe090e55885c8d7e43b0bd95c2d574",
+    "SerrePositivity/InfinityCategories/Sheaves/CoverageUniversalDescent.lean": "e64877de693e742b8b185f417338e093910b53e04249a132a970291657203981",
+    "SerrePositivity/InfinityCategories/Sheaves/DerivedGlobalSections.lean": "48f7f64a31067eaea42c18bf85a9c41611458a124a001b7b95d72047a35925a6",
+    "SerrePositivity/InfinityCategories/Sheaves/DerivedGlobalSectionsComparison.lean": "a3930f47837af9ab5569c9c512b808cff8cdebd02394897ce5c63ae6d592246f",
+    "SerrePositivity/InfinityCategories/Sheaves/DerivedGlobalSectionsMap.lean": "9bdbed35b05b1cf6c5468cbcc69fbbe4eb497dd3ac367fde76255523b6adfeee",
+    "SerrePositivity/InfinityCategories/Sheaves/DerivedGlobalSectionsSiteFamilyComparison.lean": "f5552a234fc0fcea2662b14bb2b88447c814e7fd138efcb95f0a59be31cd60aa",
+    "SerrePositivity/InfinityCategories/Sheaves/DerivedGlobalSectionsSiteSpecifiedComparison.lean": "1d2d54e4c7a5821704fe006140c6a3f8b646fbf22330429642714bdc01bbe0ad",
+    "SerrePositivity/InfinityCategories/Sheaves/DescentTopology.lean": "81c512ce9e16121f0e61fdbca3f582aa0a72f8e8d47fcddfcd8a40c010e9a8c4",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscreteNerveConeReflection.lean": "c77e210404e8bb065a2c160e6fb53790628c6e78cbe61865b7b097e5340e3426",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheaf.lean": "72f9907d68054432cc4c1452eee2d7fd4561fe34067ee96fd77622e5afb7dcaa",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafEssentialImage.lean": "a189e3c49e9777fa1b9f1f5633cb5bef993ebd3846422a0cd0648325253948ce",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafEvaluation.lean": "7510f2e926e9458829e7d4b48bf145a6d0994bd62bd18bedcef187044c49b8b6",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafInclusion.lean": "2a8b1de266918b112738e3c33ccc2a10ae6ce864b7905a552e64d3db8d94c813",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafPointwise.lean": "71b2f295edc5c07b4b70d00a612ad483b4c54051eeb6a546062aa3bb0ff0114e",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafPushoutCocones.lean": "4a58e51a11488f1cad0988ac4640adeeadc794def6be1a820cbf6aa049337a05",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePushoutSquareComparison.lean": "233cdc51c2850ee446f9dfd2c7d1c474d60fd7bcf687e6e6619db889cdcc2e93",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscretePushoutSquareData.lean": "4204163b522ddb576cf2bdcd3fa8b6da0766cd2a8120658d6a49e9931de40173",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsLeftComparison.lean": "e75875d555837cf502b27bd46315147632309c36de660a1ccbe98ce78ab14d7e",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafCondition.lean": "707c1e26727dea3c91e4b3e04ec491edd52259b915096abf4214d1515e57223e",
+    "SerrePositivity/InfinityCategories/Sheaves/EquivalentElementsSections.lean": "91c8f35720189d8faa28ae8994be6f538e05ab2d7f536f2bb99245049e084420",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveCofanCover.lean": "4be17a55e3a50d411238d03026eb2d7d691881c5864f458cd537464d30fae1ce",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveCofanDuality.lean": "fde8af088eb7545c81f8eb2a051d968720967df4a5b04cc8d24f942f2af77237",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveCofanPullback.lean": "4e9579ad845480a06b7f7c80bcfa96676eb2249705fcf60692b6497ed7431deb",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveCofanRestriction.lean": "3727a6756fbf7d24ba1e8569d7e448fa7dc9d04b31bb9094bf6d7e48c8e4dae6",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveEmptySieve.lean": "19809f72fad35ad60853766c423aba355da791b529a1741c3152fe6724793b02",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveFiniteProducts.lean": "92b9c8f5aebf269e318d24ecb287cf37990818c78b02ce4dbd14fe4a742a45ae",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveIndexRightKan.lean": "e1f3ee1ac45226ce1572aed582ed14140bafed2e9f4f72669115346f656b72b0",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveIndexUniverseRestriction.lean": "1c404e6b74ddba7e12bb14b5ae518902741a2089b8c400521fab51487ffd003b",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveLegRightCone.lean": "65f2e63f1dca4b9636ec7bebeb12f5afb8c961b91e0321ebae1ba6feb375b759",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveProductDescent.lean": "e2bbb12f4900736d398137f16011222a998d8f691411b1ddaa6061483ff7494f",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveSieveCofinality.lean": "6d59e4b4d2b4c7f9cc608882b276861debcc58dd52f0aa4ace9c520b42faef03",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveSieveCone.lean": "af0ec257102475ef24a5034eaea1ee5d4d0fe39fc22ca245bbb27073b861623d",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveSieveIndex.lean": "a1ba25cd9cddf417c3134f2784b9b17b3ea527e04e0608209994f2df7ea4ba73",
+    "SerrePositivity/InfinityCategories/Sheaves/ExtensiveTerminalComma.lean": "8ea65272365cd86aa63913acdf5da21753960d5fab7a5c1029a5c548b0454382",
+    "SerrePositivity/InfinityCategories/Sheaves/GlobalSections.lean": "b54f54498b02b348a51202ca221bae6ac452730e432e5b7280e45b2d3d0a95d4",
+    "SerrePositivity/InfinityCategories/Sheaves/GlobalSectionsConeComparison.lean": "51068804d42274bb380a64cf0848f09dbad0ba09f930cad43fbe81f20026d342",
+    "SerrePositivity/InfinityCategories/Sheaves/GlobalSectionsFamilyData.lean": "33296e65c2bc6ac3e095e338ba0fc7572e05344520971068fd2e91052d84b512",
+    "SerrePositivity/InfinityCategories/Sheaves/GlobalSectionsFunctor.lean": "72e3b95c8632740e6bd33c0afc3637c653db85c46e8632653de3307003210d46",
+    "SerrePositivity/InfinityCategories/Sheaves/GlobalSectionsSiteComparison.lean": "b9cb06ea3bcf0c7a02983ee7cc54982072f23e210e9f482528679412a5cbd8a5",
+    "SerrePositivity/InfinityCategories/Sheaves/GlobalSectionsSiteFamilyComparison.lean": "7eeb16f4d2b727978e37aa657160a681df778e950cbac5de21b2ebd44e1dfeb0",
+    "SerrePositivity/InfinityCategories/Sheaves/LargeDerivedGlobalSections.lean": "2b3b3e731efbb5949f63ffb239c5934ba00c160671bdbf03a351dd470c6da25e",
+    "SerrePositivity/InfinityCategories/Sheaves/LargeGlobalSections.lean": "b7b6df8c82afe6091c1e77f701dbe5bb633d3909b920e17ce55a64f5e12f8456",
+    "SerrePositivity/InfinityCategories/Sheaves/LargeGlobalSectionsSiteComparison.lean": "938959fb0c09db577ca37deff60ec71404db77422cc4512c1112e22b6acd9654",
+    "SerrePositivity/InfinityCategories/Sheaves/LargeSheafSmallModel.lean": "542f22df20ff511a37d6b506a5a62b25e6ed52dd997074a93cfc0bd4f568f6f2",
+    "SerrePositivity/InfinityCategories/Sheaves/LargeSiteAsSmall.lean": "7115fcec0f332b249be116d0a74c49cdfc63a0734fa425fa4b30c124fd9a72dc",
+    "SerrePositivity/InfinityCategories/Sheaves/LargeSiteSmallModel.lean": "5711fede75ae076248286f47e9d37f4f8b0260a77dad894165bed159015a9ba7",
+    "SerrePositivity/InfinityCategories/Sheaves/LocalBijectivityUniverseLift.lean": "c8d0b4ae746a6655a4156aee2b61517ba7bc6aa21a99b7c7b862a1b8f8fa4594",
+    "SerrePositivity/InfinityCategories/Sheaves/LocalEdgeRepresentative.lean": "4896ed610d2992fafee17a9f13d7be4bbcc88d6d02243446145092a249590c7e",
+    "SerrePositivity/InfinityCategories/Sheaves/LocalEquivalenceImageReduction.lean": "402eaffde7da253c7e7c151f50f9a98a9570846ba0c46b5cfdf260ff3a31c6f1",
+    "SerrePositivity/InfinityCategories/Sheaves/LocalInjectiveDiagonal.lean": "63f336eb5e22c7708225f620eec2b600fd977ea31f74e483f654f320aaf249fc",
+    "SerrePositivity/InfinityCategories/Sheaves/MonoImageSieveComma.lean": "072c8caca482f6b19dac7f8dc7aba3e7410e06deb7d3f61cb4b6276b033044c6",
+    "SerrePositivity/InfinityCategories/Sheaves/MonoImageSieveCommaEquivalence.lean": "2ebd8d6d27a1879d9da8b8bd639ff1cd5bcdff8c3e5d418748c41bdfd87e8281",
+    "SerrePositivity/InfinityCategories/Sheaves/MonoImageSieveCone.lean": "32916f271f1fe0af9f44d99965cb69d5ff3871a06bb1b4005fe758595201b283",
+    "SerrePositivity/InfinityCategories/Sheaves/MonoLocalRightKan.lean": "111710d219abdfe768e5d6b64515559034e2a1730511be22dec3a1e725a68b44",
+    "SerrePositivity/InfinityCategories/Sheaves/MonoLocalRightKanRestriction.lean": "824e3fa11a15923093962d99cd7eba0f4d2d79ebbc2baacd60c51c29090c4b20",
+    "SerrePositivity/InfinityCategories/Sheaves/MonoLocalSections.lean": "288ae6d54ac591f61e4e702e1dae8eb0c414071b7ee8118fb740dfff7925440a",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsCoefficientTransport.lean": "26a20e5f3a7c568275fa960674ded27da9cad68636314a0b19c97cfe899ce717",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsComparisonLaws.lean": "a997b5f6af8ba6ac603504fcef36a66b11d502abad596b0ac1a4e5e2a42a48ab",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean": "4f2255b7f675086b8074f707fbd85ed24164576c23fa4cb9da40208aba08faec",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanContinuity.lean": "1c8d049200a4f7a4586175856e8c0d0ad1ad7b07cd536531d37cb071f8e15d76",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeShapeSectionsContinuity.lean": "cf8847075d9ca5300086dbf7e0be27916126e881e8cacd58800b9480f9f6e9f6",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeSheafRepresentableCoefficients.lean": "f6f6a429906473153691bc0d4691dffca85bb02ca700aa3232eb31ec64575f44",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeSheafUniverseLift.lean": "5e675eb0c6143a9b86ce0df91c31439711b1572f647ef74c22e8eda9289f234f",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeSiteDescent.lean": "1121f75312cbb788daefaa6dd55bf1cb89c90e36c63f98263a52f3a0f439dbe0",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSections.lean": "c99d966185d3b07349ff6868a001959d82dbeb7e3cd99d0a1d752c09c97bd5ff",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsData.lean": "248e639c89a55d99b5c6c441dac9eeca797db93ffcd9b45e8812640550a464e6",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean": "c4fb604059ccae127c8362b883cb84d31a56b74dae6235a8a90b113fd1f27ad8",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsValueTransport.lean": "275ffe402ff6f1323bceed44c5f2d521d1d241d717a05372df51d6f1185188da",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafElementsSiteLift.lean": "d44ba91cce4fca8d7b962854f12a43857218c74868b4edff6673f7aa7d199e7a",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafRelativeCechColimit.lean": "afe796d6d56223bad65980e6a32bd784b9cc7e9a0daf11332067956139ee29d6",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafRelativeCechCoordinates.lean": "86b2965c2cef2e863f8cf1b690f6a9deec5ebd0df5fb86c6ed13c1d51e53d256",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafRelativeCechEvaluation.lean": "531469ba908d7ab5a8e80172e219233a5b2319f57cf7d50dcd00682dc19b3fa9",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafRelativeCechHom.lean": "d99499a92d3297a9c73c17c8a4015ca7b61414e94ec91ea20df2ae433cd59af2",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafRelativeCechLocalDiagonal.lean": "7c210997a1cc5f0f4f266790f85e731ad3c17cb612f71cb803911a08b2f69c01",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafYonedaShapeIso.lean": "a6abf27b7d79852c157714e164dcac8a083df4fcb7ba5f07e285026af86074d3",
+    "SerrePositivity/InfinityCategories/Sheaves/PresheafYonedaShapeValue.lean": "0f90f2b76349607c1083fa056c72c6c84534c8c6daf067b531c56e823e606ba5",
+    "SerrePositivity/InfinityCategories/Sheaves/RelativeCechDiagonal.lean": "e7d150e0666590b74ec6de36f53253da2380e30076559d7f58e2e72c98d4828b",
+    "SerrePositivity/InfinityCategories/Sheaves/RelativeCechDiagram.lean": "a24dfc3d5e09ecf4e3775fbf43cd035ceedd5d970d5b16fd8b5d182f1827f1bc",
+    "SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean": "19cf58a3216f2f04bcf7cfc1256f0b7ac91bf406b7b2896b6ee6a686b5d49440",
+    "SerrePositivity/InfinityCategories/Sheaves/RelativeCechPointComma.lean": "6ec55a54f3de33fb344e6ae0b7c8289825853a11f42394403424ec2a4cca1135",
+    "SerrePositivity/InfinityCategories/Sheaves/RepresentableSections.lean": "6442843f9cd4f3d44957289f6e8fc0ce52a097828de05062ef7102292c1740db",
+    "SerrePositivity/InfinityCategories/Sheaves/RestrictionConeVertex.lean": "0dd4d5c5d2e395645588d10bae4cbd3af14663f5367a8c1af48d34b3b1e5d2c7",
+    "SerrePositivity/InfinityCategories/Sheaves/SectionsOf.lean": "70c6726def82e83fc3ff7b6fe325455bcf7e2ca376fcadc669c63bbac5225e66",
+    "SerrePositivity/InfinityCategories/Sheaves/SetLocalEquivalence.lean": "d55637f4db13aea2894a45077b55fc06b746f7d2a7dd76fc23ec284c2ae3bfcf",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafCoefficientEquivalence.lean": "f33673d9188709ff7c84c4ce3cba39d782701c992bcfd355c8c800ffddd0f8e2",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafCondition.lean": "dcc842379a7997eac814f799e09a729d32cf1be598ee844817c0893e126a250a",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafEquivalence.lean": "ffe7a03f2c59a6b210d5b2c13f9c6d8b74138b13db13a08424752c38f2d93240",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafFiniteLimits.lean": "19bba960a2b7c1ba6407fe6b8b8482da394086af0955a7304a817b1ce5a4c363",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafGeneratingEdges.lean": "f709ed92f8431bb833677a1b556a2f3889f3d5bd834b1d30761810aa50f8ebd6",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafGlobalSectionsFamily.lean": "a8cfc0cfa6e8dd390ada4fd010ff9f39f445bab47a13fd22e8045da8f5d77584",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafLimitClosure.lean": "164b5746ac1ee8c3eaf0a64391d458a1dcdb16470c264cf877811d52fde34b59",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafLoopCorners.lean": "c44b53084f3a51116916c1261a5413e482dd54e0c4559daa04b9f987e1f49dd4",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafLoopFamily.lean": "46073175798bbad4e1111565fe9af35e321b97e460f799be58cf872d0e9060ce",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafProbeCriterion.lean": "4a1f722a3cbe35998247e9eea676c6f7a0bdbe864db28e94174c034de9e4415e",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafSiteEquivalence.lean": "a04b7da75e3f8bbcb4e20817ffa8d46dcbe6eef05d4f73c03513dab7576b0c7b",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafSiteInvariance.lean": "1c3685c6f5f099a9627b2dfd74944ed25eb1e80d3dd4f4bc177b6f1f08ec3036",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafStability.lean": "d4df38f30fc82ab5581008624196bec265fd838d6dd0b5505e93e393fda017ad",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafUnitConeTransport.lean": "c053443db9210ace123325affe999c734efeba86188be3610a828bab1e1c7b01",
+    "SerrePositivity/InfinityCategories/Sheaves/Sheafification.lean": "e5f5511ddb8b92c4d5062a0a13b35bbb758d2632f770d2f541aab8da929b72cc",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafificationExactness.lean": "5136f70d92425049f9cc0e6607ddc407ac6efd1e60d79c9a605c60c169ec11a9",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafificationReflection.lean": "fe3b4f51c2f8b878bd02f916e2f65b04dbbcb30ba0c08873a231480e77a63b1c",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteComparison.lean": "674ce91033f5e8084025810c794455c5a56fafe80ff23b530e3e657f9e84acd3",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedComparison.lean": "24fcfa53e695fae17effd5c3144e8054cba92148dd59a51739f24beb7d4bb7e4",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedUnit.lean": "d6df0a0851b8721af94709a0bea73a04615dcdb0a267edcd0b27f7c6949e60b6",
+    "SerrePositivity/InfinityCategories/Sheaves/Sheafify.lean": "c4382d19cced6bd650e0478e2d5705241184ba0b14d20fc4e014e8842514389f",
+    "SerrePositivity/InfinityCategories/Sheaves/SheafifyUnit.lean": "8fdf43d7d6f93551eedecd7036b93880ed4dcc45556ba8b673ed73cfa0acfabe",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveElements.lean": "12ccfcd7cfb1ec45daf36777d6e80718b4e7756267dd28a4f3b24f7b1e30c4fe",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorization.lean": "7d86199975b3425937f9dcd50286a6d9585fcc0e4514d86c8389f801352612e4",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationCofinality.lean": "bbad3c80590277e47310d9e890ad32b5fc54d3107976d7d4c0f9f729cbc17c3e",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationDiagram.lean": "d18d7868d4a27bd359e79142102d3f14ed137bca4866360fd5e8640ad8d5544f",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationFiber.lean": "82c678722976252dcc75ef99fb161dc4c51cdf528ea5baa777f3af0041af9a53",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationLimitComparison.lean": "c151f0608360931a4fe576f5e8afe35e3d8dfe46d8be6a98b75ad8cefc1ef28b",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationLocalComma.lean": "2aa2876491987a8640e52feddf8bb5691341f4492a35fcaaf7c35001c07c0622",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationLocalCone.lean": "b8cd31492a102ff81d490955ac54673449cc24bcb4d61df134a007385a8ff61e",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationRightKan.lean": "b1f7cb95c8954e88d8e361abf690238d7e57f95a9f106553ad1db472d6af9e99",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationRightKanConeComparison.lean": "c1a10c51c580173a06e25403a287d28ea14940e0cb2c0751c606e78f4c2733da",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationRightKanData.lean": "e2435179a954d9aebe8a85acb905f5d6e13030003fb8fe6709644612c2d2c23c",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationRightKanLocalCone.lean": "4d52a8026c55631a2298d11c6d2ebcdd8898715565b889d1a35d418693a345dd",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationRightKanShape.lean": "bb023481c12faa28e954268a585841fb8843c0398e799add779aacf1eafb3dca",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveIntersectionDescent.lean": "75d5ea740e7baf55227a6387ee5b4aee8b05a73d7070511dae1c1eb9a06c0fd4",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveProbeLocality.lean": "5cb3346d9b95abff3b6c36aabc335b127ff4f489e5bc5b55c61cebd699749954",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean": "e04cf08db53078bf5bfbb0fb9ec06bac54c91201dec71b4311fc2073e1735a2a",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveSectionsDiagram.lean": "9f89fceedf637a2b13411811d638babe279f099f17d9b162014f97a430890a85",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveSiteComparison.lean": "070fc30688b69e5b3d634b7a4ae717983f5795f8acb0ebb66d8938def356a613",
+    "SerrePositivity/InfinityCategories/Sheaves/SieveSiteConeComparison.lean": "eb88c57afd5540e4bd6af0fd1ecfa06053f42da11cb456de9f48a129126183df",
+    "SerrePositivity/InfinityCategories/Sheaves/SiteAsSmallEquivalence.lean": "fc9bed863c673b498332d003d7c60fcd3be276fb02460353f0f2577badb229a0",
+    "SerrePositivity/InfinityCategories/Sheaves/SiteLiftLocalEquivalence.lean": "19b71742723251e01434f1f53428fb5523c4bbc582f4856177ceb879249c25f5",
+    "SerrePositivity/InfinityCategories/Sheaves/SiteReindex.lean": "3272c8c1d91a6f6e27216b36efd1babe991f2ef0e716f8a1d645ec2c059aa5c5",
+    "SerrePositivity/InfinityCategories/Sheaves/SiteSmallModelShape.lean": "07c83eb59c9e8f8a176e82da29f9bdaa209fdc745d1eb5d45bc2f53e6edc5cff",
+    "SerrePositivity/InfinityCategories/Sheaves/SpacePresheafOppositeYonedaComparison.lean": "e4b560b3505daa9cf1b56b2a2288761df987c324aaf3d0987cf407dbfaceec00",
+    "SerrePositivity/InfinityCategories/Sheaves/SpacePresheafYoneda.lean": "6d09e4fba8f2d64133f4f14e3cf016594d54ee3ca20889fd8091b1ebe1b3aba2",
+    "SerrePositivity/InfinityCategories/Sheaves/SpacePresheafYonedaComparison.lean": "86f098ab3bff43ff6ab3078bd2d26e193e96c97a2d6371fc7ee92bcfd7ca32a3",
+    "SerrePositivity/InfinityCategories/Sheaves/SpacePresheafYonedaJointHom.lean": "204b832084d6e9d856b090a0521983f9531489e92ad87257ca249710f9fc75e6",
+    "SerrePositivity/InfinityCategories/Sheaves/SpacePresheafYonedaRealization.lean": "b733c8221e94bea1425f51d52bb6fb4c8a45b31a7db05c9205954807322b7026",
+    "SerrePositivity/InfinityCategories/Sheaves/TopSieveInitialPoint.lean": "cefde698e038ae4abdee97851e6677ad65014de1a472eac39f263bdd794a4906",
+    "SerrePositivity/InfinityCategories/Sheaves/TopSieveLimit.lean": "85973610a6cbc61c673b73430572f55b74742b39b9f266321a8dba74656ec6a5",
+    "SerrePositivity/InfinityCategories/Sheaves/TopSieveTerminal.lean": "1bffd4415faed6e973e2fa2d458308df847404e679afeecf60d05e69ae496a29",
+    "SerrePositivity/InfinityCategories/Sheaves/UniversalSieveDescent.lean": "682da749134a5511c7efe9c8bd42dec42904fd8048fc582b992322c30a0fba6a",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedLeftSectionsCoefficientTransport.lean": "72b4e0e11dc85ff102abde254e999f0d7088c23d9cfb9d756f5d35d9520a2615",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsComparison.lean": "862e034ecb5c0be016f368182e7758bc0ff3297f5791f31e639f71e5b87a7bed",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsContinuity.lean": "9a56a77613e328613b6615ab44c0013d8d8893df6ed651a546b3fa46f1958fce",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsData.lean": "1fd48fcee142572dacb62ab62304d9402267041c188ad2f92962dca2fd235336",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscrete.lean": "c7b47b2f4ee0ee34af4f4f68adfade8d9e714579832d6f0aa701aa90e2ad01c0",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscreteFactorization.lean": "b25ca0764beb40de7690306a31f27316a7945fbac0fc8597cb86eb0671a3a685",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsExistence.lean": "9159d412698d7bf7526faa1b3fdd11966aed8c85b12ae1dbe156512f10a08221",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsGlobalComparisonVertex.lean": "ede263316bc78ad755abed825d6d690b300e1377031ee74464e91a23f376794e",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsLeftLimit.lean": "dcabd9dc1c0212a5121b4439226ff8887c0bfac076704a52490bc00cd0aa2d28",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsLeftLimitComposition.lean": "e4e67b0f2d2e5b57576c7d16f149c86bf8f4f17d001fcd23185b2179a4bf8158",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsLocalComparison.lean": "07308cebbbe3fc63cf8f0ea9a9cdb44a5e1516e68e709499d908db65a5a29b16",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitComparison.lean": "53919e9358cc6321b394cc2b7ed81e58fdc2fbc68c7b7c3493c273a44ad53516",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeRepresentative.lean": "a7f3d035225cd201ff852b5d188c114e54ae594dd034708905073da2fbfc8483",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimit.lean": "9707dbb0b935d4a226b299f80efff703ded744c961fdc5ceaa2493adbd1a2ae9",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean": "c038f52fda15065600b28aac8ff7d20e830b6dfb53e5e20c8fc4658fb00a07b1",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsPushout.lean": "ccdc8ecd370edd889f62373f223048205dfde4416c586ec8cea358ed075f1c78",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCech.lean": "de1b13758c2dac1124e7d067fad5b5485f983a51cc2a87374e5cc09448c3f349",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsValueTransport.lean": "0825808da7c5b51eca9a3c50ce59f9bb236567bbe3c36ac12ca20ba2651586a9",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftCoherentTransportDirectComparison.lean": "643d6b6702512019cf0e2996061e5c007a11d4bbd422cf0dfc9519a90e41db7d"
+  },
+  "logs": "/tmp/is-w1/s8-scaffold-choice-approved/",
+  "main_merged": false,
+  "whole_downstream_root_audit": "調整役の夜の取り込み時に残す",
+  "hash_algorithm": "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)",
+  "proof_irrelevant": true,
+  "snapshot_sha256": {
+    "before.json": "553b51466357a52784d329a33795a4401980dfc9f77e0b29c3bfb248205bad1c",
+    "after.json": "dda3852482ef9ab7355a7a394313c0f9a71c7c6ede796b18527f4bf56286bb6e"
+  },
+  "fingerprints": {
+    "before": [
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison_isPrecompositionEquivalence",
+        "kind": "theorem",
+        "type_hash": "17208937906637624991",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison_isQCatEquivalence",
+        "kind": "theorem",
+        "type_hash": "3739578905406625983",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.exists_leftCoherentTransport_directComparison",
+        "kind": "theorem",
+        "type_hash": "6986702973813760921",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison",
+        "kind": "def",
+        "type_hash": "7102260394422315184",
+        "body_hash": "8763028117583064921",
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": true
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison_projection",
+        "kind": "theorem",
+        "type_hash": "6610675177735495158",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    ],
+    "after": [
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison_isPrecompositionEquivalence",
+        "kind": "theorem",
+        "type_hash": "17208937906637624991",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison_isQCatEquivalence",
+        "kind": "theorem",
+        "type_hash": "3739578905406625983",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.exists_leftCoherentTransport_directComparison",
+        "kind": "theorem",
+        "type_hash": "6986702973813760921",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison",
+        "kind": "def",
+        "type_hash": "7102260394422315184",
+        "body_hash": "92126359086642830",
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": true
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftCoherentTransportDirectComparison_projection",
+        "kind": "theorem",
+        "type_hash": "6610675177735495158",
+        "body_hash": null,
+        "attributes": {
+          "simp": false,
+          "reducibility": "Lean.ReducibilityStatus.semireducible",
+          "instance_priority": null,
+          "expose": false
+        },
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    ]
+  }
+}
