@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：37,031行。外枠：36,138行。係数：2。
+既計上の累計：37,145行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -85,18 +85,18 @@
 |R15a|verified|65|0〜0|0〜0|
 |R15b|verified|65|0〜0|0〜0|
 |R15c|verified|95|0〜0|0〜0|
-|R16.1|deferred_next_checkpoint|—|20〜40|40〜80|
-|R16.2|deferred_next_checkpoint|—|30〜55|60〜110|
-|R16.3|deferred_next_checkpoint|—|30〜55|60〜110|
-|R16.4|deferred_next_checkpoint|—|100〜180|200〜360|
-|R16.5|deferred_next_checkpoint|—|90〜150|180〜300|
-|R16.6|deferred_next_checkpoint|—|90〜150|180〜300|
-|R16.7|deferred_next_checkpoint|—|20〜45|40〜90|
-|R16.8|deferred_next_checkpoint|—|40〜80|80〜160|
-|R16.9|deferred_next_checkpoint|—|25〜50|50〜100|
-|R16|deferred_next_checkpoint|—|60〜100|120〜200|
-|R17.1|deferred_next_checkpoint|—|15〜30|30〜60|
-|R17|deferred_next_checkpoint|—|10〜25|20〜50|
+|R16.1|verified|36|0〜0|0〜0|
+|R16.2|verified|35|0〜0|0〜0|
+|R16.3|verified|43|0〜0|0〜0|
+|R16.4|pending|—|100〜180|200〜360|
+|R16.5|pending|—|90〜150|180〜300|
+|R16.6|pending|—|90〜150|180〜300|
+|R16.7|pending|—|20〜45|40〜90|
+|R16.8|pending|—|40〜80|80〜160|
+|R16.9|pending|—|25〜50|50〜100|
+|R16|pending|—|60〜100|120〜200|
+|R17.1|pending|—|15〜30|30〜60|
+|R17|pending|—|10〜25|20〜50|
 |R15-Unit.3|verified|34|0〜0|0〜0|
 |R15-Unit.4|verified|65|0〜0|0〜0|
 |R15a.3|verified|50|0〜0|0〜0|
@@ -3148,7 +3148,7 @@ let I := (discretePresheafInclusion C).val
 - `sheafificationReindexSpecifiedMateIso_mate` @ SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedComparison.lean:53
 
 ### R16.1 — coverageGeneratedSieveInclusion
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：なし（既存APIのみ）。
+親：R16。状態：検証済み。依存：なし（既存APIのみ）。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {U : C}
@@ -3168,7 +3168,7 @@ let I := (discretePresheafInclusion C).val
 - `sieveCategory` @ SerrePositivity/InfinityCategories/Sheaves/SheafCondition.lean:44
 
 ### R16.2 — coverageGeneratedSieveInclusion_cone
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.1。
+親：R16。状態：検証済み。依存：R16.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {U : C}
@@ -3191,7 +3191,7 @@ let I := (discretePresheafInclusion C).val
 - `nerveCone_whisker` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeNaturality.lean:55
 
 ### R16.3 — coverageLocalRefinement_for_generatedSieve
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：なし（既存APIのみ）。
+親：R16。状態：検証済み。依存：なし（既存APIのみ）。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3220,7 +3220,7 @@ let I := (discretePresheafInclusion C).val
 - `coveragePullbackRefinement_isLimit` @ SerrePositivity/InfinityCategories/Sheaves/CoveragePullbackRefinement.lean:32
 
 ### R16.4 — coverageConeRestriction_homInverse
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.2・R16.3。
+親：R16。状態：紙のみ（pending）。依存：R16.2・R16.3。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3252,7 +3252,7 @@ let r := sliceOverRestrict (nativeRestriction F S) j
 - `IsTerminalVertex.pinchedHom_isContractibleKan` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean:29
 
 ### R16.5 — coverageConeRestriction_homInverse_left
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.4。
+親：R16。状態：紙のみ（pending）。依存：R16.4。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3286,7 +3286,7 @@ let r := sliceOverRestrict (nativeRestriction F S) j
 - `IsTerminalVertex.pinchedHom_isContractibleKan` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean:29
 
 ### R16.6 — coverageConeRestriction_homInverse_right
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.4。
+親：R16。状態：紙のみ（pending）。依存：R16.4。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3320,7 +3320,7 @@ let r := sliceOverRestrict (nativeRestriction F S) j
 - `IsTerminalVertex.pinchedHom_isContractibleKan` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean:29
 
 ### R16.7 — coverageConeRestriction_isFullyFaithful
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.5・R16.6。
+親：R16。状態：紙のみ（pending）。依存：R16.5・R16.6。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3347,7 +3347,7 @@ IsFullyFaithful r
 - `IsFullyFaithful` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithful.lean:30
 
 ### R16.8 — coverageGeneratedSieve_upward_isLimit
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.2・R16.7。
+親：R16。状態：紙のみ（pending）。依存：R16.2・R16.7。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3374,7 +3374,7 @@ IsFullyFaithful r
 - `nativeRestrictionCone` @ SerrePositivity/InfinityCategories/Sheaves/NativeSiteDescent.lean:31
 
 ### R16.9 — coverage_basis_pullback_native_isLimit
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.8。
+親：R16。状態：紙のみ（pending）。依存：R16.8。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3398,7 +3398,7 @@ IsFullyFaithful r
 - `coverageRefinement_generate_le` @ SerrePositivity/InfinityCategories/Sheaves/CoveragePullbackRefinement.lean:20
 
 ### R16 — coverage_basis_pullback_isLimit
-親：R16。状態：紙のみ（deferred_next_checkpoint）。依存：R16.9。
+親：R16。状態：紙のみ（pending）。依存：R16.9。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3424,7 +3424,7 @@ IsFullyFaithful r
 - `restrictionCone_inf_isLimit_iff_of_pullbacks` @ SerrePositivity/InfinityCategories/Sheaves/SieveIntersectionDescent.lean:23
 
 ### R17.1 — coverage_generatedSieve_universallyDescending
-親：R17。状態：紙のみ（deferred_next_checkpoint）。依存：R16。
+親：R17。状態：紙のみ（pending）。依存：R16。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3448,7 +3448,7 @@ IsFullyFaithful r
 - `isSheaf_toGrothendieck_iff_universallyDescending` @ SerrePositivity/InfinityCategories/Sheaves/CoverageUniversalDescent.lean:23
 
 ### R17 — isSheaf_toGrothendieck_iff
-親：R17。状態：紙のみ（deferred_next_checkpoint）。依存：R17.1。
+親：R17。状態：紙のみ（pending）。依存：R17.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],

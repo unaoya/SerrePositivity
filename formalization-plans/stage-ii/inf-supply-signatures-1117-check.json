@@ -3,9 +3,9 @@
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 122,
-  "verified_count": 110,
+  "verified_count": 113,
   "additional_count": 87,
-  "deferred_count": 12,
+  "deferred_count": 0,
   "edge_count": 218,
   "acyclic": true,
   "topological_order": [
@@ -133,22 +133,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    0,
-    0
+    450,
+    810
   ],
   "active_corrected_lines": [
+    900,
+    1620
+  ],
+  "deferred_corrected_lines": [
     0,
     0
   ],
-  "deferred_corrected_lines": [
-    1060,
-    1920
-  ],
   "active_completion_corrected_lines": [
-    37031,
-    37031
+    38045,
+    38765
   ],
-  "ledger_sha256": "b95208e25e1f8976b4e12784f5d4424677557ef9fe4487094785b6396e97f718",
+  "ledger_sha256": "af546d4468fcc7cfb96277ac2de03210c7c03f5a08aad21dddf3601a1ad54140",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -307,8 +307,11 @@
     "SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedComparison.lean": "24fcfa53e695fae17effd5c3144e8054cba92148dd59a51739f24beb7d4bb7e4",
     "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValueUnit.lean": "2e39183a790e3888af550d64e35724db656a0ea92c2acd6000bd0ef2587c701f",
     "SerrePositivity/InfinityCategories/Sheaves/SheafCondition.lean": "dcc842379a7997eac814f799e09a729d32cf1be598ee844817c0893e126a250a",
+    "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveInclusion.lean": "b6b12ed3203756517270412267658ddfa33fa47b2ac725bfadc1920776861914",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeNaturality.lean": "5b33d126f78892e4511ede7277f284ee7935b2bb82986eec76600f12c6c3bb15",
+    "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveCone.lean": "05dc5c92440a6db6dc38c8252476e6c94c9afe5beb4978dc852e2ff1299d2868",
     "SerrePositivity/InfinityCategories/Sheaves/CoveragePullbackRefinement.lean": "eaf160be4751191f9f207a80a4c28b47cf0da0a0c3a0417afb33ebd92b898de7",
+    "SerrePositivity/InfinityCategories/Sheaves/CoverageNativeLocalRefinement.lean": "23c034a58de451959503090e6cd0a3e86ba101e543caabf523e707ca1994de77",
     "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/MappingSpaceMap.lean": "9121bcb78a59f0e2d3b3f9ad291a2f1d5a1b84ee06adc2ba5da9b0e921a11800",
     "SerrePositivity/InfinityCategories/Sheaves/SieveFactorizationLimitComparison.lean": "c151f0608360931a4fe576f5e8afe35e3d8dfe46d8be6a98b75ad8cefc1ef28b",
     "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean": "6abcdac909778e06af609f7df867988dc0ee637a86c930c2b446800d3adedb2e",

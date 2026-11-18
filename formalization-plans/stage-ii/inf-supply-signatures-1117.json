@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 37031,
+  "verified_lean_lines": 37145,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5450,6 +5450,11 @@
           "name": "sieveCategory",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SheafCondition.lean",
           "line": 44
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveInclusion.lean",
+          "line": 28,
+          "name": "coverageGeneratedSieveInclusion"
         }
       ],
       "literature": "HTT 6.2.2.6・6.2.2.7の生成被覆系の判定。通常圏での基準はMathlib Presieve.isSheaf_coverage。∞版への接続自体が残る数学。",
@@ -5463,13 +5468,35 @@
       ],
       "method": "同じOver Uの対象・射を変えず、篩への所属証明だけをhで送る。",
       "specified_compatibility": "新しい対象・射の選択はしない。",
-      "status": "deferred_next_checkpoint",
+      "status": "verified",
       "proof_unit_parent": "R16",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
-      "note": "同じOver Uの対象・射を変えず、篩への所属証明だけをhで送る。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveInclusion.lean",
+      "note": "同じOver Uの対象・射を変えず、篩への所属証明だけをhで送る。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 36,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 4,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveInclusion.lean": "b6b12ed3203756517270412267658ddfa33fa47b2ac725bfadc1920776861914"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "eb5c88c2a56bdd64041e6a735faed286b03fabb95557a90ed7c62188be0e94ea",
+        "receipt": "/tmp/is-stage5/R16.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r16-1-1118/manifest.json"
     },
     {
       "id": "R16.2",
@@ -5488,6 +5515,11 @@
           "name": "nerveCone_whisker",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeNaturality.lean",
           "line": 55
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveCone.lean",
+          "line": 28,
+          "name": "coverageGeneratedSieveInclusion_cone"
         }
       ],
       "literature": "HTT 6.2.2.6・6.2.2.7の生成被覆系の判定。通常圏での基準はMathlib Presieve.isSheaf_coverage。∞版への接続自体が残る数学。",
@@ -5501,13 +5533,35 @@
       ],
       "method": "全脚が元の同じOver射であることを通常の錐の等式で示す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "verified",
       "proof_unit_parent": "R16",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
-      "note": "全脚が元の同じOver射であることを通常の錐の等式で示す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveCone.lean",
+      "note": "全脚が元の同じOver射であることを通常の錐の等式で示す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 35,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveCone.lean": "05dc5c92440a6db6dc38c8252476e6c94c9afe5beb4978dc852e2ff1299d2868"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "c2933c5838b0c320c3e54e238f1210474cf042c796460abbc156f70ff63404d3",
+        "receipt": "/tmp/is-stage5/R16.2/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r16-2-1118/manifest.json"
     },
     {
       "id": "R16.3",
@@ -5524,6 +5578,11 @@
           "name": "coveragePullbackRefinement_isLimit",
           "path": "SerrePositivity/InfinityCategories/Sheaves/CoveragePullbackRefinement.lean",
           "line": 32
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/CoverageNativeLocalRefinement.lean",
+          "line": 29,
+          "name": "coverageLocalRefinement_for_generatedSieve"
         }
       ],
       "literature": "HTT 6.2.2.6・6.2.2.7の生成被覆系の判定。通常圏での基準はMathlib Presieve.isSheaf_coverage。∞版への接続自体が残る数学。",
@@ -5537,13 +5596,35 @@
       ],
       "method": "Coverage.pullbackの同じ証人を引数tごとに存在命題として保つ。整合しない細分を一括chooseして関手にはしない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "verified",
       "proof_unit_parent": "R16",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
-      "note": "Coverage.pullbackの同じ証人を引数tごとに存在命題として保つ。整合しない細分を一括chooseして関手にはしない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/CoverageNativeLocalRefinement.lean",
+      "note": "Coverage.pullbackの同じ証人を引数tごとに存在命題として保つ。整合しない細分を一括chooseして関手にはしない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 43,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/CoverageNativeLocalRefinement.lean": "23c034a58de451959503090e6cd0a3e86ba101e543caabf523e707ca1994de77"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "84a0ec58f4e70fd4a3e48736c671479e161894bf234c258007c1a5b75e271aa8",
+        "receipt": "/tmp/is-stage5/R16.3/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r16-3-1118/manifest.json"
     },
     {
       "id": "R16.4",
@@ -5581,13 +5662,13 @@
       ],
       "method": "同じc・dのpinched cylinderの制限からの逆を、各t上の基底細分の指定極限の普遍性で構成する。各有限単体のパラメータを保ち、点の逆を独立に選ばない。",
       "specified_compatibility": "この行がCoverage側の主な不足。通常の集合値isSheaf_coverageを空間値にそのまま適用しない。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R16",
       "paper_only": true,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
-      "note": "同じc・dのpinched cylinderの制限からの逆を、各t上の基底細分の指定極限の普遍性で構成する。各有限単体のパラメータを保ち、点の逆を独立に選ばない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "note": "同じc・dのpinched cylinderの制限からの逆を、各t上の基底細分の指定極限の普遍性で構成する。各有限単体のパラメータを保ち、点の逆を独立に選ばない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18：指定した制限射の全境界の持ち上げを、局所細分の極限性だけから組み立てる補題が未供給。"
     },
     {
       "id": "R16.5",
@@ -5624,13 +5705,13 @@
       ],
       "method": "各局所細分の極限が全パラメータの比較空間を可縮にすることから、同じ元のcylinderへ戻るホモトピーを作る。単にHoの射の等号では済ませない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R16",
       "paper_only": true,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
-      "note": "各局所細分の極限が全パラメータの比較空間を可縮にすることから、同じ元のcylinderへ戻るホモトピーを作る。単にHoの射の等号では済ませない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "note": "各局所細分の極限が全パラメータの比較空間を可縮にすることから、同じ元のcylinderへ戻るホモトピーを作る。単にHoの射の等号では済ませない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18：指定した制限射の全境界の持ち上げを、局所細分の極限性だけから組み立てる補題が未供給。"
     },
     {
       "id": "R16.6",
@@ -5667,13 +5748,13 @@
       ],
       "method": "元のR側でも同じ指定の制限を回収する。cylinderの境界を保って左右の式を別々に証明する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R16",
       "paper_only": true,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
-      "note": "元のR側でも同じ指定の制限を回収する。cylinderの境界を保って左右の式を別々に証明する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "note": "元のR側でも同じ指定の制限を回収する。cylinderの境界を保って左右の式を別々に証明する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 11-18：指定した制限射の全境界の持ち上げを、局所細分の極限性だけから組み立てる補題が未供給。"
     },
     {
       "id": "R16.7",
@@ -5701,7 +5782,7 @@
       ],
       "method": "二つのホモトピーから各pinchedHomMapの同値性を得て、同じrの充満忠実性とする。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R16",
       "paper_only": true,
       "additional_mathematics": true,
@@ -5740,7 +5821,7 @@
       ],
       "method": "同じrの像のcanonicalConeは元のRの極限錐。充満忠実性で終性を反映する。これはSが被覆を含む場合だけで、任意の大きい篩への無条件反映ではない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R16",
       "paper_only": true,
       "additional_mathematics": true,
@@ -5773,7 +5854,7 @@
       ],
       "method": "Coverage.pullbackの細分TとhTを一度取り、生成Tから実際の引き戻し篩への包含でR16.8を使う。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R16",
       "paper_only": true,
       "additional_mathematics": true,
@@ -5809,7 +5890,7 @@
         120,
         200
       ],
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/coverage_basis_pullback_isLimit.lean",
       "note": "200行超。29,000行の最後の外枠の規則により別停止点へ切り離す。前提計算42行だけ検証済み、主張は未完。",
       "additional_mathematics": false,
@@ -5854,7 +5935,7 @@
       ],
       "method": "R16を全射fに適用する。全引き戻しでの降下を明示したまま渡す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "proof_unit_parent": "R17",
       "paper_only": true,
       "additional_mathematics": true,
@@ -5885,7 +5966,7 @@
         20,
         50
       ],
-      "status": "deferred_next_checkpoint",
+      "status": "pending",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/isSheaf_toGrothendieck_iff.lean",
       "note": "",
       "additional_mathematics": false,
