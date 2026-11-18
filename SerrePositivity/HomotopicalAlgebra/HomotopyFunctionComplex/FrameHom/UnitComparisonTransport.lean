@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.UnitComparisonWeakDetection
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.DiagramComparisons.PinchedActionEquivalences
-public import SerrePositivity.EInfinity.ComplexLimits.PinchedTransportFamily
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.PinchedTransportFamily
 /-!
 概要：同じ単位と弱な全 pinched 族による判定を、指定した同型で両端輸送する。
 方針：元の全族三角形を同じ定値射と区間作用の公式で輸送する。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open _root_.CategoryTheory _root_.SSet _root_.SerrePositivity.InfinityCategories
-open _root_.SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 
 open scoped _root_.Simplicial
 
@@ -54,14 +54,14 @@ lemma unitComparisonTransport_weak {K C D : SSet.{u}} [Quasicategory C] [Quasica
   have hu' : η ≫ (hoFunctor.map U).toFunctor.map e.hom = s.inv ≫ ν := by
     rw [← hu]
     simp only [Iso.inv_hom_id_assoc]
-  have ht := pinchedTransport_intervalFamily (a := x) (b := z)
+  have ht := _root_.SerrePositivity.ComplexLimits.pinchedTransport_intervalFamily (a := x) (b := z)
     (c := U.app (Opposite.op ⦋0⦌) c) (d := U.app (Opposite.op ⦋0⦌) d) s.inv
     ((hoFunctor.map U).toFunctor.map t.hom) r
   simp only [Category.assoc] at ht
   dsimp only [P, R]
   rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace a d)
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap U a d), ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pinchedHomToIntervalMappingSpace_naturality,
-    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose_family, pinchedTransport_forget_family]
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose_family, _root_.SerrePositivity.ComplexLimits.pinchedTransport_forget_family]
   simp only [Category.assoc]
   rw [ht]
   rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K η)

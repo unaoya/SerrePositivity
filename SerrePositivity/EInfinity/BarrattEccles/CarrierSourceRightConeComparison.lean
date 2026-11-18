@@ -43,7 +43,7 @@ def carrierSourceRightConeComparisonIso (Y : Complex A) (F : K ⥤ (operad A).Al
     (hL : SSet.anodyneExtensions.IsInvertedBy L) :
     L.obj ((CarrierDiagram.constantDiagramSourceHom A K (carrierFramedLimitProbe A Y)).obj
       ((Diagram.forget A K).obj F)) ≅ L.obj ((carrierFramedLimitConeSpace A K Y).obj F) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   have := carrierFramedLimitProbe_cofibrant A Y
   let R := F ⋙ carrierRightSimplicialFrameFamily A

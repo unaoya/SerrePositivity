@@ -77,7 +77,7 @@ lemma carrierFramedLimitConeClass_eq_mapClass (F : K ⥤ (operad A).Algebra)
 使われ方：底の導来 Hom 同値の通常錐による正規化。 -/
 lemma carrierFramedLimitHomPiZeroEquiv_coneClass (F : K ⥤ (operad A).Algebra)
     (c : Cone ((Diagram.forget A K).obj F)) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
     carrierFramedLimitHomPiZeroEquiv A K F c.pt (carrierFramedLimitConeClass A K F c) =
       Q.map (carrierConeToFramedLimit A K F c) := by

@@ -22,15 +22,15 @@ lemma freeStandardSource_hom_ext {Z : Complex R}
     {f g : ((operad R).freeAlgebra (X ⊞ Y)).carrier ⟶ Z}
     (h : ∀ m n, freeStandardSource R X Y m n ≫ f =
       freeStandardSource R X Y m n ≫ g) : f = g := by
-  apply schur_hom_ext R (sequence R) (X ⊞ Y) Z
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schur_hom_ext R (sequence R) (X ⊞ Y) Z
   intro r
   apply (isColimitOfPreserves (tensorLeft ((operad R).arity r))
     (binaryTensorWordsIsColimit X Y r)).hom_ext
   rintro ⟨w⟩
   change ((operad R).arity r ◁ binaryTensorWordInclusion X Y r w) ≫
-    schurι R (sequence R) (X ⊞ Y) r ≫ f =
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) (X ⊞ Y) r ≫ f =
       ((operad R).arity r ◁ binaryTensorWordInclusion X Y r w) ≫
-        schurι R (sequence R) (X ⊞ Y) r ≫ g
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) (X ⊞ Y) r ≫ g
   obtain ⟨m, n, hr, σ, _, _, hw⟩ := binaryTensorWord_standard_orbit r w
   subst r
   simp only [cast_eq] at hw
@@ -46,11 +46,11 @@ lemma freeStandardSource_hom_ext {Z : Complex R}
     exact congrArg (fun q => a ⊗ₘ q) (binaryTensorWordPermutationIso_inclusion X Y _ σ z)
   have hk (q : ((operad R).freeAlgebra (X ⊞ Y)).carrier ⟶ Z) :
       (a ⊗ₘ e.hom) ≫ (C ◁ binaryTensorWordInclusion X Y (m + n) (σ • z)) ≫
-        schurι R (sequence R) (X ⊞ Y) (m + n) ≫ q =
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) (X ⊞ Y) (m + n) ≫ q =
       (C ◁ binaryTensorWordInclusion X Y (m + n) z) ≫
-        schurι R (sequence R) (X ⊞ Y) (m + n) ≫ q := by
+        _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι R (sequence R) (X ⊞ Y) (m + n) ≫ q := by
     rw [reassoc_of% he]
-    rw [reassoc_of% schurι_diagonal R (sequence R) (X ⊞ Y) (m + n) σ]
+    rw [reassoc_of% _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι_diagonal R (sequence R) (X ⊞ Y) (m + n) σ]
   have ha : IsIso a := by dsimp [a]; infer_instance
   apply (cancel_epi (a ⊗ₘ e.hom)).1
   rw [hk f, hk g]

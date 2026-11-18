@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.OperadAugmentation
-public import SerrePositivity.EInfinity.HomologyZero.UnitRigidity
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomologyZero.UnitRigidity
 
 /-!
 # H⁰ の演算に使う E(n) の係数とホモトピー
@@ -38,7 +38,7 @@ def aritySection (n : ℕ) : 𝟙_ (Complex A) ⟶ (operad A).arity n :=
 使われ方：H⁰ の演算の係数が一であることの保証。 -/
 lemma aritySection_augmentation (n : ℕ) :
     aritySection A n ≫ (augmentation A).map.app (FiniteBijection.of n) = 𝟙 _ :=
-  HomologyZero.unit_homotopy_eq (complexContraction A n).homotopyInvHomId
+  _root_.SerrePositivity.HomologyZero.unit_homotopy_eq (complexContraction A n).homotopyInvHomId
 
 /-- 概要：augmentation が同じ E(n) への二射はホモトピック（BF §1）。
 方針：両射を収縮と切断を通る射へホモトピーで移す。

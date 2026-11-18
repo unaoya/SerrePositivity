@@ -1,0 +1,49 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/notes-kerodon-rest",
+ "commit": "b21c0c1831d827e3eb33cd13b39af77c2182afe7",
+ "made_by": "NB-W3 stage 2: classification of frozen HTML and static transfer validation",
+ "note": "37 pages; classifications, source blocks, placements and full held text; no Lean or build",
+ "files": [
+  {
+   "path": "audit.json",
+   "sha256": "cc6f7ad5afa572de7000a4ffc6e72362e236b162302746dd20088ec937338d71",
+   "bytes": 3936
+  },
+  {
+   "path": "classify.tsv",
+   "sha256": "568a6608ec12a70bcb4750378beac78b8a30638bc93ab56af2be6c312584be48",
+   "bytes": 19054
+  },
+  {
+   "path": "overrides.tsv",
+   "sha256": "dc94c206a7c6e95cb6f18712ff51fbe1e1bbb9dcdf9fae51889b7a93075e4b54",
+   "bytes": 4412
+  },
+  {
+   "path": "dispositions.json",
+   "sha256": "1d90e57d9e6a067eeb7fb12a47e81f94f30e56d30bb3d4d39fb9f8f1721a61c6",
+   "bytes": 2430770
+  },
+  {
+   "path": "htmlunits.py",
+   "sha256": "4ee1782b27b22de55dc8be4da1be6a3873dc4b9980761374447fc93b4406f09f",
+   "bytes": 6250
+  },
+  {
+   "path": "produce.py",
+   "sha256": "8f7b2f0fe920cdebbb8475c984432f58add3d32ca3a2649f0ef111cba23b2e1e",
+   "bytes": 13310
+  },
+  {
+   "path": "stale-links.json",
+   "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+   "bytes": 3
+  },
+  {
+   "path": "validation.txt",
+   "sha256": "f501284f53a89f02367557730ffc8a518020d8b7968de5f9c2bb6e3551fe4a57",
+   "bytes": 224
+  }
+ ],
+ "total_bytes": 2477959
+}

@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
@@ -32,7 +32,7 @@ lemma strictRawModuleTensorElementPinchedMap_evaluation_app {n : ℕ}
       (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
       (ForgetEnrichment.to (Complex A) Q) x)
       ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c) =
-    (normalizedTensorElementPinchedMap A
+    (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementPinchedMap A
       ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
       ((moduleEvaluation A _ x).obj Q)).app (op ⦋n⦌)
       (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x) := by
@@ -53,7 +53,7 @@ lemma strictRawModuleTensorElementPinchedMap_linear_evaluation {n : ℕ}
       (ForgetEnrichment.to (Complex A) Q) x)
       (PinchedHom.toLinearSimplex
         ((strictRawModuleTensorElementPinchedMap A X P Q).app (op ⦋n⦌) c)) =
-    PinchedHom.toLinearSimplex ((normalizedTensorElementPinchedMap A
+    PinchedHom.toLinearSimplex ((_root_.SerrePositivity.ComplexLimits.normalizedTensorElementPinchedMap A
       ((moduleEvaluation A _ x).obj ((strictRawModuleProbeFunctor A X).obj P))
       ((moduleEvaluation A _ x).obj Q)).app (op ⦋n⦌)
       (c ⋙ strictRawModuleTensorElementEvaluationIndex A X P Q x)) :=

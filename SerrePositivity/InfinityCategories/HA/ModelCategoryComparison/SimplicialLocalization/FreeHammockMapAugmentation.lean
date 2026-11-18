@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockMap
-public import SerrePositivity.EInfinity.Hammock.RelativeColimitMap
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeColimitMap
 
 /-!
 # 元の自由 hammock の左比較の係数自然性
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
 
 lemma freeHammockFixedFunctor_augmentation (X Y : C.category) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
@@ -62,7 +62,7 @@ lemma freeHammockMap_augmentation (X Y : C.category) :
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap F X Y ≫
         _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation D (F.functor.obj X) (F.functor.obj Y) =
       _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y ≫
-        (Functor.const SimplexCategoryᵒᵖ).map (Relative.colimitMap F X Y) := by
+        (Functor.const SimplexCategoryᵒᵖ).map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y) := by
   apply NatTrans.ext
   funext n
   change colim.map _ ≫ colim.map _ = colim.map _ ≫ colim.map _
@@ -73,7 +73,7 @@ lemma freeHammockMap_augmentation (X Y : C.category) :
 lemma freeHammockDiagonalMap_augmentation (X Y : C.category) :
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y ≫
         _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation D (F.functor.obj X) (F.functor.obj Y) =
-      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y ≫ Relative.colimitMap F X Y := by
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalAugmentation C X Y ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap F X Y := by
   apply NatTrans.ext
   funext n
   exact NatTrans.congr_app (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockMap_augmentation F X Y) n) n
@@ -81,8 +81,8 @@ lemma freeHammockDiagonalMap_augmentation (X Y : C.category) :
 lemma freeHammockDiagonalMap_reduction (X Y : C.category) :
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap F X Y ≫
         _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction D (F.functor.obj X) (F.functor.obj Y) =
-      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y ≫ Relative.reducedMap F X Y := by
-  simp only [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction, Relative.reducedMap, Category.assoc,
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction C X Y ≫ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.reducedMap F X Y := by
+  simp only [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalReduction, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.reducedMap, Category.assoc,
     Iso.hom_inv_id_assoc]
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalMap_augmentation, Category.assoc]
 

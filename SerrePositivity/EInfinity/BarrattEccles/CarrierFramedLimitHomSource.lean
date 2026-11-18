@@ -37,12 +37,12 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：導来 Hom 同値の計算対象側の始域自然性。 -/
 lemma carrierFramedLimitHomPiZeroEquiv_source {Y Z : Complex A} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) (z : SSet.π₀ ((carrierFramedLimitConeSpace A K Z).obj F)) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
     carrierFramedLimitHomPiZeroEquiv A K F Y
         (SSet.mapπ₀ ((carrierFramedLimitConeSourceMap A K f).app F) z) =
       Q.map f ≫ carrierFramedLimitHomPiZeroEquiv A K F Z z := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let Q := (weakEquivalences (Complex A)).Q
   have : Q.op.IsLocalization (weakEquivalences (Complex A)ᵒᵖ) := by
     rw [weakEquivalences_op]

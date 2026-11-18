@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.EnrichedHomRealization
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.KanHomFamily
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.SourceRoofFamily
-public import SerrePositivity.EInfinity.Hammock.ExInfinityPointActions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ExInfinityPointActions
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockSourceFunctor
 
 /-!
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.SSet _root_.Opposite _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.SSet _root_.Opposite _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.InfinityCategories
 open _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
 open scoped _root_.Simplicial
@@ -38,7 +38,7 @@ lemma kanHammock_sHomWhiskerLeft {Y Z : C.category} (f : Y ⟶ Z) :
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z) = _
   rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockSourceFunctor_homTo]
   simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap, id_tensorHom] using
-    (exInfinity_postcompose_point (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exInfinity_postcompose_point (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z)).symm
 
 /-- 概要：同じ元の Kan hammock Hom 関手の coherent nerve 全体での実現。

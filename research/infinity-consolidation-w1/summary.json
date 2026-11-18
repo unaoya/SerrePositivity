@@ -1,0 +1,80 @@
+{
+  "head": "1cfcb6856ae922b3c8d047fe223173d0681f71ae",
+  "main": "a87444d438295e71a461fb945d02d5537288ed9c",
+  "source_files": 35958,
+  "moves": 2264,
+  "families": {
+    "AlexanderWhitney": 28,
+    "BergerFresse": 3,
+    "ComplexLimits": 382,
+    "CosimplicialNormalization": 9,
+    "DGAlgebra": 26,
+    "FrameRealizationLifting.lean": 1,
+    "Hammock": 354,
+    "HomBiprodRestriction.lean": 1,
+    "HomHomotopy.lean": 1,
+    "HomRestriction.lean": 1,
+    "HomologyZero": 16,
+    "IntervalCuts": 205,
+    "NatTensor": 5,
+    "NativeBinaryCoconeHom.lean": 1,
+    "NegativeTensor": 14,
+    "Operad": 327,
+    "OppositeFactorization.lean": 1,
+    "ProjectiveCofibrantUnit.lean": 1,
+    "ProjectiveCofibration.lean": 1,
+    "ProjectiveHomotopyInverse.lean": 1,
+    "ProjectiveModel.lean": 1,
+    "Shuffle": 45,
+    "SimplexCuts": 426,
+    "StrictAdjunctionBar.lean": 1,
+    "Surjection": 202,
+    "TableReduction": 211
+  },
+  "classifications": {
+    "一般": 890,
+    "BE固有": 1047,
+    "E∞の一般論": 327
+  },
+  "source_name_hints": 7414,
+  "source_rename_hints": 7414,
+  "destination_collisions": [],
+  "duplicate_destinations": [],
+  "external_importers": 311,
+  "root_project": 28931,
+  "audit_outside_root": 4332,
+  "ic1_outside_root": 0,
+  "dg": {
+    "dg理論据置": 164,
+    "Checks据置": 309
+  },
+  "inherited_choices": 255,
+  "new_choice_kinds": {
+    "def": 364,
+    "lemma": 299,
+    "theorem": 34,
+    "instance": 2
+  },
+  "unassigned_choices": [
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/Compatibility/Legacy12.lean",
+      "line": 227
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/Compatibility/Legacy12.lean",
+      "line": 227
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/Compatibility/Legacy26.lean",
+      "line": 162
+    },
+    {
+      "path": "SerrePositivity/InfinityCategories/Project/Compatibility/Legacy26.lean",
+      "line": 162
+    }
+  ],
+  "b1_small_graph_leaves": 33,
+  "choose_source_sha256": "d0ab05936e20caa7326ebd2b740db565b761c21456ba4e4ba5710f815c1364ea",
+  "infinity_files": 15972,
+  "infinity_lines": 1267297
+}

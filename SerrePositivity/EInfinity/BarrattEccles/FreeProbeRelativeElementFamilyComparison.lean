@@ -2,7 +2,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementPinched
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefixFamilyTriangle
-public import SerrePositivity.EInfinity.ComplexLimits.PinchedFamilyPostcompArrow
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.PinchedFamilyPostcompArrow
 /-! 概要：元の自由列の CAlg_R 全 pinched 族を同じ実屋根へ比較する。
 方針：元の全 slice 三角形と後合成の Arrow 等式を使う。
 規約：全パラメータ・同じ augmentation の逆・評価を保持する。
@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory Opposite SSet MonoidalClosed Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
+open CategoryTheory Opposite SSet MonoidalClosed _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
@@ -66,7 +66,7 @@ lemma freeProbeRelativeElementHammockFamily_postcomp_arrow {D : SSet.{u + 1}}
       SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix.coherentAugmentationHomotopy C U σ)))) := by
   dsimp only
-  refine (ComplexLimits.pinchedFamilyPostcomp_arrow F
+  refine (_root_.SerrePositivity.ComplexLimits.pinchedFamilyPostcomp_arrow F
     (freeProbeRelativeElementHammockPinchedMap A X B)).trans ?_
   let T := (hoFunctor.map
     ((ihom (nerve (freeProbeRelativeElementIndex A X B))).map F)).toFunctor

@@ -3,14 +3,55 @@ import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.CategoryTheory.Filtered.Basic
+import Mathlib.CategoryTheory.Presentable.SharplyLT.Basic
+import Mathlib.CategoryTheory.Presentable.SharplyLT.Lemmas
+import SerrePositivity.HomotopicalAlgebra.Diagram.FilteredHomotopyColimit
+import SerrePositivity.HomotopicalAlgebra.Diagram.Projective
+import SerrePositivity.InfinityCategories.HTT.Section3_3_4.CoherentTotalObject
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CardinalExchangeShape
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CodiscreteProductCofinal
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CofinalFilteredPoset
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredLimitExchange
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredPosetExchange
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFiniteLimitExchange
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FiberProductCofinality
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredCosliceCofinality
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredCoslices
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredLeftFibrationTransport
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredPosetNerve
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredWeakContractibility
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredWeakEquivalences
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FiniteConeOpposite
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.InnerHornClosureCardinal
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.KappaFilteredCoslices
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallCodiscreteConeRange
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallFilteredPieces
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallInnerHornClosure
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallSubcomplexCofinalFamily
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SmallSubcomplexFamilyColimit
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.StrictKappaFilteredColimit
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.TerminalFiltered
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.TerminalSubcomplexEnlargement
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.TotalKanProductEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IdemFiltered
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CardinalChangeBound
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallFilteredNerveColimit
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPosetNerve
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalWeakEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FilteredDiagonalCofinality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FilteredKanCocone
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FilteredKanColimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentTotalColimit
+import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanReplacement.FilteredNullHomotopy
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.1 Filtered ∞-Categories" =>
 %%%
@@ -22,6 +63,8 @@ Kerodon の 9.1 節（[Tag 05WY](https://kerodon.net/tag/05WY)）の項目と、
 
 :::definition "kerodon_9_1_0_1" (lean := "CategoryTheory.IsFiltered")
 Kerodon Definition 9.1.0.1（[Tag 02P9](https://kerodon.net/tag/02P9)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏がフィルター付きであるとは、空でなく、任意の二対象が共通の対象へ写り、任意の平行な二射がある射との後合成で等しくなることである。
 
 仮定：通常圏 C（Kerodon と一致）。結論：IsFiltered C は非空性、二対象からの共通の行き先、平行二射を等化する後合成を要求する（原文の三条件と一致）。
 
@@ -39,53 +82,71 @@ Kerodon [Tag 02P8](https://kerodon.net/tag/02P8)
 :::definition "kerodon_9_1_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity")
 Kerodon Definition 9.1.1.1（[Tag 02PB](https://kerodon.net/tag/02PB)）。対応表の状態：本体にある。
 
+*主張*　無限圏がフィルター付きであるとは、任意の有限単体集合 $`K` からの図式が右錐 $`K^{\triangleright}` へ延長できることである。
+
 仮定：Quasicategory C（Kerodon と一致）。結論：IsFilteredInfinity は任意の有限単体集合 K からの図式について JoinCocone の存在を要求する（K▷ への延長と一致）。
 
 :::
 
-:::definition "kerodon_9_1_1_3"
+:::definition "kerodon_9_1_1_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_op_of_finiteCones")
 Kerodon Variant 9.1.1.3（[Tag 02PC](https://kerodon.net/tag/02PC)）。対応表の状態：一部。
 
-有限な全図式の同じ錐の存在を仮定するとisFilteredInfinity\_op\_of\_finiteConesは同じCopのfiltered性を返す。逆向きはこの引用だけに含まない。
+*主張*　無限圏が余フィルター付きであるとは、有限単体集合からの任意の図式が左錐に延長できることである。反対圏がフィルター付きであることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_op_of_finiteCones`
+有限な全図式の同じ錐の存在を仮定するとisFilteredInfinity\_op\_of\_finiteConesは同じCopのfiltered性を返す。逆向きはこの引用だけに含まない。
 
 :::
 
 :::definition "kerodon_9_1_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsKappaFiltered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_aleph0_iff")
 Kerodon Variant 9.1.1.4（[Tag 05X0](https://kerodon.net/tag/05X0)）。対応表の状態：本体にある。
 
+*主張*　無限基数 $`\kappa` に対し、無限圏が $`\kappa`-フィルター付きであるとは、任意の $`\kappa`-小単体集合からの図式が右錐に延長できることをいう。反対圏が $`\kappa`-フィルター付きなら、もとの圏を $`\kappa`-余フィルター付きと呼ぶ。
+
 仮定：Quasicategory C と基数 κ。原文は無限基数を指定するが型自体は任意の κ を許す（Lean が弱い）。結論：任意の κ-small K の図式から余錐への延長を要求。cofiltered は同じ述語を Cᵒᵖ に適用する（原文と一致）。
+
+*06-catinfty-ind-presentable.html — 2. filtered ∞ 圏と交換定理*
+
+\`\`\`text
+class IsKappaFiltered (κ : Cardinal.\{u\}) (C : SSet.\{u\}) \[Quasicategory C\] : Prop where
+  cocone\_nonempty \{K : SSet.\{u\}\} (hK : IsKappaSmall κ K) (f : K ⟶ C) :
+    Nonempty (JoinCocone f)
+\`\`\`
+
+κ-small な図式がすべて余錐を持つこと（HTT Def. 5.3.1.7 の形）。cofinality による特徴づけ、coslice の弱可縮性、filtered 余錐の普遍性は揃っている（F2/Filtered\*）。
 
 :::
 
-:::proposition "kerodon_9_1_1_16" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_9_4_13")
+:::proposition "kerodon_9_1_1_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_sliceUnder, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_sliceUnder") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_9_4_13")
 Kerodon Proposition 9.1.1.16（[Tag 02PG](https://kerodon.net/tag/02PG)）。対応表の状態：一部。
 
-κを正則にも限るとisKappaFiltered\_sliceUnderは同じfのcosliceのκ-filtered性を直接返す。特異な無限κは含まない。
+*主張*　無限基数 $`\kappa` に対し、$`\kappa`-フィルター付き無限圏への $`\kappa`-小図式 $`f:K\to C` の余スライス $`C_{f/}` も $`\kappa`-フィルター付きである。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_sliceUnder`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_sliceUnder`
+κを正則にも限るとisKappaFiltered\_sliceUnderは同じfのcosliceのκ-filtered性を直接返す。特異な無限κは含まない。
 
 :::
 
 :::proposition "kerodon_9_1_1_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity")
 Kerodon Proposition 9.1.1.17（[Tag 02PH](https://kerodon.net/tag/02PH)）。対応表の状態：本体にある。
 
+*主張*　フィルター付き無限圏は弱可縮である。
+
 仮定：Quasicategory C と IsFilteredInfinity C（Kerodon と一致）。結論：台の単体集合 C の IsWeaklyContractible（原文と一致）。
 
 :::
 
-:::proposition "kerodon_9_1_1_18" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_2_3_9, kerodon_9_1_1_16, kerodon_9_1_1_17")
+:::proposition "kerodon_9_1_1_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_kappaFiltered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_sliceUnder_of_kappaFiltered") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_2_3_9, kerodon_9_1_1_16, kerodon_9_1_1_17")
 Kerodon Proposition 9.1.1.18（[Tag 02PJ](https://kerodon.net/tag/02PJ)）。対応表の状態：一部。
 
-κを正則に限ると本体のcosliceのκ-filtered性・弱可縮性・対角右余終性は同じ条件(1)から(2)(4)(5)を直接与える。Archiveの逆向きは採用しない。
+*主張*　無限基数 $`\kappa` に対し、無限圏 $`C` が $`\kappa`-フィルター付きであることは、すべての $`\kappa`-小図式の余スライスが $`\kappa`-フィルター付きであることと同値である。余スライスの条件は、単にフィルター付きであること、または弱可縮であることに置き換えられる。また、全ての $`\kappa`-小 $`K` で対角 $`C\to\operatorname{Fun}(K,C)` が右共終であることとも同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_kappaFiltered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_sliceUnder_of_kappaFiltered`
+κを正則に限ると本体のcosliceのκ-filtered性・弱可縮性・対角右余終性は同じ条件(1)から(2)(4)(5)を直接与える。Archiveの逆向きは採用しない。
 
 :::
 
 :::corollary "kerodon_9_1_1_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_iff_of_equivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_iff_of_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_iff_of_equivalence")
 Kerodon Corollary 9.1.1.19（[Tag 02PK](https://kerodon.net/tag/02PK)）。対応表の状態：本体にある。
+
+*主張*　無限基数 $`\kappa` に対し、同値な無限圏の一方が $`\kappa`-フィルター付きであることは他方もそうであることと同値である。
 
 仮定：二つの quasicategory と QCatEquivalence または IsQCatEquivalence。型は κ に無限性を要求しない（Lean が弱い）。結論：IsKappaFiltered κ C↔IsKappaFiltered κ D（原文と一致）。
 
@@ -130,12 +191,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：準圏に�
 
 :::
 
-:::corollary "kerodon_9_1_2_8"
+:::corollary "kerodon_9_1_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered")
 Kerodon Corollary 9.1.2.8（[Tag 02PV](https://kerodon.net/tag/02PV)）。対応表の状態：一部。
 
-Cをcardinal-filtered前順序の圏、κ=ℵ0に限るとisKappaFiltered\_nerve\_of\_cardinalFilteredが同じnerveのfiltered性を直接返す。任意通常圏と逆向きは含まない。
+*主張*　通常の圏がフィルター付きであることは、その神経がフィルター付き無限圏であることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered`
+Cをcardinal-filtered前順序の圏、κ=ℵ0に限るとisKappaFiltered\_nerve\_of\_cardinalFilteredが同じnerveのfiltered性を直接返す。任意通常圏と逆向きは含まない。
 
 :::
 
@@ -153,12 +214,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：κ-small �
 
 :::
 
-:::lemma_ "kerodon_9_1_2_12"
+:::lemma_ "kerodon_9_1_2_12" (lean := "CategoryTheory.IsFiltered.cocone_nonempty")
 Kerodon Lemma 9.1.2.12（[Tag 02Q0](https://kerodon.net/tag/02Q0)）。対応表の状態：一部。
 
-IsFilteredInfinity.cocone\_nonemptyを有限な同じ境界∂Δnの図式に適用すると右側の全延長条件を直接得る。逆向きは引用に含まない。
+*主張*　無限圏 $`C` がフィルター付きであることは、すべての $`n\geq0` で任意の図式 $`\partial\Delta^n\to C` がその右錐へ延長できることと同値である。
 
-宣言：`CategoryTheory.IsFiltered.cocone_nonempty`
+IsFilteredInfinity.cocone\_nonemptyを有限な同じ境界∂Δnの図式に適用すると右側の全延長条件を直接得る。逆向きは引用に含まない。
 
 :::
 
@@ -178,21 +239,21 @@ tag := "kerodon-9-1-3"
 
 Kerodon [Tag 02Q4](https://kerodon.net/tag/02Q4)
 
-:::lemma_ "kerodon_9_1_3_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_1_1")
+:::lemma_ "kerodon_9_1_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.leftFibration_finite_fiber_detection, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.leftFibration_transport_to_cocone_fiber") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_1_1")
 Kerodon Lemma 9.1.3.1（[Tag 05X6](https://kerodon.net/tag/05X6)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` と $`\kappa`-小単体集合 $`K` を取る。余デカルトファイブレーション $`E\to C` の底が $`\kappa`-フィルター付きなら、任意の $`K\to E` から、ある単一のファイバーに入る $`K\to E` への自然変換が存在する。
 
 Uをleft fibrationにも強めるとtransport\_to\_cocone\_fiberはκ-filtered性が供給する同じfUの余錐から、同じfの定値底ファイバーへの自然変換を直接返す。有限版だけでなくこの一般形状の型を使う。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.leftFibration_finite_fiber_detection`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.leftFibration_transport_to_cocone_fiber`
-
 :::
 
-:::theorem "kerodon_9_1_3_2" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_3_6_1, kerodon_3_3_6_7, kerodon_3_3_6_9, kerodon_3_6_1_9, kerodon_6_3_6_2, kerodon_7_2_1_11, kerodon_9_1_1_17, kerodon_9_1_3_1")
+:::theorem "kerodon_9_1_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_3_6_1, kerodon_3_3_6_7, kerodon_3_3_6_9, kerodon_3_6_1_9, kerodon_6_3_6_2, kerodon_7_2_1_11, kerodon_9_1_1_17, kerodon_9_1_3_1")
 Kerodon Theorem 9.1.3.2（[Tag 02Q5](https://kerodon.net/tag/02Q5)）。対応表の状態：一部。
 
-全空間EがfilteredならisWeaklyContractible\_of\_isFilteredInfinityは同じEの弱可縮性を直接返す。逆向きは含まない。
+*主張*　無限圏の左ファイブレーション $`E\to C` の底 $`C` がフィルター付きなら、$`E` がフィルター付きであることと弱可縮であることは同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity`
+全空間EがfilteredならisWeaklyContractible\_of\_isFilteredInfinityは同じEの弱可縮性を直接返す。逆向きは含まない。
 
 :::
 
@@ -205,12 +266,12 @@ Kerodon Corollary 9.1.3.3（[Tag 05X7](https://kerodon.net/tag/05X7)）。対応
 
 :::
 
-:::corollary "kerodon_9_1_3_4"
+:::corollary "kerodon_9_1_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit, SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalUnit_isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity")
 Kerodon Corollary 9.1.3.4（[Tag 05X8](https://kerodon.net/tag/05X8)）。対応表の状態：一部。
 
-同じFの標準category of elementsがfilteredならその弱可縮性とcoherentDiagramTotalUnitの弱同値から、coherentDiagramTotalCoconeの同じ余極限が可縮となる。逆向きは含まない。
+*主張*　小さいフィルター付き無限圏 $`C` 上の空間値図式 $`\mathscr F` の余極限が可縮であることは、元の無限圏 $`\int_C\mathscr F` がフィルター付きであることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit`、`SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalUnit_isWeakHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity`
+同じFの標準category of elementsがfilteredならその弱可縮性とcoherentDiagramTotalUnitの弱同値から、coherentDiagramTotalCoconeの同じ余極限が可縮となる。逆向きは含まない。
 
 :::
 
@@ -221,21 +282,21 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：単射の�
 
 :::
 
-:::definition "kerodon_9_1_3_6" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_9_1_1_17, kerodon_9_1_3_1, kerodon_9_1_3_2, kerodon_9_1_3_5")
+:::definition "kerodon_9_1_3_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_of_isKappaFiltered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_9_1_1_17, kerodon_9_1_3_1, kerodon_9_1_3_2, kerodon_9_1_3_5")
 Kerodon Variant 9.1.3.6（[Tag 05XA](https://kerodon.net/tag/05XA)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` と無限圏の左ファイブレーション $`E\to C` を取る。$`C` が $`\kappa`-フィルター付きなら、$`E` が $`\kappa`-フィルター付きであることと弱可縮であることは同値である。
 
 無限κのκ-filtered性をfilteredへ忘れ、その同じEの弱可縮性を返す二つの型を合成して左⇒右を直接得る。逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isFilteredInfinity_of_isKappaFiltered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity`
-
 :::
 
-:::proposition "kerodon_9_1_3_8" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_4_2, kerodon_5_1_4_1, kerodon_9_1_3_1")
+:::proposition "kerodon_9_1_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsKappaFiltered, SerrePositivity.InfinityCategories.Project.FilteredExchange.coconeNullHomotopy") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_4_2, kerodon_5_1_4_1, kerodon_9_1_3_1")
 Kerodon Proposition 9.1.3.8（[Tag 05XC](https://kerodon.net/tag/05XC)）。対応表の状態：一部。
 
-IsKappaFiltered.cocone\_nonemptyを同じファイバー図式のEへの合成に適用し、coconeNullHomotopyで元の図式から同じ頂点の定値図式への自然変換を得る。(1)⇒(2)を直接満たし、全三条件の同値は含まない。
+*主張*　無限基数 $`\kappa` と $`\kappa`-フィルター付き無限圏 $`C` 上の余デカルトファイブレーション $`E` を取る。$`E` が $`\kappa`-フィルター付きであることは、各ファイバーの任意の $`\kappa`-小図式が $`E` 内に余錐を持つことと同値である。さらに余錐の底への像を一つの底の射 $`c\to d` が定める定数自然変換と要求しても同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsKappaFiltered`、`SerrePositivity.InfinityCategories.Project.FilteredExchange.coconeNullHomotopy`
+IsKappaFiltered.cocone\_nonemptyを同じファイバー図式のEへの合成に適用し、coconeNullHomotopyで元の図式から同じ頂点の定値図式への自然変換を得る。(1)⇒(2)を直接満たし、全三条件の同値は含まない。
 
 :::
 
@@ -273,6 +334,8 @@ Kerodon [Tag 06CJ](https://kerodon.net/tag/06CJ)
 
 :::definition "kerodon_9_1_4_1" (lean := "SSet.Edge")
 Kerodon Definition 9.1.4.1（[Tag 06CK](https://kerodon.net/tag/06CK)）。対応表の状態：本体にある。
+
+*主張*　無限圏の関手 $`F:C\to D` が弱右共終であるとは、$`D` の各対象 $`d` から $`F(c)` への射 $`d\to F(c)` が、ある $`c\in C` について存在することである。
 
 同じFについて∀d, ∃c, Nonempty (D.Edge d (F.app \_ c))と量化すれば、原文の弱右余終性の定義全体をそのまま表す。SSet.Edgeは指定両端の1単体であり専用述語名は不要。
 
@@ -315,26 +378,28 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：既知の�
 
 :::
 
-:::corollary "kerodon_9_1_4_14" (uses := "kerodon_1_4_0_1, kerodon_7_2_1_5, kerodon_9_1_1_17, kerodon_9_1_3_2, kerodon_9_1_4_13")
+:::corollary "kerodon_9_1_4_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence") (uses := "kerodon_1_4_0_1, kerodon_7_2_1_5, kerodon_9_1_1_17, kerodon_9_1_3_2, kerodon_9_1_4_13")
 Kerodon Corollary 9.1.4.14（[Tag 06CY](https://kerodon.net/tag/06CY)）。対応表の状態：一部。
+
+*主張*　無限圏の左ファイブレーション $`F:C\to D` で $`D` がフィルター付きとする。$`C` がフィルター付きであること、$`F` が右共終であること、$`C` が弱可縮であることは同値である。
 
 isWeaklyContractible\_of\_isFilteredInfinityは同じCについて(1)⇒(3)を直接返す。原文の三条件の残りの含意は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isWeaklyContractible_of_isFilteredInfinity`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence`
-
 :::
 
-:::corollary "kerodon_9_1_4_15" (uses := "kerodon_1_4_0_1, kerodon_9_1_1_16, kerodon_9_1_4_14")
+:::corollary "kerodon_9_1_4_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isRightCofinal_sliceUnderProjection_of_filtered") (uses := "kerodon_1_4_0_1, kerodon_9_1_1_16, kerodon_9_1_4_14")
 Kerodon Corollary 9.1.4.15（[Tag 06CZ](https://kerodon.net/tag/06CZ)）。対応表の状態：一部。
 
-κ=ℵ0・有限Kに限ればisRightCofinal\_sliceUnderProjection\_of\_filteredは同じcoslice忘却射の右余終性を直接返す。
+*主張*　正則基数 $`\kappa` と $`\kappa`-フィルター付き無限圏 $`C` に対し、任意の $`\kappa`-小図式 $`q:K\to C` の余スライス射影 $`C_{q/}\to C` は右共終である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isRightCofinal_sliceUnderProjection_of_filtered`
+κ=ℵ0・有限Kに限ればisRightCofinal\_sliceUnderProjection\_of\_filteredは同じcoslice忘却射の右余終性を直接返す。
 
 :::
 
 :::corollary "kerodon_9_1_4_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isRightCofinal_sliceUnderProjection_of_filtered")
 Kerodon Corollary 9.1.4.16（[Tag 06D0](https://kerodon.net/tag/06D0)）。対応表の状態：本体にある。
+
+*主張*　フィルター付き無限圏 $`C` の任意の対象 $`c` について、余スライス射影 $`C_{c/}\to C` は右共終である。
 
 仮定：Quasicategory C、IsFilteredInfinity C と有限 K からの p。原文は K=Δ⁰ の場合（Lean が弱い）。結論：sliceUnderProjection p が IsRightCofinal。K=Δ⁰ で指定の coslice 忘却関手（原文に一致）。
 
@@ -370,12 +435,20 @@ tag := "kerodon-9-1-5"
 
 Kerodon [Tag 05XR](https://kerodon.net/tag/05XR)
 
-:::theorem "kerodon_9_1_5_1"
+*06-catinfty-ind-presentable.html — 2. filtered ∞ 圏と交換定理*
+
+*目標*（HTT Prop. 5.3.3.3）. $`\mathcal S` において、filtered 余極限は有限極限と可換。
+
+*状態：未完成*。Lean では仮定の形 \`CoherentFilteredLimitExchangeShape K\`（「形 $`K` の極限が filtered 余極限と交換する」）として述べられ、空の形と標準単体の形でだけ証明されている（\`coherentFilteredLimitExchangeShape\_of\_empty\`、\`coherentFilteredLimitExchangeShape\_simplex\`）。一般の有限形への拡張（F2N-1 a7）が F1B レーンで進行中である。
+
+この定理は、Ind の安定性（§3）、compact 対象の有限余極限での閉性（§4）、さらにその先の K 理論側の Ind\<sub\>κ\</sub\>(Perf) の扱いの前提になっている。現在のファイル数で見ると、F2 最上位の CoherentColimit\* だけで 330 ファイル・約 1.9 万行あり、その大半がこの交換定理の準備である。
+
+:::theorem "kerodon_9_1_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentFilteredLimitExchangeShape_finite, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredLimitExchangeShape")
 Kerodon Theorem 9.1.5.1（[Tag 05XS](https://kerodon.net/tag/05XS)）。対応表の状態：一部。
 
-coherentFilteredLimitExchangeShape\_finiteは同じfiltered Cの点ごとの余極限を取る写像が任意有限形状の極限錐を保存することを直接返す。filtered性を戻す逆向きは含まない。
+*主張*　小さい無限圏 $`C` がフィルター付きであることは、空間の無限圏で $`C` 添字の余極限が有限極限と可換であることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentFilteredLimitExchangeShape_finite`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredLimitExchangeShape`
+coherentFilteredLimitExchangeShape\_finiteは同じfiltered Cの点ごとの余極限を取る写像が任意有限形状の極限錐を保存することを直接返す。filtered性を戻す逆向きは含まない。
 
 :::
 
@@ -393,48 +466,48 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：κ-filtered
 
 :::
 
-:::lemma_ "kerodon_9_1_5_6" (uses := "kerodon_1_4_0_1, kerodon_9_1_1_17, kerodon_9_1_3_2, kerodon_9_1_3_12")
+:::lemma_ "kerodon_9_1_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.fiberProductToProduct_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.totalKanProductComparison_isWeakHomotopyEquivalence") (uses := "kerodon_1_4_0_1, kerodon_9_1_1_17, kerodon_9_1_3_2, kerodon_9_1_3_12")
 Kerodon Lemma 9.1.5.6（[Tag 05XV](https://kerodon.net/tag/05XV)）。対応表の状態：一部。
+
+*主張*　フィルター付き無限圏 $`C` 上の左ファイブレーション $`\tilde C\to C` と、$`\tilde C` 上の二つの左ファイブレーション $`\tilde C_0,\tilde C_1` を取る。三つの全体圏がすべて弱可縮なら、$`\tilde C_0\times_{\tilde C}\tilde C_1` も弱可縮である。
 
 中間底Ctildeもfilteredと仮定するとfiberProductToProductの右余終性と弱同値性により、二つの弱可縮な全空間の積と同じfiber productの弱可縮性を直接移せる。中間底の弱可縮性だけからの議論は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.fiberProductToProduct_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.totalKanProductComparison_isWeakHomotopyEquivalence`
-
 :::
 
-:::proposition "kerodon_9_1_5_7" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_2_5_1, kerodon_4_2_5_4, kerodon_5_1_7_16, kerodon_5_6_0_6, kerodon_7_4_1_16, kerodon_7_4_3_6, kerodon_7_6_2_42, kerodon_7_7_7_4, kerodon_9_1_1_17, kerodon_9_1_1_18, kerodon_9_1_5_4, kerodon_9_1_5_6")
+:::proposition "kerodon_9_1_5_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_filtered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentFilteredLimitExchangeShape_finite") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_2_5_1, kerodon_4_2_5_4, kerodon_5_1_7_16, kerodon_5_6_0_6, kerodon_7_4_1_16, kerodon_7_4_3_6, kerodon_7_6_2_42, kerodon_7_7_7_4, kerodon_9_1_1_17, kerodon_9_1_1_18, kerodon_9_1_5_4, kerodon_9_1_5_6")
 Kerodon Proposition 9.1.5.7（[Tag 05XW](https://kerodon.net/tag/05XW)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` がフィルター付きであることは、有限単体集合 $`K` ごとに対角 $`C\to\operatorname{Fun}(K,C)` が右共終であることと同値である。また、$`C` が本質的に $`\lambda`-小さいような非可算正則基数 $`\lambda` の空間 $`S_{<\lambda}` で $`C` 添字の余極限が有限極限と可換であることとも同値であり、条件はそのような一つの $`\lambda` に課しても、すべてに課してもよい。
 
 本体の対角右余終性は同じCについて(1)⇒(2)を直接返す。Archiveの逆向きと数値λ値の交換条件は採用しない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_filtered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentFilteredLimitExchangeShape_finite`
-
 :::
 
-:::theorem "kerodon_9_1_5_9"
+:::theorem "kerodon_9_1_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.cardinalFilteredLimitExchangeShape_poset, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentCardinalFilteredLimitExchange_poset")
 Kerodon Theorem 9.1.5.9（[Tag 05Y0](https://kerodon.net/tag/05Y0)）。対応表の状態：一部。
+
+*主張*　小さい無限圏 $`C` と小さい無限基数 $`\kappa` に対し、$`C` が $`\kappa`-フィルター付きであることは、空間の無限圏で $`C` 添字の余極限が $`\kappa`-小極限と可換であることと同値である。
 
 正則κとcardinal change boundを備え、極限形状をμ-small posetのnerveに限ると同じfiltered余極限の極限保存を直接返す。全μ-small単体形状と逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.cardinalFilteredLimitExchangeShape_poset`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentCardinalFilteredLimitExchange_poset`
-
 :::
 
-:::proposition "kerodon_9_1_5_10" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_4_3_6, kerodon_7_7_7_4, kerodon_9_1_1_17, kerodon_9_1_1_18, kerodon_9_1_3_2, kerodon_9_1_3_12, kerodon_9_1_5_4, kerodon_9_1_5_7")
+:::proposition "kerodon_9_1_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_kappaFiltered") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_4_3_6, kerodon_7_7_7_4, kerodon_9_1_1_17, kerodon_9_1_1_18, kerodon_9_1_3_2, kerodon_9_1_3_12, kerodon_9_1_5_4, kerodon_9_1_5_7")
 Kerodon Proposition 9.1.5.10（[Tag 05Y1](https://kerodon.net/tag/05Y1)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` が $`\kappa`-フィルター付きであることは、全ての $`\kappa`-小 $`K` で対角 $`C\to\operatorname{Fun}(K,C)` が右共終であることと同値である。また、$`C` が本質的に $`\lambda`-小さく指数共終数が $`\kappa` 以上の非可算正則基数 $`\lambda` について、$`S_{<\lambda}` で $`C` 添字の余極限が $`\kappa`-連続であることとも同値であり、一つの $`\lambda` でも全てでもよい。$`C` がフィルター付きで全ての $`\kappa`-小集合 $`I` について 9.1.3.12 の条件 $`(\ast_I)` を満たすことも同値である。
 
 κを正則に強めると同じ全κ-small Kの対角右余終性、すなわち(1)⇒(2)が直接得られる。残りの同値条件は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_constantDiagram_of_kappaFiltered`
-
 :::
 
-:::corollary "kerodon_9_1_5_12"
+:::corollary "kerodon_9_1_5_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_le")
 Kerodon Corollary 9.1.5.12（[Tag 05Y2](https://kerodon.net/tag/05Y2)）。対応表の状態：一部。
 
-κ≤κ+をisKappaFiltered\_of\_leに入れると同じCのκ+-filtered⇒κ-filteredを直接得る。特異性による逆向きは含まない。
+*主張*　特異基数 $`\kappa` に対し、無限圏が $`\kappa`-フィルター付きであることは、後続基数 $`\kappa^+` に関してフィルター付きであることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_le`
+κ≤κ+をisKappaFiltered\_of\_leに入れると同じCのκ+-filtered⇒κ-filteredを直接得る。特異性による逆向きは含まない。
 
 :::
 
@@ -515,12 +588,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：厳密な�
 
 :::
 
-:::definition "kerodon_9_1_6_4"
+:::definition "kerodon_9_1_6_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.filteredColimitMap_isWeakHomotopyEquivalence, SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_filtered, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.filteredColimit_kanComplex, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictNativeCocone_isColimit_of_filtered_forget")
 Kerodon Variant 9.1.6.4（[Tag 03DH](https://kerodon.net/tag/03DH)）。対応表の状態：一部。
 
-同じKan値図式について、忘却した単体集合の指定余錐が通常余極限でもあると追加するとstrictNativeCocone\_isColimit\_of\_filtered\_forgetは同じ余錐のSpace内余極限性を直接返す。Kan圏での通常余極限という入力だけから忘却後の余極限性を得たとはしない。
+*主張*　Kan 複体の通常の神経からホモトピー整合神経による空間の無限圏への包含は、小さいフィルター付き通常の圏で添字付けられた余極限を保つ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.filteredColimitMap_isWeakHomotopyEquivalence`、`SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_filtered`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.filteredColimit_kanComplex`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictNativeCocone_isColimit_of_filtered_forget`
+同じKan値図式について、忘却した単体集合の指定余錐が通常余極限でもあると追加するとstrictNativeCocone\_isColimit\_of\_filtered\_forgetは同じ余錐のSpace内余極限性を直接返す。Kan圏での通常余極限という入力だけから忘却後の余極限性を得たとはしない。
 
 :::
 
@@ -531,12 +604,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：添字形�
 
 :::
 
-:::proposition "kerodon_9_1_6_7" (uses := "kerodon_1_1_0_6, kerodon_7_5_6_1, kerodon_9_1_6_12")
+:::proposition "kerodon_9_1_6_7" (lean := "SerrePositivity.DiagramModel.Projective.modelCategory, SerrePositivity.DiagramModel.Projective.modelCategory_generated") (uses := "kerodon_1_1_0_6, kerodon_7_5_6_1, kerodon_9_1_6_12")
 Kerodon Proposition 9.1.6.7（[Tag 03DL](https://kerodon.net/tag/03DL)）。対応表の状態：一部。
 
-ModelCategoryと生成系・局所表示可能性など射影モデル構造の入力を置くと、射影モデル構造の分解により同じ図式へのcofibrant置換と各点trivial fibrationを得る。SSetに具体的ModelCategory instanceなし。
+*主張*　小さい通常の圏上の単体集合値図式 $`\mathscr G` に対し、射影的余ファイブラントな図式 $`\mathscr F` から $`\mathscr G` への成分ごとに自明な Kan ファイブレーションが存在する。
 
-宣言：`SerrePositivity.DiagramModel.Projective.modelCategory`、`SerrePositivity.DiagramModel.Projective.modelCategory_generated`
+ModelCategoryと生成系・局所表示可能性など射影モデル構造の入力を置くと、射影モデル構造の分解により同じ図式へのcofibrant置換と各点trivial fibrationを得る。SSetに具体的ModelCategory instanceなし。
 
 :::
 
@@ -549,12 +622,12 @@ modelCategoryとcofibrations\_le\_objectwiseは射影cofibrationの各点cofibra
 
 :::
 
-:::proposition "kerodon_9_1_6_12"
+:::proposition "kerodon_9_1_6_12" (lean := "SerrePositivity.DiagramModel.Projective.modelCategory")
 Kerodon Proposition 9.1.6.12（[Tag 03DR](https://kerodon.net/tag/03DR)）。対応表の状態：一部。
 
-射影モデル構造のModelCategory・生成系等を入力すると同じ自然変換をcofibrationと各点trivial fibrationへ分解できる。SSetへの具体的instanceなし、一般schemaとしての条件つき対応。
+*主張*　小さい通常の圏上の単体集合値図式の任意の自然変換は、射影的余ファイブレーションと成分ごとの自明な Kan ファイブレーションの合成に分解できる。
 
-宣言：`SerrePositivity.DiagramModel.Projective.modelCategory`
+射影モデル構造のModelCategory・生成系等を入力すると同じ自然変換をcofibrationと各点trivial fibrationへ分解できる。SSetへの具体的instanceなし、一般schemaとしての条件つき対応。
 
 :::
 
@@ -576,21 +649,21 @@ tag := "kerodon-9-1-7"
 
 Kerodon [Tag 061E](https://kerodon.net/tag/061E)
 
-:::proposition "kerodon_9_1_7_1"
+:::proposition "kerodon_9_1_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.hasCardinalLT_innerHornClosure, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.innerHornClosure_quasicategory, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.cardinal_innerHornClosure_lt")
 Kerodon Proposition 9.1.7.1（[Tag 061F](https://kerodon.net/tag/061F)）。対応表の状態：一部。
+
+*主張*　非可算基数 $`\lambda` に対し、無限圏 $`C` の任意の $`\lambda`-小な単体部分集合は、無限圏をなす $`\lambda`-小な単体部分集合に含まれる。
 
 λを正則にも強めるとinnerHornClosureの包含・準圏性・濃度上界が同じC0の小準圏への拡大を直接与える。非正則λは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.hasCardinalLT_innerHornClosure`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.innerHornClosure_quasicategory`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.cardinal_innerHornClosure_lt`
-
 :::
 
-:::corollary "kerodon_9_1_7_2"
+:::corollary "kerodon_9_1_7_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallSubcomplexFamilyCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallSubcomplexFamily_isCardinalFiltered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.hasCardinalLT_innerHornClosure")
 Kerodon Corollary 9.1.7.2（[Tag 061G](https://kerodon.net/tag/061G)）。対応表の状態：一部。
 
-準圏性をPに取りinnerHornClosureの小性と包含を渡すと、smallSubcomplexFamilyの同じ小準圏族のλ-filtered性と通常SSet余極限表示を直接得る。QC内の余極限表示は含まない。
+*主張*　非可算正則基数 $`\lambda` に対し、任意の無限圏は $`\lambda`-有向半順序集合で添字付けた $`\lambda`-小無限圏の図式の余極限として表せる。同じ図式は単体集合の通常の圏でも無限圏の無限圏 $`\mathcal{QC}` でも元の無限圏を余極限に持つ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallSubcomplexFamilyCocone_isColimit`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallSubcomplexFamily_isCardinalFiltered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.hasCardinalLT_innerHornClosure`
+準圏性をPに取りinnerHornClosureの小性と包含を渡すと、smallSubcomplexFamilyの同じ小準圏族のλ-filtered性と通常SSet余極限表示を直接得る。QC内の余極限表示は含まない。
 
 :::
 
@@ -612,48 +685,48 @@ posetの部分集合族の被覆とfiltered性は、原文の単体部分集合�
 
 :::
 
-:::definition "kerodon_9_1_7_5"
+:::definition "kerodon_9_1_7_5" (lean := "Cardinal.SharplyLT, Cardinal.SharplyLT.tfae, Cardinal.SharplyLT.exists_cofinal")
 Kerodon Definition 9.1.7.5（[Tag 061K](https://kerodon.net/tag/061K)）。対応表の状態：一部。
+
+*主張*　正則基数 $`\kappa,\lambda` で $`\kappa\trianglelefteq\lambda` とは、$`\kappa\leq\lambda` で、任意の $`\lambda`-小集合の $`\kappa`-小部分集合が包含順序で $`\lambda`-小な共終部分族をもつことである。さらに $`\kappa\ne\lambda` のとき $`\kappa\triangleleft\lambda` と書く。
 
 SharplyLTとexists\_cofinalは厳密κ◁λについて同じ小部分集合のcofinal族の条件を直接与える。非厳密κ⊴λの等号の場合を含む全定義はこの引用だけに含まない。
 
-宣言：`Cardinal.SharplyLT`、`Cardinal.SharplyLT.tfae`、`Cardinal.SharplyLT.exists_cofinal`
-
 :::
 
-:::proposition "kerodon_9_1_7_8"
+:::proposition "kerodon_9_1_7_8" (lean := "Cardinal.SharplyLT.of_pow_lt, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsCardinalChangeBound.sharplyLT")
 Kerodon Proposition 9.1.7.8（[Tag 061N](https://kerodon.net/tag/061N)）。対応表の状態：一部。
+
+*主張*　正則基数 $`\kappa<\lambda` で $`\lambda` の指数共終数が $`\kappa` 以上なら、任意の $`\lambda`-小集合の $`\kappa`-小部分集合全体は $`\lambda`-小である。特に $`\kappa\triangleleft\lambda` である。
 
 Cardinal.SharplyLT.of\_pow\_ltは原文の指数条件を同じ基数に適用して最後のκ◁λを直接返す。全κ-small部分集合族自体のλ-small性の成分は含まない。
 
-宣言：`Cardinal.SharplyLT.of_pow_lt`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsCardinalChangeBound.sharplyLT`
-
 :::
 
-:::corollary "kerodon_9_1_7_9"
+:::corollary "kerodon_9_1_7_9" (lean := "Cardinal.SharplyLT.of_pow_lt")
 Kerodon Corollary 9.1.7.9（[Tag 061P](https://kerodon.net/tag/061P)）。対応表の状態：一部。
+
+*主張*　正則基数 $`\kappa\leq\lambda` で $`\lambda` の指数共終数が $`\kappa` 以上なら、$`\kappa\trianglelefteq\lambda` である。
 
 κ\<λに限るとof\_pow\_ltは同じκ◁λを返すのでκ⊴λの要求を満たす。κ=λの場合は引用の型外。
 
-宣言：`Cardinal.SharplyLT.of_pow_lt`
-
 :::
 
-:::proposition "kerodon_9_1_7_12"
+:::proposition "kerodon_9_1_7_12" (lean := "Cardinal.SharplyLT.of_pow_lt")
 Kerodon Proposition 9.1.7.12（[Tag 061S](https://kerodon.net/tag/061S)）。対応表の状態：一部。
+
+*主張*　一般連続体仮説のもと、正則基数 $`\kappa<\lambda` について、$`\kappa\triangleleft\lambda` であることは $`\lambda` の指数共終数が $`\kappa` 以上であることと同値である。
 
 同じκ\<λの指数条件からof\_pow\_ltがκ◁λを直接返す。GCHを使う逆向きは含まない。
 
-宣言：`Cardinal.SharplyLT.of_pow_lt`
-
 :::
 
-:::proposition "kerodon_9_1_7_13"
+:::proposition "kerodon_9_1_7_13" (lean := "Cardinal.SharplyLT.trans")
 Kerodon Proposition 9.1.7.13（[Tag 061T](https://kerodon.net/tag/061T)）。対応表の状態：一部。
 
-κ\<λ\<μに限ればSharplyLT.transが同じκ◁μを返す。等号を許す非厳密版全体は含まない。
+*主張*　正則基数の関係 $`\trianglelefteq` は推移的である。
 
-宣言：`Cardinal.SharplyLT.trans`
+κ\<λ\<μに限ればSharplyLT.transが同じκ◁μを返す。等号を許す非厳密版全体は含まない。
 
 :::
 
@@ -693,12 +766,12 @@ poset被覆のfiltered性と各nerveのκ-filtered性はあるが、原文のλ-
 
 :::
 
-:::definition "kerodon_9_1_7_21"
+:::definition "kerodon_9_1_7_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredNerveCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_isCardinalFiltered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredPiece_nerve_properties")
 Kerodon Variant 9.1.7.21（[Tag 0621](https://kerodon.net/tag/0621)）。対応表の状態：一部。
 
-B6型照合：濃度変更条件を満たす filtered poset の nerve は、小さい filtered 部分 poset の nerve の通常の SSet 余極限になる。部分集合の添字の filtered 性もある。任意の μ-small 準圏の表示と、原文の λ,μ による添字の濃度境界は残る。
+*主張*　非可算正則基数 $`\lambda\trianglelefteq\mu` に対し、$`\mu`-小無限圏 $`C` は、$`\mu`-小な $`\lambda`-有向半順序集合上の $`\lambda`-小無限圏の図式の余極限として表せる。$`C` がフィルター付きなら、各成分もフィルター付きに選べる。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredNerveCocone_isColimit`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_isCardinalFiltered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredPiece_nerve_properties`
+B6型照合：濃度変更条件を満たす filtered poset の nerve は、小さい filtered 部分 poset の nerve の通常の SSet 余極限になる。部分集合の添字の filtered 性もある。任意の μ-small 準圏の表示と、原文の λ,μ による添字の濃度境界は残る。
 
 :::
 
@@ -711,21 +784,21 @@ tag := "kerodon-9-1-8"
 
 Kerodon [Tag 02Q8](https://kerodon.net/tag/02Q8)
 
-:::theorem "kerodon_9_1_8_1" (uses := "kerodon_1_4_0_1")
+:::theorem "kerodon_9_1_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex") (uses := "kerodon_1_4_0_1")
 Kerodon Theorem 9.1.8.1（[Tag 0622](https://kerodon.net/tag/0622)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` がフィルター付きであることは、ある有向半順序集合の神経から $`C` への右共終関手が存在することと同値である。
 
 B6型照合：κ=ℵ₀ として「filtered ⇒ cofinal な directed poset が存在」の向きのみ。逆向き（cofinal poset から filtered）の宣言は見当たらない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex`
-
 :::
 
-:::lemma_ "kerodon_9_1_8_2"
+:::lemma_ "kerodon_9_1_8_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.codiscreteProductProjection_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_small_codiscreteConeRange, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_small_terminalSubcomplex")
 Kerodon Lemma 9.1.8.2（[Tag 02QB](https://kerodon.net/tag/02QB)）。対応表の状態：一部。
 
-B6型照合：仮定：Lean の小部分複体の拡張には κ の正則性と κ≤\#T が必要。原文は無限基数 κ（Lean が強い）。結論：C×N(Codiscrete T)→C は非空 T で自明 Kan ファイブレーション。積で小さい単射余錐を得る宣言はあるが、任意の無限 κ に対する原文の存在は覆わない。
+*主張*　無限基数 $`\kappa` と $`\kappa`-フィルター付き無限圏 $`C` に対し、無限圏 $`\tilde C` からの自明な Kan ファイブレーション $`\tilde C\to C` が存在する。しかも $`\tilde C` の任意の $`\kappa`-小単体部分集合 $`K` の包含は単射 $`K^{\triangleright}\to\tilde C` に延長できる。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.codiscreteProductProjection_trivialKanFibration`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_small_codiscreteConeRange`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_small_terminalSubcomplex`
+B6型照合：仮定：Lean の小部分複体の拡張には κ の正則性と κ≤\#T が必要。原文は無限基数 κ（Lean が強い）。結論：C×N(Codiscrete T)→C は非空 T で自明 Kan ファイブレーション。積で小さい単射余錐を得る宣言はあるが、任意の無限 κ に対する原文の存在は覆わない。
 
 :::
 
@@ -747,21 +820,21 @@ C×N(Codiscrete T)の通常余極限表示は指定QC\_\<λ内のCの余極限�
 
 :::
 
-:::theorem "kerodon_9_1_8_7"
+:::theorem "kerodon_9_1_8_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_cardinalFiltered_poset, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset")
 Kerodon Theorem 9.1.8.7（[Tag 02QA](https://kerodon.net/tag/02QA)）。対応表の状態：一部。
+
+*主張*　正則基数 $`\kappa\triangleleft\lambda` と $`\lambda`-小かつ $`\kappa`-フィルター付きな無限圏 $`C` に対し、ある $`\lambda`-小な $`\kappa`-有向半順序集合 $`A` の神経から $`C` への右共終関手が存在する。
 
 B6型照合：右 cofinal な κ-directed poset の存在は確認。κ◁λ と C の λ-small 性から、添字 poset も λ-small に取る原文の基数評価は引用型にない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_cardinalFiltered_poset`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset`
-
 :::
 
-:::corollary "kerodon_9_1_8_8"
+:::corollary "kerodon_9_1_8_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered")
 Kerodon Corollary 9.1.8.8（[Tag 0627](https://kerodon.net/tag/0627)）。対応表の状態：一部。
 
-B6型照合：「κ-filtered ⇒ cofinal な κ-directed poset が存在」の向きのみ。逆向きの宣言は見当たらない。
+*主張*　正則基数 $`\kappa` に対し、無限圏 $`C` が $`\kappa`-フィルター付きであることは、ある $`\kappa`-有向半順序集合の神経から $`C` への右共終関手が存在することと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_nerve_of_cardinalFiltered`
+B6型照合：「κ-filtered ⇒ cofinal な κ-directed poset が存在」の向きのみ。逆向きの宣言は見当たらない。
 
 :::
 
@@ -781,21 +854,21 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：可算個�
 
 :::
 
-:::proposition "kerodon_9_1_8_11" (uses := "kerodon_1_4_0_1, kerodon_8_4_2_1, kerodon_8_5_5_5, kerodon_9_1_5_13")
+:::proposition "kerodon_9_1_8_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.idemShape_isKappaFiltered") (uses := "kerodon_1_4_0_1, kerodon_8_4_2_1, kerodon_8_5_5_5, kerodon_9_1_5_13")
 Kerodon Proposition 9.1.8.11（[Tag 0629](https://kerodon.net/tag/0629)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` と $`\kappa`-小無限圏 $`C` に対し、$`C` が $`\kappa`-フィルター付きであること、恒等関手からある定数関手への自然変換があること、冪等完備化に終対象があること、$`N(\operatorname{Idem})\to C` の右共終関手があることは同値である。従って $`C` が冪等完備なら、$`\kappa`-フィルター付きであることと終対象を持つことは同値である。
 
 終対象を持つ場合にisKappaFiltered\_of\_terminalは同じCのκ-filtered性を直接返す。原文の終対象条件からfiltered性への成分に一致し、その他の同値条件と逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.idemShape_isKappaFiltered`
-
 :::
 
-:::corollary "kerodon_9_1_8_12"
+:::corollary "kerodon_9_1_8_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex")
 Kerodon Corollary 9.1.8.12（[Tag 062A](https://kerodon.net/tag/062A)）。対応表の状態：一部。
 
-B6型照合：終対象 ⇒ κ-filtered の向きのみ。有限な filtered ∞ 圏が終対象を持つ向きはない。
+*主張*　単体集合として有限な無限圏がフィルター付きであることは、終対象を持つことと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex`
+B6型照合：終対象 ⇒ κ-filtered の向きのみ。有限な filtered ∞ 圏が終対象を持つ向きはない。
 
 :::
 
@@ -845,12 +918,12 @@ Kerodon Lemma 9.1.9.6（[Tag 0633](https://kerodon.net/tag/0633)）。対応表�
 
 :::
 
-:::lemma_ "kerodon_9_1_9_7" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_3_17, kerodon_9_1_9_6")
+:::lemma_ "kerodon_9_1_9_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.quasicategory_of_filtered_isColimit") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_3_17, kerodon_9_1_9_6")
 Kerodon Lemma 9.1.9.7（[Tag 0634](https://kerodon.net/tag/0634)）。対応表の状態：一部。
 
-B6型照合：指定された通常 filtered 余極限の頂点が準圏となる結論はある。互換な K▷ 図式が各段で普遍余錐なら、同じ余錐が頂点の準圏でも普遍になる型は見つからない。
+*主張*　正則基数 $`\kappa` と $`\kappa`-有向半順序集合上の無限圏の図式 $`C_\alpha` を取る。$`\kappa`-小 $`K` 上の互いに整合する余極限図式 $`K^{\triangleright}\to C_\alpha` を、単体集合の圏での余極限 $`C` に移すと、$`C` は無限圏で得られる右錐は余極限図式である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.quasicategory_of_filtered_isColimit`
+B6型照合：指定された通常 filtered 余極限の頂点が準圏となる結論はある。互換な K▷ 図式が各段で普遍余錐なら、同じ余錐が頂点の準圏でも普遍になる型は見つからない。
 
 :::
 

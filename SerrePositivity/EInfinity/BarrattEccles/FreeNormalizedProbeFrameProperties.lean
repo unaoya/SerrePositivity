@@ -24,36 +24,36 @@ lemma freeNormalizedProbeFrame_cofibrant (X : Complex A) :
     letI := modelCategory A
     reedyLeft simplex (cofibrations (operad A).Algebra)
       (initial.to ((freeNormalizedProbeFrame A).obj X)) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have := free_isLeftQuillen A
   have := (operad A).freeAlgebraAdjunction.isLeftAdjoint
   exact leftQuillen_frame_reedyCofibrant (operad A).freeAlgebraFunctor _
-    (ComplexLimits.normalizedProbeTensorFrame_cofibrant A X)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame_cofibrant A X)
 
 lemma freeNormalizedProbeFrame_homotopicallyConstant (X : Complex A)
     {n m : SimplexCategory} (f : n ⟶ m) :
     letI := modelCategory A
     weakEquivalences (operad A).Algebra (((freeNormalizedProbeFrame A).obj X).map f) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have := free_isLeftQuillen A
   exact leftQuillen_frame_homotopicallyConstant (operad A).freeAlgebraFunctor _
-    (ComplexLimits.normalizedProbeTensorFrame_cofibrant A X)
-    (ComplexLimits.normalizedSimplexTensor_homotopicallyConstant A
-      ((ComplexLimits.framedLimitProbeFunctor A).obj X)) f
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame_cofibrant A X)
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexTensor_homotopicallyConstant A
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)) f
 
 lemma freeNormalizedProbeAugmentation_weak (X : Complex A) (n : SimplexCategory) :
     letI := modelCategory A
     weakEquivalences (operad A).Algebra (((freeNormalizedProbeAugmentation A).app X).app n) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have := free_isLeftQuillen A
-  have : IsCofibrant ((ComplexLimits.framedLimitProbeFunctor A).obj X) :=
-    ComplexLimits.framedLimitProbe_cofibrant A X
+  have : IsCofibrant ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) :=
+    _root_.SerrePositivity.ComplexLimits.framedLimitProbe_cofibrant A X
   exact leftQuillen_frame_augmentation_weakEquivalence (operad A).freeAlgebraFunctor _
-    (ComplexLimits.normalizedProbeTensorFrame_cofibrant A X)
-    ((ComplexLimits.normalizedProbeTensorAugmentation A).app X)
-    (ComplexLimits.normalizedProbeTensorAugmentation_weak A X) n
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame_cofibrant A X)
+    ((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X)
+    (_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation_weak A X) n
 
 end SerrePositivity.EInfinity.BarrattEccles

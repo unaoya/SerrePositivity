@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackTransport
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.LeftFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.Projection
@@ -8,6 +9,9 @@ import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArro
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "8.2 Couplings of ∞-Categories" =>
 %%%
@@ -20,16 +24,18 @@ Kerodon の 8.2 節（[Tag 043P](https://kerodon.net/tag/043P)）の項目と、
 :::definition "kerodon_8_2_0_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration") (uses := "kerodon_1_4_0_1")
 Kerodon Definition 8.2.0.1（[Tag 043Q](https://kerodon.net/tag/043Q)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C_+` と $`C_-` の coupling は、無限圏 $`C` と左ファイブレーション $`C\to C_-^{\mathrm{op}}\times C_+` のデータである。
+
 準圏Cとλ:C→C₋ᵒᵖ⊗C₊にLeftFibration λを指定した組が原文のcouplingの定義そのもの。LeftFibrationと積の型を追記し、専用のCouplingという構造名の欠如だけはpartialの理由にしない。
 
 :::
 
-:::definition "kerodon_8_2_0_3" (uses := "kerodon_1_4_0_1, kerodon_8_1_1_11")
+:::definition "kerodon_8_2_0_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibration_pullback_snd") (uses := "kerodon_1_4_0_1, kerodon_8_1_1_11")
 Kerodon Construction 8.2.0.3（[Tag 043S](https://kerodon.net/tag/043S)）。対応表の状態：一部。
 
-twistedArrowProjection C₋をid⊗Gに沿って引き戻すと、leftFibration\_pullback\_sndは原文の同じpullback couplingのleft fibration性を直接与える。Tw(C₋)×\_\{C₋\}C₊への別表示の同型まではこの引用に含まない。
+*主張*　無限圏の関手 $`G:C_+\to C_-` に対応する coupling は、ねじれ矢印の左ファイブレーションを $`\mathrm{id}\times G` に沿って引き戻した $`\operatorname{Tw}(C_-)\times_{C_-}C_+\to C_-^{\mathrm{op}}\times C_+` である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibration_pullback_snd`
+twistedArrowProjection C₋をid⊗Gに沿って引き戻すと、leftFibration\_pullback\_sndは原文の同じpullback couplingのleft fibration性を直接与える。Tw(C₋)×\_\{C₋\}C₊への別表示の同型まではこの引用に含まない。
 
 :::
 

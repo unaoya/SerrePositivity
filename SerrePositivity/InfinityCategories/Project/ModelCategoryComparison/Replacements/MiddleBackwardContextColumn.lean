@@ -24,7 +24,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n m : ℕ) (X Y : C)
 
 def middleColumn : Fin (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextDiagrams.wholeWord a b n m).length :=
-  ((_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m).natAdd a.length).castAdd b.length
+  ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m).natAdd a.length).castAdd b.length
 
 variable (cof : MorphismProperty.FunctorialFactorizationData
   (cofibrations C) (trivialFibrations C))

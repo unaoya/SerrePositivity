@@ -35,7 +35,7 @@ lemma zeroDegreeDiscreteComparison_quasiIso [B.carrier.IsLE 0] [B.carrier.IsGE 0
   let := zeroDegreeModel_nonnegative A B
   have := zeroDegreeModelProjection_quasiIso A B
   have : QuasiIso (zeroDegreeHomologyAlgebraIso A (zeroDegreeModel A B)).hom.hom := by
-    change QuasiIso (HomologyZero.zeroDegreeHomologyIso (zeroDegreeModel A B).carrier).hom
+    change QuasiIso (_root_.SerrePositivity.HomologyZero.zeroDegreeHomologyIso (zeroDegreeModel A B).carrier).hom
     infer_instance
   change QuasiIso ((zeroDegreeModelProjection A B).hom ≫
     (zeroDegreeHomologyAlgebraIso A (zeroDegreeModel A B)).hom.hom)

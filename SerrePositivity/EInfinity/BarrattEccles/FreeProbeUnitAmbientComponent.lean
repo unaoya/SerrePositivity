@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnit
-public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedAmbientEdges
-public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponent
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.OrdinaryDerivedAmbientEdges
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DerivedNatTransComponent
 
 /-!
 # 元の自由 probe 単位二胞体の同じ閉辺による成分表示
@@ -26,36 +26,36 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def freeProbeUnitOrdinaryHom (X : Complex A) :
-    (HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
+    (HomotopyCategory.mk ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))) :
         hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
-      HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      HomotopyCategory.mk ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((freeProbeFunctor A).obj X).carrier)) :=
-  (ComplexLimits.complexDiagramDerivedVertexIso A
-    (ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
+  (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+    (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnitHom A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
-      (ComplexLimits.complexDiagramDerivedVertexIso A
-        (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom
+      (_root_.SerrePositivity.ComplexLimits.complexDiagramDerivedVertexIso A
+        (freeProbeFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X).hom
 
 lemma freeProbeUnitHom_component (X : Complex A) :
     freeProbeUnitOrdinaryHom A X =
     Truncated.HomotopyCategory.homMk
       ((nerve.edgeMk ((freeProbeUnitNatTrans A).app X)).map
-        (ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated :=
-  ComplexLimits.complexOrdinaryDerivedNatTransHom_component A (freeProbeUnitNatTrans A) X
+        (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated :=
+  _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransHom_component A (freeProbeUnitNatTrans A) X
 
 lemma freeProbeUnitHom_ambient (X : Complex A) :
-    (ComplexLimits.complexOrdinaryAmbientVertexIso A
-      ((ComplexLimits.framedLimitProbeFunctor A).obj X)).inv ≫
+    (_root_.SerrePositivity.ComplexLimits.complexOrdinaryAmbientVertexIso A
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)).inv ≫
       freeProbeUnitOrdinaryHom A X ≫
-      (ComplexLimits.complexOrdinaryAmbientVertexIso A
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryAmbientVertexIso A
         ((freeProbeFunctor A).obj X).carrier).hom =
-    (hoFunctor.map (ComplexLimits.complexSemifreeResolutionInfinity A)).toFunctor.map
+    (hoFunctor.map (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity A)).toFunctor.map
       (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
-        ((ComplexLimits.complexToClosed A).map
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map
           ((operad A).freeAlgebraAdjunction.unit.app
-            ((ComplexLimits.framedLimitProbeFunctor A).obj X))))) := by
+            ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))))) := by
   rw [freeProbeUnitHom_component]
-  exact ComplexLimits.complexOrdinaryAmbient_hom A ((freeProbeUnitNatTrans A).app X)
+  exact _root_.SerrePositivity.ComplexLimits.complexOrdinaryAmbient_hom A ((freeProbeUnitNatTrans A).app X)
 
 end SerrePositivity.EInfinity.BarrattEccles

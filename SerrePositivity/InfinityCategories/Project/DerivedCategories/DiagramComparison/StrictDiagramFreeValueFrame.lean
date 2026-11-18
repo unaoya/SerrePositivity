@@ -24,7 +24,7 @@ local instance : HasColimitsOfSize.{0, 0} (Complex A) :=
 local instance : ∀ (i j : strictDiagramIndex d),
     HasCoproductsOfShape (i ⟶ j) (Complex A) :=
   fun _ _ => HomologicalComplex.instHasColimitsOfShape
-local instance : ModelCategory (Complex A) := EInfinity.projectiveModelCategory A
+local instance : ModelCategory (Complex A) := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance : ModelCategory (StrictComplexDiagram A d) := strictDiagramReedyModelCategory A d
 
 /-- 指定頂点での自由図式関手。Mathlibの評価の左随伴そのもの。 -/

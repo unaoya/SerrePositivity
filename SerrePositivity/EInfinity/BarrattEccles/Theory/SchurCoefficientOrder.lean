@@ -98,7 +98,7 @@ def sequenceArityRepresentationIso (n : ℕ) :
 
 /-- 実際の Schur の一つの arity を、入力優先・指定係数の全複体へ運ぶ。 -/
 def schurArityInputCoefficientIso (K : Complex A) (n : ℕ) :
-    arityCoinvariantComplex (schurDiagram A (sequence A) K) n ≅
+    arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) K) n ≅
       (((Rep.coinvariantsTensor A (ULift.{u} (Equiv.Perm (Fin n)))).map₂CochainComplex).obj
         (representationCochainComplex (finiteBijectionComplexAction (bijectionFunctor K) n))).obj
           (arityRepresentationCochain A n) :=

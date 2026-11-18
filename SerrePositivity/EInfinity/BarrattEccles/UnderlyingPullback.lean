@@ -36,9 +36,9 @@ def carrierPullbackFunctor {Y Z : Complex A} (g : Y ⟶ Z) : Over Z ⥤ Complex 
 規約：具体的な射影モデル構造を局所的に選ぶ。
 使われ方：底の homotopy 引き戻しの導来構成。 -/
 lemma carrierPullbackFunctor_isRightQuillen {Y Z : Complex A} (g : Y ⟶ Z) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     SerrePositivity.Quillen.IsRightQuillen (carrierPullbackFunctor A g) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   constructor
   · intro X X' f hf
     exact (fibrations (Complex A)).overPullbackMap g f hf
@@ -67,9 +67,9 @@ def carrierReplacementInclusion {X Z : (operad A).Algebra} (f : X ⟶ Z) :
 使われ方：底での導来引き戻しの元の左脚への比較。 -/
 lemma carrierReplacementInclusion_weakEquivalence {X Z : (operad A).Algebra}
     (f : X ⟶ Z) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     WeakEquivalence (carrierReplacementInclusion A f) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   change WeakEquivalence (carrierReplacementInclusion A f)
   apply (weakEquivalences_over_iff Z.carrier _).mpr
   exact ⟨fibrationReplacement_quasiIso A f⟩
@@ -79,9 +79,9 @@ lemma carrierReplacementInclusion_weakEquivalence {X Z : (operad A).Algebra}
 規約：代数の置換を再度選び直さない。
 使われ方：忘却後の導来比較同型が存在する計算点。 -/
 lemma carrierReplacementOver_isFibrant {X Z : (operad A).Algebra} (f : X ⟶ Z) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     IsFibrant (carrierReplacementOver A f) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   change IsFibrant (carrierReplacementOver A f)
   apply (isFibrant_iff_of_isTerminal
     ((Over.mkIdTerminal (X := Z.carrier)).from (carrierReplacementOver A f))
@@ -98,12 +98,12 @@ def homotopyPullbackCarrierDerivedIso {X Y Z : (operad A).Algebra}
     {H : Type w} [Category.{v} H] {S : Type w'} [Category.{v'} S]
     (Q : Complex A ⥤ H) (L : Over Z.carrier ⥤ S) (RF : S ⥤ H)
     (β : carrierPullbackFunctor A g.hom ⋙ Q ⟶ L ⋙ RF) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     ∀ [Q.IsLocalization (weakEquivalences (Complex A))]
       [L.IsLocalization (weakEquivalences (Over Z.carrier))],
       RF.IsRightDerivedFunctor β (weakEquivalences (Over Z.carrier)) →
       (Q.obj (homotopyPullback A f g).carrier ≅ RF.obj (L.obj (Over.mk f.hom))) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   dsimp only
   intro hQ hL hRF
   have := hQ

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.TensorPowerSeparationAppend
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorPowerSeparationAppend
 
 /-!
 # テンソル演算の先頭ブロックの分離
@@ -38,7 +38,7 @@ lemma tensorFirstBlockAssembly {O N M O₁ O₂ N₁ N₂ M₁ M₂ V W : C}
   rw [← tensorHom_comp_whiskerRight_assoc]
   simp only [comp_whiskerRight, Category.assoc]
   rw [tensorμ_natural_left, ← associator_inv_naturality_assoc,
-    tensorμ_associativity_inv_assoc]
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorμ_associativity_inv_assoc]
   simp only [tensorHom_comp_tensorHom, tensorHom_comp_whiskerLeft_assoc]
 
 end SerrePositivity.EInfinity

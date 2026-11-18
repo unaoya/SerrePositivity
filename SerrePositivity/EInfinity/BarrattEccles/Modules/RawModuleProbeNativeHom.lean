@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleProbeDoldKanHom
-public import SerrePositivity.EInfinity.ComplexLimits.DoldKanPinchedChainNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoldKanPinchedChainNaturality
 
 /-!
 # 元の半自由 probe の実 pinched Hom への端点同定
@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.Modules
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories
@@ -64,13 +64,13 @@ lemma strictRawModuleProbeNativeHomIso_chainMap (X : (operad A).Algebra)
       (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) Q) ⟶
         homObject A (SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
           (ForgetEnrichment.to (Complex A) P') (ForgetEnrichment.to (Complex A) Q')) :
-    SSet.uliftFunctor.{u + 1, u}.map (doldKanHomSpaceChainMap
+    SSet.uliftFunctor.{u + 1, u}.map (_root_.SerrePositivity.ComplexLimits.doldKanHomSpaceChainMap
       (D := SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
       (E := SemifreeDGModules A (dgAlgebraCategory A ((assocForget A).obj X)))
       (x := ForgetEnrichment.to (Complex A) P) (y := ForgetEnrichment.to (Complex A) Q)
       (x' := ForgetEnrichment.to (Complex A) P') (y' := ForgetEnrichment.to (Complex A) Q') φ) ≫
         (strictRawModuleProbeNativeHomIso A X P' Q').hom =
       (strictRawModuleProbeNativeHomIso A X P Q).hom ≫ pinchedHomChainMap φ :=
-  doldKanHomPinchedIso_chainMap φ
+  _root_.SerrePositivity.ComplexLimits.doldKanHomPinchedIso_chainMap φ
 
 end SerrePositivity.EInfinity.BarrattEccles

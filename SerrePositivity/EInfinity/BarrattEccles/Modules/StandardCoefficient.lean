@@ -82,7 +82,7 @@ lemma shuffleSimplex_standard (m n : ℕ) (i : Fin (m + 1)) (s : ShufflePath 0 0
   have h := simplexEquiv_shuffleSimplex m n i s
     (standardSimplex (m+1)) (standardSimplex n) k
   simpa only [simplexEquiv_standardSimplex, permutationComposition,
-    outerPermutation_one, operadInnerPermutation_one, mul_one] using h
+    outerPermutation_one, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation_one, mul_one] using h
 
 /-- 概要：零次の標準生成元の shuffle は標準生成元（Berger–Fresse §1.1.3）。
 方針：唯一の零次経路と符号一で和を評価する。

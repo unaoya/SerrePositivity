@@ -35,14 +35,14 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：導来随伴を構成する Hom 同値の始域自然性。 -/
 lemma carrierFramedLimitDerivedHomEquiv_source {Y Z : Complex A} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
     ∀ x : QD.obj ((Functor.const K).obj Z) ⟶ QD.obj ((Diagram.forget A K).obj F),
       carrierFramedLimitDerivedHomEquiv A K Y F (QD.map ((Functor.const K).map f) ≫ x) =
         Q.map f ≫ carrierFramedLimitDerivedHomEquiv A K Z F x := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   dsimp only
   intro x
@@ -60,7 +60,7 @@ lemma carrierFramedLimitDerivedHomEquiv_source {Y Z : Complex A} (f : Y ⟶ Z)
 使われ方：底の導来 Hom 同値を二変数の自然同型へ束ねる。 -/
 lemma carrierFramedLimitDerivedHomEquiv_both {Y Z : Complex A} (f : Y ⟶ Z)
     {F G : K ⥤ (operad A).Algebra} (g : F ⟶ G) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
@@ -69,7 +69,7 @@ lemma carrierFramedLimitDerivedHomEquiv_both {Y Z : Complex A} (f : Y ⟶ Z)
         (QD.map ((Functor.const K).map f) ≫ x ≫ QD.map ((Diagram.forget A K).map g)) =
       Q.map f ≫ carrierFramedLimitDerivedHomEquiv A K Z F x ≫
         Q.map ((framedLimitFunctor A K).map g).hom := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   let Q := (weakEquivalences (Complex A)).Q
   let QD := (weakEquivalences (K ⥤ Complex A)).Q

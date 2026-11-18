@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleHomQuillen
 public import SerrePositivity.EInfinity.Modules.TensorSimplices
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexReedy
-public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
-public import SerrePositivity.EInfinity.ProjectiveCofibrantUnit
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexReedy
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.SimplexCounitContraction
+public import SerrePositivity.HomotopicalAlgebra.Complexes.ProjectiveCofibrantUnit
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 
@@ -35,11 +35,11 @@ variable (A : Type u) [CommRing A]
 lemma strictRawModuleSemifree_tensor_isLeftQuillen (X : (operad A).Algebra)
     (P : strictRawModuleCategory A X)
     (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P) :
-    letI := projectiveModelCategory A
+    letI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     letI := strictRawModuleModelCategory A X
     SerrePositivity.Quillen.IsLeftQuillen
       (tensorModuleFunctor (ForgetEnrichment.to (Complex A) P)) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := strictRawModuleModelCategory A X
   have := strictRawModuleSemifree_hom_isRightQuillen A X P hP
   exact SerrePositivity.Quillen.isLeftQuillen_of_isRightQuillen
@@ -55,14 +55,14 @@ lemma strictRawModuleTensorFrame_reedyCofibrant (X : (operad A).Algebra)
     reedyLeft simplex (cofibrations (strictRawModuleCategory A X))
       (initial.to ((moduleTensorSimplicesFunctor A
         (dgAlgebraCategory A ((assocForget A).obj X))).obj P)) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := strictRawModuleModelCategory A X
   have := strictRawModuleSemifree_tensor_isLeftQuillen A X P hP
   have :=
     (moduleTensorHomAdjunction A (dgAlgebraCategory A ((assocForget A).obj X)) P).isLeftAdjoint
   exact leftQuillen_frame_reedyCofibrant
     (tensorModuleFunctor (ForgetEnrichment.to (Complex A) P))
-    (SSet.stdSimplex ⋙ normalizedFunctor A) (ComplexLimits.normalizedSimplex_reedyCofibrant A)
+    (SSet.stdSimplex ⋙ normalizedFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedSimplex_reedyCofibrant A)
 
 /-- 概要：同じ半自由 source frame の全ての作用素は元の弱同値。
 方針：元の AW 余単位の実収縮と Brown の補題で同じ左 Quillen 関手を送る。
@@ -75,26 +75,26 @@ lemma strictRawModuleTensorFrame_homotopicallyConstant (X : (operad A).Algebra)
     weakEquivalences (strictRawModuleCategory A X)
       (((moduleTensorSimplicesFunctor A
         (dgAlgebraCategory A ((assocForget A).obj X))).obj P).map f) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := strictRawModuleModelCategory A X
   have := strictRawModuleSemifree_tensor_isLeftQuillen A X P hP
   have hc : ∀ {n m : SimplexCategory} (g : n ⟶ m),
       weakEquivalences (Complex A) ((SSet.stdSimplex ⋙ normalizedFunctor A).map g) := by
     intro n m g
-    change QuasiIso (AlexanderWhitney.cochainMap A (SSet.stdSimplex.map g))
-    let εn := AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)
-    let εm := AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj m)
-    have hn : QuasiIso εn := (AlexanderWhitney.cochainCounitStdSimplexHomotopyEquiv A n).quasiIso_hom
-    have hm : QuasiIso εm := (AlexanderWhitney.cochainCounitStdSimplexHomotopyEquiv A m).quasiIso_hom
-    have : QuasiIso (AlexanderWhitney.cochainMap A (SSet.stdSimplex.map g) ≫ εm) := by
-      change QuasiIso (AlexanderWhitney.cochainMap A (SSet.stdSimplex.map g) ≫
-        AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj m))
-      rw [AlexanderWhitney.cochainCounit_natural]
+    change QuasiIso (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map g))
+    let εn := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)
+    let εm := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj m)
+    have hn : QuasiIso εn := (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounitStdSimplexHomotopyEquiv A n).quasiIso_hom
+    have hm : QuasiIso εm := (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounitStdSimplexHomotopyEquiv A m).quasiIso_hom
+    have : QuasiIso (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map g) ≫ εm) := by
+      change QuasiIso (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainMap A (SSet.stdSimplex.map g) ≫
+        _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj m))
+      rw [_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_natural]
       exact hn
     exact quasiIso_of_comp_right _ εm
   exact leftQuillen_frame_homotopicallyConstant
     (tensorModuleFunctor (ForgetEnrichment.to (Complex A) P))
-    (SSet.stdSimplex ⋙ normalizedFunctor A) (ComplexLimits.normalizedSimplex_reedyCofibrant A) hc f
+    (SSet.stdSimplex ⋙ normalizedFunctor A) (_root_.SerrePositivity.ComplexLimits.normalizedSimplex_reedyCofibrant A) hc f
 
 /-- 概要：同じ半自由加群への指定 augmentation は各次数で元の擬同型。
 方針：同じ AW 余単位を左 Quillen 関手で送り、同じ左単位同型と合成する。
@@ -106,21 +106,21 @@ lemma strictRawModuleTensorFrame_augmentation_weak (X : (operad A).Algebra)
     moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X))
       ((moduleTensorSimplicesAugmentation A
         (dgAlgebraCategory A ((assocForget A).obj X)) P).app n) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := strictRawModuleModelCategory A X
   let D := dgAlgebraCategory A ((assocForget A).obj X)
   let L := tensorModuleFunctor (ForgetEnrichment.to (Complex A) P)
   have := strictRawModuleSemifree_tensor_isLeftQuillen A X P hP
-  have : IsCofibrant (AlexanderWhitney.cochains A (SSet.stdSimplex.obj n)) :=
+  have : IsCofibrant (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochains A (SSet.stdSimplex.obj n)) :=
     cosimplicialFrame_isCofibrant_obj (SSet.stdSimplex ⋙ normalizedFunctor A)
-      (ComplexLimits.normalizedSimplex_reedyCofibrant A) n
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplex_reedyCofibrant A) n
   have hu : Cofibration (0 : (HomologicalComplex.zero : Complex A) ⟶ 𝟙_ (Complex A)) :=
-    ⟨projectiveCofibrant_unit⟩
+    ⟨_root_.SerrePositivity.ProjectiveCofibrantUnit.projectiveCofibrant_unit⟩
   have : IsCofibrant (𝟙_ (Complex A)) :=
     (isCofibrant_iff_of_isInitial _ HomologicalComplex.isZero_zero.isInitial).mpr hu
-  let ε := AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)
+  let ε := _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n)
   have : WeakEquivalence ε :=
-    ⟨(AlexanderWhitney.cochainCounitStdSimplexHomotopyEquiv A n).quasiIso_hom⟩
+    ⟨(_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounitStdSimplexHomotopyEquiv A n).quasiIso_hom⟩
   have hε : WeakEquivalence (L.map ε) :=
     SerrePositivity.Quillen.map_weakEquivalence_of_cofibrant L ε
   have hc := (weakEquivalences (strictRawModuleCategory A X)).comp_mem (L.map ε)

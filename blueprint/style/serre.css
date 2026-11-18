@@ -124,3 +124,9 @@ nav#toc tr.sp-children li a:hover, nav#toc tr.sp-children li a.sp-current { colo
 
 /* Verso の通し番号は出さない（文献の番号は本文の先頭にある） */
 .bp_heading .bp_label { display: none; }
+
+/* 対応表の状態の札（serre.js が付ける）：一部・未証明の入力に依存 */
+.bp_wrapper.sp-partial, .bp_wrapper.sp-interface { border-left-color: #b7791f !important; }
+.bp_wrapper.sp-partial .bp_caption, .bp_wrapper.sp-interface .bp_caption { color: #975a16 !important; }
+.sp-status-badge { margin-left: 0.6rem; font-size: 0.7rem; font-weight: 700; color: #975a16; background: #fdf3dc; border: 1px solid #e9cf9a; border-radius: 999px; padding: 0.06rem 0.55rem; white-space: nowrap; }
+.bp_wrapper.sp-interface .sp-status-badge { color: #9b2c2c; background: #fde8e8; border-color: #f0b8b8; }

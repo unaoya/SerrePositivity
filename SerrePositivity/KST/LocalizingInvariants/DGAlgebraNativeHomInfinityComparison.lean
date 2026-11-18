@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameCoherentSource
-public import SerrePositivity.EInfinity.DGAlgebra.HomInfinityComparison
+public import SerrePositivity.DifferentialGraded.Algebras.HomInfinityComparison
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 
 /-!
@@ -20,7 +20,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
-attribute [local instance] EInfinity.DGAlgebra.modelCategory
+attribute [local instance] _root_.SerrePositivity.DGAlgebra.modelCategory
 
 /-- 実選択 right frame の全標的図式は、元の指定局所化の同じ共変 Hom と同型。 -/
 def nativeCellChosenRightHomInfinityIso :
@@ -30,7 +30,7 @@ def nativeCellChosenRightHomInfinityIso :
   let a := nativeModelInfinityPresentationIso R
   let G := nativeModelQuasiIsoInfinityMap R
   let e := nativeCellChosenRightHammockIso R A ≪≫
-    (EInfinity.DGAlgebra.frameTerminalHomIso R G
+    (_root_.SerrePositivity.DGAlgebra.frameTerminalHomIso R G
       (nativeModelQuasiIsoInfinity_isLocalization R) (cellResolution R A)).precomp
         ((SSet.uliftFunctor.{u + 2, u + 1}).map a.inv)
   have hq : a.inv ≫ G = quasiIsoInfinityMap R := by

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexTensorHom
 
 /-!
 # 指定正規化標準単体 Hom と同じ自由鎖随伴
@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -32,10 +32,10 @@ theorem normalizedSimplexHomEquiv_freeAdjunction (H : Complex A) (n : SimplexCat
     ((freeNegativeChainsAdjunction A).homEquiv
       ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H f).app (Opposite.op n)
       (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 n))) =
-    normalizedSimplexHomEquiv A H n f := by
+    _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A H n f := by
   have hm (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ))
       (he : e = ComplexShape.embeddingUpIntLE 0) (L : ChainComplex (ModuleCat A) ℕ) :
-      extendTruncationHomEquivOfShape A e he L H =
+      _root_.SerrePositivity.ComplexLimits.extendTruncationHomEquivOfShape A e he L H =
         extendTruncationHomEquivOfEmbedding e he L H := by
     subst e
     apply Equiv.symm_bijective.injective
@@ -45,9 +45,9 @@ theorem normalizedSimplexHomEquiv_freeAdjunction (H : Complex A) (n : SimplexCat
       ((normalizedMooreComplex (ModuleCat A)).obj
         ((SerrePositivity.EInfinity.BarrattEccles.linearization A).obj
           (SSet.stdSimplex.obj n))) H f =
-      normalizedChainsTruncationHomEquiv A (SSet.stdSimplex.obj n) H f := by
+      _root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv A (SSet.stdSimplex.obj n) H f := by
     simp only [negativeExtendTruncationAdjunction, Adjunction.mkOfHomEquiv_homEquiv,
-      normalizedChainsTruncationHomEquiv]
+      _root_.SerrePositivity.ComplexLimits.normalizedChainsTruncationHomEquiv]
     rw [hm]
     rfl
   simp only [freeNegativeChainsAdjunction, Adjunction.comp_homEquiv]

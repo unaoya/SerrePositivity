@@ -1,0 +1,16 @@
+{
+ "key": "vdescent",
+ "dir": "VDescent",
+ "title": "v 降下（目標：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8。BS17・BM18・Rydh の必要な項目）",
+ "modules": [
+  "BS17",
+  "BM18",
+  "Rydh"
+ ],
+ "stats": {
+  "partial": 36,
+  "with-statement": 49,
+  "own": 10,
+  "mathlib": 3
+ }
+}

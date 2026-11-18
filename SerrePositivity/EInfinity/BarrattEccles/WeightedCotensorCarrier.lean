@@ -32,7 +32,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def carrierRightFrameDiagram (F : K ⥤ (operad A).Algebra) :
     Kᵒᵖ ⥤ SimplexCategory ⥤ (Complex A)ᵒᵖ :=
   rightFrameDiagram A K F ⋙
-    (Functor.whiskeringRight SimplexCategory _ _).obj (Operad.Algebra.forget (operad A)).op
+    (Functor.whiskeringRight SimplexCategory _ _).obj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op
 
 /-- 概要：同じ右 frame の底で計算する小図式の重み付き end（BM §1、Hovey §5.4）。
 方針：複体の反対圏で重み付き実現を取り、反転する。
@@ -50,7 +50,7 @@ def carrierWeightedCotensor (F : K ⥤ (operad A).Algebra) :
 def weightedCotensorCarrierIso (F : K ⥤ (operad A).Algebra) (W : K ⥤ SSet.{u}) :
     ((weightedCotensor A K F).obj (op W)).carrier ≅
       (carrierWeightedCotensor A K F).obj (op W) := by
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   exact ((U.op.leftKanExtensionCompIsoOfPreserves
     (FrameWeightRealization.source Kᵒᵖ (rightFrameDiagram A K F))

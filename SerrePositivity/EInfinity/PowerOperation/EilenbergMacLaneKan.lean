@@ -26,7 +26,7 @@ def levelHomSpaceIso (M : Complex A) (n : ℕ) :
     DifferentialGradedCategories.doldKanHomSpace
       (R := A) (𝟙_ (Complex A)) ((shiftFunctor (Complex A) (n : ℤ)).obj M) ≅
         (levelSpaceFunctor A n).obj M :=
-  (ComplexLimits.truncatedDoldKanFunctor A).mapIso
+  (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).mapIso
     (MonoidalClosed.unitIsoSelf (C := Complex A)
       (X := (shiftFunctor (Complex A) (n : ℤ)).obj M))
 

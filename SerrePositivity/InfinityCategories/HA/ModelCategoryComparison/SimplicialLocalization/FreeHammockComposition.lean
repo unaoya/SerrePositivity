@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComparison
-public import SerrePositivity.EInfinity.Hammock.FixedObjectComposition
-public import SerrePositivity.EInfinity.Hammock.FixedObjectEvaluationComposition
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectComposition
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectEvaluationComposition
 
 /-!
 # 元の自由 hammock の対角の合成
@@ -19,13 +19,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.EInfinity.Hammock _root_.CategoryTheory.MonoidalCategory
+open _root_.CategoryTheory _root_.CategoryTheory.Limits _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.CategoryTheory.MonoidalCategory
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y Z : C.category)
 
 def freeHammockResolutionComposition :
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Y ⊗ _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C Y Z ⟶
       _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockResolution C X Z :=
-  FixedObjectDiagram.hammockComposition (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FixedObjectDiagram.hammockComposition (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject C)
     (fun θ X => _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_naturality C θ X) X Y Z
 
 def freeHammockDiagonalTensorIso :
@@ -47,16 +47,16 @@ lemma freeHammockDiagonalComposition_app (n : SimplexCategoryᵒᵖ)
 
 lemma freeHammockAugmentation_fixedColimitMap (n : SimplexCategoryᵒᵖ) :
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C X Y).app n =
-      Relative.fixedColimitMap ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.fixedColimitMap ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
         (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X)
         (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y) := by
   change colim.map ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockGraphAugmentation C X Y).app n) =
-    colim.map (Relative.fixedGraphDiagramMap ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+    colim.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.fixedGraphDiagramMap ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y))
   apply congrArg colim.map
   apply NatTrans.ext
   funext w
-  exact (Relative.fixedGraphDiagramMap_app ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
+  exact (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.fixedGraphDiagramMap_app ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionAugmentationNatTrans C).app n)
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n X) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_augmentation C n Y) w).symm
 
 lemma freeHammockDiagonalAugmentation_composePoint (n : SimplexCategoryᵒᵖ)
@@ -72,7 +72,7 @@ lemma freeHammockDiagonalAugmentation_composePoint (n : SimplexCategoryᵒᵖ)
         (((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation C Y Z).app n).app n q)
   rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation_fixedColimitMap, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation_fixedColimitMap,
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockAugmentation_fixedColimitMap]
-  exact Relative.fixedColimitMap_composePoint _ _ _ _ p q
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.fixedColimitMap_composePoint _ _ _ _ p q
 
 lemma freeHammockDiagonalComparison_composePoint (n : SimplexCategoryᵒᵖ)
     (p : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C X Y).obj n) (q : (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonal C Y Z).obj n) :

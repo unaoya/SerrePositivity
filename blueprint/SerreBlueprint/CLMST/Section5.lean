@@ -6,6 +6,9 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
+
 #doc (Manual) "§5 BCM-regularity via perfectoid signature" =>
 %%%
 number := false
@@ -165,6 +168,8 @@ tag := "clmst-5-3"
 
 :::definition "clmst_5_3_3"
 *定義 5.3.3*　モノイドの単元群と群完備化。対応表の状態：一部（part）。
+
+*主張*　加法モノイド $`M` に対し、加法逆元をもつ元の部分を $`M^*` と記す。差 $`v-w`（$`v,w\in M`）からなる群化を $`M^{\mathrm{gp}}` と記す。
 
 原典 PDF p.52; layout L2908。Mathlib の可換モノイドの群完備化を局所化として確認（加法版は to\_additive）。原典の M\* の集合と Mgp の両記号のうち群完備化側のみを採用し、モノイドを明示的に可換に限る。強凸・正規性など次項の条件は含まない。
 

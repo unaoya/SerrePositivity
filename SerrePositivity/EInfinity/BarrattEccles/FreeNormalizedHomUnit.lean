@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeNormalizedHomFrames
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorHomBifunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorHomBifunctor
 
 /-!
 # 元の自由単位と同じ正規化 Hom 比較の厳密な全次数公式
@@ -27,8 +27,8 @@ lemma freeNormalizedProbeHomAdjunctionIso_apply (X : Complex A) (B : (operad A).
     ((((freeNormalizedProbeHomAdjunctionIso A).hom.app (Opposite.op X)).app B).app
       (Opposite.op n)) f =
     (operad A).freeAlgebraAdjunction.unit.app
-      (((ComplexLimits.normalizedProbeTensorFrame A).obj X).obj n) ≫
-        (Operad.Algebra.forget (operad A)).map f := by
+      (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A).obj X).obj n) ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).map f := by
   change (operad A).freeAlgebraAdjunction.homEquiv _ _ f = _
   exact (operad A).freeAlgebraAdjunction.homEquiv_unit _ _ f
 
@@ -37,36 +37,36 @@ lemma freeNormalizedProbeHomAdjunctionIso_augmentation
     (f : (freeProbeFunctor A).obj X ⟶ B) :
     ((((freeNormalizedProbeHomAdjunctionIso A).hom.app (Opposite.op X)).app B).app
       (Opposite.op n)) (((freeNormalizedProbeAugmentation A).app X).app n ≫ f) =
-    ((ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n ≫
-      (operad A).freeAlgebraAdjunction.unit.app ((ComplexLimits.framedLimitProbeFunctor A).obj X) ≫
-        (Operad.Algebra.forget (operad A)).map f := by
+    ((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n ≫
+      (operad A).freeAlgebraAdjunction.unit.app ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) ≫
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).map f := by
   change (operad A).freeAlgebraAdjunction.homEquiv _ _
     ((operad A).freeAlgebraFunctor.map _ ≫ f) = _
   rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_unit]
 
 def freeNormalizedProbeDoldKanIso :
     freeNormalizedProbeHom A ≅
-      ((ComplexLimits.framedLimitProbeFunctor A).op ⋙
-        ComplexLimits.actualDoldKanHomBifunctor A) ⋙
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).op ⋙
+        _root_.SerrePositivity.ComplexLimits.actualDoldKanHomBifunctor A) ⋙
         (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-          (Operad.Algebra.forget (operad A)) :=
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) :=
   freeNormalizedProbeHomAdjunctionIso A ≪≫
     Functor.isoWhiskerRight
-      (Functor.isoWhiskerLeft (ComplexLimits.framedLimitProbeFunctor A).op
-        (ComplexLimits.normalizedTensorHomDoldKanIso A))
+      (Functor.isoWhiskerLeft (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).op
+        (_root_.SerrePositivity.ComplexLimits.normalizedTensorHomDoldKanIso A))
       ((Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-        (Operad.Algebra.forget (operad A)))
+        (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)))
 
 lemma freeNormalizedProbeDoldKanIso_apply (X : Complex A) (B : (operad A).Algebra)
     (n : SimplexCategory) (f : ((freeNormalizedProbeFrame A).obj X).obj n ⟶ B) :
     ((((freeNormalizedProbeDoldKanIso A).hom.app (Opposite.op X)).app B).app
       (Opposite.op n)) f =
-    ComplexLimits.normalizedSimplexTensorHomEquiv A
-      ((ComplexLimits.framedLimitProbeFunctor A).obj X) B.carrier n
+    _root_.SerrePositivity.ComplexLimits.normalizedSimplexTensorHomEquiv A
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) B.carrier n
       ((operad A).freeAlgebraAdjunction.unit.app
-        (((ComplexLimits.normalizedProbeTensorFrame A).obj X).obj n) ≫
-          (Operad.Algebra.forget (operad A)).map f) := by
-  change ComplexLimits.normalizedSimplexTensorHomEquiv A _ _ n
+        (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorFrame A).obj X).obj n) ≫
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).map f) := by
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexTensorHomEquiv A _ _ n
     (((((freeNormalizedProbeHomAdjunctionIso A).hom.app (Opposite.op X)).app B).app
       (Opposite.op n)) f) = _
   rw [freeNormalizedProbeHomAdjunctionIso_apply]
@@ -77,13 +77,13 @@ lemma freeNormalizedProbeDoldKanIso_augmentation
     (f : (freeProbeFunctor A).obj X ⟶ B) :
     ((((freeNormalizedProbeDoldKanIso A).hom.app (Opposite.op X)).app B).app
       (Opposite.op n)) (((freeNormalizedProbeAugmentation A).app X).app n ≫ f) =
-    ComplexLimits.normalizedSimplexTensorHomEquiv A
-      ((ComplexLimits.framedLimitProbeFunctor A).obj X) B.carrier n
-      (((ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n ≫
+    _root_.SerrePositivity.ComplexLimits.normalizedSimplexTensorHomEquiv A
+      ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) B.carrier n
+      (((_root_.SerrePositivity.ComplexLimits.normalizedProbeTensorAugmentation A).app X).app n ≫
         (operad A).freeAlgebraAdjunction.unit.app
-          ((ComplexLimits.framedLimitProbeFunctor A).obj X) ≫
-            (Operad.Algebra.forget (operad A)).map f) := by
-  change ComplexLimits.normalizedSimplexTensorHomEquiv A _ _ n
+          ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X) ≫
+            (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).map f) := by
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexTensorHomEquiv A _ _ n
     (((((freeNormalizedProbeHomAdjunctionIso A).hom.app (Opposite.op X)).app B).app
       (Opposite.op n)) _) = _
   rw [freeNormalizedProbeHomAdjunctionIso_augmentation]

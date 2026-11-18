@@ -43,7 +43,7 @@ def boundedCyclicRelativeHomMorphism : LocalizerMorphism
     (complexRelativeCategory k).weakEquivalences where
   functor := boundedCyclicRelativeDown p k ⋙ boundedCyclicHomFunctor p k ⋙ complexRelativeUp k
   map _ _ f hf := by
-    let := projectiveModelCategory k
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory k
     have h := (boundedCyclicHomLocalizer p k).map
       ((boundedCyclicRelativeDown p k).map f) hf
     exact (HomologicalComplex.mem_quasiIso_iff _).mp h

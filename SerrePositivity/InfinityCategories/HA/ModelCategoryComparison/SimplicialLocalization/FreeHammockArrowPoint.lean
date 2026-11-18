@@ -17,7 +17,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localiz
 noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.CategoryTheory.MonoidalCategory _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories
+open _root_.CategoryTheory _root_.CategoryTheory.MonoidalCategory _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.InfinityCategories
 open _root_.SerrePositivity.SimplicialModel
 open scoped _root_.Simplicial
 

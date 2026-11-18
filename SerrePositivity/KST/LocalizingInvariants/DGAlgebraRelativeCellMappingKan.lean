@@ -23,7 +23,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) {X B : Mon (Complex R)}
-  (q : X ⟶ B) (hq : EInfinity.projectiveFibrations R q.hom)
+  (q : X ⟶ B) (hq : _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R q.hom)
   (s : cellResolution R A ⟶ B)
 
 include hq

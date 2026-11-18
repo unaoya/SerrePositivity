@@ -19,10 +19,10 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -36,15 +36,15 @@ lemma strictRawModuleTensorConeAugmentationAt_compose_of_card_ge_three {n : ℕ}
   rw [modulePostcompose_graded]
   by_cases ha0 : a = 0
   · have h0 : (0 : Fin (n + 2)) ∈ I := by rw [← ha0, ha]; exact I.min'_mem _
-    have hJ := withoutFirst_nonempty hI h0
-    have hJtwo : 2 ≤ (withoutFirst I).card := by have := card_withoutFirst I h0; omega
-    have hkJ : k = 1 - ((withoutFirst I).card : ℤ) := by
-      have hs := card_withoutFirst I h0
+    have hJ := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0
+    have hJtwo : 2 ≤ (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card := by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; omega
+    have hkJ : k = 1 - ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card : ℤ) := by
+      have hs := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0
       omega
     have hp := strictRawModuleTensorConeAugmentationAt_postcompose_mixed
       A X P Q c I a b k hI ha hb hk ha0 h0
     have hz := strictRawModuleTensorElementSelectedCochainAtMax_augmentation_smul_zero
-      A X P Q c (withoutFirst I) k hJ hkJ hJtwo k.negOnePow
+      A X P Q c (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) k hJ hkJ hJtwo k.negOnePow
     have hx : (strictRawModuleTensorConeData A X P Q c).obj a = ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P) := by
       change strictRawModuleTensorConeObj A X P Q c a =
         ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)

@@ -1,10 +1,17 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceLeft
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceRightKan
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "5.4 ∞-Bicategories" =>
 %%%
@@ -53,12 +60,12 @@ tag := "kerodon-5-4-2"
 
 Kerodon [Tag 01WF](https://kerodon.net/tag/01WF)
 
-:::definition "kerodon_5_4_2_1" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_5_4_2_1" (lean := "SSet.InnerFibration") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 5.4.2.1（[Tag 01WG](https://kerodon.net/tag/01WG)）。対応表の状態：一部。
 
-InnerFibrationは全inner hornの持ち上げを要求するので、原文の第一条件（像の隣接三角形がthinの場合のinner horn持ち上げ）を直接与える。第二条件の全恒等辺のcartesian/cocartesian性をこの型だけから数えず、定義全体とのiffではない。
+*主張*　無限双圏 $`D` への単体集合の射 $`q:C\to D` は、内部角の欠けた頂点の前後三頂点が底で薄い二単体をなす場合に持ち上げが存在し、全退化辺が $`q`-デカルトかつ $`q`-余デカルトであるとき interior fibration である。
 
-宣言：`SSet.InnerFibration`
+InnerFibrationは全inner hornの持ち上げを要求するので、原文の第一条件（像の隣接三角形がthinの場合のinner horn持ち上げ）を直接与える。第二条件の全恒等辺のcartesian/cocartesian性をこの型だけから数えず、定義全体とのiffではない。
 
 :::
 
@@ -103,12 +110,12 @@ tag := "kerodon-5-4-3"
 
 Kerodon [Tag 01WT](https://kerodon.net/tag/01WT)
 
-:::proposition "kerodon_5_4_3_1" (uses := "kerodon_1_1_0_6, kerodon_5_4_3_8")
+:::proposition "kerodon_5_4_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration") (uses := "kerodon_1_1_0_6, kerodon_5_4_3_8")
 Kerodon Proposition 5.4.3.1（[Tag 01WU](https://kerodon.net/tag/01WU)）。対応表の状態：一部。
 
-Cを準圏に強めるとslice/coslice射影はそれぞれright/left fibration、従ってinner fibrationであり、原文の指定した二射のinterior horn持ち上げ条件を直接満たす。
+*主張*　無限双圏 $`C` の任意の単体図式 $`f:K\to C` に対し、スライスと余スライスから $`C` への射影は interior fibration である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration`
+Cを準圏に強めるとslice/coslice射影はそれぞれright/left fibration、従ってinner fibrationであり、原文の指定した二射のinterior horn持ち上げ条件を直接満たす。
 
 :::
 
@@ -121,12 +128,12 @@ Kerodon Corollary 5.4.3.4（[Tag 01WX](https://kerodon.net/tag/01WX)）。対応
 
 :::
 
-:::corollary "kerodon_5_4_3_5"
+:::corollary "kerodon_5_4_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHom_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeft_kanComplex")
 Kerodon Corollary 5.4.3.5（[Tag 01WY](https://kerodon.net/tag/01WY)）。対応表の状態：一部。
 
-Cを準圏に強めるとpinchedHomとpinchedHomLeftはともにKan、従って準圏であり、原文の二つのpinched写像空間の結論を直接満たす。
+*主張*　無限双圏の任意の二対象に対して、左と右の pinched 射空間は無限圏である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHom_kanComplex`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeft_kanComplex`
+Cを準圏に強めるとpinchedHomとpinchedHomLeftはともにKan、従って準圏であり、原文の二つのpinched写像空間の結論を直接満たす。
 
 :::
 

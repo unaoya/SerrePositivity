@@ -24,7 +24,7 @@ set_option maxHeartbeats 800000 in
 lemma schurArityOrbitIso_word_quotient (r : ℕ) (k : ULift.{u} (Fin (r + 1))) :
     ((operad R).arity r ◁
       binaryTensorWordInclusion X Y r (binaryTensorCountPattern r k.down)) ≫
-    arityCoinvariantComplexQuotient (schurDiagram R (sequence R) (X ⊞ Y)) r ≫
+    arityCoinvariantComplexQuotient (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram R (sequence R) (X ⊞ Y)) r ≫
       (schurArityOrbitIso X Y r).hom =
     (β_ ((operad R).arity r)
       (binaryTensorWordObj X Y r (binaryTensorCountPattern r k.down))).hom ≫

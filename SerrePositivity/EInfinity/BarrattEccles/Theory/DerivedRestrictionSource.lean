@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction
-public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.OrdinaryDerivedSource
 
 /-!
 # 導来係数制限と厳密複体の源
@@ -37,9 +37,9 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 
 /-- 閉零射の列を dg nerve に送る操作は項別係数制限と可換。 -/
 lemma complexClosedNerve_restriction :
-    (nerveMap (complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T)) ≫
+    (nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T)) ≫
       complexRestrictionNerve f =
-    nerveMap (ScalarExtension.restriction f) ≫ nerveMap (complexToClosed S) ≫
+    nerveMap (ScalarExtension.restriction f) ≫ nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed S) ≫
       _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion S (Complex S) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
@@ -57,32 +57,32 @@ lemma complexClosedNerve_restriction :
   let g : X ⟶ Y := Γ.map (homOfLE hab)
   let R := ScalarExtension.restriction f
   have hmap (j : ℤ) :
-      ScalarExtension.restrictCochain f (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed T).map g) j) =
-        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed S).map (R.map g)) j := by
+      ScalarExtension.restrictCochain f (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map g) j) =
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map (R.map g)) j := by
     by_cases h : j = 0
     · subst j
       rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero]
       change ScalarExtension.restrictCochain f
-          (cycleFromUnit (homComplex T X Y) ((complexToClosed T).map g)).val =
+          (cycleFromUnit (homComplex T X Y) ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map g)).val =
         (cycleFromUnit (homComplex S (R.obj X) (R.obj Y))
-          ((complexToClosed S).map (R.map g))).val
+          ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map (R.map g))).val
       rw [← complexClosedHomEquiv_cochain, ← complexClosedHomEquiv_cochain]
-      change Cochain.map (Cochain.ofHom ((closedToComplex T).map ((complexToClosed T).map g)))
+      change Cochain.map (Cochain.ofHom ((closedToComplex T).map ((_root_.SerrePositivity.ComplexLimits.complexToClosed T).map g)))
           (ModuleCat.restrictScalars f) =
-        Cochain.ofHom ((closedToComplex S).map ((complexToClosed S).map (R.map g)))
-      rw [complexToClosed_map, complexToClosed_map, Cochain.map_ofHom]
+        Cochain.ofHom ((closedToComplex S).map ((_root_.SerrePositivity.ComplexLimits.complexToClosed S).map (R.map g)))
+      rw [_root_.SerrePositivity.ComplexLimits.complexToClosed_map, _root_.SerrePositivity.ComplexLimits.complexToClosed_map, Cochain.map_ofHom]
     · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ _ h, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ _ h]
       exact Cochain.map_zero X Y j (ModuleCat.restrictScalars f)
   exact hmap k
 
 /-- 導来係数制限と通常複体の係数制限は元の源上で自然同型。 -/
 def barrattEcclesRestrictD_sourceIso :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (complexOrdinaryDerivedSource T ≫ barrattEcclesRestrictD f)
-      (nerveMap (ScalarExtension.restriction f) ≫ complexOrdinaryDerivedSource S) := by
-  let L := nerveMap (complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource T ≫ barrattEcclesRestrictD f)
+      (nerveMap (ScalarExtension.restriction f) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource S) := by
+  let L := nerveMap (_root_.SerrePositivity.ComplexLimits.complexToClosed T) ≫ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.closedNerveInclusion T (Complex T)
   let R := complexRestrictionNerve f
-  let Q := complexSemifreeResolutionInfinity S
-  let H := complexSemifreeResolutionAugmentationHomotopy T
+  let Q := _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity S
+  let H := _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionAugmentationHomotopy T
   let K := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H L
   let P := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp K (R ≫ Q)
   have he (x : (nerve (Complex T)) _⦋0⦌) :
@@ -91,17 +91,17 @@ def barrattEcclesRestrictD_sourceIso :
     let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H y).toTruncated
     let e' := e.map ((truncation 2).map R)
     have h := complexRestrictionNerve_map_quasiIso f e
-      (complexSemifreeResolutionAugmentation_edge_quasiIso T y)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionAugmentation_edge_quasiIso T y)
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (f := e'.map ((truncation 2).map Q)) ?_).mpr
-    · exact complexSemifreeResolutionInfinity_invertsQuasiIso S e' h
+    · exact _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity_invertsQuasiIso S e' h
     · change (R ≫ Q).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge K x).edge =
         (R ≫ Q).app (Opposite.op ⦋1⦌) e.edge
       rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge H L x]
       rfl
   apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy P he)
-  · simp only [L, R, Q, complexOrdinaryDerivedSource, barrattEcclesRestrictD, Category.assoc]
+  · simp only [L, R, Q, _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource, barrattEcclesRestrictD, Category.assoc]
   · change (L ≫ 𝟙 _) ≫ (R ≫ Q) = _
     rw [Category.comp_id, ← Category.assoc, show L ≫ R = _ from complexClosedNerve_restriction f]
-    simp only [complexOrdinaryDerivedSource, Q, Category.assoc]
+    simp only [_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource, Q, Category.assoc]
 
 end SerrePositivity.EInfinity.ComplexLimits

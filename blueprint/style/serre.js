@@ -46,3 +46,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   if (best) { best.classList.add("sp-current"); best.scrollIntoView({ block: "center" }); }
 });
+
+// 対応表の状態の札：「一部」「未証明の入力に依存」の項目は Lean の宣言に結んであるが原典どおりではないので、カードの見出しに札を付け、枠の色を変える。
+// 状態は各カードの本文の一行目（「対応表の状態：…。」、生成器が書く）から読む。
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".bp_wrapper").forEach((w) => {
+    const p = w.querySelector(".bp_content p");
+    const m = p && p.textContent.match(/対応表の状態：([^。]*)。/);
+    if (!m) return;
+    const st = m[1];
+    const cls = st.startsWith("一部") ? "sp-partial" : st.startsWith("未証明の入力") ? "sp-interface" : st === "なし" ? "sp-none" : null;
+    if (!cls || cls === "sp-none") return;
+    w.classList.add(cls);
+    const badge = document.createElement("span");
+    badge.className = "sp-status-badge";
+    badge.textContent = cls === "sp-partial" ? "一部：原典どおりではない" : "未証明の入力に依存";
+    badge.title = "Lean の宣言は原典の主張の一部（特別な場合など）か、未証明の入力に依存する。差は本文の理由を参照。";
+    (w.querySelector(".bp_heading") || w).appendChild(badge);
+  });
+});

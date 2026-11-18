@@ -32,7 +32,7 @@ variable (A : Type u) [CommRing A]
 lemma strictRawModuleSemifree_strict_lift (X : (operad A).Algebra)
     {P M N : strictRawModuleCategory A X}
     (hP : moduleSemifree A (dgAlgebraCategory A ((assocForget A).obj X)) P)
-    (p : M ⟶ N) (hs : (projectiveFibrations A) ((strictRawModuleUnderlying X).map p))
+    (p : M ⟶ N) (hs : (_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A) ((strictRawModuleUnderlying X).map p))
     (hq : moduleQuasiIso A (dgAlgebraCategory A ((assocForget A).obj X)) p) (g : P ⟶ N) :
     ∃ l : P ⟶ M, l ≫ p = g := by
   let D := dgAlgebraCategory A ((assocForget A).obj X)

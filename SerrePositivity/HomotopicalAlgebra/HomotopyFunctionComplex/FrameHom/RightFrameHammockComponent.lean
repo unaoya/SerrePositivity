@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.RightFrameHammockCoherent
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Kan
-public import SerrePositivity.EInfinity.Hammock.AsSmallComparison
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ModelRelative
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockHomPinched
 
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SSet _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.HomotopicalAlgebra _root_.SSet _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.Reedy _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.SimplicialModel
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open scoped _root_.Simplicial
@@ -88,7 +88,7 @@ def rightFrameHammockPinchedEquivalence (Y : C) :
   let e := (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHomExUnitEquivalence r Y).trans
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanComponentEquivalence q r cof Y)
   let b := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso (AsSmallComparison.colimitIso (weakEquivalences C) X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso (weakEquivalences C) X Y))
   have hp := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)
   exact e.trans (b.trans hp.isSimplicialHomotopyEquivalence.isQCatEquivalence.choose)
@@ -99,7 +99,7 @@ def rightFrameHammockPinchedEquivalence (Y : C) :
 lemma rightFrameHammockPinchedEquivalence_factor (Y : C) :
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockPinchedEquivalence q r cof Y).hom =
       _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.rightFrameHammockKanComponentEquivalence q r cof Y).hom ≫
-        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
           _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
             (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y) := by
   change (_ ≫ _) ≫ (_ ≫ _) = _

@@ -1,8 +1,10 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.DoubleMappingCylinder
 import SerrePositivity.KST.Comparison.AlternativeFiberCriterion
 import SerrePositivity.KST.Comparison.AlternativePullback
+import SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse
 import SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence
 import SerrePositivity.KST.Comparison.FibrantCospanInvariance
 import SerrePositivity.KST.Comparison.FreeDegeneracies
@@ -13,10 +15,14 @@ import SerrePositivity.KST.Comparison.HomotopyPullbackSymmetry
 import SerrePositivity.KST.Comparison.LocalizedPushoutCube
 import SerrePositivity.KST.Comparison.SpanPushoutGluing
 import SerrePositivity.KST.Fibration.PullbackCancellation
+import SerrePositivity.KST.SConstruction.SimplicialProductQuillenA
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "3.4 Homotopy Pullback and Homotopy Pushout Squares" =>
 %%%
@@ -28,6 +34,8 @@ Kerodon の 3.4 節（[Tag 0106](https://kerodon.net/tag/0106)）の項目と、
 
 :::proposition "kerodon_3_4_0_2" (lean := "SerrePositivity.KST.Comparison.fibrantCospanMap_localized_isIso")
 Kerodon Proposition 3.4.0.2（[Tag 0109](https://kerodon.net/tag/0109)）。対応表の状態：本体にある。
+
+*主張*　単体集合の二つの余スパンの間の成分ごとの弱ホモトピー同値は、同じ側の脚 $`X_0\to X` と $`Y_0\to Y` が Kan ファイブレーションなら、引き戻しに弱ホモトピー同値を誘導する。
 
 仮定：二つの単体集合の cospan で指定側の脚が Kan fibration、三頂点の比較射が弱ホモトピー同値（Kerodon と一致。Lean は J.rlp と anodyne 局所化同型で記述）。結論：両射影と整合する通常の引き戻しの比較射が局所化同型で、同じ射が弱ホモトピー同値（一致）。
 
@@ -72,12 +80,16 @@ Kerodon [Tag 010K](https://kerodon.net/tag/010K)
 :::definition "kerodon_3_4_1_1" (lean := "SerrePositivity.KST.Comparison.IsHomotopyPullback, SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative")
 Kerodon Definition 3.4.1.1（[Tag 010L](https://kerodon.net/tag/010L)）。対応表の状態：本体にある。
 
+*主張*　可換正方形がホモトピー引き戻しであるとは、一方の脚を弱ホモトピー同値と Kan ファイブレーションに分解するたびに、左上の対象から置換後の引き戻しへの比較射が弱ホモトピー同値になることである。
+
 仮定：任意の可換正方形（Kerodon と一致）。結論：片脚の弱同値・Kan fibration 分解を経た通常の引き戻しへの比較の局所化同型性で IsHomotopyPullback を定める。別の分解でも同値な判定を与える（一致。局所化同型を同じ射の弱ホモトピー同値と比較）。
 
 :::
 
 :::proposition "kerodon_3_4_1_2" (lean := "SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative, SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative_fiber")
 Kerodon Proposition 3.4.1.2（[Tag 010N](https://kerodon.net/tag/010N)）。対応表の状態：本体にある。
+
+*主張*　単体集合の可換正方形がホモトピー引き戻しかどうかは、一方の脚の弱ホモトピー同値と Kan ファイブレーションへの分解を一つ取り、置換後の引き戻しへの比較射が弱ホモトピー同値かを調べれば判定できる。
 
 仮定：可換正方形、片脚の局所化同型と J.rlp による分解、その厳密な引き戻しと整合する比較射（Kerodon と一致）。結論：元の正方形の IsHomotopyPullback と分解後の引き戻しへの比較の局所化同型性が同値（一致）。
 
@@ -104,12 +116,16 @@ B6：原文の指定 θ と置換模型の比較射を同一視する宣言が�
 :::proposition "kerodon_3_4_1_9" (lean := "SerrePositivity.KST.Comparison.isHomotopyPullback_flip_iff")
 Kerodon Proposition 3.4.1.9（[Tag 010Y](https://kerodon.net/tag/010Y)）。対応表の状態：本体にある。
 
+*主張*　単体集合の可換正方形がホモトピー引き戻しであることは、転置した正方形がホモトピー引き戻しであることと同値である。
+
 仮定：任意の単体集合の可換正方形 sq（Kerodon と一致）。結論：IsHomotopyPullback sq.flip ↔ IsHomotopyPullback sq。二脚を入れ替えても性質が同じ（一致）。
 
 :::
 
 :::proposition "kerodon_3_4_1_11" (lean := "SerrePositivity.KST.Comparison.isHomotopyPullback_paste_horiz, SerrePositivity.KST.Fibration.isHomotopyPullback_left_of_horiz")
 Kerodon Proposition 3.4.1.11（[Tag 0110](https://kerodon.net/tag/0110)）。対応表の状態：本体にある。
+
+*主張*　横に並ぶ二つの単体集合の可換正方形で、右がホモトピー引き戻しなら、左がホモトピー引き戻しであることと外枠がそうであることは同値である。
 
 仮定：横に並ぶ可換正方形で右が IsHomotopyPullback（Kerodon と一致）。結論：左もホモトピー引き戻しなら外周がそうなり、外周と右から左を逆に回収できる（一致）。
 
@@ -149,12 +165,12 @@ B6：Bousfield–Kan cone の比較射の同値は、原文の区間模型で定
 
 :::
 
-:::definition "kerodon_3_4_2_2"
+:::definition "kerodon_3_4_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder, SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse")
 Kerodon Construction 3.4.2.2（[Tag 032K](https://kerodon.net/tag/032K)）。対応表の状態：一部。
 
-B6：doubleMappingCylinder は区間の両端と二脚を貼る原文のホモトピー押し出しを直接構成し、collapse もその区間を潰す比較を与える。比較の Epi 性までは引用型にない。
+*主張*　単体集合のスパン $`A_0\leftarrow A\to A_1` のホモトピー押し出しは、$`\Delta^1\times A` の両端に $`A_0,A_1` を貼った単体集合である。円筒の射影は通常の押し出しへの全射を誘導する。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder`、`SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse`
+B6：doubleMappingCylinder は区間の両端と二脚を貼る原文のホモトピー押し出しを直接構成し、collapse もその区間を潰す比較を与える。比較の Epi 性までは引用型にない。
 
 :::
 
@@ -213,17 +229,19 @@ B6：一般モデル圏の追加仮定を SSet で解消できず、通常pushou
 
 :::
 
-:::corollary "kerodon_3_4_2_13"
+:::corollary "kerodon_3_4_2_13" (lean := "SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse_localized_isIso")
 Kerodon Corollary 3.4.2.13（[Tag 032Q](https://kerodon.net/tag/032Q)）。対応表の状態：一部。
 
-B6：doubleMappingCylinderCollapse\_localized\_isIso は原文の指定の collapse が右脚 Mono のとき弱同値になる向きを直接与える。左脚だけ Mono の側は含まない。
+*主張*　単体集合のスパンの少なくとも一方の脚が単射なら、ホモトピー押し出しから通常の押し出しへの比較射は弱ホモトピー同値である。
 
-宣言：`SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse_localized_isIso`
+B6：doubleMappingCylinderCollapse\_localized\_isIso は原文の指定の collapse が右脚 Mono のとき弱同値になる向きを直接与える。左脚だけ Mono の側は含まない。
 
 :::
 
 :::corollary "kerodon_3_4_2_14" (lean := "SerrePositivity.KST.Comparison.pushoutMap_localized_isIso")
 Kerodon Corollary 3.4.2.14（[Tag 032R](https://kerodon.net/tag/032R)）。対応表の状態：本体にある。
+
+*主張*　単体集合のスパンからスパンへの成分ごとの弱ホモトピー同値で、同じ側の脚が両スパンで単射なら、通常の押し出しに誘導される射も弱ホモトピー同値である。
 
 仮定：二つの span のそれぞれに単射の指定脚があり、対応する三頂点の比較が弱ホモトピー同値（Kerodon と一致。Lean は脚の側を指定し、入れ替えは span の対称性で読む）。結論：通常の押し出しの誘導写像の局所化像は同型（一致）。
 
@@ -231,6 +249,8 @@ Kerodon Corollary 3.4.2.14（[Tag 032R](https://kerodon.net/tag/032R)）。対�
 
 :::corollary "kerodon_3_4_2_15" (lean := "SerrePositivity.KST.Comparison.doubleMappingCylinderMap_localized_isIso")
 Kerodon Corollary 3.4.2.15（[Tag 032S](https://kerodon.net/tag/032S)）。対応表の状態：本体にある。
+
+*主張*　単体集合のスパン間の成分ごとの弱ホモトピー同値は、ホモトピー押し出しに弱ホモトピー同値を誘導する。
 
 仮定：二つの単体集合の span と整合する三頂点の弱ホモトピー同値（Kerodon と一致。単射の条件は不要）。結論：二重写像円筒間の指定の比較が anodyne 局所化で同型で、同じ射が弱ホモトピー同値（一致）。
 
@@ -245,12 +265,12 @@ B6：単体の解消のaugmentation と積への Quillen A は任意の二対象
 
 :::
 
-:::corollary "kerodon_3_4_2_17"
+:::corollary "kerodon_3_4_2_17" (lean := "SerrePositivity.KST.SConstruction.simplicialProductQuillenA")
 Kerodon Corollary 3.4.2.17（[Tag 032U](https://kerodon.net/tag/032U)）。対応表の状態：一部。
 
-B6：simplicialProductQuillenA で Z を終対象、g を終射に取ると仮定は各単体ファイバーの弱可縮性となり、結論は f の弱同値性（X→Y×1 を標準同型で同定）になる。同じ射への明示的な特殊化。
+*主張*　単体集合の射 $`X\to S` は、$`S` の各単体 $`\Delta^k\to S` 上の引き戻し $`\Delta^k\times_S X` が弱可縮なら弱ホモトピー同値である。
 
-宣言：`SerrePositivity.KST.SConstruction.simplicialProductQuillenA`
+B6：simplicialProductQuillenA で Z を終対象、g を終射に取ると仮定は各単体ファイバーの弱可縮性となり、結論は f の弱同値性（X→Y×1 を標準同型で同定）になる。同じ射への明示的な特殊化。
 
 :::
 
@@ -291,6 +311,8 @@ Kerodon [Tag 011Q](https://kerodon.net/tag/011Q)
 :::proposition "kerodon_3_4_4_3" (lean := "SerrePositivity.KST.Comparison.spanPushout_vertex_homotopyPullback")
 Kerodon Proposition 3.4.4.3（[Tag 011T](https://kerodon.net/tag/011T)）。対応表の状態：本体にある。
 
+*主張*　二つのスパン $`\overline C\leftarrow\overline A\to\overline B` と $`C\leftarrow A\to B` の間の射の両正方形がホモトピー引き戻しで、右脚が上でも下でも単射とする。各スパンの押し出しへの $`\overline C\to C`、$`\overline B\to B` に沿う二つの正方形もホモトピー引き戻しである。
+
 仮定：二つの span と、両方の脚の比較正方形がホモトピー引き戻しで、各 span の対応する脚が単射（Kerodon と一致）。結論：通常の押し出しへの比較と任意の span 頂点との自然性の正方形がホモトピー引き戻し（一致）。
 
 :::
@@ -322,6 +344,8 @@ B6：現本体・固定Mathlibを再検索。freeDegeneracies は既存の単体
 
 :::proposition "kerodon_3_4_5_4" (lean := "SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_localized_isIso, SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation")
 Kerodon Proposition 3.4.5.4（[Tag 0124](https://kerodon.net/tag/0124)）。対応表の状態：本体にある。
+
+*主張*　任意の単体集合 $`X` に対し、半単体集合に忘却して退化を自由に付け直した $`X^+` からの余単位 $`X^+\to X` は弱ホモトピー同値である。
 
 仮定：任意の単体集合 X（Kerodon と一致）。結論：自由退化模型から X への augmentation が anodyne 局所化で同型。これは同じ augmentation が弱ホモトピー同値という主張（一致）。
 

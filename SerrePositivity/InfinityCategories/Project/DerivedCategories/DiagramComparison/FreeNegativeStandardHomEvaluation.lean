@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory AlgebraicTopology HomologicalComplex MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open scoped Simplicial
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
@@ -25,15 +25,15 @@ variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 theorem connectiveHom_negative_inclusion (x y : D) (n : ℕ) :
     (((homObject R D x y).truncLE' (ComplexShape.embeddingUpIntLE 0)).extendXIso
       ComplexShape.embeddingDownNat (i := n + 1) (i' := -(n + 1 : ℤ)) (by simp)).inv ≫
-      (truncationExtendedInclusionOfShape R ComplexShape.embeddingDownNat
-        embeddingDownNat_eq_upIntLE_zero (homObject R D x y)).f (-(n + 1 : ℤ)) =
+      (_root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape R ComplexShape.embeddingDownNat
+        _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero (homObject R D x y)).f (-(n + 1 : ℤ)) =
       (connectiveHomComplex_positiveIso (R := R) x y n).hom := by
   have h (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ))
       (he : e = ComplexShape.embeddingUpIntLE 0)
       (hi : e.f (n + 1) = -(n + 1 : ℤ)) :
       (((homObject R D x y).truncLE' (ComplexShape.embeddingUpIntLE 0)).extendXIso
         e hi).inv ≫
-        (truncationExtendedInclusionOfShape R e he (homObject R D x y)).f
+        (_root_.SerrePositivity.ComplexLimits.truncationExtendedInclusionOfShape R e he (homObject R D x y)).f
           (-(n + 1 : ℤ)) = (connectiveHomComplex_positiveIso (R := R) x y n).hom := by
     subst e
     exact extendedTruncationInclusion_nonboundary (homObject R D x y)
@@ -54,7 +54,7 @@ theorem freeNegativeStandardHom_generator_eval (S : SSet.{u}) (x y : D)
     have h := freeNegativeChainsAdjunction_symm_generator_eval R S (homObject R D x y)
       (f ≫ standardDoldKanSpaceMap x y) 0 s
     rw [mooreProjection_zero_eq] at h
-    have he := standardDoldKanModuleIso_zero_raw (R := R) x y (f.app _ s)
+    have he := _root_.SerrePositivity.ComplexLimits.standardDoldKanModuleIso_zero_raw (R := R) x y (f.app _ s)
     exact h.trans he
   | succ n =>
     have h := freeNegativeChainsAdjunction_symm_generator_eval R S (homObject R D x y)

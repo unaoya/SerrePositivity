@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded TensorPowers
 open scoped TensorProduct
-variable {A : Type u} [CommRing A] {P : Operad A} {X Y : P.Algebra} {I : ℤ → Type u}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A} {X Y : P.Algebra} {I : ℤ → Type u}
 
 /-- Action weight bounds descend through a basis-compatible isomorphism after erasure. -/
 lemma action_weightBound_of_erasedIso
@@ -53,7 +53,7 @@ lemma action_weightBound_of_erasedIso
   intro x
   let q := (HomologicalComplex.eval (ModuleCat A) (.up ℤ) i).mapIso
     (X := (eraseDifferential A).obj X.carrier)
-    (Y := (eraseDifferential A).obj Y.carrier) ((Algebra.forget P.erase).mapIso e)
+    (Y := (eraseDifferential A).obj Y.carrier) ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase).mapIso e)
   apply (mem_basisWeightSpan_iff_map (b i) (c i) q.toLinearEquiv
     (fun z => he i z) (fun z => w ⟨i, z⟩) _ _).mpr
   change e.hom.hom.f i ((X.action n).f i

@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory Limits HomologicalComplex HomotopicalAlgebra DifferentialGraded
 attribute [local implicit_reducible] cellSphere cellStageGeneratorSpheres
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
   {J : Type u} [LinearOrder J] [OrderBot J] [SuccOrder J] [WellFoundedLT J]
   {X Y : P.Algebra} {f : X ⟶ Y}
   (c : RelativeCellComplex.{u}
@@ -70,7 +70,7 @@ lemma cellStageGeneratorLeg_homEquiv (hX : IsInitial X) (j : J)
         P.schurUnit (∐ (cellStageGeneratorSpheres c j))) ≫
         (cellStageErasedFreeIso c hX j).inv.hom := by
   let E := eraseDifferential A
-  let U := Algebra.forget P.erase
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget P.erase
   let q := cellStageErasedFreeIso c hX j
   let a := P.erase.freeAlgebraAdjunction
   let V := ∐ (cellStageGeneratorSpheres c j)

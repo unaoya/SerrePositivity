@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CochainComplex
-open SerrePositivity.HomologicalAlgebra SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.HomologicalAlgebra _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] {J : Type u} [SmallCategory J]
@@ -24,17 +24,17 @@ local notation "E" => functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.u
 
 /-- 同じ指定 AW による実 Dold–Kan 空間から重み付き切断への比較。 -/
 def normalizedWeightSectionMap :
-    (truncatedDoldKanFunctor A).obj
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj
       (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) X)) ((E).obj Q)) ⟶
-        weightedSections X (Q ⋙ truncatedDoldKanFunctor A) :=
+        weightedSections X (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) :=
   (freeTensorDiagramHomIso A Q X).inv ≫
     (freeProductHomComparison A X (liftedStandardSimplexParameter J) φ).app Q ≫
       (freeProductSectionsHomIso A X Q).hom
 
 /-- 同じ指定 shuffle による逆方向の実単体的射。 -/
 def normalizedWeightSectionReverse :
-    weightedSections X (Q ⋙ truncatedDoldKanFunctor A) ⟶
-      (truncatedDoldKanFunctor A).obj
+    weightedSections X (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) ⟶
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj
         (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) X)) ((E).obj Q)) :=
   (freeProductSectionsHomIso A X Q).inv ≫
     (freeProductHomReverse A X (liftedStandardSimplexParameter J) φ).app Q ≫

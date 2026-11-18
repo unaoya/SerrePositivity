@@ -5,17 +5,19 @@
   "Section3",
   "Section4",
   "Section5",
-  "External"
+  "External",
+  "Supplement"
  ],
  "stats": {
-  "nolink-interface": 13,
-  "nolink-partial": 8,
+  "linked": 58,
+  "with-statement": 58,
+  "with-note": 45,
   "nolink-none": 17,
-  "linked": 37,
+  "with-note-intro": 5,
   "ext-nolink-table": 18,
-  "ext-linked": 4,
-  "ext-nolink-partial": 10,
+  "ext-linked": 14,
   "ext-nolink-none": 6,
-  "ext-nolink-mathlib": 2
+  "ext-nolink-mathlib": 2,
+  "supplement": 10
  }
 }

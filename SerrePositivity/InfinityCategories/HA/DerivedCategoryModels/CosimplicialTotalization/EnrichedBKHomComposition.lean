@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory Opposite
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable {A : Type u} [CommRing A]
 
 /-- 同じ図式恒等射の実後合成は恒等。 -/
@@ -52,7 +52,7 @@ theorem enrichedBKHomSourceMap_targetMap {P Q : Complex A} (f : P ⟶ Q)
   apply NatTrans.ext
   funext j
   exact (((SimplicialCategory.sHomFunctor (ClosedCategory A (Complex A))).map
-    ((complexToClosed A).map f).op).naturality
-      ((complexToClosed A).map (g.app ((opOpEquivalence SimplexCategory).functor.obj j)))).symm
+    ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map f).op).naturality
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map (g.app ((opOpEquivalence SimplexCategory).functor.obj j)))).symm
 
 end SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization

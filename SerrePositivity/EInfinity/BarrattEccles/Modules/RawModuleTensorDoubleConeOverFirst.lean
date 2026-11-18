@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
@@ -37,7 +37,7 @@ lemma strictRawModuleTensorDoubleConeOverSimplex_first_vertex {n : ℕ}
     SSet.yonedaEquiv_symm_naturality_left]
   change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom ≫
     (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X))))).symm
-      ((strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (doubleConeEndEdgeOrderHom n)) =
+      ((strictRawModuleTensorDoubleConeSimplex A X P Q c).pullback (_root_.SerrePositivity.ComplexLimits.doubleConeEndEdgeOrderHom n)) =
       SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (RightModule A (dgAlgebraCategory A ((assocForget A).obj X)))).symm (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)))
   rw [strictRawModuleTensorDoubleConeSimplex_end_edge, moduleConstantClosedNerveSimplex_yoneda A (dgAlgebraCategory A ((assocForget A).obj X)) ((strictRawModuleProbeFunctor A X).obj P),
     SSet.comp_const]

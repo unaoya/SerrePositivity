@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.TensorAugmentationCurry
-public import SerrePositivity.EInfinity.ComplexLimits.ExtendedTruncationZeroMono
-public import SerrePositivity.EInfinity.ComplexLimits.StandardDoldKanZeroRawEvaluation
-public import SerrePositivity.EInfinity.ComplexLimits.StandardDoldKanPinchedComparison
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ExtendedTruncationZeroMono
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StandardDoldKanZeroRawEvaluation
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StandardDoldKanPinchedComparison
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.PinchedModels.PinchedClosedStandardConstant
 
 /-!
@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
@@ -41,14 +41,14 @@ def moduleIdentityDoldKanVertex (P : ModuleCategory A D) :
 方針：既存の同じ標準同型の零次直接評価と定数の一点成分式を使う。
 規約：HA 1.3.1.13、同じ実評価。使われ方：元の二頂点の単射による照合。 -/
 lemma moduleIdentityDoldKanVertex_raw (P : ModuleCategory A D) :
-    truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
-      embeddingDownNat_eq_upIntLE_zero rfl
+    _root_.SerrePositivity.ComplexLimits.truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      _root_.SerrePositivity.ComplexLimits.embeddingDownNat_eq_upIntLE_zero rfl
       (moduleHom A D (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))
-      ((gammaDegreeZeroIso (connectiveHomComplex (R := A) (D := RightModule A D)
+      ((_root_.SerrePositivity.ComplexLimits.gammaDegreeZeroIso (connectiveHomComplex (R := A) (D := RightModule A D)
         (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))).hom
           (moduleIdentityDoldKanVertex A D P)) =
     (closedHomEquiv A (RightModule A D) P P (𝟙 P)).val := by
-  have h0 := standardDoldKanModuleIso_zero_raw (R := A) (D := RightModule A D)
+  have h0 := _root_.SerrePositivity.ComplexLimits.standardDoldKanModuleIso_zero_raw (R := A) (D := RightModule A D)
     (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P)
     (standardConstant (closedHomEquiv A (RightModule A D) P P (𝟙 P)) 0)
   have h := standardConstant_singleton (closedHomEquiv A (RightModule A D) P P (𝟙 P)) (0 : Fin 1)
@@ -63,7 +63,7 @@ lemma moduleIdentityDoldKanVertex_raw (P : ModuleCategory A D) :
 規約：HA 1.3.1.13、同じ Γ。使われ方：元の恒等 pinched 辺の回収。 -/
 lemma moduleTensorAugmentation_gamma_zero_eq (P : ModuleCategory A D) :
     moduleTensorAugmentationDoldKanVertex A D P = moduleIdentityDoldKanVertex A D P := by
-  apply gammaDegreeZero_raw_injective A
+  apply _root_.SerrePositivity.ComplexLimits.gammaDegreeZero_raw_injective A
     (moduleHom A D (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))
   exact (moduleTensorAugmentation_gamma_zero_raw A D P).trans
     (moduleIdentityDoldKanVertex_raw A D P).symm
@@ -83,7 +83,7 @@ lemma moduleIdentityDoldKanVertex_pinched (P : ModuleCategory A D) :
       PinchedHom.pinchedHom A (RightModule A D)
         (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P) =>
       f.app (op ⦋0⦌) (ULift.up s))
-    (standardDoldKanPinchedComparison (R := A) (D := RightModule A D)
+    (_root_.SerrePositivity.ComplexLimits.standardDoldKanPinchedComparison (R := A) (D := RightModule A D)
       (ForgetEnrichment.to (Complex A) P) (ForgetEnrichment.to (Complex A) P))
   change (moduleDoldKanPinchedIso A D P P).hom.app (op ⦋0⦌)
       (ULift.up (moduleIdentityDoldKanVertex A D P)) =

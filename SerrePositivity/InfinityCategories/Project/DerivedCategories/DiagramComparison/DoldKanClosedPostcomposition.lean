@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.DoldKanGammaChainNaturality
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DoldKanGammaChainNaturality
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.HomSpaces.DGStandardClosedPostcomposition
 
 /-!
@@ -23,7 +23,7 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D]
 theorem standardChainMap_closedPostcomposition (x y z : D)
     (f : ForgetEnrichment.of (Complex R) y ⟶ ForgetEnrichment.of (Complex R) z) :
     Functor.whiskerRight
-      (SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap
+      (_root_.SerrePositivity.ComplexLimits.standardModuleChainMap
         (dgClosedPostcomposition R D (x := x) f)) (forget (ModuleCat R)) =
       eHomWhiskerLeft SSet (ForgetEnrichment.of (Complex R) x) f := by
   apply NatTrans.ext
@@ -32,9 +32,9 @@ theorem standardChainMap_closedPostcomposition (x y z : D)
   intro s
   erw [dgStandardSimplicialPostcomp_app]
   apply Subtype.ext
-  change ((SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap
+  change ((_root_.SerrePositivity.ComplexLimits.standardModuleChainMap
     (dgClosedPostcomposition R D (x := x) f)).app n s).val = _
-  rw [SerrePositivity.EInfinity.ComplexLimits.standardModuleChainMap_val]
+  rw [_root_.SerrePositivity.ComplexLimits.standardModuleChainMap_val]
   funext i
   rcases i with ⟨⟨J, k⟩, hJ, hk⟩
   change (dgClosedPostcomposition R D (x := x) f).f k (s.val.component J k hJ hk) =
@@ -54,7 +54,7 @@ theorem doldKanSimplicialHomIso_postcomposition (x y z : D)
               (ComplexShape.embeddingUpIntLE 0))) (forget (ModuleCat R)) := by
   rw [← standardChainMap_closedPostcomposition]
   exact congrArg (fun g => Functor.whiskerRight g (forget (ModuleCat R)))
-    (SerrePositivity.EInfinity.ComplexLimits.standardDoldKanModuleIso_chainMap
+    (_root_.SerrePositivity.ComplexLimits.standardDoldKanModuleIso_chainMap
       (dgClosedPostcomposition R D (x := x) f))
 
 end SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison

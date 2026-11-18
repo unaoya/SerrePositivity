@@ -29,11 +29,11 @@ lemma strictDiagramReedy_cof_hasFunctorialFactorization :
     letI := strictDiagramReedyModelCategory A d
     (cofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
       (trivialFibrations (StrictComplexDiagram A d)) := by
-  letI := EInfinity.projectiveModelCategory A
-  haveI := EInfinity.projectiveModelCategory_cofibrantlyGenerated A
+  letI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  haveI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
   haveI := hasFunctorialFactorization_cofibration_trivialFibration
-    (EInfinity.projectiveGeneratingCofibrations A)
-    (EInfinity.projectiveGeneratingTrivialCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A)
   cases d with
   | simplicial =>
     change (Reedy.reedyLeft Reedy.simplexOp (cofibrations (Complex A))).HasFunctorialFactorization
@@ -56,11 +56,11 @@ lemma strictDiagramReedy_fib_hasFunctorialFactorization :
     letI := strictDiagramReedyModelCategory A d
     (trivialCofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
       (fibrations (StrictComplexDiagram A d)) := by
-  letI := EInfinity.projectiveModelCategory A
-  haveI := EInfinity.projectiveModelCategory_cofibrantlyGenerated A
+  letI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  haveI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
   haveI := hasFunctorialFactorization_trivialCofibration_fibration
-    (EInfinity.projectiveGeneratingCofibrations A)
-    (EInfinity.projectiveGeneratingTrivialCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A)
   cases d with
   | simplicial =>
     change (Reedy.reedyLeft Reedy.simplexOp (cofibrations (Complex A)) ⊓

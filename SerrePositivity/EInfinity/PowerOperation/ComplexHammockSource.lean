@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.EInfinity.ComplexLimits.RightFrames
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.RightFrames
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelHammockLocalization
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.WeakNerveInverts
-public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.OrdinaryDerivedSource
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 
 /-!
@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory HomologicalComplex
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
 open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
@@ -33,7 +33,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 構成済みの実射影弱同値を持つ、全複体の同じ相対圏。 -/
 def complexRelativeCategory : RelativeCategory.{u + 1} := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact modelRelativeCategory (Complex A)
 
 /-- 宇宙の表示だけを忘れる同じ通常の複体関手。 -/
@@ -47,11 +47,11 @@ abbrev complexHammockSource := _root_.SerrePositivity.InfinityCategories.HA.Mode
 
 lemma complexHammockSource_isLocalization :
     IsLocalization (complexHammockSource A) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (complexRelativeCategory A)) := by
-  let := projectiveModelCategory A
-  have := projectiveModelCategory_cofibrantlyGenerated A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  have := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
   have := hasFunctorialFactorization_cofibration_trivialFibration
-    (projectiveGeneratingCofibrations A) (projectiveGeneratingTrivialCofibrations A)
-  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelHammock_isLocalization (rightFrameFamily A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A) (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelHammock_isLocalization (_root_.SerrePositivity.ComplexLimits.rightFrameFamily A)
 
 /-- 異なる Hom 宇宙の通常図式を、同じ全複体の元の図式へ写す。 -/
 def complexRelativeNerveDown : nerve (complexRelativeCategory A).category ⟶ nerve (Complex A) where
@@ -65,21 +65,21 @@ lemma complexRelativeNerveDown_mk₁ {X Y : (complexRelativeCategory A).category
 /-- 元の通常導来源を、同じ宇宙表示の相対圏上で読む。 -/
 def complexRelativeDerivedSource :
     nerve (complexRelativeCategory A).category ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A :=
-  complexRelativeNerveDown A ≫ complexOrdinaryDerivedSource A
+  complexRelativeNerveDown A ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
 
 lemma complexRelativeDerivedSource_inverts :
     InvertsEdges (complexRelativeDerivedSource A) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges (complexRelativeCategory A)) := by
   apply _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
   intro X Y f hf
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   have hq : QuasiIso ((complexRelativeDown A).map f) := hf
-  have h := complexOrdinaryDerivedSource_map_weak A ((complexRelativeDown A).map f) hq
+  have h := _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource_map_weak A ((complexRelativeDown A).map f) hq
   apply (isInvertibleEdge_congr ?_).mp h
-  change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
     (ComposableArrows.mk₁ ((complexRelativeDown A).map f)) = _
-  change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
     (ComposableArrows.mk₁ ((complexRelativeDown A).map f)) =
-    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+    (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
       ((complexRelativeNerveDown A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f))
   rw [complexRelativeNerveDown_mk₁]
 

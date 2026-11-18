@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordBackwardDecomposition
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WordBackwardDecomposition
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordPaddedBackwardBounds
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.MiddleBackwardContextErasureComparison
 

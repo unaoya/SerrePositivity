@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeHammockComposition
-public import SerrePositivity.EInfinity.Hammock.HammockValueForward
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.HammockValueForward
 
 /-!
 # 元の射を自由 hammock 対角の零単体へ持ち上げる
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open scoped _root_.Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
@@ -35,11 +35,11 @@ lemma freeHammockArrowZero_comparison (f : X ⟶ Y) :
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison C X Y).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockArrowZero C f) =
       _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowZero C f := by
   change eqToHom (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_localized C (op ⦋0⦌) X).symm ≫
-      (Zigzag.Value.colimitValue ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj (op ⦋0⦌)).weakEquivalences.Q
+      (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Zigzag.Value.colimitValue ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj (op ⦋0⦌)).weakEquivalences.Q
         ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolution C).obj (op ⦋0⦌)).weakEquivalences.Q_inverts _ _).app (op ⦋0⦌)
           (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint _ (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero C f) (op ⦋0⦌)) ≫
       eqToHom (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionObject_localized C (op ⦋0⦌) Y) = _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowZero C f
-  rw [Zigzag.Value.colimitValue_arrowPoint]
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Zigzag.Value.colimitValue_arrowPoint]
   dsimp only [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeResolutionArrowZero, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.localizationArrowZero]
   simp only [Functor.map_comp, eqToHom_map, Category.assoc,
     eqToHom_trans_assoc, eqToHom_trans]

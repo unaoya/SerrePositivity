@@ -108,7 +108,7 @@ lemma arityCoinvariantComplexIso_ι (n : ℕ) :
 
 /-- 実際の Schur 複体の arity 分解。零入力と全整数次数を含む。 -/
 def schurComplexArityIso (P : SymmetricSequence (Complex A)) (K : Complex A) :
-    (schurFunctor A P).obj K ≅ ∐ arityCoinvariantComplex (schurDiagram A P K) :=
-  arityCoinvariantComplexIso (schurDiagram A P K)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor A P).obj K ≅ ∐ arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K) :=
+  arityCoinvariantComplexIso (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P K)
 
 end SerrePositivity.EInfinity

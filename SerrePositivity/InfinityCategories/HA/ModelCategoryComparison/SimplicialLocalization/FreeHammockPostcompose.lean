@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localiz
 noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.CategoryTheory.MonoidalCategory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category) {Y Z : C.category}
 
 def freeHammockPostcompose (g : Y ⟶ Z) :

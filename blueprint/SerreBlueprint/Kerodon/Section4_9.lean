@@ -1,21 +1,38 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.Order.Bounds.Defs
+import Mathlib.Order.Cofinal
 import Mathlib.Order.Extension.Well
 import Mathlib.Order.Hom.Set
 import Mathlib.Order.InitialSeg
 import Mathlib.Order.RelClasses
 import Mathlib.Order.WellFounded
+import Mathlib.SetTheory.Cardinal.Arithmetic
+import Mathlib.SetTheory.Cardinal.Cofinality.Basic
+import Mathlib.SetTheory.Cardinal.Cofinality.Enum
+import Mathlib.SetTheory.Cardinal.Cofinality.Ordinal
 import Mathlib.SetTheory.Cardinal.Defs
 import Mathlib.SetTheory.Cardinal.HasCardinalLT
 import Mathlib.SetTheory.Cardinal.Order
 import Mathlib.SetTheory.Cardinal.Regular
 import Mathlib.SetTheory.Ordinal.Basic
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostHomCriterion
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.KappaSmallProducts
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.LocallySmall
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SimplicialCardinalBounds
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallJoin
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallKanModel
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallShapeSimplices
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallSimplicialShapes
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "4.9 Size Conditions on ∞-Categories" =>
 %%%
@@ -37,6 +54,8 @@ Kerodon [Tag 03PV](https://kerodon.net/tag/03PV)
 :::definition "kerodon_4_9_1_1" (lean := "WellFounded.has_min, WellFoundedLT, WellFounded.wellFounded_iff_has_min")
 Kerodon Definition 4.9.1.1（[Tag 034C](https://kerodon.net/tag/034C)）。対応表の状態：Mathlib にある。
 
+*主張*　半順序集合が整礎であるとは、空でないすべての部分集合に、それより真に小さい部分集合内の元を持たない極小元があることをいう。
+
 仮定：半順序上の狭義順序（Lean が弱い：has\_min と逆向きの定理は任意の関係）。結論：WellFoundedLT は \< の整礎性。空でない部分集合に極小元があることと同値（一致）。
 
 :::
@@ -44,12 +63,16 @@ Kerodon Definition 4.9.1.1（[Tag 034C](https://kerodon.net/tag/034C)）。対�
 :::definition "kerodon_4_9_1_6" (lean := "IsWellOrder")
 Kerodon Definition 4.9.1.6（[Tag 03Q0](https://kerodon.net/tag/03Q0)）。対応表の状態：Mathlib にある。
 
+*主張*　全順序集合が整列しているとは、空でない各部分集合が最小元をもつことである。
+
 仮定：線形順序 S（Lean は順序関係 r を引数とする）（Kerodon と一致）。結論：IsWellOrder S (\<) は線形性の関係条件と整礎性。線形順序の極小元は最小元（一致）。
 
 :::
 
 :::definition "kerodon_4_9_1_7" (lean := "Ordinal, Ordinal.type")
 Kerodon Definition 4.9.1.7（[Tag 03Q1](https://kerodon.net/tag/03Q1)）。対応表の状態：Mathlib にある。
+
+*主張*　順序数は整列集合を順序同型で割った同型類であり、各整列集合に対応する順序数をその順序型と呼ぶ。
 
 仮定：固定宇宙の整列関係 r（Kerodon と一致）。結論：Ordinal は整列関係の順序同型類、Ordinal.type r はその順序型（一致）。
 
@@ -64,6 +87,8 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::definition "kerodon_4_9_1_11" (lean := "InitialSeg")
 Kerodon Definition 4.9.1.11（[Tag 03Q5](https://kerodon.net/tag/03Q5)）。対応表の状態：Mathlib にある。
+
+*主張*　全順序集合の始切片は、ある元を含めばその元以下の元も含む部分集合である。始切片への順序同型として与えられる埋め込みを始切片埋め込みと呼ぶ。
 
 仮定：二つの線形順序（Lean が弱い：InitialSeg は一般の関係に定義）。結論：順序埋め込みで、像の任意の点より小さい点が再び像にある（一致）。
 
@@ -81,12 +106,16 @@ InitialSeg.le\_apply\_iffは一つの始切片埋め込みの下方閉性。原�
 :::corollary "kerodon_4_9_1_15" (lean := "InitialSeg.subsingleton_of_trichotomous_of_irrefl")
 Kerodon Corollary 4.9.1.15（[Tag 03Q9](https://kerodon.net/tag/03Q9)）。対応表の状態：Mathlib にある。
 
+*主張*　始域が整列集合であれば、同じ全順序集合への二つの始切片埋め込みは一致する。
+
 仮定：始域が整列順序、標的が線形順序（Lean が弱い：始域は WellFounded、標的は三分律と非反射性で足りる）。結論：InitialSeg の型は Subsingleton なので二つの始切片埋め込みは等しい（一致）。
 
 :::
 
 :::corollary "kerodon_4_9_1_16" (lean := "OrderIso.subsingleton_of_wellFoundedLT")
 Kerodon Corollary 4.9.1.16（[Tag 03QA](https://kerodon.net/tag/03QA)）。対応表の状態：Mathlib にある。
+
+*主張*　二つの整列集合の間に順序を保つ全単射があれば、それは一意である。
 
 仮定：始域と標的が整列順序（Lean が弱い：標的は前順序で足りる）。結論：OrderIso S T は Subsingleton（一致）。
 
@@ -95,12 +124,16 @@ Kerodon Corollary 4.9.1.16（[Tag 03QA](https://kerodon.net/tag/03QA)）。対�
 :::corollary "kerodon_4_9_1_17" (lean := "InitialSeg.total")
 Kerodon Corollary 4.9.1.17（[Tag 03QB](https://kerodon.net/tag/03QB)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の二つの整列集合について、少なくとも一方が他方の始切片に順序同型である。
+
 仮定：二つの整列関係 r,s（Kerodon と一致）。結論：InitialSeg r s ⊕ InitialSeg s r を得る（一致）。
 
 :::
 
 :::definition "kerodon_4_9_1_19" (lean := "Ordinal.partialOrder, Ordinal.type_le_iff")
 Kerodon Definition 4.9.1.19（[Tag 03QD](https://kerodon.net/tag/03QD)）。対応表の状態：Mathlib にある。
+
+*主張*　順序数 $`\alpha,\beta` に対し、$`\alpha\leq\beta` とは、順序型 $`\alpha` の整列集合が順序型 $`\beta` の整列集合の始切片に埋め込めることである。条件は代表の選択によらない。
 
 仮定：α,β が整列関係 r,s の順序型（Kerodon と一致）。結論：Ordinal.type r ≤ Ordinal.type s と InitialSeg r s の存在が同値（一致）。
 
@@ -109,12 +142,16 @@ Kerodon Definition 4.9.1.19（[Tag 03QD](https://kerodon.net/tag/03QD)）。対�
 :::proposition "kerodon_4_9_1_20" (lean := "Ordinal.lt_wf")
 Kerodon Proposition 4.9.1.20（[Tag 03QE](https://kerodon.net/tag/03QE)）。対応表の状態：Mathlib にある。
 
+*主張*　始切片埋め込みで定める $`\leq` は順序数全体の全順序をなす。
+
 仮定：固定宇宙の順序数（Kerodon と一致）。結論：順序数の ≤ を含む LinearOrder instance（一致）。
 
 :::
 
 :::proposition "kerodon_4_9_1_22" (lean := "Ordinal.enum, Ordinal.typein")
 Kerodon Proposition 4.9.1.22（[Tag 03QG](https://kerodon.net/tag/03QG)）。対応表の状態：Mathlib にある。
+
+*主張*　整列集合 $`S` の順序型を $`\alpha` とすると、各 $`s\in S` を $`s` 未満の部分の順序型へ送る写像は、$`S` と $`\alpha` 未満の順序数の集合の一意の順序同型である。
 
 仮定：整列関係 r と α=Ordinal.type r（Kerodon と一致）。結論：enum は Iio α→S の順序同型。逆向きが typein で、各 s を s より小さい部分の順序型に写す（一致）。
 
@@ -123,6 +160,8 @@ Kerodon Proposition 4.9.1.22（[Tag 03QG](https://kerodon.net/tag/03QG)）。対
 :::corollary "kerodon_4_9_1_23" (lean := "Ordinal.type_lt_Iio, Ordinal.ToType.mk")
 Kerodon Corollary 4.9.1.23（[Tag 03QH](https://kerodon.net/tag/03QH)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の順序数 $`\alpha` より小さい順序数の集合は、通常の順序で順序型 $`\alpha` の整列集合である。
+
 仮定：任意の順序数 α（Kerodon と一致）。結論：α 未満の順序数の順序型は宇宙持ち上げをした α（一致）。
 
 :::
@@ -130,25 +169,27 @@ Kerodon Corollary 4.9.1.23（[Tag 03QH](https://kerodon.net/tag/03QH)）。対�
 :::corollary "kerodon_4_9_1_24" (lean := "Ordinal.lt_wf, WellFounded.has_min")
 Kerodon Corollary 4.9.1.24（[Tag 03QJ](https://kerodon.net/tag/03QJ)）。対応表の状態：Mathlib にある。
 
+*主張*　順序数の空でない任意の集まりには最小元がある。
+
 仮定：固定宇宙の順序数の空でない部分集合（Kerodon と一致）。結論：Ordinal.lt\_wf と WellFounded.has\_min により極小元が存在。線形性により最小（一致）。
 
 :::
 
-:::definition "kerodon_4_9_1_26"
+:::definition "kerodon_4_9_1_26" (lean := "IsCofinal")
 Kerodon Definition 4.9.1.26（[Tag 03QL](https://kerodon.net/tag/03QL)）。対応表の状態：一部。
+
+*主張*　全順序集合間の写像が共終であるとは、単調であり、標的の各元以上の像を少なくとも一つ持つことをいう。
 
 Order.IsCofinal(range f)は原文の∀t∃s,t≤f(s)という非有界性の成分そのもの。単調性を含む写像の共終性の全定義は含まない。
 
-宣言：`IsCofinal`
-
 :::
 
-:::proposition "kerodon_4_9_1_27"
+:::proposition "kerodon_4_9_1_27" (lean := "Order.exists_cof_eq, Order.ord_cof_eq_type_lt, isCofinal_setOfPred_imp_lt")
 Kerodon Proposition 4.9.1.27（[Tag 03QM](https://kerodon.net/tag/03QM)）。対応表の状態：一部。
 
-T自身も整列順序と仮定すれば、exists\_cof\_eqの共終部分集合は誘導順序でも整列し、包含は単調なので原文と同じ存在結論を直接得る。任意の線形順序Tではない。
+*主張*　任意の全順序集合には、包含が共終である整列部分集合が存在する。
 
-宣言：`Order.exists_cof_eq`、`Order.ord_cof_eq_type_lt`、`isCofinal_setOfPred_imp_lt`
+T自身も整列順序と仮定すれば、exists\_cof\_eqの共終部分集合は誘導順序でも整列し、包含は単調なので原文と同じ存在結論を直接得る。任意の線形順序Tではない。
 
 :::
 
@@ -173,12 +214,16 @@ cof\_le/le\_cof\_iffは像集合の基数による下界。原文は非単調な
 :::theorem "kerodon_4_9_1_34" (lean := "WellOrderingRel.isWellOrder, exists_wellFoundedLT")
 Kerodon Theorem 4.9.1.34（[Tag 03QU](https://kerodon.net/tag/03QU)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の集合に整列順序を入れられる。
+
 仮定：任意の型 S（Kerodon と一致）。結論：WellOrderingRel が整列関係であり、整礎な \< を持つ線形順序の存在を与える（一致）。
 
 :::
 
 :::proposition "kerodon_4_9_1_35" (lean := "WellFounded.wellOrderExtension")
 Kerodon Proposition 4.9.1.35（[Tag 03QV](https://kerodon.net/tag/03QV)）。対応表の状態：Mathlib にある。
+
+*主張*　任意の整礎半順序集合には、もとの順序関係を含む整列順序を入れられる。
 
 仮定：整礎な半順序（Lean が弱い：wellOrderExtension は整礎な関係から構成）。結論：整礎な関係を狭義部分に含む線形順序。半順序では ≤ も延長（一致）。
 
@@ -196,12 +241,16 @@ Kerodon [Tag 03QW](https://kerodon.net/tag/03QW)
 :::definition "kerodon_4_9_2_1" (lean := "Cardinal, Cardinal.ord")
 Kerodon Definition 4.9.2.1（[Tag 03QX](https://kerodon.net/tag/03QX)）。対応表の状態：Mathlib にある。
 
+*主張*　集合 $`S` の濃度 $`|S|` は $`S` に入る整列順序の順序型の最小値である。この形の順序数を基数と呼ぶ。
+
 仮定：固定宇宙の集合（Kerodon と一致）。結論：Cardinal は全単射による商、Cardinal.ord は同じ濃度の最小順序数を与える（一致）。
 
 :::
 
 :::proposition "kerodon_4_9_2_3" (lean := "Cardinal.le_def")
 Kerodon Proposition 4.9.2.3（[Tag 03QZ](https://kerodon.net/tag/03QZ)）。対応表の状態：Mathlib にある。
+
+*主張*　集合 $`S,T` に対し、$`|S|\leq|T|` であることは $`S\to T` の単射が存在することと同値である。
 
 仮定：同一宇宙の型 S,T（Kerodon と一致）。結論：Cardinal.mk S ≤ Cardinal.mk T と単射 S↪T の存在が同値（一致）。
 
@@ -210,6 +259,8 @@ Kerodon Proposition 4.9.2.3（[Tag 03QZ](https://kerodon.net/tag/03QZ)）。対�
 :::corollary "kerodon_4_9_2_4" (lean := "Cardinal.eq")
 Kerodon Corollary 4.9.2.4（[Tag 03R0](https://kerodon.net/tag/03R0)）。対応表の状態：Mathlib にある。
 
+*主張*　集合 $`S,T` の濃度が等しいことは、それらの間に全単射が存在することと同値である。
+
 仮定：同一宇宙の型 S,T（Kerodon と一致）。結論：Cardinal.mk S = Cardinal.mk T と Equiv S T の存在が同値（一致）。
 
 :::
@@ -217,12 +268,16 @@ Kerodon Corollary 4.9.2.4（[Tag 03R0](https://kerodon.net/tag/03R0)）。対応
 :::corollary "kerodon_4_9_2_5" (lean := "Cardinal.ord_le, Cardinal.ord_card_le")
 Kerodon Corollary 4.9.2.5（[Tag 03R1](https://kerodon.net/tag/03R1)）。対応表の状態：Mathlib にある。
 
+*主張*　順序型 $`\alpha` の整列集合の濃度は、$`\alpha` 以下の最大の基数である。
+
 仮定：整列集合の順序型 α（Lean が弱い：α は任意の順序数）。結論：c.ord≤α と c≤α.card が同値、かつ α.card.ord≤α。従って α.card.ord が最大（一致）。
 
 :::
 
 :::proposition "kerodon_4_9_2_8" (lean := "Cardinal.cantor")
 Kerodon Proposition 4.9.2.8（[Tag 03R4](https://kerodon.net/tag/03R4)）。対応表の状態：Mathlib にある。
+
+*主張*　任意の集合 $`S` の冪集合の濃度は、$`|S|` より真に大きい。
 
 仮定：任意の集合 S（Lean はその濃度 a を引数に取る）（Kerodon と一致）。結論：a\<2\^a。2\^a は S の冪集合の濃度（一致）。
 
@@ -249,34 +304,36 @@ Kerodon [Tag 03RB](https://kerodon.net/tag/03RB)
 :::definition "kerodon_4_9_3_1" (lean := "HasCardinalLT")
 Kerodon Definition 4.9.3.1（[Tag 03RC](https://kerodon.net/tag/03RC)）。対応表の状態：Mathlib にある。
 
+*主張*　基数 $`\kappa` に対し、集合の濃度が $`\kappa` より真に小さいことを $`\kappa`-小であるという。
+
 仮定：基数 κ と集合 S（Kerodon と一致）。結論：HasCardinalLT S κ は S の濃度が κ 未満であること（一致）。
 
 :::
 
-:::proposition "kerodon_4_9_3_5" (uses := "kerodon_4_9_2_5")
+:::proposition "kerodon_4_9_3_5" (lean := "Cardinal.mul_lt_of_lt") (uses := "kerodon_4_9_2_5")
 Kerodon Proposition 4.9.3.5（[Tag 03RG](https://kerodon.net/tag/03RG)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` に対し、$`\kappa`-小な集合の有限直積は $`\kappa`-小である。
 
 Cardinal.mul\_lt\_of\_ltは二つのκ-small集合の積の濃度がκ未満と直接返す。一般の無限κでよいが、任意有限個の積の一括した閉性は含まない。
 
-宣言：`Cardinal.mul_lt_of_lt`
-
 :::
 
-:::corollary "kerodon_4_9_3_6" (uses := "kerodon_4_9_3_5")
+:::corollary "kerodon_4_9_3_6" (lean := "Cardinal.add_lt_of_lt") (uses := "kerodon_4_9_3_5")
 Kerodon Corollary 4.9.3.6（[Tag 03RH](https://kerodon.net/tag/03RH)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` に対し、$`\kappa`-小な集合の有限余積は $`\kappa`-小である。
 
 Cardinal.add\_lt\_of\_ltは二つのκ-small集合の余積の濃度がκ未満と直接返す。任意有限個の余積の一括した閉性は含まない。
 
-宣言：`Cardinal.add_lt_of_lt`
-
 :::
 
-:::proposition "kerodon_4_9_3_7"
+:::proposition "kerodon_4_9_3_7" (lean := "Cardinal.iSup_lt_of_isRegular, Cardinal.sum_lt_of_isRegular, Cardinal.iSup_lt_of_lt_cof_ord")
 Kerodon Proposition 4.9.3.7（[Tag 03RJ](https://kerodon.net/tag/03RJ)）。対応表の状態：一部。
 
-λが正則の場合、sum\_lt\_of\_isRegularは添字濃度\<λと各項\<λから同じ余積濃度\<λを直接返す。原文(1)⇒(2)のこの場合で、一般の特異λと逆向きは含まない。
+*主張*　無限基数 $`\lambda` と基数 $`\kappa` に対し、$`\kappa<\operatorname{cf}(\lambda)` であることは、高々 $`\kappa` 個の $`\lambda`-小な集合の任意の余積が $`\lambda`-小であることと同値である。
 
-宣言：`Cardinal.iSup_lt_of_isRegular`、`Cardinal.sum_lt_of_isRegular`、`Cardinal.iSup_lt_of_lt_cof_ord`
+λが正則の場合、sum\_lt\_of\_isRegularは添字濃度\<λと各項\<λから同じ余積濃度\<λを直接返す。原文(1)⇒(2)のこの場合で、一般の特異λと逆向きは含まない。
 
 :::
 
@@ -289,17 +346,19 @@ sum\_lt\_of\_isRegularは正則λについての小さい余積の上界。原�
 
 :::
 
-:::corollary "kerodon_4_9_3_9"
+:::corollary "kerodon_4_9_3_9" (lean := "Cardinal.card_iUnion_lt_iff_forall_of_isRegular, Cardinal.sum_lt_of_isRegular")
 Kerodon Corollary 4.9.3.9（[Tag 03RL](https://kerodon.net/tag/03RL)）。対応表の状態：一部。
 
-λも正則と仮定するとsum\_lt\_of\_isRegularは同じ添字族の余積がλ-smallという結論を直接返す。cf(λ)=λであるこの場合に限り、特異λは含まない。
+*主張*　無限基数 $`\lambda` に対し、$`\lambda`-小な集合を濃度が $`\operatorname{cf}(\lambda)` 未満の集合で添字付けた余積は $`\lambda`-小である。
 
-宣言：`Cardinal.card_iUnion_lt_iff_forall_of_isRegular`、`Cardinal.sum_lt_of_isRegular`
+λも正則と仮定するとsum\_lt\_of\_isRegularは同じ添字族の余積がλ-smallという結論を直接返す。cf(λ)=λであるこの場合に限り、特異λは含まない。
 
 :::
 
 :::definition "kerodon_4_9_3_10" (lean := "Cardinal.IsRegular")
 Kerodon Definition 4.9.3.10（[Tag 03RM](https://kerodon.net/tag/03RM)）。対応表の状態：Mathlib にある。
+
+*主張*　無限基数は共終数が自分自身に等しいとき正則であり、それ以外の無限基数を特異基数と呼ぶ。
 
 仮定：無限基数 κ（Lean は述語に無限性を含める）（Kerodon と一致）。結論：Cardinal.IsRegular は κ.ord.cof = κ に当たる条件。無限基数でこれを満たさないものが特異（一致）。
 
@@ -331,6 +390,8 @@ IsInaccessibleは正則かつ強極限と非可算性の定義。原文のκ-sma
 :::proposition "kerodon_4_9_3_22" (lean := "Cardinal.isInaccessible_def, Cardinal.IsStrongLimit")
 Kerodon Proposition 4.9.3.22（[Tag 05YL](https://kerodon.net/tag/05YL)）。対応表の状態：Mathlib にある。
 
+*主張*　非可算基数 $`\lambda` は、正則であり、任意の基数 $`\kappa<\lambda` に対して $`2^\kappa<\lambda` であるとき、かつそのときに限り強到達不能である。
+
 仮定：非可算基数 λ（Kerodon と一致）。結論：非可算性の下で IsInaccessible λ と IsRegular λ∧IsStrongLimit λ が同値。強極限は κ\<λ⇒2\^κ\<λ（一致）。
 
 :::
@@ -347,34 +408,36 @@ Kerodon [Tag 03S1](https://kerodon.net/tag/03S1)
 :::definition "kerodon_4_9_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsKappaSmall")
 Kerodon Definition 4.9.4.1（[Tag 03S2](https://kerodon.net/tag/03S2)）。対応表の状態：本体にある。
 
+*主張*　無限基数 $`\kappa` に対し、単体集合が $`\kappa`-小であるとは、非退化単体全体の濃度が $`\kappa` より真に小さいことをいう。
+
 仮定：無限基数 κ と単体集合 X（Lean が弱い：IsKappaSmall は任意の基数で定義）。結論：X の全次数の非退化単体の集合の濃度が κ 未満（一致）。
 
 :::
 
-:::proposition "kerodon_4_9_4_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_8, kerodon_3_6_1_7, kerodon_4_9_3_5, kerodon_4_9_3_6")
+:::proposition "kerodon_4_9_4_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_obj_of_N, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_N_of_obj, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_simplices_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_1_1_3_8, kerodon_3_6_1_7, kerodon_4_9_3_5, kerodon_4_9_3_6")
 Kerodon Proposition 4.9.4.10（[Tag 03SA](https://kerodon.net/tag/03SA)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` の共終数が $`\aleph_0` より大きいとする。単体集合 $`S` が $`\kappa`-小であること、各次数の単体の集合 $`S_n` が $`\kappa`-小であること、任意の有限単体集合 $`K` から $`S` への写像の集合が $`\kappa`-小であることは同値である。
 
 hasCardinalLT\_obj\_of\_NとhasCardinalLT\_N\_of\_objはκを非可算正則に強めると原文(1)⇔(2)の同じ非退化単体全体/各次数の濃度条件を直接結ぶ。有限KからのHomの条件(3)と一般の共終数仮定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_obj_of_N`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_N_of_obj`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_simplices_of_isKappaSmall`
-
 :::
 
-:::corollary "kerodon_4_9_4_12" (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_4_10")
+:::corollary "kerodon_4_9_4_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_prod") (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_4_10")
 Kerodon Corollary 4.9.4.12（[Tag 03SC](https://kerodon.net/tag/03SC)）。対応表の状態：一部。
+
+*主張*　無限基数 $`\kappa` に対し、$`\kappa`-小な単体集合の有限直積は $`\kappa`-小である。
 
 isKappaSmall\_prodはκを正則に強めると二項積の同じκ-small性を直接返す。任意の無限κと任意有限個への一般化は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_prod`
-
 :::
 
-:::corollary "kerodon_4_9_4_13" (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_3_6, kerodon_4_9_4_10")
+:::corollary "kerodon_4_9_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_join") (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_3_6, kerodon_4_9_4_10")
 Kerodon Corollary 4.9.4.13（[Tag 05P7](https://kerodon.net/tag/05P7)）。対応表の状態：一部。
 
-isKappaSmall\_joinはκを正則に強めると同じjoinのκ-small性を直接返す。任意の非正則な無限κは含まない。
+*主張*　無限基数 $`\kappa` に対し、二つの $`\kappa`-小な単体集合の結合は $`\kappa`-小である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_join`
+isKappaSmall\_joinはκを正則に強めると同じjoinのκ-small性を直接返す。任意の非正則な無限κは含まない。
 
 :::
 
@@ -452,12 +515,12 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::definition "kerodon_4_9_5_6"
+:::definition "kerodon_4_9_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallKanModel")
 Kerodon Variant 4.9.5.6（[Tag 03SM](https://kerodon.net/tag/03SM)）。対応表の状態：一部。
 
-HasSmallKanModelは準圏Xが小さいKan模型と圏同値という条件。逆同値を取ればXから小さいKan準圏へのcategorical equivalenceを直接与え、原文の小さい比較先をKanに制限した場合。任意の小さい準圏の模型の条件は含まない。
+*主張*　単体集合は、そこからある小さい無限圏への圏同値が存在するとき本質的に小さい。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallKanModel`
+HasSmallKanModelは準圏Xが小さいKan模型と圏同値という条件。逆同値を取ればXから小さいKan準圏へのcategorical equivalenceを直接与え、原文の小さい比較先をKanに制限した場合。任意の小さい準圏の模型の条件は含まない。
 
 :::
 
@@ -571,12 +634,12 @@ IsLocallySmallはu+1/uの宇宙差の述語。原文の指定κと各Homのessen
 
 :::
 
-:::definition "kerodon_4_9_7_6"
+:::definition "kerodon_4_9_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsLocallySmall, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Variant 4.9.7.6（[Tag 03TU](https://kerodon.net/tag/03TU)）。対応表の状態：一部。
 
-IsLocallySmallはu+1の準圏Cの各頂点対にuのKan模型を与える。自然なpinched→interval比較の圏同値を合成し、Kan上でホモトピー同値へ移すと原文の各interval Homのessential smallnessを直接得る。この宇宙を指定した範囲だけ。
+*主張*　無限圏は、任意の二対象の間の射空間が本質的に小さい、すなわち小さい Kan 複体にホモトピー同値であるとき局所的に小さい。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsLocallySmall`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
+IsLocallySmallはu+1の準圏Cの各頂点対にuのKan模型を与える。自然なpinched→interval比較の圏同値を合成し、Kan上でホモトピー同値へ移すと原文の各interval Homのessential smallnessを直接得る。この宇宙を指定した範囲だけ。
 
 :::
 
@@ -628,12 +691,12 @@ HasEssentiallySmallFibersはleft fibrationの頂点fiberの宇宙版で、原文
 
 :::
 
-:::definition "kerodon_4_9_8_2" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
+:::definition "kerodon_4_9_8_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasEssentiallySmallFibers") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Variant 4.9.8.2（[Tag 047C](https://kerodon.net/tag/047C)）。対応表の状態：一部。
 
-HasEssentiallySmallFibersはleft fibrationの各頂点fiberに小さいKan模型を直接要求する。原文のessentially smallの全単体条件のうちn=0の成分に限り、任意の高次単体・locally smallの条件は含まない。
+*主張*　単体集合の内部ファイブレーション $`E\to C` は、各単体 $`\Delta^n\to C` 上の引き戻しの無限圏が本質的に小さいとき、本質的に小さい。すべての引き戻しが局所的に小さいとき、内部ファイブレーションは局所的に小さい。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasEssentiallySmallFibers`
+HasEssentiallySmallFibersはleft fibrationの各頂点fiberに小さいKan模型を直接要求する。原文のessentially smallの全単体条件のうちn=0の成分に限り、任意の高次単体・locally smallの条件は含まない。
 
 :::
 

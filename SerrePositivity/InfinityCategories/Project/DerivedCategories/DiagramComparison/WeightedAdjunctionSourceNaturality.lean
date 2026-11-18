@@ -35,7 +35,7 @@ theorem freeWeightedAdjunction_weight_naturality {W W' : J ⥤ SSet.{u}}
     ((weightedSectionsAdjunction W').comp (freeNegativeChainsDiagramAdjunction A J)).homEquiv K Q
       ((freeNegativeChainsDiagramFunctor A J).map (w ▷ (Functor.const J).obj K) ≫ s) =
     ((weightedSectionsAdjunction W).comp (freeNegativeChainsDiagramAdjunction A J)).homEquiv K Q s ≫
-      weightedSectionsPre w (Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A) := by
+      weightedSectionsPre w (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) := by
   rw [Adjunction.comp_homEquiv, Adjunction.comp_homEquiv]
   dsimp only [Equiv.trans_apply]
   change (weightedSectionsAdjunction W').homEquiv K _

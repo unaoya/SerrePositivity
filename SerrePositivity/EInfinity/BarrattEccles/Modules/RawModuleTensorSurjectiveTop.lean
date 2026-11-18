@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorElementLinear
 
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorSurjectiveTop
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorSurjectiveTop
 
 /-!
 概要：全射な非単射作用素で制限した元の普遍 cochain の最上位成分は零である。
@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -29,7 +29,7 @@ lemma strictRawModuleTensorElementLinear_top_surjective_noninjective {m n : ℕ}
     (strictRawModuleTensorElementLinear A X P Q
       ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component
         Finset.univ k Finset.univ_nonempty hk = 0 := by
-  have hlast := simplexSurjective_last θ hs
+  have hlast := _root_.SerrePositivity.ComplexLimits.simplexSurjective_last θ hs
   have hn' : ¬Set.InjOn θ.toOrderHom
       ((Finset.univ : Finset (Fin (m + 1))) : Set (Fin (m + 1))) := by
     simpa only [Finset.coe_univ, Set.injOn_univ] using hn

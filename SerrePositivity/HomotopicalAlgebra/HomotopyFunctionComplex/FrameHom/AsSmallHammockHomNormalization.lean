@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.AsSmallHammockHomFamily
-public import SerrePositivity.EInfinity.Hammock.AsSmallKanArrow
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallKanArrow
 
 /-!
 概要：同じ全図式の宇宙比較の順射・全評価成分・元の射の零単体を照合する。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom
-open _root_.CategoryTheory _root_.SSet _root_.Opposite _root_.CategoryTheory.MonoidalClosed _root_.SerrePositivity.EInfinity.Hammock
+open _root_.CategoryTheory _root_.SSet _root_.Opposite _root_.CategoryTheory.MonoidalClosed _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open _root_.SerrePositivity.InfinityCategories
 open scoped _root_.Simplicial
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative] (X : C)
@@ -27,7 +27,7 @@ attribute [local instance] _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFun
 規約：射の厳密な等式。使われ方：全比較辺の評価を元の零単体へ戻す。 -/
 lemma asSmallKanHammockHomFamilyMap_app (Y : AsSmall.{max u v} C) :
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X).app Y =
-      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso W X (AsSmall.down.obj Y)).hom := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.colimitIso W X (AsSmall.down.obj Y)).hom := rfl
 
 /-- 概要：同じ全図式同型の順射は元の全自然変換の実現した辺の類。
 方針：原本の束ねの順射を回収する。
@@ -38,7 +38,7 @@ lemma asSmallHammockHomCoherentIso_hom :
       HomotopyCategory.homMk
         (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge
           (F := ⟨AsSmall.down ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily W X), trivial⟩)
-          (G := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (AsSmallComparison.weak W)
+          (G := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
             (AsSmall.up.obj X)), trivial⟩)
           (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X)).toTruncated := rfl
 
@@ -48,17 +48,17 @@ lemma asSmallHammockHomCoherentIso_hom :
 lemma asSmallHammockHomCoherentEdge_at (Y : AsSmall.{max u v} C) :
     (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.functorEdgeAt (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge
       (F := ⟨AsSmall.down ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily W X), trivial⟩)
-      (G := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (AsSmallComparison.weak W)
+      (G := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
         (AsSmall.up.obj X)), trivial⟩)
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X)) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))).edge =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (show
         (AsSmall.down ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily W X)).obj Y ⟶
-          (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (AsSmallComparison.weak W)
+          (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
             (AsSmall.up.obj X))).obj Y from
               (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X).app Y)).edge := by
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge_at
     (F := ⟨AsSmall.down ⋙ _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily W X), trivial⟩)
-    (G := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (AsSmallComparison.weak W)
+    (G := ⟨_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.kanHomFamily (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.hammockHomFamily (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
       (AsSmall.up.obj X)), trivial⟩)
     (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X) Y
 
@@ -68,9 +68,9 @@ lemma asSmallHammockHomCoherentEdge_at (Y : AsSmall.{max u v} C) :
 lemma asSmallKanHammockHomFamilyMap_arrow {Y : C} (f : X ⟶ Y) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) ≫
       (_root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.asSmallKanHammockHomFamilyMap W X).app (AsSmall.up.obj Y) =
-        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (AsSmallComparison.weak W) (AsSmall.up.map f) ≫
-          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (AsSmallComparison.weak W)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W) (AsSmall.up.map f) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.weak W)
             (AsSmall.up.obj X) (AsSmall.up.obj Y)) :=
-  AsSmallComparison.arrowMap_exInfinity_colimitIso W f
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.AsSmallComparison.arrowMap_exInfinity_colimitIso W f
 
 end SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom

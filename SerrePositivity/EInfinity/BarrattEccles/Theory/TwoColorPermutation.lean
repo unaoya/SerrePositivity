@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.SlotPermutations
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.SlotPermutations
 public import Mathlib.Algebra.Group.ULift
 
 /-!
@@ -43,7 +43,7 @@ lemma twoColorPermutationHom_injective (m n : ℕ) :
     have hi := congrArg (fun k => k.down (i.castAdd n)) h
     change FiniteBijection.blockEquiv σ.down.1 σ.down.2 (i.castAdd n) =
       FiniteBijection.blockEquiv τ.down.1 τ.down.2 (i.castAdd n) at hi
-    rw [blockEquiv_apply_left, blockEquiv_apply_left] at hi
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_left, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_left] at hi
     apply Fin.ext
     exact congrArg (fun z : Fin (m + n) => z.val) hi
   · apply Equiv.ext
@@ -51,7 +51,7 @@ lemma twoColorPermutationHom_injective (m n : ℕ) :
     have hi := congrArg (fun k => k.down (i.natAdd m)) h
     change FiniteBijection.blockEquiv σ.down.1 σ.down.2 (i.natAdd m) =
       FiniteBijection.blockEquiv τ.down.1 τ.down.2 (i.natAdd m) at hi
-    rw [blockEquiv_apply_right, blockEquiv_apply_right] at hi
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_right, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_right] at hi
     apply Fin.ext
     exact Nat.add_left_cancel (congrArg (fun z : Fin (m + n) => z.val) hi)
 

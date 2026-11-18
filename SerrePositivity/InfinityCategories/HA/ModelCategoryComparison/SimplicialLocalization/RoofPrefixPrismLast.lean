@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.RoofPrefix
 open _root_.CategoryTheory _root_.SSet _root_.CategoryTheory.MonoidalCategory
-open _root_.SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.InfinityCategories
 
 open scoped _root_.Simplicial
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]

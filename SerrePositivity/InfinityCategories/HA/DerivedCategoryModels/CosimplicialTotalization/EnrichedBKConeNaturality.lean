@@ -17,13 +17,13 @@ namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.Cosimplici
 open CategoryTheory HomologicalComplex Opposite
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 variable {A : Type u} [CommRing A]
 
 /-- 指定頂点Pから元の図式への実豊穣Homの全図式。 -/
 def enrichedBKHomDiagram (P : Complex A) (X : CosimplicialObject (Complex A)) :
     SimplexCategoryᵒᵖᵒᵖ ⥤ SSet.{u} :=
-  doubleOppositeDiagram X ⋙ complexToClosed A ⋙
+  doubleOppositeDiagram X ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A ⋙
     (SimplicialCategory.sHomFunctor (ClosedCategory A (Complex A))).obj
       (op (ForgetEnrichment.of (Complex A) P))
 
@@ -40,7 +40,7 @@ def enrichedBKHomTargetMap (P : Complex A)
     enrichedBKHomDiagram P X ⟶ enrichedBKHomDiagram P Y :=
   Functor.whiskerRight
     (Functor.whiskerRight (Functor.whiskerLeft (opOpEquivalence SimplexCategory).functor f)
-      (complexToClosed A))
+      (_root_.SerrePositivity.ComplexLimits.complexToClosed A))
     ((SimplicialCategory.sHomFunctor (ClosedCategory A (Complex A))).obj
       (op (ForgetEnrichment.of (Complex A) P)))
 
@@ -48,9 +48,9 @@ def enrichedBKHomTargetMap (P : Complex A)
 def enrichedBKHomSourceMap {P Q : Complex A} (f : P ⟶ Q)
     (X : CosimplicialObject (Complex A)) :
     enrichedBKHomDiagram Q X ⟶ enrichedBKHomDiagram P X :=
-  Functor.whiskerLeft (doubleOppositeDiagram X ⋙ complexToClosed A)
+  Functor.whiskerLeft (doubleOppositeDiagram X ⋙ _root_.SerrePositivity.ComplexLimits.complexToClosed A)
     ((SimplicialCategory.sHomFunctor (ClosedCategory A (Complex A))).map
-      ((complexToClosed A).map f).op)
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map f).op)
 
 /-- 指定Hom同型は元の図式射の後合成に自然。 -/
 theorem enrichedBKHomIso_target_naturality (P : Complex A)

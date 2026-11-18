@@ -21,7 +21,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)

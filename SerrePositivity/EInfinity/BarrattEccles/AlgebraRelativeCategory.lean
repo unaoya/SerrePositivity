@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraRelativeInput
-public import SerrePositivity.EInfinity.Hammock.HomLiftColimit
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.HomLiftColimit
 
 /-!
 # 元の全代数と cofibrant DK 入力を同じ Hom の宇宙へ揃える
@@ -22,9 +22,9 @@ def algebraRelativeCategory : _root_.SerrePositivity.InfinityCategories.Kerodon.
   let := modelCategory A
   exact
     { category := Cat.of (ULiftHom.{u + 1} (operad A).Algebra)
-      weakEquivalences := Hammock.HomLift.liftedWeak (C := (operad A).Algebra)
+      weakEquivalences := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.HomLift.liftedWeak (C := (operad A).Algebra)
         (weakEquivalences (operad A).Algebra)
-      isMultiplicative := Hammock.HomLift.liftedWeak_isMultiplicative
+      isMultiplicative := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.HomLift.liftedWeak_isMultiplicative
         (C := (operad A).Algebra) (weakEquivalences (operad A).Algebra) }
 def cofibrantToAlgebraDKRelative :
     cofibrantAlgebraRelativeCategory A ⟶ algebraRelativeCategory A := by

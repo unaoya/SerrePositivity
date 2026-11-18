@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.LaxTensorComparison
-public import SerrePositivity.EInfinity.Operad.Insertion
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Insertion
 
 /-!
 # オペラッド代数のテンソル構造の比較
@@ -100,9 +100,9 @@ lemma laxPowerComparison_insertion (K C : Complex T) (C' : Complex S)
     LaxComparisonSquare F
       (laxTensorComparison F c (laxPowerComparison F K (m + n)))
       (laxPowerComparison F K (m + 1))
-      (tensorInsertionAction (F.obj K) C' m n i
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction (F.obj K) C' m n i
         (laxTensorComparison F c (laxPowerComparison F K n) ≫ F.map θ))
-      (tensorInsertionAction K C m n i θ) := by
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction K C m n i θ) := by
   let p := laxPowerComparison F K
   let s := i.val
   let t := m - s

@@ -52,9 +52,9 @@ include r in
 方針：同じ二つの弱単位を宇宙調整前の相対逆判定へ渡す。
 規約：元の全 Hom。使われ方：ambient frame 比較の回収。 -/
 lemma modelRawBifibrantToCofibrant_colimitMap_weak (X Y : BifibrantObject C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap
       (modelRawBifibrantToCofibrant (C := C)) X Y) :=
-  _root_.SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak_of_units
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak_of_units
     modelRawBifibrantToCofibrant (modelRawCofibrantToBifibrant r)
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.bifibrantCofibrantUnit r)
     (fun Z => (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit_trivialCofibration r Z.obj).2)
@@ -81,9 +81,9 @@ def modelRawToCofibrant : LocalizerMorphism (weakEquivalences C)
 方針：同じ元の置換の二つの弱余単位を使う。
 規約：第一の関手的分解を明示。使われ方：ambient 比較の反映。 -/
 lemma modelRawCofibrantToModel_colimitMap_weak (X Y : CofibrantObject C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap
       (modelRawCofibrantToModel (C := C)) X Y) :=
-  _root_.SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak modelRawCofibrantToModel modelRawToCofibrant
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak modelRawCofibrantToModel modelRawToCofibrant
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelCounit C)
     (fun Z => (ModelReplacement.cofibrantComparison_trivialFibration C Z.obj).2)
     (ModelReplacement.cofibrantComparison C)
@@ -101,9 +101,9 @@ include r in
 方針：同じ二つの実包含の弱比較を合成する。
 規約：元の全比較射自身。使われ方：実 frame 比較の弱同値性の反映。 -/
 lemma modelRawBifibrantToModel_colimitMap_weak (X Y : BifibrantObject C) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap
       (modelRawBifibrantToModel (C := C)) X Y) := by
-  rw [modelRawBifibrantToModel, _root_.SerrePositivity.EInfinity.Hammock.Relative.colimitMap_comp]
+  rw [modelRawBifibrantToModel, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Relative.colimitMap_comp]
   exact (modelRawBifibrantToCofibrant_colimitMap_weak r X Y).comp
     (modelRawCofibrantToModel_colimitMap_weak _ _)
 

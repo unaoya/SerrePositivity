@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryPrefixTail
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorCoefficientSource
-public import SerrePositivity.EInfinity.Operad.BinarySlotSwap
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.BinarySlotSwap
 
 /-!
 # 二色の係数への指定射影
@@ -32,29 +32,29 @@ attribute [local implicit_reducible] SerrePositivity.SymmetricSequence
 /-- 二色のブロック交換は、各ブロック内の置換を逆の順の二色へ移す。 -/
 lemma twoColorBlockSwap_naturality (m n : ℕ)
     (σ : Equiv.Perm (Fin m)) (τ : Equiv.Perm (Fin n)) :
-    (FiniteBijection.blockEquiv σ τ).trans (operadBlockSwap m n) =
-      (operadBlockSwap m n).trans (FiniteBijection.blockEquiv τ σ) := by
+    (FiniteBijection.blockEquiv σ τ).trans (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n) =
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n).trans (FiniteBijection.blockEquiv τ σ) := by
   apply Equiv.ext
   intro x
   obtain ⟨x, rfl⟩ := finSumFinEquiv.surjective x
   cases x with
   | inl x =>
-    change operadBlockSwap m n (FiniteBijection.blockEquiv σ τ (x.castAdd n)) =
-      FiniteBijection.blockEquiv τ σ (operadBlockSwap m n (x.castAdd n))
-    rw [blockEquiv_apply_left, operadBlockSwap_left,
-      operadBlockSwap_left, blockEquiv_apply_right]
+    change _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n (FiniteBijection.blockEquiv σ τ (x.castAdd n)) =
+      FiniteBijection.blockEquiv τ σ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n (x.castAdd n))
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_left, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap_left,
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap_left, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_right]
   | inr x =>
-    change operadBlockSwap m n (FiniteBijection.blockEquiv σ τ (x.natAdd m)) =
-      FiniteBijection.blockEquiv τ σ (operadBlockSwap m n (x.natAdd m))
-    rw [blockEquiv_apply_right, operadBlockSwap_right,
-      operadBlockSwap_right, blockEquiv_apply_left]
+    change _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n (FiniteBijection.blockEquiv σ τ (x.natAdd m)) =
+      FiniteBijection.blockEquiv τ σ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n (x.natAdd m))
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_right, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap_right,
+      _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap_right, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.blockEquiv_apply_left]
 
 /-- ブロック交換の自然性を、オペラッドの実際の係数射へ移す。 -/
-lemma coefficientBlockSwap_naturality {A : Type u} [CommRing A] (P : Operad A)
+lemma coefficientBlockSwap_naturality {A : Type u} [CommRing A] (P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A)
     (m n : ℕ) (σ : Equiv.Perm (Fin m)) (τ : Equiv.Perm (Fin n)) :
     P.sequence.map (FiniteBijection.permutation (m + n) (FiniteBijection.blockEquiv σ τ)) ≫
-      P.arityBijectionMap (operadBlockSwap m n) =
-        P.arityBijectionMap (operadBlockSwap m n) ≫
+      P.arityBijectionMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n) =
+        P.arityBijectionMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n) ≫
           P.sequence.map
             (FiniteBijection.permutation (n + m) (FiniteBijection.blockEquiv τ σ)) := by
   change P.arityBijectionMap (FiniteBijection.blockEquiv σ τ) ≫ _ =
@@ -90,7 +90,7 @@ def twoColorRightCoefficient (m n : ℕ) :
 /-- 第一の色の係数への指定射影。 -/
 def twoColorLeftCoefficient (m n : ℕ) :
     (operad A).arity (m + n) ⟶ (operad A).arity m :=
-  (operad A).arityBijectionMap (operadBlockSwap m n) ≫ nullaryPrefixDelete A n m
+  (operad A).arityBijectionMap (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadBlockSwap m n) ≫ nullaryPrefixDelete A n m
 
 /-- 第二の色への射影は、二色のブロック内置換を第二の色の置換へ移す。 -/
 lemma twoColorRightCoefficient_equivariance (m n : ℕ)

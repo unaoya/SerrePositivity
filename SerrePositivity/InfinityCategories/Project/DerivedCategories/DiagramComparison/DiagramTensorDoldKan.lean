@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncatedDoldKanFunctor
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardSimplexParameter
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexTensorHom
 
 /-!
 概要：図式テンソルからの全単体 Hom を、図式 Hom 複体の実 Dold–Kan 空間と同定する。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory CochainComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type (max u v)) [CommRing A] {J : Type v} [SmallCategory J]
@@ -31,31 +31,31 @@ def normalizedDiagramTensorFrame : SimplexCategory ⥤ (J ⥤ Complex A) :=
 /-- 図式テンソルの各単体 Hom と、元の図式 Hom の Γ の同値。 -/
 def normalizedDiagramTensorHomEquiv (n : SimplexCategory) :
     ((normalizedDiagramTensorFrame A P).obj n ⟶ Q) ≃
-      ((truncatedDoldKanFunctor A).obj (linearHomComplex A ((E).obj P) ((E).obj Q))).obj
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (linearHomComplex A ((E).obj P) ((E).obj Q))).obj
         (Opposite.op n) :=
   (diagramTensorLinearHomEquiv P Q _).trans
-    (normalizedSimplexHomEquiv A (linearHomComplex A ((E).obj P) ((E).obj Q)) n)
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (linearHomComplex A ((E).obj P) ((E).obj Q)) n)
 
 /-- 同じ各単体の同値は全単体作用素と可換である。 -/
 def normalizedDiagramTensorHomIso :
     (cosimplicialHom (normalizedDiagramTensorFrame A P)).obj Q ≅
-      (truncatedDoldKanFunctor A).obj (linearHomComplex A ((E).obj P) ((E).obj Q)) :=
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (linearHomComplex A ((E).obj P) ((E).obj Q)) :=
   NatIso.ofComponents (fun n => Equiv.toIso (normalizedDiagramTensorHomEquiv A P Q n.unop)) (by
     intro n m f
     apply ConcreteCategory.hom_ext
     intro g
-    change normalizedSimplexHomEquiv A _ m.unop
+    change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A _ m.unop
       (diagramTensorLinearHomEquiv P Q _
         ((P ◁ (Functor.const J).map
           ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
             (SSet.stdSimplex.map f.unop))) ≫ g)) = _
     rw [diagramTensorLinearHomEquiv_precomp]
-    exact normalizedSimplexHomEquiv_naturality A _ f.unop _)
+    exact _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv_naturality A _ f.unop _)
 
 /-- 元の自由テンソル族の Hom を、同じ図式 Hom の実 Γ 空間へ戻す。 -/
 def freeTensorDiagramHomIso (X : J ⥤ SSet.{max u v}) :
     (cosimplicialHom (freeTensorFrame A X (liftedStandardSimplexParameter J))).obj Q ≅
-      (truncatedDoldKanFunctor A).obj
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj
         (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) X)) ((E).obj Q)) :=
   by
     let e : freeTensorFrame A X (liftedStandardSimplexParameter J) ≅

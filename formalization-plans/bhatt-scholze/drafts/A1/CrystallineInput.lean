@@ -31,7 +31,7 @@ import SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.CrystallineP
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateAffineModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
-public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeAlgebraFunctor
 public import Mathlib.Algebra.Homology.Embedding.Extend
 public import Mathlib.Algebra.Homology.HomologicalBicomplex
 public import Mathlib.Algebra.Homology.QuasiIso
@@ -127,7 +127,7 @@ def formsCDGAFunctor (k : Type u) [CommRing k] : Poly k ⥤ CommMon (Complex k) 
   map_comp := by sorry -- 変数の代入の連鎖律
 
 abbrev formsBEFunctor (k : Type u) [CommRing k] :=
-  formsCDGAFunctor p k ⋙ commutativeAlgebraFunctor k ⋙ Operad.restrictAlgebra (augmentation k)
+  formsCDGAFunctor p k ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraFunctor k ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebra (augmentation k)
 def formsNerve (k : Type u) [CommRing k] :
     (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ nerve (operad k).Algebra where
   app n := ↾fun q => ((formsBEFunctor p k).mapComposableArrows _).obj q.down

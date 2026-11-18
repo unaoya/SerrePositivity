@@ -33,16 +33,16 @@ variable (A : Type u) [CommRing A]
 def carrierRightSimplicialFrameFamily :
     (operad A).Algebra ⥤ SimplexCategoryᵒᵖ ⥤ Complex A :=
   rightSimplicialFrameFamily A ⋙
-    (Functor.whiskeringRight SimplexCategoryᵒᵖ _ _).obj (Operad.Algebra.forget (operad A))
+    (Functor.whiskeringRight SimplexCategoryᵒᵖ _ _).obj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))
 /-- 概要：元の複体から底の右 frame への自然な比較（Hovey §5.2）。
 方針：元の augmentation を全単体で忘却する。
 規約：元の代数にも単体作用素にも自然。
 使われ方：底の混合 Hom の左比較。 -/
 def carrierRightSimplicialFrameAugmentation :
-    Operad.Algebra.forget (operad A) ⋙ Functor.const SimplexCategoryᵒᵖ ⟶
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A) ⋙ Functor.const SimplexCategoryᵒᵖ ⟶
       carrierRightSimplicialFrameFamily A :=
   Functor.whiskerRight (rightSimplicialFrameAugmentation A)
-    ((Functor.whiskeringRight SimplexCategoryᵒᵖ _ _).obj (Operad.Algebra.forget (operad A)))
+    ((Functor.whiskeringRight SimplexCategoryᵒᵖ _ _).obj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)))
 /-- 概要：底の単体的右 frame への比較は擬同型（Hovey §5.2）。
 方針：同じ元の右 frame 比較の擬同型性を使う。
 規約：全次元で同じ複体射を使う。
@@ -57,19 +57,19 @@ lemma carrierRightSimplicialFrameAugmentation_quasiIso (X : (operad A).Algebra)
 使われ方：混合 Hom の左比較の条件。 -/
 lemma carrierRightSimplicialFrame_fibrant (X : (operad A).Algebra)
     (n : SimplexCategoryᵒᵖ) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     IsFibrant (((carrierRightSimplicialFrameFamily A).obj X).obj n) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact CarrierDiagram.complex_isFibrant A _
 /-- 概要：底の単体的右 frame の反対は Reedy cofibrant（Hovey §5.2）。
 方針：同じ底の右 frame の証明を使う。
 規約：frame を選び直さない。
 使われ方：混合 Hom の右比較の条件。 -/
 lemma carrierRightSimplicialFrame_cofibrant (X : (operad A).Algebra) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     reedyLeft simplex (cofibrations (Complex A)ᵒᵖ)
       (initial.to ((carrierRightSimplicialFrameFamily A).obj X).rightOp) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact carrierRightFrame_cofibrant A X
 /-- 概要：底の単体的右 frame の反対はホモトピー定値（Hovey §5.2）。
 方針：同じ底の余単体的右 frame の全作用素の証明を使う。
@@ -77,10 +77,10 @@ lemma carrierRightSimplicialFrame_cofibrant (X : (operad A).Algebra) :
 使われ方：底の右 Hom 図式の Kan 性。 -/
 lemma carrierRightSimplicialFrame_homotopicallyConstant (X : (operad A).Algebra)
     {n m : SimplexCategory} (f : n ⟶ m) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     weakEquivalences (Complex A)ᵒᵖ
       (((carrierRightSimplicialFrameFamily A).obj X).rightOp.map f) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact carrierRightFrame_homotopicallyConstant A X f
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
 local instance evaluatedAugmentationModel : ModelCategory (Complex A) :=
-  EInfinity.projectiveModelCategory A
+  _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
 local instance evaluatedAugmentationDiagramModel : ModelCategory (StrictComplexDiagram A d) :=
   strictDiagramReedyModelCategory A d
 

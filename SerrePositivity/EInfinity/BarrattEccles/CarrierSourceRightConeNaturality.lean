@@ -42,7 +42,7 @@ def carrierSourceRightConeComparisonNatIso (Y : Complex A)
     Diagram.forget A K ⋙
         CarrierDiagram.constantDiagramSourceHom A K (carrierFramedLimitProbe A Y) ⋙ L ≅
       carrierFramedLimitConeSpace A K Y ⋙ L := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let B := q.obj.obj (carrierFramedLimitProbe A Y)
   let a := q.augmentation.app (carrierFramedLimitProbe A Y)

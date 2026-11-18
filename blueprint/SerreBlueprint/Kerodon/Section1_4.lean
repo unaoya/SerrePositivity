@@ -3,6 +3,7 @@ import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.Basic
 import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated
+import Mathlib.AlgebraicTopology.SimplexCategory.Rev
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
@@ -10,6 +11,7 @@ import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 import Mathlib.AlgebraicTopology.SimplicialSet.Op
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.KanCharacterization
+import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.ArrowSquareHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.Checks
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyCategoryBridge
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyCategoryMap
@@ -19,6 +21,9 @@ import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategorie
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.4 ∞-Categories" =>
 %%%
@@ -30,6 +35,8 @@ Kerodon の 1.4 節（[Tag 0039](https://kerodon.net/tag/0039)）の項目と、
 
 :::definition "kerodon_1_4_0_1" (lean := "SSet.Quasicategory")
 Kerodon Definition 1.4.0.1（[Tag 003A](https://kerodon.net/tag/003A)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏は単体的集合であって、すべての内ホーン $`\Lambda_i^n` からの射が $`\Delta^n` へ拡張できるものである。
 
 仮定：単体集合 X（Kerodon と一致）。結論：Quasicategory X は全ての内ホーン 0\<i\<n の充填条件（一致）。
 
@@ -51,6 +58,8 @@ Kerodon [Tag 003F](https://kerodon.net/tag/003F)
 :::definition "kerodon_1_4_1_1" (lean := "SSet.Edge")
 Kerodon Definition 1.4.1.1（[Tag 003G](https://kerodon.net/tag/003G)）。対応表の状態：Mathlib にある。
 
+*主張*　$`\infty` 圏の対象は頂点、射は辺で、辺 $`f` の始点は $`d_1f`、終点は $`d_0f` である。対象 $`x` の恒等射は退化辺 $`s_0x` である。
+
 仮定：準圏 X（Lean が弱い：Edge の定義は任意の単体集合で使える）。結論：対象は X₀ の元、Edge x y は d₁=x と d₀=y を指定した X₁ の元（一致）。
 
 :::
@@ -58,12 +67,16 @@ Kerodon Definition 1.4.1.1（[Tag 003G](https://kerodon.net/tag/003G)）。対�
 :::definition "kerodon_1_4_1_2" (lean := "SSet.Edge")
 Kerodon Notation 1.4.1.2（[Tag 003H](https://kerodon.net/tag/003H)）。対応表の状態：Mathlib にある。
 
+*主張*　$`X\in\mathcal C` で $`\infty` 圏 $`\mathcal C` の対象であることを表し、$`f\colon X\to Y` で始点 $`X`、終点 $`Y` の射であることを表す。
+
 仮定：準圏 X と二つの対象 x,y（Lean が弱い：Edge x y に準圏性は不要）。結論：x ⟶ y という記法の内容を、端点を指定した Edge x y で表す（一致）。
 
 :::
 
 :::definition "kerodon_1_4_1_5" (lean := "SSet.Edge")
 Kerodon Definition 1.4.1.5（[Tag 03X3](https://kerodon.net/tag/03X3)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏で始点と終点が同じ射を、その対象の自己射という。
 
 仮定：準圏 X の対象 x（Lean が弱い：任意の単体集合の頂点でよい）。結論：Edge x x が始点と終点の等しい自己射を表す（一致）。
 
@@ -78,24 +91,36 @@ tag := "kerodon-1-4-2"
 
 Kerodon [Tag 003L](https://kerodon.net/tag/003L)
 
-:::definition "kerodon_1_4_2_1"
+:::definition "kerodon_1_4_2_1" (lean := "SimplexCategory.rev, SimplexCategory.rev_map_apply")
 Kerodon Notation 1.4.2.1（[Tag 003M](https://kerodon.net/tag/003M)）。対応表の状態：一部。
 
-原文には有限線形順序の双対と、Δ上のOp(\[n\])=\[n\], Op(α)(i)=n−α(m−i)の構成がある。SimplexCategory.rev は Fin.rev による同じΔ上の関手を直接定義するのでこの成分に対応する。空の順序も含むLin全体の比較同値は含めない。
+*主張*　有限全順序集合で順序を反転する自己同値は、単体圏上で対象を固定し、$`\alpha\colon[m]\to[n]` を $`i\mapsto n-\alpha(m-i)` に送る関手 $`\mathrm{Op}` となる。
 
-宣言：`SimplexCategory.rev`、`SimplexCategory.rev_map_apply`
+原文には有限線形順序の双対と、Δ上のOp(\[n\])=\[n\], Op(α)(i)=n−α(m−i)の構成がある。SimplexCategory.rev は Fin.rev による同じΔ上の関手を直接定義するのでこの成分に対応する。空の順序も含むLin全体の比較同値は含めない。
 
 :::
 
 :::definition "kerodon_1_4_2_2" (lean := "SSet.opFunctor")
 Kerodon Construction 1.4.2.2（[Tag 003N](https://kerodon.net/tag/003N)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合 $`S\colon\Delta^{\mathrm{op}}\to\mathrm{Set}` を $`\mathrm{Op}` と前合成した単体的集合を、反対単体的集合 $`S^{\mathrm{op}}` と呼ぶ。
+
 仮定：任意の単体集合 X（Kerodon と一致）。結論：opFunctor.obj X は単体圏の順序反転から誘導した関手で X を前合成した反対単体集合（一致）。
+
+*定義 12.1 （反対の単体的集合）*
+
+$`\theta\colon[m]\to[n]` について $`\theta^{\mathrm{rev}}\colon[m]\to[n]` を $`\theta^{\mathrm{rev}}(i)=n-\theta(m-i)` で定める。単体的集合 $`X` の反対 $`X^{\mathrm{op}}` を
+
+$$`X^{\mathrm{op}}([n])=X([n]),\qquad X^{\mathrm{op}}(\theta)=X(\theta^{\mathrm{rev}})`
+
+で定める。単体的集合の射 $`f\colon X\to Y` について、同じ成分の写像で $`f^{\mathrm{op}}\colon X^{\mathrm{op}}\to Y^{\mathrm{op}}` を定める。単体的集合の射 $`X^{\mathrm{op}}\to Y` と射 $`X\to Y^{\mathrm{op}}` は、同じ成分の写像として一対一に対応する。
 
 :::
 
 :::proposition "kerodon_1_4_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.quasicategory_op, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.hornReverseIso")
 Kerodon Proposition 1.4.2.6（[Tag 003S](https://kerodon.net/tag/003S)）。対応表の状態：本体にある。
+
+*主張*　$`\infty` 圏の反対単体的集合は $`\infty` 圏である。
 
 仮定：準圏 X（Kerodon と一致）。結論：quasicategory\_op は X.op が準圏であることを結論し、hornReverseIso がホーンの反転を与える（一致）。
 
@@ -103,6 +128,8 @@ Kerodon Proposition 1.4.2.6（[Tag 003S](https://kerodon.net/tag/003S)）。対�
 
 :::definition "kerodon_1_4_2_8"
 Kerodon Variant 1.4.2.8（[Tag 050H](https://kerodon.net/tag/050H)）。対応表の状態：Mathlib にある。
+
+*主張*　Kan 複体の反対単体的集合は Kan 複体である。
 
 仮定：Kan 複体 X（Kerodon と一致）。結論：instKanComplexOp は X.op の KanComplex インスタンスを与える（一致）。
 
@@ -122,12 +149,16 @@ Kerodon [Tag 003U](https://kerodon.net/tag/003U)
 :::definition "kerodon_1_4_3_1" (lean := "SSet.Truncated.HomotopicL")
 Kerodon Definition 1.4.3.1（[Tag 003V](https://kerodon.net/tag/003V)）。対応表の状態：Mathlib にある。
 
+*主張*　同じ始点・終点をもつ $`\infty` 圏の射 $`f,g\colon C\to D` について、三つの面が $`d_2=f,d_1=g,d_0=\mathrm{id}_D` となる二単体を、$`f` から $`g` へのホモトピーと呼ぶ。
+
 仮定：準圏 X の同じ端点を持つ二辺 f,g（Lean が弱い：HomotopicL の定義は 2 切断上の辺だけでよい）。結論：d₂=f、d₁=g、d₀=id を満たす 2 単体の存在で f と g の左ホモトピーを表す（一致）。
 
 :::
 
 :::proposition "kerodon_1_4_3_5" (lean := "SSet.Truncated.HomotopicL.refl, SSet.Truncated.HomotopicL.symm, SSet.Truncated.HomotopicL.trans")
 Kerodon Proposition 1.4.3.5（[Tag 003Z](https://kerodon.net/tag/003Z)）。対応表の状態：Mathlib にある。
+
+*主張*　任意の $`\infty` 圏で、始点・終点を固定した射の集合上のホモトピーは同値関係である。
 
 仮定：準圏 X の固定端点 x,y（Kerodon と一致。Lean の Quasicategory₂ は X の 2 切断に供給される）。結論：HomotopicL.refl・symm・trans は Edge x y のホモトピーが同値関係であることを与える（一致）。
 
@@ -136,16 +167,18 @@ Kerodon Proposition 1.4.3.5（[Tag 003Z](https://kerodon.net/tag/003Z)）。対�
 :::proposition "kerodon_1_4_3_6" (lean := "SSet.Truncated.homotopicL_iff_homotopicR")
 Kerodon Proposition 1.4.3.6（[Tag 0040](https://kerodon.net/tag/0040)）。対応表の状態：Mathlib にある。
 
+*主張*　$`\infty` 圏の平行射がホモトピックであることと、反対圏でホモトピックであることは同値である。従ってホモトピーを表す二単体で恒等辺を始点側に置く判定も終点側に置く判定と同値である。
+
 仮定：準圏 X と平行な辺 f,g（Kerodon と一致。Lean は 2 切断上で述べる）。結論：homotopicL\_iff\_homotopicR は終点側の恒等辺を持つホモトピーと始点側の恒等辺を持つホモトピーを同値とする。原文の反対準圏での条件が後者（一致）。
 
 :::
 
-:::corollary "kerodon_1_4_3_7"
+:::corollary "kerodon_1_4_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.exists_arrowHomotopy_of_homMk_comm")
 Kerodon Corollary 1.4.3.7（[Tag 00V0](https://kerodon.net/tag/00V0)）。対応表の状態：一部。
 
-原文は辺のホモトピーと両側が恒等辺の正方形の存在の iff。exists\_arrowHomotopy\_of\_homMk\_comm に a,b を恒等辺として適用すると、同じ辺のホモトピー圏での一致から指定した両側を保つ正方形ホモトピーが直接得られる。逆向きを含む iff の宣言ではない。
+*主張*　$`\infty` 圏の平行射 $`f,g\colon X\to Y` がホモトピックであることは、対辺が $`f,g`、残る対辺が $`\mathrm{id}_X,\mathrm{id}_Y` の単体的な四角形 $`\Delta^1\times\Delta^1\to\mathcal C` があることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.exists_arrowHomotopy_of_homMk_comm`
+原文は辺のホモトピーと両側が恒等辺の正方形の存在の iff。exists\_arrowHomotopy\_of\_homMk\_comm に a,b を恒等辺として適用すると、同じ辺のホモトピー圏での一致から指定した両側を保つ正方形ホモトピーが直接得られる。逆向きを含む iff の宣言ではない。
 
 :::
 
@@ -161,12 +194,16 @@ Kerodon [Tag 0041](https://kerodon.net/tag/0041)
 :::definition "kerodon_1_4_4_1" (lean := "SSet.Edge.CompStruct, SSet.Truncated.Edge.CompStruct")
 Kerodon Definition 1.4.4.1（[Tag 0042](https://kerodon.net/tag/0042)）。対応表の状態：Mathlib にある。
 
+*主張*　$`\infty` 圏の連続する射 $`f,g` の合成が $`h` であるとは、$`d_2=f,d_0=g,d_1=h` の二単体が存在することをいう。この二単体が合成の証人となる。
+
 仮定：準圏の可合成な辺 f,g と同じ両端を持つ候補 h（Lean が弱い：CompStruct は任意の単体集合または 2 切断に定義できる）。結論：CompStruct f g h は d₂=f、d₀=g、d₁=h の 2 単体を証人として持つ（一致）。
 
 :::
 
 :::proposition "kerodon_1_4_4_2" (lean := "SSet.Truncated.Edge.CompStruct.comp_unique, SSet.Truncated.Edge.CompStruct.nonempty_iff")
 Kerodon Proposition 1.4.4.2（[Tag 0043](https://kerodon.net/tag/0043)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏の連続する二射には合成が存在し、ある合成と平行な射も合成であることと、その合成とホモトピックであることは同値である。
 
 仮定：準圏の可合成な辺 f,g（Kerodon と一致。2 切断には Quasicategory₂ が入る）。結論：fill21 が合成の存在、comp\_unique が二つの合成のホモトピーを与える。CompStruct.nonempty\_iff は合成の証人の存在とホモトピー類での合成等式を結び、ホモトピックな候補の逆方向を与える（一致）。
 
@@ -175,12 +212,16 @@ Kerodon Proposition 1.4.4.2（[Tag 0043](https://kerodon.net/tag/0043)）。対�
 :::definition "kerodon_1_4_4_3" (lean := "SSet.Truncated.Edge.comp, SSet.Truncated.Edge.compStruct")
 Kerodon Notation 1.4.4.3（[Tag 0044](https://kerodon.net/tag/0044)）。対応表の状態：Mathlib にある。
 
+*主張*　$`h=g\circ f` という記法は、合成を表す二単体を選んだものとする。$`f,g` から一意に決まるのは $`h` のホモトピー類である。
+
 仮定：準圏の可合成な辺 f,g（Kerodon と一致。Lean は 2 切断で選択）。結論：Edge.comp が合成辺を選び、compStruct が対応する 2 単体を与える（一致）。
 
 :::
 
 :::proposition "kerodon_1_4_4_7" (lean := "SSet.Truncated.Edge.CompStruct.comp_unique")
 Kerodon Proposition 1.4.4.7（[Tag 0048](https://kerodon.net/tag/0048)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏で二つの連続する射をそれぞれホモトピックな射へ取り替えても、選んだ合成はもとの合成とホモトピックである。
 
 仮定：二組の可合成な辺 f,g と f′,g′、各辺のホモトピー、両組の合成の証人（Kerodon と一致）。結論：comp\_unique はその二つの合成辺の HomotopicL を結論する（一致）。
 
@@ -195,8 +236,16 @@ tag := "kerodon-1-4-5"
 
 Kerodon [Tag 0049](https://kerodon.net/tag/0049)
 
+*01-quasicategories.html — 2. ホモトピー圏 — Lean*
+
+- \`homotopyCategory\_homMk\_surjective\`：$`hX` の射は 1 本の辺で表せる。
+
+- \`compStruct\_nonempty\_of\_homMk\_fac\`：$`hX` での合成の等式は実際の合成 2 単体で実現できる。
+
 :::definition "kerodon_1_4_5_1" (lean := "SSet.Truncated.HomotopyCategory₂.Hom, SSet.Truncated.instSetoidEdge")
 Kerodon Construction 1.4.5.1（[Tag 004A](https://kerodon.net/tag/004A)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏の平行射のホモトピー類を $`[f]` と書き、これらの合成を $`[g]\circ[f]=[h]` と定める。ここで $`h` は $`f,g` の任意の合成であり、この規則で一意に定まる。
 
 仮定：準圏 X と頂点 x,y（Kerodon と一致。Lean は 2 切断の準圏構造を使う）。結論：HomotopyCategory₂.Hom x y は Edge x y を HomotopicL で割った商で、instSetoidEdge がその同値関係を与える（一致）。
 
@@ -204,6 +253,8 @@ Kerodon Construction 1.4.5.1（[Tag 004A](https://kerodon.net/tag/004A)）。対
 
 :::proposition "kerodon_1_4_5_2"
 Kerodon Proposition 1.4.5.2（[Tag 004B](https://kerodon.net/tag/004B)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\infty` 圏の射のホモトピー類の合成は結合的で、恒等射の類が両側単位元となる。
 
 仮定：準圏 X（Kerodon と一致。Lean は 2 切断で圏構造を作る）。結論：instCategoryHomotopyCategory₂ の assoc と id\_comp・comp\_id が、辺の類の合成の結合律と恒等辺の類の左右単位律を与える（一致）。
 
@@ -214,6 +265,8 @@ Kerodon Proposition 1.4.5.2（[Tag 004B](https://kerodon.net/tag/004B)）。対�
 :::definition "kerodon_1_4_5_3" (lean := "SSet.Truncated.HomotopyCategory₂, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge, SSet.hoFunctor")
 Kerodon Definition 1.4.5.3（[Tag 004C](https://kerodon.net/tag/004C)）。対応表の状態：本体と Mathlib にある。
 
+*主張*　$`\infty` 圏のホモトピー圏 $`h\mathcal C` は同じ対象と射のホモトピー類を持ち、恒等射と合成はそれぞれの類で定まる。
+
 仮定：準圏 X（Kerodon と一致）。結論：HomotopyCategory₂ は頂点と辺のホモトピー類の圏。homotopyCategoryBridge はこれを hoFunctor.obj X に比較する（一致）。
 
 :::
@@ -221,23 +274,41 @@ Kerodon Definition 1.4.5.3（[Tag 004C](https://kerodon.net/tag/004C)）。対�
 :::proposition "kerodon_1_4_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.nerveHomotopyCategoryEquivalence, CategoryTheory.nerveFunctorCompHoFunctorIso")
 Kerodon Example 1.4.5.4（[Tag 004D](https://kerodon.net/tag/004D)）。対応表の状態：本体と Mathlib にある。
 
+*主張*　通常の圏の nerve のホモトピー圏は元の圏と同一視できる。特に $`h\Delta^n` は順序圏 $`[n]` である。
+
 仮定：通常の圏 C（Kerodon と一致）。結論：nerveHomotopyCategoryEquivalence と nerveFunctorCompHoFunctorIso は hN(C) と C を比較する。C=\[n\] の場合に標準単体の主張になる（一致）。
 
 :::
 
-:::definition "kerodon_1_4_5_6"
+:::definition "kerodon_1_4_5_6" (lean := "CategoryTheory.nerveAdjunction, SSet.Truncated.HomotopyCategory.homToNerveMk, SSet.Truncated.HomotopyCategory.homToNerveMk_app_zero, SSet.Truncated.HomotopyCategory.homToNerveMk_app_edge")
 Kerodon Construction 1.4.5.6（[Tag 004G](https://kerodon.net/tag/004G)）。対応表の状態：一部。
 
-原文は各n単体をホモトピー類の射列へ送るu:C→N(hC)を構成する。nerveAdjunction の単位成分の型はまさにこの始域・終域の単体写像を直接与える。2切断の homToNerveMk の式は頂点と辺を同じ類へ送る。全nの指定座標の式を照合済みとせず、標準写像と0・1成分に限定する。
+*主張*　$`\infty` 圏の各単体について頂点を対象、各辺をそのホモトピー類へ送ると、$`[n]` からホモトピー圏への関手になる。これにより単体的写像 $`\mathcal C\to N(h\mathcal C)` が定まる。
 
-宣言：`CategoryTheory.nerveAdjunction`、`SSet.Truncated.HomotopyCategory.homToNerveMk`、`SSet.Truncated.HomotopyCategory.homToNerveMk_app_zero`、`SSet.Truncated.HomotopyCategory.homToNerveMk_app_edge`
+原文は各n単体をホモトピー類の射列へ送るu:C→N(hC)を構成する。nerveAdjunction の単位成分の型はまさにこの始域・終域の単体写像を直接与える。2切断の homToNerveMk の式は頂点と辺を同じ類へ送る。全nの指定座標の式を照合済みとせず、標準写像と0・1成分に限定する。
 
 :::
 
 :::proposition "kerodon_1_4_5_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.bridge_naturality")
 Kerodon Proposition 1.4.5.7（[Tag 004H](https://kerodon.net/tag/004H)）。対応表の状態：本体にある。
 
+*主張*　標準写像 $`u\colon\mathcal C\to N(h\mathcal C)` はホモトピー圏の普遍性を満たす。任意の通常の圏 $`\mathcal D` に対し、$`h\mathcal C\to\mathcal D` と $`\mathcal C\to N(\mathcal D)` は nerve を取って $`u` と合成することで全単射に対応する。
+
 仮定：準圏 X と通常圏 D。原文ではさらに 1.4.5.6 の指定写像 u を使う（Kerodon と一致するのは X の準圏性）。結論：homotopyCategoryBridge と bridge\_naturality は二つのホモトピー圏モデルの自然な比較を与える（Lean が弱い：引用の型では指定 u に沿う Fun(hX,D) と Hom(X,N(D)) の全単射を直接確認できない）。
+
+*01-quasicategories.html — 2. ホモトピー圏 — 数学*
+
+quasicategory $`X` のホモトピー圏 $`hX` には、よく知られた構成が二つある。
+
+- *(a) 道の商*：頂点を対象とし、辺の道で生成した自由圏を 2 単体の関係（$`d_1\sigma\sim d_0\sigma\circ d_2\sigma`）で割る。これは nerve の左随伴 $`h\dashv N` そのもので、任意の単体的集合に対して定義できる。
+
+- *(b) 辺のホモトピー類*：射を、辺の「ホモトピー類」とする（Boardman–Vogt、HTT §1.2.3）。合成がうまく定義できるためには quasicategory であること（実際には 2 次元の内ホーン充填）が必要である。
+
+quasicategory では二つが一致する（HTT §1.2.3、Kerodon §1.4.5）。
+
+*01-quasicategories.html — 2. ホモトピー圏 — Lean*
+
+*証明の方針*：(a) → (b) は自由圏の普遍性で辺を類に送る関手として作る。(b) → (a) は「左ホモトピックな辺は (a) で等しい」（\`homotopic\_path\_eq\`）を示して商から降ろす。二つの合成が恒等であることを両方向で確かめると、圏同値どころか圏同型になる（\`edge\_path\_inverse\`、\`path\_edge\_inverse\`）。
 
 :::
 
@@ -253,12 +324,16 @@ Kerodon [Tag 004Q](https://kerodon.net/tag/004Q)
 :::definition "kerodon_1_4_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge")
 Kerodon Definition 1.4.6.1（[Tag 004R](https://kerodon.net/tag/004R)）。対応表の状態：本体にある。
 
+*主張*　$`\infty` 圏の射が同型であるとは、そのホモトピー類がホモトピー圏で可逆であることをいう。二対象が同型であるとは、その間に同型射が存在することである。
+
 仮定：準圏 X の辺 f（Lean が弱い：IsInvertibleEdge 自体は準圏性を要求しない）。結論：2 切断の HomotopyCategory.homMk f が IsIso であることを述べ、準圏のホモトピー圏で f の類が同型となる条件に対応する（一致）。
 
 :::
 
 :::definition "kerodon_1_4_6_4" (lean := "SSet.Edge.InvStruct, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge.nonempty_inverse")
 Kerodon Definition 1.4.6.4（[Tag 004V](https://kerodon.net/tag/004V)）。対応表の状態：本体と Mathlib にある。
+
+*主張*　$`\infty` 圏の射 $`f\colon X\to Y` に対し、逆向きの射 $`g` が左（右）ホモトピー逆であるとは、$`[g][f]=[\mathrm{id}_X]`（$`[f][g]=[\mathrm{id}_Y]`）を満たすことをいう。両方を満たせばホモトピー逆と呼ぶ。
 
 仮定：準圏 X の辺 f:x→y と逆向きの辺 g（Lean が弱い：InvStruct の構造自体は一般の単体集合上）。結論：InvStruct は同じ g と f の二つの合成が各恒等辺となる 2 単体を持ち、nonempty\_inverse は可逆辺からその両側の証人を取り出す（一致）。
 
@@ -267,12 +342,16 @@ Kerodon Definition 1.4.6.4（[Tag 004V](https://kerodon.net/tag/004V)）。対�
 :::proposition "kerodon_1_4_6_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.kanComplex_ho_isGroupoid, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_iff_isGroupoid")
 Kerodon Proposition 1.4.6.10（[Tag 0052](https://kerodon.net/tag/0052)）。対応表の状態：本体にある。
 
+*主張*　Kan 複体を $`\infty` 圏とみると、そのすべての射は同型である。
+
 仮定：Kan 複体 X（Kerodon と一致）。結論：kanComplex\_ho\_isGroupoid は hoFunctor.obj X に IsGroupoid を与えるので、全辺のホモトピー類が同型。kanComplex\_iff\_isGroupoid は準圏上の逆も与える（Lean が強い：特徴付けまで含む）。
 
 :::
 
 :::definition "kerodon_1_4_6_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.kanComplex_ho_isGroupoid")
 Kerodon Definition 1.4.6.12（[Tag 00HZ](https://kerodon.net/tag/00HZ)）。対応表の状態：本体にある。
+
+*主張*　Kan 複体 $`X` の基本亜群 $`\pi_{\le1}(X)` はそのホモトピー圏 $`hX` である。
 
 仮定：Kan 複体 X（Kerodon と一致）。結論：kanComplex\_ho\_isGroupoid は Kan 複体のホモトピー圏が亜群であることを与え、これが原文の基本亜群 π≤1(X) に当たる（一致）。
 

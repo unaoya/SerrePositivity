@@ -43,7 +43,7 @@ local instance : HasColimitsOfSize.{0, u} (Complex A)ᵒᵖ :=
 規約：底の複体で新しい置換を選ばない。
 使われ方：元の E 代数の余テンソルの底の計算対象。 -/
 def carrierCotensor (X : (operad A).Algebra) : SSet.{u}ᵒᵖ ⥤ Complex A :=
-  (Realization.functor (rightFrame A X ⋙ (Operad.Algebra.forget (operad A)).op)).leftOp
+  (Realization.functor (rightFrame A X ⋙ (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op)).leftOp
 
 /-- 概要：E 代数の余テンソルの底は同じ frame の複体の余テンソル（BM §1）。
 方針：反対忘却の左 Kan 拡張保存の同型を評価して反転する。
@@ -51,7 +51,7 @@ def carrierCotensor (X : (operad A).Algebra) : SSet.{u}ᵒᵖ ⥤ Complex A :=
 使われ方：重み付き homotopy 極限を底の複体で比較する。 -/
 def cotensorCarrierIso (X : (operad A).Algebra) (K : SSet.{u}) :
     ((cotensor A X).obj (op K)).carrier ≅ (carrierCotensor A X).obj (op K) := by
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   exact ((U.op.leftKanExtensionCompIsoOfPreserves (rightFrame A X)
     uliftYoneda.{u,0,0}).app K).unop.symm
@@ -65,7 +65,7 @@ lemma cotensorCarrierIso_naturality (X : (operad A).Algebra)
     {K L : SSet.{u}} (i : K ⟶ L) :
     ((cotensor A X).map i.op).hom ≫ (cotensorCarrierIso A X K).hom =
       (cotensorCarrierIso A X L).hom ≫ (carrierCotensor A X).map i.op := by
-  let U := Operad.Algebra.forget (operad A)
+  let U := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   exact (congrArg Quiver.Hom.unop
     ((U.op.leftKanExtensionCompIsoOfPreserves (rightFrame A X)

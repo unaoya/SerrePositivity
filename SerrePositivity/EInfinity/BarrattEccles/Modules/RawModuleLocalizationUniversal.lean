@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleRelativeModel
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.LocalizationNervePrecomposition
-public import SerrePositivity.EInfinity.Hammock.RelativeEquivalenceWeak
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalenceWeak
 
 /-!
 # 元の通常加群相対圏の局所化普遍性
@@ -68,7 +68,7 @@ lemma strictRawModuleHammockUniverse_isQCatEquivalence (X : (operad A).Algebra) 
     (strictRawModuleToModelRelative A X) (strictRawModuleFromModelRelative A X)
     (strictRawModuleUniverseEquivalence A X).counitIso.hom
     (strictRawModuleUniverseCounit_weak A X)
-    (Hammock.RelativeEquivalence.colimitMap_weak
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.RelativeEquivalence.colimitMap_weak
       (strictRawModuleToModelRelative A X) (strictRawModuleFromModelRelative A X)
       (strictRawModuleUniverseEquivalence A X).unitIso.inv (strictRawModuleUniverseUnit_weak A X)
       (strictRawModuleUniverseEquivalence A X).counitIso.hom

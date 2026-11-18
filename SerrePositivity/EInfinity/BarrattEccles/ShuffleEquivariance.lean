@@ -34,7 +34,7 @@ lemma shuffleSimplex_inner_rightAction (m n : ℕ) (i : Fin (m + 1)) {p q : ℕ}
     (s : ShufflePath p q) (x : (simplicial (m + 1)) _⦋p⦌) (y : (simplicial n) _⦋q⦌)
     (κ : Equiv.Perm (Fin n)) :
     shuffleSimplex m n i s x ((rightAction n κ).app _ y) =
-      (rightAction (m + n) (operadInnerPermutation m n i κ)).app _
+      (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ)).app _
         (shuffleSimplex m n i s x y) := by
   apply (simplexEquiv (m + n) (p + q)).injective
   funext k
@@ -48,7 +48,7 @@ lemma shuffleSimplex_outer_rightAction (m n : ℕ) (i : Fin (m + 1)) {p q : ℕ}
     (s : ShufflePath p q) (x : (simplicial (m + 1)) _⦋p⦌) (y : (simplicial n) _⦋q⦌)
     (ρ : Equiv.Perm (Fin (m + 1))) :
     shuffleSimplex m n i s ((rightAction (m + 1) ρ).app _ x) y =
-      (rightAction (m + n) (operadOuterPermutation m n i ρ)).app _
+      (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ)).app _
         (shuffleSimplex m n (ρ i) s x y) := by
   apply (simplexEquiv (m + n) (p + q)).injective
   funext k
@@ -64,7 +64,7 @@ lemma shuffleValue_inner_rightAction (m n : ℕ) (i : Fin (m + 1)) (p q : ℕ)
     (x : (simplicial (m + 1)) _⦋p⦌) (y : (simplicial n) _⦋q⦌)
     (κ : Equiv.Perm (Fin n)) :
     shuffleValue A m n i p q x ((rightAction n κ).app _ y) =
-      (normalizedChainMap A (rightAction (m + n) (operadInnerPermutation m n i κ))).f (p + q)
+      (normalizedChainMap A (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ))).f (p + q)
         (shuffleValue A m n i p q x y) := by
   classical
   simp only [shuffleValue, map_sum, map_zsmul, normalizedChainMap_generator,
@@ -78,7 +78,7 @@ lemma shuffleValue_outer_rightAction (m n : ℕ) (i : Fin (m + 1)) (p q : ℕ)
     (x : (simplicial (m + 1)) _⦋p⦌) (y : (simplicial n) _⦋q⦌)
     (ρ : Equiv.Perm (Fin (m + 1))) :
     shuffleValue A m n i p q ((rightAction (m + 1) ρ).app _ x) y =
-      (normalizedChainMap A (rightAction (m + n) (operadOuterPermutation m n i ρ))).f (p + q)
+      (normalizedChainMap A (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ))).f (p + q)
         (shuffleValue A m n (ρ i) p q x y) := by
   classical
   simp only [shuffleValue, map_sum, map_zsmul, normalizedChainMap_generator,
@@ -92,11 +92,11 @@ lemma shuffleBilinear_inner_rightAction (m n : ℕ) (i : Fin (m + 1)) (p q : ℕ
     (κ : Equiv.Perm (Fin n)) (x : (normalizedChains A (m + 1)).X p)
     (y : (normalizedChains A n).X q) :
     shuffleBilinear A m n i p q x ((normalizedChainMap A (rightAction n κ)).f q y) =
-      (normalizedChainMap A (rightAction (m + n) (operadInnerPermutation m n i κ))).f (p + q)
+      (normalizedChainMap A (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ))).f (p + q)
         (shuffleBilinear A m n i p q x y) := by
   let L := (shuffleBilinear A m n i p q).compl₂ ((normalizedChainMap A (rightAction n κ)).f q).hom
   let R := (shuffleBilinear A m n i p q).compr₂
-    ((normalizedChainMap A (rightAction (m + n) (operadInnerPermutation m n i κ))).f (p + q)).hom
+    ((normalizedChainMap A (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ))).f (p + q)).hom
   have hLR : L = R := by
     apply normalizedGenerator_bilinear_ext A (m + 1) n p q
     intro sx sy
@@ -113,12 +113,12 @@ lemma shuffleBilinear_outer_rightAction (m n : ℕ) (i : Fin (m + 1)) (p q : ℕ
     (ρ : Equiv.Perm (Fin (m + 1))) (x : (normalizedChains A (m + 1)).X p)
     (y : (normalizedChains A n).X q) :
     shuffleBilinear A m n i p q ((normalizedChainMap A (rightAction (m + 1) ρ)).f p x) y =
-      (normalizedChainMap A (rightAction (m + n) (operadOuterPermutation m n i ρ))).f (p + q)
+      (normalizedChainMap A (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ))).f (p + q)
         (shuffleBilinear A m n (ρ i) p q x y) := by
   let L := (shuffleBilinear A m n i p q).comp
     ((normalizedChainMap A (rightAction (m + 1) ρ)).f p).hom
   let R := (shuffleBilinear A m n (ρ i) p q).compr₂
-    ((normalizedChainMap A (rightAction (m + n) (operadOuterPermutation m n i ρ))).f (p + q)).hom
+    ((normalizedChainMap A (rightAction (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ))).f (p + q)).hom
   have hLR : L = R := by
     apply normalizedGenerator_bilinear_ext A (m + 1) n p q
     intro sx sy

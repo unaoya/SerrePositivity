@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -24,8 +24,8 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 方針：同じ通常単位の導来像と全源同型の評価の逆を合成する。
 規約：元の単位を保持。使われ方：同じ局所化源での実単位誘導射。 -/
 def freeProbeRelativeUnitHom :
-    (HomotopyCategory.mk ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
+    (HomotopyCategory.mk ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X))) :
         hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A)) ⟶
     HomotopyCategory.mk ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
@@ -43,8 +43,8 @@ def freeProbeRelativeUnitIntervalMap :
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) ⟶
     _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace
-      ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)))
+      ((_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)))
       ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
         ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
           (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))) :=
@@ -60,11 +60,11 @@ lemma freeProbeRelativeUnderlyingRoofFamily_unit_triangle :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (freeProbeUnitOrdinaryHom A X) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp d (freeProbeElementUnderlyingRoofFamily A X B.obj) =
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp d
-      (normalizedTensorElementDerivedRoofFamily A ((ComplexLimits.framedLimitProbeFunctor A).obj X)
-        (complexSemifreeResolutionValue A B.obj.carrier).val) ≫
+      (_root_.SerrePositivity.ComplexLimits.normalizedTensorElementDerivedRoofFamily A ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj X)
+        (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValue A B.obj.carrier).val) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-        ((nerve.edgeMk (complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
-          (complexOrdinaryDerivedSource A)).toTruncated) := by
+        ((nerve.edgeMk (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
+          (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated) := by
   let d := _root_.SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.MixedNerve.down (freeProbeElementIndex A X B.obj)
   let T := (hoFunctor.map ((pre d).app (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A))).toFunctor
   have h := congrArg T.map (freeProbeElementUnderlyingRoofFamily_unit_triangle A X B.obj)
@@ -73,8 +73,8 @@ lemma freeProbeRelativeUnderlyingRoofFamily_unit_triangle :
     (freeProbeUnitOrdinaryHom A X)
   have ha := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_precomp (X := _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory A) d
     (Truncated.HomotopyCategory.homMk
-    ((nerve.edgeMk (complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
-      (complexOrdinaryDerivedSource A)).toTruncated)
+    ((nerve.edgeMk (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionValueAugmentation A B.obj.carrier)).map
+      (_root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)).toTruncated)
   dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp] at hu ha ⊢
   rw [hu, ha] at h
   exact h

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SSet SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
@@ -30,12 +30,12 @@ def strictCosimplicialModuleNerve (M : CosimplicialObject (ModuleCat.{u} A)) :
 /-- 元の加群を同じ零次複体からD(A)へ送る。 -/
 def discreteModuleSource : nerve (ModuleCat.{u} A) ⟶ derivedInfinityCategory A :=
   nerveMap (HomologicalComplex.single (ModuleCat.{u} A) (.up ℤ) 0) ≫
-    complexOrdinaryDerivedSource A
+    _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A
 
 /-- 同じ元の離散図式の全単体の厳密等式。 -/
 theorem discreteDiagram_strict (M : CosimplicialObject (ModuleCat.{u} A)) :
     strictCosimplicialComplexNerve ((discreteDiagramFunctor A).obj M) ≫
-      complexOrdinaryDerivedSource A =
+      _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A =
     strictCosimplicialModuleNerve A M ≫ discreteModuleSource A := by
   apply SSet.hom_ext
   intro n

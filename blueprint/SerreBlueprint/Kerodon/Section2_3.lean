@@ -6,6 +6,9 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
+
 #doc (Manual) "2.3 The Duskin Nerve of a Bicategory" =>
 %%%
 number := false
@@ -88,7 +91,7 @@ B6：現本体・固定Mathlibを再検索。双圏の擬関手による Duskin 
 
 :::
 
-# 2.3.3 Thin \$2\$-Simplices of a Duskin Nerve
+# 2.3.3 Thin 2-Simplices of a Duskin Nerve
 
 %%%
 number := false

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofCornerEvaluation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.ProductSimplexElementProjectionWeak
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFramePrecompose
-public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakArrowActionEquivalences
 
 /-!
 # 元の積単体から指定次数の hammock Hom への弱な基準射
@@ -54,7 +54,7 @@ lemma cofibrantSourceRoofDegreePrecompose_weak :
     cofibrantSourceFrameAugmentation_weak A X n
   have h₀ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (algebraHammockReductionIso A X.obj Y.obj).symm).isWeakHomotopyEquivalence
-  have h₁ := Hammock.WeakArrow.precompose_forward_isWeakHomotopyEquivalence f hf Y.obj
+  have h₁ := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakArrow.precompose_forward_isWeakHomotopyEquivalence f hf Y.obj
   have h₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (algebraHammockReductionIso A
     (cofibrantSourceRoofDegreeAlgebra A X Y b).obj Y.obj)).isWeakHomotopyEquivalence
   exact h₀.comp (h₁.comp h₂)

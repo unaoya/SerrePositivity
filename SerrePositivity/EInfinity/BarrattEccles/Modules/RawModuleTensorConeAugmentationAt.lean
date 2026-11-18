@@ -18,14 +18,14 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
-open SerrePositivity.EInfinity.Modules SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Modules _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -55,9 +55,9 @@ lemma strictRawModuleTensorConeAugmentationAt_postcompose_mixed {n : ℕ}
       (strictRawModuleTensorConeAugmentationAt A X P Q c b)).f k
         ((strictRawModuleTensorConeData A X P Q c).hom I a b k hI ha hb hk))
       ((eHomWhiskerLeft (Complex A) ((strictRawModuleProbeFunctor A X).obj P) ((strictRawModuleTensorElementAugmentation A X P Q).app
-        (c.obj ((withoutFirst I).max' (withoutFirst_nonempty hI h0))))).f k
-        (k.negOnePow • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (withoutFirst I) k
-          (withoutFirst_nonempty hI h0) (by have := card_withoutFirst I h0; omega))) := by
+        (c.obj ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).max' (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0))))).f k
+        (k.negOnePow • strictRawModuleTensorElementSelectedCochainAtMax A X P Q c (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) k
+          (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0) (by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; omega))) := by
   have ht : ∀ (a b : Fin (n + 2)) (j : Fin (n + 1)) (ha : a = 0) (hb : b = j.succ)
       (v : GradedHom A ((strictRawModuleTensorConeData A X P Q c).obj a)
         ((strictRawModuleTensorConeData A X P Q c).obj b) k)
@@ -70,8 +70,8 @@ lemma strictRawModuleTensorConeAugmentationAt_postcompose_mixed {n : ℕ}
     subst b
     cases eq_of_heq hv
     rfl
-  have hb' : b = ((withoutFirst I).max' (withoutFirst_nonempty hI h0)).succ :=
-    hb.trans (max_withoutFirst I hI h0).symm
+  have hb' : b = ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).max' (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0)).succ :=
+    hb.trans (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.max_withoutFirst I hI h0).symm
   exact ht a b _ ha0 hb' _ _
     (strictRawModuleTensorConeData_hom_mixed A X P Q c I a b k hI ha hb hk ha0 h0)
 

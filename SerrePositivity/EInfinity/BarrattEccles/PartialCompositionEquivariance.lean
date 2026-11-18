@@ -38,14 +38,14 @@ lemma partialComposition_inner_rightAction (m n : ℕ) (i : Fin (m + 1))
     (κ : Equiv.Perm (Fin n)) :
     (complex A (m + 1) ◁ complexRightAction A n κ) ≫ partialComposition A m n i =
       partialComposition A m n i ≫
-        complexRightAction A (m + n) (operadInnerPermutation m n i κ) := by
+        complexRightAction A (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ) := by
   apply tensor_complex_hom_ext A (m + 1) n
   intro p q x y
   change (partialComposition A m n i).f (-((p + q : ℕ) : ℤ))
       ((complex A (m + 1) ◁ complexRightAction A n κ).f (-((p + q : ℕ) : ℤ))
         (ιTensorObj (complex A (m + 1)) (complex A n) (-(p : ℤ)) (-(q : ℤ))
           (-((p + q : ℕ) : ℤ)) (by omega) (x ⊗ₜ[A] y))) =
-    (complexRightAction A (m + n) (operadInnerPermutation m n i κ)).f (-((p + q : ℕ) : ℤ))
+    (complexRightAction A (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ)).f (-((p + q : ℕ) : ℤ))
       ((partialComposition A m n i).f (-((p + q : ℕ) : ℤ))
         (ιTensorObj (complex A (m + 1)) (complex A n) (-(p : ℤ)) (-(q : ℤ))
           (-((p + q : ℕ) : ℤ)) (by omega) (x ⊗ₜ[A] y)))
@@ -53,7 +53,7 @@ lemma partialComposition_inner_rightAction (m n : ℕ) (i : Fin (m + 1))
     (complexRightAction A n κ) (-(p : ℤ)) (-(q : ℤ)) (-((p + q : ℕ) : ℤ)) (by omega) x y,
     partialComposition_neg_tmul A m n i p q, partialComposition_neg_tmul A m n i p q]
   rw [complexRightAction_normalized_apply A n q κ,
-    complexRightAction_normalized_inv_apply A (m + n) (p + q) (operadInnerPermutation m n i κ)]
+    complexRightAction_normalized_inv_apply A (m + n) (p + q) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i κ)]
   rw [shuffleBilinear_inner_rightAction A m n i p q κ]
 
 /-- 概要：部分合成の複体の射は外側の右作用に関して等変である（Berger–Fresse §1.1.3）。
@@ -64,14 +64,14 @@ lemma partialComposition_outer_rightAction (m n : ℕ) (i : Fin (m + 1))
     (ρ : Equiv.Perm (Fin (m + 1))) :
     (complexRightAction A (m + 1) ρ ▷ complex A n) ≫ partialComposition A m n i =
       partialComposition A m n (ρ i) ≫
-        complexRightAction A (m + n) (operadOuterPermutation m n i ρ) := by
+        complexRightAction A (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ) := by
   apply tensor_complex_hom_ext A (m + 1) n
   intro p q x y
   change (partialComposition A m n i).f (-((p + q : ℕ) : ℤ))
       ((complexRightAction A (m + 1) ρ ▷ complex A n).f (-((p + q : ℕ) : ℤ))
         (ιTensorObj (complex A (m + 1)) (complex A n) (-(p : ℤ)) (-(q : ℤ))
           (-((p + q : ℕ) : ℤ)) (by omega) (x ⊗ₜ[A] y))) =
-    (complexRightAction A (m + n) (operadOuterPermutation m n i ρ)).f (-((p + q : ℕ) : ℤ))
+    (complexRightAction A (m + n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ)).f (-((p + q : ℕ) : ℤ))
       ((partialComposition A m n (ρ i)).f (-((p + q : ℕ) : ℤ))
         (ιTensorObj (complex A (m + 1)) (complex A n) (-(p : ℤ)) (-(q : ℤ))
           (-((p + q : ℕ) : ℤ)) (by omega) (x ⊗ₜ[A] y)))
@@ -79,7 +79,7 @@ lemma partialComposition_outer_rightAction (m n : ℕ) (i : Fin (m + 1))
     (complex A n) (-(p : ℤ)) (-(q : ℤ)) (-((p + q : ℕ) : ℤ)) (by omega) x y,
     partialComposition_neg_tmul A m n i p q, partialComposition_neg_tmul A m n (ρ i) p q]
   rw [complexRightAction_normalized_apply A (m + 1) p ρ,
-    complexRightAction_normalized_inv_apply A (m + n) (p + q) (operadOuterPermutation m n i ρ)]
+    complexRightAction_normalized_inv_apply A (m + n) (p + q) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation m n i ρ)]
   rw [shuffleBilinear_outer_rightAction A m n i p q ρ]
 
 end SerrePositivity.EInfinity.BarrattEccles

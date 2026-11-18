@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory Opposite MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
 /-- 概要：全単体の評価は元の加群射の評価の前に符号付き交換を置いた射。
@@ -31,7 +31,7 @@ lemma moduleTensorEvaluationHomMap_app (P Q : ModuleCategory A D) (x : D)
     ((moduleEvaluation A D x).obj Q)
   have ht : e ((moduleTensorEvaluationHomMap A D P Q x).app (op n) f) =
       curryRight ((moduleEvaluation A D x).map f) :=
-    (normalizedSimplexHomEquiv A _ n).injective
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A _ n).injective
       (moduleTensorEvaluationHomMap_transpose A D P Q x n f)
   calc
     _ = e.symm (curryRight ((moduleEvaluation A D x).map f)) :=

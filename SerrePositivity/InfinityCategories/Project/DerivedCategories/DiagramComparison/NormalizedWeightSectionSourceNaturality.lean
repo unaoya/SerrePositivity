@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CochainComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
@@ -20,10 +20,10 @@ variable (A : Type u) [CommRing A] {J : Type u} [SmallCategory J]
 /-- 同じ指定比較は重みの全射について元のΓ前合成と元の切断制限に整合する。 -/
 theorem normalizedWeightSectionMap_weight_naturality {W W' : J ⥤ SSet.{u}}
     (w : W' ⟶ W) (Q : J ⥤ Complex A) (φ : simplicialRingCoefficient.{u} →+* A) :
-    (truncatedDoldKanFunctor A).map
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map
       (diagramHomSourceMap.{u,u} ((freeNegativeChainsDiagramFunctor A J).map w) Q) ≫
         normalizedWeightSectionMap A W' Q φ =
-    normalizedWeightSectionMap A W Q φ ≫ weightedSectionsPre w (Q ⋙ truncatedDoldKanFunctor A) := by
+    normalizedWeightSectionMap A W Q φ ≫ weightedSectionsPre w (Q ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) := by
   let P := liftedStandardSimplexParameter J
   let e := freeTensorDiagramHomIso.{u,u} A Q W
   let e' := freeTensorDiagramHomIso.{u,u} A Q W'
@@ -33,7 +33,7 @@ theorem normalizedWeightSectionMap_weight_naturality {W W' : J ⥤ SSet.{u}}
   let p := (cosimplicialHomMap (freeProductFrameWeightMap A w P)).app Q
   let b := (freeProductSectionsHomIso A W Q).hom
   let b' := (freeProductSectionsHomIso A W' Q).hom
-  let Hpre := (truncatedDoldKanFunctor A).map
+  let Hpre := (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map
     (diagramHomSourceMap.{u,u} ((freeNegativeChainsDiagramFunctor A J).map w) Q)
   have hi : Hpre ≫ e'.inv = e.inv ≫ t := by
     have ht : t ≫ e'.hom = e.hom ≫ Hpre := freeTensorDiagramHomIso_weight_naturality A w Q

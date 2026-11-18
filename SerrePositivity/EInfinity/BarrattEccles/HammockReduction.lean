@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper
-public import SerrePositivity.EInfinity.Hammock.ReductionExistence
-public import SerrePositivity.EInfinity.Hammock.ReductionNaturality
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReductionExistence
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReductionNaturality
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawSimplicialSet
 
 /-!
@@ -45,26 +45,26 @@ def algebraHammockRawIsReduced {n : SimplexCategoryᵒᵖ} (r : algebraHammockRa
 def algebraHammockRawReduction {n : SimplexCategoryᵒᵖ} (r s : algebraHammockRaw A X Y n) :
     Prop := by
   let := modelCategory A
-  exact Hammock.Reduction _ X Y n r s
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Reduction _ X Y n r s
 
 lemma algebraHammockRawReduction_length_lt {n : SimplexCategoryᵒᵖ}
     {r s : algebraHammockRaw A X Y n} (h : algebraHammockRawReduction A X Y r s) :
     s.1.length < r.1.length := by
   let := modelCategory A
-  exact Hammock.Reduction.length_lt h
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Reduction.length_lt h
 
 lemma algebraHammockRawReduction_value_eq {n : SimplexCategoryᵒᵖ}
     {r s : algebraHammockRaw A X Y n} (h : algebraHammockRawReduction A X Y r s) :
     algebraHammockRawValue A X Y r = algebraHammockRawValue A X Y s := by
   let := modelCategory A
-  exact Hammock.Reduction.value_eq h
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Reduction.value_eq h
 
 lemma algebraHammockRawReduction_map {n m : SimplexCategoryᵒᵖ}
     {r s : algebraHammockRaw A X Y n} (h : algebraHammockRawReduction A X Y r s) (α : n ⟶ m) :
     algebraHammockRawReduction A X Y (algebraHammockRawMap A X Y α r)
       (algebraHammockRawMap A X Y α s) := by
   let := modelCategory A
-  exact Hammock.Reduction.map h α
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Reduction.map h α
 
 /-- 全次数の元の未縮約 hammock は、有限回の基本縮約で縮約済みの代表へ到達する。 -/
 lemma algebraHammockRaw_existsReducedRepresentative {n : SimplexCategoryᵒᵖ}
@@ -72,20 +72,20 @@ lemma algebraHammockRaw_existsReducedRepresentative {n : SimplexCategoryᵒᵖ}
     ∃ s, Relation.ReflTransGen (algebraHammockRawReduction A X Y) r s ∧
       algebraHammockRawIsReduced A X Y s := by
   let := modelCategory A
-  exact Hammock.exists_reduced_representative _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exists_reduced_representative _ X Y n r
 
 lemma algebraHammockRaw_existsReducedSameValue {n : SimplexCategoryᵒᵖ}
     (r : algebraHammockRaw A X Y n) :
     ∃ s, algebraHammockRawIsReduced A X Y s ∧
       algebraHammockRawValue A X Y r = algebraHammockRawValue A X Y s := by
   let := modelCategory A
-  exact Hammock.exists_reduced_same_value _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.exists_reduced_same_value _ X Y n r
 
 lemma algebraHammockRaw_reduced_iff_no_reduction {n : SimplexCategoryᵒᵖ}
     (r : algebraHammockRaw A X Y n) :
     algebraHammockRawIsReduced A X Y r ↔ ∀ s, ¬ algebraHammockRawReduction A X Y r s := by
   let := modelCategory A
-  exact Hammock.reduced_iff_no_reduction _ X Y n r
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reduced_iff_no_reduction _ X Y n r
 
 /-- 同じ元の全語の全射列からなる未縮約単体集合。 -/
 def algebraHammockRawSimplicialSet : SSet.{u + 1} := by

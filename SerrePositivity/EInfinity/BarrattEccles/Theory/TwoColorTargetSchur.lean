@@ -55,7 +55,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 一つの Schur 成分を、入力と指定係数の対角作用の余不変へ運ぶ。 -/
 def schurArityInputCoinvariantIso (X : Complex A) (m : ℕ) :
-    arityCoinvariantComplex (schurDiagram A (sequence A) X) m ≅
+    arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) X) m ≅
       tensorCoinvariantComplex (finiteBijectionComplexAction (bijectionFunctor X) m)
         (arityComplexAction A m) :=
   schurArityInputCoefficientIso A X m ≪≫
@@ -86,8 +86,8 @@ lemma twoColorRightInputAction_sequence (Y : Complex A) (m n : ℕ) :
 def twoColorTargetSchurIso (X Y : Complex A) (m n : ℕ) :
     ((twoColorInputTotalFunctor A m n).obj (twoColorSeparatedInput X Y m n)).obj
       (twoColorTargetCochain A m n) ≅
-    arityCoinvariantComplex (schurDiagram A (sequence A) X) m ⊗
-      arityCoinvariantComplex (schurDiagram A (sequence A) Y) n := by
+    arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) X) m ⊗
+      arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) Y) n := by
   let ρ := finiteBijectionComplexAction (bijectionFunctor X) m
   let σ := finiteBijectionComplexAction (bijectionFunctor Y) n
   let α := arityComplexAction A m

@@ -39,12 +39,12 @@ set_option maxHeartbeats 300000 in
 lemma carrierFramedLimitHomPiZeroEquiv_target (Y : Complex A)
     {F G : K ⥤ (operad A).Algebra} (g : F ⟶ G)
     (z : SSet.π₀ ((carrierFramedLimitConeSpace A K Y).obj F)) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
     carrierFramedLimitHomPiZeroEquiv A K G Y
         (SSet.mapπ₀ ((carrierFramedLimitConeSpace A K Y).map g) z) =
       carrierFramedLimitHomPiZeroEquiv A K F Y z ≫ Q.map ((framedLimitFunctor A K).map g).hom := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let Q := (weakEquivalences (Complex A)).Q
   have : Q.op.IsLocalization (weakEquivalences (Complex A)ᵒᵖ) := by
     rw [weakEquivalences_op]
@@ -111,7 +111,7 @@ lemma carrierFramedLimitHomPiZeroEquiv_target (Y : Complex A)
 使われ方：底の導来普遍性と元の極限比較の照合。 -/
 lemma carrierFramedLimitDerivedHomEquiv_target (Y : Complex A)
     {F G : K ⥤ (operad A).Algebra} (g : F ⟶ G) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
@@ -119,7 +119,7 @@ lemma carrierFramedLimitDerivedHomEquiv_target (Y : Complex A)
       carrierFramedLimitDerivedHomEquiv A K Y G (x ≫ QD.map ((Diagram.forget A K).map g)) =
         carrierFramedLimitDerivedHomEquiv A K Y F x ≫
           Q.map ((framedLimitFunctor A K).map g).hom := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   dsimp only
   intro x

@@ -64,7 +64,7 @@ lemma carrierStrictSimplicialConeFamily_app (F : K ⥤ (operad A).Algebra) (c : 
 使われ方：両錐比較が元の錐の類を保つことの根拠。 -/
 lemma carrierStrictConeFamilies_mixed (F : K ⥤ (operad A).Algebra) (c : Cone ((Diagram.forget A
   K).obj F)) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
     let P := carrierFramedLimitProbe A c.pt
     let f : (Functor.const K).obj P ⟶ (Diagram.forget A K).obj F :=
@@ -76,7 +76,7 @@ lemma carrierStrictConeFamilies_mixed (F : K ⥤ (operad A).Algebra) (c : Cone (
         _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison K (q.obj.obj P) ((Diagram.forget A K).obj F) R b =
       carrierStrictSimplicialConeFamily A K F c ≫
         _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison K (q.obj.obj P) (q.augmentation.app P) R := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let P := carrierFramedLimitProbe A c.pt
   let f : (Functor.const K).obj P ⟶ (Diagram.forget A K).obj F :=

@@ -35,7 +35,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：元の始域のすべての射の前合成。 -/
 def constantDiagramSourceBifunctor :
     (Complex A)ᵒᵖ ⥤ (K ⥤ (Complex A)) ⥤ SSet.{u} := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj.op ⋙
     _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ Functor.whiskeringRight K (Complex A) SSet.{u} ⋙
       (Functor.whiskeringRight (K ⥤ (Complex A)) (K ⥤ SSet.{u}) SSet.{u}).obj
@@ -62,7 +62,7 @@ abbrev constantDiagramSourceMap {Y Z : (Complex A)} (f : Y ⟶ Z) :
 使われ方：混合 Hom の左比較の可換四角形。 -/
 lemma constantDiagramSourceMap_app {Y Z : (Complex A)} (f : Y ⟶ Z)
     (F : K ⥤ (Complex A)) :
-    let := SerrePositivity.EInfinity.projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     (constantDiagramSourceMap A K f).app F =
       (WeightedCones.coneSpace K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)).map
         (Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap

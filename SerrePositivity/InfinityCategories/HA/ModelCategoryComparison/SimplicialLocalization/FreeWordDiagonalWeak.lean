@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnForwardStep
-public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnBackwardStep
-public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnMixedStep
-public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnReverseStep
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FreeFirstColumnForwardStep
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FreeFirstColumnBackwardStep
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FreeFirstColumnMixedStep
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.FreeFirstColumnReverseStep
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.FreeWordDiagonalEmptyWeak
 
 /-!
@@ -19,7 +19,7 @@ public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Simp
 noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization
-open _root_.CategoryTheory _root_.SerrePositivity.EInfinity.Hammock _root_.SerrePositivity.InfinityCategories
+open _root_.CategoryTheory _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock _root_.SerrePositivity.InfinityCategories
 lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y : C.category) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeWordDiagonalAugmentation C X Y).app w) := by
@@ -50,18 +50,18 @@ lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCate
         | forward =>
           cases e with
           | forward =>
-            exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardForward_weak C t X Y
+            exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardForward_weak C t X Y
               (fun Z => ih Z Y)
           | backward =>
-            exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardBackward_weak C t X Y
+            exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardBackward_weak C t X Y
               (fun Z => ih Z Y)
         | backward =>
           cases e with
           | forward =>
-            exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardForward_weak C t X Y
+            exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardForward_weak C t X Y
               (fun Z => ih Z Y)
           | backward =>
-            exact _root_.SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardBackward_weak C t X Y
+            exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardBackward_weak C t X Y
               (fun Z => ih Z Y)
   exact h w X Y
 end SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization

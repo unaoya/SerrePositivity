@@ -1,0 +1,18 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/nb-w4-statements-clmst",
+ "commit": "802b8752ce8bd9fb0fbdd693300e003e64ce488e",
+ "made_by": "NB-W4 static source review",
+ "files": [
+  {
+   "path": "clmst-statement-audit.json",
+   "sha256": "5339524aab005b252f86ecb7ea0e728d348cd3d3237d275d07998bad099fd820",
+   "bytes": 197
+  },
+  {
+   "path": "clmst-statement-source-index.json",
+   "sha256": "1123721086ee7c3fb305b50b2706f8d6f3f87fbfa75515b5fac0437d0f53fe6a",
+   "bytes": 1961
+  }
+ ],
+ "total_bytes": 2158
+}

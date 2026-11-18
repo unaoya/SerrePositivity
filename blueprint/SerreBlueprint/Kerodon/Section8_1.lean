@@ -4,6 +4,7 @@ import VersoBlueprint
 import Mathlib.CategoryTheory.Elements
 import Mathlib.CategoryTheory.Functor.Currying
 import Mathlib.CategoryTheory.Yoneda
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CosliceTwistedHomComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CosliceTwistedHomEquivalence
@@ -12,17 +13,24 @@ import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArro
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseEndpoints
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseLeftFilling
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseRightFilling
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseStandardSimplex
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseSubdivision
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.FullyFaithfulJointHom
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.HomSpace
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.LeftFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.LeftKanFibration
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.Objects
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.Projection
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.Source
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.SourceInitial
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowFunctorComparison
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "8.1 Twisted Arrows and Cospans" =>
 %%%
@@ -34,6 +42,8 @@ Kerodon の 8.1 節（[Tag 03JB](https://kerodon.net/tag/03JB)）の項目と、
 
 :::definition "kerodon_8_1_0_1" (lean := "CategoryTheory.coyoneda, CategoryTheory.Functor.uncurry, CategoryTheory.Functor.Elements, CategoryTheory.Functor.Elements.Hom")
 Kerodon Construction 8.1.0.1（[Tag 00AZ](https://kerodon.net/tag/00AZ)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏 $`C` のねじれ矢印圏の対象は射 $`f:x\to y` であり、$`f` から $`f':x'\to y'` への射は $`f'=vfu` となる $`u:x'\to x,v:y\to y'` の組である。合成は始域側を逆順、終域側を順に合成する。
 
 仮定：通常圏 C を与える（Kerodon と一致）。結論：coyoneda を uncurry した Hom 二変数関手の Elements で、対象は f:X→Y、射は逆向き u と順向き v で u≫f≫v=f'、合成は Cᵒᵖ×C の成分別合成になる（一致）。
 
@@ -48,40 +58,105 @@ tag := "kerodon-8-1-1"
 
 Kerodon [Tag 03JF](https://kerodon.net/tag/03JF)
 
+*注意 （大きさ）*
+
+$`C` が小さければ $`\mathrm{Tw}(C)` は小さく、射影 $`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C` は小さいファイバーをもつ（定義 11.2）。
+
+*f-c-spaces.html — 11. $`\mathrm{Map}` を関手にする：twisted arrow の straightening — 11.6 ファイバーの計算*
+
+$`(x,y)` 上のファイバーの $`n` 単体は、左半分がすべて $`x`、右半分がすべて $`y` の $`\Delta^{2n+1}\to C`（TwistedArrow/HomSpace）。
+
+- 0 単体：射 $`f\colon x\to y`。
+
+- 1 単体：3 単体 $`x\xrightarrow{\mathrm{id}}x\to y\xrightarrow{\mathrm{id}}y`。辺 $`f_0=(\bar0,0)`、$`f_1=(\bar1,1)`、$`a=(\bar1,0)`、$`b=(\bar0,1)`。四つの三角形は一辺が恒等射で $`f_0\sim a`、$`f_0\sim b`、$`a\sim f_1`、$`b\sim f_1`、3 単体がそれらを整合させる。$`\mathrm{Hom}^L(x,y)` の 1 単体（三角形 $`(x;y,y)` 一つ）よりデータは多いが同値。
+
+*比較写像*（\`cosliceTwistedHomMap\`）：左半分を錐点につぶす崩壊 $`(\Delta^n)^{\mathrm{op}}\star\Delta^n\to\Delta^0\star\Delta^n` の前合成で、$`n` について自然な $`\mathrm{Hom}^L(x,y)\to\mathrm{Tw}(C)_{(x,y)}`。$`n=1` では三角形 $`\tau` を退化した 3 単体に送り、$`a=f_0`、$`b=f_1`。素朴な逆「$`\bar0\star\Delta^n` に制限」は、$`d_0` が $`\bar0` と $`0` を同時に除くので面写像と可換にならない（$`N^{hc}` の $`s_n` と同じ種類の難点）。
+
+*証明*（TwistedHomRows、TwistedHomDiagonal、Joins/CosliceTwistedHomEquivalence）：前に候補として挙げた二重単体の対角の方式。
+
+1. 左の大きさ $`m` と右の大きさ $`n` を別々に動かした二重単体集合 $`R_{m,n}=\{(\Delta^m)^{\mathrm{op}}\star\Delta^n\to C\mid\text{左は }x\text{、右は }y\text{ で一定}\}`。
+
+2. $`m` を固定した行は、退化単体 $`\sigma`（$`x` の $`m` 単体）の下のスライス $`C_{\sigma/}` の $`y` 上のファイバーそのもの。崩壊 $`\Delta^m\to\Delta^0` による比較 $`\mathrm{Hom}^L(x,y)\to R_{m,\bullet}` は同値（\`cosliceSimplexExpansion\_isQCatEquivalence\`）。頂点への制限 $`C_{\sigma/}\to C_{x/}` が trivial fibration で、join の持ち上げの補題で端の頂点の包含が anodyne であることに帰着する。
+
+3. 各行で同値なら対角でも同値（\`localized\_diagonal\_map\`）。
+
+4. $`R` の対角 $`R_{n,n}` は $`\mathrm{Tw}(C)_{(x,y)}`、定数の側の対角は $`\mathrm{Hom}^L(x,y)`。
+
+自然性の問題は行ごとに $`m` を固定して避け、対角補題が全体をまとめる。
+
 :::definition "kerodon_8_1_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrow")
 Kerodon Construction 8.1.1.1（[Tag 03JG](https://kerodon.net/tag/03JG)）。対応表の状態：本体にある。
 
+*主張*　単体集合 $`C` のねじれ矢印単体集合 $`\operatorname{Tw}(C)` の $`J`-単体は、全順序集合の結合 $`J^{\mathrm{op}}\star J` の神経から $`C` への単体写像である。単体作用素はこの結合に沿う前合成で定まる。
+
 仮定：C : SSet。∞圏性の仮定なし（Kerodon と一致）。結論：TwistedArrow C は edgewiseWeight の各重みから C への写像で作る単体集合。重みは \[n\]ᵒᵖ⋆\[n\] を表す（原文の Tw(C) と一致）。
+
+*定義 12.2 （twisted arrow $`\mathrm{Tw}(C)`）*
+
+単体的集合 $`C` について、単体的集合 $`\mathrm{Tw}(C)` を
+
+$$`\mathrm{Tw}(C)([n])=\mathrm{Hom}_{\mathrm{sSet}}\bigl((\Delta^n)^{\mathrm{op}}\star\Delta^n,\ C\bigr)`
+
+で定め、$`\theta\colon[m]\to[n]` は $`(\theta_*)^{\mathrm{op}}\star\theta_*\colon(\Delta^m)^{\mathrm{op}}\star\Delta^m\to(\Delta^n)^{\mathrm{op}}\star\Delta^n` の前合成で作用させる（反対は定義 12.1、join とその関手性は定義 4.3・定義 4.4、$`\theta_*` は定義 2.2）。
 
 :::
 
-:::proposition "kerodon_8_1_1_2" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_8_1_1_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSimplexEquiv, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight") (uses := "kerodon_1_1_0_6")
 Kerodon Remark 8.1.1.2（[Tag 03JH](https://kerodon.net/tag/03JH)）。対応表の状態：一部。
+
+*主張*　$`\operatorname{Tw}(C)` の $`n`-単体は $`C` の $`(2n+1)`-単体と一意に同一視できる。$`i` 番目の面と退化は、対応する単体の対称な位置 $`n-i,n+1+i` をそれぞれ削除または重ねて得る。
 
 edgewiseSimplexEquivは同じTw(C)のn単体をCの(2n+1)単体へ同定する原文の成分を直接与える。全ての面・退化の二重合成式は引用に含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSimplexEquiv`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight`
+*f-c-spaces.html — 11. $`\mathrm{Map}` を関手にする：twisted arrow の straightening — 11.4 $`n=0,1,2` の計算*
+
+\*\*$`n=0`\*\*：$`\Delta^1`（$`\bar0\to0`）。頂点は $`C` の射 $`f\colon x\to y`（退化した $`\mathrm{id}_x` も含む）。
+
+\*\*$`n=1`\*\*：$`\Delta^3`、$`x_1\xrightarrow{u}x_0\xrightarrow{f_0}y_0\xrightarrow{v}y_1`。
+
+- 辺　／　意味
+- $`(\bar1,\bar0)=u`　／　$`C^{\mathrm{op}}` 成分（$`C^{\mathrm{op}}` では $`x_0\to x_1`）
+- $`(0,1)=v`　／　$`C` 成分
+- $`(\bar0,0)=f_0`　／　$`\mathrm{Tw}` の辺の始点（$`d_1`）
+- $`(\bar1,1)=f_1`　／　$`\mathrm{Tw}` の辺の終点（$`d_0`）
+- $`(\bar1,0)`、$`(\bar0,1)`　／　途中の合成 $`f_0u`、$`vf_0`
+
+四つの三角形と 3 単体が $`f_1\simeq v\circ f_0\circ u` をすべての括弧の付け方で整合的に与える。$`\mathrm{Tw}` の辺 $`f_0\to f_1` は $`f_0` を内側、$`f_1` を外側に置いた入れ子の矢。$`C` が普通の圏なら $`N(\mathrm{Tw}\,C)` は古典的な twisted arrow 圏（射 $`f_0\to f_1` は $`f_1=vf_0u` をみたす $`(u,v)`）。
+
+\*\*$`n=2`\*\*：$`\Delta^5`、$`x_2\to x_1\to x_0\xrightarrow{f_0}y_0\to y_1\to y_2`。頂点は入れ子の三本の矢 $`f_0=(\bar0,0)`、$`f_1=(\bar1,1)`、$`f_2=(\bar2,2)`。辺は $`d_2`（$`\bar1\bar0\,01`）が $`f_0\to f_1`、$`d_0`（$`\bar2\bar1\,12`）が $`f_1\to f_2`、$`d_1`（$`\bar2\bar0\,02`）が $`f_0\to f_2`。5 単体全体が「$`f_0\to f_1\to f_2` の合成が $`f_0\to f_2`」の整合性を運ぶ。
 
 :::
 
-:::proposition "kerodon_8_1_1_4" (uses := "kerodon_1_1_0_6, kerodon_8_1_1_2")
+:::proposition "kerodon_8_1_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor") (uses := "kerodon_1_1_0_6, kerodon_8_1_1_2")
 Kerodon Remark 8.1.1.4（[Tag 00B3](https://kerodon.net/tag/00B3)）。対応表の状態：一部。
 
-edgewiseSubdivisionFunctorは原文の同じC↦Tw(C)の関手性を直接構成する。全極限・全余極限保存はその型に含まない。
+*主張*　単体集合のねじれ矢印関手 $`\operatorname{Tw}` は、すべての極限と余極限を保つ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor`
+edgewiseSubdivisionFunctorは原文の同じC↦Tw(C)の関手性を直接構成する。全極限・全余極限保存はその型に含まない。
 
 :::
 
 :::definition "kerodon_8_1_1_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection")
 Kerodon Notation 8.1.1.6（[Tag 03JK](https://kerodon.net/tag/03JK)）。対応表の状態：本体にある。
 
+*主張*　$`\operatorname{Tw}(C)` の単体を $`[n]^{\mathrm{op}}\star[n]` の左半分と右半分に制限すると、それぞれ $`C^{\mathrm{op}}` と $`C` への射影を得る。頂点 $`f:x\to y` はそれぞれ $`x,y` に移る。
+
 仮定：任意の C : SSet（Kerodon と一致）。結論：edgewiseLeft と edgewiseRight は重みの左半分と右半分への制限で、それぞれ Cᵒᵖ と C に値を取る。twistedArrowProjection はその積への射（λ₋ と λ₊ に一致）。
+
+*定義 12.3 （$`\mathrm{Tw}(C)` の射影）*
+
+$`n` 単体 $`\sigma\colon(\Delta^n)^{\mathrm{op}}\star\Delta^n\to C` について、包含 $`\iota_{(\Delta^n)^{\mathrm{op}}}`、$`\iota_{\Delta^n}`（定義 4.4）への制限は射 $`(\Delta^n)^{\mathrm{op}}\to C` と $`\Delta^n\to C` である。前者を定義 12.1 の対応で $`\Delta^n\to C^{\mathrm{op}}` とみて、射
+
+$$`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C`
+
+を定める（積は定義 2.1。$`\Delta^n` からの射と $`n` 単体は米田の補題で同一視する）。
 
 :::
 
 :::proposition "kerodon_8_1_1_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseDualityIso, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseDuality_right, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseDuality_left") (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6")
 Kerodon Remark 8.1.1.7（[Tag 03JL](https://kerodon.net/tag/03JL)）。対応表の状態：本体にある。
+
+*主張*　単体集合 $`C` のねじれ矢印単体集合は、反対単体集合 $`C^{\mathrm{op}}` のねじれ矢印単体集合と標準的に同型である。各 $`[n]^{\mathrm{op}}\star[n]` の順序反転から来るこの同型は二つの射影を交換する。
 
 edgewiseDualityIsoに現本体のedgewiseDuality\_rightとedgewiseDuality\_leftを合わせると、原文の同じ双対同型と左右射影の交換を直接得る。左側では二重opの標準同型も式に含まれる。
 
@@ -97,12 +172,36 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：任意の�
 :::proposition "kerodon_8_1_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_leftFibration")
 Kerodon Proposition 8.1.1.11（[Tag 03JQ](https://kerodon.net/tag/03JQ)）。対応表の状態：本体にある。
 
+*主張*　無限圏 $`C` について、ねじれ矢印単体集合の二つの端への射影 $`\operatorname{Tw}(C)\to C^{\mathrm{op}}\times C` は左ファイブレーションである。
+
 仮定：C : SSet と Quasicategory C（Kerodon と一致）。結論：twistedArrowProjection\_leftFibration は (λ₋,λ₊) に当たる積への射の LeftFibration（原文と一致）。
+
+*定理 12.4 （$`\mathrm{Tw}(C)` は左 fibration）*
+
+$`C` が quasicategory なら、射影 $`\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C`（定義 12.3）は左 fibration（定義 5.3）である。
+
+*f-c-spaces.html — 11. $`\mathrm{Map}` を関手にする：twisted arrow の straightening — 11.5 左 fibration であること：持ち上げの計算*
+
+左 horn $`\Lambda^n_i`（$`0\le i<n`）の持ち上げで与えられるのは、$`\Lambda^n_i` の各面 $`\tau` ごとの $`\tau^{\mathrm{op}}\star\tau\to C` と、底の $`(\Delta^n)^{\mathrm{op}}\to C`、$`\Delta^n\to C`。延長の定義域は全体の join でなく対角的な和
+
+$$`D=\bigcup_{\tau\subseteq\Lambda^n_i}(\tau^{\mathrm{op}}\star\tau)\cup(\Delta^n)^{\mathrm{op}}\cup\Delta^n\subseteq(\Delta^n)^{\mathrm{op}}\star\Delta^n`
+
+で、$`D\subseteq\Delta^{2n+1}` が inner anodyne であることを示す（Kerodon 8.1、HA 5.2.1.3）。
+
+- \*\*$`n=1`、$`i=0`\*\*：$`D` は三辺 $`u`、$`f_0`、$`v`、つまり $`\Delta^3` の背骨で、背骨の包含は inner anodyne。持ち上げは $`f_0` を $`(u,v)` に沿って動かした $`v\circ f_0\circ u` で、これが transport。
+
+- \*\*$`n=1`、$`i=1`（右 horn）\*\*：$`D` は $`u`、$`f_1`、$`v`。欠けた辺 $`x_0\to y_0` には $`u` か $`v` の逆が要り、一般には延長できない。$`\mathrm{Tw}(C)` は右 fibration ではない。
+
+- \*\*$`n=2`、$`i=0`\*\*：$`D` は 3 単体 $`\bar1\bar0\,01` と $`\bar2\bar0\,02`、三角形 $`\bar2\bar1\bar0` と $`012` の和。ここから $`\Delta^5` まで内部 horn の貼り付けで埋める。
+
+- \*\*一般の $`n`\*\*：形式化は組合せ論の判定法で処理する（TwistedArrow/HornLifting、SimplexPairing、PairingInner、PairingRegular）。$`D` の外の非退化単体を余次元 1 の面と対にし（pairing）、対の面が常に内部の面で（inner）、祖先関係に無限下降がない（regular）ことを確かめて、内部 horn の貼り付けの列にする。主定理 \`twistedArrowProjection\_leftFibration\`（TwistedArrow/LeftFibration）。
 
 :::
 
 :::corollary "kerodon_8_1_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrow_quasicategory")
 Kerodon Corollary 8.1.1.12（[Tag 03JR](https://kerodon.net/tag/03JR)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` のねじれ矢印単体集合は無限圏である。
 
 仮定：Quasicategory C（Kerodon と一致）。結論：twistedArrow\_quasicategory は Quasicategory (TwistedArrow C)（一致）。
 
@@ -110,6 +209,8 @@ Kerodon Corollary 8.1.1.12（[Tag 03JR](https://kerodon.net/tag/03JR)）。対�
 
 :::corollary "kerodon_8_1_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.leftFibration_fibration_of_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision_kanComplex")
 Kerodon Corollary 8.1.1.13（[Tag 048H](https://kerodon.net/tag/048H)）。対応表の状態：本体にある。
+
+*主張*　$`C` が Kan 複体なら、$`\operatorname{Tw}(C)\to C^{\mathrm{op}}\times C` は Kan ファイブレーションであり、$`\operatorname{Tw}(C)` も Kan 複体である。
 
 仮定：KanComplex C。積 Cᵒᵖ×C の Kan 性と Tw(C) の Kan 性で、左ファイブレーションを Kan ファイブレーションへ移す補題の仮定を満たす（Kerodon と一致）。結論：積への射の Fibration と Tw(C) の KanComplex（両方一致）。
 
@@ -147,17 +248,44 @@ tag := "kerodon-8-1-2"
 
 Kerodon [Tag 03JV](https://kerodon.net/tag/03JV)
 
-:::proposition "kerodon_8_1_2_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_3_1_2_11, kerodon_4_4_2_6, kerodon_4_7_3_11, kerodon_8_1_1_15")
+*f-c-spaces.html — 11. $`\mathrm{Map}` を関手にする：twisted arrow の straightening — 11.8 残りの比較*
+
+- 比較　／　議論　／　形式化
+- (a) $`\mathrm{id}_x` は $`\mathrm{Tw}_x=\{x\}\times_{C^{\mathrm{op}}}\mathrm{Tw}(C)` の始対象　／　崩壊写像の全空間版 $`C_{x/}\to\mathrm{Tw}_x` は $`C` 上の左 fibration の間の写像で、11.6 でファイバーごとに同値なので全体で同値。$`\mathrm{id}_x` は $`C_{x/}` の始対象で、同値で保たれる　／　SourceInitial（\`cosliceToTwistedArrowSource\_isQCatEquivalence\`、\`twistedArrowSourceIdentity\_isInitialVertex\`）
+- (b) $`\mathrm{Map}(x,y)\simeq\mathrm{Hom}^L(x,y)`　／　St の値とファイバーの同値に 11.6 を合わせる　／　—
+- (c) $`\mathrm{Un}(h_y)\simeq(C_{/y})^{\mathrm{op}}`　／　$`h_y` は $`\mathrm{Map}` の $`C^{\mathrm{op}}\times\{y\}` への制限で、Un は底変換と可換なので $`\mathrm{Un}(h_y)\simeq\mathrm{Tw}^y=\mathrm{Tw}(C)\times_C\{y\}\to C^{\mathrm{op}}`。比較 $`(C_{/y})^{\mathrm{op}}\to\mathrm{Tw}^y` は右半分を錐点 $`y` につぶす崩壊写像で、ファイバーごとに同じ主比較に戻して同値。(a) と双対　／　RightRepresentableTwistedArrowEquivalence
+- (d) Yoneda 埋め込みの充満忠実性　／　$`\mathrm{Map}_{\mathcal P(C)}(h_x,h_y)\overset{h_1}{\simeq}\mathrm{Fun}_{/C^{\mathrm{op}}}(\mathrm{Un}\,h_x,\mathrm{Un}\,h_y)\overset{(c)}{\simeq}\mathrm{Fun}_{/C^{\mathrm{op}}}((C_{/x})^{\mathrm{op}},(C_{/y})^{\mathrm{op}})\simeq((C_{/y})^{\mathrm{op}})_x\simeq\mathrm{Hom}(x,y)`（最後から二つ目は fibration 版 Yoneda、$`\mathrm{id}_x` での評価）。加えて、合成が Yoneda 写像の写像空間への作用と一致することの照合（帳簿付けの重い部分）　／　YonedaInfinityFullyFaithful、YonedaRepresentableMapping
+- (e) 関手版 Yoneda $`\mathrm{Map}(h_y,F)\simeq F(y)`　／　$`h_1` で $`\mathrm{Fun}_{/C^{\mathrm{op}}}((C_{/y})^{\mathrm{op}},\mathrm{Un}\,F)` に移し、fibration 版 Yoneda で $`\mathrm{id}_y` で評価　／　—
+
+*f-c-spaces.html — 11. $`\mathrm{Map}` を関手にする：twisted arrow の straightening — 11.9 他の作り方との比較*
+
+- 方法　／　内容　／　難点
+- Tw の St（採用）　／　11.1〜11.7　／　一般の底の St が要る
+- $`\mathfrak C[C]` の Hom（HTT 5.1.3）　／　$`\mathfrak C[C^{\mathrm{op}}\times C]\to\mathcal Kan` を $`\mathfrak C[C]` の Hom の Kan 化で作る　／　$`\mathfrak CC\simeq\mathrm{Hom}(x,y)` の比較にモデル構造を使う
+- 矢の圏の両側 straightening　／　$`\mathrm{Fun}(\Delta^1,C)\to C\times C` を両側 fibration として扱う　／　二変数の straightening を別に用意する
+- 関手にしない　／　前層を $`\mathrm{RFib}(C)` とし、$`h_y` を $`C_{/y}` のまま扱う（Cisinski、∞-cosmos）　／　関手として扱う場面で St が要る
+
+流れ「fibration 版 Yoneda → St → Map → 関手版 Yoneda」の中で、$`\mathrm{Map}` の構成は 11.6・11.8 で fibration 版 Yoneda を、11.7 で St を使う中間の位置にある。
+
+- 比較　／　鍵
+- ファイバー ≃ $`\mathrm{Hom}^L`　／　行ごとの同値（スライスの頂点への制限）と対角補題
+- 左 fibration　／　pairing による inner anodyne 性
+- 始対象・表現可能 fibration との同値　／　崩壊写像と左 fibration のファイバーごとの判定
+- 充満忠実性・関手版 Yoneda　／　$`h_1`、fibration 版 Yoneda、作用の照合
+
+:::proposition "kerodon_8_1_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceIdentity_isInitialVertex") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_3_1_2_11, kerodon_4_4_2_6, kerodon_4_7_3_11, kerodon_8_1_1_15")
 Kerodon Proposition 8.1.2.1（[Tag 03JW](https://kerodon.net/tag/03JW)）。対応表の状態：一部。
 
-fを恒等辺id\_Xに限るとtwistedArrowSourceIdentity\_isInitialVertexは同じ始点fiber内のfの始対象性を直接返す。任意の可逆辺は含まない。
+*主張*　無限圏 $`C` の同型 $`f:x\to y` は、始域射影の $`x` 上のファイバー $`\{x\}\times_{C^{\mathrm{op}}}\operatorname{Tw}(C)` の始対象である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceIdentity_isInitialVertex`
+fを恒等辺id\_Xに限るとtwistedArrowSourceIdentity\_isInitialVertexは同じ始点fiber内のfの始対象性を直接返す。任意の可逆辺は含まない。
 
 :::
 
 :::corollary "kerodon_8_1_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight_trivialKanFibration")
 Kerodon Corollary 8.1.2.3（[Tag 048J](https://kerodon.net/tag/048J)）。対応表の状態：本体にある。
+
+*主張*　Kan 複体 $`C` について、ねじれ矢印単体集合から $`C^{\mathrm{op}}` と $`C` への二つの射影はともに自明な Kan ファイブレーションである。
 
 仮定：単体集合 C の KanComplex（Kerodon と一致）。結論：edgewiseLeft と edgewiseRight のそれぞれが TrivialKanFibration（原文の二射と一致）。
 
@@ -184,17 +312,19 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：任意の f
 
 :::
 
-:::definition "kerodon_8_1_2_7" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_8_1_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource") (uses := "kerodon_1_1_0_6")
 Kerodon Construction 8.1.2.7（[Tag 03JY](https://kerodon.net/tag/03JY)）。対応表の状態：一部。
 
-K=Δ⁰、fを頂点Xに限るとcosliceToTwistedArrowSourceは原文の同じι\_Xの構成を直接与える。一般のKの二変数Tの構成は含まない。
+*主張*　単体図式 $`f:K\to C` に対し、$`K^{\mathrm{op}}` の単体と $`C_{f/}` の単体の結合を余スライス縮約射 $`K\star C_{f/}\to C` に送ると、ねじれ矢印の単体が得られる。これを転置した $`C_{f/}\to\operatorname{Fun}_{/C^{\mathrm{op}}}(K^{\mathrm{op}},\operatorname{Tw}(C))` を余スライスの包含と呼び、点 $`x` では始域ファイバーへの射になる。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource`
+K=Δ⁰、fを頂点Xに限るとcosliceToTwistedArrowSourceは原文の同じι\_Xの構成を直接与える。一般のKの二変数Tの構成は含まない。
 
 :::
 
 :::proposition "kerodon_8_1_2_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSource")
 Kerodon Proposition 8.1.2.10（[Tag 03K0](https://kerodon.net/tag/03K0)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` の任意の対象 $`x` で、余スライスの包含 $`C_{x/}\to\{x\}\times_{C^{\mathrm{op}}}\operatorname{Tw}(C)` は無限圏の同値である。
 
 仮定：Quasicategory C と頂点 x（Kerodon と一致）。結論：cosliceToTwistedArrowSource x は x の coslice から Tw(C) の source ファイバーへの射で、IsQCatEquivalence（指定の包含の同値性と一致）。
 
@@ -202,6 +332,8 @@ Kerodon Proposition 8.1.2.10（[Tag 03K0](https://kerodon.net/tag/03K0)）。対
 
 :::corollary "kerodon_8_1_2_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceTwistedHomMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceTwistedHomMap_mono, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isSimplicialHomotopyEquivalence_iff_isQCatEquivalence")
 Kerodon Corollary 8.1.2.11（[Tag 03K1](https://kerodon.net/tag/03K1)）。対応表の状態：本体にある。
+
+*主張*　無限圏 $`C` の任意の二対象 $`x,y` に対し、余スライスの包含は、左の pinched 射空間からねじれ矢印の $`(x,y)` 上のファイバーへの Kan 複体のホモトピー同値を誘導する。
 
 仮定：Quasicategory C と頂点 x,y。写像空間の Kan 性の下で圏同値とホモトピー同値を比較する（Kerodon と一致）。結論：cosliceTwistedHomMap の単射性と IsQCatEquivalence から、指定の二重ファイバーへの包含がホモトピー同値（原文と一致）。
 
@@ -216,21 +348,21 @@ twistedArrowHomPinchedEquivalenceとcoslice比較の同型は候補だが、原�
 
 :::
 
-:::definition "kerodon_8_1_2_15" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_6_5_10, kerodon_8_1_2_11")
+:::definition "kerodon_8_1_2_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace_kanComplex") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_6_5_10, kerodon_8_1_2_11")
 Kerodon Notation 8.1.2.15（[Tag 03K5](https://kerodon.net/tag/03K5)）。対応表の状態：一部。
+
+*主張*　無限圏の対象 $`x,y` の射空間と、ねじれ矢印の $`(x,y)` 上のファイバーには、左の pinched 射空間からホモトピー同値が入る。この二本から Kan 複体のホモトピー圏で両者の同型を得る。
 
 twistedArrowHomSpaceとそのKan性は原文の右辺の同じ二重fiberを直接構成する。左向き・右向きの指定包含を反転して作るα\_X,Yそのものはこの引用に含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace_kanComplex`
-
 :::
 
-:::corollary "kerodon_8_1_2_16" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_1_7_16, kerodon_8_1_1_11, kerodon_8_1_2_15")
+:::corollary "kerodon_8_1_2_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.FullyFaithfulJointHom.twistedArrowHomInfinity_fullyFaithfulIso") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_1_7_16, kerodon_8_1_1_11, kerodon_8_1_2_15")
 Kerodon Corollary 8.1.2.16（[Tag 03LX](https://kerodon.net/tag/03LX)）。対応表の状態：一部。
 
-twistedArrowFunctorComparison\_isPrecompositionEquivalenceは同じ四角のstrict pullbackへの比較が同値となる向き（充満忠実⇒categorical pullback）を直接与える。逆向きは含まない。
+*主張*　無限圏の関手 $`F:C\to D` が充満忠実であることは、ねじれ矢印圏とその底を $`F` で移す正方形 $`\operatorname{Tw}(C)\to\operatorname{Tw}(D)` 上 $`C^{\mathrm{op}}\times C\to D^{\mathrm{op}}\times D` が圏論的引き戻しであることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.FullyFaithfulJointHom.twistedArrowHomInfinity_fullyFaithfulIso`
+twistedArrowFunctorComparison\_isPrecompositionEquivalenceは同じ四角のstrict pullbackへの比較が同値となる向き（充満忠実⇒categorical pullback）を直接与える。逆向きは含まない。
 
 :::
 
@@ -248,21 +380,21 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：各次元�
 
 :::
 
-:::corollary "kerodon_8_1_2_19" (uses := "kerodon_1_4_0_1, kerodon_4_6_4_20, kerodon_4_6_8_13, kerodon_5_2_8_11, kerodon_8_1_2_10, kerodon_8_1_2_12, kerodon_8_1_2_15")
+:::corollary "kerodon_8_1_2_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowIdentityHomTransport_isQCatEquivalence") (uses := "kerodon_1_4_0_1, kerodon_4_6_4_20, kerodon_4_6_8_13, kerodon_5_2_8_11, kerodon_8_1_2_10, kerodon_8_1_2_12, kerodon_8_1_2_15")
 Kerodon Corollary 8.1.2.19（[Tag 03K6](https://kerodon.net/tag/03K6)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` の豊穣化ホモトピー圏の Hom 関手 $`(hC)^{\mathrm{op}}\times hC\to h\operatorname{Kan}` は、ねじれ矢印の左ファイブレーションのホモトピー移送表現と自然同型である。各成分は 8.1.2.15 の同型である。
 
 twistedArrowIdentityHomTransport\_isQCatEquivalenceは各x,yで同じTw fiberと左pinchedHomとの比較同値を直接返す。原文の二変数のhC上での自然性と指定αの全同定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowIdentityHomTransport_isQCatEquivalence`
-
 :::
 
-:::corollary "kerodon_8_1_2_21"
+:::corollary "kerodon_8_1_2_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource_isQCatEquivalence")
 Kerodon Corollary 8.1.2.21（[Tag 06TQ](https://kerodon.net/tag/06TQ)）。対応表の状態：一部。
 
-K=Δ⁰では原文の対象は始点Xを固定したTw fiberとなり、cosliceToTwistedArrowSource\_isQCatEquivalenceは同じcoslice包含ι\_Xの同値を直接返す。一般Kは含まない。
+*主張*　無限圏 $`C` の図式 $`f:K\to C` の余スライスは、$`K^{\mathrm{op}}\to\operatorname{Tw}(C)` で始域を $`f^{\mathrm{op}}` に固定し、終域を定数図式に指定するファイバー積の無限圏と、余スライス包含を通じて同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource_isQCatEquivalence`
+K=Δ⁰では原文の対象は始点Xを固定したTw fiberとなり、cosliceToTwistedArrowSource\_isQCatEquivalenceは同じcoslice包含ι\_Xの同値を直接返す。一般Kは含まない。
 
 :::
 
@@ -273,12 +405,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対始�
 
 :::
 
-:::corollary "kerodon_8_1_2_23" (uses := "kerodon_1_4_0_1, kerodon_5_1_1_4, kerodon_8_1_2_22")
+:::corollary "kerodon_8_1_2_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceIdentity_isInitialVertex") (uses := "kerodon_1_4_0_1, kerodon_5_1_1_4, kerodon_8_1_2_22")
 Kerodon Corollary 8.1.2.23（[Tag 03KB](https://kerodon.net/tag/03KB)）。対応表の状態：一部。
 
-fを恒等辺に限ればtwistedArrowSourceIdentity\_isInitialVertexは原文の(1)⇒(2)の同じ恒等頂点の結論を直接返す。(3)と任意の辺の逆向きは含まない。
+*主張*　無限圏の射 $`f:x\to y` が同型であることは、ねじれ矢印圏の始域射影の $`x` 上のファイバーで始対象であることと同値である。終域射影の $`y` 上のファイバーで始対象であることとも同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceIdentity_isInitialVertex`
+fを恒等辺に限ればtwistedArrowSourceIdentity\_isInitialVertexは原文の(1)⇒(2)の同じ恒等頂点の結論を直接返す。(3)と任意の辺の逆向きは含まない。
 
 :::
 
@@ -424,7 +556,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：押し出�
 
 :::
 
-# 8.1.5 Thin \$2\$-Simplices of \$\\operatorname\{Cospan\}(\\operatorname\{\\mathcal\{C\}\})\$
+# 8.1.5 Thin 2-Simplices of Cospan(C)
 
 %%%
 number := false
@@ -506,7 +638,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常 span
 
 :::
 
-# 8.1.7 Comparing \$\\operatorname\{\\mathcal\{C\}\}\$ with \$\\operatorname\{Cospan\}(\\operatorname\{\\mathcal\{C\}\})\$
+# 8.1.7 Comparing C with Cospan(C)
 
 %%%
 number := false
@@ -515,12 +647,12 @@ tag := "kerodon-8-1-7"
 
 Kerodon [Tag 049E](https://kerodon.net/tag/049E)
 
-:::definition "kerodon_8_1_7_1" (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6, kerodon_8_1_3_7")
+:::definition "kerodon_8_1_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight") (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6, kerodon_8_1_3_7")
 Kerodon Construction 8.1.7.1（[Tag 049F](https://kerodon.net/tag/049F)）。対応表の状態：一部。
 
-edgewiseRightは原文の転置前の同じλ₊の構成を直接与える。C→Cospan(C)のρ₊、次数ごとの表示とそのmono性は含まない。
+*主張*　単体集合のねじれ矢印の終域射影は、単体写像の随伴表示によって $`C\to\operatorname{Cospan}(C)` を定める。可換図式の一方の脚に元の射、他方に恒等射を置く単射である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight`
+edgewiseRightは原文の転置前の同じλ₊の構成を直接与える。C→Cospan(C)のρ₊、次数ごとの表示とそのmono性は含まない。
 
 :::
 
@@ -582,12 +714,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：元の Tw �
 
 :::
 
-:::definition "kerodon_8_1_7_14" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
+:::definition "kerodon_8_1_7_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Variant 8.1.7.14（[Tag 049V](https://kerodon.net/tag/049V)）。対応表の状態：一部。
 
-edgewiseLeftは原文の転置前の同じλ₋を直接構成する。ρ₋とCospanの指定部分複体への同値までは含まない。
+*主張*　ねじれ矢印の始域射影は、単体写像の随伴表示によって $`C^{\mathrm{op}}\to\operatorname{Cospan}(C)` を定める。$`C` が無限圏ならこれは、左脚を同型、右脚を任意とする余スパンの単体部分集合への同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft`
+edgewiseLeftは原文の転置前の同じλ₋を直接構成する。ρ₋とCospanの指定部分複体への同値までは含まない。
 
 :::
 
@@ -637,12 +769,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：E 内の一
 
 :::
 
-:::definition "kerodon_8_1_9_5" (uses := "kerodon_1_1_0_6, kerodon_5_1_1_1")
+:::definition "kerodon_8_1_9_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CocartesianEdgeLift, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibrations") (uses := "kerodon_1_1_0_6, kerodon_5_1_1_1")
 Kerodon Definition 8.1.9.5（[Tag 04A0](https://kerodon.net/tag/04A0)）。対応表の状態：一部。
 
-各始点xについてNonempty(CocartesianEdgeLift U e x)を量化すれば、原文のeがU-cocartesian liftsを持つという定義を直接表す。専用名の欠如は不足としないがcartesian側はこの構造に含まない。
+*主張*　単体集合の内部ファイブレーション $`U:E\to C` で底の辺がデカルト持ち上げを許すとは、その終点上の任意の頂点を終点とする $`U`-デカルト辺に持ち上がることである。余デカルト持ち上げでは底の始点上の任意の頂点を始点とする。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.CocartesianEdgeLift`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianFibrations`
+各始点xについてNonempty(CocartesianEdgeLift U e x)を量化すれば、原文のeがU-cocartesian liftsを持つという定義を直接表す。専用名の欠如は不足としないがcartesian側はこの構造に含まない。
 
 :::
 

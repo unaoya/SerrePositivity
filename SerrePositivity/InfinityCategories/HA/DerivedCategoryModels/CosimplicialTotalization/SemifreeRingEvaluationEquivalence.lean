@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreePointComparison
-public import SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SemifreeRingEvaluation
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.DGQuasiEquivalenceNerve
 
 /-!
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory SerrePositivity.DifferentialGraded
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
@@ -23,13 +23,13 @@ variable (A : Type u) [CommRing A]
 
 /-- 既存の一点半自由加群評価は、各HomとH⁰の対象を同じ模型で比較する準同値。 -/
 theorem semifreeRingEvaluationDG_quasiEquivalence :
-    QuasiEquivalence (semifreeRingEvaluationDG A) :=
+    QuasiEquivalence (_root_.SerrePositivity.ComplexLimits.semifreeRingEvaluationDG A) :=
   SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.semifreePointEvaluation_quasiEquivalence A
 
 /-- 既存の半自由一点評価の∞関手は、同じ既存D(A)への同値。 -/
 theorem semifreeRingEvaluationInfinity_isQCatEquivalence :
-    IsQCatEquivalence (semifreeRingEvaluationInfinity A) :=
+    IsQCatEquivalence (_root_.SerrePositivity.ComplexLimits.semifreeRingEvaluationInfinity A) :=
   dgNerve_map_isQCatEquivalence_of_quasiEquivalence
-    (semifreeRingEvaluationDG A) (semifreeRingEvaluationDG_quasiEquivalence A)
+    (_root_.SerrePositivity.ComplexLimits.semifreeRingEvaluationDG A) (semifreeRingEvaluationDG_quasiEquivalence A)
 
 end SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization

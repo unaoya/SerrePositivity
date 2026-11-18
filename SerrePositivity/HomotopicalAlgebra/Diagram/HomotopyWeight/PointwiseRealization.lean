@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.Generators
-public import SerrePositivity.EInfinity.FrameRealizationLifting
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameRealizationLifting
 public import Mathlib.CategoryTheory.Adjunction.Whiskering
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Finite
 

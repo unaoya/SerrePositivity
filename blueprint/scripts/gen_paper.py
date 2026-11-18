@@ -42,6 +42,10 @@ STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本
 by_sec = collections.defaultdict(list)
 for r in items: by_sec[r['section'].split('.')[0]].append(r)
 stats = collections.Counter(); modules = []
+# NB-W2（11-18）：research/paper-coverage/notes/<番号>.md の原稿（解説から移した本文）を項目に、<節>.md を節の頭に入れる
+import notes_md
+def note_body(n): return notes_md.note_body(f'{P}/notes/{n}.md', skip=('原典 ', '照合先'))
+STMT = notes_md.statements(P)   # 主張の一行（NB-W4）
 for sec in sorted(by_sec, key=int):
     imports = set(); body = []
     subs = collections.defaultdict(list)
@@ -53,7 +57,7 @@ for sec in sorted(by_sec, key=int):
         for r in subs[sub]:
             n = r['number']; rv = rev.get(n, {}); st = rv.get('status', '')
             linked = []
-            if st == 'own':
+            if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
                 for e in [x.strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]:
                     x = res.resolve(e)
                     if x: linked.append(x[0]); imports.add(x[1])
@@ -65,7 +69,10 @@ for sec in sorted(by_sec, key=int):
             title = r['title']
             body.append(f':::{KIND.get(r["kind"], "proposition")} "{label(n)}"{opts}')
             body.append(f'**{KINDJA.get(r["kind"], r["kind"])} {esc(n)}**　{esc(title)}。対応表の状態：{STATUS.get(st, st)}。\n')
+            if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
+            if (nb := note_body(n)):
+                stats['with-note'] += 1; body.append(nb)
             decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
             if decls and not linked:
                 body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
@@ -74,9 +81,11 @@ for sec in sorted(by_sec, key=int):
             body.append(':::\n')
     mod = f'Section{sec}'
     hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
-          ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+          ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
            f'#doc (Manual) "§{sec} {heads.get(sec, "")}" =>', '%%%', 'number := false', f'tag := "paper-{sec}"', '%%%', '',
-           f'本論文 §{sec} の項目と、本体の宣言との対応。本文は対応表（`research/paper-coverage`）の照合の理由で、論文の本文の写しではない。\n']
+           f'本論文 §{sec} の項目と、本体の宣言との対応。各項目の頭は対応表（`research/paper-coverage`）の照合の理由、その下は解説から移した本文（あるものだけ）。\n']
+    if (nb := note_body(sec)):
+        stats['with-note-intro'] += 1; hdr.append(nb)
     open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
     modules.append(mod)
 # 引用した結果（external.csv）：CLMST は CLMST の部にノードがあるので除く
@@ -85,7 +94,7 @@ for r in external:
     if r['source'] == 'CLMST': continue
     lab = ext_label((r['source'] + ' ' + r['number']).strip()); st = r['status']
     linked = []
-    if st in ('own', 'mathlib', 'both'):
+    if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
         for e in [x.strip() for x in r['declarations'].split(' | ') if x.strip()]:
             x = res.resolve(e)
             if x: linked.append(x[0]); imports.add(x[1])
@@ -98,10 +107,28 @@ for r in external:
     if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
     body.append(':::\n')
 hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
-      ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+      ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
        '#doc (Manual) "引用した結果" =>', '%%%', 'number := false', 'tag := "paper-external"', '%%%', '',
        '本論文が引用する外の文献の結果（`research/paper-coverage/external.csv`）。各本論文の項目から uses で張られる。CLMST の結果は CLMST の部のノード。BS19・K の文献の結果は、それぞれの対応表ができるまで状態を空にしてある。\n']
 open(f'{OUT}/External.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
 modules.append('External')
+# 補足（NB-W4、11-18）：項目に対応しない文章（方針の説明、解説の付録）。notes/supplement/<順番>-<slug>.md を、その順に一つの章の節として出す
+import glob
+body = []
+for fp in sorted(glob.glob(f'{P}/notes/supplement/*.md')):
+    ttl = next((l[2:].strip() for l in open(fp, encoding='utf-8') if l.startswith('# ')), os.path.basename(fp))
+    nb = notes_md.note_body(fp)
+    if not nb: continue
+    k = os.path.basename(fp)[:-3]
+    body.append(f'# {notes_md.esc_text(ttl)}\n')
+    body.append(f'%%%\nnumber := false\ntag := "paper-supplement-{k}"\n%%%\n')
+    body.append(nb); stats['supplement'] += 1
+if body:
+    hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint', '', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+           'set_option maxHeartbeats 2000000', '',
+           '#doc (Manual) "補足" =>', '%%%', 'number := false', 'tag := "paper-supplement"', '%%%', '',
+           '本論文の項目に対応しない文章（主張と帰着、証明の方針、先行研究との関係、検討の記録など）。解説から移した原稿（`research/paper-coverage/notes/supplement/`）で、原稿に「未確認」「精密ではない」とある議論は、その断り書きのまま載せる。\n']
+    open(f'{OUT}/Supplement.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+    modules.append('Supplement')
 json.dump({'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/paper-generated.json', 'w'), ensure_ascii=False, indent=1)
 print(modules, dict(stats))

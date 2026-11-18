@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.HadamardCoherence
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.HadamardCoherence
 public import Mathlib.Tactic.CategoryTheory.Monoidal.Basic
 
 /-!

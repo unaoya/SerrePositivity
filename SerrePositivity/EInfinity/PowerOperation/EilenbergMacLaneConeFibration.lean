@@ -18,12 +18,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory CategoryTheory.Limits CochainComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 元の cone の第三射は、既存の次数付き section により実射影 fibration。 -/
 lemma coneProjection_projectiveFibration {M N : Complex A} (f : M ⟶ N) :
-    projectiveFibrations A (mappingCone.triangle f).mor₃ := by
+    _root_.SerrePositivity.ProjectiveModel.projectiveFibrations A (mappingCone.triangle f).mor₃ := by
   intro n y
   refine ⟨complexConeGradedSection f n y, ?_⟩
   rw [complexConeGradedProjection_eq_connecting]
@@ -33,7 +33,7 @@ open SSet.modelCategoryQuillen in
 /-- 同じ cone の第三射の Γ は、零次数の境界も含む Kan fibration。 -/
 lemma gammaConeProjection_fibration {M N : Complex A} (f : M ⟶ N) :
     HomotopicalAlgebra.Fibration
-      ((truncatedDoldKanFunctor A).map (mappingCone.triangle f).mor₃) :=
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (mappingCone.triangle f).mor₃) :=
   gammaMap_fibration A _ (coneProjection_projectiveFibration A f)
 
 /-- 恒等射の元の cone は非輪状。 -/
@@ -54,7 +54,7 @@ lemma identityCone_zero_quasiIso (M : Complex A) :
 /-- 同じ零射の Γ は、全基点・全次数の π 同型である。 -/
 lemma gammaIdentityCone_zero_piIsomorphism (M : Complex A) :
     SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
-      ((truncatedDoldKanFunctor A).map
+      ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map
         (0 : mappingCone (𝟙 M) ⟶ (HomologicalComplex.zero : Complex A))) := by
   have := identityCone_zero_quasiIso A M
   exact gammaMap_kanPiIsomorphism _

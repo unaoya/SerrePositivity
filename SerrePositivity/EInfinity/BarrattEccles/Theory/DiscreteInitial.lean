@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.MappingAndStability.Triangles.StableLimits
-public import SerrePositivity.EInfinity.Operad.AlgebraLift
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraLift
 
 /-!
 # Barratt–Eccles 模型の離散基礎環は始対象
@@ -41,7 +41,7 @@ variable (A : Type u) [CommRing A]
 /-- 零複体に対する Schur 図式の正の arity の値は零。 -/
 lemma zero_schurDiagram_isZero (P : SymmetricSequence (Complex A)) (S : FiniteBijection)
     (h : S.card ≠ 0) :
-    IsZero ((schurDiagram A P (0 : Complex A)).obj S) := by
+    IsZero ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P (0 : Complex A)).obj S) := by
   change IsZero (P.obj S ⊗ power (0 : Complex A) S.card)
   generalize S.card = n at h ⊢
   cases n with
@@ -52,8 +52,8 @@ lemma zero_schurDiagram_isZero (P : SymmetricSequence (Complex A)) (S : FiniteBi
 
 /-- 零複体に対する Schur 対象は arity 0 の成分だけからなる。 -/
 lemma schurι_zero_isIso (P : SymmetricSequence (Complex A)) :
-    IsIso (schurι A P (0 : Complex A) 0) := by
-  let F := schurDiagram A P (0 : Complex A)
+    IsIso (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P (0 : Complex A) 0) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A P (0 : Complex A)
   let b := FiniteBijection.of 0
   let e (S : FiniteBijection) (h : S.card = 0) : S = b :=
     (FiniteBijection.of_card S).symm.trans (congrArg FiniteBijection.of h)
@@ -74,13 +74,13 @@ lemma schurι_zero_isIso (P : SymmetricSequence (Complex A)) :
         exact Fin.elim0 a
       simp [hf, r, b]
     · exact (zero_schurDiagram_isZero A P S h).eq_of_src _ _
-  let t := schurDesc A P (0 : Complex A) (F.obj b) r hr
-  have ht : schurι A P (0 : Complex A) 0 ≫ t = 𝟙 _ := by
-    rw [schurι_desc]
+  let t := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDesc A P (0 : Complex A) (F.obj b) r hr
+  have ht : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P (0 : Complex A) 0 ≫ t = 𝟙 _ := by
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι_desc]
     simp [r, b]
     rfl
   refine ⟨⟨t, ht, ?_⟩⟩
-  apply schur_hom_ext A P (0 : Complex A)
+  apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schur_hom_ext A P (0 : Complex A)
   intro n
   cases n with
   | zero => rw [← Category.assoc, ht, Category.id_comp, Category.comp_id]
@@ -119,18 +119,18 @@ def derivedFreeAtZeroProbeIso :
 def freeZeroToDiscrete :
     (operad A).freeAlgebra (0 : Complex A) ⟶
       (discreteAlgebraFunctor A).obj (CommAlgCat.of A A) :=
-  Operad.Algebra.liftHom _ 0
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.liftHom _ 0
 
 /-- 離散基礎環への射は零入力での augmentation により擬同型。 -/
 lemma freeZeroToDiscrete_quasiIso : QuasiIso (freeZeroToDiscrete A).hom := by
   let P := operad A
   let B := (discreteAlgebraFunctor A).obj (CommAlgCat.of A A)
-  let j := schurι A P.sequence (0 : Complex A) 0
+  let j := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι A P.sequence (0 : Complex A) 0
   have hj : IsIso j := schurι_zero_isIso A P.sequence
   apply (quasiIso_iff_comp_left j (freeZeroToDiscrete A).hom).mp
   have he : j ≫ (freeZeroToDiscrete A).hom = B.action 0 := by
     change j ≫ B.schurLift (0 : (0 : Complex A) ⟶ B.carrier) = B.action 0
-    rw [Operad.Algebra.ι_schurLift]
+    rw [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.ι_schurLift]
     change (𝟙 (P.arity 0) ⊗ₘ 𝟙 (𝟙_ (Complex A))) ≫ B.action 0 = _
     rw [id_tensorHom, whiskerLeft_id, Category.id_comp]
   rw [he, discreteAlgebraFunctor_action]
@@ -160,13 +160,13 @@ lemma freeZeroToDiscrete_quasiIso : QuasiIso (freeZeroToDiscrete A).hom := by
 /-- 零複体の cofibrant probe との比較を自由代数に移す。 -/
 lemma freeZeroToProbe_quasiIso :
     QuasiIso (((operad A).freeAlgebraFunctor.map
-      (0 : (0 : Complex A) ⟶ (ComplexLimits.framedLimitProbeFunctor A).obj 0)).hom) := by
-  let := projectiveModelCategory A
+      (0 : (0 : Complex A) ⟶ (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj 0)).hom) := by
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := modelCategory A
   have := free_isLeftQuillen A
-  let f : (0 : Complex A) ⟶ (ComplexLimits.framedLimitProbeFunctor A).obj 0 := 0
-  let q := (ComplexLimits.framedLimitProbeComparisonNatTrans A).app 0
-  have hq : QuasiIso q := ComplexLimits.framedLimitProbeComparison_quasiIso A 0
+  let f : (0 : Complex A) ⟶ (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj 0 := 0
+  let q := (_root_.SerrePositivity.ComplexLimits.framedLimitProbeComparisonNatTrans A).app 0
+  have hq : QuasiIso q := _root_.SerrePositivity.ComplexLimits.framedLimitProbeComparison_quasiIso A 0
   have hcomp : QuasiIso (f ≫ q) := by
     rw [(isZero_zero (Complex A)).eq_of_src (f ≫ q) (𝟙 _)]
     infer_instance
@@ -175,8 +175,8 @@ lemma freeZeroToProbe_quasiIso :
   have h0 : IsCofibrant (0 : Complex A) :=
     (isCofibrant_iff_of_isInitial (𝟙 (0 : Complex A)) (isZero_zero _).isInitial).mpr
       inferInstance
-  have h1 : IsCofibrant ((ComplexLimits.framedLimitProbeFunctor A).obj 0) :=
-    ComplexLimits.framedLimitProbe_cofibrant A 0
+  have h1 : IsCofibrant ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj 0) :=
+    _root_.SerrePositivity.ComplexLimits.framedLimitProbe_cofibrant A 0
   exact (weakEquivalence_iff A _).mp (SerrePositivity.Quillen.map_weakEquivalence_of_cofibrant
     (operad A).freeAlgebraFunctor f)
 
@@ -186,7 +186,7 @@ lemma discreteCAlgUnderEmbedding_initial :
       (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))) := by
   let B := CommAlgCat.of A A
   let f := (operad A).freeAlgebraFunctor.map
-    (0 : (0 : Complex A) ⟶ (ComplexLimits.framedLimitProbeFunctor A).obj 0)
+    (0 : (0 : Complex A) ⟶ (_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).obj 0)
   let e₁ := cAlgVertexIsoOfQuasiIso A f (freeZeroToProbe_quasiIso A)
   let e₂ := cAlgVertexIsoOfQuasiIso A (freeZeroToDiscrete A) (freeZeroToDiscrete_quasiIso A)
   have e₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso

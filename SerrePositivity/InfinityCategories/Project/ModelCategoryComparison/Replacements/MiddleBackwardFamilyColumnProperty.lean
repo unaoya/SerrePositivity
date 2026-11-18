@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackwardPositions
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendArrowProperty
 
 /-!
@@ -24,9 +24,9 @@ variable {D : Type u'} [Category.{v'} D] {C : Type u} [Category.{v} C] [ModelCat
   {n m : ℕ} {X Y : C} (F : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family D C n m X Y)
 
 lemma middleColumn_property (P : MorphismProperty C) (d : D) :
-    P ((F.zigzagFunctor.obj d).arrow (_root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn n m)) ↔ P (F.middle.app d) := by
+    P ((F.zigzagFunctor.obj d).arrow (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn n m)) ↔ P (F.middle.app d) := by
   dsimp only [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardFamilyFunctor.zigzagFunctor, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Family.zigzagObj, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.obj, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryBlock,
-    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryBlock, _root_.SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn]
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightBoundaryBlock, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn]
   rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrow_left_property P, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrow_right_property P]
   rfl
 

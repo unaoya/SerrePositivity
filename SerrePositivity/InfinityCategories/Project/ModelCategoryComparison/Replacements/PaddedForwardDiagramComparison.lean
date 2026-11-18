@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.PaddedBackwardEmbeddingComparison
-public import SerrePositivity.EInfinity.Hammock.ProperFractionDiagrams
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ProperFractionDiagrams
 
 /-!
 # 元の paddedForwardDiagramMap の全成分の弱同値性
@@ -24,7 +24,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
 include cof in
 lemma paddedForwardDiagramMap_isWeakHomotopyEquivalence (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      ((_root_.SerrePositivity.EInfinity.Hammock.paddedForwardDiagramMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y)).app w) := by
+      ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.paddedForwardDiagramMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y)).app w) := by
   apply _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedBackwardEmbedding_isWeakHomotopyEquivalence X Y cof
     (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardCore.forwardInclusion w) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardCore.forwardInclusion_injective w)
   intro j hj

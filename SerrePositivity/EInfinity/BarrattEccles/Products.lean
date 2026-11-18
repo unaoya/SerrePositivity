@@ -123,6 +123,6 @@ def productDerivedIso (X : ι → (operad A).Algebra)
 使われ方：homotopy 積の底の複体を実際に記述する。 -/
 def productCarrierIso (X : ι → (operad A).Algebra) :
     (∏ᶜ X).carrier ≅ ∏ᶜ (fun i => (X i).carrier) :=
-  PreservesProduct.iso (Operad.Algebra.forget (operad A)) X
+  PreservesProduct.iso (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) X
 
 end SerrePositivity.EInfinity.BarrattEccles

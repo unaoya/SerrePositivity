@@ -6,14 +6,17 @@ import Mathlib.Algebra.Category.Semigrp.Basic
 import Mathlib.Algebra.Group.Hom.Defs
 import Mathlib.Algebra.Group.Monoid
 import Mathlib.Algebra.Group.Semigroup
+import Mathlib.AlgebraicTopology.Quasicategory.StrictSegal
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
+import Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal
 import Mathlib.CategoryTheory.Core
 import Mathlib.CategoryTheory.Groupoid
 import Mathlib.CategoryTheory.PathCategory.Basic
 import Mathlib.CategoryTheory.SingleObj
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.ThinNerveInnerFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.GroupNerveHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.KanCharacterization
 import SerrePositivity.KST.Comparison.BarSegal
@@ -21,6 +24,9 @@ import SerrePositivity.KST.Comparison.BarSegal
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.3 From Categories to Simplicial Sets" =>
 %%%
@@ -42,6 +48,8 @@ Kerodon [Tag 002M](https://kerodon.net/tag/002M)
 :::definition "kerodon_1_3_1_1" (lean := "CategoryTheory.nerve, CategoryTheory.nerveFunctor")
 Kerodon Construction 1.3.1.1（[Tag 002N](https://kerodon.net/tag/002N)）。対応表の状態：Mathlib にある。
 
+*主張*　圏 $`\mathcal C` の nerve は、次数 $`n` に、$`[n]` を順序圏とみた関手 $`[n]\to\mathcal C` の集合を置き、単調写像に沿う前合成で構造写像を定める。
+
 仮定：通常の圏 C と非負次数 n（Kerodon と一致）。結論：nerve C は次数 n で \[n\]→C に相当する可合成射列を取り、単体圏の射に沿う前合成で単体集合を作る（一致）。
 
 *定義 3.2 （半順序集合の脈体）*
@@ -52,6 +60,8 @@ Kerodon Construction 1.3.1.1（[Tag 002N](https://kerodon.net/tag/002N)）。対
 
 :::definition "kerodon_1_3_1_6" (lean := "SSet.skeleton, CategoryTheory.nerve")
 Kerodon Variant 1.3.1.6（[Tag 03X2](https://kerodon.net/tag/03X2)）。対応表の状態：Mathlib にある。
+
+*主張*　$`N_{\le n}(\mathcal C)` を圏 $`\mathcal C` の nerve の $`n` 骨格とする。$`n=0` では対象集合に対応する離散単体的集合である。
 
 仮定：圏 C と非負整数 n（Kerodon と一致）。結論：nerve C の skeleton (n+1) が次数 n 以下で生成された部分複体。n=0 の値は対象に対応する頂点とその退化でできる（一致）。
 
@@ -66,8 +76,22 @@ tag := "kerodon-1-3-2"
 
 Kerodon [Tag 04FY](https://kerodon.net/tag/04FY)
 
+*classifying-shape.html — 1. $`B` とは何か*
+
+$`B` は*群から「その群を自己同型として持つ一点」を作る操作*（分類空間、デループ）。これまでの $`BG`（群の表現）、$`B\hat{\mathbb Z}`（有限体のエタールホモトピー型）、$`B\mathbf{Pic}`、$`B^2\mathbb G_m` は全て同じ構成。
+
+*classifying-shape.html — 1. $`B` とは何か — 空間の場合*
+
+- *離散群*：$`BG` は対象が一つで自己射の群が $`G` の亜群。空間としては $`K(G,1)`。連結で $`\Omega BG\simeq G`。例：$`B\mathbb Z=S^1`、$`B\mathbb Z/2=\mathbb{RP}^\infty`、$`BU(1)=\mathbb{CP}^\infty`。
+
+- *∞ 群*：bar 構成 $`BG:=\operatorname{colim}_{[n]\in\Delta^{\mathrm{op}}}G^{\times n}`。$`\{\text{}\infty\text{ 群}\}\simeq\{\text{連結な点付き空間}\}`、$`G\mapsto BG`、$`X\mapsto\Omega X`。
+
+- *繰り返し*：$`A` がアーベル群（$`E_\infty` 群）なら $`BA` も群で、$`B^nA=K(A,n)`、$`\Omega^nB^nA\simeq A`。例：$`B^2\mathbb Z=B(S^1)=\mathbb{CP}^\infty`。
+
 :::definition "kerodon_1_3_2_1" (lean := "Monoid")
 Kerodon Definition 1.3.2.1（[Tag 04FZ](https://kerodon.net/tag/04FZ)）。対応表の状態：Mathlib にある。
+
+*主張*　モノイドは結合的な二項演算と両側単位元を持つ集合である。両側単位元は存在すれば一意である。
 
 仮定：集合 M と二項演算（Kerodon と一致）。結論：Monoid M のデータは結合的な積と左右の単位元を含む（一致）。
 
@@ -76,6 +100,8 @@ Kerodon Definition 1.3.2.1（[Tag 04FZ](https://kerodon.net/tag/04FZ)）。対�
 :::definition "kerodon_1_3_2_3" (lean := "MonoidHom, MonCat")
 Kerodon Definition 1.3.2.3（[Tag 00BR](https://kerodon.net/tag/00BR)）。対応表の状態：Mathlib にある。
 
+*主張*　モノイド準同型は積と単位元を保つ写像である。それらを射とする圏を $`\mathrm{Mon}` と記す。
+
 仮定：モノイド M,N（Kerodon と一致）。結論：MonoidHom は積と単位を保つ関数を与え、MonCat はそれを射とするモノイドの圏（一致）。
 
 :::
@@ -83,21 +109,25 @@ Kerodon Definition 1.3.2.3（[Tag 00BR](https://kerodon.net/tag/00BR)）。対�
 :::definition "kerodon_1_3_2_5" (lean := "CategoryTheory.SingleObj, SerrePositivity.KST.Comparison.monoidWordSimplex")
 Kerodon Construction 1.3.2.5（[Tag 04G0](https://kerodon.net/tag/04G0)）。対応表の状態：本体と Mathlib にある。
 
+*主張*　モノイド $`M` の分類単体的集合 $`B_\bullet M` は、$`M` を自己射とする一対象圏の nerve である。
+
 仮定：モノイド M（Kerodon と一致）。結論：nerve (SingleObj M) が一対象圏 BM の分類単体集合で、monoidWordSimplex は M の語に対応するその単体を作る（一致）。
 
 :::
 
-:::proposition "kerodon_1_3_2_7"
+:::proposition "kerodon_1_3_2_7" (lean := "MonCat.toCat_full, MonCat.toCat_faithful, CategoryTheory.nerveFunctor.fullyfaithful, SerrePositivity.KST.Comparison.monoidWordSimplex, SerrePositivity.KST.Comparison.monoidWordLabels, SerrePositivity.KST.Comparison.monoidWordEquiv")
 Kerodon Proposition 1.3.2.7（[Tag 04G2](https://kerodon.net/tag/04G2)）。対応表の状態：一部。
 
-原文の充満忠実な埋込みという結論は MonCat.toCat の Full/Faithful と nerveFunctor の FullyFaithful の合成から直接得られる。さらに monoidWordEquiv は実際のモノイドの神経の n 単体を Fin n→T に同定する。任意SがSegal条件からその本質的像に入る逆は含めない。
+*主張*　モノイドを分類単体的集合へ送る関手は充満忠実である。本質像は、各 $`n\ge0` で連続する $`n` 本の辺への制限が $`S_n\to(S_1)^n` という全単射を与える単体的集合である。
 
-宣言：`MonCat.toCat_full`、`MonCat.toCat_faithful`、`CategoryTheory.nerveFunctor.fullyfaithful`、`SerrePositivity.KST.Comparison.monoidWordSimplex`、`SerrePositivity.KST.Comparison.monoidWordLabels`、`SerrePositivity.KST.Comparison.monoidWordEquiv`
+原文の充満忠実な埋込みという結論は MonCat.toCat の Full/Faithful と nerveFunctor の FullyFaithful の合成から直接得られる。さらに monoidWordEquiv は実際のモノイドの神経の n 単体を Fin n→T に同定する。任意SがSegal条件からその本質的像に入る逆は含めない。
 
 :::
 
 :::definition "kerodon_1_3_2_8" (lean := "Semigroup, Semigrp, MulHom")
 Kerodon Variant 1.3.2.8（[Tag 04G3](https://kerodon.net/tag/04G3)）。対応表の状態：Mathlib にある。
+
+*主張*　非単位的モノイドとは結合的な二項演算を持つ集合である。積を保つ写像を射として圏 $`\mathrm{Mon}^{\mathrm{nu}}` をなす。
 
 仮定：結合的乗法のある集合、二つのそのような構造の間の関数（Kerodon と一致）。結論：Semigroup は結合則、MulHom は積の保存を表し、Semigrp はその対象と射の圏（一致）。
 
@@ -129,6 +159,8 @@ Kerodon [Tag 002Y](https://kerodon.net/tag/002Y)
 :::proposition "kerodon_1_3_3_1" (lean := "CategoryTheory.nerveFunctor.full, CategoryTheory.nerveFunctor.faithful, CategoryTheory.nerveFunctor.fullyfaithful")
 Kerodon Proposition 1.3.3.1（[Tag 002Z](https://kerodon.net/tag/002Z)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏から単体的集合への nerve 関手は充満忠実である。
+
 仮定：通常の圏とその間の関手（Kerodon と一致）。結論：nerveFunctor.full と faithful、さらに fullyfaithful が通常圏の nerve の充満忠実性を与える（一致）。
 
 :::
@@ -151,12 +183,12 @@ Kerodon Proposition 1.3.4.1（[Tag 0031](https://kerodon.net/tag/0031)）。対�
 
 :::
 
-:::lemma_ "kerodon_1_3_4_2" (uses := "kerodon_1_1_0_6, kerodon_1_3_4_1")
+:::lemma_ "kerodon_1_3_4_2" (lean := "CategoryTheory.Nerve.strictSegal, SSet.StrictSegal.quasicategory, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn") (uses := "kerodon_1_1_0_6, kerodon_1_3_4_1")
 Kerodon Lemma 1.3.4.2（[Tag 0032](https://kerodon.net/tag/0032)）。対応表の状態：一部。
 
-原文は任意圏の nerve の内hornの一意充填。Quasicategory 性から充填の存在、thinNerve\_hom\_ext\_horn から2次元以上の任意horn制限の単射性を直接組み合わせ、Quiver.IsThin C を追加した場合の同じ一意充填を得る。一般圏の一意性はこの引用にない。
+*主張*　任意の圏の nerve では、どの内ホーンからの写像も標準単体に一意に延長できる。
 
-宣言：`CategoryTheory.Nerve.strictSegal`、`SSet.StrictSegal.quasicategory`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn`
+原文は任意圏の nerve の内hornの一意充填。Quasicategory 性から充填の存在、thinNerve\_hom\_ext\_horn から2次元以上の任意horn制限の単射性を直接組み合わせ、Quiver.IsThin C を追加した場合の同じ一意充填を得る。一般圏の一意性はこの引用にない。
 
 :::
 
@@ -179,6 +211,8 @@ Kerodon [Tag 0035](https://kerodon.net/tag/0035)
 :::definition "kerodon_1_3_5_1" (lean := "CategoryTheory.Groupoid, CategoryTheory.IsGroupoid")
 Kerodon Definition 1.3.5.1（[Tag 0036](https://kerodon.net/tag/0036)）。対応表の状態：Mathlib にある。
 
+*主張*　射 $`f\colon C\to D` が同型であるとは両側逆射を持つことであり、逆射は一意である。すべての射が同型である圏を亜群と呼ぶ。
+
 仮定：圏 C（Kerodon と一致）。結論：IsGroupoid C は全ての射が IsIso、すなわち両側逆を持つことを要求し、Groupoid は逆射を構造として持つ（一致）。
 
 :::
@@ -186,12 +220,16 @@ Kerodon Definition 1.3.5.1（[Tag 0036](https://kerodon.net/tag/0036)）。対�
 :::proposition "kerodon_1_3_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.groupoidNerve_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_iff_isGroupoid, CategoryTheory.nerveFunctorCompHoFunctorIso")
 Kerodon Proposition 1.3.5.2（[Tag 0037](https://kerodon.net/tag/0037)）。対応表の状態：本体にある。
 
+*主張*　通常の圏が亜群であることと、その nerve が Kan 複体であることは同値である。
+
 仮定：通常の圏 C（Kerodon と一致。Lean の nerve は Quasicategory インスタンスを持つ）。結論：groupoidNerve\_kanComplex は順方向。逆方向は kanComplex\_iff\_isGroupoid と nerveFunctorCompHoFunctorIso の hN(C)≅C で与えられる（一致）。
 
 :::
 
 :::definition "kerodon_1_3_5_4" (lean := "CategoryTheory.Core")
 Kerodon Construction 1.3.5.4（[Tag 007G](https://kerodon.net/tag/007G)）。対応表の状態：Mathlib にある。
+
+*主張*　圏 $`\mathcal C` の core は、全対象と同型射だけでできる部分亜群 $`\mathcal C^\simeq` である。
 
 仮定：圏 C（Kerodon と一致）。結論：Core C は C の全対象を持ち、Hom を同型に制限した亜群（一致）。
 
@@ -218,6 +256,8 @@ Kerodon Definition 1.3.6.1（[Tag 004J](https://kerodon.net/tag/004J)）。対�
 :::definition "kerodon_1_3_6_3" (lean := "SSet.HomotopyCategory, SSet.hoFunctor")
 Kerodon Notation 1.3.6.3（[Tag 004K](https://kerodon.net/tag/004K)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合のホモトピー圏が存在すれば同型を除いて一意で、単体的集合に関手的である。これを $`hS` と書く。
+
 仮定：単体集合 S と、通常圏を求める普遍性（Lean が弱い：hoFunctor はすべての単体集合上で定義済み）。結論：HomotopyCategory S がホモトピー圏の値で、hoFunctor が S の射への作用を与える（一致。普遍性による同型の一意性は随伴から読む）。
 
 :::
@@ -225,12 +265,16 @@ Kerodon Notation 1.3.6.3（[Tag 004K](https://kerodon.net/tag/004K)）。対応�
 :::proposition "kerodon_1_3_6_4" (lean := "CategoryTheory.nerveAdjunction")
 Kerodon Proposition 1.3.6.4（[Tag 004M](https://kerodon.net/tag/004M)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の単体的集合 $`S` には、そのホモトピー圏となる圏 $`\mathcal C` と普遍写像 $`S\to N(\mathcal C)` が存在する。
+
 仮定：任意の単体集合 S（Kerodon と一致）。結論：nerveAdjunction の単位 S ⟶ N(hS) と Hom 全単射が普遍的なホモトピー圏の存在を与える（一致）。
 
 :::
 
 :::corollary "kerodon_1_3_6_5" (lean := "CategoryTheory.nerveAdjunction")
 Kerodon Corollary 1.3.6.5（[Tag 004N](https://kerodon.net/tag/004N)）。対応表の状態：Mathlib にある。
+
+*主張*　ホモトピー圏関手 $`S\mapsto hS` は、通常の圏の nerve 関手の左随伴である。
 
 仮定：単体集合の圏と通常圏の圏（Kerodon と一致）。結論：nerveAdjunction は hoFunctor ⊣ nerveFunctor を与える（一致）。
 
@@ -247,6 +291,8 @@ Kerodon [Tag 00HJ](https://kerodon.net/tag/00HJ)
 
 :::definition "kerodon_1_3_7_1" (lean := "CategoryTheory.Paths")
 Kerodon Construction 1.3.7.1（[Tag 00HK](https://kerodon.net/tag/00HK)）。対応表の状態：Mathlib にある。
+
+*主張*　有向グラフの道の圏は頂点を対象とし、始点・終点が順につながる有限辺列を射とする。合成は列の連結、恒等射は空の道である。
 
 仮定：頂点型に Quiver 構造（Kerodon と一致）。結論：Paths の射は始点・終点を合わせて連結できる辺の有限列で、空列が恒等射、連結が合成（一致）。
 

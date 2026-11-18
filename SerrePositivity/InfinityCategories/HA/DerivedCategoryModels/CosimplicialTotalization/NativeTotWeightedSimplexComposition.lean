@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 variable {A : Type u} [CommRing A]
@@ -27,13 +27,13 @@ theorem nativeTotWeightedSimplexMap_id (X : CosimplicialObject (Complex A)) {n :
   induction i using Fin.cases
   case zero =>
     change closedHomEquiv A (Complex A) _ _
-      ((complexToClosed A).map ((productTotalFunctor A).map (𝟙 X))) = _
-    rw [(productTotalFunctor A).map_id, (complexToClosed A).map_id]
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((productTotalFunctor A).map (𝟙 X))) = _
+    rw [(productTotalFunctor A).map_id, (_root_.SerrePositivity.ComplexLimits.complexToClosed A).map_id]
     exact closedHom_id _
   case succ i =>
     change closedHomEquiv A (Complex A) _ _
-      ((complexToClosed A).map (𝟙 (X.obj (AsSmall.down.obj (σ.obj i))))) = _
-    rw [(complexToClosed A).map_id]
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map (𝟙 (X.obj (AsSmall.down.obj (σ.obj i))))) = _
+    rw [(_root_.SerrePositivity.ComplexLimits.complexToClosed A).map_id]
     exact closedHom_id _
 
 /-- 同じ元の図式射の合成は、同じ全HA写像の合成。 -/
@@ -48,19 +48,19 @@ theorem nativeTotWeightedSimplexMap_comp {X Y Z : CosimplicialObject (Complex A)
   induction i using Fin.cases
   case zero =>
     change (closedHomEquiv A (Complex A) _ _
-      ((complexToClosed A).map ((productTotalFunctor A).map (f ≫ g)))).val =
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((productTotalFunctor A).map (f ≫ g)))).val =
       compose A (closedHomEquiv A (Complex A) _ _
-        ((complexToClosed A).map ((productTotalFunctor A).map g))).val
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((productTotalFunctor A).map g))).val
         (closedHomEquiv A (Complex A) _ _
-          ((complexToClosed A).map ((productTotalFunctor A).map f))).val (zero_add 0)
-    rw [(productTotalFunctor A).map_comp, (complexToClosed A).map_comp, closedHom_comp]
+          ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((productTotalFunctor A).map f))).val (zero_add 0)
+    rw [(productTotalFunctor A).map_comp, (_root_.SerrePositivity.ComplexLimits.complexToClosed A).map_comp, closedHom_comp]
   case succ i =>
     change (closedHomEquiv A (Complex A) _ _
-      ((complexToClosed A).map ((f ≫ g).app (AsSmall.down.obj (σ.obj i))))).val =
+      ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map ((f ≫ g).app (AsSmall.down.obj (σ.obj i))))).val =
       compose A (closedHomEquiv A (Complex A) _ _
-        ((complexToClosed A).map (g.app (AsSmall.down.obj (σ.obj i))))).val
+        ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map (g.app (AsSmall.down.obj (σ.obj i))))).val
         (closedHomEquiv A (Complex A) _ _
-          ((complexToClosed A).map (f.app (AsSmall.down.obj (σ.obj i))))).val (zero_add 0)
-    rw [NatTrans.comp_app, (complexToClosed A).map_comp, closedHom_comp]
+          ((_root_.SerrePositivity.ComplexLimits.complexToClosed A).map (f.app (AsSmall.down.obj (σ.obj i))))).val (zero_add 0)
+    rw [NatTrans.comp_app, (_root_.SerrePositivity.ComplexLimits.complexToClosed A).map_comp, closedHom_comp]
 
 end SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization

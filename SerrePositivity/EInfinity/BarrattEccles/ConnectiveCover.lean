@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Operad.ConnectiveCover
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.ConnectiveCover
 public import SerrePositivity.EInfinity.BarrattEccles.OperadStructure
 public import SerrePositivity.EInfinity.BarrattEccles.Degrees
 
@@ -28,10 +28,10 @@ lemma arity_nonpositive (n : ℕ) : ((operad A).arity n).IsStrictlyLE 0 := by
   exact complex_isZero_positive A n i hi
 
 def connectiveCover (B : (operad A).Algebra) : (operad A).Algebra :=
-  Operad.Algebra.connectiveCover (arity_nonpositive A) B
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.connectiveCover (arity_nonpositive A) B
 
 def connectiveCoverInclusion (B : (operad A).Algebra) : connectiveCover A B ⟶ B :=
-  Operad.Algebra.connectiveCoverInclusion (arity_nonpositive A) B
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.connectiveCoverInclusion (arity_nonpositive A) B
 
 lemma connectiveCoverInclusion_quasiIso (B : (operad A).Algebra) [B.carrier.IsLE 0] :
     QuasiIso (connectiveCoverInclusion A B).hom := by

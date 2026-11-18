@@ -30,14 +30,14 @@ def remainingValue (n i a : ℕ) : ℕ := if a < i then a else a + n - 1
 使われ方：部分合成の残りの入力への作用を記述する。 -/
 def remainingPosition (m n : ℕ) (i : Fin (m + 1))
     (a : {a : Fin (m + 1) // a ≠ i}) : Fin (m + n) :=
-  (operadInsertionEquiv m n i).symm (Sum.inl a)
+  (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i).symm (Sum.inl a)
 
 /-- 概要：挿入区間の内側の入力の位置（Berger–Fresse §0.10）。
 方針：挿入分解の逆同値を右成分で評価する。
 規約：内側の位置 a の出力番号は i+a である。
 使われ方：部分合成の内側の入力への作用を記述する。 -/
 def insertedPosition (m n : ℕ) (i : Fin (m + 1)) (a : Fin n) : Fin (m + n) :=
-  (operadInsertionEquiv m n i).symm (Sum.inr a)
+  (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i).symm (Sum.inr a)
 
 /-- 概要：残りの入力の位置の値は自然数の挿入公式に一致する（Berger–Fresse §0.10）。
 方針：挿入分解の逆写像の定義を計算する。
@@ -46,7 +46,7 @@ def insertedPosition (m n : ℕ) (i : Fin (m + 1)) (a : Fin n) : Fin (m + n) :=
 lemma remainingPosition_val (m n : ℕ) (i : Fin (m + 1))
     (a : {a : Fin (m + 1) // a ≠ i}) :
     (remainingPosition m n i a).val = remainingValue n i.val a.val.val := by
-  simp only [remainingPosition, operadInsertionEquiv, Equiv.coe_fn_symm_mk, remainingValue]
+  simp only [remainingPosition, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv, Equiv.coe_fn_symm_mk, remainingValue]
   split_ifs <;> rfl
 
 /-- 概要：挿入区間の位置の値は二つの入力番号の和である（Berger–Fresse §0.10）。
@@ -64,7 +64,7 @@ lemma remainingPosition_ne_inserted (m n : ℕ) (i : Fin (m + 1))
     (a : {a : Fin (m + 1) // a ≠ i}) (b : Fin n) :
     remainingPosition m n i a ≠ insertedPosition m n i b := by
   intro h
-  cases (operadInsertionEquiv m n i).symm.injective h
+  cases (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInsertionEquiv m n i).symm.injective h
 
 /-- 概要：置換の部分合成は残りの入力を外側の置換で動かす（Berger–Fresse §0.10）。
 方針：内側の置換が残りの入力を固定することと外側置換の値の公式を使う。
@@ -74,13 +74,13 @@ lemma permutationComposition_remaining (m n : ℕ) (i : Fin (m + 1))
     (σ : Equiv.Perm (Fin (m + 1))) (τ : Equiv.Perm (Fin n))
     (a : {a : Fin (m + 1) // a ≠ i}) :
     permutationComposition m n i σ τ (remainingPosition m n i a) =
-      remainingPosition m n (σ i) ((operadRemainingEquiv m i σ) a) := by
-  have hinner : operadInnerPermutation m n i τ (remainingPosition m n i a) =
+      remainingPosition m n (σ i) ((_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadRemainingEquiv m i σ) a) := by
+  have hinner : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation m n i τ (remainingPosition m n i a) =
       remainingPosition m n i a := by
-    simp only [remainingPosition, operadInnerPermutation, Equiv.trans_apply,
+    simp only [remainingPosition, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation, Equiv.trans_apply,
       Equiv.apply_symm_apply, Equiv.sumCongr_apply, Sum.map_inl, Equiv.refl_apply]
   rw [permutationComposition, Equiv.Perm.mul_apply, hinner]
-  exact operadOuterPermutation_remaining m n i σ a
+  exact _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation_remaining m n i σ a
 
 /-- 概要：置換の部分合成は挿入区間の入力を内側の置換で動かす（Berger–Fresse §0.10）。
 方針：内側置換の区間内の値と外側置換の区間移動の公式を続けて使う。
@@ -92,8 +92,8 @@ lemma permutationComposition_inside (m n : ℕ) (i : Fin (m + 1))
       insertedPosition m n (σ i) (τ a) := by
   change permutationComposition m n i σ τ ⟨i.val + a.val, by omega⟩ =
     ⟨(σ i).val + (τ a).val, by have h := (σ i).isLt; have h' := (τ a).isLt; omega⟩
-  rw [permutationComposition, Equiv.Perm.mul_apply, operadInnerPermutation_inside,
-    operadOuterPermutation_inside]
+  rw [permutationComposition, Equiv.Perm.mul_apply, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation_inside,
+    _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation_inside]
 
 /-- 概要：残りの入力に対する部分合成の値を自然数で表す（Berger–Fresse §0.10）。
 方針：残りの入力の作用の公式に位置の値の公式を適用する。

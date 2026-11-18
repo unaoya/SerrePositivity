@@ -43,7 +43,7 @@ lemma gammaUnitCircle_cohomology :
     (((homologyFunctor (ModuleCat A) (.up ℤ) 0).shiftIso
       (1 : ℤ) (-1 : ℤ) (0 : ℤ) (by decide)).app (𝟙_ (Complex A))).hom.hom
         (Multiplicative.toAdd (gammaPiCohomologyEquiv A ((𝟙_ (Complex A))⟦(1 : ℤ)⟧) 0
-          (unitCircleClass A))) = HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _) := by
+          (unitCircleClass A))) = _root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (𝟙 _) := by
   exact congrArg Multiplicative.toAdd (unitCircle_homology A)
 
 /-- 基本円の指定自己同型による像は、実単位の逆像の H⁰ の類になる。 -/
@@ -53,7 +53,7 @@ lemma gammaUnitShiftAction_cohomology :
         (Multiplicative.toAdd (gammaPiCohomologyEquiv A ((𝟙_ (Complex A))⟦(1 : ℤ)⟧) 0
           (pointedGroupMap 0 ((gammaPointedFunctor A).map (unitShiftAutomorphism A).hom)
             (unitCircleClass A)))) =
-      HomologyZero.unitClass (𝟙_ (Complex A)) (unitDeshiftAutomorphism A).hom := by
+      _root_.SerrePositivity.HomologyZero.unitClass (𝟙_ (Complex A)) (unitDeshiftAutomorphism A).hom := by
   let sh := (homologyFunctor (ModuleCat A) (.up ℤ) 0).shiftIso
     (1 : ℤ) (-1 : ℤ) (0 : ℤ) (by decide)
   have hn := sh.hom.naturality (unitDeshiftAutomorphism A).hom

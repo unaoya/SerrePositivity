@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.ExtendedTruncationRestriction
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ExtendedTruncationRestriction
 
 /-!
 概要：smart切断包含の境界外の成分を元の項同型で計算する。
@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.HomologicalAlgebra
 open CategoryTheory HomologicalComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable {A : Type u} [CommRing A]
 
 /-- 境界外では切断からrestrictionへの射は元の項同型そのもの。 -/
@@ -42,6 +42,6 @@ theorem extendedTruncationInclusion_nonboundary (H : Complex A)
     ((H.truncLE' e).extendXIso e hi).inv ≫
       ((H.truncLEIso e).inv ≫ HomologicalComplex.ιTruncLE H e).f i =
       (H.truncLE'XIso e hi hn).hom := by
-  rw [extendedTruncationInclusion_restriction, truncLEToRestriction_nonboundary H e hi hn]
+  rw [_root_.SerrePositivity.ComplexLimits.extendedTruncationInclusion_restriction, truncLEToRestriction_nonboundary H e hi hn]
 
 end SerrePositivity.HomologicalAlgebra

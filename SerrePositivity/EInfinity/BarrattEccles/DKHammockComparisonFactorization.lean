@@ -25,7 +25,7 @@ lemma cofibrantAlgebraDKHammockComparisonIso_factorization :
     (cofibrantAlgebraDKHammockComparisonIso A X Y).hom =
       (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
         AnodyneHomotopy.anodyneQ.map (cofibrantAlgebraHammockInclusionMap A X Y) := by
-  have := Hammock.anodyneQ_map_isIso_of_weak
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.anodyneQ_map_isIso_of_weak
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison (cofibrantAlgebraRelativeCategory A) X Y)
     (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence
       (cofibrantAlgebraRelativeCategory A) X Y)

@@ -9,6 +9,7 @@ import SerreBlueprint.Paper.Section3
 import SerreBlueprint.Paper.Section4
 import SerreBlueprint.Paper.Section5
 import SerreBlueprint.Paper.External
+import SerreBlueprint.Paper.Supplement
 import SerreBlueprint.CLMST.Section1
 import SerreBlueprint.CLMST.Section2
 import SerreBlueprint.CLMST.Section3
@@ -35,35 +36,9 @@ import SerreBlueprint.BS.Section15
 import SerreBlueprint.BS.Section16
 import SerreBlueprint.BS.Section17
 import SerreBlueprint.BS.Section18
-import SerreBlueprint.BS17.Section1
-import SerreBlueprint.BS17.Section2
-import SerreBlueprint.BS17.Section3
-import SerreBlueprint.BS17.Section4
-import SerreBlueprint.BS17.Section5
-import SerreBlueprint.BS17.Section6
-import SerreBlueprint.BS17.Section7
-import SerreBlueprint.BS17.Section8
-import SerreBlueprint.BS17.Section9
-import SerreBlueprint.BS17.Section10
-import SerreBlueprint.BS17.Section11
-import SerreBlueprint.BS17.Section12
-import SerreBlueprint.BM18.Section1
-import SerreBlueprint.BM18.Section2
-import SerreBlueprint.BM18.Section3
-import SerreBlueprint.BM18.Section4
-import SerreBlueprint.BM18.Section5
-import SerreBlueprint.BM18.Section6
-import SerreBlueprint.BM18.Section7
-import SerreBlueprint.Rydh.Section1
-import SerreBlueprint.Rydh.Section2
-import SerreBlueprint.Rydh.Section3
-import SerreBlueprint.Rydh.Section4
-import SerreBlueprint.Rydh.Section5
-import SerreBlueprint.Rydh.Section6
-import SerreBlueprint.Rydh.Section7
-import SerreBlueprint.Rydh.Section8
-import SerreBlueprint.Rydh.SectionA
-import SerreBlueprint.Rydh.SectionB
+import SerreBlueprint.VDescent.BS17
+import SerreBlueprint.VDescent.BM18
+import SerreBlueprint.VDescent.Rydh
 import SerreBlueprint.Kerodon.Section1_1
 import SerreBlueprint.Kerodon.Section1_2
 import SerreBlueprint.Kerodon.Section1_3
@@ -133,27 +108,25 @@ tag := "serre-blueprint"
 
 本論文（OpenAI, Positivity of Serre's Intersection Multiplicity, 2026-09-23）と、本論文と本体が使う文献の項目ごとに、SerrePositivity と Mathlib の対応する Lean の宣言を結んだブループリント。
 各ノードの本文は対応表（`research/` の各 `-coverage`）の照合の理由（日本語の要約）と解説の原稿で、原典の本文の写しではない。
-Lean の宣言に結ぶのは、原典どおりと判定したもの（本体・Mathlib）だけ。一部（partial）・未証明の入力に依存するもの（interface）は本文に宣言名を挙げる。
+各ノードの頭の「主張」は原典の主張の要約（`statements.csv`）、その下は対応表の照合の理由。対応表の状態が「なし」でない項目は Lean の宣言に結ぶ。一部（原典どおりではない）・未証明の入力に依存するものは、カードの札と依存グラフの色で見分ける。
 章のファイルと、この入口は `blueprint/scripts/` の生成器が対応表から作る。手で直さない。
 
-*部ごとの状態*
+*部ごとの目標と状態*
 
-- 本論文：75 項目（本体 37、一部 8、未証明の入力に依存 13、なし 17）
-- CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）：147 項目（本体 4、一部 20、未証明の入力に依存 6、なし 117）
-- BS（Bhatt–Scholze, Prisms and prismatic cohomology、著者版）：211 項目（本体 25、一部 46、未証明の入力に依存 6、なし 134）
-- BS17（Bhatt–Scholze, Projectivity of the Witt vector affine Grassmannian, arXiv 1507.06490v3）：171 項目（本体 2、一部 9、なし 160）
-- BM18（Bhatt–Mathew, The arc-topology, arXiv 1807.04725v4）：171 項目（本体 8、Mathlib 1、一部 14、なし 148）
-- Rydh（Submersions and effective descent of étale morphisms, arXiv 0710.2488v3）：111 項目（Mathlib 2、一部 13、なし 96）
-- Kerodon 第 1 章 The Language of ∞-Categories：180 項目（本体 20、Mathlib 83、両方 9、一部 18、なし 50）
-- Kerodon 第 2 章 Examples of ∞-Categories：213 項目（本体 19、Mathlib 40、一部 33、なし 121）
-- Kerodon 第 3 章 Kan Complexes：339 項目（本体 48、Mathlib 17、一部 42、なし 232）
-- Kerodon 第 4 章 The Homotopy Theory of ∞-Categories：588 項目（本体 104、Mathlib 36、一部 130、なし 318）
-- Kerodon 第 5 章 Fibrations of ∞-Categories：345 項目（本体 45、Mathlib 6、一部 85、なし 209）
-- Kerodon 第 6 章 Adjoint Functors：145 項目（本体 16、Mathlib 20、一部 44、なし 65）
-- Kerodon 第 7 章 Limits and Colimits：519 項目（本体 53、Mathlib 3、一部 145、なし 318）
-- Kerodon 第 8 章 The Yoneda Embedding：483 項目（本体 38、Mathlib 8、一部 74、なし 363）
-- Kerodon 第 9 章 Large ∞-Categories：597 項目（本体 31、Mathlib 6、一部 137、なし 423）
-- Kerodon 第 10 章 Exactness and Animation：144 項目（本体 14、Mathlib 2、一部 10、なし 118）
+- 本論文：主定理（Theorem 1.1、Serre の交点重複度の正値性）。75 項目（本体 37、一部 8、未証明の入力に依存 13、なし 17）
+- CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）：本論文が使う正規化長と perfectoid の重複度の結果（§2.2 ほか）。147 項目（本体 4、一部 20、未証明の入力に依存 6、なし 117）
+- BS（Bhatt–Scholze, Prisms and prismatic cohomology、著者版）：本論文と CLMST が使う perfectoid 化（§7・§8）と、その土台の δ 環・prism（§2・§3）。211 項目（本体 25、一部 46、未証明の入力に依存 6、なし 134）
+- v 降下（目標：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8。BS17・BM18・Rydh の必要な項目）：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8（BS Proposition 8.10 の arc 層性の入力）。49 項目（本体 10、Mathlib 3、一部 36）
+- Kerodon 第 1 章 The Language of ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。180 項目（本体 20、Mathlib 83、両方 9、一部 18、なし 50）
+- Kerodon 第 2 章 Examples of ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。213 項目（本体 19、Mathlib 40、一部 33、なし 121）
+- Kerodon 第 3 章 Kan Complexes：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。339 項目（本体 48、Mathlib 17、一部 42、なし 232）
+- Kerodon 第 4 章 The Homotopy Theory of ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。588 項目（本体 104、Mathlib 36、一部 130、なし 318）
+- Kerodon 第 5 章 Fibrations of ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。345 項目（本体 45、Mathlib 6、一部 85、なし 209）
+- Kerodon 第 6 章 Adjoint Functors：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。145 項目（本体 16、Mathlib 20、一部 44、なし 65）
+- Kerodon 第 7 章 Limits and Colimits：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。519 項目（本体 53、Mathlib 3、一部 145、なし 318）
+- Kerodon 第 8 章 The Yoneda Embedding：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。483 項目（本体 38、Mathlib 8、一部 74、なし 363）
+- Kerodon 第 9 章 Large ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。597 項目（本体 31、Mathlib 6、一部 137、なし 423）
+- Kerodon 第 10 章 Exactness and Animation：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。144 項目（本体 14、Mathlib 2、一部 10、なし 118）
 
 # 本論文
 %%%
@@ -167,6 +140,7 @@ tag := "part-paper"
 {include 1 SerreBlueprint.Paper.Section4}
 {include 1 SerreBlueprint.Paper.Section5}
 {include 1 SerreBlueprint.Paper.External}
+{include 1 SerreBlueprint.Paper.Supplement}
 
 # CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）
 %%%
@@ -208,55 +182,15 @@ tag := "part-bs"
 {include 1 SerreBlueprint.BS.Section17}
 {include 1 SerreBlueprint.BS.Section18}
 
-# BS17（Bhatt–Scholze, Projectivity of the Witt vector affine Grassmannian, arXiv 1507.06490v3）
+# v 降下（目標：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8。BS17・BM18・Rydh の必要な項目）
 %%%
 number := false
-tag := "part-bs17"
+tag := "part-vdescent"
 %%%
 
-{include 1 SerreBlueprint.BS17.Section1}
-{include 1 SerreBlueprint.BS17.Section2}
-{include 1 SerreBlueprint.BS17.Section3}
-{include 1 SerreBlueprint.BS17.Section4}
-{include 1 SerreBlueprint.BS17.Section5}
-{include 1 SerreBlueprint.BS17.Section6}
-{include 1 SerreBlueprint.BS17.Section7}
-{include 1 SerreBlueprint.BS17.Section8}
-{include 1 SerreBlueprint.BS17.Section9}
-{include 1 SerreBlueprint.BS17.Section10}
-{include 1 SerreBlueprint.BS17.Section11}
-{include 1 SerreBlueprint.BS17.Section12}
-
-# BM18（Bhatt–Mathew, The arc-topology, arXiv 1807.04725v4）
-%%%
-number := false
-tag := "part-bm18"
-%%%
-
-{include 1 SerreBlueprint.BM18.Section1}
-{include 1 SerreBlueprint.BM18.Section2}
-{include 1 SerreBlueprint.BM18.Section3}
-{include 1 SerreBlueprint.BM18.Section4}
-{include 1 SerreBlueprint.BM18.Section5}
-{include 1 SerreBlueprint.BM18.Section6}
-{include 1 SerreBlueprint.BM18.Section7}
-
-# Rydh（Submersions and effective descent of étale morphisms, arXiv 0710.2488v3）
-%%%
-number := false
-tag := "part-rydh"
-%%%
-
-{include 1 SerreBlueprint.Rydh.Section1}
-{include 1 SerreBlueprint.Rydh.Section2}
-{include 1 SerreBlueprint.Rydh.Section3}
-{include 1 SerreBlueprint.Rydh.Section4}
-{include 1 SerreBlueprint.Rydh.Section5}
-{include 1 SerreBlueprint.Rydh.Section6}
-{include 1 SerreBlueprint.Rydh.Section7}
-{include 1 SerreBlueprint.Rydh.Section8}
-{include 1 SerreBlueprint.Rydh.SectionA}
-{include 1 SerreBlueprint.Rydh.SectionB}
+{include 1 SerreBlueprint.VDescent.BS17}
+{include 1 SerreBlueprint.VDescent.BM18}
+{include 1 SerreBlueprint.VDescent.Rydh}
 
 # Kerodon 第 1 章 The Language of ∞-Categories
 %%%

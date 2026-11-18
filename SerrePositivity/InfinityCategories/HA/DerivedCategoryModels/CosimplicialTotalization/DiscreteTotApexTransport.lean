@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.DiscreteTotFunctorCone
-public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransIso
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.DerivedNatTransIso
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LimitConeVertexTransport
 
 /-!
@@ -23,7 +23,7 @@ open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCateg
 open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
 open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
@@ -42,7 +42,7 @@ theorem discreteTotFunctorVertex_curry_fst {B D : SSet.{u+1}} (F : B ⟶ D) :
 /-- 元のraw離散全錐の頂点は同じ全積Tot関手。 -/
 theorem rawDiscreteTotFunctorCone_vertex :
     (rawDiscreteTotFunctorCone A).vertex =
-      functorVertex (nerveMap (discreteTotalFunctor A) ≫ complexOrdinaryDerivedSource A) := by
+      functorVertex (nerveMap (discreteTotalFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) := by
   rw [JoinCone.vertex_eq, rawDiscreteTotFunctorCone, ← curry_natural_left]
   have he :
       (nerve (CosimplicialObject (ModuleCat.{u} A)) ◁
@@ -68,19 +68,19 @@ theorem rawDiscreteTotFunctorCone_vertex :
 
 /-- 同じ自然同型を全通常導来入口へ移した、交代余面から積Totへの全関手同型。 -/
 def discreteTotCochainDerivedIso :
-    FunctorIso (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A)
-      (nerveMap (discreteTotalFunctor A) ≫ complexOrdinaryDerivedSource A) :=
-  complexOrdinaryDerivedNatTransIso A (discreteTotalCochainNatIso A).inv
+    FunctorIso (nerveMap (discreteCochainFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A)
+      (nerveMap (discreteTotalFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) :=
+  _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedNatTransIso A (discreteTotalCochainNatIso A).inv
     (fun M => by infer_instance)
 
 /-- 全関手圏で同じ自然同型に沿って頂点を移すと、同じ交代余面頂点の極限錐が得られる。 -/
 theorem exists_discreteCochainFunctorCone :
     ∃ c : JoinCone (rawDiscreteTotFunctorDiagram A), IsLimitCone c ∧
       c.vertex = functorVertex (nerveMap (discreteCochainFunctor A) ≫
-        complexOrdinaryDerivedSource A) := by
+        _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A) := by
   let e := (discreteTotCochainDerivedIso A).edge
   let f : SSet.Edge
-      (functorVertex (nerveMap (discreteCochainFunctor A) ≫ complexOrdinaryDerivedSource A))
+      (functorVertex (nerveMap (discreteCochainFunctor A) ≫ _root_.SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource A))
       (rawDiscreteTotFunctorCone A).vertex :=
     ⟨e.edge, e.src_eq, e.tgt_eq.trans (rawDiscreteTotFunctorCone_vertex A).symm⟩
   have hf : SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge f := by

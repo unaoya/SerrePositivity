@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalPreadditive
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 /-- 同じ smart 切断の実 Γ。零元の型もこの単体的加群から読む。 -/
@@ -38,11 +38,11 @@ lemma gammaPair_zero_left (K L : Complex A) (n : SimplexCategory)
     (gammaPair A K L).app (Opposite.op n)
       ((0 : (gammaModule A K).obj (Opposite.op n)), y) =
         (0 : (gammaModule A (K ⊗ L)).obj (Opposite.op n)) := by
-  change normalizedSimplexHomEquiv A (K ⊗ L) n
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (K ⊗ L) n
     (simplexPairEvaluation A n
-      ((normalizedSimplexHomEquiv A K n).symm
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm
         (0 : (gammaModule A K).obj (Opposite.op n)))
-      ((normalizedSimplexHomEquiv A L n).symm y)) = _
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A L n).symm y)) = _
   rw [gammaProbeEquiv_symm_zero, simplexPairEvaluation_zero_left, gammaProbeEquiv_zero]
 
 lemma gammaPair_zero_right (K L : Complex A) (n : SimplexCategory)
@@ -50,9 +50,9 @@ lemma gammaPair_zero_right (K L : Complex A) (n : SimplexCategory)
     (gammaPair A K L).app (Opposite.op n)
       (x, (0 : (gammaModule A L).obj (Opposite.op n))) =
         (0 : (gammaModule A (K ⊗ L)).obj (Opposite.op n)) := by
-  change normalizedSimplexHomEquiv A (K ⊗ L) n
-    (simplexPairEvaluation A n ((normalizedSimplexHomEquiv A K n).symm x)
-      ((normalizedSimplexHomEquiv A L n).symm
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (K ⊗ L) n
+    (simplexPairEvaluation A n ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm x)
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A L n).symm
         (0 : (gammaModule A L).obj (Opposite.op n)))) = _
   rw [gammaProbeEquiv_symm_zero, simplexPairEvaluation_zero_right, gammaProbeEquiv_zero]
 

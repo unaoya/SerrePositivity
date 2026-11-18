@@ -4,16 +4,38 @@ import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 import Mathlib.CategoryTheory.Presentable.LocallyPresentable
 import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.Accessibility
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.Accessible
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleIndRepresentation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleReflectiveImage
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AdjunctionHomPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.RelativeCardinalAccessibility
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ComponentCompactPullback
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Definition
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IndComplete
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PullbackFilteredColimits
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactGeneration
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactIndCompletion
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndAccessible
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactModelGenerators
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorPresentable
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndCardinalChange
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeAdjointFunctorCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ObjectCompactCardinals
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PiPresentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Presentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PullbackCompactObjects
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ReflectiveAccessibility
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LeftAdjointAllColimitPreservation
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.4 Compact Generation and Accessibility" =>
 %%%
@@ -25,6 +47,8 @@ Kerodon の 9.4 節（[Tag 06GT](https://kerodon.net/tag/06GT)）の項目と、
 
 :::definition "kerodon_9_4_0_1" (lean := "CategoryTheory.IsCardinalAccessibleCategory, CategoryTheory.IsAccessibleCategory")
 Kerodon Definition 9.4.0.1（[Tag 06GU](https://kerodon.net/tag/06GU)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏 $`C` がアクセス可能であるとは、ある小さい正則基数 $`\kappa` に対し、小さい $`\kappa`-フィルター付き余極限を持ち、全対象が $`\kappa`-コンパクト対象のそのような余極限として表せることである。さらに $`\kappa`-コンパクト対象の充満部分圏が本質的に小さいことを課す。
 
 仮定：通常圏 C と小さい宇宙での正則 κ（Kerodon と一致）。結論：IsCardinalAccessibleCategory は小 κ-filtered 余極限と κ-presentable 生成を要求し、κ-presentable 全体の本質小性も得られる。IsAccessibleCategory はそのような κ の存在（原文と一致）。
 
@@ -39,21 +63,21 @@ tag := "kerodon-9-4-1"
 
 Kerodon [Tag 0673](https://kerodon.net/tag/0673)
 
-:::definition "kerodon_9_4_1_1"
+:::definition "kerodon_9_4_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating")
 Kerodon Definition 9.4.1.1（[Tag 0674](https://kerodon.net/tag/0674)）。対応表の状態：一部。
+
+*主張*　無限圏がコンパクト生成されるとは、小さいフィルター付き余極限を持ち、全対象をコンパクト対象の小さいフィルター付き図式の余極限として表せることである。
 
 IsKappaAccessibleとIsKappaCompactGeneratingのfieldsは、κ=ℵ0で小さいcompact generator圏の存在も仮定し、同じCのκ-filtered余極限存在と各対象のcompact図式による表示を直接与える。原文の生成族全体に小ささを要求しない定義全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating`
-
 :::
 
-:::definition "kerodon_9_4_1_5"
+:::definition "kerodon_9_4_1_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating")
 Kerodon Definition 9.4.1.5（[Tag 0676](https://kerodon.net/tag/0676)）。対応表の状態：一部。
 
-IsKappaAccessibleとIsKappaCompactGeneratingのfieldsは、同じκで小さいcompact generator圏の存在も仮定し、同じCのκ-filtered余極限存在と各対象のcompact図式による表示を直接与える。原文の生成族全体に小ささを要求しない定義全体は含まない。
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏が $`\kappa`-コンパクト生成されるとは、小さい $`\kappa`-フィルター付き余極限を持ち、全対象が $`\kappa`-コンパクト対象の小さい $`\kappa`-フィルター付き余極限として表せることである。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating`
+IsKappaAccessibleとIsKappaCompactGeneratingのfieldsは、同じκで小さいcompact generator圏の存在も仮定し、同じCのκ-filtered余極限存在と各対象のcompact図式による表示を直接与える。原文の生成族全体に小ささを要求しない定義全体は含まない。
 
 :::
 
@@ -75,30 +99,30 @@ B6型照合：κ-accessible ⇔ ある小さい A で Ind\_κ(A) ≃ C。λ=∞�
 
 :::
 
-:::corollary "kerodon_9_4_1_13"
+:::corollary "kerodon_9_4_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.exists_indRepresentation")
 Kerodon Corollary 9.4.1.13（[Tag 067C](https://kerodon.net/tag/067C)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏 $`C` が $`\kappa`-コンパクト生成されることは、ある無限圏の $`\operatorname{Ind}_\kappa`-完備化であることと同値である。元の無限圏を $`C` の充満部分圏に選ぶことができ、$`\kappa`-コンパクト対象の充満部分圏を選んでもよい。
 
 Cが同じκでaccessibleという小さい生成圏の仮定も加えると、isKappaAccessible\_iff\_indEquivalenceが原文(2)の同じCのInd表示を直接返す。任意の大きさのcompact生成と(3)の全比較は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.exists_indRepresentation`
-
 :::
 
-:::corollary "kerodon_9_4_1_14"
+:::corollary "kerodon_9_4_1_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_indEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence")
 Kerodon Corollary 9.4.1.14（[Tag 067D](https://kerodon.net/tag/067D)）。対応表の状態：一部。
+
+*主張*　無限圏 $`C` がコンパクト生成されることは、ある無限圏の $`\operatorname{Ind}`-完備化であることと同値である。元の無限圏を $`C` の充満部分圏に選ぶことができ、コンパクト対象の充満部分圏を選べる。
 
 Cが同じκ=ℵ0でaccessibleという小さい生成圏の仮定も加えると、isKappaAccessible\_iff\_indEquivalenceが原文(2)の同じCのInd表示を直接返す。任意の大きさのcompact生成と(3)の全比較は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_indEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence`
-
 :::
 
-:::corollary "kerodon_9_4_1_17"
+:::corollary "kerodon_9_4_1_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_indHomTests_native")
 Kerodon Corollary 9.4.1.17（[Tag 06H0](https://kerodon.net/tag/06H0)）。対応表の状態：一部。
 
-標的Cを小準圏Aの標準Indκ(A)、数値λ制限のない全小κ-filtered形状に限ると、isKappaAccessibleFunctor\_of\_indHomTests\_nativeのμ=κへ全compact対象のテストを特殊化して同じGの保存性を得る。任意二濃度の場合は含まない。
+*主張*　正則基数 $`\kappa\leq\lambda` で、無限圏 $`C` が $`(\kappa,\lambda)`-コンパクト生成、$`D` が $`(\kappa,\lambda)`-余完備とする。$`G:D\to C` が $`(\kappa,\lambda)`-finitary であることは、全ての $`(\kappa,\lambda)`-コンパクト対象 $`c` について $`\operatorname{Hom}_C(c,G(-)):D\to S_{<\mu}` がそうであることと同値であり、$`\mu\geq\lambda` は $`C` が局所 $`\mu`-小となる正則基数を用いる。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_indHomTests_native`
+標的Cを小準圏Aの標準Indκ(A)、数値λ制限のない全小κ-filtered形状に限ると、isKappaAccessibleFunctor\_of\_indHomTests\_nativeのμ=κへ全compact対象のテストを特殊化して同じGの保存性を得る。任意二濃度の場合は含まない。
 
 :::
 
@@ -111,21 +135,21 @@ B6型照合：全単射としての主張はない。冪等完備 C ≃ Ind\_κ(
 
 :::
 
-:::corollary "kerodon_9_4_1_19"
+:::corollary "kerodon_9_4_1_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence")
 Kerodon Corollary 9.4.1.19（[Tag 067L](https://kerodon.net/tag/067L)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa` に対し、$`\operatorname{Ind}_\kappa`-完備化は、冪等完備な無限圏の同値類と $`\kappa`-コンパクト生成無限圏の同値類の全単射を誘導する。
 
 compactGenerationEquivalenceは、冪等完備な小さいCをIndκへ送りcompact対象の全部分圏へ戻したとき同じCを回収する同値を直接与える。全同値類への全単射の構成全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence`
-
 :::
 
-:::corollary "kerodon_9_4_1_20"
+:::corollary "kerodon_9_4_1_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndOmegaEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_indEquivalence")
 Kerodon Corollary 9.4.1.20（[Tag 067M](https://kerodon.net/tag/067M)）。対応表の状態：一部。
 
-compactGenerationEquivalenceのκ=ℵ0は、冪等完備な小さいCをIndκへ送りcompact対象の全部分圏へ戻したとき同じCを回収する同値を直接与える。全同値類への全単射の構成全体は含まない。
+*主張*　$`\operatorname{Ind}`-完備化は、冪等完備な無限圏の同値類とコンパクト生成無限圏の同値類の全単射を誘導する。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndOmegaEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_indEquivalence`
+compactGenerationEquivalenceのκ=ℵ0は、冪等完備な小さいCをIndκへ送りcompact対象の全部分圏へ戻したとき同じCを回収する同値を直接与える。全同値類への全単射の構成全体は含まない。
 
 :::
 
@@ -156,21 +180,21 @@ tag := "kerodon-9-4-2"
 
 Kerodon [Tag 06H3](https://kerodon.net/tag/06H3)
 
-:::definition "kerodon_9_4_2_1"
+:::definition "kerodon_9_4_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_hom_preservesKappaFilteredColimits_iff")
 Kerodon Definition 9.4.2.1（[Tag 06H4](https://kerodon.net/tag/06H4)）。対応表の状態：一部。
+
+*主張*　コンパクト生成無限圏 $`C` から小さいフィルター付き余極限を持つ無限圏 $`D` への関手がコンパクトであるとは、finitary でコンパクト対象を保つことである。そのような関手が張る充満部分圏を $`\operatorname{Fun}^{\mathrm c}(C,D)` と書く。
 
 PreservesKappaFilteredColimitsのκ=ℵ0は同じFのfinitaryという定義の一成分を直接与える。compact対象を全てcompactへ送る一般条件とその全部分圏の構成は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_hom_preservesKappaFilteredColimits_iff`
-
 :::
 
-:::definition "kerodon_9_4_2_2"
+:::definition "kerodon_9_4_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image")
 Kerodon Variant 9.4.2.2（[Tag 06H5](https://kerodon.net/tag/06H5)）。対応表の状態：一部。
 
-PreservesKappaFilteredColimitsは同じFのfinitaryという定義の一成分を直接与える。compact対象を全てcompactへ送る一般条件とその全部分圏の構成は含まない。
+*主張*　小さい正則基数 $`\kappa` に対し、$`\kappa`-コンパクト生成無限圏から小さい $`\kappa`-フィルター付き余極限を持つ無限圏への関手は、$`\kappa`-finitary で $`\kappa`-コンパクト対象を保つとき $`\kappa`-コンパクトである。そのような関手が張る充満部分圏を定める。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image`
+PreservesKappaFilteredColimitsは同じFのfinitaryという定義の一成分を直接与える。compact対象を全てcompactへ送る一般条件とその全部分圏の構成は含まない。
 
 :::
 
@@ -213,12 +237,12 @@ tag := "kerodon-9-4-3"
 
 Kerodon [Tag 06YM](https://kerodon.net/tag/06YM)
 
-:::proposition "kerodon_9_4_3_1"
+:::proposition "kerodon_9_4_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveSubcategory_isKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_of_reflection")
 Kerodon Proposition 9.4.3.1（[Tag 06YN](https://kerodon.net/tag/06YN)）。対応表の状態：一部。
 
-Cをℵ0-accessibleかつ全小余完備、部分圏をrepleteとし、その包含のℵ0-filtered余極限保存を与えるとreflectiveSubcategory\_isKappaAccessibleは同じ部分圏のℵ0-accessibility、従ってcompact生成を返す。一般のcompact生成だけの場合は含まない。
+*主張*　コンパクト生成無限圏の反射的部分圏がもとの圏で小さいフィルター付き余極限に閉じているなら、その部分圏もコンパクト生成される。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveSubcategory_isKappaAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_of_reflection`
+Cをℵ0-accessibleかつ全小余完備、部分圏をrepleteとし、その包含のℵ0-filtered余極限保存を与えるとreflectiveSubcategory\_isKappaAccessibleは同じ部分圏のℵ0-accessibility、従ってcompact生成を返す。一般のcompact生成だけの場合は含まない。
 
 :::
 
@@ -431,12 +455,12 @@ tag := "kerodon-9-4-5"
 
 Kerodon [Tag 06J5](https://kerodon.net/tag/06J5)
 
-:::proposition "kerodon_9_4_5_2"
+:::proposition "kerodon_9_4_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isKappaAccessible_of_relativeCardinals, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_pullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentCompactObjects_isPullback")
 Kerodon Proposition 9.4.5.2（[Tag 06J7](https://kerodon.net/tag/06J7)）。対応表の状態：一部。
 
-pullback\_isKappaAccessible\_of\_relativeCardinalsでμを原文のκとし、より小さい正則基数とのcardinal change bound、底のμ-accessibility、strict pullbackとequivalence liftingなど追加入力を置くと同じpullbackのμ-accessibilityを直接返す。一般のcategorical pullbackとcompact対象の逆向きは含まない。
+*主張*　小さい非可算正則基数 $`\kappa` に対し、無限圏の圏論的引き戻し $`C_\pm` を取る。両脚の始域 $`C_-,C_+` が $`\kappa`-コンパクト生成で、三圏とも小さいフィルター付き余極限を持ち、両脚の関手が finitary かつ $`\kappa`-コンパクトなら、$`C_\pm` も $`\kappa`-コンパクト生成である。その対象が $`\kappa`-コンパクトであることは両射影がそうであることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isKappaAccessible_of_relativeCardinals`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_pullback_of_components`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentCompactObjects_isPullback`
+pullback\_isKappaAccessible\_of\_relativeCardinalsでμを原文のκとし、より小さい正則基数とのcardinal change bound、底のμ-accessibility、strict pullbackとequivalence liftingなど追加入力を置くと同じpullbackのμ-accessibilityを直接返す。一般のcategorical pullbackとcompact対象の逆向きは含まない。
 
 :::
 
@@ -604,57 +628,61 @@ Kerodon [Tag 06K5](https://kerodon.net/tag/06K5)
 :::definition "kerodon_9_4_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence")
 Kerodon Definition 9.4.7.1（[Tag 06K6](https://kerodon.net/tag/06K6)）。対応表の状態：本体にある。
 
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏は小さい無限圏の $`\operatorname{Ind}_\kappa`-完備化であるとき $`\kappa`-アクセス可能である。
+
 仮定：Quasicategory C と小さい正則 κ（Kerodon と一致）。結論：IsKappaAccessible κ C と小さい A からの IndInfinity κ A との圏同値の存在を比較（原文の Ind 完備化の定義と一致）。
 
 :::
 
-:::proposition "kerodon_9_4_7_2"
+:::proposition "kerodon_9_4_7_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating")
 Kerodon Proposition 9.4.7.2（[Tag 06K7](https://kerodon.net/tag/06K7)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏が $`\kappa`-アクセス可能であることは、本質的に小さい無限圏の $`\operatorname{Ind}_\kappa`-完備化であることと同値である。これは $`\kappa`-コンパクト生成で、$`\kappa`-コンパクト対象の充満部分圏が本質的に小さいこととも同値である。
 
 isKappaAccessible\_iff\_indEquivalenceは小さいAからの同じCのIndκ表示という条件(1)の実現を直接与える。essentially smallへの拡張とcompact対象全体の小性を含む全同値は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating`
-
 :::
 
-:::corollary "kerodon_9_4_7_3"
+:::corollary "kerodon_9_4_7_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indInfinity_isKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndYoneda_isIdempotentCompletion, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ind_isIdempotentComplete")
 Kerodon Corollary 9.4.7.3（[Tag 06K8](https://kerodon.net/tag/06K8)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa` に対し、$`\operatorname{Ind}_\kappa`-完備化は、小さい冪等完備な無限圏の同値類と $`\kappa`-アクセス可能な無限圏の同値類の全単射を誘導する。
 
 indInfinity\_isKappaAccessibleは同じ小さい冪等完備CをIndκへ送った圏のκ-accessibilityを直接返す。全同値類の単射・全射の両方はこの引用だけでは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indInfinity_isKappaAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndYoneda_isIdempotentCompletion`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ind_isIdempotentComplete`
-
 :::
 
-:::proposition "kerodon_9_4_7_5"
+:::proposition "kerodon_9_4_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indInfinity_isMuAccessible")
 Kerodon Proposition 9.4.7.5（[Tag 06KA](https://kerodon.net/tag/06KA)）。対応表の状態：一部。
+
+*主張*　小さい正則基数 $`\kappa\trianglelefteq\lambda` に対し、$`\kappa`-アクセス可能な無限圏は $`\lambda`-アクセス可能である。
 
 κ⊴λを指数によるIsCardinalChangeBound κ λへ強めるとof\_cardinalChangeBoundは同じCのλ-accessibilityを直接返す。任意の非厳密sharply条件の場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indInfinity_isMuAccessible`
-
 :::
 
-:::corollary "kerodon_9_4_7_6"
+:::corollary "kerodon_9_4_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound")
 Kerodon Corollary 9.4.7.6（[Tag 06KB](https://kerodon.net/tag/06KB)）。対応表の状態：一部。
+
+*主張*　$`\aleph_0`-アクセス可能な無限圏は、任意の小さい正則基数 $`\kappa` に関して $`\kappa`-アクセス可能である。
 
 ℵ0\<κを満たす正則κについてIsCardinalChangeBound ℵ0 κも入力すると、of\_cardinalChangeBoundは同じℵ0-accessibleなCのκ-accessibilityを直接返す。正則性だけからこの追加入力を得たとはしない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound`
-
 :::
 
-:::corollary "kerodon_9_4_7_7"
+:::corollary "kerodon_9_4_7_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_compactCardinal")
 Kerodon Corollary 9.4.7.7（[Tag 06KC](https://kerodon.net/tag/06KC)）。対応表の状態：一部。
 
-IsKappaAccessibleのκ-filtered余極限存在とfiltered性の基数単調性により、同じCの全小λ-filtered余極限存在という前半を直接得る。λ-compact対象全体の小性は含まない。
+*主張*　小さい正則基数 $`\kappa\leq\lambda` に対し、$`\kappa`-アクセス可能な無限圏は小さい $`\lambda`-フィルター付き余極限を持ち、$`\lambda`-コンパクト対象の充満部分圏は本質的に小さい。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_compactCardinal`
+IsKappaAccessibleのκ-filtered余極限存在とfiltered性の基数単調性により、同じCの全小λ-filtered余極限存在という前半を直接得る。λ-compact対象全体の小性は含まない。
 
 :::
 
 :::definition "kerodon_9_4_7_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessible")
 Kerodon Definition 9.4.7.10（[Tag 06KF](https://kerodon.net/tag/06KF)）。対応表の状態：本体にある。
+
+*主張*　無限圏は、ある小さい正則基数 $`\kappa` について $`\kappa`-アクセス可能であるとき、アクセス可能である。
 
 仮定：Quasicategory C（Kerodon と一致）。結論：IsAccessible C は小さい κ に対する IsKappaAccessible κ C の存在で、正則性はその述語に含まれる（原文と一致）。
 
@@ -663,6 +691,8 @@ Kerodon Definition 9.4.7.10（[Tag 06KF](https://kerodon.net/tag/06KF)）。対�
 :::proposition "kerodon_9_4_7_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_larger")
 Kerodon Proposition 9.4.7.15（[Tag 06KM](https://kerodon.net/tag/06KM)）。対応表の状態：本体にある。
 
+*主張*　アクセス可能な無限圏が $`\lambda`-アクセス可能となる小さい正則基数 $`\lambda` は、いくらでも大きく取れる。
+
 仮定：Quasicategory C と IsAccessible C（Kerodon と一致）。結論：任意の小さい σ を上回る μ で IsKappaAccessible μ C。μ の正則性はこの述語から得られる（原文の任意に大きい小正則基数と一致）。
 
 :::
@@ -670,25 +700,27 @@ Kerodon Proposition 9.4.7.15（[Tag 06KM](https://kerodon.net/tag/06KM)）。対
 :::definition "kerodon_9_4_7_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_accessibilityCardinal")
 Kerodon Variant 9.4.7.17（[Tag 06KP](https://kerodon.net/tag/06KP)）。対応表の状態：本体にある。
 
+*主張*　アクセス可能な無限圏の任意の小さい族に対し、全ての成分が $`\lambda`-アクセス可能になる小さい正則基数 $`\lambda` をいくらでも大きく選べる。
+
 仮定：小さい添字型 ι 上の quasicategory の族と各 IsAccessible（Kerodon と一致）。結論：任意の σ を上回る共通の正則 μ で全ての Cᵢ が IsKappaAccessible μ（原文と一致）。
 
 :::
 
-:::corollary "kerodon_9_4_7_18"
+:::corollary "kerodon_9_4_7_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_isPresentable")
 Kerodon Corollary 9.4.7.18（[Tag 06KQ](https://kerodon.net/tag/06KQ)）。対応表の状態：一部。
+
+*主張*　アクセス可能な無限圏の小さい族の直積はアクセス可能である。
 
 各Ciをpresentableにも強めるとpiSSet\_isPresentableの同じ小積はpresentable、従ってaccessibleである。単にaccessibleな因子の場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_isPresentable`
-
 :::
 
-:::corollary "kerodon_9_4_7_19"
+:::corollary "kerodon_9_4_7_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.isAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.compactModel_isKappaCompactGenerating")
 Kerodon Corollary 9.4.7.19（[Tag 06KR](https://kerodon.net/tag/06KR)）。対応表の状態：一部。
 
-IsKappaAccessibleの定義とisAccessibleから、同じCのκ-accessible⇒accessibleという右辺一成分を直接得る。compact生成を併せた全右辺と逆向きは含まない。
+*主張*　小さい正則基数 $`\kappa` に対し、無限圏が $`\kappa`-アクセス可能であることは、アクセス可能かつ $`\kappa`-コンパクト生成であることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.isAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.compactModel_isKappaCompactGenerating`
+IsKappaAccessibleの定義とisAccessibleから、同じCのκ-accessible⇒accessibleという右辺一成分を直接得る。compact生成を併せた全右辺と逆向きは含まない。
 
 :::
 
@@ -750,6 +782,8 @@ Kerodon [Tag 06KX](https://kerodon.net/tag/06KX)
 :::definition "kerodon_9_4_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor")
 Kerodon Definition 9.4.8.1（[Tag 06KY](https://kerodon.net/tag/06KY)）。対応表の状態：本体にある。
 
+*主張*　アクセス可能な無限圏の間の関手は、ある小さい正則基数 $`\kappa` について小さい $`\kappa`-フィルター付き余極限を保つときアクセス可能である。
+
 仮定：写像 F:C→D。定義は C,D の accessible 性を引数に要求しない（Lean が弱い）。結論：小さい正則 κ が存在して F が小 κ-filtered 余極限を保存する（原文と一致）。
 
 :::
@@ -761,12 +795,12 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：圏と関�
 
 :::
 
-:::proposition "kerodon_9_4_8_9"
+:::proposition "kerodon_9_4_8_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.reflectiveImage_isKappaAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveSubcategory_isKappaAccessible")
 Kerodon Proposition 9.4.8.9（[Tag 06U6](https://kerodon.net/tag/06U6)）。対応表の状態：一部。
 
-Cを全小余完備にも強め、同じreplete反射部分圏の包含がある固定κのfiltered余極限を保存するとreflectiveSubcategory\_isKappaAccessibleはその部分圏のκ-accessibilityを返す。原文(4)⇒(2)のこの場合に一致する。
+*主張*　アクセス可能な無限圏 $`C` の同型で閉じた反射的部分圏 $`C'` と反射 $`L` を取る。$`C'` がアクセス可能に埋め込まれていること、$`C'` がアクセス可能であること、包含と $`L` の合成がアクセス可能であることは同値である。これは、ある小さい正則基数 $`\kappa` で $`C` が $`\kappa`-アクセス可能で $`C'` が $`\kappa`-フィルター付き余極限に閉じることとも同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.reflectiveImage_isKappaAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveSubcategory_isKappaAccessible`
+Cを全小余完備にも強め、同じreplete反射部分圏の包含がある固定κのfiltered余極限を保存するとreflectiveSubcategory\_isKappaAccessibleはその部分圏のκ-accessibilityを返す。原文(4)⇒(2)のこの場合に一致する。
 
 :::
 
@@ -777,35 +811,37 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：対象を p
 
 :::
 
-:::proposition "kerodon_9_4_8_12"
+:::proposition "kerodon_9_4_8_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_common_compactCardinal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_accessibilityCardinal")
 Kerodon Proposition 9.4.8.12（[Tag 06L6](https://kerodon.net/tag/06L6)）。対応表の状態：一部。
+
+*主張*　アクセス可能な無限圏 $`C,D` の間の関手 $`F` がアクセス可能であることは、ある小さい正則基数 $`\lambda` で $`C,D` が $`\lambda`-アクセス可能であり $`F` が $`\lambda`-コンパクトであることと同値である。
 
 exists\_common\_accessibilityCardinalを同じ二圏へ適用すると、同じ共通λでのaccessibilityを直接返す。Fiが全λ-compact対象を保存する成分は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_common_compactCardinal`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_accessibilityCardinal`
-
 :::
 
-:::definition "kerodon_9_4_8_15" (uses := "kerodon_1_4_0_1")
+:::definition "kerodon_9_4_8_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_accessibilityCardinal") (uses := "kerodon_1_4_0_1")
 Kerodon Variant 9.4.8.15（[Tag 06L9](https://kerodon.net/tag/06L9)）。対応表の状態：一部。
+
+*主張*　アクセス可能な無限圏の間のアクセス可能な関手の小さい族に対し、すべての始域と終域が $`\lambda`-アクセス可能で、各関手が $`\lambda`-コンパクトとなる小さい正則基数 $`\lambda` をいくらでも大きく取れる。
 
 exists\_common\_accessibilityCardinalを同じ二圏の小さい全族へ適用すると、同じ共通λでのaccessibilityを直接返す。Fiが全λ-compact対象を保存する成分は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_accessibilityCardinal`
-
 :::
 
-:::proposition "kerodon_9_4_8_17"
+:::proposition "kerodon_9_4_8_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_indHomTests_native")
 Kerodon Proposition 9.4.8.17（[Tag 06LB](https://kerodon.net/tag/06LB)）。対応表の状態：一部。
 
-標的を小準圏AのIndκ、全表現可能Homテストが共通の正則μでfiltered余極限を保存することも追加すると、isKappaAccessibleFunctor\_of\_indHomTests\_nativeは同じFのμ-accessibilityを返す。対象ごとに異なる基数しかない場合は含まない。
+*主張*　アクセス可能な無限圏の間の関手 $`F:C\to D` がアクセス可能であることは、各 $`d\in D` で $`\operatorname{Hom}_D(d,F(-)):C\to S` がアクセス可能であることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_indHomTests_native`
+標的を小準圏AのIndκ、全表現可能Homテストが共通の正則μでfiltered余極限を保存することも追加すると、isKappaAccessibleFunctor\_of\_indHomTests\_nativeは同じFのμ-accessibilityを返す。対象ごとに異なる基数しかない場合は含まない。
 
 :::
 
 :::corollary "kerodon_9_4_8_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rightAdjoint_isAccessible, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.adjunction_preservesSmallColimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isAccessibleFunctor")
 Kerodon Corollary 9.4.8.18（[Tag 06LC](https://kerodon.net/tag/06LC)）。対応表の状態：本体にある。
+
+*主張*　アクセス可能な無限圏の間の随伴の左随伴と右随伴は、どちらもアクセス可能である。
 
 仮定：C と D は accessible な準圏で、L ⊣ R を与える（Kerodon と一致）。結論：右随伴の accessibility を直接得て、左随伴は小余極限保存とその accessibility への変換で得る（一致）。
 
@@ -820,12 +856,12 @@ tag := "kerodon-9-4-9"
 
 Kerodon [Tag 06LD](https://kerodon.net/tag/06LD)
 
-:::proposition "kerodon_9_4_9_1"
+:::proposition "kerodon_9_4_9_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorPostcomp_isKappaAccessible")
 Kerodon Proposition 9.4.9.1（[Tag 06LE](https://kerodon.net/tag/06LE)）。対応表の状態：一部。
 
-Cをpresentable、Kを小準圏にも強めるとfunctor\_isPresentableは同じFun(K,C)のpresentability、従ってaccessibilityを直接返す。任意KとaccessibleだけのCは含まない。
+*主張*　小さい単体集合 $`K` とアクセス可能な無限圏 $`C` に対し、関手圏 $`\operatorname{Fun}(K,C)` はアクセス可能である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorPostcomp_isKappaAccessible`
+Cをpresentable、Kを小準圏にも強めるとfunctor\_isPresentableは同じFun(K,C)のpresentability、従ってaccessibilityを直接返す。任意KとaccessibleだけのCは含まない。
 
 :::
 
@@ -847,30 +883,30 @@ Kerodon Corollary 9.4.9.6（[Tag 06LJ](https://kerodon.net/tag/06LJ)）。対応
 
 :::
 
-:::proposition "kerodon_9_4_9_9" (uses := "kerodon_1_4_0_1, kerodon_4_9_5_18, kerodon_9_4_5_10, kerodon_9_4_8_15")
+:::proposition "kerodon_9_4_9_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible") (uses := "kerodon_1_4_0_1, kerodon_4_9_5_18, kerodon_9_4_5_10, kerodon_9_4_8_15")
 Kerodon Proposition 9.4.9.9（[Tag 06LM](https://kerodon.net/tag/06LM)）。対応表の状態：一部。
+
+*主張*　アクセス可能な無限圏の間のアクセス可能な二関手 $`C_-\to C\leftarrow C_+` に対し、そのホモトピーファイバー積はアクセス可能である。
 
 一方の脚pがequivalence liftingであり、homotopy fiber productを同じstrict pullback模型で与えるとpullback\_isAccessibleが同じ全空間のaccessibilityを直接返す。任意に指定された模型への輸送は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible`
-
 :::
 
-:::corollary "kerodon_9_4_9_11"
+:::corollary "kerodon_9_4_9_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible")
 Kerodon Corollary 9.4.9.11（[Tag 06LP](https://kerodon.net/tag/06LP)）。対応表の状態：一部。
+
+*主張*　アクセス可能な無限圏の間のアクセス可能な二関手の圏論的引き戻しはアクセス可能であり、両射影もアクセス可能である。アクセス可能な無限圏から引き戻しへの関手がアクセス可能であることは、射影との二つの合成がアクセス可能であることと同値である。
 
 片脚equivalence liftingのstrict pullback模型ではpullback\_isAccessibleと射影のκ-accessibilityから同じ全空間と二射影のaccessibilityを得る。任意の指定categorical pullbackへの比較とTのiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible`
-
 :::
 
-:::corollary "kerodon_9_4_9_12"
+:::corollary "kerodon_9_4_9_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor")
 Kerodon Corollary 9.4.9.12（[Tag 06U9](https://kerodon.net/tag/06U9)）。対応表の状態：一部。
 
-逆像をstrict pullbackで取り、Fにequivalence liftingを追加するとpullbackのaccessible性と射影の保存性は同じ逆像部分のaccessibly embedded条件を直接返す。一般のFは含まない。
+*主張*　アクセス可能な無限圏間のアクセス可能な関手 $`F:C\to D` に沿う、$`D` のアクセス可能に埋め込まれた部分圏 $`D_0` の逆像 $`F^{-1}(D_0)` は、$`C` にアクセス可能に埋め込まれた部分圏である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor`
+逆像をstrict pullbackで取り、Fにequivalence liftingを追加するとpullbackのaccessible性と射影の保存性は同じ逆像部分のaccessibly embedded条件を直接返す。一般のFは含まない。
 
 :::
 
@@ -898,12 +934,16 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：二脚の�
 :::definition "kerodon_9_4_9_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible, SSet.quasicategory_of_innerFibration")
 Kerodon Definition 9.4.9.16（[Tag 06LR](https://kerodon.net/tag/06LR)）。対応表の状態：本体にある。
 
+*主張*　単体集合の内部ファイブレーション $`E\to C` は、すべての単体 $`\sigma:\Delta^n\to C` について引き戻し $`\Delta^n\times_C E` がアクセス可能な無限圏であるとき edgewise accessible と呼ばれる。
+
 同じinner fibration Uについて∀n, ∀σ:Δ\[n\]⟶C, IsAccessible (pullback σ U)という既存の型の全称量化が原文の定義全体に一致する。引戻しの準圏性は標準単体の準圏性とinner fibrationの底変換から得る。
 
 :::
 
 :::definition "kerodon_9_4_9_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible, SSet.quasicategory_of_innerFibration")
 Kerodon Variant 9.4.9.19（[Tag 06LU](https://kerodon.net/tag/06LU)）。対応表の状態：本体にある。
+
+*主張*　小さい正則基数 $`\kappa` に対して、単体集合の内部ファイブレーション $`E\to C` が edgewise $`\kappa`-accessible であるとは、全単体 $`\Delta^n\to C` 上の引き戻しが $`\kappa`-アクセス可能な無限圏であることをいう。
 
 同じinner fibration Uについて∀n, ∀σ:Δ\[n\]⟶C, IsKappaAccessible κ (pullback σ U)という既存の型の全称量化が原文の定義全体に一致する。引戻しの準圏性は標準単体の準圏性とinner fibrationの底変換から得る。
 

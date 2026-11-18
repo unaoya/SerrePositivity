@@ -99,13 +99,13 @@ lemma carrierFramedLimitConePiZeroEquiv_target (Y : Complex A)
 規約：任意の複体を始域に使い、元の計算対象の底を保持する。
 使われ方：一般 homotopy 極限の忘却後の普遍性と右導来比較。 -/
 def carrierFramedLimitDerivedHomEquiv (Y : Complex A) (F : K ⥤ (operad A).Algebra) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let := CarrierDiagram.projectiveModelCategory A K
     let Q := (weakEquivalences (Complex A)).Q
     let QD := (weakEquivalences (K ⥤ Complex A)).Q
     (QD.obj ((Functor.const K).obj Y) ⟶ QD.obj ((Diagram.forget A K).obj F)) ≃
       (Q.obj Y ⟶ Q.obj ((framedLimitFunctor A K).obj F).carrier) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let := CarrierDiagram.projectiveModelCategory A K
   exact (carrierFramedLimitConePiZeroEquiv A K Y F).symm.trans
     (carrierFramedLimitHomPiZeroEquiv A K F Y)

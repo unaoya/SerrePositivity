@@ -1,12 +1,25 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.AlgebraicGeometry.NoetherianFiniteModuleFlattening
 import SerrePositivity.CategoryTheory.Karoubi.Triangulated
+import SerrePositivity.CommutativeAlgebra.CohenGabber.Normalization
+import SerrePositivity.CommutativeAlgebra.HenselianFinite
+import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.FrobeniusGrowth
+import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.General
+import SerrePositivity.IntersectionMultiplicity.EqualCharZero.Positivity
 import SerrePositivity.IntersectionMultiplicity.Vanishing
+import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
+import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
+import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
+import SerrePositivity.Paper.Section2.LengthAlgebra.EqualChar
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "引用した結果" =>
 %%%
@@ -79,12 +92,10 @@ tag := "paper-external"
 
 :::
 
-:::proposition "ext_Faltings_Appendix_2"
+:::proposition "ext_Faltings_Appendix_2" (lean := "SerrePositivity.Section2.towerLengthFun, SerrePositivity.Section2.towerLengthFun_tensor, SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian")
 *Faltings Appendix 2*　根を付加する塔などの設定で、有限表示加群の段長さの正規化を一般加群へ拡張する正規化長さを構成し、短完全列の加法性・almost 同型に関する不変性などを示す。。対応表の状態：一部。
 
 原典付録の toroidal な設定全般ではなく、本論文が CLMST の形で使う正則パラメータの根の塔で、三段階の長さ・有限段公式・加法性を確認。原典の一般 toroidal 基底と全 almost 不変性を含む付録全体の対応ではない。 原典・使用主張の確認: https://numdam.org/item/AST\_2002\_\_279\_\_185\_0.pdf; Appendix 2: opening p.200 and Lemma 7 (additivity), pp.202–203。ソースの静的照合のみで kernel 検査は再実行していない。
-
-宣言：`SerrePositivity.Section2.towerLengthFun`、`SerrePositivity.Section2.towerLengthFun_tensor`、`SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian`
 
 :::
 
@@ -109,21 +120,17 @@ tag := "paper-external"
 
 :::
 
-:::proposition "ext_KuranoShimomoto"
+:::proposition "ext_KuranoShimomoto" (lean := "SerrePositivity.exists_cohen_gabber_normalization")
 *KuranoShimomoto*　等標数 p の完備局所環 A について、剰余写像を分裂する係数体とパラメータを選び、冪級数環から有限な正規化を得る。次元 d の各極小素イデアルで分数体拡大を分離的にできる。。対応表の状態：一部。
 
 任意剰余体・次元零を含む完備 Noether 局所整域で、同じ剰余体の冪級数基底・有限性・単射性・分数体の分離性を返す。原典は非整域も許し、次元最大の各極小素イデアルを同時に扱うため、整域への特殊化として partial。 番号なしの文献引用と、参考文献欄が同定する Theorem 1.1 の辺を、それぞれ独立した辺先の行として残す。 原典・使用主張の確認: https://arxiv.org/pdf/1510.03573v2; Theorem 1.1, PDF p.1; Paper bibliography \[17\]。ソースの静的照合のみで kernel 検査は再実行していない。
 
-宣言：`SerrePositivity.exists_cohen_gabber_normalization`
-
 :::
 
-:::proposition "ext_KuranoShimomoto_1_1"
+:::proposition "ext_KuranoShimomoto_1_1" (lean := "SerrePositivity.exists_cohen_gabber_normalization")
 *KuranoShimomoto 1.1*　等標数 p の完備局所環 A について、剰余写像を分裂する係数体とパラメータを選び、冪級数環から有限な正規化を得る。次元 d の各極小素イデアルで分数体拡大を分離的にできる。。対応表の状態：一部。
 
 任意剰余体・次元零を含む完備 Noether 局所整域で、同じ剰余体の冪級数基底・有限性・単射性・分数体の分離性を返す。原典は非整域も許し、次元最大の各極小素イデアルを同時に扱うため、整域への特殊化として partial。 原典・使用主張の確認: https://arxiv.org/pdf/1510.03573v2; Theorem 1.1, PDF p.1。ソースの静的照合のみで kernel 検査は再実行していない。
-
-宣言：`SerrePositivity.exists_cohen_gabber_normalization`
 
 :::
 
@@ -176,30 +183,24 @@ tag := "paper-external"
 
 :::
 
-:::proposition "ext_Ma17_2_2"
+:::proposition "ext_Ma17_2_2" (lean := "SerrePositivity.exists_complete_flat_local_extension_of_residueField")
 *Ma17 2.2*　補題2.2は、平坦局所写像に対する Lech 型不等式を等次元・両環完備・基底が整域・拡大側の剰余体が代数閉の場合へ帰着する。別の引用箇所の §2.2 は Hilbert–Kunz 重複度と Frobenius 極限の解説。。対応表の状態：一部。
 
 剰余体の任意拡大を、極大イデアルを保つ完備 Noether 平坦局所拡大で実現する部分を確認。補題全体の Lech 不等式の帰着と §2.2 の一般 Hilbert–Kunz 理論を一括で形式化したものではない。同じ辺先キーが Lemma 2.2（本論文 p.5）と Section 2.2（p.8）を兼ねるため、この一行で両方を明示する。 原典・使用主張の確認: https://arxiv.org/pdf/1609.00095v3; Lemma 2.2 and proof, PDF pp.3–4; Section 2.2。ソースの静的照合のみで kernel 検査は再実行していない。
 
-宣言：`SerrePositivity.exists_complete_flat_local_extension_of_residueField`
-
 :::
 
-:::proposition "ext_Ma17_2_4"
+:::proposition "ext_Ma17_2_4" (lean := "SerrePositivity.tendsto_length_koszulHomologySelf_frobenius_pow")
 *Ma17 2.4*　標数 p の完備局所環の、長さが環次元 d の有限自由複体で全ホモロジーが有限長なら、正次数 Frobenius ホモロジー長を p\^(ed) で割った値は零へ収束する。。対応表の状態：一部。
 
 採用宣言は完全剰余体を持つ完備局所環のパラメータ Koszul 複体の場合。任意の有限自由複体・任意剰余体の一般定理には達していない。FrobeniusKoszulLimit の hRoberts は一般消滅を仮定して使う補助であり、一般定理の証明としては採用しない。 原典・使用主張の確認: https://arxiv.org/pdf/1609.00095v3; Theorem 2.4, PDF p.6。ソースの静的照合のみで kernel 検査は再実行していない。
 
-宣言：`SerrePositivity.tendsto_length_koszulHomologySelf_frobenius_pow`
-
 :::
 
-:::proposition "ext_Monsky"
+:::proposition "ext_Monsky" (lean := "SerrePositivity.Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary")
 *Monsky*　正標数 Noether 局所環、m 準素イデアル I と有限生成加群について、Frobenius 冪商の長さを p\^(ed) で正規化した Hilbert–Kunz 極限が存在する。。対応表の状態：一部。
 
 完全剰余体と有限な正則正規化基底・生成的分離性を持つ正標数局所整域、正次元、加群 D 自身の場合に、m 準素 H の正規化 Frobenius 商長の極限を具体的な perfection 商長として示す。一般の局所環・有限加群の存在定理への一般化はしていない。原著は表紙・導入までの取得で、使用する存在主張は本論文 p.8 と Ma17 §2.2 で確認。 原典・使用主張の確認: https://gdz.sub.uni-goettingen.de/fulltext/PPN235181684\_0263/00000047?\_format=xml; 1983 paper introduction; Paper p.8; Ma17 Section 2.2。ソースの静的照合のみで kernel 検査は再実行していない。
-
-宣言：`SerrePositivity.Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary`
 
 :::
 
@@ -210,21 +211,17 @@ tag := "paper-external"
 
 :::
 
-:::proposition "ext_Roberts89"
+:::proposition "ext_Roberts89" (lean := "SerrePositivity.tendsto_length_koszulHomologySelf_frobenius_pow")
 *Roberts89*　標数 p の完備局所環の、長さが環次元 d の有限自由複体で全ホモロジーが有限長なら、正次数 Frobenius ホモロジー長を p\^(ed) で割った値は零へ収束する。。対応表の状態：一部。
 
 採用宣言は完全剰余体を持つ完備局所環のパラメータ Koszul 複体の場合。任意の有限自由複体・任意剰余体の一般定理には達していない。FrobeniusKoszulLimit の hRoberts は一般消滅を仮定して使う補助であり、一般定理の証明としては採用しない。 原著章の本文は今回採取できず、同じ結果を再掲する Ma17 Theorem 2.4 と本論文 p.8 の引用で対象を同定した。章全体の対応を主張しない。 原典・使用主張の確認: https://www2.math.utah.edu/\~roberts/publications.html; author publication list no.19; statement restated in Ma17 Theorem 2.4。ソースの静的照合のみで kernel 検査は再実行していない。
 
-宣言：`SerrePositivity.tendsto_length_koszulHomologySelf_frobenius_pow`
-
 :::
 
-:::proposition "ext_Serre"
+:::proposition "ext_Serre" (lean := "SerrePositivity.chi_pos_of_residueCharZero")
 *Serre*　本論文が用いる等標数の正値性：正則局所環と有限生成 M,N でテンソルが有限長、dim M+dim N=dim R なら χ\_R(M,N)\>0。。対応表の状態：一部。
 
 採用宣言は剰余標数零の場合で、完備化を仮定せず有限加群の正値性を示す。文献の等標数 p の場合を含めた等標数全体の対応ではない。本論文の主定理を戻して循環的にこの外部引用の証明とはしない。使用主張は本論文 p.23、書誌は Springer Local Algebra 2000。 原典・使用主張の確認: https://link.springer.com/book/10.1007/978-3-662-04203-8; Chapter V; Paper p.23 Lemma 5.1 proof。ソースの静的照合のみで kernel 検査は再実行していない。
-
-宣言：`SerrePositivity.chi_pos_of_residueCharZero`
 
 :::
 
@@ -256,21 +253,17 @@ tag := "paper-external"
 
 :::
 
-:::proposition "ext_Stacks_03QH"
+:::proposition "ext_Stacks_03QH" (lean := "SerrePositivity.isLocalRing_finite_domain_of_complete")
 *Stacks 03QH*　局所環の Hensel 性は、任意の有限代数が有限な局所代数の有限積に分かれることなどと同値である。。対応表の状態：一部。
 
 本体では完備 Noether 局所環上の有限な整域が局所環であるという使用時の特殊な場合を証明。任意の Hensel 局所環・有限代数の積分解、および全条件の同値までの宣言ではない。 原典・使用主張の確認: https://stacks.math.columbia.edu/tag/03QH; Theorem 59.32.4, especially condition (3)。ソースの静的照合のみで kernel 検査は再実行していない。
 
-宣言：`SerrePositivity.isLocalRing_finite_domain_of_complete`
-
 :::
 
-:::proposition "ext_Stacks_0815"
+:::proposition "ext_Stacks_0815" (lean := "SerrePositivity.AlgebraicGeometry.exists_noetherian_finite_flattening_center")
 *Stacks 0815*　qcqs 基底 S 上の準コンパクト・局所有限表示な X と有限型準連接加群 F が準コンパクト開 U 上で有限表示・平坦なら、U 許容ブローアップ後の狭義変換を有限表示・平坦にできる。。対応表の状態：一部。
 
 Noether アフィン基底上の有限加群・正則主開境界での純変換の平坦化と、Noether 基底上の有限型射の構造層の平坦化を確認。原典の非 Noether qcqs 基底・任意の有限型準連接 F とその有限表示性全体は含まない。 原典・使用主張の確認: https://stacks.math.columbia.edu/tag/0815; Theorem 38.30.7。ソースの静的照合のみで kernel 検査は再実行していない。
-
-宣言：`SerrePositivity.AlgebraicGeometry.exists_noetherian_finite_flattening_center`、`SerrePositivity.AlgebraicGeometry.exists_admissible_flat_strictTransformπ_of_finiteType`
 
 :::
 

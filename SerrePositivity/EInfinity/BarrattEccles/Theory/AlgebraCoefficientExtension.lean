@@ -104,10 +104,10 @@ def coefficientAlgebraHomEquiv (X : (operad S).Algebra) (Y : (operad T).Algebra)
       fun n => (coefficientAlgebraHom_mate f X Y _ n).mpr (by
         simpa only [Equiv.apply_symm_apply] using h.comm n)⟩
   left_inv g := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     exact (Equiv.symm_apply_apply _ _)
   right_inv h := by
-    apply Operad.AlgebraHom.ext
+    apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
     exact (Equiv.apply_symm_apply _ _)
 
 /-- HA §3.2.2 の底変更随伴の厳密な模型。 -/
@@ -116,11 +116,11 @@ def coefficientAlgebraAdjunction : coefficientExtension f ⊣ coefficientRestric
     homEquiv := coefficientAlgebraHomEquiv f
     homEquiv_naturality_left_symm := by
       intro X' X Y k h
-      apply Operad.AlgebraHom.ext
+      apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
       exact (ScalarExtension.adjunction f).homEquiv_naturality_left_symm k.hom h.hom
     homEquiv_naturality_right := by
       intro X Y Y' g k
-      apply Operad.AlgebraHom.ext
+      apply _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom.ext
       exact (ScalarExtension.adjunction f).homEquiv_naturality_right g.hom k.hom }
 
 end SerrePositivity.EInfinity.BarrattEccles

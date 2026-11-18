@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 
 /-- 概要：指定持ち上げ標準単体Hom同型は同じ恒等生成元の像。
@@ -36,10 +36,10 @@ theorem normalizedSimplexHomEquiv_via_freeAdjunction (A : Type u) [CommRing A]
     (H : Complex A) (n : SimplexCategory)
     (f : (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
       (SSet.stdSimplex.obj n) ⟶ H) :
-    (liftedStandardSimplexHomIso ((truncatedDoldKanFunctor A).obj H)).hom.app (Opposite.op n)
+    (liftedStandardSimplexHomIso ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj H)).hom.app (Opposite.op n)
       ((freeNegativeChainsAdjunction A).homEquiv
         ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H f) =
-    normalizedSimplexHomEquiv A H n f := by
+    _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A H n f := by
   rw [liftedStandardSimplexHomIso_hom_apply]
   exact normalizedSimplexHomEquiv_freeAdjunction A H n f
 

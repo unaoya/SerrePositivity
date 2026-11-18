@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.ConePrependIndex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConePrependIndex
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConeComponents
 
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConePrependObjects
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedTensorConePrependObjects
 
 /-!
 概要：始点付き単射による cone の対象と、通常部分の尾の添字を元の制限列へ戻す。
@@ -16,8 +16,8 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 

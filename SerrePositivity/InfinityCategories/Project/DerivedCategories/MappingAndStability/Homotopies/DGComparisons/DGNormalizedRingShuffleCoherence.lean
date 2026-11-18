@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex
-public import SerrePositivity.EInfinity.Shuffle.SignInversions
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.Shuffle.SignInversions
 public import SerrePositivity.EInfinity.BarrattEccles.TripleShuffleCoordinates
 public import SerrePositivity.EInfinity.BarrattEccles.TripleShufflePermutation
 /-!
@@ -20,10 +20,10 @@ lemma left_eq_horizontal {p q : ℕ} (s : _root_.SerrePositivity.EInfinity.Barra
 lemma right_eq_vertical {p q : ℕ} (s : _root_.SerrePositivity.EInfinity.BarrattEccles.ShufflePath p q) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.right s rfl = s.verticalMap := rfl
 lemma inversions_eq {p q : ℕ} (s : _root_.SerrePositivity.EInfinity.BarrattEccles.ShufflePath p q) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.inversions s = EInfinity.Shuffle.inversionNumber s.val := rfl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.inversions s = _root_.SerrePositivity.SimplicialChains.Shuffle.inversionNumber s.val := rfl
 lemma sign_eq {p q : ℕ} (s : _root_.SerrePositivity.EInfinity.BarrattEccles.ShufflePath p q) :
     (-1 : ℤ) ^ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.inversions s = (s.sign : ℤ) := by
-  rw [EInfinity.Shuffle.sign_eq_pow_inversionNumber, inversions_eq]
+  rw [_root_.SerrePositivity.SimplicialChains.Shuffle.sign_eq_pow_inversionNumber, inversions_eq]
   simp only [Units.val_pow_eq_pow_val, Units.val_neg, Units.val_one]
 def associationMap (p q r : ℕ) : ⦋p + q + r⦌ ⟶ ⦋p + (q + r)⦌ :=
   SimplexCategory.mkHom

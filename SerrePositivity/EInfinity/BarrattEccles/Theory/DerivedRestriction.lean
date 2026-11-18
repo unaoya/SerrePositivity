@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.StrictHomology
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexTransport.FunctorIsoTransport
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
-public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionRetract
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.SemifreeResolutionRetract
 public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.ScalarRestrictionNerve
 
 /-!
@@ -50,7 +50,7 @@ def complexRestrictionNerve (f : S →+* T) :
 /-- 全複体で係数制限してから半自由解像を取る導来関手。 -/
 def barrattEcclesRestrictD (f : S →+* T) :
     _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory T ⟶ _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S :=
-  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion ≫ complexRestrictionNerve f ≫ complexSemifreeResolutionInfinity S
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion ≫ complexRestrictionNerve f ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity S
 
 /-- 恒等環準同型での項別係数制限は恒等関手。 -/
 lemma complexRestrictionNerve_id :
@@ -90,7 +90,7 @@ lemma complexRestrictionNerve_comp (f : S →+* T) (g : T →+* W) :
 def barrattEcclesRestrictD_id (S : Type u) [CommRing S] :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesRestrictD (RingHom.id S)) (𝟙 (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory S)) := by
   simpa only [barrattEcclesRestrictD, complexRestrictionNerve_id, Category.id_comp] using
-    complexSemifreeResolutionRetractIso S
+    _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionRetractIso S
 
 private lemma restrictCochain_heq (f : S →+* T) {X Y X' Y' : Complex T}
     (hX : X = X') (hY : Y = Y')
@@ -139,8 +139,8 @@ def barrattEcclesRestrictD_comp (f : S →+* T) (g : T →+* W) :
       (barrattEcclesRestrictD g ≫ barrattEcclesRestrictD f) := by
   let L := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion (S := W) ≫ complexRestrictionNerve g
   let R := complexRestrictionNerve f
-  let Q := complexSemifreeResolutionInfinity S
-  let H := complexSemifreeResolutionAugmentationHomotopy T
+  let Q := _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity S
+  let H := _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionAugmentationHomotopy T
   let K := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H L
   let P := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp K (R ≫ Q)
   have he (x : (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory W) _⦋0⦌) :
@@ -149,9 +149,9 @@ def barrattEcclesRestrictD_comp (f : S →+* T) (g : T →+* W) :
     let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H y).toTruncated
     let e' := e.map ((truncation 2).map R)
     have h := complexRestrictionNerve_map_quasiIso f e
-      (complexSemifreeResolutionAugmentation_edge_quasiIso T y)
+      (_root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionAugmentation_edge_quasiIso T y)
     apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (f := e'.map ((truncation 2).map Q)) ?_).mpr
-    · exact complexSemifreeResolutionInfinity_invertsQuasiIso S e' h
+    · exact _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity_invertsQuasiIso S e' h
     · change (R ≫ Q).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge K x).edge =
         (R ≫ Q).app (Opposite.op ⦋1⦌) e.edge
       rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.simplicialHomotopyVertexEdge_precomp_edge H L x]
@@ -162,19 +162,19 @@ def barrattEcclesRestrictD_comp (f : S →+* T) (g : T →+* W) :
       simp only [barrattEcclesRestrictD, R, Q, L, Category.comp_id,
         complexRestrictionNerve_comp, Category.assoc])
     (by
-      change (L ≫ complexSemifreeResolutionInfinity T ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion) ≫
+      change (L ≫ _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity T ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion) ≫
         (R ≫ Q) = barrattEcclesRestrictD g ≫ barrattEcclesRestrictD f
       simp only [barrattEcclesRestrictD, R, Q, L, Category.assoc])
 
 /-- 全複体の dg nerve 上の係数制限とホモロジーの自然比較。 -/
 def ambientRestrictionHomologyIso (f : S →+* T) (i : ℤ) :
-    hoMap (complexRestrictionNerve f) ⋙ ambientCohomology S i ≅
-      ambientCohomology T i ⋙ ModuleCat.restrictScalars f := by
+    hoMap (complexRestrictionNerve f) ⋙ _root_.SerrePositivity.ComplexLimits.ambientCohomology S i ≅
+      _root_.SerrePositivity.ComplexLimits.ambientCohomology T i ⋙ ModuleCat.restrictScalars f := by
   let R := complexRestrictionNerve f
   let M := ModuleCat.restrictScalars f
   let ψ := exactCochainHomologyIso M i
-  let a (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve T (Complex T)) _⦋0⦌) := ambientCohomologyVertexIso S i (atVertex R x)
-  let b (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve T (Complex T)) _⦋0⦌) := M.mapIso (ambientCohomologyVertexIso T i x)
+  let a (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve T (Complex T)) _⦋0⦌) := _root_.SerrePositivity.ComplexLimits.ambientCohomologyVertexIso S i (atVertex R x)
+  let b (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve T (Complex T)) _⦋0⦌) := M.mapIso (_root_.SerrePositivity.ComplexLimits.ambientCohomologyVertexIso T i x)
   refine NatIso.ofComponents (SSet.HomotopyCategory.rec
     (fun x => a x ≪≫ ψ.app (x.obj 0) ≪≫ (b x).symm)) ?_
   intro x y h
@@ -185,19 +185,19 @@ def ambientRestrictionHomologyIso (f : S →+* T) (i : ℤ) :
       obtain ⟨e, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective x y h
       let e' := e.map ((truncation 2).map R)
       let k := (closedToComplex T).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e)
-      change (ambientCohomology S i).map (Truncated.HomotopyCategory.homMk e') ≫
+      change (_root_.SerrePositivity.ComplexLimits.ambientCohomology S i).map (Truncated.HomotopyCategory.homMk e') ≫
           (a y).hom ≫ (ψ.app (y.obj 0)).hom ≫ (b y).inv =
         ((a x).hom ≫ (ψ.app (x.obj 0)).hom ≫ (b x).inv) ≫
-          M.map ((ambientCohomology T i).map (Truncated.HomotopyCategory.homMk e))
+          M.map ((_root_.SerrePositivity.ComplexLimits.ambientCohomology T i).map (Truncated.HomotopyCategory.homMk e))
       apply (cancel_mono (b y).hom).mp
-      have hs := ambientCohomology_map S i e'
-      change (ambientCohomology S i).map (Truncated.HomotopyCategory.homMk e') ≫
+      have hs := _root_.SerrePositivity.ComplexLimits.ambientCohomology_map S i e'
+      change (_root_.SerrePositivity.ComplexLimits.ambientCohomology S i).map (Truncated.HomotopyCategory.homMk e') ≫
         (a y).hom = (a x).hom ≫ HomologicalComplex.homologyMap
           ((closedToComplex S).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e')) i at hs
       rw [complexRestrictionNerve_edgeChainMap] at hs
-      have ht := congrArg M.map (ambientCohomology_map T i e)
+      have ht := congrArg M.map (_root_.SerrePositivity.ComplexLimits.ambientCohomology_map T i e)
       simp only [Functor.map_comp] at ht
-      change M.map ((ambientCohomology T i).map (Truncated.HomotopyCategory.homMk e)) ≫
+      change M.map ((_root_.SerrePositivity.ComplexLimits.ambientCohomology T i).map (Truncated.HomotopyCategory.homMk e)) ≫
         (b y).hom = (b x).hom ≫ M.map (HomologicalComplex.homologyMap k i) at ht
       have hn := ψ.hom.naturality k
       change HomologicalComplex.homologyMap ((ScalarExtension.restriction f).map k) i ≫
@@ -212,7 +212,7 @@ def barrattEcclesRestrictD_homologyIso (f : S →+* T) (i : ℤ) :
       additiveCohomologyOnHo T i := by
   let I := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityInclusion (S := T)
   let R := complexRestrictionNerve f
-  let Q := complexSemifreeResolutionInfinity S
+  let Q := _root_.SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity S
   let M := ModuleCat.restrictScalars f
   have h : hoMap (barrattEcclesRestrictD f) ≅ hoMap I ⋙ hoMap R ⋙ hoMap Q := by
     apply eqToIso
@@ -228,9 +228,9 @@ def barrattEcclesRestrictD_homologyIso (f : S →+* T) (i : ℤ) :
       cohomologyOnHo T i ⋙ M :=
     Functor.isoWhiskerRight h _ ≪≫ Functor.associator _ _ _ ≪≫
       Functor.isoWhiskerLeft _ (Functor.associator _ _ _ ≪≫
-        Functor.isoWhiskerLeft _ (complexResolutionCohomologyIso S i) ≪≫
+        Functor.isoWhiskerLeft _ (_root_.SerrePositivity.ComplexLimits.complexResolutionCohomologyIso S i) ≪≫
         ambientRestrictionHomologyIso f i) ≪≫ (Functor.associator _ _ _).symm ≪≫
-      Functor.isoWhiskerRight (derivedAmbientCohomologyIso T i).symm M
+      Functor.isoWhiskerRight (_root_.SerrePositivity.ComplexLimits.derivedAmbientCohomologyIso T i).symm M
   exact (Functor.associator _ _ _).symm ≪≫ Functor.isoWhiskerRight h' _ ≪≫
     Functor.associator _ _ _ ≪≫ Functor.isoWhiskerLeft _ hForget
 

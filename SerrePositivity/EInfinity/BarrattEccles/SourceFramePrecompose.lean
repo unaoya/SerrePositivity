@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
+open CategoryTheory _root_.HomotopicalAlgebra Opposite _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock SerrePositivity.SimplicialModel
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (Y : (operad A).Algebra) {X' X : (operad A).Algebra}
 
@@ -31,7 +31,7 @@ def sourceFramePrecomposeIndexMap (f : X' ⟶ X) :
 def algebraReducedHammockPrecompose (f : X' ⟶ X) :
     algebraReducedHammock A X Y ⟶ algebraReducedHammock A X' Y := by
   let := modelCategory A
-  exact reducedPrecomposeMap (weakEquivalences (operad A).Algebra) Y f
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedPrecomposeMap (weakEquivalences (operad A).Algebra) Y f
 
 lemma sourceFrameReducedHammockNerveMap_precompose (f : X' ⟶ X) :
     AnodyneHomotopy.anodyneQ.map
@@ -55,7 +55,7 @@ lemma sourceFrameReducedHammockNerveMap_precompose (f : X' ⟶ X) :
   have hn : (algebraHammockReductionIso A X Y).hom ≫ algebraReducedHammockPrecompose A Y f =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences (operad A).Algebra) f) Y ≫
         (algebraHammockReductionIso A X' Y).hom :=
-    reducedColimitIso_precompose (weakEquivalences (operad A).Algebra) Y f
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_precompose (weakEquivalences (operad A).Algebra) Y f
   have hnQ := congrArg Q.map hn
   simp only [Functor.map_comp] at hnQ
   rw [← sourceFrameLeftRoofNerveMap_normalization, ← sourceFrameLeftRoofNerveMap_normalization]

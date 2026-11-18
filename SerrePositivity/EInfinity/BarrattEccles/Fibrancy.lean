@@ -59,8 +59,8 @@ lemma isFibrant (X : (operad A).Algebra) :
     IsFibrant X := by
   let := modelCategory A
   change IsFibrant X
-  apply (isFibrant_iff_of_isTerminal (Operad.Algebra.toTerminal (operad A) X)
-    (Operad.Algebra.terminalAlgebraIsTerminal (operad A))).mpr
+  apply (isFibrant_iff_of_isTerminal (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.toTerminal (operad A) X)
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.terminalAlgebraIsTerminal (operad A))).mpr
   apply (fibration_iff A _).mpr
   change ∀ n : ℤ, Function.Surjective ((0 : X.carrier ⟶ (0 : Complex A)).f n)
   intro n y

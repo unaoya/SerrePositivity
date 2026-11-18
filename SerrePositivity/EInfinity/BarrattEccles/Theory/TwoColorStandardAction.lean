@@ -36,8 +36,8 @@ lemma binaryTensorStandardPowersInclusion_block (m n : ℕ)
       (permutationAction (X ⊞ Y) (m + n) (FiniteBijection.blockEquiv σ τ)).asIso.hom := by
   unfold binaryTensorStandardPowersInclusion
   rw [← Category.assoc, tensorHom_comp_tensorHom,
-    ← tensorPower_permutation_naturality A (biprod.inl : X ⟶ X ⊞ Y) m σ,
-    ← tensorPower_permutation_naturality A (biprod.inr : Y ⟶ X ⊞ Y) n τ,
+    ← _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPower_permutation_naturality A (biprod.inl : X ⟶ X ⊞ Y) m σ,
+    ← _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPower_permutation_naturality A (biprod.inr : Y ⟶ X ⊞ Y) n τ,
     ← tensorHom_comp_tensorHom, Category.assoc, appendIso_block_permutation]
   exact (Category.assoc _ _ _).symm
 

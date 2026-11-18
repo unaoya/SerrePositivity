@@ -1,7 +1,9 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 import Mathlib.CategoryTheory.Limits.Shapes.RegularMono
+import Mathlib.CategoryTheory.RegularCategory.Basic
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
@@ -10,6 +12,9 @@ import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCat
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "10.2 Regular ∞-Categories" =>
 %%%
@@ -22,16 +27,18 @@ Kerodon の 10.2 節（[Tag 04TM](https://kerodon.net/tag/04TM)）の項目と�
 :::definition "kerodon_10_2_0_2" (lean := "CategoryTheory.RegularEpi, CategoryTheory.regularEpiOfKernelPair, CategoryTheory.regularEpiOfEffectiveEpi, CategoryTheory.isRegularEpi_iff_effectiveEpi, CategoryTheory.isColimitCoforkOfEffectiveEpi")
 Kerodon Definition 10.2.0.2（[Tag 04TP](https://kerodon.net/tag/04TP)）。対応表の状態：Mathlib にある。
 
+*主張*　引き戻しを持つ通常の圏の射 $`f:X\to Y` は、二射影 $`X\times_Y X\rightrightarrows X` の余等化子を与えるとき正則エピ射である。
+
 仮定：通常圏の射 f と f 自身の引き戻し。原文は圏全体に引き戻しを要求し、Lean は対象の核対だけを要求する（Lean が弱い）。結論：regularEpiOfKernelPair は核対の射影の余等化子から RegularEpi を構成する。逆は EffectiveEpi を介して isColimitCoforkOfEffectiveEpi が同じ核対の Cofork.ofπ f の IsColimit を与える（原文の定義と一致）。
 
 :::
 
-:::definition "kerodon_10_2_0_6"
+:::definition "kerodon_10_2_0_6" (lean := "CategoryTheory.Regular, CategoryTheory.Regular.hasStrongEpiMonoFactorisations, CategoryTheory.Regular.strongEpiMonoFactorisation")
 Kerodon Definition 10.2.0.6（[Tag 04TT](https://kerodon.net/tag/04TT)）。対応表の状態：一部。
 
-通常圏のRegularのfieldsとstrongEpiMonoFactorisation、そのeのIsRegularEpiインスタンスは原文の有限極限・正則エピとmonoの分解・底変換安定性の三条件を直接返す。三条件から核対余等化子という逆向きはこの引用で確認していない。
+*主張*　通常の圏が正則であるとは、有限極限を持ち、任意の射が正則エピ射と単射の合成に分解し、正則エピ射が引き戻しで保たれることである。
 
-宣言：`CategoryTheory.Regular`、`CategoryTheory.Regular.hasStrongEpiMonoFactorisations`、`CategoryTheory.Regular.strongEpiMonoFactorisation`
+通常圏のRegularのfieldsとstrongEpiMonoFactorisation、そのeのIsRegularEpiインスタンスは原文の有限極限・正則エピとmonoの分解・底変換安定性の三条件を直接返す。三条件から核対余等化子という逆向きはこの引用で確認していない。
 
 :::
 
@@ -46,6 +53,8 @@ Kerodon [Tag 04TZ](https://kerodon.net/tag/04TZ)
 
 :::definition "kerodon_10_2_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration")
 Kerodon Definition 10.2.1.1（[Tag 04U0](https://kerodon.net/tag/04U0)）。対応表の状態：本体にある。
+
+*主張*　単体集合 $`C` 上の篩は、包含が右ファイブレーションである単体部分集合である。
 
 同じ単体集合Cの部分集合S:C.SubcomplexについてRightFibration S.ιという既存の型が原文の定義全体に一致する。通常圏Sieveではなく任意の単体集合の包含を入力する。
 
@@ -65,12 +74,12 @@ B6再照合：通常圏の Sieve は射で定義され、原文は対象の充�
 
 :::
 
-:::corollary "kerodon_10_2_1_8"
+:::corollary "kerodon_10_2_1_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_innerFibration, SSet.quasicategory_of_innerFibration")
 Kerodon Corollary 10.2.1.8（[Tag 04U7](https://kerodon.net/tag/04U7)）。対応表の状態：一部。
 
-同じsieveの包含のRightFibrationからinner fibrationを得て、quasicategory\_of\_innerFibrationを適用すると原文最後の同じ部分集合の準圏性を直接得る。repleteとfullの両条件全体は含まない。
+*主張*　無限圏上の篩は同型で閉じた充満部分圏であり、特に無限圏である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_innerFibration`、`SSet.quasicategory_of_innerFibration`
+同じsieveの包含のRightFibrationからinner fibrationを得て、quasicategory\_of\_innerFibrationを適用すると原文最後の同じ部分集合の準圏性を直接得る。repleteとfullの両条件全体は含まない。
 
 :::
 
@@ -90,6 +99,8 @@ B6再照合：通常圏の固定対象上の sieve はある。hC の部分圏�
 
 :::definition "kerodon_10_2_1_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection")
 Kerodon Definition 10.2.1.18（[Tag 04UD](https://kerodon.net/tag/04UD)）。対応表の状態：本体にある。
+
+*主張*　無限圏の対象 $`y` 上の篩は、スライス $`C_{/y}` 上の篩である。すなわち、含まれる $`f:x\to y` に前合成して得る $`f':x'\to y` も含む、スライスの充満部分圏である。
 
 同じYのsliceOver(point Y)の単体部分集合SについてRightFibration S.ιを課すと、原文の「Y上のsieveはslice上のsieve」という定義全体を直接表す。通常圏Sieveの名前付き型を∞圏版の代用にしない。
 
@@ -113,6 +124,8 @@ B6型照合：通常圏の sieve は f との後合成による逆像として�
 
 :::definition "kerodon_10_2_1_26" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone")
 Kerodon Definition 10.2.1.26（[Tag 04UN](https://kerodon.net/tag/04UN)）。対応表の状態：本体にある。
+
+*主張*　無限圏の対象 $`x` 上の篩 $`C^0_{/x}\subseteq C_{/x}` は、忘却関手 $`C_{/x}\to C` がこの篩から左 Kan 拡張されているとき稠密である。
 
 同じsieveの包含δと同じsliceOverProjection Fについて∀c, IsColimitCone (leftKanCanonicalCocone δ F c)と課せば、原文の忘却関手がそのsieveから左Kan延長されるというdenseの定義全体を直接表す。
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantHammockInclusionLaws
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFramePrecompose
-public import SerrePositivity.EInfinity.Hammock.MixedRelativePointActions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MixedRelativePointActions
 
 /-!
 # 元の cofibrant hammock 包含による前後合成の保存
@@ -19,46 +19,46 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantAlgebraHammockInclusionMap_eq_mixed
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :
     let := modelCategory A
     cofibrantAlgebraHammockInclusionMap A X Y =
-      MixedRelative.reducedMap (cofibrantAlgebraDKInclusionRelative A) X Y := by
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MixedRelative.reducedMap (cofibrantAlgebraDKInclusionRelative A) X Y := by
   let := modelCategory A
-  apply (cancel_epi (reducedColimitIso
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso
     (cofibrantAlgebraRelativeCategory A).weakEquivalences X Y).hom).1
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph_hom_ext
   intro w
-  rw [← Category.assoc, reducedColimitIso_hom_fac,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac,
     cofibrantAlgebraHammockInclusionMap_normalization,
-    ← Category.assoc, reducedColimitIso_hom_fac, MixedRelative.graphNormalization_reducedMap]
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MixedRelative.graphNormalization_reducedMap]
   rfl
 
 lemma cofibrantAlgebraHammockInclusionMap_postcompose
     (X : (cofibrantAlgebraRelativeCategory A).category)
     {Y Z : (cofibrantAlgebraRelativeCategory A).category} (g : Y ⟶ Z) :
-    reducedPostcomposeMap (cofibrantAlgebraRelativeCategory A).weakEquivalences X g ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedPostcomposeMap (cofibrantAlgebraRelativeCategory A).weakEquivalences X g ≫
         cofibrantAlgebraHammockInclusionMap A X Z =
       cofibrantAlgebraHammockInclusionMap A X Y ≫ algebraReducedHammockPostcompose A
         ((cofibrantAlgebraDKInclusion A).obj X) ((cofibrantAlgebraDKInclusion A).map g) := by
   let := modelCategory A
   rw [cofibrantAlgebraHammockInclusionMap_eq_mixed,
     cofibrantAlgebraHammockInclusionMap_eq_mixed]
-  exact MixedRelative.reducedMap_postcompose (cofibrantAlgebraDKInclusionRelative A) X g
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MixedRelative.reducedMap_postcompose (cofibrantAlgebraDKInclusionRelative A) X g
 
 lemma cofibrantAlgebraHammockInclusionMap_precompose
     (Z : (cofibrantAlgebraRelativeCategory A).category)
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
-    reducedPrecomposeMap (cofibrantAlgebraRelativeCategory A).weakEquivalences Z f ≫
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedPrecomposeMap (cofibrantAlgebraRelativeCategory A).weakEquivalences Z f ≫
         cofibrantAlgebraHammockInclusionMap A X Z =
       cofibrantAlgebraHammockInclusionMap A Y Z ≫ algebraReducedHammockPrecompose A
         ((cofibrantAlgebraDKInclusion A).obj Z) ((cofibrantAlgebraDKInclusion A).map f) := by
   let := modelCategory A
   rw [cofibrantAlgebraHammockInclusionMap_eq_mixed,
     cofibrantAlgebraHammockInclusionMap_eq_mixed]
-  exact MixedRelative.reducedMap_precompose (cofibrantAlgebraDKInclusionRelative A) Z f
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MixedRelative.reducedMap_precompose (cofibrantAlgebraDKInclusionRelative A) Z f
 
 end SerrePositivity.EInfinity.BarrattEccles

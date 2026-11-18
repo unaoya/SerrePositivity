@@ -9,6 +9,7 @@ import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
+import Mathlib.AlgebraicTopology.SimplicialSet.Dimension
 import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
@@ -18,11 +19,15 @@ import Mathlib.CategoryTheory.Functor.Const
 import Mathlib.CategoryTheory.Limits.IsConnected
 import Mathlib.Combinatorics.Quiver.Basic
 import SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryFaceGluing
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.PiZeroConstant
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.1 Simplicial Sets" =>
 %%%
@@ -39,6 +44,8 @@ Kerodon の 1.1 節（[Tag 0004](https://kerodon.net/tag/0004)）の項目と、
 :::definition "kerodon_1_1_0_1"
 Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応表の状態：Mathlib にある。
 
+*主張*　非負整数 $`n` に対し、自然順序を入れた集合 $`\{0,\ldots,n\}` を $`[n]` と記す。
+
 仮定：非負整数 n（Kerodon と一致）。結論：SimplexCategory.mk n は長さ n の対象 ⦋n⦌、すなわち 0,…,n の順序集合を表す（一致）。
 
 宣言：`SimplexCategory.mk`
@@ -47,6 +54,8 @@ Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応�
 
 :::definition "kerodon_1_1_0_2" (lean := "SimplexCategory")
 Kerodon Definition 1.1.0.2（[Tag 000A](https://kerodon.net/tag/000A)）。対応表の状態：Mathlib にある。
+
+*主張*　単体圏 $`\Delta` の対象は有限全順序集合 $`[n]`（$`n\ge0`）、射は弱単調増加写像である。
 
 仮定：非空有限順序集合の標準形 \[n\] を使う（Kerodon と一致）。結論：SimplexCategory の対象は長さ n、\[m\] から \[n\] の射は Fin (m+1) →o Fin (n+1) の順序写像（一致）。
 
@@ -65,6 +74,8 @@ $`n\ge0` について、$`[n]=\{0,1,\dots,n\}` に通常の大小関係 $`0<1<\c
 :::definition "kerodon_1_1_0_4" (lean := "CategoryTheory.SimplicialObject, CategoryTheory.CosimplicialObject")
 Kerodon Definition 1.1.0.4（[Tag 000C](https://kerodon.net/tag/000C)）。対応表の状態：Mathlib にある。
 
+*主張*　圏 $`\mathcal C` の単体的対象は関手 $`\Delta^{\mathrm{op}}\to\mathcal C`、余単体的対象は関手 $`\Delta\to\mathcal C` である。
+
 仮定：任意の圏 C（Kerodon と一致）。結論：SimplicialObject C は Δᵒᵖ ⥤ C、CosimplicialObject C は Δ ⥤ C（一致）。
 
 :::
@@ -72,12 +83,16 @@ Kerodon Definition 1.1.0.4（[Tag 000C](https://kerodon.net/tag/000C)）。対�
 :::definition "kerodon_1_1_0_5" (lean := "CategoryTheory.SimplicialObject")
 Kerodon Notation 1.1.0.5（[Tag 000D](https://kerodon.net/tag/000D)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的対象を $`C_\bullet`、余単体的対象を $`C^\bullet` と書き、$`[n]` での値をそれぞれ $`C_n,C^n` と記す。
+
 仮定：圏 C、単体対象または余単体対象、次数 n（Kerodon と一致）。結論：関手の obj を反対圏の \[n\] または \[n\] に適用した値が Cₙ または Cⁿ。引用は単体対象の型で、次数別の記法は関手評価で読む（一致）。
 
 :::
 
 :::definition "kerodon_1_1_0_6" (lean := "SSet")
 Kerodon Definition 1.1.0.6（[Tag 000H](https://kerodon.net/tag/000H)）。対応表の状態：Mathlib にある。
+
+*主張*　単体的集合とは集合の圏の単体的対象、すなわち関手 $`\Delta^{\mathrm{op}}\to\mathrm{Set}` である。
 
 仮定：値を集合の圏に取る（Kerodon と一致。Lean の集合は Type u）。結論：SSet は Δᵒᵖ から Type u への関手の型（一致）。
 
@@ -90,12 +105,25 @@ Kerodon Definition 1.1.0.6（[Tag 000H](https://kerodon.net/tag/000H)）。対�
 :::definition "kerodon_1_1_0_7" (lean := "SSet")
 Kerodon Notation 1.1.0.7（[Tag 04Z5](https://kerodon.net/tag/04Z5)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合の圏を $`\mathrm{Set}_\Delta=\operatorname{Fun}(\Delta^{\mathrm{op}},\mathrm{Set})` と記す。
+
 仮定：単体圏の反対圏を始域、集合の圏を終域とする（Kerodon と一致）。結論：SSet に関手圏の圏構造が入り、射は単体集合間の自然変換（一致）。
+
+:::
+
+:::proposition "kerodon_1_1_0_9"
+Kerodon Example 1.1.0.9（[Tag 04Z6](https://kerodon.net/tag/04Z6)）。対応表の状態：照合の対象外。
+
+*定義 1.3 （標準単体 $`\Delta^n`）*
+
+$`\Delta^n` を $`[n]` が表現する関手 $`\Delta^n=\mathrm{Hom}_\Delta(-,[n])\colon\Delta^{\mathrm{op}}\to\mathrm{Set}` と定める。
 
 :::
 
 :::definition "kerodon_1_1_0_11" (lean := "SSet")
 Kerodon Definition 1.1.0.11（[Tag 04Z7](https://kerodon.net/tag/04Z7)）。対応表の状態：Mathlib にある。
+
+*主張*　単体的集合 $`S` の $`n` 単体とは $`S_n` の元である。零単体を頂点、一次単体を辺と呼ぶ。
 
 仮定：単体集合 X、非負次数 n（Kerodon と一致）。結論：X.obj (op ⦋n⦌) の元が n 単体。n=0 と n=1 が頂点と辺（一致）。
 
@@ -104,6 +132,8 @@ Kerodon Definition 1.1.0.11（[Tag 04Z7](https://kerodon.net/tag/04Z7)）。対�
 :::proposition "kerodon_1_1_0_12" (lean := "SSet.yonedaEquiv")
 Kerodon Proposition 1.1.0.12（[Tag 04Z8](https://kerodon.net/tag/04Z8)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の単体的集合 $`S` と $`n\ge0` について、恒等単体 $`\mathrm{id}_{[n]}` で評価すると $`\operatorname{Hom}(\Delta^n,S)\simeq S_n` という全単射を得る。
+
 仮定：単体集合 X と標準単体の次数 n（Kerodon と一致）。結論：SSet.yonedaEquiv は Δ\[n\] ⟶ X と X の n 単体との全単射で、恒等単体での評価を使う（一致）。
 
 :::
@@ -111,7 +141,26 @@ Kerodon Proposition 1.1.0.12（[Tag 04Z8](https://kerodon.net/tag/04Z8)）。対
 :::definition "kerodon_1_1_0_13" (lean := "SSet.yonedaEquiv")
 Kerodon Notation 1.1.0.13（[Tag 04Z9](https://kerodon.net/tag/04Z9)）。対応表の状態：Mathlib にある。
 
+*主張*　$`\sigma\in S_n` に対応する、標準単体の恒等単体を $`\sigma` に送る一意の射 $`f_\sigma\colon\Delta^n\to S` を、$`\sigma` と同一視して書く。
+
 仮定：X の n 単体 x（Kerodon と一致）。結論：SSet.yonedaEquiv.symm x は x を表す Δ\[n\] ⟶ X で、恒等単体への適用で x を返す（一致）。
+
+:::
+
+:::proposition "kerodon_1_1_0_14"
+Kerodon Remark 1.1.0.14（[Tag 000P](https://kerodon.net/tag/000P)）。対応表の状態：照合の対象外。
+
+*定義 1.4 （部分単体的集合）*
+
+単体的集合 $`X` の部分単体的集合とは、各 $`[m]` について部分集合 $`A([m])\subseteq X([m])` を与え、任意の射 $`\theta\colon[m]\to[m']` について $`X(\theta)(A([m']))\subseteq A([m])` をみたすものをいう。このとき $`A` は $`X` の作用を制限して単体的集合になり、包含 $`A\hookrightarrow X` は単体的集合の射である。$`A\subseteq X` と書く。
+
+*定義 1.5 （和）*
+
+単体的集合 $`X` の部分単体的集合の族 $`(A_j)_{j\in J}` について、その和 $`\bigcup_{j\in J}A_j\subseteq X` を
+
+$$`\Bigl(\bigcup_{j\in J}A_j\Bigr)([m])=\bigcup_{j\in J}A_j([m])`
+
+で定める。これは $`X` の部分単体的集合である。
 
 :::
 
@@ -126,6 +175,8 @@ Kerodon [Tag 04ZB](https://kerodon.net/tag/04ZB)
 
 :::definition "kerodon_1_1_1_1" (lean := "SemiSimplexCategory")
 Kerodon Notation 1.1.1.1（[Tag 04ZC](https://kerodon.net/tag/04ZC)）。対応表の状態：Mathlib にある。
+
+*主張*　$`\Delta_{\mathrm{inj}}` は $`[n]`（$`n\ge0`）を対象とし、狭義単調増加写像を射とする圏である。
 
 仮定：対象を非空有限順序集合の標準形 \[n\] に取る（Kerodon と一致）。結論：SemiSimplexCategory の射は有限順序集合の順序埋め込み、すなわち狭義単調写像（一致）。
 
@@ -142,6 +193,8 @@ Kerodon Definition 1.1.1.2（[Tag 04ZD](https://kerodon.net/tag/04ZD)）。対�
 
 :::definition "kerodon_1_1_1_4"
 Kerodon Construction 1.1.1.4（[Tag 04ZE](https://kerodon.net/tag/04ZE)）。対応表の状態：一部。
+
+*主張*　$`n>0`、$`0\le i\le n` に対して、$`i` を飛ばす狭義増加写像 $`[n-1]\to[n]` に半単体的対象を評価すると第 $`i` 面作用素 $`d_i^n\colon C_n\to C_{n-1}` が得られる。
 
 原文は δ と (semi)simplicial object の面作用素を構成する。SimplexCategory.δ は Fin.succAboveOrderEmb による同じ δ、SimplicialObject.δ は X.map δ.op そのものなので、単体対象側の構成を直接与える。半単体対象側は含まない。
 
@@ -168,6 +221,8 @@ Kerodon [Tag 04ZJ](https://kerodon.net/tag/04ZJ)
 :::definition "kerodon_1_1_2_1"
 Kerodon Construction 1.1.2.1（[Tag 04ZK](https://kerodon.net/tag/04ZK)）。対応表の状態：Mathlib にある。
 
+*主張*　$`0\le i\le n` について、隣り合う $`i,i+1` を同一視する単調全射 $`[n+1]\to[n]` に単体的対象を評価して、第 $`i` 退化作用素 $`s_i^n\colon C_n\to C_{n+1}` を得る。
+
 仮定：非負整数 n、i : Fin (n+1)、圏 C の単体対象（Kerodon と一致）。結論：SimplexCategory.σ は \[n+1\] → \[n\] で i と i+1 を同一視し、SimplicialObject.σ は反変評価 Cₙ ⟶ Cₙ₊₁（一致）。
 
 宣言：`SimplexCategory.σ`、`CategoryTheory.SimplicialObject.σ`
@@ -177,6 +232,8 @@ Kerodon Construction 1.1.2.1（[Tag 04ZK](https://kerodon.net/tag/04ZK)）。対
 :::definition "kerodon_1_1_2_2" (lean := "SSet.Edge.id")
 Kerodon Notation 1.1.2.2（[Tag 04ZL](https://kerodon.net/tag/04ZL)）。対応表の状態：Mathlib にある。
 
+*主張*　頂点 $`x` の零番目の退化である自己辺を $`\mathrm{id}_x=s_0^0(x)` と記す。
+
 仮定：単体集合 X と頂点 x（Kerodon と一致）。結論：Edge.id x は 0 番の退化で得る始点も終点も x の辺（一致）。
 
 :::
@@ -184,16 +241,18 @@ Kerodon Notation 1.1.2.2（[Tag 04ZL](https://kerodon.net/tag/04ZL)）。対応�
 :::definition "kerodon_1_1_2_3" (lean := "SSet.degenerate, SSet.nonDegenerate, SSet.degenerate_zero")
 Kerodon Definition 1.1.2.3（[Tag 0012](https://kerodon.net/tag/0012)）。対応表の状態：Mathlib にある。
 
+*主張*　$`n` 単体は、ある $`i<n` の退化作用素 $`s_i^{n-1}` の像に入るとき退化しているという。その補集合が非退化単体であり、頂点はすべて非退化である。
+
 仮定：単体集合 X と非負次数 n（Kerodon と一致）。結論：degenerate は低次への全射に沿う像の和で、degenerate\_eq\_iUnion\_range\_σ が個々の退化作用素の像での原文の定義と照合する。nonDegenerate は補集合、degenerate\_zero は空集合（一致）。
 
 :::
 
-:::proposition "kerodon_1_1_2_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
+:::proposition "kerodon_1_1_2_10" (lean := "SSet.mem_degenerate_iff") (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
 Kerodon Proposition 1.1.2.10（[Tag 0011](https://kerodon.net/tag/0011)）。対応表の状態：一部。
 
-原文の5条件中、degenerate\_eq\_iUnion\_range\_σ は退化作用素の像の和、mem\_degenerate\_iff は低次元への全射に沿う像との同値で、(1)と(3)の同値を定義の展開で直接与える。(5)の任意次元の非単射による因子化まで含めない。
+*主張*　$`n>0` の単体 $`\tau\colon\Delta^n\to S` が退化することは、一つの退化作用素の像に入ること、標準全射で $`\Delta^{n-1}` または次元 $`m<n` の $`\Delta^m` を経ること、任意の射でより低次元の標準単体を経ること、頂点に関して非単射な射で標準単体を経ることのいずれとも同値である。
 
-宣言：`SSet.mem_degenerate_iff`、`SSet.degenerate_eq_iUnion_range_σ`
+原文の5条件中、degenerate\_eq\_iUnion\_range\_σ は退化作用素の像の和、mem\_degenerate\_iff は低次元への全射に沿う像との同値で、(1)と(3)の同値を定義の展開で直接与える。(5)の任意次元の非単射による因子化まで含めない。
 
 :::
 
@@ -214,6 +273,8 @@ Kerodon Proposition 1.1.2.13（[Tag 04FT](https://kerodon.net/tag/04FT)）。対
 :::proposition "kerodon_1_1_2_14" (lean := "SerrePositivity.SimplexPresentation.equivalence, SimplexCategoryGenRel")
 Kerodon Proposition 1.1.2.14（[Tag 04FW](https://kerodon.net/tag/04FW)）。対応表の状態：本体にある。
 
+*主張*　圏の対象列 $`C_n` と面・退化の候補が与えられたとき、面同士・面と退化・退化同士の三種の単体恒等式が成り立つことが、これらから単体的対象を作れるための必要十分条件である。そのとき単体的対象は一意である。
+
 仮定：圏 C の対象列と面・退化の作用が単体恒等式を満たす（Kerodon と一致。Lean では生成元の関係として表す）。結論：SimplexCategoryGenRel と SimplexCategory の圏同値により、反変関手の指定を生成元上の指定に移せる（一致。引用の型は圏同値で、C 値の述語を直接返す形ではない）。
 
 :::
@@ -227,17 +288,19 @@ tag := "kerodon-1-1-3"
 
 Kerodon [Tag 04ZS](https://kerodon.net/tag/04ZS)
 
-:::definition "kerodon_1_1_3_1" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_1_1_3_1" (lean := "SSet.HasDimensionLT, SSet.HasDimensionLE") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.1.3.1（[Tag 0019](https://kerodon.net/tag/0019)）。対応表の状態：一部。
 
-原文は次元≤k・次元ちょうどk・有限次元を定義する。HasDimensionLT/LE の型は各上位次数の全単体の退化性で、非負kの上界および負kの空の場合を直接表す。次元ちょうど・有限次元の述語はこの引用にはない。
+*主張*　単体的集合が次元 $`\le k` であるとは、$`n>k` の単体がすべて退化していることをいう。$`k\ge0` で上界 $`k` を持ち $`k-1` を持たなければ次元 $`k` とし、ある有限の上界を持てば有限次元という。
 
-宣言：`SSet.HasDimensionLT`、`SSet.HasDimensionLE`
+原文は次元≤k・次元ちょうどk・有限次元を定義する。HasDimensionLT/LE の型は各上位次数の全単体の退化性で、非負kの上界および負kの空の場合を直接表す。次元ちょうど・有限次元の述語はこの引用にはない。
 
 :::
 
 :::proposition "kerodon_1_1_3_6" (lean := "SSet.hasDimensionLE_prod, SSet.hasDimensionLT_prod")
 Kerodon Proposition 1.1.3.6（[Tag 012R](https://kerodon.net/tag/012R)）。対応表の状態：Mathlib にある。
+
+*主張*　次元の上界がそれぞれ $`k_-`、$`k_+` の単体的集合の積は、次元が $`k_-+k_+` 以下である。
 
 仮定：単体集合 X,Y に次元上界 d₁,d₂（Kerodon と一致）。結論：hasDimensionLE\_prod は X × Y の次元上界 d₁+d₂ を与える（一致）。
 
@@ -246,12 +309,16 @@ Kerodon Proposition 1.1.3.6（[Tag 012R](https://kerodon.net/tag/012R)）。対�
 :::proposition "kerodon_1_1_3_8" (lean := "SSet.exists_nonDegenerate, SSet.unique_nonDegenerate_map, SSet.unique_nonDegenerate_simplex, SSet.unique_nonDegenerate_dim")
 Kerodon Proposition 1.1.3.8（[Tag 0014](https://kerodon.net/tag/0014)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の単体 $`\Delta^n\to S` は、単調全射 $`[n]\twoheadrightarrow[m]` による退化と非退化 $`m` 単体 $`\Delta^m\to S` の合成として一意に書ける。
+
 仮定：単体集合 X と標準 n 単体からの射、すなわち X の n 単体 x（Kerodon と一致）。結論：exists\_nonDegenerate は低次の非退化単体と全射による分解を与え、unique\_nonDegenerate\_dim・simplex・map はそれぞれ次数、単体、全射の一意性を与える（一致）。
 
 :::
 
 :::definition "kerodon_1_1_3_9" (lean := "CategoryTheory.Functor.Elements")
 Kerodon Construction 1.1.3.9（[Tag 00X4](https://kerodon.net/tag/00X4)）。対応表の状態：Mathlib にある。
+
+*主張*　単体の圏 $`\Delta_S` は $`([n],\sigma\in S_n)` を対象とし、引き戻しで $`\sigma'` を $`\sigma` に送る単調写像 $`[n]\to[n']` を射とする。$`\Delta_{S,\le k}` は次元が $`k` 以下の対象の充満部分圏である。
 
 仮定：単体集合 X（Kerodon と一致）。結論：各対象 (\[n\],x) と x=X(α)(y) を満たす α:\[n\]→\[m\] の射の圏は X.Elements の反対圏に対応する（一致。Elements 自体では射の向きが逆）。
 
@@ -284,6 +351,8 @@ Kerodon [Tag 0010](https://kerodon.net/tag/0010)
 
 :::definition "kerodon_1_1_4_1" (lean := "SSet.skeleton, SSet.sk")
 Kerodon Construction 1.1.4.1（[Tag 0015](https://kerodon.net/tag/0015)）。対応表の状態：Mathlib にある。
+
+*主張*　$`S` の $`k` 骨格は、$`m\le k` の標準単体 $`\Delta^m` を経由する $`S` の単体全体からなる部分単体的集合である。
 
 仮定：単体集合 X と整数 k（Kerodon と一致。Lean は自然数の添字を取り、k≥0 なら k+1、k\<0 なら 0 を使う）。結論：部分複体 skeleton は次数 k 以下で生成した部分複体で、負の k では skeleton 0 が空になる（一致。別の関手 sk との比較同型は引用の型には含まれない）。
 
@@ -328,6 +397,8 @@ Kerodon Corollary 1.1.4.9（[Tag 0503](https://kerodon.net/tag/0503)）。対応
 :::definition "kerodon_1_1_4_10" (lean := "SSet.boundary, SSet.boundary_obj_eq_univ")
 Kerodon Construction 1.1.4.10（[Tag 000R](https://kerodon.net/tag/000R)）。対応表の状態：Mathlib にある。
 
+*主張*　$`n\ge0` に対し $`\partial\Delta^n` を $`\Delta^n` の $`(n-1)` 骨格と定める。その $`m` 単体は全射でない単調写像 $`[m]\to[n]` である。
+
 仮定：非負整数 n（Kerodon と一致）。結論：boundary n は Δ\[n\] の真の面を合わせた部分複体で、次数 m\<n では boundary\_obj\_eq\_univ により全単体を含む（一致）。
 
 *定義 5.1 （境界 $`\partial\Delta^n`）*
@@ -339,16 +410,18 @@ $`n\ge0` について、$`\Delta^n` の部分単体的集合 $`\partial\Delta^n=
 :::proposition "kerodon_1_1_4_12" (lean := "SSet.relativeCellComplexOfMono.isPushout, SSet.relativeCellComplexOfMono")
 Kerodon Proposition 1.1.4.12（[Tag 001B](https://kerodon.net/tag/001B)）。対応表の状態：Mathlib にある。
 
+*主張*　単体的集合 $`S` の $`k` 骨格（$`k\ge0`）は、各非退化 $`k` 単体について $`\Delta^k` をその境界 $`\partial\Delta^k` に沿って $`(k-1)` 骨格に貼る押し出しで得られる。
+
 仮定：単体集合 X と段数 k（Kerodon と一致。Lean の相対版は初期対象から X への単射に特殊化）。結論：isPushout は相対骨格の連続する段で、新しい非退化 k 単体の境界の余積に沿う押し出しを与える（一致）。
 
 :::
 
-:::proposition "kerodon_1_1_4_13" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_1_1_4_13" (lean := "SSet.boundary.hom_ext, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.boundaryFaceGluing, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryFaceCompatible") (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 1.1.4.13（[Tag 0504](https://kerodon.net/tag/0504)）。対応表の状態：一部。
 
-原文の境界からの面制限写像の単射性は boundary.hom\_ext の型そのもの（n+1≥1）で直接得られる。image の整合条件について boundaryFaceGluing は境界次数n+2の構成を与えるが、全正次数を覆うとはしない。単射性という結論成分に限定する。
+*主張*　$`n>0` の標準境界から $`S` への射は $`n+1` 個の面への制限で決まる。任意の $`(n-1)` 単体の組 $`(\sigma_i)` がその制限になるための条件は、$`i<j` に対する $`d_i\sigma_j=d_{j-1}\sigma_i` である。
 
-宣言：`SSet.boundary.hom_ext`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.boundaryFaceGluing`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryFaceCompatible`
+原文の境界からの面制限写像の単射性は boundary.hom\_ext の型そのもの（n+1≥1）で直接得られる。image の整合条件について boundaryFaceGluing は境界次数n+2の構成を与えるが、全正次数を覆うとはしない。単射性という結論成分に限定する。
 
 :::
 
@@ -370,6 +443,8 @@ Kerodon Proposition 1.1.5.1（[Tag 00FR](https://kerodon.net/tag/00FR)）。対�
 
 :::definition "kerodon_1_1_5_2" (lean := "CategoryTheory.Functor.const, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete")
 Kerodon Construction 1.1.5.2（[Tag 00FS](https://kerodon.net/tag/00FS)）。対応表の状態：本体と Mathlib にある。
+
+*主張*　圏 $`\mathcal C` の対象 $`C` に、全次数で値が $`C`、すべての射の値が恒等射である定値単体的対象 $`\underline C` を対応させる。
 
 仮定：圏 C の対象 c（Kerodon と一致）。結論：Functor.const Δᵒᵖ は全次数の値が c で作用が恒等射の単体対象。discrete は C=Type での同じ構成（一致）。
 
@@ -396,6 +471,8 @@ Kerodon Corollary 1.1.5.8（[Tag 00FX](https://kerodon.net/tag/00FX)）。対応
 :::corollary "kerodon_1_1_5_9" (lean := "CategoryTheory.isConnected_of_isInitial")
 Kerodon Corollary 1.1.5.9（[Tag 00FY](https://kerodon.net/tag/00FY)）。対応表の状態：Mathlib にある。
 
+*主張*　任意の圏からその単体的対象の圏への定値対象関手は充満忠実である。
+
 仮定：任意の圏 C（Kerodon と一致。Lean が使う IsConnected Δᵒᵖ は \[0\] が初期対象なので満たされる）。結論：Functor.const Δᵒᵖ の充満性と忠実性により定数単体対象への埋め込みを得る（一致）。
 
 :::
@@ -412,6 +489,8 @@ Kerodon Definition 1.1.5.10（[Tag 00FZ](https://kerodon.net/tag/00FZ)）。対�
 :::corollary "kerodon_1_1_5_11"
 Kerodon Corollary 1.1.5.11（[Tag 00G0](https://kerodon.net/tag/00G0)）。対応表の状態：一部。
 
+*主張*　集合を定値単体的集合へ送る関手は充満忠実で、本質像は離散単体的集合の充満部分圏である。
+
 原文の結論の一つは const:Set→SSet の充満忠実性。IsConnected J の下の const の Full/Faithful は J=SimplexCategoryᵒᵖ へ直接適用でき、その結論成分に対応する。本質的像を離散対象とする結論は引用に含めない。
 
 宣言：`CategoryTheory.instFullFunctorConstOfIsConnected`
@@ -420,6 +499,8 @@ Kerodon Corollary 1.1.5.11（[Tag 00G0](https://kerodon.net/tag/00G0)）。対�
 
 :::definition "kerodon_1_1_5_12" (lean := "CategoryTheory.Functor.const, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete")
 Kerodon Notation 1.1.5.12（[Tag 00G1](https://kerodon.net/tag/00G1)）。対応表の状態：本体と Mathlib にある。
+
+*主張*　集合 $`S` を、それに対応する定値単体的集合 $`\underline S` と同じ記号で表す。
 
 仮定：集合 T（Kerodon と一致）。結論：discrete T と Type 値の Functor.const は全次数で T を値とし、面・退化が恒等写像の単体集合（一致）。
 
@@ -444,6 +525,8 @@ Kerodon [Tag 001D](https://kerodon.net/tag/001D)
 :::definition "kerodon_1_1_6_1" (lean := "Quiver")
 Kerodon Definition 1.1.6.1（[Tag 001E](https://kerodon.net/tag/001E)）。対応表の状態：Mathlib にある。
 
+*主張*　有向グラフとは、頂点集合、辺集合、および各辺の始点と終点を与える辺集合から頂点集合への二つの関数の組である。
+
 仮定：頂点の集合と始点・終点を持つ辺（Kerodon と一致。Lean では辺を頂点対で添字付けする）。結論：Quiver V は各頂点対に辺の型を割り当て、多重辺とループを許す（一致）。
 
 :::
@@ -459,6 +542,8 @@ Kerodon Definition 1.1.6.5（[Tag 001J](https://kerodon.net/tag/001J)）。対�
 
 :::proposition "kerodon_1_1_6_7" (lean := "SSet.OneTruncation₂, SSet.OneTruncation₂.map")
 Kerodon Proposition 1.1.6.7（[Tag 001L](https://kerodon.net/tag/001L)）。対応表の状態：Mathlib にある。
+
+*主張*　単体的集合の射 $`X\to Y` が一次単体上に誘導する写像は、恒等辺を頂点として含めたグラフ $`\mathrm{Gr}(X)\to\mathrm{Gr}(Y)` の射になる。
 
 仮定：単体集合 X,Y と単体写像 f（Kerodon と一致）。結論：OneTruncation₂.map f は頂点と辺を次数別に写し、反射的 quiver の指定自己辺である頂点の退化を保存する。非退化辺の像が退化したときは原文のグラフで頂点に写る場合に当たる（一致）。
 

@@ -2,20 +2,49 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Elements
+import Mathlib.Topology.Homotopy.Lifting
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianEdgeTransport
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CrossingComparison
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.BoundaryPrism
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Choices
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Composition
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.EdgeTransport
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FatJoinPointCylinder
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FiberTransportFamily
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.HomotopyTransport
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Identity
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IntervalCocartesianCriterion
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.JoinDiagonal
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.JoinDiagonalInnerFibration
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.JoinQuasicategory
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.LiftSpace
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.MappingCylinderComparison
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.MappingCylinderGeneralComparison
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.ParametrizedFiberTransport
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.PrescribedCartesianTransport
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoin
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCocartesianFibration
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCrossingCocartesian
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCylinder
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCylinderEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinCylinderNaturality
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinEmpty
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinExtensionEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinIdentity
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinPoint
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinPullbackIso
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeJoinPullbackMap
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Witness
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibrationInternalHom
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinPoint
+import SerrePositivity.KST.SConstruction.DoubleCoconeUniversality
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "5.2 Covariant Transport" =>
 %%%
@@ -24,6 +53,71 @@ tag := "kerodon-5-2"
 %%%
 
 Kerodon の 5.2 節（[Tag 019A](https://kerodon.net/tag/019A)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*route-classification.html — 4. 段 2：左 fibration — 4.2（2.2）fiber は Kan 複体、全ての辺は cocartesian*
+
+*fiber の定義*：$`b\colon\Delta^0\to B` に沿った厳密な引き戻し $`E_b:=\Delta^0\times_BE`、つまり $`(E_b)_n=\{\sigma\in E_n\mid p(\sigma)=b_n\}`（$`b_n` は $`b` の定値 $`n` 単体）。辺は像が*ちょうど* $`s_0b` の辺。例：$`N(F)\to N(I)` の fiber は $`N(F_i)`、$`\mathcal C_{x/}\to\mathcal C` の $`y` 上の fiber は $`\mathrm{Hom}^L(x,y)`、$`B\times K\to B` の fiber は $`K`。単体 $`\sigma\colon\Delta^n\to B` に沿った $`E_\sigma:=\Delta^n\times_BE` も使い、$`n=1` が写像柱（2.6）。
+
+*(a) 点上の左 fibration は Kan*：内ホーンで準圏、$`\Lambda^2_0` を $`(u,\mathrm{id}_a)` で埋めて左逆元、亜群なので 3.2 の系で Kan（$`\mathrm{Hom}^R` が $`\Lambda^2_2` で右逆元を作ったのと左右逆）。よって fiber $`E_b`、$`\mathrm{Fun}_B(E,E')`、$`\mathrm{Hom}^L(x,y)` は Kan。
+
+*(b) 全ての辺が cocartesian*：$`\Lambda^n_0` の持ち上げは最初の辺が何でも定義に含まれる。逆に cocartesian fibration について、左 fibration ⟺ 全辺 cocartesian ⟺ fiber が全て Kan（任意の辺を cocartesian な持ち上げと fiber の中の辺に分解し、fiber が Kan なら後者は同値）。0.6 の「全ての辺が輸送する辺」の正確な形。1 圏では fiber が亜群の opfibration ⟺ 全ての射が opcartesian。
+
+*(c)* 同値を反映する（3.2）。特に fiber の中の辺は全て $`E` の同値。*(d)* 写像空間では $`\mathrm{Map}_E(y,z)\simeq\mathrm{Map}_E(x,z)\times_{\mathrm{Map}_B(px,pz)}\mathrm{Map}_B(py,pz)`（補章 4）、ここから $`\mathrm{Map}_E(x,z)\to\mathrm{Map}_B(px,pz)` の $`u` 上の fiber が $`\mathrm{Map}_{E_{b'}}(u_!x,z)`。
+
+*質問：厳密な fiber は ∞ 圏的な fiber と一致するか*。左 fibration（底が準圏）では一致する。
+
+- 意味　／　$`E_b` と　／　理由
+- $`\mathrm{sSet}` の引き戻し　／　定義　／　—
+- $`\mathrm{QCat}`（1 圏）の引き戻し　／　一致　／　$`E_b` が準圏（一般の準圏の $`\mathrm{sSet}` 引き戻しは準圏とは限らないが、片方が内 fibration なら準圏）
+- $`\mathrm{Cat}_\infty` の引き戻し　／　一致（$`B` 準圏）　／　左 fibration は isofibration（Kerodon Ex. 4.4.1.11）＝ Joyal のモデル構造の fibration、fibration に沿った引き戻しはホモトピー引き戻し
+- 一般の写像の厳密な fiber　／　不一致　／　例：$`\{0\}\to J`（$`J` は自由な同型の圏のナーブ）の 1 上の fiber は空、∞ 圏的 fiber は一点
+
+モデル構造なしの形：∞ 圏的 fiber は $`\Delta^0\times_BP(B)\times_BE`（$`P` は同値な辺の path 空間、3.5・3.6 の置換）で、定値 path による $`E_b\to\Delta^0\times_BP(B)\times_BE` は isofibration の性質から圏同値。底が準圏でないときは内アノダインな置換 $`B\to B'` で読み、共変モデル構造の不変性で $`E_b` は正しい（正確な主張は 2.5 で確認）。
+
+*Lean での扱い*：fiber は \`vertexFiber\`（引き戻し）。
+
+- 内容　／　宣言　／　ファイル
+- 左ホーンが埋まれば Kan　／　\`kanComplex\_of\_leftHornFillers\`　／　Core/LeftFiberKan
+- fiber は Kan　／　\`vertexFiber\_kanComplex\_of\_leftFibration\`　／　同上
+- cocartesian 辺　／　\`IsCocartesianEdge\`、\`IsCartesianEdge\`　／　F1/Fibrations/CartesianEdge
+- 全辺が cocartesian　／　\`isCocartesianEdge\_of\_leftFibration\`、\`leftFibration\_cocartesianFibration\`　／　F1/Fibrations/CartesianEdge、CartesianFibration
+- 逆向き　／　\`leftFibration\_of\_cocartesianFibration\_of\_all\_edges\`、\`leftFibration\_iff\_cocartesianFibration\_all\_edges\`　／　F1/Fibrations/AllEdges
+
+*route-classification.html — 4. 段 2：左 fibration — 4.3（2.3）輸送 $`u_!\colon E_b\to E_{b'}`*
+
+*構成*：$`u\colon b\to b'` について $`h\colon\Delta^1\times E_b\to E`（$`\{0\}\times E_b` で包含、$`p h=u\circ\mathrm{pr}_1`）を持ち上げで取る。$`\{0\}\times E_b\subset\Delta^1\times E_b` は左アノダイン（$`\{0\}\subset\Delta^1` 左アノダイン × 単射、0.5 の積の補題の左版）。$`u_!:=h|_{\{1\}\times E_b}`。各点では $`u_!(e)` は $`e` から始まる $`u` の持ち上げの終点（$`L(e,u)` を全体で同時に取ったもの）。
+
+*一意性*：$`h` の選び方は自明 Kan fibration $`\mathrm{Fun}(\Delta^1\times E_b,E)\to\mathrm{Fun}(\{0\}\times E_b,E)\times_{\mathrm{Fun}(\{0\}\times E_b,B)}\mathrm{Fun}(\Delta^1\times E_b,B)` の fiber で可縮。
+
+*関手性*：(1) $`(\mathrm{id}_b)_!\simeq\mathrm{id}`（射影を取る）。(2) 2 単体 $`(u,v,w)` の上で $`\Delta^2\times E_b` を持ち上げて $`w_!\simeq v_!u_!`。(3) ホモトピックな辺は同じ輸送。(4) $`u` が同値なら $`u_!` はホモトピー同値。よって関手 $`hB\to h\mathrm{Kan}`（定理 I の 1 圏的な影、$`\mathrm{St}(E)` のホモトピー圏への像）。
+
+- 左 fibration　／　$`u_!`
+- 離散 opfibration　／　$`F(u)`
+- $`\mathcal C_{x/}\to\mathcal C`　／　後合成 $`u\circ-`
+- $`B\times K\to B`　／　恒等
+- 被覆空間・Kan fibration　／　モノドロミー
+
+*失われる情報*：$`B(\mathbb Z/2)` 上では $`hB\to h\mathrm{Kan}` はホモトピー作用（$`\tau^2\simeq\mathrm{id}`）しか持たず、そのホモトピーの選び方と整合性は失われる。整合的な作用に持ち上がらないホモトピー作用もある。定理 I はこの影を ∞ 関手に格上げする主張。
+
+*Lean での扱い*：
+
+- 内容　／　宣言　／　ファイル
+- 左アノダイン × 単射　／　\`leftAnodyneExtensions\_unionProd\`　／　Core/PairingHorns
+- fiber 全体の輸送　／　\`LeftFibrationFiberTransport\`、\`nonempty\_leftFibrationFiberTransport\`　／　Stable/LeftFibrationFiberTransport
+- 径数づけた輸送の族　／　\`FiberTransportFamily\`、\`fiberTransportFamily\`、\`FiberTransportFamily.endpointIso\`　／　F1/Transport/FiberTransportFamily
+- 輸送が同値であることの判定　／　\`parametrizedFiberTransport\_isQCatEquivalence\_of\_squareIso\`　／　F1/Transport/ParametrizedTransportSquare
+
+*route-classification.html — 4. 段 2：左 fibration — 4.4（2.4）安定性*
+
+*形式的に閉じる操作*（右持ち上げ性質のクラスなので）：引き戻し（fiber は $`(E\times_BB')_{b'}=E_{k(b')}`）、合成、積、レトラクト、塔の逆極限。
+
+*局所性*：$`p` が左 fibration ⟺ 全ての単体 $`\sigma\colon\Delta^n\to B` について $`E_\sigma\to\Delta^n` が左 fibration（ホーンの持ち上げ問題は底の単体に沿った引き戻しの中で読める）。2.5 や段 7 で $`B=\Delta^n` に帰着する根拠。
+
+*関手の ∞ 圏への上げ*：$`K\subseteq L` 単射なら $`\mathrm{Fun}(L,E)\to\mathrm{Fun}(K,E)\times_{\mathrm{Fun}(K,B)}\mathrm{Fun}(L,B)` は左 fibration、$`K\subseteq L` が左アノダインなら自明 Kan fibration（0.5）。$`K=\emptyset` で $`\mathrm{Fun}(L,E)\to\mathrm{Fun}(L,B)`、相対関手の空間 $`\mathrm{Fun}_B(E',E)` は Kan。*切断の空間* $`\mathrm{Fun}_B(B,E)` は $`\mathrm{St}(E)` の極限に当たり、余極限は全空間 $`E` のホモトピー型（0.4、証明は段 7 の後）。
+
+*双対*：$`p` 左 ⟺ $`p^{\mathrm{op}}` 右（$`\Lambda^n_i\leftrightarrow\Lambda^n_{n-i}`）。左 fibration の間の写像そのものの性質は形式的には出ず、2.5 の内容。
+
+*Lean での扱い*：\`leftFibrations\` は \`deriving IsMultiplicative, IsStableUnderBaseChange, IsStableUnderRetracts\`（Core/RightFibration）。引き戻しのインスタンス \`leftFibration\_pullback\_fst\`（Core/RelativeCoslice）。$`\mathrm{Fun}(K,-)` への上げ \`ihom\_map\_leftFibration\`、\`leftAnodyneExtensions\_pushoutObjObj\_horn\`（F1/Fibrations/LeftFibrationInternalHom）。
 
 :::definition "kerodon_5_2_0_1"
 Kerodon Construction 5.2.0.1（[Tag 027S](https://kerodon.net/tag/027S)）。対応表の状態：なし。
@@ -59,12 +153,12 @@ tag := "kerodon-5-2-1"
 
 Kerodon [Tag 01VF](https://kerodon.net/tag/01VF)
 
-:::theorem "kerodon_5_2_1_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_4_3, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_4_12, kerodon_5_1_4_13, kerodon_5_2_1_3, kerodon_5_2_1_5")
+:::theorem "kerodon_5_2_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.ihom_map_leftFibration, SerrePositivity.KST.SConstruction.ihom_pre_innerFibration") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_4_3, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_4_12, kerodon_5_1_4_13, kerodon_5_2_1_3, kerodon_5_2_1_5")
 Kerodon Theorem 5.2.1.1（[Tag 01VG](https://kerodon.net/tag/01VG)）。対応表の状態：一部。
 
-qをleft fibrationに制限するとihom\_map\_leftFibrationは同じ内部Hom後合成をleft fibration、従ってcocartesian fibrationと直接返す。原文(1′)の特殊形のみ。
+*主張*　単体集合のデカルトファイブレーション $`q:X\to S` と任意の単体集合 $`B` に対し、後合成 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)` はデカルトファイブレーションである。そのデカルト辺は $`B` の全頂点で $`q`-デカルトに評価される辺であり、余デカルトファイブレーションと余デカルト辺についても同様である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.ihom_map_leftFibration`、`SerrePositivity.KST.SConstruction.ihom_pre_innerFibration`
+qをleft fibrationに制限するとihom\_map\_leftFibrationは同じ内部Hom後合成をleft fibration、従ってcocartesian fibrationと直接返す。原文(1′)の特殊形のみ。
 
 :::
 
@@ -93,6 +187,18 @@ tag := "kerodon-5-2-2"
 
 Kerodon [Tag 019M](https://kerodon.net/tag/019M)
 
+*03-straightening.html — 1. cocartesian 辺と cocartesian fibration — transport*
+
+cocartesian fibration では、底の辺 $`e\colon b\to b'` に沿って fiber の間の関手 $`e_!\colon X_b\to X_{b'}` が「ほぼ一意に」決まる。
+
+- 内容　／　Lean　／　場所
+- 一点の持ち上げ（対象の移送）　／　\`chooseCocartesianEdgeLift\`、\`cocartesianTransportObject\`　／　F1/TransportObjects
+- transport の選択空間は可縮（Kerodon Prop. 5.2.2.8）　／　\`transportChoiceSpace\_isContractibleKan\`　／　F1/TransportChoices
+- transport 関手を一つ選ぶ　／　\`cocartesianTransport p e : X\_b ⟶ X\_\{b'\}\`　／　F1/TransportHo
+- どの選び方でもホモトピー圏上で自然同型　／　\`IsCocartesianTransport.toHoIso\`　／　同上
+
+「選択空間が可縮」という形で一意性を述べるのが、以後の構成の基本の型である。選び方の任意性を、可縮な Kan 複体の点を選ぶことに閉じ込めておく。
+
 :::proposition "kerodon_5_2_2_1"
 Kerodon Proposition 5.2.2.1（[Tag 01SA](https://kerodon.net/tag/01SA)）。対応表の状態：なし。
 
@@ -114,30 +220,34 @@ IsCocartesianという射の述語は、原文が名付けるfiber間の共変�
 :::definition "kerodon_5_2_2_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsEdgeTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsCocartesianTransport")
 Kerodon Definition 5.2.2.4（[Tag 019N](https://kerodon.net/tag/019N)）。対応表の状態：本体にある。
 
+*主張*　内部ファイブレーション $`U:E\to C` において、$`f:c\to d` に沿う共変移送 $`E_c\to E_d` は、$`f` 上の $`\Delta^1\times E_c\to E` で、最初の端が $`E_c` の包含、最後の端が指定された関手、各対象上の縦辺が局所 $`U`-余デカルトとなるものを持つ関手である。
+
 仮定：内ファイブレーション p、底の辺 e:a→b、候補 F:E\_a→E\_b（Lean が弱い：述語は任意の p に定義）。結論：IsEdgeTransport は両端を指定し e 上にあり全垂直辺が cocartesian な Δ¹×E\_a の prism の存在（一致）。
 
 :::
 
-:::proposition "kerodon_5_2_2_5" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_5_2_2_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isEdgeTransport_identity") (uses := "kerodon_1_1_0_6")
 Kerodon Example 5.2.2.5（[Tag 019P](https://kerodon.net/tag/019P)）。対応表の状態：一部。
+
+*主張*　内部ファイブレーションで、退化辺 $`\mathrm{id}_c` に沿う共変移送として恒等関手 $`E_c\to E_c` を取れる。移送の証人は $`\Delta^1\times E_c\to E_c` とファイバー包含の合成である。
 
 底を準圏、Uをcocartesian fibrationに強めるとisEdgeTransport\_identityは同じ退化辺に沿うfiber恒等が輸送であることを直接返す。任意のinner fibrationではない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isEdgeTransport_identity`
-
 :::
 
-:::proposition "kerodon_5_2_2_8" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_2_13")
+:::proposition "kerodon_5_2_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport_isTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsEdgeTransport.functorIso, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.transportChoiceSpace_isContractibleKan") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_2_13")
 Kerodon Proposition 5.2.2.8（[Tag 01VS](https://kerodon.net/tag/01VS)）。対応表の状態：一部。
 
-edgeTransport\_isTransportは原文の輸送の存在を直接返し、IsEdgeTransport.functorIsoは任意の二つの輸送の同型を返す。同型な任意候補も輸送になる逆は含まない。
+*主張*　余デカルトファイブレーションの底の任意の辺に沿って、共変移送関手が存在する。対応するファイバー間の関手が共変移送であることは、この関手と自然同型であることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport_isTransport`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsEdgeTransport.functorIso`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.transportChoiceSpace_isContractibleKan`
+edgeTransport\_isTransportは原文の輸送の存在を直接返し、IsEdgeTransport.functorIsoは任意の二つの輸送の同型を返す。同型な任意候補も輸送になる逆は含まない。
 
 :::
 
 :::definition "kerodon_5_2_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport")
 Kerodon Notation 5.2.2.9（[Tag 023Y](https://kerodon.net/tag/023Y)）。対応表の状態：本体にある。
+
+*主張*　余デカルトファイブレーションで、辺 $`f:c\to d` に沿う共変移送関手の一意の自然同型類を $`[f_!]` と書く。代表を一つ選んだものを $`f_!:E_c\to E_d` と書く。
 
 仮定：CocartesianFibration p と底の辺 e:a→b（Kerodon と一致）。結論：edgeTransport p e がファイバー間の輸送の選択された代表 f\_!。原文の記法はこの代表を許す（一致）。
 
@@ -152,39 +262,39 @@ cocartesianLiftSpaceは指定始点と底を固定した持ち上げの空間。
 
 :::
 
-:::lemma_ "kerodon_5_2_2_13" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_1_1")
+:::lemma_ "kerodon_5_2_2_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesianLiftSpace_isContractibleKan, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesian_prism_extend_boundary") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_1_1")
 Kerodon Lemma 5.2.2.13（[Tag 02RB](https://kerodon.net/tag/02RB)）。対応表の状態：一部。
+
+*主張*　余デカルトファイブレーション $`U:E\to C` に対し、$`\Delta^1\times K\to C` の零端に持ち上げを指定すると、$`U`-余デカルトな持ち上げ $`H` が存在する。別の持ち上げの一端に現れる図式は、$`H` の一端に $`C` 上で同型な図式ちょうどすべてである。
 
 cocartesianLiftSpace\_isContractibleKanは任意の始点・底のprismを固定した持ち上げ空間を可縮Kanと直接返す。特に頂点があり、原文(1)のcocartesian liftを与える。(2)の任意の同型な終点の厳密実現は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesianLiftSpace_isContractibleKan`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesian_prism_extend_boundary`
-
 :::
 
-:::definition "kerodon_5_2_2_15" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1")
+:::definition "kerodon_5_2_2_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport_witness") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1")
 Kerodon Definition 5.2.2.15（[Tag 01VN](https://kerodon.net/tag/01VN)）。対応表の状態：一部。
+
+*主張*　内部ファイブレーション $`U:E\to C` で、$`f:c\to d` に沿う反変移送 $`E_d\to E_c` は、$`f` 上の $`\Delta^1\times E_d\to E` で、一端が $`E_d` の包含、零端が指定の関手、各対象上の縦辺が局所 $`U`-デカルトであるものを持つ関手である。
 
 Uをcartesian fibrationに強めるとcartesianEdgeTransportとそのwitnessは、同じ辺に沿う反変輸送と両端・底の等式および全頂点のcartesianなprismを直接構成する。任意inner fibrationと任意候補の述語全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport_witness`
-
 :::
 
-:::proposition "kerodon_5_2_2_17"
+:::proposition "kerodon_5_2_2_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.exists_cartesianPrism_prescribed_vertices, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport_witness")
 Kerodon Proposition 5.2.2.17（[Tag 019X](https://kerodon.net/tag/019X)）。対応表の状態：一部。
+
+*主張*　デカルトファイブレーションの底の任意の辺に沿って反変移送関手が存在する。対応するファイバー間の関手が反変移送であることは、その関手に自然同型であることと同値である。
 
 現本体のcartesianEdgeTransport\_witnessは一般の底の各辺について同じ反変輸送の存在を直接返す。原文第一結論のみで、任意の輸送の同型類の一意性は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.exists_cartesianPrism_prescribed_vertices`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport_witness`
-
 :::
 
-:::definition "kerodon_5_2_2_18"
+:::definition "kerodon_5_2_2_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport_witness")
 Kerodon Notation 5.2.2.18（[Tag 019Y](https://kerodon.net/tag/019Y)）。対応表の状態：一部。
 
-cartesianEdgeTransportとそのwitnessは原文が許す代表f\*の選択とそのprismを直接与える。全ての候補が一つの同型類になる結論は含まない。
+*主張*　デカルトファイブレーションで、辺 $`f:c\to d` に沿う反変移送の一意の自然同型類を $`[f^*]` と書く。代表を一つ選んだものを $`f^*:E_d\to E_c` と書く。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeTransport_witness`
+cartesianEdgeTransportとそのwitnessは原文が許す代表f\*の選択とそのprismを直接与える。全ての候補が一つの同型類になる結論は含まない。
 
 :::
 
@@ -199,6 +309,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：底辺が�
 Kerodon Theorem 5.2.2.20（[Tag 01A2](https://kerodon.net/tag/01A2)）。対応表の状態：なし。
 
 引用は底の可逆辺に沿うleft fibrationの輸送の同値性。原文は任意の射のKan fibration性を全辺の輸送で判定するiffであり、可逆辺だけの証明部品ではその方向を直接与えない。
+
+*f-06-straightening.html — 1. 何を分類するか*
+
+- Kan fibration は、transport がすべてホモトピー同値である左 fibration（Kerodon 5.2.2.20）。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport_isQCatEquivalence_of_isInvertibleEdge`
 
@@ -223,21 +337,25 @@ Kerodon [Tag 0241](https://kerodon.net/tag/0241)
 :::definition "kerodon_5_2_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.joinDiagonal, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinProjection")
 Kerodon Construction 5.2.3.1（[Tag 0242](https://kerodon.net/tag/0242)）。対応表の状態：本体にある。
 
+*主張*　単体集合の余スパン $`C\to E\leftarrow D` の相対結合 $`C\star_E D` は、$`C\star D\to E\star E` を $`\Delta^1\times E\to E\star E` に沿って引き戻したものである。後者は両端をそれぞれの $`E` に入れる写像である。
+
 仮定：同じ標的 S を持つ単体集合の射 f:X→S、g:Y→S（Kerodon と一致）。結論：relativeJoin f g は X⋆Y→S⋆S と joinDiagonal S:Δ¹×S→S⋆S の引き戻し。Δ¹ への射影を持つ（一致）。
 
 :::
 
-:::proposition "kerodon_5_2_3_4"
+:::proposition "kerodon_5_2_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinInr_emptySource_isIso, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_joinInr_emptySource_isIso")
 Kerodon Example 5.2.3.4（[Tag 0245](https://kerodon.net/tag/0245)）。対応表の状態：一部。
 
-relativeJoinInr\_emptySource\_isIsoはCが空かつG=idのとき原文の同じ右包含が同型と直接返す。任意Gおよび左包含の結論は含まない。
+*主張*　単体集合の相対結合で、一方が空なら他方の包含は同型である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinInr_emptySource_isIso`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_joinInr_emptySource_isIso`
+relativeJoinInr\_emptySource\_isIsoはCが空かつG=idのとき原文の同じ右包含が同型と直接返す。任意Gおよび左包含の結論は含まない。
 
 :::
 
 :::proposition "kerodon_5_2_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_point_fst_isIso, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.joinDiagonal_point_isIso")
 Kerodon Example 5.2.3.5（[Tag 0246](https://kerodon.net/tag/0246)）。対応表の状態：本体にある。
+
+*主張*　一点 $`\Delta^0` 上での単体集合の相対結合は、通常の結合に一致する。
 
 仮定：単体集合 X,Y と点への射（Kerodon と一致）。結論：相対 join の通常の join への第1射影が同型（一致）。
 
@@ -246,50 +364,54 @@ Kerodon Example 5.2.3.5（[Tag 0246](https://kerodon.net/tag/0246)）。対応�
 :::proposition "kerodon_5_2_3_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinSelfIso")
 Kerodon Example 5.2.3.6（[Tag 0247](https://kerodon.net/tag/0247)）。対応表の状態：本体にある。
 
+*主張*　任意の単体集合 $`E` に対して、相対結合 $`E\star_E E` は $`\Delta^1\times E` に同型である。
+
 仮定：任意の単体集合 S（Kerodon と一致）。結論：relativeJoin (id S) (id S) と Δ¹×S の同型（一致）。
 
 :::
 
-:::proposition "kerodon_5_2_3_9"
+:::proposition "kerodon_5_2_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinPullbackMap_isPullback, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinPullbackMap")
 Kerodon Remark 5.2.3.9（[Tag 024A](https://kerodon.net/tag/024A)）。対応表の状態：一部。
 
-relativeJoinPullbackMap\_isPullbackはD=E、G=idの場合の同じrelative joinの底変換四角そのもの。任意の二つの因子には一般化しない。
+*主張*　単体集合の二つの脚 $`C\to E\leftarrow D` を同じ $`E'\to E` に沿って引き戻した $`C',D'` について、$`C'\star_{E'}D'` は $`C\star_E D` を $`E'` に沿って引き戻したものになる。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinPullbackMap_isPullback`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinPullbackMap`
+relativeJoinPullbackMap\_isPullbackはD=E、G=idの場合の同じrelative joinの底変換四角そのもの。任意の二つの因子には一般化しない。
 
 :::
 
 :::proposition "kerodon_5_2_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_quasicategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinProjection_innerFibration")
 Kerodon Proposition 5.2.3.11（[Tag 024C](https://kerodon.net/tag/024C)）。対応表の状態：本体にある。
 
+*主張*　無限圏の余スパン $`C\to E\leftarrow D` の相対結合 $`C\star_E D` は無限圏である。
+
 仮定：Quasicategory X,Y,S と f:X→S、g:Y→S（Kerodon と一致）。結論：relativeJoin f g が Quasicategory。Δ¹ への射影の内ファイブレーション性もある（一致）。
 
 :::
 
-:::lemma_ "kerodon_5_2_3_12" (uses := "kerodon_1_1_0_6")
+:::lemma_ "kerodon_5_2_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.joinDiagonal_innerFibration") (uses := "kerodon_1_1_0_6")
 Kerodon Lemma 5.2.3.12（[Tag 024D](https://kerodon.net/tag/024D)）。対応表の状態：一部。
+
+*主張*　単体集合の内部ファイブレーション $`E\to E'` に対し、$`\Delta^1\times E=E\star_E E\to E\star_{E'}E` は内部ファイブレーションである。
 
 E′=Δ⁰に制限するとrelative joinは通常join、比較はjoinDiagonalとなり、joinDiagonal\_innerFibrationが同じ射のinner性を直接返す。一般のUの相対版は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.joinDiagonal_innerFibration`
-
 :::
 
-:::lemma_ "kerodon_5_2_3_13" (uses := "kerodon_1_1_0_6, kerodon_4_3_3_24, kerodon_5_2_3_12")
+:::lemma_ "kerodon_5_2_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_fst_innerFibration") (uses := "kerodon_1_1_0_6, kerodon_4_3_3_24, kerodon_5_2_3_12")
 Kerodon Lemma 5.2.3.13（[Tag 02RF](https://kerodon.net/tag/02RF)）。対応表の状態：一部。
+
+*主張*　単体集合の余スパンの間の可換図式で、三つの縦の射が内部ファイブレーションなら、相対結合間に誘導される射も内部ファイブレーションである。
 
 C′=C,D′=D,E′=Δ⁰、W:E→Δ⁰に制限すると原文の射はrelative joinから通常joinへの第一射影。relativeJoin\_fst\_innerFibrationが同じ射を直接扱う。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_fst_innerFibration`
-
 :::
 
-:::proposition "kerodon_5_2_3_15" (uses := "kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_2_3_18")
+:::proposition "kerodon_5_2_3_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinProjection_cocartesianFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesianFibration_interval_of_lift") (uses := "kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_2_3_18")
 Kerodon Proposition 5.2.3.15（[Tag 024J](https://kerodon.net/tag/024J)）。対応表の状態：一部。
 
-relativeJoinProjection\_cocartesianFibrationは原文第一結論の同じrelative joinからΔ¹への射影について直接の型。prismがFの輸送を表す第二結論は引用にない。
+*主張*　無限圏の関手 $`F:C\to D` に対し、$`C\star_D D\to\Delta^1` は余デカルトファイブレーションである。$`\Delta^1\times C\to C\star_D D` が、非退化辺に沿う共変移送が $`F` であることを示す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinProjection_cocartesianFibration`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesianFibration_interval_of_lift`
+relativeJoinProjection\_cocartesianFibrationは原文第一結論の同じrelative joinからΔ¹への射影について直接の型。prismがFの輸送を表す第二結論は引用にない。
 
 :::
 
@@ -311,12 +433,12 @@ relativeJoin\_crossing\_isCocartesianはΔ¹への構造射と混合辺だけ。
 
 :::
 
-:::proposition "kerodon_5_2_3_18" (uses := "kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_3_17")
+:::proposition "kerodon_5_2_3_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_crossing_isCocartesian, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinProjection_cocartesianFibration") (uses := "kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_3_17")
 Kerodon Example 5.2.3.18（[Tag 02RJ](https://kerodon.net/tag/02RJ)）。対応表の状態：一部。
 
-relativeJoinProjection\_cocartesianFibrationは原文の最初の結論、crossing補題は混合辺が像の同型に対応する場合の十分条件を直接返す。三場合全体のiffは含まない。
+*主張*　無限圏の関手 $`F:C\to D` から得る $`C\star_D D\to\Delta^1` は余デカルトファイブレーションである。その余デカルト射は、$`C,D` のどちらかに属する同型か、$`x\in C,y\in D` の間で $`D` の同型 $`F(x)\to y` に対応する射である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_crossing_isCocartesian`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinProjection_cocartesianFibration`
+relativeJoinProjection\_cocartesianFibrationは原文の最初の結論、crossing補題は混合辺が像の同型に対応する場合の十分条件を直接返す。三場合全体のiffは含まない。
 
 :::
 
@@ -327,7 +449,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対 join
 
 :::
 
-# 5.2.4 Fibrations over the \$1\$-Simplex
+# 5.2.4 Fibrations over the 1-Simplex
 
 %%%
 number := false
@@ -336,17 +458,42 @@ tag := "kerodon-5-2-4"
 
 Kerodon [Tag 024M](https://kerodon.net/tag/024M)
 
-:::theorem "kerodon_5_2_4_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_7_5, kerodon_4_1_3_3, kerodon_4_5_5_1, kerodon_4_5_5_9, kerodon_4_5_6_2, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_6_1, kerodon_5_2_3_15, kerodon_5_2_4_5")
+*route-classification.html — 4. 段 2：左 fibration — 4.6（2.6）$`\Delta^1` 上の左 fibration（写像柱）*
+
+*主張*：$`\Delta^1` 上の左 fibration は本質的に Kan 複体の間の写像 $`u_!\colon E_0\to E_1` と同じ（写像空間まで込めて $`\mathrm{LFib}(\Delta^1)\simeq\mathrm{Fun}(\Delta^1,\mathcal S)`、定理 I の $`B=\Delta^1` の場合）。
+
+- *左 fibration → 写像*：2.3 の輸送。
+
+- \*\*写像 → $`\Delta^1` 上の対象\*\*：写像柱 $`M(\varphi):=(\Delta^1\times K)\sqcup_{\{1\}\times K}L\to\Delta^1`。一般に左 fibration ではない（$`L` の辺と $`\Delta^1\times K` の 2 単体を組み合わせた $`\Lambda^2_1` が埋まらない）。左アノダインな置き換えか相対ナーブ（HTT §3.2.5）で左 fibration にするか、置き換えずに比較する（形式化の方針）。
+
+- *比較*：$`h` と包含 $`E_1\subset E` から $`c\colon M(u_!)\to E`。任意の左 fibration $`X\to\Delta^1` で $`c^*\colon\mathrm{Fun}_{\Delta^1}(E,X)\to\mathrm{Fun}_{\Delta^1}(M(u_!),X)` はホモトピー同値。右辺は押し出しと $`\{0\}\times K\subset\Delta^1\times K` の左アノダイン性から $`\mathrm{Fun}(K,X_0)\times_{\mathrm{Fun}(K,X_1)}\mathrm{Fun}(L,X_1)`（ホモトピー fiber 積）＝ $`(\alpha_0,\alpha_1,\ u^X_!\alpha_0\simeq\alpha_1\varphi)`、つまり $`\mathrm{Fun}(\Delta^1,\mathcal S)` の写像空間（ホモトピー可換な正方形）。
+
+*帰結*：$`E\simeq E'` in $`\mathrm{LFib}(\Delta^1)` ⟺ $`u_!`、$`u'_!` の間にホモトピー可換な同値の正方形。*段 6 への準備（univalence）*：fiber を $`K,L` に固定した $`\Delta^1` 上の左 fibration の空間は $`\mathrm{Fun}(K,L)` と同値、$`\mathrm{Map}_{\mathcal S}(K,L)\simeq\mathrm{Fun}(K,L)`（段 3）と合わせて「$`\mathcal S` の辺 ＝ $`\Delta^1` 上の左 fibration」。一般の $`B` は局所性で $`\Delta^n`、さらに $`\Delta^1` に帰着。
+
+*Lean での扱い*：写像柱は押し出し \`pushout (prismEndpoint 1 K) f\` で、置き換えずに比較する。
+
+- 内容　／　宣言　／　ファイル
+- 端点の包含と比較　／　\`transportCylinderEndpointInclusion\`、\`transportCylinderEndpointInclusion\_comparison\`　／　F1/MappingSpaces/IntervalTransportBoundary
+- 径数づけた写像柱　／　\`parametrizedCylinderIsPushout\`、\`parametrizedCylinderDesc\`　／　F1/Transport/ParametrizedCylinderGluing
+- 比較が同値　／　\`intervalTransportCylinder\_boundaryFamily\_isQCatEquivalence\`　／　F1/MappingSpaces/IntervalTransportBoundaryFamily
+- 正方形の空間　／　\`cylinderEquivalenceSquareSpace\`、\`cylinderEquivalenceSquareEndpoints\`　／　F1/MappingSpaces/CylinderEquivalenceSquares
+- 区間上の本質的全射性　／　\`isEssentiallySurjective\_over\_interval\_of\_endpoint\_fibers\`　／　F1/Fibrations/FiberwiseEssentialSurjectivity
+
+*段 2 で押さえること*：$`\mathrm{LFib}(B)=N^{hc}`（相対関手の空間を Hom とする単体的圏）で、Hom は最初から Kan。fiber は厳密な引き戻しで Kan 複体、∞ 圏的な fiber とも一致する。全ての辺が cocartesian で、輸送 $`u_!` は可縮な選択で決まり $`hB\to h\mathrm{Kan}` を与える（高次の整合性は落ちる）。左 fibration は引き戻し・合成・$`\mathrm{Fun}(K,-)` で閉じ、単体ごとに判定できる。$`B` 上の写像の同値は fiber ごとに判定でき（単体の上の切断は始点の fiber で決まる）、$`\Delta^1` 上の左 fibration は写像 $`E_0\to E_1` と同じ。
+
+:::theorem "kerodon_5_2_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_extension_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isPrecompositionEquivalence_relativeJoinCylinderComparison, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.mappingCylinder_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_7_5, kerodon_4_1_3_3, kerodon_4_5_5_1, kerodon_4_5_5_9, kerodon_4_5_6_2, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_6_1, kerodon_5_2_3_15, kerodon_5_2_4_5")
 Kerodon Theorem 5.2.4.1（[Tag 024N](https://kerodon.net/tag/024N)）。対応表の状態：一部。
 
-mappingCylinder\_isPrecompositionEquivalenceは原文の三条件を仮定して同じpushoutからMへの比較射を圏同値にするので、categorical pushoutとなる十分方向。逆とUのcocartesian性は含まない。
+*主張*　無限圏の関手 $`M\to\Delta^1` と、$`\Delta^1` 上で $`D` と $`\Delta^1\times C` を $`\{1\}\times C` から $`M` に貼る可換正方形を取る。この正方形が圏論的押し出しであることは、$`C,D` がそれぞれ零端・一端のファイバーと圏同値になり、$`C` の各頂点に付く縦辺が余デカルトであることと同値である。そのとき $`M\to\Delta^1` は余デカルトファイブレーションである。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin_extension_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isPrecompositionEquivalence_relativeJoinCylinderComparison`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.mappingCylinder_isPrecompositionEquivalence`
+mappingCylinder\_isPrecompositionEquivalenceは原文の三条件を仮定して同じpushoutからMへの比較射を圏同値にするので、categorical pushoutとなる十分方向。逆とUのcocartesian性は含まない。
 
 :::
 
 :::corollary "kerodon_5_2_4_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.mappingCylinder_isPrecompositionEquivalence")
 Kerodon Corollary 5.2.4.2（[Tag 024P](https://kerodon.net/tag/024P)）。対応表の状態：本体にある。
+
+*主張*　$`\Delta^1` 上の無限圏の余デカルトファイブレーション $`M` の両端のファイバーを $`C,D` とする。共変移送の証人 $`\Delta^1\times C\to M` は、$`(\Delta^1\times C)\coprod_{\{1\}\times C}D\to M` という圏同値を誘導する。
 
 仮定：∞ 圏 M→Δ¹、端点ファイバー X,Y、輸送を表す prism H（Lean が弱い：比較補題は両端の比較が同値ならファイバーそのものでなくてもよい）。結論：pushout.desc H g は前合成同値。X,Y を実際の両ファイバー、z₀,z₁ を恒等とすると原文の比較射（一致）。
 
@@ -362,25 +509,27 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：標準 coll
 :::proposition "kerodon_5_2_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isPrecompositionEquivalence_relativeJoinCylinderComparison, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinCylinderComparison")
 Kerodon Proposition 5.2.4.5（[Tag 024R](https://kerodon.net/tag/024R)）。対応表の状態：本体にある。
 
+*主張*　単体集合の射 $`X\to Y` を $`\{1\}\times X\to\Delta^1\times X` に沿って $`X\star_Y Y` に写す自然な可換正方形は圏論的押し出しである。下辺は $`X\star_X X\simeq\Delta^1\times X` から相対結合への写像である。
+
 仮定：任意の単体集合の射 f:X→Y（Kerodon と一致）。結論：prism の終端と f の厳密な押し出しから relativeJoin f (id Y) への比較が前合成同値（一致）。
 
 :::
 
-:::proposition "kerodon_5_2_4_6"
+:::proposition "kerodon_5_2_4_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.fatJoinPoint_isPushout, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.fatJoinPointPrism_isPushout, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_fatJoinComparison_point")
 Kerodon Example 5.2.4.6（[Tag 024S](https://kerodon.net/tag/024S)）。対応表の状態：一部。
+
+*主張*　単体集合 $`X` と $`Y=\Delta^0` の場合、相対結合の押し出しの主張は $`\Delta^0` との鈍結合から右錐への比較写像が圏同値であることを表す。
 
 X=Δ⁰に制限すればisPrecompositionEquivalence\_fatJoinComparison\_pointは原文の同じfat joinから通常joinへの比較の圏同値性を直接返す。任意Xの厳密pushoutの型だけは数えない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.fatJoinPoint_isPushout`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.fatJoinPointPrism_isPushout`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_fatJoinComparison_point`
-
 :::
 
-:::corollary "kerodon_5_2_4_7" (uses := "kerodon_1_1_0_6, kerodon_4_5_5_9, kerodon_5_2_4_5")
+:::corollary "kerodon_5_2_4_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.mappingCylinderMap_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isPrecompositionEquivalence_relativeJoinCylinderComparison, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinCylinderComparison_naturality") (uses := "kerodon_1_1_0_6, kerodon_4_5_5_9, kerodon_5_2_4_5")
 Kerodon Corollary 5.2.4.7（[Tag 0357](https://kerodon.net/tag/0357)）。対応表の状態：一部。
 
-Y′=Yで右縦射が恒等の場合、relativeJoinCylinderComparison\_naturalityは同じ二つの比較と誘導射の可換式を返す。写像円柱の誘導射と両比較の前合成同値を二対三で移せば、原文の同じrelativeJoinLeftMapの圏同値を直接得る。任意の右縦射の自然性は含まない。
+*主張*　単体集合の射 $`X\to Y` から $`X'\to Y'` への可換正方形で、二つの縦の射が圏同値なら、$`X\star_Y Y\to X'\star_{Y'}Y'` も圏同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.mappingCylinderMap_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.isPrecompositionEquivalence_relativeJoinCylinderComparison`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinCylinderComparison_naturality`
+Y′=Yで右縦射が恒等の場合、relativeJoinCylinderComparison\_naturalityは同じ二つの比較と誘導射の可換式を返す。写像円柱の誘導射と両比較の前合成同値を二対三で移せば、原文の同じrelativeJoinLeftMapの圏同値を直接得る。任意の右縦射の自然性は含まない。
 
 :::
 
@@ -393,21 +542,21 @@ tag := "kerodon-5-2-5"
 
 Kerodon [Tag 01VT](https://kerodon.net/tag/01VT)
 
-:::proposition "kerodon_5_2_5_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_2_4, kerodon_5_1_4_1")
+:::proposition "kerodon_5_2_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsEdgeTransport.comp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport_composition_iso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_2_4, kerodon_5_1_4_1")
 Kerodon Proposition 5.2.5.1（[Tag 01VU](https://kerodon.net/tag/01VU)）。対応表の状態：一部。
+
+*主張*　余デカルトファイブレーションの底の二単体で、連続する辺 $`f,g` に沿う共変移送の合成は、長辺 $`h` に沿う共変移送である。
 
 底を準圏に強めるとIsEdgeTransport.compは任意に与えた二つの輸送の合成を同じ長辺の輸送と直接返す。一般の単体集合の底は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsEdgeTransport.comp`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.edgeTransport_composition_iso`
-
 :::
 
-:::definition "kerodon_5_2_5_2" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_2_5, kerodon_5_2_2_9, kerodon_5_2_5_1")
+:::definition "kerodon_5_2_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport_unique") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_2_5, kerodon_5_2_2_9, kerodon_5_2_5_1")
 Kerodon Construction 5.2.5.2（[Tag 019U](https://kerodon.net/tag/019U)）。対応表の状態：一部。
 
-底を準圏に強めればhomotopyTransportとそのuniqueは原文と同じfiber・辺の輸送を値とするhQCat値の関手と一意性を直接与える。
+*主張*　単体集合の余デカルトファイブレーション $`E\to C` のホモトピー移送表現は、$`hC` から無限圏のホモトピー圏への関手である。頂点をそのファイバーに、辺の類を共変移送の自然同型類に送る一意の関手として定まる。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport_unique`
+底を準圏に強めればhomotopyTransportとそのuniqueは原文と同じfiber・辺の輸送を値とするhQCat値の関手と一意性を直接与える。
 
 :::
 
@@ -432,12 +581,16 @@ Kerodon [Tag 01Q7](https://kerodon.net/tag/01Q7)
 :::definition "kerodon_5_2_6_1" (lean := "CategoryTheory.Functor.Elements")
 Kerodon Construction 5.2.6.1（[Tag 01Q8](https://kerodon.net/tag/01Q8)）。対応表の状態：Mathlib にある。
 
+*主張*　通常の圏 $`C` の集合値共変関手 $`\mathscr F` の元の圏は、対象を $`(c,x\in\mathscr F(c))`、射を $`\mathscr F(f)(x)=x'` となる $`f:c\to c'` とする。合成は $`C` での合成で、$`x` を忘れると $`C` への関手を得る。
+
 仮定：通常の圏 C と集合値の関手 F（Kerodon と一致）。結論：Elements F は対象 (c,x)、射は F(f)(x)=y の証拠付きの f:c→d。π が底の c,f を取る（一致）。
 
 :::
 
 :::definition "kerodon_5_2_6_2" (lean := "CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence")
 Kerodon Variant 5.2.6.2（[Tag 01Q9](https://kerodon.net/tag/01Q9)）。対応表の状態：Mathlib にある。
+
+*主張*　通常の圏 $`C` の集合値反変関手 $`\mathscr F` の元の圏は、対象を $`(c,x\in\mathscr F(c))`、射を $`\mathscr F(f)(x')=x` となる $`f:c\to c'` とする。合成は $`C` での合成で、$`x` を忘れると $`C` への関手を得る。
 
 仮定：通常の圏 C と前層 F:Cᵒᵖ→Type（Kerodon と一致）。結論：(Elements F)ᵒᵖ と CostructuredArrow yoneda F の同値。反対圏を取ると射の条件は F(f)(y)=x（一致）。
 
@@ -461,12 +614,12 @@ tag := "kerodon-5-2-7"
 
 Kerodon [Tag 01QG](https://kerodon.net/tag/01QG)
 
-:::theorem "kerodon_5_2_7_1"
+:::theorem "kerodon_5_2_7_1" (lean := "IsCoveringMap.monodromyFunctor, IsCoveringMap.monodromy_bijective")
 Kerodon Theorem 5.2.7.1（[Tag 027R](https://kerodon.net/tag/027R)）。対応表の状態：一部。
 
-monodromyFunctorは原文の分類関手の対象部分、すなわち各被覆からπ≤1(S)上のSet値のモノドロミー表現を直接作る。被覆間の射を含む分類関手全体と圏同値は含まない。
+*主張*　半局所単連結な位相空間 $`S` の上の被覆写像の圏は、ホモトピー移送を取ることで基本亜群 $`\pi_{\leq1}(S)` の集合値関手の圏と同値になる。
 
-宣言：`IsCoveringMap.monodromyFunctor`、`IsCoveringMap.monodromy_bijective`
+monodromyFunctorは原文の分類関手の対象部分、すなわち各被覆からπ≤1(S)上のSet値のモノドロミー表現を直接作る。被覆間の射を含む分類関手全体と圏同値は含まない。
 
 :::
 
@@ -516,21 +669,21 @@ tag := "kerodon-5-2-8"
 
 Kerodon [Tag 02RL](https://kerodon.net/tag/02RL)
 
-:::definition "kerodon_5_2_8_1" (uses := "kerodon_1_1_0_6, kerodon_5_1_1_1, kerodon_5_1_4_1")
+:::definition "kerodon_5_2_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.fiberTransportFamily") (uses := "kerodon_1_1_0_6, kerodon_5_1_1_1, kerodon_5_1_4_1")
 Kerodon Definition 5.2.8.1（[Tag 02RM](https://kerodon.net/tag/02RM)）。対応表の状態：一部。
+
+*主張*　余デカルトファイブレーション $`U:E\to C` の二頂点 $`c,d` で、パラメータ付き共変移送は $`F:\operatorname{Hom}_C(c,d)\times E_c\to E_d` である。これは射空間の評価の上にある $`\Delta^1\times\operatorname{Hom}_C(c,d)\times E_c\to E` で、零端が $`E_c` への射影、一端が $`F`、各 $`f:c\to d` と各対象における縦辺が $`U`-余デカルトとなる証人を持つ。
 
 left fibrationに制限するとFiberTransportFamilyのprism・start・finish・over\_baseとparametrizedFiberTransportが原文の同じ区間写像空間をパラメータとする輸送を構成する。全辺がcocartesianなので点ごとの条件も直接満たす。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.fiberTransportFamily`
-
 :::
 
-:::proposition "kerodon_5_2_8_4" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_2_13")
+:::proposition "kerodon_5_2_8_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_2_2_13")
 Kerodon Proposition 5.2.8.4（[Tag 02RQ](https://kerodon.net/tag/02RQ)）。対応表の状態：一部。
 
-left fibrationに制限するとparametrizedFiberTransportFamilyのprismと両端・底の等式が原文の輸送の存在を直接与える。任意の同型な候補についてのiffは含まない。
+*主張*　余デカルトファイブレーション $`E\to C` と底の任意の二頂点に対し、パラメータ付き共変移送が存在する。対応する関手がパラメータ付き共変移送であることは、この移送と自然同型であることと同値である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport`
+left fibrationに制限するとparametrizedFiberTransportFamilyのprismと両端・底の等式が原文の輸送の存在を直接与える。任意の同型な候補についてのiffは含まない。
 
 :::
 
@@ -561,21 +714,21 @@ parametrizedFiberTransportと各辺での比較だけでは、原文の二つの
 
 :::
 
-:::definition "kerodon_5_2_8_9" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_6_8_13, kerodon_5_1_4_1, kerodon_5_2_2_5, kerodon_5_2_5_2, kerodon_5_2_8_4, kerodon_5_2_8_8")
+:::definition "kerodon_5_2_8_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport_map_isTransport") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_6_8_13, kerodon_5_1_4_1, kerodon_5_2_2_5, kerodon_5_2_5_2, kerodon_5_2_8_4, kerodon_5_2_8_8")
 Kerodon Construction 5.2.8.9（[Tag 02GW](https://kerodon.net/tag/02GW)）。対応表の状態：一部。
+
+*主張*　無限圏の余デカルトファイブレーション $`E\to C` から、$`h\operatorname{Kan}` に豊穣化されたホモトピー移送表現 $`hC\to h\operatorname{QCat}` を得る。対象をファイバーに、射空間の写像をパラメータ付き共変移送の自然同型類で定める一意の豊穣関手であり、台は通常のホモトピー移送表現である。
 
 底準圏上のhomotopyTransportは原文が最後に指定するunderlying ordinary functorの構成を直接与え、その辺での作用も一致する。hKan豊穣のHom作用・合成の整合性は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.homotopyTransport_map_isTransport`
-
 :::
 
-:::definition "kerodon_5_2_8_11" (uses := "kerodon_1_4_0_1, kerodon_5_2_8_9")
+:::definition "kerodon_5_2_8_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport") (uses := "kerodon_1_4_0_1, kerodon_5_2_8_9")
 Kerodon Variant 5.2.8.11（[Tag 02RW](https://kerodon.net/tag/02RW)）。対応表の状態：一部。
 
-parametrizedFiberTransportは原文の豊穣関手の各Hom作用、すなわち同じ区間HomからKanなfiber間の関手空間への射を直接与える。豊穣関手の合成・単位を束ねる主張は含まない。
+*主張*　無限圏の左ファイブレーションの豊穣化ホモトピー移送は、対象をそのファイバーに送る $`h\operatorname{Kan}`-豊穣関手 $`hC\to h\operatorname{Kan}` を与える。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport`
+parametrizedFiberTransportは原文の豊穣関手の各Hom作用、すなわち同じ区間HomからKanなfiber間の関手空間への射を直接与える。豊穣関手の合成・単位を束ねる主張は含まない。
 
 :::
 

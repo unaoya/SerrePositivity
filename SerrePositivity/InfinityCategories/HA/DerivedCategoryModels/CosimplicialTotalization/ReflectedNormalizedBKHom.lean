@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Opposite AlgebraicTopology CochainComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
@@ -37,9 +37,9 @@ def normalizedBKReverseHomotopyEquiv (X : CosimplicialObject (Complex A)) :
         (HomotopyEquiv.ofIso (weightEndHomIso A _ (doubleOppositeDiagram X))))
 /-- 上の指定順射の同じΓ像。 -/
 def normalizedBKReverseSpaceMap (X : CosimplicialObject (Complex A)) :
-    (truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X) ⟶
-      (truncatedDoldKanFunctor A).obj (reflectedNormalizedBKHom X) :=
-  (truncatedDoldKanFunctor A).map (normalizedBKReverseHomotopyEquiv X).hom
+    (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X) ⟶
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (reflectedNormalizedBKHom X) :=
+  (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map (normalizedBKReverseHomotopyEquiv X).hom
 /-- 同じ反転比較のΓ像自身が単体的ホモトピー同値。 -/
 theorem normalizedBKReverseSpaceMap_equivalence (X : CosimplicialObject (Complex A)) :
     IsSimplicialHomotopyEquivalence (normalizedBKReverseSpaceMap X) := by

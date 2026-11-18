@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.EInfinity.ComplexLimits.ConePrependIndex
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ConePrependIndex
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorSelectedImageReindex
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.RawModuleTensorConeComponents
 
@@ -17,8 +17,8 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -34,7 +34,7 @@ lemma strictRawModuleTensorConeData_pullback_hom_mixed {n m : ℕ}
         ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)).hom
           I a b k hI ha hb hk) := by
   let α := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom
-  have hi : Set.InjOn α (I : Set (Fin (m + 2))) := (prepend_injective e).injOn
+  have hi : Set.InjOn α (I : Set (Fin (m + 2))) := (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.prepend_injective e).injOn
   have hII := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two hi hI
   have haI := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min α.monotone
     (show IsLeast (I : Set (Fin (m + 2))) a by rw [ha]; exact I.isLeast_min' _) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hII)
@@ -52,12 +52,12 @@ lemma strictRawModuleTensorConeData_pullback_hom_mixed {n m : ℕ}
   have hr := strictRawModuleTensorConeData_hom_mixed A X P Q
     ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)
     I a b k hI ha hb hk ha0 h0
-  have hJ := withoutFirst_nonempty hI h0
-  have hkJ : k = 1 - ((withoutFirst I).card : ℤ) := by
-    have hs := card_withoutFirst I h0
+  have hJ := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0
+  have hkJ : k = 1 - ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I).card : ℤ) := by
+    have hs := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0
     omega
   have he := strictRawModuleTensorElementSelectedCochainAtMax_image_reindex_smul
-    A X P Q c e (withoutFirst I) k hJ hkJ k.negOnePow
+    A X P Q c e (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) k hJ hkJ k.negOnePow
   have ht : ∀ (K L : Finset (Fin (n + 1))) (h : K = L)
       (hK : K.Nonempty) (hL : L.Nonempty)
       (hkK : k = 1 - (K.card : ℤ)) (hkL : k = 1 - (L.card : ℤ)),
@@ -66,11 +66,11 @@ lemma strictRawModuleTensorConeData_pullback_hom_mixed {n m : ℕ}
     intro K L h hK hL hkK hkL
     subst L
     rfl
-  have hkK : k = 1 - ((withoutFirst (I.image α)).card : ℤ) := by
-    have hs := card_withoutFirst (I.image α) h0I
+  have hkK : k = 1 - ((_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst (I.image α)).card : ℤ) := by
+    have hs := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst (I.image α) h0I
     omega
-  have hs := ht _ _ (withoutFirst_image_prepend e I)
-    (withoutFirst_nonempty hII h0I) (hJ.image e) hkK
+  have hs := ht _ _ (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_image_prepend e I)
+    (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hII h0I) (hJ.image e) hkK
     (by rw [Finset.card_image_of_injective _ e.injective]; exact hkJ)
   exact hl.trans (hs.trans (he.trans hr.symm))
 

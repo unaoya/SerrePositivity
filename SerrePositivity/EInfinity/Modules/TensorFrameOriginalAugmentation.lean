@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.Modules.NormalizedAugmentationComparison
 public import SerrePositivity.EInfinity.Modules.TensorFrameAugmentationEvaluation
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorAugmentation
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexTensorAugmentation
 
 /-!
 概要：同じ frame 評価同型を通して、元の二つの指定 augmentation を厳密に結ぶ。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Modules
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
 /-- 概要：同じ全 frame 同型は元の二つの augmentation と可換。
@@ -25,7 +25,7 @@ lemma moduleTensorEvaluationFrameIso_original_augmentation (P : ModuleCategory A
     (n : SimplexCategory) :
     (moduleTensorEvaluationFrameIso A D P x).hom.app n ≫
       (moduleEvaluation A D x).map ((moduleTensorSimplicesAugmentation A D P).app n) =
-    (normalizedSimplexTensorAugmentation A ((moduleEvaluation A D x).obj P)).app n :=
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexTensorAugmentation A ((moduleEvaluation A D x).obj P)).app n :=
   (moduleTensorEvaluationFrameIso_augmentation A D P x n).trans
     (congrArg (fun z => (𝟙 ((moduleEvaluation A D x).obj P) ⊗ₘ z) ≫
       (ρ_ ((moduleEvaluation A D x).obj P)).hom)

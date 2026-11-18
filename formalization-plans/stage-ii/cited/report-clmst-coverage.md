@@ -1,10 +1,9 @@
 # 現在地
 
-- 段：**CC-W3 完了、停止**。
-- 一覧：済み 3／全体 3 文献（BS17・BM18・Rydh）。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。対象ソースは main `5cbfd7bb1` の取り込み後の `223ac6e1e`。
-- 次：追加作業なし。
-- 紙のみ。照合は Lean ソースの型を静的に読んだ。PDF と抽出・検索の証拠は git 外に置いた。
+- 段：**NB-W4 完了、停止**。
+- 一覧：済み 4／全体 4 段。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
+- 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -294,3 +293,59 @@ READMEに旧→新の全遷移と段0へ渡す所見（site/模型の比較、PD
 - Rydh 3.10 のアフィン基底の fppf–proper 細分は `partial / special`。3.12 の準コンパクト開被覆–固有細分は対応を確認できず `none`。
 
 none は本体・固定版 Mathlib のソース検索で対応が確認できなかった行。CSV 構造、目録と review の番号の一致、none 検索の全件、辺の参照先、採用した宣言の所在を検査した。
+
+## NB-W2
+
+### 段1　Kerodon
+
+[段落の行き先](../../../research/kerodon-coverage/notes/README.md)を更新。旧保留 47 ブロックをすべて移し、t-06〜t-15 の新規 72 ブロックを追記した。全 160 ブロック中、保留は t-15 定義15.1 の未記入表示1件。項目原稿 52、節原稿 17。項目原稿には第5章以降 11 件を含む。review に行がない 4 件は README に列挙した。
+
+本体の文言・数式・旧番号を保存し、移設後のリンクを検査した。[証拠目録](../../../evidence/cited/notes-kerodon2/manifest.json)。
+
+段1 コミット `9fdd3bf63`。
+
+### 段2　本論文
+
+解説 §3〜§9 の 380 ブロックを [段落の行き先](../../../research/paper-coverage/notes/README.md) に記録した。項目原稿 44、節原稿 5、保留 22 ブロック。付録は対象外。原典の項目の番号を使い、参照に出る解説内の番号は区別した。[証拠目録](../../../evidence/cited/notes-paper/manifest.json)。
+
+## NB-W3
+
+### 段1　BS
+
+[原稿の規則と行き先](../../../research/bs-coverage/notes/README.md)に八章と導入の転記を記録した。項目原稿 131、節原稿 8。本文 812 ブロックを転記し、原典番号を確定できない 9 ブロックは [issues.md](../../../research/bs-coverage/notes/issues.md) に全文を保留した。状態・候補・凡例等の除外は README に記した。[証拠目録](../../../evidence/cited/notes-bs/manifest.json)。
+
+段1 コミット `33fe7de58`。
+
+### 段2　∞ 圏の未処理ノート
+
+[NB-W3 の分類](../../../research/kerodon-coverage/notes/README.md#nb-w3-の分類)に 37 ページの分類を記録した。HTT・HA に当たる節と t 系の重複先は表に記載した。Kerodon 向け本文 906 ブロックを 42 項目・67 節の原稿に追記した。対応を確定できない 5 ブロックは [issues.md](../../../research/kerodon-coverage/notes/issues.md) に理由と全文を保留した。[証拠目録](../../../evidence/cited/notes-kerodon-rest/manifest.json)。
+
+## NB-W4
+
+### 段1　BS の目次
+
+[BS の目次](../../../research/bs-coverage/toc.md)に著者版の版情報と SHA-256、18 節の英語題・開始ページ・番号付き項目数を記録した。PDF の目次と各節の開始ページを照合し、項目数が目録の 211 件と一致することを確認した。
+
+### 段2　本論文の補足
+
+[原稿の段落表](../../../research/paper-coverage/notes/README.md)に「はじめに」・解説 §1–§2・付録 B–E の転記先を記録した。新規 254 ブロックを 4 項目・1 節と補足へ配し、NB-W2 の保留 22 ブロックを解説 §4–§6 の補足へ移した。補足は計 10 ファイル。付録 A は対象外。未確認と明記された議論は断り書きごと残し、省いた実装状況・照合時点は段落表の前に列挙した。[証拠目録](../../../evidence/cited/nb-w4-supplement/manifest.json)。
+
+### 段3　v 降下の依存
+
+[route-edges.csv](../../../research/bs17-coverage/route-edges.csv) に 49 項目を対象とする明示参照 112 辺を記録した。BS17 4.1 を含めて 16 項目に到達し、残る 33 項目は [BS17 README](../../../research/bs17-coverage/README.md#本体の-v-降下の依存nb-w4) に列挙した。経路 B の BM18 4.8 は `bs17VCechInput` を通じて BS17 4.1 を使う。辺の参照行・番号・重複・循環の有無と到達範囲を静的に確認した。[証拠目録](../../../evidence/cited/nb-w4-route/manifest.json)。
+
+### 段4　主張の一行
+
+v 降下の 49 項目（BS17 11、BM18 23、Rydh 15）は版を固定した PDF の見出し本文・図式に照合し、全件に記入した。BS17 4.1 は原典の Witt 係数での導来大域切断と v スタック性、BM18 4.8 は原典の余切断対象でコンパクト生成される値域での主張を収めた。[証拠目録](../../../evidence/cited/nb-w4-statements-vdescent/manifest.json)。
+
+本論文の 58 項目は採用版の定理・図・番号式に照合し、全件に記入した。式の行は適用する定理・設定を明記し、二種類の Euler 評価や通常極限と超極限を区別した。[証拠目録](../../../evidence/cited/nb-w4-statements-paper/manifest.json)。
+
+CLMST v4 の 30 項目は全件に記入した。正規化長を定める塔が未完備の場合と、導来・古典完備化の条件を原典の記法に沿って区別した。[証拠目録](../../../evidence/cited/nb-w4-statements-clmst/manifest.json)。
+
+BS 著者版の 77 項目は全件に記入した。定義・同値・構成の仮定は原則として同じ項目内に記し、長い比較定理では原典の設定や仮定番号も示した。[証拠目録](../../../evidence/cited/nb-w4-statements-bs/manifest.json)。
+
+Kerodon は第1章 130、第2章 92、第3章 107、第4章 270 の計 599 項目を、各 Tag ページの本文に照合して記入した。章ごとにコミットし、対象番号と出力番号の一致を確認した。ここまで空欄はない。次は第5〜10章の 737 項目。[Kerodon の主張表](../../../research/kerodon-coverage/statements.csv)・[証拠目録](../../../evidence/cited/nb-w4-statements-kerodon/manifest.json)。
+
+Kerodon 第5〜10章の 737 項目を追記し、第1〜10章の対象は計 1,336 項目になった。全項目を各 Tag ページの本文に照合し、章ごとにコミットした。原典で図式と本文の記号が食い違い、要約で型や周辺項目に従った箇所は [原典注記](../../../research/kerodon-coverage/statements-issues.md) に記した。
+
+七文献の主張表は計 1,550 項目で、空欄・重複・対象番号の不足はない。review と目録から対象番号を取り直し、CSV の列と番号、文数、数式の区切り、証拠目録のサイズと SHA-256 を確認した。

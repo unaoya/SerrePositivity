@@ -47,10 +47,10 @@ def homologyUnaryHomotopy (X : (operad A).Algebra) :
 規約：元の homology 0 の類の等式。
 使われ方：H⁰ の積の単位則。 -/
 lemma homologyUnary_class (X : (operad A).Algebra) (f : 𝟙_ (Complex A) ⟶ X.carrier) :
-    HomologyZero.unitClass X.carrier
+    _root_.SerrePositivity.HomologyZero.unitClass X.carrier
       (f ≫ (oneIso X.carrier).inv ≫ homologyOperation X 1) =
-      HomologyZero.unitClass X.carrier f := by
-  apply (HomologyZero.unitClass_eq_iff X.carrier _ _).mpr
+      _root_.SerrePositivity.HomologyZero.unitClass X.carrier f := by
+  apply (_root_.SerrePositivity.HomologyZero.unitClass_eq_iff X.carrier _ _).mpr
   refine ⟨?_⟩
   simpa only [Category.assoc, Iso.inv_hom_id, Category.comp_id] using
     (homologyUnaryHomotopy X).compLeft (f ≫ (oneIso X.carrier).inv)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Frames.MixedFrameComparison
-public import SerrePositivity.EInfinity.OppositeFactorization
+public import SerrePositivity.HomotopicalAlgebra.ModelCategory.OppositeFactorization
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanLimits
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
@@ -30,7 +30,7 @@ def rightFrameFamilyOfFactorization
     CofibrantResolutionFamily (C := Cᵒᵖ) simplex := by
   apply cosimplicialResolutionFamily
   rw [cofibrations_op, trivialFibrations_op]
-  exact _root_.SerrePositivity.EInfinity.OppositeFactorization.opposite fib
+  exact _root_.SerrePositivity.OppositeFactorization.OppositeFactorization.opposite fib
 
 variable (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
 

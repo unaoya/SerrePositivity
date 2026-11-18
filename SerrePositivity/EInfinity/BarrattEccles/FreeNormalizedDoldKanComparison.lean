@@ -24,10 +24,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 def freeNormalizedHomFromDoldKan :
-    ((ComplexLimits.framedLimitProbeFunctor A).op ⋙
-      ComplexLimits.actualDoldKanHomBifunctor A) ⋙
+    ((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).op ⋙
+      _root_.SerrePositivity.ComplexLimits.actualDoldKanHomBifunctor A) ⋙
         (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-          (Operad.Algebra.forget (operad A)) ⟶ freeNormalizedHomMiddle A :=
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)) ⟶ freeNormalizedHomMiddle A :=
   (freeNormalizedProbeDoldKanIso A).inv ≫ freeNormalizedHomFromTensor A
 
 open SSet.modelCategoryQuillen in
@@ -36,10 +36,10 @@ lemma freeNormalizedHomFromDoldKan_homotopyEquivalence
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromDoldKan A).app X).app B) := by
   have := freeNormalizedProbeHom_kanComplex A X B
   have := freeNormalizedHomMiddle_kanComplex A X B
-  have : KanComplex (((((ComplexLimits.framedLimitProbeFunctor A).op ⋙
-      ComplexLimits.actualDoldKanHomBifunctor A) ⋙
+  have : KanComplex (((((_root_.SerrePositivity.ComplexLimits.framedLimitProbeFunctor A).op ⋙
+      _root_.SerrePositivity.ComplexLimits.actualDoldKanHomBifunctor A) ⋙
         (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
-          (Operad.Algebra.forget (operad A))).obj X).obj B) :=
+          (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A))).obj X).obj B) :=
     HomotopicalAlgebra.isFibrant_of_fibration
       (((freeNormalizedProbeDoldKanIso A).inv.app X).app B)
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialHomotopyEquivalence_iso_hom

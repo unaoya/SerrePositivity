@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.TensorUnitAdjacent
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.ZeroArity
-public import SerrePositivity.EInfinity.Operad.TensorFamilyAdjacentTail
-public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorMap
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorFamilyAdjacentTail
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.TensorFamilyGeneratorMap
 
 /-!
 # 零入力係数の有限族の隣接交換
@@ -37,12 +37,12 @@ def nullaryCoefficientIso : complex A 0 ≅ 𝟙_ (Complex A) := by
 
 /-- 零入力係数の有限族の隣接交換は恒等射。 -/
 lemma nullaryFamilyAdjacent_hom (n : ℕ) (i : Fin n) :
-    (tensorFamilyAdjacentIso n (fun _ : Fin (n + 1) => complex A 0) i).hom = 𝟙 _ := by
-  have h := tensorFamilyAdjacentIso_generator (complex A 0) n
+    (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso n (fun _ : Fin (n + 1) => complex A 0) i).hom = 𝟙 _ := by
+  have h := _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso_generator (complex A 0) n
     (fun _ : Fin (n + 1) => complex A 0) (fun _ => 𝟙 _) i
-  simp only [tensorFamilyGenerator_asMap, tensorFamilyMap_id, Category.id_comp] at h
+  simp only [_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator_asMap, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap_id, Category.id_comp] at h
   rw [adjacent_hom_eq_id_of_isoUnit (nullaryCoefficientIso A), Category.comp_id] at h
-  apply (cancel_mono (eqToHom (tensorFamily_const (complex A 0) (n + 1)))).mp
+  apply (cancel_mono (eqToHom (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily_const (complex A 0) (n + 1)))).mp
   simpa only [Category.id_comp] using h
 
 end SerrePositivity.EInfinity.BarrattEccles

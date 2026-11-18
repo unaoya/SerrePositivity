@@ -35,7 +35,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def carrierRightFrameDiagramFamily :
     (K ⥤ (operad A).Algebra)ᵒᵖ ⥤ Kᵒᵖ ⥤ SimplexCategory ⥤ (Complex A)ᵒᵖ :=
   rightFrameDiagramFamily A K ⋙ (Functor.whiskeringRight Kᵒᵖ _ _).obj
-    ((Functor.whiskeringRight SimplexCategory _ _).obj (Operad.Algebra.forget (operad A)).op)
+    ((Functor.whiskeringRight SimplexCategory _ _).obj (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget (operad A)).op)
 /-- 概要：任意の複体を試験始域とする底の右錐空間（Hovey §5.4）。
 方針：同じ右 frame の底と具体的な複体の試験始域で重み付き Hom を取る。
 規約：元の E 代数図式と実際の一点重みを保持する。
@@ -52,7 +52,7 @@ def carrierFramedLimitConeSpace (Y : Complex A) : (K ⥤ (operad A).Algebra) ⥤
 使われ方：底の homotopy 極限比較を写像空間で検証する。 -/
 lemma carrierFramedLimitConeSpace_kanComplex (F : K ⥤ (operad A).Algebra) (Y : Complex A) :
     SSet.KanComplex ((carrierFramedLimitConeSpace A K Y).obj F) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   have := carrierFramedLimitProbe_cofibrant A Y
   have : IsFibrant (op (carrierFramedLimitProbe A Y)) :=
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
@@ -67,11 +67,11 @@ lemma carrierFramedLimitConeSpace_kanComplex (F : K ⥤ (operad A).Algebra) (Y :
 規約：任意の非有界複体と元の framedLimitFunctor の底を値に取る。
 使われ方：忘却後の一般導来極限の普遍性の Hom 側。 -/
 def carrierFramedLimitHomPiZeroEquiv (F : K ⥤ (operad A).Algebra) (Y : Complex A) :
-    let := projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let Q := (weakEquivalences (Complex A)).Q
     SSet.π₀ ((carrierFramedLimitConeSpace A K Y).obj F) ≃
       (Q.obj Y ⟶ Q.obj ((framedLimitFunctor A K).obj F).carrier) := by
-  let := projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let Q := (weakEquivalences (Complex A)).Q
   have : Q.op.IsLocalization (weakEquivalences (Complex A)ᵒᵖ) := by
     rw [weakEquivalences_op]

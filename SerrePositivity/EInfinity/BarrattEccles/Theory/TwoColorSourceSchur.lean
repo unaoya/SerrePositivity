@@ -39,7 +39,7 @@ abbrev orbitCoefficientComplex (r : ℕ) (k : ULift.{u} (Fin (r + 1))) :=
 
 /-- 実際の Schur arity の入力を、その指定された軌道直和へ分解する。 -/
 def schurArityOrbitIso (r : ℕ) :
-    arityCoinvariantComplex (schurDiagram A (sequence A) (X ⊞ Y)) r ≅
+    arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) (X ⊞ Y)) r ≅
       ∐ (orbitCoefficientComplex X Y r) :=
   schurArityInputCoefficientIso A (X ⊞ Y) r ≪≫
     ((Rep.coinvariantsTensor A (ULift.{u} (Equiv.Perm (Fin r)))).map₂CochainComplex.flip.obj
@@ -71,8 +71,8 @@ def orbitStandardCoefficientIso (m n : ℕ) :
 /-- 一つの実際の軌道成分で、指定係数射は二つの Schur 成分への鎖ホモトピー同値となる。 -/
 def orbitCoefficientComparisonEquiv (m n : ℕ) :
     HomotopyEquiv (orbitCoefficientComplex X Y (m + n) (ULift.up ⟨m, by omega⟩))
-      (arityCoinvariantComplex (schurDiagram A (sequence A) X) m ⊗
-        arityCoinvariantComplex (schurDiagram A (sequence A) Y) n) :=
+      (arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) X) m ⊗
+        arityCoinvariantComplex (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram A (sequence A) Y) n) :=
   (HomotopyEquiv.ofIso (orbitStandardCoefficientIso X Y m n)).trans
     ((twoColorComplexInputHomotopyEquiv A m n (twoColorSeparatedInput X Y m n)).trans
       (HomotopyEquiv.ofIso (twoColorTargetSchurIso A X Y m n)))

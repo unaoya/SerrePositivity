@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.EInfinity.BarrattEccles.Modules.StrictRawModules
-public import SerrePositivity.EInfinity.ProjectiveModel
+public import SerrePositivity.HomotopicalAlgebra.Complexes.ProjectiveModel
 public import SerrePositivity.DifferentialGraded.Module.TensorFree
 public import SerrePositivity.DifferentialGraded.Module.ActionLimits
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
@@ -45,14 +45,14 @@ def strictRawModuleFreeAdjunction (X : (operad A).Algebra) :
 規約：元の dg 加群圏。使われ方：cofibration の生成。 -/
 def strictRawModuleGeneratingCofibrations (X : (operad A).Algebra) :
     MorphismProperty (strictRawModuleCategory A X) :=
-  (projectiveGeneratingCofibrations A).strictMap (strictRawModuleFree A X)
+  (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (strictRawModuleFree A X)
 
 /-- 概要：同じ自由 disk 零包含の生成 J（Keller Theorem 3.2 (1) の構成）。
 方針：元の複体の零から disk への射を自由に移す。
 規約：元の dg 加群圏。使われ方：trivial cofibration の生成。 -/
 def strictRawModuleGeneratingTrivialCofibrations (X : (operad A).Algebra) :
     MorphismProperty (strictRawModuleCategory A X) :=
-  (projectiveGeneratingTrivialCofibrations A).strictMap (strictRawModuleFree A X)
+  (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (strictRawModuleFree A X)
 
 /-- 概要：唯一点の台が同じ元の objectwise 擬同型を検出する。
 方針：全ての点が唯一点と等しいことを使う。
@@ -76,11 +76,11 @@ lemma strictRawModuleQuasiIso_eq (X : (operad A).Algebra) :
 文献：Keller, Theorem 3.2 (1) の構成の成分。 -/
 lemma strictRawModuleGeneratingCofibrations_rlp (X : (operad A).Algebra) :
     (strictRawModuleGeneratingCofibrations A X).rlp =
-      ((projectiveFibrations A) ⊓ quasiIso (ModuleCat A) (.up ℤ)).inverseImage
+      ((_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A) ⊓ quasiIso (ModuleCat A) (.up ℤ)).inverseImage
         (strictRawModuleUnderlying X) := by
   rw [strictRawModuleGeneratingCofibrations,
     ModelGeneration.strictMap_rlp (strictRawModuleFreeAdjunction A X),
-    projectiveGeneratingCofibrations_rlp]
+    _root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations_rlp]
 
 /-- 概要：同じ自由 J の右類は台の全整数次数全射。
 方針：実自由随伴の持ち上げ対応と複体の既存判定を使う。
@@ -88,10 +88,10 @@ lemma strictRawModuleGeneratingCofibrations_rlp (X : (operad A).Algebra) :
 文献：Keller, Theorem 3.2 (1) の構成の成分。 -/
 lemma strictRawModuleGeneratingTrivialCofibrations_rlp (X : (operad A).Algebra) :
     (strictRawModuleGeneratingTrivialCofibrations A X).rlp =
-      (projectiveFibrations A).inverseImage (strictRawModuleUnderlying X) := by
+      (_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A).inverseImage (strictRawModuleUnderlying X) := by
   rw [strictRawModuleGeneratingTrivialCofibrations,
     ModelGeneration.strictMap_rlp (strictRawModuleFreeAdjunction A X),
-    projectiveGeneratingTrivialCofibrations_rlp]
+    _root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations_rlp]
 
 /-- 概要：台の評価の実余極限保存から accessible 性を得る。
 方針：moduleEvaluationPreservesColimitsOfSize をそのまま使う。

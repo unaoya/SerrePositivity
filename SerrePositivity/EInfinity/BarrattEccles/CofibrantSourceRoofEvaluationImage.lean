@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet _root_.HomotopicalAlgebra
-open Hammock SerrePositivity.SimplicialModel
+open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -34,18 +34,18 @@ lemma cofibrantAlgebraHammockColimitInclusionMap_precompose (Z : CofibrantAlgebr
     cofibrantAlgebraHammockColimitInclusionMap A V Z ≫
       algebraReducedHammockPrecompose A Z.obj ((cofibrantAlgebraDKInclusion A).map f) := by
   let := modelCategory A
-  have hp := reducedColimitIso_precompose (cofibrantAlgebraRelativeCategory A).weakEquivalences
+  have hp := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_precompose (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (show (cofibrantAlgebraRelativeCategory A).category from Z) f
   have hi := cofibrantAlgebraHammockInclusionMap_precompose A
     (show (cofibrantAlgebraRelativeCategory A).category from Z) f
-  change _ ≫ ((reducedColimitIso _ _ _).hom ≫ _) =
-    ((reducedColimitIso _ _ _).hom ≫ _) ≫ _
+  change _ ≫ ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso _ _ _).hom ≫ _) =
+    ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso _ _ _).hom ≫ _) ≫ _
   exact (Category.assoc _ _ _).symm.trans ((congrArg
     (fun g => g ≫ cofibrantAlgebraHammockInclusionMap A
       (show (cofibrantAlgebraRelativeCategory A).category from U)
       (show (cofibrantAlgebraRelativeCategory A).category from Z)) hp.symm).trans
     ((Category.assoc _ _ _).trans ((congrArg
-      (fun g => (reducedColimitIso (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      (fun g => (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (cofibrantAlgebraRelativeCategory A).weakEquivalences
         (show (cofibrantAlgebraRelativeCategory A).category from V)
         (show (cofibrantAlgebraRelativeCategory A).category from Z)).hom ≫ g) hi).trans
       (Category.assoc _ _ _).symm)))

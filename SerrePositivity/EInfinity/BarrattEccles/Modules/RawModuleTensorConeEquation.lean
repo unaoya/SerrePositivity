@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
@@ -52,8 +52,8 @@ lemma strictRawModuleTensorConeData_equation {n : ℕ}
     (I : Finset (Fin (n + 2))) : (strictRawModuleTensorConeData A X P Q c).Equation I := by
   by_cases h0 : (0 : Fin (n + 2)) ∈ I
   · intro a b k hI ha hb hk
-    let J := withoutFirst I
-    have hJ : J.Nonempty := withoutFirst_nonempty hI h0
+    let J := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I
+    have hJ : J.Nonempty := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hI h0
     let r := J.card - 1
     have hc : J.card = r + 1 := by have := Finset.card_pos.mpr hJ; dsimp only [r]; omega
     let e := J.orderEmbOfFin hc
@@ -63,19 +63,19 @@ lemma strictRawModuleTensorConeData_equation {n : ℕ}
       Finset.univ (Finset.mem_univ _)
     have heq := rawModuleSimplexData_equation_image_of_pullback A X
       (strictRawModuleTensorConeData A X P Q c) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)
-      (strictRawModuleTensorConeData A X P Q c') hp Finset.univ (prepend_injective e).injOn ht
+      (strictRawModuleTensorConeData A X P Q c') hp Finset.univ (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.prepend_injective e).injOn ht
     have h0U : (0 : Fin (n + 2)) ∈
         (Finset.univ : Finset (Fin (r + 2))).image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) :=
       Finset.mem_image.mpr ⟨0, Finset.mem_univ _, rfl⟩
-    have hu : withoutFirst (Finset.univ : Finset (Fin (r + 2))) = Finset.univ := by
+    have hu : _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst (Finset.univ : Finset (Fin (r + 2))) = Finset.univ := by
       ext i
-      simp [withoutFirst]
+      simp [_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst]
     have heU : (Finset.univ : Finset (Fin (r + 1))).image e = J :=
       J.image_orderEmbOfFin_univ hc
     have hImage : (Finset.univ : Finset (Fin (r + 2))).image
         (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) = I := by
-      rw [← withFirst_withoutFirst _ h0U, withoutFirst_image_prepend, hu, heU]
-      exact withFirst_withoutFirst I h0
+      rw [← _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withFirst_withoutFirst _ h0U, _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_image_prepend, hu, heU]
+      exact _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withFirst_withoutFirst I h0
     rw [hImage] at heq
     exact heq a b k hI ha hb hk
   · exact strictRawModuleTensorConeData_equation_without_zero A X P Q c I h0

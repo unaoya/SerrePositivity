@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory MonoidalCategory CochainComplex HomComplex
 open SerrePositivity.HomologicalAlgebra
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
@@ -57,7 +57,7 @@ theorem normalizedWeightSectionMap_hom_uncurry_inverse_app
 theorem normalizedWeightSectionMap_uncurry_inverse_app
     (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
     (φ : simplicialRingCoefficient.{u} →+* A) (m : SimplexCategory)
-    (β : ((truncatedDoldKanFunctor A).obj (linearHomComplex A
+    (β : ((_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).obj (linearHomComplex A
       ((functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj
         (freeNegativeChainsDiagram (A := A) W))
       ((functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj Q))).obj (Opposite.op m)) (j : J) :

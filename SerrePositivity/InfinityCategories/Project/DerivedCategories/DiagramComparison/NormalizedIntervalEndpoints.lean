@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardParameterAugmentation
-public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.SimplexCounitContraction
 /-!
 概要：同じ正規化単体区間への二つの端点を全図式の形で記す。
 方針：零単体の指定増大写像の逆と、二つの頂点包含を合成する。
@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
-open SerrePositivity.EInfinity.ComplexLimits
+open _root_.SerrePositivity.ComplexLimits
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 /-- 指定された正規化区間の端点。 -/
@@ -19,10 +19,10 @@ def normalizedIntervalEndpointChain (A : Type u) [CommRing A] (ε : Fin 2) :
     𝟙_ (CochainComplex (ModuleCat A) ℤ) ⟶
       freeNegativeChains (A := A)
         ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj ⦋1⦌)) := by
-  letI : IsIso (normalizedSimplexCochainContraction A ⦋0⦌).hom := by
-    rw [← SerrePositivity.EInfinity.AlexanderWhitney.cochainCounit_stdSimplex_eq_contraction]
-    exact SerrePositivity.EInfinity.AlexanderWhitney.cochainCounit_stdSimplexZero_isIso A
-  exact (asIso (normalizedSimplexCochainContraction A ⦋0⦌).hom).inv ≫
+  letI : IsIso (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A ⦋0⦌).hom := by
+    rw [← _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplex_eq_contraction]
+    exact _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplexZero_isIso A
+  exact (asIso (_root_.SerrePositivity.ComplexLimits.normalizedSimplexCochainContraction A ⦋0⦌).hom).inv ≫
     (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).map
       (SSet.stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋1⦌ ε))
 /-- 全図式の同じ正規化区間の端点。 -/

@@ -15,9 +15,9 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.Modules
+open _root_.SerrePositivity.ComplexLimits SerrePositivity.EInfinity.Modules
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -32,11 +32,11 @@ lemma strictRawModuleTensorConeData_terminal_compose_mixed {n : ℕ}
     HEq (compose A ((strictRawModuleTensorConeData A X P Q c).hom R j b 0 hR hjR hb hkR)
       ((strictRawModuleTensorConeData A X P Q c).hom L a j k hL ha hj hk) (add_zero k))
       (k.negOnePow • (strictRawModuleTensorElementLinear A X P Q c).val.component
-        (withoutFirst L) k (withoutFirst_nonempty hL h0)
-        (by have := card_withoutFirst L h0; omega)) := by
-  let J := withoutFirst L
-  have hJ : J.Nonempty := withoutFirst_nonempty hL h0
-  have hjm : j = (J.max' hJ).succ := hj.trans (max_withoutFirst L hL h0).symm
+        (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst L) k (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hL h0)
+        (by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst L h0; omega)) := by
+  let J := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst L
+  have hJ : J.Nonempty := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst_nonempty hL h0
+  have hjm : j = (J.max' hJ).succ := hj.trans (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.max_withoutFirst L hL h0).symm
   have hj0 : j ≠ 0 := by rw [hjm]; exact Fin.succ_ne_zero _
   have hjb : j ≤ b := by rw [hbl]; exact Fin.le_last _
   have hf := strictRawModuleTensorConeData_hom_mixed A X P Q c L a j k hL ha hj hk ha0 h0
@@ -53,8 +53,8 @@ lemma strictRawModuleTensorConeData_terminal_compose_mixed {n : ℕ}
       subst i'
       subst t'
       rfl
-    exact hg.trans (ht _ _ _ _ (by rw [hjm, coneTailOrderHom_succ])
-      (by rw [hbl]; exact coneTailOrderHom_succ (Fin.last n)) _ _)
+    exact hg.trans (ht _ _ _ _ (by rw [hjm, _root_.SerrePositivity.ComplexLimits.coneTailOrderHom_succ])
+      (by rw [hbl]; exact _root_.SerrePositivity.ComplexLimits.coneTailOrderHom_succ (Fin.last n)) _ _)
   have hx : (strictRawModuleTensorConeData A X P Q c).obj a = (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P)) := by
     change strictRawModuleTensorConeObj A X P Q c a = _
     rw [ha0, strictRawModuleTensorConeObj_zero]
@@ -70,6 +70,6 @@ lemma strictRawModuleTensorConeData_terminal_compose_mixed {n : ℕ}
   have hcomp := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq (A := A) hx hy hz rfl rfl rfl _ _ _ _ hg' hf
     (add_zero k) (add_zero k)
   exact hcomp.trans (heq_of_eq (strictRawModuleTensorElementSelectedCochainAtMax_compose
-    A X P Q c J k hJ (by have := card_withoutFirst L h0; dsimp only [J]; omega) k.negOnePow))
+    A X P Q c J k hJ (by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst L h0; dsimp only [J]; omega) k.negOnePow))
 
 end SerrePositivity.EInfinity.BarrattEccles

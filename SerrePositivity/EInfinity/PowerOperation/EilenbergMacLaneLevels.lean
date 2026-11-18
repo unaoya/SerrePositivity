@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.ComplexLimits.TruncatedDoldKanFunctor
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncatedDoldKanFunctor
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 
 /-!
@@ -30,7 +30,7 @@ def levelModuleFunctor (n : ℕ) : Complex A ⥤ SimplicialObject (ModuleCat A) 
 
 /-- 単体的加群から台を読んだ各段の全関手。 -/
 def levelSpaceFunctor (n : ℕ) : Complex A ⥤ SSet.{u} :=
-  shiftFunctor (Complex A) (n : ℤ) ⋙ ComplexLimits.truncatedDoldKanFunctor A
+  shiftFunctor (Complex A) (n : ℤ) ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A
 
 /-- 台の段の関手も、指定された同じ単体的加群の台である。 -/
 lemma levelSpaceFunctor_eq (n : ℕ) :

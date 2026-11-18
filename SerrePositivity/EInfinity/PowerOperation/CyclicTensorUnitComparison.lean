@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.CyclicCoefficientSeed
-public import SerrePositivity.EInfinity.Operad.UnitPowers
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.UnitPowers
 public import Mathlib.Algebra.Homology.HomotopyCategory.SingleFunctors
 
 /-!
@@ -39,7 +39,7 @@ lemma tensorPowerComplexAction_unit (n : ℕ) (σ : G →* Equiv.Perm (Fin n)) :
   apply MonoidHom.ext
   intro g
   apply End.ext
-  exact tensorUnitPower_permutation n (σ g)
+  exact _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitPower_permutation n (σ g)
 
 variable (p : ℕ) [NeZero p] (k)
 
@@ -53,7 +53,7 @@ def powerOperationTensorUnitIso :
   rw [tensorPowerComplexAction_unit]
   exact representationCochainTrivialIso _ ≪≫
     ((Rep.trivialFunctor k (PowerOperationCyclicGroup.{u} p)).mapHomologicalComplex
-      (.up ℤ)).mapIso (tensorUnitPowerIso (Complex k) p) ≪≫
+      (.up ℤ)).mapIso (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorUnitPowerIso (Complex k) p) ≪≫
     (HomologicalComplex.singleMapHomologicalComplex
       (Rep.trivialFunctor k (PowerOperationCyclicGroup.{u} p)) (.up ℤ) 0).app
       (ModuleCat.of k k)

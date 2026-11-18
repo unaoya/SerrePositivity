@@ -5,8 +5,8 @@
   "Section10_2"
  ],
  "stats": {
-  "linked": 16,
-  "nolink-none": 118,
-  "nolink-partial": 10
+  "linked": 26,
+  "with-statement": 26,
+  "nolink-none": 118
  }
 }

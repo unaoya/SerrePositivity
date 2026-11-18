@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Modules.CotensorSimplices
-public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
-public import SerrePositivity.EInfinity.HomHomotopy
+public import SerrePositivity.HomologicalAlgebra.SimplicialChains.AlexanderWhitney.SimplexCounitContraction
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomHomotopy
 
 /-!
 # 標準単体の余単位による cotensor の比較
@@ -33,7 +33,7 @@ lemma moduleCotensorPreMap_quasiIso {K L : Complex A} (f : K ⟶ L)
   intro x
   rw [moduleCotensorPreMap_eval]
   obtain ⟨e, rfl⟩ := hf
-  exact (homPrecomposeHomotopyEquiv e ((moduleEvaluation A D x).obj M)).quasiIso_hom
+  exact (_root_.SerrePositivity.HomHomotopy.homPrecomposeHomotopyEquiv e ((moduleEvaluation A D x).obj M)).quasiIso_hom
 
 /-- 概要：同じ AW 余単位は単位 cotensor の定数図式から全単体への射を与える。
 方針：元の余単位の自然性と前合成の合成則を使う。
@@ -42,7 +42,7 @@ def moduleCotensorCounitNat (M : ModuleCategory A D) :
     (Functor.const SimplexCategoryᵒᵖ).obj (moduleCotensor A D (𝟙_ (Complex A)) M) ⟶
       moduleCotensorSimplices A D M where
   app n := moduleCotensorPreMap A D
-    (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n.unop)) M
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n.unop)) M
   naturality n m f := by
     change 𝟙 _ ≫ _ = _ ≫ _
     rw [Category.id_comp]
@@ -53,7 +53,7 @@ def moduleCotensorCounitNat (M : ModuleCategory A D) :
         (moduleCotensorPreMap A D _ M ≫ (moduleCotensorSimplices A D M).map f)
     rw [CategoryTheory.Functor.map_comp, moduleCotensorPreMap_eval,
       moduleCotensorPreMap_eval, moduleCotensorSimplices_map_eval,
-      ← homPrecompose_comp, AlexanderWhitney.cochainCounit_natural]
+      ← homPrecompose_comp, _root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_natural]
 
 /-- 概要：同じ余単位比較の全ての次数成分は元の加群の擬同型。
 方針：標準単体の実収縮を係数前合成へ移す。
@@ -61,7 +61,7 @@ def moduleCotensorCounitNat (M : ModuleCategory A D) :
 lemma moduleCotensorCounitNat_weak (M : ModuleCategory A D) (n : SimplexCategoryᵒᵖ) :
     moduleQuasiIso A D ((moduleCotensorCounitNat A D M).app n) :=
   moduleCotensorPreMap_quasiIso A D _
-    (AlexanderWhitney.cochainCounit_stdSimplex_homotopyEquivalence A n.unop) M
+    (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit_stdSimplex_homotopyEquivalence A n.unop) M
 
 /-- 概要：同じ余単位比較は全ての元の加群射について自然。
 方針：同じ係数前合成の自然変換を各単体で使う。
@@ -74,7 +74,7 @@ def moduleCotensorCounitFamily :
     apply NatTrans.ext
     funext n
     exact (moduleCotensorPreNat A D
-      (AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n.unop))).naturality g
+      (_root_.SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit A (SSet.stdSimplex.obj n.unop))).naturality g
 
 /-- 概要：同じ simplicial cotensor の全ての面・退化は元の擬同型。
 方針：同じ余単位の自然性と擬同型の二つから三つを使う。

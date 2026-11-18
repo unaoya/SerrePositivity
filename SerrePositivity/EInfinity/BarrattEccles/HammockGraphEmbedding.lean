@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition
-public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.GraphEmbedding
 
 /-!
 # 元の E 代数の語の包含による graph の単射性
@@ -37,7 +37,7 @@ lemma algebraHammockTransition_faithful : (algebraHammockTransition A f X Y).Fai
 /-- 同じ元の語の包含は、実際の全語の graph の単射。 -/
 lemma algebraHammockGraphMap_mono : Mono (algebraHammockGraphMap A f X Y) := by
   have := algebraHammockTransition_faithful A f hf X Y
-  exact Hammock.nerveMap_mono_of_faithful _ (algebraHammockTransition_obj_injective A f hf X Y)
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.nerveMap_mono_of_faithful _ (algebraHammockTransition_obj_injective A f hf X Y)
 
 /-- 同じ包含は元の全次数の全単体を区別する。 -/
 lemma algebraHammockGraphMap_app_injective (n : SimplexCategoryᵒᵖ) :

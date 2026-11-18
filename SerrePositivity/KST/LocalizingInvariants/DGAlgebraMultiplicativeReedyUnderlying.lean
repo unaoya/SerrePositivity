@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSimplicialConvolution
-public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexReedy
-public import SerrePositivity.EInfinity.HomRestriction
+public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexReedy
+public import SerrePositivity.HomologicalAlgebra.Complexes.HomRestriction
 public import Mathlib.AlgebraicTopology.ModelCategory.Opposite
 
 /-!
@@ -32,24 +32,24 @@ lemma simplexConvolutionUnderlyingDual_eq (B : Mon (Complex R)) :
       (multiplicativeSimplices R B ⋙ Mon.forget (Complex R)).rightOp := rfl
 
 lemma simplexConvolutionUnderlyingDual_reedyCofibrant (B : Mon (Complex R)) :
-    letI := EInfinity.projectiveModelCategory R
+    letI := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory R
     letI : HasLimitsOfSize.{u, u} (Complex R) := ⟨fun _ _ => inferInstance⟩
     reedyLeft simplex (cofibrations (Complex R)ᵒᵖ)
       (initial.to (simplexConvolutionUnderlyingDual R B)) := by
-  let := EInfinity.projectiveModelCategory R
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory R
   letI : HasLimitsOfSize.{u, u} (Complex R) := ⟨fun _ _ => inferInstance⟩
   let F : Complex R ⥤ (Complex R)ᵒᵖ :=
     (MonoidalClosed.internalHom.flip.obj B.X).rightOp
   have hF : cofibrations (Complex R) ≤ (cofibrations (Complex R)ᵒᵖ).inverseImage F := by
     intro P Q f hf
-    change EInfinity.projectiveFibrations R ((MonoidalClosed.pre f).app B.X)
+    change _root_.SerrePositivity.ProjectiveModel.projectiveFibrations R ((MonoidalClosed.pre f).app B.X)
     rw [convolutionPre_eq_homPrecompose]
-    exact EInfinity.homPrecompose_projectiveFibration f hf B.X
+    exact _root_.SerrePositivity.HomRestriction.homPrecompose_projectiveFibration f hf B.X
   exact reedyCofibrant_of_preservesLatching simplex F
     (SSet.stdSimplex ⋙ EInfinity.BarrattEccles.normalizedFunctor R)
     (fun n => by
       have : PreservesColimitsOfShape (LatchingIndex simplex n) F :=
         preservesColimitsOfShape_rightOp _ (MonoidalClosed.internalHom.flip.obj B.X)
-      infer_instance) hF (EInfinity.ComplexLimits.normalizedSimplex_reedyCofibrant R)
+      infer_instance) hF (_root_.SerrePositivity.ComplexLimits.normalizedSimplex_reedyCofibrant R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

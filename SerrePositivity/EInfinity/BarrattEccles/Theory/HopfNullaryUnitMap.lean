@@ -20,7 +20,7 @@ open SerrePositivity.DifferentialGraded
 attribute [local irreducible] HomologicalComplex.monoidalCategoryStruct
 attribute [local implicit_reducible] TensorPowers.power
   SerrePositivity.SymmetricSequence SerrePositivity.SymmetricSequence.level
-variable {A : Type u} [CommRing A] {P : Operad A}
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A}
 
 /-- 単位代数からの任意の代数射は、零入力の作用と可換である。 -/
 lemma hopfTensorUnitArrow_nullary (hP : P.Hopf) (Y : P.Algebra)

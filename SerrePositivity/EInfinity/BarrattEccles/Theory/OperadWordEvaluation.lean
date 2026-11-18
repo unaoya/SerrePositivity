@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.PowerWordEvaluation
-public import SerrePositivity.EInfinity.Operad.Basic
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Basic
 
 /-!
 # 指定生成元でのオペラッドの語の微分
@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.Operad
 open CategoryTheory MonoidalCategory HomologicalComplex DifferentialGraded TensorPowers
 open scoped TensorProduct
-variable {A : Type u} [CommRing A] {P : Operad A} (X : P.Algebra)
+variable {A : Type u} [CommRing A] {P : _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad A} (X : P.Algebra)
 
 /-- Evaluate a homogeneous coefficient operation on the specified input word. -/
 def evaluatedWord {I : ℤ → Type u} (g : ∀ i, I i → X.carrier.X i)

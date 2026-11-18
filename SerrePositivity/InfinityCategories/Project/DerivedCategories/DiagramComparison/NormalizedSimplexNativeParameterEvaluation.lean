@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory HomologicalComplex
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
@@ -24,7 +24,7 @@ theorem normalizedSimplexHomEquiv_native_generator (x y : D) (m : SimplexCategor
     (α : (standardHomSpace (R := A) x y).obj (Opposite.op m)) (n : ℕ)
     (s : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)).obj
       (Opposite.op ⦋n⦌)) :
-    ((normalizedSimplexHomEquiv A (homObject A D x y) m).symm
+    ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (homObject A D x y) m).symm
       ((standardDoldKanSpaceMap x y).app (Opposite.op m) α)).f (-(n : ℤ))
         (freeNegativeGenerator
           ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) n s) =
@@ -34,7 +34,7 @@ theorem normalizedSimplexHomEquiv_native_generator (x y : D) (m : SimplexCategor
   let f := liftedStandardSimplexIso.{u}.hom.app m ≫ SSet.yonedaEquiv.symm α
   have h := normalizedSimplexHomEquiv_symm_standard_generator A x y m f n s
   have he := liftedStandardSimplexHomIso_yoneda_postcomp (standardDoldKanSpaceMap x y) m α
-  have h' := congrArg (fun t => ((normalizedSimplexHomEquiv A (homObject A D x y) m).symm t).f
+  have h' := congrArg (fun t => ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (homObject A D x y) m).symm t).f
     (-(n : ℤ)) (freeNegativeGenerator
       ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj m)) n s)) he
   exact h'.symm.trans h

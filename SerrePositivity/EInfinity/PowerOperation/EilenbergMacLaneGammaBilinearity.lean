@@ -15,15 +15,15 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.PowerOperation
 open CategoryTheory MonoidalCategory MonoidalPreadditive
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 variable (A : Type u) [CommRing A]
 
 lemma gammaProbeEquiv_symm_add (K : Complex A) (n : SimplexCategory)
     (x y : (gammaModule A K).obj (Opposite.op n)) :
-    (normalizedSimplexHomEquiv A K n).symm (x + y) =
-      (normalizedSimplexHomEquiv A K n).symm x +
-        (normalizedSimplexHomEquiv A K n).symm y := by
-  apply (normalizedSimplexHomEquiv A K n).injective
+    (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm (x + y) =
+      (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm x +
+        (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm y := by
+  apply (_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).injective
   rw [Equiv.apply_symm_apply, gammaProbeEquiv_add,
     Equiv.apply_symm_apply, Equiv.apply_symm_apply]
 
@@ -54,10 +54,10 @@ lemma gammaPair_add_left (K L : Complex A) (n : SimplexCategory)
     gammaPairValue A K L n (x + x') y =
       gammaPairValue A K L n x y +
         gammaPairValue A K L n x' y := by
-  change normalizedSimplexHomEquiv A (K ⊗ L) n
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (K ⊗ L) n
     (simplexPairEvaluation A n
-      ((normalizedSimplexHomEquiv A K n).symm (x + x'))
-      ((normalizedSimplexHomEquiv A L n).symm y)) = _
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm (x + x'))
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A L n).symm y)) = _
   rw [gammaProbeEquiv_symm_add, simplexPairEvaluation_add_left, gammaProbeEquiv_add]
   rfl
 
@@ -67,10 +67,10 @@ lemma gammaPair_add_right (K L : Complex A) (n : SimplexCategory)
     gammaPairValue A K L n x (y + y') =
       gammaPairValue A K L n x y +
         gammaPairValue A K L n x y' := by
-  change normalizedSimplexHomEquiv A (K ⊗ L) n
+  change _root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A (K ⊗ L) n
     (simplexPairEvaluation A n
-      ((normalizedSimplexHomEquiv A K n).symm x)
-      ((normalizedSimplexHomEquiv A L n).symm (y + y'))) = _
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A K n).symm x)
+      ((_root_.SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv A L n).symm (y + y'))) = _
   rw [gammaProbeEquiv_symm_add, simplexPairEvaluation_add_right, gammaProbeEquiv_add]
   rfl
 

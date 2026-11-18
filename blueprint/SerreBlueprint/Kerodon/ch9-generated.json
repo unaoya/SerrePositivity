@@ -10,9 +10,11 @@
   "Section9_7"
  ],
  "stats": {
-  "linked": 37,
-  "nolink-partial": 137,
+  "linked": 174,
+  "with-statement": 174,
+  "with-note": 3,
   "with-uses": 70,
-  "nolink-none": 423
+  "nolink-none": 423,
+  "with-note-intro": 5
  }
 }

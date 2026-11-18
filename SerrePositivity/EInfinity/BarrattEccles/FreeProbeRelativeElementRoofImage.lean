@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory _root_.HomotopicalAlgebra Hammock
+open CategoryTheory _root_.HomotopicalAlgebra _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -22,7 +22,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 規約：元の全単体を保持。使われ方：同じ reduced 屋根の包含像。 -/
 lemma freeProbeRelativeElementRoof_graph_image :
     let := modelCategory A
-    LeftRoof.Precompose.SameUniverse.diagramGraphMap
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap
       (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
       cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
         (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
@@ -36,7 +36,7 @@ lemma freeProbeRelativeElementRoof_graph_image :
   funext n
   apply ConcreteCategory.hom_ext
   intro σ
-  let F := ((LeftRoof.Precompose.SameUniverse.diagramGraphMap
+  let F := ((_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
     cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
       (ULiftHom.objUp.{u + 1, u + 1} B) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n) σ
@@ -78,7 +78,7 @@ lemma freeProbeRelativeElementRoofMap_image :
         (algebraHammockReductionIso A ((freeProbeFunctor A).obj X) B.obj).hom :=
     cofibrantAlgebraHammockColimitInclusionMap_graph A
       (freeProbeElementCofibrantSource A X) B _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
-  change (LeftRoof.Precompose.SameUniverse.diagramGraphMap
+  change (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion _ _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) ≫ _ = _
   rw [Category.assoc, hg,

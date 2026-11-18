@@ -1,0 +1,48 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/nb-w4-statements-vdescent",
+ "commit": "802b8752ce8bd9fb0fbdd693300e003e64ce488e",
+ "made_by": "NB-W4 static source review",
+ "files": [
+  {
+   "path": "primary.py",
+   "sha256": "c989ed92dff8881e4b1cf0dfdccf9db754c53447d3099862460bf7da869f4137",
+   "bytes": 1843
+  },
+  {
+   "path": "statements.py",
+   "sha256": "d84139f5ca38cd5aebd9455d97adeb8a3e81af95b49cc32a1cb1cce2c3ad79e9",
+   "bytes": 2639
+  },
+  {
+   "path": "bs17-statement-audit.json",
+   "sha256": "c29a66c769234873e624d035b06e81df4bcde42b63826d026e838505655ca29f",
+   "bytes": 1207
+  },
+  {
+   "path": "bm18-statement-audit.json",
+   "sha256": "7dc7912699931550416252d4ca40238f17ed707a66dfcc23fd9df58319c01948",
+   "bytes": 2319
+  },
+  {
+   "path": "rydh-statement-audit.json",
+   "sha256": "9cf374d37747714c695f0a4601886c8f780f4af2ebff0f98c8e411e642a3a3ac",
+   "bytes": 1572
+  },
+  {
+   "path": "bs17-primary.txt",
+   "sha256": "9fe8ffdaf87c167a2ec3d401ea4a149f8038185f17f430722cd1ed53cf1110c7",
+   "bytes": 8371
+  },
+  {
+   "path": "bm18-primary.txt",
+   "sha256": "06b62a1c362846943a1163553cc5f90a1fc0a59ab566ef509b34bc2f58b464a4",
+   "bytes": 10864
+  },
+  {
+   "path": "rydh-primary.txt",
+   "sha256": "bc933ed0bd70888d470cca954b12103b92f125f742c4d0fecfe3e0d3b1c418d9",
+   "bytes": 7279
+  }
+ ],
+ "total_bytes": 36094
+}

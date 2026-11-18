@@ -50,14 +50,14 @@ attribute [local instance] strictRawModule_hasFiniteLimits strictRawModule_hasFi
 @[instance_reducible]
 def strictRawModuleModelCategory (X : (operad A).Algebra) :
     ModelCategory (strictRawModuleCategory A X) := by
-  let := projectiveModelCategory A
-  have := projectiveModelCategory_cofibrantlyGenerated A
-  have : ((projectiveGeneratingCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  have := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
+  have : ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
     strictRawModuleGeneratingCofibrations_smallObjectArgument A X
-  have : ((projectiveGeneratingTrivialCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
+  have : ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
     strictRawModuleGeneratingTrivialCofibrations_smallObjectArgument A X
-  exact ModelGeneration.rightTransfer (projectiveGeneratingCofibrations A)
-    (projectiveGeneratingTrivialCofibrations A) (strictRawModuleFreeAdjunction A X) (by
+  exact ModelGeneration.rightTransfer (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A) (strictRawModuleFreeAdjunction A X) (by
       change _ ≤ (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (strictRawModuleUnderlying X)
       rw [← strictRawModuleQuasiIso_eq A X]
       exact strictRawModuleFreeCells_acyclic A X)
@@ -79,7 +79,7 @@ lemma strictRawModuleModelCategory_weakEquivalences (X : (operad A).Algebra) :
 lemma strictRawModuleModelCategory_fibrations (X : (operad A).Algebra) :
     @fibrations (strictRawModuleCategory A X) _
       (strictRawModuleModelCategory A X).categoryWithFibrations =
-        (projectiveFibrations A).inverseImage (strictRawModuleUnderlying X) := rfl
+        (_root_.SerrePositivity.ProjectiveModel.projectiveFibrations A).inverseImage (strictRawModuleUnderlying X) := rfl
 
 /-- 概要：実自由 I/J は同じ構成済みモデルを生成する。
 方針：一般右転送の生成類の法則を使う。
@@ -90,14 +90,14 @@ lemma strictRawModuleModelCategory_cofibrantlyGenerated (X : (operad A).Algebra)
     SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (strictRawModuleGeneratingCofibrations A X)
       (strictRawModuleGeneratingTrivialCofibrations A X) := by
-  let := projectiveModelCategory A
-  have := projectiveModelCategory_cofibrantlyGenerated A
-  have : ((projectiveGeneratingCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
+  have := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory_cofibrantlyGenerated A
+  have : ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
     strictRawModuleGeneratingCofibrations_smallObjectArgument A X
-  have : ((projectiveGeneratingTrivialCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
+  have : ((_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A).strictMap (strictRawModuleFree A X)).HasSmallObjectArgument.{u} :=
     strictRawModuleGeneratingTrivialCofibrations_smallObjectArgument A X
-  exact ModelGeneration.rightTransfer_cofibrantlyGenerated (projectiveGeneratingCofibrations A)
-    (projectiveGeneratingTrivialCofibrations A) (strictRawModuleFreeAdjunction A X) (by
+  exact ModelGeneration.rightTransfer_cofibrantlyGenerated (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingCofibrations A)
+    (_root_.SerrePositivity.ProjectiveModel.projectiveGeneratingTrivialCofibrations A) (strictRawModuleFreeAdjunction A X) (by
       change _ ≤ (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (strictRawModuleUnderlying X)
       rw [← strictRawModuleQuasiIso_eq A X]
       exact strictRawModuleFreeCells_acyclic A X)

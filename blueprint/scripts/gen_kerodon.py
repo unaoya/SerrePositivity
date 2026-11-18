@@ -10,13 +10,27 @@ ch = sys.argv[1]
 K = 'research/kerodon-coverage'
 OUT = 'blueprint/SerreBlueprint/Kerodon'
 # 見出し
+def plain_title(s):
+    """見出しの TeX を平文に（Verso の題は文字列なので、TeX の \\ は書けない）。"""
+    def tex(m):
+        x = m.group(1)
+        x = x.replace('\\infty', '∞').replace('\\rightarrow', '→').replace('\\bullet', '•').replace('\\pi', 'π')
+        x = re.sub(r'\\(?:operatorname|mathcal|mathrm|mathbf|mathbb)\s*', '', x)
+        x = re.sub(r'\\[A-Za-z]+', '', x)
+        return re.sub(r'\s+', ' ', x.replace('{', '').replace('}', '').replace('_ ', '_')).strip()
+    return re.sub(r'\$([^$]*)\$', tex, s)
 toc = {}
 for l in open(f'{K}/toc.md', encoding='utf-8'):
     m = re.match(r'\s*- (?:Chapter )?([0-9]+(?:\.[0-9]+)*) \[([0-9A-Z]{4})\] (.*)$', l)
-    if m: toc[m.group(1)] = (m.group(2), m.group(3).replace('$\\infty $', '∞').replace('$\\infty$', '∞'))
+    if m: toc[m.group(1)] = (m.group(2), plain_title(m.group(3)))
 tags = {r['number']: r['tag'] for r in csv.DictReader(open(f'{K}/item-tags.csv', encoding='utf-8'))}
 kinds = {r['number']: r['kind'] for r in csv.DictReader(open(f'{K}/items.csv', encoding='utf-8'))}
 rows = list(csv.DictReader(open(f'{K}/review/ch{ch}.csv', encoding='utf-8')))
+# review に行のない項目（照合の対象外にした Remark・Example など）のうち、原稿（notes/<番号>.md）があるものは節点を作って本文を出す（11-18）
+_have = {r['number'] for r in rows}
+for _n in sorted(kinds):
+    if _n.split('.')[0] == str(ch) and _n not in _have and os.path.exists(f'{K}/notes/{_n}.md'):
+        rows.append({'number': _n, 'status_new': 'unreviewed', 'declarations_new': '', 'reason': ''})
 # 宣言の完全な名前（名前空間つきの走査、refresh_by_source.py と同じ規則）
 DECL = re.compile(r'^\s*(?:@\[[^\]]*\]\s*)*(?:(?:private|protected|noncomputable|nonrec|public|scoped|local|partial|unsafe)\s+)*(theorem|lemma|def|abbrev|structure|class|instance|inductive|opaque|axiom)\s+([^\s:({\[]+)')
 NS = re.compile(r'^\s*namespace\s+(\S+)'); SEC = re.compile(r'^\s*(?:@\[[^\]]*\]\s*)*(?:noncomputable\s+|public\s+)*section(?:\s+(\S+))?\s*$'); END = re.compile(r'^\s*end(?:\s+(\S+))?\s*$')
@@ -55,36 +69,11 @@ KIND = {'Definition': 'definition', 'Notation': 'definition', 'Construction': 'd
 def esc(s):
     return re.sub(r'([\\*_`\[\]{}#$<>|~^])', r'\\\1', s)
 
-# NB-W1（11-17）：research/kerodon-coverage/notes/<番号>.md の原稿をノードの本文に入れる（試し）。
-# Markdown → Verso：HTML コメントと追跡用 <a id> を落とし、## 見出しは太字の段落に、\( \)・\[ \] は Verso の数式 $`…`$・$$`…`$$ に、
-# pipe table は箇条書きに。冒頭の題・Tag 行・照合先の行は（ノードの頭と重なるので）落とす。
-
-def esc_text(s):
-    """原稿の一行を Verso の本文に：Markdown のリンクは表示文言だけに、\\( \\)・\\[ \\] は数式に、それ以外はエスケープ。"""
-    s = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', s)
-    parts = re.split(r'(\\\(.+?\\\)|\\\[.+?\\\])', s)
-    out = []
-    for p in parts:
-        if p.startswith('\\(') and p.endswith('\\)'): out.append('$`' + p[2:-2].strip() + '`')
-        elif p.startswith('\\[') and p.endswith('\\]'): out.append('$$`' + p[2:-2].strip() + '`')
-        else: out.append(esc(p))
-    return ''.join(out)
+# NB-W1（11-17）：research/kerodon-coverage/notes/<番号>.md の原稿をノードの本文に入れる（変換は notes_md.py）。
+import notes_md
 NOTES = f'{K}/notes'
-def note_body(n):
-    fp = f'{NOTES}/{n}.md'
-    if not os.path.exists(fp): return None
-    out = []; in_table = False
-    for l in open(fp, encoding='utf-8'):
-        s = l.rstrip('\n')
-        if s.startswith('# ') or s.startswith('<!--') or s.startswith('<a id=') or s.startswith('Kerodon [') or s.startswith('照合先'): continue
-        if s.startswith('## '): out.append('*' + esc_text(s[3:].strip()) + '*\n'); continue
-        if s.startswith('|'):
-            cells = [c.strip() for c in s.strip().strip('|').split('|')]
-            if all(re.fullmatch(r':?-+:?', c) for c in cells if c): continue
-            out.append('- ' + '　／　'.join(esc_text(c) for c in cells)); continue
-        out.append(esc_text(s))
-    text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
-    return text + '\n' if text else None
+def note_body(n): return notes_md.note_body(f'{NOTES}/{n}.md', skip=('Kerodon [', '照合先'))
+STMT = notes_md.statements(K)   # 主張の一行（NB-W4）：カードの頭のすぐ下に出す
 
 # 依存の辺：P⁰ の項目の閉包（research/p0-lurie/item-closure/edges.csv）のうち Kerodon → Kerodon の辺を (uses := …) に
 ALLNUM = set()
@@ -97,7 +86,7 @@ if os.path.exists(_e):
         if e['source'] == 'Kerodon' and e['depends_on_source'] == 'Kerodon' and e['number'] in ALLNUM and e['depends_on_number'] in ALLNUM:
             if e['depends_on_number'] not in USES[e['number']]: USES[e['number']].append(e['depends_on_number'])
 
-STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本体と Mathlib にある', 'partial': '一部', 'none': 'なし'}
+STATUS = {'unreviewed': '照合の対象外', 'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本体と Mathlib にある', 'partial': '一部', 'none': 'なし'}
 by_sec = collections.defaultdict(list)
 for r in rows:
     n = r['number']; by_sec['.'.join(n.split('.')[:2])].append(r)
@@ -123,7 +112,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             label = 'kerodon_' + n.replace('.', '_')
             decls = [e.strip() for e in r['declarations_new'].split(' | ') if e.strip()]
             linked = []
-            if st in ('own', 'mathlib', 'both'):
+            if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
                 for e in decls:
                     x = resolve(e)
                     if x: linked.append(x[0]); imports.add(x[1])
@@ -135,6 +124,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             head = f'Kerodon {kind} {n}' + (f'（[Tag {tag}](https://kerodon.net/tag/{tag})）' if tag else '')  # 自前の markup なので esc しない
             body.append(f':::{directive} "{label}"{opt}')
             body.append(f'{head}。対応表の状態：{STATUS.get(st, st)}。\n')
+            if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
             if r['reason']: body.append(esc(r['reason']) + '\n')
             if (nb := note_body(n)):
                 stats['with-note'] += 1
@@ -145,7 +135,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
     t = toc.get(sec)
     mod = 'Section' + sec.replace('.', '_')
     hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
-          ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+          ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
            f'#doc (Manual) "{sec} {t[1] if t else ""}" =>', '%%%', 'number := false', f'tag := "kerodon-{sec.replace(".", "-")}"', '%%%', '',
            f'Kerodon の {sec} 節（[Tag {t[0]}](https://kerodon.net/tag/{t[0]})）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。\n' if t else '']
     if (nb := note_body(sec)):

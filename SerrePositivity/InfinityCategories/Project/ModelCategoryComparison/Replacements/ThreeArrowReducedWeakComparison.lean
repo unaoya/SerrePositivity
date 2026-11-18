@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Replacements.ThreeArrowGraphWeakComparison
-public import SerrePositivity.EInfinity.Hammock.ReducedColimit
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ReducedColimit
 
 /-!
 # 元の三列から reduced hammock への正規化の弱同値性
@@ -23,11 +23,11 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] (X Y : C)
 
 include cof in
 lemma threeArrowNormalization_isWeakHomotopyEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-    (_root_.SerrePositivity.EInfinity.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow) := by
-  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.EInfinity.Hammock.reducedColimitIso (weakEquivalences C) X Y).hom :=
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization (weakEquivalences C) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow) := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso (weakEquivalences C) X Y).hom :=
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
   have h := (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.threeArrowGraphInclusion_isWeakHomotopyEquivalence X Y cof).comp hi
-  rw [_root_.SerrePositivity.EInfinity.Hammock.reducedColimitIso_hom_fac] at h
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.reducedColimitIso_hom_fac] at h
   exact h
 
 end SerrePositivity.InfinityCategories.Project.ModelCategoryComparison

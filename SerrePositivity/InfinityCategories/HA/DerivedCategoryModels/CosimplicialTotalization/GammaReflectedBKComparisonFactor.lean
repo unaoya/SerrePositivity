@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison
 open SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories
@@ -28,13 +28,13 @@ theorem gammaReflectedBKComparison_factor (P : Complex A)
     let γ := homToNormalizedBousfieldKan P X ≫ (normalizedBKReverseHomotopyEquiv Y).hom ≫
       (reflectedNormalizedBKSmallHomIso A Y).hom
     let ψ := standardDoldKanSpaceMap P ((productTotalFunctor A).obj X) ≫
-      (truncatedDoldKanFunctor A).map γ ≫
+      (_root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A).map γ ≫
         normalizedWeightSectionMap A (reflectedNormalizedBKSmallWeight A)
           (normalizedBKSmallDiagram A Y) (normalizedBKCoefficientMap A)
     gammaReflectedBKComparison X (ForgetEnrichment.of (Complex A) P) =
       SSet.opFunctor.map ψ ≫
         (weightedSectionsReflectedIso (normalizedBKSmallWeight A)
-          (normalizedBKSmallDiagram A Y ⋙ truncatedDoldKanFunctor A) ≪≫
+          (normalizedBKSmallDiagram A Y ⋙ _root_.SerrePositivity.ComplexLimits.truncatedDoldKanFunctor A) ≪≫
             normalizedBKOriginalSectionsIso A Y).hom ≫
         (weightedSectionsFunctor (bousfieldKanWeight (AsSmall.{u} SimplexCategory))).map
           (normalizedBKReflectedHomDiagramIso X P).hom := by

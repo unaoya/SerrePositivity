@@ -45,7 +45,7 @@ lemma constantDiagramSourceClass_eq_coneClass {Y : (Complex A)}
     constantDiagramSourceClass A K f =
       _root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneClass K (_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K)
         ((constantDiagramHomEquiv A K Y F) ((constantDiagramComparison A K).app Y ≫ f)) := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   rw [constantDiagramSourceClass, SSet.mapπ₀_mk, constantDiagramFrameComparison_zero]
   apply congrArg SSet.π₀.mk
@@ -60,12 +60,12 @@ lemma constantDiagramSourceClass_eq_coneClass {Y : (Complex A)}
 lemma constantDiagramHomEquiv_comparison_app {Y : (Complex A)}
     {F : K ⥤ (Complex A)} (f : (Functor.const K).obj Y ⟶ F)
     (k : K) (n : SimplexCategoryᵒᵖ) (x : ((_root_.SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.weight K).obj k).obj n) :
-    let := SerrePositivity.EInfinity.projectiveModelCategory A
+    let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
     let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
     ((((constantDiagramHomEquiv A K Y F)
         ((constantDiagramComparison A K).app Y ≫ f)).app k).app n) x =
       (q.augmentation.app Y).app n.unop ≫ f.app k := by
-  let := SerrePositivity.EInfinity.projectiveModelCategory A
+  let := _root_.SerrePositivity.ProjectiveModel.projectiveModelCategory A
   let q := cosimplicialResolutionFamily (carrierProbeFactorization A)
   let B := q.obj.obj Y
   let g := (((constantDiagramComparison A K).app Y).app k)

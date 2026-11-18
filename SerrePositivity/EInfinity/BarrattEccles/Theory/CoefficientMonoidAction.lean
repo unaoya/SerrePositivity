@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientRestriction
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientAugmentation
-public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
-public import SerrePositivity.EInfinity.Operad.AlgebraRestriction
-public import SerrePositivity.EInfinity.Operad.AlgebraIso
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.CommutativeAlgebraFunctor
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraRestriction
+public import SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.AlgebraIso
 
 /-!
 # 可換モノイド複体の代数作用と係数制限
@@ -54,7 +54,7 @@ lemma laxComparison_powerProduct {X : C} [MonObj X] {Y : D} [MonObj Y]
     (hOne : LaxComparisonSquare F (ε F) c η[Y] η[X])
     (hMul : LaxComparisonSquare F (laxTensorComparison F c c) c μ[Y] μ[X]) (n : ℕ) :
     LaxComparisonSquare F (TensorPowers.map c n ≫ laxPowerComparison F X n) c
-      (powerProduct Y n) (powerProduct X n) := by
+      (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct Y n) (_root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct X n) := by
   induction n with
   | zero =>
     change LaxComparisonSquare F (𝟙 (𝟙_ D) ≫ ε F) c η[Y] η[X]
@@ -67,7 +67,7 @@ lemma laxComparison_powerProduct {X : C} [MonObj X] {Y : D} [MonObj Y]
           laxTensorComparison F c (TensorPowers.map c n ≫ laxPowerComparison F X n) := by
       simp only [laxTensorComparison, TensorPowers.map, laxPowerComparison]
       rw [tensorHom_comp_whiskerLeft_assoc]
-    rw [hc, powerProduct, powerProduct]
+    rw [hc, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct, _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct]
     exact h
 
 end LaxMonoidal
@@ -82,7 +82,7 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 /-- 可換モノイド複体から得る厳密な Barratt–Eccles 代数。 -/
 def cdgaAlgebraFunctor (A : Type u) [CommRing A] :
     CommMon (Complex A) ⥤ (operad A).Algebra :=
-  commutativeAlgebraFunctor A ⋙ Operad.restrictAlgebra (augmentation A)
+  _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.commutativeAlgebraFunctor A ⋙ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.restrictAlgebra (augmentation A)
 
 /-- 底の比較が単位と積を保てば、augmentation による全 arity の作用を保つ。 -/
 def cdgaCoefficientRestrictionIso (X : CommMon (Complex T)) (Y : CommMon (Complex S))
@@ -95,7 +95,7 @@ def cdgaCoefficientRestrictionIso (X : CommMon (Complex T)) (Y : CommMon (Comple
     (cdgaAlgebraFunctor S).obj Y ≅
       (coefficientRestriction f).obj ((cdgaAlgebraFunctor T).obj X) := by
   let R := ScalarExtension.restriction f
-  refine Operad.Algebra.isoOfCarrierIso e (fun n => ?_)
+  refine _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.isoOfCarrierIso e (fun n => ?_)
   let c : (operad S).arity n ⟶ R.obj ((operad T).arity n) := coefficientComplexMap f n
   let p := laxPowerComparison R X.X n
   let q := TensorPowers.map e.hom n ≫ p
@@ -106,7 +106,7 @@ def cdgaCoefficientRestrictionIso (X : CommMon (Complex T)) (Y : CommMon (Comple
   unfold LaxComparisonSquare at h
   let a (A : Type u) [CommRing A] (U : CommMon (Complex A)) :=
     ((augmentation A).map.app (FiniteBijection.of n) ▷ power U.X n) ≫
-      (λ_ (power U.X n)).hom ≫ powerProduct U.X n
+      (λ_ (power U.X n)).hom ≫ _root_.SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.powerProduct U.X n
   change a S Y ≫ e.hom = (𝟙 ((operad S).arity n) ⊗ₘ TensorPowers.map e.hom n) ≫
     laxTensorComparison R c p ≫ R.map (a T X)
   have hc : (𝟙 ((operad S).arity n) ⊗ₘ TensorPowers.map e.hom n) ≫

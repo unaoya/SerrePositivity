@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
 open CategoryTheory MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded _root_.SerrePositivity.ComplexLimits
 open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A] {J : Type u} [SmallCategory J]

@@ -16,9 +16,9 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.Modules
+open _root_.SerrePositivity.ComplexLimits SerrePositivity.EInfinity.Modules
 open SerrePositivity.InfinityCategories.HA.Section7_1_1
-open ConeHeadIndex
+open _root_.SerrePositivity.ComplexLimits.ConeHeadIndex
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra)
   (P : strictRawModuleProbeCategory A X) (Q : strictRawModuleCategory A X)
 
@@ -30,11 +30,11 @@ lemma strictRawModuleTensorConeData_rhs_mixed_last {n : ℕ}
     (hbl : b = Fin.last (n + 1)) (h0 : 0 ∈ I) :
     HEq ((strictRawModuleTensorConeData A X P Q c).rhs I a b k hI ha hb hk)
       (k.negOnePow • (strictRawModuleTensorElementLinear A X P Q c).val.rhs
-        (withoutFirst I) k (by have := card_withoutFirst I h0; omega)) := by
-  let J := withoutFirst I
-  have hJ : 2 ≤ J.card := by have := card_withoutFirst I h0; dsimp only [J]; omega
+        (_root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I) k (by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; omega)) := by
+  let J := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst I
+  have hJ : 2 ≤ J.card := by have := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0; dsimp only [J]; omega
   have hkJ : k = 1 - (J.card : ℤ) := by
-    have hs := card_withoutFirst I h0
+    have hs := _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.card_withoutFirst I h0
     dsimp only [J]
     omega
   have hm : Fin.last n ∈ J := by
@@ -42,7 +42,7 @@ lemma strictRawModuleTensorConeData_rhs_mixed_last {n : ℕ}
       change Fin.last (n + 1) ∈ I
       rw [← hbl, hb]
       exact I.max'_mem _
-    simpa only [J, withoutFirst, Finset.mem_filter, Finset.mem_univ, true_and] using hbI
+    simpa only [J, _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst, Finset.mem_filter, Finset.mem_univ, true_and] using hbI
   let f (j : J) : GradedHom A (ForgetEnrichment.to (Complex A) ((strictRawModuleProbeFunctor A X).obj P))
       (ForgetEnrichment.to (Complex A) ((strictRawModuleTensorElementDiagram A X P Q).obj (c.obj (Fin.last n)))) (k + 1) :=
     (strictRawModuleTensorElementLinear A X P Q c).val.component (J.erase j.val) (k + 1)
@@ -69,7 +69,7 @@ lemma strictRawModuleTensorConeData_rhs_mixed_last {n : ℕ}
       k.negOnePow • (strictRawModuleTensorElementLinear A X P Q c).val.rhs J k hkJ := by
     unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.rhs
     rw [dite_eq_left hJ]
-    exact sum_restore_terminal_linear J hm f k
+    exact _root_.SerrePositivity.ComplexLimits.ConeHeadIndex.sum_restore_terminal_linear J hm f k
   rw [strictRawModuleTensorConeData_rhs_reduced A X P Q c I a b k hI ha hb hk hc]
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_add_heq (A := A) hx hy rfl _ _ _ _ hlin hcut).trans (heq_of_eq hsum)
 
