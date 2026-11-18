@@ -3,7 +3,9 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：37,145行。外枠：36,138行。係数：2。
+既計上の累計：37,145行。承認済み外枠：36,138行。係数：2。
+11-19 の新しい見込みは補正後120〜220行（累計37,265〜37,365行）。提案外枠37,600行は承認待ち。
+一覧：済み 113／全体 125（うち追加 90、範囲外 9）。現行範囲で未完は新3署名。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -88,15 +90,18 @@
 |R16.1|verified|36|0〜0|0〜0|
 |R16.2|verified|35|0〜0|0〜0|
 |R16.3|verified|43|0〜0|0〜0|
-|R16.4|pending|—|100〜180|200〜360|
-|R16.5|pending|—|90〜150|180〜300|
-|R16.6|pending|—|90〜150|180〜300|
-|R16.7|pending|—|20〜45|40〜90|
-|R16.8|pending|—|40〜80|80〜160|
-|R16.9|pending|—|25〜50|50〜100|
-|R16|pending|—|60〜100|120〜200|
-|R17.1|pending|—|15〜30|30〜60|
-|R17|pending|—|10〜25|20〜50|
+|R16.4|範囲外（11-19）|—|—|—|
+|R16.5|範囲外（11-19）|—|—|—|
+|R16.6|範囲外（11-19）|—|—|—|
+|R16.7|範囲外（11-19）|—|—|—|
+|R16.8|範囲外（11-19）|—|—|—|
+|R16.9|範囲外（11-19）|—|—|—|
+|R16|範囲外（11-19）|—|—|—|
+|R17.1|範囲外（11-19）|—|—|—|
+|R17|範囲外（11-19）|—|—|—|
+|R16s|紙のみ（承認待ち）|—|15〜30|30〜60|
+|R17s|紙のみ（承認待ち）|—|20〜35|40〜70|
+|R17p|紙のみ（承認待ち）|—|25〜45|50〜90|
 |R15-Unit.3|verified|34|0〜0|0〜0|
 |R15-Unit.4|verified|65|0〜0|0〜0|
 |R15a.3|verified|50|0〜0|0〜0|
@@ -3220,7 +3225,7 @@ let I := (discretePresheafInclusion C).val
 - `coveragePullbackRefinement_isLimit` @ SerrePositivity/InfinityCategories/Sheaves/CoveragePullbackRefinement.lean:32
 
 ### R16.4 — coverageConeRestriction_homInverse
-親：R16。状態：紙のみ（pending）。依存：R16.2・R16.3。
+親：R16。状態：範囲外（11-19）。依存：R16.2・R16.3。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3252,7 +3257,7 @@ let r := sliceOverRestrict (nativeRestriction F S) j
 - `IsTerminalVertex.pinchedHom_isContractibleKan` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean:29
 
 ### R16.5 — coverageConeRestriction_homInverse_left
-親：R16。状態：紙のみ（pending）。依存：R16.4。
+親：R16。状態：範囲外（11-19）。依存：R16.4。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3286,7 +3291,7 @@ let r := sliceOverRestrict (nativeRestriction F S) j
 - `IsTerminalVertex.pinchedHom_isContractibleKan` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean:29
 
 ### R16.6 — coverageConeRestriction_homInverse_right
-親：R16。状態：紙のみ（pending）。依存：R16.4。
+親：R16。状態：範囲外（11-19）。依存：R16.4。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3320,7 +3325,7 @@ let r := sliceOverRestrict (nativeRestriction F S) j
 - `IsTerminalVertex.pinchedHom_isContractibleKan` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalMappingSpace.lean:29
 
 ### R16.7 — coverageConeRestriction_isFullyFaithful
-親：R16。状態：紙のみ（pending）。依存：R16.5・R16.6。
+親：R16。状態：範囲外（11-19）。依存：R16.5・R16.6。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3347,7 +3352,7 @@ IsFullyFaithful r
 - `IsFullyFaithful` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithful.lean:30
 
 ### R16.8 — coverageGeneratedSieve_upward_isLimit
-親：R16。状態：紙のみ（pending）。依存：R16.2・R16.7。
+親：R16。状態：範囲外（11-19）。依存：R16.2・R16.7。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3374,7 +3379,7 @@ IsFullyFaithful r
 - `nativeRestrictionCone` @ SerrePositivity/InfinityCategories/Sheaves/NativeSiteDescent.lean:31
 
 ### R16.9 — coverage_basis_pullback_native_isLimit
-親：R16。状態：紙のみ（pending）。依存：R16.8。
+親：R16。状態：範囲外（11-19）。依存：R16.8。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u}} [Quasicategory E]
@@ -3398,7 +3403,7 @@ IsFullyFaithful r
 - `coverageRefinement_generate_le` @ SerrePositivity/InfinityCategories/Sheaves/CoveragePullbackRefinement.lean:20
 
 ### R16 — coverage_basis_pullback_isLimit
-親：R16。状態：紙のみ（pending）。依存：R16.9。
+親：R16。状態：範囲外（11-19）。依存：R16.9。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3424,7 +3429,7 @@ IsFullyFaithful r
 - `restrictionCone_inf_isLimit_iff_of_pullbacks` @ SerrePositivity/InfinityCategories/Sheaves/SieveIntersectionDescent.lean:23
 
 ### R17.1 — coverage_generatedSieve_universallyDescending
-親：R17。状態：紙のみ（pending）。依存：R16。
+親：R17。状態：範囲外（11-19）。依存：R16。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3448,7 +3453,7 @@ IsFullyFaithful r
 - `isSheaf_toGrothendieck_iff_universallyDescending` @ SerrePositivity/InfinityCategories/Sheaves/CoverageUniversalDescent.lean:23
 
 ### R17 — isSheaf_toGrothendieck_iff
-親：R17。状態：紙のみ（pending）。依存：R17.1。
+親：R17。状態：範囲外（11-19）。依存：R17.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4672,3 +4677,78 @@ R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,53
 - `weightedSections_originalLeftLimitIso_hom_comp` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean:32
 - `nativeLeftSectionsValueIso_hom_transportCone` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:77
 - `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
+
+## 11-19：引き戻しに安定な被覆系の終端署名
+
+旧9署名の型と設計は履歴として残す。以下は型案で、実装は外枠の承認後。
+
+### R16s — coverage_basis_pullback_isLimit_of_stable
+
+依存 新署名なし。配置 `SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (K : Coverage C)
+  (hstable : ∀ {U V : C} (f : V ⟶ U) (R : Presieve U), R ∈ K.coverings U →
+    ∃ T : Presieve V, T ∈ K.coverings V ∧
+      Sieve.generate T = (Sieve.generate R).pullback f)
+  (F : Presheaf C E)
+  (hF : ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+    IsLimitCone (restrictionCone F (Sieve.generate R)))
+  {U V : C} (R : Presieve U) (hR : R ∈ K.coverings U) (f : V ⟶ U),
+  IsLimitCone (restrictionCone F ((Sieve.generate R).pullback f))
+```
+
+素の見込み 15〜30行、補正後 30〜60行。指定された T を取り、生成篩の等式で hF の錐を元の実引き戻し篩の錐に移す。
+
+対応 HTT 6.2.2.6–7（小さい通常の site での判定）。
+
+- `restrictionCone` @ `SerrePositivity/InfinityCategories/Sheaves/SheafCondition.lean:84`
+
+### R17s — isSheaf_toGrothendieck_iff_of_stable
+
+依存 R16s。配置 `SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
+∀ (K : Coverage C)
+  (hstable : ∀ {U V : C} (f : V ⟶ U) (R : Presieve U), R ∈ K.coverings U →
+    ∃ T : Presieve V, T ∈ K.coverings V ∧
+      Sieve.generate T = (Sieve.generate R).pullback f)
+  (F : Presheaf C E),
+  IsSheaf K.toGrothendieck F ↔
+    ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+      IsLimitCone (restrictionCone F (Sieve.generate R))
+```
+
+素の見込み 20〜35行、補正後 40〜70行。普遍降下での同値を使う。順方向は恒等射、逆方向は各 f に R16s を適用する。
+
+対応 HTT 6.2.2.6–7（小さい通常の site での判定）。
+
+- `isSheaf_toGrothendieck_iff_universallyDescending` @ `SerrePositivity/InfinityCategories/Sheaves/CoverageUniversalDescent.lean:23`
+- `UniversallyDescendingSieve.isLimit` @ `SerrePositivity/InfinityCategories/Sheaves/UniversalSieveDescent.lean:33`
+
+### R17p — isSheaf_pretopology_iff
+
+依存 R17s。配置 `SerrePositivity/InfinityCategories/Sheaves/CoverageStableDescent.lean`。
+
+```lean
+∀ {C : Type u} [SmallCategory C] [Limits.HasPullbacks C]
+  {E : SSet.{u + 1}} [Quasicategory E],
+∀ (J : Pretopology C) (F : Presheaf C E),
+  IsSheaf J.toGrothendieck F ↔
+    ∀ (U : C) (R : Presieve U), R ∈ J U →
+      IsLimitCone (restrictionCone F (Sieve.generate R))
+```
+
+素の見込み 25〜45行、補正後 50〜90行。引き戻し族 pullbackArrows を T とする。R17s を toCoverage に適用し、生成位相と被覆族を元の Pretopology に戻す。
+
+対応 HTT 6.2.2.6–7（小さい通常の site での判定）。
+
+- `Pretopology.toCoverage` @ `Mathlib/CategoryTheory/Sites/Coverage.lean:342`
+- `Pretopology.mem_toCoverage` @ `Mathlib/CategoryTheory/Sites/Coverage.lean:347`
+- `Pretopology.toGrothendieck_toCoverage` @ `Mathlib/CategoryTheory/Sites/Coverage.lean:350`
+- `Pretopology.pullbacks` @ `Mathlib/CategoryTheory/Sites/Pretopology.lean:68`
+- `Sieve.pullbackArrows_comm` @ `Mathlib/CategoryTheory/Sites/Sieves/Basic.lean:491`
+
+合計は素60〜110行、補正後120〜220行。実装順は R16s → R17s → R17p で循環なし。
