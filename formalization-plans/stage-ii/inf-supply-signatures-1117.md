@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：29,689行。外枠：35,681行。係数：2。
+既計上の累計：29,932行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -56,7 +56,7 @@
 |R04.6|verified|86|0〜0|0〜0|
 |R04|verified|67|0〜0|0〜0|
 |R05.1|verified|99|0〜0|0〜0|
-|R05|pending|—|60〜100|120〜200|
+|R05|verified|133|0〜0|0〜0|
 |R06.1|verified|163|0〜0|0〜0|
 |R06.2|pending|—|90〜150|180〜300|
 |R06.3|pending|—|80〜130|160〜260|
@@ -100,8 +100,8 @@
 |R15-Unit.3|pending|—|10〜25|20〜50|
 |R15-Unit.4|pending|—|35〜65|70〜130|
 |R15a.3|pending|—|40〜70|80〜140|
-|R15-Unit.0a|pending|—|60〜100|120〜200|
-|R15-Unit.0b|pending|—|30〜50|60〜100|
+|R15-Unit.0a|verified|71|0〜0|0〜0|
+|R15-Unit.0b|verified|39|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2257,7 +2257,7 @@ let d := (restrictJoinCone t.cone a).cast he
 - `limitVertexIso_hom_comp` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitVertexIsoComposition.lean:43
 
 ### R05 — weightedSections_nativeShapeLimitIso_hom_eq_globalComparison
-親：R05。状態：紙のみ（pending）。依存：R04・R05.1。
+親：R05。状態：検証済み。依存：R04・R05.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3516,7 +3516,7 @@ functorHomPrecomp (𝟙 (PresheafCat C SpaceInfinity.{u}))
 - `sheafificationReindexSpecified_unit` @ SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedUnit.lean:27
 
 ### R15-Unit.0a — largeNerveNatTransHomotopy
-親：R15-Unit。状態：紙のみ（pending）。依存：なし（既存APIのみ）。
+親：R15-Unit。状態：検証済み。依存：なし（既存APIのみ）。
 
 ```lean
 ∀ {A : Type v} [Category.{u} A] {F G : A ⥤ A} (η : F ⟶ G),
@@ -3536,7 +3536,7 @@ functorHomPrecomp (𝟙 (PresheafCat C SpaceInfinity.{u}))
 - `resizedNatTransMap` @ SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean:30
 
 ### R15-Unit.0b — largeNerveNatTransHomotopy_component
-親：R15-Unit。状態：紙のみ（pending）。依存：R15-Unit.0a。
+親：R15-Unit。状態：検証済み。依存：R15-Unit.0a。
 
 ```lean
 ∀ {A : Type v} [Category.{u} A] {F G : A ⥤ A} (η : F ⟶ G) (a : A),

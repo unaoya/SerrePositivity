@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 29689,
+  "verified_lean_lines": 29932,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3322,6 +3322,11 @@
           "name": "rightKanHomUniversalIso_hom_fac",
           "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/UniversalProperty.lean",
           "line": 83
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean",
+          "line": 80,
+          "name": "weightedSections_nativeShapeLimitIso_hom_eq_globalComparison"
         }
       ],
       "literature": "HTT 5.1.5.6（双対）、Kerodon Definition 7.3.1.2（Tag 02Y9）。",
@@ -3333,9 +3338,9 @@
         120,
         200
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_nativeShapeLimitIso_hom_eq_globalComparison.lean",
-      "note": "",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean",
+      "note": " 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -3353,7 +3358,29 @@
       "method": "元の大域比較成分の式を、同じfixedOppositeSetYoneda_nativeIsoへのR04で書き換え、R05.1で任意のdへつなぐ。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R05",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 133,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 4,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean": "01e2d6f26ef13dc07a4631f0cf6744e93b79404609c5ca4a247aef8902d8ca51"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "9eba5d031ba7240157b6d3b00e17ef0e9e011e70d67ae941ced0cb03bf79e454",
+        "receipt": "/tmp/is-stage5/R05/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r05-1118/manifest.json"
     },
     {
       "id": "R06.1",
@@ -5226,6 +5253,11 @@
           "name": "resizedNatTransMap",
           "path": "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTrans.lean",
           "line": 30
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransHomotopy.lean",
+          "line": 39,
+          "name": "largeNerveNatTransHomotopy"
         }
       ],
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
@@ -5239,13 +5271,35 @@
       ],
       "method": "resizedNatTransMapのcomposable arrowsとuncurryの式を、同じnerve Aの全単体へ書く。対象宇宙v・Hom宇宙uを分離し、新しいCategory.{v} Aを仮定しない。時間因子の反転も明示する。",
       "specified_compatibility": "ηの全円柱を明示的に構成。既存の小圏版nerveNatTransHomotopyを宇宙が違うまま適用しない。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
-      "note": "resizedNatTransMapのcomposable arrowsとuncurryの式を、同じnerve Aの全単体へ書く。対象宇宙v・Hom宇宙uを分離し、新しいCategory.{v} Aを仮定しない。時間因子の反転も明示する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransHomotopy.lean",
+      "note": "resizedNatTransMapのcomposable arrowsとuncurryの式を、同じnerve Aの全単体へ書く。対象宇宙v・Hom宇宙uを分離し、新しいCategory.{v} Aを仮定しない。時間因子の反転も明示する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 71,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 10,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransHomotopy.lean": "00255b37755c8573cf928365af9870f1fbae3564b21be5ffb295476bc24d8df2"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "8a1ea6652acc750e474002ba0d329c3e004bea9df6bafb7cac847619eb9dd5da",
+        "receipt": "/tmp/is-stage5/R15-Unit.0a/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-0a-1118/manifest.json"
     },
     {
       "id": "R15-Unit.0b",
@@ -5259,6 +5313,11 @@
           "name": "resizedNatTransMap_component",
           "path": "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/CatInfinity/StrictCoherentNatTransComponent.lean",
           "line": 37
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransComponent.lean",
+          "line": 28,
+          "name": "largeNerveNatTransHomotopy_component"
         }
       ],
       "literature": "HTT 6.2.2.7・5.5.4.15 の離散係数と小さい通常siteの場合。指定したMathlibの層化単位を全関手射として実現する法則。",
@@ -5272,13 +5331,35 @@
       ],
       "method": "同じ明示的な全円柱の垂直辺を計算する。対象・射の宇宙を混ぜない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15-Unit",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafificationUnitComparison.lean",
-      "note": "同じ明示的な全円柱の垂直辺を計算する。対象・射の宇宙を混ぜない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransComponent.lean",
+      "note": "同じ明示的な全円柱の垂直辺を計算する。対象・射の宇宙を混ぜない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 39,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransComponent.lean": "6f50298263daf618b8803732a17b8fb1a12da1155ec6d43e25152e5530f92618"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "dba6841b55503f6d32bbdc9e347dd2ce649d354771b60c94db292bfc2b51e38b",
+        "receipt": "/tmp/is-stage5/R15-Unit.0b/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15-unit-0b-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
