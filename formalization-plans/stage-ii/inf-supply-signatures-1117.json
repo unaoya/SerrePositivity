@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30695,
+  "verified_lean_lines": 30812,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3511,6 +3511,11 @@
           "name": "sectionsConeMap_homMk_unique",
           "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean",
           "line": 238
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsSpecifiedMap.lean",
+          "line": 36,
+          "name": "discreteSectionsLeftComparison_specifiedMap"
         }
       ],
       "literature": "HTT 5.1.5.6（双対）。指定値比較の自然性の法則。",
@@ -3524,13 +3529,35 @@
       ],
       "method": "同じelements比較の相対同型を錐に作用させ、終錐への辺の一意性で元のsectionsOf_mapの類と照合する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R06",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean",
-      "note": "同じelements比較の相対同型を錐に作用させ、終錐への辺の一意性で元のsectionsOf_mapの類と照合する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 R06.3S で同じ制限の計算を共用する。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsSpecifiedMap.lean",
+      "note": "同じelements比較の相対同型を錐に作用させ、終錐への辺の一意性で元のsectionsOf_mapの類と照合する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 R06.3S で同じ制限の計算を共用する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 117,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsSpecifiedMap.lean": "a0365d06ba7faa33a1112a2adea2b7d49403609837f7303d7befdc18db523b4b"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "c3e46826afae1d02890dc36915aa5374f10d509db14a943757ec9bacc606a38d",
+        "receipt": "/tmp/is-stage5/R06.3/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-3-1118/manifest.json"
     },
     {
       "id": "R06",
