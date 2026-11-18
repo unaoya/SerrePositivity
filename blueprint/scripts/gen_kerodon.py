@@ -86,6 +86,17 @@ def note_body(n):
     text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
     return text + '\n' if text else None
 
+# 依存の辺：P⁰ の項目の閉包（research/p0-lurie/item-closure/edges.csv）のうち Kerodon → Kerodon の辺を (uses := …) に
+ALLNUM = set()
+for f in glob.glob(f'{K}/review/ch*.csv'):
+    for r in csv.DictReader(open(f, encoding='utf-8')): ALLNUM.add(r['number'])
+USES = collections.defaultdict(list)
+_e = 'research/p0-lurie/item-closure/edges.csv'
+if os.path.exists(_e):
+    for e in csv.DictReader(open(_e, encoding='utf-8')):
+        if e['source'] == 'Kerodon' and e['depends_on_source'] == 'Kerodon' and e['number'] in ALLNUM and e['depends_on_number'] in ALLNUM:
+            if e['depends_on_number'] not in USES[e['number']]: USES[e['number']].append(e['depends_on_number'])
+
 STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本体と Mathlib にある', 'partial': '一部', 'none': 'なし'}
 by_sec = collections.defaultdict(list)
 for r in rows:
@@ -118,6 +129,8 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
                     if x: linked.append(x[0]); imports.add(x[1])
             stats['linked' if linked else ('nolink-' + st)] += 1
             opt = f' (lean := "{", ".join(linked)}")' if linked else ''
+            us = [u for u in USES.get(n, []) if u != n]
+            if us: opt += ' (uses := "' + ', '.join('kerodon_' + u.replace('.', '_') for u in us) + '")'; stats['with-uses'] += 1
             tag = tags.get(n)
             head = f'Kerodon {kind} {n}' + (f'（[Tag {tag}](https://kerodon.net/tag/{tag})）' if tag else '')  # 自前の markup なので esc しない
             body.append(f':::{directive} "{label}"{opt}')

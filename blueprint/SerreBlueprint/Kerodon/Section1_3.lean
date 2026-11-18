@@ -46,7 +46,7 @@ Kerodon Construction 1.3.1.1（[Tag 002N](https://kerodon.net/tag/002N)）。対
 
 *定義 3.2 （半順序集合の脈体）*
 
-半順序集合 $`P`$ について、単体的集合 $`N(P)`$ を、$`N(P)([m])`$ を順序を保つ写像 $`[m]\to P`$ の全体とし、$`\theta\colon[m]\to[m']`$ には前合成で作用させて定める。
+半順序集合 $`P` について、単体的集合 $`N(P)` を、$`N(P)([m])` を順序を保つ写像 $`[m]\to P` の全体とし、$`\theta\colon[m]\to[m']` には前合成で作用させて定める。
 
 :::
 
@@ -142,7 +142,7 @@ tag := "kerodon-1-3-4"
 
 Kerodon [Tag 0030](https://kerodon.net/tag/0030)
 
-:::proposition "kerodon_1_3_4_1"
+:::proposition "kerodon_1_3_4_1" (uses := "kerodon_1_1_0_6, kerodon_1_3_3_1, kerodon_1_3_4_2, kerodon_1_3_4_3")
 Kerodon Proposition 1.3.4.1（[Tag 0031](https://kerodon.net/tag/0031)）。対応表の状態：なし。
 
 原文の特徴づけは全ての内hornの一意充填との iff。nerve の StrictSegal は spine 座標の全単射で、引用型には内hornの一意充填もその逆の再構成もない。StrictSegalから任意内hornの充填・一意性へ移す証明を要するため、必要方向と数えない。
@@ -151,7 +151,7 @@ Kerodon Proposition 1.3.4.1（[Tag 0031](https://kerodon.net/tag/0031)）。対�
 
 :::
 
-:::lemma_ "kerodon_1_3_4_2"
+:::lemma_ "kerodon_1_3_4_2" (uses := "kerodon_1_1_0_6, kerodon_1_3_4_1")
 Kerodon Lemma 1.3.4.2（[Tag 0032](https://kerodon.net/tag/0032)）。対応表の状態：一部。
 
 原文は任意圏の nerve の内hornの一意充填。Quasicategory 性から充填の存在、thinNerve\_hom\_ext\_horn から2次元以上の任意horn制限の単射性を直接組み合わせ、Quiver.IsThin C を追加した場合の同じ一意充填を得る。一般圏の一意性はこの引用にない。
@@ -160,7 +160,7 @@ Kerodon Lemma 1.3.4.2（[Tag 0032](https://kerodon.net/tag/0032)）。対応表�
 
 :::
 
-:::lemma_ "kerodon_1_3_4_3"
+:::lemma_ "kerodon_1_3_4_3" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_1, kerodon_1_1_4_12, kerodon_1_3_4_1")
 Kerodon Lemma 1.3.4.3（[Tag 0033](https://kerodon.net/tag/0033)）。対応表の状態：なし。
 
 原文は一意内horn充填を持つ二つのSSet間のfを頂点・辺の全単射から同型とする。nerve/isIso/Segal/bijectiveで再検索。nerveAdjunctionの余単位の同型や特定のnerve比較は別の射で、任意のこのfに対する判定ではない。
@@ -206,7 +206,7 @@ tag := "kerodon-1-3-6"
 
 Kerodon [Tag 00HE](https://kerodon.net/tag/00HE)
 
-:::definition "kerodon_1_3_6_1"
+:::definition "kerodon_1_3_6_1" (uses := "kerodon_1_1_0_6, kerodon_1_3_3_1")
 Kerodon Definition 1.3.6.1（[Tag 004J](https://kerodon.net/tag/004J)）。対応表の状態：なし。
 
 原文は任意の指定u:S→N(C)が全Dへの合成でHom全単射を満たすという普遍性の述語。hoFunctorとnerveAdjunctionは標準のモデルと随伴で、任意uに関するこの述語そのものではない。標準モデルの構成を別の定義の一部とはしない。
@@ -252,7 +252,7 @@ Kerodon Construction 1.3.7.1（[Tag 00HK](https://kerodon.net/tag/00HK)）。対
 
 :::
 
-:::proposition "kerodon_1_3_7_5"
+:::proposition "kerodon_1_3_7_5" (uses := "kerodon_1_1_0_6, kerodon_1_3_6_1")
 Kerodon Proposition 1.3.7.5（[Tag 00HP](https://kerodon.net/tag/00HP)）。対応表の状態：なし。
 
 原文は指定u:G\_•→N(Path\[G\])によるHom全単射。Paths.lift はquiverの前関手を道の圏へ延長するだけで、単体集合G\_•からの射との同定や指定uとの合成を型に持たない。追加の比較が必要な証明部品。

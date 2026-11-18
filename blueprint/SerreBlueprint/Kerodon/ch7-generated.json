@@ -1,0 +1,18 @@
+{
+ "chapter": "7",
+ "modules": [
+  "Section7_1",
+  "Section7_2",
+  "Section7_3",
+  "Section7_4",
+  "Section7_5",
+  "Section7_6",
+  "Section7_7"
+ ],
+ "stats": {
+  "linked": 56,
+  "nolink-none": 318,
+  "with-uses": 186,
+  "nolink-partial": 145
+ }
+}

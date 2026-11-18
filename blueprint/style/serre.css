@@ -56,7 +56,7 @@ nav#toc td { padding: 0.16rem 0.2rem; }
 nav#toc a { color: var(--sp-ink); text-decoration: none; display: block; padding: 0.12rem 0.5rem; border-radius: 4px; border-left: 2px solid transparent; }
 nav#toc a:hover { background: rgba(47,93,138,0.08); color: var(--sp-accent); }
 /* 部の見出し（本論文・引用した結果・CLMST・Kerodon） */
-nav#toc a[href$="#paper"], nav#toc a[href$="#clmst"], nav#toc a[href*="#kerodon-"]:not([href*="#kerodon-1-"]) {
+nav#toc a[href*="#part-"] {
   font-weight: 700; color: var(--sp-navy); margin-top: 0.7rem; padding-top: 0.5rem;
   border-top: 1px solid var(--sp-rule); border-radius: 0; }
 nav#toc tr:first-child a { border-top: none; margin-top: 0; }
@@ -121,3 +121,6 @@ nav#toc button.sp-caret:hover { color: var(--sp-accent); }
 nav#toc tr.sp-children ul { list-style: none; margin: 0 0 0.3rem 1.2rem; padding: 0 0 0 0.5rem; border-left: 1px solid var(--sp-rule); }
 nav#toc tr.sp-children li a { font-size: 0.82rem; color: var(--sp-muted); padding: 0.1rem 0.5rem; }
 nav#toc tr.sp-children li a:hover, nav#toc tr.sp-children li a.sp-current { color: var(--sp-navy); }
+
+/* Verso の通し番号は出さない（文献の番号は本文の先頭にある） */
+.bp_heading .bp_label { display: none; }
