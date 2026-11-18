@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2N",
+  "declaration": "relativeFunctorIso_of_pullback_nerve_readout",
+  "target_build": {
+    "jobs": 2210,
+    "sha256": "46c906451faacfe8e606414e519f092152120235c3da0d7451fd57542f1707a1",
+    "receipt": "/tmp/is-stage5/R06.2N/build-2.log"
+  },
+  "type_check": {
+    "sha256": "1b1cd49fb3143821fb8ea10062961a2469686917d57413256a4d7b584e96d9ed",
+    "receipt": "/tmp/is-stage5/R06.2N/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "962c6833ee23f52c52cff3025928c8cf5a5fb0b52e6a32710e3f209ee2518e81",
+    "receipt": "/tmp/is-stage5/R06.2N/target-audit-result.json",
+    "modules": 1,
+    "declarations": 3,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean": "088508b1c6cb5e6988af0a31885388d80a948e6bc3e9a6f490366a59e7c839a8"
+    }
+  }
+}

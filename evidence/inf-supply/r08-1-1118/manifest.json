@@ -1,0 +1,31 @@
+{
+  "signature": "R08.1",
+  "declaration": "weightedSections_relativeCechDiagonalHom_component_isIso",
+  "target_build": {
+    "jobs": 10745,
+    "sha256": "6ec7d6dec02ee9474d7c64726829da6f7780b905f6a9284dd3e329ab691da86a",
+    "receipt": "/tmp/is-stage5/R08.1/build-2.log"
+  },
+  "type_check": {
+    "sha256": "85872c1f57dcb9093399d9ff478ba535d0c020a63dbb288740323b2b2d725f87",
+    "receipt": "/tmp/is-stage5/R08.1/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "2ee01fcd0432f724c81f7a844a59c0ca001e073ba6a5742adff405a82ce5aae4",
+    "receipt": "/tmp/is-stage5/R08.1/target-audit-result.json",
+    "modules": 1,
+    "declarations": 7,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechDiagonalComponentIso.lean": "4689eb073324773f3fd9dc1ec6df4dd8f9462d034d7c496585706aa1f58f055e"
+    }
+  }
+}

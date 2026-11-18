@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2I",
+  "declaration": "nativeDiscreteEdge_evaluation_hom",
+  "target_build": {
+    "jobs": 7360,
+    "sha256": "b39380b7d259a078fa2860b85f9e7d279a96b0ef38264d807494c9894dd9fd61",
+    "receipt": "/tmp/is-stage5/R06.2I/build-2.log"
+  },
+  "type_check": {
+    "sha256": "14704c7d9ac0f1a4a42c0132d7cbccf5f1d6287c7c5ded1a98792d167b107cc2",
+    "receipt": "/tmp/is-stage5/R06.2I/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "ed3d13491105fff2280e918695518588c042e538a9b1e9d64fb5b96099ad9ce1",
+    "receipt": "/tmp/is-stage5/R06.2I/target-audit-result.json",
+    "modules": 1,
+    "declarations": 5,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean": "86ab4c13c7d209c5e3fca36ff37f9fa1fe7b94a963ea9806bd89e91327abfc28"
+    }
+  }
+}

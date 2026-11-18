@@ -1,0 +1,31 @@
+{
+  "signature": "R09.1",
+  "declaration": "sectionsOf_map_comp_hom",
+  "target_build": {
+    "jobs": 6150,
+    "sha256": "617ba46c5b9ab03502afc667f343ffc2a408a4905ebd9f74ff13a16c1f3935ce",
+    "receipt": "/tmp/is-stage5/R09.1/build-20.log"
+  },
+  "type_check": {
+    "sha256": "9dcb0f8e1d49848a4e553d43504812bc549c3d7e9a77af1c4b463c5fbd84084c",
+    "receipt": "/tmp/is-stage5/R09.1/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "642efe002149ad76ec1ca8e27e9171e2a563b7d9e47f25c2c79d869328257538",
+    "receipt": "/tmp/is-stage5/R09.1/target-audit-result.json",
+    "modules": 1,
+    "declarations": 9,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/SectionsOfMapComposition.lean": "1454ace427599f769d8b478a17a79caf4c73ad63d0e8ac38aaed09fb9d9343fa"
+    }
+  }
+}

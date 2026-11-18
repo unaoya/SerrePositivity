@@ -1,0 +1,42 @@
+{
+  "signature": "R04.2",
+  "declaration": "nativePullbackLift_descend_specified",
+  "target_build": {
+    "path": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/build-10.log",
+    "sha256": "ab4771bd029a0d7b2e55e1245d11bdb2324cbda4b11d8ea266251d7057c6ab3d",
+    "jobs": 3033,
+    "success": true
+  },
+  "type_check": {
+    "path": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/expected-type.lean",
+    "sha256": "e355bc14dba0f85e464f7291a0b3b01281a6aaa6f71e08a91f2d24042e008328",
+    "log": {
+      "path": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/expected-type.log",
+      "sha256": "fe6f0afd0c12ed916654eea2ecb979bf61d9008039d92db26f743940d0062f57"
+    },
+    "success": true
+  },
+  "axiom_audit": {
+    "modules": 1,
+    "declarations": 17,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackLiftDescent.lean": "c82fdac06c9ab104e1d7f7e3daccf8e90b1e0e3fbb6881fb178eab8f3f02eebb"
+    },
+    "receipt": {
+      "path": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/target-audit-result.json",
+      "sha256": "188a351966247a1775c18a061508074c3cea17fdaa26a4924353d53e1844d7ec"
+    },
+    "log": {
+      "path": "/Users/sugakubunka/serre-evidence/inf-supply/r04-2-1118/audit-after.log",
+      "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a"
+    }
+  }
+}

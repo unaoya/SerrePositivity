@@ -1,0 +1,31 @@
+{
+  "signature": "R06.1",
+  "declaration": "discreteElementsComparison_specifiedHom",
+  "target_build": {
+    "jobs": 7353,
+    "sha256": "398b40abdf346703f47cbc0bcc46ced75011750b1c80de45d6dc55fe4fedbaf1",
+    "receipt": "/tmp/is-stage5/R06.1/build-8.log"
+  },
+  "type_check": {
+    "sha256": "9735b57585a672475e4bda858c8289abe3411152d8783ac12a4448fb7a2428f3",
+    "receipt": "/tmp/is-stage5/R06.1/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "4c738ba932240407b7f04b92c97a7fcdcc0ef90194f2f7100d6ad7d934e3b45d",
+    "receipt": "/tmp/is-stage5/R06.1/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteElementsComparisonSpecifiedHom.lean": "e4598c85ce2087ced6625d97ab957f8c8e6321c3b8c8b3fb6cc04409121518ec"
+    }
+  }
+}

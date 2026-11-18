@@ -1,0 +1,31 @@
+{
+  "signature": "R09-Cech.2",
+  "declaration": "weightedSections_toRange_conePrism_apex_isInvertible",
+  "target_build": {
+    "jobs": 10753,
+    "sha256": "10561b6080b5c8d4fd5f4fc5f550849c45d0577fa364cd387232cdf3fc3838ac",
+    "receipt": "/tmp/is-stage5/R09-Cech.2/build-4.log"
+  },
+  "type_check": {
+    "sha256": "20ce6af6537c602c624dcd538aa3f5418497ee5253048b1e7c60af3438c8e400",
+    "receipt": "/tmp/is-stage5/R09-Cech.2/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "cc75ae1419a646372bd55b6377dc3de3a9198257b970dc0c01655741150f56ce",
+    "receipt": "/tmp/is-stage5/R09-Cech.2/target-audit-result.json",
+    "modules": 1,
+    "declarations": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechApexIso.lean": "c7ffacfe41312f72a71f2ec1b7e98108a9c494c49eef228b1c9b07a64ca8993b"
+    }
+  }
+}

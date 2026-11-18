@@ -1,0 +1,31 @@
+{
+  "signature": "R06",
+  "declaration": "weightedSections_discrete_map",
+  "target_build": {
+    "jobs": 7672,
+    "sha256": "0b2fc0f5b468ed7971e52ca90f0bb5d0a32f9f273e3b099c825364037cdce4f7",
+    "receipt": "/tmp/is-stage5/R06/build-3.log"
+  },
+  "type_check": {
+    "sha256": "e7319e7c272c944204d2a2896dba4a70e4b900354061813eade7906ce1b0ba32",
+    "receipt": "/tmp/is-stage5/R06/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "cfcbb6ed527b583fcf9f4a59ee5c30cfa6ba67744fe629a22536636a07cb4d7f",
+    "receipt": "/tmp/is-stage5/R06/target-audit-result.json",
+    "modules": 1,
+    "declarations": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscreteMap.lean": "d31ccfa00d40652a5d81a29b9d5a17779c4bfdb13f7a94726fb990c0d0595589"
+    }
+  }
+}

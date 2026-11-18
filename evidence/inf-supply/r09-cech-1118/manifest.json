@@ -1,0 +1,31 @@
+{
+  "signature": "R09-Cech",
+  "declaration": "weightedSections_toRangeHom_isInvertible",
+  "target_build": {
+    "jobs": 10755,
+    "sha256": "cd0eba6aca1de5e7296e71cda2f648d169df35f27c5e0f39f5025d30c1d81c66",
+    "receipt": "/tmp/is-stage5/R09-Cech/build-2.log"
+  },
+  "type_check": {
+    "sha256": "52d64c1ea0c78f42cca2a4ecd0e6acdb437ad1bb8464a56c3ef2dbed1e775e17",
+    "receipt": "/tmp/is-stage5/R09-Cech/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "8ac212d07813ec084df4a878182f8465f4a9f1eff25230949ec559b1892d0950",
+    "receipt": "/tmp/is-stage5/R09-Cech/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean": "c2cb4cefb8c04931aa0fdf686a60e718e0dc52f62822d9a624ee9f43d2cd2757"
+    }
+  }
+}

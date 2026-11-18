@@ -10653,3 +10653,2392 @@ chooseの表（inf-supply-choose-1117.md/.json）は枝に保持し、今回の�
 引用属性・最終証跡・引き継ぎを78f993791にコミットした後、調整役の11-17夜の連絡に従いmainを取り込んだ（9a31cacd6、取り込んだmainは5cd32e97b）。指定の1fb2c6dccは元から祖先に含まれていた。今回の追加差分40ファイルはAlgebraicGeometryと調整文書だけで、InfinityCategoriesの変更は0。区切り対象45モジュールのSHAは全て成功証跡のままで、台帳の検査も取り込み後に成功した。そのため同じ対象ビルドの繰り返しはしていない。追跡ファイルの未コミット差分はなく、未追跡は保持指定の旧R2下書き4本だけ。今回の署名区切りとして引き渡し、次の外枠の決定を待つ。
 
 一覧：済み 39／全体 55（うち追加 20、別停止点 2）。
+
+
+### 11-18：残りの補題の紙
+残り14署名と別停止点R16・R17を、完全な型を持つ54の証明単位（42＋12）に分け、台帳md/jsonの末尾・各行へ記録した。元の16主宣言は同じ名前・完全な型の終端行として残し、補助38 IDを追加した。したがって分割前の「39／55・追加20」は、実行単位で「39／93・追加58」になる。新しい54単位は紙であり、Leanで済みには数えない。
+
+一覧：済み 39／全体 93（うち追加 58）。
+
+|親署名|証明単位|素の見込み|係数2|
+|---|---:|---:|---:|
+|R04|7|475〜825|950〜1650|
+|R05|2|100〜170|200〜340|
+|R06|4|270〜450|540〜900|
+|R08|2|95〜155|190〜310|
+|R09-Cech|3|185〜315|370〜630|
+|R09|3|115〜210|230〜420|
+|R12a|3|165〜285|330〜570|
+|R12b|1|10〜25|20〜50|
+|R13b|2|105〜180|210〜360|
+|R14|2|70〜130|140〜260|
+|R15-Unit|7|220〜400|440〜800|
+|R15a|4|200〜355|400〜710|
+|R15b|1|20〜40|40〜80|
+|R15c|1|40〜80|80〜160|
+|R16|10|505〜905|1010〜1810|
+|R17|2|25〜55|50〜110|
+
+指定構成の照合を先に出した。R04は同じaの同値性→同じLの宇宙下降→指定νと元の復元spanの相対比較→元の極限比較への反映→元の余単位βに沿う錐の比較、の順。R06は元の全切断とelements比較それぞれの同じφへの作用を分離し、既存hom_facで元のweightedSections_discreteへ戻す。R09-Cechは同じ増大・対角の全prismとその頂点辺を保持する。R15は対象宇宙とHom宇宙を分けたnerve円柱の法則を先に置き、通常の単位の全円柱を名前付きに固定してから、全mateと同じ単位の因子分解式を出す。点別の同型を集める構成は使わない。
+
+手本は11-17以降の追加20 IDの台帳。うち既検証18の主宣言・場所を紙に列挙した（P3-C1P・PN・PNV・PSG・PS、R04-PR・NP・RIほか）。残る2のR09-Cech・R15-Unitは未完だった親署名で、今回分割した。これらを済みと読み替えない。
+
+chooseについて、保持した11-17の全列挙に加え、今回指定値を比較する既存17箇所を現在の本文で点検し、元の選択源・必要な両立・処置を台帳に記録した。新しい本文置換が必要と確定したものは0。とくにpullbackFunctorIsoOfCompatibleIsosはNonemptyから選ぶ型に指定L/Rの射影の式がないため、その値から射影保存を推論する経路は使わない。NPが組で保持したLを直接戻す。weightedSectionsDataのε、valueTransportの終端、hJの反射単位、sectionsOfの極限は選び直さず、法則・一意性で比較する。R15aのmateは因子分解式付きで保持する。
+
+Coverageの主な不足はR16.4〜6：基底細分の指定極限を用いて錐の制限のpinchedHomの逆を全パラメータで構成し、同じ逆の左右のホモトピーを示すところ（素280〜480）。これはまだ未証明であり、単なる細分の存在から引き戻し篩全体の極限性が出たとは扱わない。通常の集合値Coverage定理を空間値にそのまま使うこともない。錐の全制限の充満忠実性で元の終錐を反映する筋を紙に書いた。R16・R17は別停止点のまま。
+
+依存は道具で93頂点・154辺の全グラフをKahn法で検査し、非循環。`check-inf-supply-remaining-1118.py` と `inf-supply-remaining-1118-check.json` に、16終端の名前・型の不変、既検証39行の不変、各完全な型のmd掲載、既存参照の宣言名＠行、係数2の集計、DAG、Lean無変更を検査する手順と結果を置いた。既存の台帳検査も成功した。これは紙の構造検査で、Leanの型検査や証明の成立を保証するものではない。
+
+|範囲|素|係数2|提案する追加外枠|
+|---|---:|---:|---:|
+|残り14署名|2,070〜3,620|4,140〜7,240|7,460|
+|R16・R17|530〜960|1,060〜1,920|1,980|
+|合計|2,600〜4,580|5,200〜9,160|9,440|
+
+提案は補正後上端＋3%を10行単位へ切り上げたもの（丸め後も1〜5%）。追加外枠なので既計上28,221行やR04の部分753行などは二度数えない。累計なら14署名まで35,681行、全体37,661行の案。承認済みの29,000行の停止点は閉じたまま維持し、この提案で実装を再開しない。親ごとの旧い粗い見込みはpre_decomposition_1118欄に残した。
+
+今回変更したのは台帳・報告・紙の静的検査だけ。Leanソースは開始時55a2920e1から差分0で、型検査・ビルド・鍵の使用なし。旧R2の未追跡4本はそのまま保持し、S7・R2・R3は再開していない。紙をコミットして止まり、調整役による外枠と次の目標の決定を待つ。
+
+
+### 11-18：R04.1の検証
+
+追加7,460行・累計35,681行の承認で再開。R04.1は実測84行（素70〜120、補正140〜240）、累計28,305行。指定 a の同値性を相対同型の包含と二対三で反映した。対象ビルド5,480 jobs、元の完全な型への代入、小監査2宣言が成功。標準三公理のみ。文献属性付き。証跡は evidence/inf-supply/r04-1-1118/manifest.json。
+
+一覧：済み 40／全体 93（うち追加 58）。
+
+### 11-18：R04.2の宇宙下降に必要な終点の等式
+
+R04.1を `29069fa60` にコミットした。84行（素70〜120、補正140〜240）、累計28,305行。文献属性付きで対象ビルド・完全な型への代入・小監査（2宣言、標準三公理のみ）が成功。元の14主署名は未完（今回の42証明単位のうち1済み・41未完）。R16・R17は別停止点。
+
+R04.2の紙では、任意の `a : pullback p f ⟶ pullback p g` と
+
+```lean
+hL : HEq (L.postcomp (U.map p))
+  ((functorIso_ulift.{u, u + 1} e).precomp (U.map (pullback.snd p f)))
+```
+
+を受ける。宇宙下降を端点の輸送と可換にするには、このHEqの両辺の始点・終点を等式でそろえる。始点は pullback.condition。終点の式は次の通り。
+
+```lean
+(a ≫ pullback.fst p g) ≫ p = pullback.snd p f ≫ g
+```
+
+pullback.conditionと結合則の後には `(a ≫ pullback.snd p g) ≫ g = pullback.snd p f ≫ g` が残る。既存の端点輸送の補題 `functorIso_hom_arrow_of_heq`（SerrePositivity/InfinityCategories/HA/StableInfinityCategories/FunctorIsoArrowTransport.lean:18）は、HEqに加えて両端の等式を明示的に受ける。この経路で使う終点の等式が台帳の仮定にはなく、HEqだけから射の端点を復元する既存の法則も見つからなかった。
+
+修正案はR04.2の `a` の直後に `(ha : a ≫ pullback.snd p g = pullback.snd p f)` を足すこと。呼び出し元 `exists_nativePullbackRepresentationArrowComparison` は、同じa・L・hLと一緒にhaを返している。このため最終R04の型・仮定は現行のままで組み立てられる見込み。台帳のR04.2の型は変更せず、この箇所で止める。
+
+宇宙下降の試作は既存の uliftFunctorSpaceIso.inv と downFunctor の合成である。共有鍵を待つ間に端点の不足を特定したため、試作の整理券を取り消した。試作は未検証であり、`~/serre-evidence/inf-supply/r04-2-1118/NativePullbackLiftDescent-draft.lean` に保持した。R04.2以降は未計上。旧R2の未追跡4本は変更せず、今回の検証済みコードと報告はコミットする。main は取り込み完了の連絡待ち。
+
+一覧：済み 40／全体 93（うち追加 58）。
+
+
+### 11-18：R04.2の再開
+
+11-18 ユーザー承認：R04.2 に ha : a ≫ pullback.snd p g = pullback.snd p f を追加。exists_nativePullbackRepresentationArrowComparison が同じ a とともに供給する。終端 R04 の型は不変。
+
+一覧：済み 40／全体 93（うち追加 58）。
+
+R04.2 の型内に letI : Quasicategory E := quasicategory_of_innerFibration p を明示。元の p の LeftFibration と底の Quasicategory から供給し、追加仮定はない。
+
+R04.2 は [Quasicategory E] を明示して、計算の重い型内の letI を外す。呼ぶ側の p が左ファイブレーションなので quasicategory_of_innerFibration p で同じ準圏性を供給する。
+
+### 11-18：R04.2 の指定持ち上げの降下を検証
+
+対象ビルド（3,033 jobs）、台帳の型への代入、小監査（17 宣言、標準三公理のみ）を通過。上げ下げと前・後合成は元の辺の類で計算し、同じ a・L・底の指定同型を保持した。端点の等式 ha は元の比較が返す同じ a の射影式を使う。元の終端 R04 の型と計算上限はそのまま。
+
+実測 235 行、素 80〜140 行、補正 160〜280 行。累計 28,305 ＋ 235 ＝ 28,540 行。R04.3 以降は検証の途中。
+
+一覧：済み 41／全体 93（うち追加 58）
+
+### 11-18：R04.4 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R04.4|179|80〜130|160〜260|3,200|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 28,540 から 28,719 行。
+
+一覧：済み 42／全体 93（うち追加 58）
+
+### 11-18：R05.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R05.1|99|40〜70|80〜140|7,377|4|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 28,719 から 28,818 行。
+
+一覧：済み 43／全体 93（うち追加 58）
+
+### 11-18：R06.1 の台帳型の不一致で中断
+
+main の 5cbfd7bb1 を 4be243f57 で取り込み、新しい InfinitySheaves の入口と監査を確認した。今回の検証済みは R04.2（fc0f90c9b）、R04.4（0c346ce08）、R05.1（cbcf273d0）。前回の R04.1 と合わせて 28,818 行。今回の3本は実測 513 行、素の見込み 200〜340 行、補正 400〜680 行。台帳の残りの補正上端は 6,320 行で、累計見込み上端は 35,138 行。外枠 35,681 行の区切りには達していない。
+
+R06.1 の紙で指定された `b` の合成を対象環境で型検査した。 `SetWeight.elementsMap φ` の終域は `U.obj (nerve Q.Elements)`（宇宙 u+1）で、`SetWeight.elementsComparisonNatural Q` の始域は `nerve Q.Elements`（宇宙 u）。結果は `Application type mismatch`。参照は SetSectionsNaturality.lean:192 と :45。R06.1 の比較は下げた相対写像空間で行うので、初めから小さい要素圏の射を使う次の訂正を提案する。
+
+```lean
+let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
+```
+
+この合成は Lean で `nerve P.Elements ⟶ smallLeftUnstraightening (spaceDiagram Q)` と型検査できる。元の `SetWeight.elementsMap φ` はこの `nerveMap φ.mapElements` を持ち上げた射。訂正が要るのは途中の R06.1 の添字で、終端の R06 の主張・仮定に変更は生じない。台帳型の変更が要る場合の指示に従いここで中断し、型は承認まで保持する。
+
+R04.3・R04.5 は対象診断の途中。R04.3 は前合成像の端点の等式まで進み、型移送の最終合成で底上の可換性の引数が残った。R04.5 は型の明示と補助の検査後、主証明に入った直後の余分な `dsimp only` で停止した。R09.1 は射影での合成の書き換えを局所化する段が残る。未検証の新規 Lean は8本で、R04.3・5・6・終端、R05 終端、R09.1、R15-Unit.0a・.0b。旧 R2 の未追跡4本には触れていない。R16・17、S7、R2・R3 は未着手のまま。14の終端署名は未完で、今回の中断は完成の停止点ではない。
+
+一覧：済み 43／全体 93（うち追加 58）
+
+### 11-18：R06.1 の型訂正を適用
+
+11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。
+
+一覧：済み 43／全体 93（うち追加 58）
+
+### 11-18：R04.3 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R04.3|174|90〜150|180〜300|5,630|13|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 28,818 から 28,992 行。
+
+一覧：済み 44／全体 93（うち追加 58）
+
+11-18 型照合：`VertexIso s.cone d` と暗黙の頂点射影 → `VertexIso (X := sliceOver (rightKanDiagram δ O v)) s.cone d` と `hoFunctor.obj D`・制限錐を明示した頂点射影。含意は同じで、暗黙引数の探索の時間切れを避ける。明示した型は Lean で検証済み。
+
+### 11-18：R04.5・R04.6 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R04.5|381|90〜160|180〜320|3,133|14|
+|R04.6|86|40〜80|80〜160|3,168|5|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 28,992 から 29,459 行。
+
+一覧：済み 46／全体 93（うち追加 58）
+
+### 11-18：R04 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R04|67|25〜45|50〜90|5,680|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 29,459 から 29,526 行。
+
+一覧：済み 47／全体 93（うち追加 58）
+
+### 11-18：R06.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.1|163|80〜130|160〜260|7,353|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 29,526 から 29,689 行。
+
+一覧：済み 48／全体 93（うち追加 58）
+
+### 11-18：R05・R15-Unit.0a・R15-Unit.0b の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R05|133|60〜100|120〜200|7,597|4|
+|R15-Unit.0a|71|60〜100|120〜200|1,907|10|
+|R15-Unit.0b|39|30〜50|60〜100|1,908|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 29,689 から 29,932 行。
+
+一覧：済み 51／全体 93（うち追加 58）
+
+### 11-18：R15-Unit.1・R15-Unit.2 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R15-Unit.1|52|30〜60|60〜120|7,338|6|
+|R15-Unit.2|44|40〜70|80〜140|7,339|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 29,932 から 30,028 行。
+
+一覧：済み 53／全体 93（うち追加 58）
+
+### 11-18：R15-Unit.3 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R15-Unit.3|34|10〜25|20〜50|7,339|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,028 から 30,062 行。
+
+一覧：済み 54／全体 93（うち追加 58）
+
+### 11-18：R06.3 の制限四角形の照合
+
+R06.3 は R06.3S を使う。元の終端の署名の型・仮定は同じ。新しい三件は既存の制限・射影・合成の法則で、補正上端は各 180・260・460 行。R06.3 の呼び出し側の残りは素 85〜120 行。
+
+
+### R06.3N — sliceRestrictAlong_comp
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {A B X : SSet.{u}} {p : A ⟶ X} {q : B ⟶ X} {D : SSet.{u}} {r : D ⟶ X}
+    (f : A ⟶ B) (g : B ⟶ D) (hf : f ≫ q = p) (hg : g ≫ r = q)
+    (h : (f ≫ g) ≫ r = p),
+    sliceRestrictAlong g hg ≫ sliceRestrictAlong f hf = sliceRestrictAlong (f ≫ g) h
+```
+
+素：45〜90行。係数2：90〜180行。
+
+同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。
+
+原典：HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。
+
+使う既存の宣言：
+
+- `sliceOverRestrict_projection` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SliceProjectionLaws.lean:58
+- `restrictSectionsFunctor_comp` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsRestriction.lean:80
+
+### R06.3P — restrictJoinCone_relativeIso_projection
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {A B K X : SSet.{u}} [Quasicategory X]
+      (p : A ⟶ K) (q : B ⟶ K) (f g : A ⟶ B)
+      (hf : f ≫ q = p) (hg : g ≫ q = p)
+      (h : VertexIso (relativeFunctorVertex q p f hf) (relativeFunctorVertex q p g hg))
+      (O : K ⟶ X) (d : JoinCone (q ≫ O)),
+    let cF := (restrictJoinCone d f).cast (show f ≫ (q ≫ O) = p ≫ O by rw [← Category.assoc, hf])
+    let cG := (restrictJoinCone d g).cast (show g ≫ (q ≫ O) = p ≫ O by rw [← Category.assoc, hg])
+    ∃ i : VertexIso (X := sliceOver (p ≫ O)) cF cG,
+      Arrow.mk ((hoFunctor.map (sliceOverProjection (p ≫ O))).toFunctor.map i.hom) =
+        Arrow.mk (𝟙 (HomotopyCategory.mk d.vertex))
+```
+
+素：85〜130行。係数2：170〜260行。
+
+同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。
+
+原典：HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。
+
+使う既存の宣言：
+
+- `limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean:39
+- `slice_iso_from_family` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean:156
+
+### R06.3S — limitVertexIso_restrictionSquare
+親：R06。状態：紙のみ（pending）。依存：R06.3N・R06.3P。
+
+```lean
+∀ {A B A' B' S X : SSet.{u}} [Quasicategory A] [Quasicategory B]
+    [Quasicategory A'] [Quasicategory B'] [Quasicategory X]
+    (p : A ⟶ S) (q : B ⟶ S) (p' : A' ⟶ S) (q' : B' ⟶ S)
+    (b : A ⟶ B) (a : A' ⟶ B') (f : A ⟶ A') (g : B ⟶ B')
+    (hb : b ≫ q = p) (ha : a ≫ q' = p') (hf : f ≫ p' = p) (hg : g ≫ q' = q)
+    (ef : IsQCatEquivalence f) (eg : IsQCatEquivalence g)
+    (i : VertexIso
+      (relativeFunctorVertex q' p (b ≫ g) (by rw [Category.assoc, hg, hb]))
+      (relativeFunctorVertex q' p (f ≫ a) (by rw [Category.assoc, ha, hf])))
+    (O : S ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))
+    (c' : JoinCone (p' ≫ O)) (d' : JoinCone (q' ≫ O))
+    (hc : IsLimitCone c) (hd : IsLimitCone d) (hc' : IsLimitCone c') (hd' : IsLimitCone d'),
+    let hB : b ≫ (q ≫ O) = p ≫ O := by rw [← Category.assoc, hb]
+    let hA : a ≫ (q' ≫ O) = p' ≫ O := by rw [← Category.assoc, ha]
+    let dB := (restrictJoinCone d b).cast hB
+    let dA := (restrictJoinCone d' a).cast hA
+    ∀ (s : (HomotopyCategory.mk dB : hoFunctor.obj (sliceOver (p ≫ O))) ⟶ HomotopyCategory.mk c)
+      (k : (HomotopyCategory.mk dA : hoFunctor.obj (sliceOver (p' ≫ O))) ⟶ HomotopyCategory.mk c'),
+    let l : (HomotopyCategory.mk c.vertex : hoFunctor.obj X) ⟶ HomotopyCategory.mk c'.vertex :=
+      (limitVertexIsoOfOverEquivalence f ef hf O c c' hc hc').hom
+    let r : (HomotopyCategory.mk d.vertex : hoFunctor.obj X) ⟶ HomotopyCategory.mk d'.vertex :=
+      (limitVertexIsoOfOverEquivalence g eg hg O d d' hd hd').hom
+    r ≫ normalizedSliceHom
+        ((JoinCone.vertex_cast _ hA).trans (restrictJoinCone_vertex d' a)) k =
+      normalizedSliceHom
+        ((JoinCone.vertex_cast _ hB).trans (restrictJoinCone_vertex d b)) s ≫ l
+```
+
+素：150〜230行。係数2：300〜460行。
+
+固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。
+
+原典：HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。
+
+使う既存の宣言：
+
+- `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
+- `limitConeIso` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean:73
+- `sectionsConeMap_homMk_unique` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:238
+
+一覧：済み 54／全体 96（うち追加 61）
+
+### 11-18：R06.3N・R06.3P の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.3N|93|45〜90|90〜180|1,867|8|
+|R06.3P|118|85〜130|170〜260|2,481|3|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,062 から 30,273 行。
+
+一覧：済み 56／全体 96（うち追加 61）
+
+R12a.1 の紙の改行だけで区切った `let F・G・a・t` → 各束縛にセミコロンを明示。複数行の `t` の後に結論を誤って取り込む構文を直した。型検査済みで、終端 R12a の型・仮定は同じ。
+
+### 11-18：R12a.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R12a.1|66|70〜120|140〜240|7,260|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,273 から 30,339 行。
+
+一覧：済み 57／全体 96（うち追加 61）
+
+### 11-18：R09.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R09.1|168|50〜90|100〜180|6,150|9|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,339 から 30,507 行。
+
+一覧：済み 58／全体 96（うち追加 61）
+
+### 11-18：R06.3S の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.3S|188|150〜230|300〜460|2,485|11|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,507 から 30,695 行。
+
+一覧：済み 59／全体 96（うち追加 61）
+
+### 11-18：R06.3 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.3|117|85〜120|170〜240|7,433|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,695 から 30,812 行。
+
+一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R06.2 の指定された重みの射での中断と引き継ぎ
+
+R04 と R05 の終端を検証した。R06.1 は承認済みの小さい要素圏の写像で通り、R06.3 は元の指定切断の射に対して通った。前から作業木にあった 8 本は、対象ビルド、台帳型への代入、小監査を順に通してコミット済み。R06.3 は `f759229cd`、R09.1 は `48fd708ce`、R12a.1 は `7b5728e2c`。新規 21 モジュールの各小監査は標準三公理のみ。main の `657048b94` を `77ba42820` で取り込み、昼の二枠と ③-a の整理券一枚を確認した。
+
+一覧：済み 60／全体 96（うち追加 61）
+
+現在の停止理由は、R06.2 の証明に要る指定添字の照合一本の補正見込みが 800 行を超えること。R05 の大域比較の自然性は、元の重み付き切断の辺の類を native の右 Kan 延長まで移す。R06.3S は、同じ底上の比較が与えられた後の頂点の合成を閉じる。その間で、元の φ の実辺に沿って変わる二つの指定 Yoneda 添字を、同じ係数図式の上で照合する必要がある。既存の `rightKan_actualIndexArrow_transportConeIso` は同じ頂点で添字の包含を変える法則なので、この面を供給しない。
+
+不足する面を以下の型で切り出した。一時ファイルで型検査済み。二つの `def` は証明すべき条件の記法であり、検証済みの定理や本体への追加ではない。`he₀` と `he₁` は元の離散埋め込みの頂点仕様と辺の端点から供給する。R06.2 の仮定に足さない。
+
+```lean
+import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsNativeLimitGlobalComparison
+import SerrePositivity.InfinityCategories.Sheaves.NativeLeftSectionsTransportCone
+import SerrePositivity.InfinityCategories.Sheaves.WeightedSectionsOriginalLeftLimit
+import SerrePositivity.InfinityCategories.Sheaves.DiscretePresheafHom
+open CategoryTheory Limits SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations
+set_option autoImplicit false
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories
+open SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding
+open SerrePositivity.InfinityCategories.Sheaves
+open SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories
+
+universe u
+noncomputable def rightKanMovingIndexFace
+    {J K X : SSet.{u}} (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁) : Prop :=
+  let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+  let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+  let a₀ := j₀ ≫ pullback.fst q₀ δ
+  let a₁ := j₁ ≫ pullback.fst q₁ δ
+  let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+  let r₀ := sliceUnderRestrict e (stdSimplex.δ (1 : Fin 2)) ≫
+    eqToHom (congrArg sliceUnder he₀)
+  let r₁ := sliceUnderRestrict e (stdSimplex.δ (0 : Fin 2)) ≫
+    eqToHom (congrArg sliceUnder he₁)
+  ∃ (w : J ⟶ sliceUnder e)
+    (h₀ : (w ≫ r₀) ≫ q₀ = p)
+    (h₁ : a₀ ≫ q₀ = p),
+    w ≫ r₁ = a₁ ∧
+      Nonempty (VertexIso (relativeFunctorVertex q₀ p (w ≫ r₀) h₀)
+        (relativeFunctorVertex q₀ p a₀ h₁))
+
+
+noncomputable def discreteWeightedSectionsMovingIndexCondition
+    {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) : Prop :=
+  let U := SSet.uliftFunctor.{u + 1, u}
+  let b := nerveOppositeIso (C := C)
+  let F := U.map b.hom ≫ discretePresheaf P
+  let G := U.map b.hom ≫ discretePresheaf Q
+  let a := U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf P)).hom ≫
+    U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ)) ≫
+    U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf Q)).inv
+  let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+  let e := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated
+  let e' := (edgeOp e).map ((truncation 2).map
+    ((SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv))
+  let η : (Δ[1] : SSet.{u + 1}) ⟶ (PresheafInfinity (nerve C)).op :=
+    SSet.yonedaEquiv.symm e'.edge
+  ∀ (he₀ : stdSimplex.δ (1 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex G)))
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex F))),
+    rightKanMovingIndexFace δ η he₀ he₁
+      (a ≫ leftElementsRightKanComparison G) (leftElementsRightKanComparison F)
+```
+
+再利用する本体の境目は以下のとおり。
+
+- `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison` は大域比較の同じ成分を返す（`SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean:80`）。
+- `leftElementsRightKanComparison_projection` は各頂点での指定比較の射影を返す（`SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54`）。`exists_relativeEdgeCosliceLift` は既に指定された合成三角形を持ち上げる（`SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean:70`）。
+- `yonedaPresheafEvaluation_postcomposeIso` は固定した表現可能の全写像空間で、実辺の後合成と係数作用を照合する（`SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/YonedaPresheafEvaluationPostcomposition.lean:33`）。`presheafDensityIdentityValue_factorization` は同じ密度変換を恒等点上で計算する（`SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean:49`）。離散 fiber への反映で進む場合も、二つの指定スライス写像の fiber 読み出しをこの因子分解と照合する証明が残る。
+- `rightKan_actualIndexArrow_transportConeIso` の出発点・終点は同じ `v`（`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean:210`）。今回必要な `v₀`・`v₁` 間の実辺は条件の `η`。
+
+指定した同じ面を証明する比較一本の未計上の見込みは素 450〜650 行、係数 2 で 900〜1,300 行。内訳は、元の密度変換の値と後合成の全族の照合 160〜220 行、同じ底へ移した二つの添字の規格化 120〜180 行、同じ実辺上の持ち上げと始点側の相対同型の回収 170〜250 行。固定した表現可能の比較だけを使うと全添字上の指定された面が得られず、800 行以内の別経路は確認できていない。台帳の未完分だけの見込みは累計 32,902〜34,512 行。この面を含めると 33,802〜35,812 行で、上端は外枠 35,681 行を 131 行超える。今回のタイプ検査は不足の型の確認までとし、署名台帳への追加と証明には着手していない。
+
+引き継ぎ：
+
+- 対象 14 署名の終端で済んだものは R04・R05。未完は R06・R08・R09-Cech・R09・R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。部分補題の検証状況は署名台帳の現在表に反映済み。
+- main 取り込み済みの 28,221 行を基準に、新規 21 本で 2,591 行、累計 30,812 行。検証済み 21 署名の素の見込み 1,310〜2,210 行、補正 2,620〜4,420 行。R04.5 は実測 381 行に対し補正上端 320 行。R06.3 は追加照合 3 本を含め 516 行。
+- 旧 R2 の未追跡 4 本はそのまま。追跡ファイルの未コミット差分や今回の未追跡 Lean 下書きはない。R16・R17、S7、旧 R2・R3 は実装範囲外のまま。
+
+一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R06.2 の始点側の相対同型への帰着
+
+前節の型を出発点に、次の四件を Lean の一時ファイルで検証した。再掲するコードは前節の型と import に続けて検査できる。各補題の公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+
+- `discreteWeightedSectionsMovingIndex_endpoints` は元の離散埋め込みの頂点仕様と `fixedPresheafShapeIso_op_inv_vertex` から `he₀`・`he₁` を供給する。
+- `discreteWeightedSectionsMovingIndex_projections` は `smallLeftUnstraighteningBaseIso_projection`・`smallUnstraighteningFunctorHom_projection`・`leftElementsRightKanComparison_projection` から二つの指定添字射の射影の一致を供給する。
+- `rightKanMovingIndex_target_section` は既存の `cosliceEdgeSection` から指定した `w` を作り、終点で `a₁` に一致し、始点の二射が同じ底に乗ることを示す。
+- `rightKanMovingIndexFace_of_selectedSource` は残りの始点側の相対同型があれば、前節の面全体が得られることを示す。
+
+残りは `rightKanMovingIndex_selectedSource` を前節の元の離散前層の実辺と添字射に特殊化した命題。固定した Yoneda 表現可能の後合成比較と、元の密度変換の始点側を、共通の添字全体の上で照合する。終点の切断の構成と両端・射影の確認を見積もりから外し、なおこの照合一本は素 290〜440 行、補正 580〜880 行の見込み。見込みの上端が 800 行を超えるため、ここを中断点とする。検証した四件は証明の分割としてこの報告に収録し、本体の追加行数へは計上していない。
+
+```lean
+theorem discreteWeightedSectionsMovingIndex_endpoints
+    {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let F := U.map b.hom ≫ discretePresheaf P
+    let G := U.map b.hom ≫ discretePresheaf Q
+    let e := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated
+    let e' := (edgeOp e).map ((truncation 2).map
+      ((SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv))
+    let η : (Δ[1] : SSet.{u + 1}) ⟶ (PresheafInfinity (nerve C)).op :=
+      SSet.yonedaEquiv.symm e'.edge
+    (stdSimplex.δ (1 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex G))) ∧
+    (stdSimplex.δ (0 : Fin 2) ≫ η =
+        SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm (functorVertex F))) := by
+  intro U b F G e e' η
+  dsimp only [η]
+  rw [stdSimplex.δ_comp_yonedaEquiv_symm, stdSimplex.δ_comp_yonedaEquiv_symm]
+  constructor
+  · apply congrArg SSet.yonedaEquiv.symm
+    refine e'.src_eq.trans ?_
+    change (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv.app _
+      (SSet.opObjEquiv.symm ((discretePresheafInclusion C).val.app _ (nerveVertex Q))) = _
+    rw [(discretePresheafInclusion C).property.1 Q]
+    exact fixedPresheafShapeIso_op_inv_vertex C (discretePresheaf Q)
+  · apply congrArg SSet.yonedaEquiv.symm
+    refine e'.tgt_eq.trans ?_
+    change (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).inv.app _
+      (SSet.opObjEquiv.symm ((discretePresheafInclusion C).val.app _ (nerveVertex P))) = _
+    rw [(discretePresheafInclusion C).property.1 P]
+    exact fixedPresheafShapeIso_op_inv_vertex C (discretePresheaf P)
+#print axioms discreteWeightedSectionsMovingIndex_endpoints
+
+theorem discreteWeightedSectionsMovingIndex_projections
+    {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let F := U.map b.hom ≫ discretePresheaf P
+    let G := U.map b.hom ≫ discretePresheaf Q
+    let a := U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf P)).hom ≫
+      U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ)) ≫
+      U.map (smallLeftUnstraighteningBaseIso b (discretePresheaf Q)).inv
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    (a ≫ leftElementsRightKanComparison G) ≫
+        rightKanProjection δ (SSet.opObjEquiv.symm (functorVertex G)) =
+      leftElementsRightKanComparison F ≫
+        rightKanProjection δ (SSet.opObjEquiv.symm (functorVertex F)) := by
+  intro U b F G a δ
+  change (a ≫ leftElementsRightKanComparison G) ≫ rightKanProjection _ _ =
+    leftElementsRightKanComparison F ≫ rightKanProjection _ _
+  rw [Category.assoc, leftElementsRightKanComparison_projection,
+    leftElementsRightKanComparison_projection]
+  rw [← Category.assoc]
+  apply congrArg (fun k => k ≫ (uliftOppositeIso (nerve C)).hom)
+  let α := discretePresheafHom φ
+  let i := smallLeftUnstraighteningBaseIso b (discretePresheaf P)
+  let j := smallLeftUnstraighteningBaseIso b (discretePresheaf Q)
+  have hJ : j.inv ≫ smallLeftUnstraighteningProjection G =
+      smallLeftUnstraighteningProjection (discretePresheaf Q) ≫ b.inv := by
+    apply (cancel_epi j.hom).mp
+    rw [Iso.hom_inv_id_assoc, ← Category.assoc, smallLeftUnstraighteningBaseIso_projection,
+      Category.assoc, Iso.hom_inv_id, Category.comp_id]
+  have he : (i.hom ≫ smallUnstraighteningFunctorHom α ≫ j.inv) ≫
+      smallLeftUnstraighteningProjection G = smallLeftUnstraighteningProjection F := by
+    simp only [Category.assoc]
+    rw [hJ, ← Category.assoc (smallUnstraighteningFunctorHom α),
+      smallUnstraighteningFunctorHom_projection, ← Category.assoc i.hom,
+      smallLeftUnstraighteningBaseIso_projection, Category.assoc, Iso.hom_inv_id, Category.comp_id]
+  change (U.map i.hom ≫ U.map (smallUnstraighteningFunctorHom α) ≫ U.map j.inv) ≫
+    U.map (smallLeftUnstraighteningProjection G) = _
+  simp only [← CategoryTheory.Functor.map_comp]
+  exact congrArg U.map he
+#print axioms discreteWeightedSectionsMovingIndex_projections
+
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations
+
+theorem rightKanMovingIndex_target_section
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁) :
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+    let r₀ := sliceUnderRestrict e (stdSimplex.δ (1 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₀)
+    let r₁ := sliceUnderRestrict e (stdSimplex.δ (0 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₁)
+    let w := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e)
+    w ≫ r₁ = a₁ ∧ (w ≫ r₀) ≫ q₀ = p ∧ a₀ ≫ q₀ = p := by
+  intro q₀ q₁ a₀ a₁ p r₀ r₁ w
+  let s₁ := eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e
+  have h₁ : s₁ ≫ r₁ = 𝟙 _ := by
+    dsimp only [s₁, r₁]
+    simp only [Category.assoc]
+    rw [← Category.assoc (cosliceEdgeSection e), cosliceEdgeSection_target,
+      Category.id_comp, eqToHom_trans, eqToHom_refl]
+  have hnorm (x : Δ[0] ⟶ X) (i : Δ[0] ⟶ Δ[1]) (h : i ≫ e = x) :
+      (sliceUnderRestrict e i ≫ eqToHom (congrArg sliceUnder h)) ≫ sliceUnderProjection x =
+        sliceUnderProjection e := by
+    subst x
+    simp only [eqToHom_refl, Category.comp_id]
+    exact sliceUnderRestrict_projection e i
+  have hr₀ : r₀ ≫ q₀ = sliceUnderProjection e := hnorm _ _ he₀
+  have hr₁ : r₁ ≫ q₁ = sliceUnderProjection e := hnorm _ _ he₁
+  have hpa₀ : a₀ ≫ q₀ = p := by
+    change (j₀ ≫ pullback.fst q₀ δ) ≫ q₀ = (j₀ ≫ pullback.snd q₀ δ) ≫ δ
+    simp only [Category.assoc, pullback.condition]
+  have hpa₁ : a₁ ≫ q₁ = p := by
+    change (j₁ ≫ pullback.fst q₁ δ) ≫ q₁ = (j₀ ≫ pullback.snd q₀ δ) ≫ δ
+    rw [Category.assoc, pullback.condition, ← Category.assoc]
+    exact congrArg (fun k => k ≫ δ) hj.symm
+  change (a₁ ≫ s₁) ≫ r₁ = a₁ ∧ ((a₁ ≫ s₁) ≫ r₀) ≫ q₀ = p ∧ a₀ ≫ q₀ = p
+  refine ⟨?_, ?_, hpa₀⟩
+  · rw [Category.assoc, h₁, Category.comp_id]
+  · rw [Category.assoc (a₁ ≫ s₁), hr₀, ← hr₁, ← Category.assoc (a₁ ≫ s₁),
+      Category.assoc a₁, h₁, Category.comp_id, hpa₁]
+
+noncomputable def rightKanMovingIndex_selectedSource
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁) : Prop :=
+  let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+  let a₀ := j₀ ≫ pullback.fst q₀ δ
+  let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+  let r₀ := sliceUnderRestrict e (stdSimplex.δ (1 : Fin 2)) ≫
+    eqToHom (congrArg sliceUnder he₀)
+  let hw := rightKanMovingIndex_target_section δ e he₀ he₁ j₀ j₁ hj
+  let w := (j₁ ≫ pullback.fst (sliceUnderProjection (SSet.yonedaEquiv.symm v₁)) δ) ≫
+    (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e)
+  Nonempty (VertexIso (relativeFunctorVertex q₀ p (w ≫ r₀) hw.2.1)
+    (relativeFunctorVertex q₀ p a₀ hw.2.2))
+
+theorem rightKanMovingIndexFace_of_selectedSource
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (hsource : rightKanMovingIndex_selectedSource δ e he₀ he₁ j₀ j₁ hj) :
+    rightKanMovingIndexFace δ e he₀ he₁ j₀ j₁ := by
+  let hw := rightKanMovingIndex_target_section δ e he₀ he₁ j₀ j₁ hj
+  exact ⟨_, hw.2.1, hw.2.2, hw.1, hsource⟩
+
+#print axioms rightKanMovingIndex_target_section
+#print axioms rightKanMovingIndexFace_of_selectedSource
+```
+
+今回の本体の累計は 30,812 行。済み・未完の終端署名と実測の内訳は前節の引き継ぎどおり。未追跡は旧 R2 の四本のみ。
+
+一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R06.2 の始点側の判定は切断の選択に依らない
+
+前節の帰着の逆向きを Lean で検証した。終点を正確に保つ任意の coslice の持ち上げが、始点でも指定添字と相対同型なら、前節で固定した切断も同じ条件を満たす。これで、残る照合では元の実辺 `η` に沿う持ち上げを構成しやすい方法で選べる。元の始点・終点、共通の係数図式、台帳の終端型は同じ。
+
+`sliceUnderRestrict_target_trivialKanFibration` と `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` から、終点への制限は相対関手空間で充満忠実。二つの持ち上げの終点の等式を `preimageVertexIso` で反映し、始点の制限へ写す。必要な追加 import は `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.RelativeFunctorPostEquivalence`。それを前節の import に加えた一時ファイルで、以下の型と証明を検査した。公理は標準三公理のみ。
+
+```lean
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+theorem rightKanMovingIndex_selectedSource_of_face
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (h : rightKanMovingIndexFace δ e he₀ he₁ j₀ j₁) :
+    rightKanMovingIndex_selectedSource δ e he₀ he₁ j₀ j₁ hj := by
+  let q := sliceUnderProjection e
+  let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+  let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+  let a₀ := j₀ ≫ pullback.fst q₀ δ
+  let a₁ := j₁ ≫ pullback.fst q₁ δ
+  let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+  let i₀ := stdSimplex.δ (1 : Fin 2)
+  let i₁ := stdSimplex.δ (0 : Fin 2)
+  let t := sliceUnderRestrict e i₁
+  let r₀ := sliceUnderRestrict e i₀ ≫ eqToHom (congrArg sliceUnder he₀)
+  let r₁ := t ≫ eqToHom (congrArg sliceUnder he₁)
+  let z := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e)
+  have hz := rightKanMovingIndex_target_section δ e he₀ he₁ j₀ j₁ hj
+  obtain ⟨w, hw, ha, ht, ⟨s⟩⟩ := h
+  have hnorm (x : Δ[0] ⟶ X) (i : Δ[0] ⟶ Δ[1]) (h : i ≫ e = x) :
+      (sliceUnderRestrict e i ≫ eqToHom (congrArg sliceUnder h)) ≫ sliceUnderProjection x =
+        sliceUnderProjection e := by
+    subst x
+    simp only [eqToHom_refl, Category.comp_id]
+    exact sliceUnderRestrict_projection e i
+  have hr : r₀ ≫ q₀ = q := hnorm _ _ he₀
+  have hw' : w ≫ q = p := by
+    change (w ≫ r₀) ≫ q₀ = p at hw
+    rwa [Category.assoc, hr] at hw
+  have hz' : z ≫ q = p := by
+    have h := hz.2.1
+    change (z ≫ r₀) ≫ q₀ = p at h
+    rwa [Category.assoc, hr] at h
+  let b := sliceUnderProjection (i₁ ≫ e)
+  have ht' : t ≫ b = q := sliceUnderRestrict_projection e i₁
+  have he := sliceUnderRestrict_target_trivialKanFibration e
+  let T := relativeFunctorPost q b t ht' p
+  have hT : IsQCatEquivalence T :=
+    relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence q b t ht'
+      (isQCatEquivalence_of_trivialKanFibration t).isPrecompositionEquivalence p
+  have hzt : z ≫ t = w ≫ t := by
+    apply (cancel_mono (eqToHom (congrArg sliceUnder he₁))).mp
+    rw [Category.assoc, Category.assoc]
+    exact hz.1.trans ht.symm
+  let zv := relativeFunctorVertex q p z hz'
+  let wv := relativeFunctorVertex q p w hw'
+  have huv : T.app _ zv = T.app _ wv := by
+    dsimp only [T, zv, wv]
+    rw [relativeFunctorPost_vertex, relativeFunctorPost_vertex]
+    apply Subtype.ext
+    exact congrArg functorVertex hzt
+  let zi : VertexIso zv wv := hT.isFullyFaithful.preimageVertexIso
+    (eqToIso (congrArg HomotopyCategory.mk huv))
+  have k := zi.map (relativeFunctorPost q q₀ r₀ hr p)
+  dsimp only [zv, wv] at k
+  rw [relativeFunctorPost_vertex, relativeFunctorPost_vertex] at k
+  exact ⟨k ≪≫ s⟩
+
+#print axioms rightKanMovingIndex_selectedSource_of_face
+```
+
+残る照合は、離散前層の実辺に沿う始点側の自然性。任意の適合する持ち上げから閉じられることは確かめたが、指定された密度比較とその持ち上げの始点を同じ底上で照合する見込みの上端は補正 880 行。800 行の規則によりここで中断する。本体累計は 30,812 行。終端 R04・R05 が済み、残り 12 件。未追跡は旧 R2 の 4 本のみ。
+
+一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R13b.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R13b.1|104|90〜150|180〜300|7,354|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,812 から 30,916 行。
+
+一覧：済み 61／全体 96（うち追加 61）
+
+### 11-18：R09-Cech.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R09-Cech.1|319|90〜150|180〜300|10,438|12|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 30,916 から 31,235 行。
+
+一覧：済み 62／全体 96（うち追加 61）
+
+### 11-18：R06.2 の中断点への引き継ぎ
+
+R13b.1 と R09-Cech.1 は R06.2 に依存しないので先に検証した。R13b.1 は G8 の全切断比較と同じ極限錐の辺の値をつなぎ、実測 104 行（素の見込み 90〜150 行）。R09-Cech.1 は定値極限錐への相対終点境界充填で台帳のホモトピー代表を図式面に保持し、脚の自然性と既存の増大・対角の三角形で頂点辺を同定した。実測 319 行（素の見込み 90〜150 行）。見込みとの差は、反転した余錐の脚と対角成分の照合、頂点表示の移送にかかった。補助定理は同じ証明を分割した private 宣言。台帳型の検査は `IsPresentable` と `weightedSections` に正本の名前空間を指定した。
+
+終端で済んだ署名は R04・R05。未完は R06・R08・R09-Cech・R09・R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。累計は 31,235 行で、今回の枠に対して 3,014 行を追加した。R06.2 に残る照合は、離散前層の元の実辺に沿う始点側の添字射と、指定された密度比較の同じ底上での相対同型。補正の見込みは 580〜880 行で、一本 800 行の条件に当たる。残る有効な台帳項目は、この照合から先の依存鎖にある。
+
+昼の二枠に対応する鍵の更新 657048b94 は枝に反映済み。作業木の未追跡は旧 R2 の四本のみ。追跡ファイルに未コミットの変更は残さない。
+
+一覧：済み 62／全体 96（うち追加 61）
+
+### 11-18：R06.2 の通常の要素圏への帰着
+
+共通の係数図式への射影が一致するとき、比較先の nerve で頂点が一致すれば、忠実性から一次単体が一致し、nerve の外延性で全単体が一致する。この全射の等式を相対関手空間の充満忠実性で元の指定添字へ反映する。要素圏の射影の左ファイブレーション性は、集合係数に対する元の scaffold の同型から得る。R06.2 の型・仮定は従来どおり。
+
+
+### R06.2N — relativeFunctorIso_of_pullback_nerve_readout
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {J B X T : SSet.{u}} [Quasicategory B] {C D : Type u}
+    [SmallCategory C] [SmallCategory D]
+    (p : C ⥤ D) [p.Faithful] (r : nerve C ⟶ B) [LeftFibration r]
+    (s : B ⟶ nerve D) (hs : r ≫ s = nerveMap p)
+    (δ : B ⟶ X) (q : T ⟶ X) [LeftFibration q] (h : J ⟶ B)
+    (i : pullback q δ ⟶ nerve C) (hi : i ≫ r = pullback.snd q δ)
+    (ei : IsPrecompositionEquivalence i)
+    (a b : J ⟶ T) (ha : a ≫ q = h ≫ δ) (hb : b ≫ q = h ≫ δ)
+    (hv : ∀ x : J _⦋0⦌,
+      (pullback.lift a h ha ≫ i).app _ x = (pullback.lift b h hb ≫ i).app _ x),
+    Nonempty (VertexIso (relativeFunctorVertex q (h ≫ δ) a ha)
+      (relativeFunctorVertex q (h ≫ δ) b hb))
+```
+
+素：90〜135行。係数2：180〜270行。
+
+通常の忠実な nerve への表示があるとき、頂点の一致から同じ引き戻しの相対同型を回収する。
+
+原典：HTT 3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）の相対関手空間における同値の反映。
+
+使う既存の宣言：
+
+- `nerve_hom_ext_one` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/ExtOne.lean:24
+- `relativeFunctorIsPullbackIso_vertex` @ SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/RelativeFunctorIsPullbackIso.lean:41
+- `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorPostEquivalence.lean:36
+
+### R06.2L — elements_projection_leftFibration
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {D : Type u} [SmallCategory D] (P : D ⥤ Type u),
+    LeftFibration (nerveMap (Functor.Elements.π P))
+```
+
+素：80〜125行。係数2：160〜250行。
+
+集合係数の taut scaffold は同型なので、weighted nerve の左ファイブレーション性を元の要素圏の射影に移す。
+
+原典：Kerodon Construction 5.3.4.11（Tag 0373）、Theorem 5.3.3.13（Tag 036N）の集合係数での比較。
+
+使う既存の宣言：
+
+- `elementsToReplacement_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetElements.lean:87
+- `tautScaffold_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/TautScaffold.lean:78
+- `weightedNerveProjection_leftFibration` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/NerveLeftFibration.lean:58
+
+一覧：済み 62／全体 98（うち追加 63）
+
+### 11-18：R06.2N・R06.2L の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2N|122|90〜135|180〜270|2,210|3|
+|R06.2L|124|80〜125|160〜250|2,729|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,235 から 31,481 行。
+
+一覧：済み 64／全体 98（うち追加 63）
+
+
+### R06.2C — exists_discreteRightKan_nerve_readout
+親：R06。状態：紙のみ（pending）。依存：R06.2L。
+
+```lean
+∀ {C : Type u} [SmallCategory C] (P : Cᵒᵖ ⥤ Type u),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let t := U.mapIso b.symm ≪≫ uliftOppositeIso (nerve C)
+    let s := t.symm ≪≫ nerveAsSmallIso.{u, u + 1} Cᵒᵖ
+    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} Cᵒᵖ :=
+      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up
+    let r := nerveMap p ≫ s.inv
+    let F := U.map b.hom ≫ discretePresheaf P
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let v := SSet.opObjEquiv.symm (functorVertex F)
+    ∃ i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements),
+      i ≫ r = rightKanProjection δ v ∧
+      IsPrecompositionEquivalence i ∧ LeftFibration r
+```
+
+素：80〜140行。係数2：160〜280行。
+
+離散前層の右 Kan 添字から、同じ底上の通常の要素圏の nerve への比較を得る。
+
+原典：HTT 3.3.2、Kerodon Construction 5.3.4.11（Tag 0373）の集合値前層の場合。
+
+使う既存の宣言：
+
+- `elements_projection_leftFibration` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean:108
+- `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
+- `exists_relativeFunctorInverse_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorInverse.lean:25
+- `elementsComparisonNatural_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:51
+
+一覧：済み 64／全体 99（うち追加 64）
+
+### 11-18：R06.2C の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2C|117|80〜140|160〜280|7,368|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,481 から 31,598 行。
+
+一覧：済み 65／全体 99（うち追加 64）
+
+
+### R06.2K — rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {K X : SSet.{u + 1}} [Quasicategory X]
+    {D : Type u} [SmallCategory D] (P : D ⥤ Type u)
+    (δ : K ⟶ X) (v : X _⦋0⦌),
+    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} D :=
+      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up
+    ∀ (i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements))
+      (b : K ⟶ nerve (AsSmall.{u + 1} D)),
+    i ≫ nerveMap p = rightKanProjection δ v ≫ b →
+    ∀ (x y : (rightKanShape δ v) _⦋0⦌)
+      (hxy : (rightKanProjection δ v).app _ x = (rightKanProjection δ v).app _ y),
+    let q := sliceUnderProjection (SSet.yonedaEquiv.symm v)
+    let k := (rightKanProjection δ v).app _ x
+    let s : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=
+      ⟨(pullback.fst q δ).app _ x, by
+        rw [pinchedConstant_zero]
+        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition
+        exact ConcreteCategory.congr_hom (NatTrans.congr_app hc _) x⟩
+    let t : (vertexFiber q (δ.app _ k)) _⦋0⦌ :=
+      ⟨(pullback.fst q δ).app _ y, by
+        rw [pinchedConstant_zero]
+        have hc : pullback.fst q δ ≫ q = pullback.snd q δ ≫ δ := pullback.condition
+        exact (ConcreteCategory.congr_hom (NatTrans.congr_app hc _) y).trans
+          (congrArg (fun z => δ.app (Opposite.op ⦋0⦌) z) hxy.symm)⟩
+    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ s) =
+      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ t) →
+    i.app _ x = i.app _ y
+```
+
+素：125〜205行。係数2：250〜410行。
+
+同じ底の点にある二つの右 Kan 頂点が同じ coslice の辺の類を表せば、要素圏の頂点として一致する。
+
+原典：HTT 1.2.2・3.3.2、Kerodon §4.6.5（Tag 01KW）の固定終点の写像空間。
+
+使う既存の宣言：
+
+- `cosliceFiber_nonempty_edge_of_homotopicL` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean:39
+- `cosliceFiber_nonempty_iso_of_homMk_eq` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/CosliceHomotopy.lean:113
+- `rightKanShape` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/Shapes.lean:32
+
+一覧：済み 65／全体 100（うち追加 65）
+
+### 11-18：R06.2K の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2K|179|125〜205|250〜410|2,743|8|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,598 から 31,777 行。
+
+一覧：済み 66／全体 100（うち追加 65）
+
+### 11-18：R06.2 の残る頂点の式
+
+検証済みの四補題は 542 行。累計 31,777 行で、今回の追加は 3,556／7,460 行。台帳の現在の補正後上端は累計 34,877 行。昼の二枠に対応する 657048b94 は e4dd41bac で取り込み済み。鍵は impl の整理券一枚ずつで使った。
+
+`discreteWeightedSectionsMovingIndex_of_pointHomMk` を試験ファイルで型検査した。元の二つの添字射と `rightKanMovingIndex_target_section` の指定切断を使い、各頂点 (x) で次の等式を証明すれば、始点面を同じ底上の相対同型として回収できる。(x_0) は指定切断を始点へ制限して引き戻した頂点、(x_1) は元の指定添字射の頂点。(f,g) はそれぞれの第 1 射影を共通の終点の fiber に入れたもの。
+
+```lean
+Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
+  Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ g)
+```
+
+`cosliceIntervalRestriction_homMk` も型検査した。指定切断の余錐に `coconeVertexLegCompStruct` を適用すると、始点脚の類は元の実辺の類と終点脚の類の合成になる。終点脚は `cosliceEdgeSection_target` により元の P の密度の脚。この段で未証明なのは、上の合成と、Q の密度の脚を元の `smallUnstraighteningFunctorHom (discretePresheafHom φ)` で引き戻した側の類との一致。R06.1 の相対同型、`presheafDensityFiberYonedaValueIso`、`yonedaPresheafEvaluation_postcomposeIso` を使い、Yoneda の恒等点で評価した成分へ移す。ここで使う比較が実際の密度の脚を保つことを確認する必要がある。`nativeDiscretePresheafMap_edge_evaluate` で、固定前層形状の同型を通った同じ実辺の成分が `φ.app (Opposite.op c)` の離散辺であることも型検査した。三つの試験証明はいずれも標準三公理のみ。試験証明は R06.2 の分割で、終端の型や台帳の件数を変えない。
+
+一覧：済み 66／全体 100（うち追加 65）
+
+`presheafElementsYonedaSliceValue_iff_canonicalTransport` が運ぶのは同値性の判定までで、指定された値同士の等式はここからは得られない。値を比較する経路として、同じ実区間を `canonicalYonedaTransformationFiberEvaluation_parametrizedIso` で普遍輸送へ移し、固定頂点で合成する。試験補題 `parametrizedFiberTransport_at_edge_comp_point` は `parametrizedFiberTransport_at_edgeIso` と `edgeTransport_composition_iso` を合成して型検査済み。残る照合は、同じ固定頂点での元の密度の終値と、指定された離散前層の作用の値との一致。台帳の終端の型に仮定は足していない。
+
+一覧：済み 66／全体 100（うち追加 65）
+
+
+### R06.2D — densityCanonicalTransport_at_native_point
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let b := SSet.opObjEquiv.symm x
+    let a := presheafDensityCanonicalSourceValue x
+    let z₀ := F.app (Opposite.op ⦋0⦌) (ULift.up b)
+    let e := presheafDensityCanonicalFiberInterval F x ≫
+      parametrizedFiberTransport pointedSpaceProjection a z₀ ≫
+        evaluateFunctorAt (canonicalYonedaPointedIdentity x)
+    let v := smallUnstraighteningPointedImage F b
+      ((presheafRightFiberLeftIso F x).hom.app _ (SSet.opObjEquiv.symm s))
+    Nonempty (VertexIso (e.app _ (ULift.up s)) v)
+```
+
+素：100〜160行。係数2：200〜320行。
+
+元の密度の指定区間を恒等点で輸送した終値は、同じ要素の小さい left fiber の pointed 値と同型。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 に使う恒等点での照合。
+
+使う既存の宣言：
+
+- `presheafDensityIdentityLiftEndpointTransportIso` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportEquivalence.lean:54
+- `presheafDensityIdentityLiftEndpoint_value` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIdentityLift.lean:87
+- `presheafDensityNativeIdentityValueIso` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityReconstruction.lean:66
+- `presheafDensityIdentityValue_factorization` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean:49
+- `twistedIdentityFiberLift_right` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/TwistedIdentityFiber.lean:56
+- `presheafRightFiberValueEquivalence_lift` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberValue.lean:41
+
+一覧：済み 66／全体 101（うち追加 66）
+
+### 11-18：R06.2D の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2D|120|100〜160|200〜320|3,955|17|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,777 から 31,897 行。
+
+一覧：済み 67／全体 101（うち追加 66）
+
+
+### R06.2V — presheafElementsYonedaSliceInterval_at_leg
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    (presheafElementsYonedaSliceInterval F x).app (Opposite.op ⦋0⦌) (ULift.up s) =
+      intervalMappingVertexOfEdge
+        ((coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq
+          (by
+            have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=
+              s.property.trans (pinchedConstant_zero x)
+            change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)
+              (ULift.up ((smallRightUnstraighteningProjection F).app
+                (Opposite.op ⦋0⦌) s.val)) = _
+            rw [h, yonedaInfinityMap_vertex]) (presheafDensityCocone_vertex F))
+```
+
+素：80〜135行。係数2：160〜270行。
+
+元の Yoneda comma の区間頂点は、指定した密度余錐の実際の脚を表す。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の照合。
+
+使う既存の宣言：
+
+- `presheafElementsYonedaSliceMapping_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/ElementsYonedaSliceFiberMap.lean:84
+- `pinchedHomToIntervalMappingSpace_vertex` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean:56
+- `sliceOverUncurry_yoneda` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalUniqueness.lean:126
+- `coconeVertexLeg` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:26
+
+一覧：済み 67／全体 102（うち追加 67）
+
+### 11-18：R06.2V の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2V|89|80〜135|160〜270|3,857|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,897 から 31,986 行。
+
+一覧：済み 68／全体 102（うち追加 67）
+
+
+### R06.2B — smallUnstraighteningPointedImage_baseMap
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {B D : SSet.{u}} (i : B ⟶ D)
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (b : B _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F := U.map i ≫ G
+    let f := smallLeftUnstraighteningMap F G i rfl
+    let d := i.app (Opposite.op ⦋0⦌) b
+    ∀ (s : (vertexFiber (smallLeftUnstraighteningProjection F) b) _⦋0⦌),
+    let t : (vertexFiber (smallLeftUnstraighteningProjection G) d) _⦋0⦌ :=
+      ⟨f.app (Opposite.op ⦋0⦌) s.val, by
+        have h : f ≫ smallLeftUnstraighteningProjection G =
+            smallLeftUnstraighteningProjection F ≫ i :=
+          smallLeftUnstraighteningMap_projection F G i rfl
+        exact (congrArg (fun k => k.app (Opposite.op ⦋0⦌) s.val) h).trans
+          ((congrArg (fun y => i.app (Opposite.op ⦋0⦌) y)
+            (s.property.trans (pinchedConstant_zero b))).trans (pinchedConstant_zero d).symm)⟩
+    smallUnstraighteningPointedImage F b s = smallUnstraighteningPointedImage G d t
+```
+
+素：65〜100行。係数2：130〜200行。
+
+小さい unstraightening の底変換は、同じ fiber の頂点の pointed 表示を保つ。
+
+原典：Kerodon Remark 5.6.2.18（Tag 0271）の頂点における底変換の法則。
+
+使う既存の宣言：
+
+- `smallUnstraighteningPointedImage` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointAction.lean:28
+- `smallLeftUnstraighteningMap_naturality` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseChange.lean:39
+- `leftUnstraighteningMap_pointed` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraightening.lean:72
+- `leftUnstraighteningFiberIso_hom_ι` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningFiberTransport.lean:30
+
+一覧：済み 68／全体 103（うち追加 68）
+
+### 11-18：R06.2B の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2B|72|65〜100|130〜200|3,393|3|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,986 から 32,058 行。
+
+一覧：済み 69／全体 103（うち追加 68）
+
+
+### R06.2T — presheafDensityLeg_evaluatedTransport
+親：R06。状態：紙のみ（pending）。依存：R06.2D・R06.2V。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let b := SSet.opObjEquiv.symm x
+    let R := representablePresheafInfinity x
+    let l := (coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq
+      (by
+        have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=
+          s.property.trans (pinchedConstant_zero x)
+        change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)
+          (ULift.up ((smallRightUnstraighteningProjection F).app
+            (Opposite.op ⦋0⦌) s.val)) = _
+        rw [h, yonedaInfinityMap_vertex])
+      (presheafDensityCocone_vertex F)
+    let e := functorEdgeAt (F := R) (G := F) l (ULift.up b)
+    let v := smallUnstraighteningPointedImage F b
+      ((presheafRightFiberLeftIso F x).hom.app _ (SSet.opObjEquiv.symm s))
+    Nonempty (VertexIso ((edgeTransport pointedSpaceProjection e).app _
+        (canonicalYonedaPointedIdentity x)) v)
+```
+
+素：90〜145行。係数2：180〜290行。
+
+元の密度余錐の実脚を恒等点で評価した輸送の終値は、同じ要素の pointed 値と同型。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の輸送。
+
+使う既存の宣言：
+
+- `presheafElementsYonedaSliceInterval_at_leg` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean:40
+- `densityCanonicalTransport_at_native_point` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean:82
+- `presheafDensityFiberIntervalIso` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityFiberTransformationFamily.lean:80
+- `intervalMappingPostOfEq_vertex` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean:72
+- `parametrizedFiberTransport_at_edgeIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CovariantTransport/ParametrizedFiberTransport.lean:45
+
+一覧：済み 69／全体 104（うち追加 69）
+
+### 11-18：R06.2T の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2T|99|90〜145|180〜290|3,958|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,058 から 32,157 行。
+
+一覧：済み 70／全体 104（うち追加 69）
+
+
+### R06.2A — smallUnstraighteningPointedBase_action
+親：R06。状態：紙のみ（pending）。依存：R06.2B。
+
+```lean
+∀ {B D : SSet.{u}} (i : B ≅ D)
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}
+    (a : FunctorHom F G) (b : B _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F' := U.map i.hom ≫ F
+    let G' := U.map i.hom ≫ G
+    let L := smallLeftUnstraighteningBaseIso i F
+    let R := smallLeftUnstraighteningBaseIso i G
+    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv
+    ∀ hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F',
+    ∀ s : (vertexFiber (smallLeftUnstraighteningProjection F') b) _⦋0⦌,
+    let t := (vertexFiberMap (smallLeftUnstraighteningProjection F')
+      (smallLeftUnstraighteningProjection G') m hm b).app (Opposite.op ⦋0⦌) s
+    cosliceFiberPointHom (smallUnstraighteningPointedImage F' b s) ≫
+      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) =
+    cosliceFiberPointHom (smallUnstraighteningPointedImage G' b t)
+```
+
+素：90〜150行。係数2：180〜300行。
+
+底を同型で移した指定の小さい unstraightening の射は、pointed 値のホモトピー圏で同じ成分射として作用する。
+
+原典：Kerodon Remark 5.6.2.18（Tag 0271）の頂点における底変換の法則。
+
+使う既存の宣言：
+
+- `smallUnstraighteningPointedImage_baseMap` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedBaseChange.lean:45
+- `smallUnstraighteningFunctorHom_pointHom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointHom.lean:25
+- `smallLeftUnstraighteningBaseIso_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseIso.lean:32
+
+一覧：済み 70／全体 105（うち追加 70）
+
+### 11-18：R06.2A の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2A|84|90〜150|180〜300|3,408|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,157 から 32,241 行。
+
+一覧：済み 71／全体 105（うち追加 70）
+
+
+### R06.2O — leftElementsRightKanComparison_point_edge
+親：R06。状態：紙のみ（pending）。依存：R06.2V。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let R := presheafRightFiberLeftIso F x
+    let v := R.hom.app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm s)
+    let z := functorVertex F
+    let b := SSet.opObjEquiv.symm z
+    let q := sliceUnderProjection (SSet.yonedaEquiv.symm b)
+    let r := SSet.opFunctor.map (yonedaInfinityMap C)
+    let w := (leftElementsRightKanComparison F ≫ pullback.fst q r).app
+      (Opposite.op ⦋0⦌) (ULift.up v.val)
+    (pointCosliceVertexEdge (SSet.yonedaEquiv.symm b) w).edge =
+      SSet.opObjEquiv.symm
+        (coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).edge
+```
+
+素：125〜165行。係数2：250〜330行。
+
+右 Kan 添字の同じ頂点から読んだ辺は、元の密度余錐の脚の反転である。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 に使う脚の一次座標の照合。
+
+使う既存の宣言：
+
+- `leftElementsRightKanComparison` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:37
+- `kanLeftKanShapeOpIso_slice` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LocalShapeOppositeHomotopy.lean:29
+- `cofinalPointSliceOverOpIso_app_val` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointSliceReverseCoordinates.lean:26
+- `presheafRightFiberLeftIso_ι` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberPointedIso.lean:38
+
+一覧：済み 71／全体 106（うち追加 71）
+
+### 11-18：R06.2O の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2O|152|125〜165|250〜330|5,911|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,241 から 32,393 行。
+
+一覧：済み 72／全体 106（うち追加 71）
+
+
+### R06.2Y — densityLegAt_baseAction_comp
+親：R06。状態：紙のみ（pending）。依存：R06.2T・R06.2A。
+
+```lean
+∀ {C D : SSet.{u}} [Quasicategory C] (i : C.op ≅ D)
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}
+    (a : FunctorHom F G) (x : C _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F' := U.map i.hom ≫ F
+    let G' := U.map i.hom ≫ G
+    let L := smallLeftUnstraighteningBaseIso i F
+    let R := smallLeftUnstraighteningBaseIso i G
+    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv
+    let b := SSet.opObjEquiv.symm x
+    ∀ (hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F')
+      (s : (vertexFiber (smallRightUnstraighteningProjection F') x) _⦋0⦌)
+      (t : (vertexFiber (smallRightUnstraighteningProjection G') x) _⦋0⦌)
+      (g : (PresheafInfinity C).Edge (functorVertex F') (functorVertex G')),
+    let p := (presheafRightFiberLeftIso F' x).hom.app _ (SSet.opObjEquiv.symm s)
+    let q := (presheafRightFiberLeftIso G' x).hom.app _ (SSet.opObjEquiv.symm t)
+    (vertexFiberMap (smallLeftUnstraighteningProjection F') (smallLeftUnstraighteningProjection G')
+      m hm b).app _ p = q →
+    Truncated.HomotopyCategory.homMk (functorEdgeAt g (ULift.up b)).toTruncated =
+      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) →
+    Truncated.HomotopyCategory.homMk (densityLegAt F' x s).toTruncated ≫
+        Truncated.HomotopyCategory.homMk g.toTruncated =
+      Truncated.HomotopyCategory.homMk (densityLegAt G' x t).toTruncated
+```
+
+素：135〜195行。係数2：270〜390行。
+
+元の密度脚の合成を Yoneda の恒等点で検出し、指定底変換の作用と照合する。
+
+原典：Kerodon §8.3 の Yoneda と §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6。
+
+使う既存の宣言：
+
+- `canonicalYonedaTransformationFiberEvaluation_isQCatEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CanonicalYonedaFiberTransport.lean:89
+- `functorHomEvaluate_comp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluation.lean:63
+- `presheafDensityLeg_evaluatedTransport` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean:43
+- `smallUnstraighteningPointedBase_action` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean:33
+
+一覧：済み 72／全体 107（うち追加 72）
+
+
+### R06.2J — cosliceIntervalNormalized_homMk
+親：R06。状態：紙のみ（pending）。依存：R06.2O。
+
+```lean
+∀ {X : SSet.{u}} {a b : X _⦋0⦌} (e : X.Edge a b)
+    (c : JoinCocone (SSet.yonedaEquiv.symm e.edge)),
+    let η := SSet.yonedaEquiv.symm e.edge
+    let v := c.vertex
+    let he₀ := e.δ_one_yonedaEquiv_symm
+    let he₁ := e.δ_zero_yonedaEquiv_symm
+    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₀)
+    let r₁ := sliceUnderRestrict η (stdSimplex.δ (0 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₁)
+    ∀ (s₀ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm a)) v) _⦋0⦌)
+      (s₁ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm b)) v) _⦋0⦌),
+    s₀.val = r₀.app (Opposite.op ⦋0⦌) c →
+    s₁.val = r₁.app (Opposite.op ⦋0⦌) c →
+    Truncated.HomotopyCategory.homMk e.toTruncated ≫
+      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge b v s₁) =
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge a v s₀)
+```
+
+素：65〜115行。係数2：130〜230行。
+
+指定区間に沿う余錐を端点に制限し、元の二単体からホモトピー圏の合成を読む。
+
+原典：Kerodon §4.6 の slice と join。HTT 4.1.3.1 に使う区間上の照合。
+
+使う既存の宣言：
+
+- `coconeVertexLegCompStruct` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:41
+- `sliceUnder_eqToHom_app_val` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CoslicePostCoordinates.lean:23
+
+一覧：済み 72／全体 108（うち追加 73）
+
+
+### R06.2I — nativeDiscreteEdge_evaluation_hom
+親：R06。状態：紙のみ（pending）。依存：R06.1。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)
+    (x : (nerve C).op _⦋0⦌),
+    let i := nerveOppositeIso (C := C)
+    Truncated.HomotopyCategory.homMk (functorEdgeAt (nativeDiscreteEdge φ)
+      (ULift.up x)).toTruncated =
+      functorHomEvaluate (discretePresheafHom φ) (ULift.up (i.hom.app _ x))
+```
+
+素：55〜90行。係数2：110〜180行。
+
+元の離散前層の辺を固定図式形状で書き、各点の評価を指定の自然変換と照合する。
+
+原典：Kerodon §8.3 の関手評価。HTT 5.1.5.6 の比較に使う離散前層の辺。
+
+使う既存の宣言：
+
+- `discretePresheafHom` @ SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean:28
+- `evaluateFunctorAt_precomp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluationNaturality.lean:44
+- `functorHomEvaluate_edge_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointedTransformationPointHom.lean:28
+
+一覧：済み 72／全体 109（うち追加 74）
+
+### 11-18：R06.2Y・R06.2J・R06.2I の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Y|181|135〜195|270〜390|4,047|6|
+|R06.2J|107|65〜115|130〜230|2,679|10|
+|R06.2I|87|55〜90|110〜180|7,360|5|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,393 から 32,768 行。
+
+一覧：済み 75／全体 109（うち追加 74）
+
+
+### R06.2P — discreteRightKan_projectedLegs_comp
+親：R06。状態：紙のみ（pending）。依存：R06.2Y・R06.2O・R06.2J・R06.2I。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let i := nerveOppositeIso (C := C)
+    let F := U.map i.hom ≫ discretePresheaf P
+    let G := U.map i.hom ≫ discretePresheaf Q
+    let L := smallLeftUnstraighteningBaseIso i (discretePresheaf P)
+    let R := smallLeftUnstraighteningBaseIso i (discretePresheaf Q)
+    let m := L.hom ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ) ≫ R.inv
+    let j₀ := U.map m ≫ leftElementsRightKanComparison G
+    let j₁ := leftElementsRightKanComparison F
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let v₀ := SSet.opObjEquiv.symm (functorVertex G)
+    let v₁ := SSet.opObjEquiv.symm (functorVertex F)
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    ∀ (d : (U.obj (smallLeftUnstraightening F)) _⦋0⦌)
+      (v : (PresheafInfinity (nerve C)).op _⦋0⦌)
+      (f₀ : (vertexFiber q₀ v) _⦋0⦌) (f₁ : (vertexFiber q₁ v) _⦋0⦌),
+    f₀.val = (j₀ ≫ pullback.fst q₀ δ).app (Opposite.op ⦋0⦌) d →
+    f₁.val = (j₁ ≫ pullback.fst q₁ δ).app (Opposite.op ⦋0⦌) d →
+    Truncated.HomotopyCategory.homMk (edgeOp (nativeDiscreteEdge φ).toTruncated) ≫
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ v f₁) =
+      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ v f₀)
+```
+
+素：190〜270行。係数2：380〜540行。
+
+元の離散変換に沿う密度脚の合成を反対圏へ移し、指定した右 Kan の二つの添字の脚に同定する。
+
+原典：Kerodon §4.4（Tag 01EM）と §9.3（Tag 06FR）。HTT 5.1.5.6 の指定した右 Kan 添字の照合。
+
+使う既存の宣言：
+
+- `densityLegAt_baseAction_comp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean:148
+- `leftElementsRightKanComparison_point_edge` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityLeg.lean:100
+- `nativeDiscreteEdge_evaluation_hom` @ SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean:61
+- `compStruct_nonempty_of_homMk_fac` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/InvertibleEdgeLifting.lean:157
+- `compStructOp` @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/Opposite.lean:159
+
+一覧：済み 75／全体 110（うち追加 75）
+
+### 11-18：R06.2P の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2P|203|190〜270|380〜540|7,382|9|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,768 から 32,971 行。
+
+一覧：済み 76／全体 110（うち追加 75）
+
+### 11-18：R06.2 の局所合成と指定余単位までの接続
+
+R06.2D・V・B・T・A・O は計616行（素の見込み550〜855行）。R06.2Y・J・I・P は計578行（素の見込み445〜670行）。この10本は対象ビルド・台帳型への代入・小監査を通過した。R06.2A では、底上の可換性の証明を明示した引数にした。呼ぶ側の指定底変換の射影の合成則がその証明を供給する。R06.2 の終端の型は保持した。累計32,971行（今回の追加4,750行）、外枠まで2,710行。R04・R05 の終端を検証済み。R06.2 から先は継続中。
+
+残る局所面では、指定辺の終点制限の切断から作った余錐の始点脚と元の添字の始点脚を R06.2J・P で照合する。R06.2K で頂点の一致を読み、R06.2N で固定底上の相対同型に戻す。この段階で新しい錐の値を定義する必要はない。
+
+指定余単位への接続には次の既存の射を使える見通し。区間上の添字の余錐を `joinTensorLeft` と `sliceUnderUncurry` で固定形状上の錐の辺にし、右辺の図式成分を同じ射影から出す。その辺を、固定形状での余単位に沿って `cocartesianPathSpaceSource_trivialKanFibration` または `cocartesianHomotopy_extend` で持ち上げる。両端の既存輸送との比較に `exists_kanTransportEndVertexIso_with_factorization_of_homMk_eq`、頂点の計算に `RightKanConeTransport.apex_hom`、元の大域比較には R05 を使う計画。この接続は未検証。
+
+一覧：済み 76／全体 110（うち追加 75）
+
+
+### R06.2F — rightKanMovingIndex_pointComp_of_projectedLegs
+親：R06。状態：紙のみ（pending）。依存：R06.2N・R06.2J。
+
+```lean
+∀ {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁),
+    let η := SSet.yonedaEquiv.symm e.edge
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    (∀ (d : J _⦋0⦌) (y : X _⦋0⦌)
+      (g : (vertexFiber q₀ y) _⦋0⦌) (h : (vertexFiber q₁ y) _⦋0⦌),
+      g.val = a₀.app _ d → h.val = a₁.app _ d →
+      Truncated.HomotopyCategory.homMk e.toTruncated ≫
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ y h) =
+          Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ y g)) →
+    ∀ (he₀ : stdSimplex.δ (1 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₀)
+      (he₁ : stdSimplex.δ (0 : Fin 2) ≫ η = SSet.yonedaEquiv.symm v₁),
+    let k := j₀ ≫ rightKanProjection δ v₀
+    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫ eqToHom (congrArg sliceUnder he₀)
+    let hw := rightKanMovingIndex_target_section δ η he₀ he₁ j₀ j₁ hj
+    let w := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection η)
+    ∀ d : J _⦋0⦌,
+    let l := pullback.lift (w ≫ r₀) k hw.2.1
+    let xx := l.app (Opposite.op ⦋0⦌) d
+    let zz := (rightKanProjection δ v₀).app (Opposite.op ⦋0⦌) xx
+    ∀ (f g : (vertexFiber q₀ (δ.app _ zz)) _⦋0⦌),
+    f.val = (pullback.fst q₀ δ).app _ xx → g.val = a₀.app _ d →
+    Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
+      Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ g)
+```
+
+素：245〜375行。係数2：490〜750行。
+
+区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。
+
+原典：Kerodon §4.6 の slice と join、§7.3（Tag 02Y9）。HTT 5.1.5.6 の局所比較の境界計算。
+
+使う既存の宣言：
+
+- `cosliceEdgeSection_target` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean:31
+- `cosliceIntervalNormalized_homMk` @ SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean:54
+- `relativeFunctorIso_of_pullback_nerve_readout` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean:94
+
+一覧：済み 76／全体 111（うち追加 76）
+
+
+### R06.2M — discreteWeightedSectionsMovingIndex_actual
+親：R06。状態：紙のみ（pending）。依存：R06.2F・R06.2K・R06.2P。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
+    discreteWeightedSectionsMovingIndexCondition φ
+```
+
+素：170〜295行。係数2：340〜590行。
+
+元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。
+
+原典：Kerodon §9.3（Tag 06FR）、§7.3（Tag 02Y9）。HTT 5.1.5.6 の指定離散重みの比較。
+
+使う既存の宣言：
+
+- `discreteRightKan_projectedLegs_comp` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean:158
+- `exists_discreteRightKan_nerve_readout` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean:48
+- `rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean:130
+- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:265
+
+一覧：済み 76／全体 112（うち追加 77）
+
+### 11-18：R06.2F・R06.2M の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2F|303|245〜375|490〜750|2,702|16|
+|R06.2M|264|170〜295|340〜590|7,631|7|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,971 から 33,538 行。
+
+一覧：済み 78／全体 112（うち追加 77）
+
+
+### 11-18：今回の停止点と引き継ぎ
+
+R04・R05 の終端と、R06.2F・M の指定添字の局所面まで完了。数学の累計33,538行（28,221行から5,317行増）、外枠まで2,143行。終端の型・仮定は台帳どおり。
+
+|次の R06.2 のまとまり|素の見込み|係数2で補正|根拠|
+|---|---:|---:|---|
+|指定区間に沿う標準錐の辺と、両端・図式・頂点の境界式|100〜150|200〜300|`joinTensorLeft`、`sliceUnderUncurry`、R06.2M|
+|同じ余単位に沿う全辺の輸送、端点への制限と合成式|270〜390|540〜780|`cocartesianPathSpaceSource_trivialKanFibration`、`RightKanConeTransport.diagram_hom`・`.apex_hom`|
+|端点の制限錐を元の指定輸送と比較し、切断の射を回収|300〜390|600〜780|`rightKan_actualIndexArrow_transportConeIso` の固定頂点版と `exists_kanTransportEndVertexIso_with_factorization_of_homMk_eq` を利用|
+|固定 Yoneda の形状同型を越えて R05 の大域比較と照合|140〜220|280〜440|`rightKanTransportIsoSquare_cone_val`、R04、R05|
+|R06.2 の結合と任意の指定比較辺への移送|90〜150|180〜300|R06.3S、制限錐の終性|
+|計|900〜1,300|1,800〜2,600||
+
+局所面は実測567行、素の見込み415〜670行。直前の指定脚10本は実測1,194行、素995〜1,525行。次のまとまりの補正後上端を足すと36,138行となり、外枠35,681行を457行超える。R06.2 の指定余単位から大域比較への結合の前で区切る。境界式の一時検査は `joinTensorLeft` に沿う図式側・頂点側と、標準単体の端点を前合成した式まで通過。元の `ι₀`・`ι₁` との端点照合と余単位への持ち上げは未検証で、一時ファイルにのみ置いた。
+
+未完の終端は R06・R08・R09-Cech・R09・R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。R06.1・R06.3、R09.1、R12a.1 などの検証済みの内訳は台帳のとおり。R16・R17 は別停止点、S7・R2・R3 は今回の対象外。
+
+主な二宣言に HTT 5.1.5.6 の文献属性を付けた。属性の6行は数学の累計の外。再検証は以下のとおり。
+
+|署名|対象ビルド jobs|小監査の宣言数|台帳型|
+|---|---:|---:|---|
+|R06.2F|2,702|16|一致|
+|R06.2M|7,631|7|一致|
+
+小監査は標準三公理のみ。昼の二枠を含む鍵の更新 `657048b94` は取り込み済み（`77ba42820`）。
+
+追跡ファイルに未コミットの変更なし。旧 R2 の未追跡 Lean 4 本（HomWeightYonedaUnitPointEvaluation・Square・SquareNormalized・Values）は作業木に残した。
+
+一覧：済み 78／全体 112（うち追加 77）
+
+
+### 11-18：R06.2 の再開に向けた指定余単位の直接計算
+
+前回の停止点から、同じ指定余単位を射の類で直接計算する経路を点検した。下の四式は一時ファイルで型検査済みで、標準三公理のみ。ここで `m` は区間上の同じ標準錐の射、`α` と `β` はそれぞれの元の余単位を同じ添字へ制限した類に当たる。
+
+```lean
+lemma movingCone_counit_comp
+    {K X : SSet.{u}} [Quasicategory X] {p q r : K ⟶ X}
+    (c : JoinCone p) (d : JoinCone q) (m : FunctorHom c.val d.val)
+    (α : FunctorHom p r) (β : FunctorHom q r)
+    (h : kanFunctorHomCongr c.property d.property
+      ((hoFunctor.map ((pre (joinInr (Δ[0] : SSet.{u}) K)).app X)).toFunctor.map m) ≫ β = α) :
+    constantFunctorHomMap K
+      (functorHomEvaluate m (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) K))) ≫
+        (coneCounitHom d ≫ β) = coneCounitHom c ≫ α
+
+lemma cone_apex_eq_of_counit_fac
+    {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} {c d : JoinCone p}
+    (hd : IsLimitCone d)
+    (k : (SSet.HomotopyCategory.mk c : hoFunctor.obj (sliceOver p)) ⟶
+      SSet.HomotopyCategory.mk d)
+    (a : (SSet.HomotopyCategory.mk c.vertex : hoFunctor.obj X) ⟶
+      SSet.HomotopyCategory.mk d.vertex)
+    (h : constantFunctorHomMap K a ≫ coneCounitHom d = coneCounitHom c) :
+    a = (hoFunctor.map (sliceOverProjection p)).toFunctor.map k
+
+lemma rightKan_transport_counit_comp
+    {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v) :
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    constantFunctorHomMap L (functorHomEvaluate g
+        (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L))) ≫ coneCounitHom t.cone =
+      coneCounitHom c ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+
+lemma rightKan_transport_apex_eval
+    {K C D : SSet.{u}} {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v) :
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    let vc : c.vertex = F.app (Opposite.op ⦋0⦌) v := rightKanCanonicalCone_vertex δ F v
+    functorHomEvaluate g (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L)) ≫
+        eqToHom (congrArg HomotopyCategory.mk t.cone_vertex) =
+      eqToHom (congrArg HomotopyCategory.mk vc)
+```
+
+- `rightKan_transport_counit_comp` と `rightKan_transport_apex_eval` は同じ指定輸送の `.diagram_hom` と `.apex_hom` を使う。この二式で、指定輸送の終端の余単位を標準錐の余単位と元の余単位の合成として扱える。
+- `coneCounitHom_shapeRestriction` で同じ添字に制限し、`movingCone_counit_comp` を適用する。最後は `cone_apex_eq_of_counit_fac` で、台帳にある任意の比較錐の射と同じ頂点射を得る。全辺を改めて cocartesian に持ち上げる工程を省ける候補。
+- R06.2M の指定区間から作る実際の標準錐の両端、始点の相対同型を除いた後の図式側の恒等射、固定 Yoneda の形状同型を経由する R05 の比較は、この経路でも照合が必要。四式の検証だけでは、残りのまとまりの補正上端を2,143行以下と見積もる根拠がそろっていない。
+
+本体・台帳の型・累計33,538行は維持。外枠35,681行の区切りは前の停止点のとおり。前の見積もりで R06.2 の次のまとまりを再開するなら累計36,138行までの枠が要る。
+
+一覧：済み 78／全体 112（うち追加 77）
+
+### 11-18：R06.2 の再開（外枠の承認）
+
+外枠を35,681行から36,138行へ変更する。累計33,538行から、前節の指定余単位を使う直接計算で R06.2 を進める。増額は前回示した次のまとまりの補正後の上端に合わせた。終端の型は同じ。
+
+一覧：済み 78／全体 112（うち追加 77）
+
+
+### R06.2Pr — movingConePrism_boundaries
+親：R06。状態：紙のみ（pending）。依存：R06.2M。
+
+```lean
+∀ {J X : SSet.{u}} {η : (Δ[1] : SSet.{u}) ⟶ X}
+    (w : J ⟶ sliceUnder η),
+    (SSet.ι₀ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =
+      joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧
+    (SSet.ι₁ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =
+      joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧
+    (joinInr (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =
+      fst J (Δ[1] : SSet.{u}) ≫ w ≫ sliceUnderProjection η ∧
+    (joinInl (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =
+      snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ η
+```
+
+素：115〜170行。係数2：230〜340行。
+
+指定区間の下の余錐を、同じ図式を持つ錐の辺に直し、四つの境界を計算する。
+
+原典：Kerodon §4.6.6（Tag 04J1）の join と直積の比較。HTT 5.1.5.6 の指定右 Kan 比較で使う境界式。
+
+使う既存の宣言：
+
+- `joinTensorLeft` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean:110
+- `joinTensorLeft_unit` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean:195
+- `sliceUnderUncurry_fixed` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/Coslice.lean:175
+
+一覧：済み 78／全体 113（うち追加 78）
+
+
+### R06.2Cu — rightKan_transport_counit_comp
+親：R06。状態：紙のみ（pending）。依存：R04。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v),
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    constantFunctorHomMap L (functorHomEvaluate g
+        (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L))) ≫ coneCounitHom t.cone =
+      coneCounitHom c ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+素：95〜150行。係数2：190〜300行。
+
+指定右 Kan 輸送の終端の余単位を、標準錐の同じ余単位と図式側の変換の合成で表す。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送の計算。
+
+使う既存の宣言：
+
+- `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
+- `coneCounitHom_coneMorphism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeMorphismBoundary.lean:54
+- `coneCounitHom_bijective` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ConeCounitHomUniversal.lean:86
+
+一覧：済み 78／全体 114（うち追加 79）
+
+### 11-18：R06.2Pr・R06.2Cu の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Pr|165|115〜170|230〜340|1,617|8|
+|R06.2Cu|122|95〜150|190〜300|3,944|5|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 33,538 から 33,825 行。
+
+一覧：済み 80／全体 114（うち追加 79）
+
+
+### R06.2Cn — movingConePrism_counit_naturality
+親：R06。状態：紙のみ（pending）。依存：R06.2Pr・R06.2Cu。
+
+```lean
+∀ {J X D : SSet.{u}} [Quasicategory D] {v₀ v₁ : X _⦋0⦌}
+    (e : X.Edge v₀ v₁) (G : X ⟶ D) (w : J ⟶ sliceUnder (SSet.yonedaEquiv.symm e.edge))
+    {p : J ⟶ D} (c d : JoinCone p)
+    (h₀ : joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = c.val)
+    (h₁ : joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ≫ G = d.val)
+    (hp : (w ≫ sliceUnderProjection (SSet.yonedaEquiv.symm e.edge)) ≫ G = p),
+    ∃ a : (HomotopyCategory.mk c.vertex : hoFunctor.obj D) ⟶ HomotopyCategory.mk d.vertex,
+      Arrow.mk a = Arrow.mk (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ∧
+      constantFunctorHomMap J a ≫ coneCounitHom d = coneCounitHom c
+```
+
+素：105〜150行。係数2：210〜300行。
+
+指定区間が与える頂点射は、共通図式の二つの端点の余単位を結ぶ。
+
+原典：Kerodon §4.6.6（Tag 04J1）と §7.3（Tag 02Y9）。HTT 5.1.5.6 で使う指定余単位の自然性。
+
+使う既存の宣言：
+
+- `movingConePrism_boundaries` @ SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean:151
+- `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
+- `functorHomEvaluate_homotopy` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/Homotopy/HomotopyRepresentative.lean:62
+
+一覧：済み 80／全体 115（うち追加 80）
+
+
+### R06.2Ca — rightKan_transport_counit_atApex
+親：R06。状態：紙のみ（pending）。依存：R06.2Cu。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v),
+    let c := rightKanCanonicalCone δ F v
+    coneCounitAtApex t.cone t.cone_vertex =
+      coneCounitAtApex c (rightKanCanonicalCone_vertex δ F v) ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+素：90〜125行。係数2：180〜250行。
+
+指定輸送の余単位を元の頂点に正規化し、同じ添字による制限と図式の等式での移送を計算する。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送。
+
+使う既存の宣言：
+
+- `rightKan_transport_counit_comp` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:72
+- `rightKan_transport_apex_eval` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:97
+- `coneCounitHom_shapeRestriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitShapeRestriction.lean:31
+
+一覧：済み 80／全体 116（うち追加 81）
+
+### 11-18：R06.2Cn・R06.2Ca の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cn|126|105〜150|210〜300|3,951|5|
+|R06.2Ca|101|90〜125|180〜250|3,952|9|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 33,825 から 34,052 行。
+
+一覧：済み 82／全体 116（うち追加 81）
+
+
+### R06.2Cc — coneOfCosliceMap_counit_relativeIso
+親：R06。状態：紙のみ（pending）。依存：R06.2Ca・R06.2M。
+
+```lean
+∀ {J X D : SSet.{u}} [Quasicategory X] [Quasicategory D]
+    (v : X _⦋0⦌) (G : X ⟶ D)
+    {a : J ⟶ X} (f g : J ⟶ sliceUnder (SSet.yonedaEquiv.symm v))
+    (hf : f ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) = a)
+    (hg : g ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) = a)
+    (i : VertexIso
+      (relativeFunctorVertex (sliceUnderProjection (SSet.yonedaEquiv.symm v)) a f hf)
+      (relativeFunctorVertex (sliceUnderProjection (SSet.yonedaEquiv.symm v)) a g hg)),
+    let h₀ : f ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G = a ≫ G :=
+      (Category.assoc _ _ _).symm.trans (congrArg (· ≫ G) hf)
+    let h₁ : g ≫ sliceUnderProjection (SSet.yonedaEquiv.symm v) ≫ G = a ≫ G :=
+      (Category.assoc _ _ _).symm.trans (congrArg (· ≫ G) hg)
+    coneCounitAtApex (coneOfCosliceMap f G h₀) (coneOfCosliceMap_atApex f G h₀) =
+      coneCounitAtApex (coneOfCosliceMap g G h₁) (coneOfCosliceMap_atApex g G h₁)
+```
+
+素：175〜245行。係数2：350〜490行。
+
+指定始点の下で同じ底に写る相対同型は、指定頂点での錐の余単位を保つ。
+
+原典：Kerodon §4.6.6（Tag 04J1）の区間と join の比較。HTT 5.1.5.6 で使う形状照合。
+
+使う既存の宣言：
+
+- `relativeFunctorVertexIsoImage_postcomp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/RelativeFunctorVertexIsoProjection.lean:34
+- `exists_cosliceHomotopyConePrism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanCanonicalIndexPrism.lean:52
+- `coneCounitAtApex_cast` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:94
+
+一覧：済み 82／全体 117（うち追加 82）
+
+
+### R06.2Cm — rightKanMovingIndex_cosliceCounit
+親：R06。状態：紙のみ（pending）。依存：R06.2Cc・R06.2Cn・R06.2M。
+
+```lean
+∀ {J K X D : SSet.{u}} [Quasicategory X] [Quasicategory D]
+    (δ : K ⟶ X) (G : X ⟶ D) {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁),
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    let a₀ := j₀ ≫ pullback.fst q₀ δ
+    let a₁ := j₁ ≫ pullback.fst q₁ δ
+    let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+    ∀ (h₀ : a₀ ≫ q₀ ≫ G = p ≫ G) (h₁ : a₁ ≫ q₁ ≫ G = p ≫ G),
+    constantFunctorHomMap J (Truncated.HomotopyCategory.homMk (e.map G).toTruncated) ≫
+      coneCounitAtApex (coneOfCosliceMap a₁ G h₁) (coneOfCosliceMap_atApex a₁ G h₁) =
+    coneCounitAtApex (coneOfCosliceMap a₀ G h₀) (coneOfCosliceMap_atApex a₀ G h₀)
+```
+
+素：85〜135行。係数2：170〜270行。
+
+元の区間に沿う頂点射は、共通の添字に制限した二つの標準錐の余単位を可換にする。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 に使う動く添字の照合。
+
+使う既存の宣言：
+
+- `movingConePrism_counit_naturality` @ SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean:99
+- `coneOfCosliceMap_counit_relativeIso` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean:136
+- `sliceUnderUncurry_restrict` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SliceMap.lean:197
+
+一覧：済み 82／全体 118（うち追加 83）
+
+### 11-18：R06.2Cc・R06.2Cm の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cc|204|175〜245|350〜490|3,962|8|
+|R06.2Cm|98|85〜135|170〜270|3,991|4|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,052 から 34,354 行。
+
+一覧：済み 84／全体 118（うち追加 83）
+
+
+### R06.2Ct — rightKanMovingIndex_transportApex
+親：R06。状態：紙のみ（pending）。依存：R06.2Cm・R06.2Ca。
+
+```lean
+∀ {J K C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    {δ : K ⟶ C} {O : K ⟶ D} {G : C ⟶ D} (α : SSet.Homotopy (δ ≫ G) O)
+    {v₀ v₁ : C _⦋0⦌} (e : C.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)
+    (t₀ : RightKanConeTransport δ O G α v₀) (t₁ : RightKanConeTransport δ O G α v₁),
+    let s := j₀ ≫ rightKanProjection δ v₀
+    ∀ (h₀ : j₀ ≫ rightKanDiagram δ O v₀ = s ≫ O)
+      (h₁ : j₁ ≫ rightKanDiagram δ O v₁ = s ≫ O),
+    let c := (restrictJoinCone t₀.cone j₀).cast h₀
+    let d := (restrictJoinCone t₁.cone j₁).cast h₁
+    let hc := (JoinCone.vertex_cast _ h₀).trans ((restrictJoinCone_vertex t₀.cone j₀).trans t₀.cone_vertex)
+    let hd := (JoinCone.vertex_cast _ h₁).trans ((restrictJoinCone_vertex t₁.cone j₁).trans t₁.cone_vertex)
+    ∀ (hl : IsLimitCone d)
+      (k : (HomotopyCategory.mk c : hoFunctor.obj (sliceOver (s ≫ O))) ⟶ HomotopyCategory.mk d),
+    Truncated.HomotopyCategory.homMk (e.map G).toTruncated =
+      eqToHom (congrArg HomotopyCategory.mk hc).symm ≫
+        (hoFunctor.map (sliceOverProjection (s ≫ O))).toFunctor.map k ≫
+          eqToHom (congrArg HomotopyCategory.mk hd)
+```
+
+素：210〜290行。係数2：420〜580行。
+
+同じ指定余単位による輸送を共通添字へ制限し、その極限錐の比較射の頂点を元の辺として回収する。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）と HTT 5.1.5.6 の指定局所比較。
+
+使う既存の宣言：
+
+- `rightKanMovingIndex_cosliceCounit` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean:54
+- `coneCounitAtApex_shapeRestriction` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:80
+- `cone_apex_eq_of_counit_fac` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:58
+- `rightKan_transport_counit_atApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:46
+
+一覧：済み 84／全体 119（うち追加 84）
+
+### 11-18：R06.2Ct の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Ct|203|210〜290|420〜580|4,004|8|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,354 から 34,557 行。
+
+一覧：済み 85／全体 119（うち追加 84）
+
+
+### R06.2Cg — weightedSections_nativeLimitIso_hom_transportGlobal
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2Ct。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
+    (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
+    (P : (PresheafCat C SpaceInfinity.{u}).op _⦋0⦌),
+    let a := fixedYonedaDomainIso C
+    let b := (SSet.opFunctor.mapIso (fixedPresheafShapeIso C)).symm
+    let O' := a.inv ≫ O
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let δ₀ := nativeSetShapeOppositeYoneda C
+    let hw := nativeSetShapeOppositeYoneda_square C
+    ∀ {G : (PresheafInfinity (nerve C)).op ⟶ E}
+      (α : SSet.Homotopy (δ ≫ G) O')
+      (hα : IsRightKanExtension δ O' G α)
+      (h : a.hom ≫ O' = O)
+      (t : RightKanConeTransport δ O' G α (b.hom.app (Opposite.op ⦋0⦌) P))
+      (ht : IsLimitCone t.cone),
+    let β := rightKanCounitIsoSquare a b hw α
+    let hβ := kanRightKanExtension_of_isoSquare a b hw α hα
+    let β' : SSet.Homotopy (δ₀ ≫ (b.hom ≫ G)) O := h ▸ β
+    let hβ' : IsRightKanExtension δ₀ O (b.hom ≫ G) β' := by
+      exact (show ∀ (O₀ O₁ : Presheaf C E) (hs : O₀ = O₁)
+        (g : SSet.Homotopy (δ₀ ≫ (b.hom ≫ G)) O₀),
+        IsRightKanExtension δ₀ O₀ (b.hom ≫ G) g →
+        IsRightKanExtension δ₀ O₁ (b.hom ≫ G) (hs ▸ g) from
+        fun _ _ hs _ hg => by cases hs; exact hg) _ _ h β hβ
+    (weightedSections_nativeLimitIso O hE P t.cone ht).hom =
+      functorHomEvaluate (weightedSections_nativeShape_comparison O hE β' hβ').hom P ≫
+        eqToHom (congrArg HomotopyCategory.mk t.cone_vertex).symm
+```
+
+素：190〜260行。係数2：380〜520行。
+
+元の右 Kan 輸送の極限頂点比較を、固定 Yoneda の形状同型を経由して大域比較の成分へ結ぶ。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定大域比較。
+
+使う既存の宣言：
+
+- `weightedSections_nativeShapeLimitIso_hom_eq_globalComparison` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitGlobalComparison.lean:80
+- `rightKanTransportIsoSquare_cone_val` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanShapeIsoData.lean:66
+- `limitVertexIso_hom_comp_diagramEq` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/DiagramEqLimitVertexComposition.lean:31
+
+一覧：済み 85／全体 120（うち追加 85）
+
+### 11-18：R06.2Cg の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cg|228|190〜260|380〜520|7,600|13|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,557 から 34,785 行。
+
+一覧：済み 86／全体 120（うち追加 85）
+
+
+### R06.2Cl — nativeLeftSectionsTransport_apexMap
+親：R06。状態：紙のみ（pending）。依存：R06.2Ct・R06.2M。
+
+```lean
+∀ {A : SSet.{u}} [Quasicategory A]
+    {P Q : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}}
+    {E : SSet.{u + 1}} [Quasicategory E]
+    (O : ((SSet.uliftFunctor.{u + 1, u}).obj A).op ⟶ E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let δ := SSet.opFunctor.map (yonedaInfinityMap A)
+    let v₀ := SSet.opObjEquiv.symm (functorVertex Q)
+    let v₁ := SSet.opObjEquiv.symm (functorVertex P)
+    ∀ (e : (PresheafInfinity A).op.Edge v₀ v₁)
+      (a : U.obj (smallLeftUnstraightening P) ⟶ U.obj (smallLeftUnstraightening Q)),
+    let j₀ := a ≫ leftElementsRightKanComparison Q
+    let j₁ := leftElementsRightKanComparison P
+    ∀ (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+      (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+        e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)
+      (h : a ≫ nativeLeftSectionsDiagram Q O = nativeLeftSectionsDiagram P O),
+    let c := nativeLeftSectionsTransportCone Q O hE
+    let d := nativeLeftSectionsTransportCone P O hE
+    let rc := (restrictJoinCone c a).cast h
+    let hc := ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex c a)).trans
+      (nativeLeftSectionsTransportCone_vertex Q O hE)
+    let hd := nativeLeftSectionsTransportCone_vertex P O hE
+    ∀ (k : (HomotopyCategory.mk rc : hoFunctor.obj (sliceOver (nativeLeftSectionsDiagram P O))) ⟶
+      HomotopyCategory.mk d),
+    Arrow.mk (Truncated.HomotopyCategory.homMk (e.map (nativeWeightedSections O hE)).toTruncated) =
+      Arrow.mk ((hoFunctor.map (sliceOverProjection (nativeLeftSectionsDiagram P O))).toFunctor.map k)
+```
+
+素：95〜140行。係数2：190〜280行。
+
+指定右 Kan 輸送を小さい left 全空間へ制限すると、元の比較錐の射に同じ頂点射が出る。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）、HTT 5.1.5.6 の指定局所極限。
+
+使う既存の宣言：
+
+- `rightKanMovingIndex_transportApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean:161
+- `nativeLeftSectionsTransportCone_vertex` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:54
+- `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
+
+一覧：済み 86／全体 121（うち追加 86）
+
+### 11-18：R06.2Cl の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cl|117|95〜140|190〜280|5,972|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,785 から 34,902 行。
+
+一覧：済み 87／全体 121（うち追加 86）
+
+### 11-18：R06 の実装前の照合
+
+終端の型は、台帳の R06.2 と R06 を正本とする。以下の射はすべて値域のホモトピー圏で考える。(W) は元の `weightedSections O hE`、(G) は係数を固定 Yoneda 始域の逆同型で移した `nativeWeightedSections`。(Z=P,Q) とし、(g_Z:W_Z\to G_Z) は同じ指定余単位から得た大域比較の成分。(C_Z) は `nativeLeftSectionsTransportCone` を元の係数の図式へ型移送した錐、(D_Z) は R06.2 の引数の錐、(\epsilon_Z:G_Z\to C_Z.\mathrm{vertex}) は頂点の等号による射、(\ell_Z:C_Z.\mathrm{vertex}\to D_Z.\mathrm{vertex}) は固定形状同型に沿う極限の比較とする。
+
+1. **添字と係数を固定する。** (p_Z=U(\pi_{N Z})\,;\,U(i.\mathrm{hom}))、(q_Z=U(\pi_Z))、(f_Z=U(\mathrm{baseIso}_Z)) と置く。射 (b:P_{\rm native}\to Q_{\rm native}) は (f_P\,;\,a\,;\,f_Q^{-1})。(b\,;\,f_Q=f_P\,;\,a)、(f_Z\,;\,q_Z=p_Z)、(a\,;\,q_Q=q_P) を明示する。係数の一致には `fixedYonedaDomainIso` の定義から `(uliftOppositeIso (nerve C)).hom ≫ (fixedYonedaDomainIso C).inv = U.map i.hom` を使う。これは同型の積の逆と `Iso.hom_inv_id_assoc` の計算。四角形補題の引数順は `p P, p Q, q P, q Q, b, a, (f P).hom, (f Q).hom, hb, ha, hfP, hfQ`。指定した四角形の同型は (b\,;\,f_Q=f_P\,;\,a) を相対関手の頂点へ移した等号から作る。
+2. **R06.2 の元の値を分解する。** (I_Z=(\texttt{weightedSections_originalLeftLimitIso}\;\ldots).\mathrm{hom}) に対し (I_Z=g_Z\,;\,\epsilon_Z\,;\,\ell_Z)。単体で検査済みの試作 `originalLeftLimitIso_hom_nativeRestriction` と既存の `weightedSections_nativeLimitIso_hom_transportGlobal` を接続する。中間の RightKanConeTransport の頂点を (t_Z) とすると、(t_Z\to G_Z) と (C_Z.\mathrm{vertex}\to G_Z) の等号が入る。補題の右辺を当てた後、連接する二つの `eqToHom` を `eqToHom_trans` でまとめ、逆向きの頂点等号を相殺する。大域比較の同じ成分 (g_Z) を共通に取り、比較全体を `rfl` に任せない。
+3. **R06.2 の二面を貼る。** (r) は元の辺、(c_P,c_Q) はその端点の正規化、(\nu:G_Q\to G_P) は native の辺、(k_0:D_Q.\mathrm{vertex}\to D_P.\mathrm{vertex}) は指定の錐の射を頂点へ写したもの。
+   - 第一面は `Arrow.mk (r ≫ cP ≫ gP) = Arrow.mk (gQ ≫ ν)`。端点を正規化した辺の比較 `homMk_transport` の後、`functorHomEvaluate_edge_naturality` と `nativeDiscreteEdge_opSimplex` を使う。
+   - 第二面は `Arrow.mk (ν ≫ εP ≫ ℓP) = Arrow.mk (εQ ≫ ℓQ ≫ k₀)`。移送前の錐の射を `nativeLeftSectionsTransport_apexMap` で同定し、係数の等号で slice 射を移す。移した射を `limitVertexIso_restrictionSquare` に入れる。この補題の等式は `ℓQ ≫ k₀ = normalizedSliceHom _ s ≫ ℓP` の向き。端点の `eqToHom` を除く操作は `Arrow.mk` の等式の中だけで行う。
+   - 両面を、引数の型が小さいカテゴリの結合則で合成する。最後は元の両辺が同じ始域と終域にあることを固定してから `Arrow.mk_injective` を適用し、`r ≫ cP ≫ IP = cQ ≫ IQ ≫ k₀` を得る。
+4. **R06 の終端は同じ錐で消去する。** (e_Z) を元の `weightedSections_discrete` の射、(d_Z) を `discreteSectionsLeftComparison` の射、(z_Z=c_Z\,;\,I_Z)、(m) を `sectionsOf_map` の類とする。R06.2 と R06.3 に渡す `h,dP,dQ,hdP,hdQ,k` を同じ局所名で固定する。R06.2 の帰結を、最初に同じ局所名 `r,cP,cQ,IP,IQ,k₀` の非再結合の式として取り出す。次に (r\,;\,z_P=z_Q\,;\,k_0)、(e_Z\,;\,d_Z=z_Z)（`weightedSections_discrete_hom_fac`）、(d_Q\,;\,k_0=m\,;\,d_P)（R06.3）を明示的に順につなぎ、右の (d_P) を消去する。試作で時間切れだった、R06.2 の適用と `Category.assoc` を一式で推論する形を避ける。
+
+|検証するまとまり|素の見込み|係数2の上端|
+|---|---:|---:|
+|値の分解（既存の試作を含む）|130〜150行|300行|
+|係数の一致・二面・R06.2 の合成|250〜325行|650行|
+|R06 の消去|80〜120行|240行|
+|合計|460〜595行|1,190行|
+
+現時点は累計34,902行。補正後の上端を足すと36,092行で、外枠36,138行との差は46行。これは試作とログからの見込みであり、二面の接続と終端の型検査は未検証。編集再開時は上の順に各まとまりを検証し、予定の上端を増やす必要が出たら次のまとまりに入る前に再計算する。計算上限と終端の型・仮定は従来どおり。今回は紙のみ。
+
+一覧：済み 87／全体 121（うち追加 86）
+
+
+### R06.2Cf — originalLeftLimitIso_hom_nativeRestriction
+親：R06。状態：紙のみ（pending）。依存：R06.2Cg。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E]
+    (O : Presheaf C E)
+    (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
+    (F : Presheaf C SpaceInfinity.{u}),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let P := U.map b.hom ≫ F
+    let O' := (fixedYonedaDomainIso C).inv ≫ O
+    let f := U.mapIso (smallLeftUnstraighteningBaseIso b F)
+    let p := U.map (smallLeftUnstraighteningProjection P) ≫ U.map b.hom
+    let q := U.map (smallLeftUnstraighteningProjection F)
+    let v := SSet.opObjEquiv.symm (functorVertex P)
+    let t := nativeWeightedSections_valueTransport O' hE v
+    let ht := nativeWeightedSections_valueTransport_isLimit O' hE v
+    let hc := nativeLeftSectionsTransportCone_isLimit P O' hE
+    let c := nativeLeftSectionsTransportCone P O' hE
+    ∀ (hp : p ≫ O = nativeLeftSectionsDiagram P O')
+      (hf : f.hom ≫ q = p) (d : JoinCone (q ≫ O)) (hd : IsLimitCone d),
+    let c' := c.cast hp.symm
+    (weightedSections_originalLeftLimitIso O hE F d hd).hom =
+      (weightedSections_nativeLimitIso O hE (SSet.opObjEquiv.symm (functorVertex F)) t.cone ht).hom ≫
+        eqToHom (congrArg HomotopyCategory.mk (t.cone_vertex.trans
+          ((JoinCone.vertex_cast c hp.symm).trans (nativeLeftSectionsTransportCone_vertex P O' hE)).symm)) ≫
+        (limitVertexIsoOfOverEquivalence f.hom (isPrecompositionEquivalence_of_iso f).isQCatEquivalence
+          hf O c' d (hc.cast hp.symm) hd).hom
+```
+
+素：130〜150行。係数2：260〜300行。
+
+元の指定した極限値の比較を、native の値の頂点移送と固定形状同型に沿う制限に分解する。
+
+原典：HTT 5.1.5.6（双対）、指定した右 Kan 拡張の値の比較。
+
+使う既存の宣言：
+
+- `weightedSections_originalLeftLimitIso_hom_comp` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean:32
+- `nativeLeftSectionsValueIso_hom_transportCone` @ SerrePositivity/InfinityCategories/Sheaves/NativeLeftSectionsTransportCone.lean:77
+- `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
+
+一覧：済み 87／全体 122（うち追加 87）
+
+### 11-18：R06.2Cf の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Cf|154|130〜150|260〜300|7,614|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,902 から 35,056 行。
+
+一覧：済み 88／全体 122（うち追加 87）
+
+### 11-18：R06.2・R06 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2|280|250〜325|500〜650|7,663|6|
+|R06|91|80〜120|160〜240|7,672|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,056 から 35,427 行。
+
+一覧：済み 90／全体 122（うち追加 87）
+
+R06 は完了。指定した錐を共通に使い、二面を合成してから比較同型を消去した。R06.2 と R06 の主張・仮定は台帳どおり。型照合の一時ファイルでは、元の HTT の `IsPresentable` を完全修飾して `let` 後の字下げを明示した。計算上限は従来どおり。両宣言に HTT 5.1.5.6 の特殊化の属性を付けた。
+
+この R06 の実装は計525行（154＋280＋91）。直前の紙の素の見込みは460〜595行、補正上端は1,190行。累計35,427行、外枠36,138行まで711行。14の最終署名のうち R04・R05・R06 が済み、残りは11。次は R08。旧 R2 の未追跡4本はそのまま。
+
+一覧：済み 90／全体 122（うち追加 87）
+
+### 11-18：R08 と R09-Cech の実装前の照合
+
+**R08.1 → R08。** (j) は反対・宇宙変更・nerve の頂点同値で (j_0:\mathrm{AsSmall}(\Delta^{op})) に戻す。(\phi_j=(\mathrm{relativeCechDiagonal}\ f).\mathrm{app}\ j_0:P\to D_j)。元の `weightedSections_relativeCechDiagonalHom` を (\theta)、(\phi_j) の離散 nerve の辺を元の切断関手で反変に読んだ類を (r_j) と置く。
+
+1. 必要な成分式は `Arrow.mk (functorHomEvaluate θ j) = Arrow.mk r_j`。元の対角のホモトピーに `discreteRelativeCechDiagonalHomotopy_component` を適用し、`kanHomotopyOpposite_vertex_edge` と後合成の頂点評価で同じ一次単体を得る。定値図式の端点の型移送は、定値図式の等号で一般化してから消去する。既存の `WeightedSectionsCechConePrism.lean:174` の計算は private なので、ここでは公開の評価則で同じ計算を局所的に行う。
+2. `sectionsOfDiagram_hasLimit` を (P,D_j) に適用する。(e_Z=(\texttt{weightedSections_discrete}\ \ldots\ Z).\mathrm{hom})、(m_j=[\mathrm{sectionsOf\_map}(\phi_j)]) とすると R06 は (r_j\,;\,e_P=e_{D_j}\,;\,m_j)。`relativeCechDiagonal_sections_isInvertible` が同じ (m_j) の可逆性を与える。右辺の合成が可逆なので `isIso_comp_right_iff` で (r_j) が可逆。先の `Arrow.mk` の等号で可逆性を (\theta_j) に移す。
+3. 全体の R08 は `functorHom_isIso_of_components` に R08.1 を入れる。`functorHomEvaluate` の両端を移す `eqToHom` は同型なので、成分の可逆性から生の評価関手で写した類の可逆性が出る。
+
+**R09-Cech.2 → R09-Cech。** (H) を両極限錐 (A,d) の間の実円柱とし、(e_H) を対応する関手圏の辺とする。元の制限 `coneRestriction` で写した (e_H) の類を、`functorHomotopyPrecomp_hom` と図式面 (h_D) から `Arrow.mk` の等号で同じ対角 (\theta) に照合する。R08 を (g=\mathrm{toRange}\ f) に適用してこの制限辺を可逆とする。両錐の極限性を `terminalBoundaryLifting_coneRestriction_of_isLimitCone` に入れ、`isInvertibleEdge_of_terminalBoundaries` で同じ (e_H) の可逆性を得る。頂点評価は可逆性を保ち、頂点面 (h_V) で得る一次単体は指定した (\rho) の辺。最後は R09-Cech.1 の (H,\rho) をそのまま入れ、`cechConstantCone_isLimit` と同じ頂点辺の HEq を使って元の `toRange` の辺へ戻す。新しい比較を選び直さない。
+
+使う宣言の所在は台帳の既存欄に加え、`Kerodon/LargeInfinityCategories/PresentableInfinityCategories/FullyFaithfulHomComparison.lean:26`、`Project/LocalizationAndKanExtensionAuxiliaries/Quasicategory/RelativeBoundaryInvertibility.lean:48`（いずれも `SerrePositivity/InfinityCategories/` 内）。主張・仮定は台帳どおり。R08 の補正上端は310行、R09-Cech の補正上端は330行。現在の累計35,427行から両組を足した上端は36,067行。R08 の実測後に R09-Cech の着手可否を再計算する。
+
+一覧：済み 90／全体 122（うち追加 87）
+
+### 11-18：R08.1・R08 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R08.1|134|80〜120|160〜240|10,745|7|
+|R08|44|15〜35|30〜70|10,746|3|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,427 から 35,605 行。
+
+一覧：済み 92／全体 122（うち追加 87）
+
+### 11-18：R09 の実装前の照合
+
+R09-Cech が通った後の二署名を先に型に沿って確認する。R09.2 は `space_isPresentable` を、元の重み付き切断と R06 の両方に入れる。(g=\mathrm{toRange}(f))、(R=\mathrm{range}(f))、(m=[\mathrm{sectionsOf\_map}\ g\ O\ h_P\ h_R]) と置く。R06 の式 (r\,;\,e_P=e_R\,;\,m) の左辺は R09-Cech と値比較 (e_P) で可逆なので、`isIso_comp_left_iff` で同じ (m) が可逆。(h_P,h_R) は署名の引数をそのまま使う。
+
+R09 は `isLocalEquivSet_iff_locallyBijective` で元の (\varphi) の局所単射・局所全射を得る。像 (R) には `sectionsOfDiagram_hasLimit space_isPresentable` を一度使う。(g:P\to R) には R09.2、(i:R\to Q) には `rangeInclusion_isLocallySurjective` と `sections_localMono_iso` を適用し、双方に同じ (h_R) を渡す。`Subfunctor.toRange_ι` と `sectionsOf_map_comp_hom` から ([\mathrm{sectionsOf\_map}\ \varphi]=[\mathrm{sectionsOf\_map}\ i]\,;\,[\mathrm{sectionsOf\_map}\ g]) を得る。両因子が可逆なので、元の辺も可逆。
+
+依存は R09.2 が R06・R09-Cech、R09 が R09.1・R09.2。型・仮定と見込みは台帳どおり。R09 組の補正上端は240行で、R09-Cech の実測を計上してから着手を判定する。
+
+一覧：済み 92／全体 122（うち追加 87）
+
+### 11-18：R09-Cech.2・R09-Cech の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R09-Cech.2|125|70〜120|140〜240|10,753|2|
+|R09-Cech|85|25〜45|50〜90|10,755|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,605 から 35,815 行。
+
+一覧：済み 94／全体 122（うち追加 87）
+
+### 11-18：R09.2・R09 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R09.2|59|40〜70|80〜140|10,756|4|
+|R09|61|25〜50|50〜100|10,760|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,815 から 35,935 行。
+
+一覧：済み 96／全体 122（うち追加 87）
+
+### 11-18：R09 完了、外枠での区切り
+
+R08・R09-Cech・R09 が完了。今回の追加は508行（178＋210＋120）。台帳での素の見込みは合計255〜440行だった。指定円柱と元の辺の二端を明示する等式、モジュールを分けた際のヘッダーが見込みを超えた。補正後の見込みの上端880行の内に収まった。終端の型・仮定と計算上限は同じ。主な各宣言に HTT 6.2.2.6 の特殊化の属性を付け、各型の代入検査・対象ビルド・小監査を実施した。
+
+累計35,935行、外枠36,138行まで203行。次の R12a.2 から始めるには、補正上端260行で累計36,195行になる。R12a.2・R12a・R12b の組では補正上端380行、累計36,315行。したがって R12 の Lean に入る前に区切る。
+
+引き継ぎ。最終署名は R04・R05・R06・R08・R09-Cech・R09 の6済み。残る8署名は R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。今回の範囲の未完の補題は14件で、台帳の補正後見込みは1,000〜1,840行。別停止点の Coverage（R16・R17）はこの数に含めない。旧 R2 の未追跡4本には触れておらず、今回分の未コミットの Lean はない。
+
+一覧：済み 96／全体 122（うち追加 87）
+
+### 11-18：R12 の実装前の照合
+
+ユーザーの指示により今回は外枠での着手判定を外す。実測の計上、台帳の終端の型・仮定、対象ビルドと小監査は従来どおり。R16・R17 は別停止点のまま。
+
+1. (D=\mathrm{AsSmall}^{u+1}(C))、(K=\mathrm{AsSmall.down}^*J)、(F=(\mathrm{asSmallSiteShapeIso}\ C)^{-1};O)、(Y=\mathrm{covariantRepresentableInfinity}(x))、(G=U(F);Y)。`isSheaf_asSmall_inducedTopology_iff` に (F) を入れ、`Iso.hom_inv_id_assoc` で左辺を元の (O) に戻す。`NativeIsSheaf.covariantRepresentable` で (G) の層条件を得る。(a=\mathrm{siteLiftPresheafMap}(\varphi)) の局所同値は `isLocalEquivSet_siteLift`。
+2. (P'=\mathrm{siteLiftPresheaf}(P))、(Q'=\mathrm{siteLiftPresheaf}(Q))。`space_isPresentable` から (G) に対する両極限を供給し、R09 と `sectionsMap_isInvertible_iff` で、選んだ (Q') の極限錐 (c_Q) を (a) に沿って制限した錐が極限となる。一方、引数の錐 (c) を site の同型・表現可能関手で送った錐 (t) も、`siteLiftSectionsCone_isLimit_iff` と `covariantRepresentableInfinity_isLimit` により極限。(t\simeq c_Q) を `limitConeIso` で得て、`sliceOverRestrict` のホモトピー圏の作用で写す。`isLimitCone_iff_of_vertexIso` を適用し、`isLimitCone_iff_of_cone_val_eq` の二回の型移送で `restrictSectionsCone a G t` の極限性を得る。証明の形は `sieveRestrictCone_isLimit_iff` の前半と同じ。
+3. (s=\mathrm{restrictSectionsCone}(\varphi,O,c))、(f=(\mathrm{siteLiftElementsShapeIso}\ P)^{-1})、(v=Y_*U(s))。R12a.1 により前項の錐の全射は (Y_*U(\mathrm{siteLiftSectionsCone}(P,O,s))) の全射に等しい。後者は `ulift_restrictJoinCone_val` と結合則により `restrictJoinCone v (U.map f)` の全射に等しい。`siteLiftSectionsCone` の cast は全射を変えない。`isLimitCone_iff_of_cone_val_eq` で制限錐へ移し、`isLimitCone_iff_restrict_equivalentShape` を (U(f)) の指定同型に適用して (v) を極限とする。ここまでが R12a.2。
+4. 全 (x) に対する R12a.2 を `isLimitCone_of_covariantRepresentableInfinity` へ入れると R12a。R12b では元の (h_P,h_Q) から得た両 `sectionsOfCone` とその極限性を `sectionsMap_isInvertible_iff` に入れ、R12a で元の指定辺の可逆性を得る。
+
+使う追加の既存宣言は `AsSmallSiteInvariance.lean:57`、`SieveSectionsCriterion.lean:122`、`Project/HomotopyDiagramComparison/SpecifiedCocones/UniverseConeRestriction.lean:42`（いずれも `SerrePositivity/InfinityCategories/` 内）。型は台帳どおり。
+
+一覧：済み 96／全体 122（うち追加 87）
+
+### 11-18：R13b・R14 の実装前の照合
+
+- **R13b**。元の空間値層 (O) と (P,Q) に対し、`sectionsOfDiagram_hasLimit space_isPresentable` から (h_P,h_Q) を固定する。同じ (\varphi,O,h_P,h_Q) を R09 と R13b.1 に入れ、R09 の `IsInvertibleEdge` を R13b.1 の逆向きで `IsLocalForHom (discretePresheafHom φ) (functorVertex O)` へ移す。
+- **R14.1**。(r=\mathrm{Classical.choice}(h_J))、(f=\mathrm{discretePresheafHom}(\varphi))。`reflective_isIso_map_iff_localHom r f` の逆向きを使う。局所頂点 (z) の係数を (O=\mathrm{vertexToPresheaf}(z)) と置く。`r.IsLocal z` は `sheafProperty J z`、すなわちこの (O) の層条件。同じ頂点に戻る等号は `functorVertexEquiv.apply_symm_apply`。これで R13b を (z) に適用する。
+- **R14**。R14.1 の同型を包含関手で写し、`Functor.map_comp` により `sheafificationFunctor J hJ` の作用と読む。`discretePresheafHom_eq_normalized` を用い、その作用の両端の `eqToHom` を `Functor.map_eqToHom` と同型の合成の判定で外す。残った元の辺の作用を `SSet.mapHomotopyCategory_map_homMk` で書き、`Edge.map` の合成で署名の辺に戻す。
+
+使う宣言は台帳の記載に加え、`Sheaves/DiscretePresheafHom.lean:36`、`Sheaves/Sheafify.lean:22`、`Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:603`。依存は R13b が R09・R13b.1、R14.1 が R13b、R14 が R14.1。どの段階でも (h_J) が指定した反射を使う。
+
+一覧：済み 96／全体 122（うち追加 87）
+
+R14.1 の局所頂点の照合を明示する。`r.IsLocal z` は単位成分の可逆性。層条件は `r.localization_mem z` から反射先で得る。単位成分の `asIso` と `sheafProperty_iff_of_vertexIso` で元の (z) に移した後、R13b を適用する。
+
+### 11-18：R15 の実装前の照合
+
+(X=\mathrm{PresheafCat}\ C\ \mathrm{SpaceInfinity})、(L=\mathrm{sheafificationFunctor}\ J\ h_J)、(A=(\mathrm{discretePresheafInclusion}\ C).\mathrm{val})、(T=\mathrm{nerveMap}(S);A)。(u=(\mathrm{Classical.choice}\ h_J).\mathrm{unit})、(u_B=\mathrm{functorHomPrecomp}(1,L,B,u))、(L_*\) は `functorHomPostcomp` とする。
+
+- **R15-Unit.4 と R15-Unit**。(η) は既存の `discreteSheafificationUnitHom`、実円柱 (H) は `ordinarySheafificationUnit_postHomotopy`。全可逆性は `functorHomPostcomp_homotopy_isIso_of_pointwise` に帰着する。各頂点は `nerveEquiv` で (P) と読む。R15-Unit.2 の単体の等式を (L) で写し、R14 を `isLocalEquivSet_toSheafify J P` に入れて同じ辺の可逆性を得る。存在型の成分式では、R15-Unit.2 と `functorHomEvaluate_homotopy` で同じ辺の類を取り、`discretePresheafHom_eq_normalized` の二つの端点移送を相殺する。
+- **R15a.1**。(T(P)) の層条件は通常の層化の値と `isSheaf_discretePresheaf_iff`。従って (u_T:T\to T;L) は全成分可逆。反射の全単位の交換則 `functorHom_whisker_exchange_typed` と `functorHom_postcomp_id` から (η;u_T=u_A;L_*η)。ここで (m=(L_*η);u_T^{-1}) とすれば (u_A;m=η)。点別の mate を組み立てる必要はない。
+- **R15a.2**。署名が与える任意の (m) について、(L_*u_A;L_*m=L_*η)。(L_*u_A) は `unit_postcompLeft_isIso` の反射での単位の像を包含で後合成し、さらに (A) で前合成したもの。二つの whisker の交換には `functorHomPrecomp_postcomp` を使う。(L_*m) が可逆になったら、(u_{A;L})（反射像の所属は `localization_mem`）と (u_T) の全同型、および (m;u_T=u_{A;L};L_*m) から (m) の可逆性を得る。
+- **R15a、R15a.3**。(η) を R15-Unit.3 に固定し、R15a.1 の (u_A;m=η) を満たす全射を一度選ぶ。同じ射を R15a.2 で `asIso` にし、単位の式はその選択の仕様から読む。
+- **R15b、R15c**。(P) で評価する。(h_1:A(P)=\mathrm{functorVertex}(P_{\rm disc}))、(h_2:T(P)=\mathrm{functorVertex}(S(P)_{\rm disc}))、(h_3:\mathrm{functorVertex}(\mathrm{sheafify}(P_{\rm disc}))=L(\mathrm{functorVertex}(P_{\rm disc})))。R15b の順射は `eqToHom h₃ ≫ eqToHom (L(h₁)⁻¹) ≫ m_P ≫ eqToHom h₂`（各頂点等式は `HomotopyCategory.mk` で写してから用いる）。R15c では `sheafifyUnitHom` の (h_3^{-1}) と (h_3) を相殺し、(u) の (h_1) に沿う自然性から正規化前の (u_{A(P)};m_P=η_P) に戻す。R15-Unit の指定成分を入れ、残る (h_1,h_2) を相殺する。
+
+使う全射の法則は `Project/DerivedCategories/Tensor/FunctorHomTypedWhiskerAlgebra.lean`、反射した単位の可逆性は `Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveUnitInvertible.lean:76`（いずれも `SerrePositivity/InfinityCategories/` 内）。終端の型は台帳どおり。
+
+### 11-18：R12a.2・R12a・R12b・R13b・R14.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R12a.2|142|80〜130|160〜260|10,806|6|
+|R12a|52|15〜35|30〜70|10,807|1|
+|R12b|54|10〜25|20〜50|10,808|1|
+|R13b|46|15〜30|30〜60|10,762|1|
+|R14.1|56|50〜90|100〜180|10,765|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,935 から 36,285 行。
+
+一覧：済み 101／全体 122（うち追加 87）
+
+### 11-18：R14 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R14|59|20〜40|40〜80|10,766|4|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 36,285 から 36,344 行。
+
+一覧：済み 102／全体 122（うち追加 87）
+
+### 11-18：R15-Unit.4・R15-Unit の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R15-Unit.4|65|35〜65|70〜130|10,776|1|
+|R15-Unit|97|15〜30|30〜60|10,777|4|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 36,344 から 36,506 行。
+
+一覧：済み 104／全体 122（うち追加 87）
+
+### 11-18：R15a.1・R15a.2 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R15a.1|136|80〜140|160〜280|10,820|5|
+|R15a.2|114|60〜110|120〜220|10,821|5|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 36,506 から 36,756 行。
+
+一覧：済み 106／全体 122（うち追加 87）
+
+### 11-18：R15a・R15a.3 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R15a|65|20〜35|40〜70|10,822|6|
+|R15a.3|50|40〜70|80〜140|10,823|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 36,756 から 36,871 行。
+
+一覧：済み 108／全体 122（うち追加 87）
+
+### 11-18：R15b・R15c の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R15b|65|20〜40|40〜80|10,824|9|
+|R15c|95|40〜80|80〜160|10,825|3|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 36,871 から 37,031 行。
+
+一覧：済み 110／全体 122（うち追加 87）
+
+### 11-18：R15c 完了、14 最終署名の停止点
+
+今回の区切りは R15c。元の全関手同型の同じ mate を各前層で評価し、指定された反射単位が Mathlib の通常層化の単位に写ることを確かめた。R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c が済み。R04・R05・R06・R08・R09-Cech・R09 と合わせて、今回の範囲の14最終署名と台帳の途中の補題をすべて検証した。
+
+今回の追加は1,096行（35,935→37,031）。前の停止点での見込みは素500〜920行、補正1,000〜1,840行。再添字・端点の移送と計算上限を保つ証明の分割により、素の上端を176行上回った。補正後の範囲に収まった。36,138行の外枠には今回のユーザー承認の例外を適用し、実測はすべて計上した。
+
+終端の主張・仮定と計算上限は従来どおり。主な宣言に HTT の特殊化の属性を付け、対象ビルド、台帳型の代入、小監査を実施した。R12a.2 の紙の型の `let` の区切りだけを明示した。対象ビルドの警告は行長・未使用の束縛などで、小監査は標準三公理のみ。
+
+引き継ぎ。次の停止点に残るのは一般の Coverage の R16・R17 とその途中の補題、計12件。R16.4〜6 の証明の筋は着手前に紙で確認する。旧 R2 の未追跡4本はそのまま。今回分の未コミットのファイルはない。
+
+一覧：済み 110／全体 122（うち追加 87）
+
+### 11-18：一般の Coverage の実装前の照合（R16・R17）
+
+$B=\mathrm{Sieve.generate}(R)\le S$。R16.1 は `Over U` の対象と射をそのまま使う包含、R16.2 はその包含に沿う `sieveCone S` の制限の等式。R16.3 は各 $t\in S$ について `Coverage.pullback t.obj.hom` の細分 $T_t$ と `coverageRefinement_generate_le` を使い、`hF` の極限錐を一緒に返す。選んだ $T_t$ を函手の値とはしない。
+
+R16.4〜6 の指定の射を `p := pinchedHomMap r c d` とする。既存の `trivialKanFibration_exists_section` と `qCatEquivalenceOfTrivialKanFibration` に渡せる入力は、次の全パラメータでの持ち上げである。
+
+```lean
+∀ n : ℕ, HasLiftingProperty (SSet.boundary n).ι (pinchedHomMap r c d)
+```
+
+この入力を証明する経路なら、逆射は一つの同値の `inv` として固定される。R16.5 はその単位のホモトピー代表、R16.6 は同じ右逆の等式から定値ホモトピーを得る。逆射とその二つの法則を独立に選ばない。弱同値を既存の写像空間の判定から得る経路でも、同じ元の `p` に対する一つのホモトピー同値から三署名を取り出す必要がある。
+
+不足しているのは $T_t$ の局所極限から、この指定境界の全体に対する解を作る段階。任意の $t$ で $B_t=B.\mathrm{pullback}(t.\mathrm{obj.hom})$ 上の値が分かれば、包含の右 Kan の局所極限判定に渡す筋はある。ただし `IsLimitCone (nativeRestrictionCone F B_t)` は R16.9 そのもので、R16.4 へ入力すると循環する。元の細分の結論 `Sieve.generate T_t ≤ B_t` は共終性を含まない。Fiorenza–Schreiber–Stasheff, [Theorem A.1 と Lemma A.1](https://arxiv.org/pdf/1011.4735#page=85) の局所化の筋も確認した。補うべき箇所は、表現可能前層の合併に向かう貼り合わせが任意の交叉・重なりを含めてホモトピー押し出しを計算すること。局所細分それぞれにある因子分解から、その貼り合わせを仮定することはできない。本体に同じ全境界の補題は見つかっていない。R16.4〜6 の既存見積もりはこの補題を確立できるまで保留する。
+
+R16.7 は二つのホモトピーから元の `pinchedHomMap` を同値とし、R16.8 は指定の $B$ の極限錐の終性を充満忠実な `r` で反映する。R16.9 は引き戻しの細分の包含に R16.8 を適用する。R16 は係数と同じ宇宙の `AsSmall` site に移してから指定全錐で戻す。R17.1 と R17 は全引き戻しの降下を `isSheaf_toGrothendieck_iff_universallyDescending` に渡す。循環を避けるため、先に独立な R16.1〜3 を検証する。
+
+一覧：済み 110／全体 122（うち追加 87）
+
+貼り合わせの不足は三点の鎖 $0<1<2$ でも見える。各対象の基本被覆を $0\to i$ の一本とし、$B=\langle0\to2\rangle$、$S=\top$ とする。$S\setminus B$ の二つの射 $1\to2,2\to2$ はどちらも $0$ からの細分を持つ。しかし、それぞれの表現可能前層を、その細分の生成篩だけを使って $B$ に貼った押し出しを対象 $1$ で評価すると、二つの点が残る。(S$1$) は一点。従ってこの押し出しを $S$ と同一視する段階は、細分の選択だけでは成立しない。この例は Coverage の結論への反例ではなく、指定された貼り合わせの計算に欠けている重なりを示す。
+
+### 11-18：R16.1・R16.2・R16.3 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R16.1|36|20〜40|40〜80|7,252|4|
+|R16.2|35|30〜55|60〜110|7,253|1|
+|R16.3|43|30〜55|60〜110|10,278|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 37,031 から 37,145 行。
+
+一覧：済み 113／全体 122（うち追加 87）
+
+### 11-18：R16.1〜3 の区切りと引き継ぎ
+
+篩の包含・指定錐の制限・引き戻しの局所細分を、台帳の型のまま検証した。今回の3署名は素の見込み80〜150行。R16.4〜R17 の9署名は未完で、芯は R16.4 の全境界持ち上げ。R16.5〜6 は、この持ち上げまたは別途示した同じ制限射の空間の同値性から一つの逆とその法則を取り出す。出典の押し出しの読み方に対する三点の鎖の検算は前節。必要な重なりを扱う全族の構成は、既存の構成の計算法則の追加ではないため、ここを区切りとする。今回分の未コミット変更はなく、旧 R2 の未追跡4本はそのまま。
+
+一覧：済み 113／全体 122（うち追加 87）
+
+### 11-18：Coverage の残り9署名の証明計画
+
+対象は台帳の R16.4〜R16.9・R16・R17.1・R17。以下の `B` は `Sieve.generate R`、`i` は台帳の篩包含の反対 nerve、`r` は同じ `sliceOverRestrict (nativeRestriction F S) i`。すべて既存の署名と仮定のままで考える。
+
+#### 先に解く数学
+
+各 `f : V ⟶ U` について、次の**指定錐**が極限であることを、R16.4〜8 を使わずに示せれば、以下の Kan 延長経路を始められる。左辺の基本被覆の仮定は台帳と同じである。
+
+```lean
+(hF : ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+  IsLimitCone (nativeRestrictionCone F (Sieve.generate R)))
+(R : Presieve U) (hR : R ∈ K.coverings U) (f : V ⟶ U) ⊢
+  IsLimitCone (nativeRestrictionCone F ((Sieve.generate R).pullback f))
+```
+
+これは数学的には R16.9 の型そのもの。実装順を R16.4 から始めるなら、同じ内容を独立の証明で供給するか、下記の右 Kan 延長を経由せず制限射の写像空間の同値性を直接証明する必要がある。既存の `coverageLocalRefinement_for_generatedSieve`（`Sheaves/CoverageNativeLocalRefinement.lean:29`）は、対象ごとに基本細分とその極限錐を返す。どの細分も実際の引き戻し篩への包含に沿って共終とは限らず、細分どうしの重なりの降下や、全単体で整合する選択はこの型からは取り出せない。
+
+独立の証明を探すなら、まず空間値に落とす。任意の試験頂点 x からの表現可能前層で同じ錐を評価し、`isLimitCone_iff_representablePresheafInfinity`（`Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RepresentablePresheafLimitDetection.lean:55`。係数を E の反対で特殊化）で最後に戻す。空間値での証明義務は次の形になる。
+
+- 空間値前層圏で、各基本 R の離散生成篩から離散表現可能への射 m(R) を取る。篩の要素圏で表現可能を余極限に取る表示では、対象 W での元 s ごとに、各分解 s = g ≫ b を対象、分解間の可換三角形を射とする圏は (s, 𝟙 W) を初対象に持つ。従って同じ m(R) に沿う写像空間の制限が、台帳の指定錐の比較に当たる。
+- m(R) 全体の強飽和類に、各 f に対する **実際の** 基底変換 f* m(R) が入ることを証明する。得られれば、すべての m(R) に局所な空間値前層がこれらの基底変換にも局所になり、直前の検出補題で指定錐に戻る。この包含は現在未証明。R16.3 が与えるのは、f* m(R) の定義域への基本生成篩からの包含である。
+- 細分を貼る経路で確認すべき式も明確にできる。V 上の基本細分の表現可能を加える写像を P → f*B として、重なり P ×_(f*B) ⋯ ×_(f*B) を含む増大 Čech 図式を取る場合、(i) 増大が f*B を余極限として表示することと、(ii) その余極限から y(V) への比較が基本 m(R) の強飽和類に属することが両方必要。(i) だけでは (ii) は出ない。前節の三点の鎖は、重なりを選んだ基本細分だけに置き換える押し出しが (i) で既に失敗しうる例である。[Fiorenza–Schreiber–Stasheff, Lemma A.1](https://arxiv.org/pdf/1011.4735#page=85)
+
+照合用の特殊場合として、引き戻した生成篩が毎回**ある基本被覆の生成篩と等しい**なら、上の極限性は `hF` をその基本被覆へ適用し、篩の等式で移送するだけで得られる。Mathlib の `Coverage.pullback` が返すのは `FactorsThruAlong` で、この等式は入っていない。厳密に引き戻しで閉じた篩族での生成位相の判定と、この弱い条件の差については Hoyois の Fact 2 とその末尾も参照。どちらの条件を用いるかで台帳の一般性が変わるので、特殊場合を終端の型に入れない。現時点で一般型への反例は確認していない。[Hoyois, Fact 2](https://mathoverflow.net/questions/428240/proof-without-sieves-equivalent-grothendieck-topologies-have-the-same-sheaves)
+
+#### 9署名ごとの手順
+
+**R16.4（coverageConeRestriction_homInverse）**。上の独立入力を得た場合、B の反対篩圏から S の反対篩圏への充満包含に沿う、指定制限図式の点ごとの右 Kan 判定を使う。対象 t ∈ S での右 Kan コンマ圏の対象は、B の射 b と t から b への反対篩圏の射。通常圏の向きに戻すと b = g ≫ t という因子分解であり、射も同じ因子分解の可換三角形。従ってこのコンマ圏を `(sieveCategory (B.pullback t.obj.hom))ᵒᵖ` と照合する。照合は頂点 t だけでなく可換三角形を保ち、点ごとの右 Kan 錐の全射を `nativeRestrictionCone F (B.pullback t.obj.hom)` と合わせる。
+
+錐全体に広げるには、両方の篩圏の反対に初対象 a を一つずつ加える。拡げた包含 j は充満である。右 Kan の添字は t では先のコンマ圏のまま。t から a への射はない。a では a の恒等射がコンマ圏の初対象なので、任意の錐 c の a での右 Kan 条件は自動。よって各 c を同じ j に沿う右 Kan 拡張として扱える。[Kerodon §7.3](https://kerodon.net/tag/02Y1)
+
+次に、基底図式を固定した制限で同じ充満忠実性を取り出す。比較の正方形は、上段が j に沿う右 Kan 拡張の制限、下段が篩圏上の同じ右 Kan 拡張の制限、縦辺が a を忘れる写像。下段も充満忠実なので、固定された基底図式に向かう二つの端点間の写像空間のファイバーを取り、上段・下段の同値からファイバーの同値を得る。固定ファイバーは join の錐と比較し、その比較が i での制限と可換であることを示す。ここで実装時に照合すべき対象は、元の r 上の `pinchedHomMap r c d`。一般の右 Kan 制限の全忠実性には `kanRelativeRightKanRestriction_isFullyFaithful`（`Kerodon/LimitsAndColimits/KanExtensions/RelativeRightRestrictionTheorem.lean:71`）がある。この入出力と錐の固定ファイバーとの同定は別に必要で、同補題を r に直接適用できるわけではない。
+
+最後は元の p = `pinchedHomMap r c d` の `IsSimplicialHomotopyEquivalence p` を一つ証明する。Kan 複体間の準圏同値で得たときは `IsQCatEquivalence.isSimplicialHomotopyEquivalence`（`FunctorHomotopy.lean:125`）で変換する。同じ存在から `Classical.choose` で逆射 g を固定する。この p での証明を介するので、点ごとの選択を関手化する工程は生じない。
+
+**R16.5（coverageConeRestriction_homInverse_left）**。R16.4 の g を選んだ**同じ**存在命題の `Classical.choose_spec` の第1成分を用いる。得る式は `Nonempty (SSet.Homotopy (p ≫ g) (𝟙 _))`。定義の選択を開く補題は g とその性質を結ぶ一箇所に置く。
+
+**R16.6（coverageConeRestriction_homInverse_right）**。同じ `choose_spec` の第2成分を用いる。得る式は `Nonempty (SSet.Homotopy (g ≫ p) (𝟙 _))`。`IsSimplicialHomotopyEquivalence` の成分の向きは `SimplicialHomotopyEquivalence.lean:52` で確認した。
+
+**R16.7（coverageConeRestriction_isFullyFaithful）**。`IsFullyFaithful`（`FullyFaithful.lean:30`）を展開して c・d を任意に取り、R16.4 の g、R16.5、R16.6 をこの順に組にする。結論は元の r についてで、別の錐の模型の充満忠実性だけでは閉じない。
+
+**R16.8（coverageGeneratedSieve_upward_isLimit）**。c を S 上の指定錐とする。`coverageGeneratedSieveInclusion_cone`（`Sheaves/CoverageGeneratedSieveCone.lean:28`）を nerve に上げ、`nerveCone_whisker` と後合成 F で `r.app _ c` の `val` が B 上の指定錐の `val` と一致することを示す。必要なら制限図式の等式に沿って移送してから `isLimitCone_iff_of_cone_val_eq` を使う。`hF U R hR` により像は終対象。R16.7 と `IsFullyFaithful.reflects_isTerminalVertex`（`EquivalenceTerminal.lean:114`）で c の終性を反映する。
+
+**R16.9（coverage_basis_pullback_native_isLimit）**。通常の台帳順で R16.8 が独立に得られた場合は、`K.pullback f R hR` から T とその基本被覆性・因子分解を取り、`coverageRefinement_generate_le`（`Sheaves/CoveragePullbackRefinement.lean:20`）から `Sieve.generate T ≤ B.pullback f` を得る。V 上の基本被覆 T と大きい篩 `B.pullback f` に R16.8 を適用する。上の右 Kan 経路を採る場合は、先に得た独立入力を R16.9 の証明にも使い、R16.8 への逆向きの依存を作らない。
+
+**R16（coverage_basis_pullback_isLimit）**。D を `AsSmall.{u + 1} C`、O を `(asSmallSiteShapeIso C).inv ≫ F` とする。D 上の K' は、各 A で `AsSmall.down` に沿って射の述語を下ろしたときに K の基本被覆になる presieve を取る。対象と射をともに ULift で外すので、基本被覆の引き戻しの因子分解を下ろし、K の `pullback` を適用し、因子分解を上げ直すことで K' の公理を得る。生成篩の元は「ある被覆射を経由する」という存在であり、上げ下げは合成を保つため、生成と引き戻しの両方がこの移送と可換。上げた R の基本被覆性を得て、任意の K' の基本錐の極限性を元の `hF` から運び、D 上で R16.9 を `AsSmall.up.map f` に適用する。最後は `isLimit_asSmallRestrictionCone_iff`（`Sheaves/AsSmallSieveConeComparison.lean:76`）と `hom ≫ inv ≫ F = F` で元の指定錐に戻す。必要な集合論の計算は `AsSmall.up/down`（Mathlib `CategoryTheory/Category/ULift.lean:159,165`）と `Sieve.generate_map_eq_functorPushforward`（Mathlib `CategoryTheory/Sites/Sieves/Functoriality.lean:253`）を先に試す。
+
+**R17.1（coverage_generatedSieve_universallyDescending）**。`UniversallyDescendingSieve`（`Sheaves/UniversalSieveDescent.lean:29`）を展開し、V と f を任意に取って同じ R16 の結論を渡す。恒等射の場合に絞る必要はない。
+
+**R17（isSheaf_toGrothendieck_iff）**。順向きは `Coverage.Saturate.of U R hR` が示す被覆性を `IsSheaf` の定義へ渡す。この向きは今の依存から独立。逆向きでは全基本被覆について R17.1 を作り、`(isSheaf_toGrothendieck_iff_universallyDescending K F).2`（`Sheaves/CoverageUniversalDescent.lean:23`）へ渡す。
+
+#### 着手判定と見込み
+
+|範囲|素／補正の台帳見込み|現時点の判定|
+|---|---:|---|
+|R16.4〜6|280〜480／560〜960|独立の数学と錐の比較が未確定。旧見込みを完成見込みとして使わない。R16.5〜6 自体は同じ選択の射影にできる。|
+|R16.7〜9|85〜175／170〜350|証明手順を特定済み。上流の選択または独立入力が必要。|
+|R16|60〜100／120〜200|宇宙を移す手順を特定済み。K' の因子分解・生成・引き戻しの照合は実装時に検証する。|
+|R17.1・R17|25〜55／50〜110|普遍降下版との接続を特定済み。R17 の順向きは独立。|
+
+Lean 着手前に確かめるのは、基本生成篩の全基底変換を局所同値とする独立の証明、または元の `pinchedHomMap` に対する直接のホモトピー同値の証明。現時点で九署名すべての無条件の証明は確立していない。報告のみ更新し、Lean と台帳の署名は変更していない。
+
+一覧：済み 113／全体 122（うち追加 87）
+
+### 11-19：弱い Coverage の探索を退避し、安定な被覆系に切り替え
+
+探索61コミットを explore/coverage-weak-descent（c35ec3618165d8f5a30a4b99cd42364b51d02e7a）に保存した。reset 前の HEAD が保存枝の祖先であることを確認し、math/inf-supply を 04551724d に戻した。main 79cd0868e を 0a18de99b で取り込んだ。IC-1 の moves.csv と b4-actual/declaration-name-map.csv に照らした静的確認と対象ビルドの結果、この枝の74モジュールに追加の改名対応は不要だった。旧 R2 の未追跡4本は SHA-256 で照合した。
+
+対象ビルドは10,896 jobs。小監査は枝固有の74モジュール・379宣言で、依存は標準三公理の範囲内。探索の記録と候補補題は [引き継ぎ](../../research/coverage-weak-descent/README.md) にまとめた。
+
+旧9署名を「範囲外（11-19）」として台帳に残した。R16s・R17s・R17p は型案・依存・既存宣言の参照を記録した。素60〜110行、補正後120〜220行で、今回の300行の判定内。区切りまでの37,145行を加えると37,265〜37,365行。提案外枠37,600行は承認待ち。
+
+一覧：済み 113／全体 125（うち追加 90、範囲外 9）
+
+ここを区切りとする。
+
+
+### 11-19：5∞-1 の完成（S7 を除く）
+
+R16s → R17s → R17p を Sheaves/CoverageStableDescent.lean に実装した。指定された実引き戻しを元の基本篩で計算し、既存の普遍降下による層判定へ接続した。前位相の系は Mathlib の pullbackArrows と toCoverage を使う。3宣言とも台帳 030347283 の型への代入検査を通し、HTT 6.2.2.6 の特殊化の文献属性を付けた。
+
+実測77行（R16s 17、R17s 19、R17p 18、共通23）。素60〜110行、補正後120〜220行の見込みに対し、累計は37,222行。承認外枠37,400行の内に収まった。対象ビルド9,265 jobs、小監査3宣言は標準三公理のみ。文献属性の通常表記に対する空白警告は出た。
+
+現行範囲の未完署名は0。弱い Coverage の旧9件は範囲外として台帳と保存枝に残した。旧 R2 の未追跡4本は SHA-256 で一致を確認した。追跡ファイルの差分はコミットした。
+
+一覧：済み 116／全体 116（範囲外 9）
+
+ここを区切りとする。

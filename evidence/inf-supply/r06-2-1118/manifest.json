@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2",
+  "declaration": "weightedSections_originalLeftLimitIso_specifiedMap",
+  "target_build": {
+    "jobs": 7663,
+    "sha256": "4b8154c52b3251f89e72dbb60f9294f5095f7b464c5c2aad092ccec6f3caf161",
+    "receipt": "/tmp/is-stage5/R06.2/build-3.log"
+  },
+  "type_check": {
+    "sha256": "412dc0fa27f4879816d501139117d0359d0dde41b8fd480e3ae96f16f17b648f",
+    "receipt": "/tmp/is-stage5/R06.2/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "d39ef2c65fbcd07b58f7de4a66099a1d7322f55eaec84af7c56e358a94b11fef",
+    "receipt": "/tmp/is-stage5/R06.2/target-audit-result.json",
+    "modules": 1,
+    "declarations": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalSpecifiedMap.lean": "08db66c099b6f9b9470ab684c3bc4511dd846433f1649303cbe7cd9ad6fe37b2"
+    }
+  }
+}

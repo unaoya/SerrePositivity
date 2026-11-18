@@ -1,0 +1,31 @@
+{
+  "signature": "R12a.1",
+  "declaration": "siteLift_representable_restrictSectionsCone_val",
+  "target_build": {
+    "jobs": 7260,
+    "sha256": "0489f9230fa5295e1da2ba88c311088d5f0e27d65120db57e807f4c68697d21c",
+    "receipt": "/tmp/is-stage5/R12a.1/build-20.log"
+  },
+  "type_check": {
+    "sha256": "651342ff4465e8ab237cd27f29bbe6697decbb8656df81b3f1eed60d1d6eefbf",
+    "receipt": "/tmp/is-stage5/R12a.1/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "0bc84b87875f378147cc1611f2467beb3ecc13c3be4661e6771a1272657b3d9b",
+    "receipt": "/tmp/is-stage5/R12a.1/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/SiteLiftRepresentableSectionsRestriction.lean": "a5e9e703ce5b5cbe50de721f6e19dde46af06348d68465fa962e95af0d5d4e41"
+    }
+  }
+}

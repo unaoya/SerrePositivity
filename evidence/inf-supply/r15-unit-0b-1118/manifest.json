@@ -1,0 +1,31 @@
+{
+  "signature": "R15-Unit.0b",
+  "declaration": "largeNerveNatTransHomotopy_component",
+  "target_build": {
+    "jobs": 1908,
+    "sha256": "215d405dfd17d71f22534751bbb21132c77bbf576402d11575fcd6305144be75",
+    "receipt": "/tmp/is-stage5/R15-Unit.0b/build-9.log"
+  },
+  "type_check": {
+    "sha256": "dba6841b55503f6d32bbdc9e347dd2ce649d354771b60c94db292bfc2b51e38b",
+    "receipt": "/tmp/is-stage5/R15-Unit.0b/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "6e0e80338d205bd74ec406a3aa1c9418d0c3190f8954209c16891e4753131008",
+    "receipt": "/tmp/is-stage5/R15-Unit.0b/target-audit-result.json",
+    "modules": 1,
+    "declarations": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/LargeNerveNatTransComponent.lean": "6f50298263daf618b8803732a17b8fb1a12da1155ec6d43e25152e5530f92618"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "signature": "R04.4",
+  "declaration": "leftPullback_limitVertexIso_eq_actualArrow",
+  "target_build": {
+    "jobs": 3200,
+    "sha256": "dac6643e425b01b44e7cbb9d1c48393ec3602e8c0140f68cafb76d4adac7a1d0",
+    "receipt": "/tmp/is-stage5/R04.4/build-3.log"
+  },
+  "type_check": {
+    "sha256": "423237f0ef33c13175055daa224c37e9f5e596bce3d6a35d54f5d06724864308",
+    "receipt": "/tmp/is-stage5/R04.4/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "2f82a3df550e7d12278fa591466e147cfc3c32af29f370b5c69541dfb15ef35f",
+    "receipt": "/tmp/is-stage5/R04.4/target-audit-result.json",
+    "modules": 1,
+    "declarations": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftPullbackLimitActualArrow.lean": "53460346e8089abade43788c7474ecdd82e1cc24e3683dd5e18bf69d297ed254"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "signature": "R14",
+  "declaration": "localEquiv_of_sheafifyIso",
+  "target_build": {
+    "jobs": 10766,
+    "sha256": "bd64ffdae75d9d95bfe66310b5cc55372bf756157d264d6dc849313373413c26",
+    "receipt": "/tmp/is-stage5/R14/build-2.log"
+  },
+  "type_check": {
+    "sha256": "2b3ddf2ab5c0ad5bccc0c9f0be880c7b9cecde8b93b1ee5edd6f1933c73f0703",
+    "receipt": "/tmp/is-stage5/R14/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "3489b1ce7a823c8c12fe8aca26361dc72cc1bfff78702a81082756db468dc8a0",
+    "receipt": "/tmp/is-stage5/R14/target-audit-result.json",
+    "modules": 1,
+    "declarations": 4,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceSheafification.lean": "a0c3115e8e958aed099c7f946eed9715c67c204069fe3c1f72636335772b89e1"
+    }
+  }
+}

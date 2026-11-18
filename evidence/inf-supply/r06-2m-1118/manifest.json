@@ -1,0 +1,36 @@
+{
+  "signature": "R06.2M",
+  "declaration": "discreteWeightedSectionsMovingIndex_actual",
+  "target_build": {
+    "jobs": 7631,
+    "sha256": "bc4766ba9e4548c2c691aa3b9260e5e5682bfb92c7f345e502a1ba32a26bea56",
+    "receipt": "/tmp/is-stage5/R06.2M/build-3.log"
+  },
+  "type_check": {
+    "sha256": "84f9c31f7859c456dc0f44ad22e45d269ff6a68f11d927fdf1e36629070e98f5",
+    "receipt": "/tmp/is-stage5/R06.2M/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "aa7c04d088d75f3a8949b5816ea25d91e556e79dbc835bf29703ea0dbaf89e74",
+    "receipt": "/tmp/is-stage5/R06.2M/target-audit-result.json",
+    "modules": 1,
+    "declarations": 7,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean": "857d5799964127f3d2c30daa7944ca26362df353951fbf054d63a5e4524c6550"
+    }
+  },
+  "citation": {
+    "source": "HTT",
+    "number": "5.1.5.6",
+    "partial": "special"
+  }
+}

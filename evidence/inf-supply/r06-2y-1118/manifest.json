@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Y",
+  "declaration": "densityLegAt_baseAction_comp",
+  "target_build": {
+    "jobs": 4047,
+    "sha256": "d04fa5644f10d77dbf8ab24c06cf7438e7c9250e4452e1a6d4271a76546bedbc",
+    "receipt": "/tmp/is-stage5/R06.2Y/build-2.log"
+  },
+  "type_check": {
+    "sha256": "a4213a809154d540bf3316ad4e707fbc69b0733fbf1e1c9f509fa2d408f2e652",
+    "receipt": "/tmp/is-stage5/R06.2Y/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "7bf13de01d6e97bd3ef7db4be36099687ee477553f97b7aee2c06885ad5af30b",
+    "receipt": "/tmp/is-stage5/R06.2Y/target-audit-result.json",
+    "modules": 1,
+    "declarations": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean": "4d693dc6bd0d0020ebd3fe5744c3d427e7acd4cb64cae5963adb8ee351e2d749"
+    }
+  }
+}

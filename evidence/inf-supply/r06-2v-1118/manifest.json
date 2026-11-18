@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2V",
+  "declaration": "presheafElementsYonedaSliceInterval_at_leg",
+  "target_build": {
+    "jobs": 3857,
+    "sha256": "817b4f33424fa04e0f9852b46920b23820ba249a72cc03c8f025f7f5e2264ebd",
+    "receipt": "/tmp/is-stage5/R06.2V/build-1.log"
+  },
+  "type_check": {
+    "sha256": "f512ab0eac097e510807795e51ab4563f930173c1773a500faa72ef7281e285b",
+    "receipt": "/tmp/is-stage5/R06.2V/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "970065cf7f7180668eb41338efd4aed12f23188893eca8e72b8a4db3870f3318",
+    "receipt": "/tmp/is-stage5/R06.2V/target-audit-result.json",
+    "modules": 1,
+    "declarations": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean": "dd8a6ad673fd644da67b89ee6e3ab094539b3563a96b22c2a74a6a0c9d237ec0"
+    }
+  }
+}

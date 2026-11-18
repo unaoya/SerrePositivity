@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Cm",
+  "declaration": "rightKanMovingIndex_cosliceCounit",
+  "target_build": {
+    "jobs": 3991,
+    "sha256": "da73cd0c0e35b8ec5b59dd2899894731ab68a222d7b690baae640da932801a72",
+    "receipt": "/tmp/is-stage5/R06.2Cm/build-1.log"
+  },
+  "type_check": {
+    "sha256": "871c01756ed2b455ce4b97457de1168bafe419255c3f29fc65362ff2fe321966",
+    "receipt": "/tmp/is-stage5/R06.2Cm/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "8791293f8e3b693df12f893b9b6df04314fc0961bc76b5793d1bc10ca3efe389",
+    "receipt": "/tmp/is-stage5/R06.2Cm/target-audit-result.json",
+    "modules": 1,
+    "declarations": 4,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean": "4337afb1c9a8ec4c542842556fe0ae726a6829ae29f983f3f45a720e4c9aae5e"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Cc",
+  "declaration": "coneOfCosliceMap_counit_relativeIso",
+  "target_build": {
+    "jobs": 3962,
+    "sha256": "9882057ec35a24c7629dd26318492fb5de4df735ad1e632ade7332b9af5c1487",
+    "receipt": "/tmp/is-stage5/R06.2Cc/build-1.log"
+  },
+  "type_check": {
+    "sha256": "4dcaae24a13613760d5383017f35681346ab4b8e853edd12addbe9830b04806e",
+    "receipt": "/tmp/is-stage5/R06.2Cc/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "7f1952953b9ea929ba4503a135a69f06ed86198d3e39b01fde5e5d48424abad4",
+    "receipt": "/tmp/is-stage5/R06.2Cc/target-audit-result.json",
+    "modules": 1,
+    "declarations": 8,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean": "4a5b6bf68dec4810891f6f150a90ea7264dbd7f5fd4e1ffcd0e9f5d6ed2fe8ef"
+    }
+  }
+}

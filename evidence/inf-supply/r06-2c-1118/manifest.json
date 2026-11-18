@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2C",
+  "declaration": "exists_discreteRightKan_nerve_readout",
+  "target_build": {
+    "jobs": 7368,
+    "sha256": "485ff4f1e60029801a8679c34e8805ffd7ef057d29ee0752769d28d58d2965c7",
+    "receipt": "/tmp/is-stage5/R06.2C/build-1.log"
+  },
+  "type_check": {
+    "sha256": "7678e7858e8157c0dce990e7d1fd6420416e46ba3e938945ddf5e45ed3340195",
+    "receipt": "/tmp/is-stage5/R06.2C/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "3a83cc9ebc2c0aa842f83c0e440388123a214d15b0b48018d26f5a8145c45054",
+    "receipt": "/tmp/is-stage5/R06.2C/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean": "0ad5dd87a773d9773cd7220c6b4cb2a9005630ce2a57d0cdbd0c774728dba393"
+    }
+  }
+}

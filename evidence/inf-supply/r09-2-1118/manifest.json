@@ -1,0 +1,31 @@
+{
+  "signature": "R09.2",
+  "declaration": "sections_toRange_isInvertible_space",
+  "target_build": {
+    "jobs": 10756,
+    "sha256": "05cf4a1f3bfac10f36468bbd9821179222328748bf1e6d0ae1b2bfbbaa8fa351",
+    "receipt": "/tmp/is-stage5/R09.2/build-2.log"
+  },
+  "type_check": {
+    "sha256": "46c9ea9993ad7ede67e88f9f10149accee7c01d84cee0d859115978541bc6c62",
+    "receipt": "/tmp/is-stage5/R09.2/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "1b56988e9325ad88b405489884f27179b3ab033eff82657d3512c2a3e18d77f4",
+    "receipt": "/tmp/is-stage5/R09.2/target-audit-result.json",
+    "modules": 1,
+    "declarations": 4,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceToRangeIso.lean": "873bf7d75ed6bc74ca1f55eac9c4fe92819678547558bd9d3f27f9fdcbef52ff"
+    }
+  }
+}

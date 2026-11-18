@@ -100,3 +100,13 @@ IC-1 は main に入った（fdc4045ac、root・全監査 108 本・sorry の閉
 - **移す前に、残すかどうかを見る**（§12）。ファイルごとに、次のどれからも import の閉包で届かないものに印を付ける：(a) 主定理の入口と root の各入口（`Entrypoints/`）から、sorry の閉包の対象になっている宣言のファイル、(b) 対応表（`research/*-coverage/review`）で own・partial・interface の宣言があるファイル、(c) 動いているレーンの枝（③-a `math/inf-supply`、⑥、③-b）が import するファイル。数え方（何を根にしたか）を紙に書く。宣言の単位まで下りる必要はない（ファイルの単位でよい）。
 - 出力：`report-infinity-consolidation.md` に節「IC-2 の段 0」。①移動・改名の表（`research/infinity-consolidation-w2/moves.csv`、IC-1 の `moves.csv` と同じ列）、②届かないファイルの一覧と行数（`unreached.csv`）と扱いの案（移す・Archive へ・削除の候補。**削除と Archive への移動は提案だけ**で、決めるのはユーザー）、③置き場所は対応表の番号に合わせる（§2）、番号の付かないものの置き場所の案、④層の検査の見込み、他のレーンの枝への影響、⑤B1（小さい葉の統合）で IC-2 に当たる分、⑥適用の所要時間の見込み（`verify-build-costs` の実測：IC-1 の取り込みの検証は約 6 時間）。
 - 止まるところ：段 0 の報告。範囲の外（模型＝IC-3、ホモトピー論・K 固有＝IC-4）に踏み込まない。分類が `files.csv` と食い違うファイルは一覧にして所見を書く。
+
+## 14. IC-2 の段 0 の決定（2026-11-19、ユーザー）
+
+段 0 の紙（⑦、`report-infinity-consolidation.md` 節「IC-2 の段 0」、`research/infinity-consolidation-w2/`）を受けて。
+1. **1,390 本の案**を採る：Kerodon の逆向き import の起点 235 本（`layer-holds.csv`）は元の場所に残す。新しい層の違反は 0 件。235 本の置き場所（補助の切り分け・使う側の節へ・据え置き）は、適用の後に一本ずつ設計し直す（別の紙）。
+2. **互換の入口 4 本**（`SmallKanHomotopy`・`SmallTargetKernelQuotient`・`StarDiagramSmallQuotient`・`WeightedWordHom`）は Archive へ移してよい。条件：互換の台帳の旧名と外の利用を確かめ、使われていれば据え置く。`WordSegmentComparison` は据え置き。
+3. 届かない残りの 253 本は全監査が使うので残す。削除は 0 本。
+4. 適用の時期は、整理の段全体の計画の中で決める（調整役が案を出す）。それまで ⑦ は適用に入らない。
+5. **整理が終わるまで新しい形式化は行わない**（ユーザー、11-19）。そのため §2 の「昼は 3〜5 分の塊、適用と全体の再ビルド・全監査・verify は夜」は、この間は外す。⑦ は昼夜を問わず `--class bulk` で適用・対象ビルドを続けてよい。全体の Lean のプロセスは同時に二つまで、は変えない。
+6. 鍵（`with_build_lock.sh`）は残す：同時に動く全体の Lean のプロセスを二つまでに抑えるため（監査は一本で最大 19 GB）と、成果物キャッシュを共有しているため。⑦ は `--class bulk` で鍵を通すことだけ守り、時間帯・塊の長さ・他のレーンへの譲りは気にしなくてよい（ユーザー、11-19）。

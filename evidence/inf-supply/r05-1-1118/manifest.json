@@ -1,0 +1,31 @@
+{
+  "signature": "R05.1",
+  "declaration": "weightedSections_nativeShapeLimitIso_hom_comp",
+  "target_build": {
+    "jobs": 7377,
+    "sha256": "c3714885f78b6d6fb1adc4cece486b60811af5fb9dfcd482db6a2c0b9ca561b2",
+    "receipt": "/tmp/is-stage5/R05.1/build-3.log"
+  },
+  "type_check": {
+    "sha256": "ae02c56cd85ead50658702b343f67141468cb0c41b66a66bc480c41675adcb8c",
+    "receipt": "/tmp/is-stage5/R05.1/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "e0ea6d976e44336aa8ba4e8cf4af4d341bf71c359b50b953d549a6f4451fa86c",
+    "receipt": "/tmp/is-stage5/R05.1/target-audit-result.json",
+    "modules": 1,
+    "declarations": 4,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitIsoComposition.lean": "fb87605c7c15ce0825e299c0b5322db7200334e8554b248c76413c5d799b8e66"
+    }
+  }
+}
