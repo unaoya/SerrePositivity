@@ -11566,3 +11566,18 @@ R13b.1 と R09-Cech.1 は R06.2 に依存しないので先に検証した。R13
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,598 から 31,777 行。
 
 一覧：済み 66／全体 100（うち追加 65）
+
+### 11-18：R06.2 の残る頂点の式
+
+検証済みの四補題は 542 行。累計 31,777 行で、今回の追加は 3,556／7,460 行。台帳の現在の補正後上端は累計 34,877 行。昼の二枠に対応する 657048b94 は e4dd41bac で取り込み済み。鍵は impl の整理券一枚ずつで使った。
+
+`discreteWeightedSectionsMovingIndex_of_pointHomMk` を試験ファイルで型検査した。元の二つの添字射と `rightKanMovingIndex_target_section` の指定切断を使い、各頂点 (x) で次の等式を証明すれば、始点面を同じ底上の相対同型として回収できる。(x_0) は指定切断を始点へ制限して引き戻した頂点、(x_1) は元の指定添字射の頂点。(f,g) はそれぞれの第 1 射影を共通の終点の fiber に入れたもの。
+
+```lean
+Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
+  Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ g)
+```
+
+`cosliceIntervalRestriction_homMk` も型検査した。指定切断の余錐に `coconeVertexLegCompStruct` を適用すると、始点脚の類は元の実辺の類と終点脚の類の合成になる。終点脚は `cosliceEdgeSection_target` により元の P の密度の脚。この段で未証明なのは、上の合成と、Q の密度の脚を元の `smallUnstraighteningFunctorHom (discretePresheafHom φ)` で引き戻した側の類との一致。R06.1 の相対同型、`presheafDensityFiberYonedaValueIso`、`yonedaPresheafEvaluation_postcomposeIso` を使い、Yoneda の恒等点で評価した成分へ移す。ここで使う比較が実際の密度の脚を保つことを確認する必要がある。`nativeDiscretePresheafMap_edge_evaluate` で、固定前層形状の同型を通った同じ実辺の成分が `φ.app (Opposite.op c)` の離散辺であることも型検査した。三つの試験証明はいずれも標準三公理のみ。試験証明は R06.2 の分割で、終端の型や台帳の件数を変えない。
+
+一覧：済み 66／全体 100（うち追加 65）
