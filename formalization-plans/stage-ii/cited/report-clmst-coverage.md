@@ -1,9 +1,9 @@
 # 現在地
 
-- 段：**NB-W3 段1 完了**。
-- 一覧：済み 1／全体 2 段。
+- 段：**NB-W3 完了、停止**。
+- 一覧：済み 2／全体 2 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `b21c0c183` を取り込んだ。
-- 次：段2 の未処理 ∞ 圏ノートの分類と転記。
+- 次：追加作業なし。
 - 凍結原稿の転記と静的照合。Lean・exposition・生成器・review は変更せず、ビルドと鍵の使用なし。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
@@ -314,3 +314,9 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段1　BS
 
 [原稿の規則と行き先](../../../research/bs-coverage/notes/README.md)に八章と導入の転記を記録した。項目原稿 131、節原稿 8。本文 812 ブロックを転記し、原典番号を確定できない 9 ブロックは [issues.md](../../../research/bs-coverage/notes/issues.md) に全文を保留した。状態・候補・凡例等の除外は README に記した。[証拠目録](../../../evidence/cited/notes-bs/manifest.json)。
+
+段1 コミット `33fe7de58`。
+
+### 段2　∞ 圏の未処理ノート
+
+[NB-W3 の分類](../../../research/kerodon-coverage/notes/README.md#nb-w3-の分類)に 37 ページの分類を記録した。HTT・HA に当たる節と t 系の重複先は表に記載した。Kerodon 向け本文 906 ブロックを 42 項目・67 節の原稿に追記した。対応を確定できない 5 ブロックは [issues.md](../../../research/kerodon-coverage/notes/issues.md) に理由と全文を保留した。[証拠目録](../../../evidence/cited/notes-kerodon-rest/manifest.json)。

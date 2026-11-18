@@ -59,3 +59,57 @@ t-15 定義 15.1 は見出しだけではどの評価射を定義するか確定
 <a id="t15-def-yoneda-evaluation-functor-1"></a>
 
 （未記入）
+
+## NB-W3 の保留と転記上の所見
+
+- `03-straightening.html` §3 と `unstraightening.html` §7 は、解説の ∞ 圏としての同値を §5.6 に置いた。Kerodon 5.6.0.6 の印刷本文が与えるのは同値類の全単射。解説が典拠として添える番号は原文のまま。
+- `02-mapping-limits.html` §5 の三模型の表は、fat join・lax slice・錐の族の対比を一緒に読むため §4.6.2 に置いた。表中に 4.6.4.19 と 4.6.6.8 も残した。
+- `f-a-basics.html` §3 の五角形と立方体は凍結ページ内の SVG。Markdown では元図へのリンクと図中のラベルを保持した。図形と矢印はリンク先で確認できる。
+- 凍結原稿中の旧ファイル名は表示文言として残した。現チェックアウトにないローカルリンクの表示文言を保持し、リンクだけ外した。既存の対応表は更新していない。
+- 変換は静的に確認した。長い表、Lean コードフェンス、SVG へのリンクは Markdown に保持した。Verso 出力は未確認。
+
+### 対応を確定できなかった本文
+
+#### f-01-simplicial-kan.html — 4. 塔と lim¹（Kan）
+
+<!-- source: exposition/ja/infinity/f-01-simplicial-kan.html:184; block: nbw3-f-01-simplicial-kan-l184 -->
+<a id="nbw3-f-01-simplicial-kan-l184"></a>
+
+**保留理由**　Kerodon 7.6.5 に逐次極限の一般論はあるが、この塔の lim¹ の定義・全射条件・ exact sequence を一緒に扱う項目番号を確定できない。
+
+- **非可換な lim¹**：群の塔 \(G_n\) と準同型 \(q_n : G_{n+1} \to G_n\) について、\(\prod_n G_n\) に「ねじれた共役」で作用させた軌道の集合（`TowerLimOne.limOne`、KST/Spectra/TowerLimOne.lean:51）。可換群なら、通常の \(\lim^1\) と一致する。
+
+<!-- source: exposition/ja/infinity/f-01-simplicial-kan.html:185; block: nbw3-f-01-simplicial-kan-l185 -->
+<a id="nbw3-f-01-simplicial-kan-l185"></a>
+
+**保留理由**　Kerodon 7.6.5 に逐次極限の一般論はあるが、この塔の lim¹ の定義・全射条件・ exact sequence を一緒に扱う項目番号を確定できない。
+
+- **Milnor の完全列**（KST/Spectra/TowerMilnorExactness.lean・TowerGroupLimitComparison.lean）：
+\[
+1 \to {\lim_n}^1 \pi_{r+2}(X_n) \xrightarrow{\ \delta\ } \pi_{r+1}(\lim_n X_n) \to \lim_n \pi_{r+1}(X_n) \to 1
+\]
+    右の写像の全射性は `limitGroupComparison_surjective`、\(\delta\) の単射性と「像 = 核」は `limOneBoundary` と `exists_limOneBoundary_iff` による。
+
+<!-- source: exposition/ja/infinity/f-01-simplicial-kan.html:190; block: nbw3-f-01-simplicial-kan-l190 -->
+<a id="nbw3-f-01-simplicial-kan-l190"></a>
+
+**保留理由**　Kerodon 7.6.5 に逐次極限の一般論はあるが、この塔の lim¹ の定義・全射条件・ exact sequence を一緒に扱う項目番号を確定できない。
+
+- **Mittag–Leffler**：塔が Mittag–Leffler 条件を満たせば、\(\lim^1\) は自明になり、ホモトピー群は極限と交換する（`subsingleton_of_mittagLeffler`・`limitGroupEquivOfMittagLeffler`）。
+
+#### f-01-simplicial-kan.html — 6. 基本亜群と necklace
+
+<!-- source: exposition/ja/infinity/f-01-simplicial-kan.html:210; block: nbw3-f-01-simplicial-kan-l210 -->
+<a id="nbw3-f-01-simplicial-kan-l210"></a>
+
+**保留理由**　基本亜群を necklace で表示する比較を一つの原典項目に確定できない。
+
+- **基本亜群**：単体的集合 \(A\) の基本亜群を、ホモトピー圏の自由亜群として定義する（`simplicialFundamentalGroupoid`、KST/SConstruction/FundamentalGroupoidComparison.lean:21）。
+    anodyne 射 \(A \to B\)（\(B\) は Kan）があれば、\(A\) の基本亜群は \(\mathrm{h}B\) と圏同値になる（`fundamentalGroupoidEquivalence`、FundamentalGroupoidEquivalence.lean:50）。これで \(\pi_1\) が自由亜群で表示できる。
+
+<!-- source: exposition/ja/infinity/f-01-simplicial-kan.html:212; block: nbw3-f-01-simplicial-kan-l212 -->
+<a id="nbw3-f-01-simplicial-kan-l212"></a>
+
+**保留理由**　基本亜群を necklace で表示する比較を一つの原典項目に確定できない。
+
+- **necklace**（Dugger–Spivak）：単体を頂点で貼り合わせた「数珠」の形の単体的集合。coherent nerve の写像空間を組合せ的に計算するのに使う（KST/SConstruction/Necklace*）。第 3 章以降の coherent nerve の話で再び出てくる。
