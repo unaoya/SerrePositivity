@@ -1,0 +1,64 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/bs17",
+ "commit": "223ac6e1e4f4a7e93fd31fbf2fc7ce97dedf1926",
+ "made_by": "CC-W3: pdftotext -layout/-bbox-layout; parse.py, build.py, validate.py; static Lean source review",
+ "note": "BS17 arXiv 1507.06490v3; PDF in sibling sources/ with SHA in toc.md; extracted text, source signatures and candidate search; no Lean execution",
+ "files": [
+  {
+   "path": "bs17-anchors.json",
+   "sha256": "890d67647582651334ad1d3f2987c17d2cf7eb6ea00dab2e07d9e5b0840b8491",
+   "bytes": 4010
+  },
+  {
+   "path": "bs17-parsed.json",
+   "sha256": "5306dd1f780aefbc99e65b52a7e411d1a43f97d540d56f2c3b615d31046e58c5",
+   "bytes": 312186
+  },
+  {
+   "path": "bs17-search.json.gz",
+   "sha256": "2097603457d29b553c8839b27e9a99f55bf12e5575fb01a1b0020b4019b18e1c",
+   "bytes": 1049089
+  },
+  {
+   "path": "bs17-signatures.json",
+   "sha256": "5340148b51aa7854e94ddd3efc7fe69d5cd1ed02c9d746994651dd390d2a315e",
+   "bytes": 9041
+  },
+  {
+   "path": "bs17-summary.json",
+   "sha256": "145b26509302e58db660127282fd571611120d9cc03fc8f8a5825e4f51025d58",
+   "bytes": 293
+  },
+  {
+   "path": "bs17.txt",
+   "sha256": "f8018654fde2f94467a0faed2f07ee54001f557cd29b7227bcb7550207c47ffc",
+   "bytes": 258202
+  },
+  {
+   "path": "bs17.xml",
+   "sha256": "954d37b6e00cac809c8a56ab25a2db5618160c92b9cf73e37b2d988949162652",
+   "bytes": 4824886
+  },
+  {
+   "path": "build.py",
+   "sha256": "10b1b20e6fba55d1378245f9f33084e09085932ab2c984b8c6003325738aca50",
+   "bytes": 18323
+  },
+  {
+   "path": "judgments.py",
+   "sha256": "d427d769a0e2453d77be59435184eb2aa4de5654514ed24a3f70d874b9f081c1",
+   "bytes": 11129
+  },
+  {
+   "path": "parse.py",
+   "sha256": "313167b1bd18798fba35d9192bfb46356bb1b69d660bafa2b769a76a422fe093",
+   "bytes": 4815
+  },
+  {
+   "path": "validate.py",
+   "sha256": "dd8441582a67d38b22ccd4faebc0db6c11a7d85f2b1b62595d3ea1c926b640d5",
+   "bytes": 1708
+  }
+ ],
+ "total_bytes": 6493682
+}

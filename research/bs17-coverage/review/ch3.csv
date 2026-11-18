@@ -1,0 +1,19 @@
+number,status,declarations,reason,axioms,check,partial_kind
+3.1,partial,SerrePositivity.AlgebraicGeometry.ArcRouteB.frobeniusDirectLimit_perfectRing @ SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean:24 | SerrePositivity.AlgebraicGeometry.ArcRouteB.frobeniusDirectLimitDesc @ SerrePositivity/AlgebraicGeometry/ArcRouteB/FrobeniusPerfect.lean:57,"原典 PDF p.10, y=307.2。標数 p の環の Frobenius 余極限の完全性と降下写像を与える。Spec の双対でアフィン完全化に相当する。一般のスキームの逆極限は含まない。",静的なソース照合。公理の閉包は未計測。,theorem.3.1 / 宣言の型,special
+3.2,none,,"原典 PDF p.10, y=361.1。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.2 / review/check/none-search.csv,
+3.3,none,,"原典 PDF p.10, y=394.6。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.3 / review/check/none-search.csv,
+3.4,none,,"原典 PDF p.10, y=475.0。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.4 / review/check/none-search.csv,
+3.5,none,,"原典 PDF p.11, y=334.2。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.5 / review/check/none-search.csv,
+3.6,none,,"原典 PDF p.11, y=446.1。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.6 / review/check/none-search.csv,
+3.7,none,,"原典 PDF p.11, y=577.0。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.7 / review/check/none-search.csv,
+3.8,partial,SerrePositivity.CommutativeAlgebra.isUniversalHomeomorphism_bijective_of_perfect_reduced @ SerrePositivity/CommutativeAlgebra/UniversalHomeomorphism/Basic.lean:528 | SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitUniversalHomeomorphismEquiv @ SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitInvariance.lean:60,"原典 PDF p.11, y=629.1。アフィンの普遍同相な環の射について、完全環での全単射と Frobenius 余極限上の同型を与える。一般のスキームへの貼り合わせと完全化後の同型からの逆向きは、この二つの型に含まれない。",静的なソース照合。公理の閉包は未計測。,theorem.3.8 / 宣言の型,special
+3.9,none,,"原典 PDF p.12, y=145.8。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.9 / review/check/none-search.csv,
+3.10,none,,"原典 PDF p.12, y=275.8。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.10 / review/check/none-search.csv,
+3.11,none,,"原典 PDF p.12, y=341.1。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.11 / review/check/none-search.csv,
+3.12,none,,"原典 PDF p.12, y=652.8。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.12 / review/check/none-search.csv,
+3.13,none,,"原典 PDF p.13, y=204.6。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.13 / review/check/none-search.csv,
+3.14,none,,"原典 PDF p.13, y=598.9。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.14 / review/check/none-search.csv,
+3.15,none,,"原典 PDF p.13, y=632.4。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.15 / review/check/none-search.csv,
+3.16,own,SerrePositivity.tor_vanishing_of_perfect @ SerrePositivity/CommutativeAlgebra/PerfectTorIndependence/Basic.lean:49,"原典 PDF p.14, y=74.4。同じ素標数 p の完全環 A と完全 A-代数 B、C に対して、すべての正次数の Tor を零対象とする。",静的なソース照合。公理の閉包は未計測。,theorem.3.16 / 宣言の型,
+3.17,none,,"原典 PDF p.14, y=514.8。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.17 / review/check/none-search.csv,
+3.18,none,,"原典 PDF p.14, y=581.5。Frobenius・perfection・perfect ring・Torの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.3.18 / review/check/none-search.csv,

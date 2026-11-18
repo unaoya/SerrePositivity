@@ -1,10 +1,10 @@
 # 現在地
 
-- 段：**KB-W2・BT-W1 完了、停止**。二段をそれぞれコミットした。
-- 一覧：HA 済み10／全体10章、HTT 済み8／全体8章、BS 済み18／全体18節。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。pwd一致を確認し、`git merge main` を実施（開始HEAD `5d1d699f9`）。
-- 次：追加作業なし。KB-W2 は `bdd71d205`、BT-W1 は直後の段2コミットとして納品し、ここで停止する。
-- 紙のみ。Lean変更・ビルド・kernel実行・鍵は使わない。既存own・mathlibの行は保存し、大きい証拠はgit外、目録だけコミットする。
+- 段：**CC-W3 BS17 完了**。
+- 一覧：済み 1／全体 3 文献（BS17）。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。対象ソースは main `5cbfd7bb1` の取り込み後の `223ac6e1e`。
+- 次：BM18 の対応表。
+- 紙のみ。照合は Lean ソースの型を静的に読んだ。PDF と抽出・検索の証拠は git 外に置いた。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -278,3 +278,15 @@ READMEに旧→新の全遷移と段0へ渡す所見（site/模型の比較、PD
 確認：全211番号・18節・7列・partial_kind・目録6列の不変・旧状態4列の空欄化・現在の宣言名/ファイル/行・正の根拠からArchive/drafts排除を検査。check_locations.pyは旧itemsに読取りのみで実行し、358エントリのok168・移動127・行47・未解決16を得た。未解決候補は現本体の型を直接読み直した。正の根拠77行のnative import閉包には非interfaceでソース上のsorry/sorryAxを検出せず、interface6行だけがE3存在のsorryへ到達した。これはkernelでの全axiom閉包の確認ではなく、axioms列は空とした。
 
 証拠は `~/serre-evidence/cited/bt-w1/review-evidence.tar.gz`、目録は `evidence/cited/bt-w1/manifest.json`。全検証は紙・静的スクリプトのみ。Lean変更・ビルド・kernel実行・鍵はなし。KB-W2とBT-W1をそれぞれコミットし、この二段で停止する。
+
+## CC-W3
+
+版を固定した arXiv PDF で印刷見出し・内部リンク・番号系列を照合し、各文献の番号付き項目と表示式を採録した。状態の正本は各 review。候補検索の証拠と照合した型は各目録に記録した。
+
+| 文献 | 項目（うち表示式） | own | mathlib | both | partial | interface | none | 内部辺／外部辺 | 証拠目録 | コミット |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| [BS17](../../../research/bs17-coverage/README.md) | 171（6） | 2 | 0 | 0 | 9 | 0 | 160 | 190／106 | [manifest.json](../../../evidence/cited/bs17/manifest.json) | このコミット |
+
+- BS17 4.1 は n=1・E=O・アフィン有限族の増大 Čech 完全性を `partial / special` とした。原文の Witt 係数の一般性・サイトのコホモロジー・v-stack との差を行に記した。
+
+none は本体・固定版 Mathlib のソース検索で対応が確認できなかった行。CSV 構造、目録と review の番号の一致、none 検索の全件、辺の参照先、採用した宣言の所在を検査した。

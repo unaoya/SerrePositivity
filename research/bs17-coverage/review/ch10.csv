@@ -1,0 +1,7 @@
+number,status,declarations,reason,axioms,check,partial_kind
+10.1,none,,"原典 PDF p.37, y=485.5。central extension・loop group・Steinbergの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.10.1 / review/check/none-search.csv,
+10.2,none,,"原典 PDF p.38, y=75.4。central extension・loop group・Steinbergの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.10.2 / review/check/none-search.csv,
+10.3,none,,"原典 PDF p.38, y=141.1。central extension・loop group・Steinbergの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.10.3 / review/check/none-search.csv,
+10.4,none,,"原典 PDF p.38, y=614.3。central extension・loop group・Steinbergの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.10.4 / review/check/none-search.csv,
+10.5,none,,"原典 PDF p.39, y=246.7。central extension・loop group・Steinbergの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.10.5 / review/check/none-search.csv,
+10.6,none,,"原典 PDF p.39, y=498.0。central extension・loop group・Steinbergの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,印刷見出し / review/check/none-search.csv,
