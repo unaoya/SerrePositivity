@@ -11581,3 +11581,7 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 `cosliceIntervalRestriction_homMk` も型検査した。指定切断の余錐に `coconeVertexLegCompStruct` を適用すると、始点脚の類は元の実辺の類と終点脚の類の合成になる。終点脚は `cosliceEdgeSection_target` により元の P の密度の脚。この段で未証明なのは、上の合成と、Q の密度の脚を元の `smallUnstraighteningFunctorHom (discretePresheafHom φ)` で引き戻した側の類との一致。R06.1 の相対同型、`presheafDensityFiberYonedaValueIso`、`yonedaPresheafEvaluation_postcomposeIso` を使い、Yoneda の恒等点で評価した成分へ移す。ここで使う比較が実際の密度の脚を保つことを確認する必要がある。`nativeDiscretePresheafMap_edge_evaluate` で、固定前層形状の同型を通った同じ実辺の成分が `φ.app (Opposite.op c)` の離散辺であることも型検査した。三つの試験証明はいずれも標準三公理のみ。試験証明は R06.2 の分割で、終端の型や台帳の件数を変えない。
 
 一覧：済み 66／全体 100（うち追加 65）
+
+`presheafElementsYonedaSliceValue_iff_canonicalTransport` が運ぶのは同値性の判定までで、指定された値同士の等式はここからは得られない。値を比較する経路として、同じ実区間を `canonicalYonedaTransformationFiberEvaluation_parametrizedIso` で普遍輸送へ移し、固定頂点で合成する。試験補題 `parametrizedFiberTransport_at_edge_comp_point` は `parametrizedFiberTransport_at_edgeIso` と `edgeTransport_composition_iso` を合成して型検査済み。残る照合は、同じ固定頂点での元の密度の終値と、指定された離散前層の作用の値との一致。台帳の終端の型に仮定は足していない。
+
+一覧：済み 66／全体 100（うち追加 65）
