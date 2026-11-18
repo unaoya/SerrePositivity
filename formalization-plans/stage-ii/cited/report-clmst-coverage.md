@@ -1,10 +1,10 @@
 # 現在地
 
-- 段：**CC-W3 完了、停止**。
-- 一覧：済み 3／全体 3 文献（BS17・BM18・Rydh）。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。対象ソースは main `5cbfd7bb1` の取り込み後の `223ac6e1e`。
+- 段：**NB-W3 完了、停止**。
+- 一覧：済み 2／全体 2 段。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `b21c0c183` を取り込んだ。
 - 次：追加作業なし。
-- 紙のみ。照合は Lean ソースの型を静的に読んだ。PDF と抽出・検索の証拠は git 外に置いた。
+- 凍結原稿の転記と静的照合。Lean・exposition・生成器・review は変更せず、ビルドと鍵の使用なし。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -294,3 +294,29 @@ READMEに旧→新の全遷移と段0へ渡す所見（site/模型の比較、PD
 - Rydh 3.10 のアフィン基底の fppf–proper 細分は `partial / special`。3.12 の準コンパクト開被覆–固有細分は対応を確認できず `none`。
 
 none は本体・固定版 Mathlib のソース検索で対応が確認できなかった行。CSV 構造、目録と review の番号の一致、none 検索の全件、辺の参照先、採用した宣言の所在を検査した。
+
+## NB-W2
+
+### 段1　Kerodon
+
+[段落の行き先](../../../research/kerodon-coverage/notes/README.md)を更新。旧保留 47 ブロックをすべて移し、t-06〜t-15 の新規 72 ブロックを追記した。全 160 ブロック中、保留は t-15 定義15.1 の未記入表示1件。項目原稿 52、節原稿 17。項目原稿には第5章以降 11 件を含む。review に行がない 4 件は README に列挙した。
+
+本体の文言・数式・旧番号を保存し、移設後のリンクを検査した。[証拠目録](../../../evidence/cited/notes-kerodon2/manifest.json)。
+
+段1 コミット `9fdd3bf63`。
+
+### 段2　本論文
+
+解説 §3〜§9 の 380 ブロックを [段落の行き先](../../../research/paper-coverage/notes/README.md) に記録した。項目原稿 44、節原稿 5、保留 22 ブロック。付録は対象外。原典の項目の番号を使い、参照に出る解説内の番号は区別した。[証拠目録](../../../evidence/cited/notes-paper/manifest.json)。
+
+## NB-W3
+
+### 段1　BS
+
+[原稿の規則と行き先](../../../research/bs-coverage/notes/README.md)に八章と導入の転記を記録した。項目原稿 131、節原稿 8。本文 812 ブロックを転記し、原典番号を確定できない 9 ブロックは [issues.md](../../../research/bs-coverage/notes/issues.md) に全文を保留した。状態・候補・凡例等の除外は README に記した。[証拠目録](../../../evidence/cited/notes-bs/manifest.json)。
+
+段1 コミット `33fe7de58`。
+
+### 段2　∞ 圏の未処理ノート
+
+[NB-W3 の分類](../../../research/kerodon-coverage/notes/README.md#nb-w3-の分類)に 37 ページの分類を記録した。HTT・HA に当たる節と t 系の重複先は表に記載した。Kerodon 向け本文 906 ブロックを 42 項目・67 節の原稿に追記した。対応を確定できない 5 ブロックは [issues.md](../../../research/kerodon-coverage/notes/issues.md) に理由と全文を保留した。[証拠目録](../../../evidence/cited/notes-kerodon-rest/manifest.json)。

@@ -12,10 +12,14 @@ import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyDegreeZero
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromTopologicalSpacesToSimplicialSets.HomotopyZeroRelations
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.PiZeroConstant
+import SerrePositivity.KST.Comparison.SimplicialRingKan
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.2 From Topological Spaces to Simplicial Sets" =>
 %%%
@@ -34,7 +38,35 @@ tag := "kerodon-1-2-1"
 
 Kerodon [Tag 00G5](https://kerodon.net/tag/00G5)
 
-:::definition "kerodon_1_2_1_1"
+*classifying-shape.html — 6. 「空間」と「大域切断が連結」の意味 — 6.1 ここで言う空間*
+
+この会話での「空間」は ∞ 亜群（∞ 圏 $`\mathcal S` の対象、Kan 複体で表されるもの、補章 3 の $`\mathcal S=N^{hc}(\mathrm{Kan})`）。点、点の間の道（可逆な射）、道の間のホモトピー、…と全ての次元のデータを持つ。位相空間は特異単体集合を通じて空間を定め、逆に空間は CW 複体として実現できるが、空間として覚えているのはホモトピー型だけ。
+
+- 種類　／　持っているもの　／　空間としては
+- 集合　／　点　／　0-切り詰め
+- 亜群　／　点、可逆な射　／　1-切り詰め
+- ∞ 亜群　／　点、道、全ての高次のホモトピー　／　一般の空間
+
+*classifying-shape.html — 6. 「空間」と「大域切断が連結」の意味 — 6.3 連結 ⇔ $`\pi_0` がちょうど一点*
+
+$`\Gamma(F)` が連結 ⇔ $`\pi_0\Gamma(F)=\ast`：空でなく、どの二つの大域切断も道で結べる。空集合は連結と言わない（基点付きの $`B\mathcal G` では基点があるので自動）。ホモトピー群を使わずに言えば $`\tau_{\le0}\Gamma(F)\simeq\ast`。$`\pi_0\Gamma(F)` は大域的な対象の同値類の集合なので、*連結 = 大域的な対象が同値を除いてただ一つ*。
+
+- $`F`　／　$`\Gamma(F)` の点　／　点を結ぶ道　／　連結 ⇔
+- $`BG`　／　$`G` torsor　／　torsor の同型　／　全ての torsor が自明（$`H^1=0`）
+- $`B^2A`　／　$`A` gerbe　／　gerbe の同値　／　全ての gerbe が中性（$`H^2=0`）
+- $`B\mathbf{Pic}`　／　$`\mathrm{Mod}` の捻れた形　／　圏の同値　／　$`\mathrm{Br}=0`
+
+*classifying-shape.html — 6. 「空間」と「大域切断が連結」の意味 — 6.4 連結は可縮より弱い・対象の連結性との違い*
+
+- 性質　／　意味　／　例
+- 空でない　／　存在する　／　基点付きなら自動
+- 連結　／　同値を除いて一意　／　$`\mathrm{Br}(\mathbb F_q)=0`、$`\Gamma(B\mathbb Z)`
+- $`n`-連結　／　高次の自己同値まで $`n` 次元分は一意　／　—
+- 可縮　／　一意で、その同値も一意（選択の空間が可縮）　／　Kan 拡張、cocartesian 持ち上げの選択
+
+$`\Gamma(B\mathbb Z)\simeq S^1` は連結だが可縮でない（自明な torsor の自己同型 $`\mathbb Z` が $`\pi_1` として残る）。一般に $`\Gamma(BG)` の基点の自己同型は $`\Gamma(G)=G(k)`。\*\*対象 $`F` が連結\*\*は局所的に全ての切断が基点と同値（$`B\mathcal G` は常に連結：torsor は局所的に自明）、\*\*$`\Gamma(F)` が連結\*\*は大域的にそうであること。このずれが「局所的に自明だが大域的に非自明な対象」で、コホモロジーが測るもの（§1 の $`\Gamma(B\mathcal G)\neq B(\Gamma\mathcal G)`）。
+
+:::definition "kerodon_1_2_1_1" (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.2.1.1（[Tag 00G6](https://kerodon.net/tag/00G6)）。対応表の状態：なし。
 
 原文はXの部分単体集合が別の部分単体集合と余積分解するというsummandの述語。summand/componentSubcomplex/成分因子化を再検索。成分類の逆像の部分複体はあるが、その包含をsummandとする条件/分解そのものの宣言ではない。
@@ -112,12 +144,10 @@ Kerodon Proposition 1.2.1.19（[Tag 00GQ](https://kerodon.net/tag/00GQ)）。対
 
 :::
 
-:::corollary "kerodon_1_2_1_21"
+:::corollary "kerodon_1_2_1_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv")
 Kerodon Corollary 1.2.1.21（[Tag 00GS](https://kerodon.net/tag/00GS)）。対応表の状態：一部。
 
 原文は π₀⊣const とその指定単位の構成。homEquiv の型 (X→discrete T)≃(π₀X→T) はこの随伴の Hom 同値成分を逆向きにしたものを直接与える。自然性・指定単位まで完成した Adjunction の宣言とせず、構成のこの成分に限定する。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv`
 
 :::
 
@@ -197,7 +227,7 @@ tag := "kerodon-1-2-3"
 
 Kerodon [Tag 001X](https://kerodon.net/tag/001X)
 
-:::definition "kerodon_1_2_3_1"
+:::definition "kerodon_1_2_3_1" (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.2.3.1（[Tag 001Y](https://kerodon.net/tag/001Y)）。対応表の状態：なし。
 
 原文は指定u:S→Sing(Y)が全Xへの合成写像の全単射を満たすという任意Y,uの普遍性の述語。toTop と sSetTopAdj は標準の実現関手と随伴で、任意の指定uに対するその条件の定義ではない。標準単位の例と任意のuの述語を同一視しない。
@@ -248,7 +278,7 @@ Kerodon Proposition 1.2.3.10（[Tag 0028](https://kerodon.net/tag/0028)）。対
 
 :::
 
-:::lemma_ "kerodon_1_2_3_13"
+:::lemma_ "kerodon_1_2_3_13" (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12")
 Kerodon Lemma 1.2.3.13（[Tag 00H2](https://kerodon.net/tag/00H2)）。対応表の状態：なし。
 
 原文は任意の充満部分圏Uが単射沿いのpushout・単射列の余極限・単体の全余積で閉じれば全SSetを含むという帰納原理。induction/Subcomplex/relativeCellComplexOfMonoで再検索。相対セル分解は帰納原理の証明材料であり、このUへの所属を直接返す型ではない。
@@ -285,28 +315,28 @@ tag := "kerodon-1-2-4"
 
 Kerodon [Tag 000K](https://kerodon.net/tag/000K)
 
-*定義 1.6 （面 $`\partial_j\Delta^n`$）*
+*定義 1.6 （面 $`\partial_j\Delta^n`）*
 
-$`0\le j\le n`$ について、$`\Delta^n`$ の部分単体的集合 $`\partial_j\Delta^n`$ を
+$`0\le j\le n` について、$`\Delta^n` の部分単体的集合 $`\partial_j\Delta^n` を
 
-$$`\partial_j\Delta^n([m])=\{\theta\colon[m]\to[n]\mid j\notin\theta([m])\}`$$
+$$`\partial_j\Delta^n([m])=\{\theta\colon[m]\to[n]\mid j\notin\theta([m])\}`
 
-で定め、$`\Delta^n`$ の $`j`$ 番目の面という。
+で定め、$`\Delta^n` の $`j` 番目の面という。
 
 :::definition "kerodon_1_2_4_1" (lean := "SSet.horn")
 Kerodon Construction 1.2.4.1（[Tag 000U](https://kerodon.net/tag/000U)）。対応表の状態：Mathlib にある。
 
 仮定：n\>0 と i : Fin (n+1)（Lean が弱い：horn の定義自体は n=0 にも適用できる）。結論：horn n i は Δ\[n\] の i 番以外の面の和。原文の像が i 以外の頂点を一つ欠くという条件と同じ部分複体（一致）。
 
-*定義 1.7 （horn $`\Lambda^n_i`$）*
+*定義 1.7 （horn $`\Lambda^n_i`）*
 
-$`n\ge1`$、$`0\le i\le n`$ とする。$`\Delta^n`$ の部分単体的集合 $`\Lambda^n_i`$ を、次のどちらかの書き方で定める。
+$`n\ge1`、$`0\le i\le n` とする。$`\Delta^n` の部分単体的集合 $`\Lambda^n_i` を、次のどちらかの書き方で定める。
 
-1. \*\*部分単体的集合として直接\*\*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`$。
+1. *部分単体的集合として直接*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`。
 
-2. \*\*面の和として\*\*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`$。
+2. *面の和として*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`。
 
-両者は一致する。$`\theta([m])\cup\{i\}\ne[n]`$ は、$`\theta([m])`$ に含まれない $`j\ne i`$ があること、つまりある $`j\ne i`$ について $`\theta\in\partial_j\Delta^n([m])`$ であることと同じだからである。
+両者は一致する。$`\theta([m])\cup\{i\}\ne[n]` は、$`\theta([m])` に含まれない $`j\ne i` があること、つまりある $`j\ne i` について $`\theta\in\partial_j\Delta^n([m])` であることと同じだからである。
 
 :::
 
@@ -328,7 +358,7 @@ Kerodon [Tag 002G](https://kerodon.net/tag/002G)
 
 *注意 （一点への射）*
 
-$`\Delta^0`$ は各段が一点の単体的集合で、任意の単体的集合 $`X`$ から唯一の射 $`X\to\Delta^0`$ がある。$`X`$ が quasicategory（定義 1.8）であることは $`X\to\Delta^0`$ が inner fibration であることと、Kan 複体（定義 1.9）であることは $`X\to\Delta^0`$ が Kan fibration であることと同じである。
+$`\Delta^0` は各段が一点の単体的集合で、任意の単体的集合 $`X` から唯一の射 $`X\to\Delta^0` がある。$`X` が quasicategory（定義 1.8）であることは $`X\to\Delta^0` が inner fibration であることと、Kan 複体（定義 1.9）であることは $`X\to\Delta^0` が Kan fibration であることと同じである。
 
 :::definition "kerodon_1_2_5_1" (lean := "SSet.KanComplex, SSet.KanComplex.hornFilling, SSet.KanComplex.iff")
 Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対応表の状態：Mathlib にある。
@@ -337,7 +367,7 @@ Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対�
 
 *定義 1.9 （Kan 複体）*
 
-単体的集合 $`X`$ が Kan 複体であるとは、すべての $`0\le i\le n`$ について、任意の射 $`\Lambda^n_i\to X`$ が $`\Delta^n\to X`$ に延長できることをいう。
+単体的集合 $`X` が Kan 複体であるとは、すべての $`0\le i\le n` について、任意の射 $`\Lambda^n_i\to X` が $`\Delta^n\to X` に延長できることをいう。
 
 :::
 
@@ -348,12 +378,10 @@ Kerodon Proposition 1.2.5.8（[Tag 002K](https://kerodon.net/tag/002K)）。対�
 
 :::
 
-:::proposition "kerodon_1_2_5_9"
+:::proposition "kerodon_1_2_5_9" (lean := "SerrePositivity.KST.Comparison.ringSpace_kanComplex")
 Kerodon Proposition 1.2.5.9（[Tag 00MG](https://kerodon.net/tag/00MG)）。対応表の状態：一部。
 
 原文は全単体群の台がKan。ringSpace\_kanComplex の型は単体的環 A の台のKan性であり、その加法単体群へ対象を限定した同じ結論を直接与える。全単体群への拡張は数えない。
-
-宣言：`SerrePositivity.KST.Comparison.ringSpace_kanComplex`
 
 :::
 

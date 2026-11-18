@@ -1,0 +1,39 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/notes-bs",
+ "commit": "b21c0c1831d827e3eb33cd13b39af77c2182afe7",
+ "made_by": "NB-W3 stage 1: HTML extraction and literal math comparison",
+ "note": "Eight BS chapters plus introductory extracts; placement and exclusions; no Lean or build",
+ "files": [
+  {
+   "path": "audit.json",
+   "sha256": "e5f9e08e801430647ebecd48ac3da3ab42e87d9a11eef238feb9271d5c531d84",
+   "bytes": 1215
+  },
+  {
+   "path": "htmlunits.py",
+   "sha256": "0505a791f5118f31691269becdc17e5b14c0c4ba1be2195db55d91959cb53534",
+   "bytes": 5704
+  },
+  {
+   "path": "omissions.json",
+   "sha256": "3fe9e2c98d1a0542f40e2221f7f3ec7cb7ea4946ae8aad9a4d62f403a3840758",
+   "bytes": 139200
+  },
+  {
+   "path": "produce.py",
+   "sha256": "204cfbecb402b03955cc7db25775ffe9ab9541ca58dcbff31deaaeaabb917ee6",
+   "bytes": 9055
+  },
+  {
+   "path": "transfer.json",
+   "sha256": "4e06d105b6164420a68353146186fe7da2c38daf7a74237a1d02f69584e490f5",
+   "bytes": 1338714
+  },
+  {
+   "path": "validation.txt",
+   "sha256": "fcc9a115176598fdea9ca1d50eed66abd3000dbffde3a6fd6cd21b3d57d5e91f",
+   "bytes": 99
+  }
+ ],
+ "total_bytes": 1493987
+}

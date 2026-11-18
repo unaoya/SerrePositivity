@@ -6,14 +6,17 @@ import Mathlib.Algebra.Category.Semigrp.Basic
 import Mathlib.Algebra.Group.Hom.Defs
 import Mathlib.Algebra.Group.Monoid
 import Mathlib.Algebra.Group.Semigroup
+import Mathlib.AlgebraicTopology.Quasicategory.StrictSegal
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
+import Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal
 import Mathlib.CategoryTheory.Core
 import Mathlib.CategoryTheory.Groupoid
 import Mathlib.CategoryTheory.PathCategory.Basic
 import Mathlib.CategoryTheory.SingleObj
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.ThinNerveInnerFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.GroupNerveHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.KanCharacterization
 import SerrePositivity.KST.Comparison.BarSegal
@@ -21,6 +24,9 @@ import SerrePositivity.KST.Comparison.BarSegal
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.3 From Categories to Simplicial Sets" =>
 %%%
@@ -46,7 +52,7 @@ Kerodon Construction 1.3.1.1（[Tag 002N](https://kerodon.net/tag/002N)）。対
 
 *定義 3.2 （半順序集合の脈体）*
 
-半順序集合 $`P`$ について、単体的集合 $`N(P)`$ を、$`N(P)([m])`$ を順序を保つ写像 $`[m]\to P`$ の全体とし、$`\theta\colon[m]\to[m']`$ には前合成で作用させて定める。
+半順序集合 $`P` について、単体的集合 $`N(P)` を、$`N(P)([m])` を順序を保つ写像 $`[m]\to P` の全体とし、$`\theta\colon[m]\to[m']` には前合成で作用させて定める。
 
 :::
 
@@ -65,6 +71,18 @@ tag := "kerodon-1-3-2"
 %%%
 
 Kerodon [Tag 04FY](https://kerodon.net/tag/04FY)
+
+*classifying-shape.html — 1. $`B` とは何か*
+
+$`B` は*群から「その群を自己同型として持つ一点」を作る操作*（分類空間、デループ）。これまでの $`BG`（群の表現）、$`B\hat{\mathbb Z}`（有限体のエタールホモトピー型）、$`B\mathbf{Pic}`、$`B^2\mathbb G_m` は全て同じ構成。
+
+*classifying-shape.html — 1. $`B` とは何か — 空間の場合*
+
+- *離散群*：$`BG` は対象が一つで自己射の群が $`G` の亜群。空間としては $`K(G,1)`。連結で $`\Omega BG\simeq G`。例：$`B\mathbb Z=S^1`、$`B\mathbb Z/2=\mathbb{RP}^\infty`、$`BU(1)=\mathbb{CP}^\infty`。
+
+- *∞ 群*：bar 構成 $`BG:=\operatorname{colim}_{[n]\in\Delta^{\mathrm{op}}}G^{\times n}`。$`\{\text{}\infty\text{ 群}\}\simeq\{\text{連結な点付き空間}\}`、$`G\mapsto BG`、$`X\mapsto\Omega X`。
+
+- *繰り返し*：$`A` がアーベル群（$`E_\infty` 群）なら $`BA` も群で、$`B^nA=K(A,n)`、$`\Omega^nB^nA\simeq A`。例：$`B^2\mathbb Z=B(S^1)=\mathbb{CP}^\infty`。
 
 :::definition "kerodon_1_3_2_1" (lean := "Monoid")
 Kerodon Definition 1.3.2.1（[Tag 04FZ](https://kerodon.net/tag/04FZ)）。対応表の状態：Mathlib にある。
@@ -87,12 +105,10 @@ Kerodon Construction 1.3.2.5（[Tag 04G0](https://kerodon.net/tag/04G0)）。対
 
 :::
 
-:::proposition "kerodon_1_3_2_7"
+:::proposition "kerodon_1_3_2_7" (lean := "MonCat.toCat_full, MonCat.toCat_faithful, CategoryTheory.nerveFunctor.fullyfaithful, SerrePositivity.KST.Comparison.monoidWordSimplex, SerrePositivity.KST.Comparison.monoidWordLabels, SerrePositivity.KST.Comparison.monoidWordEquiv")
 Kerodon Proposition 1.3.2.7（[Tag 04G2](https://kerodon.net/tag/04G2)）。対応表の状態：一部。
 
 原文の充満忠実な埋込みという結論は MonCat.toCat の Full/Faithful と nerveFunctor の FullyFaithful の合成から直接得られる。さらに monoidWordEquiv は実際のモノイドの神経の n 単体を Fin n→T に同定する。任意SがSegal条件からその本質的像に入る逆は含めない。
-
-宣言：`MonCat.toCat_full`、`MonCat.toCat_faithful`、`CategoryTheory.nerveFunctor.fullyfaithful`、`SerrePositivity.KST.Comparison.monoidWordSimplex`、`SerrePositivity.KST.Comparison.monoidWordLabels`、`SerrePositivity.KST.Comparison.monoidWordEquiv`
 
 :::
 
@@ -142,7 +158,7 @@ tag := "kerodon-1-3-4"
 
 Kerodon [Tag 0030](https://kerodon.net/tag/0030)
 
-:::proposition "kerodon_1_3_4_1"
+:::proposition "kerodon_1_3_4_1" (uses := "kerodon_1_1_0_6, kerodon_1_3_3_1, kerodon_1_3_4_2, kerodon_1_3_4_3")
 Kerodon Proposition 1.3.4.1（[Tag 0031](https://kerodon.net/tag/0031)）。対応表の状態：なし。
 
 原文の特徴づけは全ての内hornの一意充填との iff。nerve の StrictSegal は spine 座標の全単射で、引用型には内hornの一意充填もその逆の再構成もない。StrictSegalから任意内hornの充填・一意性へ移す証明を要するため、必要方向と数えない。
@@ -151,16 +167,14 @@ Kerodon Proposition 1.3.4.1（[Tag 0031](https://kerodon.net/tag/0031)）。対�
 
 :::
 
-:::lemma_ "kerodon_1_3_4_2"
+:::lemma_ "kerodon_1_3_4_2" (lean := "CategoryTheory.Nerve.strictSegal, SSet.StrictSegal.quasicategory, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn") (uses := "kerodon_1_1_0_6, kerodon_1_3_4_1")
 Kerodon Lemma 1.3.4.2（[Tag 0032](https://kerodon.net/tag/0032)）。対応表の状態：一部。
 
 原文は任意圏の nerve の内hornの一意充填。Quasicategory 性から充填の存在、thinNerve\_hom\_ext\_horn から2次元以上の任意horn制限の単射性を直接組み合わせ、Quiver.IsThin C を追加した場合の同じ一意充填を得る。一般圏の一意性はこの引用にない。
 
-宣言：`CategoryTheory.Nerve.strictSegal`、`SSet.StrictSegal.quasicategory`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn`
-
 :::
 
-:::lemma_ "kerodon_1_3_4_3"
+:::lemma_ "kerodon_1_3_4_3" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_1, kerodon_1_1_4_12, kerodon_1_3_4_1")
 Kerodon Lemma 1.3.4.3（[Tag 0033](https://kerodon.net/tag/0033)）。対応表の状態：なし。
 
 原文は一意内horn充填を持つ二つのSSet間のfを頂点・辺の全単射から同型とする。nerve/isIso/Segal/bijectiveで再検索。nerveAdjunctionの余単位の同型や特定のnerve比較は別の射で、任意のこのfに対する判定ではない。
@@ -206,7 +220,7 @@ tag := "kerodon-1-3-6"
 
 Kerodon [Tag 00HE](https://kerodon.net/tag/00HE)
 
-:::definition "kerodon_1_3_6_1"
+:::definition "kerodon_1_3_6_1" (uses := "kerodon_1_1_0_6, kerodon_1_3_3_1")
 Kerodon Definition 1.3.6.1（[Tag 004J](https://kerodon.net/tag/004J)）。対応表の状態：なし。
 
 原文は任意の指定u:S→N(C)が全Dへの合成でHom全単射を満たすという普遍性の述語。hoFunctorとnerveAdjunctionは標準のモデルと随伴で、任意uに関するこの述語そのものではない。標準モデルの構成を別の定義の一部とはしない。
@@ -252,7 +266,7 @@ Kerodon Construction 1.3.7.1（[Tag 00HK](https://kerodon.net/tag/00HK)）。対
 
 :::
 
-:::proposition "kerodon_1_3_7_5"
+:::proposition "kerodon_1_3_7_5" (uses := "kerodon_1_1_0_6, kerodon_1_3_6_1")
 Kerodon Proposition 1.3.7.5（[Tag 00HP](https://kerodon.net/tag/00HP)）。対応表の状態：なし。
 
 原文は指定u:G\_•→N(Path\[G\])によるHom全単射。Paths.lift はquiverの前関手を道の圏へ延長するだけで、単体集合G\_•からの射との同定や指定uとの合成を型に持たない。追加の比較が必要な証明部品。

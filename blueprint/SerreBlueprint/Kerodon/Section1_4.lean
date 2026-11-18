@@ -3,6 +3,7 @@ import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.Basic
 import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated
+import Mathlib.AlgebraicTopology.SimplexCategory.Rev
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
@@ -10,6 +11,7 @@ import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 import Mathlib.AlgebraicTopology.SimplicialSet.Op
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.KanCharacterization
+import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.ArrowSquareHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.Checks
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyCategoryBridge
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyCategoryMap
@@ -19,6 +21,9 @@ import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategorie
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.4 ∞-Categories" =>
 %%%
@@ -35,7 +40,7 @@ Kerodon Definition 1.4.0.1（[Tag 003A](https://kerodon.net/tag/003A)）。対�
 
 *定義 1.8 （quasicategory）*
 
-単体的集合 $`X`$ が quasicategory であるとは、すべての $`0<i<n`$ について、任意の射 $`\Lambda^n_i\to X`$ が $`\Delta^n\to X`$ に延長できることをいう。
+単体的集合 $`X` が quasicategory であるとは、すべての $`0<i<n` について、任意の射 $`\Lambda^n_i\to X` が $`\Delta^n\to X` に延長できることをいう。
 
 :::
 
@@ -78,12 +83,10 @@ tag := "kerodon-1-4-2"
 
 Kerodon [Tag 003L](https://kerodon.net/tag/003L)
 
-:::definition "kerodon_1_4_2_1"
+:::definition "kerodon_1_4_2_1" (lean := "SimplexCategory.rev, SimplexCategory.rev_map_apply")
 Kerodon Notation 1.4.2.1（[Tag 003M](https://kerodon.net/tag/003M)）。対応表の状態：一部。
 
 原文には有限線形順序の双対と、Δ上のOp(\[n\])=\[n\], Op(α)(i)=n−α(m−i)の構成がある。SimplexCategory.rev は Fin.rev による同じΔ上の関手を直接定義するのでこの成分に対応する。空の順序も含むLin全体の比較同値は含めない。
-
-宣言：`SimplexCategory.rev`、`SimplexCategory.rev_map_apply`
 
 :::
 
@@ -91,6 +94,14 @@ Kerodon Notation 1.4.2.1（[Tag 003M](https://kerodon.net/tag/003M)）。対応�
 Kerodon Construction 1.4.2.2（[Tag 003N](https://kerodon.net/tag/003N)）。対応表の状態：Mathlib にある。
 
 仮定：任意の単体集合 X（Kerodon と一致）。結論：opFunctor.obj X は単体圏の順序反転から誘導した関手で X を前合成した反対単体集合（一致）。
+
+*定義 12.1 （反対の単体的集合）*
+
+$`\theta\colon[m]\to[n]` について $`\theta^{\mathrm{rev}}\colon[m]\to[n]` を $`\theta^{\mathrm{rev}}(i)=n-\theta(m-i)` で定める。単体的集合 $`X` の反対 $`X^{\mathrm{op}}` を
+
+$$`X^{\mathrm{op}}([n])=X([n]),\qquad X^{\mathrm{op}}(\theta)=X(\theta^{\mathrm{rev}})`
+
+で定める。単体的集合の射 $`f\colon X\to Y` について、同じ成分の写像で $`f^{\mathrm{op}}\colon X^{\mathrm{op}}\to Y^{\mathrm{op}}` を定める。単体的集合の射 $`X^{\mathrm{op}}\to Y` と射 $`X\to Y^{\mathrm{op}}` は、同じ成分の写像として一対一に対応する。
 
 :::
 
@@ -140,12 +151,10 @@ Kerodon Proposition 1.4.3.6（[Tag 0040](https://kerodon.net/tag/0040)）。対�
 
 :::
 
-:::corollary "kerodon_1_4_3_7"
+:::corollary "kerodon_1_4_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.exists_arrowHomotopy_of_homMk_comm")
 Kerodon Corollary 1.4.3.7（[Tag 00V0](https://kerodon.net/tag/00V0)）。対応表の状態：一部。
 
 原文は辺のホモトピーと両側が恒等辺の正方形の存在の iff。exists\_arrowHomotopy\_of\_homMk\_comm に a,b を恒等辺として適用すると、同じ辺のホモトピー圏での一致から指定した両側を保つ正方形ホモトピーが直接得られる。逆向きを含む iff の宣言ではない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.exists_arrowHomotopy_of_homMk_comm`
 
 :::
 
@@ -195,6 +204,12 @@ tag := "kerodon-1-4-5"
 
 Kerodon [Tag 0049](https://kerodon.net/tag/0049)
 
+*01-quasicategories.html — 2. ホモトピー圏 — Lean*
+
+- \`homotopyCategory\_homMk\_surjective\`：$`hX` の射は 1 本の辺で表せる。
+
+- \`compStruct\_nonempty\_of\_homMk\_fac\`：$`hX` での合成の等式は実際の合成 2 単体で実現できる。
+
 :::definition "kerodon_1_4_5_1" (lean := "SSet.Truncated.HomotopyCategory₂.Hom, SSet.Truncated.instSetoidEdge")
 Kerodon Construction 1.4.5.1（[Tag 004A](https://kerodon.net/tag/004A)）。対応表の状態：Mathlib にある。
 
@@ -225,12 +240,10 @@ Kerodon Example 1.4.5.4（[Tag 004D](https://kerodon.net/tag/004D)）。対応�
 
 :::
 
-:::definition "kerodon_1_4_5_6"
+:::definition "kerodon_1_4_5_6" (lean := "CategoryTheory.nerveAdjunction, SSet.Truncated.HomotopyCategory.homToNerveMk, SSet.Truncated.HomotopyCategory.homToNerveMk_app_zero, SSet.Truncated.HomotopyCategory.homToNerveMk_app_edge")
 Kerodon Construction 1.4.5.6（[Tag 004G](https://kerodon.net/tag/004G)）。対応表の状態：一部。
 
 原文は各n単体をホモトピー類の射列へ送るu:C→N(hC)を構成する。nerveAdjunction の単位成分の型はまさにこの始域・終域の単体写像を直接与える。2切断の homToNerveMk の式は頂点と辺を同じ類へ送る。全nの指定座標の式を照合済みとせず、標準写像と0・1成分に限定する。
-
-宣言：`CategoryTheory.nerveAdjunction`、`SSet.Truncated.HomotopyCategory.homToNerveMk`、`SSet.Truncated.HomotopyCategory.homToNerveMk_app_zero`、`SSet.Truncated.HomotopyCategory.homToNerveMk_app_edge`
 
 :::
 
@@ -238,6 +251,20 @@ Kerodon Construction 1.4.5.6（[Tag 004G](https://kerodon.net/tag/004G)）。対
 Kerodon Proposition 1.4.5.7（[Tag 004H](https://kerodon.net/tag/004H)）。対応表の状態：本体にある。
 
 仮定：準圏 X と通常圏 D。原文ではさらに 1.4.5.6 の指定写像 u を使う（Kerodon と一致するのは X の準圏性）。結論：homotopyCategoryBridge と bridge\_naturality は二つのホモトピー圏モデルの自然な比較を与える（Lean が弱い：引用の型では指定 u に沿う Fun(hX,D) と Hom(X,N(D)) の全単射を直接確認できない）。
+
+*01-quasicategories.html — 2. ホモトピー圏 — 数学*
+
+quasicategory $`X` のホモトピー圏 $`hX` には、よく知られた構成が二つある。
+
+- *(a) 道の商*：頂点を対象とし、辺の道で生成した自由圏を 2 単体の関係（$`d_1\sigma\sim d_0\sigma\circ d_2\sigma`）で割る。これは nerve の左随伴 $`h\dashv N` そのもので、任意の単体的集合に対して定義できる。
+
+- *(b) 辺のホモトピー類*：射を、辺の「ホモトピー類」とする（Boardman–Vogt、HTT §1.2.3）。合成がうまく定義できるためには quasicategory であること（実際には 2 次元の内ホーン充填）が必要である。
+
+quasicategory では二つが一致する（HTT §1.2.3、Kerodon §1.4.5）。
+
+*01-quasicategories.html — 2. ホモトピー圏 — Lean*
+
+*証明の方針*：(a) → (b) は自由圏の普遍性で辺を類に送る関手として作る。(b) → (a) は「左ホモトピックな辺は (a) で等しい」（\`homotopic\_path\_eq\`）を示して商から降ろす。二つの合成が恒等であることを両方向で確かめると、圏同値どころか圏同型になる（\`edge\_path\_inverse\`、\`path\_edge\_inverse\`）。
 
 :::
 

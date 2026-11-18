@@ -1,0 +1,15 @@
+{
+ "chapter": "6",
+ "modules": [
+  "Section6_1",
+  "Section6_2",
+  "Section6_3"
+ ],
+ "stats": {
+  "linked": 80,
+  "nolink-none": 65,
+  "with-uses": 39,
+  "with-note-intro": 5,
+  "with-note": 5
+ }
+}
