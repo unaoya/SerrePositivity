@@ -1,0 +1,49 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/notes-kerodon2",
+ "commit": "8036157a85a16d9b706301d4c8960c98833a77d3",
+ "made_by": "NB-W2: paragraph transfer and Markdown link audit",
+ "note": "All 47 NB-W1 holding blocks relocated; 72 new source blocks; frozen HTML, static verification",
+ "files": [
+  {
+   "path": "audit.json",
+   "sha256": "a3dae68cc2742d3d73c47c0bcbf87ac97ef9cde5fac1cde36c4cc8cf51fb9941",
+   "bytes": 2232
+  },
+  {
+   "path": "blocks.json",
+   "sha256": "2215d308499b789a6340ec348af7120e9f82e317de5743c2d5475377affbfeb2",
+   "bytes": 111635
+  },
+  {
+   "path": "links.json",
+   "sha256": "c903b6b31cf2cece7d08b4973095b7c18c76d08e0b503865fd1957db28bccde5",
+   "bytes": 10625
+  },
+  {
+   "path": "map.tsv",
+   "sha256": "6bc806ded351835502d7e834329f5351819506e23c5675737e403ddce6f67208",
+   "bytes": 1867
+  },
+  {
+   "path": "paragraph-map.json",
+   "sha256": "50722a6bcc125c17deae6767dd957e67fe941dd4ad8a7260169e6817ff74d906",
+   "bytes": 87389
+  },
+  {
+   "path": "split-notes.py",
+   "sha256": "b6c9a5dd00706c70941462912c149299e0cb81a5263c55089f43871c53f4f15e",
+   "bytes": 11868
+  },
+  {
+   "path": "transfer.py",
+   "sha256": "c9e8782984e2330cf2bdf266b9dab2063bf37d90bc881daf398df8133bccf047",
+   "bytes": 11870
+  },
+  {
+   "path": "validation.txt",
+   "sha256": "8ea146131310f6178f46071ef1b17b9dcdbc9611e1a786d98746ee610d79852f",
+   "bytes": 2080
+  }
+ ],
+ "total_bytes": 239566
+}

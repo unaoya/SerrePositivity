@@ -1,10 +1,10 @@
 # 現在地
 
-- 段：**CC-W3 完了、停止**。
-- 一覧：済み 3／全体 3 文献（BS17・BM18・Rydh）。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。対象ソースは main `5cbfd7bb1` の取り込み後の `223ac6e1e`。
-- 次：追加作業なし。
-- 紙のみ。照合は Lean ソースの型を静的に読んだ。PDF と抽出・検索の証拠は git 外に置いた。
+- 段：**NB-W2 段1 完了**。
+- 一覧：済み 1／全体 2 段。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `8036157a8` を取り込んだ。
+- 次：段2 の本論文の解説原稿。
+- 凍結 exposition の転記と静的照合。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -294,3 +294,11 @@ READMEに旧→新の全遷移と段0へ渡す所見（site/模型の比較、PD
 - Rydh 3.10 のアフィン基底の fppf–proper 細分は `partial / special`。3.12 の準コンパクト開被覆–固有細分は対応を確認できず `none`。
 
 none は本体・固定版 Mathlib のソース検索で対応が確認できなかった行。CSV 構造、目録と review の番号の一致、none 検索の全件、辺の参照先、採用した宣言の所在を検査した。
+
+## NB-W2
+
+### 段1　Kerodon
+
+[段落の行き先](../../../research/kerodon-coverage/notes/README.md)を更新。旧保留 47 ブロックをすべて移し、t-06〜t-15 の新規 72 ブロックを追記した。全 160 ブロック中、保留は t-15 定義15.1 の未記入表示1件。項目原稿 52、節原稿 17。項目原稿には第5章以降 11 件を含む。review に行がない 4 件は README に列挙した。
+
+本体の文言・数式・旧番号を保存し、移設後のリンクを検査した。[証拠目録](../../../evidence/cited/notes-kerodon2/manifest.json)。
