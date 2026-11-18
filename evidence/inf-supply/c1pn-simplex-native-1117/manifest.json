@@ -1,0 +1,79 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-simplex-native-1117",
+ "commit": "",
+ "made_by": "c1pn-simplex-native-1117/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "be00668c7e654239015b10a8d3aead65d3e41b4de30da6c4f3ee33e309150192",
+   "bytes": 8814
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "acc02b18bdc682e7768c846176db39d799e5a88c4d87f63c667b709e6f689e0c",
+   "bytes": 4407880
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "fca53ec9630555dba9b2a6b45247d51db45dc2111d2d23505aee818cac838f6a",
+   "bytes": 4408512
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "bbd903c0bebd499d38ca22f06bf9805c74be9403a345cf9b1fe22685420ce0b6",
+   "bytes": 4408512
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "d015bee2a3d04924c4b61bba87e483586f8de40cda08d82592ce7cccbb02d62a",
+   "bytes": 5763
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "ebc0aa0da0cca983400eb23cbc313eb46ca9f6db0c6d4e736159945c87991aa1",
+   "bytes": 1376
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "f98312212bc0ec1859e88a6025dc83c2eff6335543d975517356861d98cf2055",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "13fdda03906ef818275d7efeee95e19bd6519f6281b86d46a773b08ff363ae9e",
+   "bytes": 151
+  },
+  {
+   "path": "inspect.lean",
+   "sha256": "a201aad7c624061cf921203be88ac6cdb2863750efce7197f94e0c5cb2be5562",
+   "bytes": 303
+  },
+  {
+   "path": "inspect.log",
+   "sha256": "1073b8ec1d45e387cf81d31c705041be68e0ee3dbd7e4ccf0d80d895a5b1476d",
+   "bytes": 1579
+  },
+  {
+   "path": "signature-check-before.json",
+   "sha256": "4e3fad7109505834c35536b28fe448f2537919a3b8f4433fff8aecea1140a1ca",
+   "bytes": 13446
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "06bcea11f501a30dce951e4e96afa78bd545d941409c237906ecfb4d1a960f20",
+   "bytes": 532
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 13260966
+}

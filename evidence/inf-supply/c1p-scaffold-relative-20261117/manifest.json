@@ -1,0 +1,64 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1p-scaffold-relative-20261117",
+ "commit": "56e672faf",
+ "made_by": "locked targeted build and fresh environment axiom audit; ledger DAG check",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "1bce883b76460c56fb2d69ef3de80b571f30452855a68856c4d3008bae57cfcc",
+   "bytes": 26260
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-audit.log",
+   "sha256": "44f39dd41a8e5f699bf81431bae880b4e24f42f62a7fe7aeab956e5c5f49a4d8",
+   "bytes": 4409430
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "5703869b8bbf902ceb222282ba0b33b7834550e7ed576de863ec2dc133953d35",
+   "bytes": 18280
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "74625be8621d0ec3ef01f2f6a9c233df809e1988401e6cac121dc01c1ffcf256",
+   "bytes": 1400
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "89beac2209f3d7afb521c29bc27dc0ef92eec813f7410e5595aefc999c2aaa9b",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "f07c204dc8073f221d21d9437d671d5753783b2e343a7cd9b6db3261a74249cf",
+   "bytes": 164
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "8a7009c7c838174d8cec8ec88aca54c1f825209f9e5d3bfc06763e6bcffdd012",
+   "bytes": 7891
+  },
+  {
+   "path": "signature-check.log",
+   "sha256": "063f276165bb35c83e26ffac3bf6f8a85278c7b5a0192e3cccf5a6557058031d",
+   "bytes": 1153
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "8da4d64621931fc162d4c510a465625381405d5b8b1e854b66d87a8e0dd4abf0",
+   "bytes": 541
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4469217
+}

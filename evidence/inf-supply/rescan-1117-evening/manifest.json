@@ -1,0 +1,24 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/rescan-1117-evening",
+ "commit": "c39ea20f7",
+ "made_by": "complete remaining-signature review, original type preservation check, Kahn DAG check and corrected-bound admission table",
+ "note": "",
+ "files": [
+  {
+   "path": "make-paper.py",
+   "sha256": "4fcdcbc3f008ec1a59b834cd9dee93f2028f14834a1cf15fe1006a8e5c652397",
+   "bytes": 15833
+  },
+  {
+   "path": "preservation.json",
+   "sha256": "bb8942beb5cfe0d5b6b29e69498a7dd6cb0dd296592a1b14acc7cf35fd0ebfa6",
+   "bytes": 217
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "288bac40b5df995fee9654bb751e1ef8517f3f54df64cd586c2a7033a750a9a2",
+   "bytes": 9186
+  }
+ ],
+ "total_bytes": 25236
+}

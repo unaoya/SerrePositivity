@@ -43,8 +43,8 @@ def presheafDensityOriginalFiberYonedaValue :=
 lemma presheafElementsYonedaSliceValue_interval :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceValue F x =
       _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceInterval F x ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.intervalYonedaEvaluation F x := by
-  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.presheafElementsYonedaSliceValue, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.yonedaPresheafEvaluation_interval]
-  rfl
+  rw [presheafElementsYonedaSliceValue, yonedaPresheafEvaluation_interval,
+    presheafElementsYonedaSliceInterval, Category.assoc]
 
 /-- 元の comma の実際の値写像と元の大域変換の値写像を、同じ全 fiber 上で比較する。 -/
 def presheafDensityFiberYonedaValueIso :

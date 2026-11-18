@@ -1,0 +1,69 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-native-upper-1117",
+ "commit": "",
+ "made_by": "c1pn-native-upper-1117/run.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "1fafdc22257328ffcfe5ef2188c731733e3c24ebdf3f2e4bb6a77bf447a4f3e3",
+   "bytes": 44084
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "c920b0d4e7eb92718db549ff7431b7c1a0d0fc6bbe1f9e668d0eb4eec3cdcd7f",
+   "bytes": 4604411
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "31b6cb2f9cffcbfc4ee9b3914f98d94d7f7a2625d9d3aabcee17fe169d5881c2",
+   "bytes": 9075608
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "9732fc8aa3e2cef726d51f6e2ab25db1e499a3613c24582a1e80c41d33ac5873",
+   "bytes": 30194
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "af40a2a65e2e27ef18890a51a0b34b775350cea4e5c16be9083bbfd74297db76",
+   "bytes": 1986
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "047f805231cbe6fbccc1a88a836c1e6ef21bb1b32c06956e94f8d6424bef9543",
+   "bytes": 62
+  },
+  {
+   "path": "files.json",
+   "sha256": "4b3d082baf2bbf25c98f9e6ab05cef055471d573857c6140c6e0ea69cc6aa09f",
+   "bytes": 469
+  },
+  {
+   "path": "run.py",
+   "sha256": "22eca4c3ae4946df0ad35b853d46a5aba3ce39d7a014fd22ee10067570e348be",
+   "bytes": 263
+  },
+  {
+   "path": "signature-check-after.json",
+   "sha256": "147b3a5acb63907938193c6618e2ee354208abb26574aa9e1cd68dd61a3eac0a",
+   "bytes": 14600
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "f71686c25e3523472862918ac43acb2dcac6535bf18395a4990a04149c36ea9c",
+   "bytes": 985
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 13776698
+}

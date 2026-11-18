@@ -1,0 +1,74 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-ri-final-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/r04-ri-final-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "df9e1c5e3ef23b3a4d3b2a7746ac31aba40fb5d2df9e3acdc3a337e5a56f5bcb",
+   "bytes": 8219
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "e8fb5936a6507758e5c96d561960be18058d1a9760f15d21d2de721e08e6f6ba",
+   "bytes": 24056
+  },
+  {
+   "path": "build-2.log",
+   "sha256": "30ab07340c6979ef0fecf9e392000e402b5d2ef2322b86889a1e4a41c0b624ff",
+   "bytes": 23720
+  },
+  {
+   "path": "build-3.log",
+   "sha256": "abd54e88d9b4513a737e24b24dee4a71020ca32a6ddc2d1c46c0cbeb3ddb383b",
+   "bytes": 18656
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "994efd696d2135da5e1366cd47b0a66d57eb807a86eab66707feda377dec3787",
+   "bytes": 4805
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "054ebb5fe6e4d8bf971bbb23d8b345457fb304947b85153d845ed66cbfa8109a",
+   "bytes": 1785
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "4673e052f83407cd3db87ef7fdf2066075a68e2f57e97e4f4d101c46eefa6bd3",
+   "bytes": 62
+  },
+  {
+   "path": "expected-type.lean",
+   "sha256": "c8565806256c6b6d0439d779231248e2d2810c47c0e7ff90ddd83d3cfd41b0f9",
+   "bytes": 2217
+  },
+  {
+   "path": "expected-type.log",
+   "sha256": "3899d3f948e6b51ef44eb5cd9218f83137c86467adfce9ef9512b29669c0ed84",
+   "bytes": 386
+  },
+  {
+   "path": "files.json",
+   "sha256": "c1bd784958fae6e4549d0199af21f08597615068cc4f51d55f763543763f9bbf",
+   "bytes": 371
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "919687093f62fe525ca0cff68391f984d3485a6c1219debd310c8586f324dacb",
+   "bytes": 887
+  },
+  {
+   "path": "verify.py",
+   "sha256": "62243fd40bc19052c4f9064c4e2f30dee6e1b6d719f07375120ae300cc57c214",
+   "bytes": 4207
+  }
+ ],
+ "total_bytes": 89394
+}

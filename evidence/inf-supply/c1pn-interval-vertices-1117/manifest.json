@@ -1,0 +1,99 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/c1pn-interval-vertices-1117",
+ "commit": "2513bfeff",
+ "made_by": "target build, fresh environment axiom audit, signature type elaboration",
+ "note": "P3-C1PN two interval evaluation laws; parent remains pending",
+ "files": [
+  {
+   "path": "R09-Cech-typecheck.lean",
+   "sha256": "8dad1d26082b966cfb2bfcaff3d21e5f4ea1ce7ab1cd044fc59b7c45797870ee",
+   "bytes": 1981
+  },
+  {
+   "path": "R09-Cech-typecheck.log",
+   "sha256": "6deff0f2a2cfaec40da4e68cc08e9e86bf3c6b44de0c521ea5986c0745c4f0ca",
+   "bytes": 932
+  },
+  {
+   "path": "R15-Unit-typecheck.lean",
+   "sha256": "590026008b67726854bc984086a30bcdbe107a6be0a96fe1538ab3d1753de059",
+   "bytes": 2634
+  },
+  {
+   "path": "R15-Unit-typecheck.log",
+   "sha256": "cedc3baec81f527b16aabb8e2ddccffab2c008898675ac4cff858e7ad02d2fc8",
+   "bytes": 614
+  },
+  {
+   "path": "audit-after.lean",
+   "sha256": "1ddfd7fd27ef2f6a7c3176bf9271fe4f5ebd015283497de1dabcc89217dfac03",
+   "bytes": 1304
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "batch-result.json",
+   "sha256": "20211b774b9ea377ebd673f27fc95006c1d8f0acfcef6ccbf11dd40be059d91a",
+   "bytes": 79
+  },
+  {
+   "path": "batch.log",
+   "sha256": "10e203d486400b45d811b412443b2b32462331ef6ce12c6ea4c8e1bdae309b64",
+   "bytes": 4305291
+  },
+  {
+   "path": "batch.py",
+   "sha256": "1d269c163c76dfd652f13bb07a0b0b61fc01284a49a5ca7456329f08fbed9db4",
+   "bytes": 658
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "902542018bcbfcbdb61efe7beb4a2cde99d3094c8dd2738618b8169af63d035f",
+   "bytes": 659
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "a73c7b71fe1cec880f72d6c31d3cba5372c25b3d54dcff16d79a071ceda81528",
+   "bytes": 1331
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "553e98008d89636f9f708b3f72dd688ead4fd0a538facde35526782edad65044",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "3da95b71c0694089d2642ef123ebc09ac880f45fbadfddcae054f35398432aae",
+   "bytes": 127
+  },
+  {
+   "path": "native-interval.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "path": "signature-check.json",
+   "sha256": "880f7db2abae028550295f490e6a0c0610102012668a0568d6c1f33786c6134d",
+   "bytes": 9186
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "023e89d2587a5cd0a25a2c16166a84f0ad14607afc73aa668b0d7179e149774a",
+   "bytes": 507
+  },
+  {
+   "path": "typecheck-result.json",
+   "sha256": "7a3722daf0d6587bb0a343bd529d9249189bdd992b4b1bf01967207b26ad1a2c",
+   "bytes": 246
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 4329646
+}

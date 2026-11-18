@@ -591,6 +591,7 @@ public import SerrePositivity.InfinityCategories.Project.Entrypoints.Compact
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Idempotent
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Ind
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.InfinitySheaves
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.HomotopyLimits
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Stable
 public import SerrePositivity.Inputs.Descent

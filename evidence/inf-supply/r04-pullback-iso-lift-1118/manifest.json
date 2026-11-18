@@ -1,0 +1,54 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pullback-iso-lift-1118",
+ "commit": "",
+ "made_by": "/Users/sugakubunka/serre-evidence/inf-supply/r04-pullback-iso-lift-1118/verify.py",
+ "note": "",
+ "files": [
+  {
+   "path": "audit-after.lean",
+   "sha256": "34d07e091ea8484da39776f782ac123cbf6516fa69f7b0943bb1adca67b9c271",
+   "bytes": 1646
+  },
+  {
+   "path": "audit-after.log",
+   "sha256": "021c96d4d6dbce25447c4f1432c8b5ab30fd1a62249027dd248e842e7278689a",
+   "bytes": 23
+  },
+  {
+   "path": "build-1.log",
+   "sha256": "d22109f160cac0495b83751ccaef1ad212d25da4eebde86fca9220b91fbcfb75",
+   "bytes": 7687
+  },
+  {
+   "path": "catalog-after.json",
+   "sha256": "a0f66b630fc85cb97c98426cf887065eda2076a0a188efae4738544cbf3712f5",
+   "bytes": 957
+  },
+  {
+   "path": "catalog-after.lean",
+   "sha256": "f89845b17ce83a568edbe5104c6c20053ebe94d22ac3f51adcbd02660f0f9f3b",
+   "bytes": 1370
+  },
+  {
+   "path": "catalog-after.log",
+   "sha256": "553e98008d89636f9f708b3f72dd688ead4fd0a538facde35526782edad65044",
+   "bytes": 61
+  },
+  {
+   "path": "files.json",
+   "sha256": "1ced2fec26b331c16f8fa70340e89f596d083c3ff5040a32e5763edf227a69a0",
+   "bytes": 152
+  },
+  {
+   "path": "target-audit-result.json",
+   "sha256": "85e3dfb19a1688a8cabec5c7c8ca4108030854e1d300a12c4ce100898fd5ac2d",
+   "bytes": 527
+  },
+  {
+   "path": "verify.py",
+   "sha256": "aac77d3914a2be1ad5da6fc6abeb8e72cab44a3599b4fe7eda483cd17ca83b90",
+   "bytes": 4013
+  }
+ ],
+ "total_bytes": 16436
+}
