@@ -34,7 +34,7 @@ tag := "kerodon-1-2-1"
 
 Kerodon [Tag 00G5](https://kerodon.net/tag/00G5)
 
-:::definition "kerodon_1_2_1_1"
+:::definition "kerodon_1_2_1_1" (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.2.1.1（[Tag 00G6](https://kerodon.net/tag/00G6)）。対応表の状態：なし。
 
 原文はXの部分単体集合が別の部分単体集合と余積分解するというsummandの述語。summand/componentSubcomplex/成分因子化を再検索。成分類の逆像の部分複体はあるが、その包含をsummandとする条件/分解そのものの宣言ではない。
@@ -197,7 +197,7 @@ tag := "kerodon-1-2-3"
 
 Kerodon [Tag 001X](https://kerodon.net/tag/001X)
 
-:::definition "kerodon_1_2_3_1"
+:::definition "kerodon_1_2_3_1" (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.2.3.1（[Tag 001Y](https://kerodon.net/tag/001Y)）。対応表の状態：なし。
 
 原文は指定u:S→Sing(Y)が全Xへの合成写像の全単射を満たすという任意Y,uの普遍性の述語。toTop と sSetTopAdj は標準の実現関手と随伴で、任意の指定uに対するその条件の定義ではない。標準単位の例と任意のuの述語を同一視しない。
@@ -248,7 +248,7 @@ Kerodon Proposition 1.2.3.10（[Tag 0028](https://kerodon.net/tag/0028)）。対
 
 :::
 
-:::lemma_ "kerodon_1_2_3_13"
+:::lemma_ "kerodon_1_2_3_13" (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12")
 Kerodon Lemma 1.2.3.13（[Tag 00H2](https://kerodon.net/tag/00H2)）。対応表の状態：なし。
 
 原文は任意の充満部分圏Uが単射沿いのpushout・単射列の余極限・単体の全余積で閉じれば全SSetを含むという帰納原理。induction/Subcomplex/relativeCellComplexOfMonoで再検索。相対セル分解は帰納原理の証明材料であり、このUへの所属を直接返す型ではない。
@@ -285,28 +285,28 @@ tag := "kerodon-1-2-4"
 
 Kerodon [Tag 000K](https://kerodon.net/tag/000K)
 
-*定義 1.6 （面 $`\partial_j\Delta^n`$）*
+*定義 1.6 （面 $`\partial_j\Delta^n`）*
 
-$`0\le j\le n`$ について、$`\Delta^n`$ の部分単体的集合 $`\partial_j\Delta^n`$ を
+$`0\le j\le n` について、$`\Delta^n` の部分単体的集合 $`\partial_j\Delta^n` を
 
-$$`\partial_j\Delta^n([m])=\{\theta\colon[m]\to[n]\mid j\notin\theta([m])\}`$$
+$$`\partial_j\Delta^n([m])=\{\theta\colon[m]\to[n]\mid j\notin\theta([m])\}`
 
-で定め、$`\Delta^n`$ の $`j`$ 番目の面という。
+で定め、$`\Delta^n` の $`j` 番目の面という。
 
 :::definition "kerodon_1_2_4_1" (lean := "SSet.horn")
 Kerodon Construction 1.2.4.1（[Tag 000U](https://kerodon.net/tag/000U)）。対応表の状態：Mathlib にある。
 
 仮定：n\>0 と i : Fin (n+1)（Lean が弱い：horn の定義自体は n=0 にも適用できる）。結論：horn n i は Δ\[n\] の i 番以外の面の和。原文の像が i 以外の頂点を一つ欠くという条件と同じ部分複体（一致）。
 
-*定義 1.7 （horn $`\Lambda^n_i`$）*
+*定義 1.7 （horn $`\Lambda^n_i`）*
 
-$`n\ge1`$、$`0\le i\le n`$ とする。$`\Delta^n`$ の部分単体的集合 $`\Lambda^n_i`$ を、次のどちらかの書き方で定める。
+$`n\ge1`、$`0\le i\le n` とする。$`\Delta^n` の部分単体的集合 $`\Lambda^n_i` を、次のどちらかの書き方で定める。
 
-1. \*\*部分単体的集合として直接\*\*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`$。
+1. \*\*部分単体的集合として直接\*\*：$`\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}`。
 
-2. \*\*面の和として\*\*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`$。
+2. \*\*面の和として\*\*：$`\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n`。
 
-両者は一致する。$`\theta([m])\cup\{i\}\ne[n]`$ は、$`\theta([m])`$ に含まれない $`j\ne i`$ があること、つまりある $`j\ne i`$ について $`\theta\in\partial_j\Delta^n([m])`$ であることと同じだからである。
+両者は一致する。$`\theta([m])\cup\{i\}\ne[n]` は、$`\theta([m])` に含まれない $`j\ne i` があること、つまりある $`j\ne i` について $`\theta\in\partial_j\Delta^n([m])` であることと同じだからである。
 
 :::
 
@@ -328,7 +328,7 @@ Kerodon [Tag 002G](https://kerodon.net/tag/002G)
 
 *注意 （一点への射）*
 
-$`\Delta^0`$ は各段が一点の単体的集合で、任意の単体的集合 $`X`$ から唯一の射 $`X\to\Delta^0`$ がある。$`X`$ が quasicategory（定義 1.8）であることは $`X\to\Delta^0`$ が inner fibration であることと、Kan 複体（定義 1.9）であることは $`X\to\Delta^0`$ が Kan fibration であることと同じである。
+$`\Delta^0` は各段が一点の単体的集合で、任意の単体的集合 $`X` から唯一の射 $`X\to\Delta^0` がある。$`X` が quasicategory（定義 1.8）であることは $`X\to\Delta^0` が inner fibration であることと、Kan 複体（定義 1.9）であることは $`X\to\Delta^0` が Kan fibration であることと同じである。
 
 :::definition "kerodon_1_2_5_1" (lean := "SSet.KanComplex, SSet.KanComplex.hornFilling, SSet.KanComplex.iff")
 Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対応表の状態：Mathlib にある。
@@ -337,7 +337,7 @@ Kerodon Definition 1.2.5.1（[Tag 002H](https://kerodon.net/tag/002H)）。対�
 
 *定義 1.9 （Kan 複体）*
 
-単体的集合 $`X`$ が Kan 複体であるとは、すべての $`0\le i\le n`$ について、任意の射 $`\Lambda^n_i\to X`$ が $`\Delta^n\to X`$ に延長できることをいう。
+単体的集合 $`X` が Kan 複体であるとは、すべての $`0\le i\le n` について、任意の射 $`\Lambda^n_i\to X` が $`\Delta^n\to X` に延長できることをいう。
 
 :::
 

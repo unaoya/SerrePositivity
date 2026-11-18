@@ -1,0 +1,23 @@
+{
+ "key": "clmst",
+ "dir": "CLMST",
+ "title": "CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）",
+ "modules": [
+  "Section1",
+  "Section2",
+  "Section3",
+  "Section4",
+  "Section5",
+  "Section6",
+  "Section7",
+  "Section8"
+ ],
+ "stats": {
+  "none": 117,
+  "nolink": 143,
+  "own": 4,
+  "linked": 4,
+  "partial": 20,
+  "interface": 6
+ }
+}

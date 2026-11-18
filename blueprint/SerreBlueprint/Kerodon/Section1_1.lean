@@ -34,7 +34,7 @@ Kerodon の 1.1 節（[Tag 0004](https://kerodon.net/tag/0004)）の項目と、
 
 *規約 （大きさ）*
 
-第 III 部を通して、Grothendieck 宇宙 $`\mathbb U`$ を一つ固定する。$`\mathbb U`$ の元である集合を小さいという。単体的集合 $`X`$ が小さいとは、すべての $`[m]`$ について $`X([m])`$ が小さいことをいう。
+第 III 部を通して、Grothendieck 宇宙 $`\mathbb U` を一つ固定する。$`\mathbb U` の元である集合を小さいという。単体的集合 $`X` が小さいとは、すべての $`[m]` について $`X([m])` が小さいことをいう。
 
 :::definition "kerodon_1_1_0_1"
 Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応表の状態：Mathlib にある。
@@ -50,13 +50,13 @@ Kerodon Definition 1.1.0.2（[Tag 000A](https://kerodon.net/tag/000A)）。対�
 
 仮定：非空有限順序集合の標準形 \[n\] を使う（Kerodon と一致）。結論：SimplexCategory の対象は長さ n、\[m\] から \[n\] の射は Fin (m+1) →o Fin (n+1) の順序写像（一致）。
 
-*定義 1.1 （単体圏 $`\Delta`$）*
+*定義 1.1 （単体圏 $`\Delta`）*
 
-$`n\ge0`$ について、$`[n]=\{0,1,\dots,n\}`$ に通常の大小関係 $`0<1<\cdots<n`$ で全順序を入れたものを考える。単体圏 $`\Delta`$ を次で定める。
+$`n\ge0` について、$`[n]=\{0,1,\dots,n\}` に通常の大小関係 $`0<1<\cdots<n` で全順序を入れたものを考える。単体圏 $`\Delta` を次で定める。
 
-- 対象：$`[n]`$（$`n\ge0`$）。
+- 対象：$`[n]`（$`n\ge0`）。
 
-- 射：$`\mathrm{Hom}_\Delta([m],[n])`$ は、順序を保つ写像 $`\theta\colon[m]\to[n]`$、つまり $`i\le j`$ なら $`\theta(i)\le\theta(j)`$ をみたす写像の全体。
+- 射：$`\mathrm{Hom}_\Delta([m],[n])` は、順序を保つ写像 $`\theta\colon[m]\to[n]`、つまり $`i\le j` なら $`\theta(i)\le\theta(j)` をみたす写像の全体。
 
 - 合成：写像の合成。恒等射：恒等写像。
 
@@ -83,7 +83,7 @@ Kerodon Definition 1.1.0.6（[Tag 000H](https://kerodon.net/tag/000H)）。対�
 
 *定義 1.2 （単体的集合）*
 
-単体的集合とは関手 $`X\colon\Delta^{\mathrm{op}}\to\mathrm{Set}`$ のことである。単体的集合の射は関手の間の自然変換とする。
+単体的集合とは関手 $`X\colon\Delta^{\mathrm{op}}\to\mathrm{Set}` のことである。単体的集合の射は関手の間の自然変換とする。
 
 :::
 
@@ -188,7 +188,7 @@ Kerodon Definition 1.1.2.3（[Tag 0012](https://kerodon.net/tag/0012)）。対�
 
 :::
 
-:::proposition "kerodon_1_1_2_10"
+:::proposition "kerodon_1_1_2_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
 Kerodon Proposition 1.1.2.10（[Tag 0011](https://kerodon.net/tag/0011)）。対応表の状態：一部。
 
 原文の5条件中、degenerate\_eq\_iUnion\_range\_σ は退化作用素の像の和、mem\_degenerate\_iff は低次元への全射に沿う像との同値で、(1)と(3)の同値を定義の展開で直接与える。(5)の任意次元の非単射による因子化まで含めない。
@@ -227,7 +227,7 @@ tag := "kerodon-1-1-3"
 
 Kerodon [Tag 04ZS](https://kerodon.net/tag/04ZS)
 
-:::definition "kerodon_1_1_3_1"
+:::definition "kerodon_1_1_3_1" (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.1.3.1（[Tag 0019](https://kerodon.net/tag/0019)）。対応表の状態：一部。
 
 原文は次元≤k・次元ちょうどk・有限次元を定義する。HasDimensionLT/LE の型は各上位次数の全単体の退化性で、非負kの上界および負kの空の場合を直接表す。次元ちょうど・有限次元の述語はこの引用にはない。
@@ -257,7 +257,7 @@ Kerodon Construction 1.1.3.9（[Tag 00X4](https://kerodon.net/tag/00X4)）。対
 
 :::
 
-:::proposition "kerodon_1_1_3_11"
+:::proposition "kerodon_1_1_3_11" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_8")
 Kerodon Proposition 1.1.3.11（[Tag 04ZX](https://kerodon.net/tag/04ZX)）。対応表の状態：なし。
 
 原文は次元上界と任意図式/標準単体からの余極限表示の4条件の同値。hasDimensionLT\_iSup\_iff は部分複体の和、hasDimensionLT\_of\_epi は全射像の上界であり、原文の余極限図式・標準比較写像のどれも型にない。余極限と和/全射を結ぶ別の議論が要るため部品としてのみ記録。
@@ -266,7 +266,7 @@ Kerodon Proposition 1.1.3.11（[Tag 04ZX](https://kerodon.net/tag/04ZX)）。対
 
 :::
 
-:::corollary "kerodon_1_1_3_14"
+:::corollary "kerodon_1_1_3_14" (uses := "kerodon_1_1_0_6")
 Kerodon Corollary 1.1.3.14（[Tag 04ZZ](https://kerodon.net/tag/04ZZ)）。対応表の状態：なし。
 
 原文は次元≤kの二対象間の同じ射fを低次数の全単射から同型とする。現本体とMathlibのDimension・truncation・isIsoを再検索。hasDimensionLT\_iff\_of\_isoは逆向きの不変性、SkeletalDimension.stageIsoは骨格包含の別の射の同型。任意fの判定には当たらない。
@@ -289,7 +289,7 @@ Kerodon Construction 1.1.4.1（[Tag 0015](https://kerodon.net/tag/0015)）。対
 
 :::
 
-:::proposition "kerodon_1_1_4_6"
+:::proposition "kerodon_1_1_4_6" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_8")
 Kerodon Proposition 1.1.4.6（[Tag 001A](https://kerodon.net/tag/001A)）。対応表の状態：なし。
 
 原文は skeleton の次元上界と、低次元 T からの包含による Hom 全単射。候補は S の非退化単体の所属と低次数の成分一致で、skeleton 自身の次元上界やこの Hom 写像の全単射を直接結論しない。非退化単体分解から組み立てる追加議論は partial に数えない。
@@ -316,7 +316,7 @@ Kerodon Corollary 1.1.4.8（[Tag 0502](https://kerodon.net/tag/0502)）。対応
 
 :::
 
-:::corollary "kerodon_1_1_4_9"
+:::corollary "kerodon_1_1_4_9" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_11, kerodon_1_1_3_14, kerodon_1_1_4_6")
 Kerodon Corollary 1.1.4.9（[Tag 0503](https://kerodon.net/tag/0503)）。対応表の状態：なし。
 
 原文は部分複体の k-skeleton 関手の小余極限保存。skAdj は切断から Truncated.sk への随伴で、SSet.sk と部分複体 skeleton の比較は同ファイルの TODO。異なる関手の随伴と保存から元の主張へは比較の証明が要る。
@@ -330,9 +330,9 @@ Kerodon Construction 1.1.4.10（[Tag 000R](https://kerodon.net/tag/000R)）。�
 
 仮定：非負整数 n（Kerodon と一致）。結論：boundary n は Δ\[n\] の真の面を合わせた部分複体で、次数 m\<n では boundary\_obj\_eq\_univ により全単体を含む（一致）。
 
-*定義 5.1 （境界 $`\partial\Delta^n`$）*
+*定義 5.1 （境界 $`\partial\Delta^n`）*
 
-$`n\ge0`$ について、$`\Delta^n`$ の部分単体的集合 $`\partial\Delta^n=\bigcup_{0\le j\le n}\partial_j\Delta^n`$ を境界という（面は定義 1.6、和は定義 1.5）。$`\partial\Delta^0`$ は空である。
+$`n\ge0` について、$`\Delta^n` の部分単体的集合 $`\partial\Delta^n=\bigcup_{0\le j\le n}\partial_j\Delta^n` を境界という（面は定義 1.6、和は定義 1.5）。$`\partial\Delta^0` は空である。
 
 :::
 
@@ -343,7 +343,7 @@ Kerodon Proposition 1.1.4.12（[Tag 001B](https://kerodon.net/tag/001B)）。対
 
 :::
 
-:::proposition "kerodon_1_1_4_13"
+:::proposition "kerodon_1_1_4_13" (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 1.1.4.13（[Tag 0504](https://kerodon.net/tag/0504)）。対応表の状態：一部。
 
 原文の境界からの面制限写像の単射性は boundary.hom\_ext の型そのもの（n+1≥1）で直接得られる。image の整合条件について boundaryFaceGluing は境界次数n+2の構成を与えるが、全正次数を覆うとはしない。単射性という結論成分に限定する。
@@ -400,7 +400,7 @@ Kerodon Corollary 1.1.5.9（[Tag 00FY](https://kerodon.net/tag/00FY)）。対応
 
 :::
 
-:::definition "kerodon_1_1_5_10"
+:::definition "kerodon_1_1_5_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_5_2")
 Kerodon Definition 1.1.5.10（[Tag 00FZ](https://kerodon.net/tag/00FZ)）。対応表の状態：なし。
 
 原文は X がある定数単体集合と同型であるという離散性の述語。discrete:T↦const T は定数単体集合の構成であり、任意Xの離散性の条件ではない。別の構成を定義の部分と数えない。
@@ -464,14 +464,14 @@ Kerodon Proposition 1.1.6.7（[Tag 001L](https://kerodon.net/tag/001L)）。対�
 
 :::
 
-:::proposition "kerodon_1_1_6_8"
+:::proposition "kerodon_1_1_6_8" (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12")
 Kerodon Proposition 1.1.6.8（[Tag 001M](https://kerodon.net/tag/001M)）。対応表の状態：なし。
 
 原文は次元1のXからのHomと、退化辺を頂点へ潰すGraphの射の標準写像の全単射。graph/quiver/truncation/次元1を再検索。OneTruncation₂の反射的quiver構造、SchreierGraphの同値は別の対象・写像であり、この標準Hom写像ではない。
 
 :::
 
-:::proposition "kerodon_1_1_6_9"
+:::proposition "kerodon_1_1_6_9" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_11, kerodon_1_1_6_8")
 Kerodon Proposition 1.1.6.9（[Tag 001N](https://kerodon.net/tag/001N)）。対応表の状態：なし。
 
 原文は次元≤1の充満部分圏とGraphの圏同値。graph equivalence・truncation・OneTruncationを再検索。反射的quiverの抽出だけで、原文の辺を潰せるGraphとの同値を返す宣言は見つからない。
