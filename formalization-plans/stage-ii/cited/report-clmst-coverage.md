@@ -1,6 +1,6 @@
 # 現在地
 
-- 段：**NB-W4 段4　v 降下 49 項目 完了**。
+- 段：**NB-W4 段4　本論文 58 項目 完了**。
 - 一覧：済み 3／全体 4 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
 - 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
@@ -337,3 +337,5 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段4　主張の一行
 
 v 降下の 49 項目（BS17 11、BM18 23、Rydh 15）は版を固定した PDF の見出し本文・図式に照合し、全件に記入した。BS17 4.1 は原典の Witt 係数での導来大域切断と v スタック性、BM18 4.8 は原典の余切断対象でコンパクト生成される値域での主張を収めた。[証拠目録](../../../evidence/cited/nb-w4-statements-vdescent/manifest.json)。
+
+本論文の 58 項目は採用版の定理・図・番号式に照合し、全件に記入した。式の行は適用する定理・設定を明記し、二種類の Euler 評価や通常極限と超極限を区別した。[証拠目録](../../../evidence/cited/nb-w4-statements-paper/manifest.json)。
