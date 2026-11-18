@@ -12953,3 +12953,67 @@ R16.7 は二つのホモトピーから元の `pinchedHomMap` を同値とし、
 篩の包含・指定錐の制限・引き戻しの局所細分を、台帳の型のまま検証した。今回の3署名は素の見込み80〜150行。R16.4〜R17 の9署名は未完で、芯は R16.4 の全境界持ち上げ。R16.5〜6 は、この持ち上げまたは別途示した同じ制限射の空間の同値性から一つの逆とその法則を取り出す。出典の押し出しの読み方に対する三点の鎖の検算は前節。必要な重なりを扱う全族の構成は、既存の構成の計算法則の追加ではないため、ここを区切りとする。今回分の未コミット変更はなく、旧 R2 の未追跡4本はそのまま。
 
 一覧：済み 113／全体 122（うち追加 87）
+
+### 11-18：Coverage の残り9署名の証明計画
+
+対象は台帳の R16.4〜R16.9・R16・R17.1・R17。以下の `B` は `Sieve.generate R`、`i` は台帳の篩包含の反対 nerve、`r` は同じ `sliceOverRestrict (nativeRestriction F S) i`。すべて既存の署名と仮定のままで考える。
+
+#### 先に解く数学
+
+各 `f : V ⟶ U` について、次の**指定錐**が極限であることを、R16.4〜8 を使わずに示せれば、以下の Kan 延長経路を始められる。左辺の基本被覆の仮定は台帳と同じである。
+
+```lean
+(hF : ∀ (U : C) (R : Presieve U), R ∈ K.coverings U →
+  IsLimitCone (nativeRestrictionCone F (Sieve.generate R)))
+(R : Presieve U) (hR : R ∈ K.coverings U) (f : V ⟶ U) ⊢
+  IsLimitCone (nativeRestrictionCone F ((Sieve.generate R).pullback f))
+```
+
+これは数学的には R16.9 の型そのもの。実装順を R16.4 から始めるなら、同じ内容を独立の証明で供給するか、下記の右 Kan 延長を経由せず制限射の写像空間の同値性を直接証明する必要がある。既存の `coverageLocalRefinement_for_generatedSieve`（`Sheaves/CoverageNativeLocalRefinement.lean:29`）は、対象ごとに基本細分とその極限錐を返す。どの細分も実際の引き戻し篩への包含に沿って共終とは限らず、細分どうしの重なりの降下や、全単体で整合する選択はこの型からは取り出せない。
+
+独立の証明を探すなら、まず空間値に落とす。任意の試験頂点 x からの表現可能前層で同じ錐を評価し、`isLimitCone_iff_representablePresheafInfinity`（`Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RepresentablePresheafLimitDetection.lean:55`。係数を E の反対で特殊化）で最後に戻す。空間値での証明義務は次の形になる。
+
+- 空間値前層圏で、各基本 R の離散生成篩から離散表現可能への射 m(R) を取る。篩の要素圏で表現可能を余極限に取る表示では、対象 W での元 s ごとに、各分解 s = g ≫ b を対象、分解間の可換三角形を射とする圏は (s, 𝟙 W) を初対象に持つ。従って同じ m(R) に沿う写像空間の制限が、台帳の指定錐の比較に当たる。
+- m(R) 全体の強飽和類に、各 f に対する **実際の** 基底変換 f* m(R) が入ることを証明する。得られれば、すべての m(R) に局所な空間値前層がこれらの基底変換にも局所になり、直前の検出補題で指定錐に戻る。この包含は現在未証明。R16.3 が与えるのは、f* m(R) の定義域への基本生成篩からの包含である。
+- 細分を貼る経路で確認すべき式も明確にできる。V 上の基本細分の表現可能を加える写像を P → f*B として、重なり P ×_(f*B) ⋯ ×_(f*B) を含む増大 Čech 図式を取る場合、(i) 増大が f*B を余極限として表示することと、(ii) その余極限から y(V) への比較が基本 m(R) の強飽和類に属することが両方必要。(i) だけでは (ii) は出ない。前節の三点の鎖は、重なりを選んだ基本細分だけに置き換える押し出しが (i) で既に失敗しうる例である。[Fiorenza–Schreiber–Stasheff, Lemma A.1](https://arxiv.org/pdf/1011.4735#page=85)
+
+照合用の特殊場合として、引き戻した生成篩が毎回**ある基本被覆の生成篩と等しい**なら、上の極限性は `hF` をその基本被覆へ適用し、篩の等式で移送するだけで得られる。Mathlib の `Coverage.pullback` が返すのは `FactorsThruAlong` で、この等式は入っていない。厳密に引き戻しで閉じた篩族での生成位相の判定と、この弱い条件の差については Hoyois の Fact 2 とその末尾も参照。どちらの条件を用いるかで台帳の一般性が変わるので、特殊場合を終端の型に入れない。現時点で一般型への反例は確認していない。[Hoyois, Fact 2](https://mathoverflow.net/questions/428240/proof-without-sieves-equivalent-grothendieck-topologies-have-the-same-sheaves)
+
+#### 9署名ごとの手順
+
+**R16.4（coverageConeRestriction_homInverse）**。上の独立入力を得た場合、B の反対篩圏から S の反対篩圏への充満包含に沿う、指定制限図式の点ごとの右 Kan 判定を使う。対象 t ∈ S での右 Kan コンマ圏の対象は、B の射 b と t から b への反対篩圏の射。通常圏の向きに戻すと b = g ≫ t という因子分解であり、射も同じ因子分解の可換三角形。従ってこのコンマ圏を `(sieveCategory (B.pullback t.obj.hom))ᵒᵖ` と照合する。照合は頂点 t だけでなく可換三角形を保ち、点ごとの右 Kan 錐の全射を `nativeRestrictionCone F (B.pullback t.obj.hom)` と合わせる。
+
+錐全体に広げるには、両方の篩圏の反対に初対象 a を一つずつ加える。拡げた包含 j は充満である。右 Kan の添字は t では先のコンマ圏のまま。t から a への射はない。a では a の恒等射がコンマ圏の初対象なので、任意の錐 c の a での右 Kan 条件は自動。よって各 c を同じ j に沿う右 Kan 拡張として扱える。[Kerodon §7.3](https://kerodon.net/tag/02Y1)
+
+次に、基底図式を固定した制限で同じ充満忠実性を取り出す。比較の正方形は、上段が j に沿う右 Kan 拡張の制限、下段が篩圏上の同じ右 Kan 拡張の制限、縦辺が a を忘れる写像。下段も充満忠実なので、固定された基底図式に向かう二つの端点間の写像空間のファイバーを取り、上段・下段の同値からファイバーの同値を得る。固定ファイバーは join の錐と比較し、その比較が i での制限と可換であることを示す。ここで実装時に照合すべき対象は、元の r 上の `pinchedHomMap r c d`。一般の右 Kan 制限の全忠実性には `kanRelativeRightKanRestriction_isFullyFaithful`（`Kerodon/LimitsAndColimits/KanExtensions/RelativeRightRestrictionTheorem.lean:71`）がある。この入出力と錐の固定ファイバーとの同定は別に必要で、同補題を r に直接適用できるわけではない。
+
+最後は元の p = `pinchedHomMap r c d` の `IsSimplicialHomotopyEquivalence p` を一つ証明する。Kan 複体間の準圏同値で得たときは `IsQCatEquivalence.isSimplicialHomotopyEquivalence`（`FunctorHomotopy.lean:125`）で変換する。同じ存在から `Classical.choose` で逆射 g を固定する。この p での証明を介するので、点ごとの選択を関手化する工程は生じない。
+
+**R16.5（coverageConeRestriction_homInverse_left）**。R16.4 の g を選んだ**同じ**存在命題の `Classical.choose_spec` の第1成分を用いる。得る式は `Nonempty (SSet.Homotopy (p ≫ g) (𝟙 _))`。定義の選択を開く補題は g とその性質を結ぶ一箇所に置く。
+
+**R16.6（coverageConeRestriction_homInverse_right）**。同じ `choose_spec` の第2成分を用いる。得る式は `Nonempty (SSet.Homotopy (g ≫ p) (𝟙 _))`。`IsSimplicialHomotopyEquivalence` の成分の向きは `SimplicialHomotopyEquivalence.lean:52` で確認した。
+
+**R16.7（coverageConeRestriction_isFullyFaithful）**。`IsFullyFaithful`（`FullyFaithful.lean:30`）を展開して c・d を任意に取り、R16.4 の g、R16.5、R16.6 をこの順に組にする。結論は元の r についてで、別の錐の模型の充満忠実性だけでは閉じない。
+
+**R16.8（coverageGeneratedSieve_upward_isLimit）**。c を S 上の指定錐とする。`coverageGeneratedSieveInclusion_cone`（`Sheaves/CoverageGeneratedSieveCone.lean:28`）を nerve に上げ、`nerveCone_whisker` と後合成 F で `r.app _ c` の `val` が B 上の指定錐の `val` と一致することを示す。必要なら制限図式の等式に沿って移送してから `isLimitCone_iff_of_cone_val_eq` を使う。`hF U R hR` により像は終対象。R16.7 と `IsFullyFaithful.reflects_isTerminalVertex`（`EquivalenceTerminal.lean:114`）で c の終性を反映する。
+
+**R16.9（coverage_basis_pullback_native_isLimit）**。通常の台帳順で R16.8 が独立に得られた場合は、`K.pullback f R hR` から T とその基本被覆性・因子分解を取り、`coverageRefinement_generate_le`（`Sheaves/CoveragePullbackRefinement.lean:20`）から `Sieve.generate T ≤ B.pullback f` を得る。V 上の基本被覆 T と大きい篩 `B.pullback f` に R16.8 を適用する。上の右 Kan 経路を採る場合は、先に得た独立入力を R16.9 の証明にも使い、R16.8 への逆向きの依存を作らない。
+
+**R16（coverage_basis_pullback_isLimit）**。D を `AsSmall.{u + 1} C`、O を `(asSmallSiteShapeIso C).inv ≫ F` とする。D 上の K' は、各 A で `AsSmall.down` に沿って射の述語を下ろしたときに K の基本被覆になる presieve を取る。対象と射をともに ULift で外すので、基本被覆の引き戻しの因子分解を下ろし、K の `pullback` を適用し、因子分解を上げ直すことで K' の公理を得る。生成篩の元は「ある被覆射を経由する」という存在であり、上げ下げは合成を保つため、生成と引き戻しの両方がこの移送と可換。上げた R の基本被覆性を得て、任意の K' の基本錐の極限性を元の `hF` から運び、D 上で R16.9 を `AsSmall.up.map f` に適用する。最後は `isLimit_asSmallRestrictionCone_iff`（`Sheaves/AsSmallSieveConeComparison.lean:76`）と `hom ≫ inv ≫ F = F` で元の指定錐に戻す。必要な集合論の計算は `AsSmall.up/down`（Mathlib `CategoryTheory/Category/ULift.lean:159,165`）と `Sieve.generate_map_eq_functorPushforward`（Mathlib `CategoryTheory/Sites/Sieves/Functoriality.lean:253`）を先に試す。
+
+**R17.1（coverage_generatedSieve_universallyDescending）**。`UniversallyDescendingSieve`（`Sheaves/UniversalSieveDescent.lean:29`）を展開し、V と f を任意に取って同じ R16 の結論を渡す。恒等射の場合に絞る必要はない。
+
+**R17（isSheaf_toGrothendieck_iff）**。順向きは `Coverage.Saturate.of U R hR` が示す被覆性を `IsSheaf` の定義へ渡す。この向きは今の依存から独立。逆向きでは全基本被覆について R17.1 を作り、`(isSheaf_toGrothendieck_iff_universallyDescending K F).2`（`Sheaves/CoverageUniversalDescent.lean:23`）へ渡す。
+
+#### 着手判定と見込み
+
+|範囲|素／補正の台帳見込み|現時点の判定|
+|---|---:|---|
+|R16.4〜6|280〜480／560〜960|独立の数学と錐の比較が未確定。旧見込みを完成見込みとして使わない。R16.5〜6 自体は同じ選択の射影にできる。|
+|R16.7〜9|85〜175／170〜350|証明手順を特定済み。上流の選択または独立入力が必要。|
+|R16|60〜100／120〜200|宇宙を移す手順を特定済み。K' の因子分解・生成・引き戻しの照合は実装時に検証する。|
+|R17.1・R17|25〜55／50〜110|普遍降下版との接続を特定済み。R17 の順向きは独立。|
+
+Lean 着手前に確かめるのは、基本生成篩の全基底変換を局所同値とする独立の証明、または元の `pinchedHomMap` に対する直接のホモトピー同値の証明。現時点で九署名すべての無条件の証明は確立していない。報告のみ更新し、Lean と台帳の署名は変更していない。
+
+一覧：済み 113／全体 122（うち追加 87）
