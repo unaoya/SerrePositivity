@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30273,
+  "verified_lean_lines": 30339,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3937,7 +3937,7 @@
     {
       "id": "R12a.1",
       "name": "siteLift_representable_restrictSectionsCone_val",
-      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O : Presheaf C E)\n (c : JoinCone (sectionsOfDiagram Q O)) (x : E _⦋0⦌),\nlet F := (asSmallSiteShapeIso C).inv ≫ O\nlet G := (SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ covariantRepresentableInfinity x\nlet a := siteLiftPresheafMap φ\nlet t := mapJoinCone (covariantRepresentableInfinity x)\n (JoinCone.ulift.{u + 1, u + 2} (siteLiftSectionsCone Q O c))\n (SetWeight.restrictSectionsCone a G t).val =\n (mapJoinCone (covariantRepresentableInfinity x)\n   (JoinCone.ulift.{u + 1, u + 2}\n    (siteLiftSectionsCone P O (SetWeight.restrictSectionsCone φ O c)))).val",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O : Presheaf C E)\n (c : JoinCone (sectionsOfDiagram Q O)) (x : E _⦋0⦌),\nlet F := (asSmallSiteShapeIso C).inv ≫ O;\nlet G := (SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ covariantRepresentableInfinity x;\nlet a := siteLiftPresheafMap φ;\nlet t := mapJoinCone (covariantRepresentableInfinity x)\n (JoinCone.ulift.{u + 1, u + 2} (siteLiftSectionsCone Q O c));\n (SetWeight.restrictSectionsCone a G t).val =\n (mapJoinCone (covariantRepresentableInfinity x)\n   (JoinCone.ulift.{u + 1, u + 2}\n    (siteLiftSectionsCone P O (SetWeight.restrictSectionsCone φ O c)))).val",
       "dependencies": [
         "R10a",
         "R10b",
@@ -3953,6 +3953,11 @@
           "name": "NativeIsSheaf.covariantRepresentable",
           "path": "SerrePositivity/InfinityCategories/Sheaves/NativeSheafRepresentableCoefficients.lean",
           "line": 31
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftRepresentableSectionsRestriction.lean",
+          "line": 34,
+          "name": "siteLift_representable_restrictSectionsCone_val"
         }
       ],
       "literature": "HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。",
@@ -3966,13 +3971,35 @@
       ],
       "method": "同じsiteの上昇と全join射の制限を表現可能後合成で照合する。元のc・φを保つ。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R12a",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/restrictSectionsCone_isLimit_of_localEquiv.lean",
-      "note": "同じsiteの上昇と全join射の制限を表現可能後合成で照合する。元のc・φを保つ。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftRepresentableSectionsRestriction.lean",
+      "note": "同じsiteの上昇と全join射の制限を表現可能後合成で照合する。元のc・φを保つ。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 R12a.1 の紙の改行だけで区切った `let F・G・a・t` → 各束縛にセミコロンを明示。複数行の `t` の後に結論を誤って取り込む構文を直した。型検査済みで、終端 R12a の型・仮定は同じ。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 66,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SiteLiftRepresentableSectionsRestriction.lean": "a5e9e703ce5b5cbe50de721f6e19dde46af06348d68465fa962e95af0d5d4e41"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "651342ff4465e8ab237cd27f29bbe6697decbb8656df81b3f1eed60d1d6eefbf",
+        "receipt": "/tmp/is-stage5/R12a.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r12a-1-1118/manifest.json"
     },
     {
       "id": "R12a.2",

@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,273行。外枠：35,681行。係数：2。
+既計上の累計：30,339行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -69,7 +69,7 @@
 |R09.1|pending|—|50〜90|100〜180|
 |R09.2|pending|—|40〜70|80〜140|
 |R09|pending|—|25〜50|50〜100|
-|R12a.1|pending|—|70〜120|140〜240|
+|R12a.1|verified|66|0〜0|0〜0|
 |R12a.2|pending|—|80〜130|160〜260|
 |R12a|pending|—|15〜35|30〜70|
 |R12b|pending|—|10〜25|20〜50|
@@ -2674,17 +2674,19 @@ let A := mapJoinCone (weightedSections O hE)
 - `cechConstantCone_isLimit` @ SerrePositivity/InfinityCategories/Sheaves/CechIndexConstantLimit.lean:55
 
 ### R12a.1 — siteLift_representable_restrictSectionsCone_val
-親：R12a。状態：紙のみ（pending）。依存：R10a・R10b・R11c。
+親：R12a。状態：検証済み。依存：R10a・R10b・R11c。
+
+R12a.1 の紙の改行だけで区切った `let F・G・a・t` → 各束縛にセミコロンを明示。複数行の `t` の後に結論を誤って取り込む構文を直した。型検査済みで、終端 R12a の型・仮定は同じ。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
 ∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O : Presheaf C E)
  (c : JoinCone (sectionsOfDiagram Q O)) (x : E _⦋0⦌),
-let F := (asSmallSiteShapeIso C).inv ≫ O
-let G := (SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ covariantRepresentableInfinity x
-let a := siteLiftPresheafMap φ
+let F := (asSmallSiteShapeIso C).inv ≫ O;
+let G := (SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ covariantRepresentableInfinity x;
+let a := siteLiftPresheafMap φ;
 let t := mapJoinCone (covariantRepresentableInfinity x)
- (JoinCone.ulift.{u + 1, u + 2} (siteLiftSectionsCone Q O c))
+ (JoinCone.ulift.{u + 1, u + 2} (siteLiftSectionsCone Q O c));
  (SetWeight.restrictSectionsCone a G t).val =
  (mapJoinCone (covariantRepresentableInfinity x)
    (JoinCone.ulift.{u + 1, u + 2}
