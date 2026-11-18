@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：31,986行。外枠：35,681行。係数：2。
+既計上の累計：32,058行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -111,6 +111,7 @@
 |R06.2K|verified|179|0〜0|0〜0|
 |R06.2D|verified|120|0〜0|0〜0|
 |R06.2V|verified|89|0〜0|0〜0|
+|R06.2B|verified|72|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2335,7 +2336,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3924,3 +3925,40 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `pinchedHomToIntervalMappingSpace_vertex` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean:56
 - `sliceOverUncurry_yoneda` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalUniqueness.lean:126
 - `coconeVertexLeg` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:26
+
+
+### R06.2B — smallUnstraighteningPointedImage_baseMap
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
+
+```lean
+∀ {B D : SSet.{u}} (i : B ⟶ D)
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (b : B _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F := U.map i ≫ G
+    let f := smallLeftUnstraighteningMap F G i rfl
+    let d := i.app (Opposite.op ⦋0⦌) b
+    ∀ (s : (vertexFiber (smallLeftUnstraighteningProjection F) b) _⦋0⦌),
+    let t : (vertexFiber (smallLeftUnstraighteningProjection G) d) _⦋0⦌ :=
+      ⟨f.app (Opposite.op ⦋0⦌) s.val, by
+        have h : f ≫ smallLeftUnstraighteningProjection G =
+            smallLeftUnstraighteningProjection F ≫ i :=
+          smallLeftUnstraighteningMap_projection F G i rfl
+        exact (congrArg (fun k => k.app (Opposite.op ⦋0⦌) s.val) h).trans
+          ((congrArg (fun y => i.app (Opposite.op ⦋0⦌) y)
+            (s.property.trans (pinchedConstant_zero b))).trans (pinchedConstant_zero d).symm)⟩
+    smallUnstraighteningPointedImage F b s = smallUnstraighteningPointedImage G d t
+```
+
+素：65〜100行。係数2：130〜200行。
+
+小さい unstraightening の底変換は、同じ fiber の頂点の pointed 表示を保つ。
+
+原典：Kerodon Remark 5.6.2.18（Tag 0271）の頂点における底変換の法則。
+
+使う既存の宣言：
+
+- `smallUnstraighteningPointedImage` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointAction.lean:28
+- `smallLeftUnstraighteningMap_naturality` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseChange.lean:39
+- `leftUnstraighteningMap_pointed` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraightening.lean:72
+- `leftUnstraighteningFiberIso_hom_ι` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningFiberTransport.lean:30

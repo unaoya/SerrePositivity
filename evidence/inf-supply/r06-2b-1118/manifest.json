@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2B",
+  "declaration": "smallUnstraighteningPointedImage_baseMap",
+  "target_build": {
+    "jobs": 3393,
+    "sha256": "3fccf8cdd801e40bf0b0623c5ec8ab25e3cb1dd086352f666eff759d849a8797",
+    "receipt": "/tmp/is-stage5/R06.2B/build-1.log"
+  },
+  "type_check": {
+    "sha256": "910801ff73e6599dee1be971f3f32a536b2a67e411edfee51fe57cbbbda64fc4",
+    "receipt": "/tmp/is-stage5/R06.2B/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "db99423ec109c493729b53c7ae7024f0c936f8cb403e22855890be1568d5262b",
+    "receipt": "/tmp/is-stage5/R06.2B/target-audit-result.json",
+    "modules": 1,
+    "declarations": 3,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedBaseChange.lean": "338f83e8455e4c3703f2029a3c51c06dd9463202cc351aa65c53c5579a96260b"
+    }
+  }
+}

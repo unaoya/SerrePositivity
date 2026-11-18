@@ -11676,3 +11676,52 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,897 から 31,986 行。
 
 一覧：済み 68／全体 102（うち追加 67）
+
+
+### R06.2B — smallUnstraighteningPointedImage_baseMap
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {B D : SSet.{u}} (i : B ⟶ D)
+    (G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u})
+    (b : B _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F := U.map i ≫ G
+    let f := smallLeftUnstraighteningMap F G i rfl
+    let d := i.app (Opposite.op ⦋0⦌) b
+    ∀ (s : (vertexFiber (smallLeftUnstraighteningProjection F) b) _⦋0⦌),
+    let t : (vertexFiber (smallLeftUnstraighteningProjection G) d) _⦋0⦌ :=
+      ⟨f.app (Opposite.op ⦋0⦌) s.val, by
+        have h : f ≫ smallLeftUnstraighteningProjection G =
+            smallLeftUnstraighteningProjection F ≫ i :=
+          smallLeftUnstraighteningMap_projection F G i rfl
+        exact (congrArg (fun k => k.app (Opposite.op ⦋0⦌) s.val) h).trans
+          ((congrArg (fun y => i.app (Opposite.op ⦋0⦌) y)
+            (s.property.trans (pinchedConstant_zero b))).trans (pinchedConstant_zero d).symm)⟩
+    smallUnstraighteningPointedImage F b s = smallUnstraighteningPointedImage G d t
+```
+
+素：65〜100行。係数2：130〜200行。
+
+小さい unstraightening の底変換は、同じ fiber の頂点の pointed 表示を保つ。
+
+原典：Kerodon Remark 5.6.2.18（Tag 0271）の頂点における底変換の法則。
+
+使う既存の宣言：
+
+- `smallUnstraighteningPointedImage` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointAction.lean:28
+- `smallLeftUnstraighteningMap_naturality` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallLeftUnstraighteningBaseChange.lean:39
+- `leftUnstraighteningMap_pointed` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraightening.lean:72
+- `leftUnstraighteningFiberIso_hom_ι` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningFiberTransport.lean:30
+
+一覧：済み 68／全体 103（うち追加 68）
+
+### 11-18：R06.2B の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2B|72|65〜100|130〜200|3,393|3|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,986 から 32,058 行。
+
+一覧：済み 69／全体 103（うち追加 68）
