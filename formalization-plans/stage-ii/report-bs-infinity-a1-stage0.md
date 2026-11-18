@@ -11286,3 +11286,82 @@ theorem rightKanMovingIndexFace_of_selectedSource
 今回の本体の累計は 30,812 行。済み・未完の終端署名と実測の内訳は前節の引き継ぎどおり。未追跡は旧 R2 の四本のみ。
 
 一覧：済み 60／全体 96（うち追加 61）
+
+### 11-18：R06.2 の始点側の判定は切断の選択に依らない
+
+前節の帰着の逆向きを Lean で検証した。終点を正確に保つ任意の coslice の持ち上げが、始点でも指定添字と相対同型なら、前節で固定した切断も同じ条件を満たす。これで、残る照合では元の実辺 `η` に沿う持ち上げを構成しやすい方法で選べる。元の始点・終点、共通の係数図式、台帳の終端型は同じ。
+
+`sliceUnderRestrict_target_trivialKanFibration` と `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` から、終点への制限は相対関手空間で充満忠実。二つの持ち上げの終点の等式を `preimageVertexIso` で反映し、始点の制限へ写す。必要な追加 import は `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.RelativeFunctorPostEquivalence`。それを前節の import に加えた一時ファイルで、以下の型と証明を検査した。公理は標準三公理のみ。
+
+```lean
+open SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence
+
+theorem rightKanMovingIndex_selectedSource_of_face
+    {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
+    {v₀ v₁ : X _⦋0⦌} (e : (Δ[1] : SSet.{u}) ⟶ X)
+    (he₀ : stdSimplex.δ (1 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₀)
+    (he₁ : stdSimplex.δ (0 : Fin 2) ≫ e = SSet.yonedaEquiv.symm v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (h : rightKanMovingIndexFace δ e he₀ he₁ j₀ j₁) :
+    rightKanMovingIndex_selectedSource δ e he₀ he₁ j₀ j₁ hj := by
+  let q := sliceUnderProjection e
+  let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+  let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+  let a₀ := j₀ ≫ pullback.fst q₀ δ
+  let a₁ := j₁ ≫ pullback.fst q₁ δ
+  let p := (j₀ ≫ rightKanProjection δ v₀) ≫ δ
+  let i₀ := stdSimplex.δ (1 : Fin 2)
+  let i₁ := stdSimplex.δ (0 : Fin 2)
+  let t := sliceUnderRestrict e i₁
+  let r₀ := sliceUnderRestrict e i₀ ≫ eqToHom (congrArg sliceUnder he₀)
+  let r₁ := t ≫ eqToHom (congrArg sliceUnder he₁)
+  let z := a₁ ≫ (eqToHom (congrArg sliceUnder he₁.symm) ≫ cosliceEdgeSection e)
+  have hz := rightKanMovingIndex_target_section δ e he₀ he₁ j₀ j₁ hj
+  obtain ⟨w, hw, ha, ht, ⟨s⟩⟩ := h
+  have hnorm (x : Δ[0] ⟶ X) (i : Δ[0] ⟶ Δ[1]) (h : i ≫ e = x) :
+      (sliceUnderRestrict e i ≫ eqToHom (congrArg sliceUnder h)) ≫ sliceUnderProjection x =
+        sliceUnderProjection e := by
+    subst x
+    simp only [eqToHom_refl, Category.comp_id]
+    exact sliceUnderRestrict_projection e i
+  have hr : r₀ ≫ q₀ = q := hnorm _ _ he₀
+  have hw' : w ≫ q = p := by
+    change (w ≫ r₀) ≫ q₀ = p at hw
+    rwa [Category.assoc, hr] at hw
+  have hz' : z ≫ q = p := by
+    have h := hz.2.1
+    change (z ≫ r₀) ≫ q₀ = p at h
+    rwa [Category.assoc, hr] at h
+  let b := sliceUnderProjection (i₁ ≫ e)
+  have ht' : t ≫ b = q := sliceUnderRestrict_projection e i₁
+  have he := sliceUnderRestrict_target_trivialKanFibration e
+  let T := relativeFunctorPost q b t ht' p
+  have hT : IsQCatEquivalence T :=
+    relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence q b t ht'
+      (isQCatEquivalence_of_trivialKanFibration t).isPrecompositionEquivalence p
+  have hzt : z ≫ t = w ≫ t := by
+    apply (cancel_mono (eqToHom (congrArg sliceUnder he₁))).mp
+    rw [Category.assoc, Category.assoc]
+    exact hz.1.trans ht.symm
+  let zv := relativeFunctorVertex q p z hz'
+  let wv := relativeFunctorVertex q p w hw'
+  have huv : T.app _ zv = T.app _ wv := by
+    dsimp only [T, zv, wv]
+    rw [relativeFunctorPost_vertex, relativeFunctorPost_vertex]
+    apply Subtype.ext
+    exact congrArg functorVertex hzt
+  let zi : VertexIso zv wv := hT.isFullyFaithful.preimageVertexIso
+    (eqToIso (congrArg HomotopyCategory.mk huv))
+  have k := zi.map (relativeFunctorPost q q₀ r₀ hr p)
+  dsimp only [zv, wv] at k
+  rw [relativeFunctorPost_vertex, relativeFunctorPost_vertex] at k
+  exact ⟨k ≪≫ s⟩
+
+#print axioms rightKanMovingIndex_selectedSource_of_face
+```
+
+残る照合は、離散前層の実辺に沿う始点側の自然性。任意の適合する持ち上げから閉じられることは確かめたが、指定された密度比較とその持ち上げの始点を同じ底上で照合する見込みの上端は補正 880 行。800 行の規則によりここで中断する。本体累計は 30,812 行。終端 R04・R05 が済み、残り 12 件。未追跡は旧 R2 の 4 本のみ。
+
+一覧：済み 60／全体 96（うち追加 61）
