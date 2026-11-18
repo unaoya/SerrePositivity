@@ -1,6 +1,6 @@
 # IC-1 段0の静的な資料（2026-11-17）
 
-現在地と判定は [段0報告](../../formalization-plans/stage-ii/consolidation/report-infinity-consolidation.md)。適用前の紙の提出で停止。Leanの変更・ビルド・native採取は行っていない。
+以下は段0提出時に凍結した静的資料。現在の適用・検査の状況は [IC-W1報告](../../formalization-plans/stage-ii/consolidation/report-infinity-consolidation.md) を参照。IC-1は2,264本・26単位の移動を完了し、原参照3,858本、数学対象ビルド・v3b各4,314本、追従文書4章、引用・タグ118件の欠落/余分0、通常rootの検査が成功した。正式全監査とverifyは調整役が実施する。正式なnative所有元・改名案・修復証拠は [外部証拠の目録](../../evidence/ic-w1/ic-1/manifest.json) の領域に保持する（IC-1完了時の目録）。`source-name-hints.csv` は段0のソース候補のままで、正式な宣言の改名表として使わない。
 
 |資料|内容|
 |---|---|
