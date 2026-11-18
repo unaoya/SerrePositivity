@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,339行。外枠：35,681行。係数：2。
+既計上の累計：30,507行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -66,7 +66,7 @@
 |R09-Cech.1|pending|—|90〜150|180〜300|
 |R09-Cech.2|pending|—|70〜120|140〜240|
 |R09-Cech|pending|—|25〜45|50〜90|
-|R09.1|pending|—|50〜90|100〜180|
+|R09.1|verified|168|0〜0|0〜0|
 |R09.2|pending|—|40〜70|80〜140|
 |R09|pending|—|25〜50|50〜100|
 |R12a.1|verified|66|0〜0|0〜0|
@@ -2594,7 +2594,7 @@ let A := mapJoinCone (weightedSections O hE)
 - `relativeCechDiagonal_sections_isInvertible` @ SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean:35
 
 ### R09.1 — sectionsOf_map_comp_hom
-親：R09。状態：紙のみ（pending）。依存：なし（既存APIのみ）。
+親：R09。状態：検証済み。依存：なし（既存APIのみ）。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],

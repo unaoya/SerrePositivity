@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30339,
+  "verified_lean_lines": 30507,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3813,6 +3813,11 @@
           "name": "sectionsOf_map",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SectionsOf.lean",
           "line": 64
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SectionsOfMapComposition.lean",
+          "line": 155,
+          "name": "sectionsOf_map_comp_hom"
         }
       ],
       "literature": "HTT 6.2.2.6・5.5.4.20の局所対象の筋。小さい通常のsiteと離散な局所同値への特殊化。",
@@ -3826,13 +3831,35 @@
       ],
       "method": "元の全錐の合成の式を頂点射影で送り、選ばれた同じ三極限へ特殊化する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R09",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sections_localEquiv_iso_space.lean",
-      "note": "元の全錐の合成の式を頂点射影で送り、選ばれた同じ三極限へ特殊化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SectionsOfMapComposition.lean",
+      "note": "元の全錐の合成の式を頂点射影で送り、選ばれた同じ三極限へ特殊化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 168,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 9,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SectionsOfMapComposition.lean": "1454ace427599f769d8b478a17a79caf4c73ad63d0e8ac38aaed09fb9d9343fa"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "9dcb0f8e1d49848a4e553d43504812bc549c3d7e9a77af1c4b463c5fbd84084c",
+        "receipt": "/tmp/is-stage5/R09.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r09-1-1118/manifest.json"
     },
     {
       "id": "R09.2",
