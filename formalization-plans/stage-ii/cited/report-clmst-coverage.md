@@ -1,10 +1,9 @@
 # 現在地
 
-- 段：**NB-W3 完了、停止**。
-- 一覧：済み 2／全体 2 段。
-- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `b21c0c183` を取り込んだ。
-- 次：追加作業なし。
-- 凍結原稿の転記と静的照合。Lean・exposition・生成器・review は変更せず、ビルドと鍵の使用なし。
+- 段：**NB-W4 段1 完了**。
+- 一覧：済み 1／全体 4 段。
+- 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
+- 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
 
 ## CC-W1 納品（停止コミット `156ac3c32`）
 
@@ -320,3 +319,9 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段2　∞ 圏の未処理ノート
 
 [NB-W3 の分類](../../../research/kerodon-coverage/notes/README.md#nb-w3-の分類)に 37 ページの分類を記録した。HTT・HA に当たる節と t 系の重複先は表に記載した。Kerodon 向け本文 906 ブロックを 42 項目・67 節の原稿に追記した。対応を確定できない 5 ブロックは [issues.md](../../../research/kerodon-coverage/notes/issues.md) に理由と全文を保留した。[証拠目録](../../../evidence/cited/notes-kerodon-rest/manifest.json)。
+
+## NB-W4
+
+### 段1　BS の目次
+
+[BS の目次](../../../research/bs-coverage/toc.md)に著者版の版情報と SHA-256、18 節の英語題・開始ページ・番号付き項目数を記録した。PDF の目次と各節の開始ページを照合し、項目数が目録の 211 件と一致することを確認した。
