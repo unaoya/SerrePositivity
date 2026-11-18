@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 36871,
+  "verified_lean_lines": 37031,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5299,6 +5299,11 @@
           "name": "isSheaf_discretePresheaf_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafCondition.lean",
           "line": 48
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValue.lean",
+          "line": 39,
+          "name": "sheafify_discrete_eq"
         }
       ],
       "literature": "HTT 5.5.6.28、draftsの同名の型。",
@@ -5310,9 +5315,9 @@
         40,
         80
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sheafify_discrete_eq.lean",
-      "note": "",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValue.lean",
+      "note": " 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -5330,7 +5335,29 @@
       "method": "元の全同型をnerveVertex Pで評価し、functorVertex_sheafifyと元のIの頂点仕様で両端だけを運ぶ。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R15b",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 65,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 9,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValue.lean": "9cb420d401f1aab2aa9becc51195d0bca51478ddba8822603aa53b22339a777e"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "b79616cf81d02652af55aaa4863c5ea1d8f912036077baafae2ec61989f12aa6",
+        "receipt": "/tmp/is-stage5/R15b/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15b-1118/manifest.json"
     },
     {
       "id": "R15c",
@@ -5351,6 +5378,11 @@
           "name": "sheafificationReindexSpecifiedMateIso_mate",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedComparison.lean",
           "line": 53
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValueUnit.lean",
+          "line": 57,
+          "name": "sheafify_discrete_eq_hom_fac"
         }
       ],
       "literature": "HTT 5.5.6.28・5.5.4.15。元の反射単位を保つ比較の法則。",
@@ -5362,9 +5394,9 @@
         80,
         160
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sheafify_discrete_eq_hom_fac.lean",
-      "note": "元のsheafifyUnitHomを使う。指定全mateのhom_facを保つ既存のsite比較と同じ手法を用いる。必要な随伴のHom普遍性は指定の反射から証明して渡す。",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValueUnit.lean",
+      "note": "元のsheafifyUnitHomを使う。指定全mateのhom_facを保つ既存のsite比較と同じ手法を用いる。必要な随伴のHom普遍性は指定の反射から証明して渡す。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -5384,7 +5416,29 @@
       "method": "同じ全mateのhmをPで評価し、ηの成分仕様へ戻す。全同型を別にchooseせず、同じR15aのasIsoのhomを使う。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R15c",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 95,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteValueUnit.lean": "2e39183a790e3888af550d64e35724db656a0ea92c2acd6000bd0ef2587c701f"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "fe51df35c1e31744c814a1d888cba558d9fd30a435efeae211d56bc18087a9d0",
+        "receipt": "/tmp/is-stage5/R15c/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15c-1118/manifest.json"
     },
     {
       "id": "R16.1",

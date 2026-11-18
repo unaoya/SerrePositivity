@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：36,871行。外枠：36,138行。係数：2。
+既計上の累計：37,031行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -83,8 +83,8 @@
 |R15a.1|verified|136|0〜0|0〜0|
 |R15a.2|verified|114|0〜0|0〜0|
 |R15a|verified|65|0〜0|0〜0|
-|R15b|pending|—|20〜40|40〜80|
-|R15c|pending|—|40〜80|80〜160|
+|R15b|verified|65|0〜0|0〜0|
+|R15c|verified|95|0〜0|0〜0|
 |R16.1|deferred_next_checkpoint|—|20〜40|40〜80|
 |R16.2|deferred_next_checkpoint|—|30〜55|60〜110|
 |R16.3|deferred_next_checkpoint|—|30〜55|60〜110|
@@ -3100,7 +3100,7 @@ let I := (discretePresheafInclusion C).val
 - `reflective_isIso_map_iff_localHom` @ SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean:80
 
 ### R15b — sheafify_discrete_eq
-親：R15b。状態：紙のみ（pending）。依存：R15a。
+親：R15b。状態：検証済み。依存：R15a。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C],
@@ -3123,7 +3123,7 @@ let I := (discretePresheafInclusion C).val
 - `isSheaf_discretePresheaf_iff` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteSheafCondition.lean:48
 
 ### R15c — sheafify_discrete_eq_hom_fac
-親：R15c。状態：紙のみ（pending）。依存：R15a.3・R15b・R15-Unit.2。
+親：R15c。状態：検証済み。依存：R15a.3・R15b・R15-Unit.2。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C],
