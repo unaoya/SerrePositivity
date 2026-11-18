@@ -1,7 +1,7 @@
 # Codex 指示書 SC-W1：スキーム論の土台（公理 (3) の再確認、平坦化、BS17 Thm 4.1 (i)）
 
 作成：2026-11-05 夜（段階 II の調整役）。宛先：⑥ スキーム論レーンの Codex（新しいチャット）。検収：調整役（設計判断はユーザーと決める）。
-正本：[段階 II の計画](../stage-ii-plan-draft.md) §1.5（スキーム論の土台）・§2（B-5）・§5.1。BS17 の調査は [citations-survey-2026-11-05.md](../bhatt-scholze/notes/citations-survey-2026-11-05.md) §3。K の経路は [infinity-lanes/foundations.md](../archive/stage-i/infinity-lanes/foundations.md) §3 と [kst-lanes/k-theory-kst-route.md](../archive/stage-i/kst-lanes/k-theory-kst-route.md)。規則は [coordination.md](../coordination.md) §2 と計画 §4。
+正本：[段階 II の計画](../../stage-ii-plan-draft.md) §1.5（スキーム論の土台）・§2（B-5）・§5.1。BS17 の調査は [citations-survey-2026-11-05.md](../../bhatt-scholze/notes/citations-survey-2026-11-05.md) §3。K の経路は [infinity-lanes/foundations.md](../../archive/stage-i/infinity-lanes/foundations.md) §3 と [kst-lanes/k-theory-kst-route.md](../../archive/stage-i/kst-lanes/k-theory-kst-route.md)。規則は [coordination.md](../../coordination.md) §2 と計画 §4。
 
 ## 0. 目的
 
@@ -31,7 +31,7 @@ BS（目標 A）と K（目標 B）の両方が使う代数幾何の土台を作
 
 ## 3. 段 2：スキーム論の土台（Lean）
 
-前半は休止中の K-L7 の残り（[kst-lanes/L7-scheme-lemmas.md](../archive/stage-i/kst-lanes/L7-scheme-lemmas.md) の「残り」）。既存のコードは `KST/SchemeLemmas/`（例：`NoetherianFiniteModuleFlattening.lean`）と `KST/Descent/GenericFiniteFlattening.lean`。後半は BS17 の証明（arXiv:1507.06490 の §2〜§4）と、その芯の [BST13, Lemma 3.9]（Gabber、arXiv:1307.3763 §3）。
+前半は休止中の K-L7 の残り（[kst-lanes/L7-scheme-lemmas.md](../../archive/stage-i/kst-lanes/L7-scheme-lemmas.md) の「残り」）。既存のコードは `KST/SchemeLemmas/`（例：`NoetherianFiniteModuleFlattening.lean`）と `KST/Descent/GenericFiniteFlattening.lean`。後半は BS17 の証明（arXiv:1507.06490 の §2〜§4）と、その芯の [BST13, Lemma 3.9]（Gabber、arXiv:1307.3763 §3）。
 
 | 段 | 内容 | 止めて報告 |
 | --- | --- | --- |

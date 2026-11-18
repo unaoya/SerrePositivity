@@ -31,7 +31,7 @@
 
 ## 取り込み後の検証範囲
 
-取り込み待ちだった新規モジュールは23本、入口を含む対象は24本。[一覧](scheme-w1-b4prime/unmerged-files.json)と[監査の23モジュール](scheme-w1-b4prime/audit-modules.json)を固定した。取り込み後のcore Leanとscriptsでimportを再照合し、直接importer18本も全てこの範囲内であることを確認した。
+取り込み待ちだった新規モジュールは23本、入口を含む対象は24本。[一覧](../../../evidence/scheme/scheme-w1-b4prime/unmerged-files.json)と[監査の23モジュール](scheme-w1-b4prime/audit-modules.json)を固定した。取り込み後のcore Leanとscriptsでimportを再照合し、直接importer18本も全てこの範囲内であることを確認した。
 
 対象ビルドは23モジュールと直接importerの入口だけを指定した。小監査は、23モジュール全ての読み込みを確認し、環境の定数の実際の所有元を使って、そのモジュール由来の公開・非公開・生成宣言を全件走査した。`collectAxioms` の許容集合は `propext`・`Classical.choice`・`Quot.sound` だけ。23モジュールの宣言数の和と最終ログの174宣言が一致した。ビルドと監査も別々の共有鍵で実行した。
 
@@ -39,10 +39,10 @@
 
 ## 記録
 
-- [取り込み前の対象・原ソース・道具・表のハッシュ](scheme-w1-b4prime/before-state.json)、[全対象](scheme-w1-b4prime/files.json)。
-- [全285本の採取と照合](scheme-w1-b4prime/full-before-summary.json)、[全件プレビューの差分と保留](scheme-w1-b4prime/full-rewrite-summary.json)。
-- [main取り込みと285本の保存](scheme-w1-b4prime/merged-main.json)、[取り込み後のビルド・監査・ログと監査ソースのハッシュ](scheme-w1-b4prime/after-merge-summary.json)。
-- [取り込み後の直接importer](scheme-w1-b4prime/after-merge-import-coverage.json)。モジュールごとの監査数は `after-merge-summary.json` に記録した。
+- [取り込み前の対象・原ソース・道具・表のハッシュ](../../../evidence/scheme/scheme-w1-b4prime/before-state.json)、[全対象](../../../evidence/scheme/scheme-w1-b4prime/files.json)。
+- [全285本の採取と照合](../../../evidence/scheme/scheme-w1-b4prime/full-before-summary.json)、[全件プレビューの差分と保留](../../../evidence/scheme/scheme-w1-b4prime/full-rewrite-summary.json)。
+- [main取り込みと285本の保存](../../../evidence/scheme/scheme-w1-b4prime/merged-main.json)、[取り込み後のビルド・監査・ログと監査ソースのハッシュ](../../../evidence/scheme/scheme-w1-b4prime/after-merge-summary.json)。
+- [取り込み後の直接importer](../../../evidence/scheme/scheme-w1-b4prime/after-merge-import-coverage.json)。モジュールごとの監査数は `after-merge-summary.json` に記録した。
 
 完全な索引・プレビュー・ログ・検証用スクリプトはworktree内の `formalization-plans/stage-ii/scheme-drafts/b4prime/` に保持した。`.lake` や `/tmp` を成果の置き場所には使っていない。この報告を含む先端をB4′の取り込み点とする。
 

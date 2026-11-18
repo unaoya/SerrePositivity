@@ -47,7 +47,7 @@ SerrePositivity の段階 II、∞ 中核レーンの Codex として作業し�
 
 ```
 SerrePositivity の段階 II、スキーム論レーン（⑥）の Codex として作業してください（BS17 Thm 4.1 (i) に要る代数幾何の土台。K 用の部分は後回し）。
-指示書は formalization-plans/stage-ii/scheme-w1.md です。§1 の準備（main の最新（2c5d7e414 以降）から worktree ../SerrePositivity-scheme と枝 math/scheme を切る、F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使う）から始めてください。
+指示書は formalization-plans/stage-ii/scheme/scheme-w1.md です。§1 の準備（main の最新（2c5d7e414 以降）から worktree ../SerrePositivity-scheme と枝 math/scheme を切る、F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使う）から始めてください。
 指示書の §6 の追記（11-07）のとおり、BS17 Thm 4.1 (i) の経路だけを進めます。段 1（公理 (3) の調査）と段 2c は行いません。最初の仕事は段 2a（BS17 の経路に要る範囲の照合と紙の筋）です。
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
 ```

@@ -96,8 +96,8 @@ theorem fullCechComplexMap_isIso_of_nonempty_support
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.fullCechCochainsMap` — [SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean:33](../../SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean)。
-- `SerrePositivity.AlgebraicGeometry.fullCechComplexMap` — [SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean:52](../../SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean)。
+- `SerrePositivity.AlgebraicGeometry.fullCechCochainsMap` — [SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean:33](../../../SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean)。
+- `SerrePositivity.AlgebraicGeometry.fullCechComplexMap` — [SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean:52](../../../SerrePositivity/AlgebraicGeometry/ProjectiveCechFunctor.lean)。
 
 判断：新しい完全性定理ではない。長さq+1のタプルのsupportが非空なので、既存の各項のPi写像を成分ごとの同型で判定する。
 
@@ -117,8 +117,8 @@ theorem nilImmersion_app_universalHomeomorphism
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.affineNilImmersion_restrict_appTop_universalHomeomorphism` — [SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean:36](../../SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean)。
-- `morphismRestrict_appTop` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean:665](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean)。
+- `SerrePositivity.AlgebraicGeometry.affineNilImmersion_restrict_appTop_universalHomeomorphism` — [SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean:36](../../../SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean)。
+- `morphismRestrict_appTop` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean:665](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean)。
 
 判断：既存appTopの結論を、明示した制限の等式と環同型で元のapp Uへ運ぶ。appTopとapp Uを定義的同一視しない。
 
@@ -143,10 +143,10 @@ theorem nilImmersion_perfectCechPullback_isIso
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechPullbackMap` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechPullback.lean:41](../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechPullback.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechPreimageComplexIso` — [SerrePositivity/AlgebraicGeometry/SchemeCechPreimage.lean:35](../../SerrePositivity/AlgebraicGeometry/SchemeCechPreimage.lean)。
-- `SerrePositivity.AlgebraicGeometry.cechOpenIntersection_isAffineOpen` — [SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean:49](../../SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitUniversalHomeomorphism_bijective` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitInvariance.lean:44](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitInvariance.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechPullbackMap` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechPullback.lean:41](../../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechPreimageComplexIso` — [SerrePositivity/AlgebraicGeometry/SchemeCechPreimage.lean:35](../../../SerrePositivity/AlgebraicGeometry/SchemeCechPreimage.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechOpenIntersection_isAffineOpen` — [SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean:49](../../../SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitUniversalHomeomorphism_bijective` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitInvariance.lean:44](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitInvariance.lean)。
 
 判断：元の前層の射を各非空アフィン交叉で同型とし、既存の逆像被覆の同型と合成する。
 
@@ -168,9 +168,9 @@ theorem nilBaseChange_cechNerve_map
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isPullback_cechNerve_base` — [SerrePositivity/AlgebraicGeometry/CechNerveCartesianBaseChange.lean:20](../../SerrePositivity/AlgebraicGeometry/CechNerveCartesianBaseChange.lean)。
-- `AlgebraicGeometry.IsClosedImmersion.isStableUnderBaseChange` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/ClosedImmersion.lean:375](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/ClosedImmersion.lean)。
-- `CategoryTheory.MorphismProperty.of_isPullback` — [.lake/packages/mathlib/Mathlib/CategoryTheory/MorphismProperty/Limits.lean:108](../../.lake/packages/mathlib/Mathlib/CategoryTheory/MorphismProperty/Limits.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_cechNerve_base` — [SerrePositivity/AlgebraicGeometry/CechNerveCartesianBaseChange.lean:20](../../../SerrePositivity/AlgebraicGeometry/CechNerveCartesianBaseChange.lean)。
+- `AlgebraicGeometry.IsClosedImmersion.isStableUnderBaseChange` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/ClosedImmersion.lean:375](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/ClosedImmersion.lean)。
+- `CategoryTheory.MorphismProperty.of_isPullback` — [.lake/packages/mathlib/Mathlib/CategoryTheory/MorphismProperty/Limits.lean:108](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/MorphismProperty/Limits.lean)。
 
 判断：既存のCartesianな各nerveの射へ、二つの性質の底変換安定性を代入する。最後の二つのinstance名は実装時にはMorphismProperty.of_isPullbackで参照する。
 
@@ -197,10 +197,10 @@ theorem nilBaseChange_tupleAugmentedPullback_isIso
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_mapCechNerve_preimage` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean:19](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleAugmentedPullback` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean:54](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleAugmentationHom_pullback` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean:27](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_isAffine` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean:62](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_mapCechNerve_preimage` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean:19](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleAugmentedPullback` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean:54](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleAugmentationHom_pullback` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean:27](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_isAffine` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean:62](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean)。
 
 判断：正次数は同じ逆像タプル被覆の同型、増大項はqのcanonicalなFrobenius同型のsingle。既存の増大の可換性を使う。
 
@@ -227,8 +227,8 @@ theorem nilBaseChange_tupleTotal_acyclic_iff
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDoublePullback` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean:59](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean)。
-- `SerrePositivity.AlgebraicGeometry.cechIntegerLiftTotalFunctor` — [SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean:19](../../SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDoublePullback` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean:59](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechIntegerLiftTotalFunctor` — [SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean:19](../../../SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean)。
 
 判断：同じ増大対象の同型を既存のaugmentedCochainとtotalで写すだけで、別のホモロジーを定義しない。
 
@@ -252,7 +252,7 @@ def PerfectCechUniversalDescent (p : ℕ) (hp : p.Prime)
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean:23](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean:23](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleDouble.lean)。
 
 判断：新しい内部述語。元の射を先に固定して全てのNoetherアフィン底変換を量化する。最終の仮定には現れない。
 
@@ -272,9 +272,9 @@ theorem perfectCechUniversalDescent_baseChange
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isPullback_cartesianBaseChangeComparison` — [SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean:38](../../SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_comp` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean:32](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_compIndex` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean:34](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_cartesianBaseChangeComparison` — [SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean:38](../../../SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_comp` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean:32](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_compIndex` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean:34](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean)。
 
 判断：既存の反復pullbackの同型と同じ逆像被覆の合成則へ代入する。被覆の移送を明示する分を計上する。
 
@@ -294,7 +294,7 @@ theorem perfectCechUniversalDescent_flat_surjective
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
 
 判断：各Noetherアフィン底変換で既存のflat totalの定理を適用する。元の中間基底のΓの平坦性は使わない。
 
@@ -314,8 +314,8 @@ theorem perfectCechUniversalDescent_nilImmersion
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean:48](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean)。
-- `SerrePositivity.AlgebraicGeometry.affineNilImmersion_frobeniusEquiv_toRingHom` — [SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean:57](../../SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean:48](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.affineNilImmersion_frobeniusEquiv_toRingHom` — [SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean:57](../../../SerrePositivity/AlgebraicGeometry/AffineNilImmersionFrobeniusCoefficients.lean)。
 
 判断：恒等射の同じČech列の完全性をnil底変換の同型へ渡す。恒等射の被覆比較は既存のアフィン出口を使う。
 
@@ -333,8 +333,8 @@ def augmentedNerveBase {X S : Scheme.{u}} (f : X ⟶ S)
 
 既存の宣言と場所：
 
-- `AugmentedSimplexCategory.equivAugmentedSimplicialObject` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:95](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
-- `CategoryTheory.Arrow.augmentedCechNerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
+- `AugmentedSimplexCategory.equivAugmentedSimplicialObject` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:95](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
+- `CategoryTheory.Arrow.augmentedCechNerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
 
 判断：ANは共通略記に展開した既存の増大nerve。starへの脚を元の増大項の同型でSへ戻す。
 
@@ -354,7 +354,7 @@ def augmentedTupleLength (a : AugmentedSimplexCategory) : ℕ :=
 
 既存の宣言と場所：
 
-- `AugmentedSimplexCategory` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
+- `AugmentedSimplexCategory` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
 
 判断：形式化の添字の略記。新しい幾何はない。
 
@@ -372,7 +372,7 @@ def augmentedTupleIndexMap {a b : AugmentedSimplexCategory} (α : a ⟶ b) :
 
 既存の宣言と場所：
 
-- `AugmentedSimplexCategory.equivAugmentedCosimplicialObject` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:52](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
+- `AugmentedSimplexCategory.equivAugmentedCosimplicialObject` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:52](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
 
 判断：starからは空関数、正次数は元のtoOrderHom。
 
@@ -390,7 +390,7 @@ theorem augmentedTupleIndexMap_id (a : AugmentedSimplexCategory) :
 
 既存の宣言と場所：
 
-- `SimplexCategory.toOrderHom` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:36](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean)。
+- `SimplexCategory.toOrderHom` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:36](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean)。
 
 判断：場合分け後は元の恒等順序写像。
 
@@ -409,7 +409,7 @@ theorem augmentedTupleIndexMap_comp {a b c : AugmentedSimplexCategory}
 
 既存の宣言と場所：
 
-- `SimplexCategory.toOrderHom` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:36](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean)。
+- `SimplexCategory.toOrderHom` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:36](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean)。
 
 判断：場合分け後は元の順序写像の合成。
 
@@ -428,7 +428,7 @@ def augmentedTupleOpen {X S : Scheme.{u}} (f : X ⟶ S)
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:20](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:20](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
 
 判断：starはSの全開集合、正次数は元のschemeCechTupleOpen。starでの既存同値のobjectの同型を明示する。
 
@@ -448,7 +448,7 @@ def pairedCechScheme {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：元の二つのnerveの実際のS上のpullbackを取るだけ。
 
@@ -468,8 +468,8 @@ def pairedCechSchemeMap {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `CategoryTheory.Arrow.augmentedCechNerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
-- `CategoryTheory.Limits.pullback.map` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:266](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Arrow.augmentedCechNerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
+- `CategoryTheory.Limits.pullback.map` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:266](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：元のAN h・AN gの写像をpullback.mapへ代入し、増大の自然性で四角形を照合する。
 
@@ -488,7 +488,7 @@ theorem pairedCechSchemeMap_id {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：二つの射影で既存のmap_idを確認する。
 
@@ -510,7 +510,7 @@ theorem pairedCechSchemeMap_comp {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：反変な二つの元のnerveのmap_compを二つの射影で確認する。
 
@@ -537,8 +537,8 @@ def pairedCechOpen {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleIntersection_rectangular` — [SerrePositivity/AlgebraicGeometry/RectangularCechTupleIntersection.lean:35](../../SerrePositivity/AlgebraicGeometry/RectangularCechTupleIntersection.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:25](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleIntersection_rectangular` — [SerrePositivity/AlgebraicGeometry/RectangularCechTupleIntersection.lean:35](../../../SerrePositivity/AlgebraicGeometry/RectangularCechTupleIntersection.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:25](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
 
 判断：二つの元のタプル開の逆像の交叉。新しい被覆の選び直しではない。
 
@@ -563,8 +563,8 @@ theorem pairedCechOpen_map_le {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_map_le` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:46](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_mapCechNerve_preimage` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean:19](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_map_le` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:46](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_mapCechNerve_preimage` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean:19](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean)。
 
 判断：元の各座標の逆像の包含を二つのpullbackの射影へ移す。増大と正次数の両方の照合を計上する。
 
@@ -585,7 +585,7 @@ theorem pairedCechPrimeCast {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeScalarPresheaf_primeCast` — [SerrePositivity/AlgebraicGeometry/SchemeCechNerveScalars.lean:30](../../SerrePositivity/AlgebraicGeometry/SchemeCechNerveScalars.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeScalarPresheaf_primeCast` — [SerrePositivity/AlgebraicGeometry/SchemeCechNerveScalars.lean:30](../../../SerrePositivity/AlgebraicGeometry/SchemeCechNerveScalars.lean)。
 
 判断：実際のpullbackからSpec Rへの脚に既存の標数の移送を適用する。
 
@@ -609,7 +609,7 @@ def pairedPerfectCechComplex {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_apply` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean:35](../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_apply` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean:35](../../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean)。
 
 判断：Cpxは共通略記に完全展開した既存fullCechComplex。値を持つ元の係数複体を固定する。
 
@@ -633,7 +633,7 @@ def pairedPerfectCechMap {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean:27](../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean:27](../../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean)。
 
 判断：同じpairedCechSchemeMapと二つのtuple index mapを既存のrefinedPullbackへ代入する。
 
@@ -656,7 +656,7 @@ theorem pairedPerfectCechMap_id {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_id` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedIdentity.lean:19](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedIdentity.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_id` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedIdentity.lean:19](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedIdentity.lean)。
 
 判断：既存の引き戻しの恒等則と、元のscheme map・添字写像の恒等則を代入する。
 
@@ -682,7 +682,7 @@ theorem pairedPerfectCechMap_comp {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_compIndex` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean:34](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_compIndex` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean:34](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechRefinedComposition.lean)。
 
 判断：既存のcompIndexで元の二つの係数の合成を一つにする。添字は反変なscheme mapと逆向きになる。
 
@@ -704,7 +704,7 @@ def pairedPerfectCech {R : Type u} [CommRing R] {X Y : Scheme.{u}}
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleFunctor` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFunctor.lean:72](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFunctor.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleFunctor` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFunctor.lean:72](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFunctor.lean)。
 
 判断：obj=P14、map=P15、法則=P16・P17の既存のČech関手の二変数版。新しい整合性を省略しない。
 
@@ -730,9 +730,9 @@ theorem pairedCechOpen_isAffineOpen_cover {R : Type u} [CommRing R] {X Y : Schem
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_isAffine` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean:62](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:25](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
-- `SerrePositivity.AlgebraicGeometry.isPullbackAffineOpen_inf` — [SerrePositivity/AlgebraicGeometry/SchemePullbackAffineTupleOpen.lean:37](../../SerrePositivity/AlgebraicGeometry/SchemePullbackAffineTupleOpen.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_isAffine` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean:62](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:25](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullbackAffineOpen_inf` — [SerrePositivity/AlgebraicGeometry/SchemePullbackAffineTupleOpen.lean:37](../../../SerrePositivity/AlgebraicGeometry/SchemePullbackAffineTupleOpen.lean)。
 
 判断：正次数は既存のアフィンタプル開のS上の積、starはSpec R。全ての次数のcoverを同じ座標で照合する。
 
@@ -750,8 +750,8 @@ def cechTripleTotalComponentIso (K : TriZ.{u}) (n : ℕ) :
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean:569](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean)。
-- `HomologicalComplex₂.totalDesc` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:349](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
+- `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean:569](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean)。
+- `HomologicalComplex₂.totalDesc` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:349](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
 
 判断：新しい照合。三つの非負次数の和がnの同じ有限直和を、選択した二つの括り方の直和へ比較する。単なるQuasiIsoの代入ではない。
 
@@ -771,7 +771,7 @@ theorem cechTripleTotalComponentIso_ι (K : TriZ.{u}) (a b c n : ℕ)
 
 既存の宣言と場所：
 
-- `HomologicalComplex₂.ι_totalDesc` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:354](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
+- `HomologicalComplex₂.ι_totalDesc` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:354](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
 
 判断：共通略記の三重の元の脚ごとにFubiniの標準脚の式を確認する。
 
@@ -790,8 +790,8 @@ theorem cechTripleTotalComponentIso_d (K : TriZ.{u}) (n : ℕ) :
 
 既存の宣言と場所：
 
-- `HomologicalComplex₂.ι_D₁` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:308](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
-- `HomologicalComplex₂.ι_D₂` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:314](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
+- `HomologicalComplex₂.ι_D₁` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:308](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
+- `HomologicalComplex₂.ι_D₂` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:314](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
 
 判断：新しい微分の照合。両方の括り方で符号は1,(-1)^a,(-1)^(a+b)。既存の各脚の式を三方向へ代入する。
 
@@ -808,7 +808,7 @@ def cechTripleTotalAssociator (K : TriZ.{u}) : TL K ≅ TR K
 
 既存の宣言と場所：
 
-- `HomologicalComplex.Hom.isoOfComponents` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/HomologicalComplex.lean:498](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/HomologicalComplex.lean)。
+- `HomologicalComplex.Hom.isoOfComponents` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/HomologicalComplex.lean:498](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/HomologicalComplex.lean)。
 
 判断：同じ成分の同型とC03を既存のisoOfComponentsへ代入する。
 
@@ -829,7 +829,7 @@ theorem cechTripleTotalAssociator_naturality {K L : TriZ.{u}} (f : K ⟶ L) :
 
 既存の宣言と場所：
 
-- `HomologicalComplex₂.ιTotal_map` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:453](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
+- `HomologicalComplex₂.ιTotal_map` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean:453](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplex.lean)。
 
 判断：同じ元の各三重脚でmapと標準同型の自然性を照合する。
 
@@ -847,9 +847,9 @@ def complexValuedAugmentedDouble
 
 既存の宣言と場所：
 
-- `CategoryTheory.Functor.curry` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Functor/Currying.lean:72](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Functor/Currying.lean)。
-- `AugmentedSimplexCategory.equivAugmentedCosimplicialObject` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:52](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
-- `SerrePositivity.Cech.augmentedCochain` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:62](../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
+- `CategoryTheory.Functor.curry` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Functor/Currying.lean:72](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Functor/Currying.lean)。
+- `AugmentedSimplexCategory.equivAugmentedCosimplicialObject` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:52](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean)。
+- `SerrePositivity.Cech.augmentedCochain` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:62](../../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
 
 判断：同じFをcurryし、内外に既存の増大cochainを一回ずつ適用する。B1の微分・対角線消去を再実装しない。
 
@@ -869,9 +869,9 @@ def complexValuedAugmentedDouble_swapIso
 
 既存の宣言と場所：
 
-- `HomologicalComplex₂.totalFlipIso` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplexSymmetry.lean:113](../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplexSymmetry.lean)。
-- `SerrePositivity.Cech.row` — [SerrePositivity/HomologicalAlgebra/Cech/Double.lean:47](../../SerrePositivity/HomologicalAlgebra/Cech/Double.lean)。
-- `SerrePositivity.Cech.col` — [SerrePositivity/HomologicalAlgebra/Cech/Double.lean:53](../../SerrePositivity/HomologicalAlgebra/Cech/Double.lean)。
+- `HomologicalComplex₂.totalFlipIso` — [.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplexSymmetry.lean:113](../../../.lake/packages/mathlib/Mathlib/Algebra/Homology/TotalComplexSymmetry.lean)。
+- `SerrePositivity.Cech.row` — [SerrePositivity/HomologicalAlgebra/Cech/Double.lean:47](../../../SerrePositivity/HomologicalAlgebra/Cech/Double.lean)。
+- `SerrePositivity.Cech.col` — [SerrePositivity/HomologicalAlgebra/Cech/Double.lean:53](../../../SerrePositivity/HomologicalAlgebra/Cech/Double.lean)。
 
 判断：同じ増大二方向のtransposeと既存の(-1)^(a*b)のtotalFlipIsoを係数複体へ適用する。全てのstarと正次数の評価を含む。
 
@@ -892,8 +892,8 @@ def complexValuedAugmentedDouble_columnIso
 
 既存の宣言と場所：
 
-- `SerrePositivity.Cech.mapAugmentedCochainIso` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:161](../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
-- `SerrePositivity.AlgebraicGeometry.cechIntegerLiftTotalFunctor_additive` — [SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean:23](../../SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean)。
+- `SerrePositivity.Cech.mapAugmentedCochainIso` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:161](../../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechIntegerLiftTotalFunctor_additive` — [SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean:23](../../../SerrePositivity/AlgebraicGeometry/CechIntegerLiftTotalFunctor.lean)。
 
 判断：既存の加法関手とaugmentedCochainの交換の同型を同じtotal関手へ代入する。
 
@@ -912,7 +912,7 @@ def complexValuedAugmentedDouble_columnZeroProjection
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.cechIntegerTotalToColumnZero_naturality` — [SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean:42](../../SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechIntegerTotalToColumnZero_naturality` — [SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean:42](../../../SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean)。
 
 判断：元の零次列射影の後にC08の同じ零次の同型を合成する。
 
@@ -932,7 +932,7 @@ theorem complexValuedAugmentedDouble_columnZeroProjection_quasiIso
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.cechIntegerTotalToColumnZero_quasiIso` — [SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean:101](../../SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechIntegerTotalToColumnZero_quasiIso` — [SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean:101](../../../SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean)。
 
 判断：正の列はC08で仮定と同じ複体。既存の零次列射影の判定を使う。
 
@@ -954,8 +954,8 @@ theorem complexValuedDoubleCech_axes_acyclic_iff
 
 既存の宣言と場所：
 
-- `SerrePositivity.Cech.doubleCech_acyclic_iff` — [SerrePositivity/HomologicalAlgebra/Cech/Double.lean:183](../../SerrePositivity/HomologicalAlgebra/Cech/Double.lean)。
-- `SerrePositivity.AlgebraicGeometry.cechIntegerTotalToColumnZero_quasiIso` — [SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean:101](../../SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean)。
+- `SerrePositivity.Cech.doubleCech_acyclic_iff` — [SerrePositivity/HomologicalAlgebra/Cech/Double.lean:183](../../../SerrePositivity/HomologicalAlgebra/Cech/Double.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechIntegerTotalToColumnZero_quasiIso` — [SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean:101](../../../SerrePositivity/AlgebraicGeometry/CechIntegerTotalToColumnZeroQuasiIso.lean)。
 
 判断：B1と同じ二方向の軸比較を複体値へ移す既存totalの法則。B1のAddCommGrp版に複体値をそのまま代入できるとは主張しない。
 
@@ -978,9 +978,9 @@ theorem pairedPerfectCech_zero_col_acyclic_iff {R : Type u} [CommRing R] {X Y : 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.cechSingleTotal_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean:147](../../SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean:48](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean)。
-- `SerrePositivity.AlgebraicGeometry.cechTupleReindex_comp` — [SerrePositivity/AlgebraicGeometry/CechTupleReindex.lean:28](../../SerrePositivity/AlgebraicGeometry/CechTupleReindex.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechSingleTotal_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean:147](../../../SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean:48](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechTupleReindex_comp` — [SerrePositivity/AlgebraicGeometry/CechTupleReindex.lean:28](../../../SerrePositivity/AlgebraicGeometry/CechTupleReindex.lean)。
 
 判断：片方がstarのpullbackは元のnerve、添字の空タプル因子はUnit。元のconstant角からsingleへの比較を両方向に照合する。一方向のretractの定理だけで同値を主張しない。
 
@@ -1003,8 +1003,8 @@ theorem pairedPerfectCech_zero_row_acyclic_iff {R : Type u} [CommRing R] {X Y : 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.cechSingleTotal_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean:147](../../SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean:48](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechSingleTotal_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean:147](../../../SerrePositivity/AlgebraicGeometry/CechConstantTotalRetraction.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_constant` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean:48](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleConstantTotal.lean)。
 
 判断：P20の二つの因子の順序を、元のpullbackの対称同型と被覆のreindexで交換する。
 
@@ -1028,8 +1028,8 @@ theorem exists_section_adapted_affine_cover
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.exists_finite_affineOpenCover` — [SerrePositivity/AlgebraicGeometry/FiniteAffineCover.lean:26](../../SerrePositivity/AlgebraicGeometry/FiniteAffineCover.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCommonOpenCover_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean:24](../../SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_finite_affineOpenCover` — [SerrePositivity/AlgebraicGeometry/FiniteAffineCover.lean:26](../../../SerrePositivity/AlgebraicGeometry/FiniteAffineCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCommonOpenCover_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean:24](../../../SerrePositivity/AlgebraicGeometry/SchemeCommonAffineCover.lean)。
 
 判断：元のsの逆像開被覆を有限アフィン細分する。切断の像が一つの既存のUに収まるという未供給の仮定を置かない。
 
@@ -1053,8 +1053,8 @@ theorem section_affine_chart_retraction
 
 既存の宣言と場所：
 
-- `Scheme.Hom.resLE` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean:774](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean)。
-- `morphismRestrict_appLE` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean:677](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean)。
+- `Scheme.Hom.resLE` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean:774](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean)。
+- `morphismRestrict_appLE` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean:677](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Restrict.lean)。
 
 判断：同じ切断の制限をΓで反変に写す。局所に新しい切断を仮定するのではなくsから作る。
 
@@ -1080,9 +1080,9 @@ theorem section_affine_chart_frobeniusCechExact
 
 既存の宣言と場所：
 
-- `SerrePositivity.Cech.isCechExact_of_retraction` — [SerrePositivity/HomologicalAlgebra/Cech/Split.lean:38](../../SerrePositivity/HomologicalAlgebra/Cech/Split.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficients_exact_iff` — [SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean:106](../../SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean:71](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean)。
+- `SerrePositivity.Cech.isCechExact_of_retraction` — [SerrePositivity/HomologicalAlgebra/Cech/Split.lean:38](../../../SerrePositivity/HomologicalAlgebra/Cech/Split.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficients_exact_iff` — [SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean:106](../../../SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean:71](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean)。
 
 判断：元の局所の環のretractionへFrobenius写像の合成則を適用し、B1の切断の完全性で閉じる。
 
@@ -1113,9 +1113,9 @@ theorem pairedCech_col_acyclic_of_sections {R : Type u} [CommRing R] [IsNoetheri
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_apply` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean:35](../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeModuleAffineCoverCech_acyclic` — [SerrePositivity/AlgebraicGeometry/SchemeModuleAffineCoverCech.lean:58](../../SerrePositivity/AlgebraicGeometry/SchemeModuleAffineCoverCech.lean)。
-- `SerrePositivity.AlgebraicGeometry.openCoverCechRefinementHomotopy` — [SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean:41](../../SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_apply` — [SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean:35](../../../SerrePositivity/AlgebraicGeometry/SchemeStructurePerfectCechRefinedPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeModuleAffineCoverCech_acyclic` — [SerrePositivity/AlgebraicGeometry/SchemeModuleAffineCoverCech.lean:58](../../../SerrePositivity/AlgebraicGeometry/SchemeModuleAffineCoverCech.lean)。
+- `SerrePositivity.AlgebraicGeometry.openCoverCechRefinementHomotopy` — [SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean:41](../../../SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean)。
 
 判断：新しい局所から全体への照合。F01のsに適合した細分上でF03を全ての非空交叉へ適用し、既存の共通細分の比較で元のVへ戻す。B1の環の切断を非アフィンなΓ(Y)へ直接適用しない。
 
@@ -1144,9 +1144,9 @@ theorem pairedCech_col_acyclic_of_baseChangeDescent {R : Type u} [CommRing R] [I
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.affineCechNerveTupleAugmentedGlobalTotal_quasiIso` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedGlobal.lean:70](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedGlobal.lean)。
-- `SerrePositivity.AlgebraicGeometry.affineScalarPerfectAugmentedIso` — [SerrePositivity/AlgebraicGeometry/AffineScalarPerfectTupleTotal.lean:25](../../SerrePositivity/AlgebraicGeometry/AffineScalarPerfectTupleTotal.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_mapCechNerve_preimage` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean:19](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.affineCechNerveTupleAugmentedGlobalTotal_quasiIso` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedGlobal.lean:70](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleAugmentedGlobal.lean)。
+- `SerrePositivity.AlgebraicGeometry.affineScalarPerfectAugmentedIso` — [SerrePositivity/AlgebraicGeometry/AffineScalarPerfectTupleTotal.lean:25](../../../SerrePositivity/AlgebraicGeometry/AffineScalarPerfectTupleTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_mapCechNerve_preimage` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean:19](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleBaseChange.lean)。
 
 判断：新しい係数の照合。Aの各nerveはアフィンでNoetherなのでisoSpecへ移し、同じVの逆像のhdを適用する。定数のUnit被覆との比較も含む。
 
@@ -1175,10 +1175,10 @@ theorem pairedCech_row_acyclic_of_baseChangeDescent {R : Type u} [CommRing R] [I
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_isAffine` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean:62](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:25](../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
-- `SerrePositivity.AlgebraicGeometry.cechIntegerAugmentedDouble_acyclic_of_rows` — [SerrePositivity/AlgebraicGeometry/CechAugmentedDoubleRows.lean:33](../../SerrePositivity/AlgebraicGeometry/CechAugmentedDoubleRows.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeModuleCechRefinement_homologyMap_isIso` — [SerrePositivity/AlgebraicGeometry/SchemeModuleCechRefinement.lean:27](../../SerrePositivity/AlgebraicGeometry/SchemeModuleCechRefinement.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_isAffine` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean:62](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleAffine.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechTupleOpen_iSup` — [SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean:25](../../../SerrePositivity/AlgebraicGeometry/SchemeCechTupleCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.cechIntegerAugmentedDouble_acyclic_of_rows` — [SerrePositivity/AlgebraicGeometry/CechAugmentedDoubleRows.lean:33](../../../SerrePositivity/AlgebraicGeometry/CechAugmentedDoubleRows.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeModuleCechRefinement_homologyMap_isIso` — [SerrePositivity/AlgebraicGeometry/SchemeModuleCechRefinement.lean:27](../../../SerrePositivity/AlgebraicGeometry/SchemeModuleCechRefinement.lean)。
 
 判断：新しい照合。Yの各nerveのVタプルの全アフィン交叉にhdを適用し、その同じ被覆のČech方向をtotalへ渡す。Yの各nerve自体をアフィンとは扱わない。
 
@@ -1201,7 +1201,7 @@ theorem section_perfectCechTupleTotal_acyclic
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
 
 判断：paired図式の一方を恒等射にし、切断側にF04、恒等側に既存のflat入力を使う。非アフィンな始域の切断を環のretractionと同一視しない。
 
@@ -1221,7 +1221,7 @@ theorem perfectCechUniversalDescent_of_section
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Limits.pullback.hom_ext` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:222](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：各アフィン試験基底へ同じ切断をpullbackしてF07を適用する。
 
@@ -1243,8 +1243,8 @@ theorem perfectCechUniversalDescent_of_affine_refinement
 
 既存の宣言と場所：
 
-- `SerrePositivity.Cech.isCechExact_of_comp` — [SerrePositivity/HomologicalAlgebra/Cech/Composition.lean:160](../../SerrePositivity/HomologicalAlgebra/Cech/Composition.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTuplePullback_naturality` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleNaturality.lean:33](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleNaturality.lean)。
+- `SerrePositivity.Cech.isCechExact_of_comp` — [SerrePositivity/HomologicalAlgebra/Cech/Composition.lean:160](../../../SerrePositivity/HomologicalAlgebra/Cech/Composition.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTuplePullback_naturality` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleNaturality.lean:33](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleNaturality.lean)。
 
 判断：同じアフィン細分のnerveの正次数には元のaからfの底変換への切断がある。F04とhaの底変換のF06で両軸を比較する。合成則D07を使わず先に証明する。
 
@@ -1265,8 +1265,8 @@ def fppfComparisonRefiner
 
 既存の宣言と場所：
 
-- `CategoryTheory.Arrow.augmentedCechNerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
-- `CategoryTheory.Limits.pullback.lift` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:129](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Arrow.augmentedCechNerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
+- `CategoryTheory.Limits.pullback.lift` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:129](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：同じn番目のnerveの最初のB座標に沿うqの底変換を、q≫gの底変換へ送る標準lift。
 
@@ -1287,7 +1287,7 @@ theorem fppfComparisonRefiner_over
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.pullback.lift_snd` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:179](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
+- `CategoryTheory.Limits.pullback.lift_snd` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean:179](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean)。
 
 判断：元のpullback.lift_sndの式そのもの。
 
@@ -1311,7 +1311,7 @@ theorem fppfComparison_baseChange_descent
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.exists_affine_flatSurjective_refinement` — [SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean:21](../../SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_affine_flatSurjective_refinement` — [SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean:21](../../../SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean)。
 
 判断：F08の細分は元のqのアフィン平坦全射の底変換。その普遍的完全性をD06で合成の底変換へ消去する。合成自身の完全性は仮定しない。
 
@@ -1335,8 +1335,8 @@ theorem affine_fppf_composite_tupleTotal_acyclic
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
-- `SerrePositivity.AlgebraicGeometry.affineFlatSurjective_restrict_frobeniusCechExact` — [SerrePositivity/AlgebraicGeometry/RelativeAffineFlatFrobeniusCech.lean:35](../../SerrePositivity/AlgebraicGeometry/RelativeAffineFlatFrobeniusCech.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.affineFlatSurjective_restrict_frobeniusCechExact` — [SerrePositivity/AlgebraicGeometry/RelativeAffineFlatFrobeniusCech.lean:35](../../../SerrePositivity/AlgebraicGeometry/RelativeAffineFlatFrobeniusCech.lean)。
 
 判断：一方の正軸はhgの底変換、他方はF10。ゼロ軸のgの完全性から同じアフィン合成へ戻す。Γ(B)の平坦性は仮定しない。
 
@@ -1359,8 +1359,8 @@ theorem perfectCechUniversalDescent_affine_fppf_comp
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeCechPullback_comparison_naturality` — [SerrePositivity/AlgebraicGeometry/SchemeCechPullbackComparison.lean:28](../../SerrePositivity/AlgebraicGeometry/SchemeCechPullbackComparison.lean)。
-- `SerrePositivity.AlgebraicGeometry.openCoverCechRefinementHomotopy` — [SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean:41](../../SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeCechPullback_comparison_naturality` — [SerrePositivity/AlgebraicGeometry/SchemeCechPullbackComparison.lean:28](../../../SerrePositivity/AlgebraicGeometry/SchemeCechPullbackComparison.lean)。
+- `SerrePositivity.AlgebraicGeometry.openCoverCechRefinementHomotopy` — [SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean:41](../../../SerrePositivity/AlgebraicGeometry/OpenCoverCechRefinementIndependence.lean)。
 
 判断：各Noetherアフィン底変換後にF11を適用し、Unit被覆から任意の有限アフィン被覆へ既存の比較で戻す。任意の非アフィンなΓの合成則には広げない。
 
@@ -1379,8 +1379,8 @@ theorem perfectCechUniversalDescent_targetIso
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isPullback_cartesianBaseChangeComparison` — [SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean:38](../../SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_comp` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean:32](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_cartesianBaseChangeComparison` — [SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean:38](../../../SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeStructurePerfectCechRefinedPullbackMap_comp` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean:32](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechPullbackComposition.lean)。
 
 判断：同じ試験写像をe.hom/e.invで移し、既存のpullbackの同型を元のタプル被覆へ運ぶ。
 
@@ -1402,8 +1402,8 @@ theorem perfectCechUniversalDescent_of_nil_baseChange
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemeNilradicalSubscheme_surjective` — [SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean:38](../../SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean)。
-- `SerrePositivity.AlgebraicGeometry.isPullback_cartesianBaseChangeComparison` — [SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean:38](../../SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeNilradicalSubscheme_surjective` — [SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean:38](../../../SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_cartesianBaseChangeComparison` — [SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean:38](../../../SerrePositivity/AlgebraicGeometry/CartesianBaseChangeComparison.lean)。
 
 判断：試験アフィン基底のnil閉厚化は閉部分なので再びNoetherアフィン。hfをその同じ基底で使い、N06で元のtotalへ戻す。
 
@@ -1428,8 +1428,8 @@ structure BlowupPerfectCechBaseChangeData
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:47](../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
-- `SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel.baseChange` — [SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean:43](../../SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:47](../../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel.baseChange` — [SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean:43](../../../SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean)。
 
 判断：内部の証人の型。任意の底変換を逆像イデアルのblowupと同定するfieldは置かない。
 
@@ -1449,10 +1449,10 @@ def blowupPerfectCechBaseChangeData
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.nonempty_blowupAffinePullbackProjectiveModel` — [SerrePositivity/AlgebraicGeometry/BlowupAffineProjectiveModel.lean:31](../../SerrePositivity/AlgebraicGeometry/BlowupAffineProjectiveModel.lean)。
-- `SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel.baseChange` — [SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean:43](../../SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean)。
-- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterBaseChangeProjection` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:27](../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
-- `SerrePositivity.AlgebraicGeometry.pullback_snd_isIso_of_open_preimage_top` — [SerrePositivity/AlgebraicGeometry/OpenIsomorphismBaseChange.lean:34](../../SerrePositivity/AlgebraicGeometry/OpenIsomorphismBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.nonempty_blowupAffinePullbackProjectiveModel` — [SerrePositivity/AlgebraicGeometry/BlowupAffineProjectiveModel.lean:31](../../../SerrePositivity/AlgebraicGeometry/BlowupAffineProjectiveModel.lean)。
+- `SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel.baseChange` — [SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean:43](../../../SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveModelBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterBaseChangeProjection` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:27](../../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.pullback_snd_isIso_of_open_preimage_top` — [SerrePositivity/AlgebraicGeometry/OpenIsomorphismBaseChange.lean:34](../../../SerrePositivity/AlgebraicGeometry/OpenIsomorphismBaseChange.lean)。
 
 判断：Y.isoSpecで元のblowupの次数一表示を取り、その表示だけをtへ係数移送する。中心の商表示とoutsideの式も同じtで照合する。
 
@@ -1476,8 +1476,8 @@ theorem blowupBaseChange_center_universalDescent
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:47](../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
-- `SerrePositivity.AlgebraicGeometry.inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:35](../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:47](../../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
+- `SerrePositivity.AlgebraicGeometry.inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:35](../../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
 
 判断：中心自身のcomapのCartesianな式とd.centerIsoで、元の中心のhcを実際のR/I^1の中心へ移す。中心のTへの像の次元は使わない。
 
@@ -1498,7 +1498,7 @@ theorem perfectCechUniversalDescent_blowup_of_center
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel.perfectCechTupleTotal_acyclic_of_center` — [SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveCechTupleCenterCriterion.lean:30](../../SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveCechTupleCenterCriterion.lean)。
+- `SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel.perfectCechTupleTotal_acyclic_of_center` — [SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveCechTupleCenterCriterion.lean:30](../../../SerrePositivity/AlgebraicGeometry/DegreeOneProjectiveCechTupleCenterCriterion.lean)。
 
 判断：各試験基底でI02の同じ表示とI03の中心の入力を、検証済みの射影Čech判定へ代入する。一般のproperを射影と仮定しない。
 
@@ -1516,7 +1516,7 @@ def closedCenterImage {S Y : Scheme.{u}} (j : Y ⟶ S) [IsClosedImmersion j]
 
 既存の宣言と場所：
 
-- `AlgebraicGeometry.Scheme.IdealSheafData.subschemeι` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/IdealSheaf/Subscheme.lean:471](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/IdealSheaf/Subscheme.lean)。
+- `AlgebraicGeometry.Scheme.IdealSheafData.subschemeι` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/IdealSheaf/Subscheme.lean:471](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/IdealSheaf/Subscheme.lean)。
 
 判断：台はSet.range (J.subschemeι ≫ j)。閉埋め込みの合成の閉像として同じ集合を取る。
 
@@ -1537,8 +1537,8 @@ theorem closedCenterImage_lt
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.preimage_centerComplement_comap` — [SerrePositivity/AlgebraicGeometry/IdealComplementPullback.lean:27](../../SerrePositivity/AlgebraicGeometry/IdealComplementPullback.lean)。
-- `SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_proper_surjective` — [SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean:93](../../SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean)。
+- `SerrePositivity.AlgebraicGeometry.preimage_centerComplement_comap` — [SerrePositivity/AlgebraicGeometry/IdealComplementPullback.lean:27](../../../SerrePositivity/AlgebraicGeometry/IdealComplementPullback.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_proper_surjective` — [SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean:93](../../../SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean)。
 
 判断：元のYが非空で、同じcenterComplementが稠密だから中心の像が真に小さい。テスト基底Tでこの不等式を主張しない。
 
@@ -1560,7 +1560,7 @@ def NoetherClosedPerfectCechProperty (S : Scheme.{u}) (p : ℕ) (hp : p.Prime)
 
 既存の宣言と場所：
 
-- `NoetherianSpace` — [.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean:52](../../.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean)。
+- `NoetherianSpace` — [.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean:52](../../../.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean)。
 
 判断：内部の帰納述語。閉像C上の元のfを固定してから任意のNoetherアフィン底変換を量化する。
 
@@ -1579,8 +1579,8 @@ theorem noetherClosedPerfectCechProperty_empty
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
-- `AlgebraicGeometry.isIso_of_isEmpty` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Limits.lean:108](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Limits.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleDouble_acyclic_of_flat_surjective` — [SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean:36](../../../SerrePositivity/AlgebraicGeometry/SchemePerfectCechTupleFlatTotal.lean)。
+- `AlgebraicGeometry.isIso_of_isEmpty` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Limits.lean:108](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Limits.lean)。
 
 判断：空基底を独立に処理する。非空性なしにI06の真の不等式を使わない。
 
@@ -1605,8 +1605,8 @@ theorem noetherClosed_center_input
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:47](../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
-- `AlgebraicGeometry.IsProper` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/Proper.lean:41](../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/Proper.lean)。
+- `SerrePositivity.AlgebraicGeometry.isPullback_inductiveCenterRestrictionBaseChangeMap` — [SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean:47](../../../SerrePositivity/AlgebraicGeometry/InductiveCenterBaseChange.lean)。
+- `AlgebraicGeometry.IsProper` — [.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/Proper.lean:41](../../../.lake/packages/mathlib/Mathlib/AlgebraicGeometry/Morphisms/Proper.lean)。
 
 判断：元の閉像closedCenterImage j Jへihを適用する。中心の射はblowupの固有全射の同じ底変換。
 
@@ -1627,10 +1627,10 @@ theorem noetherClosedPerfectCechProperty_step
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_proper_surjective` — [SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean:93](../../SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeNilradicalSubscheme_isReduced` — [SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean:20](../../SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean)。
-- `SerrePositivity.AlgebraicGeometry.schemeNilradicalSubscheme_surjective` — [SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean:38](../../SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean)。
-- `SerrePositivity.AlgebraicGeometry.exists_affine_flatSurjective_refinement` — [SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean:21](../../SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_proper_surjective` — [SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean:93](../../../SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeNilradicalSubscheme_isReduced` — [SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean:20](../../../SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean)。
+- `SerrePositivity.AlgebraicGeometry.schemeNilradicalSubscheme_surjective` — [SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean:38](../../../SerrePositivity/AlgebraicGeometry/SchemeNilradicalReduction.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_affine_flatSurjective_refinement` — [SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean:21](../../../SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean)。
 
 判断：新しい帰納の合成。Yを被約化し、元のYでRGの中心を先に選ぶ。I09→I04、同じfppfのアフィン細分→D07→D06、最後にD09。各順序を省略せず照合する。
 
@@ -1650,7 +1650,7 @@ theorem noetherClosedPerfectCechProperty_all
 
 既存の宣言と場所：
 
-- `NoetherianSpace` — [.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean:52](../../.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean)。
+- `NoetherianSpace` — [.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean:52](../../../.lake/packages/mathlib/Mathlib/Topology/NoetherianSpace.lean)。
 
 判断：Noether空間の閉集合の真の包含によるwell-founded帰納へI10を代入する。Krull次元の有限性は要求しない。
 
@@ -1670,7 +1670,7 @@ theorem properSurjective_perfectCechUniversalDescent
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_proper_surjective` — [SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean:93](../../SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_proper_fppf_blowup_refinement_of_proper_surjective` — [SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean:93](../../../SerrePositivity/AlgebraicGeometry/ProperFlatteningNoetherian.lean)。
 
 判断：C=⊤、j=恒等でI11を適用する。元のfに射影性を要求しない。
 
@@ -1692,10 +1692,10 @@ theorem noetherianAffineVCover_frobeniusCechExact
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.exists_fppf_proper_refinement_vCover_affineBase` — [SerrePositivity/AlgebraicGeometry/AffineBaseVCoverRefinement.lean:20](../../SerrePositivity/AlgebraicGeometry/AffineBaseVCoverRefinement.lean)。
-- `SerrePositivity.AlgebraicGeometry.exists_affine_flatSurjective_refinement` — [SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean:21](../../SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean)。
-- `SerrePositivity.AlgebraicGeometry.ringFrobeniusCech_exact_iff_spec_tuple_total_acyclic` — [SerrePositivity/AlgebraicGeometry/SpecScalarPerfectTupleTotal.lean:65](../../SerrePositivity/AlgebraicGeometry/SpecScalarPerfectTupleTotal.lean)。
-- `SerrePositivity.AlgebraicGeometry.isSchemeVCover_specMap_iff` — [SerrePositivity/AlgebraicGeometry/SchemeVCover.lean:27](../../SerrePositivity/AlgebraicGeometry/SchemeVCover.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_fppf_proper_refinement_vCover_affineBase` — [SerrePositivity/AlgebraicGeometry/AffineBaseVCoverRefinement.lean:20](../../../SerrePositivity/AlgebraicGeometry/AffineBaseVCoverRefinement.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_affine_flatSurjective_refinement` — [SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean:21](../../../SerrePositivity/AlgebraicGeometry/RelativeFppfAffineRefinement.lean)。
+- `SerrePositivity.AlgebraicGeometry.ringFrobeniusCech_exact_iff_spec_tuple_total_acyclic` — [SerrePositivity/AlgebraicGeometry/SpecScalarPerfectTupleTotal.lean:65](../../../SerrePositivity/AlgebraicGeometry/SpecScalarPerfectTupleTotal.lean)。
+- `SerrePositivity.AlgebraicGeometry.isSchemeVCover_specMap_iff` — [SerrePositivity/AlgebraicGeometry/SchemeVCover.lean:27](../../../SerrePositivity/AlgebraicGeometry/SchemeVCover.lean)。
 
 判断：Rydhの既存細分、properのI12、相対fppfのD07、細分消去D06を順に使い、元のfの環のconerveへ既存の出口で戻す。模型やNoether性はG5で消去する。
 
@@ -1715,9 +1715,9 @@ def frobeniusArrowFamilyDiagram {J : Type u} [SmallCategory J] (D : J ⥤ Arrow 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:59](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap_id` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:38](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:45](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:59](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap_id` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:38](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:45](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
 
 判断：objは既存のfrobeniusArrowSmallDiagram、mapと二法則も同じ既存宣言。charの証明の移送は命題のproof irrelevanceだけ。
 
@@ -1736,9 +1736,9 @@ def frobeniusArrowFamilyLimit {J : Type u} [SmallCategory J] (D : J ⥤ Arrow Co
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:21](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap_id` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:57](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:72](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:21](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap_id` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:57](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:72](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
 
 判断：objは元の各矢印の実際のFrobenius順極限、map・法則は既存の同じ写像。
 
@@ -1759,8 +1759,8 @@ def frobeniusArrowFamilyStandardIso {J : Type u} [SmallCategory J] (D : J ⥤ Ar
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallColimitIso` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean:118](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallColimitIso_naturality` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:91](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallColimitIso` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean:118](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallColimitIso_naturality` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:91](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
 
 判断：既存の標準同型を対象ごとに取り、既存の元の四角形への自然性でまとめる。
 
@@ -1781,8 +1781,8 @@ def frobeniusArrowFamilyTargetCocone {J : Type u} [SmallCategory J] (D : J ⥤ A
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:21](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:72](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:21](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap_comp` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean:72](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowMapLaws.lean)。
 
 判断：頂点はPF c.pt、脚は元のc.ι.app jの同じFrobenius写像。coconeの自然性をmap_compで写す。
 
@@ -1805,7 +1805,7 @@ theorem frobeniusArrowFamilyTargetCocone_ι {J : Type u} [SmallCategory J] (D : 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:21](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitArrowMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:21](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
 
 判断：E04の定義の同じ標準脚の式。
 
@@ -1826,7 +1826,7 @@ def frobeniusArrowFamilyStageCocone {J : Type u} [SmallCategory J] (D : J ⥤ Ar
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:59](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagramMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:59](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
 
 判断：各Frobenius段の対象・J方向の射は元のDそのもの。頂点と脚をcと同じに取る。
 
@@ -1847,8 +1847,8 @@ def frobeniusArrowFamilyStageCoconeIsColimit {J : Type u} [SmallCategory J] (D :
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowDiagramMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:39](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
-- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean:157](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowDiagramMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:39](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean:157](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean)。
 
 判断：同じDへの恒等成分の図式同型を介して、与えられたhcを移送する。
 
@@ -1871,8 +1871,8 @@ def frobeniusArrowFamilyStageColimitIso {J : Type u} [SmallCategory J] (D : J �
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowCocone_map` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:74](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectSystemMap_naturality` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean:20](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowCocone_map` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:74](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectSystemMap_naturality` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean:20](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean)。
 
 判断：新しい段間の照合。各段のcolimitはE07だが、n方向の遷移が元のc.ptのFrobeniusであることを同じc.ιで確認する。
 
@@ -1896,7 +1896,7 @@ theorem frobeniusArrowFamilyStageColimitIso_ι {J : Type u} [SmallCategory J] (D
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean:157](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean)。
+- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean:157](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean)。
 
 判断：同じ各段のcolimitの一意同型の標準脚の式。
 
@@ -1917,7 +1917,7 @@ def frobeniusArrowFamilyFubiniIso {J : Type u} [SmallCategory J] (D : J ⥤ Arro
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean:569](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean)。
+- `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean:569](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean)。
 
 判断：既存のFubiniの同型への直接代入。新しい余極限交換定理は証明しない。
 
@@ -1939,8 +1939,8 @@ def frobeniusArrowFamilyTargetCoconeIsColimit {J : Type u} [SmallCategory J] (D 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallIsColimit` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean:113](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean)。
-- `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim_ι_ι_hom` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean:579](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallIsColimit` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean:113](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowCocone.lean)。
+- `CategoryTheory.Limits.colimitFlipCompColimIsoColimitCompColim_ι_ι_hom` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean:579](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Fubini.lean)。
 
 判断：E03・E08・E10の合成がE04の同じcoconeを表すことを、二重の標準脚で照合する。単に対象の同型の存在だけでは済ませない。
 
@@ -1963,7 +1963,7 @@ def frobeniusArrowFamilyColimitIso {J : Type u} [SmallCategory J] (D : J ⥤ Arr
 
 既存の宣言と場所：
 
-- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean:157](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean)。
+- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean:157](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Limits/IsLimit.lean)。
 
 判断：E11と既存のcolimit.isColimitの一意同型。
 
@@ -1987,7 +1987,7 @@ theorem frobeniusArrowFamilyColimitIso_ι {J : Type u} [SmallCategory J] (D : J 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusArrowCocone_map` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:74](../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusArrowCocone_map` — [SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean:74](../../../SerrePositivity/AlgebraicGeometry/FrobeniusArrowNaturality.lean)。
 
 判断：E11の同じcoconeの脚なので一意同型の標準脚の式を使う。
 
@@ -2013,8 +2013,8 @@ theorem frobeniusCechExact_of_filtered_arrow_models {J : Type u} [SmallCategory 
 
 既存の宣言と場所：
 
-- `SerrePositivity.Cech.isCechExact_colimit` — [SerrePositivity/HomologicalAlgebra/Cech/Filtered.lean:99](../../SerrePositivity/HomologicalAlgebra/Cech/Filtered.lean)。
-- `SerrePositivity.Cech.ringCechExact_iff_of_iso` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:190](../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
+- `SerrePositivity.Cech.isCechExact_colimit` — [SerrePositivity/HomologicalAlgebra/Cech/Filtered.lean:99](../../../SerrePositivity/HomologicalAlgebra/Cech/Filtered.lean)。
+- `SerrePositivity.Cech.ringCechExact_iff_of_iso` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:190](../../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
 
 判断：各段の完全性を既存のfiltered完全性へ代入し、E12を既存のconerve関手で写した同型で移す。無限の極限と余極限を一般に交換しない。
 
@@ -2037,8 +2037,8 @@ theorem coefficientVCoverModel_primeCast
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallBase_algebra` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:20](../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
-- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallSource_algebra` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:24](../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
+- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallBase_algebra` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:20](../../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
+- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallSource_algebra` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:24](../../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
 
 判断：各段の同じalgebraMapにnatCastの零性を写すだけ。模型の有限表示性は別の既存宣言を使う。
 
@@ -2061,11 +2061,11 @@ theorem coefficientVCover_frobeniusCechExact
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrowCoconeIsColimit` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean:45](../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean)。
-- `SerrePositivity.AlgebraicGeometry.isFiltered_coefficientVCoverModelIndex` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean:34](../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean)。
-- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrow_finitePresentation` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:71](../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
-- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrow_vCover` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:39](../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficients_exact_iff` — [SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean:106](../../SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean)。
+- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrowCoconeIsColimit` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean:45](../../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean)。
+- `SerrePositivity.AlgebraicGeometry.isFiltered_coefficientVCoverModelIndex` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean:34](../../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelFinal.lean)。
+- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrow_finitePresentation` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:71](../../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
+- `SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrow_vCover` — [SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean:39](../../../SerrePositivity/AlgebraicGeometry/CoefficientVCoverModelStages.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficients_exact_iff` — [SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean:106](../../../SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean)。
 
 判断：同じ小さい被覆模型の各Noether段にI13を適用し、既存のactual coconeをE14へ渡す。新しい模型は作らない。
 
@@ -2083,8 +2083,8 @@ def primeFieldRingHom (R : Type u) [CommRing R] (p : ℕ) (hR : (p : R) = 0) :
 
 既存の宣言と場所：
 
-- `ZMod.castHom` — [.lake/packages/mathlib/Mathlib/Data/ZMod/Basic.lean:331](../../.lake/packages/mathlib/Mathlib/Data/ZMod/Basic.lean)。
-- `ringChar.dvd` — [.lake/packages/mathlib/Mathlib/Algebra/CharP/Basic.lean:45](../../.lake/packages/mathlib/Mathlib/Algebra/CharP/Basic.lean)。
+- `ZMod.castHom` — [.lake/packages/mathlib/Mathlib/Data/ZMod/Basic.lean:331](../../../.lake/packages/mathlib/Mathlib/Data/ZMod/Basic.lean)。
+- `ringChar.dvd` — [.lake/packages/mathlib/Mathlib/Algebra/CharP/Basic.lean:45](../../../.lake/packages/mathlib/Mathlib/Algebra/CharP/Basic.lean)。
 
 判断：ZMod.castHom (ringChar.dvd hR) RとULift.ringEquivの合成。零環にもCharP R pを新たに要求しない。
 
@@ -2105,7 +2105,7 @@ theorem affineVCover_frobeniusCechExact
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.exists_primeField_vCover_filtered_model` — [SerrePositivity/AlgebraicGeometry/PrimeFieldVCoverFilteredModel.lean:40](../../SerrePositivity/AlgebraicGeometry/PrimeFieldVCoverFilteredModel.lean)。
+- `SerrePositivity.AlgebraicGeometry.exists_primeField_vCover_filtered_model` — [SerrePositivity/AlgebraicGeometry/PrimeFieldVCoverFilteredModel.lean:40](../../../SerrePositivity/AlgebraicGeometry/PrimeFieldVCoverFilteredModel.lean)。
 
 判断：k=ULift Fp、Rの構造はE17、Sの構造はfとの合成を使ってE16へ代入する。元のRのNoether性・fの有限表示性は結論の仮定にない。
 
@@ -2123,8 +2123,8 @@ def perfectFrobeniusStageMap (A : Type u) [CommRing A] (p : ℕ) (hp : p.Prime) 
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.projectivePrimePowerRingHom` — [SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean:19](../../SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean)。
-- `RingEquiv.ofBijective` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean:446](../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean)。
+- `SerrePositivity.AlgebraicGeometry.projectivePrimePowerRingHom` — [SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean:19](../../../SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean)。
+- `RingEquiv.ofBijective` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean:446](../../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean)。
 
 判断：同じFrobeniusのcanonicalな逆のn乗を環準同型として取る。Mathlib Perfectionの逆極限へ構成を変更しない。
 
@@ -2143,7 +2143,7 @@ theorem perfectFrobeniusStageMap_zero (A : Type u) [CommRing A] (p : ℕ) (hp : 
 
 既存の宣言と場所：
 
-- `RingEquiv.ofBijective` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean:446](../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean)。
+- `RingEquiv.ofBijective` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean:446](../../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean)。
 
 判断：逆の零乗の恒等則。
 
@@ -2164,7 +2164,7 @@ theorem perfectFrobeniusStageMap_succ_comp (A : Type u) [CommRing A] (p : ℕ) (
 
 既存の宣言と場所：
 
-- `RingEquiv.ofBijective` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean:446](../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean)。
+- `RingEquiv.ofBijective` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean:446](../../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Equiv.lean)。
 
 判断：同じ環同型の逆射と順射の合成が恒等である法則へ代入する。
 
@@ -2183,8 +2183,8 @@ def perfectFrobeniusLimitMap (A : Type u) [CommRing A] (p : ℕ) (hp : p.Prime) 
 
 既存の宣言と場所：
 
-- `DirectLimit.Ring.lift` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:681](../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectSystemMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean:19](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean)。
+- `DirectLimit.Ring.lift` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:681](../../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectSystemMap` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean:19](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean)。
 
 判断：H01cを反復して同じDirectLimit.Ring.liftの互換条件を満たす。
 
@@ -2204,7 +2204,7 @@ theorem perfectFrobeniusLimitMap_comp_of (A : Type u) [CommRing A] (p : ℕ) (hp
 
 既存の宣言と場所：
 
-- `DirectLimit.Ring.lift_comp_of` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:690](../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
+- `DirectLimit.Ring.lift_comp_of` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:690](../../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
 
 判断：lift_comp_ofの同じ構造射の式。
 
@@ -2223,8 +2223,8 @@ def perfectFrobeniusLimitEquiv (A : Type u) [CommRing A] (p : ℕ) (hp : p.Prime
 
 既存の宣言と場所：
 
-- `DirectLimit.Ring.hom_ext` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:695](../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitOf_eq_iff` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean:66](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean)。
+- `DirectLimit.Ring.hom_ext` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:695](../../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitOf_eq_iff` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean:66](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean)。
 
 判断：順射はH01d、逆射は元の第0段の構造射。各段の元の表示で両逆性を確認する。
 
@@ -2244,7 +2244,7 @@ theorem perfectFrobeniusLimitEquiv_comp_of_zero (A : Type u) [CommRing A] (p : �
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitOf` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean:54](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitOf` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean:54](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimit.lean)。
 
 判断：canonicalな第0段との式をH01b・H01eからそのまま渡す。
 
@@ -2267,8 +2267,8 @@ theorem perfectFrobeniusLimitEquiv_naturality {A B : Type u} [CommRing A] [CommR
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitMap_of` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean:37](../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean)。
-- `DirectLimit.Ring.hom_ext` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:695](../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitMap_of` — [SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean:37](../../../SerrePositivity/AlgebraicGeometry/FrobeniusDirectLimitMap.lean)。
+- `DirectLimit.Ring.hom_ext` — [.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean:695](../../../.lake/packages/mathlib/Mathlib/Algebra/Colimit/DirectLimit.lean)。
 
 判断：環の射は元のFrobeniusと可換なので逆とも可換。同じ各段の構造射で照合する。単なる非自然な同型の存在では済ませない。
 
@@ -2291,8 +2291,8 @@ def frobeniusAugmentedRingCoefficientsIso
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficientsIso` — [SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean:91](../../SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean)。
-- `SerrePositivity.AlgebraicGeometry.frobeniusConervePerfectIso_arrow_naturality` — [SerrePositivity/AlgebraicGeometry/FrobeniusConerveArrowNaturality.lean:23](../../SerrePositivity/AlgebraicGeometry/FrobeniusConerveArrowNaturality.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficientsIso` — [SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean:91](../../../SerrePositivity/AlgebraicGeometry/FrobeniusAugmentedRingCoefficients.lean)。
+- `SerrePositivity.AlgebraicGeometry.frobeniusConervePerfectIso_arrow_naturality` — [SerrePositivity/AlgebraicGeometry/FrobeniusConerveArrowNaturality.lean:23](../../../SerrePositivity/AlgebraicGeometry/FrobeniusConerveArrowNaturality.lean)。
 
 判断：既に検証済み。増大項と余面・退化の全図式の同型なので、H02の独立なテンソル冪の構成を再実装しない。
 
@@ -2314,7 +2314,7 @@ def perfectFrobeniusOriginalArrowIso {A B : Type u} [CommRing A] [CommRing B] (f
 
 既存の宣言と場所：
 
-- `CategoryTheory.Arrow.isoMk` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Arrow.lean:215](../../.lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Arrow.lean)。
+- `CategoryTheory.Arrow.isoMk` — [.lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Arrow.lean:215](../../../.lake/packages/mathlib/Mathlib/CategoryTheory/Comma/Arrow.lean)。
 
 判断：H01の両端の同型と同じ自然性の可換式をArrow.isoMkへ代入する。
 
@@ -2336,7 +2336,7 @@ def perfectFrobeniusOriginalCechIso {A B : Type u} [CommRing A] [CommRing B] (f 
 
 既存の宣言と場所：
 
-- `CategoryTheory.CosimplicialObject.augmentedCechConerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:208](../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
+- `CategoryTheory.CosimplicialObject.augmentedCechConerve` — [.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:208](../../../.lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean)。
 
 判断：H02aと、既存のconerve関手がH02bを写した同型を合成する。
 
@@ -2358,7 +2358,7 @@ theorem perfectAffineVCover_cechExact {A B : Type u} [CommRing A] [CommRing B] (
 
 既存の宣言と場所：
 
-- `SerrePositivity.Cech.ringCechExact_iff_of_iso` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:190](../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
+- `SerrePositivity.Cech.ringCechExact_iff_of_iso` — [SerrePositivity/HomologicalAlgebra/Cech/Basic.lean:190](../../../SerrePositivity/HomologicalAlgebra/Cech/Basic.lean)。
 
 判断：一般のv被覆に対するE18の結果を同じ増大環図式のH02cで移す。条件付きのNoether段の結果を直接最終出力にしない。
 
@@ -2377,7 +2377,7 @@ theorem finitePi_primeCast_eq_zero {ι : Type u} (B : ι → Type u)
 
 既存の宣言と場所：
 
-- `Pi.evalRingHom` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Pi.lean:175](../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Pi.lean)。
+- `Pi.evalRingHom` — [.lake/packages/mathlib/Mathlib/Algebra/Ring/Pi.lean:175](../../../.lake/packages/mathlib/Mathlib/Algebra/Ring/Pi.lean)。
 
 判断：座標ごとのnatCastの式。空の族も同じfunextで処理する。
 
@@ -2399,7 +2399,7 @@ theorem finitePi_primePower_bijective {ι : Type u} (B : ι → Type u)
 
 既存の宣言と場所：
 
-- `Function.Bijective.piMap` — [.lake/packages/mathlib/Mathlib/Logic/Function/Basic.lean:625](../../.lake/packages/mathlib/Mathlib/Logic/Function/Basic.lean)。
+- `Function.Bijective.piMap` — [.lake/packages/mathlib/Mathlib/Logic/Function/Basic.lean:625](../../../.lake/packages/mathlib/Mathlib/Logic/Function/Basic.lean)。
 
 判断：単射性は座標ごと、全射性は座標ごとの逆像の選択。積の非自明性・CharP・ExpCharを新しく仮定しない。
 
@@ -2419,8 +2419,8 @@ theorem perfectRing_primePower_bijective
 
 既存の宣言と場所：
 
-- `PerfectRing.bijective_frobenius` — [.lake/packages/mathlib/Mathlib/FieldTheory/Perfect.lean:108](../../.lake/packages/mathlib/Mathlib/FieldTheory/Perfect.lean)。
-- `SerrePositivity.AlgebraicGeometry.projectivePrimePowerRingHom` — [SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean:19](../../SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean)。
+- `PerfectRing.bijective_frobenius` — [.lake/packages/mathlib/Mathlib/FieldTheory/Perfect.lean:108](../../../.lake/packages/mathlib/Mathlib/FieldTheory/Perfect.lean)。
+- `SerrePositivity.AlgebraicGeometry.projectivePrimePowerRingHom` — [SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean:19](../../../SerrePositivity/AlgebraicGeometry/ProjectiveLocalizedFrobenius.lean)。
 
 判断：PerfectRingの定義のp乗写像の全単射性そのもの。
 
@@ -2444,8 +2444,8 @@ theorem cech_exact_of_vCover_perfect
 
 既存の宣言と場所：
 
-- `SerrePositivity.AlgebraicGeometry.isAffineVCoverFamily_iff_pi` — [SerrePositivity/AlgebraicGeometry/AffineVCoverFamily.lean:20](../../SerrePositivity/AlgebraicGeometry/AffineVCoverFamily.lean)。
-- `SerrePositivity.BhattScholze.Perfectoidization.Derived.cech_exact_of_vCover_perfect` — [formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean:117](../../formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean)。
+- `SerrePositivity.AlgebraicGeometry.isAffineVCoverFamily_iff_pi` — [SerrePositivity/AlgebraicGeometry/AffineVCoverFamily.lean:20](../../../SerrePositivity/AlgebraicGeometry/AffineVCoverFamily.lean)。
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.cech_exact_of_vCover_perfect` — [formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean:117](../../bhatt-scholze/drafts/A6/ArcSheafProperty.lean)。
 
 判断：同じ有限族を積への一射へ送り、零環も許す冪写像の全単射性をH03aへ渡す。利用側のaffineFamilyCechと完全性は定義を展開して同じ型。
 

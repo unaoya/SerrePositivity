@@ -20,7 +20,7 @@
 | ⑤b BS 実装 → ③-b ∞ 供給 b | Codex | BS-D69 **完了**（停止点 3 を 11-12 に main へ、登録 a34a840f7）→ Δ・Δᵒᵖ の橋（G10、幾何学的実現） | `SerrePositivity-bs-d68`・`math/inf-supply-b`（main から） | `stage-ii/inf-supply-b/inf-supply-w2.md` | IS-W2 段 0 |
 | ⑤c BS 実装 → ③-a ∞ 供給 a | Codex | BS-W17 **完了**（停止点 5 を 11-12 に main へ）→ G8 の四角形・G14・G9 | `SerrePositivity-bs-classical`・`math/inf-supply`（main から） | `stage-ii/inf-supply-w1.md` | IS-W1 段 0 |
 | ⑤d M15・G12 | Codex | M15（descendability）→ G12（CAlg の presentability）。⑤a の M14 と並べるため 11-14 に新設 | `SerrePositivity-bs-m15`・`math/bs-m15` | `bhatt-scholze/instructions/bhatt-scholze-codex-m15.md` |
-| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
+| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/consolidation/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
