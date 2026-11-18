@@ -59,7 +59,7 @@
 |R05|verified|133|0〜0|0〜0|
 |R06.1|verified|163|0〜0|0〜0|
 |R06.2|pending|—|90〜150|180〜300|
-|R06.3|pending|—|80〜130|160〜260|
+|R06.3|pending|—|85〜120|170〜240|
 |R06|pending|—|20〜40|40〜80|
 |R08.1|pending|—|80〜120|160〜240|
 |R08|pending|—|15〜35|30〜70|
@@ -102,6 +102,9 @@
 |R15a.3|pending|—|40〜70|80〜140|
 |R15-Unit.0a|verified|71|0〜0|0〜0|
 |R15-Unit.0b|verified|39|0〜0|0〜0|
+|R06.3N|pending|—|45〜90|90〜180|
+|R06.3P|pending|—|85〜130|170〜260|
+|R06.3S|pending|—|150〜230|300〜460|
 
 <!-- current-signature-state:end -->
 
@@ -2293,7 +2296,7 @@ let d := (restrictJoinCone t.cone a).cast he
 ### R06.1 — discreteElementsComparison_specifiedHom
 親：R06。状態：検証済み。依存：なし（既存APIのみ）。
 
-11-18 型検査：紙の b は持ち上げた終域と小さい始域の宇宙が異なり合成できない。同じ小さい要素圏の射 `nerveMap φ.mapElements` による b に修正する案は型検査済み。終端 R06 の型・仮定は保つ。承認まで下の台帳型を保持する。
+11-18 型検査：紙の b は持ち上げた終域と小さい始域の宇宙が異なり合成できない。同じ小さい要素圏の射 `nerveMap φ.mapElements` による b に修正する案は型検査済み。終端 R06 の型・仮定は保つ。下の台帳型に承認済みの訂正を反映した。
 
 11-18 承認：`SetWeight.elementsMap φ ≫ SetWeight.elementsComparisonNatural Q` → `nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q`。小さい要素圏の宇宙で合成するため。修正した合成は Lean で型検査済みで、終端 R06 の型と仮定は同じ。
 
@@ -3623,3 +3626,96 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 
 一覧：済み 39／全体 93（うち追加 58）。今回の紙は54単位で、Leanで済みになった単位は0。
 <!-- remaining-paper-1118:end -->
+
+
+### R06.3N — sliceRestrictAlong_comp
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {A B X : SSet.{u}} {p : A ⟶ X} {q : B ⟶ X} {D : SSet.{u}} {r : D ⟶ X}
+    (f : A ⟶ B) (g : B ⟶ D) (hf : f ≫ q = p) (hg : g ≫ r = q)
+    (h : (f ≫ g) ≫ r = p),
+    sliceRestrictAlong g hg ≫ sliceRestrictAlong f hf = sliceRestrictAlong (f ≫ g) h
+```
+
+素：45〜90行。係数2：90〜180行。
+
+同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。
+
+原典：HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。
+
+使う既存の宣言：
+
+- `sliceOverRestrict_projection` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SliceProjectionLaws.lean:58
+- `restrictSectionsFunctor_comp` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsRestriction.lean:80
+
+### R06.3P — restrictJoinCone_relativeIso_projection
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {A B K X : SSet.{u}} [Quasicategory X]
+      (p : A ⟶ K) (q : B ⟶ K) (f g : A ⟶ B)
+      (hf : f ≫ q = p) (hg : g ≫ q = p)
+      (h : VertexIso (relativeFunctorVertex q p f hf) (relativeFunctorVertex q p g hg))
+      (O : K ⟶ X) (d : JoinCone (q ≫ O)),
+    let cF := (restrictJoinCone d f).cast (show f ≫ (q ≫ O) = p ≫ O by rw [← Category.assoc, hf])
+    let cG := (restrictJoinCone d g).cast (show g ≫ (q ≫ O) = p ≫ O by rw [← Category.assoc, hg])
+    ∃ i : VertexIso (X := sliceOver (p ≫ O)) cF cG,
+      Arrow.mk ((hoFunctor.map (sliceOverProjection (p ≫ O))).toFunctor.map i.hom) =
+        Arrow.mk (𝟙 (HomotopyCategory.mk d.vertex))
+```
+
+素：85〜130行。係数2：170〜260行。
+
+同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。
+
+原典：HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。
+
+使う既存の宣言：
+
+- `limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean:39
+- `slice_iso_from_family` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean:156
+
+### R06.3S — limitVertexIso_restrictionSquare
+親：R06。状態：紙のみ（pending）。依存：R06.3N・R06.3P。
+
+```lean
+∀ {A B A' B' S X : SSet.{u}} [Quasicategory A] [Quasicategory B]
+    [Quasicategory A'] [Quasicategory B'] [Quasicategory X]
+    (p : A ⟶ S) (q : B ⟶ S) (p' : A' ⟶ S) (q' : B' ⟶ S)
+    (b : A ⟶ B) (a : A' ⟶ B') (f : A ⟶ A') (g : B ⟶ B')
+    (hb : b ≫ q = p) (ha : a ≫ q' = p') (hf : f ≫ p' = p) (hg : g ≫ q' = q)
+    (ef : IsQCatEquivalence f) (eg : IsQCatEquivalence g)
+    (i : VertexIso
+      (relativeFunctorVertex q' p (b ≫ g) (by rw [Category.assoc, hg, hb]))
+      (relativeFunctorVertex q' p (f ≫ a) (by rw [Category.assoc, ha, hf])))
+    (O : S ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))
+    (c' : JoinCone (p' ≫ O)) (d' : JoinCone (q' ≫ O))
+    (hc : IsLimitCone c) (hd : IsLimitCone d) (hc' : IsLimitCone c') (hd' : IsLimitCone d'),
+    let hB : b ≫ (q ≫ O) = p ≫ O := by rw [← Category.assoc, hb]
+    let hA : a ≫ (q' ≫ O) = p' ≫ O := by rw [← Category.assoc, ha]
+    let dB := (restrictJoinCone d b).cast hB
+    let dA := (restrictJoinCone d' a).cast hA
+    ∀ (s : (HomotopyCategory.mk dB : hoFunctor.obj (sliceOver (p ≫ O))) ⟶ HomotopyCategory.mk c)
+      (k : (HomotopyCategory.mk dA : hoFunctor.obj (sliceOver (p' ≫ O))) ⟶ HomotopyCategory.mk c'),
+    let l : (HomotopyCategory.mk c.vertex : hoFunctor.obj X) ⟶ HomotopyCategory.mk c'.vertex :=
+      (limitVertexIsoOfOverEquivalence f ef hf O c c' hc hc').hom
+    let r : (HomotopyCategory.mk d.vertex : hoFunctor.obj X) ⟶ HomotopyCategory.mk d'.vertex :=
+      (limitVertexIsoOfOverEquivalence g eg hg O d d' hd hd').hom
+    r ≫ normalizedSliceHom
+        ((JoinCone.vertex_cast _ hA).trans (restrictJoinCone_vertex d' a)) k =
+      normalizedSliceHom
+        ((JoinCone.vertex_cast _ hB).trans (restrictJoinCone_vertex d b)) s ≫ l
+```
+
+素：150〜230行。係数2：300〜460行。
+
+固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。
+
+原典：HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。
+
+使う既存の宣言：
+
+- `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
+- `limitConeIso` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean:73
+- `sectionsConeMap_homMk_unique` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:238

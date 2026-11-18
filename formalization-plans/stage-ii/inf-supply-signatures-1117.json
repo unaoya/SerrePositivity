@@ -3498,7 +3498,8 @@
       "name": "discreteSectionsLeftComparison_specifiedMap",
       "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (O : Presheaf C E) (hE : IsPresentable E),\n∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\nlet U := SSet.uliftFunctor.{u + 1, u}\nlet a := U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ))\nlet DP := U.map (smallLeftUnstraighteningProjection (discretePresheaf P)) ≫ O\nlet DQ := U.map (smallLeftUnstraighteningProjection (discretePresheaf Q)) ≫ O\n∀ (h : a ≫ DQ = DP) (dP : JoinCone DP) (dQ : JoinCone DQ)\n (hdP : IsLimitCone dP) (hdQ : IsLimitCone dQ),\nlet rQ := (restrictJoinCone dQ a).cast h\n∀ (k : SSet.Edge (X := sliceOver DP) rQ dP),\nlet k₀ := eqToHom (congrArg HomotopyCategory.mk\n ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex dQ a)).symm) ≫\n Truncated.HomotopyCategory.homMk (k.map (sliceOverProjection DP)).toTruncated\n∀ (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)),\n (discreteSectionsLeftComparison O Q hQ dQ hdQ).hom ≫ k₀ =\n Truncated.HomotopyCategory.homMk (sectionsOf_map φ O hP hQ).toTruncated ≫\n (discreteSectionsLeftComparison O P hP dP hdP).hom",
       "dependencies": [
-        "R06.1"
+        "R06.1",
+        "R06.3S"
       ],
       "existing": [
         {
@@ -3514,12 +3515,12 @@
       ],
       "literature": "HTT 5.1.5.6（双対）。指定値比較の自然性の法則。",
       "bare_lines": [
-        80,
-        130
+        85,
+        120
       ],
       "corrected_lines": [
-        160,
-        260
+        170,
+        240
       ],
       "method": "同じelements比較の相対同型を錐に作用させ、終錐への辺の一意性で元のsectionsOf_mapの類と照合する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
@@ -3529,7 +3530,7 @@
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean",
-      "note": "同じelements比較の相対同型を錐に作用させ、終錐への辺の一意性で元のsectionsOf_mapの類と照合する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "note": "同じelements比較の相対同型を錐に作用させ、終錐への辺の一意性で元のsectionsOf_mapの類と照合する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 R06.3S で同じ制限の計算を共用する。"
     },
     {
       "id": "R06",
@@ -5441,6 +5442,122 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r15-unit-0b-1118/manifest.json"
+    },
+    {
+      "id": "R06.3N",
+      "name": "sliceRestrictAlong_comp",
+      "full_type": "∀ {A B X : SSet.{u}} {p : A ⟶ X} {q : B ⟶ X} {D : SSet.{u}} {r : D ⟶ X}\n    (f : A ⟶ B) (g : B ⟶ D) (hf : f ≫ q = p) (hg : g ≫ r = q)\n    (h : (f ≫ g) ≫ r = p),\n    sliceRestrictAlong g hg ≫ sliceRestrictAlong f hf = sliceRestrictAlong (f ≫ g) h",
+      "dependencies": [],
+      "existing": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/SliceProjectionLaws.lean",
+          "line": 58,
+          "name": "sliceOverRestrict_projection"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsRestriction.lean",
+          "line": 80,
+          "name": "restrictSectionsFunctor_comp"
+        }
+      ],
+      "literature": "HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。",
+      "bare_lines": [
+        45,
+        90
+      ],
+      "corrected_lines": [
+        90,
+        180
+      ],
+      "method": "同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。",
+      "specified_compatibility": "同じ指定構成・頂点・射を保持する。",
+      "status": "pending",
+      "proof_unit_parent": "R06",
+      "paper_only": true,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/NormalizedSliceRestriction.lean",
+      "note": "同じ join の添字制限二回を、元の合成に沿う制限へ揃える。頂点射影の同一性も同じ制限関手で得る。 型の検証は対象ビルドとともに行う。"
+    },
+    {
+      "id": "R06.3P",
+      "name": "restrictJoinCone_relativeIso_projection",
+      "full_type": "∀ {A B K X : SSet.{u}} [Quasicategory X]\n      (p : A ⟶ K) (q : B ⟶ K) (f g : A ⟶ B)\n      (hf : f ≫ q = p) (hg : g ≫ q = p)\n      (h : VertexIso (relativeFunctorVertex q p f hf) (relativeFunctorVertex q p g hg))\n      (O : K ⟶ X) (d : JoinCone (q ≫ O)),\n    let cF := (restrictJoinCone d f).cast (show f ≫ (q ≫ O) = p ≫ O by rw [← Category.assoc, hf])\n    let cG := (restrictJoinCone d g).cast (show g ≫ (q ≫ O) = p ≫ O by rw [← Category.assoc, hg])\n    ∃ i : VertexIso (X := sliceOver (p ≫ O)) cF cG,\n      Arrow.mk ((hoFunctor.map (sliceOverProjection (p ≫ O))).toFunctor.map i.hom) =\n        Arrow.mk (𝟙 (HomotopyCategory.mk d.vertex))",
+      "dependencies": [],
+      "existing": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRelativeIso.lean",
+          "line": 39,
+          "name": "limitVertexIsoOfOverEquivalence_hom_eq_of_relativeIso"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean",
+          "line": 156,
+          "name": "slice_iso_from_family"
+        }
+      ],
+      "literature": "HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。",
+      "bare_lines": [
+        85,
+        130
+      ],
+      "corrected_lines": [
+        170,
+        260
+      ],
+      "method": "同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。",
+      "specified_compatibility": "同じ指定構成・頂点・射を保持する。",
+      "status": "pending",
+      "proof_unit_parent": "R06",
+      "paper_only": true,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/RelativeIsoConeProjection.lean",
+      "note": "同じ相対関手空間から頂点一定の錐の族へ移し、同じスライスからの比較を回収する。 型の検証は対象ビルドとともに行う。"
+    },
+    {
+      "id": "R06.3S",
+      "name": "limitVertexIso_restrictionSquare",
+      "full_type": "∀ {A B A' B' S X : SSet.{u}} [Quasicategory A] [Quasicategory B]\n    [Quasicategory A'] [Quasicategory B'] [Quasicategory X]\n    (p : A ⟶ S) (q : B ⟶ S) (p' : A' ⟶ S) (q' : B' ⟶ S)\n    (b : A ⟶ B) (a : A' ⟶ B') (f : A ⟶ A') (g : B ⟶ B')\n    (hb : b ≫ q = p) (ha : a ≫ q' = p') (hf : f ≫ p' = p) (hg : g ≫ q' = q)\n    (ef : IsQCatEquivalence f) (eg : IsQCatEquivalence g)\n    (i : VertexIso\n      (relativeFunctorVertex q' p (b ≫ g) (by rw [Category.assoc, hg, hb]))\n      (relativeFunctorVertex q' p (f ≫ a) (by rw [Category.assoc, ha, hf])))\n    (O : S ⟶ X) (c : JoinCone (p ≫ O)) (d : JoinCone (q ≫ O))\n    (c' : JoinCone (p' ≫ O)) (d' : JoinCone (q' ≫ O))\n    (hc : IsLimitCone c) (hd : IsLimitCone d) (hc' : IsLimitCone c') (hd' : IsLimitCone d'),\n    let hB : b ≫ (q ≫ O) = p ≫ O := by rw [← Category.assoc, hb]\n    let hA : a ≫ (q' ≫ O) = p' ≫ O := by rw [← Category.assoc, ha]\n    let dB := (restrictJoinCone d b).cast hB\n    let dA := (restrictJoinCone d' a).cast hA\n    ∀ (s : (HomotopyCategory.mk dB : hoFunctor.obj (sliceOver (p ≫ O))) ⟶ HomotopyCategory.mk c)\n      (k : (HomotopyCategory.mk dA : hoFunctor.obj (sliceOver (p' ≫ O))) ⟶ HomotopyCategory.mk c'),\n    let l : (HomotopyCategory.mk c.vertex : hoFunctor.obj X) ⟶ HomotopyCategory.mk c'.vertex :=\n      (limitVertexIsoOfOverEquivalence f ef hf O c c' hc hc').hom\n    let r : (HomotopyCategory.mk d.vertex : hoFunctor.obj X) ⟶ HomotopyCategory.mk d'.vertex :=\n      (limitVertexIsoOfOverEquivalence g eg hg O d d' hd hd').hom\n    r ≫ normalizedSliceHom\n        ((JoinCone.vertex_cast _ hA).trans (restrictJoinCone_vertex d' a)) k =\n      normalizedSliceHom\n        ((JoinCone.vertex_cast _ hB).trans (restrictJoinCone_vertex d b)) s ≫ l",
+      "dependencies": [
+        "R06.3N",
+        "R06.3P"
+      ],
+      "existing": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean",
+          "line": 45,
+          "name": "limitVertexIsoOfOverEquivalence_hom_restriction"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean",
+          "line": 73,
+          "name": "limitConeIso"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean",
+          "line": 238,
+          "name": "sectionsConeMap_homMk_unique"
+        }
+      ],
+      "literature": "HTT 1.2.13、Kerodon §7.1（Tag 02H1）の指定錐の制限と頂点射影の法則。",
+      "bare_lines": [
+        150,
+        230
+      ],
+      "corrected_lines": [
+        300,
+        460
+      ],
+      "method": "固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。",
+      "specified_compatibility": "同じ指定構成・頂点・射を保持する。",
+      "status": "pending",
+      "proof_unit_parent": "R06",
+      "paper_only": true,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/LimitComparisonRestrictionSquare.lean",
+      "note": "固定したスライスへの制限を貼り合わせ、同じ終錐への射の一意性を頂点射影で送る。 型の検証は対象ビルドとともに行う。"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
