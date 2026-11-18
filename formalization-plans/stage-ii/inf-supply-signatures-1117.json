@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 32393,
+  "verified_lean_lines": 32768,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3470,7 +3470,10 @@
         "R06.2B",
         "R06.2T",
         "R06.2A",
-        "R06.2O"
+        "R06.2O",
+        "R06.2Y",
+        "R06.2J",
+        "R06.2I"
       ],
       "existing": [
         {
@@ -6518,6 +6521,217 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2o-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Y",
+      "name": "densityLegAt_baseAction_comp",
+      "full_type": "∀ {C D : SSet.{u}} [Quasicategory C] (i : C.op ≅ D)\n    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}\n    (a : FunctorHom F G) (x : C _⦋0⦌),\n    let U := SSet.uliftFunctor.{u + 1, u}\n    let F' := U.map i.hom ≫ F\n    let G' := U.map i.hom ≫ G\n    let L := smallLeftUnstraighteningBaseIso i F\n    let R := smallLeftUnstraighteningBaseIso i G\n    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv\n    let b := SSet.opObjEquiv.symm x\n    ∀ (hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F')\n      (s : (vertexFiber (smallRightUnstraighteningProjection F') x) _⦋0⦌)\n      (t : (vertexFiber (smallRightUnstraighteningProjection G') x) _⦋0⦌)\n      (g : (PresheafInfinity C).Edge (functorVertex F') (functorVertex G')),\n    let p := (presheafRightFiberLeftIso F' x).hom.app _ (SSet.opObjEquiv.symm s)\n    let q := (presheafRightFiberLeftIso G' x).hom.app _ (SSet.opObjEquiv.symm t)\n    (vertexFiberMap (smallLeftUnstraighteningProjection F') (smallLeftUnstraighteningProjection G')\n      m hm b).app _ p = q →\n    Truncated.HomotopyCategory.homMk (functorEdgeAt g (ULift.up b)).toTruncated =\n      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) →\n    Truncated.HomotopyCategory.homMk (densityLegAt F' x s).toTruncated ≫\n        Truncated.HomotopyCategory.homMk g.toTruncated =\n      Truncated.HomotopyCategory.homMk (densityLegAt G' x t).toTruncated",
+      "dependencies": [
+        "R06.2T",
+        "R06.2A"
+      ],
+      "existing": [
+        {
+          "name": "canonicalYonedaTransformationFiberEvaluation_isQCatEquivalence",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CanonicalYonedaFiberTransport.lean",
+          "line": 89
+        },
+        {
+          "name": "functorHomEvaluate_comp",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluation.lean",
+          "line": 63
+        },
+        {
+          "name": "presheafDensityLeg_evaluatedTransport",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean",
+          "line": 43
+        },
+        {
+          "name": "smallUnstraighteningPointedBase_action",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean",
+          "line": 33
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean",
+          "line": 148,
+          "name": "densityLegAt_baseAction_comp"
+        }
+      ],
+      "literature": "Kerodon §8.3 の Yoneda と §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6。",
+      "bare_lines": [
+        135,
+        195
+      ],
+      "corrected_lines": [
+        270,
+        390
+      ],
+      "method": "元の密度脚の合成を Yoneda の恒等点で検出し、指定底変換の作用と照合する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean",
+      "note": "元の密度脚の合成を Yoneda の恒等点で検出し、指定底変換の作用と照合する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 181,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean": "4d693dc6bd0d0020ebd3fe5744c3d427e7acd4cb64cae5963adb8ee351e2d749"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "a4213a809154d540bf3316ad4e707fbc69b0733fbf1e1c9f509fa2d408f2e652",
+        "receipt": "/tmp/is-stage5/R06.2Y/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2y-1118/manifest.json"
+    },
+    {
+      "id": "R06.2J",
+      "name": "cosliceIntervalNormalized_homMk",
+      "full_type": "∀ {X : SSet.{u}} {a b : X _⦋0⦌} (e : X.Edge a b)\n    (c : JoinCocone (SSet.yonedaEquiv.symm e.edge)),\n    let η := SSet.yonedaEquiv.symm e.edge\n    let v := c.vertex\n    let he₀ := e.δ_one_yonedaEquiv_symm\n    let he₁ := e.δ_zero_yonedaEquiv_symm\n    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫\n      eqToHom (congrArg sliceUnder he₀)\n    let r₁ := sliceUnderRestrict η (stdSimplex.δ (0 : Fin 2)) ≫\n      eqToHom (congrArg sliceUnder he₁)\n    ∀ (s₀ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm a)) v) _⦋0⦌)\n      (s₁ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm b)) v) _⦋0⦌),\n    s₀.val = r₀.app (Opposite.op ⦋0⦌) c →\n    s₁.val = r₁.app (Opposite.op ⦋0⦌) c →\n    Truncated.HomotopyCategory.homMk e.toTruncated ≫\n      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge b v s₁) =\n        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge a v s₀)",
+      "dependencies": [
+        "R06.2O"
+      ],
+      "existing": [
+        {
+          "name": "coconeVertexLegCompStruct",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean",
+          "line": 41
+        },
+        {
+          "name": "sliceUnder_eqToHom_app_val",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CoslicePostCoordinates.lean",
+          "line": 23
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean",
+          "line": 54,
+          "name": "cosliceIntervalNormalized_homMk"
+        }
+      ],
+      "literature": "Kerodon §4.6 の slice と join。HTT 4.1.3.1 に使う区間上の照合。",
+      "bare_lines": [
+        65,
+        115
+      ],
+      "corrected_lines": [
+        130,
+        230
+      ],
+      "method": "指定区間に沿う余錐を端点に制限し、元の二単体からホモトピー圏の合成を読む。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean",
+      "note": "指定区間に沿う余錐を端点に制限し、元の二単体からホモトピー圏の合成を読む。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 107,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 10,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean": "c91cc5e51e57150bf22d63fb342f0121df1e0ae46dbe2b9bbd6fcce08f60ceda"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "b5c8a3c5a4c8af2da6fab954510de13701269a043c29d72a9adb4d0525278407",
+        "receipt": "/tmp/is-stage5/R06.2J/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2j-1118/manifest.json"
+    },
+    {
+      "id": "R06.2I",
+      "name": "nativeDiscreteEdge_evaluation_hom",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)\n    (x : (nerve C).op _⦋0⦌),\n    let i := nerveOppositeIso (C := C)\n    Truncated.HomotopyCategory.homMk (functorEdgeAt (nativeDiscreteEdge φ)\n      (ULift.up x)).toTruncated =\n      functorHomEvaluate (discretePresheafHom φ) (ULift.up (i.hom.app _ x))",
+      "dependencies": [
+        "R06.1"
+      ],
+      "existing": [
+        {
+          "name": "discretePresheafHom",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean",
+          "line": 28
+        },
+        {
+          "name": "evaluateFunctorAt_precomp",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluationNaturality.lean",
+          "line": 44
+        },
+        {
+          "name": "functorHomEvaluate_edge_hom",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointedTransformationPointHom.lean",
+          "line": 28
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean",
+          "line": 61,
+          "name": "nativeDiscreteEdge_evaluation_hom"
+        }
+      ],
+      "literature": "Kerodon §8.3 の関手評価。HTT 5.1.5.6 の比較に使う離散前層の辺。",
+      "bare_lines": [
+        55,
+        90
+      ],
+      "corrected_lines": [
+        110,
+        180
+      ],
+      "method": "元の離散前層の辺を固定図式形状で書き、各点の評価を指定の自然変換と照合する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean",
+      "note": "元の離散前層の辺を固定図式形状で書き、各点の評価を指定の自然変換と照合する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 87,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean": "86ab4c13c7d209c5e3fca36ff37f9fa1fe7b94a963ea9806bd89e91327abfc28"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "14704c7d9ac0f1a4a42c0132d7cbccf5f1d6287c7c5ded1a98792d167b107cc2",
+        "receipt": "/tmp/is-stage5/R06.2I/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2i-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

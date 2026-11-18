@@ -2,11 +2,11 @@
   "success": true,
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
-  "signature_count": 106,
-  "verified_count": 72,
-  "additional_count": 71,
+  "signature_count": 109,
+  "verified_count": 75,
+  "additional_count": 74,
   "deferred_count": 12,
-  "edge_count": 172,
+  "edge_count": 179,
   "acyclic": true,
   "topological_order": [
     "R01",
@@ -47,6 +47,7 @@
     "P3-C1PNQ",
     "P3-C1PNG",
     "P3-C1PNC",
+    "R06.2I",
     "R16.2",
     "R15-Unit.1",
     "R15-Unit.0b",
@@ -66,6 +67,8 @@
     "R15-Unit.3",
     "R15-Unit.2",
     "R06.3",
+    "R06.2J",
+    "R06.2Y",
     "P3-C1PNU",
     "P3-B2e",
     "R12a.1",
@@ -129,10 +132,10 @@
     1920
   ],
   "active_completion_corrected_lines": [
-    34123,
-    35493
+    34498,
+    35868
   ],
-  "ledger_sha256": "0c09d6d8a6005b2b7c613e224fc42cb56677439dff2f368f75a0e76e18e04c77",
+  "ledger_sha256": "fc54114751f35d5af21dafebd3fdce09d469b5df1903c26c03a6787c18e123d3",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -332,6 +335,14 @@
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LocalShapeOppositeHomotopy.lean": "0e8358507c280aa6f0993086c38fa03994540a13f9154dd57253af81a6fdc3f8",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointSliceReverseCoordinates.lean": "afbc39473f765b8339d1c36ed50527d7fca44e0478e20cfaf4f7fd6687ada3ee",
     "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberPointedIso.lean": "bc24339a70acf462f5f1bb3b99670445bb6670dcfc4bdce98a9ad9600a6f0da9",
-    "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityLeg.lean": "d0af92d4bbf2d81fa91387a589551da838f2242c141817de9e47dad8ded81c08"
+    "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityLeg.lean": "d0af92d4bbf2d81fa91387a589551da838f2242c141817de9e47dad8ded81c08",
+    "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CanonicalYonedaFiberTransport.lean": "5527c2c8971de2b57e87407cf696b3b292685008ebdbf95f6389b76701a5081f",
+    "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluation.lean": "73be625b61c736711d9606d36b2ca9a225fe09289332c5b9f2252008b6524460",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean": "4d693dc6bd0d0020ebd3fe5744c3d427e7acd4cb64cae5963adb8ee351e2d749",
+    "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CoslicePostCoordinates.lean": "8f04dd9b9039a7156c861444be542e6e18a649634ef3340e40db9625e042567d",
+    "SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean": "c91cc5e51e57150bf22d63fb342f0121df1e0ae46dbe2b9bbd6fcce08f60ceda",
+    "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluationNaturality.lean": "aa5e27765010898f1b392c00362d090c3e6e1d3426fdf2302299893b35ae25ee",
+    "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointedTransformationPointHom.lean": "0c48fb4db563cf327463eacf55b1dbaedd487b96b38455f3acc516eeb436883e",
+    "SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean": "86ab4c13c7d209c5e3fca36ff37f9fa1fe7b94a963ea9806bd89e91327abfc28"
   }
 }

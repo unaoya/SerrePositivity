@@ -11870,3 +11870,124 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,241 から 32,393 行。
 
 一覧：済み 72／全体 106（うち追加 71）
+
+
+### R06.2Y — densityLegAt_baseAction_comp
+親：R06。状態：紙のみ（pending）。依存：R06.2T・R06.2A。
+
+```lean
+∀ {C D : SSet.{u}} [Quasicategory C] (i : C.op ≅ D)
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}
+    (a : FunctorHom F G) (x : C _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F' := U.map i.hom ≫ F
+    let G' := U.map i.hom ≫ G
+    let L := smallLeftUnstraighteningBaseIso i F
+    let R := smallLeftUnstraighteningBaseIso i G
+    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv
+    let b := SSet.opObjEquiv.symm x
+    ∀ (hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F')
+      (s : (vertexFiber (smallRightUnstraighteningProjection F') x) _⦋0⦌)
+      (t : (vertexFiber (smallRightUnstraighteningProjection G') x) _⦋0⦌)
+      (g : (PresheafInfinity C).Edge (functorVertex F') (functorVertex G')),
+    let p := (presheafRightFiberLeftIso F' x).hom.app _ (SSet.opObjEquiv.symm s)
+    let q := (presheafRightFiberLeftIso G' x).hom.app _ (SSet.opObjEquiv.symm t)
+    (vertexFiberMap (smallLeftUnstraighteningProjection F') (smallLeftUnstraighteningProjection G')
+      m hm b).app _ p = q →
+    Truncated.HomotopyCategory.homMk (functorEdgeAt g (ULift.up b)).toTruncated =
+      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) →
+    Truncated.HomotopyCategory.homMk (densityLegAt F' x s).toTruncated ≫
+        Truncated.HomotopyCategory.homMk g.toTruncated =
+      Truncated.HomotopyCategory.homMk (densityLegAt G' x t).toTruncated
+```
+
+素：135〜195行。係数2：270〜390行。
+
+元の密度脚の合成を Yoneda の恒等点で検出し、指定底変換の作用と照合する。
+
+原典：Kerodon §8.3 の Yoneda と §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6。
+
+使う既存の宣言：
+
+- `canonicalYonedaTransformationFiberEvaluation_isQCatEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CanonicalYonedaFiberTransport.lean:89
+- `functorHomEvaluate_comp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluation.lean:63
+- `presheafDensityLeg_evaluatedTransport` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean:43
+- `smallUnstraighteningPointedBase_action` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean:33
+
+一覧：済み 72／全体 107（うち追加 72）
+
+
+### R06.2J — cosliceIntervalNormalized_homMk
+親：R06。状態：紙のみ（pending）。依存：R06.2O。
+
+```lean
+∀ {X : SSet.{u}} {a b : X _⦋0⦌} (e : X.Edge a b)
+    (c : JoinCocone (SSet.yonedaEquiv.symm e.edge)),
+    let η := SSet.yonedaEquiv.symm e.edge
+    let v := c.vertex
+    let he₀ := e.δ_one_yonedaEquiv_symm
+    let he₁ := e.δ_zero_yonedaEquiv_symm
+    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₀)
+    let r₁ := sliceUnderRestrict η (stdSimplex.δ (0 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₁)
+    ∀ (s₀ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm a)) v) _⦋0⦌)
+      (s₁ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm b)) v) _⦋0⦌),
+    s₀.val = r₀.app (Opposite.op ⦋0⦌) c →
+    s₁.val = r₁.app (Opposite.op ⦋0⦌) c →
+    Truncated.HomotopyCategory.homMk e.toTruncated ≫
+      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge b v s₁) =
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge a v s₀)
+```
+
+素：65〜115行。係数2：130〜230行。
+
+指定区間に沿う余錐を端点に制限し、元の二単体からホモトピー圏の合成を読む。
+
+原典：Kerodon §4.6 の slice と join。HTT 4.1.3.1 に使う区間上の照合。
+
+使う既存の宣言：
+
+- `coconeVertexLegCompStruct` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:41
+- `sliceUnder_eqToHom_app_val` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CoslicePostCoordinates.lean:23
+
+一覧：済み 72／全体 108（うち追加 73）
+
+
+### R06.2I — nativeDiscreteEdge_evaluation_hom
+親：R06。状態：紙のみ（pending）。依存：R06.1。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)
+    (x : (nerve C).op _⦋0⦌),
+    let i := nerveOppositeIso (C := C)
+    Truncated.HomotopyCategory.homMk (functorEdgeAt (nativeDiscreteEdge φ)
+      (ULift.up x)).toTruncated =
+      functorHomEvaluate (discretePresheafHom φ) (ULift.up (i.hom.app _ x))
+```
+
+素：55〜90行。係数2：110〜180行。
+
+元の離散前層の辺を固定図式形状で書き、各点の評価を指定の自然変換と照合する。
+
+原典：Kerodon §8.3 の関手評価。HTT 5.1.5.6 の比較に使う離散前層の辺。
+
+使う既存の宣言：
+
+- `discretePresheafHom` @ SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean:28
+- `evaluateFunctorAt_precomp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluationNaturality.lean:44
+- `functorHomEvaluate_edge_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointedTransformationPointHom.lean:28
+
+一覧：済み 72／全体 109（うち追加 74）
+
+### 11-18：R06.2Y・R06.2J・R06.2I の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Y|181|135〜195|270〜390|4,047|6|
+|R06.2J|107|65〜115|130〜230|2,679|10|
+|R06.2I|87|55〜90|110〜180|7,360|5|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,393 から 32,768 行。
+
+一覧：済み 75／全体 109（うち追加 74）

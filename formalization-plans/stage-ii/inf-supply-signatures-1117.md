@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：32,393行。外枠：35,681行。係数：2。
+既計上の累計：32,768行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -115,6 +115,9 @@
 |R06.2T|verified|99|0〜0|0〜0|
 |R06.2A|verified|84|0〜0|0〜0|
 |R06.2O|verified|152|0〜0|0〜0|
+|R06.2Y|verified|181|0〜0|0〜0|
+|R06.2J|verified|107|0〜0|0〜0|
+|R06.2I|verified|87|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2339,7 +2342,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4074,3 +4077,106 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `kanLeftKanShapeOpIso_slice` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/LocalShapeOppositeHomotopy.lean:29
 - `cofinalPointSliceOverOpIso_app_val` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointSliceReverseCoordinates.lean:26
 - `presheafRightFiberLeftIso_ι` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberPointedIso.lean:38
+
+
+### R06.2Y — densityLegAt_baseAction_comp
+親：R06。状態：検証済み。依存：R06.2T・R06.2A。
+
+```lean
+∀ {C D : SSet.{u}} [Quasicategory C] (i : C.op ≅ D)
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj D ⟶ SpaceInfinity.{u}}
+    (a : FunctorHom F G) (x : C _⦋0⦌),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let F' := U.map i.hom ≫ F
+    let G' := U.map i.hom ≫ G
+    let L := smallLeftUnstraighteningBaseIso i F
+    let R := smallLeftUnstraighteningBaseIso i G
+    let m := L.hom ≫ smallUnstraighteningFunctorHom a ≫ R.inv
+    let b := SSet.opObjEquiv.symm x
+    ∀ (hm : m ≫ smallLeftUnstraighteningProjection G' = smallLeftUnstraighteningProjection F')
+      (s : (vertexFiber (smallRightUnstraighteningProjection F') x) _⦋0⦌)
+      (t : (vertexFiber (smallRightUnstraighteningProjection G') x) _⦋0⦌)
+      (g : (PresheafInfinity C).Edge (functorVertex F') (functorVertex G')),
+    let p := (presheafRightFiberLeftIso F' x).hom.app _ (SSet.opObjEquiv.symm s)
+    let q := (presheafRightFiberLeftIso G' x).hom.app _ (SSet.opObjEquiv.symm t)
+    (vertexFiberMap (smallLeftUnstraighteningProjection F') (smallLeftUnstraighteningProjection G')
+      m hm b).app _ p = q →
+    Truncated.HomotopyCategory.homMk (functorEdgeAt g (ULift.up b)).toTruncated =
+      functorHomEvaluate a (ULift.up (i.hom.app (Opposite.op ⦋0⦌) b)) →
+    Truncated.HomotopyCategory.homMk (densityLegAt F' x s).toTruncated ≫
+        Truncated.HomotopyCategory.homMk g.toTruncated =
+      Truncated.HomotopyCategory.homMk (densityLegAt G' x t).toTruncated
+```
+
+素：135〜195行。係数2：270〜390行。
+
+元の密度脚の合成を Yoneda の恒等点で検出し、指定底変換の作用と照合する。
+
+原典：Kerodon §8.3 の Yoneda と §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6。
+
+使う既存の宣言：
+
+- `canonicalYonedaTransformationFiberEvaluation_isQCatEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CanonicalYonedaFiberTransport.lean:89
+- `functorHomEvaluate_comp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluation.lean:63
+- `presheafDensityLeg_evaluatedTransport` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean:43
+- `smallUnstraighteningPointedBase_action` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningPointedActionBaseChange.lean:33
+
+
+### R06.2J — cosliceIntervalNormalized_homMk
+親：R06。状態：検証済み。依存：R06.2O。
+
+```lean
+∀ {X : SSet.{u}} {a b : X _⦋0⦌} (e : X.Edge a b)
+    (c : JoinCocone (SSet.yonedaEquiv.symm e.edge)),
+    let η := SSet.yonedaEquiv.symm e.edge
+    let v := c.vertex
+    let he₀ := e.δ_one_yonedaEquiv_symm
+    let he₁ := e.δ_zero_yonedaEquiv_symm
+    let r₀ := sliceUnderRestrict η (stdSimplex.δ (1 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₀)
+    let r₁ := sliceUnderRestrict η (stdSimplex.δ (0 : Fin 2)) ≫
+      eqToHom (congrArg sliceUnder he₁)
+    ∀ (s₀ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm a)) v) _⦋0⦌)
+      (s₁ : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm b)) v) _⦋0⦌),
+    s₀.val = r₀.app (Opposite.op ⦋0⦌) c →
+    s₁.val = r₁.app (Opposite.op ⦋0⦌) c →
+    Truncated.HomotopyCategory.homMk e.toTruncated ≫
+      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge b v s₁) =
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge a v s₀)
+```
+
+素：65〜115行。係数2：130〜230行。
+
+指定区間に沿う余錐を端点に制限し、元の二単体からホモトピー圏の合成を読む。
+
+原典：Kerodon §4.6 の slice と join。HTT 4.1.3.1 に使う区間上の照合。
+
+使う既存の宣言：
+
+- `coconeVertexLegCompStruct` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:41
+- `sliceUnder_eqToHom_app_val` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CoslicePostCoordinates.lean:23
+
+
+### R06.2I — nativeDiscreteEdge_evaluation_hom
+親：R06。状態：検証済み。依存：R06.1。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)
+    (x : (nerve C).op _⦋0⦌),
+    let i := nerveOppositeIso (C := C)
+    Truncated.HomotopyCategory.homMk (functorEdgeAt (nativeDiscreteEdge φ)
+      (ULift.up x)).toTruncated =
+      functorHomEvaluate (discretePresheafHom φ) (ULift.up (i.hom.app _ x))
+```
+
+素：55〜90行。係数2：110〜180行。
+
+元の離散前層の辺を固定図式形状で書き、各点の評価を指定の自然変換と照合する。
+
+原典：Kerodon §8.3 の関手評価。HTT 5.1.5.6 の比較に使う離散前層の辺。
+
+使う既存の宣言：
+
+- `discretePresheafHom` @ SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean:28
+- `evaluateFunctorAt_precomp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluationNaturality.lean:44
+- `functorHomEvaluate_edge_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointedTransformationPointHom.lean:28
