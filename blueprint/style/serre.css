@@ -108,3 +108,16 @@ nav#toc a.sp-current { border-left-color: var(--sp-accent); background: var(--sp
 .bp_wrapper [class*="thmcontent"], .bp_wrapper [class*="thmcontent"] p { font-style: normal; }
 /* 依存の一覧などの浮き出しはカードの上に出す */
 .bp_preview_panel, .bp_code_summary_preview_panel, .tippy-box { z-index: 50; }
+
+/* 目次の木：章の直下に節（serre.js）。Verso の下の枠（章ごとの目次）は出さない */
+#toc .split-toc:not(.book) { display: none; }
+nav#toc td.sp-has-children { position: relative; }
+nav#toc td.sp-has-children > a { padding-left: 1.3rem; }
+nav#toc button.sp-caret { position: absolute; left: 0.1rem; top: 0.28rem; width: 1.1rem; height: 1.1rem; padding: 0; border: none;
+  background: none; color: var(--sp-muted); cursor: pointer; font-size: 0.7rem; line-height: 1; }
+nav#toc button.sp-caret::before { content: "▸"; }
+nav#toc button.sp-caret[aria-expanded="true"]::before { content: "▾"; }
+nav#toc button.sp-caret:hover { color: var(--sp-accent); }
+nav#toc tr.sp-children ul { list-style: none; margin: 0 0 0.3rem 1.2rem; padding: 0 0 0 0.5rem; border-left: 1px solid var(--sp-rule); }
+nav#toc tr.sp-children li a { font-size: 0.82rem; color: var(--sp-muted); padding: 0.1rem 0.5rem; }
+nav#toc tr.sp-children li a:hover, nav#toc tr.sp-children li a.sp-current { color: var(--sp-navy); }
