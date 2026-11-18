@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 36756,
+  "verified_lean_lines": 36871,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -5217,6 +5217,11 @@
           "name": "reflective_isIso_map_iff_localHom",
           "path": "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveInvertedHom.lean",
           "line": 80
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteFunctorIso.lean",
+          "line": 52,
+          "name": "sheafifyDiscreteFunctorIso"
         }
       ],
       "literature": "HTT 5.5.6.28・6.2.2.7。集合値層化と0切り捨ての層化の比較の特殊な表示。",
@@ -5228,9 +5233,9 @@
         40,
         70
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sheafifyDiscreteFunctorIso.lean",
-      "note": "200行超。元のordinary単位の全自然変換のmateを作る。点ごとの同型を集めない。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteFunctorIso.lean",
+      "note": "200行超。元のordinary単位の全自然変換のmateを作る。点ごとの同型を集めない。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "original_bare_lines": [
         200,
@@ -5258,7 +5263,29 @@
       "method": "ηはdiscreteSheafificationUnitHomに固定する。指定反射の全Hom普遍性による同じmateをasIsoとし、値や成分の独立な選択をしない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R15a",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 65,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteFunctorIso.lean": "fcef2bfe6bf7a14583210a59a2036cee4d78516c73135021045c2e092a787260"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "bdfceca6ee5df273c38f6dbbdb67eb989a7228acd4487b14321e33ea7ac25f94",
+        "receipt": "/tmp/is-stage5/R15a/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15a-1118/manifest.json"
     },
     {
       "id": "R15b",
@@ -5971,6 +5998,11 @@
           "name": "sheafificationReindexSpecified_unit",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SheafificationSiteSpecifiedUnit.lean",
           "line": 27
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteFunctorUnit.lean",
+          "line": 39,
+          "name": "sheafifyDiscreteFunctorIso_unit_fac"
         }
       ],
       "literature": "HTT 5.5.6.28・6.2.2.7。集合値層化と0切り捨ての層化の比較の特殊な表示。",
@@ -5984,13 +6016,35 @@
       ],
       "method": "R15aで実際に構成した同じmateのhmを記録する。単位の成分が一致するというだけの任意のηについての主張へ強めない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R15a",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sheafifyDiscreteFunctorIso.lean",
-      "note": "R15aで実際に構成した同じmateのhmを記録する。単位の成分が一致するというだけの任意のηについての主張へ強めない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteFunctorUnit.lean",
+      "note": "R15aで実際に構成した同じmateのhmを記録する。単位の成分が一致するというだけの任意のηについての主張へ強めない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 50,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SheafifyDiscreteFunctorUnit.lean": "e019d45498eb20a33da80a2b0122753682de021a9fca6eb148485ec69414b685"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "cff251fbc66b3dbbd415e3b1b539ae4da55db8c79d9ff6324f591c8b28ab7f77",
+        "receipt": "/tmp/is-stage5/R15a.3/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r15a-3-1118/manifest.json"
     },
     {
       "id": "R15-Unit.0a",
