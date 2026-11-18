@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 28818,
+  "verified_lean_lines": 28992,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -2698,6 +2698,11 @@
           "name": "smallUnstraighteningFunctorHom_comp_iso",
           "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallUnstraighteningFunctorHomComposition.lean",
           "line": 28
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackReconstructionRelativeIso.lean",
+          "line": 67,
+          "name": "nativePullback_reconstruction_relativeIso"
         }
       ],
       "literature": "HTT 5.1.5.6の双対、Kerodon Definition 7.3.1.2（Tag 02Y9）。指定余単位に沿う値の比較の法則。",
@@ -2711,13 +2716,35 @@
       ],
       "method": "R02による同じ復元の相対比較とP3-Eの全同型の等式を順に前後合成する。指定ν₀の作用の合成則を先に使い、別の底変換同型を選ばない。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R04",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/（新規ファイル、実装時に分割）",
-      "note": "R02による同じ復元の相対比較とP3-Eの全同型の等式を順に前後合成する。指定ν₀の作用の合成則を先に使い、別の底変換同型を選ばない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackReconstructionRelativeIso.lean",
+      "note": "R02による同じ復元の相対比較とP3-Eの全同型の等式を順に前後合成する。指定ν₀の作用の合成則を先に使い、別の底変換同型を選ばない。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 174,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 13,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackReconstructionRelativeIso.lean": "9735de3685e9b7d1038d228a1bbf2bd195cff1ab4eaac1d9a9b07749c062c7bb"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "84545263e93e343a47b0b0da0cff01af5812590c6c8bbcfb5c37fbb2b208b2c0",
+        "receipt": "/tmp/is-stage5/R04.3/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r04-3-1118/manifest.json"
     },
     {
       "id": "R04.4",
