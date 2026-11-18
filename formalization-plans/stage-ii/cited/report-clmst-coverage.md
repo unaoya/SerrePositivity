@@ -1,7 +1,7 @@
 # 現在地
 
-- 段：**NB-W4 段4　Kerodon 第4章まで完了**。
-- 一覧：済み 3／全体 4 段。
+- 段：**NB-W4 完了、停止**。
+- 一覧：済み 4／全体 4 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
 - 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
 
@@ -345,3 +345,7 @@ CLMST v4 の 30 項目は全件に記入した。正規化長を定める塔が�
 BS 著者版の 77 項目は全件に記入した。定義・同値・構成の仮定は原則として同じ項目内に記し、長い比較定理では原典の設定や仮定番号も示した。[証拠目録](../../../evidence/cited/nb-w4-statements-bs/manifest.json)。
 
 Kerodon は第1章 130、第2章 92、第3章 107、第4章 270 の計 599 項目を、各 Tag ページの本文に照合して記入した。章ごとにコミットし、対象番号と出力番号の一致を確認した。ここまで空欄はない。次は第5〜10章の 737 項目。[Kerodon の主張表](../../../research/kerodon-coverage/statements.csv)・[証拠目録](../../../evidence/cited/nb-w4-statements-kerodon/manifest.json)。
+
+Kerodon 第5〜10章の 737 項目を追記し、第1〜10章の対象は計 1,336 項目になった。全項目を各 Tag ページの本文に照合し、章ごとにコミットした。原典で図式と本文の記号が食い違い、要約で型や周辺項目に従った箇所は [原典注記](../../../research/kerodon-coverage/statements-issues.md) に記した。
+
+七文献の主張表は計 1,550 項目で、空欄・重複・対象番号の不足はない。review と目録から対象番号を取り直し、CSV の列と番号、文数、数式の区切り、証拠目録のサイズと SHA-256 を確認した。
