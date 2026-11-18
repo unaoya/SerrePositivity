@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：31,897行。外枠：35,681行。係数：2。
+既計上の累計：31,986行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -110,6 +110,7 @@
 |R06.2C|verified|117|0〜0|0〜0|
 |R06.2K|verified|179|0〜0|0〜0|
 |R06.2D|verified|120|0〜0|0〜0|
+|R06.2V|verified|89|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2334,7 +2335,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3890,3 +3891,36 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `presheafDensityIdentityValue_factorization` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean:49
 - `twistedIdentityFiberLift_right` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/TwistedIdentityFiber.lean:56
 - `presheafRightFiberValueEquivalence_lift` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberValue.lean:41
+
+
+### R06.2V — presheafElementsYonedaSliceInterval_at_leg
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    (presheafElementsYonedaSliceInterval F x).app (Opposite.op ⦋0⦌) (ULift.up s) =
+      intervalMappingVertexOfEdge
+        ((coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq
+          (by
+            have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=
+              s.property.trans (pinchedConstant_zero x)
+            change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)
+              (ULift.up ((smallRightUnstraighteningProjection F).app
+                (Opposite.op ⦋0⦌) s.val)) = _
+            rw [h, yonedaInfinityMap_vertex]) (presheafDensityCocone_vertex F))
+```
+
+素：80〜135行。係数2：160〜270行。
+
+元の Yoneda comma の区間頂点は、指定した密度余錐の実際の脚を表す。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の照合。
+
+使う既存の宣言：
+
+- `presheafElementsYonedaSliceMapping_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/ElementsYonedaSliceFiberMap.lean:84
+- `pinchedHomToIntervalMappingSpace_vertex` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean:56
+- `sliceOverUncurry_yoneda` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalUniqueness.lean:126
+- `coconeVertexLeg` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:26

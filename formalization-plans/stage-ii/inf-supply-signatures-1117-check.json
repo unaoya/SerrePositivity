@@ -2,11 +2,11 @@
   "success": true,
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
-  "signature_count": 101,
-  "verified_count": 67,
-  "additional_count": 66,
+  "signature_count": 102,
+  "verified_count": 68,
+  "additional_count": 67,
   "deferred_count": 12,
-  "edge_count": 163,
+  "edge_count": 164,
   "acyclic": true,
   "topological_order": [
     "R01",
@@ -35,6 +35,7 @@
     "R06.2L",
     "R06.2K",
     "R06.2D",
+    "R06.2V",
     "R04-PR",
     "P3-B1",
     "P3-B2b",
@@ -124,10 +125,10 @@
     1920
   ],
   "active_completion_corrected_lines": [
-    33627,
-    34997
+    33716,
+    35086
   ],
-  "ledger_sha256": "80aa7f58bfb6f94bcd3feaae6629d6e93d5c3b35aca699b2d125ee254318e8ee",
+  "ledger_sha256": "060e1d1fc655d543b7926d9f2c0d35fe94e3527a6f21a1e39074a49e07857b0c",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -307,6 +308,11 @@
     "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean": "fd371f2285e7e70e6a2be880fff5cb63de20c5f1cbdddd6543d120ec8481d6ae",
     "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/TwistedIdentityFiber.lean": "42c1744302175b125b422bce8af38d18d1e128a6d5543b7462c93c3645c7854a",
     "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberValue.lean": "30186e93f0d2075b54d115e4f37e1c8d6afa9190dac0e55ece2e987d73c44872",
-    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean": "767f1a2d80ba7177f41ba571fec49456cfd872a4b65dbc46b9f518764269d06e"
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean": "767f1a2d80ba7177f41ba571fec49456cfd872a4b65dbc46b9f518764269d06e",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/ElementsYonedaSliceFiberMap.lean": "f52a83daebeb46be0173941b7bc471cf66d933d2075d59a997625324f774308a",
+    "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean": "a9727891fcda55c7510b101d255364ea731b1f3f0b3ce89fd10603fc2be3bf4a",
+    "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalUniqueness.lean": "5018a76824e5f795c8f1e21e918db66479a2576a5f96c548f0338725759728ed",
+    "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean": "e6d375da870543abcbfd37c76691a255e33f8f6b127c66e009729449d552c563",
+    "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean": "dd8a6ad673fd644da67b89ee6e3ab094539b3563a96b22c2a74a6a0c9d237ec0"
   }
 }

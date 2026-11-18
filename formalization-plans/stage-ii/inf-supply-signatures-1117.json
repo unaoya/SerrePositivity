@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 31897,
+  "verified_lean_lines": 31986,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3465,7 +3465,8 @@
         "R06.2L",
         "R06.2C",
         "R06.2K",
-        "R06.2D"
+        "R06.2D",
+        "R06.2V"
       ],
       "existing": [
         {
@@ -6141,6 +6142,79 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2d-1118/manifest.json"
+    },
+    {
+      "id": "R06.2V",
+      "name": "presheafElementsYonedaSliceInterval_at_leg",
+      "full_type": "∀ {C : SSet.{u}} [Quasicategory C]\n    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})\n    (x : C _⦋0⦌)\n    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    (presheafElementsYonedaSliceInterval F x).app (Opposite.op ⦋0⦌) (ULift.up s) =\n      intervalMappingVertexOfEdge\n        ((coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq\n          (by\n            have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=\n              s.property.trans (pinchedConstant_zero x)\n            change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)\n              (ULift.up ((smallRightUnstraighteningProjection F).app\n                (Opposite.op ⦋0⦌) s.val)) = _\n            rw [h, yonedaInfinityMap_vertex]) (presheafDensityCocone_vertex F))",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "presheafElementsYonedaSliceMapping_uncurry",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/ElementsYonedaSliceFiberMap.lean",
+          "line": 84
+        },
+        {
+          "name": "pinchedHomToIntervalMappingSpace_vertex",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean",
+          "line": 56
+        },
+        {
+          "name": "sliceOverUncurry_yoneda",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalUniqueness.lean",
+          "line": 126
+        },
+        {
+          "name": "coconeVertexLeg",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean",
+          "line": 26
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean",
+          "line": 40,
+          "name": "presheafElementsYonedaSliceInterval_at_leg"
+        }
+      ],
+      "literature": "Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の照合。",
+      "bare_lines": [
+        80,
+        135
+      ],
+      "corrected_lines": [
+        160,
+        270
+      ],
+      "method": "元の Yoneda comma の区間頂点は、指定した密度余錐の実際の脚を表す。",
+      "specified_compatibility": "元の密度余錐の脚・元の comma 比較・指定頂点を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean",
+      "note": "元の Yoneda comma の区間頂点は、指定した密度余錐の実際の脚を表す。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 89,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean": "dd8a6ad673fd644da67b89ee6e3ab094539b3563a96b22c2a74a6a0c9d237ec0"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "f512ab0eac097e510807795e51ab4563f930173c1773a500faa72ef7281e285b",
+        "receipt": "/tmp/is-stage5/R06.2V/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2v-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

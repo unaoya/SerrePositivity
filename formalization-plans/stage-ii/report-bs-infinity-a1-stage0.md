@@ -11631,3 +11631,48 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,777 から 31,897 行。
 
 一覧：済み 67／全体 101（うち追加 66）
+
+
+### R06.2V — presheafElementsYonedaSliceInterval_at_leg
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    (presheafElementsYonedaSliceInterval F x).app (Opposite.op ⦋0⦌) (ULift.up s) =
+      intervalMappingVertexOfEdge
+        ((coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq
+          (by
+            have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=
+              s.property.trans (pinchedConstant_zero x)
+            change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)
+              (ULift.up ((smallRightUnstraighteningProjection F).app
+                (Opposite.op ⦋0⦌) s.val)) = _
+            rw [h, yonedaInfinityMap_vertex]) (presheafDensityCocone_vertex F))
+```
+
+素：80〜135行。係数2：160〜270行。
+
+元の Yoneda comma の区間頂点は、指定した密度余錐の実際の脚を表す。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の照合。
+
+使う既存の宣言：
+
+- `presheafElementsYonedaSliceMapping_uncurry` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/ElementsYonedaSliceFiberMap.lean:84
+- `pinchedHomToIntervalMappingSpace_vertex` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean:56
+- `sliceOverUncurry_yoneda` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/TerminalUniqueness.lean:126
+- `coconeVertexLeg` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoconeVertexTriangles.lean:26
+
+一覧：済み 67／全体 102（うち追加 67）
+
+### 11-18：R06.2V の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2V|89|80〜135|160〜270|3,857|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,897 から 31,986 行。
+
+一覧：済み 68／全体 102（うち追加 67）
