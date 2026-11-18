@@ -1,0 +1,31 @@
+{
+  "signature": "R09",
+  "declaration": "sections_localEquiv_iso_space",
+  "target_build": {
+    "jobs": 10760,
+    "sha256": "e6322c5fe5fade8bb8b98cd83a6a7c73d162eb904db9632e3fe828d3c5c7fa28",
+    "receipt": "/tmp/is-stage5/R09/build-1.log"
+  },
+  "type_check": {
+    "sha256": "9e92c5cdb8f463eaf38c2f6079f372135d433a0e5571412c3953500463a322f2",
+    "receipt": "/tmp/is-stage5/R09/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "26837c07a01b2cff6423a2dcafa801e91e7811c75af247f68e23d0a8c9ebc271",
+    "receipt": "/tmp/is-stage5/R09/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceLocalEquivalence.lean": "e2773dbdbe60b6c53a282ae7d674b6d16b6e7ec8188fdfc07713df1b917f2884"
+    }
+  }
+}

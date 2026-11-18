@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：35,815行。外枠：36,138行。係数：2。
+既計上の累計：35,935行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -67,8 +67,8 @@
 |R09-Cech.2|verified|125|0〜0|0〜0|
 |R09-Cech|verified|85|0〜0|0〜0|
 |R09.1|verified|168|0〜0|0〜0|
-|R09.2|pending|—|40〜70|80〜140|
-|R09|pending|—|25〜50|50〜100|
+|R09.2|verified|59|0〜0|0〜0|
+|R09|verified|61|0〜0|0〜0|
 |R12a.1|verified|66|0〜0|0〜0|
 |R12a.2|pending|—|80〜130|160〜260|
 |R12a|pending|—|15〜35|30〜70|
@@ -2647,7 +2647,7 @@ let A := mapJoinCone (weightedSections O hE)
 - `sectionsOf_map` @ SerrePositivity/InfinityCategories/Sheaves/SectionsOf.lean:64
 
 ### R09.2 — sections_toRange_isInvertible_space
-親：R09。状態：紙のみ（pending）。依存：R06・R09-Cech。
+親：R09。状態：検証済み。依存：R06・R09-Cech。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] (J : GrothendieckTopology C)
@@ -2674,7 +2674,7 @@ let A := mapJoinCone (weightedSections O hE)
 - `weightedSections_discrete` @ SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscrete.lean:34
 
 ### R09 — sections_localEquiv_iso_space
-親：R09。状態：紙のみ（pending）。依存：R09.1・R09.2。
+親：R09。状態：検証済み。依存：R09.1・R09.2。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C],

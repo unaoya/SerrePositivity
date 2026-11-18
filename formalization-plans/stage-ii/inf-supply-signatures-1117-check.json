@@ -3,7 +3,7 @@
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 122,
-  "verified_count": 94,
+  "verified_count": 96,
   "additional_count": 87,
   "deferred_count": 12,
   "edge_count": 218,
@@ -133,22 +133,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    565,
-    1040
+    500,
+    920
   ],
   "active_corrected_lines": [
-    1130,
-    2080
+    1000,
+    1840
   ],
   "deferred_corrected_lines": [
     1060,
     1920
   ],
   "active_completion_corrected_lines": [
-    36945,
-    37895
+    36935,
+    37775
   ],
-  "ledger_sha256": "0776605978d802eccd9545d681a51f3b9e7a1e75d959d46d3ddc8016d7d9ea36",
+  "ledger_sha256": "058759acc49f520585ed01bcd36ade94bcea9bc3e9c947414a9b5299b3159494",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -272,6 +272,8 @@
     "SerrePositivity/InfinityCategories/Sheaves/SectionsOf.lean": "70c6726def82e83fc3ff7b6fe325455bcf7e2ca376fcadc669c63bbac5225e66",
     "SerrePositivity/InfinityCategories/Sheaves/SectionsOfMapComposition.lean": "1454ace427599f769d8b478a17a79caf4c73ad63d0e8ac38aaed09fb9d9343fa",
     "SerrePositivity/InfinityCategories/Sheaves/LocalEquivalenceImageReduction.lean": "402eaffde7da253c7e7c151f50f9a98a9570846ba0c46b5cfdf260ff3a31c6f1",
+    "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceToRangeIso.lean": "873bf7d75ed6bc74ca1f55eac9c4fe92819678547558bd9d3f27f9fdcbef52ff",
+    "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceLocalEquivalence.lean": "e2773dbdbe60b6c53a282ae7d674b6d16b6e7ec8188fdfc07713df1b917f2884",
     "SerrePositivity/InfinityCategories/Sheaves/NativeSheafRepresentableCoefficients.lean": "f6f6a429906473153691bc0d4691dffca85bb02ca700aa3232eb31ec64575f44",
     "SerrePositivity/InfinityCategories/Sheaves/SiteLiftRepresentableSectionsRestriction.lean": "a5e9e703ce5b5cbe50de721f6e19dde46af06348d68465fa962e95af0d5d4e41",
     "SerrePositivity/InfinityCategories/Sheaves/SiteLiftLocalEquivalence.lean": "19b71742723251e01434f1f53428fb5523c4bbc582f4856177ceb879249c25f5",

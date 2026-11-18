@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 35815,
+  "verified_lean_lines": 35935,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -4141,6 +4141,11 @@
           "name": "weightedSections_discrete",
           "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscrete.lean",
           "line": 34
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceToRangeIso.lean",
+          "line": 35,
+          "name": "sections_toRange_isInvertible_space"
         }
       ],
       "literature": "HTT 6.2.2.6・5.5.4.20の局所対象の筋。小さい通常のsiteと離散な局所同値への特殊化。",
@@ -4154,13 +4159,35 @@
       ],
       "method": "space_isPresentableの同じ全切断とR06で反映する。像の中間極限の選択はhRのまま。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R09",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sections_localEquiv_iso_space.lean",
-      "note": "space_isPresentableの同じ全切断とR06で反映する。像の中間極限の選択はhRのまま。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceToRangeIso.lean",
+      "note": "space_isPresentableの同じ全切断とR06で反映する。像の中間極限の選択はhRのまま。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 59,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 4,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceToRangeIso.lean": "873bf7d75ed6bc74ca1f55eac9c4fe92819678547558bd9d3f27f9fdcbef52ff"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "46c9ea9993ad7ede67e88f9f10149accee7c01d84cee0d859115978541bc6c62",
+        "receipt": "/tmp/is-stage5/R09.2/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r09-2-1118/manifest.json"
     },
     {
       "id": "R09",
@@ -4180,6 +4207,11 @@
           "name": "cechConstantCone_isLimit",
           "path": "SerrePositivity/InfinityCategories/Sheaves/CechIndexConstantLimit.lean",
           "line": 55
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceLocalEquivalence.lean",
+          "line": 36,
+          "name": "sections_localEquiv_iso_space"
         }
       ],
       "literature": "HTT 6.2.2.6・5.5.4.20の局所対象の筋。小さい通常のsiteと離散な局所同値への特殊化。",
@@ -4191,9 +4223,9 @@
         50,
         100
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sections_localEquiv_iso_space.lean",
-      "note": "200行超。元のrangeの増大射と元のφとの同定も含む。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceLocalEquivalence.lean",
+      "note": "200行超。元のrangeの増大射と元のφとの同定も含む。 11-17夕の一括洗い直し後の残り見込み。元の見込みはoriginal欄に保持。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "original_bare_lines": [
         250,
@@ -4221,7 +4253,29 @@
       "method": "isLocalEquivSet_iff_locallyBijectiveから両局所条件を得る。像包含には既存の単射の場合を使い、toRange_ιとR09.1で元のφへ戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R09",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 61,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SectionsSpaceLocalEquivalence.lean": "e2773dbdbe60b6c53a282ae7d674b6d16b6e7ec8188fdfc07713df1b917f2884"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "9e92c5cdb8f463eaf38c2f6079f372135d433a0e5571412c3953500463a322f2",
+        "receipt": "/tmp/is-stage5/R09/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r09-1118/manifest.json"
     },
     {
       "id": "R12a.1",
