@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 31235,
+  "verified_lean_lines": 31481,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3460,7 +3460,9 @@
       "name": "weightedSections_originalLeftLimitIso_specifiedMap",
       "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (O : Presheaf C E) (hE : IsPresentable E),\n∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\nlet U := SSet.uliftFunctor.{u + 1, u}\nlet a := U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ))\nlet DP := U.map (smallLeftUnstraighteningProjection (discretePresheaf P)) ≫ O\nlet DQ := U.map (smallLeftUnstraighteningProjection (discretePresheaf Q)) ≫ O\n∀ (h : a ≫ DQ = DP) (dP : JoinCone DP) (dQ : JoinCone DQ)\n (hdP : IsLimitCone dP) (hdQ : IsLimitCone dQ),\nlet rQ := (restrictJoinCone dQ a).cast h\n∀ (k : SSet.Edge (X := sliceOver DP) rQ dP),\nlet k₀ := eqToHom (congrArg HomotopyCategory.mk\n ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex dQ a)).symm) ≫\n Truncated.HomotopyCategory.homMk (k.map (sliceOverProjection DP)).toTruncated\nlet b := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated\nlet r := (edgeOp b).map ((truncation 2).map (weightedSections O hE))\nlet F := fun v => (weightedSections O hE).app _ (opObjEquiv.symm v)\nlet cP := eqToHom (congrArg HomotopyCategory.mk\n (congrArg F ((discretePresheafInclusion C).property.1 P)))\nlet cQ := eqToHom (congrArg HomotopyCategory.mk\n (congrArg F ((discretePresheafInclusion C).property.1 Q)))\n Truncated.HomotopyCategory.homMk r ≫ cP ≫\n   (weightedSections_originalLeftLimitIso O hE (discretePresheaf P) dP hdP).hom =\n cQ ≫ (weightedSections_originalLeftLimitIso O hE (discretePresheaf Q) dQ hdQ).hom ≫ k₀",
       "dependencies": [
-        "R05"
+        "R05",
+        "R06.2N",
+        "R06.2L"
       ],
       "existing": [
         {
@@ -5774,6 +5776,142 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-3s-1118/manifest.json"
+    },
+    {
+      "id": "R06.2N",
+      "name": "relativeFunctorIso_of_pullback_nerve_readout",
+      "full_type": "∀ {J B X T : SSet.{u}} [Quasicategory B] {C D : Type u}\n    [SmallCategory C] [SmallCategory D]\n    (p : C ⥤ D) [p.Faithful] (r : nerve C ⟶ B) [LeftFibration r]\n    (s : B ⟶ nerve D) (hs : r ≫ s = nerveMap p)\n    (δ : B ⟶ X) (q : T ⟶ X) [LeftFibration q] (h : J ⟶ B)\n    (i : pullback q δ ⟶ nerve C) (hi : i ≫ r = pullback.snd q δ)\n    (ei : IsPrecompositionEquivalence i)\n    (a b : J ⟶ T) (ha : a ≫ q = h ≫ δ) (hb : b ≫ q = h ≫ δ)\n    (hv : ∀ x : J _⦋0⦌,\n      (pullback.lift a h ha ≫ i).app _ x = (pullback.lift b h hb ≫ i).app _ x),\n    Nonempty (VertexIso (relativeFunctorVertex q (h ≫ δ) a ha)\n      (relativeFunctorVertex q (h ≫ δ) b hb))",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "nerve_hom_ext_one",
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/ExtOne.lean",
+          "line": 24
+        },
+        {
+          "name": "relativeFunctorIsPullbackIso_vertex",
+          "path": "SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+          "line": 41
+        },
+        {
+          "name": "relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorPostEquivalence.lean",
+          "line": 36
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean",
+          "line": 94,
+          "name": "relativeFunctorIso_of_pullback_nerve_readout"
+        }
+      ],
+      "literature": "HTT 3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）の相対関手空間における同値の反映。",
+      "bare_lines": [
+        90,
+        135
+      ],
+      "corrected_lines": [
+        180,
+        270
+      ],
+      "method": "通常の忠実な nerve への表示があるとき、頂点の一致から同じ引き戻しの相対同型を回収する。",
+      "specified_compatibility": "元の二つの添字射と共通の係数図式を保持する。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean",
+      "note": "通常の忠実な nerve への表示があるとき、頂点の一致から同じ引き戻しの相対同型を回収する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 122,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 3,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/FaithfulNerveReadout.lean": "088508b1c6cb5e6988af0a31885388d80a948e6bc3e9a6f490366a59e7c839a8"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "1b1cd49fb3143821fb8ea10062961a2469686917d57413256a4d7b584e96d9ed",
+        "receipt": "/tmp/is-stage5/R06.2N/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2n-1118/manifest.json"
+    },
+    {
+      "id": "R06.2L",
+      "name": "elements_projection_leftFibration",
+      "full_type": "∀ {D : Type u} [SmallCategory D] (P : D ⥤ Type u),\n    LeftFibration (nerveMap (Functor.Elements.π P))",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "elementsToReplacement_projection",
+          "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetElements.lean",
+          "line": 87
+        },
+        {
+          "name": "tautScaffold_projection",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/TautScaffold.lean",
+          "line": 78
+        },
+        {
+          "name": "weightedNerveProjection_leftFibration",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/NerveLeftFibration.lean",
+          "line": 58
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean",
+          "line": 108,
+          "name": "elements_projection_leftFibration"
+        }
+      ],
+      "literature": "Kerodon Construction 5.3.4.11（Tag 0373）、Theorem 5.3.3.13（Tag 036N）の集合係数での比較。",
+      "bare_lines": [
+        80,
+        125
+      ],
+      "corrected_lines": [
+        160,
+        250
+      ],
+      "method": "集合係数の taut scaffold は同型なので、weighted nerve の左ファイブレーション性を元の要素圏の射影に移す。",
+      "specified_compatibility": "元の二つの添字射と共通の係数図式を保持する。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean",
+      "note": "集合係数の taut scaffold は同型なので、weighted nerve の左ファイブレーション性を元の要素圏の射影に移す。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 124,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean": "926159a275c3ce14082b7da1faf6f4332d0da621085663d64f0b54e0b087f4fb"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "6fb045b94bd7803208086d2d092ae382d5e2f74ff58ebf3540327aefcd6a3b7c",
+        "receipt": "/tmp/is-stage5/R06.2L/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2l-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

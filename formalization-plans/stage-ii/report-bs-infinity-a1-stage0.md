@@ -11395,3 +11395,71 @@ R13b.1 と R09-Cech.1 は R06.2 に依存しないので先に検証した。R13
 昼の二枠に対応する鍵の更新 657048b94 は枝に反映済み。作業木の未追跡は旧 R2 の四本のみ。追跡ファイルに未コミットの変更は残さない。
 
 一覧：済み 62／全体 96（うち追加 61）
+
+### 11-18：R06.2 の通常の要素圏への帰着
+
+共通の係数図式への射影が一致するとき、比較先の nerve で頂点が一致すれば、忠実性から一次単体が一致し、nerve の外延性で全単体が一致する。この全射の等式を相対関手空間の充満忠実性で元の指定添字へ反映する。要素圏の射影の左ファイブレーション性は、集合係数に対する元の scaffold の同型から得る。R06.2 の型・仮定は従来どおり。
+
+
+### R06.2N — relativeFunctorIso_of_pullback_nerve_readout
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {J B X T : SSet.{u}} [Quasicategory B] {C D : Type u}
+    [SmallCategory C] [SmallCategory D]
+    (p : C ⥤ D) [p.Faithful] (r : nerve C ⟶ B) [LeftFibration r]
+    (s : B ⟶ nerve D) (hs : r ≫ s = nerveMap p)
+    (δ : B ⟶ X) (q : T ⟶ X) [LeftFibration q] (h : J ⟶ B)
+    (i : pullback q δ ⟶ nerve C) (hi : i ≫ r = pullback.snd q δ)
+    (ei : IsPrecompositionEquivalence i)
+    (a b : J ⟶ T) (ha : a ≫ q = h ≫ δ) (hb : b ≫ q = h ≫ δ)
+    (hv : ∀ x : J _⦋0⦌,
+      (pullback.lift a h ha ≫ i).app _ x = (pullback.lift b h hb ≫ i).app _ x),
+    Nonempty (VertexIso (relativeFunctorVertex q (h ≫ δ) a ha)
+      (relativeFunctorVertex q (h ≫ δ) b hb))
+```
+
+素：90〜135行。係数2：180〜270行。
+
+通常の忠実な nerve への表示があるとき、頂点の一致から同じ引き戻しの相対同型を回収する。
+
+原典：HTT 3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）の相対関手空間における同値の反映。
+
+使う既存の宣言：
+
+- `nerve_hom_ext_one` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/ExtOne.lean:24
+- `relativeFunctorIsPullbackIso_vertex` @ SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/RelativeFunctorIsPullbackIso.lean:41
+- `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorPostEquivalence.lean:36
+
+### R06.2L — elements_projection_leftFibration
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {D : Type u} [SmallCategory D] (P : D ⥤ Type u),
+    LeftFibration (nerveMap (Functor.Elements.π P))
+```
+
+素：80〜125行。係数2：160〜250行。
+
+集合係数の taut scaffold は同型なので、weighted nerve の左ファイブレーション性を元の要素圏の射影に移す。
+
+原典：Kerodon Construction 5.3.4.11（Tag 0373）、Theorem 5.3.3.13（Tag 036N）の集合係数での比較。
+
+使う既存の宣言：
+
+- `elementsToReplacement_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetElements.lean:87
+- `tautScaffold_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/TautScaffold.lean:78
+- `weightedNerveProjection_leftFibration` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/NerveLeftFibration.lean:58
+
+一覧：済み 62／全体 98（うち追加 63）
+
+### 11-18：R06.2N・R06.2L の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2N|122|90〜135|180〜270|2,210|3|
+|R06.2L|124|80〜125|160〜250|2,729|6|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,235 から 31,481 行。
+
+一覧：済み 64／全体 98（うち追加 63）

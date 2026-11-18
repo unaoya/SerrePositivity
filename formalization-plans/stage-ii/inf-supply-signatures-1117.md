@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：31,235行。外枠：35,681行。係数：2。
+既計上の累計：31,481行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -105,6 +105,8 @@
 |R06.3N|verified|93|0〜0|0〜0|
 |R06.3P|verified|118|0〜0|0〜0|
 |R06.3S|verified|188|0〜0|0〜0|
+|R06.2N|verified|122|0〜0|0〜0|
+|R06.2L|verified|124|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2329,7 +2331,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3721,3 +3723,54 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `limitVertexIsoOfOverEquivalence_hom_restriction` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitRestrictionValue.lean:45
 - `limitConeIso` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean:73
 - `sectionsConeMap_homMk_unique` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:238
+
+
+### R06.2N — relativeFunctorIso_of_pullback_nerve_readout
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
+
+```lean
+∀ {J B X T : SSet.{u}} [Quasicategory B] {C D : Type u}
+    [SmallCategory C] [SmallCategory D]
+    (p : C ⥤ D) [p.Faithful] (r : nerve C ⟶ B) [LeftFibration r]
+    (s : B ⟶ nerve D) (hs : r ≫ s = nerveMap p)
+    (δ : B ⟶ X) (q : T ⟶ X) [LeftFibration q] (h : J ⟶ B)
+    (i : pullback q δ ⟶ nerve C) (hi : i ≫ r = pullback.snd q δ)
+    (ei : IsPrecompositionEquivalence i)
+    (a b : J ⟶ T) (ha : a ≫ q = h ≫ δ) (hb : b ≫ q = h ≫ δ)
+    (hv : ∀ x : J _⦋0⦌,
+      (pullback.lift a h ha ≫ i).app _ x = (pullback.lift b h hb ≫ i).app _ x),
+    Nonempty (VertexIso (relativeFunctorVertex q (h ≫ δ) a ha)
+      (relativeFunctorVertex q (h ≫ δ) b hb))
+```
+
+素：90〜135行。係数2：180〜270行。
+
+通常の忠実な nerve への表示があるとき、頂点の一致から同じ引き戻しの相対同型を回収する。
+
+原典：HTT 3.3.2、Kerodon Corollary 5.6.0.6（Tag 028T）の相対関手空間における同値の反映。
+
+使う既存の宣言：
+
+- `nerve_hom_ext_one` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/NerveComparison/ExtOne.lean:24
+- `relativeFunctorIsPullbackIso_vertex` @ SerrePositivity/InfinityCategories/Project/FibrationAuxiliaries/FunctorCategories/RelativeFunctorIsPullbackIso.lean:41
+- `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorPostEquivalence.lean:36
+
+### R06.2L — elements_projection_leftFibration
+親：R06。状態：検証済み。依存：なし（既存 API のみ）。
+
+```lean
+∀ {D : Type u} [SmallCategory D] (P : D ⥤ Type u),
+    LeftFibration (nerveMap (Functor.Elements.π P))
+```
+
+素：80〜125行。係数2：160〜250行。
+
+集合係数の taut scaffold は同型なので、weighted nerve の左ファイブレーション性を元の要素圏の射影に移す。
+
+原典：Kerodon Construction 5.3.4.11（Tag 0373）、Theorem 5.3.3.13（Tag 036N）の集合係数での比較。
+
+使う既存の宣言：
+
+- `elementsToReplacement_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetElements.lean:87
+- `tautScaffold_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/TautScaffold.lean:78
+- `weightedNerveProjection_leftFibration` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/NerveLeftFibration.lean:58
