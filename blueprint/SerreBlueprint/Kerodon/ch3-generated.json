@@ -9,14 +9,13 @@
   "Section3_6"
  ],
  "stats": {
-  "linked": 99,
+  "linked": 100,
   "with-statement": 107,
   "with-note": 8,
   "with-note-intro": 6,
   "nolink-mathlib": 5,
   "nolink-none": 232,
   "with-uses": 107,
-  "nolink-own": 1,
   "nolink-partial": 2
  }
 }

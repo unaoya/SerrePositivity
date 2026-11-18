@@ -18,6 +18,7 @@ import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunc
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.KanFibrationEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexMap
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationContractible
 import SerrePositivity.KST.Comparison.ArbitraryBasePullback
@@ -440,7 +441,7 @@ Kerodon Proposition 3.3.6.6（[Tag 00ZG](https://kerodon.net/tag/00ZG)）。対�
 
 :::
 
-:::proposition "kerodon_3_3_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne")
+:::proposition "kerodon_3_3_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence")
 Kerodon Proposition 3.3.6.7（[Tag 00ZH](https://kerodon.net/tag/00ZH)）。対応表の状態：本体にある。
 
 *主張*　任意の単体集合 $`X` の比較写像 $`X\to\operatorname{Ex}^{\infty}(X)` は弱ホモトピー同値である。
@@ -449,7 +450,7 @@ Kerodon Proposition 3.3.6.7（[Tag 00ZH](https://kerodon.net/tag/00ZH)）。対�
 
 :::
 
-:::corollary "kerodon_3_3_6_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff, SerrePositivity.KST.Fibration.weakHomotopyEquivalence_anodyneQ_isIso")
+:::corollary "kerodon_3_3_6_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff, SerrePositivity.KST.Fibration.weakHomotopyEquivalence_anodyneQ_isIso, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence")
 Kerodon Corollary 3.3.6.8（[Tag 00ZJ](https://kerodon.net/tag/00ZJ)）。対応表の状態：本体にある。
 
 *主張*　単体集合の射 $`f` が弱ホモトピー同値であることと、$`\operatorname{Ex}^{\infty}(f)` が弱ホモトピー同値であることは同値である。
@@ -494,7 +495,7 @@ B6：left fibration と準圏同値の判定は一般の Kan fibration の弱同
 
 :::
 
-:::corollary "kerodon_3_3_7_4" (lean := "SerrePositivity.KST.Comparison.pullback_localized_isIso, SerrePositivity.KST.Fibration.weakHomotopyEquivalence_anodyneQ_isIso")
+:::corollary "kerodon_3_3_7_4" (lean := "SerrePositivity.KST.Comparison.pullback_localized_isIso, SerrePositivity.KST.Fibration.weakHomotopyEquivalence_anodyneQ_isIso, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence")
 Kerodon Corollary 3.3.7.4（[Tag 0104](https://kerodon.net/tag/0104)）。対応表の状態：本体にある。
 
 *主張*　弱ホモトピー同値 $`T\to S` を Kan ファイブレーション $`X\to S` に沿って引き戻した射 $`T\times_S X\to X` は弱ホモトピー同値である。

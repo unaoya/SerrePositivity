@@ -6,8 +6,10 @@ import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
 import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
+import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakTensor
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorRestrictionFibration
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.HomotopyDetection
@@ -565,7 +567,7 @@ B6：前向きの型は一段のホモトピー逆を持つ f から同じ f の
 
 :::
 
-:::proposition "kerodon_3_1_7_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.homotopyEquivalence_pre_of_anodyne")
+:::proposition "kerodon_3_1_7_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.homotopyEquivalence_pre_of_anodyne, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneWeakDetection.isWeakHomotopyEquivalence")
 Kerodon Proposition 3.1.7.14（[Tag 00UP](https://kerodon.net/tag/00UP)）。対応表の状態：本体にある。
 
 *主張*　単体集合の無害射は弱ホモトピー同値である。
@@ -590,14 +592,12 @@ B6：現本体・固定Mathlibを再検索。確認済み・なし。引用は�
 
 :::
 
-:::proposition "kerodon_3_1_7_23"
+:::proposition "kerodon_3_1_7_23" (lean := "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.weakTensor")
 Kerodon Proposition 3.1.7.23（[Tag 02L2](https://kerodon.net/tag/02L2)）。対応表の状態：本体にある。
 
 *主張*　単体集合の二つの弱ホモトピー同値の直積も弱ホモトピー同値である。
 
 仮定：単体集合の二写像 f,g が IsWeakHomotopyEquivalence（Kerodon と一致）。結論：点ごとの直積の写像 f ⊗ₘ g が IsWeakHomotopyEquivalence（一致）。
-
-宣言：`SerrePositivity.EInfinity.Hammock.weakTensor`
 
 :::
 
