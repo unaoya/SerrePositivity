@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 33538,
+  "verified_lean_lines": 33825,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3476,7 +3476,9 @@
         "R06.2I",
         "R06.2P",
         "R06.2F",
-        "R06.2M"
+        "R06.2M",
+        "R06.2Pr",
+        "R06.2Cu"
       ],
       "existing": [
         {
@@ -6966,6 +6968,146 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2m-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Pr",
+      "name": "movingConePrism_boundaries",
+      "full_type": "∀ {J X : SSet.{u}} {η : (Δ[1] : SSet.{u}) ⟶ X}\n    (w : J ⟶ sliceUnder η),\n    (SSet.ι₀ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =\n      joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧\n    (SSet.ι₁ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =\n      joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧\n    (joinInr (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =\n      fst J (Δ[1] : SSet.{u}) ≫ w ≫ sliceUnderProjection η ∧\n    (joinInl (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =\n      snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ η",
+      "dependencies": [
+        "R06.2M"
+      ],
+      "existing": [
+        {
+          "name": "joinTensorLeft",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean",
+          "line": 110
+        },
+        {
+          "name": "joinTensorLeft_unit",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean",
+          "line": 195
+        },
+        {
+          "name": "sliceUnderUncurry_fixed",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/Coslice.lean",
+          "line": 175
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean",
+          "line": 151,
+          "name": "movingConePrism_boundaries"
+        }
+      ],
+      "literature": "Kerodon §4.6.6（Tag 04J1）の join と直積の比較。HTT 5.1.5.6 の指定右 Kan 比較で使う境界式。",
+      "bare_lines": [
+        115,
+        170
+      ],
+      "corrected_lines": [
+        230,
+        340
+      ],
+      "method": "指定区間の下の余錐を、同じ図式を持つ錐の辺に直し、四つの境界を計算する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean",
+      "note": "指定区間の下の余錐を、同じ図式を持つ錐の辺に直し、四つの境界を計算する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 165,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 8,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/MovingConePrism.lean": "22a6e1608762cc9201185aac80f475cbbd777b43c5a1eac4abbc0faecbfe1f96"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "0ed9165a7eccf0ad46a25493444b4c7d6b9543719dc94e2cc710d85709b32c81",
+        "receipt": "/tmp/is-stage5/R06.2Pr/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2pr-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Cu",
+      "name": "rightKan_transport_counit_comp",
+      "full_type": "∀ {K C D : SSet.{u}} [Quasicategory D]\n    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}\n    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}\n    (t : RightKanConeTransport δ F₀ F α v),\n    let L := rightKanShape δ v\n    let c := rightKanCanonicalCone δ F v\n    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge\n    constantFunctorHomMap L (functorHomEvaluate g\n        (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L))) ≫ coneCounitHom t.cone =\n      coneCounitHom c ≫\n        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map\n          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))",
+      "dependencies": [
+        "R04"
+      ],
+      "existing": [
+        {
+          "name": "coneCounitHom_morphism_naturality",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean",
+          "line": 27
+        },
+        {
+          "name": "coneCounitHom_coneMorphism",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeMorphismBoundary.lean",
+          "line": 54
+        },
+        {
+          "name": "coneCounitHom_bijective",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ConeCounitHomUniversal.lean",
+          "line": 86
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean",
+          "line": 72,
+          "name": "rightKan_transport_counit_comp"
+        }
+      ],
+      "literature": "Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送の計算。",
+      "bare_lines": [
+        95,
+        150
+      ],
+      "corrected_lines": [
+        190,
+        300
+      ],
+      "method": "指定右 Kan 輸送の終端の余単位を、標準錐の同じ余単位と図式側の変換の合成で表す。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean",
+      "note": "指定右 Kan 輸送の終端の余単位を、標準錐の同じ余単位と図式側の変換の合成で表す。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 122,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean": "7fcfab1ee06e92f824bed0b3a4378cfdb5831e944e37a691edbe09d6d0b97943"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "8119b4fab3247dfec9320b0eaa64c3713b952b2ebff925b7d3a17c206619470f",
+        "receipt": "/tmp/is-stage5/R06.2Cu/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2cu-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

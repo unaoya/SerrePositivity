@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：33,538行。外枠：36,138行。係数：2。
+既計上の累計：33,825行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -121,6 +121,8 @@
 |R06.2P|verified|203|0〜0|0〜0|
 |R06.2F|verified|303|0〜0|0〜0|
 |R06.2M|verified|264|0〜0|0〜0|
+|R06.2Pr|verified|165|0〜0|0〜0|
+|R06.2Cu|verified|122|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2345,7 +2347,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4304,3 +4306,63 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,538行（今回5,317行）。次の R06.2 の指定余単位・大域比較のまとまりは素900〜1,300行、補正1,800〜2,600行。補正上端を足した36,138行が外枠35,681行を超えるため、このまとまりの手前で区切る。
 
 一覧：済み 78／全体 112（うち追加 77）
+
+
+### R06.2Pr — movingConePrism_boundaries
+親：R06。状態：検証済み。依存：R06.2M。
+
+```lean
+∀ {J X : SSet.{u}} {η : (Δ[1] : SSet.{u}) ⟶ X}
+    (w : J ⟶ sliceUnder η),
+    (SSet.ι₀ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =
+      joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧
+    (SSet.ι₁ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =
+      joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧
+    (joinInr (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =
+      fst J (Δ[1] : SSet.{u}) ≫ w ≫ sliceUnderProjection η ∧
+    (joinInl (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =
+      snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ η
+```
+
+素：115〜170行。係数2：230〜340行。
+
+指定区間の下の余錐を、同じ図式を持つ錐の辺に直し、四つの境界を計算する。
+
+原典：Kerodon §4.6.6（Tag 04J1）の join と直積の比較。HTT 5.1.5.6 の指定右 Kan 比較で使う境界式。
+
+使う既存の宣言：
+
+- `joinTensorLeft` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean:110
+- `joinTensorLeft_unit` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean:195
+- `sliceUnderUncurry_fixed` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/Coslice.lean:175
+
+
+### R06.2Cu — rightKan_transport_counit_comp
+親：R06。状態：検証済み。依存：R04。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v),
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    constantFunctorHomMap L (functorHomEvaluate g
+        (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L))) ≫ coneCounitHom t.cone =
+      coneCounitHom c ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+素：95〜150行。係数2：190〜300行。
+
+指定右 Kan 輸送の終端の余単位を、標準錐の同じ余単位と図式側の変換の合成で表す。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送の計算。
+
+使う既存の宣言：
+
+- `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
+- `coneCounitHom_coneMorphism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeMorphismBoundary.lean:54
+- `coneCounitHom_bijective` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ConeCounitHomUniversal.lean:86

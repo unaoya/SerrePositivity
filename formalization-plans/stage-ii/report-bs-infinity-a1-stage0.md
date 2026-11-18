@@ -12240,3 +12240,78 @@ lemma rightKan_transport_apex_eval
 外枠を35,681行から36,138行へ変更する。累計33,538行から、前節の指定余単位を使う直接計算で R06.2 を進める。増額は前回示した次のまとまりの補正後の上端に合わせた。終端の型は同じ。
 
 一覧：済み 78／全体 112（うち追加 77）
+
+
+### R06.2Pr — movingConePrism_boundaries
+親：R06。状態：紙のみ（pending）。依存：R06.2M。
+
+```lean
+∀ {J X : SSet.{u}} {η : (Δ[1] : SSet.{u}) ⟶ X}
+    (w : J ⟶ sliceUnder η),
+    (SSet.ι₀ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =
+      joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧
+    (SSet.ι₁ : join (Δ[0] : SSet.{u}) J ⟶ _) ≫ movingConePrism w =
+      joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 J) ≫ sliceUnderUncurry w ∧
+    (joinInr (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =
+      fst J (Δ[1] : SSet.{u}) ≫ w ≫ sliceUnderProjection η ∧
+    (joinInl (Δ[0] : SSet.{u}) J ▷ (Δ[1] : SSet.{u})) ≫ movingConePrism w =
+      snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ η
+```
+
+素：115〜170行。係数2：230〜340行。
+
+指定区間の下の余錐を、同じ図式を持つ錐の辺に直し、四つの境界を計算する。
+
+原典：Kerodon §4.6.6（Tag 04J1）の join と直積の比較。HTT 5.1.5.6 の指定右 Kan 比較で使う境界式。
+
+使う既存の宣言：
+
+- `joinTensorLeft` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean:110
+- `joinTensorLeft_unit` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/JoinTensor.lean:195
+- `sliceUnderUncurry_fixed` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/Coslice.lean:175
+
+一覧：済み 78／全体 113（うち追加 78）
+
+
+### R06.2Cu — rightKan_transport_counit_comp
+親：R06。状態：紙のみ（pending）。依存：R04。
+
+```lean
+∀ {K C D : SSet.{u}} [Quasicategory D]
+    {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
+    {α : SSet.Homotopy (δ ≫ F) F₀} {v : C _⦋0⦌}
+    (t : RightKanConeTransport δ F₀ F α v),
+    let L := rightKanShape δ v
+    let c := rightKanCanonicalCone δ F v
+    let g : FunctorHom c.val t.cone.val := Truncated.HomotopyCategory.homMk t.edge
+    constantFunctorHomMap L (functorHomEvaluate g
+        (SSet.yonedaEquiv (joinInl (Δ[0] : SSet.{u}) L))) ≫ coneCounitHom t.cone =
+      coneCounitHom c ≫
+        (hoFunctor.map ((pre (rightKanProjection δ v)).app D)).toFunctor.map
+          (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy α))
+```
+
+素：95〜150行。係数2：190〜300行。
+
+指定右 Kan 輸送の終端の余単位を、標準錐の同じ余単位と図式側の変換の合成で表す。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）。HTT 5.1.5.6 の指定右 Kan 輸送の計算。
+
+使う既存の宣言：
+
+- `coneCounitHom_morphism_naturality` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeCounitMorphismNaturality.lean:27
+- `coneCounitHom_coneMorphism` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/ConeMorphismBoundary.lean:54
+- `coneCounitHom_bijective` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ConeCounitHomUniversal.lean:86
+
+一覧：済み 78／全体 114（うち追加 79）
+
+### 11-18：R06.2Pr・R06.2Cu の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Pr|165|115〜170|230〜340|1,617|8|
+|R06.2Cu|122|95〜150|190〜300|3,944|5|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 33,538 から 33,825 行。
+
+一覧：済み 80／全体 114（うち追加 79）
