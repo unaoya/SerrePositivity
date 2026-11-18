@@ -4,16 +4,32 @@ import VersoBlueprint
 import Mathlib.CategoryTheory.Equivalence
 import Mathlib.CategoryTheory.EssentialImage
 import Mathlib.CategoryTheory.Quotient
+import SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalenceCalculus
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullSubcomplexCosliceFaithful
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulBaseChange
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulBoundary
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulPostcomposition
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.MappingSpacePositiveBoundary
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveFullyFaithful
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.ThinNerveInnerFibration
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceFullyFaithful
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostHomCriterion
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.EquivalenceTerminal
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalVertices
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "4.8 Full, Faithful, and Essentially Surjective Functors" =>
 %%%
@@ -22,6 +38,15 @@ tag := "kerodon-4-8"
 %%%
 
 Kerodon の 4.8 節（[Tag 0578](https://kerodon.net/tag/0578)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*02-mapping-limits.html — 4. 充満忠実性と同値の判定 — 関連する結果*
+
+- 内容　／　Lean　／　場所
+- 充満忠実 ⇒ $`hX\to hY` も充満忠実　／　\`IsFullyFaithful.toHoFullyFaithful\`　／　Core/FullyFaithful
+- 合成、右の簡約　／　\`IsFullyFaithful.comp\`、\`isFullyFaithful\_comp\_iff\`　／　Core/EquivalenceCalculus、FullyFaithfulCalculus
+- 自然同型で不変　／　\`FunctorIso.isFullyFaithful\_iff\`　／　Core/FullyFaithfulIso
+- 各点で可逆なホモトピー ⇒ \`FunctorIso\`（Kerodon Thm. 4.4.4.4）　／　\`functorIsoOfPointwiseInvertibleHomotopy\`　／　Core/FunctorEdgePointwise
+- Kan 複体の間のホモトピー ⇒ \`FunctorIso\`　／　\`functorIsoOfSimplicialHomotopy\`　／　Core/KanHomotopyEquivalence
 
 :::theorem "kerodon_4_8_0_1" (lean := "CategoryTheory.Functor.IsEquivalence, CategoryTheory.Functor.essImage")
 Kerodon Theorem 4.8.0.1（[Tag 06RY](https://kerodon.net/tag/06RY)）。対応表の状態：Mathlib にある。
@@ -60,12 +85,10 @@ Kerodon Remark 4.8.1.3（[Tag 01JS](https://kerodon.net/tag/01JS)）。対応表
 
 :::
 
-:::proposition "kerodon_4_8_1_7" (uses := "kerodon_1_4_0_1")
+:::proposition "kerodon_4_8_1_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective.comp") (uses := "kerodon_1_4_0_1")
 Kerodon Remark 4.8.1.7（[Tag 01JW](https://kerodon.net/tag/01JW)）。対応表の状態：一部。
 
 IsEssentiallySurjective.compは原文の三つの結論のうち、本質的全射な二関手の合成も本質的全射という第一成分を同じ合成について直接返す。後二条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective.comp`
 
 :::
 
@@ -94,12 +117,10 @@ Fullは通常圏のHom集合の全射性。原文のnerveの区間写像空間�
 
 :::
 
-:::definition "kerodon_4_8_2_7" (uses := "kerodon_1_4_0_1, kerodon_4_8_1_1, kerodon_4_8_2_1")
+:::definition "kerodon_4_8_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective") (uses := "kerodon_1_4_0_1, kerodon_4_8_1_1, kerodon_4_8_2_1")
 Kerodon Definition 4.8.2.7（[Tag 05A5](https://kerodon.net/tag/05A5)）。対応表の状態：一部。
 
 IsEssentiallySurjectiveは原文の0-fullの定義の頂点同型による存在条件そのもの。1-fullと高次n-fullの定義は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective`
 
 :::
 
@@ -204,21 +225,17 @@ Faithfulは通常圏のHom集合の単射性。原文の写像空間の直和因
 
 :::
 
-:::proposition "kerodon_4_8_3_9" (uses := "kerodon_1_4_0_1, kerodon_4_8_2_1, kerodon_4_8_3_1, kerodon_4_8_3_8")
+:::proposition "kerodon_4_8_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.toHoFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsFullyFaithful.comp, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_4_0_1, kerodon_4_8_2_1, kerodon_4_8_3_1, kerodon_4_8_3_8")
 Kerodon Remark 4.8.3.9（[Tag 059X](https://kerodon.net/tag/059X)）。対応表の状態：一部。
 
 IsFullyFaithfulの各pinchedHomMapのホモトピー同値は、自然なpinched→interval比較の同値と可換式で同じinterval作用の同値へ移る。従ってπ₀全射と全標的を直和因子とする同値を直接得る。fully faithful⇒fullかつfaithfulの向きのみ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.toHoFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsFullyFaithful.comp`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
-
 :::
 
-:::definition "kerodon_4_8_3_12"
+:::definition "kerodon_4_8_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Definition 4.8.3.12（[Tag 05AX](https://kerodon.net/tag/05AX)）。対応表の状態：一部。
 
 n=0の(n−2)-truncationは各Hom作用のホモトピー同値の条件。IsFullyFaithfulのpinchedHomMapを自然な区間比較で移すと同じinterval作用のこの条件を直接得る。任意の正のnの定義は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
 
 :::
 
@@ -245,12 +262,10 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::proposition "kerodon_4_8_3_36"
+:::proposition "kerodon_4_8_3_36" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.pullback_snd, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Proposition 4.8.3.36（[Tag 05BD](https://kerodon.net/tag/05BD)）。対応表の状態：一部。
 
 n=0でIsFullyFaithful.pullback\_sndは同じinner fibrationの各底変換の充満忠実性を直接返す。pinched/interval比較は自然な同値なのでこの性質は原文の同じHom作用へ移る。一般nの四条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.pullback_snd`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
 
 :::
 
@@ -279,12 +294,55 @@ tag := "kerodon-4-8-4"
 
 Kerodon [Tag 06SQ](https://kerodon.net/tag/06SQ)
 
-:::theorem "kerodon_4_8_4_1" (uses := "kerodon_1_4_0_1, kerodon_4_5_3_24, kerodon_4_5_4_11, kerodon_4_8_3_9, kerodon_4_8_4_5")
+:::theorem "kerodon_4_8_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.isQCatEquivalence_of_surjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_4_0_1, kerodon_4_5_3_24, kerodon_4_5_4_11, kerodon_4_8_3_9, kerodon_4_8_4_5")
 Kerodon Theorem 4.8.4.1（[Tag 01JX](https://kerodon.net/tag/01JX)）。対応表の状態：一部。
 
 isQCatEquivalence\_iff\_fullyFaithful\_essentiallySurjectiveは同じFの原文(1)⇔(2)を直接返す。pinchedとintervalの自然な比較によるHom作用の同値性も確認する。(3),(4)を含む四条件全体ではない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.isQCatEquivalence_of_surjective`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
+*02-mapping-limits.html — 4. 充満忠実性と同値の判定 — 主定理*
+
+*定理*（HTT §1.2.10。コードの docstring は Kerodon Thm. 4.8.4.1・Prop. 4.8.4.5 を参照）. quasicategory の間の $`f\colon X\to Y` について、$`f` が同値 ⇔ $`f` が充満忠実かつ本質的全射。
+
+Lean では \`isQCatEquivalence\_iff\_fullyFaithful\_essentiallySurjective\`（Core/EquivalenceFullyFaithful）。難しいのは ⇐ で、次の三段で示す。
+
+1. *isofibration への置き換え*（Core/EquivalencePath\*）。$`Y` の可逆な辺がなす path の空間 $`\mathrm{Path}^{\simeq}(Y)` で $`f` を引き戻し、$`\tilde X=X\times_Y\mathrm{Path}^{\simeq}(Y)` を作る。射影 $`\tilde X\to X` は trivial Kan fibration で、終点の評価 $`\tilde f\colon\tilde X\to Y`（\`equivalencePathReplacementMap f\`）は inner fibration になる。$`f` が同値であることと $`\tilde f` が同値であることは同値。
+
+2. *性質の移送*。$`\tilde f` も充満忠実で、本質的全射性は頂点上の*全射*に強まる（可逆な辺を経由して像を動かせるため）。
+
+3. *trivial Kan fibration であることの証明*（Core/FullyFaithfulBoundary）。頂点上で全射な充満忠実 inner fibration $`p` が $`\partial\Delta^{n+1}\hookrightarrow\Delta^{n+1}` を持ち上げることを示す。$`p` を $`\Delta^{n+1}` に引き戻す（充満忠実性は引き戻しで保たれる。\`IsFullyFaithful.pullback\_snd\`）。$`\Delta^{n+1}` の最後の頂点は終対象で、充満忠実な inner fibration は終対象性を反映するので、引き戻した側でも最後の頂点が終対象になる。終対象の境界充填性から持ち上げが得られる。$`n=-1`（頂点）の場合が全射性である。
+
+このとき trivial Kan fibration は同値なので、$`\tilde f`、したがって $`f` が同値になる。
+
+Lean の構造：写像空間の写像を trivial fibration に上げる
+
+3 段目の「充満忠実な inner fibration は終対象性を反映する」の内部では、次の組み合わせが繰り返し使われる。
+
+- \`pinchedHomMap\_rightFibration\`：写像空間の写像は右 fibration、とくに Kan fibration
+
+- \`trivialKanFibration\_of\_fibration\_of\_simplicialHomotopyEquivalence\`：Kan fibration かつホモトピー同値なら trivial
+
+二つを合わせると \`IsFullyFaithful.pinchedHomMap\_trivialKanFibration\` が得られる。「ホモトピー同値」という性質を「持ち上げ性」という具体的な道具に変えることが、この層の証明の基本の型になっている。
+
+*route-classification.html — 3. 段 1：写像空間・同値・関手の ∞ 圏 — 3.6（1.6）∞ 圏の同値*
+
+- *(⇐)*（Kerodon Theorem 4.8.4.1）：1 圏のように $`x_d` と同型を選んで $`G` を作ると高次の整合性の選択が要るので、三段階で示す。
+
+1. *置換*：$`\mathcal C':=\mathcal C\times_{\mathcal D}P(\mathcal D)`（$`P` は 3.5 の同値な辺の path 空間）、$`F'\colon\mathcal C'\to\mathcal D` は終点。$`\mathcal C\to\mathcal C'` は同値（始点評価が自明 Kan fibration）。$`F'` は内 fibration、充満忠実、本質的全射性は「頂点の上で全射」になる。
+2. *鍵の補題*：頂点の上で全射かつ充満忠実な内 fibration は自明 Kan fibration。$`n=0` は全射性。$`n=1` は $`\pi_0` の全射で $`Ff\simeq\bar u` を取り、2 単体 $`(Ff,\mathrm{id},\bar u)` の上で $`\Lambda^2_1` を持ち上げる。$`n\ge2` は写像空間の写像が右 fibration（よって Kan fibration）かつホモトピー同値なので自明 Kan fibration、に帰着（一般の境界の帰着の細部は未確認で、段 1 に戻るときに詰める）。
+3. *自明 Kan fibration は同値*：切断 $`s` を取り、$`\mathrm{Fun}(\mathcal C',\mathcal C')\to\mathrm{Fun}(\mathcal C',\mathcal D)` も自明 Kan fibration なので $`p` 上の fiber は可縮な Kan 複体。$`sp` と $`\mathrm{id}` は辺で結べ、Kan 複体の辺は同値。
+
+*定理 I での使われ方*：強い形 $`\mathrm{Fun}(B,\mathcal S)\simeq\mathrm{LFib}(B)` はこの判定法の形で示す。段 6 が充満忠実性、段 7 が本質的全射性。
+
+*Lean での扱い*：
+
+- 内容　／　宣言　／　ファイル
+- 同値　／　\`QCatEquivalence\`、\`IsQCatEquivalence\`　／　Core/Equivalence
+- 充満忠実（右 pinched 写像空間のホモトピー同値）・本質的全射　／　\`IsFullyFaithful\`、\`IsEssentiallySurjective\`　／　Core/FullyFaithful
+- 置換　／　\`equivalencePathReplacementMap\`、\`isQCatEquivalence\_iff\_equivalencePathReplacementMap\`　／　Core/EquivalencePathReplacement
+- 主判定　／　\`isQCatEquivalence\_of\_isFullyFaithful\_of\_isEssentiallySurjective\`、\`isQCatEquivalence\_iff\_fullyFaithful\_essentiallySurjective\`　／　Core/FullyFaithfulEquivalence、EquivalenceFullyFaithful
+- 逆データの選択　／　\`qCatEquivalenceOfFullyFaithfulEssentiallySurjective\`　／　Core/FullyFaithfulEquivalence
+
+鍵の補題の高次元部分は \`Core/FullyFaithfulBoundary.lean\`（全境界の持ち上げ）。
 
 :::
 
@@ -297,21 +355,17 @@ fullSubcomplexVertexImageLiftは頂点のliteral imageが張る部分複体へ�
 
 :::
 
-:::proposition "kerodon_4_8_4_5" (uses := "kerodon_1_4_0_1, kerodon_4_7_6_25, kerodon_4_8_2_24, kerodon_4_8_2_25")
+:::proposition "kerodon_4_8_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.hasLiftingProperty_boundary_succ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ") (uses := "kerodon_1_4_0_1, kerodon_4_7_6_25, kerodon_4_8_2_24, kerodon_4_8_2_25")
 Kerodon Proposition 4.8.4.5（[Tag 05AR](https://kerodon.net/tag/05AR)）。対応表の状態：一部。
 
 IsFullyFaithful.hasLiftingProperty\_boundary\_succはFを充満忠実なinner fibrationに強めると同じ∂Δⁿに対する持ち上げを全ての正のnで直接返す。一つのn-fullだけの仮定と逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.hasLiftingProperty_boundary_succ`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ`
-
 :::
 
-:::theorem "kerodon_4_8_4_6" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_2_8_3, kerodon_3_3_7_1, kerodon_4_4_5_4, kerodon_4_5_1_22, kerodon_4_8_4_1")
+:::theorem "kerodon_4_8_4_6" (lean := "SerrePositivity.InfinityCategories.HTT.Section3_1_3.IsQCatEquivalence.core") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_2_8_3, kerodon_3_3_7_1, kerodon_4_4_5_4, kerodon_4_5_1_22, kerodon_4_8_4_1")
 Kerodon Theorem 4.8.4.6（[Tag 01HG](https://kerodon.net/tag/01HG)）。対応表の状態：一部。
 
 Fの圏同値からpostcomposeをΔ¹に適用し、IsQCatEquivalence.coreとKan上のホモトピー同値への比較を適用すると、原文の同じ矢印関手圏coreの射のホモトピー同値性を直接得る。逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.HTT.Section3_1_3.IsQCatEquivalence.core`
 
 :::
 
@@ -322,12 +376,10 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::definition "kerodon_4_8_4_8" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_4_8_4_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 4.8.4.8（[Tag 01Q0](https://kerodon.net/tag/01Q0)）。対応表の状態：一部。
 
 coherentNerveMap\_isFullyFaithful\_iffの右辺は局所Kanな豊穣圏で全てのF.map X Yが圏同値という条件で、Kan上の弱ホモトピー同値との比較により原文のweakly fully faithfulの条件を直接与える。この範囲と前半の条件のみで、weakly essentially surjectiveと一般のweak equivalenceの定義は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff`
 
 :::
 
@@ -356,12 +408,10 @@ Faithfulは通常圏のHom集合上の述語。原文の∞圏のfaithful性とh
 
 :::
 
-:::proposition "kerodon_4_8_4_13" (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_4_0_1, kerodon_4_8_4_5")
+:::proposition "kerodon_4_8_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.hasLiftingProperty_boundary_succ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.trivialKanFibration_of_surjective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_4_0_1, kerodon_4_8_4_5")
 Kerodon Proposition 4.8.4.13（[Tag 05BF](https://kerodon.net/tag/05BF)）。対応表の状態：一部。
 
 n=0では充満忠実性と全ての正次元境界のRLPを、hasLiftingProperty\_boundary\_succとisFullyFaithful\_of\_boundary\_succが同じFについて直接結ぶ。自然なpinched/interval比較でHom作用を同定できる。一般nと全てのA⊂Bの条件(3)は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.hasLiftingProperty_boundary_succ`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_boundary_succ`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.trivialKanFibration_of_surjective`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
 
 :::
 
@@ -372,12 +422,10 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::corollary "kerodon_4_8_4_15"
+:::corollary "kerodon_4_8_4_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.postcompose, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Corollary 4.8.4.15（[Tag 04Q6](https://kerodon.net/tag/04Q6)）。対応表の状態：一部。
 
 IsFullyFaithful.postcomposeは原文が明記する「特に充満忠実なら内部Homの同じ後合成も充満忠実」を直接返す。写像空間模型の自然な比較を通じる性質で、一般n-faithfulは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.postcompose`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
 
 :::
 
@@ -388,12 +436,10 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::corollary "kerodon_4_8_4_17" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_3_1_8_1, kerodon_4_3_6_10, kerodon_4_6_4_21, kerodon_4_8_4_1, kerodon_4_8_4_13")
+:::corollary "kerodon_4_8_4_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.fullSubcomplex_coslicePostcomp_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_3_1_8_1, kerodon_4_3_6_10, kerodon_4_6_4_21, kerodon_4_8_4_1, kerodon_4_8_4_13")
 Kerodon Corollary 4.8.4.17（[Tag 02C8](https://kerodon.net/tag/02C8)）。対応表の状態：一部。
 
 fullSubcomplex\_coslicePostcomp\_isFullyFaithfulはGが同型で閉じた頂点集合の充満部分複体の包含の場合の同じcoslice後合成の充満忠実性。一般G・slice側・一般nは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.fullSubcomplex_coslicePostcomp_isFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
 
 :::
 
@@ -406,21 +452,17 @@ tag := "kerodon-4-8-5"
 
 Kerodon [Tag 05BY](https://kerodon.net/tag/05BY)
 
-:::definition "kerodon_4_8_5_1"
+:::definition "kerodon_4_8_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective")
 Kerodon Definition 4.8.5.1（[Tag 05BZ](https://kerodon.net/tag/05BZ)）。対応表の状態：一部。
 
 IsEssentiallySurjectiveはn=0で唯一要求される0-fullの条件をそのまま与える。他のnでの全てのm-fullの条件は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective`
-
 :::
 
-:::proposition "kerodon_4_8_5_15"
+:::proposition "kerodon_4_8_5_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective.comp")
 Kerodon Proposition 4.8.5.15（[Tag 05CA](https://kerodon.net/tag/05CA)）。対応表の状態：一部。
 
 n=0ではcategorically 0-connectiveは0-fullすなわち本質的全射だけ。IsEssentiallySurjective.compは同じF,Gの合成についてこの結論を直接返す。(1)のn=0の場合に限り、一般nや(2),(3)は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective.comp`
 
 :::
 
@@ -489,12 +531,10 @@ tag := "kerodon-4-8-6"
 
 Kerodon [Tag 06SY](https://kerodon.net/tag/06SY)
 
-:::definition "kerodon_4_8_6_1"
+:::definition "kerodon_4_8_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn")
 Kerodon Definition 4.8.6.1（[Tag 05BL](https://kerodon.net/tag/05BL)）。対応表の状態：一部。
 
 始域・標的を薄い通常圏のnerveとしn=1に取ると、thinNerve\_innerFibrationが同じpの存在、thinNerve\_hom\_ext\_hornを始域に適用して次数2以上の一意性を直接得る。一般n・任意の始域は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_innerFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.thinNerve_hom_ext_horn`
 
 :::
 

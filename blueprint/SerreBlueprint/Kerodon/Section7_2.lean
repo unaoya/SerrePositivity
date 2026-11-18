@@ -1,20 +1,39 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Limits.Final
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrowCofinality
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredPosetNerve
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalAnodyneRecognition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalCoconeRestriction
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalConeRestriction
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFactorizationCriterion
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalFunctorSpace
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalOpposite
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalTensor
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalWeakEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.Cofinality
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FilteredDiagonalCofinality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LastHornPullback
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftFibrationAnodynePullback
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftFibrationCofinalPullback
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LimitExistence
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenA
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenALeft
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.RoofTerminalFiberCofinality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.TerminalFiberCofinality
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.TerminalPointAnodyne
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.TrivialFibrationCofinality
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.JoinCells
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "7.2 Cofinality" =>
 %%%
@@ -23,6 +42,20 @@ tag := "kerodon-7-2"
 %%%
 
 Kerodon の 7.2 節（[Tag 02MZ](https://kerodon.net/tag/02MZ)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*f-b-literature-yoneda.html — 3. cofinality*
+
+$`e\colon C'\to C` が cofinal とは、どんな $`F\colon C\to\mathcal D` についても $`\operatorname{colim}_{C'}(F\circ e)\to\operatorname{colim}_C F` が同値であること（極限には逆向きの coinitial、Kerodon の left cofinal を使う）。判定法は Quillen の定理 A：すべての $`c` で $`C'\times_C C_{c/}` が弱可縮。
+
+- *余極限を簡単にする*：終対象 $`t` があれば $`\operatorname{colim}_C F\simeq F(t)`。filtered な図式は cofinal な部分で計算できる。図式の形を取り替える。
+
+- *他の一般論の土台*：Kan 拡張の各点公式、極限の推移性、Ind とコンパクト対象（密度、単一の filtered 図式での表示）、局所化と余極限の整合。
+
+- *不変性*：cofinal は「制限が余極限を変えない」という極限の理論の中での同値の概念。モデル圏での「ホモトピー余極限は添字の弱同値で不変」の ∞ 版。
+
+- 1 圏の final functor は「$`c\downarrow e` が空でなく連結」。∞ 版では連結が弱可縮に強まる。
+
+- 単射が left anodyne ⇔ left cofinal。§6 の「始対象の包含は left anodyne」はこれから出る。
 
 # 7.2.1 Cofinal Morphisms of Simplicial Sets
 
@@ -33,10 +66,32 @@ tag := "kerodon-7-2-1"
 
 Kerodon [Tag 02N0](https://kerodon.net/tag/02N0)
 
+*04-yoneda-adjunction-kan.html — 5. cofinality*
+
+\`\`\`text
+def IsLeftCofinal \{A B : SSet.\{u\}\} (i : A ⟶ B) : Prop :=
+  ∀ (E : SSet.\{u\}) (p : E ⟶ B) \[LeftFibration p\],
+    IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)
+\`\`\`
+
+- 内容　／　Lean　／　場所
+- left anodyne ⇒ left cofinal（right も同様）　／　\`isRightCofinal\_of\_rightAnodyne\` など　／　F1B/Cofinal\*
+- cofinal ⇔ 「anodyne の後に trivial Kan fibration」と分解できる　／　\`isLeftCofinal\_iff\_exists\_anodyne\_trivialKan\_factorization\`　／　F1B/CofinalFactorizationCriterion
+- trivial Kan fibration ⇔ 左 fibration かつ left cofinal　／　\`trivialKanFibration\_iff\_leftFibration\_and\_isLeftCofinal\`　／　同上
+- 反対圏による left/right の入れ替え　／　\`isLeftCofinal\_iff\_isRightCofinal\_op\`　／　F1B/CofinalOpposite
+- Quillen の定理 A 型の判定：slice が弱可縮なら、単射に沿う slice の制限は trivial　／　\`sliceOverRestrict\_trivialKanFibration\_of\_weaklyContractible\_slices\`　／　F1B/InitialQuillenRecovery
+- 例：始対象への制限は極限を変えない　／　\`initialCofinality\_via\_quillenA\`　／　同上
+
+cofinal な射に沿う slice の制限が trivial Kan fibration になる（\`sliceOverRestrict\_trivialKanFibration\_of\_isLeftCofinal\`）ので、極限は cofinal な部分図式で計算できる。
+
 :::definition "kerodon_7_2_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalFunctorSpace")
 Kerodon Definition 7.2.1.1（[Tag 02N1](https://kerodon.net/tag/02N1)）。対応表の状態：本体にある。
 
 仮定：任意の単体集合の射 f。A,B の Quasicategory は不要（Kerodon と一致）。結論：任意の左・右ファイブレーションの相対関手空間上で f による前合成が単体的ホモトピー同値（原文の二定義と一致）。
+
+*04-yoneda-adjunction-kan.html — 5. cofinality*
+
+任意の左 fibration $`E\to B` について、切断の空間の制限 $`\mathrm{Fun}_{/B}(B,E)\to\mathrm{Fun}_{/B}(A,E)` がホモトピー同値であること（Kerodon Def. 7.2.1.1）。極限を計算する向きが left、余極限の向きが right である。
 
 :::
 
@@ -47,21 +102,17 @@ Kerodon Proposition 7.2.1.3（[Tag 02N3](https://kerodon.net/tag/02N3)）。対�
 
 :::
 
-:::proposition "kerodon_7_2_1_4" (uses := "kerodon_1_4_0_1, kerodon_4_7_3_22, kerodon_7_2_1_3")
+:::proposition "kerodon_7_2_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.roofTerminalPoint_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.terminalPoint_rightAnodyne, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.nervePoint_isLeftCofinal") (uses := "kerodon_1_4_0_1, kerodon_4_7_3_22, kerodon_7_2_1_3")
 Kerodon Example 7.2.1.4（[Tag 03LQ](https://kerodon.net/tag/03LQ)）。対応表の状態：一部。
 
 roofTerminalPoint\_isRightCofinalは終対象Xの点包含がright cofinalというiffの向きを直接返す。任意準圏の逆とleft側のiff全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.roofTerminalPoint_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.terminalPoint_rightAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.nervePoint_isLeftCofinal`
-
 :::
 
-:::proposition "kerodon_7_2_1_5" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_3_2, kerodon_3_1_3_4, kerodon_3_1_7_17, kerodon_3_2_8_1, kerodon_4_4_3_8")
+:::proposition "kerodon_7_2_1_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_3_2, kerodon_3_1_3_4, kerodon_3_1_7_17, kerodon_3_2_8_1, kerodon_4_4_3_8")
 Kerodon Proposition 7.2.1.5（[Tag 02N5](https://kerodon.net/tag/02N5)）。対応表の状態：一部。
 
 IsLeftCofinal.isWeakHomotopyEquivalenceとRight版は原文(1)の両場合を同じfについて直接返す。Kan終域と弱同値からの逆(2)は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.isWeakHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence`
 
 :::
 
@@ -79,12 +130,10 @@ Kerodon Corollary 7.2.1.7（[Tag 02N7](https://kerodon.net/tag/02N7)）。対応
 
 :::
 
-:::corollary "kerodon_7_2_1_9" (uses := "kerodon_1_4_0_1, kerodon_7_2_1_4, kerodon_7_2_1_6")
+:::corollary "kerodon_7_2_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.nervePoint_isLeftCofinal") (uses := "kerodon_1_4_0_1, kerodon_7_2_1_4, kerodon_7_2_1_6")
 Kerodon Corollary 7.2.1.9（[Tag 043E](https://kerodon.net/tag/043E)）。対応表の状態：一部。
 
 Cを一点、Dを通常圏Iのnerve、Fを点包含に制限すれば、通常の始対象cに対するnervePoint\_isLeftCofinalは原文の「始対象の像が始対象ならFはleft cofinal」という向きを直接与える。一般のFのiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.nervePoint_isLeftCofinal`
 
 :::
 
@@ -102,21 +151,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：辺の局�
 
 :::
 
-:::corollary "kerodon_7_2_1_12"
+:::corollary "kerodon_7_2_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset")
 Kerodon Corollary 7.2.1.12（[Tag 02NB](https://kerodon.net/tag/02NB)）。対応表の状態：一部。
 
 Cを正則κに対してκ-filteredな準圏に強めるとexists\_cofinal\_kappaFiltered\_posetは半順序のnerveから同じCへのright cofinal射の存在を直接返す。原文の存在結論のright成分のみで、同じ射のleft cofinal性・有限版は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_cofinal_kappaFiltered_poset`
-
 :::
 
-:::corollary "kerodon_7_2_1_13" (uses := "kerodon_1_1_0_6, kerodon_7_2_1_10")
+:::corollary "kerodon_7_2_1_13" (lean := "CategoryTheory.Functor.final_iff_comp_equivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_7_2_1_10")
 Kerodon Corollary 7.2.1.13（[Tag 02NC](https://kerodon.net/tag/02NC)）。対応表の状態：一部。
 
 fをtrivial Kan fibrationに強めるとisLeftCofinal\_of\_trivialKanFibrationとRight版は同じfの左右cofinal性を直接返す。一般のcategorical equivalenceは含まない。
-
-宣言：`CategoryTheory.Functor.final_iff_comp_equivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_trivialKanFibration`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_of_trivialKanFibration`
 
 :::
 
@@ -134,12 +179,10 @@ Kerodon Corollary 7.2.1.15（[Tag 02NE](https://kerodon.net/tag/02NE)）。対�
 
 :::
 
-:::corollary "kerodon_7_2_1_16"
+:::corollary "kerodon_7_2_1_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_leftAnodyne_of_mono, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_leftAnodyne, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions")
 Kerodon Corollary 7.2.1.16（[Tag 02NF](https://kerodon.net/tag/02NF)）。対応表の状態：一部。
 
 四角をstrict pushout、fをmonoにも強めると、cofinal/anodyneのmono判定、leftAnodyneExtensionsのcobase change閉性、left anodyne⇒left cofinalを同じf,f′に順に適用して原文の結論を直接得る。任意のcategorical pushoutは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_leftAnodyne_of_mono`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_leftAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions`
 
 :::
 
@@ -171,21 +214,17 @@ opで右側へ移し、左右のwhiskerのright cofinal性とIsRightCofinal.comp
 
 :::
 
-:::proposition "kerodon_7_2_1_21" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_5_6_0_6, kerodon_7_2_1_13")
+:::proposition "kerodon_7_2_1_21" (lean := "CategoryTheory.Functor.final_iff_final_comp, CategoryTheory.Functor.final_iff_comp_equivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_isIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.comp") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_5_6_0_6, kerodon_7_2_1_13")
 Kerodon Proposition 7.2.1.21（[Tag 02NM](https://kerodon.net/tag/02NM)）。対応表の状態：一部。
 
 gを単体集合の厳密同型に強めれば、gと逆射はいずれもleft cofinal。IsLeftCofinal.compを各方向に適用しgf≫g⁻¹=fで戻せば同じfのiffを直接得る。一般の圏同値は含まない。
 
-宣言：`CategoryTheory.Functor.final_iff_final_comp`、`CategoryTheory.Functor.final_iff_comp_equivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_isIso`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.comp`
-
 :::
 
-:::corollary "kerodon_7_2_1_22" (uses := "kerodon_1_1_0_6, kerodon_7_2_1_6, kerodon_7_2_1_21")
+:::corollary "kerodon_7_2_1_22" (lean := "CategoryTheory.Functor.initial_iff_comp_equivalence, CategoryTheory.Functor.initial_iff_equivalence_comp, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.of_arrow_iso") (uses := "kerodon_1_1_0_6, kerodon_7_2_1_6, kerodon_7_2_1_21")
 Kerodon Corollary 7.2.1.22（[Tag 02NN](https://kerodon.net/tag/02NN)）。対応表の状態：一部。
 
 g,g′を厳密同型に強めると可換四角は同じf,f′のArrow同型。IsLeftCofinal.of\_arrow\_isoとそのsymmへの適用が原文のiffを直接返す。通常圏のInitialのiffは根拠にしない。
-
-宣言：`CategoryTheory.Functor.initial_iff_comp_equivalence`、`CategoryTheory.Functor.initial_iff_equivalence_comp`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.of_arrow_iso`
 
 :::
 
@@ -207,12 +246,10 @@ tag := "kerodon-7-2-2"
 
 Kerodon [Tag 02NQ](https://kerodon.net/tag/02NQ)
 
-:::proposition "kerodon_7_2_2_1" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_5, kerodon_4_4_5_3, kerodon_4_5_3_30, kerodon_4_5_5_8, kerodon_4_5_5_9, kerodon_4_5_5_10, kerodon_4_5_5_11, kerodon_4_6_2_3, kerodon_4_6_2_8, kerodon_4_6_2_9, kerodon_4_6_4_14, kerodon_4_6_4_15, kerodon_4_6_4_19, kerodon_5_1_7_1, kerodon_5_1_7_5, kerodon_5_1_7_16, kerodon_5_6_0_6, kerodon_7_2_1_1, kerodon_7_2_1_15")
+:::proposition "kerodon_7_2_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceOverRestrict_isQCatEquivalence_of_leftCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceUnderRestrict_equivalence_of_rightCofinal") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_5, kerodon_4_4_5_3, kerodon_4_5_3_30, kerodon_4_5_5_8, kerodon_4_5_5_9, kerodon_4_5_5_10, kerodon_4_5_5_11, kerodon_4_6_2_3, kerodon_4_6_2_8, kerodon_4_6_2_9, kerodon_4_6_4_14, kerodon_4_6_4_15, kerodon_4_6_4_19, kerodon_5_1_7_1, kerodon_5_1_7_5, kerodon_5_1_7_16, kerodon_5_6_0_6, kerodon_7_2_1_1, kerodon_7_2_1_15")
 Kerodon Proposition 7.2.2.1（[Tag 02NR](https://kerodon.net/tag/02NR)）。対応表の状態：一部。
 
 Bを準圏に強めるとsliceOverRestrict\_isQCatEquivalence\_of\_leftCofinalは原文(1)⇒(5)の同じ制限射の圏同値性を直接返す。右cofinalのcoslice版は左側の全七条件の代用にはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceOverRestrict_isQCatEquivalence_of_leftCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.sliceUnderRestrict_equivalence_of_rightCofinal`
 
 :::
 
@@ -225,12 +262,10 @@ Kerodon Corollary 7.2.2.2（[Tag 02XQ](https://kerodon.net/tag/02XQ)）。対応
 
 :::
 
-:::corollary "kerodon_7_2_2_3" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_2_2_2")
+:::corollary "kerodon_7_2_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_2_2_2")
 Kerodon Corollary 7.2.2.3（[Tag 02XR](https://kerodon.net/tag/02XR)）。対応表の状態：一部。
 
 Bを準圏に強めればisLimitCone\_iff\_restrict\_of\_leftCofinalは原文の同じ錐とeによる制限の極限性のiffを直接返す。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal`
 
 :::
 
@@ -270,39 +305,31 @@ MathlibのPreservesLimit\_comp\_iffは通常圏のInitial/Finalと通常錐に�
 
 :::
 
-:::proposition "kerodon_7_2_2_9" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_6_9, kerodon_7_2_1_15, kerodon_7_2_2_2")
+:::proposition "kerodon_7_2_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_iff_restrict_of_leftCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_6_9, kerodon_7_2_1_15, kerodon_7_2_2_2")
 Kerodon Proposition 7.2.2.9（[Tag 02XT](https://kerodon.net/tag/02XT)）。対応表の状態：一部。
 
 Dを一点、Uを終写像、Bを準圏に限ると原文の相対持ち上げは絶対極限錐の存在となり、hasLimit\_iff\_restrict\_of\_leftCofinalが同じfとeについてこのiffを直接返す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_iff_restrict_of_leftCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal`
-
 :::
 
-:::corollary "kerodon_7_2_2_10" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_2_2_3, kerodon_7_2_2_9")
+:::corollary "kerodon_7_2_2_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_iff_restrict_of_leftCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_2_2_3, kerodon_7_2_2_9")
 Kerodon Corollary 7.2.2.10（[Tag 02NS](https://kerodon.net/tag/02NS)）。対応表の状態：一部。
 
 Bを準圏に強めるとhasLimit\_iff\_restrict\_of\_leftCofinalは原文と同じfの極限存在とeによる制限の極限存在のiffを直接返す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_iff_restrict_of_leftCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal`
-
 :::
 
-:::corollary "kerodon_7_2_2_11" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_1_13, kerodon_7_2_2_10")
+:::corollary "kerodon_7_2_2_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_1_13, kerodon_7_2_2_10")
 Kerodon Corollary 7.2.2.11（[Tag 02XU](https://kerodon.net/tag/02XU)）。対応表の状態：一部。
 
 Bを準圏に強めると、頂点Xを持つ極限錐cにisLimitCone\_iff\_restrict\_of\_leftCofinalを適用して、同じ頂点を保った制限錐の極限性を直接得る。Xが制限の極限なら元でも極限となる逆向きの存在は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal`
-
 :::
 
-:::corollary "kerodon_7_2_2_12" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
+:::corollary "kerodon_7_2_2_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Corollary 7.2.2.12（[Tag 02NU](https://kerodon.net/tag/02NU)）。対応表の状態：一部。
 
 Bを準圏に強めると、全A図式の極限存在をu≫Fに適用しhasLimit\_of\_leftCofinalを使うだけで原文の極限側の全B図式の存在を直接得る。余極限側は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.hasLimit_of_leftCofinal`
 
 :::
 
@@ -363,12 +390,10 @@ Kerodon Corollary 7.2.3.6（[Tag 02XY](https://kerodon.net/tag/02XY)）。対応
 
 :::
 
-:::corollary "kerodon_7_2_3_7" (uses := "kerodon_1_4_0_1, kerodon_4_7_3_23, kerodon_6_2_6_2, kerodon_7_2_3_1")
+:::corollary "kerodon_7_2_3_7" (lean := "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal") (uses := "kerodon_1_4_0_1, kerodon_4_7_3_23, kerodon_6_2_6_2, kerodon_7_2_3_1")
 Kerodon Corollary 7.2.3.7（[Tag 02P3](https://kerodon.net/tag/02P3)）。対応表の状態：一部。
 
 Fを通常圏の随伴L⊣RのnerveMap Lに制限すると、OE-W1後のFrameArrowCofinalityにあるnerveMap\_leftAdjoint\_isLeftCofinalは同じFのleft cofinal性を直接返す。MathlibのFinal Rだけはright cofinal性の証拠としない。
-
-宣言：`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FrameArrows.nerveMap_leftAdjoint_isLeftCofinal`
 
 :::
 
@@ -379,39 +404,31 @@ Kerodon Corollary 7.2.3.9（[Tag 02P4](https://kerodon.net/tag/02P4)）。対応
 
 :::
 
-:::proposition "kerodon_7_2_3_10" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_13, kerodon_5_1_4_1, kerodon_5_3_4_9, kerodon_5_3_6_3, kerodon_5_3_6_5, kerodon_7_2_1_3, kerodon_7_2_1_15, kerodon_7_2_1_22")
+:::proposition "kerodon_7_2_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_pullback_fst_of_vertexFibers") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_13, kerodon_5_1_4_1, kerodon_5_3_4_9, kerodon_5_3_6_3, kerodon_5_3_6_5, kerodon_7_2_1_3, kerodon_7_2_1_15, kerodon_7_2_1_22")
 Kerodon Proposition 7.2.3.10（[Tag 02P6](https://kerodon.net/tag/02P6)）。対応表の状態：一部。
 
 πをleft fibrationに強めればleftFibration\_pullback\_isRightCofinalは同じpullback第一射影Fのright cofinal性を直接返す。一般cocartesian fibrationではない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_pullback_fst_of_vertexFibers`
-
 :::
 
-:::corollary "kerodon_7_2_3_11" (uses := "kerodon_1_1_0_6, kerodon_5_1_4_1, kerodon_7_2_1_3, kerodon_7_2_3_10")
+:::corollary "kerodon_7_2_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_rightAnodyne, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_lastHorn_pullback_rightAnodyne") (uses := "kerodon_1_1_0_6, kerodon_5_1_4_1, kerodon_7_2_1_3, kerodon_7_2_3_10")
 Kerodon Corollary 7.2.3.11（[Tag 02P7](https://kerodon.net/tag/02P7)）。対応表の状態：一部。
 
 πをleft fibrationに強めればleftFibration\_pullback\_rightAnodyneは原文と同じ引き戻したFのright anodyne性を直接返す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_rightAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_lastHorn_pullback_rightAnodyne`
-
 :::
 
-:::proposition "kerodon_7_2_3_12"
+:::proposition "kerodon_7_2_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.roofLeftFibration_terminalFiber_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_terminalFiber_rightAnodyne, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_rightAnodyne_of_mono")
 Kerodon Example 7.2.3.12（[Tag 03J8](https://kerodon.net/tag/03J8)）。対応表の状態：一部。
 
 πをleft fibrationに強めればroofLeftFibration\_terminalFiber\_isRightCofinalは同じfiber包含のright cofinal性を返す。fiber包含はmonoなのでright cofinal/anodyneのmono判定も適用でき、原文のright anodyne性まで直接得る。一般cocartesianの場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.roofLeftFibration_terminalFiber_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_terminalFiber_rightAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_rightAnodyne_of_mono`
-
 :::
 
-:::corollary "kerodon_7_2_3_13" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_3, kerodon_4_7_3_23, kerodon_5_1_4_1, kerodon_5_1_4_15, kerodon_7_2_1_5, kerodon_7_2_1_13, kerodon_7_2_1_21, kerodon_7_2_3_1, kerodon_7_2_3_10")
+:::corollary "kerodon_7_2_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_3, kerodon_4_7_3_23, kerodon_5_1_4_1, kerodon_5_1_4_15, kerodon_7_2_1_5, kerodon_7_2_1_13, kerodon_7_2_1_21, kerodon_7_2_3_1, kerodon_7_2_3_10")
 Kerodon Corollary 7.2.3.13（[Tag 05ZU](https://kerodon.net/tag/05ZU)）。対応表の状態：一部。
 
 leftFibration\_pullback\_isRightCofinalとIsRightCofinal.isWeakHomotopyEquivalenceの合成は原文(1)⇒(3)を同じFの全left-fibration引き戻しについて直接返す。一般cocartesian版(2)と全逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.leftFibration_pullback_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.isWeakHomotopyEquivalence`
 
 :::
 

@@ -1,9 +1,12 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Bicategory.Adjunction.Basic
 import Mathlib.CategoryTheory.Bicategory.Basic
 import Mathlib.CategoryTheory.Bicategory.Functor.Lax
+import Mathlib.CategoryTheory.Bicategory.Functor.Pseudofunctor
 import Mathlib.CategoryTheory.Bicategory.Functor.StrictPseudofunctor
+import Mathlib.CategoryTheory.Bicategory.Functor.StrictlyUnitary
 import Mathlib.CategoryTheory.Bicategory.LocallyGroupoid
 import Mathlib.CategoryTheory.Bicategory.Opposites
 import Mathlib.CategoryTheory.Bicategory.Span.Basic
@@ -12,6 +15,9 @@ import Mathlib.CategoryTheory.Bicategory.Strict.Basic
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "2.2 The Theory of Bicategories" =>
 %%%
@@ -69,12 +75,10 @@ Kerodon Proposition 2.2.1.13（[Tag 00EZ](https://kerodon.net/tag/00EZ)）。対
 
 :::
 
-:::corollary "kerodon_2_2_1_14" (uses := "kerodon_2_2_1_13")
+:::corollary "kerodon_2_2_1_14" (lean := "CategoryTheory.Bicategory.unitors_equal") (uses := "kerodon_2_2_1_13")
 Kerodon Corollary 2.2.1.14（[Tag 0082](https://kerodon.net/tag/0082)）。対応表の状態：一部。
 
 B6：unitors\_equal は恒等1射上の λ.hom=ρ.hom を直接述べる。原文の三者一致のうちこの二者の一致のみで、別に与える υ との一致は含まない。
-
-宣言：`CategoryTheory.Bicategory.unitors_equal`
 
 :::
 
@@ -156,12 +160,10 @@ Kerodon Notation 2.2.4.15（[Tag 008Q](https://kerodon.net/tag/008Q)）。対応
 
 :::
 
-:::definition "kerodon_2_2_4_17"
+:::definition "kerodon_2_2_4_17" (lean := "CategoryTheory.StrictlyUnitaryLaxFunctor")
 Kerodon Definition 2.2.4.17（[Tag 008R](https://kerodon.net/tag/008R)）。対応表の状態：一部。
 
 B6：StrictlyUnitaryLaxFunctor.map\_id と mapId\_eq\_eqToHom は原文の strictly unital の定義を直接与える。unital だけを要求する前半の一般の述語は含まない。
-
-宣言：`CategoryTheory.StrictlyUnitaryLaxFunctor`
 
 :::
 
@@ -181,12 +183,10 @@ Kerodon Construction 2.2.5.1（[Tag 008W](https://kerodon.net/tag/008W)）。対
 
 :::
 
-:::definition "kerodon_2_2_5_5" (uses := "kerodon_2_2_4_5, kerodon_2_2_5_1")
+:::definition "kerodon_2_2_5_5" (lean := "CategoryTheory.LaxFunctor.id, CategoryTheory.LaxFunctor.comp, CategoryTheory.Pseudofunctor.id, CategoryTheory.Pseudofunctor.comp, CategoryTheory.StrictPseudofunctor.id, CategoryTheory.StrictPseudofunctor.comp") (uses := "kerodon_2_2_4_5, kerodon_2_2_5_1")
 Kerodon Definition 2.2.5.5（[Tag 0090](https://kerodon.net/tag/0090)）。対応表の状態：一部。
 
 B6：id と comp は原文で指定された各種関手の恒等射・合成という構成成分を直接与える。双圏を対象として束ねた普通圏とその厳密な圏則は未確認。
-
-宣言：`CategoryTheory.LaxFunctor.id`、`CategoryTheory.LaxFunctor.comp`、`CategoryTheory.Pseudofunctor.id`、`CategoryTheory.Pseudofunctor.comp`、`CategoryTheory.StrictPseudofunctor.id`、`CategoryTheory.StrictPseudofunctor.comp`
 
 :::
 
@@ -236,12 +236,10 @@ tag := "kerodon-2-2-7"
 
 Kerodon [Tag 00FC](https://kerodon.net/tag/00FC)
 
-:::definition "kerodon_2_2_7_1"
+:::definition "kerodon_2_2_7_1" (lean := "CategoryTheory.Bicategory.Strict")
 Kerodon Definition 2.2.7.1（[Tag 00FD](https://kerodon.net/tag/00FD)）。対応表の状態：一部。
 
 B6：Strict の id\_comp/comp\_id と left/rightUnitor\_eqToIso から原文の厳密単位性が直接得られる。associator も等式由来とする追加仮定がある。
-
-宣言：`CategoryTheory.Bicategory.Strict`
 
 :::
 
@@ -319,21 +317,17 @@ B6：Pith と inclusion は可逆2射に制限する双圏であり、原文の1
 
 :::
 
-:::definition "kerodon_2_2_8_17"
+:::definition "kerodon_2_2_8_17" (lean := "CategoryTheory.Bicategory.Equivalence")
 Kerodon Definition 2.2.8.17（[Tag 02B1](https://kerodon.net/tag/02B1)）。対応表の状態：一部。
 
 B6：Equivalence の hom に対して inv・unit・counit が原文の両側ホモトピー逆を直接与える。指定1射をこのデータの hom とし、triangle も持つ場合に限る。hPith の IsIso との iff は含めない。
 
-宣言：`CategoryTheory.Bicategory.Equivalence`
-
 :::
 
-:::definition "kerodon_2_2_8_24"
+:::definition "kerodon_2_2_8_24" (lean := "CategoryTheory.Bicategory.IsLocallyGroupoid")
 Kerodon Definition 2.2.8.24（[Tag 02B8](https://kerodon.net/tag/02B8)）。対応表の状態：一部。
 
 B6：IsLocallyGroupoid の ∀b c, IsGroupoid(b⟶c) は原文の全2射が可逆という結論成分。全1射が同値である条件は含まない。
-
-宣言：`CategoryTheory.Bicategory.IsLocallyGroupoid`
 
 :::
 

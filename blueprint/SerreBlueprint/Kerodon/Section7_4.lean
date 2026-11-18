@@ -1,15 +1,51 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.InfinityCategories.HA.Section5_2_2.ClassifiedConeLimit
 import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SmallConstantSource
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationInfinity
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningAllBases
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningInfinityEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalCoconeRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalWeakEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.InitialSectionEvaluation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenA
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PullbackColimitConeExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PullbackSquareCoconeCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CanonicalCoconeWeakEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoconeFiberColimitCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentTotalColimit
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.DiagramSectionsCone
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportConeRestriction
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PullbackConeComponentCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PullbackLimitConeExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.PullbackSquareConeCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentationFamilyRecovery
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentationFamilyUniqueness
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentationFamilyWitness
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentationMappingEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RepresentationMappingSpaceMap
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SigmaElementsConeRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SimplicialSections
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SpacePointLimitDetection
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SpaceSmallLimits
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TensorCoconeComponentCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TensorColimitConeExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TensorConeComponentCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TensorLimitConeExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TransportSectionsLimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.YonedaEvaluationLimits
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "7.4 Limits and Colimits of Spaces" =>
 %%%
@@ -28,21 +64,30 @@ tag := "kerodon-7-4-1"
 
 Kerodon [Tag 05QM](https://kerodon.net/tag/05QM)
 
-:::proposition "kerodon_7_4_1_1" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_1_0_1, kerodon_7_1_8_3")
+*05-gamma-bridges.html — 3. γ3：𝒮 の極限・余極限*
+
+空間の ∞ 圏 $`\mathcal S` が完備かつ余完備であることは、二つの経路で示されている。
+
+*05-gamma-bridges.html — 3. γ3：𝒮 の極限・余極限 — (a) 一般の coherent 図式：straightening 経由（無条件）*
+
+- 内容　／　Lean　／　場所
+- 任意の小さい coherent 図式 $`B\to\mathcal S` は極限を持つ。極限は unstraightening の*切断の空間*　／　\`hasLimit\_coherentSpaceDiagram\`　／　F1/CoherentSpaceSmallLimits
+- 同じく余極限を持つ。余極限は unstraightening の*全空間*の Kan 模型　／　\`hasColimit\_coherentSpaceDiagram\`　／　F2/CoherentTotalColimit
+- 系：前層 ∞ 圏は小さい極限・余極限を持ち、評価で保存・検出される　／　\`presheafInfinity\_hasLimit\`、\`presheafInfinity\_hasColimit\`　／　F1/PresheafAllSmallLimits、F1/PresheafPointwiseColimits
+
+これは「$`\lim F=` 左 fibration $`\mathrm{Un}(F)\to B` の切断の空間、$`\mathrm{colim}\,F=\mathrm{Un}(F)` の全空間（を Kan 化したもの）」という Kerodon 流の記述そのものである。第 3 章の straightening が完成していることがこの経路の前提になっている。
+
+:::proposition "kerodon_7_4_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_1_0_1, kerodon_7_1_8_3")
 Kerodon Proposition 7.4.1.1（[Tag 05QN](https://kerodon.net/tag/05QN)）。対応表の状態：一部。
 
 Cを宇宙で小さく、βとYをcoherentDiagramSectionsCone Fの標準錐と切断空間に指定すると、coherentDiagramSectionsCone\_isLimitは原文(1)を同じβについて直接返す。任意のβに対する(1)⇔(2)の判定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit`
-
 :::
 
-:::corollary "kerodon_7_4_1_2"
+:::corollary "kerodon_7_4_1_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentSmallConstantSourceMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit")
 Kerodon Corollary 7.4.1.2（[Tag 05QP](https://kerodon.net/tag/05QP)）。対応表の状態：一部。
 
 Cが宇宙で小さい場合、coherentSmallConstantSourceMap\_isQCatEquivalenceを点に適用すると原文のMは同じ小さい全切断空間と同値。その切断錐の極限性を同値に沿って移せばMが極限と直接得る。任意の大きなCは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentSmallConstantSourceMap_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit`
 
 :::
 
@@ -60,12 +105,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙で�
 
 :::
 
-:::proposition "kerodon_7_4_1_6"
+:::proposition "kerodon_7_4_1_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportSectionsConeIsLimit")
 Kerodon Proposition 7.4.1.6（[Tag 05QS](https://kerodon.net/tag/05QS)）。対応表の状態：一部。
 
 UをFの標準leftUnstraighteningProjectionに指定すると、全切断のKan性のinstanceとcoherentDiagramSectionsCone\_isLimitは同じ全切断空間がFの極限であると直接返す。任意の与えた輸送表現Uは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportSectionsConeIsLimit`
 
 :::
 
@@ -83,21 +126,17 @@ Kerodon Definition 7.4.1.8（[Tag 05QT](https://kerodon.net/tag/05QT)）。対�
 
 :::
 
-:::proposition "kerodon_7_4_1_9" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_4_20, kerodon_5_1_7_16, kerodon_5_6_5_1, kerodon_7_4_1_8")
+:::proposition "kerodon_7_4_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation.isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_4_20, kerodon_5_1_7_16, kerodon_5_6_5_1, kerodon_7_4_1_8")
 Kerodon Proposition 7.4.1.9（[Tag 05QU](https://kerodon.net/tag/05QU)）。対応表の状態：一部。
 
 Space値の比較データLeftTransportRepresentationを仮定すると、そのcomparisonはLeftTransportRepresentation.isPrecompositionEquivalenceにより同じUからFの標準leftUnstraighteningへの底上の同値を直接与える。(1)から(3)のこの成分だけで、指定αと全三条件のiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation.isPrecompositionEquivalence`
-
 :::
 
-:::definition "kerodon_7_4_1_13" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_7_4_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSections") (uses := "kerodon_1_1_0_6")
 Kerodon Construction 7.4.1.13（[Tag 05QY](https://kerodon.net/tag/05QY)）。対応表の状態：一部。
 
 simplicialSectionsは原文のFun\_/C(C,E)という構成の始域を、同じUについて指定pullbackで直接構成する。αからHom空間への比較射Tの構成は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSections`
 
 :::
 
@@ -117,12 +156,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：固定宇�
 
 :::
 
-:::proposition "kerodon_7_4_1_16" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_7_4_1_1, kerodon_7_4_1_9, kerodon_7_4_1_13, kerodon_7_4_1_14")
+:::proposition "kerodon_7_4_1_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.spaceCone_isLimit_iff_pointRestriction_of_hasLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation.coneRestriction_iff") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_7_4_1_1, kerodon_7_4_1_9, kerodon_7_4_1_13, kerodon_7_4_1_14")
 Kerodon Proposition 7.4.1.16（[Tag 05R3](https://kerodon.net/tag/05R3)）。対応表の状態：一部。
 
 Ūを普遍pointed-space左fibrationの指定F̄によるpullback、Fの極限存在も仮定する場合、spaceCone\_isLimit\_iff\_pointRestriction\_of\_hasLimitは同じ点からの切断制限の同値と極限性のiffを直接返す。任意の与えた表現Ūは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.spaceCone_isLimit_iff_pointRestriction_of_hasLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation.coneRestriction_iff`
 
 :::
 
@@ -144,21 +181,17 @@ Kerodon Corollary 7.4.1.19（[Tag 06MH](https://kerodon.net/tag/06MH)）。対�
 
 :::
 
-:::corollary "kerodon_7_4_1_20"
+:::corollary "kerodon_7_4_1_20" (lean := "SerrePositivity.InfinityCategories.HA.Section5_2_2.exists_classifiedLimitCone")
 Kerodon Corollary 7.4.1.20（[Tag 06MK](https://kerodon.net/tag/06MK)）。対応表の状態：一部。
 
 Uを標準smallLeftUnstraighteningProjection Fに指定するとexists\_classifiedLimitConeは、同じFの底の極限の保存(1)から、任意のliftに射影で保たれる極限を直接与える。(2)⇒(1)および任意の表現Uは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.HA.Section5_2_2.exists_classifiedLimitCone`
-
 :::
 
-:::corollary "kerodon_7_4_1_21"
+:::corollary "kerodon_7_4_1_21" (lean := "SerrePositivity.InfinityCategories.HA.Section5_2_2.hasLimit_smallLeftUnstraightening_of_finiteProducts, SerrePositivity.InfinityCategories.HA.Section5_2_2.exists_classifiedLimitCone")
 Kerodon Corollary 7.4.1.21（[Tag 06ML](https://kerodon.net/tag/06ML)）。対応表の状態：一部。
 
 Uを標準smallLeftUnstraighteningProjection F、Kを有限離散形状に限りFに全有限積保存を課せば、exists\_classifiedLimitConeは任意の同じliftに射影で保たれる極限を直接作り(1)⇒(2)を与える。逆向き・一般Kは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.HA.Section5_2_2.hasLimit_smallLeftUnstraightening_of_finiteProducts`、`SerrePositivity.InfinityCategories.HA.Section5_2_2.exists_classifiedLimitCone`
 
 :::
 
@@ -171,12 +204,10 @@ Kerodon Proposition 7.4.1.22（[Tag 039L](https://kerodon.net/tag/039L)）。対
 
 :::
 
-:::corollary "kerodon_7_4_1_23"
+:::corollary "kerodon_7_4_1_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.yonedaInfinityMap_evaluation_isLimit")
 Kerodon Corollary 7.4.1.23（[Tag 039M](https://kerodon.net/tag/039M)）。対応表の状態：一部。
 
 Cを宇宙で小さく取るとyonedaInfinityMap\_evaluation\_isLimitは同じ共変Hom(x,−)について原文h\^Xの極限保存を直接返す。反変h\_X側および任意の局所κ-smallな大きなCは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.yonedaInfinityMap_evaluation_isLimit`
 
 :::
 
@@ -189,12 +220,10 @@ tag := "kerodon-7-4-2"
 
 Kerodon [Tag 05R5](https://kerodon.net/tag/05R5)
 
-:::definition "kerodon_7_4_2_1"
+:::definition "kerodon_7_4_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObject_enrichedCategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObject_sHom_kanComplex")
 Kerodon Notation 7.4.2.1（[Tag 05R6](https://kerodon.net/tag/05R6)）。対応表の状態：一部。
 
 宇宙で小さいCと小さい全空間のleft fibrationsに限れば、LeftFibrationObject、leftFibrationObject\_enrichedCategory、sHom\_kanComplexが原文と同じ対象・底上のHom・局所Kanな豊穣圏を直接構成する。単にcoherent nerveの写像があるという根拠から置き換えた。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObject_enrichedCategory`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObject_sHom_kanComplex`
 
 :::
 
@@ -205,30 +234,24 @@ Kerodon Definition 7.4.2.2（[Tag 05R7](https://kerodon.net/tag/05R7)）。対�
 
 :::
 
-:::theorem "kerodon_7_4_2_4"
+:::theorem "kerodon_7_4_2_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isQCatEquivalence")
 Kerodon Theorem 7.4.2.4（[Tag 05R9](https://kerodon.net/tag/05R9)）。対応表の状態：一部。
 
 Cを宇宙で小さい準圏に限ればleftStraighteningInfinityMap\_isQCatEquivalenceからh Funとh LFibの同値そのものを直接得る。指定γとΓの適合を保つという射の指定まではこの型に含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityMap_isQCatEquivalence`
-
 :::
 
-:::proposition "kerodon_7_4_2_6"
+:::proposition "kerodon_7_4_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingSpaceMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingSpaceMap, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingFamilyWitness")
 Kerodon Proposition 7.4.2.6（[Tag 05RB](https://kerodon.net/tag/05RB)）。対応表の状態：一部。
 
 両left fibrationsにHasSmallSimplexFibersも仮定すると、transportRepresentationMappingSpaceMapの同値と同じ射に対するMappingFamilyWitnessは指定γに適合するΓの存在とホモトピー類の一意性を直接与える。表現だけから小性を得たとはしない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingSpaceMap_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingSpaceMap`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationMappingFamilyWitness`
-
 :::
 
-:::proposition "kerodon_7_4_2_11"
+:::proposition "kerodon_7_4_2_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationFamilyWitness_nonempty, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TransportRepresentationFamilyWitness.unique")
 Kerodon Proposition 7.4.2.11（[Tag 05RH](https://kerodon.net/tag/05RH)）。対応表の状態：一部。
 
 両射にHasSmallSimplexFibersを加えると、familyWitness\_nonemptyのK=Δ⁰とuniqueは同じΓに適合するγの存在とFunctorIsoによるホモトピー一意性を直接返す。一般の小性のない場合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.transportRepresentationFamilyWitness_nonempty`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.TransportRepresentationFamilyWitness.unique`
 
 :::
 
@@ -271,21 +294,17 @@ tag := "kerodon-7-4-3"
 
 Kerodon [Tag 05RN](https://kerodon.net/tag/05RN)
 
-:::proposition "kerodon_7_4_3_1" (uses := "kerodon_1_1_0_6, kerodon_5_6_5_1")
+:::proposition "kerodon_7_4_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_5_6_5_1")
 Kerodon Proposition 7.4.3.1（[Tag 02VE](https://kerodon.net/tag/02VE)）。対応表の状態：一部。
 
 Uを標準leftUnstraighteningProjection、XをcoherentDiagramTotalCoconeの頂点に限ると、その余極限性とcoherentTotalCoconeFiber\_isWeakHomotopyEquivalenceは同じ全空間からXへの標準射の弱同値性を直接返す。任意X・任意の輸送表現のiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence`
-
 :::
 
-:::corollary "kerodon_7_4_3_3"
+:::corollary "kerodon_7_4_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits")
 Kerodon Corollary 7.4.3.3（[Tag 02VF](https://kerodon.net/tag/02VF)）。対応表の状態：一部。
 
 hasColimit\_coherentSpaceDiagramとspace\_hasSmallColimitsは原文前半の全小図式の余極限存在を直接返す。任意Xについて全空間からの弱同値で特徴付ける後半は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.hasColimit_coherentSpaceDiagram`、`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits`
 
 :::
 
@@ -298,12 +317,10 @@ Kerodon Corollary 7.4.3.4（[Tag 039K](https://kerodon.net/tag/039K)）。対応
 
 :::
 
-:::proposition "kerodon_7_4_3_6" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_6_7_2, kerodon_7_1_2_11, kerodon_7_3_8_26, kerodon_7_4_2_15")
+:::proposition "kerodon_7_4_3_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_5_6_7_2, kerodon_7_1_2_11, kerodon_7_3_8_26, kerodon_7_4_2_15")
 Kerodon Proposition 7.4.3.6（[Tag 05RR](https://kerodon.net/tag/05RR)）。対応表の状態：一部。
 
 Uを標準leftUnstraighteningProjectionに限り、指定Xへの射がある余錐cのcoconeFiberMapとして与えられる場合、isColimitCone\_of\_coconeFiberMap\_weakEquivalenceはその同じ射が弱同値ならXが余極限という向きを直接返す。任意の全空間射から余錐を構成する議論は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence`
 
 :::
 
@@ -325,39 +342,31 @@ Kerodon Corollary 7.4.3.10（[Tag 05RV](https://kerodon.net/tag/05RV)）。対�
 
 :::
 
-:::proposition "kerodon_7_4_3_11" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_6_6_13, kerodon_5_6_6_21, kerodon_7_2_1_1, kerodon_7_2_2_11, kerodon_7_2_3_1, kerodon_7_4_3_6")
+:::proposition "kerodon_7_4_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_weaklyContractible_coslices") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_6_6_13, kerodon_5_6_6_21, kerodon_7_2_1_1, kerodon_7_2_2_11, kerodon_7_2_3_1, kerodon_7_4_3_6")
 Kerodon Proposition 7.4.3.11（[Tag 04K3](https://kerodon.net/tag/04K3)）。対応表の状態：一部。
 
 isColimitCone\_iff\_restrict\_rightCofinalは、原文(1)⇒(2)の同じ極限対象Xを保つ制限余錐を直接与える。空間値の試験から共終性を検出する逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isColimitCone_iff_restrict_rightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isRightCofinal_iff_weaklyContractible_coslices`
-
 :::
 
-:::corollary "kerodon_7_4_3_12"
+:::corollary "kerodon_7_4_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal")
 Kerodon Corollary 7.4.3.12（[Tag 03E7](https://kerodon.net/tag/03E7)）。対応表の状態：一部。
 
 Cを準圏に強めればisLimitCone\_iff\_restrict\_of\_leftCofinalは原文(1)⇒(2)を同じ指定極限錐の制限として直接返す。一般の単体集合Cおよび試験から共終性を得る逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal`
-
 :::
 
-:::proposition "kerodon_7_4_3_13" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_6_7_3, kerodon_7_1_2_11, kerodon_7_3_8_26, kerodon_7_4_1_8, kerodon_7_4_2_14")
+:::proposition "kerodon_7_4_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_6_7_3, kerodon_7_1_2_11, kerodon_7_3_8_26, kerodon_7_4_1_8, kerodon_7_4_2_14")
 Kerodon Proposition 7.4.3.13（[Tag 05RW](https://kerodon.net/tag/05RW)）。対応表の状態：一部。
 
 Uを標準leftUnstraighteningProjection、γを指定余錐cのcoconeFiberMapとした場合、isColimitCone\_of\_coconeFiberMap\_weakEquivalenceは同じγについて(2)⇒(1)を直接返す。任意の表現αの比較と逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_of_coconeFiberMap_weakEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentTotalCoconeFiber_isWeakHomotopyEquivalence`
-
 :::
 
-:::corollary "kerodon_7_4_3_14" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_4_1_5, kerodon_4_1_3_3, kerodon_4_3_6_6, kerodon_4_5_3_12, kerodon_4_5_3_28, kerodon_4_6_4_1, kerodon_5_3_7_3, kerodon_5_6_7_2, kerodon_5_6_7_6, kerodon_7_2_1_5, kerodon_7_2_1_22, kerodon_7_2_3_1, kerodon_7_2_3_11, kerodon_7_4_3_13")
+:::corollary "kerodon_7_4_3_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.isWeakHomotopyEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_4_1_5, kerodon_4_1_3_3, kerodon_4_3_6_6, kerodon_4_5_3_12, kerodon_4_5_3_28, kerodon_4_6_4_1, kerodon_5_3_7_3, kerodon_5_6_7_2, kerodon_5_6_7_6, kerodon_7_2_1_5, kerodon_7_2_1_22, kerodon_7_2_3_1, kerodon_7_2_3_11, kerodon_7_4_3_13")
 Kerodon Corollary 7.4.3.14（[Tag 02VJ](https://kerodon.net/tag/02VJ)）。対応表の状態：一部。
 
 IsLeftCofinal.isWeakHomotopyEquivalenceを同じ引き戻し包含E→Ēへ適用すると原文(2)⇒(1)を直接得る。輸送表現の余極限条件(3)や逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal.isWeakHomotopyEquivalence`
 
 :::
 
@@ -411,12 +420,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：始頂点�
 
 :::
 
-:::definition "kerodon_7_4_4_9" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_3_1_23")
+:::definition "kerodon_7_4_4_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.exists_kanCocartesianSectionsEvaluate_section, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_3_1_23")
 Kerodon Construction 7.4.4.9（[Tag 02TD](https://kerodon.net/tag/02TD)）。対応表の状態：一部。
 
 底C◁を準圏に強めるとcocartesianSectionsEvaluate\_trivialKanFibrationとexists\_kanCocartesianSectionsEvaluate\_sectionは原文の指定evとその切断を直接構成する。θとの合成は書けるが、選択によらないFunctorIsoという残りの結論は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.exists_kanCocartesianSectionsEvaluate_section`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_trivialKanFibration`
 
 :::
 
@@ -434,21 +441,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏 C
 
 :::
 
-:::proposition "kerodon_7_4_4_15"
+:::proposition "kerodon_7_4_4_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_isPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_of_isPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_pullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_tensor_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_tensor_of_components")
 Kerodon Proposition 7.4.4.15（[Tag 06B4](https://kerodon.net/tag/06B4)）。対応表の状態：一部。
 
 極限を二項積X⊗Yで表示する場合、isColimitCone\_tensor\_of\_componentsは同じ余錐q̄の二射影の余極限性からq̄の余極限性を直接返す。一般のQC値図式の極限は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_isPullback_of_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_of_isPullback_of_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_pullback_of_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isColimitCone_tensor_of_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.isLimitCone_tensor_of_components`
-
 :::
 
-:::proposition "kerodon_7_4_4_16"
+:::proposition "kerodon_7_4_4_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_pullback_with_snd, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_pullback_with_snd, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_colimitCone_tensor_with_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_tensor_with_components")
 Kerodon Proposition 7.4.4.16（[Tag 06B5](https://kerodon.net/tag/06B5)）。対応表の状態：一部。
 
 極限を二項積で表示する場合、exists\_colimitCone\_tensor\_with\_componentsは同じqの余極限を指定された成分余錐から直接構成し、tensor\_of\_componentsは原文の成分条件⇒余極限性を与える。任意の極限形状と逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_pullback_with_snd`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_pullback_with_snd`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_colimitCone_tensor_with_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.exists_limitCone_tensor_with_components`
 
 :::
 

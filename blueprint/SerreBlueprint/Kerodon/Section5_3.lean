@@ -1,36 +1,66 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FiberwiseHomCartesianEdges
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FiberwiseHomCartesianFibration
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FiberwiseHomPostInnerFibration
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ArbitraryBaseChange
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianInnerAnodynePullback
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianStrictTransport
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianStrictTransportEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CoconeRestrictionEdges
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.Comparison
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ConeRestrictionCocartesianEdge
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ConeRestrictionCocartesianFibration
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.Definition
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.F1BCocartesianScaffoldUniversalScaffold
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftFibrationInitialEvaluation
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftScaffold
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftScaffoldComparison
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftScaffoldPoint
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftStrictTransportReconstruction
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftStrictTransportWeightedNerve
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.Nerve
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveCocartesianFibration
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveCocartesianFunctor
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveCocartesianScaffold
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveCocartesianUnit
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveFiber
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveFunctor
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveLeftFibration
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveMapComparison
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveUnderMap
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ReplacementInitialSubcomplex
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ReplacementInnerHorn
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ScaffoldIntervalPushout
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacement
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementBaseChange
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementConstant
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementFiber
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementFunctor
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementPoint
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.SimplicialReplacementUnderEvaluation
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.StrictDiagramScaffoldAdjunction
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.StrictDiagramScaffoldIdentities
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.StrictTransportEnriched
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.StrictTransportMappingEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.TautScaffold
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.TransportPostcomparison
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FiberwiseHom
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.RelativeFunctor
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftAnodynePushoutProduct
+import SerrePositivity.KST.Fibration.StrictTransportPostToLeftFibration
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "5.3 Fibrations over Ordinary Categories" =>
 %%%
@@ -48,6 +78,55 @@ tag := "kerodon-5-3-1"
 %%%
 
 Kerodon [Tag 035D](https://kerodon.net/tag/035D)
+
+*03-straightening.html — 4. 証明の経路*
+
+二段に分かれる。まず通常の圏の nerve $`N(C)` を底とする場合を示し、次に一般の $`B` をそれに帰着させる。
+
+*03-straightening.html — 4. 証明の経路 — 第一段：底が通常の圏の nerve の場合*
+
+*strict transport*。$`N(C)` 上の左 fibration $`X` と対象 $`c` に対し、under 圏の nerve $`N(C_{c/})\to N(C)` 上の $`X` の切断の空間 $`\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)` を考える。$`C_{c/}` は始対象 $`\mathrm{id}_c` を持ち、その包含 $`\{c\}\hookrightarrow N(C_{c/})` は left anodyne なので、切断を始対象に制限する写像は trivial Kan fibration になる（\`relativeFunctorOverPre\_trivialKanFibration\_of\_leftAnodyne\`、F1/RelativeSectionInitialRestriction）。よってこの空間は fiber $`X_c` と同値である。さらに $`c\mapsto C_{c/}` は厳密に反変なので、$`c\mapsto\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)` は*厳密な*関手 $`C\to\mathrm{Kan}` になる。fiber のままでは transport の選択があいまいで厳密な関手にならないが、切断の空間に置き換えることでそのあいまいさが消える。
+
+\`\`\`text
+def strictTransportDomains (C : Type u) \[Category.\{u\} C\] : Cᵒᵖ ⥤ Over (nerve C)
+-- under 圏の忘却を、nerve C 上の反変図式に束ねたもの
+
+lemma strictTransportDomains\_realization (C : Type u) \[Category.\{u\} C\] :
+    (relativeSectionEnrichedDiagram (strictTransportDomains C)).realization
+      = leftStraighteningCoherentMap C
+\`\`\`
+
+この構成は fibration $`X` についても単体的に関手的なので、二変数の単体的関手「左 fibration の単体的圏 × $`C` → Kan」が得られる。その coherent nerve を取って curry したものが分類写像 \`leftStraighteningCoherentMap C\` である（F1/StrictTransport\*）。
+
+- *充満忠実性*（\`leftStraighteningCoherentMap\_isFullyFaithful\`）：Hom への作用を strict transport の像の Hom と比較する。単体的関手の Hom が同値なら coherent nerve の写像は充満忠実、という判定を使う（F1/StrictTransportEnrichedFunctor など）。
+
+- *本質的全射性*（\`leftStraighteningCoherentMap\_isEssentiallySurjective\`）：与えられた coherent 図式 $`F` に対し、小さい unstraightening（全空間）$`\mathrm{Un}(F)` を作り、その straightening が $`F` と同型であること（余単位 \`leftStraighteningInfinityCounit\`）を示す。この部分は実は一般の底 $`B` で直接示されていて（\`leftStraighteningInfinityMap\_isEssentiallySurjective\`、F1/LeftStraighteningEssentialSurjectivity）、nerve の場合はその特殊化である。unstraightening の構成には、strict な図式なら weighted nerve（Kerodon Def. 5.3.3.1、F1/WeightedNerve）、一般の coherent 図式なら F1/Coherent\* の表現の議論を使う。
+
+結論：\`leftStraighteningCoherentMap\_isQCatEquivalence\`（F1/LeftStraighteningCoherentEquivalence）。
+
+*f-b-literature-yoneda.html — 9. straightening の構成と $`h_y` の関手性 — 9.2 なぜ素朴には関手にならないか*
+
+∞ 関手 $`C^{\mathrm{op}}\to\mathcal S` は単体的関手 $`\mathfrak C[C^{\mathrm{op}}]\to\mathcal Kan` と同じで、値、射の作用 $`f^*`、合成のホモトピー、高次のホモトピーを整合的に与える必要がある。$`\mathrm{Hom}^R(x,y)` を使うと $`f^*` は horn の充填の選択でしか定まらず、$`f^*g^*=(gf)^*` は厳密に成り立たない。
+
+*f-b-literature-yoneda.html — 9. straightening の構成と $`h_y` の関手性 — 9.3 St の第一段：底が普通の圏の脈体 $`N(C)`*
+
+値を $`X_c` の代わりに $`\mathrm{St}(X)(c):=\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)` とする。
+
+- *厳密に関手的*：$`f\colon c\to c'` に対し $`f^\sharp\colon C_{c'/}\to C_{c/}`、$`(c'\xrightarrow{u}d)\mapsto(c\xrightarrow{f}c'\xrightarrow{u}d)` は前合成で厳密に定まり $`(gf)^\sharp=f^\sharp g^\sharp`。切断の制限も厳密に関手的で、$`X` についても関手的。厳密な関手 $`C\to\mathcal Kan` を $`\mathfrak C[N(C)]\to C` と合成し、$`\mathfrak C\dashv N^{hc}` で ∞ 関手 $`N(C)\to\mathcal S` にする。
+
+- *値は正しい*：$`\mathrm{id}_c` は $`C_{c/}` の始対象なので、$`\mathrm{id}_c` での評価 $`\mathrm{St}(X)(c)\to X_c` は trivial Kan fibration（fibration 版 Yoneda、§6）。
+
+- *射の作用*：切断 $`\sigma` を $`f^\sharp` で制限して $`\mathrm{id}_{c'}` で評価すると $`\sigma(f)\simeq f_!\sigma(\mathrm{id}_c)`。transport の厳密な模型。
+
+ファイバーを表現可能な fibration からの切断空間に置き換えることで、値を変えずに厳密な関手性を得る。選択は一つもしない。
+
+*f-b-literature-yoneda.html — 9. straightening の構成と $`h_y` の関手性 — 9.4 相対関手空間 $`\mathrm{Fun}_{/S}(K,X)`*
+
+- *定義*：$`\mathrm{Fun}_{/S}(K,X)=\mathrm{Fun}(K,X)\times_{\mathrm{Fun}(K,S)}\{K\to S\}`。$`n` 単体は $`S` 上で可換な $`\Delta^n\times K\to X`。$`\mathrm{Fun}_{/K}(K,K\times_SX)`（切断の空間）とも同じ。
+
+- *Kan 複体*（$`X\to S` が左 fibration のとき）：(1) $`\mathrm{Fun}(K,X)\to\mathrm{Fun}(K,S)` は左 fibration（$`\Lambda^n_i\times K\subseteq\Delta^n\times K` は left anodyne と単射 $`\emptyset\subseteq K` の pushout-product、HTT 2.1.2.7）。(2) 点上のファイバーは $`\Delta^0` 上の左 fibration で、すべての辺が可逆な quasicategory なので Kan 複体（Joyal、HTT 1.2.5.1）。$`K=N(C_{c/})` なら $`X_c` への trivial Kan fibration からも直接わかる。
+
+- *写像空間として*：$`N(C_{c/})\to N(C)` 自身が左 fibration なので $`\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)=\mathrm{Map}_{\mathrm{LFib}(N(C))}(N(C_{c/}),X)`。関手の言葉では Yoneda の左辺 $`\mathrm{Map}(h^c,F)\simeq F(c)`。第一段は値 $`F(c)` を Yoneda で同値な $`\mathrm{Map}(h^c,F)` に置き換えて厳密な関手性を得ている。
 
 :::definition "kerodon_5_3_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftStrictTransportDiagram")
 Kerodon Construction 5.3.1.1（[Tag 035E](https://kerodon.net/tag/035E)）。対応表の状態：本体にある。
@@ -70,21 +149,17 @@ cocartesianStrictTransportEvaluate\_trivialKanFibrationは原文の同じstrict 
 
 :::
 
-:::corollary "kerodon_5_3_1_8"
+:::corollary "kerodon_5_3_1_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence")
 Kerodon Corollary 5.3.1.8（[Tag 035M](https://kerodon.net/tag/035M)）。対応表の状態：一部。
 
 cocartesianStrictTransportEvaluate\_isQCatEquivalenceは原文の指定された自然同型の各対象の成分が同値であることを直接与える。辺との自然性と成分の組立ては含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence`
-
 :::
 
-:::corollary "kerodon_5_3_1_9"
+:::corollary "kerodon_5_3_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.strictTransportPost, SerrePositivity.KST.Fibration.strictTransportPostToLeftFibration")
 Kerodon Corollary 5.3.1.9（[Tag 035N](https://kerodon.net/tag/035N)）。対応表の状態：一部。
 
 標的U′をleft fibrationに制限するとstrictTransportPostToLeftFibrationが同じcocartesian strict transport間の後合成を直接構成し、原文(2)の制限を与える。一般の標的とiff全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.strictTransportPost`、`SerrePositivity.KST.Fibration.strictTransportPostToLeftFibration`
 
 :::
 
@@ -102,12 +177,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：恒等射�
 
 :::
 
-:::proposition "kerodon_5_3_1_21" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_2_5_4, kerodon_4_5_1_22, kerodon_4_5_6_20, kerodon_4_8_4_6, kerodon_5_1_4_1")
+:::proposition "kerodon_5_3_1_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.trivialKanFibration_relativeHom_of_leftAnodyne") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_2_5_4, kerodon_4_5_1_22, kerodon_4_5_6_20, kerodon_4_8_4_6, kerodon_5_1_4_1")
 Kerodon Proposition 5.3.1.21（[Tag 035S](https://kerodon.net/tag/035S)）。対応表の状態：一部。
 
 Uをleft fibrationに制限すると全辺はcocartesianで、相対Functor空間とcocartesian section空間は同じ条件になる。trivialKanFibration\_relativeHom\_of\_leftAnodyneは同じ制限射のtrivial Kan性を直接返す。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.trivialKanFibration_relativeHom_of_leftAnodyne`
 
 :::
 
@@ -118,12 +191,10 @@ Kerodon Corollary 5.3.1.22（[Tag 035T](https://kerodon.net/tag/035T)）。対�
 
 :::
 
-:::corollary "kerodon_5_3_1_23" (uses := "kerodon_1_1_0_6, kerodon_5_1_4_1, kerodon_5_3_1_22")
+:::corollary "kerodon_5_3_1_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_5_1_4_1, kerodon_5_3_1_22")
 Kerodon Corollary 5.3.1.23（[Tag 02TC](https://kerodon.net/tag/02TC)）。対応表の状態：一部。
 
 C\^◁を準圏と仮定すれば、そのcone pointをIsInitialVertexとしてcocartesianSectionsEvaluate\_trivialKanFibrationに代入し、同じ評価射のtrivial Kan性を直接得る。一般の単体集合Cの錐は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.InitialSectionLifting.cocartesianSectionsEvaluate_trivialKanFibration`
 
 :::
 
@@ -143,12 +214,10 @@ Kerodon Construction 5.3.2.1（[Tag 035V](https://kerodon.net/tag/035V)）。対
 
 :::
 
-:::proposition "kerodon_5_3_2_2" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_5_3_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementConstantLift_isIso, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementConstantIso") (uses := "kerodon_1_1_0_6")
 Kerodon Example 5.3.2.2（[Tag 035W](https://kerodon.net/tag/035W)）。対応表の状態：一部。
 
 添字圏が一点である場合、simplicialReplacementConstantLift\_isIsoはその唯一のF(c)から同じhomotopy colimitへの射が同型と直接返す。任意の離散圏の直和は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementConstantLift_isIso`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementConstantIso`
 
 :::
 
@@ -182,30 +251,24 @@ Kerodon Example 5.3.2.13（[Tag 0366](https://kerodon.net/tag/0366)）。対応�
 
 :::
 
-:::proposition "kerodon_5_3_2_17"
+:::proposition "kerodon_5_3_2_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementMap_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence")
 Kerodon Proposition 5.3.2.17（[Tag 036B](https://kerodon.net/tag/036B)）。対応表の状態：一部。
 
 図式をKan値、各成分をIsQCatEquivalenceに強めれば、simplicialReplacementMap\_isPrecompositionEquivalenceとIsPrecompositionEquivalence.isWeakHomotopyEquivalenceから同じ全空間射の弱ホモトピー同値が直接得られる。一般の単体集合値ではない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementMap_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence`
-
 :::
 
-:::definition "kerodon_5_3_2_18" (uses := "kerodon_1_1_0_6, kerodon_4_5_5_14, kerodon_4_8_8_14, kerodon_5_3_2_2, kerodon_5_3_2_3, kerodon_5_3_2_12")
+:::definition "kerodon_5_3_2_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementMap_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_4_5_5_14, kerodon_4_8_8_14, kerodon_5_3_2_2, kerodon_5_3_2_3, kerodon_5_3_2_12")
 Kerodon Variant 5.3.2.18（[Tag 036C](https://kerodon.net/tag/036C)）。対応表の状態：一部。
 
 図式をKan値に強めるとsimplicialReplacementMap\_isPrecompositionEquivalenceは原文の同じ自然変換のhomotopy colimitへの誘導射を圏同値と直接返す。一般の単体集合値図式には及ばない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementMap_isPrecompositionEquivalence`
-
 :::
 
-:::definition "kerodon_5_3_2_19" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_5_3_2_19" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementUnderEvaluation") (uses := "kerodon_1_1_0_6")
 Kerodon Construction 5.3.2.19（[Tag 036D](https://kerodon.net/tag/036D)）。対応表の状態：一部。
 
 simplicialReplacementUnderEvaluationは原文の各cについての同じN(Under c)×F(c)からhomotopy colimitへの射f\_cを直接構成する。currying後の自然変換全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementUnderEvaluation`
 
 :::
 
@@ -234,12 +297,10 @@ Kerodon Corollary 5.3.2.22（[Tag 036G](https://kerodon.net/tag/036G)）。対�
 
 :::
 
-:::corollary "kerodon_5_3_2_23"
+:::corollary "kerodon_5_3_2_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.strictDiagramScaffoldHomEquiv")
 Kerodon Corollary 5.3.2.23（[Tag 036H](https://kerodon.net/tag/036H)）。対応表の状態：一部。
 
 strictDiagramScaffoldHomEquivは原文と同じhomotopy colimitを始域とする底上の射と、weak transportへの自然変換のHom全単射を直接与える。両変数の自然性・随伴としての構造全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.strictDiagramScaffoldHomEquiv`
 
 :::
 
@@ -257,32 +318,38 @@ Kerodon Definition 5.3.3.1（[Tag 025X](https://kerodon.net/tag/025X)）。対�
 
 仮定：通常の圏 C と単体集合値図式 F（Kerodon と一致）。結論：weightedNerve の単体は鎖 σ と整合する初期区間ごとの F の単体。射影は σ を取る（一致）。
 
+*unstraightening.html — 6. strict な図式との比較*
+
+通常の圏 $`C` 上の strict な図式 $`F\colon C\to\mathrm{Kan}` には、古典的な全空間 *weighted nerve* $`N_F(C)\to N(C)` がある（Kerodon Def. 5.3.3.1、F1/WeightedNerve。単体は「底の合成可能な射の列」と「各段の標準単体からの自然変換の組」）。これと、coherent な図式とみなした \`kanDiagramCoherentNerve F\` の unstraightening を比較する。
+
+- F1/DirectKanUnstraightening：weighted nerve から、図式自身の coherent な復元への比較。edgewise 細分（F1/Edgewise\*、47 ファイル）を経由する。
+
+- F1/OppositeKanUnstraightening：値を反転した coherent 図式の unstraightening との比較。
+
+- F1/LocalUnstraighteningStrictification：標準単体上の一般の coherent な図式の小さい unstraightening を、strict な図式の底変換で表す。
+
+これらは主に、straightening の本質的全射性（「任意の coherent 図式は何かの straightening」）の証明で、局所的に strict な模型に帰着させるために使われる。
+
 :::
 
-:::proposition "kerodon_5_3_3_15" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_4_8, kerodon_5_2_3_17")
+:::proposition "kerodon_5_3_3_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_cocartesianFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap_preservesCocartesianEdges") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_4_8, kerodon_5_2_3_17")
 Kerodon Proposition 5.3.3.15（[Tag 046X](https://kerodon.net/tag/046X)）。対応表の状態：一部。
 
 Gを定値Δ⁰、Fを準圏値に制限するとweightedNerveProjection\_cocartesianFibrationは原文(1)の同じ射を直接扱う。一般の相対weighted nerveと辺の判定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_cocartesianFibration`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap_preservesCocartesianEdges`
-
 :::
 
-:::corollary "kerodon_5_3_3_16" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_3_3_15")
+:::corollary "kerodon_5_3_3_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_cocartesianFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveFiberMap_isIso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_5_3_3_15")
 Kerodon Corollary 5.3.3.16（[Tag 046Y](https://kerodon.net/tag/046Y)）。対応表の状態：一部。
 
 weightedNerveProjection\_cocartesianFibrationは原文(1)そのもの。底N(C)が準圏なので全空間の準圏性も従う。(2)の任意(f,e)のiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_cocartesianFibration`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveFiberMap_isIso`
-
 :::
 
-:::corollary "kerodon_5_3_3_18" (uses := "kerodon_1_1_0_6, kerodon_5_1_4_15, kerodon_5_3_3_15")
+:::corollary "kerodon_5_3_3_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_leftFibration") (uses := "kerodon_1_1_0_6, kerodon_5_1_4_15, kerodon_5_3_3_15")
 Kerodon Corollary 5.3.3.18（[Tag 046Z](https://kerodon.net/tag/046Z)）。対応表の状態：一部。
 
 Gを定値Δ⁰、FをKan値に制限すればweightedNerveProjection\_leftFibrationは原文の同じ誘導射のleft fibration性を直接返す。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_leftFibration`
 
 :::
 
@@ -293,12 +360,10 @@ Kerodon Corollary 5.3.3.19（[Tag 036N](https://kerodon.net/tag/036N)）。対�
 
 :::
 
-:::corollary "kerodon_5_3_3_20" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_4_8_8_14, kerodon_5_1_4_1, kerodon_5_1_6_1, kerodon_5_2_4_7, kerodon_5_3_3_16")
+:::corollary "kerodon_5_3_3_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_4_8_8_14, kerodon_5_1_4_1, kerodon_5_1_6_1, kerodon_5_2_4_7, kerodon_5_3_3_16")
 Kerodon Corollary 5.3.3.20（[Tag 036P](https://kerodon.net/tag/036P)）。対応表の状態：一部。
 
 両図式がKan値ならweightedNerveMap\_isPrecompositionEquivalenceは原文のlevelwise圏同値⇒同じweightedNerveMapが圏同値という方向を直接返す。任意図式と逆は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveMap`
 
 :::
 
@@ -347,21 +412,17 @@ tag := "kerodon-5-3-4"
 
 Kerodon [Tag 036V](https://kerodon.net/tag/036V)
 
-:::definition "kerodon_5_3_4_1" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_5_3_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianScaffoldHorizontalEdge") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 5.3.4.1（[Tag 036W](https://kerodon.net/tag/036W)）。対応表の状態：一部。
 
 cocartesianScaffoldHorizontalEdgeは任意のF・底射f・頂点xから、係数が退化辺const xである原文の水平辺を直接構成する。全ての辺が水平であるための判定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianScaffoldHorizontalEdge`
-
 :::
 
-:::definition "kerodon_5_3_4_2" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_3_2_1")
+:::definition "kerodon_5_3_4_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.IsLeftScaffold") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_3_2_1")
 Kerodon Definition 5.3.4.2（[Tag 0255](https://kerodon.net/tag/0255)）。対応表の状態：一部。
 
 各F(c)を準圏に強めたCocartesianScaffoldは底上の等式・水平辺のcocartesian性・全fiberの同値という原文三条件を同じλに課す。一般の単体集合値は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.IsLeftScaffold`
 
 :::
 
@@ -421,12 +482,10 @@ Kerodon Proposition 5.3.4.17（[Tag 0379](https://kerodon.net/tag/0379)）。対
 
 :::
 
-:::corollary "kerodon_5_3_4_18" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_5_1_4_1, kerodon_5_3_4_17")
+:::corollary "kerodon_5_3_4_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isCocartesianScaffold") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_5_1_4_1, kerodon_5_3_4_17")
 Kerodon Corollary 5.3.4.18（[Tag 037A](https://kerodon.net/tag/037A)）。対応表の状態：一部。
 
 図式を準圏値に強めればtautScaffold\_isCocartesianScaffoldは同じFのweighted nerve射影とtaut scaffoldを直接与える。一般図式は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isCocartesianScaffold`
 
 :::
 
@@ -451,12 +510,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：定値・�
 
 :::
 
-:::corollary "kerodon_5_3_4_23"
+:::corollary "kerodon_5_3_4_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementPoint_kanComplex")
 Kerodon Corollary 5.3.4.23（[Tag 037F](https://kerodon.net/tag/037F)）。対応表の状態：一部。
 
 添字groupoidを一点に限るとsimplicialReplacementPoint\_kanComplexは同じhomotopy colimitのKan性を直接返す。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementPoint_kanComplex`
 
 :::
 
@@ -501,12 +558,10 @@ Kerodon Theorem 5.3.5.6（[Tag 037P](https://kerodon.net/tag/037P)）。対応�
 
 :::
 
-:::theorem "kerodon_5_3_5_7" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_7_5, kerodon_4_1_1_10, kerodon_4_3_6_5, kerodon_4_3_7_8, kerodon_4_5_3_35, kerodon_4_5_4_9, kerodon_4_8_8_14, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_6_2, kerodon_5_2_4_1, kerodon_5_3_2_12, kerodon_5_3_4_18")
+:::theorem "kerodon_5_3_5_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold.isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianUniversalScaffold_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isPrecompositionEquivalence_of_quasicategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_7_5, kerodon_4_1_1_10, kerodon_4_3_6_5, kerodon_4_3_7_8, kerodon_4_5_3_35, kerodon_4_5_4_9, kerodon_4_8_8_14, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_6_2, kerodon_5_2_4_1, kerodon_5_3_2_12, kerodon_5_3_4_18")
 Kerodon Theorem 5.3.5.7（[Tag 037Q](https://kerodon.net/tag/037Q)）。対応表の状態：一部。
 
 Fを準圏値に強めるとCocartesianScaffold.isPrecompositionEquivalenceは同じλに対する原文(1)⇒(2)を直接返す。任意の図式と逆方向は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold.isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianUniversalScaffold_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isPrecompositionEquivalence_of_quasicategory`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold`
 
 :::
 
@@ -517,12 +572,10 @@ cocartesianUniversalScaffold\_isPrecompositionEquivalenceは原文の同じunive
 
 :::
 
-:::corollary "kerodon_5_3_5_9" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_5_1_4_1, kerodon_5_3_2_18, kerodon_5_3_3_20, kerodon_5_3_4_11, kerodon_5_3_4_17, kerodon_5_3_5_7")
+:::corollary "kerodon_5_3_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isPrecompositionEquivalence_of_quasicategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_5_1_4_1, kerodon_5_3_2_18, kerodon_5_3_3_20, kerodon_5_3_4_11, kerodon_5_3_4_17, kerodon_5_3_5_7")
 Kerodon Corollary 5.3.5.9（[Tag 037S](https://kerodon.net/tag/037S)）。対応表の状態：一部。
 
 Fを準圏値に強めればtautScaffold\_isPrecompositionEquivalence\_of\_quasicategoryは原文の同じλ\_tの圏同値性を直接返す。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isPrecompositionEquivalence_of_quasicategory`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.tautScaffold_isPrecompositionEquivalence`
 
 :::
 
@@ -551,57 +604,45 @@ tag := "kerodon-5-3-6"
 
 Kerodon [Tag 037W](https://kerodon.net/tag/037W)
 
-:::proposition "kerodon_5_3_6_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_4_5_3_33, kerodon_4_5_8_10, kerodon_5_1_4_1, kerodon_5_1_4_9, kerodon_5_3_6_6")
+:::proposition "kerodon_5_3_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_1_3_2, kerodon_4_5_3_33, kerodon_4_5_8_10, kerodon_5_1_4_1, kerodon_5_1_4_9, kerodon_5_3_6_6")
 Kerodon Proposition 5.3.6.1（[Tag 025H](https://kerodon.net/tag/025H)）。対応表の状態：一部。
 
 cocartesian側、C′=C、底の圏同値をinner anodyneに制限すると、引用は同じpullback projectionの圏同値性を直接返す。一般のcategorical equivalence全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
-
 :::
 
-:::lemma_ "kerodon_5_3_6_3" (uses := "kerodon_1_1_0_6, kerodon_1_5_4_13, kerodon_4_2_5_3, kerodon_5_3_2_3, kerodon_5_3_2_12")
+:::lemma_ "kerodon_5_3_6_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.replacementNerveHorn_preimage_innerAnodyne, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.replacementInitialSubcomplex_isPushout") (uses := "kerodon_1_1_0_6, kerodon_1_5_4_13, kerodon_4_2_5_3, kerodon_5_3_2_3, kerodon_5_3_2_12")
 Kerodon Lemma 5.3.6.3（[Tag 025A](https://kerodon.net/tag/025A)）。対応表の状態：一部。
 
 添字を有限鎖、Bをそのnerve、fを指定inner horn包含に限ればreplacementNerveHorn\_preimage\_innerAnodyneは同じ逆像包含のinner anodyne性(2)を直接返す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.replacementNerveHorn_preimage_innerAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.replacementInitialSubcomplex_isPushout`
-
 :::
 
-:::lemma_ "kerodon_5_3_6_5" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_8_8_14, kerodon_5_1_4_1, kerodon_5_3_5_7")
+:::lemma_ "kerodon_5_3_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold.overPullback_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_8_8_14, kerodon_5_1_4_1, kerodon_5_3_5_7")
 Kerodon Lemma 5.3.6.5（[Tag 037X](https://kerodon.net/tag/037X)）。対応表の状態：一部。
 
 Fを準圏値に強めればCocartesianScaffold.overPullback\_isPrecompositionEquivalenceは任意Sへの同じscaffoldの底変換射の圏同値性を直接返す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianScaffold.overPullback_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence`
-
 :::
 
-:::lemma_ "kerodon_5_3_6_6" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_13, kerodon_4_8_8_11, kerodon_5_1_4_1, kerodon_5_3_4_9, kerodon_5_3_6_3, kerodon_5_3_6_5")
+:::lemma_ "kerodon_5_3_6_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_13, kerodon_4_8_8_11, kerodon_5_1_4_1, kerodon_5_3_4_9, kerodon_5_3_6_3, kerodon_5_3_6_5")
 Kerodon Lemma 5.3.6.6（[Tag 02RK](https://kerodon.net/tag/02RK)）。対応表の状態：一部。
 
 cocartesianFibration\_pullback\_innerAnodyne\_isPrecompositionEquivalenceは原文のcocartesian fibrationの場合そのもの。cartesian側は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
-
 :::
 
-:::proposition "kerodon_5_3_6_7" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_8_18, kerodon_5_1_1_1, kerodon_5_1_2_5, kerodon_5_1_4_1, kerodon_5_3_6_1, kerodon_5_3_6_12, kerodon_5_3_6_13")
+:::proposition "kerodon_5_3_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomPostcomp_innerFibration") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_8_18, kerodon_5_1_1_1, kerodon_5_1_2_5, kerodon_5_1_4_1, kerodon_5_3_6_1, kerodon_5_3_6_12, kerodon_5_3_6_13")
 Kerodon Proposition 5.3.6.7（[Tag 0470](https://kerodon.net/tag/0470)）。対応表の状態：一部。
 
 Vに全単射な前合成同値に対する持ち上げを追加するとfiberwiseHomPostcomp\_innerFibrationは原文の同じV′のinner性を直接返す。cartesian fibration性の一条件のみで、cartesian辺の判定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomPostcomp_innerFibration`
-
 :::
 
-:::corollary "kerodon_5_3_6_9" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_1_4, kerodon_5_1_4_1, kerodon_5_3_6_7")
+:::corollary "kerodon_5_3_6_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomProjection_cartesianFibration, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHom_isCartesianEdge_of_inverting") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_1, kerodon_5_1_1_4, kerodon_5_1_4_1, kerodon_5_3_6_7")
 Kerodon Corollary 5.3.6.9（[Tag 0472](https://kerodon.net/tag/0472)）。対応表の状態：一部。
 
 fiberwiseHomProjection\_cartesianFibrationは原文(1)、fiberwiseHom\_isCartesianEdge\_of\_invertingは原文(2)の十分条件を同じ射・辺について直接返す。必要条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomProjection_cartesianFibration`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHom_isCartesianEdge_of_inverting`
 
 :::
 
@@ -667,21 +708,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：一点の c
 
 :::
 
-:::corollary "kerodon_5_3_7_4" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_4_5_1, kerodon_4_4_5_6, kerodon_4_5_3_33, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_6_1, kerodon_5_3_7_2")
+:::corollary "kerodon_5_3_7_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianHornFibration_coneRestriction, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.hasCocartesianHornLifting_coneRestriction_of_apex") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_4_5_1, kerodon_4_4_5_6, kerodon_4_5_3_33, kerodon_5_1_1_1, kerodon_5_1_4_1, kerodon_5_1_6_1, kerodon_5_3_7_2")
 Kerodon Corollary 5.3.7.4（[Tag 06MA](https://kerodon.net/tag/06MA)）。対応表の状態：一部。
 
 底C=Δ⁰に限ると原文の相対比較射Vは同じconeRestriction。cocartesianHornFibration\_coneRestrictionとhorn/cartesian条件の比較で同じfibration性を与え、apex可逆ならcocartesianという十分方向も直接ある。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianHornFibration_coneRestriction`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.hasCocartesianHornLifting_coneRestriction_of_apex`
-
 :::
 
-:::corollary "kerodon_5_3_7_5" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_11, kerodon_5_1_4_1, kerodon_5_3_7_4")
+:::corollary "kerodon_5_3_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianHornFibration_coneRestriction, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.hasCocartesianHornLifting_coneRestriction_of_apex, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.coconeRestriction_hasLiftingProperty_finalVertex") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_1_1_11, kerodon_5_1_4_1, kerodon_5_3_7_4")
 Kerodon Corollary 5.3.7.5（[Tag 02VW](https://kerodon.net/tag/02VW)）。対応表の状態：一部。
 
 cocartesianHornFibration\_coneRestrictionは原文(1)のfibration性、hasCocartesianHornLifting\_coneRestriction\_of\_apexは辺の十分条件を直接与える。逆方向と(2)全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianHornFibration_coneRestriction`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.hasCocartesianHornLifting_coneRestriction_of_apex`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.coconeRestriction_hasLiftingProperty_finalVertex`
 
 :::
 
@@ -699,12 +736,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：一点の c
 
 :::
 
-:::definition "kerodon_5_3_7_9"
+:::definition "kerodon_5_3_7_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomCurry, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomCurry_projection")
 Kerodon Notation 5.3.7.9（[Tag 02UH](https://kerodon.net/tag/02UH)）。対応表の状態：一部。
 
 fiberwiseHomCurryにA=C、a=id、HをDへの第二射影として代入すれば、恒等Dをcurryした原文最初のsectionを直接構成し、projection補題が底上の等式を返す。Resのpullbackとcocartesian部分への制限全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomCurry`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomCurry_projection`
 
 :::
 

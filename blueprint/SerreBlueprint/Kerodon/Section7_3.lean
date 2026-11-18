@@ -1,8 +1,11 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Functor.KanExtension.Adjunction
 import Mathlib.CategoryTheory.Functor.KanExtension.Basic
 import Mathlib.CategoryTheory.Functor.KanExtension.Pointwise
+import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.ModelBifibrantRightKanReduction
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Transport
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.CanonicalMappingTrivial
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.ComparisonCartesian
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.ComparisonCocartesian
@@ -12,20 +15,45 @@ import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtension
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.InitialBoundaryCoconeRestriction
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCanonicalMapping
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCommaCoconeColimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCommaHomUniversal
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftHomUniversal
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftHomotopyInvariant
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftIdentityLeg
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftKanColimitExistence
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftStrictExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftTerminalRestrictionExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftUnitCanonical
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftUnitInvertible
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.PosetNestedCanonicalRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeColimitConstantFamily
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeCosliceEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeJoinCartesianRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeJoinFamilyAssembly
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeJoinRelativeUniversalExistence
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftCanonical
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftCanonicalExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftConstantFamily
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftExtension
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftRestrictionTheorem
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftStrictExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftUnitInvertible
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeMappingPullback
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeRightRestrictionTheorem
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightExistence
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightHomotopyInvariant
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LeftCanonicalRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeColimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeColimitFunctorIso
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeColimitPointwise
+import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.ClassicalHomUniversal
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "7.3 Kan Extensions" =>
 %%%
@@ -34,6 +62,65 @@ tag := "kerodon-7-3"
 %%%
 
 Kerodon の 7.3 節（[Tag 02Y1](https://kerodon.net/tag/02Y1)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*04-yoneda-adjunction-kan.html — 6. Kan 拡張 — 主な結果*
+
+- 内容　／　Lean　／　場所
+- 存在 ⇔ 各点の局所図式が余極限を持つ　／　\`exists\_kanLeftExtension\_iff\_local\_colimits\`　／　F1B/KanLeftCommaCoconeColimit
+- 一意性：二つの左 Kan 拡張は $`\beta` と両立する \`FunctorIso\` で結ばれる　／　\`kanLeftKanExtensionIso\`　／　F1B/KanLeftHomUniversal
+- 充満忠実な $`\delta` に沿う場合、単位は可逆（拡張は本当に「拡張」）　／　\`kanLeftKanExtension\_unit\_isIso\`　／　F1B/KanLeftUnitInvertible
+- 各点の条件 ⇔ Hom の普遍性（$`\mathrm{Fun}(C,D)` での左随伴的な性質）　／　\`exists\_kanLeftExtension\_with\_homUniversal\_of\_local\_colimits\` など　／　F1B/KanLeftHomUniversal
+- nerve の場合：通常の pointwise 左 Kan 拡張と一致　／　\`kanNerve\_isLeftKanExtensionHom\_iff\_pointwise\`　／　F1B/KanNerveLeftPointwise
+
+右 Kan 拡張も双対的に揃っている（局所図式は $`K\times_C C_{c/}`、条件は極限）。
+
+*04-yoneda-adjunction-kan.html — 6. Kan 拡張 — 証明の方針（存在）*
+
+各点で余極限を選ぶだけでは、それらを一つの関手 $`F` に束ねられない。そこで「相対 join」による表示を使う。拡張の問題を $`C` の単体に沿った相対的な延長の問題に書き直し（\`LeftKanRelativeJoinRealization\`）、各単体で局所余極限の普遍性から延長を作る。そのうえで厳密化（\`Strictification\`）して、元の $`\beta` を保ったまま関手に組み立てる（F1B/KanGlobal\*、KanRelative\*）。第 2 章の「関手 ∞ 圏の極限の各点計算」と同じ型の議論で、各点の選択を骨格に沿って自然な族へ延ばしていく。
+
+*04-yoneda-adjunction-kan.html — 7. 通常の圏論との整合（B5）*
+
+F1B では、∞ 圏の概念を通常の圏の nerve に制限すると Mathlib の概念に一致することを確かめている（F1B/KanNerve\*、71 ファイル）。
+
+- 随伴：\`kanNonempty\_adjunction\_iff\_nerveAdjunction\`
+
+- 左右の Kan 拡張（pointwise）：\`kanNerve\_isLeftKanExtensionHom\_iff\_pointwise\`、\`kanNerve\_isRightKanExtensionHom\_iff\_pointwise\`
+
+- 局所的な Kan 錐の双方向の移送：\`kanNerveLeftCoconeTransport\_cocone\`、\`kanNerveRightConeTransport\_cone\`
+
+定義が意図どおりであることを確かめる検算の役目を果たしている。第 2 章で見たとおり、一般の極限についての同種の比較は、Core にはまだ小さな例しかない。
+
+*f-b-literature-yoneda.html — 4. Kan 拡張の位置づけ — 4.1 二つの役割*
+
+- *極限の一般化*：各点の右 Kan 拡張は $`\mathrm{Ran}_fF(d)=\lim(d\downarrow f\to C\to\mathcal E)`、$`d\downarrow f=C\times_D D_{d/}`。Kerodon が 7.1 → 7.2 → 7.3 と並べるのはこのため。
+
+- *整合的な関手を作る手段*：$`C_0\subseteq C` 上の関手を左 Kan 拡張した関手の全体は $`\mathrm{Fun}(C_0,\mathcal D)` に trivial fibration で写る（Kerodon 7.3.6）。小さな部分で値を決めれば、全体への延長が可縮な選択の空間から一意に得られる。極限を関手にする構成（trivial fibration の切断）の一般化。
+
+*f-b-literature-yoneda.html — 4. Kan 拡張の位置づけ — 4.2 この先の定義で使う場面*
+
+- 場面　／　Kan 拡張としての捉え方
+- 前層の普遍性　／　余極限を保つ $`\mathcal P(A)\to\mathcal D` は Yoneda に沿った $`\mathrm{Lan}_yF`
+- $`\mathrm{Ind}` の普遍性　／　filtered 余極限を保つ延長も同じ型
+- $`F_!`　／　$`\mathcal P(C)\to\mathcal P(D)` は左 Kan 拡張
+- realization ⊣ nerve　／　presentable の特徴づけ（Lurie–Simpson）の核心
+- 六関手形式の構成　／　$`D(X)=\lim_{\mathrm{Spec}A\to X}D(A)` のようにアフィンから右 Kan 拡張で延ばす。Liu–Zheng・Mann の延長定理も同じ型
+
+関手を作る手段として、第 6 章 §8 の (a) 厳密な単体的関手、(b) straightening に加え、(c) 小さい部分で決めて Kan 拡張で延ばす、がある。六関手形式に向けては (c) が主役になる場面が多い。
+
+*f-b-literature-yoneda.html — 4. Kan 拡張の位置づけ — 4.3 「すべては Kan 拡張」*
+
+- 1 圏での主張　／　∞ 版
+- 極限は一点への Kan 拡張　／　成り立つ（§4.4）
+- $`G` が左随伴を持つ ⇔ $`\mathrm{Lan}_G\mathrm{id}` が存在して $`G` で保たれる（絶対 Kan 拡張）　／　成り立つ。∞-cosmos では随伴を absolute lifting として扱う
+- 密度 $`\mathrm{id}=\mathrm{Lan}_yy`　／　成り立つ（presheafElementsColimitCocone\_isColimit、F2）
+- codensity モナド $`\mathrm{Ran}_GG`　／　成り立つが ∞ 版のモナド論（HA 第 4 章）の上に立つ
+- end・coend　／　twisted arrow 上の極限・余極限
+
+∞ では各点の Kan 拡張を定義に採るのが普通（Kerodon 7.3.1）。それが存在するとき制限の随伴になることは定理（7.3.6）。Riehl–Verity でも各点の Kan 拡張は comma で定義される。
+
+*f-b-literature-yoneda.html — 4. Kan 拡張の位置づけ — 4.4 一点への Kan 拡張*
+
+大域的には、$`\mathrm{Ran}_f` は制限 $`f^*\colon\mathrm{Fun}(D,\mathcal E)\to\mathrm{Fun}(C,\mathcal E)` の右随伴。$`D=\ast` なら $`\mathrm{Fun}(\ast,\mathcal E)=\mathcal E`、$`f^*` は対角 $`\delta` なので $`\mathrm{Ran}_{C\to\ast}=\lim`。各点の形でも $`d\downarrow f=C` なので値は $`\lim_CF`。Kerodon・HTT は Kan 拡張を各点の形（極限を使う形）で定義するので、極限が先で Kan 拡張が後。1 圏論の流儀で Kan 拡張を先に定義すれば、極限はその特別な場合として定義できる。
 
 :::definition "kerodon_7_3_0_1" (lean := "CategoryTheory.Functor.LeftExtension.IsPointwiseLeftKanExtension")
 Kerodon Definition 7.3.0.1（[Tag 02Y2](https://kerodon.net/tag/02Y2)）。対応表の状態：Mathlib にある。
@@ -51,12 +138,10 @@ tag := "kerodon-7-3-1"
 
 Kerodon [Tag 02Y7](https://kerodon.net/tag/02Y7)
 
-:::definition "kerodon_7_3_1_1" (uses := "kerodon_1_4_0_1, kerodon_4_6_4_15")
+:::definition "kerodon_7_3_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanShape, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanShape") (uses := "kerodon_1_4_0_1, kerodon_4_6_4_15")
 Kerodon Notation 7.3.1.1（[Tag 02Y8](https://kerodon.net/tag/02Y8)）。対応表の状態：一部。
 
 leftKanShapeとrightKanShapeは原文のK\_/CとK\_C/という二つの指定pullbackを直接構成する。γ,γ′の自然変換までは引用に含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanShape`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanShape`
 
 :::
 
@@ -78,6 +163,22 @@ Kerodon Warning 7.3.1.4（[Tag 02YB](https://kerodon.net/tag/02YB)）。対応�
 Kerodon Variant 7.3.1.5（[Tag 02YC](https://kerodon.net/tag/02YC)）。対応表の状態：本体にある。
 
 仮定：単体写像 δ、F₀、F と SSet.Homotopy F₀ (δ≫F)。定義自体は C,D の Quasicategory を要求しない（Lean が弱い）。結論：各 c における輸送済み左 Kan 余錐の IsColimitCone（原文と一致）。
+
+*04-yoneda-adjunction-kan.html — 6. Kan 拡張 — 定義：各点の条件*
+
+$`\delta\colon K\to C`、$`F_0\colon K\to D` と、$`F\colon C\to D` および変換 $`\beta\colon F_0\Rightarrow F\delta` について、$`F` が左 Kan 拡張であるとは、各 $`c\in C` で、局所図式
+
+$$`K\times_C C_{/c}\longrightarrow K\xrightarrow{F_0}D`
+
+の上の誘導された余錐（頂点 $`F(c)`）が余極限であることをいう（Kerodon Variant 7.3.1.5）。
+
+\`\`\`text
+def IsLeftKanExtension \{K C D : SSet.\{u\}\} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
+    (β : SSet.Homotopy F₀ (δ ≫ F)) : Prop :=
+  ∀ c : C \_⦋0⦌, ∃ t : LeftKanCoconeTransport δ F₀ F β c, IsColimitCone t.cocone
+\`\`\`
+
+変換 $`\beta` は単体的ホモトピー（$`K\times\Delta^1\to D`）として厳密に持つ。$`h\,\mathrm{Fun}` の射として持つ版が \`IsLeftKanExtensionHom\` である（F1B/KanExtensionHom）。
 
 :::
 
@@ -115,21 +216,17 @@ Mathlibの通常圏の前合成によるKan拡張のiffは、原文の∞圏の�
 
 :::
 
-:::corollary "kerodon_7_3_1_17"
+:::corollary "kerodon_7_3_1_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_unit_isIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanExtension_unit_isIso")
 Kerodon Corollary 7.3.1.17（[Tag 02YN](https://kerodon.net/tag/02YN)）。対応表の状態：一部。
 
 δをinner fibrationにも限るとkanLeftKanExtension\_unit\_isIsoは、充満忠実な同じδに沿う左Kan拡張の指定単位βが可逆と直接返す。右Kan拡張の余単位の節は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_unit_isIso`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanExtension_unit_isIso`
-
 :::
 
-:::proposition "kerodon_7_3_1_18"
+:::proposition "kerodon_7_3_1_18" (lean := "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality")
 Kerodon Proposition 7.3.1.18（[Tag 039N](https://kerodon.net/tag/039N)）。対応表の状態：一部。
 
 δをモデル圏のbifibrant部分のhammockLocalizationNerveMap、F₀=δ≫G、αを恒等変換に制限すると、移動後のmodelBifibrantSourceRightKanExtension\_refl\_of\_frameCofinalityは同じαの右Kan性を返す。ModelCategory C・指定resolution・frame余終性を明示入力とするschema（一般の具体的instanceなし）で、任意の局所化ではない。
-
-宣言：`SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality`
 
 :::
 
@@ -142,30 +239,24 @@ tag := "kerodon-7-3-2"
 
 Kerodon [Tag 02YP](https://kerodon.net/tag/02YP)
 
-:::definition "kerodon_7_3_2_1" (uses := "kerodon_1_4_0_1, kerodon_4_3_5_12, kerodon_7_3_1_1")
+:::definition "kerodon_7_3_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRelativeLeftKanExtendedFrom") (uses := "kerodon_1_4_0_1, kerodon_4_3_5_12, kerodon_7_3_1_1")
 Kerodon Definition 7.3.2.1（[Tag 02YQ](https://kerodon.net/tag/02YQ)）。対応表の状態：一部。
 
 leftKanCanonicalCocone δ F cは原文のC⁰\_/cに沿う同じ標準余錐で、そのIsColimitConeという型が左Kan extended at cの定義を直接与える。右側の定義はこの引用に含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRelativeLeftKanExtendedFrom`
-
 :::
 
-:::proposition "kerodon_7_3_2_6" (uses := "kerodon_1_4_0_1, kerodon_7_3_1_2, kerodon_7_3_1_5, kerodon_7_3_2_1")
+:::proposition "kerodon_7_3_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal") (uses := "kerodon_1_4_0_1, kerodon_7_3_1_2, kerodon_7_3_1_5, kerodon_7_3_2_1")
 Kerodon Proposition 7.3.2.6（[Tag 02YU](https://kerodon.net/tag/02YU)）。対応表の状態：一部。
 
 Uを終対象への射として相対余極限と絶対余極限のiffを各輸送余錐に適用すると、kanIsRelativeLeftKanExtendedFrom\_iff\_refl\_extensionは原文の左側の恒等変換のKan性とのiffを直接与える。右側のiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal`
-
 :::
 
-:::corollary "kerodon_7_3_2_7"
+:::corollary "kerodon_7_3_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_unit_isIso, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_canonicalColimits_of_unit_isIso")
 Kerodon Corollary 7.3.2.7（[Tag 02YV](https://kerodon.net/tag/02YV)）。対応表の状態：一部。
 
 全部分圏の包含δについて、kanLeftKanExtension\_unit\_isIsoとcanonicalColimits\_of\_unit\_isIsoを順に用いると、左Kan拡張⇒単位β可逆かつFが左Kan extendedという同じβについての向きを直接得る。逆向きは引用に含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_unit_isIso`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtension_canonicalColimits_of_unit_isIso`
 
 :::
 
@@ -176,12 +267,10 @@ Kerodon Corollary 7.3.2.8（[Tag 02YW](https://kerodon.net/tag/02YW)）。対応
 
 :::
 
-:::definition "kerodon_7_3_2_9"
+:::definition "kerodon_7_3_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsLeftKanExtension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftCanonical_strict_extension_of_local_colimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone")
 Kerodon Definition 7.3.2.9（[Tag 02YX](https://kerodon.net/tag/02YX)）。対応表の状態：一部。
 
 δ≫F=F₀という厳密延長に対し、leftKanCanonicalCocone δ F cの全cでの余極限性が原文の左Kan延長の定義部分を直接与える。右Kan延長の定義は含まない。別のGの存在だけを定義の証拠とはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsLeftKanExtension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftCanonical_strict_extension_of_local_colimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone`
 
 :::
 
@@ -219,21 +308,17 @@ tag := "kerodon-7-3-3"
 
 Kerodon [Tag 02Z2](https://kerodon.net/tag/02Z2)
 
-:::definition "kerodon_7_3_3_1"
+:::definition "kerodon_7_3_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRelativeLeftKanExtendedFrom, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRelativeLeftKanExtension")
 Kerodon Definition 7.3.3.1（[Tag 02Z3](https://kerodon.net/tag/02Z3)）。対応表の状態：一部。
 
 IsRelativeLeftKanExtendedFromの定義は全cについて同じleftKanCanonicalCoconeのIsRelativeColimitConeを要求し、原文のU-left Kan条件を直接表す。右Kan側の定義は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRelativeLeftKanExtendedFrom`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeColimitCone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.IsRelativeLeftKanExtension`
-
 :::
 
-:::proposition "kerodon_7_3_3_7" (uses := "kerodon_1_4_0_1, kerodon_4_7_3_20, kerodon_7_2_3_6")
+:::proposition "kerodon_7_3_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_isColimit_at_image, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftTransport_image_isColimit_at_image, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal") (uses := "kerodon_1_4_0_1, kerodon_4_7_3_20, kerodon_7_2_3_6")
 Kerodon Proposition 7.3.3.7（[Tag 02Z8](https://kerodon.net/tag/02Z8)）。対応表の状態：一部。
 
 Uを終対象への射、cを包含δの実際の像δkに限ると、kanLeftCanonical\_isColimit\_at\_imageと終対象上の相対余極限のiffは同じ標準余錐のU余極限性を直接与える。δはinnerかつ充満忠実。任意Uや像と同型な全cは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_isColimit_at_image`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftTransport_image_isColimit_at_image`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal`
 
 :::
 
@@ -346,21 +431,17 @@ exists\_kanRelativeJoin\_diagram\_of\_pointwise\_colimitsは相対join上の図�
 
 :::
 
-:::lemma_ "kerodon_7_3_4_5"
+:::lemma_ "kerodon_7_3_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinRestriction_preservesCartesianEdges, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeJoin_family_extension_of_colimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal")
 Kerodon Lemma 7.3.4.5（[Tag 02ZR](https://kerodon.net/tag/02ZR)）。対応表の状態：一部。
 
 C,Dを準圏、Uを終対象への射に限ると、fiberwiseHomの随伴で同じ押し出しからの指定F₀を族へ移し、exists\_kanRelativeJoin\_family\_extension\_of\_colimitsは元と同じF₀を保つ解を直接返す。相対余極限は終対象上では絶対余極限と同値。一般Uは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinRestriction_preservesCartesianEdges`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeJoin_family_extension_of_colimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal`
-
 :::
 
-:::lemma_ "kerodon_7_3_4_6"
+:::lemma_ "kerodon_7_3_4_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeJoin_family_extension_of_colimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration")
 Kerodon Lemma 7.3.4.6（[Tag 02ZU](https://kerodon.net/tag/02ZU)）。対応表の状態：一部。
 
 Cを準圏に限り、全ての同じ型の持ち上げ問題について局所余錐があると強めると、relativeColimitRestrictionの頂点全射性は同じF₀,Gを保つ大域解の存在を返す。指定された各F\_Cとの厳密一致の結論は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeJoin_family_extension_of_colimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinRelativeColimitRestriction_trivialKanFibration`
 
 :::
 
@@ -391,21 +472,17 @@ tag := "kerodon-7-3-5"
 
 Kerodon [Tag 02ZZ](https://kerodon.net/tag/02ZZ)
 
-:::proposition "kerodon_7_3_5_1" (uses := "kerodon_1_4_0_1, kerodon_4_1_3_1, kerodon_4_1_3_3, kerodon_5_6_7_6, kerodon_7_2_1_13, kerodon_7_2_2_9, kerodon_7_3_1_14, kerodon_7_3_2_11, kerodon_7_3_5_8")
+:::proposition "kerodon_7_3_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftExtension_iff_local_colimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRightExtension_iff_local_limits") (uses := "kerodon_1_4_0_1, kerodon_4_1_3_1, kerodon_4_1_3_3, kerodon_5_6_7_6, kerodon_7_2_1_13, kerodon_7_2_2_9, kerodon_7_3_1_14, kerodon_7_3_2_11, kerodon_7_3_5_8")
 Kerodon Proposition 7.3.5.1（[Tag 0300](https://kerodon.net/tag/0300)）。対応表の状態：一部。
 
 Kも準圏に強めれば左右それぞれのexists\_kanLeft/RightExtension\_iff\_local\_colimits/limitsは同じδ,F₀について原文の二つのiffを直接返す。任意の単体集合Kは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftExtension_iff_local_colimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRightExtension_iff_local_limits`
-
 :::
 
-:::corollary "kerodon_7_3_5_2"
+:::corollary "kerodon_7_3_5_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftExtension_of_local_colimits")
 Kerodon Corollary 7.3.5.2（[Tag 0301](https://kerodon.net/tag/0301)）。対応表の状態：一部。
 
 Kを準圏に強めると、全ての形状の余極限存在を各leftKanDiagramに適用しexists\_kanLeftExtension\_of\_local\_colimitsから同じF₀の拡張を直接得る。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftExtension_of_local_colimits`
 
 :::
 
@@ -446,21 +523,17 @@ comma全局所相対余錐の存在から延長を作る型はあるが、原文
 
 :::
 
-:::corollary "kerodon_7_3_5_10" (uses := "kerodon_1_4_0_1, kerodon_5_1_4_1")
+:::corollary "kerodon_7_3_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits") (uses := "kerodon_1_4_0_1, kerodon_5_1_4_1")
 Kerodon Corollary 7.3.5.10（[Tag 039V](https://kerodon.net/tag/039V)）。対応表の状態：一部。
 
 同じF₀,Gの全comma余錐に指定された相対余極限が存在することも加えると、exists\_kanRelativeLeftCanonical\_strict\_extension\_of\_comma\_colimitsは同じ持ち上げ問題のU-leftKan解を直接返す。始域の余反射性や始対象だけからその入力を得たとはしない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits`
-
 :::
 
-:::corollary "kerodon_7_3_5_11" (uses := "kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_7_3_5_10")
+:::corollary "kerodon_7_3_5_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits") (uses := "kerodon_1_4_0_1, kerodon_5_1_4_1, kerodon_7_3_5_10")
 Kerodon Corollary 7.3.5.11（[Tag 043K](https://kerodon.net/tag/043K)）。対応表の状態：一部。
 
 同じF₀,Gの全comma余錐に指定された相対余極限が存在することも加えると、exists\_kanRelativeLeftCanonical\_strict\_extension\_of\_comma\_colimitsは同じ持ち上げ問題のU-leftKan解を直接返す。始域の余反射性や始対象だけからその入力を得たとはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits`
 
 :::
 
@@ -491,21 +564,17 @@ MathlibのlanAdjunctionは通常の関手圏の随伴。原文のFun準圏間の
 
 :::
 
-:::corollary "kerodon_7_3_6_4"
+:::corollary "kerodon_7_3_6_4" (lean := "CategoryTheory.Functor.lanAdjunction, CategoryTheory.Functor.isPointwiseLeftKanExtensionLeftKanExtensionUnit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftExtension_with_homUniversal_of_local_colimits")
 Kerodon Corollary 7.3.6.4（[Tag 030C](https://kerodon.net/tag/030C)）。対応表の状態：一部。
 
 Kを準圏に強めればexists\_kanLeftExtension\_with\_homUniversal\_of\_local\_colimitsは全F₀について同じδに沿う左Kan拡張の存在を直接返す。原文の左随伴の構成およびその単位との同定は含まない。
 
-宣言：`CategoryTheory.Functor.lanAdjunction`、`CategoryTheory.Functor.isPointwiseLeftKanExtensionLeftKanExtensionUnit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanLeftExtension_with_homUniversal_of_local_colimits`
-
 :::
 
-:::corollary "kerodon_7_3_6_5" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_3_6_1")
+:::corollary "kerodon_7_3_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtensionHom_homUniversal, SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.kanClassical_isLeftKanExtension_iff_bijective") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_3_6_1")
 Kerodon Corollary 7.3.6.5（[Tag 030D](https://kerodon.net/tag/030D)）。対応表の状態：一部。
 
 Kを準圏に強めるとkanLeftKanExtensionHom\_homUniversalは同じβについて原文(1)⇒(3)のh Fun上のHom全単射を直接返す。写像空間同値(2)や逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftKanExtensionHom_homUniversal`、`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.kanClassical_isLeftKanExtension_iff_bijective`
 
 :::
 
@@ -537,39 +606,31 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対写�
 
 :::
 
-:::corollary "kerodon_7_3_6_12" (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_1_5_12, kerodon_7_3_6_7")
+:::corollary "kerodon_7_3_6_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftMappingPullbackComparison_equivalence") (uses := "kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_7_1_5_12, kerodon_7_3_6_7")
 Kerodon Corollary 7.3.6.12（[Tag 030N](https://kerodon.net/tag/030N)）。対応表の状態：一部。
 
 全部分圏の包含に対しkanRelativeLeftMappingPullbackComparison\_equivalenceは、同じU,F,Gと制限について(1)からホモトピー引き戻しへの比較同値(2)を直接返す。逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftMappingPullbackComparison_equivalence`
-
 :::
 
-:::corollary "kerodon_7_3_6_13" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_3_7_6, kerodon_4_1_4_2, kerodon_4_6_1_22, kerodon_7_3_6_12")
+:::corollary "kerodon_7_3_6_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_3_3_7_6, kerodon_4_1_4_2, kerodon_4_6_1_22, kerodon_7_3_6_12")
 Kerodon Corollary 7.3.6.13（[Tag 030Q](https://kerodon.net/tag/030Q)）。対応表の状態：一部。
 
 kanLeftCanonical\_pinchedHomMap\_trivialKanFibrationは原文(1)⇒(3)を同じF,Gの制限のpinched Homモデルで直接返す。(1)⇒(2)も自然なpinched/interval比較で得るが、その比較だけで別モデルの厳密Kanファイブレーション性を主張しない。全逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_trivialKanFibration`
-
 :::
 
-:::theorem "kerodon_7_3_6_14" (uses := "kerodon_1_4_0_1, kerodon_4_4_5_1, kerodon_7_1_5_18, kerodon_7_3_5_5, kerodon_7_3_6_7")
+:::theorem "kerodon_7_3_6_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_trivialKanFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_isFullyFaithful, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeRightKanRestriction_trivialKanFibration") (uses := "kerodon_1_4_0_1, kerodon_4_4_5_1, kerodon_7_1_5_18, kerodon_7_3_5_5, kerodon_7_3_6_7")
 Kerodon Theorem 7.3.6.14（[Tag 030R](https://kerodon.net/tag/030R)）。対応表の状態：一部。
 
 全てのF₀,H₀の局所相対余錐があると強めれば、Bは全pullbackとなりkanRelativeLeftKanRestriction\_trivialKanFibrationが同じ制限Vを返す。任意の真の充満部分圏Bの場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_trivialKanFibration`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_isFullyFaithful`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeRightKanRestriction_trivialKanFibration`
-
 :::
 
-:::corollary "kerodon_7_3_6_15" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_3_6_14")
+:::corollary "kerodon_7_3_6_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_terminal_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_3_6_14")
 Kerodon Corollary 7.3.6.15（[Tag 030S](https://kerodon.net/tag/030S)）。対応表の状態：一部。
 
 全F₀,cで局所余極限があると強めればFun′(C⁰,D)は全関手圏となり、terminal版の制限のtrivialKanFibrationは同じ左Kan関手の制限の結論を直接与える。任意の真の部分圏への制限は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeLeftKanRestriction_terminal_trivialKanFibration`
 
 :::
 
@@ -582,12 +643,10 @@ tag := "kerodon-7-3-7"
 
 Kerodon [Tag 047V](https://kerodon.net/tag/047V)
 
-:::theorem "kerodon_7_3_7_1" (uses := "kerodon_1_4_0_1, kerodon_7_3_7_13")
+:::theorem "kerodon_7_3_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_constantFamily") (uses := "kerodon_1_4_0_1, kerodon_7_3_7_13")
 Kerodon Theorem 7.3.7.1（[Tag 047W](https://kerodon.net/tag/047W)）。対応表の状態：一部。
 
 Bを一点、FをC因子に依らない定値族に限りVをinner fibrationに強めると、kanIsRelativeLeftKanExtendedFrom\_constantFamilyは同じ転置fのV′-leftKan条件を直接返す。一般の相対関手圏は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_constantFamily`
 
 :::
 
@@ -633,12 +692,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：全余錐�
 
 :::
 
-:::proposition "kerodon_7_3_7_13" (uses := "kerodon_1_4_0_1, kerodon_4_5_8_18, kerodon_7_3_5_5, kerodon_7_3_6_14, kerodon_7_3_7_10")
+:::proposition "kerodon_7_3_7_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_functor_of_pointwise, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeColimitCone_constantFamily") (uses := "kerodon_1_4_0_1, kerodon_4_5_8_18, kerodon_7_3_5_5, kerodon_7_3_6_14, kerodon_7_3_7_10")
 Kerodon Proposition 7.3.7.13（[Tag 0488](https://kerodon.net/tag/0488)）。対応表の状態：一部。
 
 Bを一点、Vをinner fibrationとし、仮定を各aの指定余錐がV余極限であることにも強めると、kanIsRelativeColimitCone\_functor\_of\_pointwiseは同じ転置fのV′余極限性を直接返す。元のleftKan仮定だけから点ごとの条件を得たとはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_functor_of_pointwise`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeColimitCone_constantFamily`
 
 :::
 
@@ -651,12 +708,10 @@ tag := "kerodon-7-3-8"
 
 Kerodon [Tag 030U](https://kerodon.net/tag/030U)
 
-:::proposition "kerodon_7_3_8_1" (uses := "kerodon_1_4_0_1, kerodon_3_4_1_11, kerodon_3_4_1_13, kerodon_7_1_6_19, kerodon_7_3_6_7, kerodon_7_3_6_9")
+:::proposition "kerodon_7_3_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_poset_nested_canonical, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal") (uses := "kerodon_1_4_0_1, kerodon_3_4_1_11, kerodon_3_4_1_13, kerodon_7_1_6_19, kerodon_7_3_6_7, kerodon_7_3_6_9")
 Kerodon Proposition 7.3.8.1（[Tag 030V](https://kerodon.net/tag/030V)）。対応表の状態：一部。
 
 Uを終対象への射に限れば相対余極限は絶対余極限。同じFの標準左Kan余錐からkanLeftCanonical\_pre\_initialBoundaryを得てisColimitCone\_iff\_restrict\_of\_initialBoundaryへ渡すと、原文の指定余錐の制限とのiffを直接得る。U=idはこの特殊化ではない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_poset_nested_canonical`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal`
 
 :::
 
@@ -736,21 +791,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：左 Kan 拡
 
 :::
 
-:::proposition "kerodon_7_3_8_12" (uses := "kerodon_1_4_0_1, kerodon_7_3_8_1, kerodon_7_3_8_10")
+:::proposition "kerodon_7_3_8_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.posetSubtype_canonicalColimit_nested") (uses := "kerodon_1_4_0_1, kerodon_7_3_8_1, kerodon_7_3_8_10")
 Kerodon Proposition 7.3.8.12（[Tag 0312](https://kerodon.net/tag/0312)）。対応表の状態：一部。
 
 Uを終対象への射、Cの塔を半順序集合の充満部分nerveに限ると、posetSubtype\_canonicalColimit\_nestedは原文の左辺⇒(2)を同じ制限関手について直接返す。(1)および逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.posetSubtype_canonicalColimit_nested`
-
 :::
 
-:::corollary "kerodon_7_3_8_14" (uses := "kerodon_1_4_0_1, kerodon_7_3_8_12")
+:::corollary "kerodon_7_3_8_14" (lean := "CategoryTheory.Functor.isLeftKanExtension_iff_postcompose, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.posetSubtype_canonicalColimit_nested") (uses := "kerodon_1_4_0_1, kerodon_7_3_8_12")
 Kerodon Corollary 7.3.8.14（[Tag 0314](https://kerodon.net/tag/0314)）。対応表の状態：一部。
 
 半順序集合のnerveとその充満部分圏の塔に限ればposetSubtype\_canonicalColimit\_nestedは同じFの左辺⇒(2)を直接返す。通常圏のisLeftKanExtension\_iff\_postcomposeだけは根拠としない。
-
-宣言：`CategoryTheory.Functor.isLeftKanExtension_iff_postcompose`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.posetSubtype_canonicalColimit_nested`
 
 :::
 
@@ -763,30 +814,24 @@ isPointwiseLeftKanExtensionAtOfIso′は通常圏の点ごとのKan条件の輸�
 
 :::
 
-:::proposition "kerodon_7_3_8_16"
+:::proposition "kerodon_7_3_8_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.sliceUnderRestrict_isQCatEquivalence_of_initialBoundary, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary")
 Kerodon Proposition 7.3.8.16（[Tag 0316](https://kerodon.net/tag/0316)）。対応表の状態：一部。
 
 Uを終対象への射に限れば、同じFのkanLeftCanonical\_pre\_initialBoundaryとsliceUnderRestrict\_isQCatEquivalence\_of\_initialBoundaryは原文のθの絶対coslice制限の同値を直接返す。一般Uの相対pullbackは含まない。U=idとはしない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.sliceUnderRestrict_isQCatEquivalence_of_initialBoundary`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary`
-
 :::
 
-:::corollary "kerodon_7_3_8_17"
+:::corollary "kerodon_7_3_8_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence")
 Kerodon Corollary 7.3.8.17（[Tag 0319](https://kerodon.net/tag/0319)）。対応表の状態：一部。
 
 UをEquivalenceLifting、包含C⁰→CをIsPrecompositionEquivalenceにも強めれば、kanRelativeCosliceMap\_trivialKanFibration\_of\_precompositionEquivalenceは原文と同じ相対coslice制限θのtrivialKanFibrationを直接返す。Fの相対Kan性だけの場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence`
-
 :::
 
-:::corollary "kerodon_7_3_8_18"
+:::corollary "kerodon_7_3_8_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_trivialKanFibration")
 Kerodon Corollary 7.3.8.18（[Tag 031A](https://kerodon.net/tag/031A)）。対応表の状態：一部。
 
 包含C⁰→CをIsPrecompositionEquivalenceにも強め、Uを終対象への射として相対coslice補題を用いれば、同じ絶対coslice制限θのtrivialKanFibrationを直接得る。個別のpinchedHomMapの結果だけは全cosliceの代用にしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pinchedHomMap_trivialKanFibration`
 
 :::
 
@@ -818,30 +863,24 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常圏�
 
 :::
 
-:::proposition "kerodon_7_3_8_24" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_6_2, kerodon_5_1_4_1, kerodon_5_1_4_20, kerodon_5_2_3_17, kerodon_5_3_6_1, kerodon_7_2_2_3, kerodon_7_2_3_10, kerodon_7_3_1_10, kerodon_7_3_2_11, kerodon_7_3_8_14")
+:::proposition "kerodon_7_3_8_24" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_6_2, kerodon_5_1_4_1, kerodon_5_1_4_20, kerodon_5_2_3_17, kerodon_5_3_6_1, kerodon_7_2_2_3, kerodon_7_2_3_10, kerodon_7_3_1_10, kerodon_7_3_2_11, kerodon_7_3_8_14")
 Kerodon Proposition 7.3.8.24（[Tag 031M](https://kerodon.net/tag/031M)）。対応表の状態：一部。
 
 C₂を一点、Gを全部分圏の包含、αを厳密制限の恒等変換に限る。すると同じβのKan性はその頂点への余錐の余極限性で、kanLeftCanonical\_pre\_initialBoundaryとisColimitCone\_iff\_restrict\_of\_initialBoundaryは原文の(1)⇔(2)を直接返す。一般Hや一般αは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.isColimitCone_iff_restrict_of_initialBoundary`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCanonical_pre_initialBoundary`
-
 :::
 
-:::proposition "kerodon_7_3_8_25" (uses := "kerodon_1_4_0_1, kerodon_7_2_2_3, kerodon_7_3_2_11, kerodon_7_3_5_8, kerodon_7_3_8_12, kerodon_7_3_8_24")
+:::proposition "kerodon_7_3_8_25" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension") (uses := "kerodon_1_4_0_1, kerodon_7_2_2_3, kerodon_7_3_2_11, kerodon_7_3_5_8, kerodon_7_3_8_12, kerodon_7_3_8_24")
 Kerodon Proposition 7.3.8.25（[Tag 031N](https://kerodon.net/tag/031N)）。対応表の状態：一部。
 
 C₂を一点に限れば左Kan拡張の存在は同じF₁,F₀の余極限の存在。hasColimit\_iff\_leftKanExtensionはこの場合の(1)⇔(2)を直接返す。一般のHは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension`
-
 :::
 
-:::corollary "kerodon_7_3_8_26" (uses := "kerodon_1_4_0_1, kerodon_4_1_3_3, kerodon_7_3_1_5, kerodon_7_3_1_14, kerodon_7_3_8_24, kerodon_7_3_8_25")
+:::corollary "kerodon_7_3_8_26" (lean := "CategoryTheory.Functor.isColimitCoconeOfIsLeftKanExtension, CategoryTheory.Functor.colimitIsoOfIsLeftKanExtension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal") (uses := "kerodon_1_4_0_1, kerodon_4_1_3_3, kerodon_7_3_1_5, kerodon_7_3_1_14, kerodon_7_3_8_24, kerodon_7_3_8_25")
 Kerodon Corollary 7.3.8.26（[Tag 039X](https://kerodon.net/tag/039X)）。対応表の状態：一部。
 
 Kを準圏に強めるとhasColimit\_iff\_leftKanExtensionは原文(1)の同じF,F₀の余極限存在のiffを直接返す。指定βについての余極限性を比較する(2)は含まない。
-
-宣言：`CategoryTheory.Functor.isColimitCoconeOfIsLeftKanExtension`、`CategoryTheory.Functor.colimitIsoOfIsLeftKanExtension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_isColimit_of_terminal`
 
 :::
 
@@ -861,21 +900,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対余�
 
 :::
 
-:::corollary "kerodon_7_3_9_2"
+:::corollary "kerodon_7_3_9_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits")
 Kerodon Corollary 7.3.9.2（[Tag 0320](https://kerodon.net/tag/0320)）。対応表の状態：一部。
 
 仮定を、同じFと底図式の全comma余錐上に指定された相対余極限が存在することにも強めれば、exists\_kanRelativeLeftCanonical\_strict\_extension\_of\_comma\_colimitsは同じ持ち上げ問題のU-leftKan解を直接返す。fiber余完備性と輸送保存だけからその入力を得たとはしない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits`
-
 :::
 
-:::proposition "kerodon_7_3_9_3"
+:::proposition "kerodon_7_3_9_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_of_functorIso")
 Kerodon Proposition 7.3.9.3（[Tag 031R](https://kerodon.net/tag/031R)）。対応表の状態：一部。
 
 指定αが全余錐のFunctorIsoも与えると強めればkanIsRelativeColimitCone\_iff\_of\_functorIsoは同じ二余錐の相対余極限性を両方向に直接移す。全成分cocartesianという元の仮定だけは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanIsRelativeColimitCone_iff_of_functorIso`
 
 :::
 
@@ -886,12 +921,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対余�
 
 :::
 
-:::proposition "kerodon_7_3_9_5"
+:::proposition "kerodon_7_3_9_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesianFibration_lift_prism")
 Kerodon Proposition 7.3.9.5（[Tag 031W](https://kerodon.net/tag/031W)）。対応表の状態：一部。
 
 cocartesianFibration\_lift\_prismを原文のc≫gへ適用すれば、同じf₀から指定された底の変換上の成分ごとcocartesianなαを直接構成する。終点が定値Eなのでf₁は同じ終点fiberを通る。後半の余極限存在と輸送保存のiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cocartesianFibration_lift_prism`
 
 :::
 

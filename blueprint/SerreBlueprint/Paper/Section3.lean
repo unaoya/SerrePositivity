@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.Inputs.Descent
 import SerrePositivity.LengthAlgebra.Flat
 import SerrePositivity.Paper.Section3.LengthComputation
 import SerrePositivity.Paper.Section3.NormComparison
@@ -8,6 +9,9 @@ import SerrePositivity.Paper.Section3.NormComparison
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§3 Rational descent with closed supports" =>
 %%%
@@ -29,7 +33,7 @@ tag := "paper-3"
 
 §5.4 では $`\lambda`-平坦な代数でこれらの入力がそろうことを、§5.5 では消滅の適用としてパラメータ商（Lemma 5.3）を述べる。
 
-:::theorem "paper_3_1" (uses := "paper_eq_3_1, paper_eq_3_2, paper_eq_3_5, paper_eq_3_6, paper_eq_3_7, paper_eq_3_8, paper_3_3, ext_BGT_8_1, ext_BGT_8_7, ext_BGT_9_3, ext_BGT_9_8, ext_Goodwillie_Main_Theorem, ext_LT_3_10, ext_LT_3_12, ext_LT_3_9, ext_LT_A_2, ext_LT_Appendix_B, ext_LT_B_2, ext_LT_B_3, ext_TT_5_2_2, ext_TT_5_2_3, ext_TT_5_2_4, ext_TT_7_4")
+:::theorem "paper_3_1" (lean := "SerrePositivity.theorem_3_1_K0") (uses := "paper_eq_3_1, paper_eq_3_2, paper_eq_3_5, paper_eq_3_6, paper_eq_3_7, paper_eq_3_8, paper_3_3, ext_BGT_8_1, ext_BGT_8_7, ext_BGT_9_3, ext_BGT_9_8, ext_Goodwillie_Main_Theorem, ext_LT_3_10, ext_LT_3_12, ext_LT_3_9, ext_LT_A_2, ext_LT_Appendix_B, ext_LT_B_2, ext_LT_B_3, ext_TT_5_2_2, ext_TT_5_2_3, ext_TT_5_2_4, ext_TT_7_4")
 **定理 3.1**　任意の連結結合係数を持つ台つき有理降下。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.10 / layout L502。本体の入力は離散H=A、局所基底とパラメータ台についてのK0の正整数倍持ち上げで、直接sorryを持つ。原典の任意の連結結合Hと有理Kスペクトルの同値は未構成なので、入力界面としてのみ対応する。
@@ -50,8 +54,6 @@ $$`K^J(H)_\mathbb{Q} \simeq \bigl(K^J(H\otimes^L_A T)_\mathbb{Q}\bigr)^{hG}.`
 
 *Lean:* \`theorem\_3\_1\_K0\`（$`H = A` の場合のみ、引用）。
 
-宣言：`SerrePositivity.theorem_3_1_K0`
-
 外の文献：BGT 8.1、BGT 8.7、BGT 9.3、BGT 9.8、Goodwillie Main Theorem、LT 3.10、LT 3.12、LT 3.9、LT A.2、LT Appendix B、LT B.2、LT B.3、TT 5.2.2、TT 5.2.3、TT 5.2.4、TT 7.4
 
 :::
@@ -63,7 +65,7 @@ $$`K^J(H)_\mathbb{Q} \simeq \bigl(K^J(H\otimes^L_A T)_\mathbb{Q}\bigr)^{hG}.`
 
 :::
 
-:::definition "paper_eq_3_2" (uses := "paper_eq_3_1, paper_eq_3_6")
+:::definition "paper_eq_3_2" (lean := "SerrePositivity.theorem_3_1_K0") (uses := "paper_eq_3_1, paper_eq_3_6")
 **式 (3.2)**　台つき有理K0のG不変部分への全射。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.10 / layout L514。離散・局所・パラメータ台の場合の正整数倍の持ち上げを直接sorryで置く。原典の任意Hに対する全射全体にはまだ達しない。
@@ -85,8 +87,6 @@ $$`K^J(H)_\mathbb{Q} \simeq \bigl(K^J(H\otimes^L_A T)_\mathbb{Q}\bigr)^{hG}.`
 有理化した写像が不変部分へ全射なので、$`y\otimes1` の原像 $`x'\otimes(1/m)` をとる。$`my-f(x')` は有理化すると零なので捩れであり、その位数を掛けて分母と捩れを払う。
 
 *Lean:* $`H=A` の場合は \`theorem\_3\_1\_K0\`、§6 の $`H`（補題 7.7）の場合は \`Section4.supportedRankK0\_descent\`。いずれもこの整数倍の形で引用している。
-
-宣言：`SerrePositivity.theorem_3_1_K0`
 
 :::
 
@@ -281,7 +281,7 @@ $`V` を有限長 $`A` 加群（普通の長さで $`\operatorname{length}_A V<\
 
 :::
 
-:::lemma_ "paper_3_5" (uses := "paper_eq_3_11, paper_eq_3_12, paper_eq_3_13, paper_eq_3_14, paper_eq_3_9, paper_3_1, paper_3_4")
+:::lemma_ "paper_3_5" (lean := "SerrePositivity.lemma_3_5a, SerrePositivity.lemma_3_5b, SerrePositivity.lemma_3_5c, SerrePositivity.theorem_3_1_K0") (uses := "paper_eq_3_11, paper_eq_3_12, paper_eq_3_13, paper_eq_3_14, paper_eq_3_9, paper_3_1, paper_3_4")
 **補題 3.5**　通常のEuler評価とnorm和の比較。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.15 / layout L748。有限性・加法性および基底からの引戻しでの比較は別々に証明されている。一般の不変K0類・norm和へ広げるlemma\_3\_5cはtheorem\_3\_1\_K0のsorryに依存する。原典の二つの評価を個々の共役について等しいとはしていない。
@@ -478,11 +478,9 @@ $$`\chi_{\mathrm{ord}}(Q\otimes_A T) \;=\; r\cdot\chi_A(Q) \;=\; \chi_C(Q\otimes
 
 *Lean:* \`lemma\_3\_5b\`、生成は \`K0.exists\_eq\_zsmul\_koszul\`、\`K0.hom\_ext\_koszul\`（証明済み。\`lemma\_3\_5b\_ord\_of\_koszul\`、\`lemma\_3\_5b\_lam\_of\_koszul\` は一般の基底公式の適用）。
 
-宣言：`SerrePositivity.lemma_3_5a`、`SerrePositivity.lemma_3_5b`、`SerrePositivity.lemma_3_5c`、`SerrePositivity.theorem_3_1_K0`
-
 :::
 
-:::definition "paper_eq_3_11" (uses := "paper_eq_3_13, paper_eq_3_14, paper_3_1")
+:::definition "paper_eq_3_11" (lean := "SerrePositivity.lemma_3_5c") (uses := "paper_eq_3_13, paper_eq_3_14, paper_3_1")
 **式 (3.11)**　共役Euler評価のnorm和の一致。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.15 / layout L761。有理不変類の持ち上げを通常K0降下入力に依存して証明する。
@@ -564,8 +562,6 @@ $$`\sum_{g\in G} \chi_{\mathrm{ord}}(P^g) \;=\; \sum_{g\in G} \chi_C(P^g).`
 系 5.12 (b) を $`(C',\lambda')=(T,\operatorname{length}_T)` に適用する。$`e_{\operatorname{length}_T}(z;T)=r` は補題 7.1 による。$`G` の $`K_0(\mathcal{K}_T)` への作用はひねり $`P\mapsto P^g` による。降下（命題 3.6 の (b)）は、剰余標数 $`p`、推移性、全射性のもとで系 7.4（$`H=A`）による。
 
 *Lean:* \`lemma\_3\_5c\`（引用を除いて証明済み）。証明はこの形である：定理 5.9（\`perfectEuler\_conjSum\_eq\`）を係数環 $`A\to T`、$`T\to T`（通常の長さ）、$`T\to C`（$`\lambda`）に適用する。二つの Koszul Euler 特性が $`\operatorname{rank}_AT` で一致すること（補題 7.1、\`koszulEulerChar\_eq\_finrank\`）と、旧来の有限自由モデル（\`K0Supported\`）で述べられた降下の引用 \`theorem\_3\_1\_K0\` を有限射影 $`K_0` へ移したもの（\`perfectK0\_descent\_of\_free\`）を渡し、結論を \`freeToPerfectK0\` で旧モデルの値 \`chiOrd\`、\`chiLam\` に戻す。
-
-宣言：`SerrePositivity.lemma_3_5c`
 
 :::
 
@@ -700,7 +696,7 @@ $`A` を正則局所環、$`z` をその正則パラメータ系、$`T` を可�
 
 :::
 
-:::proposition "paper_3_6"
+:::proposition "paper_3_6" (lean := "SerrePositivity.lemma_3_5c")
 **注意 3.6**　長さのG不変性を要求しないという注意。対応表の状態：一部。
 
 原典 PDF p.16 / layout L823。定理の型はlambdaのG不変性を仮定せずnorm和だけを比較する。この注意の論理的内容は読み取れるが、個々の評価が不変でない具体例や独立の否定命題は宣言していない。比較自体は入力依存。
@@ -722,8 +718,6 @@ $`A` を正則局所環、$`z` をその正則パラメータ系、$`T` を可�
 *解説 §7.1 Lemma 3.5*
 
 仮定の使われ方を補足する。元論文は $`A` を完備としているが、完備性はどこでも使わない（完備性が効くのは §9 で正規化基底をとる段階である）。$`A` の剰余標数 $`p` と $`G` の作用・推移性は降下（定理 7.3）にだけ要る。$`T` が整域であることは $`r` の定義と $`\operatorname{Spec} T\to\operatorname{Spec} A` の全射性に、剰余体の一致は普通の側の長さの比較（補題 7.1）にだけ使う。$`\lambda` については加法性と非負性、および Koszul 条件（有限性は全ての $`v`、値は $`v=1`）だけを使う。また結論は共役の和についての等式であり、個々の $`P` について $`\chi_{\mathrm{ord}}(P)=\chi_C(P)` を主張しない（元論文 Remark 3.6）。このため $`D` 側と $`E` 側の長さ付き代数を独立に選べ、$`\lambda` の $`G` 不変性も要らない。
-
-宣言：`SerrePositivity.lemma_3_5c`
 
 :::
 

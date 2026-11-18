@@ -6,10 +6,12 @@ import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCat
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CosliceCoconeFamilyEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CosliceFixedDiagramIso
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CosliceLaxEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceCylinderFunctorIso
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceFullyFaithful
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoin
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinComparisonGluing
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinFixedDiagramComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinGeneralComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FatJoinStdComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FullyFaithfulIntervalMapping
@@ -18,20 +20,31 @@ import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCat
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LaxPullback
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LaxPullbackProjections
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LaxSlice
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceIntervalComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceLeft
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceModelEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceRightKan
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PointedConeHornLifting
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PointedConeLeftFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PreFiberKan
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RelativeCylinderExtension
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RelativeEquivalenceCylinder
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RelativeMappingCylinder
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightConeBoundary
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.SliceConeFamilyEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.SliceFixedDiagramIso
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.SliceLaxEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.SliceLaxMap
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "4.6 Morphism Spaces" =>
 %%%
@@ -40,6 +53,36 @@ tag := "kerodon-4-6"
 %%%
 
 Kerodon の 4.6 節（[Tag 01J3](https://kerodon.net/tag/01J3)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*route-classification.html — 3. 段 1：写像空間・同値・関手の ∞ 圏 — 3.4（1.4）写像空間 $`\mathrm{Map}_{\mathcal C}(x,y)`*
+
+*比較*：$`\Delta^n\times\Delta^1\to\Delta^{n+1}`、$`(i,0)\mapsto i`、$`(i,1)\mapsto n+1` で引き戻して $`\mathrm{Hom}^R\to\mathrm{Map}`（$`\mathrm{Hom}^L` も同様）。これらはホモトピー同値（HTT Cor. 4.2.1.8、Kerodon §4.6）。証明は「$`\mathcal C_{/y}` と $`\mathrm{Fun}(\Delta^1,\mathcal C)\times_{\mathcal C}\{y\}` という $`\mathcal C` 上の右 fibration の間の写像が fiber ごとに同値」で、段 2 の判定法で回収する。
+
+*合成*：厳密な合成はない。$`\mathrm{Fun}(\Delta^2,\mathcal C)\to\mathrm{Fun}(\Lambda^2_1,\mathcal C)` の $`(x,y,z)` 上の fiber が自明 Kan fibration $`\to\mathrm{Map}(x,y)\times\mathrm{Map}(y,z)` になり、切断を選んで $`\{0,2\}` に制限すると合成。可縮な選択を除いて一意。
+
+*使われ方*：充満忠実（1.6）、段 3 の $`\mathcal S` の写像空間の比較、段 6 の充満忠実性。
+
+*模型の比較（質問への答え）*：模型 3 が一番すっきりするという感覚は正しく、現代的な扱いもその方向。ただし計算には $`\mathrm{Hom}^R`、$`N^{hc}` との比較には $`\mathfrak C[-]` が要り、「定義は一つ、計算用の模型は別」という使い分けになる。
+
+- 模型　／　長所　／　短所　／　主な使われ方
+- $`\mathrm{Fun}(\Delta^1,\mathcal C)` の fiber　／　左右対称、$`\mathrm{Fun}`・極限・随伴と同じ言葉、$`(\mathrm{ev}_0,\mathrm{ev}_1)` が isofibration なので fiber がホモトピー fiber、$`\mathrm{Map}_{\mathrm{Fun}(K,\mathcal C)}(F,G)` も同じ形　／　単体が角柱で大きい、Kan 性に各点判定が要る　／　定義（Kerodon §4.6.1、Riehl–Verity）
+- $`\mathrm{Hom}^R`・$`\mathrm{Hom}^L`（pinched）　／　単体が小さく端が厳密に固定、Kan 性が直ちに出る、表現可能前層と直結　／　左右非対称で比較に定理が要る、$`x,y` 同時には関手的でない　／　計算（HTT §1.2.2、Kerodon §4.6.5）、dg nerve では Hom 複体の切り詰めと対応
+- $`\mathfrak C\mathcal C`　／　合成が厳密　／　一般に Kan でない、比較に重い定理（HTT §2.2）　／　straightening、$`N^{hc}` との比較（段 3）
+- twisted arrow の fiber　／　$`x,y` 両方について関手的　／　$`\mathrm{Tw}(\mathcal C)` が先に要る　／　米田（Yoneda への道 段 7）
+
+現代的な扱い：Kerodon は模型 3 を定義とし pinched を同値な計算模型とする（HTT は $`\mathrm{Hom}^R` と $`\mathfrak C` が主）。Riehl–Verity は comma ∞ 圏（$`A^{\Delta^1}\to A\times A` の fiber）、Riehl–Shulman の単体的ホモトピー型理論は hom 型を端点を固定した $`\Delta^1\to A` の型とする。このルートでは定義を模型 3、計算道具を $`\mathrm{Hom}^R` とし、$`\mathfrak C` の模型は段 3 で導入する。
+
+\*\*四つ目の模型 $`\mathfrak C\mathcal C`\*\*：$`N^{hc}` の左随伴 $`\mathfrak C`（単体的集合 → 単体的圏、$`\mathfrak C\Delta^n=(\Delta^1)^{n-1}`）の Hom。段 3 で $`\mathrm{Map}_{N^{hc}(D)}(x,y)\simeq D(x,y)`（$`D` Kan 豊穣）を示すときに、余単位 $`\mathfrak C[N^{hc}D]\to D` を通して使う。つまり $`N^{hc}` で定義された ∞ 圏（$`\mathcal S`、$`\mathrm{Cat}_\infty`）の写像空間を計算するための道具。
+
+\*\*質問：$`\mathcal C` が準圏であることは重要か\*\*。模型によって違う。
+
+- 模型　／　任意の単体的集合 $`S` で
+- $`\mathrm{Hom}^R`、$`\mathrm{Hom}^L`、$`\mathrm{Fun}(\Delta^1,S)` の fiber　／　定義はできるが意味を持たない（Kan とは限らず、$`S` が生成する ∞ 圏の写像空間とも一致しない）。Kan 性も比較も内ホーンの充填を使う
+- $`\mathfrak CS`　／　常に正しい：$`S` が生成する ∞ 圏の写像空間を与える（$`\mathfrak C` は圏同値を Dwyer–Kan 同値に送る）。ただし $`S` が準圏でないと $`\mathrm{Hom}^R` との比較は成り立たない
+
+例：$`S=\Lambda^2_1`（$`0\to1\to2`）では $`\mathrm{Hom}^R_S(0,2)=\emptyset`（辺 $`0\to2` がない）が、生成する ∞ 圏 $`\Delta^2` では $`\mathrm{Map}(0,2)=\mathrm{pt}`、$`\mathfrak C\Lambda^2_1=\mathrm{pt}` は正しい。$`S=\partial\Delta^2` では $`\mathrm{Hom}^R_S(0,2)=\mathrm{pt}`（辺 $`\{0,2\}` だけ）だが、生成する圏では $`0\to2` が $`\{0,2\}` と合成の 2 本、$`\mathfrak C\partial\Delta^2` も 2 点で正しい。$`\mathfrak C` は「単体的集合を自由に生成された ∞ 圏として読む」関手なので、準圏性は要らない。
+
+*Lean での扱い*：Kerodon §4.6.5 に沿って右 pinched 写像空間（＝ $`\mathrm{Hom}^R`）が主な模型。
 
 # 4.6.1 Morphism Spaces
 
@@ -112,12 +155,10 @@ pinchedHomMapのホーン持ち上げは別模型の射の性質。原文の区�
 
 :::
 
-:::proposition "kerodon_4_6_1_24" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_3_10, kerodon_4_4_5_11, kerodon_4_6_1_11")
+:::proposition "kerodon_4_6_1_24" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomMap_hasLiftingProperty_horn, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomMap_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.kanComplex_preFiber_of_vertexSurjective") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_4_3_10, kerodon_4_4_5_11, kerodon_4_6_1_11")
 Kerodon Proposition 4.6.1.24（[Tag 01PC](https://kerodon.net/tag/01PC)）。対応表の状態：一部。
 
 kanComplex\_preFiber\_of\_vertexSurjective は底Dが終対象の場合の同じ、全頂点を含むAからの制限の指定fiberのKan性を直接返す。右pinched模型の候補は区間模型との比較がなく数えない。一般の相対底は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomMap_hasLiftingProperty_horn`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomMap_rightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.kanComplex_preFiber_of_vertexSurjective`
 
 :::
 
@@ -130,12 +171,25 @@ tag := "kerodon-4-6-2"
 
 Kerodon [Tag 01HM](https://kerodon.net/tag/01HM)
 
-:::definition "kerodon_4_6_2_1"
+*02-mapping-limits.html — 5. 極限 — 補助模型：fat join、lax slice、錐の族*
+
+関手 ∞ 圏の極限を扱うには、slice $`X_{/p}` のままでは $`\mathrm{Fun}(K,-)` との相性が悪い。そこで Kerodon §4.6.2〜4.6.6 に沿って、三つの補助模型を導入し、すべて slice と同値であることを示している。
+
+- 模型　／　中身　／　slice との比較
+- fat join $`A\diamond B`　／　$`A\times\Delta^1\times B` の 0 端を $`A` に、1 端を $`B` に潰したもの（Kerodon Notation 4.6.2.3）　／　\`fatJoinComparison : fatJoin A B ⟶ join A B\`（Kerodon Thm. 4.6.2.8）
+- lax slice（太い slice）　／　fat join から作る slice　／　\`isQCatEquivalence\_sliceLaxMap\`（Kerodon Prop. 4.6.4.19）
+- 錐の族 \`coneFamily\`　／　錐を関手 ∞ 圏 $`\mathrm{Fun}(\Delta^0\star K,X)` の fiber として見たもの　／　\`isQCatEquivalence\_sliceConeFamilyMap\`（Kerodon Ex. 4.6.6.8）
+
+錐の族の模型では、錐が関手 ∞ 圏の対象になる。そのため $`\mathrm{Fun}(K,-)` との交換が内部 Hom の curry だけで済む。\`isLimitCone\_iff\_isTerminalVertex\_coneFamily\`（Core/LimitConeFamily）が、極限性をこの模型に移す入口である。
+
+原典との違い
+
+HTT は slice $`X_{/p}` と fat slice $`X^{/p}` の比較を Joyal のモデル構造で処理する（HTT Prop. 4.2.1.5）。ここでは Kerodon の方針に従い、標準単体の場合を明示的な変形（Core/FatJoinStd\*）で示してから、pushout・余極限での閉包性で一般化している（Core/FatJoinLeftColimits、FatJoinRightColimits など）。Core/Precomposition\* の判定条件 \`IsPrecompositionEquivalence\`（「任意の quasicategory への前合成が同値」）は、quasicategory でない補助模型の比較のために導入されている。
+
+:::definition "kerodon_4_6_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinCylinderMap")
 Kerodon Construction 4.6.2.1（[Tag 01HN](https://kerodon.net/tag/01HN)）。対応表の状態：一部。
 
 joinCylinderMap は原文の順序の切断による同じcollapseの写像を直接構成する。指定両端だけからの一意性は引用型に含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinCylinderMap`
 
 :::
 
@@ -208,66 +262,52 @@ tag := "kerodon-4-6-3"
 
 Kerodon [Tag 01K2](https://kerodon.net/tag/01K2)
 
-:::proposition "kerodon_4_6_3_1" (uses := "kerodon_1_4_0_1, kerodon_4_6_3_9")
+:::proposition "kerodon_4_6_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_equivalenceCylinder_extension_of_functorIso, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.nonempty_functorIso_of_equivalenceCylinder_extension") (uses := "kerodon_1_4_0_1, kerodon_4_6_3_9")
 Kerodon Proposition 4.6.3.1（[Tag 01K3](https://kerodon.net/tag/01K3)）。対応表の状態：一部。
 
 可逆区間JによるB×Jの円柱に限ると、二つのEquivalenceCylinderFunctorIsoの型は同じ二端点を持つ延長とFunctorIsoを双方向に直接結ぶ。任意の分解B̄での三条件全部は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_equivalenceCylinder_extension_of_functorIso`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.nonempty_functorIso_of_equivalenceCylinder_extension`
-
 :::
 
-:::definition "kerodon_4_6_3_3" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_4_6_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinder, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderProjection, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint_projection, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint_fixed, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint_mono, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 4.6.3.3（[Tag 01K5](https://kerodon.net/tag/01K5)）。対応表の状態：一部。
 
 relativeEquivalenceCylinderの二端点はA上で一致し、同じ射影への切断であることをendpoint\_fixed/projectionが直接返す。B∐\_A Bからの合わせた射のMono性と一般の円柱を束ねる型は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinder`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderProjection`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint_projection`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint_fixed`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint_mono`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint`
-
 :::
 
-:::corollary "kerodon_4_6_3_7" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_3_1, kerodon_4_6_3_3")
+:::corollary "kerodon_4_6_3_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_3_1, kerodon_4_6_3_3")
 Kerodon Corollary 4.6.3.7（[Tag 01K9](https://kerodon.net/tag/01K9)）。対応表の状態：一部。
 
 exists\_relativeCylinder\_extension は元の二図式を結ぶ点ごとに可逆な実際の区間ホモトピーも入力すると、指定の単射円柱への同じ延長を直接返す。FunctorIsoだけからこの入力を作る方向と逆方向は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension`
-
 :::
 
-:::theorem "kerodon_4_6_3_8" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_1_4_6, kerodon_4_4_3_15, kerodon_4_5_4_11")
+:::theorem "kerodon_4_6_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_equivalenceCylinder_extension_of_functorIso, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.nonempty_functorIso_of_equivalenceCylinder_extension") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_1_4_6, kerodon_4_4_3_15, kerodon_4_5_4_11")
 Kerodon Theorem 4.6.3.8（[Tag 01KA](https://kerodon.net/tag/01KA)）。対応表の状態：一部。
 
 S=Δ⁰、A=∅、B̄=B×Jの可逆区間円柱に限ると、二つのEquivalenceCylinderFunctorIsoの型が同じ延長とFunctorIsoを双方向に結ぶ。一般のisofibration上の相対版は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_equivalenceCylinder_extension_of_functorIso`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.nonempty_functorIso_of_equivalenceCylinder_extension`
-
 :::
 
-:::corollary "kerodon_4_6_3_9" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_3_8")
+:::corollary "kerodon_4_6_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinder, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_6_3_8")
 Kerodon Corollary 4.6.3.9（[Tag 01KB](https://kerodon.net/tag/01KB)）。対応表の状態：一部。
 
 exists\_relativeCylinder\_extension はA上で固定され点ごとに可逆な区間ホモトピーを追加入力すると、原文(3)の任意の単射円柱への同じ延長を直接返す。相対関手空間での同型だけからの入力の比較と逆方向は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinder`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension`
-
 :::
 
-:::corollary "kerodon_4_6_3_10"
+:::corollary "kerodon_4_6_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension")
 Kerodon Corollary 4.6.3.10（[Tag 01KC](https://kerodon.net/tag/01KC)）。対応表の状態：一部。
 
 底Sを終対象にし、A上固定で点ごとに可逆な区間ホモトピーも与える場合、exists\_relativeCylinder\_extension は指定円柱への同じ延長を返す。一般の相対底の持ち上げとiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension`
-
 :::
 
-:::corollary "kerodon_4_6_3_11"
+:::corollary "kerodon_4_6_3_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension")
 Kerodon Corollary 4.6.3.11（[Tag 01KD](https://kerodon.net/tag/01KD)）。対応表の状態：一部。
 
 exists\_relativeCylinder\_extension はA上で固定され点ごとに可逆な区間ホモトピーを追加入力すると、指定円柱への同じ延長を直接返す。相対関手空間での同型との比較・逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.exists_relativeCylinder_extension`
 
 :::
 
@@ -279,6 +319,16 @@ tag := "kerodon-4-6-4"
 %%%
 
 Kerodon [Tag 01KE](https://kerodon.net/tag/01KE)
+
+*06-catinfty-ind-presentable.html — 1. Cat∞ の写像空間と極限 — 引き戻しと lax pullback*
+
+- 内容　／　Lean　／　場所
+- Cat\<sub\>∞\</sub\> の引き戻し：cospan $`A\to C\leftarrow B` を path で置き換えて作った錐は極限　／　\`catPullbackCone\_isLimit\`　／　F2/CatPullbackCone
+- lax pullback $`A\times_C\mathrm{Fun}(\Delta^1,C)\times_C B`　／　\`laxPullback p q\`　／　F2/LaxPullback
+- lax pullback は Cat\<sub\>∞\</sub\> のある極限の頂点　／　\`laxPullbackCone\_isLimit\`　／　F2/LaxPullbackLimit
+- 安定 ∞ 圏の間の完全関手の lax pullback は安定で、両射影は完全　／　\`laxPullback\_isStable\`、\`laxPullbackFst\_isExactFunctor\`　／　F2/LaxPullbackStable
+
+lax pullback は Tamme の切除定理（K 理論の Land–Tamme 経路）の中心にある構成で、これが安定 ∞ 圏として完成していることが、K 側の第一の入力になっている。
 
 :::definition "kerodon_4_6_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullback, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst")
 Kerodon Definition 4.6.4.1（[Tag 01KF](https://kerodon.net/tag/01KF)）。対応表の状態：本体にある。
@@ -303,12 +353,10 @@ Kerodon Corollary 4.6.4.3（[Tag 01KH](https://kerodon.net/tag/01KH)）。対応
 
 :::
 
-:::proposition "kerodon_4_6_4_13" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_6_2, kerodon_4_6_2_3, kerodon_4_6_2_14")
+:::proposition "kerodon_4_6_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pointedConeProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pointedConeProjection") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_6_2, kerodon_4_6_2_3, kerodon_4_6_2_14")
 Kerodon Proposition 4.6.4.13（[Tag 01KQ](https://kerodon.net/tag/01KQ)）。対応表の状態：一部。
 
 pointedConeProjectionをK=Δ⁰に取りjoinStdSimplexIso 0 0でΔ¹に移すと、原文の始点Xを固定した向き付き積の同じ射影のleft fibration性を直接得る。終点固定のright側は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pointedConeProjection_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pointedConeProjection`
 
 :::
 
@@ -363,12 +411,10 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::corollary "kerodon_4_6_4_24"
+:::corollary "kerodon_4_6_4_24" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceOverPostcomp_trivialKanFibration_of_rightFibration")
 Kerodon Corollary 4.6.4.24（[Tag 05YA](https://kerodon.net/tag/05YA)）。対応表の状態：一部。
 
 sliceOverPostcomp\_trivialKanFibration\_of\_rightFibration はK=Δ⁰の同じ射U\_/Fの自明Kan性を直接返す。この図式は全次数で連結で、任意の指定のfiber切断次数に依存しない。一般Kは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceOverPostcomp_trivialKanFibration_of_rightFibration`
 
 :::
 
@@ -395,6 +441,32 @@ Kerodon [Tag 01KW](https://kerodon.net/tag/01KW)
 $$`f_*\colon\mathrm{Hom}^R_C(x,y)\to\mathrm{Hom}^R_D(f(x),f(y))`
 
 を定める（$`\mathrm{Hom}^R` は定義 7.1）。
+
+*02-mapping-limits.html — 1. 写像空間 — 基本的な性質*
+
+- 内容　／　Lean　／　場所
+- 頂点 = $`x` から $`y` への辺　／　\`PinchedHom.vertexEquiv\`　／　PinchedHom/Edges
+- Kan 複体である（HTT Prop. 1.2.2.3）　／　\`pinchedHom\_kanComplex\`（instance）　／　Core/MappingSpaceRightKan
+- $`\pi_0\,\mathrm{Hom}^R(x,y)\cong\mathrm{Hom}_{hX}(x,y)`　／　\`pinchedHomPiZeroEquiv\`　／　Core/MappingSpacePiZero
+- slice の fiber と同型：$`\mathrm{Hom}^R(x,y)\cong X_{/y}\times_X\{x\}`　／　\`pinchedHomSliceFiberIso\`　／　Core/PinchedSlice
+- 普遍性：$`A\to\mathrm{Hom}^R(x,y)` ⇔ $`A` を $`x` に潰した $`A\star\Delta^0\to X`　／　\`pinchedHomCurry\`／\`pinchedHomUncurry\`　／　Core/PinchedUniversal
+- 関手性　／　\`pinchedHomMap f x y\`　／　Core/MappingSpaceMap
+- $`p` が inner fibration ⇒ 写像空間の写像は右 fibration　／　\`pinchedHomMap\_rightFibration\`　／　Core/MappingSpaceFibration
+- $`p` が trivial ⇒ 写像空間の写像も trivial　／　\`pinchedHomMap\_trivialKanFibration\`　／　Core/MappingSpaceTrivialFibration
+
+*Kan 性の証明の方針*：$`\mathrm{Hom}^R(x,y)` の右ホーン $`\Lambda^{n+1}_i`（$`0<i`）は、最後の頂点 $`y` を加えると $`X` の内ホーン $`\Lambda^{n+2}_i` になる。したがって quasicategory 性で充填できる。右ホーンが充填できれば、ホモトピー圏が亜群になることを経由して Kan 複体であることが従う（\`kanComplex\_of\_rightHornFillers\`。第 1 章の Joyal の定理を使う）。
+
+*f-a-basics.html — 1. 始対象と写像空間 — 写像空間の定義と比較*
+
+- 定義　／　$`n` 単体　／　スライスとの関係
+- $`\mathrm{Hom}^R(x,y)`（HTT 1.2.2、Lean の pinchedHom）　／　$`\Delta^{n+1}\to\mathcal C`、前の面 $`\Delta^{\{0..n\}}` が $`x` で定値、最後の頂点が $`y`　／　$`\mathcal C_{/y}\to\mathcal C` の $`x` 上のファイバー
+- $`\mathrm{Hom}^L(x,y)`　／　最初の頂点が $`x`、後ろの面が $`y` で定値　／　$`\mathcal C_{x/}\to\mathcal C` の $`y` 上のファイバー
+- $`\mathrm{Hom}(x,y)=\{x\}\times_{\mathcal C}\mathrm{Fun}(\Delta^1,\mathcal C)\times_{\mathcal C}\{y\}`　／　$`\Delta^n\times\Delta^1\to\mathcal C` で両端が定値　／　fat slice のファイバー
+- $`\mathrm{Map}_{\mathfrak C[\mathcal C]}(x,y)`　／　単体的圏の Hom（ネックレスで記述）　／　一般に Kan でない。置き換えが要る
+
+- $`\mathrm{Hom}^L,\mathrm{Hom}^R` は左・右 fibration の点上のファイバーなので Kan 複体。$`\mathrm{Hom}` はすべての射が同値な quasicategory なので Kan 複体（Joyal）。
+
+- $`\Delta^n\times\Delta^1\to\Delta^{n+1}`、$`(i,0)\mapsto i`、$`(i,1)\mapsto n+1` との合成で $`\mathrm{Hom}^R\hookrightarrow\mathrm{Hom}`。これらはホモトピー同値（HTT 4.2.1.8）。$`|\mathrm{Hom}^R|\simeq|\mathrm{Map}_{\mathfrak C[\mathcal C]}|`（HTT §2.2.4）。どの模型でも $`\pi_0=\mathrm{Hom}_{h\mathcal C}`。
 
 :::definition "kerodon_4_6_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeft")
 Kerodon Construction 4.6.5.1（[Tag 01KX](https://kerodon.net/tag/01KX)）。対応表の状態：本体にある。
@@ -430,6 +502,17 @@ Kerodon Proposition 4.6.5.10（[Tag 01L5](https://kerodon.net/tag/01L5)）。対
 
 仮定：Quasicategory X と頂点 x,y（Kerodon と一致）。結論：左右の pinch inclusion が IsQCatEquivalence。両端が Kan 複体なのでホモトピー同値（一致）。
 
+*02-mapping-limits.html — 1. 写像空間 — 左の写像空間と両者の比較*
+
+左 pinched 写像空間 $`\mathrm{Hom}^L(x,y)` は、反対圏の右写像空間の反対として定義している。
+
+\`\`\`text
+def pinchedHomLeft \{X : SSet.\{u\}\} (x y : X \_⦋0⦌) : SSet.\{u\} :=
+  (pinchedHom (X := X.op) (SSet.opObjEquiv.symm y) (SSet.opObjEquiv.symm x)).op
+\`\`\`
+
+Kan 性と $`\pi_0` の計算は、反対圏を通して右の場合から導かれる（Core/MappingSpaceLeft）。右の場合から双対で導く形になっている。左右の写像空間が同値であること（\`pinchedHomLeftRightEquivalence\`）は、区間模型を経由して F1/MappingSpaceModelEquivalence で示されている。Core ではなく F1 にある点に注意する。
+
 :::
 
 # 4.6.6 Digression: Diagrams in Slice ∞-Categories
@@ -441,39 +524,31 @@ tag := "kerodon-4-6-6"
 
 Kerodon [Tag 04HY](https://kerodon.net/tag/04HY)
 
-:::definition "kerodon_4_6_6_1"
+:::definition "kerodon_4_6_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder")
 Kerodon Notation 4.6.6.1（[Tag 04HZ](https://kerodon.net/tag/04HZ)）。対応表の状態：一部。
 
 片方の図式が空の場合、sliceOverまたはsliceUnderが原文の両側sliceの一側だけを固定した構成を直接与える。二つの非空図式を同時に固定するtilde fと反復構成全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder`
-
 :::
 
-:::definition "kerodon_4_6_6_4"
+:::definition "kerodon_4_6_6_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceConeFamilyMap")
 Kerodon Construction 4.6.6.4（[Tag 04J1](https://kerodon.net/tag/04J1)）。対応表の状態：一部。
 
 sliceConeFamilyMapはK₋=∅、K=Δ⁰のとき、原文の同じsliceからcone familyへの評価比較を直接構成する。両側の一般図式と一般Kは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceConeFamilyMap`
-
 :::
 
-:::theorem "kerodon_4_6_6_5"
+:::theorem "kerodon_4_6_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_sliceConeFamilyMap, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_cosliceCoconeFamilyMap, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_fatJoinComparison_fixedDiagram")
 Kerodon Theorem 4.6.6.5（[Tag 04J2](https://kerodon.net/tag/04J2)）。対応表の状態：一部。
 
 sliceConeFamilyMapとcosliceCoconeFamilyMapの圏同値性は、それぞれ片側の図式が空、K=Δ⁰の場合の同じ比較射の結論。一般の両側slice・任意Kは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_sliceConeFamilyMap`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_cosliceCoconeFamilyMap`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_fatJoinComparison_fixedDiagram`
-
 :::
 
-:::lemma_ "kerodon_4_6_6_7"
+:::lemma_ "kerodon_4_6_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_sliceConeFamilyMap")
 Kerodon Lemma 4.6.6.7（[Tag 04J4](https://kerodon.net/tag/04J4)）。対応表の状態：一部。
 
 isQCatEquivalence\_sliceConeFamilyMap はK=Δ⁰で同じslice→cone familyの比較が圏同値となる結論を直接返す。任意Kの関手空間版は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isQCatEquivalence_sliceConeFamilyMap`
 
 :::
 
@@ -507,6 +582,49 @@ tag := "kerodon-4-6-7"
 
 Kerodon [Tag 01LA](https://kerodon.net/tag/01LA)
 
+*f-c-spaces.html — 9. 形式化での証明*
+
+主定理は \`F1/Coherent/HomEquivalence.lean\` の \`coherentHomComparison\_isQCatEquivalence\` と系 \`…\_isSimplicialHomotopyEquivalence\`：局所 Kan な単体的圏の豊穣 Hom から coherent nerve の右 pinched 写像空間への比較写像は同値。カテゴリー同値は \`Core/PrecompositionEquivalence.lean\` の \`IsPrecompositionEquivalence f\`（すべての quasicategory $`Z` で前合成 $`\mathrm{Fun}(B,Z)\to\mathrm{Fun}(A,Z)` が同値）で、Kerodon の定義と同じ形。モデル構造は使わない。
+
+- Kerodon　／　リポジトリ（F1/Coherent/）　／　内容
+- $`\Phi(\Delta^n)`（4.6.7.27）　／　ResolutionFlags（\`CoherentResolutionFlag\`）、ResolutionSimplex　／　旗：始点から始まり始点が各集合の最小元の増大列。Kerodon の順序を反転した右 pinched 版
+- $`\Phi\dashv\mathrm{Sing}^Q`（4.6.7.19〜21）　／　ResolutionExtension（\`coherentResolution\`、\`coherentResolutionRightAdjoint\`）　／　米田に沿った左 Kan 拡張と制限米田関手の随伴
+- $`\rho_K`（4.6.7.22）　／　\`coherentResolutionProjectionAll\`　／　旗の最大元の射影の全 $`K` への拡張
+- $`\mathrm{Hom}\cong\mathrm{Sing}^Q\mathcal C(X,Y)`（4.6.7.16）　／　FlagIso（\`coherentPinchedFlagIso\`）　／　局所 Kan 性を仮定しない同型
+- $`\theta`　／　\`coherentResolutionComparison\`　／　$`Z\to\mathrm{Sing}^QZ`
+- 4.6.7.23（標準単体）　／　ResolutionInterval、ResolutionHomotopy、ResolutionEquivalence　／　下の (i)
+- 4.6.7.23（一般）　／　ResolutionMonomorphisms、Core/CellularNaturalComparison　／　下の (ii)
+- 4.6.7.23 ⇒ 4.6.7.5　／　ResolutionRetraction、ResolutionCylinder、HomEquivalence　／　下の (iii)
+
+- *(i) 標準単体*：blunt join を使わず直接縮約する。区間の切断 \`coherentResolutionSection n\`（7.2 の $`s_n`）、切断則、恒等から「射影の後に切断」への変形 \`coherentResolutionHomotopy n\`（旗を区間の旗へ広げる）、その各頂点での可逆性から、2-out-of-6 型の \`isPrecompositionEquivalence\_of\_composites\` で射影は同値。$`s_n` は固定した $`n` でしか使わないので自然性は要らない。
+
+- \*\*(ii) 一般の $`K`\*\*：汎用補題 \`isPrecompositionEquivalence\_natComponent\_of\_stdSimplex\`：単射・押し出し・$`\mathbb N` 型余極限・wide pushout を保つ関手の間の自然変換が $`\varnothing` とすべての $`\Delta^n` で前合成の同値なら、すべての $`X` で同値（境界の次数の帰納、セルの族の余積、骨格の押し出し、可算余極限）。Kerodon 4.6.2.10 と共用で、局所化の証明（LocalizationAllBases）と同じ型。
+
+- \*\*(iii) $`\rho` から $`\theta`\*\*：Kerodon の写像柱の代わりに、厳密な左逆 \`coherentResolutionComparison\_exists\_retraction\`（射影の押し出しに余単位を貼り、前合成の同値で延長して単射上で厳密化）と、ホモトピーの随伴転置による後合成の本質的全射性 \`coherentResolutionComparison\_postcomp\_essentiallySurjective\` から、両合成の可逆 2-cell を作る（\`coherentResolutionComparison\_isQCatEquivalence\`）。
+
+- 論点　／　Kerodon　／　形式化
+- 写像空間の向き　／　左 pinched　／　右 pinched（旗の順序を反転）
+- 標準単体　／　blunt join で帰納　／　区間の切断と変形による直接の縮約
+- 一般の $`K`　／　骨格の帰納法　／　汎用のセル帰納法（他と共用）
+- $`\rho\Rightarrow\theta`　／　$`\mathrm{Fun}(K,-)^{\simeq}` で試す（写像柱）　／　厳密な左逆と転置による右逆
+- 適用範囲　／　$`\mathcal C(X,Y)` が ∞ 圏　／　$`\mathcal C(X,Y)` が Kan 複体
+
+*route-classification.html — 5. 段 3：$`\mathcal S=N^{hc}(\mathrm{Kan})` と写像空間の比較定理 — 5.4（3.4）$`\mathcal S` の写像空間と合成*
+
+3.3 を $`\mathrm{Kan}` に適用して $`\mathrm{Map}_{\mathcal S}(K,L)\simeq\mathrm{Fun}(K,L)`。
+
+- 写像空間　／　値　／　意味
+- $`\mathrm{Map}_{\mathcal S}(\Delta^0,K)`　／　$`K`　／　一点からの写像の空間（段 4 の鍵）
+- $`\mathrm{Map}_{\mathcal S}(K,\Delta^0)`　／　一点　／　終対象
+- $`\mathrm{Map}_{\mathcal S}(\emptyset,K)`　／　一点　／　始対象
+- $`\mathrm{Map}_{\mathcal S}(K,K)` の同値の部分　／　$`\mathrm{hAut}(K)`　／　$`\mathcal S^{\simeq}\simeq\coprod_{[K]}B\,\mathrm{hAut}(K)` の正当化
+
+*合成は写像の合成と一致*：合成は自明 Kan fibration $`\{\Delta^2\to\mathcal S\}_{K,L,M}\to\mathrm{Map}(K,L)\times\mathrm{Map}(L,M)` の切断で作るが、$`\mathcal S` では $`f_{02}:=gf` と定値ホモトピーの 2 単体で族として切断が取れる。選び方は可縮なので、∞ 圏の合成は $`\theta` を通して写像の合成と一致。前合成も $`f^*` に対応。
+
+\*\*$`\mathrm{Map}_{\mathcal S}(\Delta^0,-)` は恒等関手\*\*：fibration で言えば $`\mathcal S_*:=\mathcal S_{\Delta^0/}\to\mathcal S` は左 fibration で、$`K` 上の fiber は $`\mathrm{Hom}^L_{\mathcal S}(\Delta^0,K)\simeq K`。これが普遍左 fibration（段 4）。同じ定理から $`\mathrm{LFib}(B)` の写像空間は $`\mathrm{Fun}_B(E,E')`、$`\mathrm{Cat}_\infty` の写像空間は $`\mathrm{Fun}(\mathcal C,\mathcal D)^{\simeq}`。
+
+*Lean での扱い*：\`coherentHomEquivalence\`（F1/Coherent/HomEquivalence）を \`KanObject\` に適用。一点からの射の合成と点での評価 \`coherentKanPointComposition\_pre\`、\`coherentKanPointComposition\_evaluate\`（F1/Coherent/KanPointComposition）、右 Hom の合成と輸送 \`coherentKanRightCompositionSquare\`、\`coherentKanRightCompositionTransportIso\`（F1/Coherent/KanRightCompositionTransport）、表現可能関手の coslice 比較 \`fiberIso\`、\`fiberIso\_square\`（F1/Coherent/KanCosliceComparison）。
+
 :::definition "kerodon_4_6_7_1" (uses := "kerodon_1_1_0_6")
 Kerodon Notation 4.6.7.1（[Tag 01LB](https://kerodon.net/tag/01LB)）。対応表の状態：なし。
 
@@ -528,6 +646,46 @@ Kerodon Theorem 4.6.7.5（[Tag 01LE](https://kerodon.net/tag/01LE)）。対応�
 
 右pinchedのcoherentHomComparisonのホモトピー同値性であり、原文の左pinchedの指定θの同値性ではない。対象だけでなく比較射を同定する宣言が必要。
 
+*f-c-spaces.html — 7. 写像空間の比較定理 — 7.1 主張と $`\mathrm{Hom}^L` の具体形*
+
+$`\mathcal C` が局所 Kan なら $`\mathcal C(x,y)\simeq\mathrm{Hom}^L_{N^{hc}\mathcal C}(x,y)`。$`\mathrm{Hom}^L` の $`n` 単体は頂点 0 が $`x`、面 $`\{1,\dots,n+1\}` が $`y` で退化した $`(n+1)` 単体、つまり $`\mathfrak C[\Delta^{n+1}]\to\mathcal C` で頂点 $`1,\dots,n+1` を $`y` に、$`\mathrm{Hom}(j,k)`（$`j\ge1`）を $`\mathrm{id}_y` に送るもの。$`\mathrm{Hom}(j,k)` をつぶす合成の関係で立方体を割って
+
+$$`J^n:=(\Delta^1)^n\big/(S\sim S\cup T),\qquad\mathrm{Hom}^L(x,y)_n=\mathrm{Hom}_{\mathrm{sSet}}(J^n,\mathcal C(x,y)).`
+
+$`S` の類は $`m(S)=\min(S\setminus\{0\})` で決まり、$`J^n` の頂点は $`n+1` 個。$`S\subseteq S'` なら $`m(S)\ge m(S')` なので $`S\mapsto n+1-m(S)` は $`J^n` を経由し、余単体的な写像 $`r\colon J^\bullet\to\Delta^\bullet` を与える。
+
+\*\*$`n=2`\*\*：正方形の頂点 $`\varnothing,\{1\},\{2\},\{1,2\}` の $`m` は $`3,1,2,1`。$`\mathrm{Hom}(1,3)=\Delta^1` との合成で辺 $`\{1\}\to\{1,2\}` が一点につぶれ、三角形 $`\varnothing\subseteq\{2\}\subseteq\{1,2\}` は $`\Delta^2` のまま、三角形 $`\varnothing\subseteq\{1\}\subseteq\{1,2\}` は一辺が退化した 2 単体になる。$`J^2=\Delta^2\cup_{\Delta^1}(\text{一辺が退化した 2 単体})\ne\Delta^2`。$`J^n` と $`\Delta^n` はどちらも弱可縮だが同型ではない。
+
+*f-c-spaces.html — 7. 写像空間の比較定理 — 7.2 比較写像と素朴な方針の難点*
+
+$`\theta=r^*\colon\mathcal C(x,y)=\mathrm{Hom}(\Delta^\bullet,\mathcal C(x,y))\to\mathrm{Hom}(J^\bullet,\mathcal C(x,y))=\mathrm{Hom}^L(x,y)` は選択を使わない明示的な単体的写像。定理は「Kan 複体 $`Z` について $`r^*\colon\mathrm{Hom}(\Delta^\bullet,Z)\to\mathrm{Hom}(J^\bullet,Z)` はホモトピー同値」に帰着する。各 $`r_n` は弱ホモトピー同値で切断 $`s_n\colon k\mapsto\{0\}\cup[n+1-k,n+1]` をもつが、$`s_n` は $`n` について自然でないので逆写像を単体ごとに作れない。$`r` は単射でないので $`\theta` は trivial fibration でもなく、持ち上げで直接は示せない。Reedy 型の議論や二重単体の対角補題でも書けるが、Kerodon と形式化は別の道をとる。
+
+*f-c-spaces.html — 8. Kerodon 4.6.7 の証明（モデル圏なし）*
+
+- 構成　／　内容
+- pinched 写像空間（4.6.5.1）　／　$`\mathrm{Hom}^L_{\mathcal C}(X,Y)=\mathcal C_{X/}\times_{\mathcal C}\{Y\}`。fat 版 $`\mathrm{Hom}` への包含はホモトピー同値（4.6.5.10）
+- $`\mathcal E[K]`（4.6.7.1）　／　対象 $`x,y`、$`\mathrm{Hom}(x,y)=K`。$`\mathcal E[K]\to\mathcal C` は $`K\to\mathcal C(X,Y)` と同じ
+- $`\theta`（4.6.7.3）　／　$`S\mapsto\min(S\setminus\{x\})`。7.2 の $`r^*` そのもの
+- $`\Phi(K)=\mathrm{Hom}_{\mathrm{Path}[\Sigma K]}(x,y)`（4.6.7.10）　／　$`\Sigma K` は非約懸垂。$`\Phi(\Delta^n)=J^n`、余単体的対象 $`Q^\bullet`
+- 随伴（4.6.7.16〜21）　／　$`\{K\to\mathrm{Hom}^L\}\cong\{\Phi(K)\to\mathcal C(X,Y)\}`。$`\Phi=&#124;-&#124;^Q` は余極限と単射を保つ
+- $`\rho_K\colon\Phi(K)\to K`（4.6.7.22）　／　$`\theta` を随伴で移したもの。$`K=\Delta^n` なら $`r_n`
+
+*route-classification.html — 5. 段 3：$`\mathcal S=N^{hc}(\mathrm{Kan})` と写像空間の比較定理 — 5.3（3.3）写像空間の比較定理*
+
+*主張*（Kerodon Theorem 4.6.7.5）：局所 Kan な $`\mathcal C` について比較写像 $`\theta\colon\mathcal C(X,Y)\to\mathrm{Hom}^L_{N^{hc}\mathcal C}(X,Y)` はホモトピー同値（$`\mathrm{Hom}^R` とは向きの反転を除いて同じ）。一般形（Theorem 4.6.7.8）：$`\mathcal C(X,Y)` が準圏なら $`\mathrm{Hom}^L` も準圏で $`\theta` は圏同値。Kan 性はこの準圏性にだけ使う。
+
+1. \*\*$`\mathrm{Hom}^L` は $`\mathcal C(X,Y)` だけで決まる\*\*：$`n` 単体は懸垂 $`\Sigma(K)=(\{x\}\star K)\sqcup_K\{y\}`（$`K=\Delta^n`）からの写像。$`\Phi(K):=\mathfrak C\Sigma K` と置くと $`\mathrm{Hom}(K,\mathrm{Hom}^L)\cong\mathrm{Hom}(\Phi(K),\mathcal C(X,Y))`、つまり $`\mathrm{Hom}^L` は $`\Phi` の右随伴。
+
+2. \*\*$`\Phi(\Delta^n)` は太らせた $`\Delta^n`\*\*：$`\Phi(\Delta^0)=\Delta^0`、$`\Phi(\Delta^1)=\Delta^1`（向き反転、データは $`f_{01},f_{02}` と $`f_{02}\to f_{01}` の辺）、$`\Phi(\Delta^2)` は $`t_1=1` の辺を潰した正方形。一般に単体は最大元を共有する部分集合の減少列（旗、Kerodon Ex. 4.6.7.27）で、$`\Phi(\Delta^n)\cong\Delta^0\diamond\Phi(\Delta^{n-1})`（鈍い join）。頂点を $`[n]` の元に送る $`\rho_K\colon\Phi(K)\to K` が $`\theta` に対応。
+
+3. *鍵の補題*（Prop. 4.6.7.23）：$`\rho_K` は圏同値。有限な $`K` に帰着（フィルター余極限）、$`\Phi` が余極限と単射を保つので単体ごとの帰納法で $`\Delta^n` に帰着、$`\rho_{\Delta^n}` は $`\mathrm{id}\diamond\rho_{\Delta^{n-1}}`（帰納法）と鈍い join から join への比較（Prop. 4.6.2.12）の合成。
+
+4. *結論*：内アノダインな $`A\to B` で $`\Phi(A)\to\Phi(B)` は単射かつ圏同値なので $`\mathrm{Hom}^L` は準圏。$`\pi_0\mathrm{Fun}(K,M)^{\simeq}\to\pi_0\mathrm{Fun}(K,\mathrm{Hom}^L)^{\simeq}=\pi_0\mathrm{Fun}(\Phi(K),M)^{\simeq}`（Cor. 4.6.7.26）は $`\rho_K` の前合成で全単射、よって $`\theta` は圏同値。$`M` が Kan ならホモトピー同値。
+
+*直観*：$`N^{hc}\mathcal C` の写像空間の単体は $`\mathcal C(X,Y)` の単体を太らせた形 $`\Phi(\Delta^n)` で見たもので、太らせても圏同値なのでホモトピー型は変わらない。$`\mathfrak C` の一般論は要らず、懸垂の場合だけを直接計算する。
+
+*Lean での扱い*：比較写像 \`coherentHomComparisonObj\` など（F1/Coherent/HomComparison、Kerodon Construction 4.6.7.3 を右 pinched の向きに）。比較定理 \`coherentHomComparison\_isQCatEquivalence\`、\`coherentHomComparison\_isSimplicialHomotopyEquivalence\`、\`coherentHomEquivalence\`（F1/Coherent/HomEquivalence）。旗と解像は F1/Coherent の \`Flag\*.lean\`、\`MaximumFlag.lean\`、\`LeftResolution\*.lean\`。方針は「旗の解像の右随伴との同型で比較写像を同定し同値性を移す」で上と同じ組み立て。
+
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_isSimplicialHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_isQCatEquivalence`
 
 :::
@@ -536,6 +694,23 @@ Kerodon Theorem 4.6.7.5（[Tag 01LE](https://kerodon.net/tag/01LE)）。対応�
 Kerodon Theorem 4.6.7.8（[Tag 01LG](https://kerodon.net/tag/01LG)）。対応表の状態：なし。
 
 右pinched/旗の解像についての型で、原文の左pinchedの指定θまたはPath\[ΣK\]の特定のΦ・ρとの同定がない。Hom が Kan 複体の場合（Thm 4.6.7.5）だけ。Hom が ∞ 圏のときの同値は未。
+
+*f-c-spaces.html — 8. Kerodon 4.6.7 の証明（モデル圏なし）*
+
+*定理 4.6.7.8 ⇒ 4.6.7.5*：$`\mathrm{Hom}^L` は ∞ 圏（4.6.7.25：内部 horn を $`\Phi(i)` に沿った延長に移す）。すべての $`K` で $`\pi_0\mathrm{Fun}(K,-)^{\simeq}` の全単射を示せばよく、categorical mapping cylinder（4.6.7.26）で右辺を $`\pi_0\mathrm{Fun}(\Phi(K),\mathcal C(X,Y))^{\simeq}` と同一視すると $`\theta` は $`\rho_K` の前合成になり全単射。$`\mathcal C(X,Y)` が ∞ 圏であるだけでよく、局所 Kan なら Kan 複体の間のカテゴリー同値なのでホモトピー同値（Example 4.6.7.7 が $`\mathrm{Fun}(X,Y)\simeq\mathrm{Hom}_{\mathcal S}(X,Y)`）。素朴な方針との違いは、帰納法を余単体の次数でなく定義域 $`K` の骨格で行い、自然な $`\rho_K` をより強いカテゴリー同値として示すことで、$`s_n` が自然でない問題が起きない点。
+
+*f-c-spaces.html — 10. 局所 Kan でない場合に止まる場所*
+
+- 段　／　仮定　／　quasicategory $`Z=\mathcal C(X,Y)` で通るか
+- $`N^{hc}(\mathcal C)` が quasicategory（Coherent）　／　局所 Kan　／　通らない（4.3）
+- $`\mathrm{Hom}\cong\mathrm{Sing}^QZ`（FlagIso）　／　なし　／　通る
+- $`\rho_K` が前合成の同値　／　なし　／　通る
+- $`\mathrm{Sing}^QZ` が quasicategory（ResolutionRightQuasicategory）　／　$`Z` が quasicategory　／　通る
+- 厳密な左逆（ResolutionRetraction）　／　\`\[KanComplex Z\]\` と書いている　／　中の \`exists\_extension\_of\_functorIso\` は quasicategory で済むので、おそらく通る
+- 後合成の本質的全射性（ResolutionCylinder）　／　\`\[KanComplex Z\]\`　／　*止まる*：転置したホモトピー $`H` を \`functorIsoOfSimplicialHomotopy\`（標的が Kan）で同型に戻しており、quasicategory では $`H` の可逆性を別に示す必要がある
+- 単体的ホモトピー同値への変換　／　両側が Kan　／　結論の形の問題（∞ 圏の同値で止めればよい）
+
+一般化するなら、Kerodon 4.6.7.8 の方式（写像柱で「同型の転置は同型」を処理）、転置の可逆性を直接示す（円筒の比較 $`\Phi(K\times\Delta^1)\to\Phi K\times\Delta^1` が可逆な辺を保つことを示して差し替える）、Hom を $`\mathrm{Ex}^\infty` で Kan 化する（2 射の向きは消える）のいずれか。$`\mathcal S` と $`\mathrm{Cat}_\infty` はどちらも局所 Kan なので今の形で足り、Hom が ∞ 圏の場合が要るのは $`\mathrm{Cat}_\infty` の 2 圏構造や $`\mathrm{Corr}` の 2 射のような (∞,2) 的な場面で、そこでは写像空間の比較より先に (∞,2) の模型を選ぶ問題になる。
 
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionComparison_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionRightAdjoint_quasicategory`
 
@@ -616,6 +791,10 @@ Kerodon Proposition 4.6.7.23（[Tag 01LW](https://kerodon.net/tag/01LW)）。対
 
 右pinched/旗の解像についての型で、原文の左pinchedの指定θまたはPath\[ΣK\]の特定のΦ・ρとの同定がない。仮定：任意の単体集合 K（Kerodon と一致）。結論：coherentResolutionProjectionAll.app K は前合成同値（Lean が弱い：原文の指定 ρ\_K と同じ射であることを引用先から確認できない）。
 
+*f-c-spaces.html — 8. Kerodon 4.6.7 の証明（モデル圏なし）*
+
+\*\*命題 4.6.7.23：$`\rho_K` はすべての $`K` でカテゴリー同値\*\*。有限に帰着（$`\Phi` は余極限を保ち、カテゴリー同値は filtered 余極限で閉じる、4.8.8.11）→ 骨格の帰納法（単射に沿った押し出しはカテゴリー的押し出し、4.5.5.9）→ $`\Delta^n`：$`\Phi(\Delta^n)\cong\Delta^0\diamond\Phi(\Delta^{n-1})`（4.6.7.29）で、$`\rho_{\Delta^n}` は $`\mathrm{id}\diamond\rho`（帰納法と 4.6.2.7）と blunt join と join の比較 $`c\colon\Delta^0\diamond\Delta^{n-1}\to\Delta^n`（4.6.2.12）の合成。blunt join $`A\diamond B` は円柱 $`A\times\Delta^1\times B` の両端を $`A`、$`B` につぶしたもの。$`\Phi(\Delta^2)\cong\Delta^0\diamond\Delta^1`（正方形の一辺をつぶしたもの）は 7.1 の $`J^2` と一致する。
+
 宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionProjectionAll_isPrecompositionEquivalence`
 
 :::
@@ -679,12 +858,10 @@ tag := "kerodon-4-6-8"
 
 Kerodon [Tag 01PF](https://kerodon.net/tag/01PF)
 
-:::definition "kerodon_4_6_8_1" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_4_6_8_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace") (uses := "kerodon_1_1_0_6")
 Kerodon Notation 4.6.8.1（[Tag 01PG](https://kerodon.net/tag/01PG)）。対応表の状態：一部。
 
 intervalMappingSpaceは頂点列が二つ、n=1の場合の原文と同じ区間関手空間の両端固定fiberを直接構成する。任意長の列は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace`
 
 :::
 

@@ -1,13 +1,17 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
 import SerrePositivity.CommutativeAlgebra.RegularLocalRing.FlatBaseChange
 import SerrePositivity.CommutativeAlgebra.RootTower.Basic
 import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 import SerrePositivity.IntersectionMultiplicity.Basic
 import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
 import SerrePositivity.Paper.Section2.Lemma2_4
+import SerrePositivity.Paper.Section2.LengthAlgebra
 import SerrePositivity.Paper.Section2.LengthAlgebra.EqualChar
+import SerrePositivity.Paper.Section2.LengthAlgebra.Formulas
+import SerrePositivity.Paper.Section2.LengthAlgebra.MixedChar
 import SerrePositivity.Paper.Section2.NormalizationBase
 import SerrePositivity.Paper.Section2.ResidueFieldExtension
 import SerrePositivity.Paper.Section3.LengthComputation
@@ -16,6 +20,9 @@ import SerrePositivity.Paper.Section4.LengthHypotheses
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§2 Residue fields and normalized length" =>
 %%%
@@ -231,7 +238,7 @@ number := false
 tag := "paper-2-3"
 %%%
 
-:::theorem "paper_2_5" (uses := "paper_eq_2_1, paper_eq_2_4, paper_eq_2_5, paper_eq_2_6, paper_eq_2_7, paper_eq_2_8, paper_2_2, paper_2_3, paper_2_4, ext_BS19_8_5, clmst_4_0_1, clmst_4_0_10, clmst_4_0_14, clmst_4_0_4, ext_Ma17_2_2, ext_Ma17_2_4, ext_Monsky, ext_Roberts89")
+:::theorem "paper_2_5" (lean := "SerrePositivity.Section2.theorem_2_5, SerrePositivity.Section2.mixedPerfectoid_length_properties, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3") (uses := "paper_eq_2_1, paper_eq_2_4, paper_eq_2_5, paper_eq_2_6, paper_eq_2_7, paper_eq_2_8, paper_2_2, paper_2_3, paper_2_4, ext_BS19_8_5, clmst_4_0_1, clmst_4_0_10, clmst_4_0_14, clmst_4_0_4, ext_Ma17_2_2, ext_Ma17_2_4, ext_Monsky, ext_Roberts89")
 **定理 2.5**　全パラメータに使える長さ代数の存在。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L352。固定した正規化基底の上でCと塔作用を一つ選び、全パラメータと冪についてKoszul消滅・重複度公式・基底のランク公式を得る型がある。等標数の証明は実装されているが、混標数のCの存在はBSpfdのE3界面のsorryに依存する。
@@ -264,13 +271,11 @@ $`D` と $`A\subseteq D` を補題 8.4 のとおりとする。$`\Lambda` 作用
 
 *Lean:* \`Section2.theorem\_2\_5\`。この定理自体は、標数別の構成（\`LengthAlgebraConstruction\`）から証明している。標数 $`p` は perfection・塔の作用・Frobenius 長さ極限を、パラメータ Koszul 複体の初等的な消滅（\`tendsto\_length\_koszulHomologySelf\_frobenius\_pow\`、引用なし）へ接続済み。混標数も完備塔・perfectoidization と CLMST の引用を接続済み。(b) への書き換えは \`lengthAlgebra\_base\_values\`。
 
-宣言：`SerrePositivity.Section2.theorem_2_5`、`SerrePositivity.Section2.mixedPerfectoid_length_properties`、`SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`
-
 外の文献：BS19 8.5、CLMST 4.0.1、CLMST 4.0.10、CLMST 4.0.14、CLMST 4.0.4、Ma17 2.2、Ma17 2.4、Monsky、Roberts89
 
 :::
 
-:::definition "paper_eq_2_4" (uses := "paper_eq_2_5, paper_2_3, paper_2_4, clmst_4_0_10, clmst_4_0_4, ext_Ma17_2_4, ext_Roberts89")
+:::definition "paper_eq_2_4" (lean := "SerrePositivity.Section2.theorem_2_5") (uses := "paper_eq_2_5, paper_2_3, paper_2_4, clmst_4_0_10, clmst_4_0_4, ext_Ma17_2_4, ext_Roberts89")
 **式 (2.4)**　全パラメータの正次数Koszul長の零性。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L357。同じCの存在と一緒に返す全パラメータ・全冪の公式。混標数でのCの構成がE3入力に依存する。
@@ -301,24 +306,20 @@ $`D` が整域であることも、$`R'\to D` が単射であることも使わ�
 
 *Lean:* \`CommutativeAlgebra.ParameterKoszulGrowth\` の \`exists\_length\_koszulHomologySelf\_pow\_le\` と \`tendsto\_length\_koszulHomologySelf\_frobenius\_pow\`（証明済み、引用なし）。部品は \`length\_le\_length\_quotient\_smul\_of\_subquotient\`、\`exists\_ne\_zero\_smul\_torModule\_eq\_zero\`、\`length\_torModule\_le\_of\_smul\_eq\_zero\`、\`exists\_length\_quotient\_generator\_pow\_le\`、\`length\_koszulHomologySelf\_eq\_length\_torModule\`。Roberts の一般形の引用（旧 \`Inputs.frobenius\_homology\_length\_tendsto\_zero\`）は主定理の経路で使わないので削除した。
 
-宣言：`SerrePositivity.Section2.theorem_2_5`
-
 外の文献：CLMST 4.0.10、CLMST 4.0.4、Ma17 2.4、Roberts89
 
 :::
 
-:::definition "paper_eq_2_5" (uses := "paper_eq_2_4, paper_eq_2_8, paper_2_3, paper_2_4, clmst_4_0_14, clmst_4_0_4")
+:::definition "paper_eq_2_5" (lean := "SerrePositivity.Section2.theorem_2_5, SerrePositivity.Section2.parameter_quotient_values_pow") (uses := "paper_eq_2_4, paper_eq_2_8, paper_2_3, paper_2_4, clmst_4_0_14, clmst_4_0_4")
 **式 (2.5)**　パラメータ商長の重複度公式。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L360。全パラメータに共通のCの存在にはE3入力が残る。v=1の重複度公式から冪への拡張自体はsorryなし。
-
-宣言：`SerrePositivity.Section2.theorem_2_5`、`SerrePositivity.Section2.parameter_quotient_values_pow`
 
 外の文献：CLMST 4.0.14、CLMST 4.0.4
 
 :::
 
-:::definition "paper_eq_2_6"
+:::definition "paper_eq_2_6" (lean := "SerrePositivity.Section2.theorem_2_5, SerrePositivity.Section2.base_parameter_values_of_multiplicity")
 **式 (2.6)**　基底パラメータ商長のrank公式。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.7 / layout L365。既存のC上の重複度からrank値への移行は証明済みだが、両標数に共通する存在主張にはE3のsorryが残る。
@@ -342,8 +343,6 @@ $`\mathfrak{m}_D^N\subseteq\mathfrak{m}_A D` となる $`N` があるので、$`
 - (b) $`(C_D,\lambda_D)` は $`\lambda`-平坦でランク $`\operatorname{rank}_A D` の長さ付き $`A` 代数。
 
 (b) は (a) と命題 4.15 から出る。ランクは $`A` の正則パラメータ系 $`z` について $`e((z),D) = \operatorname{rank}_A D`。元論文は (a) を全ての $`z^v` についての形で述べるが、$`z^v` もパラメータ系なので同じことである。
-
-宣言：`SerrePositivity.Section2.theorem_2_5`、`SerrePositivity.Section2.base_parameter_values_of_multiplicity`
 
 :::
 

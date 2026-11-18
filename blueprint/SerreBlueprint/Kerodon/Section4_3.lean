@@ -5,15 +5,21 @@ import Mathlib.CategoryTheory.Comma.Over.Basic
 import Mathlib.CategoryTheory.Join.Basic
 import Mathlib.CategoryTheory.Limits.Cones
 import Mathlib.Topology.Order.UpperLowerSetTopology
+import SerrePositivity.InfinityCategories.HTT.Section1_2_9.OverIso
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.JoinQuasicategory
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanFibrationTools
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.JoinCells
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightConeBoundary
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeAnodyne
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeMapRightAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Coslice
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceEndpointFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRestriction
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRestrictionEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceRightAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.FibrationRestriction
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinBoundary
@@ -24,16 +30,23 @@ import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCat
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinRightBoundaryAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinRightColimits
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeConeAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeCoslice
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSliceRightFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RightConeMonoAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Slice
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceRestriction
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceRestrictionEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.TrivialFibrationCocone
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.LeftKanFibration
+import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.UnderIso
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "4.3 The Slice and Join Constructions" =>
 %%%
@@ -170,12 +183,10 @@ Kerodon Notation 4.3.3.1（[Tag 016L](https://kerodon.net/tag/016L)）。対応�
 
 :::
 
-:::definition "kerodon_4_3_3_2"
+:::definition "kerodon_4_3_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join.augObj, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join.Simplex")
 Kerodon Construction 4.3.3.2（[Tag 016M](https://kerodon.net/tag/016M)）。対応表の状態：一部。
 
 Join.Simplex は空区間の値が一点である通常単体集合のcanonicalな増大の場合、初期区間の長さと左右の単体の組という原文の次数別データを直接与える。任意のLin上の増大関手とその全作用は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join.augObj`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.Join.Simplex`
 
 :::
 
@@ -195,7 +206,7 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::definition "kerodon_4_3_3_13"
+:::definition "kerodon_4_3_3_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso")
 Kerodon Construction 4.3.3.13（[Tag 016Y](https://kerodon.net/tag/016Y)）。対応表の状態：一部。
 
 join と joinMap はcanonicalな増大の初期区間の分割式で原文のjoinの単体と射を直接構成する。Lin上の関手圏との可換図式を束ねる同型は含まない。
@@ -212,7 +223,18 @@ $$`\bigl(K^+(\theta|_{I'})(\sigma),\ L^+(\theta|_{[m]\setminus I'})(\tau)\bigr)`
 
 に送る。ここで $`\theta|_{I'}\colon I'\to I`、$`\theta|_{[m]\setminus I'}\colon[m]\setminus I'\to[n]\setminus I` は $`\theta` の制限である。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso`
+:::
+
+:::proposition "kerodon_4_3_3_16"
+Kerodon Remark 4.3.3.16（[Tag 016Z](https://kerodon.net/tag/016Z)）。対応表の状態：照合の対象外。
+
+*定義 4.4 （join の関手性と包含）*
+
+単体的集合の射 $`f\colon K\to K'`、$`g\colon L\to L'` について、$`f\star g\colon K\star L\to K'\star L'` を各成分で $`(\sigma,\tau)\mapsto(f(\sigma),g(\tau))` により定める（$`\ast` は $`\ast` に送る）。また包含
+
+$$`\iota_K\colon K\to K\star L,\quad\sigma\mapsto(\sigma,\ast)\ (I=[n]\text{ の成分}),\qquad \iota_L\colon L\to K\star L,\quad\tau\mapsto(\ast,\tau)\ (I=\varnothing\text{ の成分})`
+
+を定める。
 
 :::
 
@@ -322,6 +344,15 @@ $$`X_{/p}([n])=\{\sigma\colon\Delta^n\star K\to X\mid\sigma\circ\iota_K=p\},\qqu
 
 :::
 
+:::proposition "kerodon_4_3_5_2"
+Kerodon Remark 4.3.5.2（[Tag 017X](https://kerodon.net/tag/017X)）。対応表の状態：照合の対象外。
+
+*定義 4.7 （スライスとコスライスの射影）*
+
+単体的集合の射 $`X_{/p}\to X` を、$`n` 単体 $`\sigma\colon\Delta^n\star K\to X` を $`\sigma\circ\iota_{\Delta^n}\colon\Delta^n\to X`、すなわち $`X([n])` の元に送ることで定める。同様に $`X_{p/}\to X` を、$`\sigma\colon K\star\Delta^n\to X` を $`\sigma\circ\iota_{\Delta^n}` に送ることで定める（$`\iota_{\Delta^n}` は定義 4.4 の包含。$`\Delta^n\to X` と $`X([n])` の元は米田の補題で同一視する）。
+
+:::
+
 :::definition "kerodon_4_3_5_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection")
 Kerodon Variant 4.3.5.3（[Tag 017Y](https://kerodon.net/tag/017Y)）。対応表の状態：本体にある。
 
@@ -336,12 +367,10 @@ Kerodon Notation 4.3.5.6（[Tag 0181](https://kerodon.net/tag/0181)）。対応�
 
 :::
 
-:::definition "kerodon_4_3_5_12" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_4_3_5_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry") (uses := "kerodon_1_1_0_6")
 Kerodon Construction 4.3.5.12（[Tag 0188](https://kerodon.net/tag/0188)）。対応表の状態：一部。
 
 sliceOverUncurry と sliceUnderUncurry をそれぞれ恒等射に適用すると、原文のslice/cosliceの評価による収縮写像を直接構成する。指定の各制限の等式の一式までは引用型にない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry`
 
 :::
 
@@ -349,6 +378,10 @@ sliceOverUncurry と sliceUnderUncurry をそれぞれ恒等射に適用する�
 Kerodon Proposition 4.3.5.13（[Tag 0189](https://kerodon.net/tag/0189)）。対応表の状態：本体にある。
 
 仮定：任意の f:K→X と単体集合 A（Kerodon と一致）。結論：A→sliceOver f と K 上で f に等しい A⋆K→X の全単射。coslice では K⋆A に入れ替える（一致）。
+
+*01-quasicategories.html — 4. join と slice — slice と普遍性*
+
+\`sliceOverEquiv\` が「$`A\to X_{/p}` は $`A\star K\to X` と同じ」という随伴で、以後の持ち上げ問題の言い換えはすべてこれによる。coslice（\`sliceUnder\`）も同様に定義されている。
 
 :::
 
@@ -359,12 +392,10 @@ Kerodon Corollary 4.3.5.14（[Tag 018A](https://kerodon.net/tag/018A)）。対�
 
 :::
 
-:::corollary "kerodon_4_3_5_17"
+:::corollary "kerodon_4_3_5_17" (lean := "SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso, SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderIso")
 Kerodon Corollary 4.3.5.17（[Tag 018C](https://kerodon.net/tag/018C)）。対応表の状態：一部。
 
 nerveOverIso/nerveUnderIso は図式 K が一点で F が一つの対象 c を選ぶ場合の同じslice/cosliceのnerve比較同型。任意Kとそのホモトピー圏を経由する比較は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.HTT.Section1_2_9.nerveOverIso`、`SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveUnderIso`
 
 :::
 
@@ -383,6 +414,18 @@ tag := "kerodon-4-3-6"
 %%%
 
 Kerodon [Tag 018E](https://kerodon.net/tag/018E)
+
+*01-quasicategories.html — 4. join と slice — slice は quasicategory（Joyal の補題）*
+
+- 内容　／　Lean　／　場所
+- 生成ホーンの場合の計算　／　\`joinUnion\_rightHorn\_boundary\_innerAnodyne\`　／　Core/JoinCells
+- 持ち上げ問題の移送　／　\`joinUnion\_hasLiftingProperty\_of\_relativeSliceOverMap\`　／　Core/JoinLifting
+- 命題　／　\`joinUnion\_innerAnodyne\_of\_rightAnodyne\`　／　Core/JoinAnodyne
+- 系　／　\`sliceOverProjection\_rightFibration\`、\`sliceOver\_quasicategory\`（instance）　／　Core/RightFibration
+
+*f-a-basics.html — 2. スライスと join の補題 — スライスが quasicategory であること*
+
+fat slice $`\mathcal C^{x/}` は、$`\partial\Delta^1\subseteq\Delta^1` と inner anodyne の pushout-product が inner anodyne（HTT 2.3.2.4）なので $`\mathrm{Fun}(\Delta^1,\mathcal C)\to\mathcal C\times\mathcal C` が inner fibration、その引き戻しとして quasicategory。join を使わず直積だけで済む。
 
 :::proposition "kerodon_4_3_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOver_quasicategory")
 Kerodon Proposition 4.3.6.1（[Tag 018F](https://kerodon.net/tag/018F)）。対応表の状態：本体にある。
@@ -406,6 +449,31 @@ Kerodon Construction 4.3.6.3（[Tag 018H](https://kerodon.net/tag/018H)）。対
 Kerodon Proposition 4.3.6.4（[Tag 018J](https://kerodon.net/tag/018J)）。対応表の状態：本体にある。
 
 仮定：部分複体 A⊆A′、B⊆B′ で左の包含が右アノダインまたは右の包含が左アノダイン（Kerodon と一致）。結論：joinUnion の包含が内アノダイン（一致）。
+
+*01-quasicategories.html — 4. join と slice — slice は quasicategory（Joyal の補題）*
+
+*命題*（HTT Lemma 2.1.2.3、Kerodon Prop. 4.3.6.4）. $`A_0\hookrightarrow A` が右 anodyne なら $`A_0\star B\cup A\star B_0\hookrightarrow A\star B` は inner anodyne。左右を入れ替えた版も成り立つ。
+
+*証明の方針*：生成元 $`\Lambda^p_i\hookrightarrow\Delta^p`（$`0<i`）と $`\partial\Delta^q\hookrightarrow\Delta^q` について、pushout-join が $`\Delta^{p+q+1}` の内ホーンになることを、\`joinStdSimplexIso\` の下で頂点の集合を数えて確かめる（JoinCells）。一般の右 anodyne 射へは、llp の閉包性（pushout・合成・レトラクト）で広げる。その際、持ち上げ問題を slice への持ち上げ問題に移すのが JoinLifting の役目である。
+
+*f-a-basics.html — 2. スライスと join の補題 — スライスが quasicategory であること*
+
+射影 $`\mathcal C_{p/}\to\mathcal C` が左 fibration であることを示せば、inner fibration の合成として従う。持ち上げ問題 $`\Lambda^n_i\subseteq\Delta^n`（$`0\le i<n`）は、包含 $`K\star\Lambda^n_i\cup_{\Lambda^n_i}\Delta^n\hookrightarrow K\star\Delta^n` に沿った延長に翻訳される。
+
+Joyal の補題（HTT 2.1.2.3）
+
+$`A\subseteq B` が単射、$`A'\subseteq B'` が left anodyne なら $`A\star B'\cup_{A\star A'}B\star A'\subseteq B\star B'` は inner anodyne。飽和性（$`K\star-` は $`\mathrm{sSet}_{K/}` への関手として余極限を保つ）で生成元に帰着し、生成元では
+
+$$`\partial\Delta^m\star\Delta^n\ \cup\ \Delta^m\star\Lambda^n_j\;=\;\Lambda^{m+n+1}_{m+1+j}.`
+
+面を $`S=S_1\sqcup S_2` で表すと、左辺に入る条件「$`S_1\ne[m]` または $`S_2\cup\{j\}\ne[n]`」が右辺の条件と一致する。$`m\ge 0`、$`j<n` なので $`0<m+1+j<m+n+1` で inner horn。
+
+- $`(m,n,j)`　／　合併に入る面　／　結果
+- $`(0,1,0)`　／　$`\{0,1\},\{1,2\}`　／　$`\Lambda^2_1`（射の合成そのもの）
+- $`(0,2,0)`　／　$`d_0,d_3,d_2`　／　$`\Lambda^3_1`
+- $`(0,2,1)`　／　$`d_0,d_3,d_1`　／　$`\Lambda^3_2`
+- $`(1,1,0)`　／　$`d_1,d_0,d_3`　／　$`\Lambda^3_2`
+- $`(0,1,1)`（right horn）　／　$`\{0,2\},\{1,2\}`　／　$`\Lambda^2_2`（outer）。$`\mathcal C_{x/}\to\mathcal C` が右 fibration にならない理由
 
 :::
 
@@ -448,30 +516,24 @@ relativeCosliceMap/relativeSliceOverMap は相対fiber productへの射。原文
 
 :::
 
-:::definition "kerodon_4_3_6_11"
+:::definition "kerodon_4_3_6_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceOverPostcomp_trivialKanFibration_of_rightFibration")
 Kerodon Variant 4.3.6.11（[Tag 05P4](https://kerodon.net/tag/05P4)）。対応表の状態：一部。
 
 sliceOverPostcomp\_trivialKanFibration\_of\_rightFibration は K=Δ⁰ の同じ後合成射の自明Kan性を直接返し、従ってright fibrationでもある。一般Kと双対側は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sliceOverPostcomp_trivialKanFibration_of_rightFibration`
-
 :::
 
-:::corollary "kerodon_4_3_6_12" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_3_6_8")
+:::corollary "kerodon_4_3_6_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_leftFibration") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_3_6_8")
 Kerodon Corollary 4.3.6.12（[Tag 018K](https://kerodon.net/tag/018K)）。対応表の状態：一部。
 
 sliceUnderRestrict\_leftFibration は原文のcoslice側の同じ制限射のleft fibration性。Archiveのslice側は根拠に含めない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_leftFibration`
-
 :::
 
-:::proposition "kerodon_4_3_6_13" (uses := "kerodon_1_1_0_6, kerodon_4_1_3_1, kerodon_4_3_6_3, kerodon_4_3_6_4")
+:::proposition "kerodon_4_3_6_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeCosliceMap_trivialKanFibration_of_rightAnodyne") (uses := "kerodon_1_1_0_6, kerodon_4_1_3_1, kerodon_4_3_6_3, kerodon_4_3_6_4")
 Kerodon Proposition 4.3.6.13（[Tag 01C1](https://kerodon.net/tag/01C1)）。対応表の状態：一部。
 
 relativeCosliceMap\_trivialKanFibration\_of\_rightAnodyne は原文のright anodyne包含でのcoslice側の同じ相対射の自明Kan性を直接返す。slice側は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeCosliceMap_trivialKanFibration_of_rightAnodyne`
 
 :::
 
@@ -489,12 +551,10 @@ Kerodon Lemma 4.3.6.16（[Tag 018N](https://kerodon.net/tag/018N)）。対応表
 
 :::
 
-:::corollary "kerodon_4_3_6_17"
+:::corollary "kerodon_4_3_6_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration")
 Kerodon Corollary 4.3.6.17（[Tag 0236](https://kerodon.net/tag/0236)）。対応表の状態：一部。
 
 準圏を仮定する二つのprojectionのinstanceは原文(1)⇒(2),(3)を直接返す。(2)または(3)から準圏性への逆方向は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration`
 
 :::
 
@@ -523,12 +583,10 @@ joinUnion\_pointBoundary\_anodyne はanodyneだけで、原文のleft/right anod
 
 :::
 
-:::proposition "kerodon_4_3_7_2" (uses := "kerodon_1_1_0_6, kerodon_4_3_7_1")
+:::proposition "kerodon_4_3_7_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativePointSliceUnderMap_fibration") (uses := "kerodon_1_1_0_6, kerodon_4_3_7_1")
 Kerodon Proposition 4.3.7.2（[Tag 018R](https://kerodon.net/tag/018R)）。対応表の状態：一部。
 
 relativePointSliceUnderMap\_fibration は K=Δ⁰、K₀=∅、qがKan fibrationの場合の原文coslice側と同じ相対射のKan fibration性。一般K・right fibrationだけの仮定は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativePointSliceUnderMap_fibration`
 
 :::
 
@@ -539,39 +597,31 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::corollary "kerodon_4_3_7_4"
+:::corollary "kerodon_4_3_7_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.leftFibration_fibration_of_kanComplex")
 Kerodon Corollary 4.3.7.4（[Tag 018T](https://kerodon.net/tag/018T)）。対応表の状態：一部。
 
 cosliceの二端をKanとも仮定すれば sliceUnderRestrict\_leftFibration と leftFibration\_fibration\_of\_kanComplex から同じ制限射のKan fibration性を直接得る。この全空間Kan性の追加仮定とcoslice側だけに限る。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.leftFibration_fibration_of_kanComplex`
-
 :::
 
-:::corollary "kerodon_4_3_7_5"
+:::corollary "kerodon_4_3_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_fibration_of_kanComplex, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.leftFibration_fibration_of_kanComplex")
 Kerodon Corollary 4.3.7.5（[Tag 018U](https://kerodon.net/tag/018U)）。対応表の状態：一部。
 
 原文のslice/cosliceの全空間もKanと仮定すると、両projectionのleft/right性とKan昇格の型から同じ二つの射影のKan fibration性を直接得る。全空間のKan性を原文の仮定だけから示したとはしない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverProjection_rightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderProjection_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_fibration_of_kanComplex`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.leftFibration_fibration_of_kanComplex`
-
 :::
 
-:::proposition "kerodon_4_3_7_6" (uses := "kerodon_1_1_0_6, kerodon_4_3_7_1")
+:::proposition "kerodon_4_3_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeCosliceMap_trivialKanFibration_of_rightAnodyne") (uses := "kerodon_1_1_0_6, kerodon_4_3_7_1")
 Kerodon Proposition 4.3.7.6（[Tag 018V](https://kerodon.net/tag/018V)）。対応表の状態：一部。
 
 coslice側について、包含をanodyneかつright anodyneに強めれば relativeCosliceMap\_trivialKanFibration\_of\_rightAnodyne が同じ相対射の自明Kan性を直接返す。一般anodyneだけの場合とslice側は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeCosliceMap_trivialKanFibration_of_rightAnodyne`
-
 :::
 
-:::corollary "kerodon_4_3_7_7"
+:::corollary "kerodon_4_3_7_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence")
 Kerodon Corollary 4.3.7.7（[Tag 018W](https://kerodon.net/tag/018W)）。対応表の状態：一部。
 
 包含に IsPrecompositionEquivalence も仮定すると、二つの restrict\_trivialKanFibration 宣言が原文と同じ制限射の自明Kan性を直接返す。Kan–Quillen anodyneだけからこの追加仮定を得たとはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`
 
 :::
 
@@ -582,21 +632,17 @@ Kerodon Lemma 4.3.7.8（[Tag 0196](https://kerodon.net/tag/0196)）。対応表�
 
 :::
 
-:::proposition "kerodon_4_3_7_9" (uses := "kerodon_1_1_0_6, kerodon_3_3_7_7, kerodon_4_3_7_1, kerodon_4_3_7_8")
+:::proposition "kerodon_4_3_7_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeAnodyne.joinPoint_mono_leftAnodyne, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinPoint_mono_rightAnodyne, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.coneMap_rightAnodyne") (uses := "kerodon_1_1_0_6, kerodon_3_3_7_7, kerodon_4_3_7_1, kerodon_4_3_7_8")
 Kerodon Proposition 4.3.7.9（[Tag 0197](https://kerodon.net/tag/0197)）。対応表の状態：一部。
 
 joinPoint\_mono\_leftAnodyne と joinPoint\_mono\_rightAnodyne は原文で可縮とする因子がそれぞれ Δ⁰ の場合の同じ joinMap の結論。一般の弱可縮な因子は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeAnodyne.joinPoint_mono_leftAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinPoint_mono_rightAnodyne`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.coneMap_rightAnodyne`
-
 :::
 
-:::proposition "kerodon_4_3_7_12"
+:::proposition "kerodon_4_3_7_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeAnodyne.sliceUnderPostcomp_trivialKanFibration")
 Kerodon Proposition 4.3.7.12（[Tag 0199](https://kerodon.net/tag/0199)）。対応表の状態：一部。
 
 sliceUnderPostcomp\_trivialKanFibration は K=Δ⁰ と left fibration q の場合の同じcoslice後合成の自明Kan性。任意の弱可縮K・slice側は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeAnodyne.sliceUnderPostcomp_trivialKanFibration`
 
 :::
 
@@ -641,12 +687,10 @@ Kerodon Corollary 4.3.7.17（[Tag 01NT](https://kerodon.net/tag/01NT)）。対�
 
 :::
 
-:::corollary "kerodon_4_3_7_18"
+:::corollary "kerodon_4_3_7_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence")
 Kerodon Corollary 4.3.7.18（[Tag 0191](https://kerodon.net/tag/0191)）。対応表の状態：一部。
 
 包含に IsPrecompositionEquivalence も仮定すると二つのrestrict宣言から同じ射の自明Kan性を直接得る。可縮Kan値域だけでは任意の包含についてこの追加仮定を解消していない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderRestrict_trivialKanFibration_of_precompositionEquivalence`
 
 :::
 

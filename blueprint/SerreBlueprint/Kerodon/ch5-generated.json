@@ -9,11 +9,10 @@
   "Section5_6"
  ],
  "stats": {
-  "linked": 51,
-  "nolink-partial": 85,
+  "with-note-intro": 15,
+  "linked": 136,
+  "with-note": 11,
   "with-uses": 189,
-  "nolink-none": 209,
-  "with-note": 2,
-  "with-note-intro": 1
+  "nolink-none": 209
  }
 }

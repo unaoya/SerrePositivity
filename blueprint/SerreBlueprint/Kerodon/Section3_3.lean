@@ -1,25 +1,39 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
 import Mathlib.AlgebraicTopology.SimplicialSet.Subdivision
 import Mathlib.Order.NonemptyFiniteChains
+import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationFiberReflection
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityFibrations
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityKan
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityStages
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnit
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnitAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.KanFibrationEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexMap
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationContractible
 import SerrePositivity.KST.Comparison.ArbitraryBasePullback
+import SerrePositivity.KST.Comparison.ExInfinityHomotopyPullback
 import SerrePositivity.KST.Comparison.LocalizedHomotopyComparison
+import SerrePositivity.KST.Comparison.TrivialFibrationExtension
 import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
+import SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations
+import SerrePositivity.KST.Spectra.FreeInterval
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "3.3 The Ex^∞ Functor" =>
 %%%
@@ -29,12 +43,10 @@ tag := "kerodon-3-3"
 
 Kerodon の 3.3 節（[Tag 00XF](https://kerodon.net/tag/00XF)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
-:::theorem "kerodon_3_3_0_1"
+:::theorem "kerodon_3_3_0_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne, SerrePositivity.KST.Comparison.isHomotopyPullback_exInfinity_iff")
 Kerodon Theorem 3.3.0.1（[Tag 00XG](https://kerodon.net/tag/00XG)）。対応表の状態：一部。
 
 B6：exInfinity の自然な単位・Kan 性・anodyne 性・Kan fibration 保存で、同じ置換正方形の (a),(b),(c) を直接与える。任意の指定ファイバーの比較がホモトピー同値という (d) は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne`、`SerrePositivity.KST.Comparison.isHomotopyPullback_exInfinity_iff`
 
 :::
 
@@ -56,12 +68,10 @@ B6：nonDegenerate\_δ は Nonsingular X の非退化単体の各面も非退化
 
 :::
 
-:::definition "kerodon_3_3_1_4"
+:::definition "kerodon_3_3_1_4" (lean := "SSet.nonDegenerate")
 Kerodon Notation 3.3.1.4（[Tag 00XX](https://kerodon.net/tag/00XX)）。対応表の状態：一部。
 
 B6：nonDegenerate は任意 X の原文の次数別部分集合を直接与える。nonDegenerate\_δ は Nonsingular の追加仮定で面閉性を返す。braced 一般の半単体集合の束ねた構造は含まない。
-
-宣言：`SSet.nonDegenerate`、`SSet.nonDegenerate_δ`
 
 :::
 
@@ -366,21 +376,17 @@ Kerodon Construction 3.3.6.1（[Tag 00ZB](https://kerodon.net/tag/00ZB)）。対
 
 :::
 
-:::proposition "kerodon_3_3_6_2" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_3_3_6_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne, SerrePositivity.KST.Spectra.anodyne_mono") (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 3.3.6.2（[Tag 00ZC](https://kerodon.net/tag/00ZC)）。対応表の状態：一部。
 
 B6：exInfinityUnit\_anodyne と anodyne\_mono から同じ ρ\_X\^∞ の Mono を直接得る。零単体での全射性は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne`、`SerrePositivity.KST.Spectra.anodyne_mono`
-
 :::
 
-:::proposition "kerodon_3_3_6_4" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_3_3_6_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesFiniteLimits, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_finite_factorization") (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 3.3.6.4（[Tag 00ZE](https://kerodon.net/tag/00ZE)）。対応表の状態：一部。
 
 B6：exInfinity\_preservesFiniteLimits は原文の二つの保存性のうち有限極限保存を直接述べる。入力の filtered colimit 保存を、有限始域からの段階因子化と取り違えない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesFiniteLimits`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_finite_factorization`
 
 :::
 
@@ -453,30 +459,24 @@ Kerodon Corollary 3.3.7.4（[Tag 0104](https://kerodon.net/tag/0104)）。対応
 
 :::
 
-:::corollary "kerodon_3_3_7_5" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1")
+:::corollary "kerodon_3_3_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_isQCatEquivalence_iff_fibers, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1")
 Kerodon Corollary 3.3.7.5（[Tag 0105](https://kerodon.net/tag/0105)）。対応表の状態：一部。
 
 B6：leftFibration\_isQCatEquivalence\_iff\_fibers は同じ三角形とファイバー射の iff。E,F,B を Kan 複体に強めると Kan fibration は left fibration で、引用の isWeakHomotopyEquivalence\_iff\_isQCatEquivalence と isSimplicialHomotopyEquivalence への比較をそのまま適用できる。任意の底 S については含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_isQCatEquivalence_iff_fibers`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence`
-
 :::
 
-:::proposition "kerodon_3_3_7_6" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_7_10, kerodon_3_1_7_13, kerodon_3_3_7_5, kerodon_3_5_2_1")
+:::proposition "kerodon_3_3_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_trivialKanFibration_of_contractible_fibers, SerrePositivity.KST.SConstruction.map_isIso_of_trivialKanFibration") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_7_10, kerodon_3_1_7_13, kerodon_3_3_7_5, kerodon_3_5_2_1")
 Kerodon Proposition 3.3.7.6（[Tag 00ZP](https://kerodon.net/tag/00ZP)）。対応表の状態：一部。
 
 B6：rightFibration\_trivialKanFibration\_of\_contractible\_fibers は Kan fibration（特に right fibration）に全ファイバーの可縮性を仮定し、同じ f の自明 Kan 性を返す。(4)⇒(1)の向き。一般の弱同値からの逆方向は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.rightFibration_trivialKanFibration_of_contractible_fibers`、`SerrePositivity.KST.SConstruction.map_isIso_of_trivialKanFibration`
-
 :::
 
-:::corollary "kerodon_3_3_7_7" (uses := "kerodon_1_1_0_6, kerodon_3_1_7_14, kerodon_3_1_8_1, kerodon_3_3_7_6")
+:::corollary "kerodon_3_3_7_7" (lean := "SerrePositivity.KST.Spectra.anodyne_mono, SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations") (uses := "kerodon_1_1_0_6, kerodon_3_1_7_14, kerodon_3_1_8_1, kerodon_3_3_7_6")
 Kerodon Corollary 3.3.7.7（[Tag 00ZQ](https://kerodon.net/tag/00ZQ)）。対応表の状態：一部。
 
 B6：anodyne\_mono は条件(1)から条件(2)の単射性成分を直接返す。一般 ModelCategory SSet を要求する別宣言は根拠にせず、モデル圏のinstanceなしで逆向きや仮定なしの一致を主張しない。
-
-宣言：`SerrePositivity.KST.Spectra.anodyne_mono`、`SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations`
 
 :::
 
@@ -489,12 +489,10 @@ tag := "kerodon-3-3-8"
 
 Kerodon [Tag 00ZR](https://kerodon.net/tag/00ZR)
 
-:::theorem "kerodon_3_3_8_1"
+:::theorem "kerodon_3_3_8_1" (lean := "SerrePositivity.KST.Comparison.trivialFibrationExtension")
 Kerodon Theorem 3.3.8.1（[Tag 00ZS](https://kerodon.net/tag/00ZS)）。対応表の状態：一部。
 
 B6：trivialFibrationExtension は同じ q を p に沿う引き戻しで延長し、延長先にも全単射 RLP を返す。原文の Kan fibration を自明 Kan fibration に強める場合。p は任意の単射なので anodyne も含む。
-
-宣言：`SerrePositivity.KST.Comparison.trivialFibrationExtension`
 
 :::
 

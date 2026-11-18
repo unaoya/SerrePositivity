@@ -1,14 +1,30 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
+import SerrePositivity.BhattScholze.Perfectoidization.Finite
+import SerrePositivity.CLMST.KoszulAnnihilation
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Proof
 import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+import SerrePositivity.CommutativeAlgebra.RootTower.Perfectoid
+import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangePrincipalH0
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletelyFlat.Definition
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionReflection
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Basic
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalClassicalComparison
+import SerrePositivity.LengthAlgebra.Normalized
+import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
 import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
+import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§2 Preliminaries" =>
 %%%
@@ -87,12 +103,10 @@ tag := "clmst-2-2"
 
 :::
 
-:::lemma_ "clmst_2_2_4"
+:::lemma_ "clmst_2_2_4" (lean := "SerrePositivity.Section2.towerLengthFun_tensor")
 *補題 2.2.4*　有限生成元から作る有限段長さの極限。対応表の状態：一部（special）。
 
 原典 PDF p.11; layout L523。有限段から基底変換した加群の正確な長さ公式を確認。原典は任意の有限生成 M と任意の有限生成元集合から作る部分加群 Mn の極限公式であり、有限段から降下する場合に範囲を狭めた対応。一般の生成元近似極限を述べる宣言は未確認。
-
-宣言：`SerrePositivity.Section2.towerLengthFun_tensor`
 
 外の文献：Fal02 Appendix 2、Fal02 Appendix 2, Claim、Shi07 Lemma 2.3
 
@@ -105,12 +119,10 @@ tag := "clmst-2-2"
 
 :::
 
-:::proposition "clmst_2_2_6" (uses := "clmst_2_2_5")
+:::proposition "clmst_2_2_6" (lean := "SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian, SerrePositivity.NormalizedLength.len_iSup_of_directed") (uses := "clmst_2_2_5")
 *命題 2.2.6*　短完全列の加法性と単射・全射な filtered colimit。対応表の状態：一部（part）。
 
 原典 PDF p.12; layout L572。(a) の短完全列加法性は具体的な塔で証明。(b\|i) の有向部分加群の和の上限公式もある。一方 (b\|ii) の有限長・全射遷移を持つ一般 filtered colimit の極限公式全体は未確認。len\_directLimit\_eq\_zero\_of\_tendsto は長さ極限零の場合に限る。
-
-宣言：`SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian`、`SerrePositivity.NormalizedLength.len_iSup_of_directed`
 
 外の文献：Fal02 Appendix 2, Lemma、GR04 Proposition 14.5.12(iii)(b)、GR04 Proposition 14.5.75(i)(b)、GR04 Theorem 14.5.75、Shi07 Proposition 2.8
 
@@ -123,12 +135,10 @@ number := false
 tag := "clmst-2-3"
 %%%
 
-:::definition "clmst_2_3_1"
+:::definition "clmst_2_3_1" (lean := "SerrePositivity.DerivedCompletion.IsComplete, SerrePositivity.DerivedCompletion.IsModuleComplete")
 *定義 2.3.1*　導来 I 完備性。対応表の状態：一部（special）。
 
 原典 PDF p.12; layout L611。局所化 R\[1/f\] からの全次数 Hom 消滅で単項 f 完備性を定義する。原典の有限生成 I の全ての f に対する導来逆極限消滅という一般定義に対し、単項への特殊化と同値な記述。一般 I の条件を一つの型として採用してはいない。
-
-宣言：`SerrePositivity.DerivedCompletion.IsComplete`、`SerrePositivity.DerivedCompletion.IsModuleComplete`
 
 外の文献：Stacks Tag 091Q
 
@@ -143,43 +153,35 @@ tag := "clmst-2-3"
 
 :::
 
-:::proposition "clmst_2_3_3"
+:::proposition "clmst_2_3_3" (lean := "SerrePositivity.DerivedCompletion.principalCompletionAdicAlgEquiv")
 *命題 2.3.3*　有界冪捩れ加群の pro 比較と古典的完備化。対応表の状態：一部（special）。
 
 原典 PDF p.13; layout L659。原典は任意の有界 f 冪捩れ加群 M の pro 同型と導来完備化全体の離散性を主張する。採用宣言は M=R かつ f が非零因子の場合の H0 と古典的完備環の同型で、一般の捩れ加群・pro 同型までは含まない。
-
-宣言：`SerrePositivity.DerivedCompletion.principalCompletionAdicAlgEquiv`
 
 外の文献：Bha19 III, Lemma 2.4
 
 :::
 
-:::definition "clmst_2_3_4"
+:::definition "clmst_2_3_4" (lean := "SerrePositivity.BhattScholze.Prismatic.IsDerivedCompletelyFlat")
 *定義 2.3.4*　導来 I 完全平坦性と忠実平坦性。対応表の状態：一部（special）。
 
 原典 PDF p.14; layout L665。剰余への導来底変換が零次に集中し、その H0 が平坦であるという定義に対応。ただし定義域は上に有界な導来対象に限り、原典の全 D(R) と忠実平坦版の両方をまとめた定義ではない。
-
-宣言：`SerrePositivity.BhattScholze.Prismatic.IsDerivedCompletelyFlat`
 
 外の文献：BMS19 Section 4.1
 
 :::
 
-:::lemma_ "clmst_2_3_5" (uses := "clmst_2_3_3")
+:::lemma_ "clmst_2_3_5" (lean := "SerrePositivity.DerivedCompletion.completedBaseChangeTensorPrincipalH0LinearEquiv, SerrePositivity.DerivedCompletion.principalCompletionAdicAlgEquiv") (uses := "clmst_2_3_3")
 *補題 2.3.5*　完全平坦底変換の完備テンソル積の古典的表示。対応表の状態：一部（special）。
 
 原典 PDF p.14; layout L671。M が R 代数 A の場合、完備導来底変換の H0 と通常テンソル環 T の実主元完備化 H0 の線形同型を確認。さらに p が T の非零因子なら古典的完備化との同型を使える。原典は任意の有界 p 冪捩れ加群 M、p 完全平坦な S について完備導来対象全体の同値を主張するため、代数係数・非零因子という特殊な場合の H0 比較に限る。
 
-宣言：`SerrePositivity.DerivedCompletion.completedBaseChangeTensorPrincipalH0LinearEquiv`、`SerrePositivity.DerivedCompletion.principalCompletionAdicAlgEquiv`
-
 :::
 
-:::definition "clmst_2_3_6"
+:::definition "clmst_2_3_6" (lean := "SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor")
 *規約 2.3.6*　導来 p 完備化と完備テンソル積の記号規約。対応表の状態：一部（part）。
 
 原典 PDF p.14; layout L684。任意 f の導来完備化関手はあり f=p に特殊化できる。原典の完備テンソル積も含めた全記号規約に対し、この宣言は完備化関手の側のみ。記号の採用自体は数学的存在定理ではない。
-
-宣言：`SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor`
 
 :::
 
@@ -199,21 +201,17 @@ tag := "clmst-2-4"
 
 :::
 
-:::proposition "clmst_2_4_2"
+:::proposition "clmst_2_4_2" (lean := "SerrePositivity.Section2.completedTower_isIntegralPerfectoid_of_parameters")
 *例 2.4.2*　根の塔と絶対整閉包の完備化の例。対応表の状態：一部（special）。
 
 原典 PDF p.15; layout L714。(1) の標準パラメータから作る混標数の完備根の塔の perfectoid 性を確認。(2) の一般 R の絶対整閉包の p 進完備化、および等標数の例をこの宣言だけからは得ない。
 
-宣言：`SerrePositivity.Section2.completedTower_isIntegralPerfectoid_of_parameters`
-
 :::
 
-:::lemma_ "clmst_2_4_3" (uses := "clmst_2_3_5")
+:::lemma_ "clmst_2_4_3" (lean := "SerrePositivity.BhattScholze.completedTowerRoot_mem_perfectoidIdeal") (uses := "clmst_2_3_5")
 *補題 2.4.3*　compatible roots を持つ perfectoid イデアルと閉包の比較。対応表の状態：一部（special）。
 
 原典 PDF p.15; layout L757。完備根の塔の座標根が対応する perfectoid イデアルに入る包含は証明される。原典の任意の perfectoid 射 R→S における三つの閉包イデアルの等号と根の系の独立性に対し、座標根の片方向の所属に限る。商 perfectoid 化の存在入力への依存も残る。
-
-宣言：`SerrePositivity.BhattScholze.completedTowerRoot_mem_perfectoidIdeal`
 
 外の文献：BS19 Proposition 8.13、BS19 Proposition 8.5、BS19 Theorem 7.14
 
@@ -226,12 +224,10 @@ tag := "clmst-2-4"
 
 :::
 
-:::theorem "clmst_2_4_5"
+:::theorem "clmst_2_4_5" (lean := "SerrePositivity.isPerfectoidization_toPerfectoidization, SerrePositivity.CLMST.proposition_2_4_7")
 *定理 2.4.5*　有限エタール開集合に対する almost purity。対応表の状態：一部（part）。
 
 原典 PDF p.16; layout L813。有限代数の perfectoid 化の普遍性と、有界 p 冪捩れを追加した J 同種性を確認。原典の各 mod p\^n の J almost finite etale という圏的結論全体の宣言ではない。標準 perfectoid 化の存在は E3 sorry 入力に依存するため、この部分対応も無条件の検証済み定理とは数えない。
-
-宣言：`SerrePositivity.isPerfectoidization_toPerfectoidization`、`SerrePositivity.CLMST.proposition_2_4_7`
 
 外の文献：BS19 Theorem 10.9、Bha19 VIII, Theorem 3.1
 
@@ -246,34 +242,28 @@ tag := "clmst-2-4"
 
 :::
 
-:::proposition "clmst_2_4_7" (uses := "clmst_2_3_5, clmst_2_4_5, clmst_2_4_6, clmst_2_4_8")
+:::proposition "clmst_2_4_7" (lean := "SerrePositivity.CLMST.proposition_2_4_7") (uses := "clmst_2_3_5, clmst_2_4_5, clmst_2_4_6, clmst_2_4_8")
 *命題 2.4.7*　有限 perfectoid 化への比較写像の J 同種性。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.17; layout L861。有限・有限表示、有限生成 J、J の外のエタール性、有界 p 冪捩れの仮定を保持し、各 g∈J のある冪が実導来錐を零化する J 同種性を述べる。本文に直接 sorry はないが、標準 perfectoid 化の選択は BhattScholze.Inputs.exists\_perfectoidizationInterfaceE3 に依存する。
-
-宣言：`SerrePositivity.CLMST.proposition_2_4_7`
 
 外の文献：BS19 Proof of Theorem 10.9, footnote 18、BS19 Proposition 8.13、BS19 Theorem 7.14、BS19 last paragraph of proof of Theorem 10.9、Bha12 Lemma 3.2、Bha18 Lemma 3.2、Stacks Tag 0CQE
 
 :::
 
-:::lemma_ "clmst_2_4_8"
+:::lemma_ "clmst_2_4_8" (lean := "SerrePositivity.exists_pow_ker_coker_annihilator")
 *主張 2.4.8*　分裂積への比較写像の錐の一様冪零化。対応表の状態：一部（part）。
 
 原典 PDF p.19; layout L968。被約な基底上で有限生成源から有限自由積への写像と、g を反転した同型を仮定し、核と余核の一様冪零化を得る。Claim の核・余核の結論に当たるが、指定した Galois 比較 phi とその導来錐での零写像の同定をこの宣言だけでは供給しない。
-
-宣言：`SerrePositivity.exists_pow_ker_coker_annihilator`
 
 外の文献：Bha12 Lemma 3.2
 
 :::
 
-:::proposition "clmst_2_4_9" (uses := "clmst_2_4_5, clmst_2_4_6")
+:::proposition "clmst_2_4_9" (lean := "SerrePositivity.CLMST.perfectoidIdeal_powerTorsionTorInput") (uses := "clmst_2_4_5, clmst_2_4_6")
 *命題 2.4.9*　p 完全 almost 平坦性・忠実性・純性。対応表の状態：一部（special）。
 
 原典 PDF p.19; layout L994。(a) の任意 p\^k 捩れ試験加群・全正次数 Tor の零化を、単項 J=(a) の場合に証明。原典の任意の有限生成 J、(b) の正の階数での忠実性、および最後の almost 純性の結論全体は未確認。
-
-宣言：`SerrePositivity.CLMST.perfectoidIdeal_powerTorsionTorInput`
 
 外の文献：BS19 Theorem 7.14、BS19 last paragraph 19 of proof of Theorem 10.9
 

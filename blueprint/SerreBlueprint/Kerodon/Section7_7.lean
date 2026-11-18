@@ -2,10 +2,18 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Monoidal.Closed.Basic
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationEquivalenceLifting
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianSections
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorSpace
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.UniversalityOfColimits.FilteredColimitFiniteLimitPreservation
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "7.7 Universality of Colimits" =>
 %%%
@@ -117,12 +125,10 @@ tag := "kerodon-7-7-2"
 
 Kerodon [Tag 05TC](https://kerodon.net/tag/05TC)
 
-:::definition "kerodon_7_7_2_1"
+:::definition "kerodon_7_7_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianSections, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace")
 Kerodon Notation 7.7.2.1（[Tag 05TD](https://kerodon.net/tag/05TD)）。対応表の状態：一部。
 
 relativeFunctorSpace U Fは原文の底上の同じ全関手単体集合を直接構成する。cartesian fibrationならinnerなのでその準圏性も既存instanceで得る。cartesianな全辺という頂点条件の全部分圏は、引用のcocartesianSectionsで代用しない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianSections`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace`
 
 :::
 
@@ -482,12 +488,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：左ファ�
 
 :::
 
-:::lemma_ "kerodon_7_7_6_3"
+:::lemma_ "kerodon_7_7_6_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_equivalenceLifting, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_innerFibration")
 Kerodon Lemma 7.7.6.3（[Tag 05W3](https://kerodon.net/tag/05W3)）。対応表の状態：一部。
 
 E′,Eを準圏に強めると、Γ自身がleft fibration⇒innerかつEquivalenceLiftingという二宣言が同じΓのisofibration性を直接与える。isofibration⇒left fibrationおよび任意の単体集合上ではない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftFibration_equivalenceLifting`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_innerFibration`
 
 :::
 
@@ -523,21 +527,17 @@ tag := "kerodon-7-7-7"
 
 Kerodon [Tag 05XG](https://kerodon.net/tag/05XG)
 
-:::proposition "kerodon_7_7_7_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_6_17, kerodon_7_1_8_2")
+:::proposition "kerodon_7_7_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.UniversalityOfColimits.smallSpaceFilteredColimit_map_isLimit_finite") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_7_1_6_17, kerodon_7_1_8_2")
 Kerodon Proposition 7.7.7.1（[Tag 05XH](https://kerodon.net/tag/05XH)）。対応表の状態：一部。
 
 CをSpace、Kを小さいfiltered準圏、Lを有限形状に限るとsmallSpaceFilteredColimit\_map\_isLimit\_finiteは同じcolimit functorのL極限保存（7.7.7.1の条件(3)）を直接返す。任意K,Lの四条件の全同値と閉性の判定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.UniversalityOfColimits.smallSpaceFilteredColimit_map_isLimit_finite`
-
 :::
 
-:::definition "kerodon_7_7_7_2"
+:::definition "kerodon_7_7_7_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.UniversalityOfColimits.smallSpaceFilteredColimit_map_isLimit_finite")
 Kerodon Definition 7.7.7.2（[Tag 05XJ](https://kerodon.net/tag/05XJ)）。対応表の状態：一部。
 
 CをSpace、Kを小さいfiltered準圏、Lを有限形状に限るとsmallSpaceFilteredColimit\_map\_isLimit\_finiteは同じcolimit functorのL極限保存（7.7.7.1の条件(3)）を直接返す。任意K,Lの四条件の全同値と閉性の判定は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.UniversalityOfColimits.smallSpaceFilteredColimit_map_isLimit_finite`
 
 :::
 

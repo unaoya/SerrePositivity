@@ -4,12 +4,18 @@ import VersoBlueprint
 import SerrePositivity.Asymptotic.Completed
 import SerrePositivity.Asymptotic.RankQuotient
 import SerrePositivity.Paper.Section3.LengthComputation
+import SerrePositivity.Paper.Section4.EulerComparison
 import SerrePositivity.Paper.Section4.LengthHypotheses
 import SerrePositivity.Paper.Section4.RankQuotient
+import SerrePositivity.Paper.Section4.SupportedDescent
+import SerrePositivity.Paper.Section4.SymmetricComparison
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§4 Supported asymptotic complexes" =>
 %%%
@@ -290,7 +296,7 @@ tag := "paper-4-4"
 
 :::
 
-:::proposition "paper_4_5" (uses := "paper_eq_4_4, paper_eq_4_5, paper_eq_4_6, paper_4_2, paper_4_4")
+:::proposition "paper_4_5" (lean := "SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul, SerrePositivity.Section4.ordinaryPaperEulerK0, SerrePositivity.Section4.koszulPaperEulerK0_changeRing") (uses := "paper_eq_4_4, paper_eq_4_5, paper_eq_4_6, paper_4_2, paper_4_4")
 **命題 4.5**　冪等直和因子を含む基底変換Euler比較。対応表の状態：一部。
 
 原典 PDF p.20 / layout L1037。Karoubi包の全K0類で正規化Euler評価の基底変換公式を直接確認した。原典のchi\_A・通常T評価・C評価の三項同一視のうち通常T評価側までを一つの対応として検収していないためpartialとする。
@@ -339,8 +345,6 @@ $$`\chi_{\mathrm{ord}}(X\otimes_A T) \;=\; r\cdot\chi_A(X) \;=\; \chi_C(X\otimes
 
 *Lean:* \`Paper.Section4.UniformRepresentative\`、\`PaperK0Comparison\`。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。
 
-宣言：`SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul`、`SerrePositivity.Section4.ordinaryPaperEulerK0`、`SerrePositivity.Section4.koszulPaperEulerK0_changeRing`
-
 :::
 
 :::definition "paper_eq_4_4"
@@ -350,12 +354,10 @@ $$`\chi_{\mathrm{ord}}(X\otimes_A T) \;=\; r\cdot\chi_A(X) \;=\; \chi_C(X\otimes
 
 :::
 
-:::definition "paper_eq_4_5" (uses := "paper_eq_4_6")
+:::definition "paper_eq_4_5" (lean := "SerrePositivity.Section4.koszulPaperEulerK0_changeRing") (uses := "paper_eq_4_6")
 **式 (4.5)**　普通Euler評価に現れるr倍有限和。対応表の状態：一部。
 
 原典 PDF p.20 / layout L1085。Koszul Euler数を係数とするK0での比較はあるが、原典のidempotent aの像V\_bの通常長の有限和をこの形で計算する表示は未検収。
-
-宣言：`SerrePositivity.Section4.koszulPaperEulerK0_changeRing`
 
 :::
 
@@ -411,7 +413,7 @@ tag := "paper-4-5"
 
 :::
 
-:::theorem "paper_4_7" (uses := "paper_eq_4_1, paper_3_1, paper_4_5, paper_4_6")
+:::theorem "paper_4_7" (lean := "SerrePositivity.Section4.theorem_4_7, SerrePositivity.Section4.theorem_4_7_K0, SerrePositivity.Section4.supportedRankK0_descent") (uses := "paper_eq_4_1, paper_3_1, paper_4_5, paper_4_6")
 **定理 4.7**　漸近Euler評価の共役norm和の比較。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.22 / layout L1171。全支持対象上の共役和の等式の型はあるが、supportedRankK0\_descentが直接sorryを持つ。Lemma4.6を構成してTheorem3.1を実際に適用したものとはせず、別の入力界面として記録する。
@@ -451,8 +453,6 @@ $$`\sum_{g\in G} \chi_{\mathrm{ord}}(X^g) \;=\; \sum_{g\in G} \chi_C(X^g).`
 系 6.14 (b) を $`(C',\lambda')=(T,\operatorname{length}_T)` に適用する。$`e_{\operatorname{length}_T}(z;T)=r` は補題 7.1 による。降下は、系 7.4 を補題 7.7 の $`H` について使って得る（引用）。
 
 *Lean:* \`symmetricPaperEuler\_conjSum\_eq\` は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\`Section4.theorem\_4\_7\_K0\` はその系であり、\`supportedRankK0\_descent\` と正則パラメータの引用への依存は残る。
-
-宣言：`SerrePositivity.Section4.theorem_4_7`、`SerrePositivity.Section4.theorem_4_7_K0`、`SerrePositivity.Section4.supportedRankK0_descent`
 
 :::
 

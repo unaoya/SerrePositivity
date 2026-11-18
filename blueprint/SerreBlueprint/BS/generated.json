@@ -24,10 +24,11 @@
  ],
  "stats": {
   "partial": 46,
-  "nolink": 186,
+  "linked": 77,
   "none": 134,
+  "nolink": 134,
   "interface": 6,
   "own": 25,
-  "linked": 25
+  "with-note": 131
  }
 }

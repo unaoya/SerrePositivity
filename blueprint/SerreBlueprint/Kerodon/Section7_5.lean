@@ -3,19 +3,39 @@ import VersoManual
 import VersoBlueprint
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianSections
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveCocartesianFibration
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.WeightedTransportUnit
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.WeightedTransportUnitEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKan
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanComparison
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanHomotopyInvariance
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanSectionsIso
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ConeComparisonReflection
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.CospanComparison
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralConeComparisonReflection
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.GeneralReflectedCriterion
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanConeComparisonCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.QCatPullbackLimit
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SectionsKan
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.TowerComparison
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedConeRestriction
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedFunctor
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.BousfieldKanCoherentColimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SpaceSmallLimits
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.ContinuousKanAnodyne
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.ContinuousKanSequence
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanWeakEquivalence
+import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanExtensions.BousfieldKanCoherentCocone
+import SerrePositivity.KST.Comparison.HomotopyPullback
+import SerrePositivity.KST.Descent.MainAugmentedHomotopyLimit
+import SerrePositivity.KST.Fibration.KanCommSqLimit
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "7.5 Homotopy Limits and Colimits" =>
 %%%
@@ -24,6 +44,28 @@ tag := "kerodon-7-5"
 %%%
 
 Kerodon の 7.5 節（[Tag 039Y](https://kerodon.net/tag/039Y)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*05-gamma-bridges.html — 3. γ3：𝒮 の極限・余極限 — (b) strict な図式：Bousfield–Kan 経由*
+
+通常の小さい圏 $`I` 上の strict な図式 $`F\colon I\to\mathrm{Kan}` は、coherent な図式 \`kanDiagramCoherentNerve F : N(I) → 𝒮\` とみなせる（F1/KanDiagramCoherentNerve）。古典的なホモトピー（余）極限（Bousfield–Kan の coend・end、重み付き切断）がその ∞ （余）極限になることを示すのが γ3 である。
+
+- 内容　／　Lean　／　場所
+- 任意の小圏上の Kan 値図式：Bousfield–Kan coend は ∞ 余極限（HTT 4.2.4.1 の余極限側）　／　\`bousfieldKanCoherentCocone\_isColimit\`、\`kanDiagramCoherentNerve\_hasColimit\`　／　HomotopyLimits/BousfieldKanCoherentColimit
+- 極限側：離散図式（積）、塔（Tot）、cospan（引き戻し）の形で、Bousfield–Kan の極限との比較がホモトピー同値　／　\`bousfieldKanLimitComparison\_discrete\_homotopyEquivalence\`、\`\_tower\_\`、\`\_cospan\_\`　／　HomotopyLimits/BousfieldKan\*
+- 有限の具体的な形：押し出し、逐次余極限、小さい余積、積、引き戻し　／　\`spaceHomotopyPushoutCocone\_isColimitCone\`、\`spacePullbackCone\_isLimitCone\` など　／　HomotopyLimits/Space\*
+- 極限の判定：錐の pinched Hom が可縮　／　\`isLimitCone\_iff\_conePinchedHom\_isContractibleKan\`　／　HomotopyLimits
+
+(b) が必要なのは、スペクトラム（Sp レーン）での Tot、ホモトピー不動点、fiber 列のように、古典的なホモトピー極限として書かれた対象を ∞ 極限として使うためである。(a) は存在を保証するが、極限の頂点が古典的な構成と一致することまでは言わない。
+
+*f-b-literature-yoneda.html — 5. ホモトピー極限（Kerodon 7.5）*
+
+- ∞ 圏論の中では極限そのものが最初からホモトピー不変で、別の概念としてのホモトピー極限は要らない（∞ 極限を慣習的にホモトピー極限と呼ぶ文献はある）。
+
+- ホモトピー極限が意味を持つのは厳密な図式 $`C\to\mathrm{Kan}`（または quasicategory の圏）の側。Bousfield–Kan などで導来関手として定まる。
+
+- 7.5 は、それが $`N(C)\to\mathcal S`（または $`\mathcal{QC}`）と見たときの ∞ 極限と一致することを示す。後半のホモトピー極限図式と categorical な極限図式の比較は、局所化と極限の関係。
+
+- 扱うのは Kan 複体と ∞ 圏の場合だけで、モデル構造も使わない。一般のモデル圏との比較は ModelBridge 層の話。形式化の HomotopyLimits 層（bousfieldKanHolim）が 7.5 に対応する。
 
 # 7.5.1 Homotopy Limits of Kan Complexes
 
@@ -80,12 +122,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：全切断�
 
 :::
 
-:::proposition "kerodon_7_5_2_6"
+:::proposition "kerodon_7_5_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianSections, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianSections_quasicategory, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_cocartesianFibration")
 Kerodon Proposition 7.5.2.6（[Tag 03AB](https://kerodon.net/tag/03AB)）。対応表の状態：一部。
 
 weightedNerveProjection\_cocartesianFibrationとcocartesianSections\_quasicategoryは原文の同じholimが準圏であるという前半を直接返す。QC内の極限性という後半はSpace内の極限性で代用しない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramSectionsCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianSections`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianSections_quasicategory`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection_cocartesianFibration`
 
 :::
 
@@ -121,21 +161,17 @@ cocartesianStrictTransportDiagramの定義は図式を構成するだけで、�
 
 :::
 
-:::definition "kerodon_7_5_3_3" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_3_3_1, kerodon_5_3_4_7, kerodon_5_3_4_11")
+:::definition "kerodon_7_5_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_3_3_1, kerodon_5_3_4_7, kerodon_5_3_4_11")
 Kerodon Construction 7.5.3.3（[Tag 03AS](https://kerodon.net/tag/03AS)）。対応表の状態：一部。
 
 FをKan値に限るとweightedTransportUnitは同じweighted nerveの全切断によるstrict transportへの自然変換αを構成する。left fibrationでは全切断がcocartesianなので原文の構成のα成分に一致する。universal/taut scaffoldとの可換性と一意性は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnit`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso`
-
 :::
 
-:::proposition "kerodon_7_5_3_4" (uses := "kerodon_1_4_0_1, kerodon_5_3_1_7, kerodon_7_5_3_2, kerodon_7_5_3_3")
+:::proposition "kerodon_7_5_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnitComponent_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_4_0_1, kerodon_5_3_1_7, kerodon_7_5_3_2, kerodon_7_5_3_3")
 Kerodon Proposition 7.5.3.4（[Tag 03AT](https://kerodon.net/tag/03AT)）。対応表の状態：一部。
 
 FをKan値に限ればweightedTransportUnitComponent\_isQCatEquivalenceは同じαの各成分の圏同値性を直接返す。全図式のisofibrant性とαのmono性は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnitComponent_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso`
 
 :::
 
@@ -146,12 +182,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：Kan 値の 
 
 :::
 
-:::definition "kerodon_7_5_3_6"
+:::definition "kerodon_7_5_3_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit_anodyne, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacementUnit_isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement")
 Kerodon Variant 7.5.3.6（[Tag 03AV](https://kerodon.net/tag/03AV)）。対応表の状態：一部。
 
 functorialなcontinuousKanReplacementとその単位をFに後合成すると、anodyne単位のmono性と弱同値性から、同じFからKan値図式へのlevelwise単射弱同値を直接得る。図式全体のisofibrant性は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit_anodyne`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacementUnit_isWeakHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement`
 
 :::
 
@@ -178,12 +212,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：全切断�
 
 :::
 
-:::proposition "kerodon_7_5_3_12" (uses := "kerodon_1_4_0_1, kerodon_4_5_7_17, kerodon_7_5_3_3, kerodon_7_5_3_4, kerodon_7_5_3_7")
+:::proposition "kerodon_7_5_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_homotopyEquivalence_of_extensions, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_cospan_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_tower_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_4_0_1, kerodon_4_5_7_17, kerodon_7_5_3_3, kerodon_7_5_3_4, kerodon_7_5_3_7")
 Kerodon Proposition 7.5.3.12（[Tag 03B1](https://kerodon.net/tag/03B1)）。対応表の状態：一部。
 
 FをKan値で全levelwise anodyneの図式からの延長条件も満たすと強めると、bousfieldKanLimitComparison\_homotopyEquivalence\_of\_extensionsは同じlim F→holim Fの比較の同値を返す。BKの全切断とcocartesian切断はleft fibrationの場合の同型で比較する。一般QCat値は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_homotopyEquivalence_of_extensions`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_cospan_homotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_tower_homotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso`
 
 :::
 
@@ -196,12 +228,10 @@ tag := "kerodon-7-5-4"
 
 Kerodon [Tag 03B5](https://kerodon.net/tag/03B5)
 
-:::definition "kerodon_7_5_4_1" (uses := "kerodon_1_2_5_1")
+:::definition "kerodon_7_5_4_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison, SerrePositivity.KST.Descent.Main.HasHomotopyLimitDescent") (uses := "kerodon_1_2_5_1")
 Kerodon Definition 7.5.4.1（[Tag 03B6](https://kerodon.net/tag/03B6)）。対応表の状態：一部。
 
 bousfieldKanConeComparisonは同じ増強図式の頂点→lim→BK holimという合成射を直接構成し、そのIsSimplicialHomotopyEquivalenceを条件とすることで原文のKan値の定義を表す。KSTの基点付きπ\_\*版は根拠としない。専用述語名の欠如は不足にしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison`、`SerrePositivity.KST.Descent.Main.HasHomotopyLimitDescent`
 
 :::
 
@@ -226,12 +256,10 @@ Kerodon Corollary 7.5.4.6（[Tag 03BB](https://kerodon.net/tag/03BB)）。対応
 
 :::
 
-:::corollary "kerodon_7_5_4_7"
+:::corollary "kerodon_7_5_4_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_homotopyEquivalence_of_extensions, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison")
 Kerodon Corollary 7.5.4.7（[Tag 03BC](https://kerodon.net/tag/03BC)）。対応表の状態：一部。
 
 全levelwise anodyneに対する延長条件を加えると、strict極限のBK比較同値とkanCone\_isLimit\_iff\_bousfieldKanComparisonは同じKan値の極限錐がSpace内でも極限と直接返す。isofibrantだけから延長条件を得たとはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_homotopyEquivalence_of_extensions`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison`
 
 :::
 
@@ -251,30 +279,24 @@ Kan値図式間のBK endの同値不変性だけでは、任意の単体集合�
 
 :::
 
-:::corollary "kerodon_7_5_4_11" (uses := "kerodon_3_1_8_1, kerodon_7_5_4_4, kerodon_7_5_4_10")
+:::corollary "kerodon_7_5_4_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_naturality, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.comp, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.cancel_left, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.cancel_right") (uses := "kerodon_3_1_8_1, kerodon_7_5_4_4, kerodon_7_5_4_10")
 Kerodon Corollary 7.5.4.11（[Tag 03BG](https://kerodon.net/tag/03BG)）。対応表の状態：一部。
 
 両増強図式をKan値に限ると、BK比較の自然性と成分弱同値の不変性、Kan複体の弱同値の二つから三つにより、同じ三条件の判定を直接得る。任意の単体集合値の置換比較は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_naturality`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_homotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.comp`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.cancel_left`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.cancel_right`
-
 :::
 
-:::corollary "kerodon_7_5_4_12" (uses := "kerodon_1_1_0_6, kerodon_1_2_3_1, kerodon_3_6_4_1, kerodon_7_5_4_11")
+:::corollary "kerodon_7_5_4_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_reflection_iff, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_reflection_general_iff") (uses := "kerodon_1_1_0_6, kerodon_1_2_3_1, kerodon_3_6_4_1, kerodon_7_5_4_11")
 Kerodon Corollary 7.5.4.12（[Tag 03BH](https://kerodon.net/tag/03BH)）。対応表の状態：一部。
 
 増強図式をKan値に限ると、現本体のbousfieldKanConeComparison\_reflection\_general\_iffは同じ錐と反対錐のhomotopy limit条件のiffを直接返す。古いreflection\_iffにあったstrict極限のKan性・lim比較同値の仮定は不要になっている。任意の単体集合値は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_reflection_iff`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_reflection_general_iff`
-
 :::
 
-:::proposition "kerodon_7_5_4_13" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_8_1, kerodon_3_4_0_3, kerodon_3_4_1_1, kerodon_3_4_1_6, kerodon_3_4_1_13, kerodon_7_5_4_8, kerodon_7_5_4_11")
+:::proposition "kerodon_7_5_4_13" (lean := "SerrePositivity.KST.Comparison.IsHomotopyPullback, SerrePositivity.KST.Fibration.kanCommSqCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_cospan_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_3_1_8_1, kerodon_3_4_0_3, kerodon_3_4_1_1, kerodon_3_4_1_6, kerodon_3_4_1_13, kerodon_7_5_4_8, kerodon_7_5_4_11")
 Kerodon Proposition 7.5.4.13（[Tag 03BJ](https://kerodon.net/tag/03BJ)）。対応表の状態：一部。
 
 四対象をKan複体に限るとkanCommSqCone\_isLimitとkanCone\_isLimit\_iff\_bousfieldKanComparisonは、同じ可換正方形がhomotopy pullbackならhomotopy limit diagramという向きを直接与える。逆向きと任意の単体集合は含まない。
-
-宣言：`SerrePositivity.KST.Comparison.IsHomotopyPullback`、`SerrePositivity.KST.Fibration.kanCommSqCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_cospan_homotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison`
 
 :::
 
@@ -310,12 +332,10 @@ Kerodon Corollary 7.5.5.8（[Tag 03BU](https://kerodon.net/tag/03BU)）。対応
 
 :::
 
-:::corollary "kerodon_7_5_5_9"
+:::corollary "kerodon_7_5_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.qCatPullbackInfinityCone_isLimit")
 Kerodon Corollary 7.5.5.9（[Tag 03BV](https://kerodon.net/tag/03BV)）。対応表の状態：一部。
 
 形状をcospanで一脚がEquivalenceLiftingな図式に限ると、qCatPullbackInfinityCone\_isLimitは通常のstrict pullback錐がQC内で極限と直接返す。原文の存在と保存のこの形状の場合に一致し、一般形状は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.qCatPullbackInfinityCone_isLimit`
 
 :::
 
@@ -426,12 +446,10 @@ tag := "kerodon-7-5-7"
 
 Kerodon [Tag 03CM](https://kerodon.net/tag/03CM)
 
-:::proposition "kerodon_7_5_7_1"
+:::proposition "kerodon_7_5_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.bousfieldKanCoherentCocone_isColimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.kanDiagramCoherentNerve_hasColimit, SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.bousfieldKanCoherentCocone_vertex")
 Kerodon Proposition 7.5.7.1（[Tag 03CN](https://kerodon.net/tag/03CN)）。対応表の状態：一部。
 
 XをKan置換したBK coend（kanReflectedBousfieldKanColimitObject F）に指定すると、bousfieldKanCoherentCocone\_isColimitとそのvertex計算は同じXが余極限と直接返す。一般Xのiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.bousfieldKanCoherentCocone_isColimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.kanDiagramCoherentNerve_hasColimit`、`SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.bousfieldKanCoherentCocone_vertex`
 
 :::
 

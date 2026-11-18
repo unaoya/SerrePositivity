@@ -1,8 +1,10 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.DoubleMappingCylinder
 import SerrePositivity.KST.Comparison.AlternativeFiberCriterion
 import SerrePositivity.KST.Comparison.AlternativePullback
+import SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse
 import SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence
 import SerrePositivity.KST.Comparison.FibrantCospanInvariance
 import SerrePositivity.KST.Comparison.FreeDegeneracies
@@ -13,10 +15,14 @@ import SerrePositivity.KST.Comparison.HomotopyPullbackSymmetry
 import SerrePositivity.KST.Comparison.LocalizedPushoutCube
 import SerrePositivity.KST.Comparison.SpanPushoutGluing
 import SerrePositivity.KST.Fibration.PullbackCancellation
+import SerrePositivity.KST.SConstruction.SimplicialProductQuillenA
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "3.4 Homotopy Pullback and Homotopy Pushout Squares" =>
 %%%
@@ -149,12 +155,10 @@ B6：Bousfield–Kan cone の比較射の同値は、原文の区間模型で定
 
 :::
 
-:::definition "kerodon_3_4_2_2"
+:::definition "kerodon_3_4_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder, SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse")
 Kerodon Construction 3.4.2.2（[Tag 032K](https://kerodon.net/tag/032K)）。対応表の状態：一部。
 
 B6：doubleMappingCylinder は区間の両端と二脚を貼る原文のホモトピー押し出しを直接構成し、collapse もその区間を潰す比較を与える。比較の Epi 性までは引用型にない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder`、`SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse`
 
 :::
 
@@ -213,12 +217,10 @@ B6：一般モデル圏の追加仮定を SSet で解消できず、通常pushou
 
 :::
 
-:::corollary "kerodon_3_4_2_13"
+:::corollary "kerodon_3_4_2_13" (lean := "SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse_localized_isIso")
 Kerodon Corollary 3.4.2.13（[Tag 032Q](https://kerodon.net/tag/032Q)）。対応表の状態：一部。
 
 B6：doubleMappingCylinderCollapse\_localized\_isIso は原文の指定の collapse が右脚 Mono のとき弱同値になる向きを直接与える。左脚だけ Mono の側は含まない。
-
-宣言：`SerrePositivity.KST.Comparison.doubleMappingCylinderCollapse_localized_isIso`
 
 :::
 
@@ -245,12 +247,10 @@ B6：単体の解消のaugmentation と積への Quillen A は任意の二対象
 
 :::
 
-:::corollary "kerodon_3_4_2_17"
+:::corollary "kerodon_3_4_2_17" (lean := "SerrePositivity.KST.SConstruction.simplicialProductQuillenA")
 Kerodon Corollary 3.4.2.17（[Tag 032U](https://kerodon.net/tag/032U)）。対応表の状態：一部。
 
 B6：simplicialProductQuillenA で Z を終対象、g を終射に取ると仮定は各単体ファイバーの弱可縮性となり、結論は f の弱同値性（X→Y×1 を標準同型で同定）になる。同じ射への明示的な特殊化。
-
-宣言：`SerrePositivity.KST.SConstruction.simplicialProductQuillenA`
 
 :::
 

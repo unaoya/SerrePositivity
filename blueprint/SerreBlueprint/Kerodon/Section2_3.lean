@@ -6,6 +6,9 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
+
 #doc (Manual) "2.3 The Duskin Nerve of a Bicategory" =>
 %%%
 number := false

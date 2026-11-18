@@ -3,6 +3,7 @@ import VersoManual
 import VersoBlueprint
 import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Avoidance
 import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
+import SerrePositivity.IntersectionMultiplicity.Additivity
 import SerrePositivity.IntersectionMultiplicity.Vanishing
 import SerrePositivity.LengthAlgebra.Normalized
 import SerrePositivity.LengthAlgebra.QuotientBounds
@@ -12,11 +13,15 @@ import SerrePositivity.Paper.Section5.Approximation
 import SerrePositivity.Paper.Section5.FirstComparison
 import SerrePositivity.Paper.Section5.ParameterQuotient
 import SerrePositivity.Paper.Section5.Positivity
+import SerrePositivity.Paper.Section5.Reduction
 import SerrePositivity.Paper.Section5.SecondComparison
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§5 Proof of strict positivity" =>
 %%%
@@ -51,7 +56,7 @@ number := false
 tag := "paper-5-1"
 %%%
 
-:::lemma_ "paper_5_1" (uses := "paper_eq_5_1, paper_1_1, paper_2_1, ext_GilletSoule, ext_Roberts85, ext_Serre")
+:::lemma_ "paper_5_1" (lean := "SerrePositivity.chi_pos_of_prime_quotients, SerrePositivity.Section5.chi_prime_eq_one_of_dim_zero, SerrePositivity.Section5.positivity_of_residueCharP, SerrePositivity.Section5.positivity_of_residueCharZero") (uses := "paper_eq_5_1, paper_1_1, paper_2_1, ext_GilletSoule, ext_Roberts85, ext_Serre")
 **補題 5.1**　完備・代数閉剰余体・正次元素商対への帰着。対応表の状態：一部。
 
 原典 PDF p.23 / layout L1200。prime filtrationとvanishingによる帰着、零次元対、剰余体拡大・完備化の各処理はある。一方、positivity\_of\_residueCharPは核心の実定理を呼ぶため入力依存で、原典の「核心を証明すれば十分」という全帰着を独立の含意型として切り出した宣言は確認しない。
@@ -72,8 +77,6 @@ $`A\to T` を有限な環準同型、有限群 $`G` が $`T` に $`A` 上で作�
 代数閉体 $`\Omega` への $`A` 代数の構造をとり、$`S=T\otimes_A\Omega` とおく。$`u=\sum_it_i\otimes\omega_i\in S` について、共役の積 $`\prod_gg(u)` は $`\Omega` に入る。実際、多項式 $`\prod_g\sum_ig(t_i)X_i` は $`G` 不変なので係数は $`A` から来て、$`X_i=\omega_i` と特殊化すればよい。$`S` は $`\Omega` 上有限な Artin 環なので、$`\operatorname{Spec} S` は離散である。一つの点の軌道に対応する冪等元 $`e` について $`\prod_gg(e)` は冪等なスカラーで、その点で $`0` でないから $`1` に等しい。したがって軌道は $`\operatorname{Spec} S` 全体である。
 
 *Lean:* \`isGeometricallyTransitive\_of\_fixed\`（証明済み）。
-
-宣言：`SerrePositivity.chi_pos_of_prime_quotients`、`SerrePositivity.Section5.chi_prime_eq_one_of_dim_zero`、`SerrePositivity.Section5.positivity_of_residueCharP`、`SerrePositivity.Section5.positivity_of_residueCharZero`
 
 外の文献：GilletSoule、Roberts85、Serre
 
@@ -107,7 +110,7 @@ $$`c_\sigma = \sum_i (-1)^i \lambda_D \operatorname{Tor}_i^R(C_D^\sigma, E')`
 
 :::
 
-:::lemma_ "paper_5_2" (uses := "paper_eq_5_1, paper_3_5")
+:::lemma_ "paper_5_2" (lean := "SerrePositivity.firstComparison, SerrePositivity.normComparison_of_lengthAlgebra") (uses := "paper_eq_5_1, paper_3_5")
 **補題 5.2**　第1のGalois平均と普通の交点数。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.24 / layout L1274。任意の共役の有限正規化Tor長と、\|G\_D\| a\_D a\_E chi=Σc\_sigmaを同時に与える。有限拡大のrank因子・vanishingは実装されるが、norm比較に使う通常K0降下入力のsorryが残る。
@@ -128,16 +131,12 @@ $`\sigma` と $`\sigma^{-1}` のどちらを $`P_\sigma` に対応させるか�
 
 *Lean:* \`firstComparison\`、\`firstComparison\_of\_resolution\`、\`normComparison\_of\_lengthAlgebra\`、ランクの因子は \`IntersectionMultiplicity.FiniteExtension\`（引用を除いて証明済み。引用は消滅定理と定理 7.3）。環・有限代数・群作用・長さの条件は引数として明示的に受け取る。
 
-宣言：`SerrePositivity.firstComparison`、`SerrePositivity.normComparison_of_lengthAlgebra`
-
 :::
 
-:::definition "paper_eq_5_3" (uses := "paper_eq_5_1, paper_3_5")
+:::definition "paper_eq_5_3" (lean := "SerrePositivity.firstComparison") (uses := "paper_eq_5_1, paper_3_5")
 **式 (5.3)**　第1のnorm比較の等式。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.24 / layout L1276。全共役の有限性と和の等式を返すが、普通K0降下入力に依存する。
-
-宣言：`SerrePositivity.firstComparison`
 
 :::
 
@@ -367,12 +366,10 @@ $`\lambda_D` は塔と整合する長さの係数制限である（命題 8.3）
 
 :::
 
-:::definition "paper_eq_5_12" (uses := "paper_eq_5_10, paper_eq_5_9")
+:::definition "paper_eq_5_12" (lean := "SerrePositivity.Section5.lemma_5_4") (uses := "paper_eq_5_10, paper_eq_5_9")
 **式 (5.12)**　近似誤差をkernel・cokernelの長さで抑えるTor評価。対応表の状態：一部。
 
 原典 PDF p.26 / layout L1419。finite approximationの構成で長さ誤差を制御しているが、原典のri+ri-1およびri+1+riの係数を持つ四項評価を独立の対応宣言として未検収。
-
-宣言：`SerrePositivity.Section5.lemma_5_4`
 
 :::
 
@@ -463,7 +460,7 @@ tag := "paper-5-5"
 
 :::
 
-:::lemma_ "paper_5_6" (uses := "paper_eq_4_2, paper_eq_5_11, paper_eq_5_16, paper_eq_5_17, paper_2_5")
+:::lemma_ "paper_5_6" (lean := "SerrePositivity.Asymptotic.paperBaseChangeEuler_minimal_lower_bound, SerrePositivity.Section5.finiteApproximation_rank_lower_bound, SerrePositivity.Section4.residue_length_pos_of_lengthAlgebra_values, SerrePositivity.len_quotient_map_le_length_mul") (uses := "paper_eq_4_2, paper_eq_5_11, paper_eq_5_16, paper_eq_5_17, paper_2_5")
 **補題 5.6**　正規化Euler評価の正の定量的下界。対応表の状態：一部。
 
 原典 PDF p.29 / layout L1535。Euler評価≥eta\_E×正規化生成元数、および生成元数のlambda(U)/length(B/m\^a)下界を確認した。原典(5.17)に明示するr\_E≤t\_E eta\_Eも一般の商長評価にある。一方、除算形の二段階下界を本文のb\_sigma,gammaの実評価と一括して返す宣言としては未照合なのでpartialとする。正値性の核心を新しい仮定として置かない。
@@ -550,11 +547,9 @@ $`D` 側の $`\lambda`-CM 性（命題 7.10）が複体の長さを $`l` に抑�
 
 *Lean:* \`Section5.exists\_secondComparison\_pos\_of\_approximation\` が、同じ有限近似から第二比較の対象と全ての共役の正値性を同時に構成する（保留した降下を除いて証明済み）。個別の入口として \`secondComparison\_minimal\_lower\_bound\`、\`paperEuler\_pos\_of\_finiteApproximation\` もある。
 
-宣言：`SerrePositivity.Asymptotic.paperBaseChangeEuler_minimal_lower_bound`、`SerrePositivity.Section5.finiteApproximation_rank_lower_bound`、`SerrePositivity.Section4.residue_length_pos_of_lengthAlgebra_values`、`SerrePositivity.len_quotient_map_le_length_mul`
-
 :::
 
-:::definition "paper_eq_5_17" (uses := "paper_eq_4_2, paper_eq_5_11, paper_eq_5_16, paper_2_5")
+:::definition "paper_eq_5_17" (lean := "SerrePositivity.Asymptotic.paperBaseChangeEuler_minimal_lower_bound, SerrePositivity.Section5.finiteApproximation_rank_lower_bound, SerrePositivity.len_quotient_map_le_length_mul") (uses := "paper_eq_4_2, paper_eq_5_11, paper_eq_5_16, paper_2_5")
 **式 (5.17)**　二段階の明示的な正の下界。対応表の状態：一部。
 
 原典 PDF p.29 / layout L1538。eta×生成元数、およびlambda(U)/length(B/m\^a)という下界までは対応する。(5.16)の商長不等式もあるが、表示の除算形全体と本文のb\_sigma,gammaを一括した型としては未検収。
@@ -585,11 +580,9 @@ $$`H_0(K_v\otimes F_n\otimes C) =C^{\oplus\beta_0(F_n)}/(\operatorname{im}d_1+(z
 
 $$`b_{\sigma,\gamma} \;\ge\; \nu_\sigma\cdot\lambda_E(C_E/\mathfrak{m}_{E'}C_E) \;>\; 0.`
 
-宣言：`SerrePositivity.Asymptotic.paperBaseChangeEuler_minimal_lower_bound`、`SerrePositivity.Section5.finiteApproximation_rank_lower_bound`、`SerrePositivity.len_quotient_map_le_length_mul`
-
 :::
 
-:::definition "paper_eq_5_18" (uses := "paper_4_7, paper_5_1, paper_5_2, paper_5_5, paper_5_6")
+:::definition "paper_eq_5_18" (lean := "SerrePositivity.Section5.exists_secondComparison_pos_of_regular, SerrePositivity.Section5.secondComparison_of_approximation") (uses := "paper_4_7, paper_5_1, paper_5_2, paper_5_5, paper_5_6")
 **式 (5.18)**　第二平均から第1平均の各c\_sigmaの正値性。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.29 / layout L1577。実際の第二比較の等式と各共役の正値性を接続する入口があるが、原典のTheorem4.7の代わりにsupportedRankK0\_descentのsorry入力に依存する。
@@ -609,8 +602,6 @@ $$`|G_E|\cdot c_\sigma \;=\; \sum_{\gamma\in G_E} b_{\sigma,\gamma}. \tag{9.1}`
 これが §2 の （2.2） である。
 
 *Lean:* \`Section5.secondComparison\_of\_approximation\`（有限近似・Koszul 分解・降下などを明示的な入力として証明済み）。
-
-宣言：`SerrePositivity.Section5.exists_secondComparison_pos_of_regular`、`SerrePositivity.Section5.secondComparison_of_approximation`
 
 :::
 

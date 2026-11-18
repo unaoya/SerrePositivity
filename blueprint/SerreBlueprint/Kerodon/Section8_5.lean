@@ -1,24 +1,44 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
+import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 import Mathlib.CategoryTheory.Idempotents.Basic
 import Mathlib.CategoryTheory.Idempotents.Karoubi
 import Mathlib.CategoryTheory.Limits.Shapes.SplitCoequalizer
 import Mathlib.CategoryTheory.Limits.Shapes.SplitEqualizer
 import Mathlib.CategoryTheory.Retract
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.InnerAnodyneVertices
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.InnerAnodyneReplacement
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Coherent
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.ColimitRetractions
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompleteSubcomplexRetracts
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletenessEquivalence
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Completion
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionBaseChange
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionCanonicalColimits
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionCofinal
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionLeftCofinal
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionOpposite
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionOppositeGeneral
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionSlice
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionUniqueness
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.FibrationComplete
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.FullSubcomplexSplitting
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.FunctorComplete
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.MissingFaceInnerAnodyne
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplittingCanonicalColimits
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplittingDiagramCone
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplittingRestriction
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplittingColimit
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplittingExistence
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplittingLimit
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplittingLimitExistence
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.UniversalProperty
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Walking
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakExtension
@@ -29,6 +49,9 @@ open Verso.Genre
 open Verso.Genre.Manual
 open Informal
 
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
+
 #doc (Manual) "8.5 Retracts and Idempotents" =>
 %%%
 number := false
@@ -36,6 +59,29 @@ tag := "kerodon-8-5"
 %%%
 
 Kerodon の 8.5 節（[Tag 03Y9](https://kerodon.net/tag/03Y9)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
+
+*06-catinfty-ind-presentable.html — 5. 冪等完備化*
+
+冪等射は、高次の整合性まで含めて「冪等図式」（Idem の nerve からの図式、\`CoherentIdempotent\`）として扱う（HTT §4.4.5）。
+
+\`\`\`text
+def IsIdempotentComplete (X : SSet.\{u\}) : Prop :=
+  ∀ d : CoherentIdempotent X, Nonempty (StrongSplitting d)
+
+def IsIdempotentCompletion \{C D : SSet.\{u\}\} (f : C ⟶ D) : Prop :=
+  IsIdempotentComplete D ∧ IsFullyFaithful f ∧
+    ∀ d : D \_⦋0⦌, ∃ c : C \_⦋0⦌, IsVertexRetractOf d (f.app (Opposite.op ⦋0⦌) c)
+\`\`\`
+
+冪等完備化とは、冪等完備な $`D` への充満忠実な $`f` で、$`D` の任意の対象が像の retract になるもの（HTT 5.1.4.2）。
+
+- 内容　／　Lean　／　場所
+- 存在：前層 ∞ 圏の中の retract 閉包 $`\mathrm{Idem}(C)`　／　\`idemYoneda\_isIdempotentCompletion\`　／　F2/Idempotent
+- 普遍性と一意性　／　\`IsIdempotentCompletion.exists\_extension\`、\`.equivalence\_unique\`　／　F2/Idempotent
+- 安定 ∞ 圏の冪等完備化は安定（HA 1.1.3.7）　／　\`idem\_isStable\`、\`IsIdempotentCompletion.isStable\`　／　F2/Idempotent
+- $`\mathrm{Ind}(C)^\omega\simeq\mathrm{Idem}(C)`　／　（N-5 e）　／　F2/Compact、F2/Idempotent
+
+これで Cat\<sup\>perf\</sup\>（冪等完備な小さい安定 ∞ 圏）を扱う準備が整っている。
 
 :::definition "kerodon_8_5_0_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingSplit, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSection_retraction")
 Kerodon Construction 8.5.0.2（[Tag 03YB](https://kerodon.net/tag/03YB)）。対応表の状態：本体にある。
@@ -76,12 +122,10 @@ Kerodon Proposition 8.5.1.7（[Tag 03YP](https://kerodon.net/tag/03YP)）。対�
 
 :::
 
-:::proposition "kerodon_8_5_1_8"
+:::proposition "kerodon_8_5_1_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.canonicalCocones_isColimit")
 Kerodon Proposition 8.5.1.8（[Tag 03YQ](https://kerodon.net/tag/03YQ)）。対応表の状態：一部。
 
 包含δがさらにIsIdempotentCompletion（標的の冪等完備性も含む）を満たす場合、canonicalCocones\_isColimitは同じFの全標準左Kan余錐の余極限性を直接返す。右Kan側と単なるretract生成だけの一般形は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.canonicalCocones_isColimit`
 
 :::
 
@@ -99,12 +143,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：相対始�
 
 :::
 
-:::corollary "kerodon_8_5_1_11"
+:::corollary "kerodon_8_5_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isColimitCone_of_functorRetraction")
 Kerodon Corollary 8.5.1.11（[Tag 03YT](https://kerodon.net/tag/03YT)）。対応表の状態：一部。
 
 Uを終対象への射に限ると相対余極限は絶対余極限。isColimitCone\_of\_functorRetractionは同じ全余錐の関手準圏内のretractへ余極限性を直接移す。一般Uは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isColimitCone_of_functorRetraction`
 
 :::
 
@@ -272,12 +314,10 @@ Kerodon Definition 8.5.3.5（[Tag 03ZX](https://kerodon.net/tag/03ZX)）。対�
 
 :::
 
-:::proposition "kerodon_8_5_3_8"
+:::proposition "kerodon_8_5_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingCanonicalCocones_isColimit, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone_isLimit")
 Kerodon Proposition 8.5.3.8（[Tag 0400](https://kerodon.net/tag/0400)）。対応表の状態：一部。
 
 splittingCanonicalCocones\_isColimitは原文の同じN(Idem)包含とF̄について全標準左Kan余錐の余極限性、すなわち左Kan側を直接返す。右Kan側はsplittingDiagramConeの別の極限錐だけで代用しない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingCanonicalCocones_isColimit`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone_isLimit`
 
 :::
 
@@ -327,12 +367,10 @@ Kerodon Variant 8.5.4.3（[Tag 06YL](https://kerodon.net/tag/06YL)）。対応�
 
 :::
 
-:::proposition "kerodon_8_5_4_10"
+:::proposition "kerodon_8_5_4_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSubcomplex_isIdempotentComplete, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retract_iso_in_complete_fullSubcomplex")
 Kerodon Proposition 8.5.4.10（[Tag 040B](https://kerodon.net/tag/040B)）。対応表の状態：一部。
 
 部分圏の頂点述語をretractに厳密に閉じると強めればfullSubcomplex\_isIdempotentCompleteは同じ全部分準圏の冪等完備性を直接返す。同型な代表だけが含まれる一般形は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSubcomplex_isIdempotentComplete`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retract_iso_in_complete_fullSubcomplex`
 
 :::
 
@@ -403,12 +441,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：冪等完�
 
 :::
 
-:::corollary "kerodon_8_5_4_28"
+:::corollary "kerodon_8_5_4_28" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_leftFibration")
 Kerodon Corollary 8.5.4.28（[Tag 0608](https://kerodon.net/tag/0608)）。対応表の状態：一部。
 
 同じG₁:C₀₁→C₁がrightまたはleft fibrationでもあると強めると、isIdempotentComplete\_of\_right/leftFibrationは同じC₀₁の冪等完備性を直接返す。任意のcategorical pullbackだけの場合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_rightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_leftFibration`
 
 :::
 
@@ -435,12 +471,10 @@ Kerodon Definition 8.5.5.1（[Tag 040U](https://kerodon.net/tag/040U)）。対�
 
 :::
 
-:::proposition "kerodon_8_5_5_3"
+:::proposition "kerodon_8_5_5_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.equivalence_unique")
 Kerodon Proposition 8.5.5.3（[Tag 0411](https://kerodon.net/tag/0411)）。対応表の状態：一部。
 
 IsIdempotentCompletion.pre\_isQCatEquivalenceは原文の同じHについて(a)⇒(b)を直接返す。普遍性から充満忠実性とretract生成を回収する逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.equivalence_unique`
 
 :::
 
@@ -510,12 +544,10 @@ tag := "kerodon-8-5-6"
 
 Kerodon [Tag 05M8](https://kerodon.net/tag/05M8)
 
-:::definition "kerodon_8_5_6_1"
+:::definition "kerodon_8_5_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion")
 Kerodon Definition 8.5.6.1（[Tag 05M9](https://kerodon.net/tag/05M9)）。対応表の状態：一部。
 
 Fを準圏間の冪等完備化に限ると、pre\_isQCatEquivalenceは任意の冪等完備Eについて同じ前合成同値を直接返し、原文のMorita条件を満たす。任意の単体写像を判定する定義全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion`
 
 :::
 
@@ -528,12 +560,10 @@ Kerodon Variant 8.5.6.10（[Tag 060F](https://kerodon.net/tag/060F)）。対応�
 
 :::
 
-:::proposition "kerodon_8_5_6_11"
+:::proposition "kerodon_8_5_6_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence")
 Kerodon Proposition 8.5.6.11（[Tag 05MG](https://kerodon.net/tag/05MG)）。対応表の状態：一部。
 
 標的Dの冪等完備性を加えると、原文(a)(b)はIsIdempotentCompletion Fを与え、pre\_isQCatEquivalenceが任意の冪等完備Eに対して同じ前合成同値を返す。これはMorita定義の同じテストを満たす向き。逆向きと任意Dは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence`
 
 :::
 
@@ -544,12 +574,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：任意の�
 
 :::
 
-:::proposition "kerodon_8_5_6_13"
+:::proposition "kerodon_8_5_6_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op_general, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion")
 Kerodon Proposition 8.5.6.13（[Tag 05MJ](https://kerodon.net/tag/05MJ)）。対応表の状態：一部。
 
 C,Dを準圏、Fを冪等完備化にも強めるとop\_generalと前合成普遍性からFopも任意冪等完備標的への前合成同値を与える。(1)⇒(2)のこの場合に一致し、κ値前層の条件(3)(4)は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op_general`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion`
 
 :::
 
@@ -560,39 +588,31 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：cartesian �
 
 :::
 
-:::corollary "kerodon_8_5_6_15" (uses := "kerodon_1_1_0_6")
+:::corollary "kerodon_8_5_6_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion") (uses := "kerodon_1_1_0_6")
 Kerodon Corollary 8.5.6.15（[Tag 060G](https://kerodon.net/tag/060G)）。対応表の状態：一部。
 
 底のFを準圏間のinner fibrationかつ冪等完備化に強めると、pullback\_rightFibrationは同じpullback射を冪等完備化とし、その前合成普遍性が同じ射のMorita条件を返す。任意のMorita射は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion`
-
 :::
 
-:::corollary "kerodon_8_5_6_16" (uses := "kerodon_1_1_0_6, kerodon_7_2_3_13, kerodon_8_5_6_10, kerodon_8_5_6_15")
+:::corollary "kerodon_8_5_6_16" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.comp") (uses := "kerodon_1_1_0_6, kerodon_7_2_3_13, kerodon_8_5_6_10, kerodon_8_5_6_15")
 Kerodon Corollary 8.5.6.16（[Tag 060H](https://kerodon.net/tag/060H)）。対応表の状態：一部。
 
 Fを準圏間のinner fibrationかつ冪等完備化に強めるとisRightCofinalとcofinalな射の合成から、同じGが右余終ならGFが右余終という向きを直接得る。任意Morita射の場合と反映の向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsRightCofinal.comp`
-
 :::
 
-:::corollary "kerodon_8_5_6_17" (uses := "kerodon_1_1_0_6, kerodon_8_5_6_16")
+:::corollary "kerodon_8_5_6_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isLeftCofinal") (uses := "kerodon_1_1_0_6, kerodon_8_5_6_16")
 Kerodon Corollary 8.5.6.17（[Tag 060J](https://kerodon.net/tag/060J)）。対応表の状態：一部。
 
 Fを準圏間の冪等完備化かつinner fibrationに強めるとIsIdempotentCompletion.isRightCofinalは原文の同じFがright cofinalという結論を直接返す。任意Morita射は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isLeftCofinal`
-
 :::
 
-:::corollary "kerodon_8_5_6_18"
+:::corollary "kerodon_8_5_6_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.sliceOver")
 Kerodon Corollary 8.5.6.18（[Tag 060K](https://kerodon.net/tag/060K)）。対応表の状態：一部。
 
 底の同じ冪等完備化Fにinner fibrationを追加すると、pullback\_rightFibrationは指定pullbackの同じ射が冪等完備化となる結論を直接返す。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.sliceOver`
 
 :::
 
@@ -614,12 +634,10 @@ tag := "kerodon-8-5-7"
 
 Kerodon [Tag 0418](https://kerodon.net/tag/0418)
 
-:::definition "kerodon_8_5_7_1"
+:::definition "kerodon_8_5_7_1" (lean := "SSet.S1, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv")
 Kerodon Notation 8.5.7.1（[Tag 0419](https://kerodon.net/tag/0419)）。対応表の状態：一部。
 
 S1の平行対の余等化子と一般の内部Homから原文のFun(S1,C)というEnd準圏自体を構成できる。対象の自己射データとの全単射の型までは引用しない。
-
-宣言：`SSet.S1`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv`
 
 :::
 
@@ -813,12 +831,10 @@ tag := "kerodon-8-5-9"
 
 Kerodon [Tag 042C](https://kerodon.net/tag/042C)
 
-:::theorem "kerodon_8_5_9_4"
+:::theorem "kerodon_8_5_9_4" (lean := "SSet.innerAnodyneExtensions_eq_llp_rlp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.quasicategory_of_innerFibration")
 Kerodon Theorem 8.5.9.4（[Tag 042G](https://kerodon.net/tag/042G)）。対応表の状態：一部。
 
 exists\_innerAnodyne\_innerFibration\_factorizationを指定骨格包含に適用すると、同じ射のinner anodyneとinner fibrationへの分解を直接得る。N(Idem)が準圏なので中間も準圏。低次数の全単射と右逆Vは含まない。
-
-宣言：`SSet.innerAnodyneExtensions_eq_llp_rlp`、`CategoryTheory.MorphismProperty.instHasFunctorialFactorizationLlpRlp`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization`、`SSet.quasicategory_of_innerFibration`
 
 :::
 
@@ -850,12 +866,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：単独の�
 
 :::
 
-:::lemma_ "kerodon_8_5_9_11"
+:::lemma_ "kerodon_8_5_9_11" (lean := "SSet.innerAnodyneExtensions_eq_llp_rlp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.quasicategory_of_innerFibration")
 Kerodon Lemma 8.5.9.11（[Tag 042Q](https://kerodon.net/tag/042Q)）。対応表の状態：一部。
 
 n=1に限ると終対象へのinner anodyne/inner fibration分解から同じKの準圏置換を得て、innerAnodyne\_vertex\_bijectiveが必要な全次数\<1の全単射を返す。一般nでの低次数保存は含まない。
-
-宣言：`SSet.innerAnodyneExtensions_eq_llp_rlp`、`CategoryTheory.MorphismProperty.instHasFunctorialFactorizationLlpRlp`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization`、`SSet.quasicategory_of_innerFibration`
 
 :::
 

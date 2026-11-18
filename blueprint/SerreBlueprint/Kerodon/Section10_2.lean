@@ -1,7 +1,9 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 import Mathlib.CategoryTheory.Limits.Shapes.RegularMono
+import Mathlib.CategoryTheory.RegularCategory.Basic
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
@@ -10,6 +12,9 @@ import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCat
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "10.2 Regular ∞-Categories" =>
 %%%
@@ -26,12 +31,10 @@ Kerodon Definition 10.2.0.2（[Tag 04TP](https://kerodon.net/tag/04TP)）。対�
 
 :::
 
-:::definition "kerodon_10_2_0_6"
+:::definition "kerodon_10_2_0_6" (lean := "CategoryTheory.Regular, CategoryTheory.Regular.hasStrongEpiMonoFactorisations, CategoryTheory.Regular.strongEpiMonoFactorisation")
 Kerodon Definition 10.2.0.6（[Tag 04TT](https://kerodon.net/tag/04TT)）。対応表の状態：一部。
 
 通常圏のRegularのfieldsとstrongEpiMonoFactorisation、そのeのIsRegularEpiインスタンスは原文の有限極限・正則エピとmonoの分解・底変換安定性の三条件を直接返す。三条件から核対余等化子という逆向きはこの引用で確認していない。
-
-宣言：`CategoryTheory.Regular`、`CategoryTheory.Regular.hasStrongEpiMonoFactorisations`、`CategoryTheory.Regular.strongEpiMonoFactorisation`
 
 :::
 
@@ -65,12 +68,10 @@ B6再照合：通常圏の Sieve は射で定義され、原文は対象の充�
 
 :::
 
-:::corollary "kerodon_10_2_1_8"
+:::corollary "kerodon_10_2_1_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_innerFibration, SSet.quasicategory_of_innerFibration")
 Kerodon Corollary 10.2.1.8（[Tag 04U7](https://kerodon.net/tag/04U7)）。対応表の状態：一部。
 
 同じsieveの包含のRightFibrationからinner fibrationを得て、quasicategory\_of\_innerFibrationを適用すると原文最後の同じ部分集合の準圏性を直接得る。repleteとfullの両条件全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_innerFibration`、`SSet.quasicategory_of_innerFibration`
 
 :::
 

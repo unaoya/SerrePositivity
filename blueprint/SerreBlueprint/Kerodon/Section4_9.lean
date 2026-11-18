@@ -1,21 +1,38 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.Order.Bounds.Defs
+import Mathlib.Order.Cofinal
 import Mathlib.Order.Extension.Well
 import Mathlib.Order.Hom.Set
 import Mathlib.Order.InitialSeg
 import Mathlib.Order.RelClasses
 import Mathlib.Order.WellFounded
+import Mathlib.SetTheory.Cardinal.Arithmetic
+import Mathlib.SetTheory.Cardinal.Cofinality.Basic
+import Mathlib.SetTheory.Cardinal.Cofinality.Enum
+import Mathlib.SetTheory.Cardinal.Cofinality.Ordinal
 import Mathlib.SetTheory.Cardinal.Defs
 import Mathlib.SetTheory.Cardinal.HasCardinalLT
 import Mathlib.SetTheory.Cardinal.Order
 import Mathlib.SetTheory.Cardinal.Regular
 import Mathlib.SetTheory.Ordinal.Basic
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostHomCriterion
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.KappaSmallProducts
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.LocallySmall
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SimplicialCardinalBounds
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallJoin
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallKanModel
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallShapeSimplices
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallSimplicialShapes
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "4.9 Size Conditions on ∞-Categories" =>
 %%%
@@ -134,21 +151,17 @@ Kerodon Corollary 4.9.1.24（[Tag 03QJ](https://kerodon.net/tag/03QJ)）。対�
 
 :::
 
-:::definition "kerodon_4_9_1_26"
+:::definition "kerodon_4_9_1_26" (lean := "IsCofinal")
 Kerodon Definition 4.9.1.26（[Tag 03QL](https://kerodon.net/tag/03QL)）。対応表の状態：一部。
 
 Order.IsCofinal(range f)は原文の∀t∃s,t≤f(s)という非有界性の成分そのもの。単調性を含む写像の共終性の全定義は含まない。
 
-宣言：`IsCofinal`
-
 :::
 
-:::proposition "kerodon_4_9_1_27"
+:::proposition "kerodon_4_9_1_27" (lean := "Order.exists_cof_eq, Order.ord_cof_eq_type_lt, isCofinal_setOfPred_imp_lt")
 Kerodon Proposition 4.9.1.27（[Tag 03QM](https://kerodon.net/tag/03QM)）。対応表の状態：一部。
 
 T自身も整列順序と仮定すれば、exists\_cof\_eqの共終部分集合は誘導順序でも整列し、包含は単調なので原文と同じ存在結論を直接得る。任意の線形順序Tではない。
-
-宣言：`Order.exists_cof_eq`、`Order.ord_cof_eq_type_lt`、`isCofinal_setOfPred_imp_lt`
 
 :::
 
@@ -253,30 +266,24 @@ Kerodon Definition 4.9.3.1（[Tag 03RC](https://kerodon.net/tag/03RC)）。対�
 
 :::
 
-:::proposition "kerodon_4_9_3_5" (uses := "kerodon_4_9_2_5")
+:::proposition "kerodon_4_9_3_5" (lean := "Cardinal.mul_lt_of_lt") (uses := "kerodon_4_9_2_5")
 Kerodon Proposition 4.9.3.5（[Tag 03RG](https://kerodon.net/tag/03RG)）。対応表の状態：一部。
 
 Cardinal.mul\_lt\_of\_ltは二つのκ-small集合の積の濃度がκ未満と直接返す。一般の無限κでよいが、任意有限個の積の一括した閉性は含まない。
 
-宣言：`Cardinal.mul_lt_of_lt`
-
 :::
 
-:::corollary "kerodon_4_9_3_6" (uses := "kerodon_4_9_3_5")
+:::corollary "kerodon_4_9_3_6" (lean := "Cardinal.add_lt_of_lt") (uses := "kerodon_4_9_3_5")
 Kerodon Corollary 4.9.3.6（[Tag 03RH](https://kerodon.net/tag/03RH)）。対応表の状態：一部。
 
 Cardinal.add\_lt\_of\_ltは二つのκ-small集合の余積の濃度がκ未満と直接返す。任意有限個の余積の一括した閉性は含まない。
 
-宣言：`Cardinal.add_lt_of_lt`
-
 :::
 
-:::proposition "kerodon_4_9_3_7"
+:::proposition "kerodon_4_9_3_7" (lean := "Cardinal.iSup_lt_of_isRegular, Cardinal.sum_lt_of_isRegular, Cardinal.iSup_lt_of_lt_cof_ord")
 Kerodon Proposition 4.9.3.7（[Tag 03RJ](https://kerodon.net/tag/03RJ)）。対応表の状態：一部。
 
 λが正則の場合、sum\_lt\_of\_isRegularは添字濃度\<λと各項\<λから同じ余積濃度\<λを直接返す。原文(1)⇒(2)のこの場合で、一般の特異λと逆向きは含まない。
-
-宣言：`Cardinal.iSup_lt_of_isRegular`、`Cardinal.sum_lt_of_isRegular`、`Cardinal.iSup_lt_of_lt_cof_ord`
 
 :::
 
@@ -289,12 +296,10 @@ sum\_lt\_of\_isRegularは正則λについての小さい余積の上界。原�
 
 :::
 
-:::corollary "kerodon_4_9_3_9"
+:::corollary "kerodon_4_9_3_9" (lean := "Cardinal.card_iUnion_lt_iff_forall_of_isRegular, Cardinal.sum_lt_of_isRegular")
 Kerodon Corollary 4.9.3.9（[Tag 03RL](https://kerodon.net/tag/03RL)）。対応表の状態：一部。
 
 λも正則と仮定するとsum\_lt\_of\_isRegularは同じ添字族の余積がλ-smallという結論を直接返す。cf(λ)=λであるこの場合に限り、特異λは含まない。
-
-宣言：`Cardinal.card_iUnion_lt_iff_forall_of_isRegular`、`Cardinal.sum_lt_of_isRegular`
 
 :::
 
@@ -351,30 +356,24 @@ Kerodon Definition 4.9.4.1（[Tag 03S2](https://kerodon.net/tag/03S2)）。対�
 
 :::
 
-:::proposition "kerodon_4_9_4_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_8, kerodon_3_6_1_7, kerodon_4_9_3_5, kerodon_4_9_3_6")
+:::proposition "kerodon_4_9_4_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_obj_of_N, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_N_of_obj, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_simplices_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_1_1_3_8, kerodon_3_6_1_7, kerodon_4_9_3_5, kerodon_4_9_3_6")
 Kerodon Proposition 4.9.4.10（[Tag 03SA](https://kerodon.net/tag/03SA)）。対応表の状態：一部。
 
 hasCardinalLT\_obj\_of\_NとhasCardinalLT\_N\_of\_objはκを非可算正則に強めると原文(1)⇔(2)の同じ非退化単体全体/各次数の濃度条件を直接結ぶ。有限KからのHomの条件(3)と一般の共終数仮定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_obj_of_N`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_N_of_obj`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_simplices_of_isKappaSmall`
-
 :::
 
-:::corollary "kerodon_4_9_4_12" (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_4_10")
+:::corollary "kerodon_4_9_4_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_prod") (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_4_10")
 Kerodon Corollary 4.9.4.12（[Tag 03SC](https://kerodon.net/tag/03SC)）。対応表の状態：一部。
 
 isKappaSmall\_prodはκを正則に強めると二項積の同じκ-small性を直接返す。任意の無限κと任意有限個への一般化は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_prod`
-
 :::
 
-:::corollary "kerodon_4_9_4_13" (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_3_6, kerodon_4_9_4_10")
+:::corollary "kerodon_4_9_4_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_join") (uses := "kerodon_1_1_0_6, kerodon_4_9_3_5, kerodon_4_9_3_6, kerodon_4_9_4_10")
 Kerodon Corollary 4.9.4.13（[Tag 05P7](https://kerodon.net/tag/05P7)）。対応表の状態：一部。
 
 isKappaSmall\_joinはκを正則に強めると同じjoinのκ-small性を直接返す。任意の非正則な無限κは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isKappaSmall_join`
 
 :::
 
@@ -452,12 +451,10 @@ B6再検索（現本体・ロックMathlib、移動後の宣言を含む）：�
 
 :::
 
-:::definition "kerodon_4_9_5_6"
+:::definition "kerodon_4_9_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallKanModel")
 Kerodon Variant 4.9.5.6（[Tag 03SM](https://kerodon.net/tag/03SM)）。対応表の状態：一部。
 
 HasSmallKanModelは準圏Xが小さいKan模型と圏同値という条件。逆同値を取ればXから小さいKan準圏へのcategorical equivalenceを直接与え、原文の小さい比較先をKanに制限した場合。任意の小さい準圏の模型の条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallKanModel`
 
 :::
 
@@ -571,12 +568,10 @@ IsLocallySmallはu+1/uの宇宙差の述語。原文の指定κと各Homのessen
 
 :::
 
-:::definition "kerodon_4_9_7_6"
+:::definition "kerodon_4_9_7_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsLocallySmall, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq")
 Kerodon Variant 4.9.7.6（[Tag 03TU](https://kerodon.net/tag/03TU)）。対応表の状態：一部。
 
 IsLocallySmallはu+1の準圏Cの各頂点対にuのKan模型を与える。自然なpinched→interval比較の圏同値を合成し、Kan上でホモトピー同値へ移すと原文の各interval Homのessential smallnessを直接得る。この宇宙を指定した範囲だけ。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsLocallySmall`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_postOfEq`
 
 :::
 
@@ -628,12 +623,10 @@ HasEssentiallySmallFibersはleft fibrationの頂点fiberの宇宙版で、原文
 
 :::
 
-:::definition "kerodon_4_9_8_2" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
+:::definition "kerodon_4_9_8_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasEssentiallySmallFibers") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1")
 Kerodon Variant 4.9.8.2（[Tag 047C](https://kerodon.net/tag/047C)）。対応表の状態：一部。
 
 HasEssentiallySmallFibersはleft fibrationの各頂点fiberに小さいKan模型を直接要求する。原文のessentially smallの全単体条件のうちn=0の成分に限り、任意の高次単体・locally smallの条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasEssentiallySmallFibers`
 
 :::
 

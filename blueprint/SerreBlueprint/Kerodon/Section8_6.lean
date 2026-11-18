@@ -1,16 +1,31 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Bicategory.Grothendieck
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FiberwiseHomPostcomposition
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.Nerve
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCatSimplicial
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FiberwiseHom
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceTwistedArrowTarget
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceTwistedArrowTargetNaturality
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.ConjugateAndDualFibrations.EdgewiseEnrichedCategory
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.EdgewiseEnrichedComparison
 import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseRightFilling
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseSubdivision
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.HomSwap
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.Projection
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrowFunctorComparison
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "8.6 Conjugate and Dual Fibrations" =>
 %%%
@@ -64,12 +79,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：Tw(E) の�
 
 :::
 
-:::definition "kerodon_8_6_1_9"
+:::definition "kerodon_8_6_1_9" (lean := "CategoryTheory.Pseudofunctor.Grothendieck.Hom, CategoryTheory.Pseudofunctor.CoGrothendieck.Hom, CategoryTheory.Pseudofunctor.CoGrothendieck.forget")
 Kerodon Construction 8.6.1.9（[Tag 04CF](https://kerodon.net/tag/04CF)）。対応表の状態：一部。
 
 Grothendieck/CoGrothendieckの構成は同じ通常圏値Fのint±という二つの入力圏の対象・射を直接与える。原文のそれらを合わせるTの全構成は含まない。
-
-宣言：`CategoryTheory.Pseudofunctor.Grothendieck.Hom`、`CategoryTheory.Pseudofunctor.CoGrothendieck.Hom`、`CategoryTheory.Pseudofunctor.CoGrothendieck.forget`
 
 :::
 
@@ -80,12 +93,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：両 Grothen
 
 :::
 
-:::definition "kerodon_8_6_1_11"
+:::definition "kerodon_8_6_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve")
 Kerodon Construction 8.6.1.11（[Tag 04CH](https://kerodon.net/tag/04CH)）。対応表の状態：一部。
 
 weightedNerveとその射影は同じ通常圏値FのE側の加重脈体と底への射影を直接与える。反対側を併せたTという全構成は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve`
 
 :::
 
@@ -112,12 +123,10 @@ tag := "kerodon-8-6-2"
 
 Kerodon [Tag 04CM](https://kerodon.net/tag/04CM)
 
-:::definition "kerodon_8_6_2_1" (uses := "kerodon_1_1_0_6, kerodon_4_5_8_1")
+:::definition "kerodon_8_6_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomEquiv, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomPostcompOver") (uses := "kerodon_1_1_0_6, kerodon_4_5_8_1")
 Kerodon Notation 8.6.2.1（[Tag 04CN](https://kerodon.net/tag/04CN)）。対応表の状態：一部。
 
 fiberwiseHomとfiberwiseHomEquivはλ−とEの同じ相対指数対象およびその写像の普遍性を直接与える。追加のD+上の条件で切る部分全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomEquiv`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.fiberwiseHomPostcompOver`
 
 :::
 
@@ -211,12 +220,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：既存の�
 
 :::
 
-:::definition "kerodon_8_6_3_9" (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6, kerodon_8_1_1_7, kerodon_8_1_3_7")
+:::definition "kerodon_8_6_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowOppositeSwap_projection, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_naturality, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_left, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_right, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_naturality") (uses := "kerodon_1_1_0_6, kerodon_8_1_1_6, kerodon_8_1_1_7, kerodon_8_1_3_7")
 Kerodon Construction 8.6.3.9（[Tag 04EX](https://kerodon.net/tag/04EX)）。対応表の状態：一部。
 
 twistedArrowOppositeSwapとその二射影との可換性から、原文の8.87の最初のTw(E†)からの射と底との可換図式を直接構成できる。全相対指数への転置Ψとその比較までは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowOppositeSwap_projection`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection_naturality`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_left`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_right`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.twistedArrowOppositeSwap_naturality`
 
 :::
 
@@ -234,12 +241,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：輸送表�
 
 :::
 
-:::definition "kerodon_8_6_3_15"
+:::definition "kerodon_8_6_3_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap")
 Kerodon Construction 8.6.3.15（[Tag 05JL](https://kerodon.net/tag/05JL)）。対応表の状態：一部。
 
 edgewiseSubdivisionMapを評価射evに適用したTw(ev)は原文の指定合成の最後の射そのもの。先行するΞと、そのΞを含む合成全体の同値は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap`
 
 :::
 
@@ -521,21 +526,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：通常の s
 
 :::
 
-:::definition "kerodon_8_6_6_7" (uses := "kerodon_1_1_0_6, kerodon_5_6_5_1, kerodon_8_1_1_15")
+:::definition "kerodon_8_6_6_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation") (uses := "kerodon_1_1_0_6, kerodon_5_6_5_1, kerodon_8_1_1_15")
 Kerodon Definition 8.6.6.7（[Tag 05JU](https://kerodon.net/tag/05JU)）。対応表の状態：一部。
 
 twistedArrowFunctorComparison Uは、Tw(E)からTw(C)をEop×Eへ引き戻した対象への同じ比較λを直接構成する。指定Hの左輸送表現という条件全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.LeftTransportRepresentation`
-
 :::
 
-:::definition "kerodon_8_6_6_12" (uses := "kerodon_1_1_0_6, kerodon_4_5_8_1")
+:::definition "kerodon_8_6_6_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomEquiv, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison") (uses := "kerodon_1_1_0_6, kerodon_4_5_8_1")
 Kerodon Notation 8.6.6.12（[Tag 05JZ](https://kerodon.net/tag/05JZ)）。対応表の状態：一部。
 
 一般のfiberwiseHomEquivを同じ評価射の引戻し図式へ適用すると、原文の相対指数への転置Tという射の構成を直接与える。Hが空間値Homの場合のYonedaという追加同定は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomEquiv`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowFunctorComparison`
 
 :::
 
@@ -569,12 +570,10 @@ Kerodon Proposition 8.6.7.2（[Tag 04FA](https://kerodon.net/tag/04FA)）。対�
 
 :::
 
-:::definition "kerodon_8_6_7_4"
+:::definition "kerodon_8_6_7_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat")
 Kerodon Construction 8.6.7.4（[Tag 04FC](https://kerodon.net/tag/04FC)）。対応表の状態：一部。
 
 QCatとCatInfinityは原文の最初の入力である小準圏の豊穣圏とその脈体を直接構成する。twisted Homを使うQCat\^asympと比較πは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat`
 
 :::
 

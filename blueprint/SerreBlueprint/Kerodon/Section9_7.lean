@@ -1,12 +1,30 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Limits.Sifted
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanUnitRecovery
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndRestrictionEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PresheafSubcategory
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.F2PresentableSiftedFiniteDiagonal
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedContractibility
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedInfinity
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedProductComparison
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedSimplexCategory
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SiftedTerminalComparison
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaReflectorAdjunction
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaRestrictionEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalOpposite
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CoherentTotalColimit
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.7 Tensor Products of ∞-Categories" =>
 %%%
@@ -25,30 +43,24 @@ tag := "kerodon-9-7-1"
 
 Kerodon [Tag 06ZF](https://kerodon.net/tag/06ZF)
 
-:::definition "kerodon_9_7_1_1"
+:::definition "kerodon_9_7_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence")
 Kerodon Definition 9.7.1.1（[Tag 06ZG](https://kerodon.net/tag/06ZG)）。対応表の状態：一部。
 
 Qを空、Kを全小κ-filtered形状、Hを小準圏Cの標準indYonedaに限ると、Indのκ-filtered余完備性とindKappaContinuousRestriction\_isQCatEquivalenceは同じHの余完備化条件を直接満たす。任意の関係Qは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence`
-
 :::
 
-:::theorem "kerodon_9_7_1_4"
+:::theorem "kerodon_9_7_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence")
 Kerodon Theorem 9.7.1.4（[Tag 06ZK](https://kerodon.net/tag/06ZK)）。対応表の状態：一部。
 
 Qを空、Kを全小κ-filtered形状、Hを小準圏Cの標準indYonedaに限ると、Indのκ-filtered余完備性とindKappaContinuousRestriction\_isQCatEquivalenceは同じHの余完備化条件を直接満たす。任意の関係Qは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence`
-
 :::
 
-:::proposition "kerodon_9_7_1_6"
+:::proposition "kerodon_9_7_1_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_exists_reflector, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity")
 Kerodon Proposition 9.7.1.6（[Tag 06ZM](https://kerodon.net/tag/06ZM)）。対応表の状態：一部。
 
 Cが有限余積を持ちQをその余積図式とする標準Σ前層の場合、sigma\_exists\_reflectorは同じ有限余積を積へ送る前層部分の反射随伴という(1)の成分を直接返す。任意Qと数値λでの(2)は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_exists_reflector`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity`
 
 :::
 
@@ -59,39 +71,31 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：小 κ-filt
 
 :::
 
-:::lemma_ "kerodon_9_7_1_11"
+:::lemma_ "kerodon_9_7_1_11" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension_with_recovery, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits")
 Kerodon Lemma 9.7.1.11（[Tag 06ZS](https://kerodon.net/tag/06ZS)）。対応表の状態：一部。
 
 Qを空、Hを標準indYoneda、Kを全小κ-filtered形状に限ると、ind\_exists\_leftKanExtension\_with\_recoveryとindLeftKanExtension\_preservesSmallKappaFilteredColimitsは原文の同じfの左Kan延長F、その回収同型、FのK-余連続性という存在の結論を直接与える。任意Qと指定変換αの全iffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension_with_recovery`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits`
-
 :::
 
-:::corollary "kerodon_9_7_1_12"
+:::corollary "kerodon_9_7_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits")
 Kerodon Corollary 9.7.1.12（[Tag 06ZT](https://kerodon.net/tag/06ZT)）。対応表の状態：一部。
 
 Qを空、Hを標準indYoneda、Kを全小κ-filtered形状に限ると、indLeftKanExtension\_preservesSmallKappaFilteredColimitsは同じFと恒等単位の左Kan性からFのκ-filtered余極限保存を直接返す。(1)⇒(2)のこの場合で、任意Qと逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits`
-
 :::
 
-:::corollary "kerodon_9_7_1_13"
+:::corollary "kerodon_9_7_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_isLeftKanExtension")
 Kerodon Corollary 9.7.1.13（[Tag 06ZU](https://kerodon.net/tag/06ZU)）。対応表の状態：一部。
 
 Qを空、Kを全小形状、Hを標準Yonedaに限るとpresheafIdentity\_isLeftKanExtensionは同じ恒等関手の恒等単位の左Kan性、すなわち原文のdenseを直接返す。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafNativeDensityKan.presheafIdentity_isLeftKanExtension`
-
 :::
 
-:::corollary "kerodon_9_7_1_14"
+:::corollary "kerodon_9_7_1_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful")
 Kerodon Corollary 9.7.1.14（[Tag 06ZV](https://kerodon.net/tag/06ZV)）。対応表の状態：一部。
 
 Qを空、Hを小準圏Cの標準indYonedaに限るとindYoneda\_isFullyFaithfulは原文の同じHの充満忠実性を直接返す。この場合右辺の関係条件は空であり、任意Qのiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful`
 
 :::
 
@@ -136,21 +140,17 @@ tag := "kerodon-9-7-2"
 
 Kerodon [Tag 02QD](https://kerodon.net/tag/02QD)
 
-:::definition "kerodon_9_7_2_1"
+:::definition "kerodon_9_7_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity, CategoryTheory.IsSifted, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal")
 Kerodon Definition 9.7.2.1（[Tag 02QE](https://kerodon.net/tag/02QE)）。対応表の状態：一部。
 
 IsSiftedInfinityのfield diagonal\_rightCofinalは原文の有限集合Iが二点の場合の同じ対角のright cofinal性を直接与える。nonemptyFiniteDiagonal\_isRightCofinalは非空有限反復積へ拡張するが、任意有限集合と空添字を含む定義全体の比較は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity`、`CategoryTheory.IsSifted`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal`
-
 :::
 
-:::definition "kerodon_9_7_2_3"
+:::definition "kerodon_9_7_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_isRightCofinal_op")
 Kerodon Variant 9.7.2.3（[Tag 02QG](https://kerodon.net/tag/02QG)）。対応表の状態：一部。
 
 反対のIsSiftedInfinityとisLeftCofinal\_iff\_isRightCofinal\_opにより同じ有限対角の左余終性の条件を与える。空集合の場合と積・opの全比較はこの引用だけに含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_isRightCofinal_op`
 
 :::
 
@@ -179,12 +179,10 @@ Kerodon Proposition 9.7.2.7（[Tag 02QL](https://kerodon.net/tag/02QL)）。対�
 
 :::
 
-:::proposition "kerodon_9_7_2_8"
+:::proposition "kerodon_9_7_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isWeaklyContractible_of_sifted, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity")
 Kerodon Proposition 9.7.2.8（[Tag 02QM](https://kerodon.net/tag/02QM)）。対応表の状態：一部。
 
 IsSiftedInfinityの二つのfields nonempty\_verticesとdiagonal\_rightCofinalは同じKの非空性と同じ二項対角のright cofinal性を直接返す。任意有限集合による原文の定義との比較を含む逆向きはこの引用だけで主張しない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.nonemptyFiniteDiagonal_isRightCofinal`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isWeaklyContractible_of_sifted`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.IsSiftedInfinity`
 
 :::
 
@@ -204,12 +202,10 @@ Kerodon Proposition 9.7.2.10（[Tag 02QP](https://kerodon.net/tag/02QP)）。対
 
 :::
 
-:::proposition "kerodon_9_7_2_12"
+:::proposition "kerodon_9_7_2_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted, CategoryTheory.IsSifted.colim_preservesFiniteProducts_of_isSifted, CategoryTheory.IsSifted.of_colim_preservesFiniteProducts, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit")
 Kerodon Proposition 9.7.2.12（[Tag 0704](https://kerodon.net/tag/0704)）。対応表の状態：一部。
 
 同じ二つの空間値図式のunstraighteningにtotalKanProductComparisonを適用すると、siftedなKの余極限と二項積の比較が弱同値となる向きを直接得る。分類と全体余極限の同じ比較も併用し、逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted`、`CategoryTheory.IsSifted.colim_preservesFiniteProducts_of_isSifted`、`CategoryTheory.IsSifted.of_colim_preservesFiniteProducts`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentDiagramTotalCocone_isColimit`
 
 :::
 

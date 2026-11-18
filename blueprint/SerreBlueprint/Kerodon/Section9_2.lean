@@ -1,22 +1,43 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.Algebra.Category.ModuleCat.Adjunctions
+import Mathlib.Algebra.Category.ModuleCat.FilteredColimits
+import Mathlib.Algebra.Module.FinitePresentation
 import Mathlib.AlgebraicTopology.SimplicialSet.Finite
+import Mathlib.CategoryTheory.Adjunction.Basic
 import Mathlib.CategoryTheory.Presentable.Finite
+import Mathlib.CategoryTheory.Yoneda
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredPosetNerve
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.CofinalColimitExistence
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Definition
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteColimitClosureUnconditional
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteCoproductColimitGeneration
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteCoproductSiftedPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteKanReplacementCompact
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteSpaceGenerators
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.KappaSmallPresentable
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativeFilteredPreservation
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativePreservationPosetReductionUniverse
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.SmallPosetColimitCompactUniverse
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.SmallQuasicategoryColimitCompact
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.SmallSpaceCompact
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.SpaceCompactCardinals
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Subcategory
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CofinalUniverseLift
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LaxPullbackColimitConeExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LaxPullbackColimitCriterion
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionEquivalence
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.2 Finitary Functors and Compact Objects" =>
 %%%
@@ -26,12 +47,10 @@ tag := "kerodon-9-2"
 
 Kerodon の 9.2 節（[Tag 0639](https://kerodon.net/tag/0639)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
-:::proposition "kerodon_9_2_0_1"
+:::proposition "kerodon_9_2_0_1" (lean := "ModuleCat.adj, CategoryTheory.Adjunction.compCoyonedaIso, CategoryTheory.Coyoneda.punitIso, ModuleCat.FilteredColimits.forget_preservesFilteredColimits, Module.finitePresentation_of_projective")
 Kerodon Proposition 9.2.0.1（[Tag 063A](https://kerodon.net/tag/063A)）。対応表の状態：一部。
 
 B6型照合：有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。
-
-宣言：`ModuleCat.adj`、`CategoryTheory.Adjunction.compCoyonedaIso`、`CategoryTheory.Coyoneda.punitIso`、`ModuleCat.FilteredColimits.forget_preservesFilteredColimits`、`Module.finitePresentation_of_projective`
 
 :::
 
@@ -42,12 +61,10 @@ Kerodon Definition 9.2.0.2（[Tag 063B](https://kerodon.net/tag/063B)）。対�
 
 :::
 
-:::definition "kerodon_9_2_0_5" (uses := "kerodon_1_1_0_6, kerodon_3_6_1_1, kerodon_3_6_1_7")
+:::definition "kerodon_9_2_0_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_3_6_1_1, kerodon_3_6_1_7")
 Kerodon Variant 9.2.0.5（[Tag 063E](https://kerodon.net/tag/063E)）。対応表の状態：一部。
 
 B6型照合：有限 ⇒ finitely presentable の向きのみ（Mathlib）。自前は κ-small ⇒ κ-presentable。逆向きはない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall`、`SSet.Finite.instIsFinitelyPresentable`
 
 :::
 
@@ -85,12 +102,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙小�
 
 :::
 
-:::corollary "kerodon_9_2_1_9"
+:::corollary "kerodon_9_2_1_9" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits.hasSmallKappaFilteredColimits")
 Kerodon Corollary 9.2.1.9（[Tag 03DK](https://kerodon.net/tag/03DK)）。対応表の状態：一部。
 
 B6型照合：全小余極限があれば小さい κ-filtered 余極限もある型は確認できる。任意の小さい κ について κ-small な余極限と小 κ-filtered 余極限を合わせて全小余極限を得る逆向きは見つからない。
-
-宣言：`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits.hasSmallKappaFilteredColimits`
 
 :::
 
@@ -169,21 +184,17 @@ tag := "kerodon-9-2-2"
 
 Kerodon [Tag 062B](https://kerodon.net/tag/062B)
 
-:::definition "kerodon_9_2_2_1"
+:::definition "kerodon_9_2_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits")
 Kerodon Definition 9.2.2.1（[Tag 039F](https://kerodon.net/tag/039F)）。対応表の状態：一部。
 
 PreservesSmallKappaFilteredColimitsのκ=ℵ0は原文の同じFのfinitary条件を直接与える。全関手準圏のその条件による全部分圏という追加の構成成分はこの引用だけに含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits`
-
 :::
 
-:::definition "kerodon_9_2_2_3"
+:::definition "kerodon_9_2_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits")
 Kerodon Definition 9.2.2.3（[Tag 05Y6](https://kerodon.net/tag/05Y6)）。対応表の状態：一部。
 
 PreservesSmallKappaFilteredColimitsの同じκは原文の同じFのfinitary条件を直接与える。全関手準圏のその条件による全部分圏という追加の構成成分はこの引用だけに含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesKappaFilteredColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits`
 
 :::
 
@@ -219,21 +230,17 @@ Kerodon Corollary 9.2.2.22（[Tag 06DW](https://kerodon.net/tag/06DW)）。対�
 
 :::
 
-:::corollary "kerodon_9_2_2_23"
+:::corollary "kerodon_9_2_2_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite")
 Kerodon Corollary 9.2.2.23（[Tag 06DX](https://kerodon.net/tag/06DX)）。対応表の状態：一部。
 
 Cを全小余完備、Fを全小filtered余極限保存にも強めると二つのpreservesSmall補題により同じFの全小余極限保存を直接得る。指定λ-smallだけを仮定する場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite`
-
 :::
 
-:::corollary "kerodon_9_2_2_24"
+:::corollary "kerodon_9_2_2_24" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite")
 Kerodon Corollary 9.2.2.24（[Tag 06DY](https://kerodon.net/tag/06DY)）。対応表の状態：一部。
 
 有限余極限保存から有限余積保存を取り、preservesSmallCoproducts\_of\_finite\_filteredで小余積保存、preservesSmallColimits\_of\_coproducts\_finiteで同じFの全小余極限保存を得る。右⇒左の向きに一致する。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallCoproducts_of_finite_filtered`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite`
 
 :::
 
@@ -340,21 +347,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：可算個�
 
 :::
 
-:::corollary "kerodon_9_2_3_9"
+:::corollary "kerodon_9_2_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_countable_op_of_finite_sequential")
 Kerodon Corollary 9.2.3.9（[Tag 06EC](https://kerodon.net/tag/06EC)）。対応表の状態：一部。
 
 B6型照合：一般の κ の順序形状の filtered 性と、有限余極限・自然数列を使った可算形状の保存余極限の構成はある。任意の正則 κ と κ⁺ に対する存在・保存の判定は見つからない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_countable_op_of_finite_sequential`
-
 :::
 
-:::corollary "kerodon_9_2_3_10"
+:::corollary "kerodon_9_2_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_countable_op_of_finite_sequential")
 Kerodon Corollary 9.2.3.10（[Tag 06ED](https://kerodon.net/tag/06ED)）。対応表の状態：一部。
 
 B6型照合：一つの宇宙の小さい可算 B に対し、有限形状と自然数列の余極限の存在・保存を仮定して Bᵒᵖ 上の保存余極限を作る。濃度による aleph1 の一般の存在・保存 iff としては確認できない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_countable_op_of_finite_sequential`
 
 :::
 
@@ -419,6 +422,22 @@ tag := "kerodon-9-2-5"
 
 Kerodon [Tag 0649](https://kerodon.net/tag/0649)
 
+*06-catinfty-ind-presentable.html — 4. κ-compact 対象*
+
+\`\`\`text
+def IsKappaCompact (κ : Cardinal.\{u\}) \{C : SSet.\{max u v\}\} \[Quasicategory C\]
+    (x : C \_⦋0⦌) : Prop :=
+  PreservesKappaFilteredColimits.\{u, v\} κ (C := C) (covariantRepresentableInfinity x)
+\`\`\`
+
+$`\mathrm{Map}(x,-)` が小さい κ-filtered 余極限を保つこと。
+
+- 表現可能前層は $`\mathcal P(C)` の中でも Ind の中でも κ-compact（\`indYoneda\_isKappaCompact\`、F2/Compact/IndCompact）
+
+- retract で閉じる。有限余極限で閉じることは、交換定理を仮定にとった形で証明されている（a7 待ち）
+
+- *compact 生成*：$`C` が冪等完備なら $`C\simeq\mathrm{Ind}_\kappa(C)^\kappa`（\`compactGenerationEquivalence\`、F2/Ind/CompactGeneration）
+
 :::definition "kerodon_9_2_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_aleph0_iff_filtered")
 Kerodon Definition 9.2.5.1（[Tag 064A](https://kerodon.net/tag/064A)）。対応表の状態：本体にある。
 
@@ -433,12 +452,10 @@ Kerodon Definition 9.2.5.6（[Tag 064F](https://kerodon.net/tag/064F)）。対�
 
 :::
 
-:::definition "kerodon_9_2_5_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_3_9, kerodon_1_1_3_11, kerodon_4_9_4_1, kerodon_4_9_4_10, kerodon_8_4_2_1, kerodon_9_2_0_5, kerodon_9_2_5_24")
+:::definition "kerodon_9_2_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_1_1_3_9, kerodon_1_1_3_11, kerodon_4_9_4_1, kerodon_4_9_4_10, kerodon_8_4_2_1, kerodon_9_2_0_5, kerodon_9_2_5_24")
 Kerodon Variant 9.2.5.10（[Tag 064K](https://kerodon.net/tag/064K)）。対応表の状態：一部。
 
 B6型照合：κ-small ⇒ κ-presentable の向きのみ（ℵ₀ は Mathlib）。逆向きはない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall`、`SSet.Finite.instIsFinitelyPresentable`
 
 :::
 
@@ -465,21 +482,17 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙小�
 
 :::
 
-:::corollary "kerodon_9_2_5_22"
+:::corollary "kerodon_9_2_5_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.of_le")
 Kerodon Corollary 9.2.5.22（[Tag 064U](https://kerodon.net/tag/064U)）。対応表の状態：一部。
 
 PreservesKappaFilteredColimits.of\_leを同じcovariantRepresentableInfinityに適用すると原文のκ-compact⇒λ-compactという右辺一成分を直接得る。(κ,λ)-compactとの全同値は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.of_le`
-
 :::
 
-:::corollary "kerodon_9_2_5_23"
+:::corollary "kerodon_9_2_5_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.of_le, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_aleph0_iff_filtered")
 Kerodon Corollary 9.2.5.23（[Tag 064V](https://kerodon.net/tag/064V)）。対応表の状態：一部。
 
 κ=ℵ0のcompact判定と保存の基数単調性から同じ対象のcompact⇒λ-compactを直接得る。二濃度の残りの条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.of_le`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_aleph0_iff_filtered`
 
 :::
 
@@ -492,12 +505,10 @@ Kerodon Proposition 9.2.5.24（[Tag 064W](https://kerodon.net/tag/064W)）。対
 
 :::
 
-:::corollary "kerodon_9_2_5_25" (uses := "kerodon_1_4_0_1")
+:::corollary "kerodon_9_2_5_25" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallPosetColimit_universe, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit") (uses := "kerodon_1_4_0_1")
 Kerodon Corollary 9.2.5.25（[Tag 064X](https://kerodon.net/tag/064X)）。対応表の状態：一部。
 
 B6型照合：原文は任意の小さい正則 κ について κ-small 余極限で閉じる主張。引用は非可算の小 quasicategory・poset 形状と有限形状の結果。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallPosetColimit_universe`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_finiteColimit`
 
 :::
 
@@ -538,12 +549,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：有限 CW �
 
 :::
 
-:::corollary "kerodon_9_2_6_5"
+:::corollary "kerodon_9_2_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteKanReplacement_isCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact")
 Kerodon Corollary 9.2.6.5（[Tag 067U](https://kerodon.net/tag/067U)）。対応表の状態：一部。
 
 Xを有限単体集合の標準Kan置換に限ると、有限生成対象のcompact性は同じXのSpace内compact性を直接返す。任意のessentially finite Xへの輸送と逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteKanReplacement_isCompact`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact`
 
 :::
 
@@ -563,12 +572,10 @@ compact generatingのretract判定は、原文の有限単体集合によるdomi
 
 :::
 
-:::proposition "kerodon_9_2_6_9"
+:::proposition "kerodon_9_2_6_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallKanObject_isKappaCompact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.exists_spaceCompactCardinal")
 Kerodon Proposition 9.2.6.9（[Tag 0680](https://kerodon.net/tag/0680)）。対応表の状態：一部。
 
 B6型照合：非可算正則 μ について μ-small Kan 複体が μ-compact の向きのみ。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallKanObject_isKappaCompact`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.exists_spaceCompactCardinal`
 
 :::
 
@@ -611,12 +618,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：辺の族�
 
 :::
 
-:::proposition "kerodon_9_2_7_4"
+:::proposition "kerodon_9_2_7_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence")
 Kerodon Proposition 9.2.7.4（[Tag 0689](https://kerodon.net/tag/0689)）。対応表の状態：一部。
 
 B6型照合：任意の前合成同値な単体写像は弱ホモトピー同値なので、有限 K を使う categorical equivalence から弱同値の証人が得られる。Kan 同士の Whitehead 型には K の Kan 性も必要で、任意の有限な弱同値模型から有限 categorical 模型を得る逆向きは残る。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsPrecompositionEquivalence.isWeakHomotopyEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence`
 
 :::
 
@@ -710,12 +715,10 @@ pointCosliceVertexは始点固定の矢印で、原文の終点図式固定のsl
 
 :::
 
-:::proposition "kerodon_9_2_8_3" (uses := "kerodon_1_4_0_1, kerodon_7_1_9_5, kerodon_8_3_7_1")
+:::proposition "kerodon_9_2_8_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_laxPullback_of_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_laxPullback_iff_components, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_laxPullback_with_components") (uses := "kerodon_1_4_0_1, kerodon_7_1_9_5, kerodon_8_3_7_1")
 Kerodon Proposition 9.2.8.3（[Tag 06EV](https://kerodon.net/tag/06EV)）。対応表の状態：一部。
 
 B6型照合：(1) の形だけ。lax pullback（= oriented fiber product, Fun(Δ¹,C) の strict pullback）で、両入力が余極限を持ち F± が保てば余極限が存在し、余極限錐は両射影で判定（任意の形状 J、(κ,λ) の制限なし）。(2) の compact 性の主張はない。名前空間 SerrePositivity.InfinityCategories.F2。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_laxPullback_of_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_laxPullback_iff_components`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_laxPullback_with_components`
 
 :::
 

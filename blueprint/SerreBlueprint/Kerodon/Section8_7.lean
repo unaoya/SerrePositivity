@@ -1,10 +1,24 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianInnerAnodynePullback
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianInnerHornPullback
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftFibrationInnerHornPullback
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.LeftCommaUniversalCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeLeftCanonicalExistence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrecompositionEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.InnerAnodyneReplacement
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Completion
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionBaseChange
+import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.UniversalProperty
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "8.7 Fiberwise Cocompletions" =>
 %%%
@@ -90,12 +104,10 @@ Kerodon Theorem 8.7.1.14（[Tag 05L3](https://kerodon.net/tag/05L3)）。対応�
 
 :::
 
-:::lemma_ "kerodon_8_7_1_17"
+:::lemma_ "kerodon_8_7_1_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers")
 Kerodon Lemma 8.7.1.17（[Tag 05L7](https://kerodon.net/tag/05L7)）。対応表の状態：一部。
 
 底を終対象、完備化を小準圏のIndκ、Kを小κ-filtered形状に限るとindLeftKanExtension\_preservesSmallKappaFilteredColimitsは同じFについて(2)⇒(1)を直接返す。(3)との同値と任意Kは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers`
 
 :::
 
@@ -115,12 +127,10 @@ comma余錐ごとの相対余極限判定は、原文の底の各ファイバー
 
 :::
 
-:::definition "kerodon_8_7_1_20"
+:::definition "kerodon_8_7_1_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits")
 Kerodon Variant 8.7.1.20（[Tag 05LA](https://kerodon.net/tag/05LA)）。対応表の状態：一部。
 
 同じ包含をmonoかつinner fibration、同じU′をequivalence liftingとし全標準comma余錐の相対余極限も追加するとexists\_kanRelativeLeftCanonical\_strict\_extension\_of\_local\_relative\_colimitsが同じ持ち上げ問題の相対左Kan解を直接返す。K-余完備性だけの場合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits`
 
 :::
 
@@ -253,21 +263,17 @@ tag := "kerodon-8-7-5"
 
 Kerodon [Tag 05ML](https://kerodon.net/tag/05ML)
 
-:::definition "kerodon_8_7_5_1"
+:::definition "kerodon_8_7_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_innerHorn_pullback_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftFibration_innerHorn_pullback_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence")
 Kerodon Definition 8.7.5.1（[Tag 05MM](https://kerodon.net/tag/05MM)）。対応表の状態：一部。
 
 Uをcocartesian fibrationに限り同じ2単体に沿って引き戻すとcocartesianFibration\_innerHorn\_pullback\_isPrecompositionEquivalenceのn=2,k=1が原文の同じhorn引戻しのcategorical equivalenceを返す。一般inner fibrationのflat条件の判定は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_innerHorn_pullback_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftFibration_innerHorn_pullback_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
-
 :::
 
-:::theorem "kerodon_8_7_5_6"
+:::theorem "kerodon_8_7_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion, SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration")
 Kerodon Theorem 8.7.5.6（[Tag 05MS](https://kerodon.net/tag/05MS)）。対応表の状態：一部。
 
 底写像を準圏間のinner fibrationかつ冪等完備化、Uをright fibrationに強めると、pullback\_rightFibrationと前合成普遍性は同じ引戻し射のMorita条件を直接返す。任意flat Uと任意Morita射は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion`、`SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration`
 
 :::
 
@@ -313,12 +319,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：内ホー�
 
 :::
 
-:::corollary "kerodon_8_7_5_14"
+:::corollary "kerodon_8_7_5_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_innerHorn_pullback_isPrecompositionEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence")
 Kerodon Corollary 8.7.5.14（[Tag 05N0](https://kerodon.net/tag/05N0)）。対応表の状態：一部。
 
 Uにcocartesian fibrationを追加すると、各2単体でのinner hornの引戻し同値から原文の同じUのflat条件を直接得る。任意のΔ1への関手の場合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_innerHorn_pullback_isPrecompositionEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence`
 
 :::
 
@@ -350,12 +354,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：左ファ�
 
 :::
 
-:::proposition "kerodon_8_7_5_22"
+:::proposition "kerodon_8_7_5_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPrecompositionEquivalence_of_innerAnodyne")
 Kerodon Proposition 8.7.5.22（[Tag 05N8](https://kerodon.net/tag/05N8)）。対応表の状態：一部。
 
 同じUのinner anodyne/inner fibration分解とinner anodyneのcategorical equivalence性から、中間準圏への同値Fとinner fibration U′という結論成分を直接得る。U′のflat/isofibration性と各ファイバーのMorita条件は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPrecompositionEquivalence_of_innerAnodyne`
 
 :::
 

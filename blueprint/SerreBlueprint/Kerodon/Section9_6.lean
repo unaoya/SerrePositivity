@@ -1,14 +1,29 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.LiftingProperties.Basic
+import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
 import Mathlib.CategoryTheory.MorphismProperty.Retract
+import Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition
 import Mathlib.CategoryTheory.MorphismProperty.WeakFactorizationSystem
+import Mathlib.CategoryTheory.ObjectProperty.Local
+import Mathlib.CategoryTheory.SmallObject.Basic
+import Mathlib.SetTheory.Ordinal.Basic
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.LocalStrongSaturation
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.StronglySaturatedClosure
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldReflection
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldSaturation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowsPresentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourcePresentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalPushoutEquivalences
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalJoinNerveIso
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.6 Factorization Systems" =>
 %%%
@@ -18,12 +33,10 @@ tag := "kerodon-9-6"
 
 Kerodon の 9.6 節（[Tag 04KF](https://kerodon.net/tag/04KF)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
-:::definition "kerodon_9_6_0_1"
+:::definition "kerodon_9_6_0_1" (lean := "CategoryTheory.HasLiftingProperty, CategoryTheory.MorphismProperty.IsWeakFactorizationSystem")
 Kerodon Definition 9.6.0.1（[Tag 06VS](https://kerodon.net/tag/06VS)）。対応表の状態：一部。
 
 通常圏のIsWeakFactorizationSystemのfieldsは同じ左右クラスの因数分解とLLPを与える。原文がさらに要求する持ち上げの一意性は含まない。
-
-宣言：`CategoryTheory.HasLiftingProperty`、`CategoryTheory.MorphismProperty.IsWeakFactorizationSystem`
 
 :::
 
@@ -61,12 +74,10 @@ Kerodon Variant 9.6.1.3（[Tag 06VX](https://kerodon.net/tag/06VX)）。対応�
 
 :::
 
-:::definition "kerodon_9_6_1_4"
+:::definition "kerodon_9_6_1_4" (lean := "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape, Ordinal.enum, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.terminalJoinNerveIso")
 Kerodon Variant 9.6.1.4（[Tag 04L2](https://kerodon.net/tag/04L2)）。対応表の状態：一部。
 
 Ordinal.enumは同じ整列集合Aとその順序型の初切片との順序保存全単射を直接与える。原文のnerveと右joinの同型および超限合成の条件の全比較は含まない。
-
-宣言：`CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape`、`Ordinal.enum`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.terminalJoinNerveIso`
 
 :::
 
@@ -169,12 +180,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：射圏の r
 
 :::
 
-:::proposition "kerodon_9_6_2_13"
+:::proposition "kerodon_9_6_2_13" (lean := "CategoryTheory.MorphismProperty.isLocal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLocalForHom_pushout_right_of_left, CategoryTheory.MorphismProperty.pushouts_le_llp_rlp")
 Kerodon Proposition 9.6.2.13（[Tag 04LW](https://kerodon.net/tag/04LW)）。対応表の状態：一部。
 
 同じwについてXをstrongly localにも強めるとisLocalForHom\_pushout\_right\_of\_leftが同じpushout射w′のstrong localityを返すのでweak localityを得る。weak localityだけの入力ではない。
-
-宣言：`CategoryTheory.MorphismProperty.isLocal`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLocalForHom_pushout_right_of_left`、`CategoryTheory.MorphismProperty.pushouts_le_llp_rlp`
 
 :::
 
@@ -214,12 +223,10 @@ Kerodon Definition 9.6.3.1（[Tag 04M8](https://kerodon.net/tag/04M8)）。対�
 
 :::
 
-:::theorem "kerodon_9_6_3_3"
+:::theorem "kerodon_9_6_3_3" (lean := "CategoryTheory.MorphismProperty.HasSmallObjectArgument, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement")
 Kerodon Theorem 9.6.3.3（[Tag 04MA](https://kerodon.net/tag/04MA)）。対応表の状態：一部。
 
 exists\_bousfieldLocalReplacementは同じ小WとXに対しX→YとW-local（従ってweakly local）なYを直接返す。射がgeneratedEdgesに属する条件はあるが、指定超限pushoutであるという比較は含まない。
-
-宣言：`CategoryTheory.MorphismProperty.HasSmallObjectArgument`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement`
 
 :::
 
@@ -259,12 +266,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：小さい�
 
 :::
 
-:::proposition "kerodon_9_6_3_10"
+:::proposition "kerodon_9_6_3_10" (lean := "CategoryTheory.MorphismProperty.HasSmallObjectArgument, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences")
 Kerodon Proposition 9.6.3.10（[Tag 06ZB](https://kerodon.net/tag/06ZB)）。対応表の状態：一部。
 
 Cをpresentable、Wを宇宙小族にも強めるとbousfield\_isReflectiveSubcategoryは同じW-local部分圏のreflectivityを直接返す。指定λでの生成辺集合の等式全体は含まない。
-
-宣言：`CategoryTheory.MorphismProperty.HasSmallObjectArgument`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences`
 
 :::
 
@@ -717,12 +722,10 @@ tag := "kerodon-9-6-9"
 
 Kerodon [Tag 06X2](https://kerodon.net/tag/06X2)
 
-:::definition "kerodon_9_6_9_2"
+:::definition "kerodon_9_6_9_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes")
 Kerodon Definition 9.6.9.2（[Tag 06X4](https://kerodon.net/tag/06X4)）。対応表の状態：一部。
 
 IsStronglySaturatedEdgeSetOfShapesは同じSに2-of-3などを追加し、原文の同型包含・合成閉性・小arrow余極限閉性を直接与える。saturatedだけの全定義とは差がある。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.IsStronglySaturatedEdgeSetOfShapes`
 
 :::
 
@@ -754,12 +757,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：小辺族�
 
 :::
 
-:::proposition "kerodon_9_6_9_13"
+:::proposition "kerodon_9_6_9_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable")
 Kerodon Proposition 9.6.9.13（[Tag 06XE](https://kerodon.net/tag/06XE)）。対応表の状態：一部。
 
 Wbarを同じ小族からのgeneratedEdgesとしgeneratedArrowCategoryを取る場合、presentabilityは原文(3)の同じarrow部分圏のaccessibilityを直接返す。任意のsaturatedクラスの全iffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable`
 
 :::
 
@@ -784,21 +785,17 @@ Kerodon Definition 9.6.9.18（[Tag 06XK](https://kerodon.net/tag/06XK)）。対�
 
 :::
 
-:::proposition "kerodon_9_6_9_23"
+:::proposition "kerodon_9_6_9_23" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.localEquivalences_stronglySaturated")
 Kerodon Proposition 9.6.9.23（[Tag 06XQ](https://kerodon.net/tag/06XQ)）。対応表の状態：一部。
 
 小Wから生成した同じgeneratedEdgesについてlocalEquivalencesとの等式とstrong saturationは、原文のlocal equivalence表示とstrong saturationの成分を直接与える。小集合によるcolimit生成を含む全三条件の同値は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FactorizationSystems.localEquivalences_stronglySaturated`
-
 :::
 
-:::corollary "kerodon_9_6_9_25"
+:::corollary "kerodon_9_6_9_25" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory")
 Kerodon Corollary 9.6.9.25（[Tag 06XS](https://kerodon.net/tag/06XS)）。対応表の状態：一部。
 
 小Wに対するlocal部分圏と生成辺集合の等式は、原文の対応の同じ小生成入力に対する値を直接与える。全Bousfield部分圏からの回収と全単射の型は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory`
 
 :::
 

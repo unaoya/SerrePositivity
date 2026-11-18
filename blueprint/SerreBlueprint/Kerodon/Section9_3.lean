@@ -3,10 +3,29 @@ import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Limits.ExactFunctor
 import Mathlib.CategoryTheory.Limits.Preserves.Finite
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.TerminalFiltered
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactGeneration
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactIndCompletion
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactIndEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.DiagramCommaSmallness
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.FilteredRetraction
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndAccessible
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndCompactRetraction
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndComparison
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndComparisonEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndComparisonFullyFaithful
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanExtension
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndRestrictionEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.PresheafSubcategory
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.YonedaZero
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.3 Ind-Completions of ∞-Categories" =>
 %%%
@@ -25,21 +44,36 @@ tag := "kerodon-9-3-1"
 
 Kerodon [Tag 063J](https://kerodon.net/tag/063J)
 
-:::definition "kerodon_9_3_1_1"
+*06-catinfty-ind-presentable.html — 3. Indκ(C) — 定義*
+
+\`\`\`text
+def IndInfinity (κ : Cardinal.\{u\}) (C : SSet.\{u\}) \[Quasicategory C\] : SSet.\{u + 1\} :=
+  fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)
+\`\`\`
+
+前層 ∞ 圏 $`\mathcal P(C)` の中で、表現可能前層を含み、同型と小さい κ-filtered 余極限で閉じた最小の頂点の集合 \`IsIndVertex\` が張る充満部分 ∞ 圏として定義する。Yoneda 埋め込みは $`C\to\mathrm{Ind}_\kappa(C)` に制限される（\`indYoneda\`）。
+
+*06-catinfty-ind-presentable.html — 3. Indκ(C) — 主な結果*
+
+- 内容　／　Lean　／　場所
+- Ind 対象 ⇔ 表現可能前層の単一の小さい κ-filtered 図式の余極限　／　\`isIndVertex\_iff\_singleFilteredPresentation\`　／　F2/Ind/SingleFilteredPresentation
+- 普遍性：$`\mathrm{Fun}^\kappa(\mathrm{Ind}_\kappa C,D)\simeq\mathrm{Fun}(C,D)`（$`D` が小さい κ-filtered 余極限を持つとき、HTT 5.3.5.10）　／　\`indKappaContinuousRestrictionEquivalence\`　／　F2/Ind/IndRestrictionEquivalence
+- 左 Kan 拡張は小さい κ-filtered 余極限を保つ　／　\`indLeftKanExtension\_preservesSmallKappaFilteredColimits\`　／　F2/Ind
+- 零対象：$`C` の零対象は Ind の零対象（安定な $`C` に対し存在）　／　\`indYoneda\_isZero\_of\_zero\`、\`ind\_hasZeroVertex\_of\_stable\`　／　F2/Ind
+
+Ind(C) の*安定性*（HA 1.1.3.6）は未完成（F1-7 b）。有限の半順序集合上の図式を単一の filtered 図式で表示すること（HTT 5.3.5.15）を進めている。計画文書には「任意の有限単体集合への一般化は偽であり、半順序集合の nerve に限る（HTT Warning 5.3.5.16）」という経路の修正が記録されている。
+
+:::definition "kerodon_9_3_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence")
 Kerodon Definition 9.3.1.1（[Tag 063K](https://kerodon.net/tag/063K)）。対応表の状態：一部。
 
 B6型照合：「Ind 完備化を与える」述語はなし。具体的な模型 IndInfinity ℵ0 C（C 小）とその性質（compact 生成・普遍性）。Mathlib の Ind C は 1 圏。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence`
-
 :::
 
-:::definition "kerodon_9_3_1_2"
+:::definition "kerodon_9_3_1_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful")
 Kerodon Notation 9.3.1.2（[Tag 063L](https://kerodon.net/tag/063L)）。対応表の状態：一部。
 
 小さい準圏Cの標準IndInfinityとindYonedaの充満忠実性・filtered余極限存在・普遍性は原文の同じCに対するInd完備化の存在成分を直接実現する。一意性と関手性の全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful`
 
 :::
 
@@ -52,21 +86,17 @@ Indの制限同値は原文の指定Pro完備化と反転同値を構成しな�
 
 :::
 
-:::definition "kerodon_9_3_1_4"
+:::definition "kerodon_9_3_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence")
 Kerodon Definition 9.3.1.4（[Tag 063N](https://kerodon.net/tag/063N)）。対応表の状態：一部。
 
 B6型照合：9.3.1.1 と同じ：述語はなく κ の模型 IndInfinity κ C とその性質。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence`
-
 :::
 
-:::definition "kerodon_9_3_1_5"
+:::definition "kerodon_9_3_1_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity")
 Kerodon Notation 9.3.1.5（[Tag 063P](https://kerodon.net/tag/063P)）。対応表の状態：一部。
 
 小さい準圏Cの標準IndInfinityとindYonedaの充満忠実性・filtered余極限存在・普遍性は原文の同じCに対するInd完備化の存在成分を直接実現する。一意性と関手性の全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity`
 
 :::
 
@@ -88,21 +118,17 @@ Kerodon Notation 9.3.1.8（[Tag 063S](https://kerodon.net/tag/063S)）。対応�
 
 :::
 
-:::definition "kerodon_9_3_1_12" (uses := "kerodon_1_4_0_1")
+:::definition "kerodon_9_3_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence") (uses := "kerodon_1_4_0_1")
 Kerodon Definition 9.3.1.12（[Tag 063X](https://kerodon.net/tag/063X)）。対応表の状態：一部。
 
 B6型照合：Ind 延長という名前の述語はない。κ-連続な左 Kan 延長の存在と制限の同値で代用。λ=∞（Ind\_κ）の場合だけ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence`
-
 :::
 
-:::definition "kerodon_9_3_1_13"
+:::definition "kerodon_9_3_1_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.exists_indComparison, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension")
 Kerodon Notation 9.3.1.13（[Tag 06N2](https://kerodon.net/tag/06N2)）。対応表の状態：一部。
 
 B6型照合：名前の付いた Ind(F) はない。F ≫ indYoneda に exists\_indComparison を当てれば得られる。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.exists_indComparison`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_exists_leftKanExtension`
 
 :::
 
@@ -122,75 +148,59 @@ tag := "kerodon-9-3-2"
 
 Kerodon [Tag 0650](https://kerodon.net/tag/0650)
 
-:::proposition "kerodon_9_3_2_1" (uses := "kerodon_1_4_0_1")
+:::proposition "kerodon_9_3_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact") (uses := "kerodon_1_4_0_1")
 Kerodon Proposition 9.3.2.1（[Tag 0651](https://kerodon.net/tag/0651)）。対応表の状態：一部。
 
 B6型照合：充満忠実・像 compact ⇒ 延長が充満忠実。λ=∞（Ind\_κ）の場合だけ、C は小さい（宇宙 u）場合。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact`
-
 :::
 
-:::corollary "kerodon_9_3_2_2"
+:::corollary "kerodon_9_3_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful")
 Kerodon Corollary 9.3.2.2（[Tag 0652](https://kerodon.net/tag/0652)）。対応表の状態：一部。
 
 B6型照合：Ind(F) の充満忠実性の明示的な宣言はなし。CFF から導ける形。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isFullyFaithful`
-
 :::
 
-:::proposition "kerodon_9_3_2_3" (uses := "kerodon_1_4_0_1, kerodon_9_3_2_1")
+:::proposition "kerodon_9_3_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating") (uses := "kerodon_1_4_0_1, kerodon_9_3_2_1")
 Kerodon Proposition 9.3.2.3（[Tag 0653](https://kerodon.net/tag/0653)）。対応表の状態：一部。
 
 B6型照合：Ind 完備化の判定。「もし」の向き（compact 生成 ⇒ Ind 同値）と模型の性質。λ=∞（Ind\_κ）の場合だけ、C は小さい（宇宙 u）場合。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating`
-
 :::
 
-:::lemma_ "kerodon_9_3_2_5" (uses := "kerodon_1_4_0_1")
+:::lemma_ "kerodon_9_3_2_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IsKappaCompact.retract_of_colimit, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indCompact_retract_yoneda") (uses := "kerodon_1_4_0_1")
 Kerodon Lemma 9.3.2.5（[Tag 067F](https://kerodon.net/tag/067F)）。対応表の状態：一部。
 
 B6型照合：compact な余極限頂点は filtered 図式の項の retract。生成の閉包一般ではなく単一の κ-filtered 表示がある場合。λ=∞（Ind\_κ）の場合だけ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IsKappaCompact.retract_of_colimit`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indCompact_retract_yoneda`
-
 :::
 
-:::proposition "kerodon_9_3_2_6"
+:::proposition "kerodon_9_3_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndYoneda_isIdempotentCompletion, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndEquivalence")
 Kerodon Proposition 9.3.2.6（[Tag 067G](https://kerodon.net/tag/067G)）。対応表の状態：一部。
 
 B6型照合：Ind\_κ(C) の κ-compact 部分 ≃ Idem(C)（冪等完備化）。模型について、λ=∞（Ind\_κ）の場合だけ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndYoneda_isIdempotentCompletion`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactIndEquivalence`
-
 :::
 
-:::corollary "kerodon_9_3_2_8"
+:::corollary "kerodon_9_3_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationEquivalence")
 Kerodon Corollary 9.3.2.8（[Tag 067J](https://kerodon.net/tag/067J)）。対応表の状態：一部。
 
 B6型照合：冪等完備な C ≃ Ind\_κ(C) の κ-compact 部分。λ=∞（Ind\_κ）の場合だけ。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.compactGenerationEquivalence`
-
 :::
 
-:::corollary "kerodon_9_3_2_9"
+:::corollary "kerodon_9_3_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.exists_indComparison, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact")
 Kerodon Corollary 9.3.2.9（[Tag 0655](https://kerodon.net/tag/0655)）。対応表の状態：一部。
 
 小さいCの標準Indとcompact生成表示についてindComparison\_isFullyFaithful\_of\_compactは同じ拡張関手の充満忠実性を直接与える。任意のfの全四条件のiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.exists_indComparison`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact`
-
 :::
 
-:::corollary "kerodon_9_3_2_10"
+:::corollary "kerodon_9_3_2_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.exists_indComparison, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact")
 Kerodon Corollary 9.3.2.10（[Tag 0656](https://kerodon.net/tag/0656)）。対応表の状態：一部。
 
 小さいCの標準Indとcompact生成表示についてindComparison\_isFullyFaithful\_of\_compactは同じ拡張関手の充満忠実性を直接与える。任意のfの全四条件のiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.exists_indComparison`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isKappaCompactGenerating`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact`
 
 :::
 
@@ -281,12 +291,10 @@ Kerodon Proposition 9.3.3.1（[Tag 06FY](https://kerodon.net/tag/06FY)）。対�
 
 :::
 
-:::corollary "kerodon_9_3_3_2"
+:::corollary "kerodon_9_3_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_hasSmallFixedVertexMaps")
 Kerodon Corollary 9.3.3.2（[Tag 06FZ](https://kerodon.net/tag/06FZ)）。対応表の状態：一部。
 
 Cを宇宙で小さく標準Indℵ0に限るとind\_hasSmallFixedVertexMapsは同じIndの写像の局所小性を直接返す。一般の大きい局所小Cは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_hasSmallFixedVertexMaps`、`CategoryTheory.instLocallySmallFullSubcategoryFunctorOppositeTypeIsIndObject`
 
 :::
 
@@ -536,12 +544,10 @@ Kerodon Definition 9.3.5.1（[Tag 066A](https://kerodon.net/tag/066A)）。対�
 
 :::
 
-:::definition "kerodon_9_3_5_4"
+:::definition "kerodon_9_3_5_4" (lean := "CategoryTheory.Limits.PreservesFiniteColimits")
 Kerodon Variant 9.3.5.4（[Tag 066D](https://kerodon.net/tag/066D)）。対応表の状態：一部。
 
 PreservesFiniteColimitsは原文前半の通常圏のright exactという定義を直接与える。加法的な場合のexact sequenceによる同値とmonoへの限定は含まない。
-
-宣言：`CategoryTheory.Limits.PreservesFiniteColimits`
 
 :::
 
@@ -783,12 +789,10 @@ tag := "kerodon-9-3-7"
 
 Kerodon [Tag 06GD](https://kerodon.net/tag/06GD)
 
-:::theorem "kerodon_9_3_7_1"
+:::theorem "kerodon_9_3_7_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isTerminal_of_terminal, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex")
 Kerodon Theorem 9.3.7.1（[Tag 06GE](https://kerodon.net/tag/06GE)）。対応表の状態：一部。
 
 Cに終対象zがある場合、indYoneda\_isTerminal\_of\_terminalのκ=ℵ0は同じInd(C)の終対象を直接返す。filtered性だけからの場合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isTerminal_of_terminal`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.isKappaFiltered_of_isTerminalVertex`
 
 :::
 
@@ -810,12 +814,10 @@ Kerodon Proposition 9.3.7.4（[Tag 06GH](https://kerodon.net/tag/06GH)）。対�
 
 :::
 
-:::corollary "kerodon_9_3_7_5"
+:::corollary "kerodon_9_3_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isTerminal_of_terminal")
 Kerodon Corollary 9.3.7.5（[Tag 06GJ](https://kerodon.net/tag/06GJ)）。対応表の状態：一部。
 
 Cに終対象もあるとindYoneda\_isTerminal\_of\_terminalは同じ標準Indκ(C)の終対象を直接返す。κ-filtered性だけを仮定する向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda_isTerminal_of_terminal`
 
 :::
 

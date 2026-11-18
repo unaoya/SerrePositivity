@@ -56,7 +56,7 @@ for sec in sorted(by_sec, key=int):
         for r in subs[sub]:
             n = r['number']; rv = rev.get(n, {}); st = rv.get('status', '')
             linked = []
-            if st == 'own':
+            if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
                 for e in [x.strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]:
                     x = res.resolve(e)
                     if x: linked.append(x[0]); imports.add(x[1])
@@ -79,7 +79,7 @@ for sec in sorted(by_sec, key=int):
             body.append(':::\n')
     mod = f'Section{sec}'
     hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
-          ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+          ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
            f'#doc (Manual) "§{sec} {heads.get(sec, "")}" =>', '%%%', 'number := false', f'tag := "paper-{sec}"', '%%%', '',
            f'本論文 §{sec} の項目と、本体の宣言との対応。各項目の頭は対応表（`research/paper-coverage`）の照合の理由、その下は解説から移した本文（あるものだけ）。\n']
     if (nb := note_body(sec)):
@@ -92,7 +92,7 @@ for r in external:
     if r['source'] == 'CLMST': continue
     lab = ext_label((r['source'] + ' ' + r['number']).strip()); st = r['status']
     linked = []
-    if st in ('own', 'mathlib', 'both'):
+    if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
         for e in [x.strip() for x in r['declarations'].split(' | ') if x.strip()]:
             x = res.resolve(e)
             if x: linked.append(x[0]); imports.add(x[1])
@@ -105,7 +105,7 @@ for r in external:
     if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
     body.append(':::\n')
 hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
-      ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
+      ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
        '#doc (Manual) "引用した結果" =>', '%%%', 'number := false', 'tag := "paper-external"', '%%%', '',
        '本論文が引用する外の文献の結果（`research/paper-coverage/external.csv`）。各本論文の項目から uses で張られる。CLMST の結果は CLMST の部のノード。BS19・K の文献の結果は、それぞれの対応表ができるまで状態を空にしてある。\n']
 open(f'{OUT}/External.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')

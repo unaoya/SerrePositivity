@@ -6,15 +6,26 @@ import Mathlib.Algebra.Homology.Homotopy
 import Mathlib.Algebra.Homology.Monoidal
 import Mathlib.Algebra.Homology.QuasiIso
 import Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex
+import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 import Mathlib.AlgebraicTopology.DoldKan.Equivalence
+import Mathlib.AlgebraicTopology.DoldKan.HomotopyEquivalence
 import Mathlib.AlgebraicTopology.MooreComplex
 import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate
+import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Relative
+import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
+import Mathlib.CategoryTheory.Functor.Const
+import Mathlib.CategoryTheory.SingleObj
 import SerrePositivity.DifferentialGraded.Category.Basic
 import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+import SerrePositivity.EInfinity.AlexanderWhitney.Unnormalized
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWChainMap
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AlexanderWhitney
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ConnectiveHom
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CubeBoundary
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CubeCoordinateFaces
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CubeEvaluation
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.CubeFlags
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DGNerveBasic
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DoldKanIso
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.EdgeClosedEquivalence
@@ -26,10 +37,15 @@ import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.D
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplicialCategory
 import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardVertices
+import SerrePositivity.KST.Comparison.HomologyDegenerate
+import SerrePositivity.KST.Comparison.HomologyRelative
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "2.5 Differential Graded Categories" =>
 %%%
@@ -110,12 +126,10 @@ B6：IsStrictlyGE/LE の引用は余鎖複体についての述語。鎖複体�
 
 :::
 
-:::definition "kerodon_2_5_1_3"
+:::definition "kerodon_2_5_1_3" (lean := "HomologicalComplex.cycles")
 Kerodon Notation 2.5.1.3（[Tag 00NT](https://kerodon.net/tag/00NT)）。対応表の状態：一部。
 
 B6：HomologicalComplex.cycles は指定次数の outgoing 微分の核を直接構成し、鎖規約でも原文の Z\_n を与える。image による B\_n とその包含の一式は引用に含まない。
-
-宣言：`HomologicalComplex.cycles`
 
 :::
 
@@ -303,12 +317,10 @@ tag := "kerodon-2-5-5"
 
 Kerodon [Tag 00Q9](https://kerodon.net/tag/00Q9)
 
-:::definition "kerodon_2_5_5_1"
+:::definition "kerodon_2_5_5_1" (lean := "AlgebraicTopology.alternatingFaceMapComplex")
 Kerodon Construction 2.5.5.1（[Tag 00QA](https://kerodon.net/tag/00QA)）。対応表の状態：一部。
 
 B6：alternatingFaceMapComplex は全ての面の交代和を微分とする ChainComplex を直接構成する。半単体対象一般ではなく、退化も持つ単体アーベル群に入力を制限した場合。
-
-宣言：`AlgebraicTopology.alternatingFaceMapComplex`
 
 :::
 
@@ -362,12 +374,10 @@ B6：homotopyPInftyToId と正規化ホモトピー同値は核型正規化の�
 
 :::
 
-:::definition "kerodon_2_5_5_15"
+:::definition "kerodon_2_5_5_15" (lean := "SSetPair.chainComplexFunctor, SerrePositivity.KST.Comparison.relativeIntegralChains, SerrePositivity.KST.Comparison.relativeIntegralHomologyFunctor")
 Kerodon Variant 2.5.5.15（[Tag 00QP](https://kerodon.net/tag/00QP)）。対応表の状態：一部。
 
 B6：SSetPair.chainComplexFunctor は原文の相対非正規化鎖複体 C(S,S′;Z) の構成成分を与える。核型の正規化相対複体とのホモロジー比較や商型の N の同定は含めない。
-
-宣言：`SSetPair.chainComplexFunctor`、`SerrePositivity.KST.Comparison.relativeIntegralChains`、`SerrePositivity.KST.Comparison.relativeIntegralHomologyFunctor`
 
 :::
 
@@ -396,12 +406,10 @@ B6：Γ は非負次数複体上の別の Dold–Kan 模型。StandardSimplex �
 
 :::
 
-:::definition "kerodon_2_5_6_9"
+:::definition "kerodon_2_5_6_9" (lean := "CategoryTheory.Functor.const, CategoryTheory.nerve, CategoryTheory.SingleObj")
 Kerodon Construction 2.5.6.9（[Tag 00QX](https://kerodon.net/tag/00QX)）。対応表の状態：一部。
 
 B6：const は任意の集合 G に対して原文が明記する K(G,0) を、nerve(SingleObj G) は群 G に対して明記する K(G,1) を直接構成する。一般の可換群の全 n は含まない。
-
-宣言：`CategoryTheory.Functor.const`、`CategoryTheory.nerve`、`CategoryTheory.SingleObj`
 
 :::
 
@@ -464,12 +472,10 @@ B6：splitMonoInclusionOfMooreComplexMap は核型 Ñ→C の分裂単射。原�
 
 :::
 
-:::proposition "kerodon_2_5_6_21"
+:::proposition "kerodon_2_5_6_21" (lean := "AlgebraicTopology.DoldKan.homotopyEquivNormalizedMooreComplexAlternatingFaceMapComplex, SerrePositivity.KST.Comparison.degenerateIntegralChains_homology_isZero")
 Kerodon Proposition 2.5.6.21（[Tag 00RC](https://kerodon.net/tag/00RC)）。対応表の状態：一部。
 
 B6：homotopyEquivNormalizedMooreComplexAlternatingFaceMapComplex は原文の核型 Ñ と C の包含を hom とするホモトピー同値。そこから包含のホモロジー同型という第二の結論成分が直接得られる。商射・一般の D の非輪状性は含まない。
-
-宣言：`AlgebraicTopology.DoldKan.homotopyEquivNormalizedMooreComplexAlternatingFaceMapComplex`、`SerrePositivity.KST.Comparison.degenerateIntegralChains_homology_isZero`
 
 :::
 
@@ -610,12 +616,10 @@ Kerodon Proposition 2.5.8.3（[Tag 00S3](https://kerodon.net/tag/00S3)）。対�
 
 :::
 
-:::proposition "kerodon_2_5_8_4"
+:::proposition "kerodon_2_5_8_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality, SerrePositivity.EInfinity.AlexanderWhitney.rawComponent_coassoc")
 Kerodon Proposition 2.5.8.4（[Tag 00S4](https://kerodon.net/tag/00S4)）。対応表の状態：一部。
 
 B6：alexanderWhitney\_naturality は単体 Z 加群の二変数に関する原文の非正規化 AW の自然性を直接述べる。colax 構造の自然性成分のみで、一般の余単位・余結合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality`、`SerrePositivity.EInfinity.AlexanderWhitney.rawComponent_coassoc`
 
 :::
 
@@ -694,12 +698,10 @@ Kerodon Remark 2.5.9.3（[Tag 00SF](https://kerodon.net/tag/00SF)）。対応表
 
 :::
 
-:::definition "kerodon_2_5_9_6"
+:::definition "kerodon_2_5_9_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeEvaluation")
 Kerodon Construction 2.5.9.6（[Tag 00SJ](https://kerodon.net/tag/00SJ)）。対応表の状態：一部。
 
 B6：cubeFlag は番号付けた有限集合で空集合から1点ずつ増やす最大旗の単体を直接構成する。原文に記された旗の構成成分のみで、正規化整数基本鎖と自由推移性の一式は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeEvaluation`
 
 :::
 
@@ -721,21 +723,17 @@ B6：coherentComparison は HA 符号規約の dg nerve と包含順 nerve の�
 
 :::
 
-:::definition "kerodon_2_5_9_12"
+:::definition "kerodon_2_5_9_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFaceMap, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_sum")
 Kerodon Notation 2.5.9.12（[Tag 00SP](https://kerodon.net/tag/00SP)）。対応表の状態：一部。
 
 B6：cubeFaceMap は指定座標を0/1に固定する原文の二つの面の包含を直接構成する。原文の基本鎖をこれで送った整数鎖としての比較は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFaceMap`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_sum`
-
 :::
 
-:::lemma_ "kerodon_2_5_9_13"
+:::lemma_ "kerodon_2_5_9_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_sum, SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_eq_outer_sum")
 Kerodon Lemma 2.5.9.13（[Tag 00SQ](https://kerodon.net/tag/00SQ)）。対応表の状態：一部。
 
 B6：cubeFlag\_boundary\_sum は任意の加法可換群値 F に対する符号和。F を正規化自由鎖への生成元写像に取ると原文の境界式が直接得られる。型の card=n+2、すなわち次元2以上に限り、0・1次元は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_sum`、`SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cubeFlag_boundary_eq_outer_sum`
 
 :::
 

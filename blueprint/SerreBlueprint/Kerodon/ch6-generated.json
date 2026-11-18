@@ -6,9 +6,10 @@
   "Section6_3"
  ],
  "stats": {
-  "linked": 36,
-  "nolink-partial": 44,
+  "linked": 80,
   "nolink-none": 65,
-  "with-uses": 39
+  "with-uses": 39,
+  "with-note-intro": 5,
+  "with-note": 5
  }
 }

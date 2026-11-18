@@ -2,12 +2,19 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Comma.Basic
+import Mathlib.CategoryTheory.Enriched.Basic
+import Mathlib.CategoryTheory.Monoidal.Category
+import Mathlib.CategoryTheory.Monoidal.CoherenceLemmas
 import Mathlib.CategoryTheory.Monoidal.Functor
+import Mathlib.CategoryTheory.Monoidal.Mon
 import Mathlib.CategoryTheory.Monoidal.NaturalTransformation
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "2.1 Monoidal Categories" =>
 %%%
@@ -33,12 +40,10 @@ B6：現本体・固定Mathlibを再検索。単位を持たない厳密なテ�
 
 :::
 
-:::definition "kerodon_2_1_1_5"
+:::definition "kerodon_2_1_1_5" (lean := "CategoryTheory.MonoidalCategory")
 Kerodon Definition 2.1.1.5（[Tag 00BY](https://kerodon.net/tag/00BY)）。対応表の状態：一部。
 
 B6：MonoidalCategory のテンソル関手・associator（原文の向きには逆同型）・自然性・pentagon を忘却すると原文の非単位モノイダル構造を直接得る。単位対象と単位則も持つ圏に仮定を強めた場合。
-
-宣言：`CategoryTheory.MonoidalCategory`
 
 :::
 
@@ -86,12 +91,10 @@ B6：現本体・固定Mathlibを再検索。二つの (1, υ) の間の乗法�
 
 :::
 
-:::definition "kerodon_2_1_2_10"
+:::definition "kerodon_2_1_2_10" (lean := "CategoryTheory.MonoidalCategory")
 Kerodon Definition 2.1.2.10（[Tag 00CC](https://kerodon.net/tag/00CC)）。対応表の状態：一部。
 
 B6：MonoidalCategory の tensorObj・tensorHom と associator の逆同型・pentagon が非単位部分を直接与える。原文の単位 (1,υ) と完全忠実性による提示との比較は含めない。
-
-宣言：`CategoryTheory.MonoidalCategory`
 
 :::
 
@@ -122,12 +125,10 @@ Kerodon Proposition 2.1.2.19（[Tag 00CK](https://kerodon.net/tag/00CK)）。対
 
 :::
 
-:::corollary "kerodon_2_1_2_21"
+:::corollary "kerodon_2_1_2_21" (lean := "CategoryTheory.MonoidalCategory.unitors_equal")
 Kerodon Corollary 2.1.2.21（[Tag 00CM](https://kerodon.net/tag/00CM)）。対応表の状態：一部。
 
 B6：unitors\_equal は単位対象上で λ.hom=ρ.hom を直接述べる。原文の三者一致のうち λ=ρ の成分。別に指定した υ との一致は含めない。
-
-宣言：`CategoryTheory.MonoidalCategory.unitors_equal`
 
 :::
 
@@ -147,48 +148,38 @@ B6：現本体・固定Mathlibを再検索。単位なしのテンソルを対�
 
 :::
 
-:::definition "kerodon_2_1_4_3"
+:::definition "kerodon_2_1_4_3" (lean := "CategoryTheory.Functor.LaxMonoidal")
 Kerodon Definition 2.1.4.3（[Tag 00CY](https://kerodon.net/tag/00CY)）。対応表の状態：一部。
 
 B6：LaxMonoidal の μ・naturality・associativity は原文の非単位 lax 構造を直接与える。単位つき圏と ε・単位則まで持つ関手に仮定を強めた場合。
 
-宣言：`CategoryTheory.Functor.LaxMonoidal`
-
 :::
 
-:::definition "kerodon_2_1_4_4"
+:::definition "kerodon_2_1_4_4" (lean := "CategoryTheory.Functor.Monoidal")
 Kerodon Definition 2.1.4.4（[Tag 00CZ](https://kerodon.net/tag/00CZ)）。対応表の状態：一部。
 
 B6：Monoidal の μ/δ と μ\_δ・δ\_μ は原文の tensorator の可逆性を直接与える。圏も関手も単位つきという追加仮定がある。
 
-宣言：`CategoryTheory.Functor.Monoidal`
-
 :::
 
-:::definition "kerodon_2_1_4_10"
+:::definition "kerodon_2_1_4_10" (lean := "CategoryTheory.NatTrans.IsMonoidal")
 Kerodon Definition 2.1.4.10（[Tag 00D5](https://kerodon.net/tag/00D5)）。対応表の状態：一部。
 
 B6：IsMonoidal.tensor は原文のテンソル可換正方形そのもの。単位つき lax 関手と単位整合まで仮定した場合に限り、非単位変換の条件を得る。
 
-宣言：`CategoryTheory.NatTrans.IsMonoidal`
-
 :::
 
-:::definition "kerodon_2_1_4_16"
+:::definition "kerodon_2_1_4_16" (lean := "CategoryTheory.Functor.OplaxMonoidal")
 Kerodon Variant 2.1.4.16（[Tag 00MM](https://kerodon.net/tag/00MM)）。対応表の状態：一部。
 
 B6：OplaxMonoidal の δ と自然性・結合則から非単位 colax 構造を直接忘却できる。単位対象・余単位・単位則を持つ場合だけ。
 
-宣言：`CategoryTheory.Functor.OplaxMonoidal`
-
 :::
 
-:::definition "kerodon_2_1_4_17"
+:::definition "kerodon_2_1_4_17" (lean := "CategoryTheory.Functor.LaxMonoidal.comp")
 Kerodon Construction 2.1.4.17（[Tag 00DB](https://kerodon.net/tag/00DB)）。対応表の状態：一部。
 
 B6：LaxMonoidal.comp の μ X Y=μ G \_ \_≫G.map(μ F X Y) は原文の合成式。単位つき lax 関手に限る追加仮定がある。
-
-宣言：`CategoryTheory.Functor.LaxMonoidal.comp`
 
 :::
 
@@ -215,12 +206,10 @@ tag := "kerodon-2-1-5"
 
 Kerodon [Tag 00DD](https://kerodon.net/tag/00DD)
 
-:::definition "kerodon_2_1_5_1"
+:::definition "kerodon_2_1_5_1" (lean := "CategoryTheory.MonObj")
 Kerodon Definition 2.1.5.1（[Tag 00DE](https://kerodon.net/tag/00DE)）。対応表の状態：一部。
 
 B6：MonObj の one\_mul・mul\_one は選ばれた m=mul、ε=one について左・右単位の式を与える（unitor の逆を前合成）。任意の非単位代数の任意の候補 ε の述語ではない。
-
-宣言：`CategoryTheory.MonObj`
 
 :::
 
@@ -319,12 +308,10 @@ Kerodon Definition 2.1.6.1（[Tag 00DY](https://kerodon.net/tag/00DY)）。対�
 
 :::
 
-:::definition "kerodon_2_1_6_9"
+:::definition "kerodon_2_1_6_9" (lean := "CategoryTheory.NatTrans.IsMonoidal")
 Kerodon Notation 2.1.6.9（[Tag 00E6](https://kerodon.net/tag/00E6)）。対応表の状態：一部。
 
 B6：IsMonoidal の unit/tensor の二場は、強モノイダル関手間でも原文の射の二条件を直接与える。強関手を対象とする指定の充満部分圏の構成までは含まない。
-
-宣言：`CategoryTheory.NatTrans.IsMonoidal`
 
 :::
 
@@ -337,21 +324,17 @@ tag := "kerodon-2-1-7"
 
 Kerodon [Tag 00ED](https://kerodon.net/tag/00ED)
 
-:::definition "kerodon_2_1_7_1" (uses := "kerodon_2_1_2_17")
+:::definition "kerodon_2_1_7_1" (lean := "CategoryTheory.EnrichedCategory") (uses := "kerodon_2_1_2_17")
 Kerodon Definition 2.1.7.1（[Tag 00EE](https://kerodon.net/tag/00EE)）。対応表の状態：一部。
 
 B6：EnrichedCategory.Hom と id は原文のデータ (2),(4) を直接持つ。comp のテンソル順は原文と逆なので、一般の V での合成則・結合則の一致は数えない。
 
-宣言：`CategoryTheory.EnrichedCategory`
-
 :::
 
-:::definition "kerodon_2_1_7_10"
+:::definition "kerodon_2_1_7_10" (lean := "CategoryTheory.EnrichedFunctor")
 Kerodon Definition 2.1.7.10（[Tag 00JE](https://kerodon.net/tag/00JE)）。対応表の状態：一部。
 
 B6：EnrichedFunctor の obj・map・map\_id は原文の対象写像・Hom 写像・恒等射保存を直接与える。非対称な V では合成のテンソル順が逆のため map\_comp の原文との比較は未確認。
-
-宣言：`CategoryTheory.EnrichedFunctor`
 
 :::
 

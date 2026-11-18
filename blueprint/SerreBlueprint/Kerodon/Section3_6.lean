@@ -3,11 +3,16 @@ import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
+import Mathlib.Order.Category.NonemptyFinLinOrd
+import Mathlib.Topology.Homotopy.Lifting
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.ComparisonWithTopologicalSpaces.FiniteInternalHomContinuity
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "3.6 Comparison with Topological Spaces" =>
 %%%
@@ -116,12 +121,10 @@ B6：現本体・固定Mathlibを再検索。通常の実現は標準単体か�
 
 :::
 
-:::definition "kerodon_3_6_2_8"
+:::definition "kerodon_3_6_2_8" (lean := "NonemptyFinLinOrd")
 Kerodon Notation 3.6.2.8（[Tag 013L](https://kerodon.net/tag/013L)）。対応表の状態：一部。
 
 B6：NonemptyFinLinOrd は原文の Lin\_\{≠∅\} の対象と単調写像を直接束ねる構成成分。\[0,1\]から有限集合を除いた成分集合の有限性・順序は含まない。
-
-宣言：`NonemptyFinLinOrd`
 
 :::
 
@@ -258,12 +261,10 @@ tag := "kerodon-3-6-6"
 
 Kerodon [Tag 021Q](https://kerodon.net/tag/021Q)
 
-:::definition "kerodon_3_6_6_1"
+:::definition "kerodon_3_6_6_1" (lean := "IsCoveringMap.liftHomotopy, IsCoveringMap.liftHomotopy_lifts, IsCoveringMap.liftHomotopy_zero")
 Kerodon Definition 3.6.6.1（[Tag 021R](https://kerodon.net/tag/021R)）。対応表の状態：一部。
 
 B6：IsCoveringMap.liftHomotopy と liftHomotopy\_lifts/zero は任意の位相空間 A に対し初時刻の持ち上げを直接返す。q を被覆写像に強め、A を標準単体の実現（3.6.6.8では任意 B の実現）に取ると、原文の区間持ち上げ条件が直接成立。一般の Serre fibration と相対条件全体の iff は含まない。
-
-宣言：`IsCoveringMap.liftHomotopy`、`IsCoveringMap.liftHomotopy_lifts`、`IsCoveringMap.liftHomotopy_zero`
 
 :::
 
@@ -274,12 +275,10 @@ B6：現本体・固定Mathlibを再検索。特異単体集合と単体の Kan 
 
 :::
 
-:::corollary "kerodon_3_6_6_8"
+:::corollary "kerodon_3_6_6_8" (lean := "IsCoveringMap.liftHomotopy, IsCoveringMap.liftHomotopy_lifts, IsCoveringMap.liftHomotopy_zero")
 Kerodon Corollary 3.6.6.8（[Tag 021Y](https://kerodon.net/tag/021Y)）。対応表の状態：一部。
 
 B6：IsCoveringMap.liftHomotopy と liftHomotopy\_lifts/zero は任意の位相空間 A に対し初時刻の持ち上げを直接返す。q を被覆写像に強め、A を標準単体の実現（3.6.6.8では任意 B の実現）に取ると、原文の区間持ち上げ条件が直接成立。一般の Serre fibration と相対条件全体の iff は含まない。
-
-宣言：`IsCoveringMap.liftHomotopy`、`IsCoveringMap.liftHomotopy_lifts`、`IsCoveringMap.liftHomotopy_zero`
 
 :::
 
@@ -290,12 +289,10 @@ B6：現本体・固定Mathlibを再検索。位相の被覆写像の持ち上�
 
 :::
 
-:::corollary "kerodon_3_6_6_11"
+:::corollary "kerodon_3_6_6_11" (lean := "IsCoveringMap.liftHomotopy, IsCoveringMap.liftHomotopy_lifts, IsCoveringMap.liftHomotopy_zero")
 Kerodon Corollary 3.6.6.11（[Tag 0224](https://kerodon.net/tag/0224)）。対応表の状態：一部。
 
 B6：IsCoveringMap.liftHomotopy と lifts/zero は全空間が離散ファイバーの被覆である場合、任意のパラメータ（特に実現した標準単体）で初時刻を固定する区間持ち上げを直接返す。一般のファイバー束の全体は含まない。
-
-宣言：`IsCoveringMap.liftHomotopy`、`IsCoveringMap.liftHomotopy_lifts`、`IsCoveringMap.liftHomotopy_zero`
 
 :::
 

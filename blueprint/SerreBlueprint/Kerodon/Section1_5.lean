@@ -7,6 +7,7 @@ import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
+import Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal
 import Mathlib.CategoryTheory.CommSq
 import Mathlib.CategoryTheory.LiftingProperties.Basic
 import Mathlib.CategoryTheory.Monoidal.Closed.Basic
@@ -17,6 +18,7 @@ import Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition
 import Mathlib.CategoryTheory.Retract
 import Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting
 import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
+import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.CompositionTriangleSpace
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
@@ -28,6 +30,9 @@ import SerrePositivity.KST.SConstruction.STrivialFibration
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.5 Functors of ∞-Categories" =>
 %%%
@@ -171,12 +176,10 @@ Kerodon Corollary 1.5.3.4（[Tag 0063](https://kerodon.net/tag/0063)）。対応
 
 :::
 
-:::corollary "kerodon_1_5_3_5"
+:::corollary "kerodon_1_5_3_5" (lean := "CategoryTheory.nerveAdjunction")
 Kerodon Corollary 1.5.3.5（[Tag 0064](https://kerodon.net/tag/0064)）。対応表の状態：一部。
 
 原文のρSは全次数の単体集合の同型。nerveAdjunction.homEquiv はhS→Dの関手とS→N(D)の全単射で、ρSの0単体（次数0に限定）の同じHom対応を直接与える。全次数・面退化の可換性までは含まない。
-
-宣言：`CategoryTheory.nerveAdjunction`
 
 :::
 
@@ -289,12 +292,10 @@ Kerodon Proposition 1.5.4.12（[Tag 006R](https://kerodon.net/tag/006R)）。対
 
 :::
 
-:::definition "kerodon_1_5_4_13" (uses := "kerodon_1_5_4_4, kerodon_1_5_4_7, kerodon_1_5_4_10")
+:::definition "kerodon_1_5_4_13" (lean := "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange, CategoryTheory.MorphismProperty.IsStableUnderRetracts, CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition") (uses := "kerodon_1_5_4_4, kerodon_1_5_4_7, kerodon_1_5_4_10")
 Kerodon Definition 1.5.4.13（[Tag 006S](https://kerodon.net/tag/006S)）。対応表の状態：一部。
 
 原文のweakly saturatedの条件は押し出し・retract・超限合成で閉じること。三つの IsStableUnder… の型はこの各条件を直接表し、弱飽和性の述語の成分に対応する。三条件をまとめた名前付きの述語や生成閉包そのものと同一視しない。
-
-宣言：`CategoryTheory.MorphismProperty.IsStableUnderCobaseChange`、`CategoryTheory.MorphismProperty.IsStableUnderRetracts`、`CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition`
 
 :::
 
@@ -333,12 +334,10 @@ Kerodon Proposition 1.5.5.4（[Tag 006Y](https://kerodon.net/tag/006Y)）。対�
 
 :::
 
-:::corollary "kerodon_1_5_5_5" (uses := "kerodon_1_1_0_6, kerodon_1_5_5_4")
+:::corollary "kerodon_1_5_5_5" (lean := "SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section, SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction") (uses := "kerodon_1_1_0_6, kerodon_1_5_5_4")
 Kerodon Corollary 1.5.5.5（[Tag 006Z](https://kerodon.net/tag/006Z)）。対応表の状態：一部。
 
 原文(a)の切断の存在はexists\_sectionの型の結論そのもの（TrivialKanFibrationの全単射RLPを適用）。(b)の指定向きのfiberwise収縮について、引用のexists\_vertical\_contractionはid→p≫sと逆端点順なので一致としない。(a)だけを数える。
-
-宣言：`SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section`、`SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction`
 
 :::
 
@@ -408,12 +407,10 @@ tag := "kerodon-1-5-6"
 
 Kerodon [Tag 0078](https://kerodon.net/tag/0078)
 
-:::theorem "kerodon_1_5_6_1" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_14, kerodon_1_5_6_7, kerodon_1_5_6_9")
+:::theorem "kerodon_1_5_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_14, kerodon_1_5_6_7, kerodon_1_5_6_9")
 Kerodon Theorem 1.5.6.1（[Tag 0079](https://kerodon.net/tag/0079)）。対応表の状態：一部。
 
 原文の(1)⇒(2)は、innerAnodyneExtensions.horn\_ι でΛ²₁の包含を指定し trivialKanFibration\_pre\_of\_innerAnodyne に適用して直接得られる。単一の制限射の自明Kan性⇒準圏性の逆向きはこの型に含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne`、`SSet.innerAnodyneExtensions.horn_ι`
 
 :::
 
@@ -497,12 +494,10 @@ Kerodon Proposition 1.5.7.6（[Tag 00J9](https://kerodon.net/tag/00J9)）。対�
 
 :::
 
-:::corollary "kerodon_1_5_7_9"
+:::corollary "kerodon_1_5_7_9" (lean := "CategoryTheory.Nerve.strictSegal, CategoryTheory.Nerve.isStrictSegal")
 Kerodon Corollary 1.5.7.9（[Tag 05HU](https://kerodon.net/tag/05HU)）。対応表の状態：一部。
 
 原文の必要方向について、Nerve.strictSegal/IsStrictSegalはnerveのn単体からn本の可合成辺列（spineの射）への全単射を直接与える。Sの一般の再構成はTODOなので、spineの一意延長条件からnerveとの同型を作る逆方向は含めない。
-
-宣言：`CategoryTheory.Nerve.strictSegal`、`CategoryTheory.Nerve.isStrictSegal`
 
 :::
 

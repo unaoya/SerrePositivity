@@ -2,14 +2,22 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Adjunction.Basic
+import Mathlib.CategoryTheory.Adjunction.FullyFaithful
+import Mathlib.CategoryTheory.Adjunction.Unique
 import Mathlib.CategoryTheory.Bicategory.Adjunction.Basic
 import Mathlib.CategoryTheory.Bicategory.Adjunction.Mate
 import Mathlib.CategoryTheory.Monoidal.Rigid.Basic
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.AdjunctionUnitInvertible
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.HomCorrespondence
 import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.UnitHomCriterion
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "6.1 Adjunctions in 2-Categories" =>
 %%%
@@ -58,30 +66,24 @@ tag := "kerodon-6-1-2"
 
 Kerodon [Tag 02CP](https://kerodon.net/tag/02CP)
 
-:::definition "kerodon_6_1_2_1"
+:::definition "kerodon_6_1_2_1" (lean := "CategoryTheory.Bicategory.Adjunction.homEquiv₂, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategoryUnitHomMap")
 Kerodon Construction 6.1.2.1（[Tag 02CQ](https://kerodon.net/tag/02CQ)）。対応表の状態：一部。
 
 bicategoryUnitHomMapは任意の単位型ηによる原文のright adjunctそのものを直接構成する。homEquiv₂は随伴を仮定するので、任意のεだけによるleft adjunct全体までは数えない。
 
-宣言：`CategoryTheory.Bicategory.Adjunction.homEquiv₂`、`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategoryUnitHomMap`
-
 :::
 
-:::proposition "kerodon_6_1_2_5"
+:::proposition "kerodon_6_1_2_5" (lean := "CategoryTheory.Bicategory.Adjunction.homEquiv₁, CategoryTheory.Bicategory.Adjunction.homEquiv₂")
 Kerodon Proposition 6.1.2.5（[Tag 02CU](https://kerodon.net/tag/02CU)）。対応表の状態：一部。
 
 (η,ε)が両三角恒等式を満たすAdjunctionに強めればhomEquiv₂のleft\_inv/right\_invから同じadjunctの二つの含意を直接得る。片方の三角式だけの各主張には一般化しない。
 
-宣言：`CategoryTheory.Bicategory.Adjunction.homEquiv₁`、`CategoryTheory.Bicategory.Adjunction.homEquiv₂`
-
 :::
 
-:::corollary "kerodon_6_1_2_6"
+:::corollary "kerodon_6_1_2_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.BicategoryHomCorrespondence.adjunctionEquiv, CategoryTheory.Bicategory.Adjunction.homEquiv₂")
 Kerodon Corollary 6.1.2.6（[Tag 02CV](https://kerodon.net/tag/02CV)）。対応表の状態：一部。
 
 AdjunctionのhomEquiv₂は原文(1)から、同じunit/counitによるleft/right adjunctが互いに逆という(2)を直接返す。任意の指定η,εについての逆方向は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.BicategoryHomCorrespondence.adjunctionEquiv`、`CategoryTheory.Bicategory.Adjunction.homEquiv₂`
 
 :::
 
@@ -115,21 +117,17 @@ Kerodon Variant 6.1.2.11（[Tag 02D0](https://kerodon.net/tag/02D0)）。対応�
 
 :::
 
-:::definition "kerodon_6_1_2_12"
+:::definition "kerodon_6_1_2_12" (lean := "CategoryTheory.Bicategory.Adjunction.homEquiv₁")
 Kerodon Variant 6.1.2.12（[Tag 02D1](https://kerodon.net/tag/02D1)）。対応表の状態：一部。
 
 随伴のhomEquiv₁の逆は原文の指定ηを使った前合成側のHom全単射そのもの。(ηがunit)⇒判定の向きを直接与え、逆は含まない。
 
-宣言：`CategoryTheory.Bicategory.Adjunction.homEquiv₁`
-
 :::
 
-:::proposition "kerodon_6_1_2_13"
+:::proposition "kerodon_6_1_2_13" (lean := "CategoryTheory.Bicategory.Adjunction.homEquiv₁")
 Kerodon Proposition 6.1.2.13（[Tag 02D2](https://kerodon.net/tag/02D2)）。対応表の状態：一部。
 
 随伴を与えるとhomEquiv₁は原文(3)⇒(2)の指定εによるHom全単射を直接与える。任意εからunitを回収する逆・一意性は含まない。
-
-宣言：`CategoryTheory.Bicategory.Adjunction.homEquiv₁`
 
 :::
 
@@ -163,12 +161,10 @@ Kerodon Variant 6.1.3.2（[Tag 02D6](https://kerodon.net/tag/02D6)）。対応�
 
 :::
 
-:::corollary "kerodon_6_1_3_3" (uses := "kerodon_6_1_3_1")
+:::corollary "kerodon_6_1_3_3" (lean := "CategoryTheory.Bicategory.Adjunction.homEquiv₁, CategoryTheory.Adjunction.rightAdjointUniq, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.rightAdjointIso") (uses := "kerodon_6_1_3_1")
 Kerodon Corollary 6.1.3.3（[Tag 02D7](https://kerodon.net/tag/02D7)）。対応表の状態：一部。
 
 homEquiv₁に適切な恒等1射を代入すれば、指定η′をunit経由に因子化するβの存在・一意性を直接得る。βの可逆性とη′がunitとなることの一般iffとε′側の全体は含まない。
-
-宣言：`CategoryTheory.Bicategory.Adjunction.homEquiv₁`、`CategoryTheory.Adjunction.rightAdjointUniq`、`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.rightAdjointIso`
 
 :::
 
@@ -179,30 +175,24 @@ Kerodon Proposition 6.1.3.4（[Tag 02D8](https://kerodon.net/tag/02D8)）。対�
 
 :::
 
-:::definition "kerodon_6_1_3_5" (uses := "kerodon_6_1_3_3, kerodon_6_1_3_4")
+:::definition "kerodon_6_1_3_5" (lean := "CategoryTheory.Bicategory.IsLeftAdjoint") (uses := "kerodon_6_1_3_3, kerodon_6_1_3_4")
 Kerodon Notation 6.1.3.5（[Tag 02D9](https://kerodon.net/tag/02D9)）。対応表の状態：一部。
 
 IsLeftAdjointは原文のLHomを張る1射の条件（右随伴が存在）そのもの。選んだ右随伴を反変な関手にする構成は含まない。
 
-宣言：`CategoryTheory.Bicategory.IsLeftAdjoint`
-
 :::
 
-:::corollary "kerodon_6_1_3_7" (uses := "kerodon_6_1_3_3")
+:::corollary "kerodon_6_1_3_7" (lean := "CategoryTheory.Bicategory.Adjunction.homEquiv₂, CategoryTheory.Adjunction.leftAdjointUniq, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.leftAdjointIso") (uses := "kerodon_6_1_3_3")
 Kerodon Corollary 6.1.3.7（[Tag 02DB](https://kerodon.net/tag/02DB)）。対応表の状態：一部。
 
 homEquiv₂を恒等1射で特殊化すれば、指定η′のunitを経由するβによる因子化の存在・一意性を直接得る。可逆性のiffとε′側の全体は含まない。
 
-宣言：`CategoryTheory.Bicategory.Adjunction.homEquiv₂`、`CategoryTheory.Adjunction.leftAdjointUniq`、`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction.leftAdjointIso`
-
 :::
 
-:::definition "kerodon_6_1_3_8" (uses := "kerodon_6_1_3_5, kerodon_6_1_3_7")
+:::definition "kerodon_6_1_3_8" (lean := "CategoryTheory.Bicategory.IsRightAdjoint") (uses := "kerodon_6_1_3_5, kerodon_6_1_3_7")
 Kerodon Notation 6.1.3.8（[Tag 02DC](https://kerodon.net/tag/02DC)）。対応表の状態：一部。
 
 IsRightAdjointは原文のRHomを張る1射の条件そのもの。LHomの反対への圏同値と準逆は含まない。
-
-宣言：`CategoryTheory.Bicategory.IsRightAdjoint`
 
 :::
 
@@ -231,12 +221,10 @@ Kerodon Corollary 6.1.4.2（[Tag 02DF](https://kerodon.net/tag/02DF)）。対応
 
 :::
 
-:::corollary "kerodon_6_1_4_4"
+:::corollary "kerodon_6_1_4_4" (lean := "CategoryTheory.Adjunction.toEquivalence")
 Kerodon Corollary 6.1.4.4（[Tag 02DH](https://kerodon.net/tag/02DH)）。対応表の状態：一部。
 
 通常圏の双圏に制限するとAdjunction.toEquivalenceはunit/counitの成分同型から同じF,Gを逆関手とする圏同値を直接作り、原文(3)⇒(1),(2)を与える。一般双圏の三条件のiffは含まない。
-
-宣言：`CategoryTheory.Adjunction.toEquivalence`
 
 :::
 
@@ -247,12 +235,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：指定 η �
 
 :::
 
-:::proposition "kerodon_6_1_4_7"
+:::proposition "kerodon_6_1_4_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_whiskerLeft_unit_isIso_of_counit, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_whiskerRight_unit_isIso_of_counit, CategoryTheory.Adjunction.whiskerLeft_unit_iso_of_R_fully_faithful")
 Kerodon Proposition 6.1.4.7（[Tag 02DL](https://kerodon.net/tag/02DL)）。対応表の状態：一部。
 
 bicategory\_whiskerLeft\_unit\_isIso\_of\_counitとwhiskerRight版は原文(1)から(2)の二つのwhiskerの可逆性を同じηについて直接返す。本質的全射の部分と他のiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_whiskerLeft_unit_isIso_of_counit`、`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjunctionsInTwoCategories.bicategory_whiskerRight_unit_isIso_of_counit`、`CategoryTheory.Adjunction.whiskerLeft_unit_iso_of_R_fully_faithful`
 
 :::
 
@@ -265,21 +251,17 @@ tag := "kerodon-6-1-5"
 
 Kerodon [Tag 02DM](https://kerodon.net/tag/02DM)
 
-:::definition "kerodon_6_1_5_1"
+:::definition "kerodon_6_1_5_1" (lean := "CategoryTheory.Bicategory.Adjunction.compUnit")
 Kerodon Construction 6.1.5.1（[Tag 02DN](https://kerodon.net/tag/02DN)）。対応表の状態：一部。
 
 η,η′を指定随伴のunitに強めればcompUnitは原文と同じwhiskeringと結合子による合成unitを構成する。任意のunit型2射だけの構成は含まない。
 
-宣言：`CategoryTheory.Bicategory.Adjunction.compUnit`
-
 :::
 
-:::proposition "kerodon_6_1_5_3"
+:::proposition "kerodon_6_1_5_3" (lean := "CategoryTheory.Adjunction.comp_homEquiv")
 Kerodon Proposition 6.1.5.3（[Tag 02DQ](https://kerodon.net/tag/02DQ)）。対応表の状態：一部。
 
 双圏をCat、試験圏Tを一点、η,η′を随伴のunitに限るとAdjunction.comp\_homEquivは原文の同じ二段のadjunctと合成adjunctの一致を直接返す。任意双圏と任意ηの可換四角には及ばない。
-
-宣言：`CategoryTheory.Adjunction.comp_homEquiv`
 
 :::
 
@@ -304,12 +286,10 @@ Bicategory.Adjunction.compは二つの随伴の合成を直接作る。存在す
 
 :::
 
-:::definition "kerodon_6_1_5_7"
+:::definition "kerodon_6_1_5_7" (lean := "CategoryTheory.Bicategory.Adjunction.compCounit")
 Kerodon Construction 6.1.5.7（[Tag 02DV](https://kerodon.net/tag/02DV)）。対応表の状態：一部。
 
 ε,ε′を指定随伴のcounitに強めればcompCounitは原文と同じwhiskering・結合子による合成counitを直接構成する。
-
-宣言：`CategoryTheory.Bicategory.Adjunction.compCounit`
 
 :::
 
@@ -336,12 +316,10 @@ Kerodon Definition 6.1.6.1（[Tag 02DZ](https://kerodon.net/tag/02DZ)）。対�
 
 :::
 
-:::proposition "kerodon_6_1_6_5"
+:::proposition "kerodon_6_1_6_5" (lean := "CategoryTheory.tensorLeftHomEquiv")
 Kerodon Proposition 6.1.6.5（[Tag 02E3](https://kerodon.net/tag/02E3)）。対応表の状態：一部。
 
 評価evが指定ExactPairing Y Xの評価であれば、tensorLeftHomEquivの逆は原文第一条件の同じevによる全単射を直接返す。duality datum⇒第一条件の向きで、任意evからの逆判定は含まない。
-
-宣言：`CategoryTheory.tensorLeftHomEquiv`
 
 :::
 
@@ -352,12 +330,10 @@ ExactPairing Y Xはcoev:1→Y⊗X、ev:X⊗Y→1と二つのzigzag等式を持�
 
 :::
 
-:::definition "kerodon_6_1_6_7"
+:::definition "kerodon_6_1_6_7" (lean := "CategoryTheory.tensorRightHomEquiv")
 Kerodon Variant 6.1.6.7（[Tag 02E5](https://kerodon.net/tag/02E5)）。対応表の状態：一部。
 
 指定coevを持つExactPairing Y Xを仮定するとtensorRightHomEquivは原文第二条件の同じcoevによる全単射を直接与える。任意coevから評価を回収する逆と一意性は含まない。
-
-宣言：`CategoryTheory.tensorRightHomEquiv`
 
 :::
 
@@ -375,21 +351,17 @@ Kerodon Definition 6.1.6.9（[Tag 02E7](https://kerodon.net/tag/02E7)）。対�
 
 :::
 
-:::definition "kerodon_6_1_6_13"
+:::definition "kerodon_6_1_6_13" (lean := "CategoryTheory.tensorRightHomEquiv")
 Kerodon Definition 6.1.6.13（[Tag 02EB](https://kerodon.net/tag/02EB)）。対応表の状態：一部。
 
 評価evをExactPairing Y Xの評価に強めるとtensorRightHomEquiv Z Y X 1の逆と単位子が、原文後半の弱left dualの全単射Hom(Z,X)→Hom(Z⊗Y,1)を直接返す。任意evとweak right側は含まない。
 
-宣言：`CategoryTheory.tensorRightHomEquiv`
-
 :::
 
-:::proposition "kerodon_6_1_6_15"
+:::proposition "kerodon_6_1_6_15" (lean := "CategoryTheory.rightDualIso, CategoryTheory.tensorLeftHomEquiv")
 Kerodon Proposition 6.1.6.15（[Tag 02ED](https://kerodon.net/tag/02ED)）。対応表の状態：一部。
 
 tensorLeftHomEquivを終域1に特殊化すると、同じevによるduality datumからweak right dualの全単射が直接得られる。原文(1)の順方向のみで、任意指定evに関する逆は含まない。
-
-宣言：`CategoryTheory.rightDualIso`、`CategoryTheory.tensorLeftHomEquiv`
 
 :::
 

@@ -2,17 +2,42 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.Order.CompleteLattice.Defs
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.AdjointRepresentability
 import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Reflective
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveLocalization
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.Accessibility
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.Accessible
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.PresentationAssembly
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteColimitClosureUnconditional
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndComparisonFullyFaithful
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndLeftKanPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.AccessibleCorepresentability
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.AdjointFunctorTheorem
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldReflection
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldSaturation
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldUniversalProperty
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorPresentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndCardinalChange
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalObjects
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeAdjointFunctorCriterion
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrInfinity
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Presentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentablePresheafReflection
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentablePullback
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableSmallLimits
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafPresentable
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallGeneratorPresentation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ReflectionSmallLimits
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.LocallySmall
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "9.5 Presentable ∞-Categories" =>
 %%%
@@ -38,12 +63,43 @@ tag := "kerodon-9-5-1"
 
 Kerodon [Tag 06NE](https://kerodon.net/tag/06NE)
 
-:::theorem "kerodon_9_5_1_1"
+*06-catinfty-ind-presentable.html — 6. accessible と presentable*
+
+\`\`\`text
+def IsKappaAccessible (κ : Cardinal.\{u\}) (C : SSet.\{u + 1\}) \[Quasicategory C\] : Prop
+  -- κ 正則、小さい κ-filtered 余極限を持ち、小さい κ-compact 生成圏を持つ
+def IsAccessible (C : SSet.\{u + 1\}) \[Quasicategory C\] : Prop
+\`\`\`
+
+完成：$`\mathrm{Ind}_\kappa(A)` の accessibility、κ-compact 対象が生成対象の retract であること、小さい Ind との同値による特徴づけ（\`isKappaAccessible\_iff\_indEquivalence\`）、濃度の変更、accessible 関手（HTT §5.4.2、F2/Presentable）。
+
+作業中（P-1 b〜g）：presentable の定義と前層・Ind の presentable 性、極限・余極限の存在、随伴関手定理、Pr\<sup\>L\</sup\>/Pr\<sup\>R\</sup\>、Bousfield 局所化の存在、P\<sub\>Σ\</sub\> の普遍性。局所対象・強飽和性と P\<sub\>Σ\</sub\> の準備は HomotopyLimits/ にある（第 5 章）。
+
+*f-d-adjoint-presentable.html — 4. 表現可能性定理*
+
+注意：以前「再帰的局所化」と書いたのは誤記で、正しくは反射的局所化（reflective localization）。
+
+*f-d-adjoint-presentable.html — 4. 表現可能性定理 — 4.1 用語*
+
+- 用語　／　定義
+- $`C_0`　／　$`C` の小さい充満部分圏で $`C` を余極限で生成するもの。標準的には十分大きい正則基数 $`\kappa` で $`C_0=C^\kappa`（$`\mathrm{Map}(c,-)` が $`\kappa`-filtered 余極限を保つ対象の全体、本質的に小さい）
+- 反射的局所化　／　充満部分圏の包含 $`i\colon C\hookrightarrow E` が左随伴 $`L`（反射、局所化関手）をもつこと。$`L\circ i\simeq\mathrm{id}`。アクセシブルとは $`i` が $`\kappa`-filtered 余極限を保つこと。例：層化 $`\mathrm{Sh}\subseteq\mathrm{PSh}`
+- 局所対象　／　射の集合 $`S` について、すべての $`s\colon A\to B` で $`\mathrm{Map}(B,Z)\to\mathrm{Map}(A,Z)` が同値な $`Z`。反射的部分圏 $`C\subseteq E` はちょうど $`L`-同値に関する局所対象の全体。層の条件は「被覆篩 $`\to` 表現可能前層」に関する局所性
+- 稠密性　／　$`F\in\mathcal P(C_0)` は表現可能前層の余極限 $`F\simeq\operatorname{colim}_{(c,x\in F(c))}h_c`（∞ 版では $`\mathrm{Un}(F)\to C_0` と Yoneda 埋め込みの合成の余極限）。証明は $`\mathrm{Map}(\operatorname{colim}h_c,G)\simeq\lim G(c)\simeq\mathrm{Map}(F,G)`（形式化：PresheafDensity 以下）
+- Lurie–Simpson の特徴づけ（HTT 5.5.1.1）　／　(1) $`C` は presentable。(2) ある小さい $`C_0` で $`C` は $`\mathcal P(C_0)` のアクセシブルな反射的局所化。(3) ある小さい $`C_0` と射の小さい集合 $`S` で $`C\simeq S^{-1}\mathcal P(C_0)`。この三つは同値
+
+*f-d-adjoint-presentable.html — 4. 表現可能性定理 — 4.2 二つの向きの役割*
+
+- *(1)⇒(2)*（表現可能性定理の手順 1）：比較的初等的。$`C_0=C^\kappa`、$`\nu\colon C\to\mathcal P(C_0)`、$`X\mapsto\mathrm{Map}_C(-,X)|_{C_0}`。$`C\simeq\mathrm{Ind}_\kappa(C^\kappa)` から $`\nu` は充満忠実。左随伴 $`L` は包含 $`C_0\hookrightarrow C` の Yoneda 埋め込みに沿った左 Kan 拡張（$`C` が余完備なので存在）。$`\nu` が $`\kappa`-filtered 余極限を保つのでアクセシブル。
+
+- *(3)⇒(1)* で使う「局所化の存在」（HTT 5.5.4.15）：任意の小さい $`S` で $`S`-局所対象が反射的部分圏をなし presentable になる。反射 $`L` を作るのに small object argument の ∞ 版が要る重い部分で、新しい presentable 圏を作るときに使う。
+
+表現可能性定理には (1)⇒(2) しか要らない。presentability の理論全体では Lurie–Simpson と局所化の存在が重いが、表現可能性定理に限れば重いのは $`\mathrm{Ind}_\kappa` による記述と稠密性。
+
+:::theorem "kerodon_9_5_1_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.hasSmallLimits")
 Kerodon Theorem 9.5.1.1（[Tag 06PU](https://kerodon.net/tag/06PU)）。対応表の状態：一部。
 
 accessibleかつcocompleteはIsPresentableの定義そのもので、hasSmallLimitsは同じCの完備性を直接返す。complete⇒cocompleteは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.hasSmallLimits`
 
 :::
 
@@ -54,21 +110,79 @@ Kerodon Definition 9.5.1.2（[Tag 06ND](https://kerodon.net/tag/06ND)）。対�
 
 :::
 
-:::theorem "kerodon_9_5_1_8"
+:::theorem "kerodon_9_5_1_8" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presentableContinuous_isRepresentable")
 Kerodon Theorem 9.5.1.8（[Tag 06PY](https://kerodon.net/tag/06PY)）。対応表の状態：一部。
 
 IsPresentableの同じCと同じFにpresentableContinuous\_isRepresentableを適用して小極限保存⇒表現可能を直接得る。逆向きはこの引用に含まない。
 
-宣言：`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presentableContinuous_isRepresentable`
+*f-d-adjoint-presentable.html — 4. 表現可能性定理 — 4.3 証明*
+
+$`C` を presentable、$`H\colon C^{\mathrm{op}}\to\mathcal S` を余極限を極限に送る関手、$`C\overset{\nu}{\hookrightarrow}\mathcal P(C_0)` を 4.2 の反射的局所化、反射を $`L` とする。
+
+1. *候補*：$`\tilde H:=H|_{C_0^{\mathrm{op}}}\in\mathcal P(C_0)`。
+
+2. *鍵の計算*：任意の $`F\in\mathcal P(C_0)` で自然に $`\mathrm{Map}_{\mathcal P(C_0)}(F,\tilde H)\simeq H(LF)`。稠密性 $`F\simeq\operatorname{colim}h_c` から左辺は $`\lim\tilde H(c)=\lim H(c)`。$`L` は余極限を保ち $`L(h_c)\simeq c` なので $`LF\simeq\operatorname{colim}c`（$`C` での余極限）。$`H` は余極限を極限に送るので $`H(LF)\simeq\lim H(c)`。
+
+3. \*\*$`\tilde H` は局所対象\*\*：$`f\colon F\to F'` が $`L`-同値なら $`LF\simeq LF'` なので、2 により $`\mathrm{Map}(F',\tilde H)\to\mathrm{Map}(F,\tilde H)` は同値。よって $`\tilde H\simeq\nu Y`（$`Y=L\tilde H`）。
+
+4. *表現*：$`X\in C` について 2 を $`F=\nu X` に適用し $`L\nu X\simeq X` を使うと $`H(X)\simeq\mathrm{Map}_{\mathcal P(C_0)}(\nu X,\nu Y)\simeq\mathrm{Map}_C(X,Y)`（$`\nu` が充満忠実）。
+
+*自然性*：$`H` と $`\mathrm{Map}_C(-,Y)` はどちらも $`C_0^{\mathrm{op}}` への制限の右 Kan 拡張（余極限を極限に送り、$`C_0` が稠密だから）で、$`C_0` 上で一致するので Kan 拡張の一意性から関手として同値。3 は形式化の「表現可能前層の辺の作用による局所性判定」（\`presheaf\_representableInversionDetectsLocality\`）にあたる。
+
+- 概念　／　一言で　／　証明での役割
+- $`C_0=C^\kappa`　／　余極限で $`C` を生成する小さい部分圏　／　前層を小さい圏の上で扱う
+- 反射的局所化　／　左随伴をもつ充満部分圏　／　$`C\subseteq\mathcal P(C_0)` と $`L`
+- 局所対象　／　$`L`-同値に関して $`\mathrm{Map}(-,Z)` が同値な対象　／　候補 $`\tilde H` が $`C` に入る判定
+- 稠密性　／　前層は表現可能前層の余極限　／　鍵の計算（2）
+- Lurie–Simpson　／　presentable ⇔ 前層の圏のアクセシブルな反射的局所化　／　(1)⇒(2) が手順。(3)⇒(1) は別の道具
+- 局所化の存在　／　$`S^{-1}\mathcal P(C_0)` が反射的で presentable　／　表現可能性定理には不要
+
+*presentable-route.html — 2. 随伴関手定理*
+
+- *表現可能性定理*（HTT Prop. 5.5.2.2）：$`\mathcal C` が presentable なら、$`H\colon\mathcal C^{\mathrm{op}}\to\mathcal S` が表現可能 ⇔ $`H` が小さい余極限を極限に送る。
+
+*presentable-route.html — 5. 表現可能性定理の証明*
+
+二段階で示す。段階 I は $`\mathcal C=\mathcal P(A)` の場合、段階 II は一般の場合を局所化で帰着させる。
+
+*presentable-route.html — 5. 表現可能性定理の証明 — 準備*
+
+- *(a)* presentable なら、小さい $`A`（$`\kappa`-コンパクト対象）と反射的局所化 $`L\colon\mathcal P(A)\rightleftarrows\mathcal C\colon i`（$`L\dashv i`、$`i` 充満忠実）がある。1 圏では Gabriel–Ulmer、∞ 圏では Lurie–Simpson（HTT Thm 5.5.1.1）。
+
+- *(b)* §4 の普遍性。
+
+*presentable-route.html — 5. 表現可能性定理の証明 — 段階 I：$`\mathcal C=\mathcal P(A)`*
+
+$`h:=H\circ y\in\mathcal P(A)` と置く。1 圏では
+$$`H(F)\cong H\bigl(\operatorname{colim}y(a)\bigr)\cong\lim H(y(a))=\lim h(a)\cong\lim\mathrm{Hom}(y(a),h)\cong\mathrm{Hom}(F,h).`
+整理すると、$`H` と $`\mathrm{Hom}(-,h)` はどちらも余極限を極限に送り、$`A` への制限がどちらも $`h`（後者は米田）なので、(b) の一意性で同型。\*\*表現する対象は、$`H` を生成元に制限したものそのもの\*\*である。
+
+*presentable-route.html — 5. 表現可能性定理の証明 — 段階 II：一般の $`\mathcal C`*
+
+1. $`H':=H\circ L^{\mathrm{op}}` は余極限を極限に送る（$`L` は左随伴）。段階 I より $`H'\cong\mathrm{Hom}(-,h)`、$`h(a)=H(L\,y(a))`。
+
+2. $`h` は局所的：単位 $`\eta_F` について $`\mathrm{Hom}(\eta_F,h)=H(L\eta_F)` は同型。よって $`h\cong iLh`。
+
+3. $`c\in\mathcal C` について $`\mathrm{Hom}_{\mathcal C}(c,Lh)\cong\mathrm{Hom}(ic,h)\cong H(Lic)\cong H(c)`。
+
+仮定の使われ方：「余極限を極限に送る」は生成元への帰着と $`L` との合成で、presentable（$`A` が小さい）は $`h` が小さい前層として存在するために使う。
+
+*presentable-route.html — 5. 表現可能性定理の証明 — ∞ 圏で何が変わるか*
+
+- 論点　／　1 圏　／　∞ 圏
+- (a) 局所化として表す　／　Gabriel–Ulmer　／　Lurie–Simpson。主張は同じで証明は重い（HTT 第 5 章）
+- 要素の圏　／　$`\mathrm{el}(F)`　／　$`\mathrm{Un}(F)`
+- 段階 I の同型　／　各点の全単射 + 自然性　／　(b) を関手 ∞ 圏の同値として使い、制限側の同値を整合的に持ち上げる。関手版の米田が要る
+- 段階 II の局所性　／　全単射　／　写像空間の同値。ほぼそのまま
+
+表現可能性定理は「straightening → 米田 → $`\mathcal P(A)` の普遍性」の積み重ねの上に立つ。補章 2 §5 の「関手版の米田を何で示すか」がここに効く。
 
 :::
 
-:::theorem "kerodon_9_5_1_9"
+:::theorem "kerodon_9_5_1_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.accessible_preservesLimits_isCorepresentable")
 Kerodon Theorem 9.5.1.9（[Tag 06PZ](https://kerodon.net/tag/06PZ)）。対応表の状態：一部。
 
 accessible\_preservesLimits\_isCorepresentableは同じC,Fについてaccessibleかつ全小極限保存⇒corepresentableを直接返す。逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.accessible_preservesLimits_isCorepresentable`
 
 :::
 
@@ -81,12 +195,10 @@ Kerodon Proposition 9.5.1.11（[Tag 06Q1](https://kerodon.net/tag/06Q1)）。対
 
 :::
 
-:::corollary "kerodon_9_5_1_12"
+:::corollary "kerodon_9_5_1_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.hasSmallLimits")
 Kerodon Corollary 9.5.1.12（[Tag 06UE](https://kerodon.net/tag/06UE)）。対応表の状態：一部。
 
 Cをpresentableにも強め、Kを宇宙小形状に限るとhasSmallLimitsの同じKへの適用が原文の同じCのK極限の存在を直接返す。二濃度の入力だけの場合は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.hasSmallLimits`
 
 :::
 
@@ -108,28 +220,105 @@ tag := "kerodon-9-5-2"
 
 Kerodon [Tag 06Q4](https://kerodon.net/tag/06Q4)
 
+*f-d-adjoint-presentable.html — 1. 随伴関手定理の主張と骨格*
+
+$`C,D` を presentable ∞ 圏とする（HTT 5.5.2.9）。
+
+1. $`F\colon C\to D` が右随伴をもつ ⇔ $`F` は小さい余極限を保つ。
+
+2. $`G\colon D\to C` が左随伴をもつ ⇔ $`G` はアクセシブルで、小さい極限を保つ。
+
+どちらも「随伴 = 各点の表現可能性」（随伴の (E)）に帰着する。
+
+- *1 の向き*：各 $`Y` で $`\mathrm{Map}_D(F(-),Y)\colon C^{\mathrm{op}}\to\mathcal S` は、$`F` が余極限を保つので余極限を極限に送る（極限の (3)、写像空間の極限公式）。表現可能性定理（HTT 5.5.2.2）で表現され、表現対象を $`GY` とする。各点の表現を (C) の構成（cograph が cocartesian fibration になること）で関手 $`G` にまとめる。
+
+- *2 の向き*：各 $`X` で $`\mathrm{Map}_C(X,G(-))\colon D\to\mathcal S` は極限を保ちアクセシブル。アクセシブルで極限を保つ関手は余表現可能（解集合条件の ∞ 版）。(E) から (C) で左随伴を組み立てる。
+
+*f-d-adjoint-presentable.html — 2. 必要な部品*
+
+- 部品　／　内容　／　どこで使うか
+- $`\mathrm{Map}` の関手性　／　Hom 関手（Tw の St、補章 3 §11）、表現可能前層 $`h_y`、Yoneda 埋め込みの充満忠実性　／　表現可能性を言うため
+- 随伴の (E)⇒(C)　／　各点の普遍射から関手を作る（cograph の cocartesian 持ち上げ）　／　各点の表現から随伴へ
+- $`\mathcal S` の極限・余極限　／　小さい極限・余極限をもつ。$`\mathrm{Map}(\operatorname{colim}X_i,Y)\simeq\lim\mathrm{Map}(X_i,Y)`　／　「余極限を極限に送る」を扱う
+- 前層の圏 $`\mathcal P(C_0)`　／　各点で計算される極限・余極限、Yoneda 埋め込みが極限を保つこと、稠密性、自由余完備化（左 Kan 拡張）　／　表現可能性定理の本体
+- Kan 拡張　／　各点の左 Kan 拡張の存在　／　自由余完備化と Ind
+- 大きさ　／　宇宙、正則基数 $`\kappa`、本質的に小さい、局所小　／　全体の大きさの制御
+- filtered 余極限　／　$`\kappa`-filtered、$`\mathcal S` で filtered 余極限と有限極限が可換　／　コンパクト性
+- アクセシブル圏　／　$`\kappa`-コンパクト対象、$`\mathrm{Ind}_\kappa`、アクセシブル関手　／　presentability の定義、2 の向き
+- presentable 圏　／　定義（アクセシブルかつ余完備）と Lurie–Simpson の特徴づけ（HTT 5.5.1.1）　／　表現可能性定理を前層の場合に帰着する（(1)⇒(2) の向きだけ）
+- 局所化の存在　／　射の集合での局所化 $`S^{-1}\mathcal P(C_0)` が反射的で presentable（small object argument の ∞ 版、HTT 5.5.4.15）　／　表現可能性定理には不要。新しい presentable 圏（層、安定化、Bousfield 局所化）を作るとき
+
+\`\`\`text
+Map の関手性（St・Tw）──┐
+随伴 (E)⇒(C) ──────────┤
+𝒮 と 𝒫(C₀) の極限・余極限、稠密性、自由余完備化 ──► 表現可能性定理 ──► 随伴関手定理 1
+filtered・κ-コンパクト・Ind・アクセシブル ──► presentable（Lurie–Simpson (1)⇒(2)）──┘
+                                    └──► 余表現可能性 ──► 随伴関手定理 2
+\`\`\`
+
+*f-d-adjoint-presentable.html — 3. 左随伴の側だけアクセシブル性が要る理由*
+
+presentable 圏は「余極限の側では小さいデータで生成されるが、極限の側ではそうでない」非対称な概念で、アクセシブル性は極限の側で足りない小さい解集合を補う条件。
+
+*f-d-adjoint-presentable.html — 3. 左随伴の側だけアクセシブル性が要る理由 — 3.1 1 の向きで条件が要らない理由*
+
+$`C` は小さい $`C_0=C^\kappa` から余極限で生成され（$`C\simeq\mathrm{Ind}_\kappa(C^\kappa)`）、余極限を極限に送る前層は $`C_0` への制限で決まる。小さい圏上の前層なので大きさの問題は起きず、$`\mathcal P(C_0)` で表現して局所化で降ろすだけ。左随伴はすべての余極限を保つので自動的にアクセシブルで、presentable 圏の間の右随伴も自動的にアクセシブル（HTT 5.4.7.7）。
+
+*f-d-adjoint-presentable.html — 3. 左随伴の側だけアクセシブル性が要る理由 — 3.2 2 の向きでアクセシブル性が効く場所*
+
+$`G` の左随伴には各 $`X` でコンマ圏 $`X\downarrow G`（対象 $`(Y,X\to GY)`）の始対象が要る。$`X\downarrow G` 全体の極限は大きすぎて存在せず、小さい弱始的な部分集合（解集合）が必要。$`D` が presentable でも $`D^{\mathrm{op}}` は presentable でないので、極限の側に小さい生成系はない。
+
+1. $`\kappa` を十分大きくとり、$`X` が $`\kappa`-コンパクト、$`G` が $`\kappa`-filtered 余極限を保つようにする。
+
+2. 任意の $`Y` は $`\kappa`-コンパクト対象の $`\kappa`-filtered 余極限 $`Y\simeq\operatorname{colim}Y_i`。
+
+3. $`G` は $`\kappa`-filtered 余極限を保つので $`GY\simeq\operatorname{colim}GY_i`。
+
+4. $`X` は $`\kappa`-コンパクトなので $`X\to GY` はある $`X\to GY_i` を経由する。
+
+5. $`\kappa`-コンパクトな $`Y'` をもつ $`(Y',X\to GY')` が弱始的で、$`D^\kappa` は本質的に小さいので小さい解集合。
+
+6. その上で極限をとれば、$`D` の極限と $`G` の極限保存から始対象が得られる。
+
+アクセシブル性は 3 の一点にだけ効く。1 圏では Freyd の一般随伴関手定理の解集合条件そのもの。極限を保つだけで解集合がない古典的な例は完備束の圏から集合の圏への忘却関手（3 元生成の自由完備束が存在しない、Gaifman–Hales）だが、完備束の圏は presentable ではないので「極限保存だけでは解集合が出ない」ことの説明にとどまる。presentable 圏の間で極限を保つがアクセシブルでない関手が存在するかは集合論的な仮定（Vopěnka 原理など）が絡む問題だったと記憶しているが、確かめていない。
+
+- 　／　左随伴になる条件　／　右随伴になる条件
+- presentable 圏の間　／　余極限を保つ　／　極限を保ち、かつアクセシブル
+- 理由　／　余極限の側は $`C^\kappa` で生成されるので小ささが自動　／　極限の側には生成系がなく、解集合をアクセシブル性で作る
+- 圏の圏　／　$`\mathrm{Pr}^L`：余極限を保つ関手　／　$`\mathrm{Pr}^R`：アクセシブルで極限を保つ関手
+
+$`\mathrm{Pr}^R` の射の定義にアクセシブル性が入っているのもこの非対称のためで、$`\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}` は二つの条件が随伴でちょうど入れ替わることを言う。
+
 :::theorem "kerodon_9_5_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits")
 Kerodon Theorem 9.5.2.1（[Tag 06Q5](https://kerodon.net/tag/06Q5)）。対応表の状態：本体にある。
 
 仮定：C,D が quasicategory で IsPresentable、指定した F または G（Kerodon と一致）。結論：右随伴の存在と小余極限保存の iff、左随伴の存在と accessible 性かつ小極限保存の iff（原文の二主張と一致）。
 
+*presentable-route.html — 2. 随伴関手定理*
+
+*定理*（HTT Cor. 5.5.2.9）．$`\mathcal C,\mathcal D` を presentable な ∞ 圏、$`F\colon\mathcal C\to\mathcal D` を関手とする。
+
+1. $`F` が右随伴を持つ ⇔ $`F` が小さい余極限を保つ。
+
+2. $`F` が左随伴を持つ ⇔ $`F` が小さい極限を保ち、accessible（ある $`\kappa` について $`\kappa`-filtered 余極限を保つ）。
+
+「⇒」は随伴の一般論。中身は「⇐」で、1 は次の二つの組み合わせである。
+
+- *各点の判定*：$`F` が右随伴を持つ ⇔ 各 $`d` について $`c\mapsto\mathrm{Map}(Fc,d)` が表現可能。
+
 :::
 
-:::proposition "kerodon_9_5_2_2"
+:::proposition "kerodon_9_5_2_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits_of_representability_native")
 Kerodon Proposition 9.5.2.2（[Tag 06QB](https://kerodon.net/tag/06QB)）。対応表の状態：一部。
 
 Dをaccessibleにも強め、presentableなCからの全連続前層の表現定理をhRepへ入れると、native判定は同じFの右随伴存在と全小余極限保存のiffを直接返す。Dをpresentableとする必要はなく、局所小だけの場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits_of_representability_native`
-
 :::
 
-:::proposition "kerodon_9_5_2_3"
+:::proposition "kerodon_9_5_2_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rightAdjoint_isAccessible")
 Kerodon Proposition 9.5.2.3（[Tag 06QC](https://kerodon.net/tag/06QC)）。対応表の状態：一部。
 
 Dをpresentableとする原文の仮定の下でrightAdjoint\_isAccessibleとadjunction\_preservesSmallLimitsは同じGの左随伴存在⇒accessibleかつ小極限保存を直接与える。引用のiffが要求するCのpresentabilityは逆向きに限る追加入力。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rightAdjoint_isAccessible`
 
 :::
 
@@ -233,12 +422,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：Mathlib に
 
 :::
 
-:::proposition "kerodon_9_5_4_3"
+:::proposition "kerodon_9_5_4_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable")
 Kerodon Proposition 9.5.4.3（[Tag 06P7](https://kerodon.net/tag/06P7)）。対応表の状態：一部。
 
 Kを小準圏に限るとfunctor\_isPresentableが同じFun(K,C)のpresentabilityを直接返す。任意の単体集合Kは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable`
 
 :::
 
@@ -251,12 +438,10 @@ Arrow(C)のpresentabilityは原文の指定F−,F+のoriented fiber productと�
 
 :::
 
-:::corollary "kerodon_9_5_4_6" (uses := "kerodon_1_4_0_1")
+:::corollary "kerodon_9_5_4_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isPresentable_of_accessiblePullback, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isPresentable_of_isAccessible") (uses := "kerodon_1_4_0_1")
 Kerodon Corollary 9.5.4.6（[Tag 06PA](https://kerodon.net/tag/06PA)）。対応表の状態：一部。
 
 両脚cocontinuous、一方equivalence lifting、strict pullback模型に限りpullback\_isAccessibleを入力してisPresentable\_of\_isAccessibleを適用すると同じ全空間のpresentabilityを直接得る。continuous側と任意の指定模型は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isPresentable_of_accessiblePullback`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isPresentable_of_isAccessible`
 
 :::
 
@@ -354,12 +539,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：コンパ�
 
 :::
 
-:::corollary "kerodon_9_5_5_8"
+:::corollary "kerodon_9_5_5_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects")
 Kerodon Corollary 9.5.5.8（[Tag 06NS](https://kerodon.net/tag/06NS)）。対応表の状態：一部。
 
 κ=ℵ0としCが有限余極限を持つ場合、hasFiniteColimits\_kappaCompactObjectsは同じcompact対象部分圏の有限余極限存在、すなわち(2)⇒(3)を直接返す。全iffと任意κは含まない。
-
-宣言：`CategoryTheory.instHasColimitsIndOfHasFiniteColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects`
 
 :::
 
@@ -407,12 +590,10 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：一濃度�
 
 :::
 
-:::corollary "kerodon_9_5_5_15"
+:::corollary "kerodon_9_5_5_15" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isKappaAccessibleFunctor, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits")
 Kerodon Corollary 9.5.5.15（[Tag 06NZ](https://kerodon.net/tag/06NZ)）。対応表の状態：一部。
 
 Cを標準Indκ(A)に限り同じFが左Kan拡張である場合、indLeftKanExtension\_preservesSmallKappaFilteredColimitsは原文右辺の同じFのκ-finitary成分を直接返す。compact部分への保存条件と全iffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isKappaAccessibleFunctor`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indLeftKanExtension_preservesSmallKappaFilteredColimits`
 
 :::
 
@@ -425,21 +606,17 @@ PrLFunctorSpaceの準圏性と全Fun(K,D)のpresentabilityは、cocontinuous全�
 
 :::
 
-:::proposition "kerodon_9_5_5_17"
+:::proposition "kerodon_9_5_5_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable.hasSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaCompactGenerating.exists_smallFamilyPresentation")
 Kerodon Proposition 9.5.5.17（[Tag 06P0](https://kerodon.net/tag/06P0)）。対応表の状態：一部。
 
 IsPresentableの同じCの局所小性と全小余極限存在は原文の右辺(a)(b)を直接返す。小生成族の全余極限生成と全対象のcompact基数はこの引用だけでは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall`、`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable.hasSmallColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaCompactGenerating.exists_smallFamilyPresentation`
-
 :::
 
-:::lemma_ "kerodon_9_5_5_18"
+:::lemma_ "kerodon_9_5_5_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact")
 Kerodon Lemma 9.5.5.18（[Tag 06P1](https://kerodon.net/tag/06P1)）。対応表の状態：一部。
 
 数値λ制限のない標準Indκの小始域の場合、indComparison\_isFullyFaithful\_of\_compactは同じhのκ-finitary拡張Hの充満忠実性を直接返す。全λ-small余極限閉包としての像の判定は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact`
 
 :::
 
@@ -452,21 +629,17 @@ Kerodon Lemma 9.5.5.19（[Tag 06P2](https://kerodon.net/tag/06P2)）。対応表
 
 :::
 
-:::proposition "kerodon_9_5_5_21"
+:::proposition "kerodon_9_5_5_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable.hasSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating")
 Kerodon Proposition 9.5.5.21（[Tag 06P4](https://kerodon.net/tag/06P4)）。対応表の状態：一部。
 
 κ-presentableのpresentable成分から同じCの局所小性と余完備性(a)(b)が直接得られる。小κ-compact族による全小余極限生成を含む全iffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall`、`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable.hasSmallColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaCompactGenerating`
-
 :::
 
-:::corollary "kerodon_9_5_5_22"
+:::corollary "kerodon_9_5_5_22" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_accessibilityCardinalAbove")
 Kerodon Corollary 9.5.5.22（[Tag 06UT](https://kerodon.net/tag/06UT)）。対応表の状態：一部。
 
 κ≤λをIsCardinalChangeBound κ λへ強めると同じCのκ-accessibilityをλ-accessibilityへ移せる。元のpresentabilityと論理積にして同じCのλ-presentabilityを得る。任意の基数比較は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_accessibilityCardinalAbove`
 
 :::
 
@@ -479,39 +652,31 @@ tag := "kerodon-9-5-6"
 
 Kerodon [Tag 06UU](https://kerodon.net/tag/06UU)
 
-:::definition "kerodon_9_5_6_1"
+:::definition "kerodon_9_5_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable")
 Kerodon Definition 9.5.6.1（[Tag 06UV](https://kerodon.net/tag/06UV)）。対応表の状態：一部。
 
 FをrepleteなReflectiveSubcategoryのreflectorに限り、始域・その部分圏のIsPresentableを課すと、その構造の随伴と充満包含は原文の同じFのBousfield条件を直接表す。任意のFによる定義全体は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory`、`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable`
-
 :::
 
-:::proposition "kerodon_9_5_6_2"
+:::proposition "kerodon_9_5_6_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_preservesSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_invertedEdges, SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.isLocalization")
 Kerodon Proposition 9.5.6.2（[Tag 06UW](https://kerodon.net/tag/06UW)）。対応表の状態：一部。
 
 同じ反射のreflectorには随伴による余極限保存とisLocalizationがあり、原文のBousfield⇒(1)(2)を直接返す。逆向きは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_preservesSmallColimits`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_invertedEdges`、`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory.isLocalization`
-
 :::
 
-:::definition "kerodon_9_5_6_9"
+:::definition "kerodon_9_5_6_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsReflectiveSubcategory, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_of_reflection")
 Kerodon Definition 9.5.6.9（[Tag 06V3](https://kerodon.net/tag/06V3)）。対応表の状態：一部。
 
 IsReflectiveSubcategoryは同じ部分圏に要求する定義のreflective成分を直接与える。accessibly embedded成分と併せた全定義はこの引用だけでは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsReflectiveSubcategory`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_of_reflection`
-
 :::
 
-:::proposition "kerodon_9_5_6_15"
+:::proposition "kerodon_9_5_6_15" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_mem_limitCone, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits")
 Kerodon Proposition 9.5.6.15（[Tag 06V9](https://kerodon.net/tag/06V9)）。対応表の状態：一部。
 
 部分圏をrepleteにも強めればreflective\_mem\_limitConeは同じ部分圏の小極限閉性という右辺一成分を直接返す。accessibilityと逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_mem_limitCone`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits`
 
 :::
 
@@ -561,12 +726,10 @@ IsLocalizationの前合成は全関手準圏の型。原文の両側のcocontinu
 
 :::
 
-:::proposition "kerodon_9_5_7_5"
+:::proposition "kerodon_9_5_7_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences")
 Kerodon Proposition 9.5.7.5（[Tag 06VL](https://kerodon.net/tag/06VL)）。対応表の状態：一部。
 
 小さい同じWからbousfield\_isReflectiveSubcategoryとbousfieldLocalObjects\_isPresentableによりW-local部分圏の反射性とaccessibilityを得る。包含のaccessibilityは別入力なので右⇒左の全体ではなく反射性・部分圏のaccessibilityの成分。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences`
 
 :::
 
@@ -579,12 +742,10 @@ IsLocalizationの全関手圏への前合成の充満忠実性は、原文のPrL
 
 :::
 
-:::corollary "kerodon_9_5_7_8"
+:::corollary "kerodon_9_5_7_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_presheafReflection, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isPresentable, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalObjects_isPresentable")
 Kerodon Corollary 9.5.7.8（[Tag 06VP](https://kerodon.net/tag/06VP)）。対応表の状態：一部。
 
 W-local部分圏のpresentability、presheaf\_isPresentableと同値不変性から、原文のそのような小K,Wの表示が存在⇒Cがpresentableを直接得る。一般反射を小Wで表す逆向きは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_presheafReflection`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isPresentable`、`SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalObjects_isPresentable`
 
 :::
 

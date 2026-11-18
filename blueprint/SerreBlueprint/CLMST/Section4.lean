@@ -1,10 +1,19 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.CLMST.Algebra
+import SerrePositivity.CLMST.AllModuleTorVanishing
+import SerrePositivity.CLMST.CyclicLengthBound
+import SerrePositivity.CLMST.KoszulAnnihilation
+import SerrePositivity.CLMST.ParameterPowerLength
+import SerrePositivity.CLMST.ParameterQuotientLength
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§4 Perfectoid signature and perfectoid Hilbert-Kunz multiplicity" =>
 %%%
@@ -14,12 +23,10 @@ tag := "clmst-4"
 
 CLMST §4 の項目と、本体の宣言との対応。本文は対応表（`research/clmst-coverage`）の照合の理由で、原典の本文の写しではない。
 
-:::definition "clmst_4_0_1" (uses := "clmst_2_4_2")
+:::definition "clmst_4_0_1" (lean := "SerrePositivity.CLMST.RPerfd") (uses := "clmst_2_4_2")
 *記法 4.0.1*　Noether–Cohen 正規化・根の塔・R\_perfd の設定。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.26; layout L1410。混標数の有限基底 A⊆R、完備根の塔、(A\_infty⊗\_A R)\_perfd の透明な別名を確認。完全剰余体・Witt 冪級数表示は使用定理の引数で保持する。標準 perfectoid 化の存在は E3 sorry 入力に依存する。テンソル積の左右の順は可換交換で対応。
-
-宣言：`SerrePositivity.CLMST.RPerfd`
 
 外の文献：BS19 Section 10、BS19 Theorem 10.11、GR03 2.1.1
 
@@ -32,23 +39,19 @@ CLMST §4 の項目と、本体の宣言との対応。本文は対応表（`res
 
 :::
 
-:::theorem "clmst_4_0_3" (uses := "clmst_2_4_3, clmst_2_4_9, clmst_4_0_1")
+:::theorem "clmst_4_0_3" (lean := "SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated") (uses := "clmst_2_4_3, clmst_2_4_9, clmst_4_0_1")
 *定理 4.0.3*　R\_perfd の全加群 almost 平坦性と忠実性。対応表の状態：一部（part）。
 
 原典 PDF p.27; layout L1439。(a) の全 A 加群・全正次数 Tor の零化を、p 冪捩れ試験の零化 hTor と完備 almost 零加群の拡大閉性 hExt を明示的に受け取る形で確認。原典の設定だけから両入力を供給する入口でも (b) の非零加群に対する忠実性でもない。
-
-宣言：`SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated`
 
 外の文献：And18a、BS19 Proposition 10.2、Stacks Tag 091U、Stacks Tag 0ARD、Stacks Tag 0CQE
 
 :::
 
-:::corollary "clmst_4_0_4" (uses := "clmst_4_0_1, clmst_4_0_3")
+:::corollary "clmst_4_0_4" (lean := "SerrePositivity.CLMST.corollary_4_0_4") (uses := "clmst_4_0_1, clmst_4_0_3")
 *系 4.0.4*　局所コホモロジーと全有限段パラメータ Koszul の零化。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.28; layout L1509。原典の混標数・完全剰余体・Witt 基底・非零 g の外のエタール性を保持し、i\<d の局所コホモロジーと全有限段・任意パラメータ系の正 Koszul ホモロジーの両方を零化する。hperf は別途構成できるが、RPerfd の存在は E3 sorry 入力に依存する。
-
-宣言：`SerrePositivity.CLMST.corollary_4_0_4`
 
 外の文献：Hoc02、Shi11 Lemma 4.2
 
@@ -91,23 +94,19 @@ CLMST §4 の項目と、本体の宣言との対応。本文は対応表（`res
 
 :::
 
-:::proposition "clmst_4_0_10" (uses := "clmst_eq_4_0_10_1, clmst_2_2_6, clmst_2_4_3, clmst_4_0_1")
+:::proposition "clmst_4_0_10" (lean := "SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso") (uses := "clmst_eq_4_0_10_1, clmst_2_2_6, clmst_2_4_3, clmst_4_0_1")
 *命題 4.0.10*　almost 同型に対する正規化長さの不変性。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.30; layout L1645。原典と同じ混標数 Witt 基底、非零 g、および両加群の一様 m 冪捩れを持つ。共通 p\^N 零化の構成は exists\_common\_completedTower\_p\_pow\_annihilates で補い、mod p\^N の局所化圏の同型から長さ一致を得る。巡回商の評価に用いる商 perfectoid 化の存在に E3 sorry 入力が残る。
-
-宣言：`SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso`
 
 外の文献：Fal02 Appendix 2、Mon83 Lemma 1.1
 
 :::
 
-:::definition "clmst_eq_4_0_10_1" (uses := "clmst_2_4_1")
+:::definition "clmst_eq_4_0_10_1" (lean := "SerrePositivity.CLMST.exists_stage_root_mem_sup_perfectoidIdeal_of_surjective") (uses := "clmst_2_4_1")
 *式 (4.0.10.1)*　mod p 冪根での g の根と perfectoid イデアル。対応表の状態：一部（part）。
 
 原典 PDF p.31; layout L1677。原典の Frobenius 図式からの根の所属を、完備根の塔の有限段の代表元で表す。商 perfectoid 化写像の全射性を明示入力としており、原典の式単独より追加入力がある。 perfectoid 化を用いる箇所には E3 sorry 入力への依存が残る。
-
-宣言：`SerrePositivity.CLMST.exists_stage_root_mem_sup_perfectoidIdeal_of_surjective`
 
 :::
 
@@ -136,50 +135,40 @@ CLMST §4 の項目と、本体の宣言との対応。本文は対応表（`res
 
 :::
 
-:::proposition "clmst_4_0_14" (uses := "clmst_eq_4_0_15_1, clmst_eq_4_0_15_2, clmst_eq_4_0_15_3, clmst_eq_4_0_15_4, clmst_eq_4_0_15_5, clmst_2_2_6, clmst_2_4_7, clmst_4_0_1, clmst_4_0_10, clmst_4_0_15, clmst_4_0_4")
+:::proposition "clmst_4_0_14" (lean := "SerrePositivity.CLMST.proposition_4_0_14, SerrePositivity.CLMST.base_maximalIdeal_quotient_length_eq_rank") (uses := "clmst_eq_4_0_15_1, clmst_eq_4_0_15_2, clmst_eq_4_0_15_3, clmst_eq_4_0_15_4, clmst_eq_4_0_15_5, clmst_2_2_6, clmst_2_4_7, clmst_4_0_1, clmst_4_0_10, clmst_4_0_15, clmst_4_0_4")
 *命題 4.0.14*　全有限段パラメータ商の長さ・重複度公式。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.32; layout L1748。任意有限段 n と任意のパラメータ系 y に対して、長さ=e(y,A\_n⊗R)/p\^(nd) を保持し、基底極大イデアル商の階数公式もある。原典の混標数・完全剰余体の設定を Witt 表示などで明示化したもの。証明本文の直接 sorry はないが RPerfd の存在の E3 sorry 入力に依存する。
-
-宣言：`SerrePositivity.CLMST.proposition_4_0_14`、`SerrePositivity.CLMST.base_maximalIdeal_quotient_length_eq_rank`
 
 外の文献：BH93 Corollary 1.6.13 (a)、BH93 Theorem 4.7.6、BHM24 Theorem 3.4 (c)
 
 :::
 
-:::lemma_ "clmst_4_0_15" (uses := "clmst_2_2_6, clmst_4_0_10, clmst_4_0_4")
+:::lemma_ "clmst_4_0_15" (lean := "SerrePositivity.CLMST.completedTensor_stage_parameter_last_pow_length") (uses := "clmst_2_2_6, clmst_4_0_10, clmst_4_0_4")
 *主張 4.0.15*　最後のパラメータの冪と商の長さ。対応表の状態：未証明の入力に依存。
 
 原典 PDF p.33; layout L1772。任意有限段のパラメータ系について最後の元を D 乗すると長さが D 倍になる。原典の補助 Claim と同じ範囲であり、D を一つに固定していない。RPerfd の存在の E3 sorry 入力に依存する。
 
-宣言：`SerrePositivity.CLMST.completedTensor_stage_parameter_last_pow_length`
-
 :::
 
-:::definition "clmst_eq_4_0_15_1" (uses := "clmst_2_2_6, clmst_2_4_7, clmst_4_0_10, clmst_4_0_4")
+:::definition "clmst_eq_4_0_15_1" (lean := "SerrePositivity.CLMST.perfectoidizationCokernel_restricted_koszul_shortExact") (uses := "clmst_2_2_6, clmst_2_4_7, clmst_4_0_10, clmst_4_0_4")
 *式 (4.0.15.1)*　perfectoid 比較の余核の Koszul 長完全列。対応表の状態：一部（part）。
 
 原典 PDF p.33; layout L1800。原典の比較余核短完全列に Koszul を適用する短完全複体列を構成。原典の表示はそれから得る長完全ホモロジー列で、表示全体を一つの宣言として同定したものではない。 perfectoid 化を用いる箇所には E3 sorry 入力への依存が残る。
 
-宣言：`SerrePositivity.CLMST.perfectoidizationCokernel_restricted_koszul_shortExact`
-
 :::
 
-:::definition "clmst_eq_4_0_15_2" (uses := "clmst_eq_4_0_15_1, clmst_2_2_1, clmst_2_2_6, clmst_4_0_10, clmst_4_0_4")
+:::definition "clmst_eq_4_0_15_2" (lean := "SerrePositivity.CLMST.completedTensor_stage_source_homology_length") (uses := "clmst_eq_4_0_15_1, clmst_2_2_1, clmst_2_2_6, clmst_4_0_10, clmst_4_0_4")
 *式 (4.0.15.2)*　余核と有限段の正 Koszul 長さの一致と有限性。対応表の状態：一部（part）。
 
 原典 PDF p.33; layout L1807。有限段の源のホモロジー長さの p\^(nd) 正規化公式を確認。原典の余核 H\_(i+1) との等号および全 i≥1 の有限性の連結全体はこの宣言に含まない。 perfectoid 化を用いる箇所には E3 sorry 入力への依存が残る。
 
-宣言：`SerrePositivity.CLMST.completedTensor_stage_source_homology_length`
-
 :::
 
-:::definition "clmst_eq_4_0_15_3" (uses := "clmst_eq_4_0_15_1, clmst_2_2_6, clmst_4_0_10")
+:::definition "clmst_eq_4_0_15_3" (lean := "SerrePositivity.CLMST.completedTensor_stage_cokernel_negative_length_ne_top") (uses := "clmst_eq_4_0_15_1, clmst_2_2_6, clmst_4_0_10")
 *式 (4.0.15.3)*　余核の H1 の長さの上界。対応表の状態：一部（part）。
 
 原典 PDF p.33; layout L1809。余核の負 cochain 次数の長さ有限性を、零化冪と最後のパラメータの所属を入力として得る。原典の H1 の長さが源 H0 以下という具体的不等式そのものまでは確認していない。 perfectoid 化を用いる箇所には E3 sorry 入力への依存が残る。
-
-宣言：`SerrePositivity.CLMST.completedTensor_stage_cokernel_negative_length_ne_top`
 
 外の文献：BH93 Corollary 1.6.13 (a)、BHM24 Theorem 3.4 (c)
 
@@ -203,12 +192,10 @@ CLMST §4 の項目と、本体の宣言との対応。本文は対応表（`res
 
 :::
 
-:::proposition "clmst_4_0_16" (uses := "clmst_4_0_1, clmst_4_0_10, clmst_4_0_14, clmst_4_0_3")
+:::proposition "clmst_4_0_16" (lean := "SerrePositivity.CLMST.base_maximalIdeal_quotient_length_eq_rank") (uses := "clmst_4_0_1, clmst_4_0_10, clmst_4_0_14, clmst_4_0_3")
 *命題 4.0.16*　基底の有限生成準素イデアル商の階数公式。対応表の状態：一部（special）。
 
 原典 PDF p.34; layout L1870。J=m\_A A\_infty の商に対する長さ=rank\_A R の場合は確認。原典は m\_A の冪を含む任意の有限生成 J⊆A\_infty に対する倍率公式であり、J を基底の極大イデアルに狭めている。E3 sorry 入力への依存も残る。
-
-宣言：`SerrePositivity.CLMST.base_maximalIdeal_quotient_length_eq_rank`
 
 :::
 
@@ -221,12 +208,10 @@ CLMST §4 の項目と、本体の宣言との対応。本文は対応表（`res
 
 :::
 
-:::corollary "clmst_4_0_18" (uses := "clmst_4_0_1, clmst_4_0_14, clmst_4_0_17, clmst_6_0_3")
+:::corollary "clmst_4_0_18" (lean := "SerrePositivity.CLMST.parameter_quotient_length") (uses := "clmst_4_0_1, clmst_4_0_14, clmst_4_0_17, clmst_6_0_3")
 *系 4.0.18*　perfectoid HK 重複度の Hilbert–Samuel 上界とパラメータでの等号。対応表の状態：一部（special）。
 
 原典 PDF p.36; layout L1941。I がパラメータで生成される場合の長さ=e(I,R) を確認。原典の任意 m 準素 I に対する上界、およびこの上界に至る有限剰余体の拡大の議論全体は未確認。E3 sorry 入力への依存も残る。
-
-宣言：`SerrePositivity.CLMST.parameter_quotient_length`
 
 :::
 

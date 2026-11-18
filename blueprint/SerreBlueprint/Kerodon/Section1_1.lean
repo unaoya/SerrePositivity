@@ -9,6 +9,7 @@ import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
+import Mathlib.AlgebraicTopology.SimplicialSet.Dimension
 import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
@@ -18,11 +19,15 @@ import Mathlib.CategoryTheory.Functor.Const
 import Mathlib.CategoryTheory.Limits.IsConnected
 import Mathlib.Combinatorics.Quiver.Basic
 import SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryFaceGluing
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.PiZeroConstant
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.1 Simplicial Sets" =>
 %%%
@@ -94,6 +99,15 @@ Kerodon Notation 1.1.0.7（[Tag 04Z5](https://kerodon.net/tag/04Z5)）。対応�
 
 :::
 
+:::proposition "kerodon_1_1_0_9"
+Kerodon Example 1.1.0.9（[Tag 04Z6](https://kerodon.net/tag/04Z6)）。対応表の状態：照合の対象外。
+
+*定義 1.3 （標準単体 $`\Delta^n`）*
+
+$`\Delta^n` を $`[n]` が表現する関手 $`\Delta^n=\mathrm{Hom}_\Delta(-,[n])\colon\Delta^{\mathrm{op}}\to\mathrm{Set}` と定める。
+
+:::
+
 :::definition "kerodon_1_1_0_11" (lean := "SSet")
 Kerodon Definition 1.1.0.11（[Tag 04Z7](https://kerodon.net/tag/04Z7)）。対応表の状態：Mathlib にある。
 
@@ -112,6 +126,23 @@ Kerodon Proposition 1.1.0.12（[Tag 04Z8](https://kerodon.net/tag/04Z8)）。対
 Kerodon Notation 1.1.0.13（[Tag 04Z9](https://kerodon.net/tag/04Z9)）。対応表の状態：Mathlib にある。
 
 仮定：X の n 単体 x（Kerodon と一致）。結論：SSet.yonedaEquiv.symm x は x を表す Δ\[n\] ⟶ X で、恒等単体への適用で x を返す（一致）。
+
+:::
+
+:::proposition "kerodon_1_1_0_14"
+Kerodon Remark 1.1.0.14（[Tag 000P](https://kerodon.net/tag/000P)）。対応表の状態：照合の対象外。
+
+*定義 1.4 （部分単体的集合）*
+
+単体的集合 $`X` の部分単体的集合とは、各 $`[m]` について部分集合 $`A([m])\subseteq X([m])` を与え、任意の射 $`\theta\colon[m]\to[m']` について $`X(\theta)(A([m']))\subseteq A([m])` をみたすものをいう。このとき $`A` は $`X` の作用を制限して単体的集合になり、包含 $`A\hookrightarrow X` は単体的集合の射である。$`A\subseteq X` と書く。
+
+*定義 1.5 （和）*
+
+単体的集合 $`X` の部分単体的集合の族 $`(A_j)_{j\in J}` について、その和 $`\bigcup_{j\in J}A_j\subseteq X` を
+
+$$`\Bigl(\bigcup_{j\in J}A_j\Bigr)([m])=\bigcup_{j\in J}A_j([m])`
+
+で定める。これは $`X` の部分単体的集合である。
 
 :::
 
@@ -188,12 +219,10 @@ Kerodon Definition 1.1.2.3（[Tag 0012](https://kerodon.net/tag/0012)）。対�
 
 :::
 
-:::proposition "kerodon_1_1_2_10" (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
+:::proposition "kerodon_1_1_2_10" (lean := "SSet.mem_degenerate_iff") (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
 Kerodon Proposition 1.1.2.10（[Tag 0011](https://kerodon.net/tag/0011)）。対応表の状態：一部。
 
 原文の5条件中、degenerate\_eq\_iUnion\_range\_σ は退化作用素の像の和、mem\_degenerate\_iff は低次元への全射に沿う像との同値で、(1)と(3)の同値を定義の展開で直接与える。(5)の任意次元の非単射による因子化まで含めない。
-
-宣言：`SSet.mem_degenerate_iff`、`SSet.degenerate_eq_iUnion_range_σ`
 
 :::
 
@@ -227,12 +256,10 @@ tag := "kerodon-1-1-3"
 
 Kerodon [Tag 04ZS](https://kerodon.net/tag/04ZS)
 
-:::definition "kerodon_1_1_3_1" (uses := "kerodon_1_1_0_6")
+:::definition "kerodon_1_1_3_1" (lean := "SSet.HasDimensionLT, SSet.HasDimensionLE") (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.1.3.1（[Tag 0019](https://kerodon.net/tag/0019)）。対応表の状態：一部。
 
 原文は次元≤k・次元ちょうどk・有限次元を定義する。HasDimensionLT/LE の型は各上位次数の全単体の退化性で、非負kの上界および負kの空の場合を直接表す。次元ちょうど・有限次元の述語はこの引用にはない。
-
-宣言：`SSet.HasDimensionLT`、`SSet.HasDimensionLE`
 
 :::
 
@@ -343,12 +370,10 @@ Kerodon Proposition 1.1.4.12（[Tag 001B](https://kerodon.net/tag/001B)）。対
 
 :::
 
-:::proposition "kerodon_1_1_4_13" (uses := "kerodon_1_1_0_6")
+:::proposition "kerodon_1_1_4_13" (lean := "SSet.boundary.hom_ext, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.boundaryFaceGluing, SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryFaceCompatible") (uses := "kerodon_1_1_0_6")
 Kerodon Proposition 1.1.4.13（[Tag 0504](https://kerodon.net/tag/0504)）。対応表の状態：一部。
 
 原文の境界からの面制限写像の単射性は boundary.hom\_ext の型そのもの（n+1≥1）で直接得られる。image の整合条件について boundaryFaceGluing は境界次数n+2の構成を与えるが、全正次数を覆うとはしない。単射性という結論成分に限定する。
-
-宣言：`SSet.boundary.hom_ext`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.boundaryFaceGluing`、`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryFaceCompatible`
 
 :::
 

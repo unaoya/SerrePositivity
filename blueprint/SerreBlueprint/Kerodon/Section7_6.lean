@@ -1,18 +1,37 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Functor.KanExtension.Pointwise
 import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.CatPullbackReplacementCone
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.EquivalenceSmallLimits
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ExactFunctor
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FibrationTower
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FilteredKanCocone
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FilteredKanColimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FiniteLimitGeneration
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.Pullback
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PullbackPasting
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.RepresentableLimitEquivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SiftedColimitPreservation
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SpacePullbacks
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SpaceTowers
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.StrictHomotopyLimits
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanConeComparisonCriterion
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.QCatPullbackLimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightExistence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FiniteLimitsColimits
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeLimit
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CatPullbackCone
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.CatPullback
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "7.6 Examples of Limits and Colimits" =>
 %%%
@@ -30,6 +49,10 @@ tag := "kerodon-7-6-1"
 %%%
 
 Kerodon [Tag 03E9](https://kerodon.net/tag/03E9)
+
+*02-mapping-limits.html — 5. 極限 — 通常の圏との整合性*
+
+Core/LimitExamples では、順序圏 $`0\to1` の二項積が nerve の極限と一致する、という小さな例を検算している（\`topPair\_limit\_agreement\`）。一般の圏 $`C` について $`N(C)` の極限が $`C` の極限と一致することは、ここではまだ示されていない（古典 nerve との比較は F1B 側、第 4 章）。
 
 :::definition "kerodon_7_6_1_1"
 Kerodon Definition 7.6.1.1（[Tag 03EA](https://kerodon.net/tag/03EA)）。対応表の状態：なし。
@@ -122,6 +145,16 @@ tag := "kerodon-7-6-2"
 
 Kerodon [Tag 03FE](https://kerodon.net/tag/03FE)
 
+*02-mapping-limits.html — 5. 極限 — 引き戻し*
+
+引き戻しの四角形は $`\Delta^1\times\Delta^1\to X` として扱う。鍵は同型 $`\Delta^0\star\Lambda^2_2\cong\Delta^1\times\Delta^1`（\`cospanConeSquareIso\`、Core/Square）で、両辺とも対角線に沿って二つの 2 単体を貼り合わせたものとして表示して比較する。これで四角形を cospan 上の錐とみなせる。
+
+\`\`\`text
+def IsPullbackSquare \{X : SSet.\{u\}\} (F : Δ\[1\] ⊗ Δ\[1\] ⟶ X) : Prop
+\`\`\`
+
+規約：右辺と上辺が cospan で、座標 $`(0,0)` が錐の頂点（Core/Pullback）。
+
 :::definition "kerodon_7_6_2_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare")
 Kerodon Definition 7.6.2.1（[Tag 03FF](https://kerodon.net/tag/03FF)）。対応表の状態：本体にある。
 
@@ -138,30 +171,24 @@ mono\_snd\_of\_monoは通常圏のMono。原文の∞圏のn-truncated射（写�
 
 :::
 
-:::definition "kerodon_7_6_2_8"
+:::definition "kerodon_7_6_2_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone")
 Kerodon Variant 7.6.2.8（[Tag 048C](https://kerodon.net/tag/048C)）。対応表の状態：一部。
 
 同じσのpullbackCone σにIsRelativeLimitCone Uを適用することで、原文のU-pullbackという定義の極限側を直接表す。専用のIsRelativePullbackSquareという名前の欠如は不足としない。余極限側は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsRelativeLimitCone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone`
-
 :::
 
-:::definition "kerodon_7_6_2_13"
+:::definition "kerodon_7_6_2_13" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackDiagram_hasLimit")
 Kerodon Notation 7.6.2.13（[Tag 03FS](https://kerodon.net/tag/03FS)）。対応表の状態：一部。
 
 CをQC、二脚のfiber productをcatPullbackで指定するとcatPullbackDiagram\_hasLimitとその錐の頂点が原文の存在するfiber productの対象の成分を直接与える。一般Cとpushout側の記法・一意性は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackDiagram_hasLimit`
-
 :::
 
-:::definition "kerodon_7_6_2_14"
+:::definition "kerodon_7_6_2_14" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare")
 Kerodon Definition 7.6.2.14（[Tag 03FT](https://kerodon.net/tag/03FT)）。対応表の状態：一部。
 
 IsPullbackSquare σ=IsLimitCone(pullbackCone σ)を用い、全cospanにその錐の存在を要求すること、および全σでIsPullbackSquare σ→IsPullbackSquare(σ≫F)を要求することで、原文のpullback存在・保存の定義部分を直接表す。pushout側はこの行の根拠に含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare`
 
 :::
 
@@ -312,12 +339,10 @@ Kerodon Corollary 7.6.2.39（[Tag 048F](https://kerodon.net/tag/048F)）。対�
 
 :::
 
-:::proposition "kerodon_7_6_2_40" (uses := "kerodon_1_4_0_1, kerodon_7_2_2_2, kerodon_7_2_3_7, kerodon_7_3_8_1")
+:::proposition "kerodon_7_6_2_40" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isPullbackSquare_pasting_iff") (uses := "kerodon_1_4_0_1, kerodon_7_2_2_2, kerodon_7_2_3_7, kerodon_7_3_8_1")
 Kerodon Proposition 7.6.2.40（[Tag 03FZ](https://kerodon.net/tag/03FZ)）。対応表の状態：一部。
 
 Uを終対象への射に限るとisPullbackSquare\_pasting\_iffは同じΔ²×Δ¹図式の右squareを仮定した左squareと外周のiff、すなわち原文(1)を直接返す。相対一般Uとpushout側は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isPullbackSquare_pasting_iff`
 
 :::
 
@@ -330,12 +355,10 @@ Kerodon Proposition 7.6.2.41（[Tag 03G1](https://kerodon.net/tag/03G1)）。対
 
 :::
 
-:::corollary "kerodon_7_6_2_42" (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_4_0_1, kerodon_7_2_2_12, kerodon_7_6_2_41")
+:::corollary "kerodon_7_6_2_42" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits") (uses := "kerodon_1_1_0_6, kerodon_1_1_4_12, kerodon_1_4_0_1, kerodon_7_2_2_12, kerodon_7_6_2_41")
 Kerodon Corollary 7.6.2.42（[Tag 03G2](https://kerodon.net/tag/03G2)）。対応表の状態：一部。
 
 HasFiniteLimitsの全有限形状への存在を終対象とcospanへ特殊化する向きと、hasFiniteLimits\_of\_terminal\_pullbacksの逆向きにより、原文の存在のiffを直接得る。任意の関手の有限極限保存のiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits`
 
 :::
 
@@ -348,39 +371,31 @@ tag := "kerodon-7-6-3"
 
 Kerodon [Tag 03G3](https://kerodon.net/tag/03G3)
 
-:::proposition "kerodon_7_6_3_1"
+:::proposition "kerodon_7_6_3_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_iff_cospan_representableComparison, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison")
 Kerodon Proposition 7.6.3.1（[Tag 03G4](https://kerodon.net/tag/03G4)）。対応表の状態：一部。
 
 全Homの指定一脚をKan fibrationに強めると、strictCoherentConeのBK Hom比較のiffとKan錐のhomotopy pullback判定から、原文の同じstrict squareの引き戻し性と全Hom squareのhomotopy pullback性を直接比較できる。一般の一脚fibrationでない場合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_iff_cospan_representableComparison`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison`
-
 :::
 
-:::proposition "kerodon_7_6_3_8" (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_3_21, kerodon_4_5_3_23, kerodon_4_5_3_24, kerodon_4_5_3_28, kerodon_4_5_3_29, kerodon_4_5_3_33, kerodon_7_1_3_18")
+:::proposition "kerodon_7_6_3_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.qCatPullbackInfinityCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_4_5_3_21, kerodon_4_5_3_23, kerodon_4_5_3_24, kerodon_4_5_3_28, kerodon_4_5_3_29, kerodon_4_5_3_33, kerodon_7_1_3_18")
 Kerodon Proposition 7.6.3.8（[Tag 06TN](https://kerodon.net/tag/06TN)）。対応表の状態：一部。
 
 指定squareを一脚がEquivalenceLiftingなstrict pullback錐に限ると、qCatPullbackInfinityCone\_isLimitは同じsquareのQC内のpullback性（原文(1)）を直接返す。一般squareの指定Gの圏同値性とのiffは含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.qCatPullbackInfinityCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback`
-
 :::
 
-:::corollary "kerodon_7_6_3_9" (uses := "kerodon_1_4_0_1, kerodon_4_5_3_1, kerodon_4_5_3_21, kerodon_4_5_3_23, kerodon_7_6_3_8")
+:::corollary "kerodon_7_6_3_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackCone_isLimit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackCone_vertex") (uses := "kerodon_1_4_0_1, kerodon_4_5_3_1, kerodon_4_5_3_21, kerodon_4_5_3_23, kerodon_7_6_3_8")
 Kerodon Corollary 7.6.3.9（[Tag 03GF](https://kerodon.net/tag/03GF)）。対応表の状態：一部。
 
 catPullbackCone\_isLimitとcatPullbackCone\_vertexは元の同じ二脚p,qの図式についてhomotopy fiber productそのものがQC内のfiber product対象となるという最後の結論を直接与える。指定αを備えるsquareの二脚の照合は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackCone_isLimit`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.catPullbackCone_vertex`
-
 :::
 
-:::corollary "kerodon_7_6_3_10"
+:::corollary "kerodon_7_6_3_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spacePullbackCone_isLimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_iff_cospan_representableComparison")
 Kerodon Corollary 7.6.3.10（[Tag 03GG](https://kerodon.net/tag/03GG)）。対応表の状態：一部。
 
 squareを一脚がKan fibrationなstrict pullback錐に指定すると、spacePullbackCone\_isLimitConeは同じsquareのSpace内でのpullback性（原文(1)）を直接返す。任意のsquareの指定gによるiffは含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spacePullbackCone_isLimitCone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_iff_cospan_representableComparison`
 
 :::
 
@@ -543,6 +558,10 @@ tag := "kerodon-7-6-5"
 
 Kerodon [Tag 03HG](https://kerodon.net/tag/03HG)
 
+*f-01-simplicial-kan.html — 4. 塔と lim¹（Kan）*
+
+Kan fibration の塔 $`\cdots \to X_2 \to X_1 \to X_0` の極限を考える。スペクトラムのホモトピー群の計算や、filtered な状況の比較で使う。
+
 :::definition "kerodon_7_6_5_1"
 Kerodon Definition 7.6.5.1（[Tag 03HH](https://kerodon.net/tag/03HH)）。対応表の状態：なし。
 
@@ -572,6 +591,10 @@ Kerodon Variant 7.6.5.9（[Tag 03HS](https://kerodon.net/tag/03HS)）。対応�
 Kerodon Variant 7.6.5.11（[Tag 03HU](https://kerodon.net/tag/03HU)）。対応表の状態：本体にある。
 
 仮定：ℕᵒᵖ 上の Kan 図式で隣接遷移が Fibration。Kan 性の補題には初段の Kan 性だけが必要（Lean が弱い）。結論：通常の塔極限の Kan 性と、同じ塔の coherent 図式での spaceTowerCone の IsLimitCone（原文と一致）。
+
+*f-01-simplicial-kan.html — 4. 塔と lim¹（Kan）*
+
+- *極限は Kan 複体*：各 $`X_{n+1} \to X_n` が Kan fibration で、$`X_0` が Kan 複体なら、$`\lim X_n` は Kan 複体で、射影 $`\lim X_n \to X_0` は Kan fibration（\`FibrationTower.limit\_kanComplex\`・\`projection\_zero\_fibration\`、KST/Spectra/FibrationTower.lean。InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/KanLimits.lean にも \`towerLimit\_kanComplex\` がある）。
 
 :::
 
@@ -626,12 +649,10 @@ Kerodon Definition 7.6.6.4（[Tag 06BA](https://kerodon.net/tag/06BA)）。対�
 
 :::
 
-:::definition "kerodon_7_6_6_5"
+:::definition "kerodon_7_6_6_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits")
 Kerodon Notation 7.6.6.5（[Tag 06BB](https://kerodon.net/tag/06BB)）。対応表の状態：一部。
 
 PreservesSmallLimitsとPreservesSmallColimitsは原文のcontinuous/cocontinuousな頂点の条件を直接与える。専用のFunᶜᵒⁿᵗという名前の欠如は不足としないが、大きさの異なる全形状と全部分準圏の構成全体は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits`、`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits`
 
 :::
 
@@ -665,30 +686,24 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：宇宙で�
 
 :::
 
-:::proposition "kerodon_7_6_6_19" (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_1, kerodon_4_6_5_10, kerodon_5_6_7_7, kerodon_7_3_5_1")
+:::proposition "kerodon_7_6_6_19" (lean := "CategoryTheory.Functor.pointwiseRightKanExtension, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRightExtension_iff_local_limits") (uses := "kerodon_1_1_0_6, kerodon_1_2_5_1, kerodon_1_4_0_1, kerodon_4_3_6_1, kerodon_4_6_5_10, kerodon_5_6_7_7, kerodon_7_3_5_1")
 Kerodon Proposition 7.6.6.19（[Tag 03UP](https://kerodon.net/tag/03UP)）。対応表の状態：一部。
 
 Kを準圏とし同じrightKanDiagram δ F₀ cの全てに極限があることも仮定すれば、exists\_kanRightExtension\_iff\_local\_limitsは原文の同じF₀の右Kan拡張存在を直接返す。局所κ-small性から各形状の小性を得る議論は含まない。
 
-宣言：`CategoryTheory.Functor.pointwiseRightKanExtension`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.exists_kanRightExtension_iff_local_limits`
-
 :::
 
-:::definition "kerodon_7_6_6_20"
+:::definition "kerodon_7_6_6_20" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits, SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits")
 Kerodon Definition 7.6.6.20（[Tag 06BD](https://kerodon.net/tag/06BD)）。対応表の状態：一部。
 
 𝕂を宇宙内の全小形状またはsifted小形状に限ればHasSmallLimits/HasSmallSiftedColimitsは、原文の各Kでの同じHasLimit/HasColimitの全称条件そのもの。任意の形状集合𝕂は含まない。
 
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits`、`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallSiftedColimits`
-
 :::
 
-:::definition "kerodon_7_6_6_22"
+:::definition "kerodon_7_6_6_22" (lean := "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits")
 Kerodon Definition 7.6.6.22（[Tag 06BE](https://kerodon.net/tag/06BE)）。対応表の状態：一部。
 
 𝕂を宇宙内の全小形状に限ればPreservesSmallLimitsとPreservesSmallColimitsが原文の同じ図式の極限・余極限保存の条件を直接表す。任意𝕂およびそれを張る全部分関手準圏は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits`
 
 :::
 

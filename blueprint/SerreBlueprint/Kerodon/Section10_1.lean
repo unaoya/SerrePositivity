@@ -2,18 +2,25 @@ import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Basic
+import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 import Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory
 import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
+import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.Equivalence
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Shapes
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cocone
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "10.1 Simplicial Objects of ∞-Categories" =>
 %%%
@@ -74,12 +81,10 @@ nerve Δopからの同じFについて∃c:JoinCocone F, c.vertex=X ∧ IsColimi
 
 :::
 
-:::definition "kerodon_10_1_1_5"
+:::definition "kerodon_10_1_1_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone.vertex, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitVertexIso")
 Kerodon Notation 10.1.1.5（[Tag 04QV](https://kerodon.net/tag/04QV)）。対応表の状態：一部。
 
 colimitVertexIsoを同じnerve Δop図式の二つの余極限余錐へ適用すると、実現頂点の同型による一意性を直接得る。\|X•\|という専用記法・選択の構成は含まない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone.vertex`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitVertexIso`
 
 :::
 
@@ -234,12 +239,10 @@ B6再照合：既成の単体的対象の面恒等式はある。次数 −1 を
 
 :::
 
-:::definition "kerodon_10_1_2_28"
+:::definition "kerodon_10_1_2_28" (lean := "AugmentedSimplexCategory")
 Kerodon Variant 10.1.2.28（[Tag 04S3](https://kerodon.net/tag/04S3)）。対応表の状態：一部。
 
 増強単体的対象をdropした同じ非負次数の図式にδ\_comp\_δ等を適用すると、原文の必要条件(1)(2)(3)の増強次数を使わない恒等式を直接得る。次数−1を含む全恒等式と作用素からの復元・一意性は含まない。
-
-宣言：`AugmentedSimplexCategory`、`CategoryTheory.SimplicialObject.δ_comp_δ`、`CategoryTheory.SimplicialObject.σ_comp_σ`、`CategoryTheory.SimplicialObject.δ_comp_σ_of_le`、`CategoryTheory.SimplicialObject.δ_comp_σ_of_gt`
 
 :::
 
@@ -273,21 +276,17 @@ B6再照合：弱可縮な添字上の定値図式の極限性は別の主張。
 
 :::
 
-:::definition "kerodon_10_1_3_3"
+:::definition "kerodon_10_1_3_3" (lean := "SimplexCategory.Truncated")
 Kerodon Notation 10.1.3.3（[Tag 05G6](https://kerodon.net/tag/05G6)）。対応表の状態：一部。
 
 n≥0に限るとSimplexCategory.Truncated nは原文の同じ次数≤nの充満部分圏そのもの。負のnにおける空圏の場合はこの引用に含まない。
 
-宣言：`SimplexCategory.Truncated`
-
 :::
 
-:::definition "kerodon_10_1_3_4"
+:::definition "kerodon_10_1_3_4" (lean := "SimplexCategory.Truncated.inclusion, CategoryTheory.nerveMap, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone")
 Kerodon Definition 10.1.3.4（[Tag 05G7](https://kerodon.net/tag/05G7)）。対応表の状態：一部。
 
 n≥0に限りnerveMap ((Truncated.inclusion n).op)をδとして、各頂点のleftKanCanonicalCocone δ FにIsColimitConeを課すと、原文の同じn-skeletalという定義を直接表す。通常圏skの随伴を∞圏の結果と見なさず、負次数は含まない。
-
-宣言：`SimplexCategory.Truncated.inclusion`、`CategoryTheory.nerveMap`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanCanonicalCocone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone`
 
 :::
 
@@ -333,12 +332,10 @@ B6再照合：左 Kan 拡張を作る通常圏の随伴はある。押し出し�
 
 :::
 
-:::definition "kerodon_10_1_3_18"
+:::definition "kerodon_10_1_3_18" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge, SSet.Edge.map")
 Kerodon Definition 10.1.3.18（[Tag 05GM](https://kerodon.net/tag/05GM)）。対応表の状態：一部。
 
 同じuの各0≤m≤nでの辺がIsInvertibleEdgeであるという既存の判定を課せば原文の二番目の条件を直接表す。通常圏のskAdjだけでYの∞圏のn-skeletal性を得たとはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge`、`SSet.Edge.map`
 
 :::
 
@@ -410,12 +407,10 @@ cechNerveAdjunctionの左側は通常圏Augmented.toArrowであり、原文の�
 
 :::
 
-:::definition "kerodon_10_1_4_9"
+:::definition "kerodon_10_1_4_9" (lean := "SimplexCategory.Truncated.inclusion, CategoryTheory.nerveMap, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone")
 Kerodon Definition 10.1.4.9（[Tag 05GV](https://kerodon.net/tag/05GV)）。対応表の状態：一部。
 
 n≥0に限りδを同じ切断包含の反対のnerveMapとして、各rightKanCanonicalCone δ FへIsLimitConeを課せば、原文の同じn-coskeletal条件を直接表す。通常圏coskとの輸送は使わず、負次数は含まない。
-
-宣言：`SimplexCategory.Truncated.inclusion`、`CategoryTheory.nerveMap`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone`、`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone`
 
 :::
 
@@ -442,12 +437,10 @@ B6再照合：通常圏の単体的対象の IsCoskeletal と右 Kan 拡張は�
 
 :::
 
-:::definition "kerodon_10_1_4_17"
+:::definition "kerodon_10_1_4_17" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge, SSet.Edge.map")
 Kerodon Definition 10.1.4.17（[Tag 05H3](https://kerodon.net/tag/05H3)）。対応表の状態：一部。
 
 同じuの各0≤m≤nでの辺にIsInvertibleEdgeを課す型は原文の二番目の条件を直接表す。原文のYのn-coskeletal性を通常圏coskだけから得たとはしない。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge`、`SSet.Edge.map`
 
 :::
 
@@ -512,12 +505,10 @@ B6型照合：Mathlib に 1 圏の随伴 Augmented.toArrow ⊣ augmentedCechNerv
 
 :::
 
-:::definition "kerodon_10_1_5_9"
+:::definition "kerodon_10_1_5_9" (lean := "AugmentedSimplexCategory, CategoryTheory.ObjectProperty.FullSubcategory")
 Kerodon Notation 10.1.5.9（[Tag 05H8](https://kerodon.net/tag/05H8)）。対応表の状態：一部。
 
 n≥0に限りAugmentedSimplexCategory上のObjectProperty.FullSubcategoryを、次数の対象が−1または0..nである述語で取れば原文の同じ切断部分圏を直接構成する。負次数の範囲全体は含まない。
-
-宣言：`AugmentedSimplexCategory`、`CategoryTheory.ObjectProperty.FullSubcategory`
 
 :::
 

@@ -1,10 +1,25 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
+import SerrePositivity.BhattScholze.Almost.Lemma103
+import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
+import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
+import SerrePositivity.BhattScholze.Perfectoidization.Interface.IntegralExistence
+import SerrePositivity.BhattScholze.Prism.Basic.Bounded
+import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
+import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
+import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
+import SerrePositivity.BhattScholze.Prismatic.Site.PrismOver
+import SerrePositivity.BhattScholze.Semiperfectoid.Perfection.Perfectoidization
+import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.Surjectivity
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "§1 " =>
 %%%
@@ -14,57 +29,45 @@ tag := "bs-1"
 
 BS §1 の項目と、本体の宣言との対応。本文は対応表（`research/bs-coverage`）の照合の理由で、原典の本文の写しではない。
 
-:::definition "bs_1_1"
+:::definition "bs_1_1" (lean := "SerrePositivity.BhattScholze.OrientedPrism, SerrePositivity.BhattScholze.OrientedPrism.ofDistinguished")
 *定義 1.1*　。対応表の状態：一部（special）。
 
 I=(d) に生成元と正則性を指定し、古典的な p,d 完備性を持つ向き付き prism の場合。一般の Cartier 因子・導来 (p,I) 完備の定義全体は含まない。
 
-宣言：`SerrePositivity.BhattScholze.OrientedPrism`、`SerrePositivity.BhattScholze.OrientedPrism.ofDistinguished`
-
 :::
 
-:::proposition "bs_1_2"
+:::proposition "bs_1_2" (lean := "SerrePositivity.BhattScholze.DeltaStructure, SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift")
 *注意 1.2*　。対応表の状態：一部（component）。
 
 δ 構造から φ(x)=x\^p+pδ(x) の環準同型を構成する部分。p 正則時の逆構成は2.2の宣言で補えるが、この行の二宣言だけで回想の全記述を覆ったとはしない。
 
-宣言：`SerrePositivity.BhattScholze.DeltaStructure`、`SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift`
-
 :::
 
-:::proposition "bs_1_3"
+:::proposition "bs_1_3" (lean := "SerrePositivity.BhattScholze.OrientedPrism.crystalline, SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff, SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid")
 *例 1.3*　。対応表の状態：一部（component）。
 
 列挙した例のうち結晶 prism の構成・特徴付けと完全な向き付き prism の商の perfectoid 性。圏同値、Breuil–Kisin・q 型および非 prism の反例は含まない。
 
-宣言：`SerrePositivity.BhattScholze.OrientedPrism.crystalline`、`SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff`、`SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid`
-
 :::
 
-:::definition "bs_1_4"
+:::definition "bs_1_4" (lean := "SerrePositivity.BhattScholze.Prismatic.IsBoundedPrism")
 *定義 1.4*　。対応表の状態：一部（special）。
 
 有界性は商の p 冪ねじれを一様な冪で消す同じ条件。ただし入力 P は向き付き prism に限定される。
 
-宣言：`SerrePositivity.BhattScholze.Prismatic.IsBoundedPrism`
-
 :::
 
-:::proposition "bs_1_5"
+:::proposition "bs_1_5" (lean := "SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq, SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit, SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv")
 *命題 1.5*　Proposition 3.5。対応表の状態：一部（special）。
 
 同じ prism の射の ideal の像の等式を向き付きの場合に証明する。一般の非主 Cartier 因子は扱わない。
 
-宣言：`SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq`、`SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit`、`SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv`
-
 :::
 
-:::definition "bs_1_6"
+:::definition "bs_1_6" (lean := "SerrePositivity.BhattScholze.Prismatic.PrismOver")
 *定義 1.6*　。対応表の状態：一部（component）。
 
 向き付き有界基底・κ-small な affine の対象 PrismOver のデータ。原文の一般形式的スキームの site と二つの構造層・RΓ の構成までは含まない。
-
-宣言：`SerrePositivity.BhattScholze.Prismatic.PrismOver`
 
 :::
 
@@ -105,21 +108,17 @@ affine 比較から一般の形式的スキーム・stack への拡張の説明�
 
 :::
 
-:::theorem "bs_1_12"
+:::theorem "bs_1_12" (lean := "SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectoidization_of_semiperfectoid_quotient, SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismQuotientPerfectoidizationMap_isPerfectoidization, SerrePositivity.BhattScholze.Semiperfectoid.exists_surjective_perfectoidization_of_semiperfectoid_quotient")
 *定理 1.12*　。対応表の状態：一部（component）。
 
 (2) の semiperfectoid quotient の普遍 perfectoid 化の存在と全射性は同じ環・単位について直接証明される。(1) の全 prism での始対象・その perfection との指定同一視は含まない。
 
-宣言：`SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectoidization_of_semiperfectoid_quotient`、`SerrePositivity.BhattScholze.Semiperfectoid.perfectPrismQuotientPerfectoidizationMap_isPerfectoidization`、`SerrePositivity.BhattScholze.Semiperfectoid.exists_surjective_perfectoidization_of_semiperfectoid_quotient`
-
 :::
 
-:::proposition "bs_1_13"
+:::proposition "bs_1_13" (lean := "SerrePositivity.BhattScholze.Almost.perfectoidKernel, SerrePositivity.BhattScholze.Almost.perfectoidKernel_quotient_isIntegralPerfectoid, SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedDerivedIdealMul_isIso")
 *注意 1.13*　Almost mathematics with respect to any closed set。対応表の状態：一部（component）。
 
 任意の p 完備 ideal J の同じ普遍 perfectoid 化の核 K について、商の perfectoid 性と integralPerfectoid\_completedDerivedIdealMul\_isIso を組み、原文の K⊗̂ᴸK→K の同型を直接得る。good almost mathematics の圏全体を構成したとはしない。
-
-宣言：`SerrePositivity.BhattScholze.Almost.perfectoidKernel`、`SerrePositivity.BhattScholze.Almost.perfectoidKernel_quotient_isIntegralPerfectoid`、`SerrePositivity.BhattScholze.Almost.integralPerfectoid_completedDerivedIdealMul_isIso`
 
 :::
 
@@ -146,12 +145,10 @@ quasisyntomic Nygaard filtration と site 比較を未同定。
 
 :::
 
-:::theorem "bs_1_17"
+:::theorem "bs_1_17" (lean := "SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3")
 *定理 1.17*　。対応表の状態：未証明の入力に依存。
 
 (1) の整代数の普遍 perfectoid 化の存在は Inputs の E3 存在 sorry を取り出して導く。原文(2)の任意 J の almost 有限 étale 性はこの宣言には含まない。
-
-宣言：`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral`、`SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`
 
 :::
 

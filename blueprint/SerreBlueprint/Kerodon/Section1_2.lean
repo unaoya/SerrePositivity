@@ -12,10 +12,14 @@ import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyDegreeZero
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromTopologicalSpacesToSimplicialSets.HomotopyZeroRelations
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.PiZeroConstant
+import SerrePositivity.KST.Comparison.SimplicialRingKan
 
 open Verso.Genre
 open Verso.Genre.Manual
 open Informal
+
+-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）
+set_option maxHeartbeats 2000000
 
 #doc (Manual) "1.2 From Topological Spaces to Simplicial Sets" =>
 %%%
@@ -33,6 +37,34 @@ tag := "kerodon-1-2-1"
 %%%
 
 Kerodon [Tag 00G5](https://kerodon.net/tag/00G5)
+
+*classifying-shape.html — 6. 「空間」と「大域切断が連結」の意味 — 6.1 ここで言う空間*
+
+この会話での「空間」は ∞ 亜群（∞ 圏 $`\mathcal S` の対象、Kan 複体で表されるもの、補章 3 の $`\mathcal S=N^{hc}(\mathrm{Kan})`）。点、点の間の道（可逆な射）、道の間のホモトピー、…と全ての次元のデータを持つ。位相空間は特異単体集合を通じて空間を定め、逆に空間は CW 複体として実現できるが、空間として覚えているのはホモトピー型だけ。
+
+- 種類　／　持っているもの　／　空間としては
+- 集合　／　点　／　0-切り詰め
+- 亜群　／　点、可逆な射　／　1-切り詰め
+- ∞ 亜群　／　点、道、全ての高次のホモトピー　／　一般の空間
+
+*classifying-shape.html — 6. 「空間」と「大域切断が連結」の意味 — 6.3 連結 ⇔ $`\pi_0` がちょうど一点*
+
+$`\Gamma(F)` が連結 ⇔ $`\pi_0\Gamma(F)=\ast`：空でなく、どの二つの大域切断も道で結べる。空集合は連結と言わない（基点付きの $`B\mathcal G` では基点があるので自動）。ホモトピー群を使わずに言えば $`\tau_{\le0}\Gamma(F)\simeq\ast`。$`\pi_0\Gamma(F)` は大域的な対象の同値類の集合なので、*連結 = 大域的な対象が同値を除いてただ一つ*。
+
+- $`F`　／　$`\Gamma(F)` の点　／　点を結ぶ道　／　連結 ⇔
+- $`BG`　／　$`G` torsor　／　torsor の同型　／　全ての torsor が自明（$`H^1=0`）
+- $`B^2A`　／　$`A` gerbe　／　gerbe の同値　／　全ての gerbe が中性（$`H^2=0`）
+- $`B\mathbf{Pic}`　／　$`\mathrm{Mod}` の捻れた形　／　圏の同値　／　$`\mathrm{Br}=0`
+
+*classifying-shape.html — 6. 「空間」と「大域切断が連結」の意味 — 6.4 連結は可縮より弱い・対象の連結性との違い*
+
+- 性質　／　意味　／　例
+- 空でない　／　存在する　／　基点付きなら自動
+- 連結　／　同値を除いて一意　／　$`\mathrm{Br}(\mathbb F_q)=0`、$`\Gamma(B\mathbb Z)`
+- $`n`-連結　／　高次の自己同値まで $`n` 次元分は一意　／　—
+- 可縮　／　一意で、その同値も一意（選択の空間が可縮）　／　Kan 拡張、cocartesian 持ち上げの選択
+
+$`\Gamma(B\mathbb Z)\simeq S^1` は連結だが可縮でない（自明な torsor の自己同型 $`\mathbb Z` が $`\pi_1` として残る）。一般に $`\Gamma(BG)` の基点の自己同型は $`\Gamma(G)=G(k)`。\*\*対象 $`F` が連結\*\*は局所的に全ての切断が基点と同値（$`B\mathcal G` は常に連結：torsor は局所的に自明）、\*\*$`\Gamma(F)` が連結\*\*は大域的にそうであること。このずれが「局所的に自明だが大域的に非自明な対象」で、コホモロジーが測るもの（§1 の $`\Gamma(B\mathcal G)\neq B(\Gamma\mathcal G)`）。
 
 :::definition "kerodon_1_2_1_1" (uses := "kerodon_1_1_0_6")
 Kerodon Definition 1.2.1.1（[Tag 00G6](https://kerodon.net/tag/00G6)）。対応表の状態：なし。
@@ -112,12 +144,10 @@ Kerodon Proposition 1.2.1.19（[Tag 00GQ](https://kerodon.net/tag/00GQ)）。対
 
 :::
 
-:::corollary "kerodon_1_2_1_21"
+:::corollary "kerodon_1_2_1_21" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv")
 Kerodon Corollary 1.2.1.21（[Tag 00GS](https://kerodon.net/tag/00GS)）。対応表の状態：一部。
 
 原文は π₀⊣const とその指定単位の構成。homEquiv の型 (X→discrete T)≃(π₀X→T) はこの随伴の Hom 同値成分を逆向きにしたものを直接与える。自然性・指定単位まで完成した Adjunction の宣言とせず、構成のこの成分に限定する。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv`
 
 :::
 
@@ -348,12 +378,10 @@ Kerodon Proposition 1.2.5.8（[Tag 002K](https://kerodon.net/tag/002K)）。対�
 
 :::
 
-:::proposition "kerodon_1_2_5_9"
+:::proposition "kerodon_1_2_5_9" (lean := "SerrePositivity.KST.Comparison.ringSpace_kanComplex")
 Kerodon Proposition 1.2.5.9（[Tag 00MG](https://kerodon.net/tag/00MG)）。対応表の状態：一部。
 
 原文は全単体群の台がKan。ringSpace\_kanComplex の型は単体的環 A の台のKan性であり、その加法単体群へ対象を限定した同じ結論を直接与える。全単体群への拡張は数えない。
-
-宣言：`SerrePositivity.KST.Comparison.ringSpace_kanComplex`
 
 :::
 
