@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：28,719行。外枠：35,681行。係数：2。
+既計上の累計：28,818行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -55,7 +55,7 @@
 |R04.5|pending|—|90〜160|180〜320|
 |R04.6|pending|—|40〜80|80〜160|
 |R04|pending|753|25〜45|50〜90|
-|R05.1|pending|—|40〜70|80〜140|
+|R05.1|verified|99|0〜0|0〜0|
 |R05|pending|—|60〜100|120〜200|
 |R06.1|pending|—|80〜130|160〜260|
 |R06.2|pending|—|90〜150|180〜300|
@@ -2227,7 +2227,7 @@ let d := (restrictJoinCone t.cone a).cast he
 - `limitVertexIsoOfOverEquivalence_span_middle` @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitSpan.lean:38
 
 ### R05.1 — weightedSections_nativeShapeLimitIso_hom_comp
-親：R05。状態：紙のみ（pending）。依存：なし（既存APIのみ）。
+親：R05。状態：検証済み。依存：なし（既存APIのみ）。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],

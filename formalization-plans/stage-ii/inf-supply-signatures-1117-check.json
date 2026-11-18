@@ -3,7 +3,7 @@
   "validation": "JSON structure / current rendered status and estimates / rendered complete signatures / reference name at source line / Kahn topological sort",
   "lean_type_elaboration": "not run; paper signatures, unimplemented signatures not certified",
   "signature_count": 93,
-  "verified_count": 42,
+  "verified_count": 43,
   "additional_count": 58,
   "deferred_count": 12,
   "edge_count": 154,
@@ -104,22 +104,22 @@
     "R15c"
   ],
   "active_bare_lines": [
-    1840,
-    3230
+    1800,
+    3160
   ],
   "active_corrected_lines": [
-    3680,
-    6460
+    3600,
+    6320
   ],
   "deferred_corrected_lines": [
     1060,
     1920
   ],
   "active_completion_corrected_lines": [
-    32399,
-    35179
+    32418,
+    35138
   ],
-  "ledger_sha256": "c100f0c0b980ef4664220b2090ceba4fff2df8c2c58dcbfc4b8b84f30b8e9026",
+  "ledger_sha256": "7b797688645439bbf433779ec4b15d1a8de85ea4edbfe68d9c37aaa526d5fe74",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -212,6 +212,7 @@
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanLimitVertexTransport.lean": "7cdff787bdd68363d1e209e31019c78d834d2fadfd030a465a243fdb7a82b35c",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/OverEquivalenceLimitSpan.lean": "e059c3059d242da4ffe17c76e828303cc51a73fc7e951508d590ff9848d5e56b",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsLocalComparison.lean": "07308cebbbe3fc63cf8f0ea9a9cdb44a5e1516e68e709499d908db65a5a29b16",
+    "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeLimitIsoComposition.lean": "fb87605c7c15ce0825e299c0b5322db7200334e8554b248c76413c5d799b8e66",
     "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsGlobalComparisonVertex.lean": "ede263316bc78ad755abed825d6d690b300e1377031ee74464e91a23f376794e",
     "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/UniversalProperty.lean": "6b0c3ba6964233c305ba869464e4df349aaf88ca0d5c723700958fa3f3821489",
     "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/CommonWeightedNativeHomAction.lean": "0182e09c02b3a6473dc33a0960dd299e927f29c5b61b27781859f0004a85ac4f",
