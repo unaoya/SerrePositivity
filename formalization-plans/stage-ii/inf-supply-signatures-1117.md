@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：31,481行。外枠：35,681行。係数：2。
+既計上の累計：31,598行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -107,6 +107,7 @@
 |R06.3S|verified|188|0〜0|0〜0|
 |R06.2N|verified|122|0〜0|0〜0|
 |R06.2L|verified|124|0〜0|0〜0|
+|R06.2C|verified|117|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2331,7 +2332,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -3774,3 +3775,37 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `elementsToReplacement_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetElements.lean:87
 - `tautScaffold_projection` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/TautScaffold.lean:78
 - `weightedNerveProjection_leftFibration` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/NerveLeftFibration.lean:58
+
+
+### R06.2C — exists_discreteRightKan_nerve_readout
+親：R06。状態：検証済み。依存：R06.2L。
+
+```lean
+∀ {C : Type u} [SmallCategory C] (P : Cᵒᵖ ⥤ Type u),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let t := U.mapIso b.symm ≪≫ uliftOppositeIso (nerve C)
+    let s := t.symm ≪≫ nerveAsSmallIso.{u, u + 1} Cᵒᵖ
+    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} Cᵒᵖ :=
+      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up
+    let r := nerveMap p ≫ s.inv
+    let F := U.map b.hom ≫ discretePresheaf P
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let v := SSet.opObjEquiv.symm (functorVertex F)
+    ∃ i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements),
+      i ≫ r = rightKanProjection δ v ∧
+      IsPrecompositionEquivalence i ∧ LeftFibration r
+```
+
+素：80〜140行。係数2：160〜280行。
+
+離散前層の右 Kan 添字から、同じ底上の通常の要素圏の nerve への比較を得る。
+
+原典：HTT 3.3.2、Kerodon Construction 5.3.4.11（Tag 0373）の集合値前層の場合。
+
+使う既存の宣言：
+
+- `elements_projection_leftFibration` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean:108
+- `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
+- `exists_relativeFunctorInverse_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorInverse.lean:25
+- `elementsComparisonNatural_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:51

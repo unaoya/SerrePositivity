@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 31481,
+  "verified_lean_lines": 31598,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3462,7 +3462,8 @@
       "dependencies": [
         "R05",
         "R06.2N",
-        "R06.2L"
+        "R06.2L",
+        "R06.2C"
       ],
       "existing": [
         {
@@ -5912,6 +5913,81 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2l-1118/manifest.json"
+    },
+    {
+      "id": "R06.2C",
+      "name": "exists_discreteRightKan_nerve_readout",
+      "full_type": "∀ {C : Type u} [SmallCategory C] (P : Cᵒᵖ ⥤ Type u),\n    let U := SSet.uliftFunctor.{u + 1, u}\n    let b := nerveOppositeIso (C := C)\n    let t := U.mapIso b.symm ≪≫ uliftOppositeIso (nerve C)\n    let s := t.symm ≪≫ nerveAsSmallIso.{u, u + 1} Cᵒᵖ\n    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} Cᵒᵖ :=\n      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up\n    let r := nerveMap p ≫ s.inv\n    let F := U.map b.hom ≫ discretePresheaf P\n    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))\n    let v := SSet.opObjEquiv.symm (functorVertex F)\n    ∃ i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements),\n      i ≫ r = rightKanProjection δ v ∧\n      IsPrecompositionEquivalence i ∧ LeftFibration r",
+      "dependencies": [
+        "R06.2L"
+      ],
+      "existing": [
+        {
+          "name": "elements_projection_leftFibration",
+          "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean",
+          "line": 108
+        },
+        {
+          "name": "leftElementsRightKanComparison_projection",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean",
+          "line": 54
+        },
+        {
+          "name": "exists_relativeFunctorInverse_of_precompositionEquivalence",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorInverse.lean",
+          "line": 25
+        },
+        {
+          "name": "elementsComparisonNatural_projection",
+          "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean",
+          "line": 51
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean",
+          "line": 48,
+          "name": "exists_discreteRightKan_nerve_readout"
+        }
+      ],
+      "literature": "HTT 3.3.2、Kerodon Construction 5.3.4.11（Tag 0373）の集合値前層の場合。",
+      "bare_lines": [
+        80,
+        140
+      ],
+      "corrected_lines": [
+        160,
+        280
+      ],
+      "method": "離散前層の右 Kan 添字から、同じ底上の通常の要素圏の nerve への比較を得る。",
+      "specified_compatibility": "右 Kan 射影を保つ同じ底上の比較射。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean",
+      "note": "離散前層の右 Kan 添字から、同じ底上の通常の要素圏の nerve への比較を得る。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 117,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean": "0ad5dd87a773d9773cd7220c6b4cb2a9005630ce2a57d0cdbd0c774728dba393"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "7678e7858e8157c0dce990e7d1fd6420416e46ba3e938945ddf5e45ed3340195",
+        "receipt": "/tmp/is-stage5/R06.2C/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2c-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

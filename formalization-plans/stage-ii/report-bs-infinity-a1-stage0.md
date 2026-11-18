@@ -11463,3 +11463,49 @@ R13b.1 と R09-Cech.1 は R06.2 に依存しないので先に検証した。R13
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,235 から 31,481 行。
 
 一覧：済み 64／全体 98（うち追加 63）
+
+
+### R06.2C — exists_discreteRightKan_nerve_readout
+親：R06。状態：紙のみ（pending）。依存：R06.2L。
+
+```lean
+∀ {C : Type u} [SmallCategory C] (P : Cᵒᵖ ⥤ Type u),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let b := nerveOppositeIso (C := C)
+    let t := U.mapIso b.symm ≪≫ uliftOppositeIso (nerve C)
+    let s := t.symm ≪≫ nerveAsSmallIso.{u, u + 1} Cᵒᵖ
+    let p : AsSmall.{u + 1} P.Elements ⥤ AsSmall.{u + 1} Cᵒᵖ :=
+      AsSmall.down ⋙ Functor.Elements.π P ⋙ AsSmall.up
+    let r := nerveMap p ≫ s.inv
+    let F := U.map b.hom ≫ discretePresheaf P
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let v := SSet.opObjEquiv.symm (functorVertex F)
+    ∃ i : rightKanShape δ v ⟶ nerve (AsSmall.{u + 1} P.Elements),
+      i ≫ r = rightKanProjection δ v ∧
+      IsPrecompositionEquivalence i ∧ LeftFibration r
+```
+
+素：80〜140行。係数2：160〜280行。
+
+離散前層の右 Kan 添字から、同じ底上の通常の要素圏の nerve への比較を得る。
+
+原典：HTT 3.3.2、Kerodon Construction 5.3.4.11（Tag 0373）の集合値前層の場合。
+
+使う既存の宣言：
+
+- `elements_projection_leftFibration` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean:108
+- `leftElementsRightKanComparison_projection` @ SerrePositivity/InfinityCategories/Sheaves/NativeWeightedSectionsLeftLimit.lean:54
+- `exists_relativeFunctorInverse_of_precompositionEquivalence` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/RelativeFunctorInverse.lean:25
+- `elementsComparisonNatural_projection` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:51
+
+一覧：済み 64／全体 99（うち追加 64）
+
+### 11-18：R06.2C の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2C|117|80〜140|160〜280|7,368|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,481 から 31,598 行。
+
+一覧：済み 65／全体 99（うち追加 64）
