@@ -11725,3 +11725,55 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,986 から 32,058 行。
 
 一覧：済み 69／全体 103（うち追加 68）
+
+
+### R06.2T — presheafDensityLeg_evaluatedTransport
+親：R06。状態：紙のみ（pending）。依存：R06.2D・R06.2V。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let b := SSet.opObjEquiv.symm x
+    let R := representablePresheafInfinity x
+    let l := (coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq
+      (by
+        have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=
+          s.property.trans (pinchedConstant_zero x)
+        change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)
+          (ULift.up ((smallRightUnstraighteningProjection F).app
+            (Opposite.op ⦋0⦌) s.val)) = _
+        rw [h, yonedaInfinityMap_vertex])
+      (presheafDensityCocone_vertex F)
+    let e := functorEdgeAt (F := R) (G := F) l (ULift.up b)
+    let v := smallUnstraighteningPointedImage F b
+      ((presheafRightFiberLeftIso F x).hom.app _ (SSet.opObjEquiv.symm s))
+    Nonempty (VertexIso ((edgeTransport pointedSpaceProjection e).app _
+        (canonicalYonedaPointedIdentity x)) v)
+```
+
+素：90〜145行。係数2：180〜290行。
+
+元の密度余錐の実脚を恒等点で評価した輸送の終値は、同じ要素の pointed 値と同型。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の輸送。
+
+使う既存の宣言：
+
+- `presheafElementsYonedaSliceInterval_at_leg` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean:40
+- `densityCanonicalTransport_at_native_point` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean:82
+- `presheafDensityFiberIntervalIso` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityFiberTransformationFamily.lean:80
+- `intervalMappingPostOfEq_vertex` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean:72
+- `parametrizedFiberTransport_at_edgeIso` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CovariantTransport/ParametrizedFiberTransport.lean:45
+
+一覧：済み 69／全体 104（うち追加 69）
+
+### 11-18：R06.2T の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2T|99|90〜145|180〜290|3,958|2|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,058 から 32,157 行。
+
+一覧：済み 70／全体 104（うち追加 69）

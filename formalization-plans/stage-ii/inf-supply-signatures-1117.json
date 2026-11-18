@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 32058,
+  "verified_lean_lines": 32157,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3467,7 +3467,8 @@
         "R06.2K",
         "R06.2D",
         "R06.2V",
-        "R06.2B"
+        "R06.2B",
+        "R06.2T"
       ],
       "existing": [
         {
@@ -6289,6 +6290,87 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2b-1118/manifest.json"
+    },
+    {
+      "id": "R06.2T",
+      "name": "presheafDensityLeg_evaluatedTransport",
+      "full_type": "∀ {C : SSet.{u}} [Quasicategory C]\n    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})\n    (x : C _⦋0⦌)\n    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let b := SSet.opObjEquiv.symm x\n    let R := representablePresheafInfinity x\n    let l := (coconeVertexLeg (presheafDensityCocone F) (ULift.up s.val)).ofEq\n      (by\n        have h : (smallRightUnstraighteningProjection F).app (Opposite.op ⦋0⦌) s.val = x :=\n          s.property.trans (pinchedConstant_zero x)\n        change (yonedaInfinityMap C).app (Opposite.op ⦋0⦌)\n          (ULift.up ((smallRightUnstraighteningProjection F).app\n            (Opposite.op ⦋0⦌) s.val)) = _\n        rw [h, yonedaInfinityMap_vertex])\n      (presheafDensityCocone_vertex F)\n    let e := functorEdgeAt (F := R) (G := F) l (ULift.up b)\n    let v := smallUnstraighteningPointedImage F b\n      ((presheafRightFiberLeftIso F x).hom.app _ (SSet.opObjEquiv.symm s))\n    Nonempty (VertexIso ((edgeTransport pointedSpaceProjection e).app _\n        (canonicalYonedaPointedIdentity x)) v)",
+      "dependencies": [
+        "R06.2D",
+        "R06.2V"
+      ],
+      "existing": [
+        {
+          "name": "presheafElementsYonedaSliceInterval_at_leg",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIntervalAtLeg.lean",
+          "line": 40
+        },
+        {
+          "name": "densityCanonicalTransport_at_native_point",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean",
+          "line": 82
+        },
+        {
+          "name": "presheafDensityFiberIntervalIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityFiberTransformationFamily.lean",
+          "line": 80
+        },
+        {
+          "name": "intervalMappingPostOfEq_vertex",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceIntervalVertices.lean",
+          "line": 72
+        },
+        {
+          "name": "parametrizedFiberTransport_at_edgeIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CovariantTransport/ParametrizedFiberTransport.lean",
+          "line": 45
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean",
+          "line": 43,
+          "name": "presheafDensityLeg_evaluatedTransport"
+        }
+      ],
+      "literature": "Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 へ使う指定脚の輸送。",
+      "bare_lines": [
+        90,
+        145
+      ],
+      "corrected_lines": [
+        180,
+        290
+      ],
+      "method": "元の密度余錐の実脚を恒等点で評価した輸送の終値は、同じ要素の pointed 値と同型。",
+      "specified_compatibility": "元の実脚・元の恒等点・元の要素の pointed 値を保持する。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean",
+      "note": "元の密度余錐の実脚を恒等点で評価した輸送の終値は、同じ要素の pointed 値と同型。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 99,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegEvaluatedTransport.lean": "9a2e68126e6373c602683b7016613327ef5157a6c8560baa3b8f81483543cb3d"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "0a2e4e9e33fb0d583905503718df706ce534d54982b0144dc46a2f6975a38d86",
+        "receipt": "/tmp/is-stage5/R06.2T/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2t-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
