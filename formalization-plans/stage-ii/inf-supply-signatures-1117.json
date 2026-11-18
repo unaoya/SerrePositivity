@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 31777,
+  "verified_lean_lines": 31897,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3464,7 +3464,8 @@
         "R06.2N",
         "R06.2L",
         "R06.2C",
-        "R06.2K"
+        "R06.2K",
+        "R06.2D"
       ],
       "existing": [
         {
@@ -6057,6 +6058,89 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2k-1118/manifest.json"
+    },
+    {
+      "id": "R06.2D",
+      "name": "densityCanonicalTransport_at_native_point",
+      "full_type": "∀ {C : SSet.{u}} [Quasicategory C]\n    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})\n    (x : C _⦋0⦌)\n    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let b := SSet.opObjEquiv.symm x\n    let a := presheafDensityCanonicalSourceValue x\n    let z₀ := F.app (Opposite.op ⦋0⦌) (ULift.up b)\n    let e := presheafDensityCanonicalFiberInterval F x ≫\n      parametrizedFiberTransport pointedSpaceProjection a z₀ ≫\n        evaluateFunctorAt (canonicalYonedaPointedIdentity x)\n    let v := smallUnstraighteningPointedImage F b\n      ((presheafRightFiberLeftIso F x).hom.app _ (SSet.opObjEquiv.symm s))\n    Nonempty (VertexIso (e.app _ (ULift.up s)) v)",
+      "dependencies": [],
+      "existing": [
+        {
+          "name": "presheafDensityIdentityLiftEndpointTransportIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportEquivalence.lean",
+          "line": 54
+        },
+        {
+          "name": "presheafDensityIdentityLiftEndpoint_value",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIdentityLift.lean",
+          "line": 87
+        },
+        {
+          "name": "presheafDensityNativeIdentityValueIso",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityReconstruction.lean",
+          "line": 66
+        },
+        {
+          "name": "presheafDensityIdentityValue_factorization",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean",
+          "line": 49
+        },
+        {
+          "name": "twistedIdentityFiberLift_right",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/TwistedIdentityFiber.lean",
+          "line": 56
+        },
+        {
+          "name": "presheafRightFiberValueEquivalence_lift",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberValue.lean",
+          "line": 41
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean",
+          "line": 82,
+          "name": "densityCanonicalTransport_at_native_point"
+        }
+      ],
+      "literature": "Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 に使う恒等点での照合。",
+      "bare_lines": [
+        100,
+        160
+      ],
+      "corrected_lines": [
+        200,
+        320
+      ],
+      "method": "元の密度の指定区間を恒等点で輸送した終値は、同じ要素の小さい left fiber の pointed 値と同型。",
+      "specified_compatibility": "元の密度区間・固定恒等点・指定 pointed 値を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean",
+      "note": "元の密度の指定区間を恒等点で輸送した終値は、同じ要素の小さい left fiber の pointed 値と同型。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 120,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 17,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean": "767f1a2d80ba7177f41ba571fec49456cfd872a4b65dbc46b9f518764269d06e"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "dee441717492f9edb7bb91fe67ce62dfadfff18c24e5b0fb4c919395795dade8",
+        "receipt": "/tmp/is-stage5/R06.2D/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2d-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

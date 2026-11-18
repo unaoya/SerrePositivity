@@ -11585,3 +11585,49 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 `presheafElementsYonedaSliceValue_iff_canonicalTransport` が運ぶのは同値性の判定までで、指定された値同士の等式はここからは得られない。値を比較する経路として、同じ実区間を `canonicalYonedaTransformationFiberEvaluation_parametrizedIso` で普遍輸送へ移し、固定頂点で合成する。試験補題 `parametrizedFiberTransport_at_edge_comp_point` は `parametrizedFiberTransport_at_edgeIso` と `edgeTransport_composition_iso` を合成して型検査済み。残る照合は、同じ固定頂点での元の密度の終値と、指定された離散前層の作用の値との一致。台帳の終端の型に仮定は足していない。
 
 一覧：済み 66／全体 100（うち追加 65）
+
+
+### R06.2D — densityCanonicalTransport_at_native_point
+親：R06。状態：紙のみ（pending）。依存：なし（既存 API のみ）。
+
+```lean
+∀ {C : SSet.{u}} [Quasicategory C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
+    (x : C _⦋0⦌)
+    (s : (vertexFiber (smallRightUnstraighteningProjection F) x) _⦋0⦌),    let b := SSet.opObjEquiv.symm x
+    let a := presheafDensityCanonicalSourceValue x
+    let z₀ := F.app (Opposite.op ⦋0⦌) (ULift.up b)
+    let e := presheafDensityCanonicalFiberInterval F x ≫
+      parametrizedFiberTransport pointedSpaceProjection a z₀ ≫
+        evaluateFunctorAt (canonicalYonedaPointedIdentity x)
+    let v := smallUnstraighteningPointedImage F b
+      ((presheafRightFiberLeftIso F x).hom.app _ (SSet.opObjEquiv.symm s))
+    Nonempty (VertexIso (e.app _ (ULift.up s)) v)
+```
+
+素：100〜160行。係数2：200〜320行。
+
+元の密度の指定区間を恒等点で輸送した終値は、同じ要素の小さい left fiber の pointed 値と同型。
+
+原典：Kerodon §9.3（Tag 06FR）の密度比較。HTT 5.1.5.6 に使う恒等点での照合。
+
+使う既存の宣言：
+
+- `presheafDensityIdentityLiftEndpointTransportIso` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportEquivalence.lean:54
+- `presheafDensityIdentityLiftEndpoint_value` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityIdentityLift.lean:87
+- `presheafDensityNativeIdentityValueIso` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityReconstruction.lean:66
+- `presheafDensityIdentityValue_factorization` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafDensityIdentityValue.lean:49
+- `twistedIdentityFiberLift_right` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/TwistedIdentityFiber.lean:56
+- `presheafRightFiberValueEquivalence_lift` @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRightFiberValue.lean:41
+
+一覧：済み 66／全体 101（うち追加 66）
+
+### 11-18：R06.2D の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2D|120|100〜160|200〜320|3,955|17|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 31,777 から 31,897 行。
+
+一覧：済み 67／全体 101（うち追加 66）
