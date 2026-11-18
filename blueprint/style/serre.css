@@ -1,0 +1,101 @@
+/* SerrePositivity ブループリントの見た目（Verso の既定の上に重ねる）。
+   blueprint/scripts/style_site.py が生成済みのサイトの各ページに読み込ませる。 */
+:root {
+  --sp-paper: #fbfaf7;
+  --sp-surface: #ffffff;
+  --sp-ink: #1f2328;
+  --sp-muted: #5f6670;
+  --sp-rule: #dedad2;
+  --sp-accent: #2f5d8a;
+  --sp-accent-soft: #e8eff6;
+  --sp-navy: #17304a;
+  --sp-ok: #2d6a3e;
+  --sp-ok-soft: #e6f2e9;
+  --sp-warn: #9a5b12;
+  --sp-warn-soft: #fbf0dc;
+  --sp-none: #8a8f98;
+
+  --verso-structure-font-family: "Hiragino Sans", "Noto Sans JP", "Helvetica Neue", "Segoe UI", sans-serif;
+  --verso-text-font-family: "Hiragino Sans", "Noto Sans JP", "Helvetica Neue", "Segoe UI", sans-serif;
+  --verso-code-font-family: "SF Mono", Menlo, Consolas, monospace;
+  --verso-text-color: var(--sp-ink);
+  --verso-structure-color: var(--sp-ink);
+  --verso-toc-background-color: #f4f1ea;
+  --verso-toc-border-color: var(--sp-rule);
+  --verso-content-max-width: 50rem;
+  --verso-header-height: 2.75rem;
+}
+
+body { background: var(--sp-paper); line-height: 1.8; }
+main { background: var(--sp-paper); }
+main p, main li { font-size: 0.97rem; }
+a { color: var(--sp-accent); text-underline-offset: 2px; text-decoration-thickness: 1px; }
+a:hover { color: var(--sp-navy); }
+code { font-size: 0.86em; }
+main p > code:not(.bp_math), main li > code:not(.bp_math) { background: #f1eee8; padding: 0.05em 0.35em; border-radius: 3px; }
+code.bp_math { font-size: 1em; background: none; padding: 0; }
+
+/* 上の帯 */
+header { background: var(--sp-navy); box-shadow: none; border-bottom: 1px solid #0f2236; }
+header .header-title h1 { color: #f4f1ea; font-size: 1.02rem; font-weight: 600; letter-spacing: 0.04em; }
+header a.header-title { text-decoration: none; }
+#search-wrapper { background: transparent; }
+#search-wrapper .combobox .cb_edit { background: rgba(255,255,255,0.1); color: #f4f1ea; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px; padding: 0.25rem 0.7rem; font-family: var(--verso-text-font-family); }
+#search-wrapper .combobox .group.focus .cb_edit, #search-wrapper .combobox .group .cb_edit:hover { background: rgba(255,255,255,0.18); outline: none; border-color: rgba(255,255,255,0.5); }
+#search-wrapper .cb_edit:empty:before { color: rgba(244,241,234,0.6); }
+#search-wrapper ul[role="listbox"] { color: var(--sp-ink); }
+#toggle-toc-click .line { background: #f4f1ea; }
+
+/* 目次 */
+nav#toc { font-size: 0.86rem; line-height: 1.45; }
+nav#toc .toc-title h1 { font-size: 0.95rem; font-weight: 700; color: var(--sp-navy); }
+nav#toc .split-toc .title { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sp-muted); }
+nav#toc table { border-collapse: collapse; width: 100%; }
+nav#toc td { padding: 0.16rem 0.2rem; }
+nav#toc a { color: var(--sp-ink); text-decoration: none; display: block; padding: 0.12rem 0.5rem; border-radius: 4px; border-left: 2px solid transparent; }
+nav#toc a:hover { background: rgba(47,93,138,0.08); color: var(--sp-accent); }
+/* 部の見出し（本論文・引用した結果・CLMST・Kerodon） */
+nav#toc a[href$="#paper"], nav#toc a[href$="#clmst"], nav#toc a[href*="#kerodon-"]:not([href*="#kerodon-1-"]) {
+  font-weight: 700; color: var(--sp-navy); margin-top: 0.7rem; padding-top: 0.5rem;
+  border-top: 1px solid var(--sp-rule); border-radius: 0; }
+nav#toc tr:first-child a { border-top: none; margin-top: 0; }
+nav#toc a[href$="#paper-external"] { color: var(--sp-muted); }
+
+/* 見出し */
+main h1 { font-size: 1.75rem; font-weight: 700; color: var(--sp-navy); letter-spacing: 0.01em; margin-bottom: 0.4rem; }
+main h2 { font-size: 1.25rem; font-weight: 700; color: var(--sp-navy); margin-top: 2.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--sp-rule); }
+main h3 { font-size: 1.05rem; color: var(--sp-navy); }
+main .prev-next-buttons a, main nav.prev-next-buttons a { color: var(--sp-muted); font-weight: 500; font-size: 0.86rem; text-decoration: none; }
+main .prev-next-buttons a:hover { color: var(--sp-accent); }
+
+/* ノード（定義・定理など） */
+.bp_wrapper { background: var(--sp-surface); border: 1px solid var(--sp-rule); border-left: 4px solid var(--sp-accent);
+  border-radius: 6px; box-shadow: 0 1px 2px rgba(23,48,74,0.05); margin: 1.3rem 0 0.4rem; overflow: hidden; }
+.bp_wrapper.bp_kind_theorem, .bp_wrapper.bp_kind_proposition, .bp_wrapper.bp_kind_lemma_, .bp_wrapper.bp_kind_corollary { border-left-color: var(--sp-ok); }
+.bp_wrapper.bp_kind_definition { border-left-color: var(--sp-accent); }
+.bp_heading { background: #f7f5f0; border-bottom: 1px solid var(--sp-rule); padding: 0.35rem 0.8rem; }
+.bp_caption { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sp-accent); }
+.bp_wrapper.bp_kind_theorem .bp_caption, .bp_wrapper.bp_kind_proposition .bp_caption,
+.bp_wrapper.bp_kind_lemma_ .bp_caption, .bp_wrapper.bp_kind_corollary .bp_caption { color: var(--sp-ok); }
+.bp_label { font-size: 0.74rem; color: var(--sp-muted); font-weight: 600; }
+.bp_content { padding: 0.5rem 1rem 0.7rem; }
+.bp_content > p:first-child { color: var(--sp-muted); font-size: 0.86rem; margin-bottom: 0.4rem; }
+.bp_content p strong:only-child { color: var(--sp-navy); }
+.bp_relation_chip { font-size: 0.7rem; color: var(--sp-muted); border: 1px solid var(--sp-rule); border-radius: 999px; padding: 0.05rem 0.5rem; background: var(--sp-surface); }
+.bp_relation_chip_empty { opacity: 0.45; }
+.bp_code_link_status { font-size: 0.72rem; border-radius: 999px; padding: 0.08rem 0.55rem; border: 1px solid var(--sp-rule); color: var(--sp-none); background: var(--sp-surface); }
+.bp_code_link_status_proved { color: var(--sp-ok); background: var(--sp-ok-soft); border-color: #bcd9c4; }
+.bp_code_link_label { letter-spacing: 0.06em; }
+
+/* ノードの下の Lean の宣言の折りたたみ */
+main details { border: 1px solid var(--sp-rule); border-radius: 6px; background: var(--sp-surface); margin: 0 0 1.2rem; }
+main details > summary { padding: 0.3rem 0.8rem; font-size: 0.82rem; color: var(--sp-muted); cursor: pointer; }
+main details[open] > summary { border-bottom: 1px solid var(--sp-rule); }
+.bp_external_decl_signature, pre.signature { background: #f7f5f0; border-radius: 4px; font-size: 0.8rem; line-height: 1.55; }
+pre.docstring { font-family: var(--verso-text-font-family); font-size: 0.84rem; color: var(--sp-muted); white-space: pre-wrap; }
+.bp_external_status_ok, .bp_code_decl_status_ok { color: var(--sp-ok); }
+
+/* 数式 */
+.katex { font-size: 1.06em; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.2rem 0; }

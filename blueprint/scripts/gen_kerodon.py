@@ -65,8 +65,8 @@ def esc_text(s):
     parts = re.split(r'(\\\(.+?\\\)|\\\[.+?\\\])', s)
     out = []
     for p in parts:
-        if p.startswith('\\(') and p.endswith('\\)'): out.append('$`' + p[2:-2].strip() + '`$')
-        elif p.startswith('\\[') and p.endswith('\\]'): out.append('$$`' + p[2:-2].strip() + '`$$')
+        if p.startswith('\\(') and p.endswith('\\)'): out.append('$`' + p[2:-2].strip() + '`')
+        elif p.startswith('\\[') and p.endswith('\\]'): out.append('$$`' + p[2:-2].strip() + '`')
         else: out.append(esc(p))
     return ''.join(out)
 NOTES = f'{K}/notes'
