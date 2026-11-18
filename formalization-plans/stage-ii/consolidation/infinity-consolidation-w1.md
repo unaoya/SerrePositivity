@@ -90,3 +90,13 @@ IC-W1 の移動・改名の追従は `SerrePositivity/Archive/` を対象にし�
 ## 12. BS の drafts も型検査の対象外（2026-11-17 夕、ユーザー決定）
 
 `formalization-plans/bhatt-scholze/drafts/` は本体ではなくビルドも監査もしない設計の紙なので、§10 の Archive と同じく、移動・改名の追従は**文字の置き換えだけ**を当て、型検査は求めない。IC-1 の停止（0edfe41f2）で見つかった `drafts/A1/CrystallineInput.lean` は、移動の前の環境でも 19 エラー（`EInfinityTheory`・`PerfectoidizationInterface` など、もう無い名前）で、IC-1 による不具合ではない。⑦ の追従の案（34 行の import、130 行の関手と制限の名前の 3 か所）を文字で当て、報告に「移動の前から 19 エラー、追従は文字の置き換えのみ」と記録する。drafts が今の本体の名前に合っていない件は BS の整理のレーンの段 0 で扱う。drafts は外部 importer の数（30 ファイルの条件）に数えない。
+
+## 13. IC-2 の段 0 を始める（2026-11-19、ユーザー決定）
+
+IC-1 は main に入った（fdc4045ac、root・全監査 108 本・sorry の閉包 PASS）。③-a の 5∞-1 の完成を待たずに、⑦ は IC-2 の段 0（紙）を始める。
+
+- **紙だけ**。Lean の変更・ビルド・鍵の使用なし。§3 の条件付きの事前承認は IC-2 には使わない：**段 0 の報告で必ず止まる**（`stage-ii-second-half.md` §12）。③-a の取り込みとリポジトリの移動（`repo-move.md`）がこの後に控えていて、適用の時期は調整役がその後に決める。
+- 範囲：§1 の IC-2（KST・HomotopicalAlgebra・Spectra の一般の ∞ 圏論 1,725 本、`research/infinity-outside-map/files.csv`）。IC-1 の後の今の main で数え直す（IC-1・OE-W1 で既に動いたものを除く）。
+- **移す前に、残すかどうかを見る**（§12）。ファイルごとに、次のどれからも import の閉包で届かないものに印を付ける：(a) 主定理の入口と root の各入口（`Entrypoints/`）から、sorry の閉包の対象になっている宣言のファイル、(b) 対応表（`research/*-coverage/review`）で own・partial・interface の宣言があるファイル、(c) 動いているレーンの枝（③-a `math/inf-supply`、⑥、③-b）が import するファイル。数え方（何を根にしたか）を紙に書く。宣言の単位まで下りる必要はない（ファイルの単位でよい）。
+- 出力：`report-infinity-consolidation.md` に節「IC-2 の段 0」。①移動・改名の表（`research/infinity-consolidation-w2/moves.csv`、IC-1 の `moves.csv` と同じ列）、②届かないファイルの一覧と行数（`unreached.csv`）と扱いの案（移す・Archive へ・削除の候補。**削除と Archive への移動は提案だけ**で、決めるのはユーザー）、③置き場所は対応表の番号に合わせる（§2）、番号の付かないものの置き場所の案、④層の検査の見込み、他のレーンの枝への影響、⑤B1（小さい葉の統合）で IC-2 に当たる分、⑥適用の所要時間の見込み（`verify-build-costs` の実測：IC-1 の取り込みの検証は約 6 時間）。
+- 止まるところ：段 0 の報告。範囲の外（模型＝IC-3、ホモトピー論・K 固有＝IC-4）に踏み込まない。分類が `files.csv` と食い違うファイルは一覧にして所見を書く。
