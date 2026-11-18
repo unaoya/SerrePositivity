@@ -12798,3 +12798,54 @@ R08・R09-Cech・R09 が完了。今回の追加は508行（178＋210＋120）�
 引き継ぎ。最終署名は R04・R05・R06・R08・R09-Cech・R09 の6済み。残る8署名は R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。今回の範囲の未完の補題は14件で、台帳の補正後見込みは1,000〜1,840行。別停止点の Coverage（R16・R17）はこの数に含めない。旧 R2 の未追跡4本には触れておらず、今回分の未コミットの Lean はない。
 
 一覧：済み 96／全体 122（うち追加 87）
+
+### 11-18：R12 の実装前の照合
+
+ユーザーの指示により今回は外枠での着手判定を外す。実測の計上、台帳の終端の型・仮定、対象ビルドと小監査は従来どおり。R16・R17 は別停止点のまま。
+
+1. (D=\mathrm{AsSmall}^{u+1}(C))、(K=\mathrm{AsSmall.down}^*J)、(F=(\mathrm{asSmallSiteShapeIso}\ C)^{-1};O)、(Y=\mathrm{covariantRepresentableInfinity}(x))、(G=U(F);Y)。`isSheaf_asSmall_inducedTopology_iff` に (F) を入れ、`Iso.hom_inv_id_assoc` で左辺を元の (O) に戻す。`NativeIsSheaf.covariantRepresentable` で (G) の層条件を得る。(a=\mathrm{siteLiftPresheafMap}(\varphi)) の局所同値は `isLocalEquivSet_siteLift`。
+2. (P'=\mathrm{siteLiftPresheaf}(P))、(Q'=\mathrm{siteLiftPresheaf}(Q))。`space_isPresentable` から (G) に対する両極限を供給し、R09 と `sectionsMap_isInvertible_iff` で、選んだ (Q') の極限錐 (c_Q) を (a) に沿って制限した錐が極限となる。一方、引数の錐 (c) を site の同型・表現可能関手で送った錐 (t) も、`siteLiftSectionsCone_isLimit_iff` と `covariantRepresentableInfinity_isLimit` により極限。(t\simeq c_Q) を `limitConeIso` で得て、`sliceOverRestrict` のホモトピー圏の作用で写す。`isLimitCone_iff_of_vertexIso` を適用し、`isLimitCone_iff_of_cone_val_eq` の二回の型移送で `restrictSectionsCone a G t` の極限性を得る。証明の形は `sieveRestrictCone_isLimit_iff` の前半と同じ。
+3. (s=\mathrm{restrictSectionsCone}(\varphi,O,c))、(f=(\mathrm{siteLiftElementsShapeIso}\ P)^{-1})、(v=Y_*U(s))。R12a.1 により前項の錐の全射は (Y_*U(\mathrm{siteLiftSectionsCone}(P,O,s))) の全射に等しい。後者は `ulift_restrictJoinCone_val` と結合則により `restrictJoinCone v (U.map f)` の全射に等しい。`siteLiftSectionsCone` の cast は全射を変えない。`isLimitCone_iff_of_cone_val_eq` で制限錐へ移し、`isLimitCone_iff_restrict_equivalentShape` を (U(f)) の指定同型に適用して (v) を極限とする。ここまでが R12a.2。
+4. 全 (x) に対する R12a.2 を `isLimitCone_of_covariantRepresentableInfinity` へ入れると R12a。R12b では元の (h_P,h_Q) から得た両 `sectionsOfCone` とその極限性を `sectionsMap_isInvertible_iff` に入れ、R12a で元の指定辺の可逆性を得る。
+
+使う追加の既存宣言は `AsSmallSiteInvariance.lean:57`、`SieveSectionsCriterion.lean:122`、`Project/HomotopyDiagramComparison/SpecifiedCocones/UniverseConeRestriction.lean:42`（いずれも `SerrePositivity/InfinityCategories/` 内）。型は台帳どおり。
+
+一覧：済み 96／全体 122（うち追加 87）
+
+### 11-18：R13b・R14 の実装前の照合
+
+- **R13b**。元の空間値層 (O) と (P,Q) に対し、`sectionsOfDiagram_hasLimit space_isPresentable` から (h_P,h_Q) を固定する。同じ (\varphi,O,h_P,h_Q) を R09 と R13b.1 に入れ、R09 の `IsInvertibleEdge` を R13b.1 の逆向きで `IsLocalForHom (discretePresheafHom φ) (functorVertex O)` へ移す。
+- **R14.1**。(r=\mathrm{Classical.choice}(h_J))、(f=\mathrm{discretePresheafHom}(\varphi))。`reflective_isIso_map_iff_localHom r f` の逆向きを使う。局所頂点 (z) の係数を (O=\mathrm{vertexToPresheaf}(z)) と置く。`r.IsLocal z` は `sheafProperty J z`、すなわちこの (O) の層条件。同じ頂点に戻る等号は `functorVertexEquiv.apply_symm_apply`。これで R13b を (z) に適用する。
+- **R14**。R14.1 の同型を包含関手で写し、`Functor.map_comp` により `sheafificationFunctor J hJ` の作用と読む。`discretePresheafHom_eq_normalized` を用い、その作用の両端の `eqToHom` を `Functor.map_eqToHom` と同型の合成の判定で外す。残った元の辺の作用を `SSet.mapHomotopyCategory_map_homMk` で書き、`Edge.map` の合成で署名の辺に戻す。
+
+使う宣言は台帳の記載に加え、`Sheaves/DiscretePresheafHom.lean:36`、`Sheaves/Sheafify.lean:22`、`Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:603`。依存は R13b が R09・R13b.1、R14.1 が R13b、R14 が R14.1。どの段階でも (h_J) が指定した反射を使う。
+
+一覧：済み 96／全体 122（うち追加 87）
+
+R14.1 の局所頂点の照合を明示する。`r.IsLocal z` は単位成分の可逆性。層条件は `r.localization_mem z` から反射先で得る。単位成分の `asIso` と `sheafProperty_iff_of_vertexIso` で元の (z) に移した後、R13b を適用する。
+
+### 11-18：R15 の実装前の照合
+
+(X=\mathrm{PresheafCat}\ C\ \mathrm{SpaceInfinity})、(L=\mathrm{sheafificationFunctor}\ J\ h_J)、(A=(\mathrm{discretePresheafInclusion}\ C).\mathrm{val})、(T=\mathrm{nerveMap}(S);A)。(u=(\mathrm{Classical.choice}\ h_J).\mathrm{unit})、(u_B=\mathrm{functorHomPrecomp}(1,L,B,u))、(L_*\) は `functorHomPostcomp` とする。
+
+- **R15-Unit.4 と R15-Unit**。(η) は既存の `discreteSheafificationUnitHom`、実円柱 (H) は `ordinarySheafificationUnit_postHomotopy`。全可逆性は `functorHomPostcomp_homotopy_isIso_of_pointwise` に帰着する。各頂点は `nerveEquiv` で (P) と読む。R15-Unit.2 の単体の等式を (L) で写し、R14 を `isLocalEquivSet_toSheafify J P` に入れて同じ辺の可逆性を得る。存在型の成分式では、R15-Unit.2 と `functorHomEvaluate_homotopy` で同じ辺の類を取り、`discretePresheafHom_eq_normalized` の二つの端点移送を相殺する。
+- **R15a.1**。(T(P)) の層条件は通常の層化の値と `isSheaf_discretePresheaf_iff`。従って (u_T:T\to T;L) は全成分可逆。反射の全単位の交換則 `functorHom_whisker_exchange_typed` と `functorHom_postcomp_id` から (η;u_T=u_A;L_*η)。ここで (m=(L_*η);u_T^{-1}) とすれば (u_A;m=η)。点別の mate を組み立てる必要はない。
+- **R15a.2**。署名が与える任意の (m) について、(L_*u_A;L_*m=L_*η)。(L_*u_A) は `unit_postcompLeft_isIso` の反射での単位の像を包含で後合成し、さらに (A) で前合成したもの。二つの whisker の交換には `functorHomPrecomp_postcomp` を使う。(L_*m) が可逆になったら、(u_{A;L})（反射像の所属は `localization_mem`）と (u_T) の全同型、および (m;u_T=u_{A;L};L_*m) から (m) の可逆性を得る。
+- **R15a、R15a.3**。(η) を R15-Unit.3 に固定し、R15a.1 の (u_A;m=η) を満たす全射を一度選ぶ。同じ射を R15a.2 で `asIso` にし、単位の式はその選択の仕様から読む。
+- **R15b、R15c**。(P) で評価する。(h_1:A(P)=\mathrm{functorVertex}(P_{\rm disc}))、(h_2:T(P)=\mathrm{functorVertex}(S(P)_{\rm disc}))、(h_3:\mathrm{functorVertex}(\mathrm{sheafify}(P_{\rm disc}))=L(\mathrm{functorVertex}(P_{\rm disc})))。R15b の順射は `eqToHom h₃ ≫ eqToHom (L(h₁)⁻¹) ≫ m_P ≫ eqToHom h₂`（各頂点等式は `HomotopyCategory.mk` で写してから用いる）。R15c では `sheafifyUnitHom` の (h_3^{-1}) と (h_3) を相殺し、(u) の (h_1) に沿う自然性から正規化前の (u_{A(P)};m_P=η_P) に戻す。R15-Unit の指定成分を入れ、残る (h_1,h_2) を相殺する。
+
+使う全射の法則は `Project/DerivedCategories/Tensor/FunctorHomTypedWhiskerAlgebra.lean`、反射した単位の可逆性は `Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveUnitInvertible.lean:76`（いずれも `SerrePositivity/InfinityCategories/` 内）。終端の型は台帳どおり。
+
+### 11-18：R12a.2・R12a・R12b・R13b・R14.1 の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R12a.2|142|80〜130|160〜260|10,806|6|
+|R12a|52|15〜35|30〜70|10,807|1|
+|R12b|54|10〜25|20〜50|10,808|1|
+|R13b|46|15〜30|30〜60|10,762|1|
+|R14.1|56|50〜90|100〜180|10,765|1|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 35,935 から 36,285 行。
+
+一覧：済み 101／全体 122（うち追加 87）

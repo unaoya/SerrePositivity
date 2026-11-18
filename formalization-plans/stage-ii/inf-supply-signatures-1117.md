@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：35,935行。外枠：36,138行。係数：2。
+既計上の累計：36,285行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -70,12 +70,12 @@
 |R09.2|verified|59|0〜0|0〜0|
 |R09|verified|61|0〜0|0〜0|
 |R12a.1|verified|66|0〜0|0〜0|
-|R12a.2|pending|—|80〜130|160〜260|
-|R12a|pending|—|15〜35|30〜70|
-|R12b|pending|—|10〜25|20〜50|
+|R12a.2|verified|142|0〜0|0〜0|
+|R12a|verified|52|0〜0|0〜0|
+|R12b|verified|54|0〜0|0〜0|
 |R13b.1|verified|104|0〜0|0〜0|
-|R13b|pending|—|15〜30|30〜60|
-|R14.1|pending|—|50〜90|100〜180|
+|R13b|verified|46|0〜0|0〜0|
+|R14.1|verified|56|0〜0|0〜0|
 |R14|pending|—|20〜40|40〜80|
 |R15-Unit.1|verified|52|0〜0|0〜0|
 |R15-Unit.2|verified|44|0〜0|0〜0|
@@ -2734,15 +2734,15 @@ let t := mapJoinCone (covariantRepresentableInfinity x)
 - `NativeIsSheaf.covariantRepresentable` @ SerrePositivity/InfinityCategories/Sheaves/NativeSheafRepresentableCoefficients.lean:31
 
 ### R12a.2 — representable_restrictedSectionsCone_isLimit
-親：R12a。状態：紙のみ（pending）。依存：R09・R12a.1・R11d。
+親：R12a。状態：検証済み。依存：R09・R12a.1・R11d。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
 ∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)
  (hφ : IsLocalEquivSet J φ) (O : Presheaf C E) (hO : IsSheaf J O),
 ∀ (c : JoinCone (sectionsOfDiagram Q O)) (hc : IsLimitCone c) (x : E _⦋0⦌),
-let U := SSet.uliftFunctor.{u + 2, u + 1}
-let Y := covariantRepresentableInfinity x
+let U := SSet.uliftFunctor.{u + 2, u + 1};
+let Y := covariantRepresentableInfinity x;
 IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
  (SetWeight.restrictSectionsCone φ O c)))
 ```
@@ -2764,7 +2764,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `sectionsMap_isInvertible_iff` @ SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean:62
 
 ### R12a — restrictSectionsCone_isLimit_of_localEquiv
-親：R12a。状態：紙のみ（pending）。依存：R12a.2。
+親：R12a。状態：検証済み。依存：R12a.2。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -2790,7 +2790,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `siteLiftSectionsCone_isLimit_iff` @ SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean:78
 
 ### R12b — sections_localEquiv_iso
-親：R12b。状態：紙のみ（pending）。依存：R12a。
+親：R12b。状態：検証済み。依存：R12a。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -2845,7 +2845,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `setWeightTensorSections_shapeIso` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightTensorSectionsNaturality.lean:26
 
 ### R13b — discreteHom_isLocalForHom_of_localEquiv
-親：R13b。状態：紙のみ（pending）。依存：R09・R13b.1。
+親：R13b。状態：検証済み。依存：R09・R13b.1。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C],
@@ -2868,7 +2868,7 @@ IsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}
 - `sectionsEquivalenceNatural` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:78
 
 ### R14.1 — discreteLocalEquiv_reflector_map_isIso
-親：R14。状態：紙のみ（pending）。依存：R13b。
+親：R14。状態：検証済み。依存：R13b。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] (J : GrothendieckTopology C)

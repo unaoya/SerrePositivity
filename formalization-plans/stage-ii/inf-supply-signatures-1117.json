@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 35935,
+  "verified_lean_lines": 36285,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -4347,7 +4347,7 @@
     {
       "id": "R12a.2",
       "name": "representable_restrictedSectionsCone_isLimit",
-      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)\n (hφ : IsLocalEquivSet J φ) (O : Presheaf C E) (hO : IsSheaf J O),\n∀ (c : JoinCone (sectionsOfDiagram Q O)) (hc : IsLimitCone c) (x : E _⦋0⦌),\nlet U := SSet.uliftFunctor.{u + 2, u + 1}\nlet Y := covariantRepresentableInfinity x\nIsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}\n (SetWeight.restrictSectionsCone φ O c)))",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (J : GrothendieckTopology C) {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q)\n (hφ : IsLocalEquivSet J φ) (O : Presheaf C E) (hO : IsSheaf J O),\n∀ (c : JoinCone (sectionsOfDiagram Q O)) (hc : IsLimitCone c) (x : E _⦋0⦌),\nlet U := SSet.uliftFunctor.{u + 2, u + 1};\nlet Y := covariantRepresentableInfinity x;\nIsLimitCone (mapJoinCone Y (JoinCone.ulift.{u + 1, u + 2}\n (SetWeight.restrictSectionsCone φ O c)))",
       "dependencies": [
         "R09",
         "R12a.1",
@@ -4368,6 +4368,11 @@
           "name": "sectionsMap_isInvertible_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean",
           "line": 62
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RepresentableRestrictedSectionsLimit.lean",
+          "line": 126,
+          "name": "representable_restrictedSectionsCone_isLimit"
         }
       ],
       "literature": "HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。",
@@ -4381,13 +4386,35 @@
       ],
       "method": "持ち上げたsite上で表現可能値の層条件とR09を使う。任意の極限錐との比較を通し、選んだsectionsOfConeから元のcへ戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R12a",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/restrictSectionsCone_isLimit_of_localEquiv.lean",
-      "note": "持ち上げたsite上で表現可能値の層条件とR09を使う。任意の極限錐との比較を通し、選んだsectionsOfConeから元のcへ戻す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RepresentableRestrictedSectionsLimit.lean",
+      "note": "持ち上げたsite上で表現可能値の層条件とR09を使う。任意の極限錐との比較を通し、選んだsectionsOfConeから元のcへ戻す。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 台帳の改行だけの let をセミコロンで区切った。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 142,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RepresentableRestrictedSectionsLimit.lean": "4225abe9c17f9d39faa33f6771d9c83c9541fd2d480313827c1e58584ddb86a5"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "5e4350c7c7b57ff96b08d883288fc899f9250c210b0f042032d4e167627fe08b",
+        "receipt": "/tmp/is-stage5/R12a.2/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r12a-2-1118/manifest.json"
     },
     {
       "id": "R12a",
@@ -4406,6 +4433,11 @@
           "name": "siteLiftSectionsCone_isLimit_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SiteLiftSectionsCone.lean",
           "line": 78
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RestrictedSectionsLocalEquivalenceLimit.lean",
+          "line": 41,
+          "name": "restrictSectionsCone_isLimit_of_localEquiv"
         }
       ],
       "literature": "HTT 6.2.2.6、表現可能関手による極限の検出（Kerodon §7.1）。任意の準圏係数への反映。",
@@ -4417,9 +4449,9 @@
         30,
         70
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/restrictSectionsCone_isLimit_of_localEquiv.lean",
-      "note": "上端200行超。係数のpresentabilityを仮定しない。",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RestrictedSectionsLocalEquivalenceLimit.lean",
+      "note": "上端200行超。係数のpresentabilityを仮定しない。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -4443,7 +4475,29 @@
       "method": "全xについて同じ元の錐の像の極限性があるのでisLimitCone_of_covariantRepresentableInfinityで反映する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R12a",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 52,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RestrictedSectionsLocalEquivalenceLimit.lean": "ed988ee8eae09a42e4e9d17d691bea8b1a20791960d064452e96949605321771"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "bbb1b2fbe2803a190f1ec358cc5fe45761bdadef353ca5ce324a215af9100176",
+        "receipt": "/tmp/is-stage5/R12a/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r12a-1118/manifest.json"
     },
     {
       "id": "R12b",
@@ -4457,6 +4511,11 @@
           "name": "sectionsMap_isInvertible_iff",
           "path": "SerrePositivity/InfinityCategories/Sheaves/SieveSectionsCriterion.lean",
           "line": 62
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/SectionsLocalEquivalenceIso.lean",
+          "line": 41,
+          "name": "sections_localEquiv_iso"
         }
       ],
       "literature": "HTT 6.2.2.6・5.5.4.20。draftsの元の局所同値の型。",
@@ -4468,9 +4527,9 @@
         20,
         50
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/sections_localEquiv_iso.lean",
-      "note": "",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/SectionsLocalEquivalenceIso.lean",
+      "note": " 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -4488,7 +4547,29 @@
       "method": "元の二つのsectionsOfConeとその選ばれた比較辺へsectionsMap_isInvertible_iffを適用する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R12b",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 54,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/SectionsLocalEquivalenceIso.lean": "d1613c87ca91a4a223dabc4f9c3a5a20b00382d71433ab07ed88c77d4fee3543"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "2c5cb2ed83f13db91595b2ec9486b6af8a4693bbec7d6f37c6556d0ca060fc15",
+        "receipt": "/tmp/is-stage5/R12b/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r12b-1118/manifest.json"
     },
     {
       "id": "R13b.1",
@@ -4583,6 +4664,11 @@
           "name": "sectionsEquivalenceNatural",
           "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean",
           "line": 78
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceLocalHom.lean",
+          "line": 34,
+          "name": "discreteHom_isLocalForHom_of_localEquiv"
         }
       ],
       "literature": "HTT 5.5.4.20・6.2.2.6。小さい通常のsiteの離散重みでの局所Hom。",
@@ -4594,9 +4680,9 @@
         30,
         60
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/discreteHom_isLocalForHom_of_localEquiv.lean",
-      "note": "上端200行超。全族G8比較を使用。",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceLocalHom.lean",
+      "note": "上端200行超。全族G8比較を使用。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -4615,7 +4701,29 @@
       "method": "space係数の極限の存在を使い、R09の元の辺の可逆性をR13b.1で戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R13b",
-      "paper_only": true
+      "paper_only": false,
+      "actual_lines": 46,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceLocalHom.lean": "ceba99872bb644d83f0eb5e6b0e53221b7700ae2d54dc0794b2ff43fb92b4605"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "44c706ef5a9c4205b572ba498af20f225996fe7d255306866741b63d5c798df4",
+        "receipt": "/tmp/is-stage5/R13b/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r13b-1118/manifest.json"
     },
     {
       "id": "R14.1",
@@ -4634,6 +4742,11 @@
           "name": "sheafificationFunctor",
           "path": "SerrePositivity/InfinityCategories/Sheaves/Sheafify.lean",
           "line": 22
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceReflector.lean",
+          "line": 36,
+          "name": "discreteLocalEquiv_reflector_map_isIso"
         }
       ],
       "literature": "HTT 5.5.4.15・6.2.2.7。指定された反射による局所同値の反転。",
@@ -4647,13 +4760,35 @@
       ],
       "method": "元のhJを固定し、全局所対象でR13bを使う。反射の全忠実な包含へ進む前の式を分ける。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R14",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/localEquiv_of_sheafifyIso.lean",
-      "note": "元のhJを固定し、全局所対象でR13bを使う。反射の全忠実な包含へ進む前の式を分ける。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceReflector.lean",
+      "note": "元のhJを固定し、全局所対象でR13bを使う。反射の全忠実な包含へ進む前の式を分ける。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 56,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteLocalEquivalenceReflector.lean": "43ddece48bffe9385525469664f61a5d38878f096a7825262d66a948c2ae2dbd"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "5bcd4918abfb4cc9009b935434ab2204b0421ef089eaa581c57bec07e7a399e3",
+        "receipt": "/tmp/is-stage5/R14.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r14-1-1118/manifest.json"
     },
     {
       "id": "R14",
@@ -8539,5 +8674,11 @@
     "approved_limit": 36138,
     "scope": "同じ型で R06.2 の指定余単位と大域比較をつなぐ",
     "previous_limit": 35681
+  },
+  "cap_exception_1118": {
+    "authorized": true,
+    "scope": "今回の R12a・R12b・R13b・R14・R15 群の実装",
+    "nominal_limit": 36138,
+    "count_actual_lines": true
   }
 }
