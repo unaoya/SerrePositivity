@@ -1,0 +1,172 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+1.1,Definition,v 位相と v 被覆,1,,,,high,,,,BM18
+(1),Equation,v 被覆の付値持ち上げ,1,,,,high,,,,BM18
+1.2,Definition,arc 位相と arc 被覆,1,,,,high,,,,BM18
+1.3,Example,階数二の付値環の arc 被覆,1,,,,high,,,,BM18
+1.4,Remark,qcqs スキームへの制限,1,,,,high,,,,BM18
+1.5,Definition,∞ 圏値関手の降下,1,,,,high,,,,BM18
+1.6,Example,サイトの導来コホモロジー,1,,,,high,,,,BM18
+1.7,Theorem,arc 降下の判定条件,1,,,,high,,,,BM18
+1.8,Theorem,エタールコホモロジーと構成可能層,1,,,,high,,,,BM18
+1.9,Theorem,完全複体の arc 降下,1,,,,high,,,,BM18
+1.10,Theorem,完全スキームの arc 被覆の特徴づけ,1,,,,high,,,,BM18
+1.11,Definition,excision datum,1,,,,high,,,,BM18
+(2),Equation,excision datum の Milnor 正方形,1,,,,high,,,,BM18
+1.12,Theorem,arc 層の excision,1,,,,high,,,,BM18
+1.13,Remark,v 層に対する excision の反例,1,,,,high,,,,BM18
+1.14,Definition,形式的貼り合わせのデータ,1,,,,high,,,,BM18
+(3),Equation,形式的貼り合わせの正方形,1,,,,high,,,,BM18
+1.15,Theorem,arc 層の形式的貼り合わせ,1,,,,high,,,,BM18
+1.16,Remark,v 層での形式的貼り合わせの反例,1,,,,high,,,,BM18
+1.17,Corollary,torsion 係数の excision と形式的貼り合わせ,1,,,,high,,,,BM18
+1.18,Corollary,Hensel 対上のエタールコホモロジー,1,,,,high,,,,BM18
+1.19,Theorem,アフィノイドの Artin–Grothendieck 消滅,1,,,,high,,,,BM18
+2.1,Proposition,v 被覆から arc 被覆,2,,,,high,,,,BM18
+2.2,Remark,階数一に切り詰める素理想の記述,2,,,,high,,,,BM18
+2.3,Lemma,合成の arc 被覆性からの反映,2,,,,high,,,,BM18
+2.4,Lemma,階数一の付値基底における被覆の同値,2,,,,high,,,,BM18
+2.5,Corollary,階数一の付値基底による arc 被覆の判定,2,,,,high,,,,BM18
+2.6,Proposition,Noether 基底での v 被覆と arc 被覆,2,,,,high,,,,BM18
+2.7,Lemma,excision datum からの arc 被覆,2,,,,high,,,,BM18
+2.8,Proposition,付値環の excision datum,2,,,,high,,,,BM18
+2.9,Corollary,局所化と素商の arc 被覆,2,,,,high,,,,BM18
+2.10,Remark,付値環の arc 被覆の別証明,2,,,,high,,,,BM18
+2.11,Proposition,アフィンの arc 被覆の環論的判定,2,,,,high,,,,BM18
+2.12,Definition,submersion の定義,2,,,,high,,,,BM18
+2.13,Proposition,v 被覆の普遍 submersive 性,2,,,,high,,,,BM18
+2.14,Definition,spectral submersion の定義,2,,,,high,,,,BM18
+2.15,Remark,spectral submersion の簡略条件,2,,,,high,,,,BM18
+2.16,Remark,普遍 spectral submersion の局所判定,2,,,,high,,,,BM18
+2.17,Lemma,逆極限での spectral submersion,2,,,,high,,,,BM18
+2.18,Remark,商写像と普遍 spectral submersion の差,2,,,,high,,,,BM18
+2.19,Proposition,arc 被覆と普遍 spectral submersion の同値,2,,,,high,,,,BM18
+2.20,Corollary,逆極限での arc 被覆,2,,,,high,,,,BM18
+2.21,Lemma,部分体に引き戻した付値環,2,,,,high,,,,BM18
+2.22,Lemma,付値環の有限階数近似,2,,,,high,,,,BM18
+3.1,Definition,finitary 関手と v 層・arc 層,3,,,,high,,,,BM18
+3.2,Definition,普遍 F 降下,3,,,,high,,,,BM18
+3.3,Example,エタールコホモロジーの普遍降下,3,,,,high,,,,BM18
+3.4,Lemma,普遍降下の切断・合成・反映・底変換,3,,,,high,,,,BM18
+3.5,Definition,余切断対象によるコンパクト生成,3,,,,high,,,,BM18
+3.6,Example,余切断対象で生成される圏の例,3,,,,high,,,,BM18
+3.7,Lemma,全化と filtered 余極限,3,,,,high,,,,BM18
+3.8,Proposition,有限表示模型による v 層判定,3,,,,high,,,,BM18
+3.9,Corollary,finitary v 層の有限表示サイトへの制限,3,,,,high,,,,BM18
+3.10,Proposition,profinite 空間の clopen 基底上の層,3,,,,high,,,,BM18
+3.11,Definition,冪集合の上の層,3,,,,high,,,,BM18
+3.12,Example,離散の族の積で定める層,3,,,,high,,,,BM18
+3.13,Construction,Stone–Čech コンパクト化,3,,,,high,,,,BM18
+3.14,Lemma,超フィルターの茎による同値の判定,3,,,,high,,,,BM18
+3.15,Definition,環の超積,3,,,,high,,,,BM18
+3.16,Remark,積環のスペクトルと超積,3,,,,high,,,,BM18
+3.17,Construction,積環から構成する層,3,,,,high,,,,BM18
+3.18,Corollary,超積での関手の同値による積での判定,3,,,,high,,,,BM18
+3.19,Corollary,超積から積上の切断の存在,3,,,,high,,,,BM18
+3.20,Definition,普遍降下の検出の定義,3,,,,high,,,,BM18
+3.21,Example,普遍降下射による検出,3,,,,high,,,,BM18
+3.22,Example,検出する族の合成,3,,,,high,,,,BM18
+3.23,Example,族から積への普遍降下,3,,,,high,,,,BM18
+3.24,Lemma,逆極限での普遍降下の検出,3,,,,high,,,,BM18
+3.25,Lemma,超積による普遍降下の検出,3,,,,high,,,,BM18
+(4),Equation,Čech 図式の底変換,3,,,,high,,,,BM18
+3.26,Definition,絶対整閉環,3,,,,high,,,,BM18
+3.27,Lemma,絶対整閉付値環の超積,3,,,,high,,,,BM18
+3.28,Lemma,絶対整閉付値環への忠実平坦拡大,3,,,,high,,,,BM18
+3.29,Lemma,濃度を制限した絶対整閉付値部分環,3,,,,high,,,,BM18
+3.30,Proposition,付値環の族による普遍降下の検出,3,,,,high,,,,BM18
+3.31,Remark,付値環を成分にもつ v 被覆,3,,,,high,,,,BM18
+3.32,Proposition,絶対整閉付値環による同値検出,3,,,,high,,,,BM18
+4.1,Theorem,arc 降下と excision の同値,4,,,,high,,,,BM18
+(5),Equation,絶対整閉付値環の excision 正方形,4,,,,high,,,,BM18
+4.2,Proposition,arc 降下から aic-v-excision,4,,,,high,,,,BM18
+4.3,Lemma,絶対整閉付値環の素環拡大と局所化,4,,,,high,,,,BM18
+4.4,Lemma,aic-v-excision の代数への持ち上げ,4,,,,high,,,,BM18
+4.5,Lemma,有限表示 v 被覆の有限段への降下,4,,,,high,,,,BM18
+4.6,Definition,付値環スペクトルの区間,4,,,,high,,,,BM18
+4.7,Lemma,局所延長と貼り合わせによる区間判定,4,,,,high,,,,BM18
+4.8,Proposition,aic-v-excision から arc 降下,4,,,,high,,,,BM18
+(6),Equation,重なる区間の比較正方形,4,,,,high,,,,BM18
+(7),Equation,片側の区間を縮める比較正方形,4,,,,high,,,,BM18
+4.9,Lemma,離散性の区間による判定,4,,,,high,,,,BM18
+4.10,Lemma,階数一テストによる切断性の判定,4,,,,high,,,,BM18
+4.11,Corollary,階数一テストによる arc 層の同値判定,4,,,,high,,,,BM18
+4.12,Corollary,階数一の完備付値環による判定,4,,,,high,,,,BM18
+4.13,Lemma,整域への Milnor 正方形の底変換,4,,,,high,,,,BM18
+(8),Equation,付値基底へ移す Milnor 正方形,4,,,,high,,,,BM18
+4.14,Lemma,全射の Milnor 正方形と v 層,4,,,,high,,,,BM18
+4.15,Proposition,arc 層の excision,4,,,,high,,,,BM18
+(9),Equation,切断をもつ補助 Milnor 正方形,4,,,,high,,,,BM18
+4.16,Definition,濃度を制限した arc トポス,4,,,,high,,,,BM18
+4.17,Remark,被覆に対する濃度上限の独立性,4,,,,high,,,,BM18
+4.18,Remark,arc トポスの濃度上限への依存,4,,,,high,,,,BM18
+4.19,Lemma,arc トポスの coherent 性,4,,,,high,,,,BM18
+4.20,Warning,arc 位相の非 subcanonical 性,4,,,,high,,,,BM18
+4.21,Lemma,coherent arc 層の全射の付値判定,4,,,,high,,,,BM18
+4.22,Lemma,層化の同型の付値判定,4,,,,high,,,,BM18
+4.23,Lemma,arc 層の押し出しの coherent 性,4,,,,high,,,,BM18
+4.24,Proposition,Milnor 正方形の arc 層化,4,,,,high,,,,BM18
+4.25,Corollary,任意の完備な値の圏における excision,4,,,,high,,,,BM18
+5.1,Lemma,and · finitary · functor · qcqs · satisfies,5,,,,high,,,,BM18
+(10),Equation,エタール局所での降下比較,5,,,,high,,,,BM18
+5.2,Proposition,torsion · sheaf · the · qcqs · functor,5,,,,high,,,,BM18
+5.3,Lemma,絶対整閉付値環の狭義 Hensel 性,5,,,,high,,,,BM18
+5.4,Theorem,arc-descent for étale cohomology,5,,,,high,,,,BM18
+5.5,Remark,Excision from rigidity,5,,,,high,,,,BM18
+(11),Equation,エタール剛性を使う excision 正方形,5,,,,high,,,,BM18
+5.6,Theorem,rydh · ryd · the · three · functors,5,,,,high,,,,BM18
+5.7,Proposition,absolutely · integrally · closed · valuation · quasi-compact,5,,,,high,,,,BM18
+5.8,Notation,Constructible sheaves,5,,,,high,,,,BM18
+5.9,Remark,field · product · fields · the · preceding,5,,,,high,,,,BM18
+5.10,Proposition,the · functor · cons · finitary · more,5,,,,high,,,,BM18
+5.11,Proposition,the · functor · cons · generally · for,5,,,,high,,,,BM18
+(12),Equation,構成可能な複体の Čech 降下比較,5,,,,high,,,,BM18
+5.12,Proposition,absolutely · integrally · closed · valuation · finite,5,,,,high,,,,BM18
+5.13,Theorem,arc-descent for constructible sheaves,5,,,,high,,,,BM18
+5.14,Theorem,the · functor · qcqs · arc-sheaf,5,,,,high,,,,BM18
+(13),Equation,微分形式の区間正方形,5,,,,high,,,,BM18
+5.15,Corollary,the · construction · defines · arc-sheaf,5,,,,high,,,,BM18
+5.16,Theorem,arc-hyperdescent for perfect complexes on perfect schemes,5,,,,high,,,,BM18
+(14),Equation,完全複体の excision 正方形,5,,,,high,,,,BM18
+5.17,Theorem,Universally effective epimorphisms of perfect schemes,5,,,,high,,,,BM18
+5.18,Remark,the · canonical · topology · qcqs · perfect,5,,,,high,,,,BM18
+(15),Equation,形式的貼り合わせの基本図式,6,,,,high,,,,BM18
+6.1,Example,nonconnective · k-theory · does · the · square,6,,,,high,,,,BM18
+6.2,Proposition,rank · valuation · and · pseudouniformizer · the,6,,,,high,,,,BM18
+6.3,Proposition,and · finitely · generated · ideal · arc-cover,6,,,,high,,,,BM18
+6.4,Theorem,Formal glueing squares for arc-sheaves,6,,,,high,,,,BM18
+(16),Equation,形式的貼り合わせの比較正方形,6,,,,high,,,,BM18
+6.5,Example,Formal glueing in étale cohomology,6,,,,high,,,,BM18
+6.6,Theorem,Formal glueing via arc-sheafification,6,,,,high,,,,BM18
+6.7,Corollary,arc-sheaf · qcqs · valued · category · has,6,,,,high,,,,BM18
+6.8,Example,rank · valuation · write · for · the,6,,,,high,,,,BM18
+6.9,Definition,say · functor · r-algebras · rigid · for,6,,,,high,,,,BM18
+6.10,Corollary,henselian · along · finitely · generated · ideal,6,,,,high,,,,BM18
+6.11,Theorem,fujiwara · gabber · fuj · cor · henselian,6,,,,high,,,,BM18
+6.12,Remark,fuj · the · proved · additional · hypothesis,6,,,,high,,,,BM18
+6.13,Remark,relies · the · fact · equivalences · derived,6,,,,high,,,,BM18
+6.14,Definition,say · algebras · arc · cover · for,6,,,,high,,,,BM18
+6.15,Example,tate · algebras · pseudouniformizer · defines · spa,6,,,,high,,,,BM18
+6.16,Construction,Étale cohomology of the rigid generic fiber,6,,,,high,,,,BM18
+6.17,Corollary,arc t -descent for étale cohomology of affinoids,6,,,,high,,,,BM18
+(17),Equation,エタールコホモロジーの形式的貼り合わせ,6,,,,high,,,,BM18
+6.18,Corollary,GAGA for rigid étale cohomology in the proper case,6,,,,high,,,,BM18
+(18),Equation,剛体比較の図式,6,,,,high,,,,BM18
+6.19,Definition,arc t -equivalences,6,,,,high,,,,BM18
+6.20,Example,give · examples · arc · equivalences · a-algebra,6,,,,high,,,,BM18
+6.21,Proposition,Invariance under arc t -equivalences,6,,,,high,,,,BM18
+(19),Equation,環の射の Čech 降下,6,,,,high,,,,BM18
+6.22,Proposition,Künneth formula,6,,,,high,,,,BM18
+6.23,Remark,the · assumption · invertible · residue · field,6,,,,high,,,,BM18
+6.24,Proposition,universal · homeomorphism · qcqs · r-schemes · for,6,,,,high,,,,BM18
+(20),Equation,スキームの射の Čech 降下,6,,,,high,,,,BM18
+6.25,Theorem,commutative · and · element · nonzerodivisor · both,6,,,,high,,,,BM18
+7.1,Theorem,artin · grothendieck · cor · exp · xiv,7,,,,high,,,,BM18
+7.2,Notation,throughout · this · section · complete · separably,7,,,,high,,,,BM18
+7.3,Theorem,complete · algebraically · closed · nonarchimedean · field,7,,,,high,,,,BM18
+7.4,Remark,would · expect · part · for · arbitrary,7,,,,high,,,,BM18
+7.5,Proposition,Künneth formula,7,,,,high,,,,BM18
+7.6,Proposition,Descent in the analytic topology,7,,,,high,,,,BM18
+7.7,Proposition,topologically · finite · type · k-algebra · this,7,,,,high,,,,BM18
+(21),Equation,管状近傍と閉部分のコホモロジー比較,7,,,,high,,,,BM18
+7.8,Lemma,generate · the · unit · ideal · algebra,7,,,,high,,,,BM18
+7.9,Proposition,topologically · finite · type · k-algebra · dimension,7,,,,high,,,,BM18

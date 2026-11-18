@@ -1,0 +1,15 @@
+number,status,declarations,reason,axioms,check,partial_kind
+6.1,none,,"原典 PDF p.20, y=531.0。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.1 / review/check/none-search.csv,
+6.2,none,,"原典 PDF p.21, y=139.9。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.2 / review/check/none-search.csv,
+6.3,partial,SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationRing_milnorSquare_perfect @ SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationMilnor.lean:87,"原典 PDF p.22, y=74.4。局所化・素イデアル商・剰余体による加法群の短完全列を与える。一般の完全 V スキームと任意の準連接複体に対する導来大域切断の三角は含まない。",静的なソース照合。公理の閉包は未計測。,theorem.6.3 / 宣言の型,component
+6.4,none,,"原典 PDF p.22, y=505.6。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.4 / review/check/none-search.csv,
+6.5,none,,"原典 PDF p.22, y=551.2。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.5 / review/check/none-search.csv,
+6.6,none,,"原典 PDF p.23, y=234.4。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.6 / review/check/none-search.csv,
+6.7,none,,"原典 PDF p.23, y=273.7。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.7 / review/check/none-search.csv,
+6.8,none,,"原典 PDF p.23, y=554.7。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.8 / review/check/none-search.csv,
+6.9,none,,"原典 PDF p.24, y=74.4。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.9 / review/check/none-search.csv,
+6.10,none,,"原典 PDF p.24, y=439.1。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.10 / review/check/none-search.csv,
+6.11,none,,"原典 PDF p.24, y=583.7。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.11 / review/check/none-search.csv,
+6.12,none,,"原典 PDF p.25, y=401.7。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.12 / review/check/none-search.csv,
+6.13,none,,"原典 PDF p.25, y=472.7。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.13 / review/check/none-search.csv,
+6.14,none,,"原典 PDF p.26, y=362.7。line bundle・valuation・ultraproduct・descentの関連宣言を検索し、この項目の仮定から結論を直接得る型を確認できなかった。",静的なソース照合。公理の閉包は未計測。,theorem.6.14 / review/check/none-search.csv,

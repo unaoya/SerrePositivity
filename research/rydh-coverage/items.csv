@@ -1,0 +1,112 @@
+number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
+1.1,Proposition,pro-constructible 集合のアフィン像表示,1,,,,high,,,,Rydh
+1.2,Proposition,構成可能位相での連続性・開閉性,1,,,,high,,,,Rydh
+1.3,Remark,素スペクトルの特殊化順序,1,,,,high,,,,Rydh
+1.4,Proposition,構成可能集合の内部・閉包,1,,,,high,,,,Rydh
+1.5,Corollary,構成可能位相と特殊化位相による開閉判定,1,,,,high,,,,Rydh
+1.6,Proposition,構成可能位相での submersion,1,,,,high,,,,Rydh
+1.7,Proposition,submersion に沿う性質の降下,1,,,,high,,,,Rydh
+1.8,Remark,代数空間の submersion,1,,,,high,,,,Rydh
+2.1,Proposition,特殊化の持ち上げと同値な条件,2,,,,high,,,,Rydh
+2.2,Definition,S-subtrusive と subtrusive,2,,,,high,,,,Rydh
+2.3,Remark,spectral 空間と subtrusive 性,2,,,,high,,,,Rydh
+2.4,Proposition,被約化と開被覆による判定,2,,,,high,,,,Rydh
+2.5,Remark,普遍 subtrusive 射の例,2,,,,high,,,,Rydh
+2.6,Remark,付値環での主イデアル性と平坦性,2,,,,high,,,,Rydh
+2.7,Proposition,付値基底上の普遍 subtrusive 性,2,,,,high,,,,Rydh
+2.8,Theorem,付値による普遍 subtrusive 性と submersive 性,2,,,,high,,,,Rydh
+2.9,Corollary,普遍 subtrusive 性の付値環拡大による判定,2,,,,high,,,,Rydh
+2.10,Corollary,局所 Noether 基底の同値な判定,2,,,,high,,,,Rydh
+2.11,Proposition,特殊化の鎖の持ち上げ,2,,,,high,,,,Rydh
+3.1,Notation,既約成分の一般点集合,3,,,,high,,,,Rydh
+3.2,Lemma,一般点を含む集合からの全射性,3,,,,high,,,,Rydh
+3.3,Definition,爆発と狭義変換,3,,,,high,,,,Rydh
+3.4,Remark,狭義変換の全射性,3,,,,high,,,,Rydh
+3.5,Lemma,準コンパクト稠密開上の平坦性,3,,,,high,,,,Rydh
+3.6,Proposition,爆発による狭義変換の平坦化,3,,,,high,,,,Rydh
+3.7,Proposition,一般点集合が準コンパクトな基底での細分,3,,,,high,,,,Rydh
+3.8,Definition,全整閉スキームの定義,3,,,,high,,,,Rydh
+3.9,Properties,全整閉スキームの性質,3,,,,high,,,,Rydh
+3.10,Theorem,アフィンまたは Noether 基底の fppf–固有細分,3,,,,high,,,,Rydh
+3.11,Theorem,準有限な被覆の開被覆–有限細分,3,,,,high,,,,Rydh
+3.12,Theorem,準コンパクト開被覆–固有細分,3,,,,high,,,,Rydh
+3.13,Remark,qcqs 基底への一般化,3,,,,high,,,,Rydh
+3.14,Remark,有限型から有限表示への拡張,3,,,,high,,,,Rydh
+4.1,Theorem,スキーム上の構成可能な局所閉集合の降下,4,,,,high,,,,Rydh
+4.2,Theorem,代数空間上の局所閉集合の降下,4,,,,high,,,,Rydh
+4.3,Example,付値環による降下の反例,4,,,,high,,,,Rydh
+5.1,Notation,エタール射のファイバー圏,5,,,,high,,,,Rydh
+5.2,Remark,基底圏の選択,5,,,,high,,,,Rydh
+5.3,Proposition,普遍 submersion に沿うエタール射の降下,5,,,,high,,,,Rydh
+5.4,Proposition,エタール射の性質の降下,5,,,,high,,,,Rydh
+5.5,Exposition,エタール射の降下データ,5,,,,high,,,,Rydh
+5.6,Proposition,降下射の合成と反映,5,,,,high,,,,Rydh
+5.7,Proposition,普遍降下による有効性の判定,5,,,,high,,,,Rydh
+5.8,Proposition,逆極限に沿う普遍降下,5,,,,high,,,,Rydh
+5.9,Proposition,逆極限での有効降下,5,,,,high,,,,Rydh
+5.10,Proposition,忠実平坦準コンパクト射の有効降下,5,,,,high,,,,Rydh
+5.11,Proposition,忠実平坦局所有限表示射の有効降下,5,,,,high,,,,Rydh
+5.12,Proposition,局所エタール持ち上げと降下,5,,,,high,,,,Rydh
+5.13,Remark,Popescu による平滑近似と降下,5,,,,high,,,,Rydh
+5.14,Proposition,固有全射に沿う有限エタール降下,5,,,,high,,,,Rydh
+5.15,Corollary,固有全射に沿う分離準コンパクトエタール降下,5,,,,high,,,,Rydh
+5.16,Corollary,固有全射に沿う準コンパクトエタール降下,5,,,,high,,,,Rydh
+5.17,Theorem,普遍 subtrusive 射に沿う有効エタール降下,5,,,,high,,,,Rydh
+5.18,Corollary,Noether 基底上の普遍 submersion の場合,5,,,,high,,,,Rydh
+5.19,Theorem,普遍開全射・普遍閉全射の有効降下,5,,,,high,,,,Rydh
+5.20,Example,エタール同値関係の商の例,5,,,,high,,,,Rydh
+5.21,Theorem,普遍同相によるエタール圏の同値,5,,,,high,,,,Rydh
+5.22,Corollary,分離普遍同相の可表現性と整性,5,,,,high,,,,Rydh
+5.23,Remark,非分離普遍同相での失敗,5,,,,high,,,,Rydh
+5.24,Example,閉埋め込みに沿う押し出し,5,,,,high,,,,Rydh
+5.25,Question,普遍 submersion での有効降下の問い,5,,,,high,,,,Rydh
+6.1,Notation,アフィン遷移射の逆系,6,,,,high,,,,Rydh
+6.2,Proposition,逆極限と subtrusive 性,6,,,,high,,,,Rydh
+6.3,Corollary,有限次元アフィン空間への底変換での判定,6,,,,high,,,,Rydh
+6.4,Theorem,普遍 subtrusive 性の有限段への降下,6,,,,high,,,,Rydh
+6.5,Corollary,アフィン基底での有限段判定,6,,,,high,,,,Rydh
+6.6,Theorem,普遍開性の有限段への降下,6,,,,high,,,,Rydh
+7.1,Exposition,スキーム論的像,7,,,,high,,,,Rydh
+7.2,Proposition,スキーム論的に優勢な submersion のエピ性,7,,,,high,,,,Rydh
+7.3,Exposition,弱正規化,7,,,,high,,,,Rydh
+7.4,Theorem,弱正規な普遍 submersion に沿う降下,7,,,,high,,,,Rydh
+7.5,Remark,弱正規性を緩める場合,7,,,,high,,,,Rydh
+7.6,Corollary,被約な自己ファイバー積による降下,7,,,,high,,,,Rydh
+8.1,Definition,h 位相と qfh 位相,8,,,,high,,,,Rydh
+8.2,Remark,qcqs スキームへの制限,8,,,,high,,,,Rydh
+8.3,Remark,h 被覆を生成する射,8,,,,high,,,,Rydh
+8.4,Theorem,h 被覆と qfh 被覆の細分,8,,,,high,,,,Rydh
+8.5,Definition,前層の局所一致による商,8,,,,high,,,,Rydh
+8.6,Remark,分離化から層化への移行,8,,,,high,,,,Rydh
+8.7,Definition,可表現前層の分離化と層化,8,,,,high,,,,Rydh
+8.8,Lemma,被約試験スキーム上の分離化,8,,,,high,,,,Rydh
+8.9,Lemma,分離化と被約化上の射の像,8,,,,high,,,,Rydh
+8.10,Remark,分離化と全ての被約化上の射の差,8,,,,high,,,,Rydh
+8.11,Proposition,有限型代数空間の層化の余極限表示,8,,,,high,,,,Rydh
+8.12,Definition,被覆上での切断の実現,8,,,,high,,,,Rydh
+8.13,Lemma,エタール被覆で実現された切断の降下,8,,,,high,,,,Rydh
+8.14,Proposition,切断を実現する細分,8,,,,high,,,,Rydh
+8.15,Corollary,有限表示代数空間への適用,8,,,,high,,,,Rydh
+8.16,Theorem,h 層化と絶対弱正規化,8,,,,high,,,,Rydh
+8.17,Remark,非 Noether の場合の位相の変形,8,,,,high,,,,Rydh
+A.1,Proposition,分離エタール射の可表現性,A,,,,high,,,,Rydh
+A.2,Proposition,対角・切断・普遍単射での開埋め込み,A,,,,high,,,,Rydh
+A.3,Corollary,エタール空間への射のグラフ,A,,,,high,,,,Rydh
+A.4,Proposition,nilimmersion によるエタール圏の不変性,A,,,,high,,,,Rydh
+A.5,Proposition,完備局所固有スキームの開閉集合,A,,,,high,,,,Rydh
+A.6,Theorem,完備局所固有スキームの有限エタール圏,A,,,,high,,,,Rydh
+A.7,Proposition,閉部分とエタール層の切断,A,,,,high,,,,Rydh
+A.8,Remark,espace étalé の局所分離性,A,,,,high,,,,Rydh
+A.9,Remark,閉部分への制限の判定,A,,,,high,,,,Rydh
+A.10,Definition,Hensel 対の定義,A,,,,high,,,,Rydh
+A.11,Theorem,完備局所基底の固有スキームの Hensel 性,A,,,,high,,,,Rydh
+A.12,Proposition,Hensel 局所基底での開閉集合,A,,,,high,,,,Rydh
+A.13,Theorem,Hensel 局所基底における固有底変換,A,,,,high,,,,Rydh
+B.1,Definition,絶対弱正規と絶対弱正規化,B,,,,high,,,,Rydh
+B.2,Properties,絶対弱正規スキームの性質,B,,,,high,,,,Rydh
+B.3,Definition,弱 subintegral 拡大とその閉包,B,,,,high,,,,Rydh
+B.4,Properties,弱 subintegral 閉包の性質,B,,,,high,,,,Rydh
+B.5,Lemma,テンソル積による弱 subintegral 閉包の判定,B,,,,high,,,,Rydh
+B.6,Proposition,局所化・エタール底変換での閉包,B,,,,high,,,,Rydh
+B.7,Definition,射に関する弱正規化,B,,,,high,,,,Rydh
+B.8,Remark,整域・被約環の弱正規性,B,,,,high,,,,Rydh
