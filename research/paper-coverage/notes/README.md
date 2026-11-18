@@ -1,6 +1,6 @@
-# 本論文の本文原稿（NB-W2）
+# 本論文の本文原稿（NB-W2・NB-W4）
 
-凍結中の `exposition/ja/exposition-ja.tex` の §3〜§9 が転記元。付録 A は引用・状態・実装の対応表と重なるため転記対象外。付録 B 以降も指定された §3〜§9 の範囲外。
+転記元は凍結中の `exposition/ja/exposition-ja.tex`。NB-W2 は解説 §3〜§9、NB-W4 は「はじめに」・§1・§2・付録 B〜E を扱う。
 
 ## 原稿の規則
 
@@ -8,7 +8,7 @@
 - `##` の下が転記本文。見出し・参照の表示番号は解説 TeX のもの。項目ファイル名には原典の番号を使う。照合先の宣言は既存 review の記載。状態の正本は review。
 - 数式の区切りは `\( \)`・`\[ \]`。必要なローカルマクロを展開した。HTML コメントとアンカーで凍結 TeX の本文行を追跡できる。
 - 前後の式とつながった段落は一緒に、箇条書きは一項ずつ、表は一つのブロックに数える。節や環境の見出しは計数に入れず、対応する原稿で本文に添える。
-- 行き先を決められない本文は [issues.md](issues.md) に全文と理由を置いた。
+- 項目に対応しない本文は補足に置く。NB-W2 の保留の移設と変換の所見は [issues.md](issues.md) を参照。
 
 ## 段落の行き先
 
@@ -85,9 +85,9 @@
 | 412 | `\(C\) を環、\(J\subseteq C\) をイデアルとする。\(C\) 加群 \(M\) が **\(J\)-` | [2.3](2.3.md#paper-ja-L412) |
 | 417 | `普通の長さ \(\operatorname{length}_C\) は全ての \(C\) 加群の短完全列について加法的な` | [2.3](2.3.md#paper-ja-L417) |
 | 418 | `Faltings の正規化長さ \(\lambda_\infty\)（定義 8.1）は、塔 \(\Lambda\) 上の` | [2.3](2.3.md#paper-ja-L418) |
-| 421 | `**Lean:** &#96;NormalizedLength&#96;（&#96;PerfectComplex.NormalizedLengt` | [保留](issues.md#paper-ja-L421) |
-| 424 | `\(A\) を可換環、\(z=(z_1,\dots,z_e)\) をその元の有限列とし、\(z^v=(z_1^v,\do` | [保留](issues.md#paper-ja-L424) |
-| 426 | `\(A\) がネーター局所環で \(\sqrt{(z)}=\mathfrak{m}_A\) なら、\((z)C\)-冪ね` | [保留](issues.md#paper-ja-L426) |
+| 421 | `**Lean:** &#96;NormalizedLength&#96;（&#96;PerfectComplex.NormalizedLengt` | [補足](supplement/04-length-algebra.md#paper-ja-L421) |
+| 424 | `\(A\) を可換環、\(z=(z_1,\dots,z_e)\) をその元の有限列とし、\(z^v=(z_1^v,\do` | [補足](supplement/04-length-algebra.md#paper-ja-L424) |
+| 426 | `\(A\) がネーター局所環で \(\sqrt{(z)}=\mathfrak{m}_A\) なら、\((z)C\)-冪ね` | [補足](supplement/04-length-algebra.md#paper-ja-L426) |
 | 430 | `\((C,\lambda)\) を長さ付き \(A\) 代数とし、\(J=(z)C\) とする。` | [4.3](4.3.md#paper-ja-L430) |
 | 433–438 | `\(J\)-冪ねじれ \(C\) 加群の圏 \(\mathcal{T}_J(C)\) はアーベル圏である。その中の \[` | [4.3](4.3.md#paper-ja-L433) |
 | 441 | `冪ねじれ加群は部分加群・商で閉じ、\(J^aM'=0\)、\(J^bM''=0\) ならその拡大 \(M\) は \(J` | [4.3](4.3.md#paper-ja-L441) |
@@ -96,7 +96,7 @@
 | 460 | `核と余核が長さ \(0\) の射 \(f\colon M\to N\) は、像を介する短完全列により \(\lambda` | [4.3](4.3.md#paper-ja-L460) |
 | 464–469 | `包含から誘導される関手は、長さを保つ完全な同値 \[ \mathcal A_\lambda^{\mathrm{fin}}` | [4.3](4.3.md#paper-ja-L464) |
 | 472 | `大きな商の射を分数で表すとき、逆にする射は長さを保つ。両端が有限長さなら必要な中間対象も有限長さとなるので、有限な商から` | [4.3](4.3.md#paper-ja-L472) |
-| 474 | `**Lean:** &#96;LengthAlgebra.FiniteQuotientEquivalence&#96; の &#96;finit` | [保留](issues.md#paper-ja-L474) |
+| 474 | `**Lean:** &#96;LengthAlgebra.FiniteQuotientEquivalence&#96; の &#96;finit` | [補足](supplement/04-length-algebra.md#paper-ja-L474) |
 | 476 | `\(q\) を複体の各項に適用できるのは、その各項が \(\mathcal{T}_J(C)\) に入る場合だけである。一` | [4.3](4.3.md#paper-ja-L476) |
 | 478 | `これで \((\mathcal{A}_\lambda^{\mathrm{fin}},\ell_\lambda)\) は定` | [4.3](4.3.md#paper-ja-L478) |
 | 483–487 | `長さ付き \(A\) 代数 \((C,\lambda)\) が \(z\) に関して Koszul 有限であるとは、全て` | [(3.9)](%283.9%29.md#paper-ja-L483) |
@@ -147,7 +147,7 @@
 | 606–618 | `&#124; §3 の結論 &#124; この実現で確かめる入力 &#124; 場所 &#124; 得られる結論 &#124; &#124; --- &#124; --- &#124; --- &#124; -` | [3](3.md#paper-ja-L606) |
 | 619 | `§5.4 では \(\lambda\)-平坦な代数でこれらの入力がそろうことを、§5.5 では消滅の適用としてパラメータ` | [3](3.md#paper-ja-L619) |
 | 624–635 | `\(A\) を可換環、\(z\) をその元の有限列、\(T\) を可換 \(A\) 代数、\(C\) を \(T\) 代` | [3.5](3.5.md#paper-ja-L624) |
-| 636 | `**Lean:** 評価元は &#96;SupportedPerfectHomotopy&#96;、評価は &#96;LengthAlgebra` | [保留](issues.md#paper-ja-L636) |
+| 636 | `**Lean:** 評価元は &#96;SupportedPerfectHomotopy&#96;、評価は &#96;LengthAlgebra` | [補足](supplement/05-perfect-complexes.md#paper-ja-L636) |
 | 639 | `普通の側の評価先は有限長 \(T\) 加群の圏である。正規化側は、有限な \(\lambda\)-長さをもつ冪ねじれ \` | [3.5](3.5.md#paper-ja-L639) |
 | 642 | `任意の可換環 \(S\) 上の有界有限射影複体 \(P\) について、次は同値である。` | [(3.12)](%283.12%29.md#paper-ja-L642) |
 | 644 | `全ての \(H_i(P)\) の台が \(V((z)S)\) に入る。` | [(3.12)](%283.12%29.md#paper-ja-L644) |
@@ -186,25 +186,25 @@
 | 774 | `\(T\) 上の群作用が \(A\) を固定すれば、ひねり \(P\mapsto P^g\) がこの \(K_0\) 作` | [(3.11)](%283.11%29.md#paper-ja-L774) |
 | 776 | `幾何的な適用では、剰余標数 \(p>0\)、\(T\) の有限性、幾何ファイバーへの推移的作用と \(\operator` | [(3.11)](%283.11%29.md#paper-ja-L776) |
 | 778 | `二つの評価先 \(\mathcal{A}_{\lambda_1}^{\mathrm{fin}}\) と \(\mathc` | [3.6](3.6.md#paper-ja-L778) |
-| 782 | `ここでは、補題 3.11 の仮定（台の条件と Koszul 振幅の条件）と、補題 3.12 の全射を perfect 複` | [保留](issues.md#paper-ja-L782) |
-| 784 | `\(P\) が \(0\) 次から \(m\) 次に有限射影項をもつなら、\(K_v\otimes P\otimes C` | [保留](issues.md#paper-ja-L784) |
-| 786–790 | `一方、\(S=T\) が局所環で \(P\) の \(0\) 次の項が \(T^{\oplus\beta_0}\)、\(` | [保留](issues.md#paper-ja-L786) |
-| 793–797 | `\(e\) を列 \(z\) の長さとし、全ての \(v\ge1\) と \(j>0\) で \(\lambda H_j` | [保留](issues.md#paper-ja-L793) |
-| 800 | `台から \(z_j^v\) の零ホモトピーを選び、台の条件を得る。\(P\) の項によるフィルトレーションの各段は \(` | [保留](issues.md#paper-ja-L800) |
-| 802 | `\(A\) が正則局所環、\(z\) が正則パラメータ系で \((C,\lambda)\) が \(\lambda\)-` | [保留](issues.md#paper-ja-L802) |
-| 804 | `古典的には、\(B\) を巨大 CM 代数、\(F\) を長さ \(m\) で有限長ホモロジーの有限自由複体とすると、同` | [保留](issues.md#paper-ja-L804) |
-| 805 | `**Lean:** &#96;LengthAlgebra.PerfectVanishing&#96; の &#96;lambdaHomology` | [保留](issues.md#paper-ja-L805) |
-| 808–811 | `補題 5.10 の \(P\) の \(0\) 次の項を \(T^{\oplus\beta_0}\) とし、\(P\) ` | [保留](issues.md#paper-ja-L808) |
-| 814 | `\(H_0(P\otimes C) = C^{\oplus\beta_0}/\operatorname{im}(d_1\` | [保留](issues.md#paper-ja-L814) |
-| 816 | `**Lean:** &#96;LengthAlgebra.PerfectMinimalLowerBound&#96;（極小性から全射を構` | [保留](issues.md#paper-ja-L816) |
-| 818 | `普通の評価についても準同型と共役和の比較はあるが、この消滅の入力は一般には満たさない。` | [保留](issues.md#paper-ja-L818) |
+| 782 | `ここでは、補題 3.11 の仮定（台の条件と Koszul 振幅の条件）と、補題 3.12 の全射を perfect 複` | [補足](supplement/05-perfect-complexes.md#paper-ja-L782) |
+| 784 | `\(P\) が \(0\) 次から \(m\) 次に有限射影項をもつなら、\(K_v\otimes P\otimes C` | [補足](supplement/05-perfect-complexes.md#paper-ja-L784) |
+| 786–790 | `一方、\(S=T\) が局所環で \(P\) の \(0\) 次の項が \(T^{\oplus\beta_0}\)、\(` | [補足](supplement/05-perfect-complexes.md#paper-ja-L786) |
+| 793–797 | `\(e\) を列 \(z\) の長さとし、全ての \(v\ge1\) と \(j>0\) で \(\lambda H_j` | [補足](supplement/05-perfect-complexes.md#paper-ja-L793) |
+| 800 | `台から \(z_j^v\) の零ホモトピーを選び、台の条件を得る。\(P\) の項によるフィルトレーションの各段は \(` | [補足](supplement/05-perfect-complexes.md#paper-ja-L800) |
+| 802 | `\(A\) が正則局所環、\(z\) が正則パラメータ系で \((C,\lambda)\) が \(\lambda\)-` | [補足](supplement/05-perfect-complexes.md#paper-ja-L802) |
+| 804 | `古典的には、\(B\) を巨大 CM 代数、\(F\) を長さ \(m\) で有限長ホモロジーの有限自由複体とすると、同` | [補足](supplement/05-perfect-complexes.md#paper-ja-L804) |
+| 805 | `**Lean:** &#96;LengthAlgebra.PerfectVanishing&#96; の &#96;lambdaHomology` | [補足](supplement/05-perfect-complexes.md#paper-ja-L805) |
+| 808–811 | `補題 5.10 の \(P\) の \(0\) 次の項を \(T^{\oplus\beta_0}\) とし、\(P\) ` | [補足](supplement/05-perfect-complexes.md#paper-ja-L808) |
+| 814 | `\(H_0(P\otimes C) = C^{\oplus\beta_0}/\operatorname{im}(d_1\` | [補足](supplement/05-perfect-complexes.md#paper-ja-L814) |
+| 816 | `**Lean:** &#96;LengthAlgebra.PerfectMinimalLowerBound&#96;（極小性から全射を構` | [補足](supplement/05-perfect-complexes.md#paper-ja-L816) |
+| 818 | `普通の評価についても準同型と共役和の比較はあるが、この消滅の入力は一般には満たさない。` | [補足](supplement/05-perfect-complexes.md#paper-ja-L818) |
 | 823 | `\(A\) を正則局所環、\(z\) をその正則パラメータ系、\(T\) を可換 \(A\) 代数、\((C,\lamb` | [(3.13)](%283.13%29.md#paper-ja-L823) |
 | 825 | `**基底公式**：\(Q\in\operatorname{Perf}_{\mathfrak{m}}(A)\) について ` | [(3.13)](%283.13%29.md#paper-ja-L825) |
 | 826 | `**比較**：Koszul 有限なもう一つの長さ付き代数 \((C',\lambda')\) で \(e_{\lambd` | [(3.11)](%283.11%29.md#paper-ja-L826) |
-| 827 | `**消滅と下界**：補題 5.10、5.11 が成り立つ。` | [保留](issues.md#paper-ja-L827) |
-| 831 | `系 4.11 により Koszul 有限性、正次数の Koszul ホモロジーの長さ零、\(e_\lambda(z;C)` | [保留](issues.md#paper-ja-L831) |
-| 833 | `\(\lambda\)-CM 代数についても、命題 4.15 を通して同じである。` | [保留](issues.md#paper-ja-L833) |
-| 834 | `**Lean:** &#96;LengthAlgebra.FlatRealization&#96; の &#96;perfectEuler_co` | [保留](issues.md#paper-ja-L834) |
+| 827 | `**消滅と下界**：補題 5.10、5.11 が成り立つ。` | [補足](supplement/05-perfect-complexes.md#paper-ja-L827) |
+| 831 | `系 4.11 により Koszul 有限性、正次数の Koszul ホモロジーの長さ零、\(e_\lambda(z;C)` | [補足](supplement/05-perfect-complexes.md#paper-ja-L831) |
+| 833 | `\(\lambda\)-CM 代数についても、命題 4.15 を通して同じである。` | [補足](supplement/05-perfect-complexes.md#paper-ja-L833) |
+| 834 | `**Lean:** &#96;LengthAlgebra.FlatRealization&#96; の &#96;perfectEuler_co` | [補足](supplement/05-perfect-complexes.md#paper-ja-L834) |
 | 838 | `§9 の置き換え 2 の準備として、\(C_D\) を有限加群の代わりに使えるようにする。正則列 \(x\) で割った商` | [5.3](5.3.md#paper-ja-L838) |
 | 841–848 | `\(R\) をネーター環、\(x=(x_1,\dots,x_h)\) を \(R\) 正則列、\(B=R/(x)\) と` | [(5.7)](%285.7%29.md#paper-ja-L841) |
 | 851 | `\(K(x;R)\) は \(B\) の自由分解なので \(\operatorname{Tor}_i^R(C,B)=H_` | [(5.7)](%285.7%29.md#paper-ja-L851) |
@@ -243,7 +243,7 @@
 | 930 | `一様に台をもつ列の像では、延長した関手を元のホモロジー列で計算できることを示す。` | [4.3](4.3.md#paper-ja-L930) |
 | 932 | `この接続と有界性を構成すると Euler 有限性が成り立ち、命題 3.4 が使える。評価先の Serre 商だけでは (` | [4.3](4.3.md#paper-ja-L932) |
 | 933 | `**Lean:** &#96;Asymptotic.SequenceHomologyLocalization&#96;、&#96;Complet` | [4.3](4.3.md#paper-ja-L933) |
-| 935 | `段ごとの長さ \(0\) は正規化超極限の長さ \(0\) を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の` | [保留](issues.md#paper-ja-L935) |
+| 935 | `段ごとの長さ \(0\) は正規化超極限の長さ \(0\) を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の` | [補足](supplement/06-rank-negligible-category.md#paper-ja-L935) |
 | 938–943 | `\((C,\lambda)\) を Koszul 有限とする。一様に台をもつ \(F = (F_n)\) に対し \[ ` | [4.3](4.3.md#paper-ja-L938) |
 | 946 | `有限性：共通の \(v\) について補題 5.2 を各段に適用する。これによりホモロジー列は共通の冪で消され、長さは \` | [4.3](4.3.md#paper-ja-L946) |
 | 948–952 | `延長：評価先は、有限な長さ \(O(s_n)\) の冪ねじれ加群列を \[ L(M)=\lim_\mathcal{U}\` | [4.3](4.3.md#paper-ja-L948) |
@@ -426,3 +426,330 @@
 | 1447 | `**Lean:** &#96;Section5.exists_secondComparison_pos_of_approxima` | [5.6](5.6.md#paper-ja-L1447) |
 | 1452–1456 | `補題 9.2、命題 9.5、補題 9.6 を合わせて \[ &#124;G_D&#124;\, a_D a_E\, \chi^R(D,E) ` | [1.1](1.1.md#paper-ja-L1452) |
 | 1458 | `**Lean:** &#96;chi_pos_of_firstComparison&#96;、&#96;core_of_twistedEuler` | [1.1](1.1.md#paper-ja-L1458) |
+
+
+## NB-W4 の補足
+
+付録 A は引用・状態の対応表と重なるため対象外。付録 B〜E の「未確認」「推測」「精密化すべき点」等は、その断り書きごと保存した。数式を含む行を項目ファイルに置いた場合は、下の段落表で場所を引ける。解説 §1 の Adams 作用素による消滅の説明と二つの系の概観、§2 の二つの置き換え全体を読むための説明は、それぞれ §1・§2 の補足に置いた。
+
+| 順 | 元のまとまり | 補足 |
+| --- | --- | --- |
+| 01 | はじめに | [はじめに](supplement/01-introduction.md) |
+| 02 | 解説 §1 | [主張と帰着](supplement/02-statement-and-reduction.md) |
+| 03 | 解説 §2 | [証明の方針](supplement/03-proof-strategy.md) |
+| 04 | 解説 §4 | [長さ付き代数（解説 §4 の補足）](supplement/04-length-algebra.md) |
+| 05 | 解説 §5 | [perfect 複体での評価（解説 §5 の補足）](supplement/05-perfect-complexes.md) |
+| 06 | 解説 §6 | [ランク無視の圏での評価（解説 §6 の補足）](supplement/06-rank-negligible-category.md) |
+| 07 | 付録 B | [先行研究との関係](supplement/07-prior-work.md) |
+| 08 | 付録 C | [拡大すると高次の項が消える理由（直感的な説明）](supplement/08-vanishing-at-scale.md) |
+| 09 | 付録 D | [\(\lambda\)-平坦を主役にした整理の検討](supplement/09-lambda-flatness.md) |
+| 10 | 付録 E | [K 理論の降下の構造（定理 7.3・補題 7.7）](supplement/10-k-theory-descent.md) |
+
+### 省いた実装状況・照合時点
+
+| 元の行 | 省いた記述 |
+| --- | --- |
+| 66 | `共通理論・二つの実現から主定理までの接続は実装済みである。` |
+| 66 | `ただし外部引用1件（Bhatt--Scholze の perfectoid 化界面の存在）と保留したK理論2件に依存し、引用なしの主定理の証明ではない。` |
+| 70 | `各命題の末尾に対応する Lean の宣言名を \textsf{Lean:} として書き、状況を次のように示す。` |
+| 72 | `\textbf{証明済み}：未証明の引用に依存しない。` |
+| 73 | `\textbf{引用を除いて証明済み}：証明は完成しているが、未証明のまま引用している結果に依存する。` |
+| 74 | `\textbf{引用}：文献の結果を名前つきの定理として述べ、証明していない。` |
+| 75 | `\textbf{構成中}：部品はあるが主張としてはまだ完成していない。` |
+| 76 | `\textbf{保留K理論}：必要な結論を名前付き定理として述べ、証明を保留している。` |
+| 77 | `\textbf{未}：まだ形式化していない。` |
+| 79 | `抽象論とその適用の記述は 2026-10-13 時点の実装と照合した。` |
+| 79 | `条件付き定理の「証明済み」は、明示した仮定から結論までを証明したという意味であり、その仮定を論文の全ての具体例で供給したことまでは意味しない。` |
+| 94 | `（外部引用・保留K理論から証明）` |
+| 99 | `（外部引用・保留K理論から証明）` |
+| 110 | `（引用からの接続は証明済み）` |
+| 110 | `（注意~\ref{rem:adams-vanishing} のとおり証明済み）` |
+| 110 | `の適用として証明済み` |
+| 122 | `。引用なし。` |
+| 474 | `（証明済み）` |
+| 805 | `証明済み。` |
+| 816 | `。証明済み` |
+| 834 | `で証明済み` |
+| 2227 | ` は形式化で保留しているが、` |
+| 2227 | `（2026-10-18）` |
+
+## NB-W4 の段落の行き先
+
+| 元の行 | 段落の先頭 | 行き先 |
+| --- | --- | --- |
+| 55–59 | `この文書は、プレプリント *Positivity of Serre's Intersection Multiplicit` | [01-introduction](supplement/01-introduction.md#paper-ja-L55) |
+| 61 | `この解説では、証明を次のように整理して述べる。` | [01-introduction](supplement/01-introduction.md#paper-ja-L61) |
+| 63 | `Euler 評価、反復錐による消滅、第零次の下界、群作用による共役和比較を共通定理としてまとめる（§3）。評価先は長さ付` | [01-introduction](supplement/01-introduction.md#paper-ja-L63) |
+| 64 | `perfect 複体（§5）とランク無視の圏（§6）をその二つの実現とする。各節では具体的な圏と関手を作り、共通定理の仮` | [01-introduction](supplement/01-introduction.md#paper-ja-L64) |
+| 65 | `長さの有限性、Koszul ホモロジーの消滅、比較に必要な降下を別々の入力とする。\(\lambda\)-平坦性・\(\` | [01-introduction](supplement/01-introduction.md#paper-ja-L65) |
+| 66 | `具体的な代数の構成（§8）と核の場合への適用（§9）は別に述べる。` | [01-introduction](supplement/01-introduction.md#paper-ja-L66) |
+| 70 | `命題の番号はこの解説の通し番号で、元論文の番号を括弧で併記する。` | [01-introduction](supplement/01-introduction.md#paper-ja-L70) |
+| 79 | `宣言名は名前空間 &#96;SerrePositivity&#96; を省略して書く。解説の定式化が Lean と異なる箇所は、その場で` | [01-introduction](supplement/01-introduction.md#paper-ja-L79) |
+| 84–88 | `\((R,\mathfrak{m})\) を正則局所環、\(M, N\) を有限生成 \(R\) 加群で \(M\oti` | [1](1.md#paper-ja-L84) |
+| 89 | `**Lean:** &#96;IntersectionMultiplicity.Basic&#96;（\(\chi\) の定義）。` | [1](1.md#paper-ja-L89) |
+| 92 | `\(M, N\) が \(0\) でなく \(\dim M + \dim N = \dim R\) なら \(\chi^` | [1.1](1.1.md#paper-ja-L92) |
+| 94 | `**Lean:** &#96;main_statement&#96;。` | [1.1](1.1.md#paper-ja-L94) |
+| 97 | `\(R\) を剰余体が標数 \(p>0\) の代数閉体である完備正則局所環、\(P, Q\) を \(P+Q\) が \` | [5.1](5.1.md#paper-ja-L97) |
+| 99 | `**Lean:** &#96;core_statement&#96;。` | [5.1](5.1.md#paper-ja-L99) |
+| 102 | `定理 1.2 から定理 1.1 が従う。` | [5.1](5.1.md#paper-ja-L102) |
+| 104 | `等標数は Serre の定理。` | [5.1](5.1.md#paper-ja-L104) |
+| 105 | `完備化と剰余体の代数閉体への拡大（Lemma 2.1）。等標数は \(k[[X]]/I\to\bar k[[X]]/I\` | [5.1](5.1.md#paper-ja-L105) |
+| 106 | `素フィルトレーションと \(\chi\) の各変数での加法性で、\(\chi(R/P_j, R/Q_k)\) の和に分け` | [5.1](5.1.md#paper-ja-L106) |
+| 107 | `次元の和が \(d\) 未満の組は**消滅定理**（Roberts、Gillet–Soulé）で \(0\)。次元が相補` | [5.1](5.1.md#paper-ja-L107) |
+| 108 | `一方が \(0\) 次元なら \(\chi = 1\)。` | [5.1](5.1.md#paper-ja-L108) |
+| 110 | `**Lean:** &#96;IntersectionMultiplicity.Additivity&#96;、&#96;Paper.Secti` | [5.1](5.1.md#paper-ja-L110) |
+| 112 | `消滅定理はここと補題 9.2（Lemma 5.2）の2か所で使う。` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L112) |
+| 115 | `元論文は消滅定理を引用するが、形式化では Gillet–Soulé の Adams 作用素の方法で証明した。Chow 群` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L115) |
+| 117 | `**巡回 Adams 作用素。** 素数 \(p\) と、\(1/p\) と \(1\) の原始 \(p\) 乗根 \(` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L117) |
+| 118 | `**重みの評価。** \(Z\) の余次元が \(c\) なら、\(K_0^Z(R)_E\) 上の \(\psi^p\)` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L118) |
+| 119 | `**結論。** 正則局所環では \(\operatorname{ht}P=d-\dim R/P\) なので、\([F_M` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L119) |
+| 121 | `素数は、剰余標数が \(2\) でなければ \(p=2\)（\(\zeta=-1\) なので係数拡大は不要）、剰余標数が` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L121) |
+| 122 | `**Lean:** &#96;IntersectionMultiplicity.AdamsVanishingAll&#96; の &#96;in` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L122) |
+| 125 | `以下、定理 1.2 の設定を固定する。` | [5.1](5.1.md#paper-ja-L125) |
+| 128 | `等標数と不分岐の場合（完備 DVR 上の冪級数環を含む）は Serre による。Roberts、Gillet–Soulé` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L128) |
+| 131 | `元論文は定理 1.1 から二つの系を導く。分岐する混標数の正則局所環で \(\sqrt{P+Q}=\mathfrak{m` | [02-statement-and-reduction](supplement/02-statement-and-reduction.md#paper-ja-L131) |
+| 137 | `\(D\) と \(E\) がどちらも Cohen–Macaulay なら、高次の Tor が消えて \(\chi^R(` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L137) |
+| 139 | `\(D\) 側：CM 加群の射影次元は低い（Auslander–Buchsbaum の公式）。\(\lambda\) 版` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L139) |
+| 140 | `\(E\) 側：巨大 CM 代数とテンソルすると、短い有限自由複体の高次ホモロジーが消える（Hochster による新交` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L140) |
+| 141 | `残る \(0\) 次の項が正であることは、巨大 CM 代数の非自明性 \(\mathfrak{m} B\ne B\) の` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L141) |
+| 145 | `\(D\) は正則でないので、比較を直接示せる場所（命題 7.2：\(K_0\) が Koszul 複体で生成される）と` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L145) |
+| 147 | `**正則な基底をとる**：\(D\) の中に、\(D\) がその上有限で \(\operatorname{Frac}(D` | [2.2](2.2.md#paper-ja-L147) |
+| 148 | `**Galois にする**：比べたい複体は \(D\) 上にあって \(A_D\) からは来ないので、その類を \(A` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L148) |
+| 150 | `\(E\) についても同様に \(A_E\)、\(E'\)、\(G_E\)、\(a_E = \operatorname{` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L150) |
+| 153 | `\(\sigma\in G_D\) に対し、\(C_D\) に \(R\to D'\xrightarrow{\sigma` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L153) |
+| 156 | `\(\chi\) を変えずに \(D\) と \(E\) を1つずつ置き換える。個々の値はひねりで変わりうるが、Galo` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L156) |
+| 158–161 | `**置き換え 1**（\(D'\to C_D\)、補題 9.2）．perfect 複体でのノルム比較（§5）により \[` | [(5.3)](%285.3%29.md#paper-ja-L158) |
+| 163–167 | `**置き換え 2**（\(E'\to C_E\)、式 （9.1））．ランク無視の圏でのノルム比較（§6）により、各 \(` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L163) |
+| 169–172 | `**正値性**（補題 9.6）．両側が CM もどきなので、（2.2） の右辺の各項は \(0\) 次の項だけになり、正` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L169) |
+| 175 | `2回の置き換えは同じ型の議論である。右の因子 \(T\) を \(C_T\) に置き換えるため、左の因子の自由分解と \` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L175) |
+| 177 | `普通の長さで測ると元の \(\chi\)（Galois でひねっても変わらない）` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L177) |
+| 178 | `\(X\otimes C_T\) を \(\lambda\) で測ると置き換えた量（ひねりで変わりうる）` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L178) |
+| 180 | `の2つが、共役の和の上で一致する。一致の理由は「正則な基底 \(A\) から来る類では一致する」と「共役の和は有理的に ` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L180) |
+| 182–194 | `&#124; &#124; 置き換え 1 &#124; 置き換え 2 &#124; &#124; --- &#124; --- &#124; --- &#124; &#124; 左の因子 &#124; \(E'\) &#124; ` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L182) |
+| 196 | `置き換え 2 で左の因子 \(C_D^\sigma\) が有限加群でないために、有限近似と「ランク \(o(s_n)\)` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L196) |
+| 199 | `以下では、二つの置き換えと正値性に共通する四つの道具を先に抽象的に述べ（§3）、評価先を長さ付き代数から作る（§4）。そ` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L199) |
+| 200–212 | `&#124; 共通の道具（§3） &#124; 実現（§5 / §6） &#124; 論文の状況（§7） &#124; 核の場合（§9） &#124; &#124; --- &#124; -` | [03-proof-strategy](supplement/03-proof-strategy.md#paper-ja-L200) |
+| 421 | `**Lean:** &#96;NormalizedLength&#96;（&#96;PerfectComplex.NormalizedLengt` | [04-length-algebra](supplement/04-length-algebra.md#paper-ja-L421) |
+| 424 | `\(A\) を可換環、\(z=(z_1,\dots,z_e)\) をその元の有限列とし、\(z^v=(z_1^v,\do` | [04-length-algebra](supplement/04-length-algebra.md#paper-ja-L424) |
+| 426 | `\(A\) がネーター局所環で \(\sqrt{(z)}=\mathfrak{m}_A\) なら、\((z)C\)-冪ね` | [04-length-algebra](supplement/04-length-algebra.md#paper-ja-L426) |
+| 474 | `**Lean:** &#96;LengthAlgebra.FiniteQuotientEquivalence&#96; の &#96;finit` | [04-length-algebra](supplement/04-length-algebra.md#paper-ja-L474) |
+| 636 | `**Lean:** 評価元は &#96;SupportedPerfectHomotopy&#96;、評価は &#96;LengthAlgebra` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L636) |
+| 782 | `ここでは、補題 3.11 の仮定（台の条件と Koszul 振幅の条件）と、補題 3.12 の全射を perfect 複` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L782) |
+| 784 | `\(P\) が \(0\) 次から \(m\) 次に有限射影項をもつなら、\(K_v\otimes P\otimes C` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L784) |
+| 786–790 | `一方、\(S=T\) が局所環で \(P\) の \(0\) 次の項が \(T^{\oplus\beta_0}\)、\(` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L786) |
+| 793–797 | `\(e\) を列 \(z\) の長さとし、全ての \(v\ge1\) と \(j>0\) で \(\lambda H_j` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L793) |
+| 800 | `台から \(z_j^v\) の零ホモトピーを選び、台の条件を得る。\(P\) の項によるフィルトレーションの各段は \(` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L800) |
+| 802 | `\(A\) が正則局所環、\(z\) が正則パラメータ系で \((C,\lambda)\) が \(\lambda\)-` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L802) |
+| 804 | `古典的には、\(B\) を巨大 CM 代数、\(F\) を長さ \(m\) で有限長ホモロジーの有限自由複体とすると、同` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L804) |
+| 805 | `**Lean:** &#96;LengthAlgebra.PerfectVanishing&#96; の &#96;lambdaHomology` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L805) |
+| 808–811 | `補題 5.10 の \(P\) の \(0\) 次の項を \(T^{\oplus\beta_0}\) とし、\(P\) ` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L808) |
+| 814 | `\(H_0(P\otimes C) = C^{\oplus\beta_0}/\operatorname{im}(d_1\` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L814) |
+| 816 | `**Lean:** &#96;LengthAlgebra.PerfectMinimalLowerBound&#96;（極小性から全射を構` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L816) |
+| 818 | `普通の評価についても準同型と共役和の比較はあるが、この消滅の入力は一般には満たさない。` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L818) |
+| 827 | `**消滅と下界**：補題 5.10、5.11 が成り立つ。` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L827) |
+| 831 | `系 4.11 により Koszul 有限性、正次数の Koszul ホモロジーの長さ零、\(e_\lambda(z;C)` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L831) |
+| 833 | `\(\lambda\)-CM 代数についても、命題 4.15 を通して同じである。` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L833) |
+| 834 | `**Lean:** &#96;LengthAlgebra.FlatRealization&#96; の &#96;perfectEuler_co` | [05-perfect-complexes](supplement/05-perfect-complexes.md#paper-ja-L834) |
+| 935 | `段ごとの長さ \(0\) は正規化超極限の長さ \(0\) を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の` | [06-rank-negligible-category](supplement/06-rank-negligible-category.md#paper-ja-L935) |
+| 1710 | `この付録では、§3、§4 の枠組み（長さ関数、長さ \(0\) の加群による Serre 商、長さ付きアーベル圏に値をと` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1710) |
+| 1712 | `以下では、評価の係数（CM な対象）を次の三つの型に分けて呼ぶ。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1712) |
+| 1714 | `型 (i)：有限生成加群と普通の長さ（評価先は有限長加群の圏）。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1714) |
+| 1715 | `型 (ii)：巨大代数と長さ関数 \(\lambda\)（評価先は \(\mathcal{A}_\lambda\)）。C` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1715) |
+| 1716 | `型 (iii)：有限加群の列と正規化した長さ \(\lim_\mathcal{U}\ell(\cdot)/s_n\)（評` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1716) |
+| 1721 | `CLMST は、混標数の完備局所整域 \(R\) と、その中の正則な基底 \(A = W(k)[[x_2,\dots,x` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1721) |
+| 1723 | `**Def. 2.2.1、Prop. 2.2.3、2.2.6**：Faltings の正規化長さ \(\lambda_\` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1723) |
+| 1724 | `**Thm. 4.0.3**：\(C\) は \(A\) 上 \(g\)-almost flat で、\(g\)-alm` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1724) |
+| 1725 | `**Cor. 4.0.4**：\(A_n\otimes_A R\) の任意のパラメータ系 \(\bar y\) について` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1725) |
+| 1726 | `**Prop. 4.0.10**：almost で同型な加群は \(\lambda_\infty\) が等しく、特に a` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1726) |
+| 1727 | `**Prop. 4.0.14**：\(\lambda_\infty(C/\bar yC) = p^{-nd}\,e(\b` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1727) |
+| 1728 | `**Cor. 4.0.18**：perfectoid Hilbert–Kunz 重複度 \(e_{\mathrm{per` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1728) |
+| 1730 | `CLMST には、複体の Euler 特性、\(K_0\)、Dutta 重複度、lim CM 列は現れない。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1730) |
+| 1733–1749 | `&#124; この解説 &#124; CLMST &#124; 関係 &#124; &#124; --- &#124; --- &#124; --- &#124; &#124; 長さ関数 \(\lambda\)` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1733) |
+| 1752 | `CLMST が与えるのは「\(\lambda\)-CM で、パラメータ商の長さが重複度に等しい長さ付き代数が存在する」と` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1752) |
+| 1757 | `BHM は、正則局所環 \(T\) 上の正値性を、両側の商整域 \(R = T/P\)、\(S = T/Q\) の「極限` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1757) |
+| 1759 | `**lim CM 列**（Def. 1.1、4.2）：有限生成 \(R\) 加群の列 \((M_n)\) で、あるパラメ` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1759) |
+| 1760 | `**弱い lim CM**（§4.1）：\(\chi_1(x;M_n) = o(\nu(M_n))\)。lim CM な` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1760) |
+| 1761 | `**存在**（Thm. 5.4）：標数 \(p\) で \(R\) が F-有限なら \(\{F^e_*R\}\) は ` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1761) |
+| 1762 | `**正値性**（Thm. 6.1）：\(R\)、\(S\) がともに lim CM 列 \((M_n)\)、\((N_n` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1762) |
+| 1764 | `Thm. 6.1 の証明は3段である。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1764) |
+| 1766 | `消滅定理と双加法性により、各 \(n\) で厳密に \(\chi(M_n,N_n) = \operatorname{ra` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1766) |
+| 1767 | `両側のパラメータ系の Koszul 複体を同時に使う多重 Tor の評価で、\(i\ge1\) の \(\ell\ope` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1767) |
+| 1768 | `\(\ell(M_n\otimes N_n)\ge\nu(M_n)\nu(N_n)\ge\operatorname{ra` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1768) |
+| 1770 | `Galois 拡大や K 理論の降下は現れない。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1770) |
+| 1774 | `**lim CM は列の圏での \(\lambda\)-CM である。** §6.2 の列の Serre 商で、長さを ` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1774) |
+| 1776 | `パラメータ商の長さの有限性は自動的である（\(\nu\le\ell H_0\le\ell(R/x)\,\nu\)、BHM` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1776) |
+| 1777 | `\(\nu\) で正規化すると \(L((M_n/\mathfrak{m} M_n)) = 1\) で、非自明性も自動的` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1777) |
+| 1778 | `弱い lim CM は弱い \(\lambda\)-CM（\(\lambda\)-重複度 \(=\) \(0\) 次の長` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1778) |
+| 1780 | `BHM の対象は代数ではなく加群の列だが、3 の一般論は \(C\) の代数構造をほとんど使わないので、この違いは問題に` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1780) |
+| 1781 | `**標数 \(p\) では同じものの二つの見方である。** 列として \(\{F^e_*R\}\) は lim CM（B` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1781) |
+| 1782 | `**混標数では二つの見方が分かれる。** \(\lambda\)-CM 代数（型 (ii)）を lim CM 列（型 (` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1782) |
+| 1783 | `**列の使い方が逆である。** BHM では列は係数（CM な対象）の側にあり、評価されるのは単一の有限加群どうしの T` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1783) |
+| 1787–1800 | `&#124; &#124; BHM Thm. 6.1 &#124; 元論文 &#124; &#124; --- &#124; --- &#124; --- &#124; &#124; CM な対象 &#124; 両側の ` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1787) |
+| 1801 | `CM な対象が有限加群なら、普通の長さで測れるので、二つの評価が基底から来る類で一致すること（定理 5.9 の仮定）は消` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1801) |
+| 1805 | `BHM Thm. 4.6（パラメータ系への非依存性）の \(\lambda\)-CM 版が一般の \(\lambda\)` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1805) |
+| 1806 | `lim CM 列から巨大 CM 加群が出ること（BHM §9、Dietz 閉包）の \(\lambda\)-CM 版。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1806) |
+| 1807 | `BHM §6 の番号が Crelle 版でも同じか。` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1807) |
+| 1812 | `元論文と同日に、同じ方法を使う論文が二つ公開されている。OpenAI, *Lech's multiplicity con` | [07-prior-work](supplement/07-prior-work.md#paper-ja-L1812) |
+| 1817 | `この付録は、定理 8.5 の \(\lambda\)-CM 性がなぜ成り立つのかを、直感的な水準で説明する。議論はまだ精` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1817) |
+| 1821 | `\(D = R/P\)、\(E = R/Q\) は一般には CM でなく、\(\operatorname{Tor}_i^` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1821) |
+| 1823 | `**残る部分**：Euler 特性。\(D\)、\(E\) を \(\lambda\)-CM 代数 \(C_D\)、\(` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1823) |
+| 1824 | `**消える部分**：拡大した側の高次ホモロジー。\(C_D\)、\(C_E\) が \(\lambda\)-CM なので` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1824) |
+| 1826 | `消えるのは「\(\lambda\) で測ると \(0\)」という意味であり、群として \(0\) になるわけではない。ま` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1826) |
+| 1828 | `以下では、2 の前提である「拡大すると \(\lambda\)-CM になる」ことを三つの見方で説明する。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1828) |
+| 1832 | `\(A\) を \(D\) の中の正則な基底（Cohen–Gabber）とし、\(D\) は \(A\) 上有限とする。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1832) |
+| 1834 | `Auslander–Buchsbaum により、\(D\) が CM であることと、\(D\) が \(A\) 上自由で` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1834) |
+| 1835 | `\(A\) のパラメータ系 \(t\) について \(H_i(t;D) = \operatorname{Tor}^A_i` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1835) |
+| 1837 | `したがって、拡大の目標は「\(D\) を \(A\) の塔の上でほぼ平坦にすること」と言い換えられる。CLMST の T` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1837) |
+| 1841–1845 | `標数 \(p\) では、増大度の比較として理解できる。例として Macaulay の曲線 \[ D = k[[s^4, ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1841) |
+| 1847 | `パラメータ系 \(z\) を \(q\) 乗すると、主要項は \(\ell(D/z^{[q]})\approx q^2 ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1847) |
+| 1848 | `一方、高次の項 \(\ell H_1(z^{[q]};D)\) は \(q\) によらず有界である（一般化 CM 環で、` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1848) |
+| 1849 | `\(D^{1/q}\) の段で \(\lambda = \ell/q^h\) と正規化すると、主要項は \(e(z;D)` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1849) |
+| 1851 | `一般の場合も、Roberts の Frobenius ホモロジー定理 \(\ell H_i(z^{[q]};D) = o` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1851) |
+| 1853 | `ここで効いているのは \(D\) のすべての元の \(q\) 乗根をとること（\(D^{1/q}\)）であって、基底 \` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1853) |
+| 1857 | `見方 2 で起きていることを、次数ごとに分けて書く。以下は標数 \(p\) の話である。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1857) |
+| 1860–1864 | `\(D^{1/q}\) は Frobenius によって環として \(D\) と同型であり、この同型で \(D\) の元` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1860) |
+| 1867–1877 | `&#124; 次数 &#124; 対応する局所コホモロジー &#124; \(\ell_D H_i(z^{[q]};D)\) の増大度 &#124; \(q^{` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1867) |
+| 1878 | `表の「対応する局所コホモロジー」は次の意味である。Koszul 複体は自己双対で \(H_i(z;D)\cong H^{` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1878) |
+| 1880 | `\(i = 0\) の項は最上次の \(H^h_\mathfrak{m}(D)\) に対応し、\(D\) の次元 \(h` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1880) |
+| 1881 | `\(i\ge 1\) の項は、それより下の \(H^{h-i}_\mathfrak{m}(D)\) に対応する。これは「` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1881) |
+| 1883 | `CM であることは \(H^j_\mathfrak{m}(D) = 0\)（\(j<h\)）、つまり最上次以外の局所コホ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1883) |
+| 1885 | `Macaulay の曲線（\(h = 2\)）では、\(H^1_\mathfrak{m}(D)\cong k\) は有限` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1885) |
+| 1888 | `混標数で塔の段 \(A_n\otimes_A D\) に移るだけなら、これは平坦な基底変換なので、\(\ell H_i(` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1888) |
+| 1892 | `この小節では、見方 1（平坦性）と見方 2（増大度）を一つの描像にまとめ、Koszul 複体による見方、局所コホモロジー` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1892) |
+| 1895–1899 | `これまで「体積で割る」と書いたが、正確には次のとおりである。\(F^n_*A = A^{1/q}\) は \(A\) 上` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1895) |
+| 1901 | `\(i = 0\)：\(\beta_0^A(F^n_*D)/q^h = \ell(D/t^{[q]}D)/q^h\to ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1901) |
+| 1902 | `\(i\ge 1\)：\(\beta_i^A(F^n_*D)/q^h\to 0\)（Roberts）。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1902) |
+| 1904 | `つまり \(F^n_*D\) は、\(A\) 上で「ランク \(r q^h\) の自由加群に、相対的に小さい誤差を加えた` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1904) |
+| 1908 | `基底の根だけを足すと、\(A\) 加群として \(D\otimes_A A^{1/q}\cong D^{\oplus q` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1908) |
+| 1909 | `全ての元の根をとる \(F^n_*\) は、各部分をその次元に応じて拡大する。次元 \(w\) の素イデアル \(\ma` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1909) |
+| 1911 | `\(F^n_*\) は次元 \(h\) の部分を \(q^h\) 倍に、次元 \(w<h\) の部分を \(q^w\) ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1911) |
+| 1914 | `\(D\) は \(A\) 上有限なので、\(A\) 上の有限な自由分解をもつ。\(E^c = \operatornam` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1914) |
+| 1916 | `\(D_\mathfrak{p}\) が \(A_\mathfrak{p}\) 上自由であることと、全ての \(c>0\` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1916) |
+| 1917 | `\(E^c_\mathfrak{p}\neq0\) なら \(\operatorname{pd}D_\mathfrak{` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1917) |
+| 1918 | `\(D\) は整域なので生成点で平坦であり、\(\dim W<h\) である。\(D\) が \(S_2\)（例えば正規` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1918) |
+| 1922–1926 | `正則な \(A\) 上の局所双対により、\(j<h\) について \[ H^j_\mathfrak{m}(D)^\vee` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1922) |
+| 1929–1937 | `\(K(t;A)\) は \(k\) の自由分解なので、\(H_i(t;D) = \operatorname{Tor}^` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1929) |
+| 1939 | `Koszul 複体を深い冪 \(t^{[q]}\) にとることは、局所コホモロジー（\(H^j_\mathfrak{m}` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1939) |
+| 1942–1954 | `&#124; 見方 &#124; 欠陥を表すもの &#124; \(F^n_*\)（\(D^{1/q}\)）での振る舞い &#124; &#124; --- &#124; --- ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1942) |
+| 1958 | `平坦なら高次の Koszul ホモロジーは消える。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1958) |
+| 1959 | `\(D\) は平坦ではないが、平坦でない部分 \(E^c\) は低次元の場所 \(W\) にあり、次数 \(c\) が高` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1959) |
+| 1960 | `\(F^n_*\) は各部分をその次元の分だけ拡大するので、平坦な主要部分（次元 \(h\)）に比べて \(E^c\) ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1960) |
+| 1961 | `\(F^n_*A\) のランク \(q^h\) を単位として測ると、\(F^n_*D\) はランク \(r\) の自由加` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1961) |
+| 1963 | `基底の根だけを足すこと（\(D\otimes_A A^{1/q}\)）では全体が一様に \(q^h\) 倍になるだけで、` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1963) |
+| 1966 | `冪根をとっても、平坦でない場所 \(W\) そのものは変わらない。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1966) |
+| 1968 | `\(D^{1/q}\) は環として \(D\) と同型で、Frobenius は \(\operatorname{Spe` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1968) |
+| 1969 | `極限の \(D_{\mathrm{perf}}\) も、\(W\) の点では平坦にならない。\(\lambda\)-平坦` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1969) |
+| 1971 | `変わるのは場所ではなく相対的な大きさだけである。平坦な主要部分は \(q^h\) 倍、\(W\) の上の欠陥は \(q^` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1971) |
+| 1975 | `「\(F^n_*\) が次元 \(w\) の部分をおおよそ \(q^w\) 倍にする」ことを、高次の Tor（Betti` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1975) |
+| 1976 | `スペクトル系列の添字の正確な形（CM の場合と一般化 CM の場合で整合することは確認した）。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1976) |
+| 1977 | `混標数で perfectoid 化が \(p\) を法として \(F_*\) の役をする（tilt）とき、同じ描像がどこ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1977) |
+| 1982 | `ここまでの直感的な議論は、元論文 Theorem 2.5（定理 8.5）の標数 \(p\) の場合の証明に当たる。証明の` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1982) |
+| 1984–1999 | `&#124; &#124; 証明のステップ &#124; 直感的な議論との対応 &#124; &#124; --- &#124; --- &#124; --- &#124; &#124; (1) &#124; \(C_D` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L1984) |
+| 2003 | `誤差は二種類あり、どちらも有限段で数えている。分岐から来る誤差（ステップ (3)）は \(V(g)\) の次元による \` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2003) |
+| 2004 | `トレースの制御が要るのは \(0\) 次だけである。一般の \(H\) で \(\lambda(C_D/HC_D)\) ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2004) |
+| 2005 | `\(W\)、\(E^c\)、局所コホモロジー、次数ごとの速さは論文に出てこない。これらは Roberts の定理の中身を` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2005) |
+| 2007 | `混標数では、論文はステップ (1)–(7) を CLMST の Cor. 4.0.4、Prop. 4.0.10、4.0.` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2007) |
+| 2011 | `混標数には Frobenius がないので、見方 2 の代わりに次の仕組みが働く。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2011) |
+| 2013 | `\(A[1/g]\to D[1/g]\) が有限エタールとなる \(g\neq0\) をとる。\(g\) の外では \(` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2013) |
+| 2014 | `パラメータの \(p\) 冪根をすべて添加した塔 \(A_\infty\) への基底変換 \(D\otimes_A A_` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2014) |
+| 2015 | `その結果、平坦でない部分は「任意の \(n\) について \(g^{1/p^n}\) で消える」大きさに押し込められる。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2015) |
+| 2020 | `見方 2、3 で添加する冪根の次数は、剰余標数 \(p\) と一致していなければならない。理由を以下に述べる。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2020) |
+| 2023 | `\(D\) を正規整域、\(D'\) をその次数 \(d\) の有限拡大とする。\(d\) が \(D\) で可逆なら、` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2023) |
+| 2025 | `剰余標数 \(0\) では全ての有限拡大がこれに当たる。このため \(R^+\) は（次元 \(3\) 以上で）CM に` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2025) |
+| 2026 | `欠陥を群として消せる可能性があるのは、次数が \(p\) で割り切れる拡大だけである。Bhatt による \(R^+\)` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2026) |
+| 2030 | `\(\lambda\) で測る場合も、\(p\) と素な冪根は役に立たない。\(\ell\neq p\) とし、\(A_` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2030) |
+| 2033 | `効いているのは \(D\) のすべての元の根をとる操作である。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2033) |
+| 2035 | `標数 \(p\) では \(D^{1/q}\) がそれに当たり、\(D\otimes_A A^{1/q}\to D^{1` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2035) |
+| 2036 | `これは \(x\mapsto x^p\) が環準同型であることによる。\(x\mapsto x^\ell\)（\(\el` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2036) |
+| 2037 | `混標数でも、perfectoid 化は \(D/p\) 上の Frobenius を全射にする操作で、\(x\mapst` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2037) |
+| 2041 | `馴分岐（\(p\) と素な部分）は、\(\ell\) 冪根を添加すれば Abhyankar の補題で厳密に消える。しかし` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2041) |
+| 2045 | `元の \(D\) で高次の項が生きているのは、\(D\) が正則な基底の上で平坦でないからである。その欠陥は低次元の場所` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2045) |
+| 2047 | `この説明からわかるように、perfectoid 化が担っているのは次の二つを同時に満たすことである。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2047) |
+| 2049 | `**CM 性**：欠陥を \(\lambda\) で見えなくする（見方 3）。` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2049) |
+| 2050 | `**大きさの有限性**：\(C\) は \(A_\infty\) 上でほぼランク \(r\) なので、\(\lambda` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2050) |
+| 2052 | `原理的には、この二つを満たす長さ付き代数なら perfectoid である必要はない。\(D\)、\(E\) が小さな ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2052) |
+| 2056 | `見方 1 は \(A\) のパラメータ系についての説明である。\(\lambda\)-CM（定義 4.14）は \(D\` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2056) |
+| 2057 | `見方 2 の例で \(\ell H_1(z^{[q]};D)\) が有界であることを計算で確かめる。一般化 CM 環での` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2057) |
+| 2058 | `標数 \(p\) で、\(H_i(z;D_{\mathrm{perf}})\)（\(i>0\)）が群として \(0\) ` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2058) |
+| 2059 | `見方 3 の almost purity の正確な主張（どの塔の上で、どのイデアルについて almost か）と、CLM` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2059) |
+| 2060 | `§C.8 のトレースによる分裂の議論は群としての消滅についてのもので、正規化した欠陥については平坦な基底変換の議論しかし` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2060) |
+| 2061 | `「混標数で一般の \(D\) に \(\lambda\)-CM 代数を供給する方法は perfectoid 化しかない」` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2061) |
+| 2062 | `§C.4 の目安 \(\ell H_i(z^{[q]};D) = O(q^{h-i})\) は確かめていない。\(H_i` | [08-vanishing-at-scale](supplement/08-vanishing-at-scale.md#paper-ja-L2062) |
+| 2068 | `この付録では、\(\lambda\)-CM の代わりに \(\lambda\)-平坦（almost flat の対応物）` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2068) |
+| 2072 | `\(\lambda\)-平坦（定義 4.9）：正則な基底 \(A\) の上で、全ての有限長 \(A\) 加群 \(V\)` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2072) |
+| 2073 | `\(\lambda\)-CM（定義 4.14）：\(D\) の任意のパラメータ系 \(x\) について \(\lambd` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2073) |
+| 2074 | `\(\lambda\)-CM なら、\(D\) 上有限な正則部分環 \(A\) の上で \(\lambda\)-平坦であ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2074) |
+| 2076 | `\(\lambda\)-平坦は、有限長 \(A\) 加群の圏から Serre 商 \(\mathcal{A}_\lamb` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2076) |
+| 2078 | `古典的な対応は次のとおりである。` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2078) |
+| 2080 | `有限生成加群 \(M\) が CM であることと、\(M\) が正則な基底 \(A\) の上で自由であることは同値である` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2080) |
+| 2081 | `巨大加群では、正則な基底の上で平坦であることと、基底から来るパラメータ系が正則列であることは同値である。しかし任意のパラ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2081) |
+| 2083 | `\(\lambda\)-平坦と \(\lambda\)-CM の差は、後者の「基底によらない」部分にある。` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2083) |
+| 2086–2097 | `&#124; 使う場所 &#124; 必要な条件 &#124; &#124; --- &#124; --- &#124; &#124; §5 の比較、§6 のランク無視の圏 &#124; \(A\) ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2086) |
+| 2098 | `\(D\) 側で使う \(x\) は \(R\) から来るもので、正則な基底 \(A_D\) の元とは限らない。\(\l` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2098) |
+| 2102 | `**\(x\) を含むように基底を選ぶ。** 等標数なら \(k[[x]]\subseteq D\) は正則で、\(D\` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2102) |
+| 2103 | `**「ある \(A\) の上で \(\lambda\)-平坦なら \(\lambda\)-CM」を補題として示す。** ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2103) |
+| 2104 | `**\(\lambda\)-CM を「\(\lambda\)-平坦と、パラメータ系への非依存性」として定義し直す。** ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2104) |
+| 2109 | `CM は相対的な概念ではない。有限加群 \(M\) について depth \(M = \dim M\) という条件で、\` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2109) |
+| 2111 | `\(D\) が正則局所環 \(S\) の上で有限なら、Auslander–Buchsbaum により \(\operat` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2111) |
+| 2112–2122 | `&#124; 基底 \(S\) &#124; \(\dim S\) &#124; CM の現れ方 &#124; &#124; --- &#124; --- &#124; --- &#124; &#124; \(` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2112) |
+| 2123 | `\(D\) は \(R\) の商なので \(R\) 上で平坦になることはなく、Serre の Euler 特性で問題にな` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2123) |
+| 2125–2129 | `欠陥の層も \(D\) に内在的で、基底によって添字がずれるだけである。正則な \(A\) と \(R\) の上の局所双` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2125) |
+| 2131 | `\(\lambda\) 版では、この絶対性が自動的には成り立たない。\(C_D\) は \(D\) 上有限でないからであ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2131) |
+| 2135 | `「\(\lambda\)-CM が必要なのは \(D\) 側だけ」というのは、両側の CM 性の強さが違うという意味であ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2135) |
+| 2138 | `\(D\)、\(E\) がともに CM なら \(\operatorname{Tor}^R_i(D,E) = 0\)（\` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2138) |
+| 2140 | `**\(D\) が CM なら複体が短い。** \(D\) の \(R\) 上の自由分解 \(G\) は長さ \(\op` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2140) |
+| 2141 | `**\(E\) が CM なら短い複体の高次が消える。** \(G\otimes E\) は \(E\) 上の長さ \(` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2141) |
+| 2143 | `\(D\) が CM でなければ複体の長さが \(\dim E\) を超え、新交叉型の議論は何も言わない。\(E\) が` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2143) |
+| 2146 | `片側が平坦なら Tor は消えるが、それは平坦性が Tor を計算する環の上で成り立つときに限る。\(D\)、\(E\)` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2146) |
+| 2148 | `片側が最良でも消えない例：\(D = R/(x_1,\dots,x_l)\)（\(x\) は \(R\) 正則列で \(` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2148) |
+| 2151–2161 | `&#124; &#124; 古典版 &#124; 元論文 &#124; &#124; --- &#124; --- &#124; --- &#124; &#124; \(D\) 側 &#124; \(\operatorn` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2151) |
+| 2162 | `片側の平坦性だけで Tor を消す使い方も元論文にある。それは Tor が基底 \(A\) の上で計算される場面で、\(` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2162) |
+| 2164 | `取り替えるたびに Euler 特性はランク倍になり、その回収に K 理論の降下と Galois 閉包を使う。本文ではこれ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2164) |
+| 2168 | `上の候補 2 について、CLMST が almost の世界で使っている論法（Cor. 4.0.4 の証明）が、長さ関数` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2168) |
+| 2171–2179 | `almost 平坦性（Thm. 4.0.3）から直接得られるのは、基底 \(A\) のパラメータ系 \(x\) について` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2171) |
+| 2182 | `almost zero は任意の加群について意味をもつが、抽象的な &#96;NormalizedLength.len&#96; は全加` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2182) |
+| 2185–2189 | `正規化長さの定義（有限生成部分加群の上限）は、\(\mathfrak{m}_A\) 冪ねじれ（固定した冪とは限らない）の` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2185) |
+| 2191 | `\(\lambda^{\mathrm{ext}}\) は元の定義域では \(\lambda\) に一致し、部分商で単調で` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2191) |
+| 2192 | `\(\lambda\) の各段が \(0\) なら、帰納極限の \(\lambda^{\mathrm{ext}}\) も` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2192) |
+| 2197 | `\((C,\lambda)\) が \(A\) 上 \(\lambda\)-平坦なら、\(D\)（あるいは \(A_n\` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2197) |
+| 2201 | `\(\lambda\)-平坦性から、\(i<d\) で \(\lambda H^i(x^t;C) = \lambda\o` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2201) |
+| 2202 | `\(H_i(y;C)\) は \((y)\) で消されるので、\(K(y;C)\simeq K(y;\mathbf{R}` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2202) |
+| 2203 | `\(E_2\) の項 \(H_k(y;H^j_\mathfrak{m}(C))\) は \(H^j_\mathfrak{` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2203) |
+| 2204 | `収束先 \(H_i(y;C)\) は有限個の \(E_\infty\) の項（\(E_2\) の部分商）でフィルトレーシ` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2204) |
+| 2209 | `\(\lambda^{\mathrm{ext}}\) が矛盾なく定まり、元の \(\lambda\) と一致し、部分商で` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2209) |
+| 2210 | `\(K(y;C)\simeq K(y;\mathbf{R}\Gamma_\mathfrak{m} C)\) と、スペクト` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2210) |
+| 2211 | `\(D\) のパラメータ系だけでなく、Serre の論文の補題 5.14 で使う「\(R\) の元で像が \(D\) の` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2211) |
+| 2213 | `これが成り立てば、\(\lambda\)-CM（定義 4.14）を仮定から外し、\(\lambda\)-平坦（定義 4.` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2213) |
+| 2217 | `CLMST Cor. 4.0.4 の証明を読み、almost flat から任意のパラメータ系の almost CM 性` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2217) |
+| 2218 | `移らない場合は、本文の \(D\) 側の入力を「\(R\) の元 \(x\) についての Koszul 消滅」として明示` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2218) |
+| 2219 | `補題 5.14 の修正（§5.5 の形への置き換え）と同時に行う。` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2219) |
+| 2223 | `分岐（エタール性）の側も \(\lambda\) で測る概念を導入して別の問題に使えないか、という検討は、別のノート（&#96;` | [09-lambda-flatness](supplement/09-lambda-flatness.md#paper-ja-L2223) |
+| 2227 | `定理 7.3 と補題 7.7 について、何を主張し、どの既知の結果の上に立ち、なぜこの形で必要になるのかをここにまとめる` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2227) |
+| 2230 | `定理 7.3 は二回使われる。` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2230) |
+| 2232 | `**置き換え 1**（命題 7.5、元論文 Lemma 3.5・5.2）：\(H=A\)。底は正則な \(A_D\)、上` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2232) |
+| 2233 | `**置き換え 2**（定理 7.9）：\(H\) は補題 7.7 のもの。底は \(A_E\)、上は \(E'\)。比べ` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2233) |
+| 2235 | `どちらも双線形形式 \(\chi^R(-,-)\) を展開するのではない。片方を固定した類に二つの準同型 \(\chi_` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2235) |
+| 2239 | `置き換え 1 では \(C_D\) は類ではなく、評価 \(\chi_{C_D}\) を定める試験対象である。使うのは ` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2239) |
+| 2240 | `置き換え 2 で初めて \(C_D\)（正確には \(U=C_D/I_\sigma C_D\)）を類にする。\(U\) ` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2240) |
+| 2241 | `\(C_E\) は最後まで評価の側にとどまる。` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2241) |
+| 2243 | `K 理論をとる場所（降下の場）は一貫して \(A\) 上有限型でネーターである。非ネーター性は係数 \(H\) の側（非` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2243) |
+| 2246 | `\(A\) 上のスキーム \(Y\) と連結な \(A\) 代数 \(H\) に対し \(K(Y;H)=K(\opera` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2246) |
+| 2248 | `定理 7.3 を最初から一般の連結係数で述べているのは、置き換え 2 で現れるランク無視の圏がどのスキームの \(\op` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2248) |
+| 2251 | `被覆 \(U\to X\) について \(F\) が降下を満たすとは、\(F(X)\) が \(F\) の Cech 図` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2251) |
+| 2253 | `**Galois 降下**：\(U=\operatorname{Spec} L\to X=\operatorname{S` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2253) |
+| 2254 | `**cdh 降下**：Nisnevich 四角形と抽象爆発四角形（\(Y\to X\) 固有、閉集合 \(Z\) の外で` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2254) |
+| 2255 | `**構成可能的・連接的**：捲れ係数のエタールコホモロジーは固有底変換から cdh 降下を満たす。KH、truncati` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2255) |
+| 2256 | `**圏の降下と不変量の降下**：エタールな Galois 被覆について \(\operatorname{Perf}(K)` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2256) |
+| 2258 | `\(\operatorname{Spec} T\to\operatorname{Spec} A\) は一般に cdh 被` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2258) |
+| 2262 | `**cdh 降下（既存の入力）**：\(I=\operatorname{fib}(K_\mathbb{Q}\to\mat` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2262) |
+| 2263 | `**有限忠実平坦な被覆の降下（Lemma 3.2）**：転送との合成が局所的に階数 \(a\) 倍なので、有理係数では ` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2263) |
+| 2264 | `**\(\tau\) 降下（Lemma 3.3）**：\(\tau\) は cdh 被覆と有限忠実平坦な被覆で生成される` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2264) |
+| 2265 | `**\(hG\) との同一視（§3.3）**：両辺が \(\tau\) 層なので、被覆が切断をもつ場合に帰着する。切断の` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2265) |
+| 2267 | `平坦な場合でも (4) で cdh 降下が要る。転送から得られるのは \(L(A)\) が \(L(T)\) のレトラク` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2267) |
+| 2270 | `元論文は平坦性も tame 分岐も仮定しない。分岐は二か所で別の仕組みで吸収される。` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2270) |
+| 2272 | `**K 理論の側**：有理化（\(&#124;G&#124;\) と階数が可逆）と cdh 降下（非平坦性と分岐の軌跡を次元の低い問題へ押し` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2272) |
+| 2273 | `**長さの側**：判別式型の \(g\in A\) で \(A[1/g]\to D[1/g]\) は有限エタールである。` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2273) |
+| 2275 | `Galois 降下が要る理由は perfectoid 化そのものより「\(D\) が正則でない」ことにある。\(\lam` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2275) |
+| 2279 | `\(H=A\) の場合は既知の理論から導ける可能性が高い（推測）。\(E\) は cdh 局所なので \(L_{\mat` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2279) |
+| 2280 | `元論文が新しい点として挙げるのは「任意の連結な結合的係数での有限全射降下」（§1.2 末）である。係数 \(H\) はス` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2280) |
+| 2284 | `有理化と \(E\) をとる操作で、TC・\(\mathrm{HN}\)（de Rham・シントミックの側）は打ち消し合` | [10-k-theory-descent](supplement/10-k-theory-descent.md#paper-ja-L2284) |

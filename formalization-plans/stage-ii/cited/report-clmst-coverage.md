@@ -1,7 +1,7 @@
 # 現在地
 
-- 段：**NB-W4 段1 完了**。
-- 一覧：済み 1／全体 4 段。
+- 段：**NB-W4 段2 完了**。
+- 一覧：済み 2／全体 4 段。
 - 作業場所：`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-cited`。枝：`research/cited-coverage`。開始時に main `802b8752c` を取り込んだ。
 - 確認は静的照合。Lean・exposition・生成器・review の編集、ビルド、鍵の使用なし。
 
@@ -325,3 +325,7 @@ none は本体・固定版 Mathlib のソース検索で対応が確認できな
 ### 段1　BS の目次
 
 [BS の目次](../../../research/bs-coverage/toc.md)に著者版の版情報と SHA-256、18 節の英語題・開始ページ・番号付き項目数を記録した。PDF の目次と各節の開始ページを照合し、項目数が目録の 211 件と一致することを確認した。
+
+### 段2　本論文の補足
+
+[原稿の段落表](../../../research/paper-coverage/notes/README.md)に「はじめに」・解説 §1–§2・付録 B–E の転記先を記録した。新規 254 ブロックを 4 項目・1 節と補足へ配し、NB-W2 の保留 22 ブロックを解説 §4–§6 の補足へ移した。補足は計 10 ファイル。付録 A は対象外。未確認と明記された議論は断り書きごと残し、省いた実装状況・照合時点は段落表の前に列挙した。[証拠目録](../../../evidence/cited/nb-w4-supplement/manifest.json)。

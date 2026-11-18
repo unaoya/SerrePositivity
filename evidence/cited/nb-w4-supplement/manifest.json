@@ -1,0 +1,38 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/cited/nb-w4-supplement",
+ "commit": "802b8752ce8bd9fb0fbdd693300e003e64ce488e",
+ "made_by": "NB-W4 static source review",
+ "files": [
+  {
+   "path": "parse.py",
+   "sha256": "900901ce5904af1fa995008cbc2888f709f6140b8e73892ad2df8e16810b9ad9",
+   "bytes": 6601
+  },
+  {
+   "path": "prose.py",
+   "sha256": "cea180c136b4e8d4942b245ff5492ed7533bbd5453f68c47da9c8bf6ae1b7e19",
+   "bytes": 3733
+  },
+  {
+   "path": "supplement.py",
+   "sha256": "7269ee6ba86bff10165dc48d7f395eabf1616a42e8804a990c8d043d3fe71f11",
+   "bytes": 11992
+  },
+  {
+   "path": "nbw2-blocks.json",
+   "sha256": "87a1bdce3ab46de1f4aa5f91c25ad9589f80a03744e76e9f6c52aebf2b4ae6ee",
+   "bytes": 385425
+  },
+  {
+   "path": "supplement-audit.json",
+   "sha256": "9e557688aa7e82651aff59a83629a5d5b56530699d0fcd1a08d74bb291b396a8",
+   "bytes": 275
+  },
+  {
+   "path": "supplement-dispositions.json",
+   "sha256": "4fe687aed7eca3215f7522264256b38c72e1deff78060a66331b25cdd8afbaa8",
+   "bytes": 514777
+  }
+ ],
+ "total_bytes": 922803
+}
