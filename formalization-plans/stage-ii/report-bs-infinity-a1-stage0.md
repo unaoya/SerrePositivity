@@ -11991,3 +11991,59 @@ Truncated.HomotopyCategory.homMk (cosliceFiberEdge _ _ f) =
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,393 から 32,768 行。
 
 一覧：済み 75／全体 109（うち追加 74）
+
+
+### R06.2P — discreteRightKan_projectedLegs_comp
+親：R06。状態：紙のみ（pending）。依存：R06.2Y・R06.2O・R06.2J・R06.2I。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let i := nerveOppositeIso (C := C)
+    let F := U.map i.hom ≫ discretePresheaf P
+    let G := U.map i.hom ≫ discretePresheaf Q
+    let L := smallLeftUnstraighteningBaseIso i (discretePresheaf P)
+    let R := smallLeftUnstraighteningBaseIso i (discretePresheaf Q)
+    let m := L.hom ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ) ≫ R.inv
+    let j₀ := U.map m ≫ leftElementsRightKanComparison G
+    let j₁ := leftElementsRightKanComparison F
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let v₀ := SSet.opObjEquiv.symm (functorVertex G)
+    let v₁ := SSet.opObjEquiv.symm (functorVertex F)
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    ∀ (d : (U.obj (smallLeftUnstraightening F)) _⦋0⦌)
+      (v : (PresheafInfinity (nerve C)).op _⦋0⦌)
+      (f₀ : (vertexFiber q₀ v) _⦋0⦌) (f₁ : (vertexFiber q₁ v) _⦋0⦌),
+    f₀.val = (j₀ ≫ pullback.fst q₀ δ).app (Opposite.op ⦋0⦌) d →
+    f₁.val = (j₁ ≫ pullback.fst q₁ δ).app (Opposite.op ⦋0⦌) d →
+    Truncated.HomotopyCategory.homMk (edgeOp (nativeDiscreteEdge φ).toTruncated) ≫
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ v f₁) =
+      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ v f₀)
+```
+
+素：190〜270行。係数2：380〜540行。
+
+元の離散変換に沿う密度脚の合成を反対圏へ移し、指定した右 Kan の二つの添字の脚に同定する。
+
+原典：Kerodon §4.4（Tag 01EM）と §9.3（Tag 06FR）。HTT 5.1.5.6 の指定した右 Kan 添字の照合。
+
+使う既存の宣言：
+
+- `densityLegAt_baseAction_comp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean:148
+- `leftElementsRightKanComparison_point_edge` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityLeg.lean:100
+- `nativeDiscreteEdge_evaluation_hom` @ SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean:61
+- `compStruct_nonempty_of_homMk_fac` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/InvertibleEdgeLifting.lean:157
+- `compStructOp` @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/Opposite.lean:159
+
+一覧：済み 75／全体 110（うち追加 75）
+
+### 11-18：R06.2P の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2P|203|190〜270|380〜540|7,382|9|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,768 から 32,971 行。
+
+一覧：済み 76／全体 110（うち追加 75）

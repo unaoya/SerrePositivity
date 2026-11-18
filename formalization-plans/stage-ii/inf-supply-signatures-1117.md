@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：32,768行。外枠：35,681行。係数：2。
+既計上の累計：32,971行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -118,6 +118,7 @@
 |R06.2Y|verified|181|0〜0|0〜0|
 |R06.2J|verified|107|0〜0|0〜0|
 |R06.2I|verified|87|0〜0|0〜0|
+|R06.2P|verified|203|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2342,7 +2343,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4180,3 +4181,47 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `discretePresheafHom` @ SerrePositivity/InfinityCategories/Sheaves/DiscretePresheafHom.lean:28
 - `evaluateFunctorAt_precomp` @ SerrePositivity/InfinityCategories/Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories/FunctorHomEvaluationNaturality.lean:44
 - `functorHomEvaluate_edge_hom` @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointedTransformationPointHom.lean:28
+
+
+### R06.2P — discreteRightKan_projectedLegs_comp
+親：R06。状態：検証済み。依存：R06.2Y・R06.2O・R06.2J・R06.2I。
+
+```lean
+∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
+    let U := SSet.uliftFunctor.{u + 1, u}
+    let i := nerveOppositeIso (C := C)
+    let F := U.map i.hom ≫ discretePresheaf P
+    let G := U.map i.hom ≫ discretePresheaf Q
+    let L := smallLeftUnstraighteningBaseIso i (discretePresheaf P)
+    let R := smallLeftUnstraighteningBaseIso i (discretePresheaf Q)
+    let m := L.hom ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ) ≫ R.inv
+    let j₀ := U.map m ≫ leftElementsRightKanComparison G
+    let j₁ := leftElementsRightKanComparison F
+    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))
+    let v₀ := SSet.opObjEquiv.symm (functorVertex G)
+    let v₁ := SSet.opObjEquiv.symm (functorVertex F)
+    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)
+    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)
+    ∀ (d : (U.obj (smallLeftUnstraightening F)) _⦋0⦌)
+      (v : (PresheafInfinity (nerve C)).op _⦋0⦌)
+      (f₀ : (vertexFiber q₀ v) _⦋0⦌) (f₁ : (vertexFiber q₁ v) _⦋0⦌),
+    f₀.val = (j₀ ≫ pullback.fst q₀ δ).app (Opposite.op ⦋0⦌) d →
+    f₁.val = (j₁ ≫ pullback.fst q₁ δ).app (Opposite.op ⦋0⦌) d →
+    Truncated.HomotopyCategory.homMk (edgeOp (nativeDiscreteEdge φ).toTruncated) ≫
+        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ v f₁) =
+      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ v f₀)
+```
+
+素：190〜270行。係数2：380〜540行。
+
+元の離散変換に沿う密度脚の合成を反対圏へ移し、指定した右 Kan の二つの添字の脚に同定する。
+
+原典：Kerodon §4.4（Tag 01EM）と §9.3（Tag 06FR）。HTT 5.1.5.6 の指定した右 Kan 添字の照合。
+
+使う既存の宣言：
+
+- `densityLegAt_baseAction_comp` @ SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean:148
+- `leftElementsRightKanComparison_point_edge` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityLeg.lean:100
+- `nativeDiscreteEdge_evaluation_hom` @ SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean:61
+- `compStruct_nonempty_of_homMk_fac` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/InvertibleEdgeLifting.lean:157
+- `compStructOp` @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/Opposite.lean:159

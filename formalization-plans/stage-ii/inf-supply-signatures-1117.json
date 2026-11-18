@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 32768,
+  "verified_lean_lines": 32971,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3473,7 +3473,8 @@
         "R06.2O",
         "R06.2Y",
         "R06.2J",
-        "R06.2I"
+        "R06.2I",
+        "R06.2P"
       ],
       "existing": [
         {
@@ -6732,6 +6733,89 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2i-1118/manifest.json"
+    },
+    {
+      "id": "R06.2P",
+      "name": "discreteRightKan_projectedLegs_comp",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\n    let U := SSet.uliftFunctor.{u + 1, u}\n    let i := nerveOppositeIso (C := C)\n    let F := U.map i.hom ≫ discretePresheaf P\n    let G := U.map i.hom ≫ discretePresheaf Q\n    let L := smallLeftUnstraighteningBaseIso i (discretePresheaf P)\n    let R := smallLeftUnstraighteningBaseIso i (discretePresheaf Q)\n    let m := L.hom ≫ smallUnstraighteningFunctorHom (discretePresheafHom φ) ≫ R.inv\n    let j₀ := U.map m ≫ leftElementsRightKanComparison G\n    let j₁ := leftElementsRightKanComparison F\n    let δ := SSet.opFunctor.map (yonedaInfinityMap (nerve C))\n    let v₀ := SSet.opObjEquiv.symm (functorVertex G)\n    let v₁ := SSet.opObjEquiv.symm (functorVertex F)\n    let q₀ := sliceUnderProjection (SSet.yonedaEquiv.symm v₀)\n    let q₁ := sliceUnderProjection (SSet.yonedaEquiv.symm v₁)\n    ∀ (d : (U.obj (smallLeftUnstraightening F)) _⦋0⦌)\n      (v : (PresheafInfinity (nerve C)).op _⦋0⦌)\n      (f₀ : (vertexFiber q₀ v) _⦋0⦌) (f₁ : (vertexFiber q₁ v) _⦋0⦌),\n    f₀.val = (j₀ ≫ pullback.fst q₀ δ).app (Opposite.op ⦋0⦌) d →\n    f₁.val = (j₁ ≫ pullback.fst q₁ δ).app (Opposite.op ⦋0⦌) d →\n    Truncated.HomotopyCategory.homMk (edgeOp (nativeDiscreteEdge φ).toTruncated) ≫\n        Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₁ v f₁) =\n      Truncated.HomotopyCategory.homMk (normalizedCosliceFiberEdge v₀ v f₀)",
+      "dependencies": [
+        "R06.2Y",
+        "R06.2O",
+        "R06.2J",
+        "R06.2I"
+      ],
+      "existing": [
+        {
+          "name": "densityLegAt_baseAction_comp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityLegPointedComposition.lean",
+          "line": 148
+        },
+        {
+          "name": "leftElementsRightKanComparison_point_edge",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityLeg.lean",
+          "line": 100
+        },
+        {
+          "name": "nativeDiscreteEdge_evaluation_hom",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeDiscretePresheafEdge.lean",
+          "line": 61
+        },
+        {
+          "name": "compStruct_nonempty_of_homMk_fac",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/InvertibleEdgeLifting.lean",
+          "line": 157
+        },
+        {
+          "name": "compStructOp",
+          "path": "SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/Opposite.lean",
+          "line": 159
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean",
+          "line": 158,
+          "name": "discreteRightKan_projectedLegs_comp"
+        }
+      ],
+      "literature": "Kerodon §4.4（Tag 01EM）と §9.3（Tag 06FR）。HTT 5.1.5.6 の指定した右 Kan 添字の照合。",
+      "bare_lines": [
+        190,
+        270
+      ],
+      "corrected_lines": [
+        380,
+        540
+      ],
+      "method": "元の離散変換に沿う密度脚の合成を反対圏へ移し、指定した右 Kan の二つの添字の脚に同定する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean",
+      "note": "元の離散変換に沿う密度脚の合成を反対圏へ移し、指定した右 Kan の二つの添字の脚に同定する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 203,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 9,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean": "be3f2d3374cd9aaf06185192109a3a72a7e53b05a027fc153c37e39a743befc8"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "84be0e6d84b21f7eb85db41c2bd6067a090d11c3edb39646045e6a4186951889",
+        "receipt": "/tmp/is-stage5/R06.2P/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2p-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",
