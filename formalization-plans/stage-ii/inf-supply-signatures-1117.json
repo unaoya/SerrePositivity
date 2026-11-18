@@ -6845,7 +6845,7 @@
         },
         {
           "path": "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean",
-          "line": 262,
+          "line": 265,
           "name": "rightKanMovingIndex_pointComp_of_projectedLegs"
         }
       ],
@@ -6866,7 +6866,7 @@
       "additional_mathematics": true,
       "addition_kind": "existing construction comparison",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean",
-      "note": "区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "note": "区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。 対象ビルド・台帳型への代入・小監査を通過。 HTT 5.1.5.6 の文献属性を追加したあと対象ビルド・台帳型・小監査を再確認した。",
       "actual_lines": 303,
       "citation_verification": {
         "modules": 1,
@@ -6880,7 +6880,7 @@
         "source": "fresh environment after target build; no pre-merge index reuse",
         "heartbeat_limit": "unchanged; one command per declaration",
         "source_sha256": {
-          "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "2f37e9fe1e6ff0909dae6d28d56e3bc7337880e7d9fb903b6d1a02d2e84a6a42"
+          "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "a4d52d4653e3bcbf9650bcf86ef24ffd9a4ad7f3f8f216e2e768c06f97841743"
         }
       },
       "approved_type_check": {
@@ -6918,11 +6918,11 @@
         {
           "name": "rightKanMovingIndex_pointComp_of_projectedLegs",
           "path": "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean",
-          "line": 262
+          "line": 265
         },
         {
           "path": "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean",
-          "line": 243,
+          "line": 246,
           "name": "discreteWeightedSectionsMovingIndex_actual"
         }
       ],
@@ -6943,7 +6943,7 @@
       "additional_mathematics": true,
       "addition_kind": "existing construction comparison",
       "placement": "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean",
-      "note": "元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "note": "元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。 対象ビルド・台帳型への代入・小監査を通過。 HTT 5.1.5.6 の文献属性を追加したあと対象ビルド・台帳型・小監査を再確認した。",
       "actual_lines": 264,
       "citation_verification": {
         "modules": 1,
@@ -6957,7 +6957,7 @@
         "source": "fresh environment after target build; no pre-merge index reuse",
         "heartbeat_limit": "unchanged; one command per declaration",
         "source_sha256": {
-          "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean": "e52cb9b5b929c8ca0f9781bac6f61bf9b9963ce5145ca75a67e846d4c3adf915"
+          "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean": "857d5799964127f3d2c30daa7944ca26362df353951fbf054d63a5e4524c6550"
         }
       },
       "approved_type_check": {
@@ -7552,5 +7552,29 @@
       "R16",
       "R17"
     ]
+  },
+  "cap_checkpoint_1118_additional": {
+    "verified_before": 28221,
+    "verified_at_checkpoint": 33538,
+    "cumulative_limit": 35681,
+    "completed_endpoints": [
+      "R04",
+      "R05"
+    ],
+    "last_verified": [
+      "R06.2F",
+      "R06.2M"
+    ],
+    "next_group": "R06.2: selected counit, moving apex and global comparison",
+    "next_group_bare_lines": [
+      900,
+      1300
+    ],
+    "next_group_corrected_lines": [
+      1800,
+      2600
+    ],
+    "next_group_upper_total": 36138,
+    "scope": "same terminal signature; no work on R16, R17, S7, R2 or R3"
   }
 }

@@ -12128,7 +12128,7 @@ R06.2D・V・B・T・A・O は計616行（素の見込み550〜855行）。R06.2
 - `discreteRightKan_projectedLegs_comp` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean:158
 - `exists_discreteRightKan_nerve_readout` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean:48
 - `rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean:130
-- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:262
+- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:265
 
 一覧：済み 76／全体 112（うち追加 77）
 
@@ -12140,5 +12140,36 @@ R06.2D・V・B・T・A・O は計616行（素の見込み550〜855行）。R06.2
 |R06.2M|264|170〜295|340〜590|7,631|7|
 
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 32,971 から 33,538 行。
+
+一覧：済み 78／全体 112（うち追加 77）
+
+
+### 11-18：今回の停止点と引き継ぎ
+
+R04・R05 の終端と、R06.2F・M の指定添字の局所面まで完了。数学の累計33,538行（28,221行から5,317行増）、外枠まで2,143行。終端の型・仮定は台帳どおり。
+
+|次の R06.2 のまとまり|素の見込み|係数2で補正|根拠|
+|---|---:|---:|---|
+|指定区間に沿う標準錐の辺と、両端・図式・頂点の境界式|100〜150|200〜300|`joinTensorLeft`、`sliceUnderUncurry`、R06.2M|
+|同じ余単位に沿う全辺の輸送、端点への制限と合成式|270〜390|540〜780|`cocartesianPathSpaceSource_trivialKanFibration`、`RightKanConeTransport.diagram_hom`・`.apex_hom`|
+|端点の制限錐を元の指定輸送と比較し、切断の射を回収|300〜390|600〜780|`rightKan_actualIndexArrow_transportConeIso` の固定頂点版と `exists_kanTransportEndVertexIso_with_factorization_of_homMk_eq` を利用|
+|固定 Yoneda の形状同型を越えて R05 の大域比較と照合|140〜220|280〜440|`rightKanTransportIsoSquare_cone_val`、R04、R05|
+|R06.2 の結合と任意の指定比較辺への移送|90〜150|180〜300|R06.3S、制限錐の終性|
+|計|900〜1,300|1,800〜2,600||
+
+局所面は実測567行、素の見込み415〜670行。直前の指定脚10本は実測1,194行、素995〜1,525行。次のまとまりの補正後上端を足すと36,138行となり、外枠35,681行を457行超える。R06.2 の指定余単位から大域比較への結合の前で区切る。境界式の一時検査は `joinTensorLeft` に沿う図式側・頂点側と、標準単体の端点を前合成した式まで通過。元の `ι₀`・`ι₁` との端点照合と余単位への持ち上げは未検証で、一時ファイルにのみ置いた。
+
+未完の終端は R06・R08・R09-Cech・R09・R12a・R12b・R13b・R14・R15-Unit・R15a・R15b・R15c。R06.1・R06.3、R09.1、R12a.1 などの検証済みの内訳は台帳のとおり。R16・R17 は別停止点、S7・R2・R3 は今回の対象外。
+
+主な二宣言に HTT 5.1.5.6 の文献属性を付けた。属性の6行は数学の累計の外。再検証は以下のとおり。
+
+|署名|対象ビルド jobs|小監査の宣言数|台帳型|
+|---|---:|---:|---|
+|R06.2F|2,702|16|一致|
+|R06.2M|7,631|7|一致|
+
+小監査は標準三公理のみ。昼の二枠を含む鍵の更新 `657048b94` は取り込み済み（`77ba42820`）。
+
+追跡ファイルに未コミットの変更なし。旧 R2 の未追跡 Lean 4 本（HomWeightYonedaUnitPointEvaluation・Square・SquareNormalized・Values）は作業木に残した。
 
 一覧：済み 78／全体 112（うち追加 77）

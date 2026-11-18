@@ -1,5 +1,6 @@
 module
 
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Sheaves.RightKanIntervalCosliceComposition
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Definition
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceEdgeFamilies
@@ -259,6 +260,8 @@ private theorem normalizedCosliceSource_eq_of_terminalLeg
 
 /-- 区間の終点脚の切断と元の始点脚を、同じ右 Kan 図式の上で比較する。
 Kerodon §4.6 の slice と join、§7.3（Tag 02Y9）。HTT 5.1.5.6 の局所比較の境界計算。 -/
+@[cite HTT "5.1.5.6" (partial := component)
+  "指定右 Kan 比較に用いる、区間の端点への制限と添字の局所的な照合。"]
 lemma rightKanMovingIndex_pointComp_of_projectedLegs
     {J K X : SSet.{u}} [Quasicategory X] (δ : K ⟶ X)
     {v₀ v₁ : X _⦋0⦌} (e : X.Edge v₀ v₁)

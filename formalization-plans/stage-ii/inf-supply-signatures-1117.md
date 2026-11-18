@@ -4297,4 +4297,10 @@ R16.4は全pinchedHomの逆を同時に構成する新規の不足であり、�
 - `discreteRightKan_projectedLegs_comp` @ SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean:158
 - `exists_discreteRightKan_nerve_readout` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanNerveReadout.lean:48
 - `rightKanReadout_elements_vertices_eq_of_cosliceHomMk_eq` @ SerrePositivity/InfinityCategories/Sheaves/DiscreteRightKanVertexClasses.lean:130
-- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:262
+- `rightKanMovingIndex_pointComp_of_projectedLegs` @ SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean:265
+
+### 11-18：累計35,681行の区切り
+
+R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,538行（今回5,317行）。次の R06.2 の指定余単位・大域比較のまとまりは素900〜1,300行、補正1,800〜2,600行。補正上端を足した36,138行が外枠35,681行を超えるため、このまとまりの手前で区切る。
+
+一覧：済み 78／全体 112（うち追加 77）

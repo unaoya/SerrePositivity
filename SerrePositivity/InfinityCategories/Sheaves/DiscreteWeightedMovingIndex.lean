@@ -1,5 +1,6 @@
 module
 
+public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.Sheaves.MovingIndexPointClass
 public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.FaithfulNerveReadout
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointCoslicePostIso
@@ -240,6 +241,8 @@ private theorem discreteWeightedSectionsMovingIndex_of_pointHomMk
 
 /-- 元の離散前層の変換に対して、指定した右 Kan の添字の両端を同じ係数図式の上で照合する。
 Kerodon §9.3（Tag 06FR）、§7.3（Tag 02Y9）。HTT 5.1.5.6 の指定離散重みの比較。 -/
+@[cite HTT "5.1.5.6" (partial := special)
+  "小さい通常の site 上の離散前層の指定変換に対する、右 Kan 添字の比較に特殊化する。"]
 lemma discreteWeightedSectionsMovingIndex_actual
     {C : Type u} [SmallCategory C] {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q) :
     discreteWeightedSectionsMovingIndexCondition φ := by

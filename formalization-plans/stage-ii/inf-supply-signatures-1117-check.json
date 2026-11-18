@@ -138,7 +138,7 @@
     35268,
     36638
   ],
-  "ledger_sha256": "87667a7b9fc9e51ca044dd16450a2d2881ca6549abe073e1c39dba9bb0320340",
+  "ledger_sha256": "71f2f5a1c1760b8ccf8c89493d23db376bf9068c36d1ef824cbf8913fff64257",
   "reference_source_sha256": {
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/ScaffoldCoherentComparisonRestriction.lean": "eaca001013d2fdcb29b38a5c6652896da293437d0d827266f4ac760c591bf92c",
     "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/StraighteningReconstructionRepresentationComparison.lean": "268abe1ed9b74b9d96bb95b4fe73a9c03448c7595b6a59c9eade04a55e5af273",
@@ -351,7 +351,7 @@
     "SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/InfinityCategories/Opposite.lean": "d7bf6224be7f49a96b8100c382283ccda66c18fca1baa671b2b7194af07e4ba5",
     "SerrePositivity/InfinityCategories/Sheaves/NativeRightKanDensityComposition.lean": "be3f2d3374cd9aaf06185192109a3a72a7e53b05a027fc153c37e39a743befc8",
     "SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/CosliceEdgeFamilies.lean": "fe56c5d029b852b01af2522c7e360295418393911db5b550a994af021ade1fd2",
-    "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "2f37e9fe1e6ff0909dae6d28d56e3bc7337880e7d9fb903b6d1a02d2e84a6a42",
-    "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean": "e52cb9b5b929c8ca0f9781bac6f61bf9b9963ce5145ca75a67e846d4c3adf915"
+    "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "a4d52d4653e3bcbf9650bcf86ef24ffd9a4ad7f3f8f216e2e768c06f97841743",
+    "SerrePositivity/InfinityCategories/Sheaves/DiscreteWeightedMovingIndex.lean": "857d5799964127f3d2c30daa7944ca26362df353951fbf054d63a5e4524c6550"
   }
 }

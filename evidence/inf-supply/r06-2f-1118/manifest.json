@@ -3,8 +3,8 @@
   "declaration": "rightKanMovingIndex_pointComp_of_projectedLegs",
   "target_build": {
     "jobs": 2702,
-    "sha256": "a6dc0a2a3a313d406bc05ed985d69872b337760fb8705eb057aca3d6a3c7e3a2",
-    "receipt": "/tmp/is-stage5/R06.2F/build-2.log"
+    "sha256": "3f40c8af45a7ddfd6303a38e4804c82d73e1b3f8dcbff87b55b4d6be784b2173",
+    "receipt": "/tmp/is-stage5/R06.2F/build-3.log"
   },
   "type_check": {
     "sha256": "ef30b8c298836948bffa22cde6c64ef65bde3dca94401718f5397be8d3e4c7a5",
@@ -12,7 +12,7 @@
     "success": true
   },
   "axiom_audit": {
-    "sha256": "2c744fd4f61dcca47b9cdcd829fad857bca42d67b6f2eb6d2875d9a8581931dd",
+    "sha256": "bc0457a63f459706981d5ac1bfd67aca747725fbba5fd787458faff832363d6f",
     "receipt": "/tmp/is-stage5/R06.2F/target-audit-result.json",
     "modules": 1,
     "declarations": 16,
@@ -25,7 +25,12 @@
     "source": "fresh environment after target build; no pre-merge index reuse",
     "heartbeat_limit": "unchanged; one command per declaration",
     "source_sha256": {
-      "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "2f37e9fe1e6ff0909dae6d28d56e3bc7337880e7d9fb903b6d1a02d2e84a6a42"
+      "SerrePositivity/InfinityCategories/Sheaves/MovingIndexPointClass.lean": "a4d52d4653e3bcbf9650bcf86ef24ffd9a4ad7f3f8f216e2e768c06f97841743"
     }
+  },
+  "citation": {
+    "source": "HTT",
+    "number": "5.1.5.6",
+    "partial": "component"
   }
 }
