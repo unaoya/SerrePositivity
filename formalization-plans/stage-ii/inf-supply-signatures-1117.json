@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 30916,
+  "verified_lean_lines": 31235,
   "final_cap": 35681,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3712,6 +3712,11 @@
           "name": "weightedSections_rangeCech_isLimit",
           "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRelativeCech.lean",
           "line": 39
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechConePrism.lean",
+          "line": 253,
+          "name": "weightedSections_toRange_conePrism"
         }
       ],
       "literature": "HTT 6.2.2.6 の小さい通常 site の集合値Čech解消への特殊化。全族の極限比較の照合。",
@@ -3725,13 +3730,35 @@
       ],
       "method": "同じ通常Čech三角形の二単体・円柱を反対化してweightedSectionsで送る。図式面と頂点辺を同時に計算する。HEqの端点はIの元の頂点仕様で正規化する。",
       "specified_compatibility": "増大・対角・像への元の射gの類を同時に保持。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R09-Cech",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsRangeCechComparison.lean",
-      "note": "同じ通常Čech三角形の二単体・円柱を反対化してweightedSectionsで送る。図式面と頂点辺を同時に計算する。HEqの端点はIの元の頂点仕様で正規化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechConePrism.lean",
+      "note": "同じ通常Čech三角形の二単体・円柱を反対化してweightedSectionsで送る。図式面と頂点辺を同時に計算する。HEqの端点はIの元の頂点仕様で正規化する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 319,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 12,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechConePrism.lean": "ebf628fa4616546ba50dcd8a07a66f43c2049a9432f97feb071c5a27352cfc4c"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "c03f0f2e576fc6585856acb2dcc48eb1b480b6f07bc7ce3cd609484a6eb8494e",
+        "receipt": "/tmp/is-stage5/R09-Cech.1/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r09-cech-1-1118/manifest.json"
     },
     {
       "id": "R09-Cech.2",

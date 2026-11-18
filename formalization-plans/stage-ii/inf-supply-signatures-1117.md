@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：30,916行。外枠：35,681行。係数：2。
+既計上の累計：31,235行。外枠：35,681行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -63,7 +63,7 @@
 |R06|pending|—|20〜40|40〜80|
 |R08.1|pending|—|80〜120|160〜240|
 |R08|pending|—|15〜35|30〜70|
-|R09-Cech.1|pending|—|90〜150|180〜300|
+|R09-Cech.1|verified|319|0〜0|0〜0|
 |R09-Cech.2|pending|—|70〜120|140〜240|
 |R09-Cech|pending|—|25〜45|50〜90|
 |R09.1|verified|168|0〜0|0〜0|
@@ -2489,7 +2489,7 @@ let k₀ := eqToHom (congrArg HomotopyCategory.mk
 - `relativeCechDiagonal_sections_isInvertible` @ SerrePositivity/InfinityCategories/Sheaves/RelativeCechLocalSections.lean:35
 
 ### R09-Cech.1 — weightedSections_toRange_conePrism
-親：R09-Cech。状態：紙のみ（pending）。依存：R07。
+親：R09-Cech。状態：検証済み。依存：R07。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
