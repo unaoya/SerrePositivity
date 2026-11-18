@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 34354,
+  "verified_lean_lines": 34557,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3482,7 +3482,8 @@
         "R06.2Cn",
         "R06.2Ca",
         "R06.2Cc",
-        "R06.2Cm"
+        "R06.2Cm",
+        "R06.2Ct"
       ],
       "existing": [
         {
@@ -7396,6 +7397,82 @@
         "success": true
       },
       "verification_receipt": "evidence/inf-supply/r06-2cm-1118/manifest.json"
+    },
+    {
+      "id": "R06.2Ct",
+      "name": "rightKanMovingIndex_transportApex",
+      "full_type": "∀ {J K C D : SSet.{u}} [Quasicategory C] [Quasicategory D]\n    {δ : K ⟶ C} {O : K ⟶ D} {G : C ⟶ D} (α : SSet.Homotopy (δ ≫ G) O)\n    {v₀ v₁ : C _⦋0⦌} (e : C.Edge v₀ v₁)\n    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)\n    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)\n    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)\n      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)\n    (t₀ : RightKanConeTransport δ O G α v₀) (t₁ : RightKanConeTransport δ O G α v₁),\n    let s := j₀ ≫ rightKanProjection δ v₀\n    ∀ (h₀ : j₀ ≫ rightKanDiagram δ O v₀ = s ≫ O)\n      (h₁ : j₁ ≫ rightKanDiagram δ O v₁ = s ≫ O),\n    let c := (restrictJoinCone t₀.cone j₀).cast h₀\n    let d := (restrictJoinCone t₁.cone j₁).cast h₁\n    let hc := (JoinCone.vertex_cast _ h₀).trans ((restrictJoinCone_vertex t₀.cone j₀).trans t₀.cone_vertex)\n    let hd := (JoinCone.vertex_cast _ h₁).trans ((restrictJoinCone_vertex t₁.cone j₁).trans t₁.cone_vertex)\n    ∀ (hl : IsLimitCone d)\n      (k : (HomotopyCategory.mk c : hoFunctor.obj (sliceOver (s ≫ O))) ⟶ HomotopyCategory.mk d),\n    Truncated.HomotopyCategory.homMk (e.map G).toTruncated =\n      eqToHom (congrArg HomotopyCategory.mk hc).symm ≫\n        (hoFunctor.map (sliceOverProjection (s ≫ O))).toFunctor.map k ≫\n          eqToHom (congrArg HomotopyCategory.mk hd)",
+      "dependencies": [
+        "R06.2Cm",
+        "R06.2Ca"
+      ],
+      "existing": [
+        {
+          "name": "rightKanMovingIndex_cosliceCounit",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean",
+          "line": 54
+        },
+        {
+          "name": "coneCounitAtApex_shapeRestriction",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean",
+          "line": 80
+        },
+        {
+          "name": "cone_apex_eq_of_counit_fac",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean",
+          "line": 58
+        },
+        {
+          "name": "rightKan_transport_counit_atApex",
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean",
+          "line": 46
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean",
+          "line": 161,
+          "name": "rightKanMovingIndex_transportApex"
+        }
+      ],
+      "literature": "Kerodon Definition 7.3.1.2（Tag 02Y9）と HTT 5.1.5.6 の指定局所比較。",
+      "bare_lines": [
+        210,
+        290
+      ],
+      "corrected_lines": [
+        420,
+        580
+      ],
+      "method": "同じ指定余単位による輸送を共通添字へ制限し、その極限錐の比較射の頂点を元の辺として回収する。",
+      "specified_compatibility": "元の辺、射影および指定の密度脚を保つ。",
+      "status": "verified",
+      "proof_unit_parent": "R06",
+      "paper_only": false,
+      "additional_mathematics": true,
+      "addition_kind": "existing construction comparison",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean",
+      "note": "同じ指定余単位による輸送を共通添字へ制限し、その極限錐の比較射の頂点を元の辺として回収する。 対象ビルド・台帳型への代入・小監査を通過。",
+      "actual_lines": 203,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 8,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean": "60cc2db2212fdb1e43b1a45f170cc2af9aa5df42d52e5abddbefacbe0be02e8b"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "bd4e58a3c66728db805997e581447b9638e11324875a2ee6c0697d8ae3e0e07a",
+        "receipt": "/tmp/is-stage5/R06.2Ct/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2ct-1118/manifest.json"
     }
   ],
   "common_typeclass_setup": "local instance signaturePullbackLeft {E B D : SSet.{u}}\n    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) : LeftFibration (pullback.snd p k) :=\n  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩",

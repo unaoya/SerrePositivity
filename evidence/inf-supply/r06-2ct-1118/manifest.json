@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Ct",
+  "declaration": "rightKanMovingIndex_transportApex",
+  "target_build": {
+    "jobs": 4004,
+    "sha256": "5ca86cdf8b82f24512d27f0738a0094d5058bf8a00c9368e7948f79c1bf5aa72",
+    "receipt": "/tmp/is-stage5/R06.2Ct/build-1.log"
+  },
+  "type_check": {
+    "sha256": "bd4e58a3c66728db805997e581447b9638e11324875a2ee6c0697d8ae3e0e07a",
+    "receipt": "/tmp/is-stage5/R06.2Ct/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "8eb4c57f5ad6d3bcb003cf6e7a9a2548da382911a1736d005604a392d9b8fc54",
+    "receipt": "/tmp/is-stage5/R06.2Ct/target-audit-result.json",
+    "modules": 1,
+    "declarations": 8,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingTransportApex.lean": "60cc2db2212fdb1e43b1a45f170cc2af9aa5df42d52e5abddbefacbe0be02e8b"
+    }
+  }
+}

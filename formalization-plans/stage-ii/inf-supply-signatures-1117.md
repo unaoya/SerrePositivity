@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：34,354行。外枠：36,138行。係数：2。
+既計上の累計：34,557行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -127,6 +127,7 @@
 |R06.2Ca|verified|101|0〜0|0〜0|
 |R06.2Cc|verified|204|0〜0|0〜0|
 |R06.2Cm|verified|98|0〜0|0〜0|
+|R06.2Ct|verified|203|0〜0|0〜0|
 
 <!-- current-signature-state:end -->
 
@@ -2351,7 +2352,7 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm。
+親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
@@ -4492,3 +4493,44 @@ R04・R05 の終端と R06.2M の指定局所面まで検証済み。累計33,53
 - `movingConePrism_counit_naturality` @ SerrePositivity/InfinityCategories/Sheaves/MovingConePrismCounit.lean:99
 - `coneOfCosliceMap_counit_relativeIso` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCosliceCounit.lean:136
 - `sliceUnderUncurry_restrict` @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SliceMap.lean:197
+
+
+### R06.2Ct — rightKanMovingIndex_transportApex
+親：R06。状態：検証済み。依存：R06.2Cm・R06.2Ca。
+
+```lean
+∀ {J K C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    {δ : K ⟶ C} {O : K ⟶ D} {G : C ⟶ D} (α : SSet.Homotopy (δ ≫ G) O)
+    {v₀ v₁ : C _⦋0⦌} (e : C.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)
+    (t₀ : RightKanConeTransport δ O G α v₀) (t₁ : RightKanConeTransport δ O G α v₁),
+    let s := j₀ ≫ rightKanProjection δ v₀
+    ∀ (h₀ : j₀ ≫ rightKanDiagram δ O v₀ = s ≫ O)
+      (h₁ : j₁ ≫ rightKanDiagram δ O v₁ = s ≫ O),
+    let c := (restrictJoinCone t₀.cone j₀).cast h₀
+    let d := (restrictJoinCone t₁.cone j₁).cast h₁
+    let hc := (JoinCone.vertex_cast _ h₀).trans ((restrictJoinCone_vertex t₀.cone j₀).trans t₀.cone_vertex)
+    let hd := (JoinCone.vertex_cast _ h₁).trans ((restrictJoinCone_vertex t₁.cone j₁).trans t₁.cone_vertex)
+    ∀ (hl : IsLimitCone d)
+      (k : (HomotopyCategory.mk c : hoFunctor.obj (sliceOver (s ≫ O))) ⟶ HomotopyCategory.mk d),
+    Truncated.HomotopyCategory.homMk (e.map G).toTruncated =
+      eqToHom (congrArg HomotopyCategory.mk hc).symm ≫
+        (hoFunctor.map (sliceOverProjection (s ≫ O))).toFunctor.map k ≫
+          eqToHom (congrArg HomotopyCategory.mk hd)
+```
+
+素：210〜290行。係数2：420〜580行。
+
+同じ指定余単位による輸送を共通添字へ制限し、その極限錐の比較射の頂点を元の辺として回収する。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）と HTT 5.1.5.6 の指定局所比較。
+
+使う既存の宣言：
+
+- `rightKanMovingIndex_cosliceCounit` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean:54
+- `coneCounitAtApex_shapeRestriction` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:80
+- `cone_apex_eq_of_counit_fac` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:58
+- `rightKan_transport_counit_atApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:46

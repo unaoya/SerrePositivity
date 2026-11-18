@@ -12467,3 +12467,56 @@ lemma rightKan_transport_apex_eval
 台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,052 から 34,354 行。
 
 一覧：済み 84／全体 118（うち追加 83）
+
+
+### R06.2Ct — rightKanMovingIndex_transportApex
+親：R06。状態：紙のみ（pending）。依存：R06.2Cm・R06.2Ca。
+
+```lean
+∀ {J K C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
+    {δ : K ⟶ C} {O : K ⟶ D} {G : C ⟶ D} (α : SSet.Homotopy (δ ≫ G) O)
+    {v₀ v₁ : C _⦋0⦌} (e : C.Edge v₀ v₁)
+    (j₀ : J ⟶ rightKanShape δ v₀) (j₁ : J ⟶ rightKanShape δ v₁)
+    (hj : j₀ ≫ rightKanProjection δ v₀ = j₁ ≫ rightKanProjection δ v₁)
+    (hface : rightKanMovingIndexFace δ (SSet.yonedaEquiv.symm e.edge)
+      e.δ_one_yonedaEquiv_symm e.δ_zero_yonedaEquiv_symm j₀ j₁)
+    (t₀ : RightKanConeTransport δ O G α v₀) (t₁ : RightKanConeTransport δ O G α v₁),
+    let s := j₀ ≫ rightKanProjection δ v₀
+    ∀ (h₀ : j₀ ≫ rightKanDiagram δ O v₀ = s ≫ O)
+      (h₁ : j₁ ≫ rightKanDiagram δ O v₁ = s ≫ O),
+    let c := (restrictJoinCone t₀.cone j₀).cast h₀
+    let d := (restrictJoinCone t₁.cone j₁).cast h₁
+    let hc := (JoinCone.vertex_cast _ h₀).trans ((restrictJoinCone_vertex t₀.cone j₀).trans t₀.cone_vertex)
+    let hd := (JoinCone.vertex_cast _ h₁).trans ((restrictJoinCone_vertex t₁.cone j₁).trans t₁.cone_vertex)
+    ∀ (hl : IsLimitCone d)
+      (k : (HomotopyCategory.mk c : hoFunctor.obj (sliceOver (s ≫ O))) ⟶ HomotopyCategory.mk d),
+    Truncated.HomotopyCategory.homMk (e.map G).toTruncated =
+      eqToHom (congrArg HomotopyCategory.mk hc).symm ≫
+        (hoFunctor.map (sliceOverProjection (s ≫ O))).toFunctor.map k ≫
+          eqToHom (congrArg HomotopyCategory.mk hd)
+```
+
+素：210〜290行。係数2：420〜580行。
+
+同じ指定余単位による輸送を共通添字へ制限し、その極限錐の比較射の頂点を元の辺として回収する。
+
+原典：Kerodon Definition 7.3.1.2（Tag 02Y9）と HTT 5.1.5.6 の指定局所比較。
+
+使う既存の宣言：
+
+- `rightKanMovingIndex_cosliceCounit` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingCanonicalCounit.lean:54
+- `coneCounitAtApex_shapeRestriction` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:80
+- `cone_apex_eq_of_counit_fac` @ SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean:58
+- `rightKan_transport_counit_atApex` @ SerrePositivity/InfinityCategories/Sheaves/RightKanCounitAtApex.lean:46
+
+一覧：済み 84／全体 119（うち追加 84）
+
+### 11-18：R06.2Ct の対象検証
+
+|署名|実測|素の見込み|補正後の見込み|対象ビルド jobs|小監査の宣言数|
+|---|---:|---:|---:|---:|---:|
+|R06.2Ct|203|210〜290|420〜580|4,004|8|
+
+台帳型への代入と小監査を通過し、標準三公理のみ。累計 34,354 から 34,557 行。
+
+一覧：済み 85／全体 119（うち追加 84）
