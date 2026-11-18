@@ -3,7 +3,7 @@
 <!-- current-signature-state:begin -->
 ## 最新の進行状態と停止判定
 
-既計上の累計：35,056行。外枠：36,138行。係数：2。
+既計上の累計：35,427行。外枠：36,138行。係数：2。
 行別の実測は既計上の補助・共有検証組を含みうるため、合計して累計を作り直さない。
 この表が進行状態・残り見込みの現在値。後の各節は署名の型・設計・検証履歴を保持する。
 
@@ -58,9 +58,9 @@
 |R05.1|verified|99|0〜0|0〜0|
 |R05|verified|133|0〜0|0〜0|
 |R06.1|verified|163|0〜0|0〜0|
-|R06.2|pending|—|90〜150|180〜300|
+|R06.2|verified|280|0〜0|0〜0|
 |R06.3|verified|117|0〜0|0〜0|
-|R06|pending|—|20〜40|40〜80|
+|R06|verified|91|0〜0|0〜0|
 |R08.1|pending|—|80〜120|160〜240|
 |R08|pending|—|15〜35|30〜70|
 |R09-Cech.1|verified|319|0〜0|0〜0|
@@ -2355,11 +2355,11 @@ let b := nerveMap φ.mapElements ≫ SetWeight.elementsComparisonNatural Q
 - `setWeightElementsUnstraightening_naturality` @ SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean:49
 
 ### R06.2 — weightedSections_originalLeftLimitIso_specifiedMap
-親：R06。状態：紙のみ（pending）。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct・R06.2Cg・R06.2Cl・R06.2Cf。
+親：R06。状態：検証済み。依存：R05・R06.2N・R06.2L・R06.2C・R06.2K・R06.2D・R06.2V・R06.2B・R06.2T・R06.2A・R06.2O・R06.2Y・R06.2J・R06.2I・R06.2P・R06.2F・R06.2M・R06.2Pr・R06.2Cu・R06.2Cn・R06.2Ca・R06.2Cc・R06.2Cm・R06.2Ct・R06.2Cg・R06.2Cl・R06.2Cf。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
-∀ (O : Presheaf C E) (hE : IsPresentable E),
+∀ (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),
 ∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),
 let U := SSet.uliftFunctor.{u + 1, u}
 let a := U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ))
@@ -2379,9 +2379,9 @@ let cP := eqToHom (congrArg HomotopyCategory.mk
  (congrArg F ((discretePresheafInclusion C).property.1 P)))
 let cQ := eqToHom (congrArg HomotopyCategory.mk
  (congrArg F ((discretePresheafInclusion C).property.1 Q)))
- Truncated.HomotopyCategory.homMk r ≫ cP ≫
+Truncated.HomotopyCategory.homMk r ≫ cP ≫
    (weightedSections_originalLeftLimitIso O hE (discretePresheaf P) dP hdP).hom =
- cQ ≫ (weightedSections_originalLeftLimitIso O hE (discretePresheaf Q) dQ hdQ).hom ≫ k₀
+cQ ≫ (weightedSections_originalLeftLimitIso O hE (discretePresheaf Q) dQ hdQ).hom ≫ k₀
 ```
 
 素：90〜150行。係数2：180〜300行。
@@ -2437,11 +2437,11 @@ let k₀ := eqToHom (congrArg HomotopyCategory.mk
 - `sectionsConeMap_homMk_unique` @ SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean:238
 
 ### R06 — weightedSections_discrete_map
-親：R06。状態：紙のみ（pending）。依存：R06.2・R06.3。
+親：R06。状態：検証済み。依存：R06.2・R06.3。
 
 ```lean
 ∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],
-∀ (O : Presheaf C E) (hE : IsPresentable E) {P Q : Cᵒᵖ ⥤ Type u}
+∀ (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) {P Q : Cᵒᵖ ⥤ Type u}
   (φ : P ⟶ Q) (hP : HasLimit (sectionsOfDiagram P O))
   (hQ : HasLimit (sectionsOfDiagram Q O)),
   let e := (nerve.edgeMk φ).map (discretePresheafInclusion C).val

@@ -3,7 +3,7 @@
   "source_head": "7e9743b30",
   "scope": "11-18の紙：残り14署名と別停止点R16/R17を52証明単位へ分割。既検証39署名・累計28,221行は不変。新しい外枠は未承認。",
   "count_rule": "実行単位のIDを数える。元の未完16署名は型を保つ終端行として残し、補助38IDを追加（55→93、追加20→58）。親と子を二重計上しない。紙のpendingは検証済みではない。",
-  "verified_lean_lines": 35056,
+  "verified_lean_lines": 35427,
   "final_cap": 36138,
   "checkpoint_report_lines": 28500,
   "factor": 2,
@@ -3458,7 +3458,7 @@
     {
       "id": "R06.2",
       "name": "weightedSections_originalLeftLimitIso_specifiedMap",
-      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (O : Presheaf C E) (hE : IsPresentable E),\n∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\nlet U := SSet.uliftFunctor.{u + 1, u}\nlet a := U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ))\nlet DP := U.map (smallLeftUnstraighteningProjection (discretePresheaf P)) ≫ O\nlet DQ := U.map (smallLeftUnstraighteningProjection (discretePresheaf Q)) ≫ O\n∀ (h : a ≫ DQ = DP) (dP : JoinCone DP) (dQ : JoinCone DQ)\n (hdP : IsLimitCone dP) (hdQ : IsLimitCone dQ),\nlet rQ := (restrictJoinCone dQ a).cast h\n∀ (k : SSet.Edge (X := sliceOver DP) rQ dP),\nlet k₀ := eqToHom (congrArg HomotopyCategory.mk\n ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex dQ a)).symm) ≫\n Truncated.HomotopyCategory.homMk (k.map (sliceOverProjection DP)).toTruncated\nlet b := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated\nlet r := (edgeOp b).map ((truncation 2).map (weightedSections O hE))\nlet F := fun v => (weightedSections O hE).app _ (opObjEquiv.symm v)\nlet cP := eqToHom (congrArg HomotopyCategory.mk\n (congrArg F ((discretePresheafInclusion C).property.1 P)))\nlet cQ := eqToHom (congrArg HomotopyCategory.mk\n (congrArg F ((discretePresheafInclusion C).property.1 Q)))\n Truncated.HomotopyCategory.homMk r ≫ cP ≫\n   (weightedSections_originalLeftLimitIso O hE (discretePresheaf P) dP hdP).hom =\n cQ ≫ (weightedSections_originalLeftLimitIso O hE (discretePresheaf Q) dQ hdQ).hom ≫ k₀",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E),\n∀ {P Q : Cᵒᵖ ⥤ Type u} (φ : P ⟶ Q),\nlet U := SSet.uliftFunctor.{u + 1, u}\nlet a := U.map (smallUnstraighteningFunctorHom (discretePresheafHom φ))\nlet DP := U.map (smallLeftUnstraighteningProjection (discretePresheaf P)) ≫ O\nlet DQ := U.map (smallLeftUnstraighteningProjection (discretePresheaf Q)) ≫ O\n∀ (h : a ≫ DQ = DP) (dP : JoinCone DP) (dQ : JoinCone DQ)\n (hdP : IsLimitCone dP) (hdQ : IsLimitCone dQ),\nlet rQ := (restrictJoinCone dQ a).cast h\n∀ (k : SSet.Edge (X := sliceOver DP) rQ dP),\nlet k₀ := eqToHom (congrArg HomotopyCategory.mk\n ((JoinCone.vertex_cast _ h).trans (restrictJoinCone_vertex dQ a)).symm) ≫\n Truncated.HomotopyCategory.homMk (k.map (sliceOverProjection DP)).toTruncated\nlet b := ((nerve.edgeMk φ).map (discretePresheafInclusion C).val).toTruncated\nlet r := (edgeOp b).map ((truncation 2).map (weightedSections O hE))\nlet F := fun v => (weightedSections O hE).app _ (opObjEquiv.symm v)\nlet cP := eqToHom (congrArg HomotopyCategory.mk\n (congrArg F ((discretePresheafInclusion C).property.1 P)))\nlet cQ := eqToHom (congrArg HomotopyCategory.mk\n (congrArg F ((discretePresheafInclusion C).property.1 Q)))\nTruncated.HomotopyCategory.homMk r ≫ cP ≫\n   (weightedSections_originalLeftLimitIso O hE (discretePresheaf P) dP hdP).hom =\ncQ ≫ (weightedSections_originalLeftLimitIso O hE (discretePresheaf Q) dQ hdQ).hom ≫ k₀",
       "dependencies": [
         "R05",
         "R06.2N",
@@ -3498,26 +3498,63 @@
           "name": "weightedSections_originalLeftLimitIso_hom_comp",
           "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalLeftLimitComposition.lean",
           "line": 32
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalSpecifiedMap.lean",
+          "line": 98,
+          "name": "weightedSections_originalLeftLimitIso_specifiedMap"
         }
       ],
       "literature": "HTT 5.1.5.6（双対）。指定値比較の自然性の法則。",
       "bare_lines": [
-        90,
-        150
+        250,
+        325
       ],
       "corrected_lines": [
-        180,
-        300
+        500,
+        650
       ],
       "method": "全右Kan比較の自然性を同じφの全円柱へ適用する。R05を使い、定義上同じ選ばれた値への成分を回収する。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
-      "status": "pending",
+      "status": "verified",
       "proof_unit_parent": "R06",
-      "paper_only": true,
+      "paper_only": false,
       "additional_mathematics": true,
       "addition_kind": "paper decomposition; not Lean implemented",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean",
-      "note": "全右Kan比較の自然性を同じφの全円柱へ適用する。R05を使い、定義上同じ選ばれた値への成分を回収する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。"
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalSpecifiedMap.lean",
+      "note": "全右Kan比較の自然性を同じφの全円柱へ適用する。R05を使い、定義上同じ選ばれた値への成分を回収する。 紙の型のみ。Lean型検査・実装・ビルドは未実施。 型照合の表示上、IsPresentable の名前空間と let 後の字下げを明示した。 対象ビルド・台帳型への代入・小監査を通過。",
+      "pre_execution_forecast_1118": {
+        "bare_lines": [
+          90,
+          150
+        ],
+        "corrected_lines": [
+          180,
+          300
+        ]
+      },
+      "actual_lines": 280,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 6,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsOriginalSpecifiedMap.lean": "08db66c099b6f9b9470ab684c3bc4511dd846433f1649303cbe7cd9ad6fe37b2"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "412dc0fa27f4879816d501139117d0359d0dde41b8fd480e3ae96f16f17b648f",
+        "receipt": "/tmp/is-stage5/R06.2/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-2-1118/manifest.json"
     },
     {
       "id": "R06.3",
@@ -3588,7 +3625,7 @@
     {
       "id": "R06",
       "name": "weightedSections_discrete_map",
-      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (O : Presheaf C E) (hE : IsPresentable E) {P Q : Cᵒᵖ ⥤ Type u}\n  (φ : P ⟶ Q) (hP : HasLimit (sectionsOfDiagram P O))\n  (hQ : HasLimit (sectionsOfDiagram Q O)),\n  let e := (nerve.edgeMk φ).map (discretePresheafInclusion C).val\n  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))\n  Truncated.HomotopyCategory.homMk r ≫ (weightedSections_discrete O hE P hP).hom =\n    (weightedSections_discrete O hE Q hQ).hom ≫\n      Truncated.HomotopyCategory.homMk (sectionsOf_map φ O hP hQ).toTruncated",
+      "full_type": "∀ {C : Type u} [SmallCategory C] {E : SSet.{u + 1}} [Quasicategory E],\n∀ (O : Presheaf C E) (hE : SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) {P Q : Cᵒᵖ ⥤ Type u}\n  (φ : P ⟶ Q) (hP : HasLimit (sectionsOfDiagram P O))\n  (hQ : HasLimit (sectionsOfDiagram Q O)),\n  let e := (nerve.edgeMk φ).map (discretePresheafInclusion C).val\n  let r := (edgeOp e.toTruncated).map ((truncation 2).map (weightedSections O hE))\n  Truncated.HomotopyCategory.homMk r ≫ (weightedSections_discrete O hE P hP).hom =\n    (weightedSections_discrete O hE Q hQ).hom ≫\n      Truncated.HomotopyCategory.homMk (sectionsOf_map φ O hP hQ).toTruncated",
       "dependencies": [
         "R06.2",
         "R06.3"
@@ -3603,20 +3640,25 @@
           "name": "sectionsEquivalenceNatural",
           "path": "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsNaturality.lean",
           "line": 78
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscreteMap.lean",
+          "line": 36,
+          "name": "weightedSections_discrete_map"
         }
       ],
       "literature": "HTT 5.1.5.6（双対）。指定値比較の自然性の法則。",
       "bare_lines": [
-        20,
-        40
+        80,
+        120
       ],
       "corrected_lines": [
-        40,
-        80
+        160,
+        240
       ],
-      "status": "pending",
-      "placement": "SerrePositivity/InfinityCategories/Sheaves/weightedSections_discrete_map.lean",
-      "note": "上端200行超。draftsの元の値の選択を保持。",
+      "status": "verified",
+      "placement": "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscreteMap.lean",
+      "note": "上端200行超。draftsの元の値の選択を保持。 型照合の表示上、IsPresentable の名前空間と let 後の字下げを明示した。 対象ビルド・台帳型への代入・小監査を通過。",
       "additional_mathematics": false,
       "pre_decomposition_1118": {
         "dependencies": [
@@ -3634,7 +3676,39 @@
       "method": "元のweightedSections_discrete_hom_facで二つの同型を展開せず消去し、正規化した同じ辺の類を戻す。",
       "specified_compatibility": "元の指定構成を引数・等式に保持する。",
       "proof_unit_parent": "R06",
-      "paper_only": true
+      "paper_only": false,
+      "pre_execution_forecast_1118": {
+        "bare_lines": [
+          20,
+          40
+        ],
+        "corrected_lines": [
+          40,
+          80
+        ]
+      },
+      "actual_lines": 91,
+      "citation_verification": {
+        "modules": 1,
+        "declarations": 2,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "success": true,
+        "source": "fresh environment after target build; no pre-merge index reuse",
+        "heartbeat_limit": "unchanged; one command per declaration",
+        "source_sha256": {
+          "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsDiscreteMap.lean": "d31ccfa00d40652a5d81a29b9d5a17779c4bfdb13f7a94726fb990c0d0595589"
+        }
+      },
+      "approved_type_check": {
+        "sha256": "e7319e7c272c944204d2a2896dba4a70e4b900354061813eade7906ce1b0ba32",
+        "receipt": "/tmp/is-stage5/R06/expected-type.lean",
+        "success": true
+      },
+      "verification_receipt": "evidence/inf-supply/r06-1118/manifest.json"
     },
     {
       "id": "R08.1",
