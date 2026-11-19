@@ -18859,7 +18859,14 @@
       "SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.TwoRowSplit": "Consumers",
       "SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.UniqueInsertion": "Consumers",
       "SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.WordRows": "Consumers",
-      "SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.ZeroAugmentation": "Consumers"
+      "SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.ZeroAugmentation": "Consumers",
+      "SerrePositivity.InfinityCategories.HA.Section4_1_2.BarVertexInclusion": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FiniteQuotientConeRecoveryCofinality": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RelativeSectionBaseChangeBackwardPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCartesianEdge": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianEdge": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianFibration": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SpanFinalHornExtension": "Consumers"
     },
     "external_prefixes": [
       "Lean",

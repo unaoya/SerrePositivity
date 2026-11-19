@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakMarkedSpanCartesianLift
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianFibration
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.BaseChange
 
 /-! # 全辺が元の W 分母に写る底図式上の span 族の両側 fibration 性 -/

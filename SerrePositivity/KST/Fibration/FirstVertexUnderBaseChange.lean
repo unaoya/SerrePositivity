@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart
-public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangeBackwardPoint
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RelativeSectionBaseChangeBackwardPoint
 
 /-! # 元の初頂点 pullback 切断比較を、同じ指定係数成分へ戻す -/
 

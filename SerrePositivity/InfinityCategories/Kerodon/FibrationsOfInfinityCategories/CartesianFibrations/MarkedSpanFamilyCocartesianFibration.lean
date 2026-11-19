@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianEdge
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration

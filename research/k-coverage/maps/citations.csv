@@ -1907,7 +1907,7 @@ SerrePositivity/KST/Comparison/BarFundamentalRepresentatives.lean,12,KST,2.13
 SerrePositivity/KST/Comparison/BarPositiveDelooping.lean,10,KST,2.13
 SerrePositivity/KST/Comparison/BarPositiveDelooping.lean,55,KST,2.13
 SerrePositivity/KST/Comparison/BarPositiveDelooping.lean,71,KST,2.13
-SerrePositivity/KST/Comparison/BarVertexInclusion.lean,11,KST,2.13
+SerrePositivity/InfinityCategories/HA/Section4_1_2/BarVertexInclusion.lean,11,KST,2.13
 SerrePositivity/KST/Comparison/BasedPathFamily.lean,12,KST,2.13
 SerrePositivity/KST/Comparison/ChainPairContraction.lean,12,Waldhausen,§1.7
 SerrePositivity/KST/Comparison/ChainPairContraction.lean,12,Waldhausen,§1.8
@@ -7669,7 +7669,7 @@ SerrePositivity/KST/LocalizingInvariants/LaxUniversalProductComponentValues.lean
 SerrePositivity/KST/LocalizingInvariants/LaxValueProjectionAxes.lean,9,Tamme,
 SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean,7,Tamme,
 SerrePositivity/KST/LocalizingInvariants/LocalizationResolution.lean,10,Land–Tamme,
-SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyCartesianEdge.lean,9,Tamme,
+SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/MarkedSpanFamilyCartesianEdge.lean,9,Tamme,
 SerrePositivity/KST/LocalizingInvariants/PullbackDifferenceVertices.lean,13,Tamme,12
 SerrePositivity/KST/LocalizingInvariants/ReflectiveMappingAdjunction.lean,11,Tamme,11
 SerrePositivity/KST/LocalizingInvariants/ReflectiveTargetHom.lean,11,Tamme,

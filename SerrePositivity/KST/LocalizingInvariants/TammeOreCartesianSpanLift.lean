@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeOreSpanLift
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCartesianEdge
 
 /-!
 概要：指定 Tamme 分母上の実 Ore span lift は cartesian に選べる。
