@@ -703,7 +703,9 @@ run_cmd do
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.KST.Fibration).isPrefixOf mod do continue
+    -- IC-2 第1組で InfinityCategories へ移した K-F の宣言も数える（11-19）
+    unless (`SerrePositivity.KST.Fibration).isPrefixOf mod ||
+        mod == `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RelativeSectionBaseChangeBackwardPoint do continue
     if info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
       throwError "K-F: ModelCategory assumption in type of {name}"
     let axioms ← collectAxioms name
