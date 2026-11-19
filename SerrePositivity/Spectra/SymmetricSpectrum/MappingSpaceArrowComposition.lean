@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceAssociativity
 public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
@@ -15,6 +16,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensorUnitIso)
 
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
@@ -47,9 +50,9 @@ lemma mappingSpaceArrow_composition_evaluation {E F G : SymmetricSpectrum.{u}}
     (mappingSpaceEvaluation E F) (mappingSpaceEvaluation F G)
   · exact mappingSpaceArrow_evaluation f
   · exact mappingSpaceArrow_evaluation g
-  · exact pointwiseTensorAssociator_parameter_naturality (mappingSpaceArrow g)
+  · exact GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_naturality (mappingSpaceArrow g)
       (mappingSpaceArrow f) E
-  · exact pointwiseTensor_triangle (𝟙_ PointedSimplicialSet.{u}) E
+  · exact GeneralSymmetricSpectrum.pointwiseTensor_triangle (𝟙_ PointedSimplicialSet.{u}) E
 
 /-- 通常の射の合成と写像対象の点の合成が一致するという法則。 -/
 def mappingSpaceArrowCompositionLaw {E F G : SymmetricSpectrum.{u}}

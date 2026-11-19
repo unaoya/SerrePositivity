@@ -11,7 +11,13 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity SerrePositivity.SymmetricSpectrum
-open SerrePositivity.GeneralSymmetricSpectrum (level)
+open SerrePositivity.GeneralSymmetricSpectrum (level pointwiseTensorAssociator
+  pointwiseTensorAssociator_level pointwiseTensorAssociator_parameter_naturality
+  pointwiseTensorUnitIso pointwiseTensorUnitIso_level
+  pointwiseTensorPentagonLaw pointwiseTensor_pentagon pointwiseTensorTriangleLaw
+  pointwiseTensor_triangle pointwiseTensorLeftUnitLaw pointwiseTensor_left_unit)
+open SerrePositivity.PointedSimplicialSet
+  (adjoinBasepointFunctor adjoinBasepointProductIso adjoinBasepointProductIso_inv_naturality)
 open scoped Simplicial
 
 -- 基点付きの作用の随伴、各段の比較、単位・結合の整合性。
@@ -20,7 +26,7 @@ example (X : PointedSimplicialSet.{u}) : pointwiseTensorFunctor X ⊣ cotensorFu
 
 example (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorUnitIso E).hom.hom.app (FiniteBijection.of q) =
-      (λ_ (level E q)).hom := pointwiseTensorUnitIso_app E q
+      (λ_ (level E q)).hom := pointwiseTensorUnitIso_level E q
 
 example (X Y : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorAssociator X Y E).hom.hom.app (FiniteBijection.of q) =
@@ -55,7 +61,7 @@ example (K : SSet.{u}) (E F : SymmetricSpectrum.{u}) (f : simplicialTensor K E �
 
 -- Δ[0]はtensor・cotensorの両方の単位。
 example (E : SymmetricSpectrum.{u}) : simplicialTensor (Δ[0] : SSet.{u}) E ≅ E :=
-  simplicialTensorUnitIso E
+  simplicialTensorUnitNatIso.app E
 
 example (E : SymmetricSpectrum.{u}) : simplicialCotensor (Δ[0] : SSet.{u}) E ≅ E :=
   simplicialCotensorUnitIso E
@@ -63,14 +69,20 @@ example (E : SymmetricSpectrum.{u}) : simplicialCotensor (Δ[0] : SSet.{u}) E �
 -- 直積による反復比較と、そのパラメータ自然性。
 example (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
     simplicialTensor (K ⊗ L) E ≅ simplicialTensor K (simplicialTensor L E) :=
-  simplicialTensorProductIso K L E
+  (simplicialTensorProductNatIso K L).app E
 
 example (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
     simplicialCotensor (K ⊗ L) E ≅ simplicialCotensor L (simplicialCotensor K E) :=
   simplicialCotensorProductIso K L E
 
 example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpectrum.{u}) :
-    simplicialTensorProductParameterLaw f g E := simplicialTensorProduct_parameter f g E
+    ActionProductComparison.parameterLaw adjoinBasepointFunctor.{u} pointwiseTensorBifunctor.{u}
+      pointwiseTensorAssociatorNatIso.{u} adjoinBasepointProductIso.{u} f g E :=
+  ActionProductComparison.parameter adjoinBasepointFunctor.{u} pointwiseTensorBifunctor.{u}
+      pointwiseTensorAssociatorNatIso.{u} adjoinBasepointProductIso.{u} f g E
+      (adjoinBasepointProductIso_inv_naturality f g)
+      (pointwiseTensorAssociator_parameter_naturality
+        (adjoinBasepointFunctor.map f) (adjoinBasepointFunctor.map g) E)
 
 example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpectrum.{u}) :
     simplicialCotensorProductParameterLaw f g E := simplicialCotensorProduct_parameter f g E

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorCoherence
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialCotensorProductNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 

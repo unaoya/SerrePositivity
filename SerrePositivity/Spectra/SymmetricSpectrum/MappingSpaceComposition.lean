@@ -1,7 +1,9 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorCoherence
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 /-! # 基点付き写像対象の合成・単位と通常の射との対応 -/
@@ -16,6 +18,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensor)
 
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet

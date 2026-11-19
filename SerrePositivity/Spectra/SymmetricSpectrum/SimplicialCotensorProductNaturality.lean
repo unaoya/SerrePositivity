@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProductNaturality
+public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct
+public import SerrePositivity.CategoryTheory.Monoidal.Action
 public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # 反復cotensorの比較のパラメータ自然性 -/
@@ -81,6 +82,10 @@ lemma simplicialCotensorProduct_parameter {K K' L L' : SSet.{u}}
   · intro F G h
     exact simplicialTensorCotensorProductHomEquiv_pre f g F G h
   · intro F
-    exact simplicialTensorProduct_parameter f g F
+    exact ActionProductComparison.parameter adjoinBasepointFunctor.{u} pointwiseTensorBifunctor.{u}
+      pointwiseTensorAssociatorNatIso.{u} adjoinBasepointProductIso.{u} f g F
+      (adjoinBasepointProductIso_inv_naturality f g)
+      (GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_naturality
+        (adjoinBasepointFunctor.map f) (adjoinBasepointFunctor.map g) F)
 
 end SerrePositivity.SymmetricSpectrum

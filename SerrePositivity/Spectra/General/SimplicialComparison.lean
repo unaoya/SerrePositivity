@@ -4,7 +4,7 @@ public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.Spectra.General.TensorClosed
 public import SerrePositivity.Spectra.General.MappingObject
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociatorLevels
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.General.StructureMaps
 public import SerrePositivity.Spectra.General.FreeLevelQuotient
@@ -34,7 +34,7 @@ lemma simplicial_internalHom (E F : SymmetricSpectrum.{u}) :
       SymmetricSpectrum.internalHom E F := rfl
 
 lemma simplicial_pointwiseTensor (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
-    pointwiseTensor (K := circle) X E = SymmetricSpectrum.pointwiseTensor X E := rfl
+    pointwiseTensor (K := circle) X E = pointwiseTensor X E := rfl
 
 lemma simplicial_cotensor (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     cotensor (K := circle) X E = SymmetricSpectrum.cotensor X E := rfl
@@ -45,8 +45,6 @@ lemma simplicial_mappingObject (E F : SymmetricSpectrum.{u}) :
 
 lemma simplicial_pointwiseTensorAssociator (X Y : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) : pointwiseTensorAssociator (K := circle) X Y E =
-      SymmetricSpectrum.pointwiseTensorAssociator X Y E := by
-  apply CategoryTheory.Iso.ext
-  exact (SymmetricSpectrum.pointwiseTensorAssociator_module_hom X Y E).symm
+      (SymmetricSpectrum.pointwiseTensorAssociatorNatIso X Y).app E := rfl
 
 end SerrePositivity.GeneralSymmetricSpectrum

@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorUnit
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointProduct
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
@@ -32,11 +33,6 @@ def simplicialTensorProductNatIso (K L : SSet.{u}) :
   pointwiseTensorBifunctor.mapIso (adjoinBasepointProductIso K L).symm ≪≫
     pointwiseTensorAssociatorNatIso (adjoinBasepoint K) (adjoinBasepoint L)
 
-/-- 直積によるtensorの対象ごとの反復比較。 -/
-def simplicialTensorProductIso (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
-    simplicialTensor (K ⊗ L) E ≅ simplicialTensor K (simplicialTensor L E) :=
-  (simplicialTensorProductNatIso K L).app E
-
 /-- 二つのtensor・cotensorの随伴を合成した反復作用の随伴。 -/
 def simplicialTensorCotensorProductAdjunction (K L : SSet.{u}) :
     simplicialTensorFunctor L ⋙ simplicialTensorFunctor K ⊣
@@ -54,14 +50,6 @@ def simplicialCotensorProductNatIso (K L : SSet.{u}) :
 def simplicialCotensorProductIso (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
     simplicialCotensor (K ⊗ L) E ≅ simplicialCotensor L (simplicialCotensor K E) :=
   (simplicialCotensorProductNatIso K L).app E
-
-/-- tensorの直積比較はスペクトルの射に関して自然。 -/
-@[reassoc] lemma simplicialTensorProduct_naturality (K L : SSet.{u})
-    {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) :
-    (simplicialTensorFunctor (K ⊗ L)).map f ≫ (simplicialTensorProductIso K L F).hom =
-    (simplicialTensorProductIso K L E).hom ≫
-      (simplicialTensorFunctor K).map ((simplicialTensorFunctor L).map f) :=
-  (simplicialTensorProductNatIso K L).hom.naturality f
 
 /-- cotensorの直積比較もスペクトルの射に関して自然。 -/
 @[reassoc] lemma simplicialCotensorProduct_naturality (K L : SSet.{u})

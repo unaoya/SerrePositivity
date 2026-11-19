@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepoint
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialOrdinary
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
@@ -16,6 +17,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensor)
 
 open CategoryTheory
 open SerrePositivity.PointedSimplicialSet
@@ -69,16 +72,6 @@ def simplicialMappingCotensorHomEquiv (K : SSet.{u}) (E F : SymmetricSpectrum.{u
     (K ⟶ simplicialMappingSpace E F) ≃ (E ⟶ simplicialCotensor K F) :=
   (simplicialTensorMappingHomEquiv K E F).symm.trans (simplicialTensorCotensorHomEquiv K E F)
 
-/-- tensor・cotensorの評価。 -/
-def simplicialTensorEvaluation (K : SSet.{u}) (F : SymmetricSpectrum.{u}) :
-    simplicialTensor K (simplicialCotensor K F) ⟶ F :=
-  (simplicialTensorCotensorAdjunction K).counit.app F
-
-/-- tensor・cotensorの余評価。 -/
-def simplicialTensorCoevaluation (K : SSet.{u}) (E : SymmetricSpectrum.{u}) :
-    E ⟶ simplicialCotensor K (simplicialTensor K E) :=
-  (simplicialTensorCotensorAdjunction K).unit.app E
-
 /-- 通常の単体的写像対象の評価。 -/
 def simplicialMappingEvaluation (E F : SymmetricSpectrum.{u}) :
     simplicialTensor (simplicialMappingSpace E F) E ⟶ F :=
@@ -120,18 +113,5 @@ lemma simplicialHomEquiv_compatibility (K : SSet.{u}) (E F : SymmetricSpectrum.{
       simplicialTensorCotensorHomEquiv K E F f := by
   unfold simplicialMappingCotensorHomEquiv
   rw [Equiv.trans_apply, Equiv.symm_apply_apply]
-
-/-- 評価と余評価はtensor側の三角形の等式を満たす。 -/
-lemma simplicialTensor_left_triangle (K : SSet.{u}) (E : SymmetricSpectrum.{u}) :
-    (simplicialTensorFunctor K).map (simplicialTensorCoevaluation K E) ≫
-      simplicialTensorEvaluation K (simplicialTensor K E) = 𝟙 (simplicialTensor K E) :=
-  (simplicialTensorCotensorAdjunction K).left_triangle_components E
-
-/-- 評価と余評価はcotensor側の三角形の等式を満たす。 -/
-lemma simplicialTensor_right_triangle (K : SSet.{u}) (F : SymmetricSpectrum.{u}) :
-    simplicialTensorCoevaluation K (simplicialCotensor K F) ≫
-      (simplicialCotensorFunctor K).map (simplicialTensorEvaluation K F) =
-        𝟙 (simplicialCotensor K F) :=
-  (simplicialTensorCotensorAdjunction K).right_triangle_components F
 
 end SerrePositivity.SymmetricSpectrum

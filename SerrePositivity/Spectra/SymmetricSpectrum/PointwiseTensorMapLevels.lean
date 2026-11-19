@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
@@ -42,41 +43,5 @@ lemma cotensorPre_level {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
   unfold cotensorMapLevelLaw at h
   rw [cotensorMap_id] at h
   exact h
-
-/-- テンソルの生成対象の射の各段の通常のsmashの法則。 -/
-def pointwiseTensorPostLevelLaw {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    (A : SymmetricSpectrum.{u}) (q : ℕ) : Prop :=
-  SymmetricSequence.pointwiseTensorPostModuleLevelLaw sphereSequence.{u} f A
-    (pointwiseTensorPost f A) q
-
-/-- 生成対象の射は各段の通常のsmashの射になる。 -/
-lemma pointwiseTensorPost_level {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    (A : SymmetricSpectrum.{u}) (q : ℕ) : pointwiseTensorPostLevelLaw f A q := by
-  apply SymmetricSequence.pointwiseTensorPostModuleLevelLaw_of_curry sphereSequence.{u} f A
-    (Iso.refl (cotensor Y (pointwiseTensor Y A)).X)
-    (Iso.refl (cotensor X (pointwiseTensor Y A)).X)
-    (pointwiseTensorCurry Y (𝟙 (pointwiseTensor Y A)))
-    (cotensorPre f (pointwiseTensor Y A))
-  · exact pointwiseTensorCurry_level Y (𝟙 (pointwiseTensor Y A)) q
-  · exact cotensorPre_level f (pointwiseTensor Y A) q
-  · have h := pointwiseTensorUncurry_level X
-      (pointwiseTensorCurry Y (𝟙 (pointwiseTensor Y A)) ≫
-        cotensorPre f (pointwiseTensor Y A)) q
-    unfold pointwiseTensorUncurryLevelLaw at h
-    rw [pointwiseTensorUncurry_pre, pointwiseTensorUncurry_curry, Category.comp_id] at h
-    exact h
-
-/-- 両変数のテンソル射の各段の通常のsmashの法則。 -/
-def pointwiseTensorBimapLevelLaw {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    {A B : SymmetricSpectrum.{u}} (g : A ⟶ B) (q : ℕ) : Prop :=
-  SymmetricSequence.pointwiseTensorBimapModuleLevelLaw sphereSequence.{u} f g
-    (pointwiseTensorMap f g) q
-
-/-- 両変数のスペクトル射は各段の通常のsmashの射になる。 -/
-lemma pointwiseTensorMap_level {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    {A B : SymmetricSpectrum.{u}} (g : A ⟶ B) (q : ℕ) :
-    pointwiseTensorBimapLevelLaw f g q :=
-  SymmetricSequence.pointwiseTensorBimapModuleLevelLaw_of_post sphereSequence.{u} f g
-    (pointwiseTensorPost f A) q (pointwiseTensorPost_level f A q)
 
 end SerrePositivity.SymmetricSpectrum

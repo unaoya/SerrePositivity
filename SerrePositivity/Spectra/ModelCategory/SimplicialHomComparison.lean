@@ -20,15 +20,17 @@ local instance legacyPointedOrdinaryCategory :
 
 /-- Comparison in both spectrum variables with the existing chosen enrichment. -/
 def legacyPointedHomFunctorIso : eHomFunctor PointedSimplicialSet.{u} SymmetricSpectrum.{u} ≅
-    SymmetricSpectrum.pointedMappingSpaceBifunctor.{u} := by
-  exact RepresentedHomFunctor.homFunctorIso_ofParametrized
+    SymmetricSpectrum.pointedMappingSpaceBifunctor.{u} :=
+  RepresentedHomFunctor.homFunctorIso_ofParametrized
     (H := SymmetricSpectrum.pointwiseTensorBifunctor.{u})
     (a := SymmetricSpectrum.pointwiseTensorAssociatorNatIso.{u})
     (u := SymmetricSpectrum.pointwiseTensorUnitNatIso.{u})
-    (hL := fun p Q E ↦ SymmetricSpectrum.pointwiseTensorAssociator_parameter_left p Q E)
-    (hR := fun P {_ _} q E ↦ SymmetricSpectrum.pointwiseTensorAssociator_parameter_right P q E)
-    (huL := SymmetricSpectrum.pointwiseTensor_left_unit.{u})
-    (huR := SymmetricSpectrum.pointwiseTensor_triangle.{u})
+    (hL := fun p Q E ↦ GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_left p Q E)
+    (hR := fun P {_ _} q E ↦ GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_right P q E)
+    (huL := GeneralSymmetricSpectrum.pointwiseTensorBifunctor_left_unit
+      (K := PointedSimplicialSet.circle.{u}))
+    (huR := GeneralSymmetricSpectrum.pointwiseTensorBifunctor_triangle
+      (K := PointedSimplicialSet.circle.{u}))
     (B := SymmetricSpectrum.pointedMappingSpaceBifunctor.{u})
     SymmetricSpectrum.pointedMappingSpaceParametrizedAdjunction.{u}
     SymmetricSpectrum.mappingSpace_left_unit.{u}

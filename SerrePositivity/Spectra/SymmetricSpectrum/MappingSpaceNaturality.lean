@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 
 /-! # 基点付き写像対象への転置の原変数に関する自然性 -/
@@ -14,6 +15,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensor)
 
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity.PointedSimplicialSet

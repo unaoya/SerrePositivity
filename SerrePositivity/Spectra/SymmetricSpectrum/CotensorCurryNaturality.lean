@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
 
 /-! # 生成対象の射に関するテンソルとcotensorの転置の自然性 -/
@@ -14,6 +15,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensor pointwiseTensorPost tensorFreeZeroPointwiseIso)
 
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
@@ -45,55 +48,44 @@ lemma cotensorCurry_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
   erw [← h, Category.assoc, internalHomCotensorIso_pre]
   exact (Category.assoc _ _ _).symm
 
-/-- 各段のsmashを持つテンソルの生成対象の射。 -/
-def pointwiseTensorPost {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    (A : SymmetricSpectrum.{u}) : pointwiseTensor X A ⟶ pointwiseTensor Y A :=
-  (pointwiseTensorBifunctor.map f).app A
-
-/-- F_0との比較は生成対象の射と両立する。 -/
-@[reassoc]
-lemma sphereTensorFreeZeroPointwiseIso_post {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    (A : SymmetricSpectrum.{u}) :
-    ((freeAt 0).map f ▷ A) ≫ (sphereTensorFreeZeroPointwiseIso Y A).hom =
-      (sphereTensorFreeZeroPointwiseIso X A).hom ≫ pointwiseTensorPost f A := by
-  have h := congrArg (fun k => k.app A)
-    (sphereTensorFreeZeroPointwiseBifunctorIso.hom.naturality f)
-  exact h
-
 /-- 各段のsmashを持つテンソルの転置は生成対象の射に関して自然。 -/
 lemma pointwiseTensorCurry_post {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     {A E : SymmetricSpectrum.{u}} (g : pointwiseTensor Y A ⟶ E) :
-    pointwiseTensorCurry X (pointwiseTensorPost f A ≫ g) =
-      pointwiseTensorCurry Y g ≫ cotensorPre f E := by
-  rw [pointwiseTensorCurry_formula, pointwiseTensorCurry_formula,
-    ← Category.assoc, ← sphereTensorFreeZeroPointwiseIso_post, Category.assoc,
-    cotensorCurry_pre]
+    ((pointwiseTensorCotensorAdjunction X).homEquiv _ _) (pointwiseTensorPost f A ≫ g) =
+      ((pointwiseTensorCotensorAdjunction Y).homEquiv _ _) g ≫ cotensorPre f E := by
+  change (((freeZeroTensorCotensorAdjunction X).ofNatIsoLeft
+    (sphereTensorFreeZeroPointwiseNatIso X)).homEquiv A E) (pointwiseTensorPost f A ≫ g) =
+      (((freeZeroTensorCotensorAdjunction Y).ofNatIsoLeft
+        (sphereTensorFreeZeroPointwiseNatIso Y)).homEquiv A E) g ≫ cotensorPre f E
+  rw [Adjunction.homEquiv_ofNatIsoLeft_apply, Adjunction.homEquiv_ofNatIsoLeft_apply]
+  change cotensorCurry X ((tensorFreeZeroPointwiseIso X A).hom ≫ pointwiseTensorPost f A ≫ g) =
+    cotensorCurry Y ((tensorFreeZeroPointwiseIso Y A).hom ≫ g) ≫ cotensorPre f E
+  rw [← Category.assoc, ← GeneralSymmetricSpectrum.tensorFreeZeroPointwiseIso_post,
+    Category.assoc, cotensorCurry_pre]
 
 /-- 逆転置も生成対象の前合成と両立する。 -/
 lemma pointwiseTensorUncurry_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     {A E : SymmetricSpectrum.{u}} (g : A ⟶ cotensor Y E) :
-    pointwiseTensorUncurry X (g ≫ cotensorPre f E) =
-      pointwiseTensorPost f A ≫ pointwiseTensorUncurry Y g := by
-  apply (pointwiseTensorHomEquiv X A E).injective
-  change pointwiseTensorCurry X (pointwiseTensorUncurry X (g ≫ cotensorPre f E)) =
-    pointwiseTensorCurry X (pointwiseTensorPost f A ≫ pointwiseTensorUncurry Y g)
-  rw [pointwiseTensorCurry_uncurry, pointwiseTensorCurry_post, pointwiseTensorCurry_uncurry]
+    ((pointwiseTensorCotensorAdjunction X).homEquiv _ _).symm (g ≫ cotensorPre f E) =
+      pointwiseTensorPost f A ≫ ((pointwiseTensorCotensorAdjunction Y).homEquiv _ _).symm g := by
+  apply ((pointwiseTensorCotensorAdjunction X).homEquiv A E).injective
+  rw [Equiv.apply_symm_apply, pointwiseTensorCurry_post, Equiv.apply_symm_apply]
 
 /-- cotensorの前合成と生成対象のテンソル射は評価に関して両立する。 -/
 @[reassoc]
 lemma pointwiseTensorEvaluation_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     (E : SymmetricSpectrum.{u}) :
-    (pointwiseTensorFunctor X).map (cotensorPre f E) ≫ pointwiseTensorEvaluation X E =
-      pointwiseTensorPost f (cotensor Y E) ≫ pointwiseTensorEvaluation Y E := by
+    (pointwiseTensorFunctor X).map (cotensorPre f E) ≫ (pointwiseTensorCotensorAdjunction X).counit.app E =
+      pointwiseTensorPost f (cotensor Y E) ≫ (pointwiseTensorCotensorAdjunction Y).counit.app E := by
   have h := pointwiseTensorUncurry_pre f (𝟙 (cotensor Y E))
   rw [Category.id_comp] at h
   calc
-    _ = pointwiseTensorUncurry X (cotensorPre f E) :=
+    _ = ((pointwiseTensorCotensorAdjunction X).homEquiv _ _).symm (cotensorPre f E) :=
       ((pointwiseTensorCotensorAdjunction X).homEquiv_symm_apply
         (cotensor Y E) E (cotensorPre f E)).symm
     _ = pointwiseTensorPost f (cotensor Y E) ≫
-        pointwiseTensorUncurry Y (𝟙 (cotensor Y E)) := h
+        ((pointwiseTensorCotensorAdjunction Y).homEquiv _ _).symm (𝟙 (cotensor Y E)) := h
     _ = _ := congrArg (fun k => pointwiseTensorPost f (cotensor Y E) ≫ k)
-      (pointwiseTensorEvaluation_uncurry Y E).symm
+      ((pointwiseTensorCotensorAdjunction Y).homEquiv_symm_id E)
 
 end SerrePositivity.SymmetricSpectrum

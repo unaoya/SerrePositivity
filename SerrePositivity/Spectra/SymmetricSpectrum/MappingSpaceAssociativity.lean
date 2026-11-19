@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceUnitLaws
 public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
@@ -31,12 +32,12 @@ lemma mappingSpace_associativity_evaluation (E F G K : SymmetricSpectrum.{u}) :
   apply RepresentedMappingEnrichment.associativity_evaluation pointwiseTensorBifunctor.{u}
     pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
     pointedMappingSpaceAdjunction.{u} E F G K
-  · exact pointwiseTensorAssociator_parameter_left (mappingSpaceComposition F G K)
+  · exact GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_left (mappingSpaceComposition F G K)
       (pointedMappingSpace E F) E
-  · exact pointwiseTensorAssociator_parameter_right (pointedMappingSpace G K)
+  · exact GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_right (pointedMappingSpace G K)
       (mappingSpaceComposition E F G) E
-  · exact pointwiseTensor_pentagon (pointedMappingSpace G K) (pointedMappingSpace F G)
-      (pointedMappingSpace E F) E
+  · exact GeneralSymmetricSpectrum.pointwiseTensorBifunctor_pentagon (K := circle.{u})
+      (pointedMappingSpace G K) (pointedMappingSpace F G) (pointedMappingSpace E F) E
 
 /-- 基点付き写像対象の合成の結合則の等式。 -/
 def mappingSpaceAssociativityLaw (E F G K : SymmetricSpectrum.{u}) : Prop :=

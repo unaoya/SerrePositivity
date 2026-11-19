@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition
 public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
@@ -31,10 +32,10 @@ lemma mappingSpace_left_unit_evaluation (E F : SymmetricSpectrum.{u}) :
   apply RepresentedMappingEnrichment.left_unit_evaluation pointwiseTensorBifunctor.{u}
     pointwiseTensorAssociatorNatIso.{u} pointwiseTensorUnitNatIso.{u}
     pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u} E F
-  · exact pointwiseTensorAssociator_parameter_left (mappingSpaceUnit F)
+  · exact GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_left (mappingSpaceUnit F)
       (pointedMappingSpace E F) E
   · exact mappingSpaceUnit_evaluation F
-  · exact pointwiseTensor_left_unit (pointedMappingSpace E F) E
+  · exact GeneralSymmetricSpectrum.pointwiseTensor_left_unit (pointedMappingSpace E F) E
 
 /-- 写像対象の左単位則の等式。 -/
 def mappingSpaceLeftUnitLaw (E F : SymmetricSpectrum.{u}) : Prop :=
@@ -61,10 +62,10 @@ lemma mappingSpace_right_unit_evaluation (E F : SymmetricSpectrum.{u}) :
   apply RepresentedMappingEnrichment.right_unit_evaluation pointwiseTensorBifunctor.{u}
     pointwiseTensorAssociatorNatIso.{u} pointwiseTensorUnitNatIso.{u}
     pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u} E F
-  · exact pointwiseTensorAssociator_parameter_right (pointedMappingSpace E F)
+  · exact GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_right (pointedMappingSpace E F)
       (mappingSpaceUnit E) E
   · exact mappingSpaceUnit_evaluation E
-  · exact pointwiseTensor_triangle (pointedMappingSpace E F) E
+  · exact GeneralSymmetricSpectrum.pointwiseTensor_triangle (pointedMappingSpace E F) E
 
 /-- 写像対象の右単位則の等式。 -/
 def mappingSpaceRightUnitLaw (E F : SymmetricSpectrum.{u}) : Prop :=

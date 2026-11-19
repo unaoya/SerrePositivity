@@ -1,9 +1,9 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorCotensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.CategoryTheory.Adjunction.Comparison
-
 
 /-! # 通常の単体的集合による三つのHom同値の自然性 -/
 
@@ -17,6 +17,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensorPost)
 
 open CategoryTheory
 open SerrePositivity.PointedSimplicialSet

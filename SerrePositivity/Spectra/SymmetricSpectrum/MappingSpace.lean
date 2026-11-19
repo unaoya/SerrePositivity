@@ -1,14 +1,12 @@
 module
 
+public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import Mathlib.CategoryTheory.Whiskering
 public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
-
-
-
 
 /-! # 基点付き写像対象と各段のsmashの表現性 -/
 
@@ -22,6 +20,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (pointwiseTensor pointwiseTensorPost tensorFreeZeroPointwiseIso)
 
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
@@ -56,7 +56,7 @@ def mappingTensorFunctor (E : SymmetricSpectrum.{u}) :
 def mappingTensorNatIso (E : SymmetricSpectrum.{u}) :
     (freeAt 0) ⋙ tensorRight E ≅ mappingTensorFunctor E :=
   FunctorTransport.iso ((freeAt 0) ⋙ tensorRight E)
-    (fun X => pointwiseTensor X E) (fun X => sphereTensorFreeZeroPointwiseIso X E)
+    (fun X => pointwiseTensor X E) (fun X => tensorFreeZeroPointwiseIso X E)
 
 /-- パラメータ関手の射は既存の生成対象のテンソル射。 -/
 lemma mappingTensorFunctor_map {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
