@@ -1,0 +1,31 @@
+{
+  "signature": "R04.5",
+  "declaration": "rightKan_actualIndexArrow_transportConeIso",
+  "target_build": {
+    "jobs": 3133,
+    "sha256": "76729c5525d4e5b752331a4703917e450b9b69dd5f26c5d44f15dd6a1d73fe73",
+    "receipt": "/tmp/is-stage5/R04.5/build-8.log"
+  },
+  "type_check": {
+    "sha256": "6094f1d853460407c7e8834fe116232b5ab17ad792a381c30ae87e04741d402b",
+    "receipt": "/tmp/is-stage5/R04.5/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "add23be8b1fbb0aa2724559d812c79453e6a4a9e7b65ed0e299e2099213571b1",
+    "receipt": "/tmp/is-stage5/R04.5/target-audit-result.json",
+    "modules": 1,
+    "declarations": 14,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/KanExtensions/RightKanActualIndexTransport.lean": "0c78535b5a26f36350753a5d28a08b24a56083eb43c87a093590ece28c579e98"
+    }
+  }
+}

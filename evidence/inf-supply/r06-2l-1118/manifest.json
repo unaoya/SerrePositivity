@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2L",
+  "declaration": "elements_projection_leftFibration",
+  "target_build": {
+    "jobs": 2729,
+    "sha256": "12662dc58aaa582aae29ad40ac28d6f78057fbb9db041a372bd292e17e2268d4",
+    "receipt": "/tmp/is-stage5/R06.2L/build-1.log"
+  },
+  "type_check": {
+    "sha256": "6fb045b94bd7803208086d2d092ae382d5e2f74ff58ebf3540327aefcd6a3b7c",
+    "receipt": "/tmp/is-stage5/R06.2L/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "bb0b8b4661db751e66b1daf710768a820cd06b6b02e730ce908161c3cb8caab6",
+    "receipt": "/tmp/is-stage5/R06.2L/target-audit-result.json",
+    "modules": 1,
+    "declarations": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Project/SetWeightedTensors/DiscreteElementsNerveLeftFibration.lean": "926159a275c3ce14082b7da1faf6f4332d0da621085663d64f0b54e0b087f4fb"
+    }
+  }
+}

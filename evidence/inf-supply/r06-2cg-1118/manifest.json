@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Cg",
+  "declaration": "weightedSections_nativeLimitIso_hom_transportGlobal",
+  "target_build": {
+    "jobs": 7600,
+    "sha256": "6b53746eb7d83f3404e4fdb83fbe5df12e1d41e5c4317d6a5970fcbb283e9a34",
+    "receipt": "/tmp/is-stage5/R06.2Cg/build-1.log"
+  },
+  "type_check": {
+    "sha256": "709ad4cffd2483da750a78ea69b0da3c429650cdf3530a25236bd3a91797c822",
+    "receipt": "/tmp/is-stage5/R06.2Cg/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "3a53fabff44ec7d14b2b3b708fcffb85797e8453b62bf60e34f68bad71eef930",
+    "receipt": "/tmp/is-stage5/R06.2Cg/target-audit-result.json",
+    "modules": 1,
+    "declarations": 13,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsNativeGlobalApex.lean": "cc3c0b46a41aae4f109790f64a8f246490d208fefa148ce2d324c317c1129ab2"
+    }
+  }
+}

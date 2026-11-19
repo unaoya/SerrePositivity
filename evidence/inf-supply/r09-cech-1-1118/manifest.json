@@ -1,0 +1,31 @@
+{
+  "signature": "R09-Cech.1",
+  "declaration": "weightedSections_toRange_conePrism",
+  "target_build": {
+    "jobs": 10438,
+    "sha256": "14efa55212b716094d8b8544d083883c2480f5a2d202ac52f164def6e9e5723f",
+    "receipt": "/tmp/is-stage5/R09-Cech.1/build-2.log"
+  },
+  "type_check": {
+    "sha256": "c03f0f2e576fc6585856acb2dcc48eb1b480b6f07bc7ce3cd609484a6eb8494e",
+    "receipt": "/tmp/is-stage5/R09-Cech.1/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "60038a7b360fdfc6e8651877886a4adef554676201c553cc97a1f463e586b1aa",
+    "receipt": "/tmp/is-stage5/R09-Cech.1/target-audit-result.json",
+    "modules": 1,
+    "declarations": 12,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/WeightedSectionsCechConePrism.lean": "ebf628fa4616546ba50dcd8a07a66f43c2049a9432f97feb071c5a27352cfc4c"
+    }
+  }
+}

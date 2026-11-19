@@ -1,0 +1,31 @@
+{
+  "signature": "R04.3",
+  "declaration": "nativePullback_reconstruction_relativeIso",
+  "target_build": {
+    "jobs": 5630,
+    "sha256": "618460d035187b36266a7bca17ae5f4bf3f2308958bf72afc1f59eb26e9bb0be",
+    "receipt": "/tmp/is-stage5/R04.3/build-6.log"
+  },
+  "type_check": {
+    "sha256": "84545263e93e343a47b0b0da0cff01af5812590c6c8bbcfb5c37fbb2b208b2c0",
+    "receipt": "/tmp/is-stage5/R04.3/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "ebd3c3d2c4ab011983471fbc85c269a1908c712930f6027ee5a9f5feaa9c8f2a",
+    "receipt": "/tmp/is-stage5/R04.3/target-audit-result.json",
+    "modules": 1,
+    "declarations": 13,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/NativePullbackReconstructionRelativeIso.lean": "9735de3685e9b7d1038d228a1bbf2bd195cff1ab4eaac1d9a9b07749c062c7bb"
+    }
+  }
+}

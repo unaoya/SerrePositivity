@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2D",
+  "declaration": "densityCanonicalTransport_at_native_point",
+  "target_build": {
+    "jobs": 3955,
+    "sha256": "7be55a7a4e753c56e439a669e9136b24b6dedb03aa5097e45bc67fa7e7c8268d",
+    "receipt": "/tmp/is-stage5/R06.2D/build-1.log"
+  },
+  "type_check": {
+    "sha256": "dee441717492f9edb7bb91fe67ce62dfadfff18c24e5b0fb4c919395795dade8",
+    "receipt": "/tmp/is-stage5/R06.2D/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "a7da9d7535bfa293cfb3e7c496d96f751319792869f949151209562ec51e30bb",
+    "receipt": "/tmp/is-stage5/R06.2D/target-audit-result.json",
+    "modules": 1,
+    "declarations": 17,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/DensityCanonicalTransportAtPoint.lean": "767f1a2d80ba7177f41ba571fec49456cfd872a4b65dbc46b9f518764269d06e"
+    }
+  }
+}

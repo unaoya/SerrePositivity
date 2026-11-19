@@ -1,0 +1,31 @@
+{
+  "signature": "R16.2",
+  "declaration": "coverageGeneratedSieveInclusion_cone",
+  "target_build": {
+    "jobs": 7253,
+    "sha256": "f33e8e7b82f262b51a9bbbb7a254958dd1608e8c8e1a540d7df2006470e82ded",
+    "receipt": "/tmp/is-stage5/R16.2/build-2.log"
+  },
+  "type_check": {
+    "sha256": "c2933c5838b0c320c3e54e238f1210474cf042c796460abbc156f70ff63404d3",
+    "receipt": "/tmp/is-stage5/R16.2/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "2be2eb2847e7d30c2ff03f947157c6229da09c67cc3076350c899f8c0f5898a9",
+    "receipt": "/tmp/is-stage5/R16.2/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/CoverageGeneratedSieveCone.lean": "05dc5c92440a6db6dc38c8252476e6c94c9afe5beb4978dc852e2ff1299d2868"
+    }
+  }
+}

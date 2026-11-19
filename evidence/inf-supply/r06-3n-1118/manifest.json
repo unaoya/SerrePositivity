@@ -1,0 +1,31 @@
+{
+  "signature": "R06.3N",
+  "declaration": "sliceRestrictAlong_comp",
+  "target_build": {
+    "jobs": 1867,
+    "sha256": "595490bbe532392db66e2bd4edf463a2b69312fb34599c017d31ee941a9eb338",
+    "receipt": "/tmp/is-stage5/R06.3N/build-20.log"
+  },
+  "type_check": {
+    "sha256": "65793afc0b129b41f111f0c245cf98dd68d6537db018b11e61791d2f042a692a",
+    "receipt": "/tmp/is-stage5/R06.3N/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "341948bf571e1d86c82808d5b6351dbcace32bcb224ef898c51c74e1e4b744c2",
+    "receipt": "/tmp/is-stage5/R06.3N/target-audit-result.json",
+    "modules": 1,
+    "declarations": 8,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/NormalizedSliceRestriction.lean": "c7d2f56747270e27049987e61ae4c7ba4f28d5f379ba8c949fe9178d58e38873"
+    }
+  }
+}

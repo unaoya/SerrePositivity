@@ -1,0 +1,31 @@
+{
+  "signature": "R16.3",
+  "declaration": "coverageLocalRefinement_for_generatedSieve",
+  "target_build": {
+    "jobs": 10278,
+    "sha256": "f473ff895d0ec2130d212c41f5ddbb57ef61d375fe27442047afde400fdc45b5",
+    "receipt": "/tmp/is-stage5/R16.3/build-2.log"
+  },
+  "type_check": {
+    "sha256": "84a0ec58f4e70fd4a3e48736c671479e161894bf234c258007c1a5b75e271aa8",
+    "receipt": "/tmp/is-stage5/R16.3/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "cffb5409afb4f094ae51415e736cbc191aa8d31b1ca94efd12e9148201bb2b43",
+    "receipt": "/tmp/is-stage5/R16.3/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/CoverageNativeLocalRefinement.lean": "23c034a58de451959503090e6cd0a3e86ba101e543caabf523e707ca1994de77"
+    }
+  }
+}

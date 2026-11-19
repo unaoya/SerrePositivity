@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2Cu",
+  "declaration": "rightKan_transport_counit_comp",
+  "target_build": {
+    "jobs": 3944,
+    "sha256": "1276fcf0bff85345e257aa5bfad11080856e14627a8ff38b3b11110aa932f5eb",
+    "receipt": "/tmp/is-stage5/R06.2Cu/build-1.log"
+  },
+  "type_check": {
+    "sha256": "8119b4fab3247dfec9320b0eaa64c3713b952b2ebff925b7d3a17c206619470f",
+    "receipt": "/tmp/is-stage5/R06.2Cu/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "0e78b9ec8fcf71c6d992398a6c20d9ffc2d4ac6df63efb427233c8346c7f7006",
+    "receipt": "/tmp/is-stage5/R06.2Cu/target-audit-result.json",
+    "modules": 1,
+    "declarations": 5,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/RightKanMovingConeCounit.lean": "7fcfab1ee06e92f824bed0b3a4378cfdb5831e944e37a691edbe09d6d0b97943"
+    }
+  }
+}

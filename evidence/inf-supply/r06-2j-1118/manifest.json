@@ -1,0 +1,31 @@
+{
+  "signature": "R06.2J",
+  "declaration": "cosliceIntervalNormalized_homMk",
+  "target_build": {
+    "jobs": 2679,
+    "sha256": "545ce3013cbedf264d4308c6758ecfec64690dd260b959874f0e5d45fd394df1",
+    "receipt": "/tmp/is-stage5/R06.2J/build-2.log"
+  },
+  "type_check": {
+    "sha256": "b5c8a3c5a4c8af2da6fab954510de13701269a043c29d72a9adb4d0525278407",
+    "receipt": "/tmp/is-stage5/R06.2J/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "298cf401c115a43d0be7f791b190b1ecec142eeb0ac95988a243c08ab37d00dd",
+    "receipt": "/tmp/is-stage5/R06.2J/target-audit-result.json",
+    "modules": 1,
+    "declarations": 10,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/RightKanIntervalCosliceComposition.lean": "c91cc5e51e57150bf22d63fb342f0121df1e0ae46dbe2b9bbd6fcce08f60ceda"
+    }
+  }
+}

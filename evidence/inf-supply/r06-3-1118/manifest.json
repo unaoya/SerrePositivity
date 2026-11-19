@@ -1,0 +1,31 @@
+{
+  "signature": "R06.3",
+  "declaration": "discreteSectionsLeftComparison_specifiedMap",
+  "target_build": {
+    "jobs": 7433,
+    "sha256": "daf7cd5798766614dc85b743102e1e71717f3cf0b5407aa8a6f89567db2c1bcd",
+    "receipt": "/tmp/is-stage5/R06.3/build-21.log"
+  },
+  "type_check": {
+    "sha256": "c3e46826afae1d02890dc36915aa5374f10d509db14a943757ec9bacc606a38d",
+    "receipt": "/tmp/is-stage5/R06.3/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "1c5897a9b5d319a85a5396ca53b9c66e76b102d1e37701decd7f42892f027d11",
+    "receipt": "/tmp/is-stage5/R06.3/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/DiscreteSectionsSpecifiedMap.lean": "a0365d06ba7faa33a1112a2adea2b7d49403609837f7303d7befdc18db523b4b"
+    }
+  }
+}

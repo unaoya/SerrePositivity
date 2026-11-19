@@ -1,0 +1,31 @@
+{
+  "signature": "R12a",
+  "declaration": "restrictSectionsCone_isLimit_of_localEquiv",
+  "target_build": {
+    "jobs": 10807,
+    "sha256": "9c238ef3094ab925c2a60e49fc0dca726193d4bf841997b1ff9144c55ae6b05d",
+    "receipt": "/tmp/is-stage5/R12a/build-5.log"
+  },
+  "type_check": {
+    "sha256": "bbb1b2fbe2803a190f1ec358cc5fe45761bdadef353ca5ce324a215af9100176",
+    "receipt": "/tmp/is-stage5/R12a/expected-type.lean",
+    "success": true
+  },
+  "axiom_audit": {
+    "sha256": "7f765eded4e318f57e99b74089ec67844897b9a8fdc84a3b079bc2fed7f1dc21",
+    "receipt": "/tmp/is-stage5/R12a/target-audit-result.json",
+    "modules": 1,
+    "declarations": 1,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "success": true,
+    "source": "fresh environment after target build; no pre-merge index reuse",
+    "heartbeat_limit": "unchanged; one command per declaration",
+    "source_sha256": {
+      "SerrePositivity/InfinityCategories/Sheaves/RestrictedSectionsLocalEquivalenceLimit.lean": "ed988ee8eae09a42e4e9d17d691bea8b1a20791960d064452e96949605321771"
+    }
+  }
+}
