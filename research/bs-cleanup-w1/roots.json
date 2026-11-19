@@ -1,0 +1,1387 @@
+{
+  "ba24dceb6": {
+    "total_files": 604,
+    "total_lines": 171356,
+    "tracked_local_lean": 30941,
+    "modes": {
+      "R-A": [
+        586,
+        162734
+      ],
+      "--A": [
+        11,
+        6003
+      ],
+      "RCA": [
+        7,
+        2619
+      ]
+    },
+    "root_entry_sorry": [
+      "SerrePositivity",
+      "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.BaseChangeSecondHomDecompositionEndpoints",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.CatInfinity",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Checks",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Cocartesian",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Compact",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Core",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.CoreFibrations",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DGClosedSlicePrismNaturality",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DGNerve",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DGWalkingHomPrismNaturality",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Derived",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedClosureFunctorialityAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarCompactAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarRetractAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarStrictComparisonAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaCoversAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaPerfectAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedPiCriterionAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedSuspensionActionAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DwyerKan",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Exact",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F1",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F1B",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F1Fibrations",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableAccessiblePullbackAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableDualityAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationLocalObjectsAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableSupplyAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Filtered",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Gluing",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.HomotopyLimits",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Idempotent",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Ind",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Infinity",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Kan",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Lax",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.MappingSpace",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.ModelBridge",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.NativeAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.NativeTriangleSupplyAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Perfect",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Pointed",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.PresheafDensity",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Semiorthogonal",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Simplicial",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Stable",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.StablePresentable",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Support",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Verdier",
+      "SerrePositivity.Inputs.Descent",
+      "SerrePositivity.Paper.Section4.SupportedDescent",
+      "SerrePositivity.Paper.Statement"
+    ],
+    "sorry_decl_paths": {
+      "SerrePositivity.main_statement": "SerrePositivity/Paper/Statement.lean",
+      "SerrePositivity.theorem_3_1_K0": "SerrePositivity/Inputs/Descent.lean",
+      "SerrePositivity.Section4.supportedRankK0_descent": "SerrePositivity/Paper/Section4/SupportedDescent.lean",
+      "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3": "SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean"
+    },
+    "coverage_roots": 713,
+    "bs_coverage_roots": {
+      "SerrePositivity/BhattScholze/Prismatic/RelativeCompleteRegularity.lean": [
+        {
+          "review": "research/ha-coverage/review/ch7.csv",
+          "number": "7.2.2.10",
+          "status": "partial"
+        }
+      ]
+    },
+    "coverage_rows": {
+      "partial": 2329,
+      "own": 570
+    },
+    "audits": [
+      "scripts.audit.adams",
+      "scripts.audit.bhatt_scholze",
+      "scripts.audit.clmst",
+      "scripts.audit.dg",
+      "scripts.audit.shared",
+      "scripts.audit_adams_action_transport",
+      "scripts.audit_andre_initial_coefficient",
+      "scripts.audit_andre_unoriented",
+      "scripts.audit_axioms",
+      "scripts.audit_bhatt_scholze",
+      "scripts.audit_bhatt_scholze_andre_conditional",
+      "scripts.audit_bhatt_scholze_arc_excision",
+      "scripts.audit_bhatt_scholze_b4",
+      "scripts.audit_bhatt_scholze_b5",
+      "scripts.audit_bhatt_scholze_prop813",
+      "scripts.audit_bhatt_scholze_refactoring",
+      "scripts.audit_clmst",
+      "scripts.audit_clmst_b3",
+      "scripts.audit_coherent_nerve",
+      "scripts.audit_derived_cell_projective",
+      "scripts.audit_derived_closure_functoriality",
+      "scripts.audit_derived_coherent_bar",
+      "scripts.audit_derived_coherent_bar_compact",
+      "scripts.audit_derived_coherent_bar_retract",
+      "scripts.audit_derived_coherent_bar_strict",
+      "scripts.audit_derived_dg_nerve_reflection",
+      "scripts.audit_derived_gluing",
+      "scripts.audit_derived_infinity",
+      "scripts.audit_derived_kappa_perfect",
+      "scripts.audit_derived_native_family",
+      "scripts.audit_derived_native_p",
+      "scripts.audit_derived_sphere_closure",
+      "scripts.audit_derived_suspension_coherent",
+      "scripts.audit_derived_suspension_native",
+      "scripts.audit_derived_suspension_replacement",
+      "scripts.audit_dg_cell_comparison",
+      "scripts.audit_dg_nerve",
+      "scripts.audit_dg_perfect_projective_image",
+      "scripts.audit_dg_projective_contraction",
+      "scripts.audit_dg_quotient_parameter",
+      "scripts.audit_dold_kan_comparison",
+      "scripts.audit_einfinity",
+      "scripts.audit_euler_betti_finite_support",
+      "scripts.audit_euler_group_shared",
+      "scripts.audit_exact_euler_finite_support",
+      "scripts.audit_f2_compact",
+      "scripts.audit_f2_idempotent",
+      "scripts.audit_f2_ind",
+      "scripts.audit_f2_pi_criterion",
+      "scripts.audit_f4",
+      "scripts.audit_f5",
+      "scripts.audit_f6",
+      "scripts.audit_f7",
+      "scripts.audit_general_spectra",
+      "scripts.audit_homotopical_foundations",
+      "scripts.audit_homotopical_general_tools",
+      "scripts.audit_homotopical_rectification",
+      "scripts.audit_homotopy_cone_representative_shared",
+      "scripts.audit_homotopy_limits",
+      "scripts.audit_homotopy_property_shared",
+      "scripts.audit_infinity_accessible_pullback",
+      "scripts.audit_infinity_core",
+      "scripts.audit_infinity_core_supply_s1_closed_stable",
+      "scripts.audit_infinity_core_supply_s1_triangle",
+      "scripts.audit_infinity_f1",
+      "scripts.audit_infinity_f1_f1b",
+      "scripts.audit_infinity_f1b",
+      "scripts.audit_infinity_f2",
+      "scripts.audit_infinity_f2_checks",
+      "scripts.audit_infinity_kan",
+      "scripts.audit_infinity_model_bridge",
+      "scripts.audit_infinity_presentable",
+      "scripts.audit_infinity_presentable_duality",
+      "scripts.audit_infinity_presentable_local_objects",
+      "scripts.audit_infinity_presentable_localization",
+      "scripts.audit_infinity_presentable_supply",
+      "scripts.audit_infinity_stable",
+      "scripts.audit_infinity_stable_presentable",
+      "scripts.audit_kst_cofinality",
+      "scripts.audit_kst_comparison",
+      "scripts.audit_kst_core_flag",
+      "scripts.audit_kst_derived_blowup",
+      "scripts.audit_kst_derived_geometry",
+      "scripts.audit_kst_descent",
+      "scripts.audit_kst_descent_main",
+      "scripts.audit_kst_fibration",
+      "scripts.audit_kst_fibration_relative",
+      "scripts.audit_kst_nonconnective",
+      "scripts.audit_kst_pro_excision",
+      "scripts.audit_kst_s_construction",
+      "scripts.audit_kst_s_construction_tail",
+      "scripts.audit_kst_scheme_lemmas",
+      "scripts.audit_kst_spectra",
+      "scripts.audit_kst_spectra_d3",
+      "scripts.audit_kst_spectra_d3tail",
+      "scripts.audit_kst_spectra_s3",
+      "scripts.audit_local_algebra",
+      "scripts.audit_localizing_invariants",
+      "scripts.audit_refactor_infinity",
+      "scripts.audit_spectra",
+      "scripts.audit_stage4_contract",
+      "scripts.audit_triangulated_k0_shift_shared"
+    ],
+    "extra_audit_edges": {
+      "scripts.audit_infinity_core": [
+        "Lean.Util.CollectAxioms",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathReplacementNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallHullCardinal",
+        "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.SmallQuasicategoryHull",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SmallHullFactorization",
+        "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SmallMarkedQuasicategoryHull"
+      ],
+      "scripts.audit_infinity_f1": [
+        "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.PointedFiberValueNormalization",
+        "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanWeightedUnstraighteningUnit",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanUnstraighteningUnitPoints",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedFiberRecovery",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CocartesianKanWeightedUnit",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoherentHomFamilyVertices",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractibleFamilyComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ContractiblePrescribedRetraction",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledCompositionDiagonalTransport",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledFactorizationTetrahedronFamily",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledNativeTriangle",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoder",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderDiagonal",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderNative",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentReconstruction",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderMap",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleEncoderParameterEquality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyComparison",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilySpaces",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleFamilyVertices",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleIntervalFaithfulness",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleLongHomFamily",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNativeReadout",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedFamilySupply",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedRequest",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTrianglePointParameterMono",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleReadoutMap",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleSplitReduction",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalLongHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalNative",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleUniversalVertices",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FactorizationTetrahedronFaces",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FamilyParameterEquality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InnerHornFamilyPrescribedVertices",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanIntervalEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanWeightedUnitFiberRestriction",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.NativeLongHomFamilyVertices",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SplitTriangleNormalization",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronFamilyVertices",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronPathFold",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronStrictCompositionHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleCutMapComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalKanExtension",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleDiagonalLabels",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornFromFaces",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleFamilyHornPullback",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleIntervalIsoEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaseline",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineRealization",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelBaselineUnits",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelCoordinateSection",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelHomReplacement",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLabelPathCoordinates",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedCoordinateIdentities",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLiftedHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomFamilyLift",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleLongHomReplacement",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeCompositeValue",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeFamilyControl",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativeHomControl",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNestedSecondHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismCoordinateSection",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePrismLiftedSection",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleRightIntervalHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedAssignedHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedComposition",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedConstantNative",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedCoordinateNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectEvaluation",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedDirectHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamily",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyDiagonal",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedFamilyShortFaces",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongFaithfulness",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedLongHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleCoordinates",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleEnriched",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedMiddleHom",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedPrismRecovery",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplex",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexData",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexDiagonal",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedSimplexNaturality",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleSeparatedVertexParameter",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleTwoCutCoordinates",
+        "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.WholeDiagonalImageObstruction",
+        "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RepresentableHomInfinity"
+      ],
+      "scripts.audit_infinity_f1b": [
+        "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseAscent",
+        "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseExtension",
+        "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniverseFaithfulUp",
+        "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource",
+        "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PositiveBoundaryFaithful"
+      ]
+    },
+    "unresolved_coverage_count": 2563,
+    "unresolved_BS_paths": []
+  },
+  "cbcb40a59": {
+    "total_files": 885,
+    "total_lines": 189149,
+    "tracked_local_lean": 34958,
+    "modes": {
+      "RCA": [
+        302,
+        125408
+      ],
+      "R-A": [
+        582,
+        63609
+      ],
+      "--A": [
+        1,
+        132
+      ]
+    },
+    "root_entry_sorry": [
+      "SerrePositivity",
+      "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.BaseChangeSecondHomDecompositionEndpoints",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.CatInfinity",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Checks",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Cocartesian",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Compact",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Core",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.CoreFibrations",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DGClosedSlicePrismNaturality",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DGNerve",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DGWalkingHomPrismNaturality",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Derived",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedClosureFunctorialityAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarCompactAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarRetractAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarStrictComparisonAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaCoversAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaPerfectAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedPiCriterionAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedSuspensionActionAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.DwyerKan",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Exact",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F1",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F1B",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F1Fibrations",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableAccessiblePullbackAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableDualityAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationLocalObjectsAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableSupplyAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Filtered",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Gluing",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.HomotopyLimits",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Idempotent",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Ind",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Infinity",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.InfinitySheaves",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Kan",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Lax",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.MappingSpace",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.ModelBridge",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.NativeAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.NativeTriangleSupplyAll",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Perfect",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Pointed",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.PresheafDensity",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Semiorthogonal",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Simplicial",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Stable",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.StablePresentable",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Support",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.Verdier",
+      "SerrePositivity.Inputs.Descent",
+      "SerrePositivity.Paper.Section4.SupportedDescent",
+      "SerrePositivity.Paper.Statement"
+    ],
+    "sorry_decl_paths": {
+      "SerrePositivity.main_statement": "SerrePositivity/Paper/Statement.lean",
+      "SerrePositivity.theorem_3_1_K0": "SerrePositivity/Inputs/Descent.lean",
+      "SerrePositivity.Section4.supportedRankK0_descent": "SerrePositivity/Paper/Section4/SupportedDescent.lean",
+      "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3": "SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean"
+    },
+    "coverage_roots": 1341,
+    "bs_coverage_roots": {
+      "SerrePositivity/BhattScholze/Perfectoidization/Arc/Valuations/ArcValuationMilnor.lean": [
+        {
+          "review": "research/bm18-coverage/review/ch2.csv",
+          "number": "2.8",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs17-coverage/review/ch6.csv",
+          "number": "6.3",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.1",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.3",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.5",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.25",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.1",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.2",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.3",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.5",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.8",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.2",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.1",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.2",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.4",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.19",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.26",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.3",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.10",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Basic/Bounded.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.4",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.2",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.5",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.5",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Site/PrismOver.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.6",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.12",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.4",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Perfectoidization.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.12",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.3",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Almost/AlmostConnectivity.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.13",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.1",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.3",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Almost/Lemma103.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.13",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.3",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.17",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.11",
+          "status": "interface"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean": [
+        {
+          "review": "research/bs-coverage/review/ch1.csv",
+          "number": "1.17",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.11",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.2",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.5",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.12",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.14",
+          "status": "interface"
+        },
+        {
+          "review": "research/paper-coverage/review/ch2.csv",
+          "number": "2.5",
+          "status": "interface"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean": [
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.2",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.3",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean": [
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.2",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean": [
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.4",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.5",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean": [
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.4",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/Interface/Derived.lean": [
+        {
+          "review": "research/bs-coverage/review/ch10.csv",
+          "number": "10.11",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.2",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.5",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.12",
+          "status": "interface"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.14",
+          "status": "interface"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Perfect/PerfectDelta.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.6",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.28",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.30",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.31",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.32",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.33",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Distinguished/PrimeLocalIntegers.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.6",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Perfect/PerfectDeltaTensor.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Basic/Tensor.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Basic/DeltaColimit.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Basic/DeltaWitt.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.7",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.13",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Free/RelativeFreeDelta.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.8",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.11",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Basic/DeltaQuotient.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.9",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.10",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Free/RelativeFreeWitt.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.14",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Extension/DeltaLocalization.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.15",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.16",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Extension/DeltaAdicCompletion.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.17",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Distinguished/Distinguished.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.20",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.23",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.24",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.25",
+          "status": "own"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Distinguished/Universal.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.21",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Perfect/DeltaPerfection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.27",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismHomLift.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.31",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.10",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.8",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/Perfect/DistinguishedRegular.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.34",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/DividedPower/Coefficients/Factorial.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.35",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Delta/DividedPower/PDivision/PDivision.lean": [
+        {
+          "review": "research/bs-coverage/review/ch2.csv",
+          "number": "2.41",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Basic/UniversalOriented.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.4",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Basic/UniversalOrientedFrobenius.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.4",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Bounded/CompletelyFlatPrism.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Bounded/CompletedTensorCover.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Bounded/CompleteFlatDiscrete.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Bounded/Completeness.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.7",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.8",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Bounded/CompleteFlatCochain.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.7",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfection/PrismPerfection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.9",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfection/ClassicalPrismPerfection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.9",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.9",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidWittEquiv.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.10",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prism/Perfectoid/AinfClassical.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.10",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Site/FlatSiteSheaf.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.12",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Site/FlatTopologyPushout.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.12",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Site/FlatCechSheaf.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.12",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Site/FlatCechDescent.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.12",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Site/FlatSiteResidue.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.12",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Envelopes/Envelope.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.13",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.14",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Envelopes/CompletedFreeDeltaFlat.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.13",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.14",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Envelopes/VariableEnvelopeBaseChange.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.13",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Envelopes/VariableEnvelope.lean": [
+        {
+          "review": "research/bs-coverage/review/ch3.csv",
+          "number": "3.14",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/CechAlexanderAssembly.lean": [
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.17",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Complexes/CechAlexanderComplex.lean": [
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.17",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/AffineCechSiteNerve.lean": [
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.17",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.19",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/CechAlexanderSmall.lean": [
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.17",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/BaseChange/AffineEnvelopeDerivedBaseChange.lean": [
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.19",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/AffineCechPrismBaseChange.lean": [
+        {
+          "review": "research/bs-coverage/review/ch4.csv",
+          "number": "4.19",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/FrobeniusCechComparison.lean": [
+        {
+          "review": "research/bs-coverage/review/ch5.csv",
+          "number": "5.4",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/Construction61Reflection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch6.csv",
+          "number": "6.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/Construction61Frobenius.lean": [
+        {
+          "review": "research/bs-coverage/review/ch6.csv",
+          "number": "6.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/CrystallineCoverCompleteTor.lean": [
+        {
+          "review": "research/bs-coverage/review/ch6.csv",
+          "number": "6.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Prismatic/HodgeTate/Comparison/CrystallineCover/Construction61Detection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch6.csv",
+          "number": "6.1",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationPerfection.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.3",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/PerfectPrism.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.4",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Semiperfectoid/Discrete/PrismRetract.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.8",
+          "status": "own"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.14",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Andre/AndreFlatness.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.14",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Initiality.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.15",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean": [
+        {
+          "review": "research/bs-coverage/review/ch7.csv",
+          "number": "7.15",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/Arc/Site/ArcSite.lean": [
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.7",
+          "status": "partial"
+        },
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.8",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/Interface/Excision.lean": [
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.12",
+          "status": "interface"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean": [
+        {
+          "review": "research/bs-coverage/review/ch8.csv",
+          "number": "8.13",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/PerfectoidIdeal/Roots.lean": [
+        {
+          "review": "research/clmst-coverage/review/ch2.csv",
+          "number": "2.4.3",
+          "status": "partial"
+        }
+      ],
+      "SerrePositivity/BhattScholze/Perfectoidization/Finite.lean": [
+        {
+          "review": "research/clmst-coverage/review/ch2.csv",
+          "number": "2.4.5",
+          "status": "partial"
+        }
+      ]
+    },
+    "coverage_rows": {
+      "partial": 1356,
+      "own": 709,
+      "interface": 25
+    },
+    "audits": [
+      "scripts.audit.adams",
+      "scripts.audit.bhatt_scholze",
+      "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+      "scripts.audit.bs_power_root_envelope.Unoriented",
+      "scripts.audit.bs_power_root_envelope.VarpiComparison",
+      "scripts.audit.bs_power_root_envelope.VarpiComparisonUnconditional",
+      "scripts.audit.clmst",
+      "scripts.audit.dg",
+      "scripts.audit.shared",
+      "scripts.audit_adams_action_transport",
+      "scripts.audit_andre_initial_coefficient",
+      "scripts.audit_andre_unoriented",
+      "scripts.audit_axioms",
+      "scripts.audit_bhatt_scholze",
+      "scripts.audit_bhatt_scholze_andre_conditional",
+      "scripts.audit_bhatt_scholze_arc_excision",
+      "scripts.audit_bhatt_scholze_b4",
+      "scripts.audit_bhatt_scholze_b5",
+      "scripts.audit_bhatt_scholze_prop813",
+      "scripts.audit_bhatt_scholze_refactoring",
+      "scripts.audit_bhatt_scholze_stage2",
+      "scripts.audit_citations",
+      "scripts.audit_clmst",
+      "scripts.audit_clmst_b3",
+      "scripts.audit_coherent_nerve",
+      "scripts.audit_derived_cell_projective",
+      "scripts.audit_derived_closure_functoriality",
+      "scripts.audit_derived_coherent_bar",
+      "scripts.audit_derived_coherent_bar_compact",
+      "scripts.audit_derived_coherent_bar_retract",
+      "scripts.audit_derived_coherent_bar_strict",
+      "scripts.audit_derived_dg_nerve_reflection",
+      "scripts.audit_derived_gluing",
+      "scripts.audit_derived_infinity",
+      "scripts.audit_derived_kappa_perfect",
+      "scripts.audit_derived_native_family",
+      "scripts.audit_derived_native_p",
+      "scripts.audit_derived_sphere_closure",
+      "scripts.audit_derived_suspension_coherent",
+      "scripts.audit_derived_suspension_native",
+      "scripts.audit_derived_suspension_replacement",
+      "scripts.audit_dg_cell_comparison",
+      "scripts.audit_dg_nerve",
+      "scripts.audit_dg_perfect_projective_image",
+      "scripts.audit_dg_projective_contraction",
+      "scripts.audit_dg_quotient_parameter",
+      "scripts.audit_dold_kan_comparison",
+      "scripts.audit_einfinity",
+      "scripts.audit_euler_betti_finite_support",
+      "scripts.audit_euler_group_shared",
+      "scripts.audit_exact_euler_finite_support",
+      "scripts.audit_f2_compact",
+      "scripts.audit_f2_idempotent",
+      "scripts.audit_f2_ind",
+      "scripts.audit_f2_pi_criterion",
+      "scripts.audit_f4",
+      "scripts.audit_f5",
+      "scripts.audit_f6",
+      "scripts.audit_f7",
+      "scripts.audit_general_spectra",
+      "scripts.audit_homotopical_foundations",
+      "scripts.audit_homotopical_general_tools",
+      "scripts.audit_homotopical_rectification",
+      "scripts.audit_homotopy_cone_representative_shared",
+      "scripts.audit_homotopy_limits",
+      "scripts.audit_homotopy_property_shared",
+      "scripts.audit_infinity_accessible_pullback",
+      "scripts.audit_infinity_core",
+      "scripts.audit_infinity_core_supply_s1_closed_stable",
+      "scripts.audit_infinity_core_supply_s1_triangle",
+      "scripts.audit_infinity_f1",
+      "scripts.audit_infinity_f1_f1b",
+      "scripts.audit_infinity_f1b",
+      "scripts.audit_infinity_f2",
+      "scripts.audit_infinity_f2_checks",
+      "scripts.audit_infinity_kan",
+      "scripts.audit_infinity_model_bridge",
+      "scripts.audit_infinity_presentable",
+      "scripts.audit_infinity_presentable_duality",
+      "scripts.audit_infinity_presentable_local_objects",
+      "scripts.audit_infinity_presentable_localization",
+      "scripts.audit_infinity_presentable_supply",
+      "scripts.audit_infinity_sheaves",
+      "scripts.audit_infinity_stable",
+      "scripts.audit_infinity_stable_presentable",
+      "scripts.audit_kst_cofinality",
+      "scripts.audit_kst_comparison",
+      "scripts.audit_kst_core_flag",
+      "scripts.audit_kst_derived_blowup",
+      "scripts.audit_kst_derived_geometry",
+      "scripts.audit_kst_descent_main",
+      "scripts.audit_kst_fibration",
+      "scripts.audit_kst_fibration_relative",
+      "scripts.audit_kst_nonconnective",
+      "scripts.audit_kst_pro_excision",
+      "scripts.audit_kst_s_construction",
+      "scripts.audit_kst_s_construction_tail",
+      "scripts.audit_kst_scheme_lemmas",
+      "scripts.audit_kst_spectra",
+      "scripts.audit_kst_spectra_d3",
+      "scripts.audit_kst_spectra_d3tail",
+      "scripts.audit_kst_spectra_s3",
+      "scripts.audit_local_algebra",
+      "scripts.audit_localizing_invariants",
+      "scripts.audit_refactor_infinity",
+      "scripts.audit_spectra",
+      "scripts.audit_stage4_contract",
+      "scripts.audit_triangulated_k0_shift_shared"
+    ],
+    "extra_audit_edges": {},
+    "unresolved_coverage_count": 0,
+    "unresolved_BS_paths": []
+  }
+}

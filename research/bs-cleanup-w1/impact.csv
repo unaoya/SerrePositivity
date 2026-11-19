@@ -1,0 +1,114 @@
+path,category,A_moved_source,A_direct_imports,A_reverse_import_closure,B_C_source_name_candidates
+SerrePositivity.lean,本体,0,,1,
+SerrePositivity/BhattScholze.lean,本体,0,SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta,1,
+SerrePositivity/BhattScholze/Almost/AlmostConnectivity.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Almost/AlmostGenerators.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Almost/Lemma103.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Andre/Envelope/MonicCandidate.lean,本体,0,,0,BR13a: monicPrismaticSourceQuotientDerivedRestrictedH0Iso | BR13a: monicPrismaticSourceQuotientDerivedRestrictedH0Iso (定義元)
+SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean,本体,0,,0,BR6/38: deltaPDivisionRawFactorialEquiv | BR6/38: deltaPDivisionRawFactorialEquiv (定義元) | BR6/38: principalDPFactorialEquiv
+SerrePositivity/BhattScholze/Andre/Envelope/RootFamilySource.lean,本体,0,,0,BR13a: deltaRootFamilySourceQuotientDerivedRestrictedH0Iso | BR13a: deltaRootFamilySourceQuotientDerivedRestrictedH0Iso (定義元)
+SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean,本体,0,,0,BR13a: deltaRootSourceQuotientDerivedRestrictedH0Iso_of_preservesColimit | BR13a: deltaRootSourceQuotientDerivedRestrictedH0Iso_of_preservesColimit (定義元)
+SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Residue.lean,本体,0,,0,BR13a: powerRootPrismMonicSourceQuotientDerivedRestrictedH0Iso_of_unconditional | BR13a: powerRootPrismMonicSourceQuotientDerivedRestrictedH0Iso_of_unconditional (定義元)
+SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Andre/Transfinite/Limit.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean,本体,0,,0,BR10/35: exists_monicRootPerfectoidExtension | BR13b: exists_perfectoidTrialPrism | BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Andre/Variants/ArbitraryFamily.lean,本体,0,,0,BR13a: monicPrismaticSourceQuotientDerivedRestrictedH0Iso_arbitrary | BR13a: monicPrismaticSourceQuotientDerivedRestrictedH0Iso_arbitrary (定義元)
+SerrePositivity/BhattScholze/Andre/Variants/Auxiliary.lean,本体,0,,0,BR10/35: exists_monicRootPerfectoidExtension (定義元) | BR13b: exists_perfectoidTrialPrism
+SerrePositivity/BhattScholze/Andre/Variants/RootedExtension.lean,本体,0,,0,BR10/35: exists_monicRootedPerfectoidExtension (定義元) | BR13b: exists_perfectoidTrialPrism | BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Delta/Distinguished/Universal.lean,本体,0,,0,BR4: existsUnique_freeDeltaHom | BR4: freeDeltaStructure
+SerrePositivity/BhattScholze/Delta/DividedPower/Frobenius/FrobeniusDivisionPD.lean,本体,0,,0,BR5: frobeniusLift_isDeltaHom_of_regular | BR6/38: frobeniusDivisionFactorialEquiv | BR6/38: frobeniusDivisionFactorialEquiv (定義元)
+SerrePositivity/BhattScholze/Delta/DividedPower/Frobenius/FrobeniusDivisionRegularSequence.lean,本体,0,,0,BR6/38: frobeniusDivisionFactorialEquiv
+SerrePositivity/BhattScholze/Delta/DividedPower/PDivision/PDivision.lean,本体,0,,0,BR6/38: pDivisionFactorialBaseEquivOfDividedPowers | BR6/38: pDivisionFactorialBaseEquivOfDividedPowers (定義元)
+SerrePositivity/BhattScholze/Delta/DividedPower/Principal/PrincipalDP.lean,本体,0,,0,BR6/38: principalDPFactorialEquiv | BR6/38: principalDPFactorialEquiv (定義元)
+SerrePositivity/BhattScholze/Delta/Division/FrobeniusPushout.lean,本体,0,,0,BR37: primeLocalFreeDelta_frobenius_isCompletelyFlat | BR37: primeLocalFreeDelta_frobenius_isCompletelyFlat (定義元)
+SerrePositivity/BhattScholze/Delta/Free/CrystallineTensorRegularity.lean,本体,0,,0,BR5: frobeniusLift_isDeltaHom_of_regular (定義元)
+SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusFlat.lean,本体,0,,0,BR37: freeDeltaFrobenius_isCompletelyFaithfullyFlat | BR37: freeDeltaFrobenius_isCompletelyFaithfullyFlat (定義元)
+SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean,本体,0,,0,BR4: existsUnique_freeDeltaHom | BR4: existsUnique_freeDeltaHom (定義元) | BR4: freeDeltaStructure | BR4: freeDeltaStructure (定義元)
+SerrePositivity/BhattScholze/Delta/Perfect/PerfectDelta.lean,本体,0,,0,BR5: isDeltaHom_frobeniusLift | BR5: isDeltaHom_frobeniusLift (定義元)
+SerrePositivity/BhattScholze/IntegralPerfectoidization/Approximation/PerfectoidFilteredColimit.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Perfectoidization/Arc/Site/ArcSite.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Perfectoidization/CompletedBaseChange.lean,本体,0,,0,BR21: completedTensorPerfectoidizationMap_isPerfectoidization
+SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean,本体,0,,0,BR21: completedTensorPerfectoid_hom_ext | BR21: completedTensorPerfectoid_hom_ext (定義元) | BR21: completedTensorPerfectoidizationMap_isPerfectoidization | BR21: completedTensorPerfectoidizationMap_isPerfectoidization (定義元) | BR21: existsUnique_completedTensorPerfectoidLift | BR21: existsUnique_completedTensorPerfectoidLift (定義元)
+SerrePositivity/BhattScholze/Perfectoidization/Construction/RootAdjunction.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Perfectoidization/ExcisionTor.lean,本体,0,,0,BR24: perfectoidization_image_ker_coker_annihilated
+SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean,本体,0,,0,BR24: perfectoidization_image_ker_coker_annihilated | BR24: perfectoidization_image_ker_coker_annihilated (定義元) | BR24: perfectoidization_mapAlgHom_ker_coker_annihilated_of_surjective_supported_kernel | BR24: perfectoidization_mapAlgHom_ker_coker_annihilated_of_surjective_supported_kernel (定義元) | BR24: perfectoidization_map_almost_of_surjective_supported_kernel | BR24: perfectoidization_map_almost_of_surjective_supported_kernel (定義元)
+SerrePositivity/BhattScholze/Perfectoidization/Tensor/PerfectPrismResidueTensor.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Perfectoidization/Tensor/PerfectPrismTensor.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean,本体,0,,0,BR21: completedTensorPerfectoid_hom_ext | BR21: completedTensorPerfectoidizationMap_isPerfectoidization
+SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean,本体,0,,0,BR17: injective_of_quotientMap_injective | BR17: injective_of_quotientMap_injective (定義元) | BR44: idealBaseChangeEquiv | BR44: idealBaseChangeEquiv (定義元) | BR44: idealTensorEquiv | BR44: idealTensorEquiv (定義元)
+SerrePositivity/BhattScholze/Prism/Basic/UniversalOrientedFrobenius.lean,本体,0,,0,BR4: freeDeltaStructure
+SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean,本体,0,,0,BR15: existsUnique_pCompletedDistinguishedPrismHom | BR15: existsUnique_pCompletedDistinguishedPrismHom (定義元) | BR15: existsUnique_pCompletedPrismHom | BR15: existsUnique_pCompletedPrismHom (定義元)
+SerrePositivity/BhattScholze/Prism/Perfectoid/FiniteProduct.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismHomLift.lean,本体,0,,0,BR17: prime_nonunit_of_complete | BR17: prime_nonunit_of_complete (定義元)
+SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean,本体,0,,0,BR13b: exists_perfectoidTrialPrism | BR13b: exists_perfectoidTrialPrism (定義元) | BR23: isIntegralPerfectoid_of_ringEquiv | BR23: isIntegralPerfectoid_of_ringEquiv (定義元)
+SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidPrismPresentation.lean,本体,0,,0,BR13b: exists_perfectoidTrialPrism
+SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean,本体,0,,0,BR17: wittQuotientFontaineMap_injective | BR17: wittQuotientFontaineMap_injective (定義元)
+SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/CrystallineAffineDivision.lean,本体,0,,0,BR5: frobeniusLift_isDeltaHom_of_regular
+SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/CrystallineBridge.lean,本体,0,,0,BR5: frobeniusLift_isDeltaHom_of_regular
+SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/CrystallineBridgePushout.lean,本体,0,,0,BR5: frobeniusLift_isDeltaHom_of_regular
+SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/CrystallineRawPDFactor.lean,本体,0,,0,BR6/38: freeDPFactorialEquiv
+SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscreteDelta.lean,本体,1,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscretePrism.lean,本体,0,SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Discrete/PrismRetract.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelope.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelopeDiscrete.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelopeExistence.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelopeFaithful.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelopeInitial.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelopeReduction.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/LciEnvelopeVariables.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/PerfectEnvelopeInitial.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/PrismRelationQuotient.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/RawVariableEnvelope.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Lci/RawVariableEnvelopeFaithful.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivision.lean,本体,0,,0,BR15: existsUnique_pCompletedDeltaDivisionHom_to_perfectPrism | BR15: existsUnique_pCompletedDeltaDivisionHom_to_perfectPrism (定義元)
+SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Perfectoidization.lean,本体,0,,0,BR13b: exists_perfectoidTrialPrism | BR15: existsUnique_pCompletedDeltaDivisionHom_to_perfectPrism
+SerrePositivity/BhattScholze/Semiperfectoid/Perfection/Product.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeCompletion.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeDiagram.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/FiniteEnvelopes/FiniteEnvelopeRawColimit.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PerfectoidRelationEnvelope.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/PerfectoidRelationEnvelopeFaithful.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootFamilyPerfectoid.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationAinfEnvelope.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletedInitial.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationCompletedSurjective.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationEnvelope.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationEnvelopeFaithful.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationFiniteEnvelopeDiagram.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationLift.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationLiftInitial.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Quasiregular/RootRelationPerfection.lean,本体,0,,1,
+SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/AbsolutelyIntegrallyClosedQuotient.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/CompatibleRootPerfectoid.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/PerfectPrism.lean,本体,0,,0,BR13b: exists_perfectoidTrialPrism
+SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/Source.lean,本体,0,,0,BR13a: deltaRootBoundedSupportQuotientDerivedRestrictedH0Iso | BR13a: deltaRootBoundedSupportQuotientDerivedRestrictedH0Iso (定義元) | BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean,本体,0,,0,BR12: exists_surjective_perfectoidization_of_complete_torsionFree_quotient | BR12: exists_surjective_perfectoidization_of_complete_torsionFree_quotient (定義元) | BR12: surjective_of_isPerfectoidization_of_complete_torsionFree_quotient (定義元)
+SerrePositivity/CLMST/PerfectoidizationIsogeny/Rank/AIC.lean,本体,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+SerrePositivity/CommutativeAlgebra/DividedPowers/FreeDPFactorial.lean,本体,0,,0,BR6/38: freeDPFactorialEquiv | BR6/38: freeDPFactorialEquiv (定義元)
+blueprint/SerreBlueprint.lean,blueprint,0,,1,
+blueprint/SerreBlueprint/BS/Section2.lean,blueprint,0,,0,BR6/38: frobeniusDivisionFactorialEquiv
+blueprint/SerreBlueprint/BS/Section3.lean,blueprint,0,,0,BR44: idealBaseChangeEquiv | BR44: idealTensorEquiv
+blueprint/SerreBlueprint/BS/Section7.lean,blueprint,0,,1,
+blueprint/SerreBlueprint/Blueprint.lean,blueprint,0,,1,
+blueprint/SerreBlueprintMain.lean,blueprint,0,,1,
+formalization-plans/bhatt-scholze/drafts/A0/W15K1/AuditK1.lean,drafts,0,,0,BR6/38: frobeniusDivisionFactorialEquiv
+formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean,drafts,0,,0,BR4: freeDeltaStructure
+research/bs-w13-scratch/BSW13AlmostConnectivity.lean,その他,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+research/bs-w13-scratch/BSW13AlmostGenerators.lean,その他,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+research/bs-w13-scratch/bsw13-c3-colimit-alt.lean,その他,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+research/bs-w13-scratch/bsw13-c3-colimit-cocone.lean,その他,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+research/bs-w13-scratch/bsw13-c3-colimit.lean,その他,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+research/bs-w13-scratch/bsw13-kernel-probe.lean,その他,0,,0,BR23: isIntegralPerfectoid_of_ringEquiv
+scripts/audit/bhatt_scholze.lean,scripts,0,,1,
+scripts/audit_axioms.lean,scripts,0,,1,BR12: exists_surjective_perfectoidization_of_complete_torsionFree_quotient | BR12: surjective_of_isPerfectoidization_of_complete_torsionFree_quotient
+scripts/audit_bhatt_scholze.lean,scripts,0,,0,BR13b: exists_perfectoidTrialPrism | BR15: existsUnique_pCompletedDeltaDivisionHom_to_perfectPrism | BR15: existsUnique_pCompletedDistinguishedPrismHom | BR15: existsUnique_pCompletedPrismHom | BR17: injective_of_quotientMap_injective | BR17: wittQuotientFontaineMap_injective | BR23: isIntegralPerfectoid_of_ringEquiv | BR44: idealBaseChangeEquiv | BR44: idealTensorEquiv | BR4: existsUnique_freeDeltaHom | BR4: freeDeltaStructure | BR5: isDeltaHom_frobeniusLift
+scripts/audit_bhatt_scholze_b4.lean,scripts,0,,0,BR12: exists_surjective_perfectoidization_of_complete_torsionFree_quotient | BR12: surjective_of_isPerfectoidization_of_complete_torsionFree_quotient | BR13a: deltaRootBoundedSupportQuotientDerivedRestrictedH0Iso | BR13a: deltaRootFamilySourceQuotientDerivedRestrictedH0Iso | BR13a: deltaRootSourceQuotientDerivedRestrictedH0Iso_of_preservesColimit | BR37: freeDeltaFrobenius_isCompletelyFaithfullyFlat | BR6/38: deltaPDivisionRawFactorialEquiv | BR6/38: pDivisionFactorialBaseEquivOfDividedPowers | BR6/38: principalDPFactorialEquiv
+scripts/audit_bhatt_scholze_prop813.lean,scripts,0,,0,BR21: completedTensorPerfectoid_hom_ext | BR21: existsUnique_completedTensorPerfectoidLift
+scripts/audit_bhatt_scholze_stage2.lean,scripts,0,SerrePositivity.BhattScholze.Semiperfectoid.Discrete.DiscreteDelta,1,
+scripts/audit_citations.lean,scripts,0,,1,
+scripts/audit_clmst_b3.lean,scripts,0,,0,BR12: exists_surjective_perfectoidization_of_complete_torsionFree_quotient
+scripts/audit_f5.lean,scripts,0,,1,
+scripts/audit_f7.lean,scripts,0,,1,
+scripts/refactor/audit_sorries.lean,scripts,0,,1,

@@ -1,0 +1,9 @@
+table,number,status,column,reference,A,B_C
+research/bs-coverage/review/ch1.csv,1.5,partial,declarations,SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv @ SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean:185,0,1
+research/bs-coverage/review/ch2.csv,2.36,none,declarations,SerrePositivity.BhattScholze.frobeniusDivisionFactorialEquiv @ SerrePositivity/BhattScholze/Delta/DividedPower/Frobenius/FrobeniusDivisionPD.lean:169,0,1
+research/bs-coverage/review/ch3.csv,3.5,partial,declarations,SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv @ SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean:185,0,1
+research/bs-coverage/review/ch3.csv,3.5,partial,declarations,SerrePositivity.BhattScholze.OrientedPrism.Hom.idealTensorEquiv @ SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean:158,0,1
+research/bs-coverage/review/ch3.csv,3.9,partial,declarations,SerrePositivity.BhattScholze.existsUnique_pCompletedPrismHom @ SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean:517,0,1
+research/bs-coverage/review/ch3.csv,3.10,partial,declarations,SerrePositivity.BhattScholze.exists_perfectoidTrialPrism @ SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean:385,0,1
+research/bs-coverage/review/ch7.csv,7.7,none,declarations,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_over_of_frobeniusLift @ SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscreteDelta.lean:37,1,0
+research/bs-coverage/review/ch7.csv,7.7,none,declarations,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_over_of_equiv @ SerrePositivity/BhattScholze/Semiperfectoid/Discrete/DiscreteDelta.lean:52,1,0

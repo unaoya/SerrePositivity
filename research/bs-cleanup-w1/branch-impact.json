@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "A_direct": {
+      "本体": 2,
+      "scripts": 1
+    },
+    "A_reverse_closure": {
+      "本体": 30,
+      "blueprint": 4,
+      "scripts": 7
+    },
+    "B_C_lexical": {
+      "本体": 58,
+      "blueprint": 2,
+      "drafts": 2,
+      "その他": 6,
+      "scripts": 5
+    },
+    "coverage": {
+      "A": 2,
+      "B_C": 6
+    }
+  },
+  "closed_or_integrated": [
+    {
+      "lane": "③-a",
+      "head": "31cd82e7fe269e7dbddfc5eeaaae99e6c4884c58",
+      "measured_lean_paths": 423,
+      "A_direct": [],
+      "A_transitive": [],
+      "B_C_name_or_source_hits": [],
+      "any_BS_direct": []
+    },
+    {
+      "lane": "⑥",
+      "head": "9bcbfd77fdc308a56261cbd4a5ddb46b5ac874e4",
+      "measured_lean_paths": 1405,
+      "A_direct": [],
+      "A_transitive": [
+        "SerrePositivity.lean"
+      ],
+      "B_C_name_or_source_hits": [],
+      "any_BS_direct": [
+        [
+          "SerrePositivity",
+          [
+            "SerrePositivity.BhattScholze.Andre.TorDescent",
+            "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+            "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+            "SerrePositivity.BhattScholze.PerfectoidIdeal.Powers",
+            "SerrePositivity.BhattScholze.PerfectoidIdeal.Roots",
+            "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+            "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+            "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+            "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+            "SerrePositivity.BhattScholze.Perfectoidization.Tensor.IteratedTensor",
+            "SerrePositivity.BhattScholze.Prism.Basic.PerfectBounded",
+            "SerrePositivity.BhattScholze.Prismatic.Site.PerfectSite",
+            "SerrePositivity.BhattScholze.Semiperfectoid.Basic",
+            "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity.AbsolutelyIntegrallyClosedQuotient"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.AicProductArc",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.AicValuationArc",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.ArcCoverCech",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalGluing",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.IntervalTensorComparison",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapCoefficientDetection",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapComplex",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcIntervalOverlap"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.OverlapShortExact",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcMilnorTensor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.PerfectedFpArc",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeComparison",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcPerfectCech",
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.ProbeTerms",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Valuations.ArcValuationProduct"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalOverlap",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ],
+        [
+          "SerrePositivity.AlgebraicGeometry.ArcRouteB.UniversalUltraproduct",
+          [
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Descent.ArcCechUltraproduct",
+            "SerrePositivity.BhattScholze.Perfectoidization.Arc.Milnor.ArcCechMilnor"
+          ]
+        ]
+      ]
+    },
+    {
+      "lane": "③-b",
+      "head": "bce212ecee8188a0e81bdec7dca4766fd1fb262d",
+      "measured_lean_paths": 583,
+      "A_direct": [],
+      "A_transitive": [],
+      "B_C_name_or_source_hits": [],
+      "any_BS_direct": []
+    }
+  ],
+  "IC2": {
+    "head": "a1fbde1af93e4bad6b76cf215052671e73e8822e",
+    "moves": 1625,
+    "A_same_sources": [],
+    "B_C_same_sources": [],
+    "B_C_name_hits": [],
+    "IC2_files_importing_BS": [],
+    "status": "段0の紙のみ。予定移動の元ファイルを現行 main に照合。"
+  }
+}
