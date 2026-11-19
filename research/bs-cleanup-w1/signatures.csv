@@ -1,0 +1,482 @@
+bundle,role,source_name,path,line,source_signature,section_variable_candidates,same_file_mentions,body_files,script_files,blueprint_files,drafts_files
+BR4,旧,freeDeltaStructure,SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean,101,def freeDeltaStructure : DeltaStructure p (FreeDeltaRing σ),44,13,2,1,0,1
+BR4,旧,existsUnique_freeDeltaHom,SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean,162,"theorem existsUnique_freeDeltaHom (D : DeltaStructure p A) (a : σ → A) :
+    ∃! f : FreeDeltaRing σ →+* A,
+      (freeDeltaStructure p σ).IsDeltaHom D f ∧
+        ∀ s : σ, f (MvPolynomial.X (s, 0)) = a s",44 130,2,1,1,0,0
+BR4,比較,relativeFreeDeltaStructure_int_eq,SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean,240,"theorem relativeFreeDeltaStructure_int_eq (D : DeltaStructure p ℤ) :
+    relativeFreeDeltaStructure σ D = freeDeltaStructure p σ",44 130 188 236,0,0,1,0,0
+BR4,残す,relativeFreeDeltaStructure,SerrePositivity/BhattScholze/Delta/Free/RelativeFreeDelta.lean,246,"def relativeFreeDeltaStructure (D : DeltaStructure p R) :
+    DeltaStructure p (RelativeFreeDeltaRing (R := R) σ)",42 107 166 227,13,39,1,1,0
+BR4,残す,existsUnique_relativeFreeDeltaHom,SerrePositivity/BhattScholze/Delta/Free/RelativeFreeDelta.lean,322,"theorem existsUnique_relativeFreeDeltaHom (D : DeltaStructure p R) (E : DeltaStructure p A)
+    (f : R →+* A) (hf : D.IsDeltaHom E f) (a : σ → A) :
+    ∃! g : RelativeFreeDeltaRing (R := R) σ →+* A,
+      (relativeFreeDeltaStructure σ D).IsDeltaHom E g ∧
+        g.comp MvPolynomial.C = f ∧ ∀ s : σ, g (MvPolynomial.X (s, 0)) = a s",42 107 166 227 279,2,4,1,0,0
+BR4,前提,integerDelta,SerrePositivity/BhattScholze/Delta/Distinguished/PrimeLocalIntegers.lean,44,private def integerDelta : DeltaStructure p ℤ,29,6,1,0,0,0
+BR5,残す,isDeltaHom_frobeniusLift_general,SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean,278,"theorem isDeltaHom_frobeniusLift_general (D : DeltaStructure p A) :
+    D.IsDeltaHom D D.frobeniusLift",44 130 188 236 262,0,2,1,0,0
+BR5,旧,isDeltaHom_frobeniusLift,SerrePositivity/BhattScholze/Delta/Perfect/PerfectDelta.lean,290,"theorem isDeltaHom_frobeniusLift (D : DeltaStructure p A)
+    (hp : Function.Injective (fun x : A ↦ (p : A) * x)) : D.IsDeltaHom D D.frobeniusLift",48 157 240 286,1,0,1,0,0
+BR5,旧,frobeniusLift_isDeltaHom_of_regular,SerrePositivity/BhattScholze/Delta/Free/CrystallineTensorRegularity.lean,60,"theorem frobeniusLift_isDeltaHom_of_regular {p : ℕ} [Fact p.Prime] {R : Type u}
+    [CommRing R] (D : DeltaStructure p R)
+    (hp : Function.Injective (fun x : R => (p : R) * x)) :
+    D.IsDeltaHom D D.frobeniusLift",,0,4,0,0,0
+BR5,前提,p_mul_delta_dvd_delta_pow,SerrePositivity/BhattScholze/Delta/Perfect/PerfectDelta.lean,161,"theorem p_mul_delta_dvd_delta_pow (D : DeltaStructure p A) (x : A) :
+    (p : A) * D.delta x ∣ D.delta (x ^ p)",48 157,1,2,1,0,0
+BR6/38,旧,principalDPFactorialEquiv,SerrePositivity/BhattScholze/Delta/DividedPower/Principal/PrincipalDP.lean,474,"def principalDPFactorialEquiv :
+    PrincipalDPPresentation A y ≃+* pDivisionFactorialSubring p (fun _ : Unit ↦ y)",449 450 451 452 453,13,1,1,0,0
+BR6/38,残す,dpFamilyFactorialEquiv,SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequence/RegularSequencePDFactorial.lean,205,def dpFamilyFactorialEquiv (hp : IsRegular (p : P)) : P ≃ₐ[A] FSub,32,2,1,0,1,1
+BR6/38,共有候補,freeDPFactorialEquiv,SerrePositivity/CommutativeAlgebra/DividedPowers/FreeDPFactorial.lean,131,def freeDPFactorialEquiv (hp : IsRegular (p : A)) : D ≃+* F,33 34,5,1,0,0,0
+BR6/38,共有候補,frobeniusDivisionFactorialEquiv,SerrePositivity/BhattScholze/Delta/DividedPower/Frobenius/FrobeniusDivisionPD.lean,169,"def frobeniusDivisionFactorialEquiv (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+    (hp : IsSMulRegular B (p : B)) : B ≃+* pDivisionFactorialSubring p a",38 109 160,2,1,0,1,1
+BR6/38,共有候補,pDivisionFactorialBaseEquivOfDividedPowers,SerrePositivity/BhattScholze/Delta/DividedPower/PDivision/PDivision.lean,1501,"def pDivisionFactorialBaseEquivOfDividedPowers
+    (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+    (hpA : Function.Injective (fun a : A ↦ (p : A) * a))
+    {I : Ideal A} (H : DividedPowers I) (y : σ → A) (hy : ∀ s, y s ∈ I) :
+    A ≃+* pDivisionFactorialSubring p y",1342 1343 1387 1388 1441,5,0,1,0,0
+BR6/38,旧,Andre.deltaPDivisionRawFactorialEquiv,SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean,620,def Andre.deltaPDivisionRawFactorialEquiv : B₀ ≃+* _root_.SerrePositivity.BhattScholze.pDivisionFactorialSubring p ys,606 607 609 610 612,7,0,1,0,0
+BR7,比較,Andre.deltaRootFrobeniusCoefficientEquiv,SerrePositivity/BhattScholze/Andre/Envelope/RootFamilyRaw.lean,266,def Andre.deltaRootFrobeniusCoefficientEquiv : _root_.SerrePositivity.BhattScholze.Andre.DeltaRootFrobeniusCoefficientQuotient D b ≃+* C,146 147 148 191 211,9,0,1,0,0
+BR7,比較,monicPrismaticSourceQuotientDerivedRestrictedH0Iso,SerrePositivity/BhattScholze/Andre/Envelope/MonicCandidate.lean,1108,"def monicPrismaticSourceQuotientDerivedRestrictedH0Iso (s : Fin m ≃ σ) (hf : ∀ t, (f t).Monic)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (MonicPrismaticSourceQuotientDerived D d f).obj) ≅ MRes",894 895 1003 1004 1103,1,0,0,0,0
+BR10/35,旧,exists_monicRootPerfectoidExtension,SerrePositivity/BhattScholze/Andre/Variants/Auxiliary.lean,1541,"theorem exists_monicRootPerfectoidExtension
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (f : Polynomial R) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      f.eval₂ φ ρ = 0",1041 1042 1184 1185 1397,0,1,0,0,0
+BR10/35,残す,exists_monicRootPerfectoidExtension,SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean,1150,"theorem exists_monicRootPerfectoidExtension (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (f : Polynomial R)
+    (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      f.eval₂ φ ρ = 0",490 544 619 907 908,1,0,0,0,0
+BR10/35,旧,exists_monicRootedPerfectoidExtension,SerrePositivity/BhattScholze/Andre/Variants/RootedExtension.lean,1584,"theorem exists_monicRootedPerfectoidExtension
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    {σ : Type u} (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) :
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0",1157 1269 1270 1404 1405,0,0,0,0,0
+BR10/35,残す,exists_monicFamilyRootedPerfectoidExtension,SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean,1441,"theorem exists_monicFamilyRootedPerfectoidExtension (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) {σ : Type u} (f : σ → Polynomial R)
+    (hf : ∀ s, (f s).Monic ∧ 0 < (f s).natDegree) :
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0",907 908 1196 1233 1388,1,0,0,0,0
+BR12,残す,Semiperfectoid.surjective_of_isPerfectoidization_of_andre,SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean,462,"theorem Semiperfectoid.surjective_of_isPerfectoidization_of_andre
+    (R S C : Type u) [CommRing R] [CommRing S] [CommRing C]
+    (p : ℕ) [Fact p.Prime] (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p)
+    (q : R →+* S) (hq : Function.Surjective q)
+    (hS : _root_.SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
+    (f : S →+* C) (hf : _root_.SerrePositivity.IsPerfectoidization p f) : Function.Surjective f",325 326 397 398 399,2,0,1,0,0
+BR12,残す,Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient,SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean,511,"theorem Semiperfectoid.surjective_of_isPerfectoidization_of_semiperfectoid_quotient
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
+    (hS : _root_.SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
+    (f : S →+* C) (hf : _root_.SerrePositivity.IsPerfectoidization p f) : Function.Surjective f",397 398 399 506 507,3,3,1,0,1
+BR12,旧,exists_surjective_perfectoidization_of_complete_torsionFree_quotient,SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean,555,"theorem exists_surjective_perfectoidization_of_complete_torsionFree_quotient
+    (R S : Type u) [CommRing R] [CommRing S] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
+    [IsAdicComplete (Ideal.span {(p : S)}) S]
+    (hp : Function.Injective (fun x : S ↦ (p : S) * x)) :
+    ∃ (C : Type u) (_ : CommRing C) (f : S →+* C),
+      IsPerfectoidization p f ∧ Function.Surjective f",397 398 399 506 507,1,0,3,0,0
+BR12,旧,Semiperfectoid.surjective_of_isPerfectoidization_of_complete_torsionFree_quotient,SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/Surjectivity.lean,577,"theorem Semiperfectoid.surjective_of_isPerfectoidization_of_complete_torsionFree_quotient
+    (R S C : Type u) [CommRing R] [CommRing S] [CommRing C] (p : ℕ) [Fact p.Prime]
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
+    [IsAdicComplete (Ideal.span {(p : S)}) S]
+    (hp : Function.Injective (fun x : S ↦ (p : S) * x))
+    (f : S →+* C) (hf : _root_.SerrePositivity.IsPerfectoidization p f) : Function.Surjective f",397 398 399 506 507,0,0,2,0,0
+BR12,比較,Semiperfectoid.surjective_perfectoidizationTensorBaseChangeMap_of_rootedGeneratingFamily,SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/Source.lean,1879,"theorem Semiperfectoid.surjective_perfectoidizationTensorBaseChangeMap_of_rootedGeneratingFamily
+    (hT : _root_.SerrePositivity.IsIntegralPerfectoid T p) (hq : Function.Surjective (algebraMap R S))
+    (a : σ → R) (ha : RingHom.ker (algebraMap R S) = Ideal.span (Set.range a))
+    (ρ : σ → ℕ → T) (hρ0 : ∀ s, ρ s 0 = algebraMap R T (a s))
+    (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
+    (f : S →ₐ[R] C) (hf : _root_.SerrePositivity.IsPerfectoidization p f.toRingHom)
+    (F : C ⊗[R] T →+* E) (hF : _root_.SerrePositivity.IsPerfectoidization p F) :
+    Function.Surjective (_root_.SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMap f F)",1840 1841 1874 1875 1876,1,0,1,0,0
+BR13a,旧,Andre.deltaRootSourceQuotientDerivedRestrictedH0Iso_of_preservesColimit,SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean,373,"def Andre.deltaRootSourceQuotientDerivedRestrictedH0Iso_of_preservesColimit
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hg : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
+    (v : Aˣ) (hv : (v : A) = D.delta d)
+    (hpres : ∀ i : ℕ, PreservesColimit F₀
+      ((ModuleCat.extendScalars.{u, u, u} ψ₀).leftDerived (i + 1))) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (_root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceQuotientDerived D d b).obj) ≅ MRes",91 197 198 287 288,1,0,1,0,0
+BR13a,旧,Andre.deltaRootFamilySourceQuotientDerivedRestrictedH0Iso,SerrePositivity/BhattScholze/Andre/Envelope/RootFamilySource.lean,284,"def Andre.deltaRootFamilySourceQuotientDerivedRestrictedH0Iso (s : Fin m ≃ σ)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (_root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceQuotientDerived D d b).obj) ≅ MRes",126 185 186 260 261,1,0,1,0,0
+BR13a,旧,monicPrismaticSourceQuotientDerivedRestrictedH0Iso,SerrePositivity/BhattScholze/Andre/Envelope/MonicCandidate.lean,1108,"def monicPrismaticSourceQuotientDerivedRestrictedH0Iso (s : Fin m ≃ σ) (hf : ∀ t, (f t).Monic)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (MonicPrismaticSourceQuotientDerived D d f).obj) ≅ MRes",894 895 1003 1004 1103,1,0,0,0,0
+BR13a,旧,monicPrismaticSourceQuotientDerivedRestrictedH0Iso_arbitrary,SerrePositivity/BhattScholze/Andre/Variants/ArbitraryFamily.lean,260,"def monicPrismaticSourceQuotientDerivedRestrictedH0Iso_arbitrary (hf : ∀ t, (f t).Monic)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (MonicPrismaticSourceQuotientDerived D d f).obj) ≅ MRes",59 130 131 230 231,1,0,0,0,0
+BR13a,旧,Semiperfectoid.deltaRootBoundedSupportQuotientDerivedRestrictedH0Iso,SerrePositivity/BhattScholze/Semiperfectoid/Surjectivity/RootEnvelope/Source.lean,303,"def Semiperfectoid.deltaRootBoundedSupportQuotientDerivedRestrictedH0Iso
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d)
+    (hpres : ∀ i : ℕ, PreservesColimit
+      (_root_.SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram E₀ c₀)
+      ((ModuleCat.extendScalars.{u, u, u} ψ₀).leftDerived (i + 1))) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (_root_.SerrePositivity.BhattScholze.Andre.DeltaRootSourceQuotientDerived D d b).obj) ≅ MRes",75 150 151 279 280,1,0,1,0,0
+BR13a,旧,powerRootPrismMonicSourceQuotientDerivedRestrictedH0Iso_of_unconditional,SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Residue.lean,751,"def powerRootPrismMonicSourceQuotientDerivedRestrictedH0Iso_of_unconditional (hf : f.Monic) :
+    (ModuleCat.restrictScalars q₀).obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+        (PowerRootPrismMonicSourceQuotientDerived_of_unconditional W hW f).obj) ≅ MRes",449 540 541 644 645,1,0,0,0,0
+BR13b,残す,exists_boundedPerfectPrismPresentation,SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidPrismPresentation.lean,47,"theorem exists_boundedPerfectPrismPresentation (hR : IsIntegralPerfectoid R p) :
+    ∃ (A : CommRingCat.{u}) (P : OrientedPrism p A),
+      P.deltaStructure.IsPerfect ∧ IsBoundedPrism P ∧ Nonempty (A ⧸ P.ideal ≃+* R)",27,0,4,0,0,0
+BR15,旧,existsUnique_pCompletedDistinguishedPrismHom,SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean,441,"theorem existsUnique_pCompletedDistinguishedPrismHom
+    {B : Type v} [CommRing B] (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
+    (f : A →+* B) (hf : D.IsDeltaHom Q.deltaStructure f) (hdf : f d ∈ Q.ideal) :
+    ∃! g : OrientedPrism.Hom (pCompletedDistinguishedPrism D d hd) Q,
+      g.toRingHom.comp (pCompletedDeltaPerfectionMap D) = f",296 297 406 407 408,3,0,1,0,0
+BR15,旧,existsUnique_pCompletedPrismHom,SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean,517,"theorem existsUnique_pCompletedPrismHom
+    {B : Type v} [CommRing B] (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
+    (f : OrientedPrism.Hom P Q) :
+    ∃! g : OrientedPrism.Hom
+      (pCompletedDistinguishedPrism P.deltaStructure P.generator hd) Q,
+      g.comp (pCompletedPrismMap P hd) = f",407 408 500 503 504,1,0,1,0,0
+BR15,旧,Semiperfectoid.existsUnique_pCompletedDeltaDivisionHom_to_perfectPrism,SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivision.lean,299,"theorem Semiperfectoid.existsUnique_pCompletedDeltaDivisionHom_to_perfectPrism
+    {A : Type v} [CommRing A] (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p R) (d : R) (hd : D.IsDistinguished d)
+    (J : Ideal R) (Q : _root_.SerrePositivity.BhattScholze.OrientedPrism p A) (hQ : Q.deltaStructure.IsPerfect)
+    (f : R →+* A) (hf : D.IsDeltaHom Q.deltaStructure f)
+    (hdf : f d ∈ Q.ideal) (hJ : J ≤ Q.ideal.comap f) :
+    ∃! g : _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision D d (fun x : J ↦ (x : R)) →+* A,
+      (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionStructure D d (fun x : J ↦ (x : R))).IsDeltaHom Q.deltaStructure g ∧
+        g.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap D d (fun x : J ↦ (x : R))) = f",38 156 157 269,3,1,1,0,0
+BR15,比較,Semiperfectoid.pCompletedDeltaDivisionPresentationEquiv,SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivision.lean,407,"def Semiperfectoid.pCompletedDeltaDivisionPresentationEquiv
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p R) (d : R) (hd : D.IsDistinguished d) (a : σ → R) (b : τ → R)
+    (hab : Ideal.span (Set.range a) = Ideal.span (Set.range b)) :
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision D d a ≃+* _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision D d b",323 324 325 386 387,5,0,1,0,0
+BR15,比較,Semiperfectoid.pCompletedDeltaDivisionSequentialEquiv,SerrePositivity/BhattScholze/Semiperfectoid/Perfection/PerfectPrismDivisionComparison.lean,321,"def Semiperfectoid.pCompletedDeltaDivisionSequentialEquiv
+    (D : _root_.SerrePositivity.BhattScholze.DeltaStructure p R) (d : R) (hd : D.IsDistinguished d) (a : σ → R) (b : τ → R) :
+    _root_.SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision D d (Sum.elim a b) ≃+*
+      _root_.SerrePositivity.BhattScholze.Semiperfectoid.SequentialPCompletedDeltaDivision D d a b",127 199 200 317 318,6,0,1,0,0
+BR15,残す,existsUnique_classicalPrismPerfectionHom,SerrePositivity/BhattScholze/Prism/Perfection/ClassicalPrismPerfection.lean,76,"theorem existsUnique_classicalPrismPerfectionHom (Q : OrientedPrism p B)
+    {C : Type u} [CommRing C] (Y : OrientedPrism p C) (hY : Y.deltaStructure.IsPerfect)
+    (f : OrientedPrism.Hom Q Y) :
+    ∃! g : OrientedPrism.Hom (classicalPrismPerfection Q) Y,
+      g.comp (classicalPrismPerfectionMap Q) = f",26,1,1,0,0,0
+BR15,残す,existsUnique_pCompletedDeltaPerfectionPDCompletionHom,SerrePositivity/BhattScholze/Prism/Perfection/PrismPerfection.lean,274,"theorem existsUnique_pCompletedDeltaPerfectionPDCompletionHom :
+    letI := pdCompletionCommRing (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b)
+    ∃! g : PDCompletionH0 (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b) →+* T,
+      (deltaPDCompletionStructure (pCompletedDeltaPerfectionStructure E)
+        (pCompletedDeltaPerfectionMap E b)).IsDeltaHom F g ∧
+      g.comp ((pdCompletionUnit (PCompletedDeltaPerfection E) p
+        (pCompletedDeltaPerfectionMap E b)).comp (pCompletedDeltaPerfectionMap E)) = f",241 242 243 244 245,3,0,2,0,0
+BR16,保留,wittRegularQuotientFontaineMap_surjective,SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean,388,"theorem wittRegularQuotientFontaineMap_surjective
+    [IsPrecomplete (Ideal.span {d}) (WittVector p k)]
+    [IsHausdorff (RingHom.ker (WittVector.fontaineTheta (WittVector p k ⧸ Ideal.span {d}) p))
+      (WittVector p (PreTilt (WittVector p k ⧸ Ideal.span {d}) p))]
+    (hd : (wittDeltaStructure p k).IsDistinguished d)
+    (hreg : Function.Injective (fun x : k ↦ d.coeff 0 * x)) :
+    Function.Surjective (wittQuotientFontaineMap p k d)",278 279 322 323 335,1,0,2,0,0
+BR16,保留,wittRegularQuotientFontaineMap_bijective,SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean,408,"theorem wittRegularQuotientFontaineMap_bijective
+    [IsAdicComplete (Ideal.span {d}) (WittVector p k)]
+    [IsHausdorff (RingHom.ker (WittVector.fontaineTheta (WittVector p k ⧸ Ideal.span {d}) p))
+      (WittVector p (PreTilt (WittVector p k ⧸ Ideal.span {d}) p))]
+    (hd : (wittDeltaStructure p k).IsDistinguished d)
+    (hreg : Function.Injective (fun x : k ↦ d.coeff 0 * x)) :
+    Function.Bijective (wittQuotientFontaineMap p k d)",278 279 322 323 335,1,0,2,0,0
+BR16,保留,IsIntegralPerfectoid.fontaine_kernel_isHausdorff,SerrePositivity/CommutativeAlgebra/Perfectoid/Fontaine.lean,974,"theorem IsIntegralPerfectoid.fontaine_kernel_isHausdorff
+    (hS : IsIntegralPerfectoid S p)
+    (hregular : Function.Injective (fun x : S ↦ (p : S) * x)) :
+    IsHausdorff (RingHom.ker (WittVector.fontaineTheta S p))
+      (WittVector p (PreTilt S p))",152 625 733 835 908,0,0,2,0,0
+BR17,共有候補,injective_of_quotientMap_injective,SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean,229,"theorem injective_of_quotientMap_injective (f : Hom P Q)
+    (hf : Function.Injective f.quotientMap) : Function.Injective f.toRingHom",108 109 112 210 211,1,0,1,0,0
+BR17,共有候補,wittQuotientFontaineMap_injective,SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean,361,"theorem wittQuotientFontaineMap_injective
+    [IsHausdorff (Ideal.span {d}) (WittVector p k)]
+    (hd : (wittDeltaStructure p k).IsDistinguished d) :
+    Function.Injective (wittQuotientFontaineMap p k d)",278 279 322 323 335,2,0,1,0,0
+BR18,保留,perfectPrism_completedResidueTensorCartierAlgEquiv,SerrePositivity/BhattScholze/Perfectoidization/Tensor/PerfectPrismResidueTensor.lean,134,"def perfectPrism_completedResidueTensorCartierAlgEquiv
+    (PR : OrientedPrism p R) (PS : OrientedPrism p S) (PT : OrientedPrism p T)
+    (hR : PR.deltaStructure.IsPerfect) (hS : PS.deltaStructure.IsPerfect)
+    (hT : PT.deltaStructure.IsPerfect)
+    (fS : OrientedPrism.Hom PR PS) (fT : OrientedPrism.Hom PR PT)
+    (hfS : fS.toRingHom = algebraMap R S) (hfT : fT.toRingHom = algebraMap R T) :
+    let d := PR.generator
+    let Q := R ⧸ PR.ideal
+    let AD := (boundedAboveCompletionCommMonFunctor R d).obj
+      (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    let C := (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj AD.X.obj
+    letI : Algebra Q (S ⧸ PS.ideal) := fS.quotientMap.toAlgebra
+    letI : Algebra Q (T ⧸ PT.ideal) := fT.quotientMap.toAlgebra
+    let RES := boundedAboveCompletedTensorAlgebra Q (p : Q) (S ⧸ PS.ideal) (T ⧸ PT.ideal)
+    letI := derivedH0CommRing AD
+    letI := derivedH0Algebra AD
+    letI : Algebra Q (C ⧸ Ideal.span {algebraMap R C d}) := principalAdicQuotientAlgebra d C
+    letI := derivedH0CommRing RES
+    letI := derivedH0Algebra RES
+    (DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj RES.X.obj ≃ₐ[Q]
+      C ⧸ Ideal.span {algebraMap R C d}",37 109,1,0,0,0,0
+BR18,保留,perfectPrism_completedResidueTensor_isIntegralPerfectoid,SerrePositivity/BhattScholze/Perfectoidization/Tensor/PerfectPrismResidueTensor.lean,221,"lemma perfectPrism_completedResidueTensor_isIntegralPerfectoid
+    (PR : OrientedPrism p R) (PS : OrientedPrism p S) (PT : OrientedPrism p T)
+    (hR : PR.deltaStructure.IsPerfect) (hS : PS.deltaStructure.IsPerfect)
+    (hT : PT.deltaStructure.IsPerfect)
+    (fS : OrientedPrism.Hom PR PS) (fT : OrientedPrism.Hom PR PT)
+    (hfS : fS.toRingHom = algebraMap R S) (hfT : fT.toRingHom = algebraMap R T) :
+    let Q := R ⧸ PR.ideal
+    letI : Algebra Q (S ⧸ PS.ideal) := fS.quotientMap.toAlgebra
+    letI : Algebra Q (T ⧸ PT.ideal) := fT.quotientMap.toAlgebra
+    let RES := boundedAboveCompletedTensorAlgebra Q (p : Q) (S ⧸ PS.ideal) (T ⧸ PT.ideal)
+    letI := derivedH0CommRing RES
+    IsIntegralPerfectoid ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj RES.X.obj) p",37 109,0,0,0,0,0
+BR21,残す,IsPerfectoidization.comp_ringEquiv,SerrePositivity/CommutativeAlgebra/Perfectoid/Defs.lean,63,"theorem IsPerfectoidization.comp_ringEquiv {S S' C : Type u}
+    [CommRing S] [CommRing S'] [CommRing C]
+    {p : ℕ} [Fact p.Prime] {f : S →+* C}
+    (hf : IsPerfectoidization p f) (e : S' ≃+* S) :
+    IsPerfectoidization p (f.comp e.toRingHom)",,0,0,1,0,0
+BR21,残す,precomp_ringEquiv,SerrePositivity/CommutativeAlgebra/Perfectoid/Defs.lean,173,"theorem precomp_ringEquiv (hf : IsPerfectoidization p f) (e : T ≃+* S) :
+    IsPerfectoidization p (f.comp e.toRingHom)",155,0,4,0,0,0
+BR21,旧,completedTensorPerfectoid_hom_ext,SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean,509,"lemma completedTensorPerfectoid_hom_ext
+    (D : Type u) [CommRing D] (hD : IsIntegralPerfectoid D p) :
+    letI := derivedH0CommRing C
+    ∀ f g : H →+* D,
+      f.comp (completedTensorPerfectoidizationMap R p S T) =
+        g.comp (completedTensorPerfectoidizationMap R p S T) → f = g",277 330 364 472,1,1,1,0,0
+BR21,旧,existsUnique_completedTensorPerfectoidLift,SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean,480,"lemma existsUnique_completedTensorPerfectoidLift
+    (D : Type u) [CommRing D] (hD : IsIntegralPerfectoid D p) (f : S ⊗[R] T →+* D) :
+    letI := derivedH0CommRing C
+    ∃! g : H →+* D, g.comp (completedTensorPerfectoidizationMap R p S T) = f",277 330 364 472,3,0,1,0,0
+BR21,旧,completedTensorPerfectoidizationMap_isPerfectoidization,SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean,367,"lemma completedTensorPerfectoidizationMap_isPerfectoidization
+    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p)
+    (hT : IsIntegralPerfectoid T p) :
+    letI := derivedH0CommRing ORIG
+    IsPerfectoidization p (completedTensorPerfectoidizationMap R p S T)",277 330 364,2,2,0,0,0
+BR22,比較,perfectoidizationTensorBaseChangeMap_isPerfectoidization,SerrePositivity/BhattScholze/Perfectoidization/TensorPerfectoidization.lean,397,"theorem perfectoidizationTensorBaseChangeMap_isPerfectoidization
+    (p : ℕ) [Fact p.Prime] (f : S →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom)
+    (F : C ⊗[R] T →+* E) (hF : IsPerfectoidization p F) :
+    IsPerfectoidization p (perfectoidizationTensorBaseChangeMap f F)",253 254 255 387 388,1,4,1,0,0
+BR22,比較,completedTensorBaseChangeMap_isPerfectoidization,SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean,413,"lemma completedTensorBaseChangeMap_isPerfectoidization
+    (hR : IsIntegralPerfectoid R p) (hT : IsIntegralPerfectoid T p)
+    (A : Type u) [CommRing A] [Algebra R A] (f : A →ₐ[R] S)
+    (hf : IsPerfectoidization p f.toRingHom) :
+    letI := derivedH0CommRing ORIG
+    IsPerfectoidization p (perfectoidizationTensorBaseChangeMap f
+      (completedTensorPerfectoidizationMap R p S T))",277 330 364,0,0,0,0,0
+BR22,比較,prop813BaseChangeMap_isPerfectoidization,SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean,400,"lemma prop813BaseChangeMap_isPerfectoidization :
+    letI := derivedH0CommRing X
+    letI := derivedH0CommRing Y
+    IsPerfectoidization p (prop813BaseChangeMap R p S A C hR hS f hf)",44 72 176 209 348,2,0,1,0,0
+BR22,比較,exists_wittPresentedTensorPerfectoidization_modP,SerrePositivity/BhattScholze/Perfectoidization/TensorPerfectoidization.lean,259,"theorem exists_wittPresentedTensorPerfectoidization_modP
+    (d : WittVector p kR) (hd : (wittDeltaStructure p kR).IsDistinguished d)
+    (θ : WittVector p kR →+* R) (hθ : Function.Surjective θ)
+    (eS : (WittVector p kS ⧸ Ideal.span {WittVector.map (algebraMap kR kS) d}) ≃+* S)
+    (eT : (WittVector p kT ⧸ Ideal.span {WittVector.map (algebraMap kR kT) d}) ≃+* T)
+    (hS : (eS.toRingHom.comp (Ideal.Quotient.mk _)).comp
+      (WittVector.map (algebraMap kR kS)) = (algebraMap R S).comp θ)
+    (hT : (eT.toRingHom.comp (Ideal.Quotient.mk _)).comp
+      (WittVector.map (algebraMap kR kT)) = (algebraMap R T).comp θ) :
+    ∃ F : S ⊗[R] T →+* WittCoefficientPushout p kR kS kT d,
+      F.comp (Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T).toRingHom =
+        (wittCoefficientPushoutLeft p kR kS kT d).comp eS.symm.toRingHom ∧
+      F.comp (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom =
+        (wittCoefficientPushoutRight p kR kS kT d).comp eT.symm.toRingHom ∧
+      IsPerfectoidization p F ∧ Function.Bijective (modPMap p F)",251 252 253 254 255,1,0,1,0,0
+BR22/23,残す,prop813CompletedTensorMap_isPerfectoidization,SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean,250,"lemma prop813CompletedTensorMap_isPerfectoidization :
+    letI := derivedH0CommRing X
+    letI := derivedH0CommRing Y
+    IsPerfectoidization p (prop813CompletedTensorMap p r s t hs ht hr hsp htp)",44 72 176 209,4,0,1,0,0
+BR23,移送候補,isIntegralPerfectoid_of_ringEquiv,SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean,169,"theorem isIntegralPerfectoid_of_ringEquiv (e : R ≃+* S) (hR : IsIntegralPerfectoid R p) :
+    IsIntegralPerfectoid S p",81 82 119 120 159,2,20,1,0,0
+BR23,残す,coefficientTensorLift,SerrePositivity/CommutativeAlgebra/PerfectRing.lean,82,"def coefficientTensorLift {R : Type u} {A : Type v} {B : Type w} {D : Type z}
+    [CommRing R] [CommRing A] [CommRing B] [CommRing D] [Algebra R A] [Algebra R B]
+    (f : A →+* D) (g : B →+* D)
+    (h : ∀ r : R, f (algebraMap R A r) = g (algebraMap R B r)) : A ⊗[R] B →+* D",50,2,11,1,0,1
+BR24,残す,IsAlmostZero,SerrePositivity/CommutativeAlgebra/Almost/Basic.lean,38,def IsAlmostZero (I : Ideal R) (M : Type v) [AddCommGroup M] [Module R M] : Prop,35,31,13,2,1,0
+BR24,残す,IsAlmostIso,SerrePositivity/CommutativeAlgebra/Almost/Basic.lean,137,def IsAlmostIso (I : Ideal R) (f : M →ₗ[R] N) : Prop,44 123 124 125 126,11,3,1,0,0
+BR24,旧,Perfectoidization.perfectoidization_map_almost_of_surjective_supported_kernel,SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean,113,"theorem Perfectoidization.perfectoidization_map_almost_of_surjective_supported_kernel
+    (R : Type u) [CommRing R] (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p)
+    (α : R →+* A) (hf : _root_.SerrePositivity.IsPerfectoidization p f) (hg : _root_.SerrePositivity.IsPerfectoidization p g)
+    (q : A →+* B) (hq : Function.Surjective q)
+    (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+    (hk : ∀ a ∈ RingHom.ker q, ∃ N : ℕ, α (ρ 0) ^ N * a = 0) :
+    Function.Surjective (_root_.SerrePositivity.IsPerfectoidization.map hf hg q) ∧
+      ∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0), ∀ x : C,
+        _root_.SerrePositivity.IsPerfectoidization.map hf hg q x = 0 → f (α s) * x = 0",44,1,0,0,0,0
+BR24,旧,Perfectoidization.perfectoidization_mapAlgHom_ker_coker_annihilated_of_surjective_supported_kernel,SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean,147,"theorem Perfectoidization.perfectoidization_mapAlgHom_ker_coker_annihilated_of_surjective_supported_kernel
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p)
+    (hf : _root_.SerrePositivity.IsPerfectoidization p f.toRingHom) (hg : _root_.SerrePositivity.IsPerfectoidization p g.toRingHom)
+    (q : A →ₐ[R] B) (hq : Function.Surjective q)
+    (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+    (hk : ∀ a ∈ RingHom.ker q.toRingHom, ∃ N : ℕ, (algebraMap R A (ρ 0)) ^ N * a = 0) :
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
+      ∀ x : (_root_.SerrePositivity.IsPerfectoidization.mapAlgHom hf hg q).toLinearMap.ker, s • x = 0) ∧
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
+      ∀ y : D ⧸ (_root_.SerrePositivity.IsPerfectoidization.mapAlgHom hf hg q).toLinearMap.range, s • y = 0)",44 140,1,0,0,0,0
+BR24,旧,Perfectoidization.perfectoidization_image_ker_coker_annihilated,SerrePositivity/BhattScholze/Perfectoidization/SupportedQuotient.lean,196,"theorem Perfectoidization.perfectoidization_image_ker_coker_annihilated
+    (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (φ : A →ₐ[R] E)
+    (hf : _root_.SerrePositivity.IsPerfectoidization p f.toRingHom)
+    (g : φ.range →ₐ[R] D) (hg : _root_.SerrePositivity.IsPerfectoidization p g.toRingHom)
+    (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+    (hk : ∀ a, φ a = 0 → ∃ N : ℕ, ρ 0 ^ N • a = 0) :
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
+      ∀ x : (_root_.SerrePositivity.IsPerfectoidization.mapAlgHom hf hg φ.rangeRestrict).toLinearMap.ker, s • x = 0) ∧
+    (∀ s ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ 0),
+      ∀ y : D ⧸ (_root_.SerrePositivity.IsPerfectoidization.mapAlgHom hf hg φ.rangeRestrict).toLinearMap.range,
+        s • y = 0)",44 140 189,1,1,0,0,0
+BR29,残す,exists_boundedPerfectPrismPresentation,SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidPrismPresentation.lean,47,"theorem exists_boundedPerfectPrismPresentation (hR : IsIntegralPerfectoid R p) :
+    ∃ (A : CommRingCat.{u}) (P : OrientedPrism p A),
+      P.deltaStructure.IsPerfect ∧ IsBoundedPrism P ∧ Nonempty (A ⧸ P.ideal ≃+* R)",27,0,4,0,0,0
+BR29,残す,exists_fontaineCompatibleWittEquiv,SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidWittEquiv.lean,73,"theorem exists_fontaineCompatibleWittEquiv {R A : Type u} [CommRing R] [CommRing A]
+    [Fact (¬ IsUnit (p : R))] [IsAdicComplete (Ideal.span {(p : R)}) R]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (e : A ⧸ P.ideal ≃+* R) :
+    ∃ ρ : WittVector p (PreTilt R p) ≃+* A,
+      (wittDeltaStructure p (PreTilt R p)).IsDeltaHom P.deltaStructure ρ.toRingHom ∧
+      (e.toRingHom.comp (Ideal.Quotient.mk P.ideal)).comp ρ.toRingHom = WittVector.fontaineTheta R p",26,1,1,0,0,0
+BR29,残す,exists_ainfClassicalPrism,SerrePositivity/BhattScholze/Prism/Perfectoid/AinfClassical.lean,107,"theorem exists_ainfClassicalPrism (hR : IsIntegralPerfectoid R p) :
+    ∃ Q : OrientedPrism p (ainfClassicalCoefficients p R),
+      Q.deltaStructure = ainfClassicalDelta p R hR ∧ Q.deltaStructure.IsPerfect ∧ IsBoundedPrism Q ∧
+      ∃ res : ainfClassicalCoefficients p R ⧸ Q.ideal ≃+* R,
+        res.toRingHom.comp (Ideal.Quotient.mk Q.ideal) = ainfClassicalTheta p R hR",26,2,1,0,1,0
+BR36,残す,exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed,SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean,1061,"theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+    (hR : IsIntegralPerfectoid R p)
+    (step : ∀ (B : Type u) [CommRing B] (_hB : IsIntegralPerfectoid B p)
+    {σ : Type u} (f : σ → Polynomial B), (∀ s, (f s).Monic ∧ 0 < (f s).natDegree) →
+    ∃ (T : Type u) (_ : CommRing T) (φ : B →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : B)}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0) :
+    ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
+      IsIntegralPerfectoid S p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
+      IsAbsolutelyIntegrallyClosed S",490 544 619 907 908,2,4,1,0,0
+BR36,残す,exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed,SerrePositivity/BhattScholze/Andre/Transfinite/Tower.lean,1487,"theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
+    ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
+      IsIntegralPerfectoid S p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
+      IsAbsolutelyIntegrallyClosed S",907 908 1196 1233 1388,2,4,1,0,0
+BR36,比較,exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed,SerrePositivity/BhattScholze/Andre/AndreFlatness.lean,60,"theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
+    ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
+      IsIntegralPerfectoid S p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
+      IsAbsolutelyIntegrallyClosed S",,2,4,1,0,0
+BR37,旧,freeDeltaFrobenius_isCompletelyFaithfullyFlat,SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusFlat.lean,341,"theorem freeDeltaFrobenius_isCompletelyFaithfullyFlat :
+    IsCompletelyFaithfullyFlat I₀ B₀",47 114 161 255,1,0,1,0,0
+BR37,残す,crystallineCompletelyFlat_frobenius,SerrePositivity/BhattScholze/Delta/Free/CrystallineTensorRegularity.lean,206,"theorem crystallineCompletelyFlat_frobenius {σ : Type u}
+    (hp : IsSMulRegular R (p : R))
+    (eR : (R ⧸ Ideal.span {(p : R)}) ≃+* MvPolynomial σ (ZMod p)) :
+    letI := crystallineFrobeniusAlgebra D
+    IsCompletelyFlat (Ideal.span {(p : R)}) (CrystallineFrobeniusTarget D)",123 193,0,2,0,0,0
+BR37,旧,primeLocalFreeDelta_frobenius_isCompletelyFlat,SerrePositivity/BhattScholze/Delta/Division/FrobeniusPushout.lean,199,"private theorem primeLocalFreeDelta_frobenius_isCompletelyFlat :
+    IsCompletelyFlat (Ideal.span {(p : P)}) (baseChangeScalarModule φ)",44 134,1,0,0,0,0
+BR39,比較,exists_perfectoidization_of_integral,SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean,32,"theorem exists_perfectoidization_of_integral
+    (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Algebra.IsIntegral R S]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (F : PerfectoidizationInterfaceE3 R p hR) :
+    ∃ (C : Type u) (_ : CommRing C) (f : S →+* C), IsPerfectoidization p f",,3,6,1,0,0
+BR39,比較,exists_perfectoidization_of_integral,SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean,77,"theorem exists_perfectoidization_of_integral
+    (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Algebra.IsIntegral R S]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
+    ∃ (C : Type u) (_ : CommRing C) (f : S →+* C), IsPerfectoidization p f",,3,6,1,0,0
+BR39,比較,exists_perfectoidization_of_finite,SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean,101,"theorem exists_perfectoidization_of_finite
+    (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Module.Finite R S]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
+    ∃ (C : Type u) (_ : CommRing C) (f : S →+* C), IsPerfectoidization p f",,0,1,2,0,0
+BR39,比較,perfectoidization_excision_isPullback,SerrePositivity/BhattScholze/Perfectoidization/Interface/Excision.lean,499,"theorem perfectoidization_excision_isPullback :
+    IsPullback
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hD f.toRingHom))
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)))
+      (CommRingCat.ofHom (IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom))))
+      (CommRingCat.ofHom (IsPerfectoidization.map hQ hE
+        (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map)))",51 66 171 293 462,1,1,1,0,0
+BR39,比較,perfectoidization_excision_isPullback,SerrePositivity/BhattScholze/Perfectoidization/Interface/Excision.lean,555,"theorem perfectoidization_excision_isPullback
+    (R S T : Type u) [CommRing R] [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (f : S →ₐ[R] T) (I : Ideal S)
+    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
+    (hI : IsModuleComplete S (p : S) (ModuleCat.of S I))
+    (harc : ∀ (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V],
+      ringKrullDim V = 1 → IsAdicComplete (Ideal.span {(p : V)}) V →
+      ∀ k : S →+* V, ¬ (I ≤ RingHom.ker k) → ∃! l : T →+* V, l.comp f.toRingHom = k)
+    {C D Q E : Type u} [CommRing C] [CommRing D] [CommRing Q] [CommRing E]
+    {ηS : S →+* C} {ηT : T →+* D} {ηQ : S ⧸ I →+* Q} {ηE : T ⧸ I.map f.toRingHom →+* E}
+    (hC : IsPerfectoidization p ηS) (hD : IsPerfectoidization p ηT)
+    (hQ : IsPerfectoidization p ηQ) (hE : IsPerfectoidization p ηE) :
+    IsPullback
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hD f.toRingHom))
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)))
+      (CommRingCat.ofHom (IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom))))
+      (CommRingCat.ofHom (IsPerfectoidization.map hQ hE
+        (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map)))",51 66 171 293 462,1,1,1,0,0
+BR39,残す,isCoproduct,SerrePositivity/BhattScholze/Prismatic/CechAlexander/Frames/PrismaticFrameCoproduct.lean,56,"def isCoproduct (n : ℕ) : IsColimit (Cofan.mk (X.obj ⦋n⦌)
+    (fun i : Fin (n + 1) => X.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i)))",26 27 28 29,1,4,0,1,0
+BR39,残す,isCoproduct,SerrePositivity/BhattScholze/Prismatic/CechAlexander/Comparison/CechAlexanderCoproduct.lean,51,"def isCoproduct (n : ℕ) :
+    IsColimit (Cofan.mk ((cosimplicial E).obj ⦋n⦌) (fun i : Fin (n + 1) =>
+      (cosimplicial E).map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i)))",29 30 31,2,4,0,1,0
+BR39,残す,_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.baseExtension,SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean,330,"abbrev _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.baseExtension (S : Type u) [CommRing S]
+    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : Type u",51,8,4,0,1,1
+BR40,残す,HasCochainCompleteTorAmplitude,SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean,37,@[expose] def HasCochainCompleteTorAmplitude (f : R →+* S) {r : ℕ} (x : Fin r → R) (c : ℕ) : Prop,31,1,17,0,2,2
+BR40,残す,bockstein_sq_zero,SerrePositivity/BhattScholze/Prismatic/HodgeTate/Affine/HodgeTateBocksteinSquare.lean,67,theorem bockstein_sq_zero : BetaSquareZero P hP r,39,1,1,0,1,1
+BR40,比較,bockstein_sq_zero',formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean,349,theorem bockstein_sq_zero' (hP : IsBoundedPrism P) (r : ℕ) : BetaSquareZero P hP r,46 52 131,0,0,0,1,0
+BR41,前提,deltaAdjoinDivisionResidueDirectLimitAlgEquiv,SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean,78,"def deltaAdjoinDivisionResidueDirectLimitAlgEquiv :
+    letI := deltaAdjoinDivisionResidueBaseAlgebra D hpA hpL hg d a u hu
+    letI := _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedDirectLimitBaseAlgebra D d a u
+    DeltaAdjoinDivisionResidue D d a ≃ₐ[A ⧸ _root_.SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal (p := p) d a]
+      _root_.SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteNormalizedDirectLimit D d a u",35 36 37 39 41,1,0,1,0,0
+BR41,前提,deltaAdjoinDivisionResidueSupEquiv,SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean,90,"def deltaAdjoinDivisionResidueSupEquiv :
+    DeltaAdjoinDivisionResidue D d a ≃+*
+      (RelativeFreeDeltaRing (R := A) σ ⧸
+        (Ideal.span {(p : RelativeFreeDeltaRing (R := A) σ), MvPolynomial.C d} ⊔
+          (relativeFreeDeltaStructure σ D).deltaClosure (deltaDivisionRelationIdeal d a)))",68 69,3,1,1,0,0
+BR43,残す,BhattScholze.Almost.perfectoidIdeal,SerrePositivity/BhattScholze/PerfectoidIdeal/Basic.lean,39,"def BhattScholze.Almost.perfectoidIdeal (R : Type u) [CommRing R]
+    (p : ℕ) [Fact p.Prime] (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (g : R) : Ideal R",,13,19,2,1,0
+BR43,残す,perfectoidKernel,SerrePositivity/BhattScholze/Almost/AlmostConnectivity.lean,41,def perfectoidKernel : Ideal R,33,14,3,0,1,1
+BR44,処遇候補,idealTensorEquiv,SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean,158,"def idealTensorEquiv (f : Hom P Q) (hf : f.toRingHom = algebraMap A B) :
+    B ⊗[A] P.ideal ≃ₗ[B] Q.ideal",39 91 108 109 112,3,0,1,1,0
+BR44,処遇候補,idealBaseChangeEquiv,SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean,185,"def idealBaseChangeEquiv (f : Hom P Q) :
+    letI := f.toRingHom.toAlgebra
+    B ⊗[A] P.ideal ≃ₗ[B] Q.ideal",39 91 108 109 112,3,0,1,1,0
+BR23,残す,perfectCoefficientTensorRoot,SerrePositivity/CommutativeAlgebra/PerfectRing.lean,99,"def perfectCoefficientTensorRoot (p : ℕ) [Fact p.Prime] (R A B : Type u)
+    [CommRing R] [CommRing A] [CommRing B] [Algebra R A] [Algebra R B]
+    [CharP R p] [CharP A p] [CharP B p]
+    [PerfectRing R p] [PerfectRing A p] [PerfectRing B p] : A ⊗[R] B →+* A ⊗[R] B",50,3,1,1,0,0
+BR23,残す,perfectCoefficientTensor_perfectRing,SerrePositivity/CommutativeAlgebra/PerfectRing.lean,137,theorem perfectCoefficientTensor_perfectRing : PerfectRing (A ⊗[R] B) p,50 122 123 124 125,0,4,1,0,1
+BR39,残す,baseExtension,SerrePositivity/DifferentialGraded/Resolution/FixedObject.lean,469,"def baseExtension : letI : DGCategory A D := S.category;
+    letI : DGCategory A E := T.category; DGFunctor A D ((TC).Objects A E TI)",314 319 381 393 457,1,4,0,1,1
+BR40,残す,cechIndex,SerrePositivity/BhattScholze/Prismatic/CechAlexander/Envelopes/CechAlexanderEnvelopeData.lean,32,abbrev cechIndex (n : ℕ) : Type u,28 29,8,3,0,0,0
+BR43,残す,IsAlmostZero,SerrePositivity/CommutativeAlgebra/Almost/Basic.lean,38,def IsAlmostZero (I : Ideal R) (M : Type v) [AddCommGroup M] [Module R M] : Prop,35,31,13,2,1,0
+BR43,文書訂正,_root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.perfectoidBaseRing,SerrePositivity/BhattScholze/Perfectoidization/Arc/Descent/ArcPerfectoidBase.lean,66,abbrev _root_.SerrePositivity.BhattScholze.Perfectoidization.Arc.perfectoidBaseRing : Type u,51,17,2,0,1,0
+BR13b,共有候補,exists_perfectoidTrialPrism,SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean,385,"theorem exists_perfectoidTrialPrism
+    (hF : Function.Surjective (fun x : ModP T p ↦ x ^ p))
+    (hker : (RingHom.ker (WittVector.fontaineTheta T p)).IsPrincipal)
+    (π : T) (u : Tˣ) (hpEq : (p : T) = u * π ^ p) :
+    ∃ (d : WittVector p (PreTilt T p))
+      (hd : (wittDeltaStructure p (PreTilt T p)).IsDistinguished d),
+      letI := pdCompletionCommRing (WittVector p (PreTilt T p)) p d
+      ∃ e : PDCompletionH0 (WittVector p (PreTilt T p)) p d ⧸
+          (perfectDeltaPDPrism (wittDeltaStructure p (PreTilt T p))
+            (wittDeltaStructure_isPerfect p (PreTilt T p)) d hd).ideal ≃+* T,
+        e.toRingHom.comp ((Ideal.Quotient.mk _).comp
+          (pdCompletionUnit (WittVector p (PreTilt T p)) p d)) =
+          WittVector.fontaineTheta T p",239 297 338 380 381,1,6,1,0,0
+BR17,共有候補,prime_nonunit_of_complete,SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismHomLift.lean,649,"private theorem prime_nonunit_of_complete {C : Type*} [CommRing C] [Nontrivial C]
+    [IsAdicComplete (Ideal.span {(p : C)}) C] : ¬ IsUnit (p : C)",456 457 458 521 646,1,0,0,0,0
+BR21,残す,lift_unique,SerrePositivity/CommutativeAlgebra/Perfectoid/Defs.lean,168,"theorem lift_unique (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p)
+    (k : S →+* D) (l : C →+* D) (hl : l.comp f = k) : l = lift hf hD k",155,2,16,1,0,0
+BR34/40,草稿の記録,Construction61Hypotheses,formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean,164,structure Construction61Hypotheses : Prop,46 52 131,0,0,0,1,0
