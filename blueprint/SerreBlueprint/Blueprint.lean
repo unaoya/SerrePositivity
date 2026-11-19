@@ -39,6 +39,84 @@ import SerreBlueprint.BS.Section18
 import SerreBlueprint.VDescent.BS17
 import SerreBlueprint.VDescent.BM18
 import SerreBlueprint.VDescent.Rydh
+import SerreBlueprint.HTT.Section1_1
+import SerreBlueprint.HTT.Section1_2
+import SerreBlueprint.HTT.Section2_0
+import SerreBlueprint.HTT.Section2_1
+import SerreBlueprint.HTT.Section2_2
+import SerreBlueprint.HTT.Section2_3
+import SerreBlueprint.HTT.Section2_4
+import SerreBlueprint.HTT.Section3_0
+import SerreBlueprint.HTT.Section3_1
+import SerreBlueprint.HTT.Section3_2
+import SerreBlueprint.HTT.Section3_3
+import SerreBlueprint.HTT.Section4_1
+import SerreBlueprint.HTT.Section4_2
+import SerreBlueprint.HTT.Section4_3
+import SerreBlueprint.HTT.Section4_4
+import SerreBlueprint.HTT.Section5_0
+import SerreBlueprint.HTT.Section5_1
+import SerreBlueprint.HTT.Section5_2
+import SerreBlueprint.HTT.Section5_3
+import SerreBlueprint.HTT.Section5_4
+import SerreBlueprint.HTT.Section5_5
+import SerreBlueprint.HTT.Section6_1
+import SerreBlueprint.HTT.Section6_2
+import SerreBlueprint.HTT.Section6_3
+import SerreBlueprint.HTT.Section6_4
+import SerreBlueprint.HTT.Section6_5
+import SerreBlueprint.HTT.Section7_1
+import SerreBlueprint.HTT.Section7_2
+import SerreBlueprint.HTT.Section7_3
+import SerreBlueprint.HTT.SectionA_1
+import SerreBlueprint.HTT.SectionA_2
+import SerreBlueprint.HTT.SectionA_3
+import SerreBlueprint.HA.Section0
+import SerreBlueprint.HA.Section1_1
+import SerreBlueprint.HA.Section1_2
+import SerreBlueprint.HA.Section1_3
+import SerreBlueprint.HA.Section1_4
+import SerreBlueprint.HA.Section2
+import SerreBlueprint.HA.Section2_1
+import SerreBlueprint.HA.Section2_2
+import SerreBlueprint.HA.Section2_3
+import SerreBlueprint.HA.Section2_4
+import SerreBlueprint.HA.Section3_1
+import SerreBlueprint.HA.Section3_2
+import SerreBlueprint.HA.Section3_3
+import SerreBlueprint.HA.Section3_4
+import SerreBlueprint.HA.Section4_1
+import SerreBlueprint.HA.Section4_2
+import SerreBlueprint.HA.Section4_3
+import SerreBlueprint.HA.Section4_4
+import SerreBlueprint.HA.Section4_5
+import SerreBlueprint.HA.Section4_6
+import SerreBlueprint.HA.Section4_7
+import SerreBlueprint.HA.Section4_8
+import SerreBlueprint.HA.Section5_1
+import SerreBlueprint.HA.Section5_2
+import SerreBlueprint.HA.Section5_3
+import SerreBlueprint.HA.Section5_4
+import SerreBlueprint.HA.Section5_5
+import SerreBlueprint.HA.Section6_1
+import SerreBlueprint.HA.Section6_2
+import SerreBlueprint.HA.Section6_3
+import SerreBlueprint.HA.Section7_1
+import SerreBlueprint.HA.Section7_2
+import SerreBlueprint.HA.Section7_3
+import SerreBlueprint.HA.Section7_4
+import SerreBlueprint.HA.Section7_5
+import SerreBlueprint.HA.SectionA_3
+import SerreBlueprint.HA.SectionA_4
+import SerreBlueprint.HA.SectionA_5
+import SerreBlueprint.HA.SectionA_6
+import SerreBlueprint.HA.SectionA_7
+import SerreBlueprint.HA.SectionA_8
+import SerreBlueprint.HA.SectionA_9
+import SerreBlueprint.HA.SectionB_1
+import SerreBlueprint.HA.SectionB_2
+import SerreBlueprint.HA.SectionB_3
+import SerreBlueprint.HA.SectionB_4
 import SerreBlueprint.Kerodon.Section1_1
 import SerreBlueprint.Kerodon.Section1_2
 import SerreBlueprint.Kerodon.Section1_3
@@ -117,6 +195,8 @@ tag := "serre-blueprint"
 - CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）：本論文が使う正規化長と perfectoid の重複度の結果（§2.2 ほか）。147 項目（本体 4、一部 20、未証明の入力に依存 6、なし 117）
 - BS（Bhatt–Scholze, Prisms and prismatic cohomology、著者版）：本論文と CLMST が使う perfectoid 化（§7・§8）と、その土台の δ 環・prism（§2・§3）。211 項目（本体 25、一部 46、未証明の入力に依存 6、なし 134）
 - v 降下（目標：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8。BS17・BM18・Rydh の必要な項目）：BS17 Theorem 4.1 (i) と BM18 Proposition 4.8（BS Proposition 8.10 の arc 層性の入力）。49 項目（本体 10、Mathlib 3、一部 36）
+- HTT（Lurie, Higher Topos Theory、著者公開版 2017-04-09）：本体の ∞ 圏・∞ トポスの定義と定理の出どころ。この部には、対応表で本体か Mathlib に対応がある項目だけを載せる（全項目の表は `research/htt-coverage`）。543 項目（本体 195、Mathlib 50、一部 298）
+- HA（Lurie, Higher Algebra、著者公開版 2017-09-18）：本体の安定 ∞ 圏・∞ operad・代数の定義と定理の出どころ。この部には、対応表で本体か Mathlib に対応がある項目だけを載せる（全項目の表は `research/ha-coverage`）。303 項目（本体 50、Mathlib 39、一部 214）
 - Kerodon 第 1 章 The Language of ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。180 項目（本体 20、Mathlib 83、両方 9、一部 18、なし 50）
 - Kerodon 第 2 章 Examples of ∞-Categories：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。213 項目（本体 19、Mathlib 40、一部 33、なし 121）
 - Kerodon 第 3 章 Kan Complexes：∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。339 項目（本体 48、Mathlib 17、一部 42、なし 232）
@@ -191,6 +271,98 @@ tag := "part-vdescent"
 {include 1 SerreBlueprint.VDescent.BS17}
 {include 1 SerreBlueprint.VDescent.BM18}
 {include 1 SerreBlueprint.VDescent.Rydh}
+
+# HTT（Lurie, Higher Topos Theory、著者公開版 2017-04-09）
+%%%
+number := false
+tag := "part-htt"
+%%%
+
+{include 1 SerreBlueprint.HTT.Section1_1}
+{include 1 SerreBlueprint.HTT.Section1_2}
+{include 1 SerreBlueprint.HTT.Section2_0}
+{include 1 SerreBlueprint.HTT.Section2_1}
+{include 1 SerreBlueprint.HTT.Section2_2}
+{include 1 SerreBlueprint.HTT.Section2_3}
+{include 1 SerreBlueprint.HTT.Section2_4}
+{include 1 SerreBlueprint.HTT.Section3_0}
+{include 1 SerreBlueprint.HTT.Section3_1}
+{include 1 SerreBlueprint.HTT.Section3_2}
+{include 1 SerreBlueprint.HTT.Section3_3}
+{include 1 SerreBlueprint.HTT.Section4_1}
+{include 1 SerreBlueprint.HTT.Section4_2}
+{include 1 SerreBlueprint.HTT.Section4_3}
+{include 1 SerreBlueprint.HTT.Section4_4}
+{include 1 SerreBlueprint.HTT.Section5_0}
+{include 1 SerreBlueprint.HTT.Section5_1}
+{include 1 SerreBlueprint.HTT.Section5_2}
+{include 1 SerreBlueprint.HTT.Section5_3}
+{include 1 SerreBlueprint.HTT.Section5_4}
+{include 1 SerreBlueprint.HTT.Section5_5}
+{include 1 SerreBlueprint.HTT.Section6_1}
+{include 1 SerreBlueprint.HTT.Section6_2}
+{include 1 SerreBlueprint.HTT.Section6_3}
+{include 1 SerreBlueprint.HTT.Section6_4}
+{include 1 SerreBlueprint.HTT.Section6_5}
+{include 1 SerreBlueprint.HTT.Section7_1}
+{include 1 SerreBlueprint.HTT.Section7_2}
+{include 1 SerreBlueprint.HTT.Section7_3}
+{include 1 SerreBlueprint.HTT.SectionA_1}
+{include 1 SerreBlueprint.HTT.SectionA_2}
+{include 1 SerreBlueprint.HTT.SectionA_3}
+
+# HA（Lurie, Higher Algebra、著者公開版 2017-09-18）
+%%%
+number := false
+tag := "part-ha"
+%%%
+
+{include 1 SerreBlueprint.HA.Section0}
+{include 1 SerreBlueprint.HA.Section1_1}
+{include 1 SerreBlueprint.HA.Section1_2}
+{include 1 SerreBlueprint.HA.Section1_3}
+{include 1 SerreBlueprint.HA.Section1_4}
+{include 1 SerreBlueprint.HA.Section2}
+{include 1 SerreBlueprint.HA.Section2_1}
+{include 1 SerreBlueprint.HA.Section2_2}
+{include 1 SerreBlueprint.HA.Section2_3}
+{include 1 SerreBlueprint.HA.Section2_4}
+{include 1 SerreBlueprint.HA.Section3_1}
+{include 1 SerreBlueprint.HA.Section3_2}
+{include 1 SerreBlueprint.HA.Section3_3}
+{include 1 SerreBlueprint.HA.Section3_4}
+{include 1 SerreBlueprint.HA.Section4_1}
+{include 1 SerreBlueprint.HA.Section4_2}
+{include 1 SerreBlueprint.HA.Section4_3}
+{include 1 SerreBlueprint.HA.Section4_4}
+{include 1 SerreBlueprint.HA.Section4_5}
+{include 1 SerreBlueprint.HA.Section4_6}
+{include 1 SerreBlueprint.HA.Section4_7}
+{include 1 SerreBlueprint.HA.Section4_8}
+{include 1 SerreBlueprint.HA.Section5_1}
+{include 1 SerreBlueprint.HA.Section5_2}
+{include 1 SerreBlueprint.HA.Section5_3}
+{include 1 SerreBlueprint.HA.Section5_4}
+{include 1 SerreBlueprint.HA.Section5_5}
+{include 1 SerreBlueprint.HA.Section6_1}
+{include 1 SerreBlueprint.HA.Section6_2}
+{include 1 SerreBlueprint.HA.Section6_3}
+{include 1 SerreBlueprint.HA.Section7_1}
+{include 1 SerreBlueprint.HA.Section7_2}
+{include 1 SerreBlueprint.HA.Section7_3}
+{include 1 SerreBlueprint.HA.Section7_4}
+{include 1 SerreBlueprint.HA.Section7_5}
+{include 1 SerreBlueprint.HA.SectionA_3}
+{include 1 SerreBlueprint.HA.SectionA_4}
+{include 1 SerreBlueprint.HA.SectionA_5}
+{include 1 SerreBlueprint.HA.SectionA_6}
+{include 1 SerreBlueprint.HA.SectionA_7}
+{include 1 SerreBlueprint.HA.SectionA_8}
+{include 1 SerreBlueprint.HA.SectionA_9}
+{include 1 SerreBlueprint.HA.SectionB_1}
+{include 1 SerreBlueprint.HA.SectionB_2}
+{include 1 SerreBlueprint.HA.SectionB_3}
+{include 1 SerreBlueprint.HA.SectionB_4}
 
 # Kerodon 第 1 章 The Language of ∞-Categories
 %%%
