@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningBaseChangeLeftEndpoints
 public import SerrePositivity.KST.Fibration.DoubleEvaluationPrecompositionVertices
-public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningBaseChangeChartComponents
 
 /-! # 像の単体での指定切断比較を、元の左底変換比較の端点へ揃える -/
 

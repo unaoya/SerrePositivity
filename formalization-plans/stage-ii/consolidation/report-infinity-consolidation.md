@@ -587,3 +587,5 @@ tracked非ArchiveのLeanヘッダ34,883本・145,428辺から、明示 import �
 移動前の引用採取は初回のみ旧入口で失敗した。現行の `CitationRegistry` を明示して再試行し、前後とも成功。初回のログを保存した。比較器や本体の型・証明は、修復のための変更を加えていない。移動・追従で23パスを書き、旧7パスを除いた。追従には既存の監査スクリプト2本のモジュール名と対応表のパスを含む。root・正式全監査・sorry閉包は調整役の取り込み時に確認する。
 
 [証拠目録](../../../evidence/ic-w1/ic-2-g01/manifest.json) の `commit` は移動前の基準 `6680433e40f564070d7a49740abaa8c3dc5dd5f4`。移動後のファイルSHAと全比較の結果は目録中の `final-result.json` に記録した。第1組のコミットで停止し、調整役の取り込みと連絡を待つ。
+
+IC2-G02 適用（`IC2-Kerodon-FibrationsOfInfinityCategories-ClassificationOfCocartesianFibrations`、`IC2-Kerodon-TheHomotopyTheoryOfInfinityCategories-TheSliceAndJoinConstructions`、`IC2-Kerodon-AdjointFunctors-AdjointFunctorsBetweenInfinityCategories`）。**一覧：済み7／全体28（うち追加0）**。77本移動（累計84／1,390）、取り下げ0、削除0。層の増分0、対象813本とv3b未説明0、引用・タグ43件の欠落・余分0、追従した監査3本PASS。[証拠目録](../../../evidence/ic-w1/ic-2-g02/manifest.json)（移動前基準 `7148361b3`）。main `0fb60ead1` の決定に従い、第2組で停止。

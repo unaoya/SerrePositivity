@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.StrictTransportPostEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportPostEvaluation
 
 /-! # 同じ strict Kan 自然変換は、元の fiber 評価と厳密に可換 -/
 

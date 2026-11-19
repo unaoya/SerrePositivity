@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRho
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctInverseFormula
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.AdjunctInverseFormula
 
 /-!
 概要：差の随伴単位の D 成分を、元の cofiber 四角形の右辺から構成する。

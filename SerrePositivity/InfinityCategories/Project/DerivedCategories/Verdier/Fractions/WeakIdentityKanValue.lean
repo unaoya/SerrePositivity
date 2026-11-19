@@ -3,7 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentitySpanPoint
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakSpanKanFiberComparison
-public import SerrePositivity.KST.Fibration.FixedFractionCosliceTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.FixedFractionCosliceTransport
 public import SerrePositivity.KST.Fibration.IdentityCosliceEvaluation
 
 /-! # 同じ strict Kan 比較の恒等点における評価を、元の固定分数点で計算する -/

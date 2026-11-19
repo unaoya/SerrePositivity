@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SliceConeComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceConeComparison
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberInfinityCone
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
 

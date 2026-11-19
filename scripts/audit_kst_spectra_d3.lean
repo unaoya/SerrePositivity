@@ -11,6 +11,10 @@ import Lean.Util.CollectAxioms
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
+  -- Preserve the original audit scope for these IC-2 modules.
+  let ic2MovedFrom1 : Array Name := #[
+    `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3DoubleEndpointJointFamily,
+    `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3JointSourceStageComparison]
   let env ← getEnv
   for mod in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf mod.module ||
@@ -116,7 +120,7 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3TensorEndpointZeros,
     `SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies,
     `SerrePositivity.KST.Spectra.D3DoubleEndpointModelComparison,
-    `SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily,
+    `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3DoubleEndpointJointFamily,
     `SerrePositivity.KST.Spectra.D3ParameterDiagramTransformation,
     `SerrePositivity.KST.Spectra.D3ParameterUnitComparison,
     `SerrePositivity.KST.Spectra.D3ParameterComparisonStage,
@@ -126,7 +130,7 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3DoubleEndpointLoopImageComparison,
     `SerrePositivity.KST.Spectra.D3LoopedSectionComparison,
     `SerrePositivity.KST.Spectra.D3CurryEvaluationProjection,
-    `SerrePositivity.KST.Spectra.D3JointSourceStageComparison,
+    `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3JointSourceStageComparison,
     `SerrePositivity.KST.Spectra.D3LoopImageComparisonCorners,
     `SerrePositivity.KST.Spectra.D3LoopedSectionComparisonCorners,
     `SerrePositivity.KST.Spectra.D3LoopedSectionUnitPasting,
@@ -160,7 +164,7 @@ run_cmd do
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.KST.Spectra).isPrefixOf mod do continue
+    unless ((`SerrePositivity.KST.Spectra).isPrefixOf mod || ic2MovedFrom1.contains mod) do continue
     if info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
       throwError "Sp-2 d3: ModelCategory assumption in type of {name}"
     let axioms ← collectAxioms name

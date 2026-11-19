@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3ParameterDiagramTransformation
-public import SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3DoubleEndpointJointFamily
 
 /-!
 概要：元のパラメータ単位子を、全パラメータ・全入力 Hom 上の coherent 比較にする。

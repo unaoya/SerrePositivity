@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.D3JointSourceStageComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3JointSourceStageComparison
 
 /-!
 概要：二方向全図式比較の各角が、以前の同じ指定始点比較に一致することを認証する。

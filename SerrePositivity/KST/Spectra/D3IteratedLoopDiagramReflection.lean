@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3DoubleEndpointJointFamily
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.TrivialFibrationSquares
 
 /-!

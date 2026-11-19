@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.FirstVertexDiagramComponent
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexDiagramComponent
 public import SerrePositivity.KST.Fibration.DoubleEvaluationPrecompositionVertices
 
 /-! # 共通 Hom 解像上でも、元の初頂点制限の同じ指定成分を保持する -/

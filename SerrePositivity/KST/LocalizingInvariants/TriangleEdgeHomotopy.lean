@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
-public import SerrePositivity.KST.LocalizingInvariants.CurryIntervalNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CurryIntervalNaturality
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.ArrowInverseControl
 
 /-!

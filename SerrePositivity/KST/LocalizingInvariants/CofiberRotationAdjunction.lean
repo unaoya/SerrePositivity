@@ -4,7 +4,7 @@ public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberRotationAdjunction
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact
-public import SerrePositivity.KST.LocalizingInvariants.TrivialFibrationSectionAdjunction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.TrivialFibrationSectionAdjunction
 
 /-!
 概要：元の cofiber 回転関手と、元の右辺を持ち上げて底辺へ戻す関手の実随伴。

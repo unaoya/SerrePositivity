@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanDiagramValueIso
-public import SerrePositivity.KST.Fibration.LeftCocartesianKanComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftCocartesianKanComparison
 
 /-! # 元の Kan 図式の置換同型と逆成分は、同じ置換単位の点を保つ -/
 

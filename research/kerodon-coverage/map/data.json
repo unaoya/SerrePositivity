@@ -28323,11 +28323,11 @@
       [
         [
           "SerrePositivity.KST.LocalizingInvariants.pointAdjunction_isTerminal",
-          "SerrePositivity/KST/LocalizingInvariants/PointTerminalAdjunction.lean:41"
+          "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/PointTerminalAdjunction.lean:41"
         ],
         [
           "SerrePositivity.KST.LocalizingInvariants.pointVertex_isTerminal",
-          "SerrePositivity/KST/LocalizingInvariants/PointTerminalAdjunction.lean:35"
+          "SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/PointTerminalAdjunction.lean:35"
         ]
       ],
       "n=−2、D=Δ⁰に制限するとpointAdjunction_isTerminalは同じ右随伴Gが点の頂点を終対象へ送ると直接返す。終対象の全Homの可縮性とpinched/interval比較により、この場合の(−2)-truncated対象の保存になる。一般n・任意Dは含まない。",

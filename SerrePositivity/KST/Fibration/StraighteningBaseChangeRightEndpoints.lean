@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningBaseChangeChartComponents
 
 /-! # pullback 側の指定切断比較の端点を、同じ初頂点比較へ揃える -/
 

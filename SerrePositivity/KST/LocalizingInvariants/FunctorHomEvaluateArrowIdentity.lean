@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SliceConeComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceConeComparison
 
 /-!
 概要：全関手比較の Arrow が恒等なら、各頂点評価の Arrow も恒等である。

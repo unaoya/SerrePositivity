@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingCoconeExtension
-public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoconeFamilyCoreCriterion
 public import SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism
 
 /-!

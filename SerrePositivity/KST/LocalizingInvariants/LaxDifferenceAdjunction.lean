@@ -3,7 +3,7 @@ module
 
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceMapping
-public import SerrePositivity.KST.LocalizingInvariants.ReflectiveMappingAdjunction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveMappingAdjunction
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.AdjointVerdier
 
 /-!

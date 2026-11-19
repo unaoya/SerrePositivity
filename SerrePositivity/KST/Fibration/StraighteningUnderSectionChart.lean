@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningUnderSectionChart
 import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningUnderSectionChart
-public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.TransportUnderSectionPoint
 
 /-! # 元の初頂点 under 比較を、同じ切断比較と元の under 制限成分に分解する -/

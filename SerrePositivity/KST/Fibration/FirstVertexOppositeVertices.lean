@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FirstVertexEdgewiseRestriction
-public import SerrePositivity.KST.Fibration.StrictTransportOppositePointHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportOppositePointHom
 
 /-! # 初頂点の解像上の底変換は、同じ pullback strict transport の反転成分を回収する -/
 

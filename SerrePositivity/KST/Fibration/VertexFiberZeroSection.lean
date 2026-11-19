@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.BaseChangeSectionFiberPoint
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.BaseChangeSectionFiberPoint
 
 /-! # 任意の実 fiber 点を零単体切断で表し、その初頂点を厳密に回収する -/
 

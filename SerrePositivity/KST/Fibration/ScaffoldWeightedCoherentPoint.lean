@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldTransportPointedCoefficient
 public import SerrePositivity.KST.Fibration.OppositeKanPointedEvaluation
 
 /-! # 元の scaffold 係数点の weighted 像を、標準 coherent Hom 比較で回収する -/
