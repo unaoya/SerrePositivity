@@ -9,10 +9,10 @@ open SerrePositivity.DiagramModel
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
   (IS JS : MorphismProperty SSet.{w})
-  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
 

@@ -75,12 +75,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_ker_specMap := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_ker_specMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_comap_fromSpec := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_comap_fromSpec
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_comap_affine_local := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_comap_affine_local

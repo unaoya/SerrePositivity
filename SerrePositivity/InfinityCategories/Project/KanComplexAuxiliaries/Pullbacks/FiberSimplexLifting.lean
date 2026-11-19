@@ -84,36 +84,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftRelStruct (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftRelStruct
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex_ι := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex_ι_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex_ι_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftRelStruct._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftRelStruct._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftRelStruct._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftRelStruct._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex.congr_simp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.liftSimplex.congr_simp

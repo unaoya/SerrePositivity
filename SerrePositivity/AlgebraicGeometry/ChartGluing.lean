@@ -160,36 +160,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartCover := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartCover
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupπ_isSeparated := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupπ_isSeparated
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartLocalizationι := _root_.SerrePositivity.AlgebraicGeometry.chartLocalizationι
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartLocalizationι_ker_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.chartLocalizationι_ker_eq_bot
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartLocalizationι_range_base := _root_.SerrePositivity.AlgebraicGeometry.chartLocalizationι_range_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_overlap_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.chart_overlap_hom_ext
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowup_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.affineBlowup_hom_ext
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartCover._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartCover._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartCover._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartCover._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartCover._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartCover._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartCover._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartCover._proof_4

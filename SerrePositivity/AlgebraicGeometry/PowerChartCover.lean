@@ -112,24 +112,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productCenterElement := _root_.SerrePositivity.AlgebraicGeometry.productCenterElement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesDegreeOne_product_pow := _root_.SerrePositivity.AlgebraicGeometry.reesDegreeOne_product_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.prime_contains_degreeOne_of_contains_powers := _root_.SerrePositivity.AlgebraicGeometry.prime_contains_degreeOne_of_contains_powers
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iSup_affineBlowup_powerCharts := _root_.SerrePositivity.AlgebraicGeometry.iSup_affineBlowup_powerCharts
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productCenterElement._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.productCenterElement._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productCenterElement._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.productCenterElement._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productCenterElement.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.productCenterElement.eq_1

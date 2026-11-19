@@ -53,9 +53,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.invertedEdges_eq_cofiber_kernel := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.invertedEdges_eq_cofiber_kernel
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.isVerdierSequence_of_adjoint := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.isVerdierSequence_of_adjoint

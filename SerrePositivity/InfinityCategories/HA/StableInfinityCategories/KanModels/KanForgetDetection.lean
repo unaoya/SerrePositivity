@@ -52,6 +52,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanMap_piIsomorphism_of_invertible := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanMap_piIsomorphism_of_invertible

@@ -102,12 +102,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finiteFree_factorization_of_fg_submodule := _root_.SerrePositivity.AlgebraicGeometry.exists_finiteFree_factorization_of_fg_submodule
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finiteFree_factorization_same_kernel := _root_.SerrePositivity.AlgebraicGeometry.exists_finiteFree_factorization_same_kernel
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finiteFree_factorization_same_kernel_and_element := _root_.SerrePositivity.AlgebraicGeometry.exists_finiteFree_factorization_same_kernel_and_element

@@ -75,6 +75,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fract
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.hasVerdierRelativeConeRecovery_of_iso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.hasVerdierRelativeConeRecovery_of_iso

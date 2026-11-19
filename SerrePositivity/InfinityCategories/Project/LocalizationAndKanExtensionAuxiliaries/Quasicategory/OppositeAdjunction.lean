@@ -66,24 +66,3 @@ end SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxili
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeAdjunction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeAdjunction := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeAdjunction
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeCounit (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeCounit := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeCounit
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeUnit (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeUnit := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeUnit
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.opposite_leftTriangle := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.opposite_leftTriangle
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.opposite_rightTriangle := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.opposite_rightTriangle
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeCounit._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeCounit._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeUnit._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.oppositeUnit._proof_1

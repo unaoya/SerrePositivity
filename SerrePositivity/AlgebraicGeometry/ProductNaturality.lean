@@ -48,12 +48,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftMap_naturality := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftMap_naturality
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftMap_naturality_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftMap_naturality_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftMap_naturality._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftMap_naturality._proof_1

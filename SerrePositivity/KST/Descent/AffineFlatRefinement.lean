@@ -39,7 +39,7 @@ variable {S : Scheme.{u}} [IsNoetherian S] {X Y : FiniteTypeSchemes S}
 theorem exists_affine_finiteFlat_refinement :
     ∃ (r : Γ(Y.obj.left, ⊤)) (J : Y.obj.left.IdealSheafData), r ≠ 0 ∧
       (∀ W : Y.obj.left.affineOpens, (J.ideal W).FG) ∧
-      Y.obj.left.basicOpen r ≤ centerComplement J ∧ J.support ≠ ⊤ ∧
+      Y.obj.left.basicOpen r ≤ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J ∧ J.support ≠ ⊤ ∧
       ∃ (T : FiniteTypeSchemes S) (p : T ⟶ finiteTypeBlowup Y J)
         (a : T ⟶ finiteTypePullback f (finiteTypeBlowupProjection Y J)),
         IsFinite p.hom.left ∧ Flat p.hom.left ∧ Surjective p.hom.left ∧

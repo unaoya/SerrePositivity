@@ -50,21 +50,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_apply := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap_apply
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_first := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap_first
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_last := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap_last
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_mono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap_mono
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_first._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetMap_first._proof_2

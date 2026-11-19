@@ -90,9 +90,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_component_restriction := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakQuotientMappingComparison_component_restriction
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanSpaceMappingComparison_component_restriction := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakSpanSpaceMappingComparison_component_restriction

@@ -103,24 +103,3 @@ end SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.paramCurry := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.paramCurry_ι := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.paramCurry_ι_assoc := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.uncurry_basepoint := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.paramCurry._proof_1 := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.paramCurry._proof_2 := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.paramCurry.congr_simp := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry.congr_simp

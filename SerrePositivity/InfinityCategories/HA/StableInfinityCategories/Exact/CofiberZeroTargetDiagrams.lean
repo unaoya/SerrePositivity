@@ -96,21 +96,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squareAt_isSuspension := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.squareAt_isSuspension
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource_source
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroTargetDiagrams := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroTargetDiagrams
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.suspensionDiagramsAtSource.eq_1

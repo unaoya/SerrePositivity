@@ -55,15 +55,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryFace_range_le_horn := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.boundaryFace_range_le_horn
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.boundaryToHorn (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryToHorn := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.boundaryToHorn
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryToHorn_ι := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.boundaryToHorn_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryToHorn_ι_assoc := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.boundaryToHorn_ι_assoc

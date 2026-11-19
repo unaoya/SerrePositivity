@@ -17,7 +17,7 @@ example {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C]
 
 variable {C : Type u₁} [Category.{v₁} C] [ModelCategory C]
   [IsLocallyPresentable.{w} C] (I J : MorphismProperty C)
-  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I J in
 -- Full A0/A1 consumer: no assumed accessibility of W, replacements, or factorizations.

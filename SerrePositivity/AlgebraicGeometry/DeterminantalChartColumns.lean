@@ -90,18 +90,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalChartColumns := _root_.SerrePositivity.AlgebraicGeometry.determinantalChartColumns
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalChartColumns_det := _root_.SerrePositivity.AlgebraicGeometry.determinantalChartColumns_det
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalChartColumns_injective := _root_.SerrePositivity.AlgebraicGeometry.determinantalChartColumns_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalChartColumns_vector_mem_range := _root_.SerrePositivity.AlgebraicGeometry.determinantalChartColumns_vector_mem_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalChartColumns._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.determinantalChartColumns._proof_1

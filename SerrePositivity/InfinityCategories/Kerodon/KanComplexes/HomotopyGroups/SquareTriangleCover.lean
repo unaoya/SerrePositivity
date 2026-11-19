@@ -134,33 +134,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.interval_simplices_comparable := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.interval_simplices_comparable
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_sumSimplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_sumSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_one_sumIndex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sigma_one_sumIndex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_zero_sumIndex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sigma_zero_sumIndex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sumIndex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumIndex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sumIndex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sumSimplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumSimplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sumSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_lower_cover := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_lower_cover
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_sumSimplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_sumSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumIndex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sumIndex._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sumSimplex._proof_1

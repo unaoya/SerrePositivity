@@ -70,24 +70,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fixedFractionCosliceEvaluation (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fixedFractionCosliceEvaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation_inclusion := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fixedFractionCosliceEvaluation_inclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedMarkedSpanToFamily_target := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fixedMarkedSpanToFamily_target
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionFamilyCosliceData (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionFamilyCosliceData := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionFamilyCosliceData
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionFamilyCosliceEvaluation (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionFamilyCosliceEvaluation := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionFamilyCosliceEvaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionFamilyCosliceEvaluation_projection := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fractionFamilyCosliceEvaluation_projection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.fixedFractionCosliceEvaluation.eq_1

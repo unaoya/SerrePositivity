@@ -47,15 +47,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_id := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_id
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_true_iff := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_true_iff

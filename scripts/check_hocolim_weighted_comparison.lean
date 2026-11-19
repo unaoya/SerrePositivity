@@ -18,9 +18,9 @@ example (W : Kᵒᵖ ⥤ SSet.{w}) :
   SmallHomFrameWeights.standardFrameHomFamilyIso K W
 
 variable (I J : MorphismProperty C)
-  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J] [ModelCategory SSet.{w}]
+  [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] [ModelCategory SSet.{w}]
   (IS JS : MorphismProperty SSet.{w})
-  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
 -- The actual frame Hom cospan now connects by a bifunctor isomorphism to weighted Hom.

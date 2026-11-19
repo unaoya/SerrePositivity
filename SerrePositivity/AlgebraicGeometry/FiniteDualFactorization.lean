@@ -77,9 +77,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMap_factorization_of_dual_range_le := _root_.SerrePositivity.AlgebraicGeometry.linearMap_factorization_of_dual_range_le
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMap_factorization_iff_of_dual_ranges_eq := _root_.SerrePositivity.AlgebraicGeometry.linearMap_factorization_iff_of_dual_ranges_eq

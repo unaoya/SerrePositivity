@@ -82,9 +82,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localization_awayMap_isLocalizationMap := _root_.SerrePositivity.AlgebraicGeometry.localization_awayMap_isLocalizationMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localization_powers_map_isLocalizationMap := _root_.SerrePositivity.AlgebraicGeometry.localization_powers_map_isLocalizationMap

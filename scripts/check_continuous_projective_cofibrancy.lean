@@ -30,7 +30,7 @@ example [HasInitial C] (D : K ⥤ C) [D.IsWellOrderContinuous] (Q : MorphismProp
   ContinuousLifts.projective_llp Q hbot hstep
 
 variable [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- Actual projective model and actual hocolim, independent object/Hom/presentability universes.
 example (D : K ⥤ C) [D.IsWellOrderContinuous] (hbot : IsCofibrant (D.obj ⊥))

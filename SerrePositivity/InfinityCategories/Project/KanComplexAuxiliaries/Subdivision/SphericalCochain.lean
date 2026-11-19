@@ -105,33 +105,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.boundary (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.boundary := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.boundary
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cochain (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.cochain := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cochain
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.differential_cochain := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.differential_cochain
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexValue (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexValue
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue_degeneracy := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexValue_degeneracy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.zeroExtend_cochain := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.zeroExtend_cochain
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.boundary._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.boundary._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.cochain.congr_simp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cochain.congr_simp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexValue._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue.congr_simp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexValue.congr_simp

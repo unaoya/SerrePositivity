@@ -40,7 +40,7 @@ variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
 /-- Almost-zero coefficient endomorphisms glue along any rooted cover. -/
 theorem perfectoidIdeal_torCoefficientScalar_eq_zero_of_rooted_cover
     {σ : Type u} (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    (g : R) (e : ℕ) (hcover : g ^ e ∈ BhattScholze.compatibleRootFamilyZeroIdeal ρ)
+    (g : R) (e : ℕ) (hcover : g ^ e ∈ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ)
     (C : Type u) [CommRing C] [Algebra R C]
     (N : ModuleCat.{u} R) (k : ℕ) (hN : ∀ x : N, (p : R) ^ k • x = 0) (i : ℕ)
     (hlocal : ∀ s, ∀ a ∈ _root_.SerrePositivity.BhattScholze.Almost.perfectoidIdeal R p hR (ρ s 0),
@@ -72,7 +72,7 @@ theorem perfectoidIdeal_powerTorsionTorInput_of_aic_cover
   choose ρ hρ0 hρ using fun s =>
     hAIC.exists_compatible_pow_roots (Fact.out : p.Prime).pos (d s)
   obtain ⟨e, he⟩ := hcover
-  have hzero : BhattScholze.compatibleRootFamilyZeroIdeal ρ = Ideal.span (Set.range d) := by
+  have hzero : _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ = Ideal.span (Set.range d) := by
     change Ideal.span (Set.range (fun s => ρ s 0)) = Ideal.span (Set.range d)
     rw [show (fun s => ρ s 0) = d from funext hρ0]
   rw [← hzero] at he

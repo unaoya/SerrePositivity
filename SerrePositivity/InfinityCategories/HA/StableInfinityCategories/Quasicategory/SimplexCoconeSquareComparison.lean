@@ -83,6 +83,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquare_homMk_comm_of_arrowMks := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanSquare_homMk_comm_of_arrowMks

@@ -92,21 +92,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.vertexFiberPointReindex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.vertexFiberPointReindex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.vertexFiberPointReindex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.vertexFiberPointReindex_eq_transport := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.vertexFiberPointReindex_eq_transport
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.fiberPoint_ext := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldTransportComparisonSpan.fiberPoint_ext
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.strictTransportForget_eq := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldTransportComparisonSpan.strictTransportForget_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.vertexFiberPointReindex._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.vertexFiberPointReindex._proof_1

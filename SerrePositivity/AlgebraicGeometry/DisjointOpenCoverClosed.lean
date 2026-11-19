@@ -48,6 +48,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isClosed_of_disjoint_open_cover := _root_.SerrePositivity.AlgebraicGeometry.isClosed_of_disjoint_open_cover

@@ -162,18 +162,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.homotopy_filtered_eq_eventually := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homotopy_filtered_eq_eventually
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.homotopy_filtered_surjective := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homotopy_filtered_surjective
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ptSimplex_filtered_eq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ptSimplex_filtered_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ptSimplex_filtered_factorization := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ptSimplex_filtered_factorization
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.relStruct_filtered_factorization := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.relStruct_filtered_factorization

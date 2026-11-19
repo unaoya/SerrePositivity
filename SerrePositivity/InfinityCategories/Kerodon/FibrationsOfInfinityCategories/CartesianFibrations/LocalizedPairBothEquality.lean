@@ -49,12 +49,3 @@ end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.Ca
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.pair_eq_of_anodyneQ_eq := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pair_eq_of_anodyneQ_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.pair_left_eq_of_anodyneQ_eq := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pair_left_eq_of_anodyneQ_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.whiskerRight_eq_of_anodyneQ_eq := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.whiskerRight_eq_of_anodyneQ_eq

@@ -101,33 +101,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLocalLift := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLocalLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLocalLift_base := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLocalLift_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLocalLift_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLocalLift_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLift := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLift_base := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLift_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLift_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLift_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLift._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLift.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLift.congr_simp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLift.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLift.eq_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openChartUniversalLocalLift.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.openChartUniversalLocalLift.congr_simp

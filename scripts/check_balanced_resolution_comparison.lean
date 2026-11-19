@@ -44,7 +44,7 @@ example {H : Type uH} [Category.{vH} H] (L : SSet.{v} ⥤ H)
 section ActualRightLiftAction
 open BiresolutionRightAction
 variable (q : Centers C) (A : (FramedResolution C)ᵒᵖ)
-example : SerrePositivity.SimplicialModel.UniverseLift.BoundaryFillers ((choices C).obj q) :=
+example : SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers ((choices C).obj q) :=
   choice_fillers C hcof q
 example : (coherent C hcof).app
     (SerrePositivity.NerveSimplexEndpoint.ofChain (ComposableArrows.mk₀ q)) =

@@ -61,33 +61,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor_nerve_heq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor_nerve_heq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor_native_heq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentStringPathReindexFunctor_native_heq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_5 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_5
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_6 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_6
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_7 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentPathImageFunctor._proof_7

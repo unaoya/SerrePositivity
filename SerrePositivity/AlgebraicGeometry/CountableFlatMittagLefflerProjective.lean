@@ -110,15 +110,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_linearSection_of_finiteFree_sequence_mittagLeffler := _root_.SerrePositivity.AlgebraicGeometry.exists_linearSection_of_finiteFree_sequence_mittagLeffler
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_of_finiteFree_sequence_mittagLeffler := _root_.SerrePositivity.AlgebraicGeometry.projective_of_finiteFree_sequence_mittagLeffler
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_of_countable_flat_mittagLeffler := _root_.SerrePositivity.AlgebraicGeometry.projective_of_countable_flat_mittagLeffler
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_of_finiteType_finite_flat_mittagLeffler := _root_.SerrePositivity.AlgebraicGeometry.projective_of_finiteType_finite_flat_mittagLeffler

@@ -92,9 +92,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_split_matrix_for_local_presentation_kernel := _root_.SerrePositivity.AlgebraicGeometry.exists_split_matrix_for_local_presentation_kernel
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_minor_pattern_of_projective_presentation := _root_.SerrePositivity.AlgebraicGeometry.exists_minor_pattern_of_projective_presentation

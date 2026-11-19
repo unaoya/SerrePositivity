@@ -103,15 +103,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction_target := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.contraction_target
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.identityArrow_contraction := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.identityArrow_contraction
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.unitHomotopy (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.unitHomotopy := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.unitHomotopy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.unitHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.unitHomotopy._proof_1

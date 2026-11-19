@@ -48,15 +48,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenKanTransport_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakSpanChosenKanTransport_isQCatEquivalence
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakSpanChosenTransport (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenTransport := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakSpanChosenTransport
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenTransport._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakSpanChosenTransport._proof_1

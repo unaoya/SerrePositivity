@@ -110,30 +110,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prod_kanComplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prod_kanComplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prod_kanComplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prod_map_injective := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prod_map_injective
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct._proof_5 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct._proof_5
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.prodRelStruct._proof_6 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.prodRelStruct._proof_6

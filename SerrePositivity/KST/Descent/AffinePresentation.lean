@@ -65,7 +65,7 @@ theorem affine_basicOpen_nonempty_of_ne_zero (Y : Scheme.{u}) [IsAffine Y] [IsIn
 使われ方：平坦化の中心上の次元帰納への接続。 -/
 theorem center_support_ne_top_of_nonzero_boundary (Y : Scheme.{u}) [IsAffine Y] [IsIntegral Y]
     (J : Y.IdealSheafData) (r : Γ(Y, ⊤)) (hr : r ≠ 0)
-    (hadm : Y.basicOpen r ≤ centerComplement J) : J.support ≠ ⊤ := by
+    (hadm : Y.basicOpen r ≤ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J) : J.support ≠ ⊤ := by
   obtain ⟨y, hy⟩ := affine_basicOpen_nonempty_of_ne_zero Y r hr
   intro htop
   have hc := hadm hy

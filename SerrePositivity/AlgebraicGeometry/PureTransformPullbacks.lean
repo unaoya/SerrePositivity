@@ -117,30 +117,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformCoefficientMap := _root_.SerrePositivity.AlgebraicGeometry.pureTransformCoefficientMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasFlatPurePullbacks := _root_.SerrePositivity.AlgebraicGeometry.HasFlatPurePullbacks
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformCoefficientMap_comp := _root_.SerrePositivity.AlgebraicGeometry.pureTransformCoefficientMap_comp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasFlatPurePullbacks.comp := _root_.SerrePositivity.AlgebraicGeometry.HasFlatPurePullbacks.comp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformCoefficientMap_spec := _root_.SerrePositivity.AlgebraicGeometry.pureTransformCoefficientMap_spec
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformCoefficientMap_factor := _root_.SerrePositivity.AlgebraicGeometry.pureTransformCoefficientMap_factor
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformCoefficientMap_post_spec := _root_.SerrePositivity.AlgebraicGeometry.pureTransformCoefficientMap_post_spec
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasFlatPurePullbacks._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.HasFlatPurePullbacks._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformCoefficientMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformCoefficientMap.eq_1

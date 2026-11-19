@@ -52,6 +52,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rankAtStalk_baseChange_of_mem_freeLocus := _root_.SerrePositivity.AlgebraicGeometry.rankAtStalk_baseChange_of_mem_freeLocus

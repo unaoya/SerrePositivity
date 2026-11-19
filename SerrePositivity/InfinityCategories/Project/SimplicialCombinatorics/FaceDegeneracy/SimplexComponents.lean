@@ -97,27 +97,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass_map := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex_class_eq := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex_class_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex.eq_1

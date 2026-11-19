@@ -177,39 +177,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_rTensor_apply := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_rTensor_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_basis_apply := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_basis_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_injective_of_basis := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_injective_of_basis
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_surjective_of_finite_basis := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_surjective_of_finite_basis
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_surjective_of_finite := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_surjective_of_finite
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_injective_of_finitePresentation := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_injective_of_finitePresentation
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightEquivOfFinitePresentation := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightEquivOfFinitePresentation
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightHom_injective_of_noetherian := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightHom_injective_of_noetherian
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightEquivOfFinitePresentation._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightEquivOfFinitePresentation._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightEquivOfFinitePresentation._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightEquivOfFinitePresentation._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightEquivOfFinitePresentation._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightEquivOfFinitePresentation._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarRightEquivOfFinitePresentation._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.piScalarRightEquivOfFinitePresentation._proof_4

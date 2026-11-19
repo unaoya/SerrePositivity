@@ -195,13 +195,13 @@ theorem Semiperfectoid.tensorBaseChangeKernel_eq_map (hq : Function.Surjective (
   let g := (algebraMap R S).liftOfSurjective hq ⟨qU.comp (algebraMap R T), hle⟩
   have hg (r : R) : g (algebraMap R S r) = qU (algebraMap R T r) :=
     RingHom.liftOfSurjective_comp_apply _ _ _ r
-  let L := _root_.SerrePositivity.BhattScholze.coefficientTensorLift g qU hg
+  let L := _root_.SerrePositivity.coefficientTensorLift g qU hg
   let iT := (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom
   apply le_antisymm
   · intro t ht
     have hL : L (iT t) = qU t := by
-      change _root_.SerrePositivity.BhattScholze.coefficientTensorLift g qU hg ((1 : S) ⊗ₜ[R] t) = qU t
-      rw [_root_.SerrePositivity.BhattScholze.coefficientTensorLift_tmul, map_one, one_mul]
+      change _root_.SerrePositivity.coefficientTensorLift g qU hg ((1 : S) ⊗ₜ[R] t) = qU t
+      rw [_root_.SerrePositivity.coefficientTensorLift_tmul, map_one, one_mul]
     apply Ideal.Quotient.eq_zero_iff_mem.mp
     change iT t = 0 at ht
     rw [← hL, ht, map_zero]
@@ -224,9 +224,9 @@ theorem Semiperfectoid.tensorBaseChangeKernel_eq_rootFamilyZeroIdeal
     {σ : Type u} (a : σ → R) (ha : RingHom.ker (algebraMap R S) = Ideal.span (Set.range a))
     (ρ : σ → ℕ → T) (hρ0 : ∀ s, ρ s 0 = algebraMap R T (a s)) :
     RingHom.ker (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom =
-      _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ := by
+      _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ := by
   rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.tensorBaseChangeKernel_eq_map hq, ha, Ideal.map_span, ← Set.range_comp]
-  unfold _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal
+  unfold _root_.SerrePositivity.compatibleRootFamilyZeroIdeal
   congr 1
   exact congrArg Set.range (funext hρ0).symm
 
@@ -248,7 +248,7 @@ variable {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R]
 /-- Jの各元を最初の元に持つ根族は、最初の元のイデアルとしてJそのものを生成する。 -/
 theorem Semiperfectoid.compatibleRootFamilyZeroIdeal_eq_of_roots_on_ideal
     (J : Ideal R) (ρ : J → ℕ → R) (hρ0 : ∀ s, ρ s 0 = (s : R)) :
-    _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ = J := by
+    _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ = J := by
   apply le_antisymm
   · apply Ideal.span_le.mpr
     rintro _ ⟨s, rfl⟩
@@ -268,7 +268,7 @@ theorem Semiperfectoid.surjective_of_isPerfectoidization_of_rootedIdeal
     {C : Type u} [CommRing C] (f : R ⧸ J →+* C) (hf : _root_.SerrePositivity.IsPerfectoidization p f) :
     Function.Surjective f := by
   have hJ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyZeroIdeal_eq_of_roots_on_ideal J ρ hρ0
-  let e : R ⧸ J ≃+* R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ := Ideal.quotEquivOfEq hJ.symm
+  let e : R ⧸ J ≃+* R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ := Ideal.quotEquivOfEq hJ.symm
   let ff := f.comp e.symm.toRingHom
   have hff : _root_.SerrePositivity.IsPerfectoidization p ff := hf.precomp_ringEquiv e.symm
   have hsurj := _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_compatibleRootFamily hR ρ hρ ff hff

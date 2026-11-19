@@ -62,24 +62,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_lower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_lower
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMonotone_exists_adjacent_eq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeMonotone_exists_adjacent_eq
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSurjectionLower (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSurjectionLower
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower_factor := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSurjectionLower_factor
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower_monotone := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSurjectionLower_monotone
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower_surjective := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSurjectionLower_surjective
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSurjectionLower.eq_1

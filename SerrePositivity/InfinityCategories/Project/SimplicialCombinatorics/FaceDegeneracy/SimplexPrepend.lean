@@ -121,30 +121,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_comp := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_comp
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_epi (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_epi := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_epi
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_id := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_id
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_mono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_mono
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_succ := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_succ
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend._proof_2

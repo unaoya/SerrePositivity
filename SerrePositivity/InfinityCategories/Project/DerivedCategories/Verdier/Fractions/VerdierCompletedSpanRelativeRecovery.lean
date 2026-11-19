@@ -184,15 +184,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanEquivalence_relative := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.spanRecoveryKanEquivalence_relative
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierCompletedSpan_relative_finite_recovery := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierCompletedSpan_relative_finite_recovery
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFiniteMappingFamily_relative_recovery := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierFiniteMappingFamily_relative_recovery
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpan_relative_finite_recovery_of_kanComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierSpan_relative_finite_recovery_of_kanComparison

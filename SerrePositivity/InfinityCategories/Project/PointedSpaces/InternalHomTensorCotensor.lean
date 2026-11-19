@@ -79,15 +79,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_tensor_block := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.HomTensorStrength.exchange_tensor_block
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensor_curry := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.tensor_curry
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.uncurry_uncurry_pre := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.uncurry_uncurry_pre
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.uncurry_uncurry_hom := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.uncurry_uncurry_hom

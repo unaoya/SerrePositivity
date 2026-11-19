@@ -588,7 +588,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily,
     `SerrePositivity.KST.LocalizingInvariants.SquareFramePathExtension,
     `SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily,
-    `SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy,
     `SerrePositivity.KST.LocalizingInvariants.LaxQuotientBFNormalization,
     `SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationExact,
     `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference,

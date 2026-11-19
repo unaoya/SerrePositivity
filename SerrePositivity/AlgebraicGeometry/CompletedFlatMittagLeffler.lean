@@ -58,9 +58,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_adicCompletion_of_projective_reduction := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_adicCompletion_of_projective_reduction
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flat_mittagLeffler_adicCompletion_of_projective_reduction := _root_.SerrePositivity.AlgebraicGeometry.flat_mittagLeffler_adicCompletion_of_projective_reduction

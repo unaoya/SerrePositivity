@@ -91,27 +91,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.affineTower (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.affineTower
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_map := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.affineTower_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_step := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.affineTower_step
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.groupTower (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.groupTower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.groupTower
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.groupTower_step := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.groupTower_step
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.transition := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.transition_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.transition.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.transition.eq_1

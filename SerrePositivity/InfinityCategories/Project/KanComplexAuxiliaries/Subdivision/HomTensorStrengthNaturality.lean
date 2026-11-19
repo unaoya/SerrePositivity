@@ -56,21 +56,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_middle := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_natural_middle
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_middle_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_natural_middle_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.natural
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.natural_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_parameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.natural_parameter
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_parameter_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.natural_parameter_assoc

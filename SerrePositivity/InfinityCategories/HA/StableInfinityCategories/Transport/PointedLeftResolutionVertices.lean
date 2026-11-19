@@ -60,12 +60,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedSpaceLeftCoefficientIso_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.pointedSpaceLeftCoefficientIso_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.uliftMapVertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.uliftMapVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.uliftOppositeVertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.uliftOppositeVertex

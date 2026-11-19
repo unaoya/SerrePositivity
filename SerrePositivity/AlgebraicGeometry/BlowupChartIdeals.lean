@@ -95,21 +95,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeal := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_to_blowup := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_to_blowup
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeals_compatible := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeals_compatible
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartRing_isNoetherianRing := _root_.SerrePositivity.AlgebraicGeometry.blowupChartRing_isNoetherianRing
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeal_fg
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeal._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeal._proof_1

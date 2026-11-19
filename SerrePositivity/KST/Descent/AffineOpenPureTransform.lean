@@ -108,7 +108,7 @@ theorem algebraPureTransformBasicOpenImageIso_hom_structure :
 方針：商の Spec との基礎環上の同型で実際のスキームの平坦性を移す。
 規約：単なる点集合の閉包の平坦性ではない。
 使われ方：strict transform のアフィンチャートでの平坦性。 -/
-theorem algebraBoundaryOpen_image_flat [Module.Flat R (modulePureTransform f B)] :
+theorem algebraBoundaryOpen_image_flat [Module.Flat R (_root_.SerrePositivity.AlgebraicGeometry.modulePureTransform f B)] :
     Flat ((algebraBoundaryOpen R B f).ι.imageι ≫
       Spec.map (CommRingCat.ofHom (algebraMap R B))) := by
   let e := algebraPureTransformBasicOpenImageIso R B f

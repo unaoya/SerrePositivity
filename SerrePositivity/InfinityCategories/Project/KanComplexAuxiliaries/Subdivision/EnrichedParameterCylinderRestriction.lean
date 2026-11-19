@@ -110,30 +110,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.gradedRestriction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.gradedRestriction := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.gradedRestriction
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restriction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restriction := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restriction
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionMap_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_id := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionMap_id
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionObject (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionObject := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionObject
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restriction_evaluation := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restriction_evaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.gradedRestriction._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.gradedRestriction._proof_1
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionMap.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap.match_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restrictionMap.match_1

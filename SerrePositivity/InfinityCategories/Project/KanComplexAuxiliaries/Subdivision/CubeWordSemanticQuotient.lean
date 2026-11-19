@@ -53,27 +53,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordSemanticQuotient (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordSemanticQuotient := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordSemanticQuotient
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor_essSurj (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_essSurj := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor_essSurj
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordSemanticComparison := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticComparison
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticComparison_isEquivalence (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordSemanticComparison_isEquivalence := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticComparison_isEquivalence
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticProjection (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordSemanticProjection := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticProjection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_comparison := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticProjection_comparison
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordSemanticProjection_map_eq_iff := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticProjection_map_eq_iff
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordSemanticComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordSemanticComparison._proof_1

@@ -6,14 +6,15 @@ universe w v u wV vV uV
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open CategoryTheory.MonoidalCategory
 open SerrePositivity SerrePositivity.Bousfield
+open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison (CofibrantlyGenerated)
 
 section General
 variable {C : Type u} [Category.{v} C] [original : ModelCategory C] [IsLocallyPresentable.{w} C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hw : weakEquivalences SSet.{w} = SimplicialHomotopy.weakEquivalences)
@@ -27,7 +28,7 @@ variable {C : Type u} [Category.{v} C] [original : ModelCategory C] [IsLocallyPr
   [EnrichedOrdinaryCategory V C]
   (P : SerrePositivity.Enriched.TensorCotensor V C)
   [hP : Quillen.IsQuillenBifunctor P.tensor] [hunit : SerrePositivity.Enriched.HasTensorUnitAxiom P]
-  (IV JV : MorphismProperty V) [ModelGeneration.CofibrantlyGenerated.{wV} IV JV]
+  (IV JV : MorphismProperty V) [CofibrantlyGenerated.{wV} IV JV]
   [ModelCategory SSet.{vV}] [ModelCategory SSet.{max v vV}]
   (hcofParam : cofibrations SSet.{vV} = MorphismProperty.monomorphisms _)
   (hfibParam : fibrations SSet.{vV} = SSet.modelCategoryQuillen.J.{vV}.rlp)
@@ -62,9 +63,9 @@ section Simplicial
 variable {C : Type u} [Category.{v} C] [original : ModelCategory C] [IsLocallyPresentable.{w} C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hw : weakEquivalences SSet.{w} = SerrePositivity.SimplicialHomotopy.weakEquivalences)
@@ -79,7 +80,7 @@ variable {C : Type u} [Category.{v} C] [original : ModelCategory C] [IsLocallyPr
 
 variable [EnrichedOrdinaryCategory SSet.{v} C]
   (P : SerrePositivity.Enriched.TensorCotensor SSet.{v} C) [Quillen.IsQuillenBifunctor P.tensor]
-  (IV JV : MorphismProperty SSet.{v}) [ModelGeneration.CofibrantlyGenerated.{v} IV JV]
+  (IV JV : MorphismProperty SSet.{v}) [CofibrantlyGenerated.{v} IV JV]
 
 -- For V = SSet, the parameter cofibrancy and action unit conditions are proved automatically.
 example (S : MorphismProperty C) [S.IsSmall.{w}]

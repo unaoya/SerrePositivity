@@ -78,17 +78,17 @@ theorem exists_wittPresentedTensorCompletion
       wittCoefficientPushoutRight p kR kS kT d (eT.symm _)
     rw [← hxS, ← hxT, eS.symm_apply_apply, eT.symm_apply_apply]
     exact RingHom.congr_fun (wittCoefficientPushout_base_agreement p kR kS kT d) x
-  let F := coefficientTensorLift iS iT hi
+  let F := _root_.SerrePositivity.coefficientTensorLift iS iT hi
   have hFS : F.comp
       (Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T).toRingHom = iS := by
     ext s
-    change coefficientTensorLift iS iT hi (s ⊗ₜ[R] (1 : T)) = iS s
-    rw [coefficientTensorLift_tmul, map_one, mul_one]
+    change _root_.SerrePositivity.coefficientTensorLift iS iT hi (s ⊗ₜ[R] (1 : T)) = iS s
+    rw [_root_.SerrePositivity.coefficientTensorLift_tmul, map_one, mul_one]
   have hFT : F.comp
       (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom = iT := by
     ext t
-    change coefficientTensorLift iS iT hi ((1 : S) ⊗ₜ[R] t) = iT t
-    rw [coefficientTensorLift_tmul, map_one, one_mul]
+    change _root_.SerrePositivity.coefficientTensorLift iS iT hi ((1 : S) ⊗ₜ[R] t) = iT t
+    rw [_root_.SerrePositivity.coefficientTensorLift_tmul, map_one, one_mul]
   refine ⟨F, hFS, hFT, wittCoefficientPushout_isIntegralPerfectoid p kR kS kT d hd, ?_⟩
   intro D _ hD g
   let := hD
@@ -129,8 +129,8 @@ theorem exists_wittPresentedTensorCompletion
     apply RingHom.ext
     intro x
     refine TensorProduct.inductionOn x (fun s t ↦ ?_) (fun x y hx hy ↦ ?_)
-    · change L (coefficientTensorLift iS iT hi (s ⊗ₜ[R] t)) = g (s ⊗ₜ[R] t)
-      rw [coefficientTensorLift_tmul, map_mul, hLiS, hLiT, ← map_mul]
+    · change L (_root_.SerrePositivity.coefficientTensorLift iS iT hi (s ⊗ₜ[R] t)) = g (s ⊗ₜ[R] t)
+      rw [_root_.SerrePositivity.coefficientTensorLift_tmul, map_mul, hLiS, hLiT, ← map_mul]
       congr 1
       change (s ⊗ₜ[R] (1 : T)) * ((1 : S) ⊗ₜ[R] t) = s ⊗ₜ[R] t
       rw [Algebra.TensorProduct.tmul_mul_tmul, mul_one, one_mul]
@@ -412,7 +412,7 @@ theorem perfectoidizationTensorBaseChangeMap_isPerfectoidization
       _ = g (jT (algebraMap R T r)) := congrArg g
         (((Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T).commutes r).trans
           ((Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).commutes r).symm)
-  let k := coefficientTensorLift lC (g.comp jT) hi
+  let k := _root_.SerrePositivity.coefficientTensorLift lC (g.comp jT) hi
   obtain ⟨L, hL, huniq⟩ := hF.2 U hU k
   have hLg : L.comp (perfectoidizationTensorBaseChangeMap f F) = g := by
     apply RingHom.ext
@@ -420,9 +420,9 @@ theorem perfectoidizationTensorBaseChangeMap_isPerfectoidization
     refine TensorProduct.inductionOn x (fun s t ↦ ?_) (fun x y hx hy ↦ ?_)
     · change L (F (f s ⊗ₜ[R] t)) = g (s ⊗ₜ[R] t)
       have hx := RingHom.congr_fun hL (f s ⊗ₜ[R] t)
-      change L (F (f s ⊗ₜ[R] t)) = coefficientTensorLift lC (g.comp jT) hi
+      change L (F (f s ⊗ₜ[R] t)) = _root_.SerrePositivity.coefficientTensorLift lC (g.comp jT) hi
         (f s ⊗ₜ[R] t) at hx
-      rw [hx, coefficientTensorLift_tmul]
+      rw [hx, _root_.SerrePositivity.coefficientTensorLift_tmul]
       have hs := RingHom.congr_fun hlC s
       change lC (f s) = g (jS s) at hs
       rw [hs]
@@ -452,8 +452,8 @@ theorem perfectoidizationTensorBaseChangeMap_isPerfectoidization
   · have ht : c ⊗ₜ[R] t = iC c * iT t := by
       change c ⊗ₜ[R] t = (c ⊗ₜ[R] (1 : T)) * ((1 : C) ⊗ₜ[R] t)
       rw [Algebra.TensorProduct.tmul_mul_tmul, mul_one, one_mul]
-    change M (F (c ⊗ₜ[R] t)) = coefficientTensorLift lC (g.comp jT) hi (c ⊗ₜ[R] t)
-    rw [coefficientTensorLift_tmul, ht, map_mul, map_mul]
+    change M (F (c ⊗ₜ[R] t)) = _root_.SerrePositivity.coefficientTensorLift lC (g.comp jT) hi (c ⊗ₜ[R] t)
+    rw [_root_.SerrePositivity.coefficientTensorLift_tmul, ht, map_mul, map_mul]
     have hc := RingHom.congr_fun heC c
     change M (F (iC c)) = lC c at hc
     rw [hc, heT]

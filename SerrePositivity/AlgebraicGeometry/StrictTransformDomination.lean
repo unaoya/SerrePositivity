@@ -66,12 +66,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ_isIso_of_open_dense := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ_isIso_of_open_dense
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_domination_of_strictTransform_isIso := _root_.SerrePositivity.AlgebraicGeometry.exists_domination_of_strictTransform_isIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_domination_of_strictTransform_open_dense := _root_.SerrePositivity.AlgebraicGeometry.exists_domination_of_strictTransform_open_dense

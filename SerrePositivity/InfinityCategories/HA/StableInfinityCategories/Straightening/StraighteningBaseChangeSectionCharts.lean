@@ -113,27 +113,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.mapNormalizeTriangle := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.mapNormalizeTriangle
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeLeftIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeLeftIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso_factor := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRestrictionIso_factor
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRightIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRightIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRightIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeLeftIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeLeftIso._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeLeftIso.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRightIso.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRightIso.eq_1

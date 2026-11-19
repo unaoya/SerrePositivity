@@ -114,39 +114,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.firstPositiveJoint (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.firstPositiveJoint
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint_le := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.firstPositiveJoint_le
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint_mem := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.firstPositiveJoint_mem
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint_pos := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.firstPositiveJoint_pos
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositive_tail_lt := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.firstPositive_tail_lt
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.positiveJoints (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.positiveJoints := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.positiveJoints
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.positiveJoints_nonempty := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.positiveJoints_nonempty
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.single_wedge_tail := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.single_wedge_tail
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tail (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tail
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tail._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tail._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tail._proof_3

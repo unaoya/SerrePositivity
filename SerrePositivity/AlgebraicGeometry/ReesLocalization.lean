@@ -162,33 +162,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rees_localization_clear_denominator := _root_.SerrePositivity.AlgebraicGeometry.rees_localization_clear_denominator
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesMap_isLocalizationMap := _root_.SerrePositivity.AlgebraicGeometry.reesMap_isLocalizationMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv_base := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rees_localization_clear_homogeneous := _root_.SerrePositivity.AlgebraicGeometry.rees_localization_clear_homogeneous
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesLocalizationEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.reesLocalizationEquiv._proof_5

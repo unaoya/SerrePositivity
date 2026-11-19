@@ -52,6 +52,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.span_chartRatio_generators_eq_top := _root_.SerrePositivity.AlgebraicGeometry.span_chartRatio_generators_eq_top

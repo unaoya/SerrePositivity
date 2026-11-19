@@ -59,33 +59,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexConnection := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexConnection_sup := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection_sup
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexDegeneracy := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_sup := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy_sup
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexFace := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexFace_sup := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace_sup
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexConnection.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexDegeneracy.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexFace.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace.eq_1

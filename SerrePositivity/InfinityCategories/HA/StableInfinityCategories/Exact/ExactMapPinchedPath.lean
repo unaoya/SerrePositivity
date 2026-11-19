@@ -72,33 +72,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapComparisonTriangle (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapComparisonTriangle := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapComparisonTriangle
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapCoreEdge (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreEdge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapCoreEdge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreEdge_hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapCoreEdge_hom
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapPinchedPath (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapPinchedPath := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapPinchedPath
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.stableArrowPinchedVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowPinchedVertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.stableArrowPinchedVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapComparisonTriangle._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapComparisonTriangle._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapCoreEdge._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapPinchedPath._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapPinchedPath._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapPinchedPath._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactMapPinchedPath._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowPinchedVertex.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.stableArrowPinchedVertex.eq_1

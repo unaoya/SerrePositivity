@@ -123,36 +123,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.emptyTo (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.emptyTo := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.emptyTo
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.evaluationFunctor := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorMap_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap_id := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorMap_id
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorObject (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorObject := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorObject
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functor_comp_app := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functor_comp_app
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.naturality_app := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.naturality_app
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.emptyTo._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.emptyTo._proof_1
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorMap.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap.match_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorMap.match_1
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorObject.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorObject.match_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functorObject.match_1

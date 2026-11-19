@@ -64,33 +64,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberLeftIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberLeftIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberLeftIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberMiddleIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberMiddleIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberRightIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberRightIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberRightIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_middle_vertex := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiber_middle_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_right_vertex := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiber_right_vertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.productVerticesSimplicialCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.productVerticesSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.productVerticesSimplicialCategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.productVerticesSquareQuasicategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.productVerticesSquareQuasicategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberLeftIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberLeftIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberMiddleIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberRightIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberRightIso._proof_1

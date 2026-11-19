@@ -71,18 +71,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_injective := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap_injective
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_simplex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap_simplex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.simplexVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.simplexVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.simplexVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.simplexVertex_eq_const := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.simplexVertex_eq_const
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.vertexEquiv_simplexVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.vertexEquiv_simplexVertex

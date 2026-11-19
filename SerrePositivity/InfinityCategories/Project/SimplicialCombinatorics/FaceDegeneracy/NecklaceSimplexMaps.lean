@@ -68,24 +68,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_first_le_last := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInSimplex_first_le_last
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_isEmpty := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInSimplex_isEmpty
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_monotone := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexMap_monotone
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_simplex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexMap_simplex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexOrderHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexOrderHom := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexOrderHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceSimplexVertexMap._proof_1

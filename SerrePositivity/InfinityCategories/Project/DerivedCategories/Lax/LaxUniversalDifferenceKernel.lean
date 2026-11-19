@@ -74,39 +74,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionArrowComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionArrowComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionArrowComparison
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionCLegDiagonalIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionCLegDiagonalIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionCLegDiagonalIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionDiagonalIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionDiagonalIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionDiagonalIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusion_connectingArrow_invertible := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusion_connectingArrow_invertible
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusion_difference_zero := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusion_difference_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionArrowComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionArrowComparison._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionArrowComparison._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionArrowComparison._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionArrowComparison._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionArrowComparison._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionCLegDiagonalIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionCLegDiagonalIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionCLegDiagonalIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionCLegDiagonalIso._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionDiagonalIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionDiagonalIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionDiagonalIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.inclusionDiagonalIso._proof_2

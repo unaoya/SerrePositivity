@@ -91,27 +91,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.contains_degreeOne_of_contains_products := _root_.SerrePositivity.AlgebraicGeometry.contains_degreeOne_of_contains_products
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iSup_affineBlowup_productCharts := _root_.SerrePositivity.AlgebraicGeometry.iSup_affineBlowup_productCharts
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductChartCover := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductChartCover
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductChartCover._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductChartCover._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductChartCover._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductChartCover._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductChartCover._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductChartCover._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductChartCover._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductChartCover._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductChartCover._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductChartCover._proof_5

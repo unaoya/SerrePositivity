@@ -71,21 +71,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientLegsIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientLegsIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientLegsIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.valueMap_laxQuotientLegs_comm := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.valueMap_laxQuotientLegs_comm
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientLegsIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientLegsIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientLegsIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientLegsIso._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientLegsIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientLegsIso._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientLegsIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientLegsIso._proof_4

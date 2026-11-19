@@ -110,9 +110,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.endomorphism_pow_mem_ideal_pow := _root_.SerrePositivity.AlgebraicGeometry.endomorphism_pow_mem_ideal_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_section_of_nilpotent_kernel_endomorphism := _root_.SerrePositivity.AlgebraicGeometry.exists_section_of_nilpotent_kernel_endomorphism

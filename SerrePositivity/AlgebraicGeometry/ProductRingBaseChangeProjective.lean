@@ -97,6 +97,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_baseChange_product_of_factors := _root_.SerrePositivity.AlgebraicGeometry.projective_baseChange_product_of_factors

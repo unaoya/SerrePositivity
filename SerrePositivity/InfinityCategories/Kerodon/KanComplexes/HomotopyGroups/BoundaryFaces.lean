@@ -98,39 +98,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsCompatible (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsCompatible
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.desc (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.desc := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.desc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.diagram := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.diagram
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isColimit (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.isColimit := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isColimit
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.multicofork (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.multicofork := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.multicofork
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.ι_desc := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ι_desc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.ι_desc_assoc := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ι_desc_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsCompatible._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsCompatible._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible._proof_3 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.IsCompatible._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.desc.congr_simp := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.desc.congr_simp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.multicofork._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.multicofork._proof_1

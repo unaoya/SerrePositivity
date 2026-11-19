@@ -40,9 +40,3 @@ end SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.simplexConstant_isQCatEquivalence
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.simplexConstant_isWeakHomotopyEquivalence

@@ -57,15 +57,3 @@ end SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.S
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_attachingMap_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cell_attachingMap_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_attachingMap_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cell_attachingMap_ι_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_characteristicMap_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cell_characteristicMap_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_characteristicMap_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cell_characteristicMap_ι_assoc

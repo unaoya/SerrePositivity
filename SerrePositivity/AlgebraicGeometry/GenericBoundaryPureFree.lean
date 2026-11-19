@@ -76,18 +76,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.GenericBoundaryPureFree := _root_.SerrePositivity.AlgebraicGeometry.GenericBoundaryPureFree
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericBoundaryPureFree_of_coefficient_minor := _root_.SerrePositivity.AlgebraicGeometry.genericBoundaryPureFree_of_coefficient_minor
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.GenericBoundaryPureFree._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.GenericBoundaryPureFree._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.GenericBoundaryPureFree._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.GenericBoundaryPureFree._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.GenericBoundaryPureFree._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.GenericBoundaryPureFree._proof_3

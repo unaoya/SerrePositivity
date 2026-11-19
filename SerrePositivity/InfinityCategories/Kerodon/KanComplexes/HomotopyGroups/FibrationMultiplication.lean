@@ -220,33 +220,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting_mul := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting_mul
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.compatible := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ConnectingProduct.compatible
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.exists_product_lift := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ConnectingProduct.exists_product_lift
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ConnectingProduct.face (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.face := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ConnectingProduct.face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.output_face := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ConnectingProduct.output_face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.mul_unique_at := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mul_unique_at
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.ConnectingProduct.face.eq_1

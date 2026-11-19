@@ -1,17 +1,20 @@
 import SerrePositivity.HomotopicalAlgebra.Diagram.HocolimMappingComparison
+import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame
 import Lean.Util.CollectAxioms
 
 noncomputable section
 universe w v u
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.DiagramModel SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+  (cosimplicialHom)
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
   (IS JS : MorphismProperty SSet.{w})
-  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (D : K ⥤ C)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
@@ -61,7 +64,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame,
+    `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameOverObject,
     `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HocolimMappingComparison]

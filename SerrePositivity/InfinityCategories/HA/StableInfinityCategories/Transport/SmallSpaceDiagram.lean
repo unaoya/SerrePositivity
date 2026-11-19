@@ -101,18 +101,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.invertsEdges_of_ulift_post := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.invertsEdges_of_ulift_post
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagram (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagram := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagram
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagramInclusion (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagramInclusion := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagramInclusion
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagramTarget (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagramTarget := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagramTarget
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagram_inclusion := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.smallSpaceDiagram_inclusion

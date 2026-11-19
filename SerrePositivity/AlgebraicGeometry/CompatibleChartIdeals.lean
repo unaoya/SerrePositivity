@@ -75,18 +75,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ChartIdealsCompatible := _root_.SerrePositivity.AlgebraicGeometry.ChartIdealsCompatible
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_fraction_mem_after_ratio_pow := _root_.SerrePositivity.AlgebraicGeometry.chart_fraction_mem_after_ratio_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_fraction_mem_after_numerator_pow := _root_.SerrePositivity.AlgebraicGeometry.chart_fraction_mem_after_numerator_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ChartIdealsCompatible._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.ChartIdealsCompatible._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_fraction_mem_after_numerator_pow._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chart_fraction_mem_after_numerator_pow._proof_1

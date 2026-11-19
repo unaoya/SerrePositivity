@@ -52,33 +52,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection (since := "2026-11-05")]
-noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.exists_compatible_family := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_compatible_family
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._f (since := "2026-11-05")]
-noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._f := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._f
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._proof_3
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._sunfold (since := "2026-11-05")]
-noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._sunfold := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._sunfold
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._unsafe_rec (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection._unsafe_rec
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection.match_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.eventualSection.match_1

@@ -92,15 +92,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformMap_mk := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformMap_mk
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformMap_injective := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformMap_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformMap_surjective := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformMap_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformMap_exact_of_isSMulRegular := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformMap_exact_of_isSMulRegular

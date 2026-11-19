@@ -34,7 +34,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence_functor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence": {
+    "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.toHoEquivalence": {
       "file": "SerrePositivity/InfinityCategories/Core/Equivalence.lean",
       "line": 198,
       "kind": "def",
@@ -42,7 +42,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.IsKappaFiltered": {
+    "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsKappaFiltered": {
       "file": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
       "line": 32,
       "kind": "class",
@@ -50,7 +50,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.IsKappaFiltered' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.IsFullyFaithful.toHoFullyFaithful": {
+    "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful.toHoFullyFaithful": {
       "file": "SerrePositivity/InfinityCategories/Core/FullyFaithful.lean",
       "line": 81,
       "kind": "def",
@@ -82,7 +82,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_isFiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D": {
+    "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitComparison_D": {
       "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeSplitting.lean",
       "line": 76,
       "kind": "lemma",
@@ -90,7 +90,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C": {
+    "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.tammeSplitComparison_C": {
       "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeSplitting.lean",
       "line": 66,
       "kind": "lemma",
@@ -114,7 +114,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.catPullbackToLax_isPullback' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullback": {
+    "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullback": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullback.lean",
       "line": 25,
       "kind": "def",
@@ -122,7 +122,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullback' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.exists_colimitCone_laxPullback_with_components": {
+    "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_colimitCone_laxPullback_with_components": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitConeExistence.lean",
       "line": 27,
       "kind": "lemma",
@@ -130,7 +130,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.exists_colimitCone_laxPullback_with_components' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso": {
+    "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackEquivalenceSubcomplexIso": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackEquivalenceIso.lean",
       "line": 41,
       "kind": "def",
@@ -138,7 +138,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor": {
+    "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackFst_isExactFunctor": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackExactProjections.lean",
       "line": 44,
       "kind": "instance",
@@ -146,7 +146,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor": {
+    "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackSnd_isExactFunctor": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackExactProjections.lean",
       "line": 53,
       "kind": "instance",
@@ -154,7 +154,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullbackMappingProduct_isPullback": {
+    "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackMappingProduct_isPullback": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingProductSquare.lean",
       "line": 29,
       "kind": "lemma",
@@ -194,7 +194,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact": {
+    "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact": {
       "file": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
       "line": 31,
       "kind": "def",
@@ -210,7 +210,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.Compact.indYoneda_isKappaCompact": {
+    "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.indYoneda_isKappaCompact": {
       "file": "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean",
       "line": 32,
       "kind": "lemma",
@@ -234,7 +234,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.Idempotent.idempotentCompletionUniversalEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.Ind.ind_isKappaCompact_iff_yoneda": {
+    "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_isKappaCompact_iff_yoneda": {
       "file": "SerrePositivity/InfinityCategories/F2/Ind/CompactGeneratorImage.lean",
       "line": 21,
       "kind": "lemma",
@@ -266,7 +266,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.Presentable.IsAccessibleFunctor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable": {
+    "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable": {
       "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
       "line": 34,
       "kind": "def",
@@ -314,7 +314,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.isStable_of_finite_limits_colimits' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.IsStable": {
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable": {
       "file": "SerrePositivity/InfinityCategories/Stable/Definition.lean",
       "line": 26,
       "kind": "class",
@@ -322,7 +322,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.IsStable' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.IsExactFunctor": {
+    "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor": {
       "file": "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
       "line": 37,
       "kind": "class",
@@ -330,7 +330,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.IsExactFunctor' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity": {
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity": {
       "file": "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
       "line": 84,
       "kind": "def",
@@ -346,7 +346,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.hasFiniteLimitsColimits_of_isStable' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e19c5a14"
     },
-    "SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors": {
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors": {
       "file": "SerrePositivity/InfinityCategories/Stable/Verdier/StableCategories.lean",
       "line": 63,
       "kind": "def",
@@ -1202,7 +1202,7 @@
       "axioms": "'SerrePositivity.KST.ProExcision.lemma416' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "86fb5ab0c"
     },
-    "SerrePositivity.KST.ProExcision.linearizedTensorIso": {
+    "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso": {
       "file": "SerrePositivity/KST/ProExcision/LinearizedTensor.lean",
       "line": 133,
       "kind": "def",
@@ -1482,7 +1482,7 @@
       "axioms": "'SerrePositivity.KST.ProExcision.HomologicallyMConstant' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "86fb5ab0c"
     },
-    "SerrePositivity.KST.ProExcision.LinearizedMHomotopy": {
+    "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy": {
       "file": "SerrePositivity/KST/ProExcision/LinearizedHomotopy.lean",
       "line": 53,
       "kind": "structure",
@@ -1658,7 +1658,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.dgVerdierExactPrecomposition_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.dgQuotientNerveProjection_isLocalization": {
+    "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuotientNerveProjection_isLocalization": {
       "file": "SerrePositivity/InfinityCategories/Derived/DGQuotientLocalization.lean",
       "line": 38,
       "kind": "lemma",
@@ -1690,7 +1690,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.dgGluingCanonicalTammeProjectionEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.DGGluingMilnorSquare": {
+    "SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare": {
       "file": "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorSquareComparison.lean",
       "line": 40,
       "kind": "def",
@@ -1698,7 +1698,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.DGGluingMilnorSquare' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.DGGluingObject": {
+    "SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject": {
       "file": "SerrePositivity/InfinityCategories/Derived/Gluing/Objects.lean",
       "line": 22,
       "kind": "structure",
@@ -1706,7 +1706,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.DGGluingObject' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.resolvedDGQuotientNerve_isStable": {
+    "SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientNerve_isStable": {
       "file": "SerrePositivity/InfinityCategories/Derived/ResolvedDGQuotientStability.lean",
       "line": 35,
       "kind": "theorem",
@@ -1722,7 +1722,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeProductCone_isLimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.F2.catPullbackToLax": {
+    "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackToLax": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackToLax.lean",
       "line": 28,
       "kind": "def",
@@ -1746,7 +1746,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackMappingIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullbackSnd": {
+    "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackProjections.lean",
       "line": 37,
       "kind": "def",
@@ -1754,7 +1754,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackSnd' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullbackArrow": {
+    "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackProjections.lean",
       "line": 25,
       "kind": "def",
@@ -1762,7 +1762,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackArrow' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.F2.laxPullbackFst": {
+    "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackFst": {
       "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackProjections.lean",
       "line": 31,
       "kind": "def",
@@ -1770,7 +1770,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackFst' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.IsStableVerdierSequence": {
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsStableVerdierSequence": {
       "file": "SerrePositivity/InfinityCategories/Stable/Verdier/StableVerdierSequence.lean",
       "line": 15,
       "kind": "structure",
@@ -1778,7 +1778,7 @@
       "axioms": "'SerrePositivity.InfinityCategories.IsStableVerdierSequence' depends on axioms: [propext, Classical.choice, Quot.sound]",
       "checked_revision": "6e6a3f9a7"
     },
-    "SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence": {
+    "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence": {
       "file": "SerrePositivity/InfinityCategories/Stable/Verdier/VerdierSequence.lean",
       "line": 37,
       "kind": "structure",

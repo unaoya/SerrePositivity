@@ -69,30 +69,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding_apply := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding_of := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding_of
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding_injective := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding._proof_5

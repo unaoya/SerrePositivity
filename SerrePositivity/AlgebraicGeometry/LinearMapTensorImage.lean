@@ -84,33 +84,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra_tmul := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra_tmul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra_range := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra_ker_annihilated := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra_ker_annihilated
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra._proof_5
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToAlgebra.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToAlgebra.eq_1

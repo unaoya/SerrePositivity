@@ -101,12 +101,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_finite_clear_denominators := _root_.SerrePositivity.AlgebraicGeometry.chart_finite_clear_denominators
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_finite_ideal_descent := _root_.SerrePositivity.AlgebraicGeometry.chart_finite_ideal_descent
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_finite_ideal_descent_eventually := _root_.SerrePositivity.AlgebraicGeometry.chart_finite_ideal_descent_eventually

@@ -62,6 +62,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeLocus_and_rankAtStalk_of_away_free := _root_.SerrePositivity.AlgebraicGeometry.freeLocus_and_rankAtStalk_of_away_free

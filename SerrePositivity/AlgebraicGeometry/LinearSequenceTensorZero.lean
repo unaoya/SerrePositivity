@@ -93,36 +93,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv_of := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv_of
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequence_rTensor_eq_zero_iff := _root_.SerrePositivity.AlgebraicGeometry.linearSequence_rTensor_eq_zero_iff
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceDirectLimitEquiv.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceDirectLimitEquiv.congr_simp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv._proof_5
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv._proof_6
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceModuleLimitEquiv.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceModuleLimitEquiv.eq_1

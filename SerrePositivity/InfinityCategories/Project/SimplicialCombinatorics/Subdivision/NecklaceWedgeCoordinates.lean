@@ -91,30 +91,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointCoordinate_wedge_left := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.nonjointCoordinate_wedge_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointCoordinate_wedge_right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.nonjointCoordinate_wedge_right
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateLeft (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateLeft := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateLeft
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateRight (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateRight := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateRight
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinate_cases := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinate_cases
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateLeft._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateLeft._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateLeft.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateLeft.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateRight._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateRight._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateRight.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeCoordinateRight.eq_1

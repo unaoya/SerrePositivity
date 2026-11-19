@@ -58,18 +58,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPrincipalIso := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPrincipalIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupπ_isIso_of_regular_principal := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupπ_isIso_of_regular_principal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPrincipalIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPrincipalIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPrincipalIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPrincipalIso._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPrincipalIso._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPrincipalIso._proof_3

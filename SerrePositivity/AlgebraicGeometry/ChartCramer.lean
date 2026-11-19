@@ -74,12 +74,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartCramerCoefficients := _root_.SerrePositivity.AlgebraicGeometry.chartCramerCoefficients
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartCramerCoefficients_smul := _root_.SerrePositivity.AlgebraicGeometry.chartCramerCoefficients_smul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartCramerCoefficients_solution := _root_.SerrePositivity.AlgebraicGeometry.chartCramerCoefficients_solution

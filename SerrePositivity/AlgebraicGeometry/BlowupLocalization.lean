@@ -193,39 +193,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBaseChangeSpec_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.chartBaseChangeSpec_isOpenImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_isOpenImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBaseChangeSpec_range := _root_.SerrePositivity.AlgebraicGeometry.chartBaseChangeSpec_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_range := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupLocalizationIso := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupLocalizationIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupLocalizationIso_hom_ι := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupLocalizationIso_hom_ι
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupLocalizationIso_hom_ι_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupLocalizationIso_hom_ι_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_isOpenImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_range := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupLocalizationIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupLocalizationIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupLocalizationIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupLocalizationIso._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupLocalizationIso.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupLocalizationIso.congr_simp

@@ -53,27 +53,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotient
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.chosenCone (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.chosenCone := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.chosenCone
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.chosenCone_isLimit := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.chosenCone_isLimit
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.coneComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.coneComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.coneComparison
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.pullbackComparisonSimplicialCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.pullbackComparisonSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.pullbackComparisonSimplicialCategory
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.valueIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.valueIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.valueIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.coneComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.coneComparison._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.valueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.valueIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.valueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientPullbackComparison.valueIso._proof_2

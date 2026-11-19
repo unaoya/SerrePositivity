@@ -52,15 +52,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_monotone := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap_monotone
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexOrderHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexOrderHom := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexOrderHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_comp := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexOrderHom_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_id := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexOrderHom_id

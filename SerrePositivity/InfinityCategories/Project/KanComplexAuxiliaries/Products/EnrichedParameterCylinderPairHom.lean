@@ -83,18 +83,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_identity := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide_identity
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_precomp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide_precomp
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide.match_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.pairBySide.match_1

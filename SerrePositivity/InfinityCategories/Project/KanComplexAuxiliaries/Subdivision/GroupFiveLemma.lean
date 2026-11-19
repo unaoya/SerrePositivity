@@ -71,6 +71,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.group_five_lemma := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.group_five_lemma

@@ -78,15 +78,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_mono := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower_mono
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_values_sum := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.sigma_values_sum
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_app_injective := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_app_injective
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_mono := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper_mono

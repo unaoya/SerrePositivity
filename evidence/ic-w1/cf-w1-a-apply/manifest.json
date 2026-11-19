@@ -1,0 +1,225 @@
+{
+  "directory": "/Users/sugakubunka/serre-evidence/ic-w1/cf-w1-a-apply",
+  "main_before_application_commit": "c67e5758603dfe5d250f03c636899edfc8585d6f",
+  "comparison_baseline": "84e08e53e16293a995a755368a1f3e673144453e",
+  "application_diff_sha256": "9e6a5255fad85b8862f6ffea8492aeacedc04065cf5f3a5accc693db33d03ac4",
+  "audit_reference_followups": [
+    "scripts/audit_spectra.lean",
+    "scripts/check_accessible_mapping_tests.lean",
+    "scripts/check_coherent_lift_tuples.lean",
+    "scripts/check_colimit_frame.lean",
+    "scripts/check_enriched_localization_existence.lean",
+    "scripts/check_frame_right_quillen.lean",
+    "scripts/check_hocolim_mapping_comparison.lean",
+    "scripts/check_mapping_limit.lean",
+    "scripts/check_projective_bifunctor.lean",
+    "scripts/check_simplicial_monoidal.lean"
+  ],
+  "pinned_comparison_rule": "1a9626867",
+  "kernel_declarations": {
+    "before": 376040,
+    "after": 360311
+  },
+  "exported_axiom_entries": {
+    "before": 311030,
+    "after": 295301
+  },
+  "checks": {
+    "original_modules": 34337,
+    "deleted_alias_only_modules": 80,
+    "removed_aliases": 15729,
+    "position_pairs": 1295,
+    "unnamed_renames": 2,
+    "named_types_using_renamed_unnamed": 4,
+    "active_written_references": 0,
+    "changed_audits_passed": 48,
+    "root_jobs": 34634,
+    "axiom_or_sorry_increases": 0,
+    "alias_dependent_types": 107,
+    "linked_before": 2363,
+    "linked_after": 2363,
+    "linked_lost": 0
+  },
+  "files": [
+    {
+      "path": "after-build-1.log.gz",
+      "bytes": 1596748,
+      "sha256": "8bad001c9e8b938833db2bd5d3091b3bb8dbcda75348dcb06bb6322a5a746114"
+    },
+    {
+      "path": "alias-in-types.tsv.gz",
+      "bytes": 1979,
+      "sha256": "b608d1d4d358627638def73b0d60bd42bc880a8d5a5c5bc8621781aa95f9707f"
+    },
+    {
+      "path": "alias-only-files.json",
+      "bytes": 594096,
+      "sha256": "e5d921303a5bbe0033b3d1935195e7c3715f9ea57b8851fdca1802d5696079a2"
+    },
+    {
+      "path": "all-instance-sites.tsv",
+      "bytes": 827431,
+      "sha256": "54f7f37699825c4d64af216586d9860c57071a284c1ac239290c66b7712cd209"
+    },
+    {
+      "path": "audit-reference-edits.json",
+      "bytes": 30829,
+      "sha256": "e8638ef5fe4751a268c41d7de08fd13dba088e463cd8e60ab56670e986d2bcd7"
+    },
+    {
+      "path": "baseline-all.log.gz",
+      "bytes": 291061,
+      "sha256": "6f623156ba50b88e182dc3d10024916380da65b13a5f523634f44b5b9f6b3ff9"
+    },
+    {
+      "path": "changed-audits.txt",
+      "bytes": 2054,
+      "sha256": "e64b96611449b4e6de8e084b855ca6b834f40faf5536d8ca425233e00736639c"
+    },
+    {
+      "path": "coverage-linked-comparison.json",
+      "bytes": 610,
+      "sha256": "9494b6745a141a51ba051285ad2d53555cc69b97db286f6137d59bdfa46f1503"
+    },
+    {
+      "path": "coverage-linked-items.tsv.gz",
+      "bytes": 61897,
+      "sha256": "5caaad6e4c7847f1db70ebccafcc38acebda3001651fdd01087dfd2f4597d949"
+    },
+    {
+      "path": "exported-axioms-check.log",
+      "bytes": 28,
+      "sha256": "a9f1bade65cc6c7748856d2a0db21defddbd516b3a9e388e863720ff1148646c"
+    },
+    {
+      "path": "freeze-receipt.json",
+      "bytes": 421,
+      "sha256": "ba86d61543d1e905605a31a78ffcad735af8fcd6b73999ae5ed1d2ff53155391"
+    },
+    {
+      "path": "line-counts.json",
+      "bytes": 395,
+      "sha256": "4a752af50cce0df6c608c1aec0ebb62223abeac471733b7577f7297e65e97326"
+    },
+    {
+      "path": "metadata-edits.json",
+      "bytes": 49227,
+      "sha256": "8f6a6b7eca9dd06d035716a6e9d076f21381610364c896fd85e90748664d3c12"
+    },
+    {
+      "path": "native-alias-results.tsv",
+      "bytes": 4188168,
+      "sha256": "9d97628bee712382455f224d66df9a353993f60dabca768d2614ff0bc4a5fa82"
+    },
+    {
+      "path": "new-direct-dependencies.tsv.gz",
+      "bytes": 6593,
+      "sha256": "81bb5b1e364e9d4db6ac3c2f64da13bebb804f298812079186902941168123d1"
+    },
+    {
+      "path": "owned-audits.log",
+      "bytes": 6677,
+      "sha256": "4e4479dd82ac0c2a2456e37f78264a143e5dab4430d0849dcab7e76c059cce77"
+    },
+    {
+      "path": "owned-axioms.log",
+      "bytes": 355,
+      "sha256": "2dc1262ab303577c1c312ecbbc3af6ec5e304571ab166f94a8c3717d555fcef6"
+    },
+    {
+      "path": "owned-final.log",
+      "bytes": 3296,
+      "sha256": "1760274ec97552071bad9a6850550e783f4f8f7c5898290100fe1e439e5b81e9"
+    },
+    {
+      "path": "owned-map.log",
+      "bytes": 2475,
+      "sha256": "0ed823b3981b4de74839581728b4a17bba2d5b6a0d51a790b7dfafe66dee0c3b"
+    },
+    {
+      "path": "owned-map.tsv",
+      "bytes": 4079454,
+      "sha256": "0bbd7772a8682af13a268fb15a418db2a25d31de1eff287f9b728b925fe4aef5"
+    },
+    {
+      "path": "owned-positions.log",
+      "bytes": 3300,
+      "sha256": "a02a536c06a90f3c1ed04dc7c02ac0c2033060dc5049fbc95d54e9e313af6f64"
+    },
+    {
+      "path": "owned-renames-final.log",
+      "bytes": 52,
+      "sha256": "5f89fc4a9034b636ce9629be4f9793df7578a2398ad9d29186b61ba1d680f640"
+    },
+    {
+      "path": "owned-root.log.gz",
+      "bytes": 1155489,
+      "sha256": "75f18e01fa6972e0421a970026fefca3efa375e80b91530e7e2e677ade660019"
+    },
+    {
+      "path": "owned-scopes.tsv",
+      "bytes": 1324076,
+      "sha256": "8bf547646761b2dd47cf7c6eeb21910c49464bf5b9716d48accb72a6ae381e66"
+    },
+    {
+      "path": "population.txt",
+      "bytes": 3283996,
+      "sha256": "5ff507c0d62c522b7d40515cda03dc4ece833efd325b13303b4532c6f16084dc"
+    },
+    {
+      "path": "procedure.tar.gz",
+      "bytes": 252228,
+      "sha256": "6a6ff9fdd5600ae637dfde42bbcba84199c7329567ffbd3c515d598c0e80491c"
+    },
+    {
+      "path": "renamed-unnamed.tsv",
+      "bytes": 604,
+      "sha256": "b5bd8fd2bc002a180e3b458c0966cc8b6d39f8898cf0a471691180ff6688f377"
+    },
+    {
+      "path": "retained-test-aliases.tsv",
+      "bytes": 1481,
+      "sha256": "c30df85cdc0327be36ef97352fbc5fe947103f4fc6ab3d451d6a5b0d3bae278a"
+    },
+    {
+      "path": "unified-map.tsv",
+      "bytes": 2689622,
+      "sha256": "c7dc3ea41d346322beaeb82c382864c328fbea82af9d3dc276046bdaa16fbf97"
+    },
+    {
+      "path": "unified-map.tsv.ambiguous",
+      "bytes": 322,
+      "sha256": "f4c47650cd802b002c8870ef44ba50eb8c1cdc71ca54479ee2c55b6d7f662fa9"
+    },
+    {
+      "path": "unified-pairs.tsv",
+      "bytes": 400877,
+      "sha256": "b2cc750c65d78a335f24b23bfb68147da1c4d865f5123d7114f83fec95124e96"
+    },
+    {
+      "path": "unified-renames.tsv",
+      "bytes": 604,
+      "sha256": "b5bd8fd2bc002a180e3b458c0966cc8b6d39f8898cf0a471691180ff6688f377"
+    },
+    {
+      "path": "unnamed-in-named-types.tsv",
+      "bytes": 1004,
+      "sha256": "8ee903a23b2bc5d74cbd3118ef3b9e6052f22a6f826ac98f7b901e2a64115610"
+    },
+    {
+      "path": "verification-logs.tar.gz",
+      "bytes": 1227144,
+      "sha256": "a43620aec6270e77407b68869a960503e49b6b3c453c23ec2c0a0caddcb66ff4"
+    },
+    {
+      "path": "verified-audits.log",
+      "bytes": 11854,
+      "sha256": "d8f31511bc58e5eb8289bea172e649f146a9ea42821ce215dbb53eb3df0b4406"
+    },
+    {
+      "path": "working-tree.patch.gz",
+      "bytes": 378089,
+      "sha256": "a504b42ec17eaaa79237626d125815eb096ae258d51463e7b13dfd31715bb5d9"
+    }
+  ]
+}

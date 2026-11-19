@@ -80,33 +80,3 @@ end SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.Ca
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImage (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImage := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImage
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageInclusion (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageInclusion := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageInclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageInclusion_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageInclusion_isFullyFaithful
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageLift (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageLift := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageLift
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageLift_inclusion := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageLift_inclusion
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageObjects (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageObjects := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageObjects
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageObjects_small (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageObjects_small := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageObjects_small
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImage_obj_small (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImage_obj_small := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImage_obj_small
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImage_quasicategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImage_quasicategory := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImage_quasicategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageLift._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.spaceDiagramImageLift._proof_1

@@ -37,8 +37,8 @@ set_option backward.isDefEq.respectTransparency false in
 theorem exists_affine_finite_flattening_center {X Y : Scheme.{u}} [IsAffine Y]
     [IsNoetherian Y] [IsIntegral Y] (f : X ⟶ Y) [IsFinite f] :
     ∃ (r : Γ(Y, ⊤)) (J : Y.IdealSheafData), r ≠ 0 ∧
-      (∀ W : Y.affineOpens, (J.ideal W).FG) ∧ Y.basicOpen r ≤ centerComplement J ∧
-        J.support ≠ ⊤ ∧ Flat (strictTransformπ f (Y.basicOpen r) J) := by
+      (∀ W : Y.affineOpens, (J.ideal W).FG) ∧ Y.basicOpen r ≤ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J ∧
+        J.support ≠ ⊤ ∧ Flat (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f (Y.basicOpen r) J) := by
   have : IsAffine X := isAffine_of_isAffineHom f
   have : IsNoetherianRing Γ(Y, ⊤) :=
     IsLocallyNoetherian.component_noetherian ⟨⊤, isAffineOpen_top Y⟩
@@ -59,10 +59,10 @@ theorem exists_affine_finite_flattening_center {X Y : Scheme.{u}} [IsAffine Y]
     intro W
     have := IsLocallyNoetherian.component_noetherian W
     exact Ideal.fg_of_isNoetherianRing _
-  have hpre : eY.hom ⁻¹ᵁ centerComplement J = affineCenterComplement I :=
-    (fromSpec_preimage_centerComplement J ⟨⊤, isAffineOpen_top Y⟩).trans
-      (congrArg affineCenterComplement hJ)
-  have hadm : Y.basicOpen r ≤ centerComplement J := by
+  have hpre : eY.hom ⁻¹ᵁ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J = _root_.SerrePositivity.AlgebraicGeometry.affineCenterComplement I :=
+    (_root_.SerrePositivity.AlgebraicGeometry.fromSpec_preimage_centerComplement J ⟨⊤, isAffineOpen_top Y⟩).trans
+      (congrArg _root_.SerrePositivity.AlgebraicGeometry.affineCenterComplement hJ)
+  have hadm : Y.basicOpen r ≤ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J := by
     intro y hy
     obtain ⟨x, rfl⟩ := eY.hom.surjective y
     have hx : x ∈ (PrimeSpectrum.basicOpen r).carrier := by
@@ -70,16 +70,16 @@ theorem exists_affine_finite_flattening_center {X Y : Scheme.{u}} [IsAffine Y]
       rw [show eY.hom ⁻¹ᵁ Y.basicOpen r = PrimeSpectrum.basicOpen r from
         affineTopPresentation_preimage_basicOpen Y r] at hy
       exact hy
-    change x ∈ eY.hom ⁻¹ᵁ centerComplement J
+    change x ∈ eY.hom ⁻¹ᵁ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J
     rw [hpre]
     exact hUI hx
   let P (K : Ideal R) : Prop :=
-    ∀ a : K, letI : Algebra R (BlowupChartRing K a) := (chartBaseMap K a).toAlgebra
-      Module.Flat (BlowupChartRing K a)
-        (modulePureTransform (chartBaseMap K a r) (BlowupChartRing K a ⊗[R] B))
+    ∀ a : K, letI : Algebra R (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing K a) := (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap K a).toAlgebra
+      Module.Flat (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing K a)
+        (_root_.SerrePositivity.AlgebraicGeometry.modulePureTransform (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap K a r) (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing K a ⊗[R] B))
   have hflatJ : P (J.ideal ⟨⊤, isAffineOpen_top Y⟩) := (congrArg P hJ).mpr hflatI
-  have : QuasiCompact (strictTransformOpen f (Y.basicOpen r) J).ι := inferInstance
-  have hs : Flat (strictTransformπ f (Y.basicOpen r) J) :=
+  have : QuasiCompact (_root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen f (Y.basicOpen r) J).ι := inferInstance
+  have hs : Flat (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f (Y.basicOpen r) J) :=
     strictTransform_flat_of_topChart_pureTransforms J f B eX hf r hflatJ
   exact ⟨r, J, hr, hJfg, hadm,
     center_support_ne_top_of_nonzero_boundary Y J r hr hadm, hs⟩

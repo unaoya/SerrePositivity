@@ -128,27 +128,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportComparisonObject (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportComparisonObject := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportComparisonObject
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso_heq_doubleMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeIso_heq := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeIso_heq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeSource_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeSource_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeVertexIso_heq_map := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeVertexIso_heq_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportOppositeComponentIso._proof_2

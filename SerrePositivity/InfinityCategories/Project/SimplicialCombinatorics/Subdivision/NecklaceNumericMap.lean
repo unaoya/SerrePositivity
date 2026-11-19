@@ -69,18 +69,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceNumericMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceNumericMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_comp := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceNumericMap_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_coordinate := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceNumericMap_coordinate
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_id := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceNumericMap_id
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceNumericMap.eq_1

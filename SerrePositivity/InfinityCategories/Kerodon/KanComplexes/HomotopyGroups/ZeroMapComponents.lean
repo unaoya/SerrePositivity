@@ -57,15 +57,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.zeroMapComponent (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.zeroMapComponent
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent_comp := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.zeroMapComponent_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent_edge := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.zeroMapComponent_edge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent.eq_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.zeroMapComponent.eq_1

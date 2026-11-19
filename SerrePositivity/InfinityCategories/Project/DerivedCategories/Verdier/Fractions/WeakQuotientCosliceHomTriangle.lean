@@ -66,24 +66,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceTriangle_of_identity_hom := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceTriangle_of_identity_hom._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceTriangle_of_identity_hom._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom._proof_2

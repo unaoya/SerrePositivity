@@ -97,12 +97,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.associatedPrime_algebra_of_domain_eq_ker := _root_.SerrePositivity.AlgebraicGeometry.associatedPrime_algebra_of_domain_eq_ker
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ker_algebraMap_tensor_residueField := _root_.SerrePositivity.AlgebraicGeometry.ker_algebraMap_tensor_residueField
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.associatedPrime_tensor_residueField_eq_extendedPrime := _root_.SerrePositivity.AlgebraicGeometry.associatedPrime_tensor_residueField_eq_extendedPrime

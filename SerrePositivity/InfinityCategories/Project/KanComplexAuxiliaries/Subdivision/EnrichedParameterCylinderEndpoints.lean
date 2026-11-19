@@ -80,30 +80,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.crossIdentity (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.crossIdentity := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.crossIdentity
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.crossIdentity_evaluation := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.crossIdentity_evaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.evaluationFunctor_left := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.evaluationFunctor_right := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor_right
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.leftInclusion (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.leftInclusion := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.leftInclusion
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.rightInclusion (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.rightInclusion := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.rightInclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.leftInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.leftInclusion._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.leftInclusion._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.leftInclusion._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.rightInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.rightInclusion._proof_1

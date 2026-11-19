@@ -110,33 +110,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightArrow (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightArrow
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightArrow_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow_target := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightArrow_target
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHom
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHomotopy (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHomotopy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightArrow.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHomotopy._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHomotopy._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHomotopy._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.rightHomotopy._proof_4

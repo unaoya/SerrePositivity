@@ -42,27 +42,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.factorIndex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.factorIndex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.factorIndex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.preIndex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.factorIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.factorIndex._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex._proof_3 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.preIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex._proof_1

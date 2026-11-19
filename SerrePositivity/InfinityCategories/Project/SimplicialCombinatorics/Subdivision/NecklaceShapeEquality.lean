@@ -92,21 +92,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.eq_single_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.eq_single_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.shape_ext := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.shape_ext
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.shape_ext_iff := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.shape_ext_iff
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.single_zero_wedge := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.single_zero_wedge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_assoc := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedge_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_single_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedge_single_zero

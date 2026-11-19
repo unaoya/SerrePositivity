@@ -77,15 +77,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseLeftComponent_eq_doubleMap := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedEdgewiseLeftComponent_eq_doubleMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent_eq_doubleMap := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedEdgewiseRightComponent_eq_doubleMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedEdgewiseRightComponent_heq_doubleMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightRealizationIso_heq := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedEdgewiseRightRealizationIso_heq

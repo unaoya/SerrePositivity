@@ -85,12 +85,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fullyFaithful_of_relativeTerminalSection := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.fullyFaithful_of_relativeTerminalSection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeSectionEquality := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.oppositeSectionEquality
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeSection_initialBoundary := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.oppositeSection_initialBoundary

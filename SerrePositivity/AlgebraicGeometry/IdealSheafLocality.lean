@@ -117,21 +117,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ideal_comap_mul_equiv := _root_.SerrePositivity.AlgebraicGeometry.ideal_comap_mul_equiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_mul := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_mul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_pow := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_mul_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_mul_of_openImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_pow_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_pow_of_openImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_ext_of_affineOpenCover := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_ext_of_affineOpenCover

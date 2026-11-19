@@ -18,7 +18,7 @@ example [IsLocallyPresentable.{w} C] (I J : MorphismProperty C)
   exists_common_accessible_generated_factorizations I J
 
 example [ModelCategory C] [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J] :
+    (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       ∃ d : AccessibleModelFactorizations C κ,
         d.Q.IsCardinalAccessible κ ∧ d.R.IsCardinalAccessible κ ∧

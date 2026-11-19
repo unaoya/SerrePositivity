@@ -123,74 +123,28 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory_isZero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.colimit := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.colimit
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.contractible := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.contractible
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.cosliceUnique (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.cosliceUnique := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.cosliceUnique
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.hom_ext := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.hom_ext
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.limit := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.limit
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.map (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.map := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.map
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.pullback := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.pullback
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.pushout := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.pushout
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.sliceUnique (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.sliceUnique
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.zero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.zero
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory._aux_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory._aux_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory._aux_1
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory._proof_1
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory._proof_3
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory._proof_1
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory._proof_2
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.cosliceUnique._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.cosliceUnique._proof_1
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.cosliceUnique._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.cosliceUnique._proof_2
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.map._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.map._proof_1
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.sliceUnique._proof_1
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.UniqueTarget.sliceUnique._proof_2
 
 /-! Literature correspondences from the reviewed coverage tables. -/
 

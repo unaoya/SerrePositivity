@@ -68,9 +68,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_orthogonal_boundary_numerators := _root_.SerrePositivity.AlgebraicGeometry.exists_orthogonal_boundary_numerators
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBaseMap_eq_zero_of_mul_eq_zero := _root_.SerrePositivity.AlgebraicGeometry.chartBaseMap_eq_zero_of_mul_eq_zero

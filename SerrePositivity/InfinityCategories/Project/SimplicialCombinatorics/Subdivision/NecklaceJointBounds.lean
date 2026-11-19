@@ -69,36 +69,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.first_mem_jointVertices := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.first_mem_jointVertices
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.jointVertices (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.jointVertices := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.jointVertices
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.last_mem_jointVertices := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.last_mem_jointVertices
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.le_lowerJoint := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.le_lowerJoint
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoint (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoint
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint_le := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoint_le
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoint_mem := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoint_mem
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoints (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoints := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoints
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lowerJoints_nonempty := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lowerJoints_nonempty
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.mem_jointVertices := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.mem_jointVertices
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.jointVertices.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.jointVertices.eq_1

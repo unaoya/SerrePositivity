@@ -91,30 +91,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange_surjective := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange_exact := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange_exact
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange_columnSpan_eq_ker := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange_columnSpan_eq_ker
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteFreePresentationBaseChange._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.finiteFreePresentationBaseChange._proof_5

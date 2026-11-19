@@ -94,18 +94,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_eq_zero_of_mem_map_powers := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_eq_zero_of_mem_map_powers
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_isHausdorff := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_isHausdorff
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_isHausdorff_map := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_isHausdorff_map
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_adicCompletion_injective := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_adicCompletion_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_isHausdorff_maximalIdeal := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_isHausdorff_maximalIdeal

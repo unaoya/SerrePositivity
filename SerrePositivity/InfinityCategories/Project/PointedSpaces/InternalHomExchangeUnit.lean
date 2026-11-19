@@ -91,21 +91,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry_unit_evaluation := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.curry_unit_evaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.exchange_second_unit := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.exchange_second_unit
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.exchange_second_unit_assoc := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.exchange_second_unit_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_unit_inv := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.natural_unit_inv
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_unit_inv_assoc := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.natural_unit_inv_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.unit_inv_eq_curry := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.unit_inv_eq_curry
