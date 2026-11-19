@@ -1,0 +1,224 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/ic-w1/cf-w1-a-stage0",
+ "commit": "5572d40298f053a88445e5a99acbd7764507ba7b",
+ "made_by": "CF-W1 A stage 0: source and ILean index; temporary Lake configuration probes and ordered Lean trials under the bulk lock",
+ "note": "Repository configuration and Lean sources were left at the baseline. Trial logs and configurations are archived outside Git.",
+ "files": [
+  {
+   "path": "alias-locations.tsv.gz",
+   "sha256": "4540f5ddc92c38570211e91c4083e4faa8deb447d1d39bac30b0362adc376aef",
+   "bytes": 731211
+  },
+  {
+   "path": "alias-summary.json",
+   "sha256": "08ba90553f39c20ae038269347dc2e8545378ad1b7a817f12b8d0602509a24d6",
+   "bytes": 19668
+  },
+  {
+   "path": "aliases.tsv.gz",
+   "sha256": "8e002e005ca145b2855e99c17fa1aa44af467d1d7c193f8e24156e3583591089",
+   "bytes": 357796
+  },
+  {
+   "path": "destination-owners.tsv.gz",
+   "sha256": "2e4456b9bf1da9d63c6221ae7e0c5bc8109d71e2c8bf29c732c4ec9ddc5bd387",
+   "bytes": 345823
+  },
+  {
+   "path": "excluded-import-hubs.json",
+   "sha256": "88c231098c76dba441100496278c192844a4c9e90fc0cc5126750bfcf4a2db17",
+   "bytes": 358
+  },
+  {
+   "path": "initial-plan.json",
+   "sha256": "017239dab20413826d792fafdfbf16f736a0667bb009866e92d38e5b320008d2",
+   "bytes": 911304
+  },
+  {
+   "path": "metadata-fields.tsv.gz",
+   "sha256": "53fc7304edb80ece6e100af5e9df95b16b70577fcf2a4b743a81b5e8191fc5c7",
+   "bytes": 532571
+  },
+  {
+   "path": "override-results.json",
+   "sha256": "80c7e8fec1445adfcbbbbdcabb3ee23b2df4c2a084af6e8da2402b6a4010763d",
+   "bytes": 849
+  },
+  {
+   "path": "phase.json",
+   "sha256": "89f3d9d79174344cc0b2e55567f95ae530c39e0cd99cf7d254d57a40df7d0a24",
+   "bytes": 272
+  },
+  {
+   "path": "plan.json",
+   "sha256": "5f2885face01dd2a191481967202036f207a1e43be9829bfe6e24e1291fd9c8c",
+   "bytes": 221138
+  },
+  {
+   "path": "population.json.gz",
+   "sha256": "690d86a381591f562825cb9eef2c2cab0f486ccf0518e328e364de354f43230c",
+   "bytes": 2986601
+  },
+  {
+   "path": "procedure/check_local_override.py",
+   "sha256": "764298df672a4abb06e134b23a631a3ee66909b70385e9f6221bdda2a8dcd190",
+   "bytes": 2036
+  },
+  {
+   "path": "procedure/common.py",
+   "sha256": "86192a308067d39942438fbf91a364c75f8a2e170d2d5a7c236df4f3148b17f6",
+   "bytes": 2193
+  },
+  {
+   "path": "procedure/destinations.py",
+   "sha256": "0febacf48971425ed9d195b47299db6a0b33bd895077fd945c4feef47f7caff5",
+   "bytes": 1962
+  },
+  {
+   "path": "procedure/fields.py",
+   "sha256": "02fb77ec6569c45e436276b3525aed8164d928667c27dc14da2bbfde1bf79fce",
+   "bytes": 2110
+  },
+  {
+   "path": "procedure/followup.py",
+   "sha256": "313b690833b32ea16e73be9ce4fb8304776d603b1e11d36240b38bc498d350f6",
+   "bytes": 913
+  },
+  {
+   "path": "procedure/inventory.py",
+   "sha256": "34f4e7e71acc090031ab8dc2c26bbf47d3fdafd0ea3ec28272713302f2cb3485",
+   "bytes": 10821
+  },
+  {
+   "path": "procedure/pack.py",
+   "sha256": "963141e1394579e4f50a04febaca2205ed48099bf448c37ed1d5c162a809daa1",
+   "bytes": 2217
+  },
+  {
+   "path": "procedure/population.py",
+   "sha256": "2fdf21debe8006bb41743e8c56ceac70baea1e8417595cd250607911da916e70",
+   "bytes": 2020
+  },
+  {
+   "path": "procedure/relative.py",
+   "sha256": "892da5c9add61534cbdeb6e5264f5eef7927f1e05d4fec29ee5f64f62fa06dda",
+   "bytes": 3873
+  },
+  {
+   "path": "procedure/run-chunks.zsh",
+   "sha256": "dbf12391d05968707e781d4f3f0aed3145a97cf9fbc37689557671221df88abe",
+   "bytes": 498
+  },
+  {
+   "path": "procedure/summarize_trial.py",
+   "sha256": "1218bef68c4b9928b53e13c82be3123447fc7d53b9c3720dc19235563cfe46e7",
+   "bytes": 3347
+  },
+  {
+   "path": "procedure/trial.py",
+   "sha256": "89d0b1d85f8c785adc18371f56c4d3c68fb5e9a0c13cefdb4f81e1c7a5ebe0dd",
+   "bytes": 8911
+  },
+  {
+   "path": "receipts.jsonl.gz",
+   "sha256": "f7c50d661c6a869cfc0e441e08a5d2d99a38b7b20faeb359d4f55e2960962f17",
+   "bytes": 9827
+  },
+  {
+   "path": "relative-candidates.tsv.gz",
+   "sha256": "f531c62a1e71a12d6a1715ba09a7b09aea7c0fb8e6f209e579f3a86967f7916f",
+   "bytes": 829
+  },
+  {
+   "path": "relative-counts.tsv.gz",
+   "sha256": "8afc5ddcb4b87183a532de0465c7f39ecbe2611eadf1350901a3b78b23fefe77",
+   "bytes": 463
+  },
+  {
+   "path": "trial-lake-config/Probe.lean",
+   "sha256": "474b057370c96b42e06d06e3f4d83b5bf5abbefe4bb2245ab676a5fa53eaddf5",
+   "bytes": 230
+  },
+  {
+   "path": "trial-lake-config/all.toml",
+   "sha256": "c9046de5e1961943fec28856da68b486ea2eed98c2bff83e4dc897f1870eb1a4",
+   "bytes": 600
+  },
+  {
+   "path": "trial-lake-config/backward.toml",
+   "sha256": "d53abaa3556bf9743867eab19e3b1301c7c5d0cb2111dea457c663e7c2aef9e1",
+   "bytes": 485
+  },
+  {
+   "path": "trial-lake-config/base.toml",
+   "sha256": "ed9541f3b6cb53c408dc239f14c8623d09e983b7196879a4a48f9c7e1a3e8577",
+   "bytes": 445
+  },
+  {
+   "path": "trial-lake-config/config-all.log",
+   "sha256": "f2ed116095e4d2fde5eb2e8da99309df7a27e93fe7e523f1de9a5b50639c2874",
+   "bytes": 366
+  },
+  {
+   "path": "trial-lake-config/config-backward.log",
+   "sha256": "7ae275e8839e12526ac7a5941c075186bc63f00bbf121046be97d6c89348d802",
+   "bytes": 319
+  },
+  {
+   "path": "trial-lake-config/config-base.log",
+   "sha256": "0686b4d2159a0a2b671082d0e61bbecdbc5ea08ca721ec17b92354df61d9c6a5",
+   "bytes": 280
+  },
+  {
+   "path": "trial-lake-config/config-blueprint.log",
+   "sha256": "5996116f05d02db477d57cc402cf672bf1ec9d09d92d0f5d35b606c10caa5e34",
+   "bytes": 161
+  },
+  {
+   "path": "trial-lake-config/config-scripts-env.log",
+   "sha256": "8a630fca4faf6a4474beec9ca21f9e1c7c8630bfde72d1f7a447a440ce493dca",
+   "bytes": 22
+  },
+  {
+   "path": "trial-lake-config/config-transparency.log",
+   "sha256": "651715de0fb266cca8704af07a0c480daa52aa098a50c2a5841f2a7ec4108031",
+   "bytes": 326
+  },
+  {
+   "path": "trial-lake-config/config-types.log",
+   "sha256": "9c1471e4976062673ad540548e930539ee6fbc74ffa58d2ed5ec75e27dfa7607",
+   "bytes": 332
+  },
+  {
+   "path": "trial-lake-config/transparency.toml",
+   "sha256": "f2b4b844684413caa0b5c8d1afeacf2e2c3fa956e49333ff0c227482fe7e7a63",
+   "bytes": 490
+  },
+  {
+   "path": "trial-lake-config/types.toml",
+   "sha256": "23f56c9e52363f742372fde7e188bdedb7a1b470e518de088ef6568607e11b69",
+   "bytes": 496
+  },
+  {
+   "path": "trial-logs.tar.gz",
+   "sha256": "b52388bfdcd7f655244218e993a13e33b6dde1cab7be9cf92e5dbb584f71847c",
+   "bytes": 1272022
+  },
+  {
+   "path": "trial-results.tsv.gz",
+   "sha256": "92b08fd54fd522570d2dd2dd12973d90e9b98189de17d1fb13c55dcc095bea81",
+   "bytes": 8326
+  },
+  {
+   "path": "trial-summary.json",
+   "sha256": "95ba82c993017713e3a1d73ea387fc3c3c3cee247324f814a0b3c7251cfc2234",
+   "bytes": 3556
+  },
+  {
+   "path": "unaligned-ilean.tsv.gz",
+   "sha256": "c6eb7eede0206248e9025ac83e458d8bbb67447e7614372099c67e9680894821",
+   "bytes": 27120
+  }
+ ],
+ "total_bytes": 7475187
+}
