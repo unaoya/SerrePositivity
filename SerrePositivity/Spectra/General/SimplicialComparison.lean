@@ -9,7 +9,6 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.General.StructureMaps
 public import SerrePositivity.Spectra.General.FreeLevelQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.StructureMaps
-public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 

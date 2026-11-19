@@ -64,6 +64,18 @@ instance freeAt_preservesColimits (n : ℕ) :
     PreservesColimitsOfSize.{w', w} (freeAt (K := K) n) :=
   (freeAtAdjunction (K := K) n).leftAdjoint_preservesColimits
 
+instance forget_preservesLimits [HasLimitsOfSize.{w', w} C] :
+    PreservesLimitsOfSize.{w', w} (forget K) where
+
+instance forget_preservesColimits [HasLimitsOfSize.{0, 0} C] [HasColimitsOfSize.{w', w} C] :
+    PreservesColimitsOfSize.{w', w} (forget K) where
+
+instance evaluation_preservesLimits [HasLimitsOfSize.{w', w} C] (n : ℕ) :
+    PreservesLimitsOfSize.{w', w} (evaluation (K := K) n) where
+
+instance evaluation_preservesColimits [HasLimitsOfSize.{0, 0} C] [HasColimitsOfSize.{w', w} C]
+    (n : ℕ) : PreservesColimitsOfSize.{w', w} (evaluation (K := K) n) where
+
 variable {K}
 def limitLevelIso [HasLimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) :
     level (limit F) n ≅ limit (F ⋙ evaluation n) := preservesLimitIso (evaluation n) F

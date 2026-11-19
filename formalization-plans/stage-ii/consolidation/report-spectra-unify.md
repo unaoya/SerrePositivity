@@ -161,3 +161,57 @@ B の円周特殊化を用いた機械照合は150件。29定理で具体版の�
 - `simplicial_suspensionLoopUnit` の左辺は一般の単位に右随伴の自然同型の順射を後合成したもの。余単位では懸垂関手で写した比較の順射を前合成する。証明は右随伴の一意性を使う。[`SimplicialSuspensionComparison.lean`](../../../SerrePositivity/Spectra/General/SimplicialSuspensionComparison.lean#L46)
 
 この段の差分は分類表と本節の2ファイル。比較に使う一時ファイルと採取は bulk 鍵の下で実行し、作業ツリーに追跡対象を追加しなかった。
+
+## 段 3　自由スペクトルと極限・余極限
+
+範囲は段 2 の「自由」と「極限と余極限」の81件。main の c551fdd34 を 89eb8e0f8 で取り込んだ。自由関手のモノイダル・組紐構造と単位比較は指示書の §4 に従いテンソル積の段に回した。[判定表](../../../research/cleanup-zero-base/spectra/stage3.csv)
+
+| 扱い | 段 2 の案 | 今回の扱い |
+|---|---:|---:|
+| 消す | 42 | 56 |
+| 別名 | 25 | 6 |
+| B に一般版を足す | 13 | 13 |
+| C に残す | 0 | 0 |
+| 判断できない | 1 | 0 |
+| 対象外 | 0 | 6 |
+
+段 2 の案をこの81件に当てはめると C は 55 件減、B は 13 件増。今回の実測では C は 69 件減、B は 13 件増。自由関手のモノイダル構造の保留と、利用が削除される別名の再判定がこの差を生んだ。宣言の範囲に限ると、C から除いた行は見積もり 322 行に対して 376 行。B の見積もりは元の宣言の 66 行で、実際には一般化の型注釈、import、コメント、改行を含め102行増えた。C の物理行数の減少には、空になった7ファイルのヘッダーと宣言間の行も含む。
+
+別名の候補を、残る使用者が座標をどう推論するかで見直した。今回削除した宣言の間でだけ使っていた別名は一般版へ集約した。極限・余極限のインスタンスの利用者は B の登録を型クラス探索で使う。rewritten_uses は、削除した宣言に依存していた既存の宣言で今回の差分より後も残るものを数える。自動生成補題経由の依存も元の宣言に寄せた。変更は2件で、freePushoutProductSquare と simplicialLevelTensor_unit_isCofibrant が一般版の freeAt_preservesColimits に切り替わった。いずれも型クラス探索による。
+
+| 範囲 | ソース宣言数 | 物理行数 |
+|---|---:|---:|
+| C | 622 → 553 | 5,951 → 5,328 |
+| B | 333 → 346 | 3,661 → 3,763 |
+| 利用側 | 158 → 158 | 3,420 → 3,418 |
+
+消したファイルは 7 本。
+
+- `FreeLevelAction.lean`
+- `FreeLevelInduction.lean`
+- `FreeLevelPermutation.lean`
+- `FreeLevelQuotient.lean`
+- `FreeLevelQuotientAction.lean`
+- `FreeLevels.lean`
+- `Limits.lean`
+
+### 確認と調整
+
+忘却の大きさ付き保存では、対応する形の極限または余極限が係数圏に存在することを仮定した。余極限には、Day convolution の閉構造に必要な小極限の仮定も残した。基礎対象の誘導表示への比較は、一般論の n, X, m を具体版の n, m, X の順で受け取るラムダを使って型を照合した。削除・一般化した69件を元の具体版の型で照合した。無名の（余）極限インスタンス4件は、B の登録を明示した例でも通った。ハートビート上限は新設・増加していない。
+
+対象を逆向きに import する 154 モジュールを旧版で、削除ファイルを除く 147 モジュールを新版で検証した。監査・検査36本のうち15本が成功。段 1 で確認した11本と、B の変更で影響範囲に加わった既存失敗10本の終了状態・診断を前後で比較した。うち20本は診断全文が一致した。check_spectrum_level_model の1件は40行目の同じ箇所で同じ200,000ハートビート上限に達し、診断に出る処理名だけ whnf から isDefEq に変わった。カーネル宣言は1,680件から1,577件になった。既存宣言の公理依存の追加は0件で、sorryAx に依存する宣言は前後とも同じ9件。対象81件を直接名指しする対応表は0件。影響範囲の2宣言を挙げた BS17 の検索候補は、カーネル名と型が一致した。
+
+繰り返し円周を明記する6件は一行の別名を維持した。利用側では忘却による極限・余極限の登録元が変わった。TensorQuotient.lean では、以前は一つの import から得ていた一般の極限構成と円周用の評価の別名を、それぞれ import する。
+
+```diff
+-public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
++public import SerrePositivity.Spectra.General.Limits
++public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
+```
+
+- `examples` は 20.3 秒。
+- `before-inventory` は 14.5 秒。
+- `final-build` は 306.6 秒。
+- `after-inventory` は 11.3 秒。
+
+開始から検証完了まで約36分（bulk 鍵の待ち時間を含む）。
