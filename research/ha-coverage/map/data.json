@@ -13739,7 +13739,7 @@
       [
         [
           "SerrePositivity.KST.Comparison.constantMonoidBarIso",
-          "SerrePositivity/KST/Comparison/BarVertexInclusion.lean:46"
+          "SerrePositivity/InfinityCategories/HA/Section4_1_2/BarVertexInclusion.lean:46"
         ],
         [
           "SerrePositivity.KST.Comparison.monoidWordEquiv",
@@ -26797,7 +26797,7 @@
         ],
         [
           "SerrePositivity.KST.Comparison.constantMonoidBarIso",
-          "SerrePositivity/KST/Comparison/BarVertexInclusion.lean:46"
+          "SerrePositivity/InfinityCategories/HA/Section4_1_2/BarVertexInclusion.lean:46"
         ]
       ],
       "KB-W2型再照合：仮定：離散群 G を定数単体的モノイドとして与える（HA と一致する離散群）。結論：各次数の一対象圏の nerve の対角とその唯一の零単体を使うので、通常の BG とその基点を得る（原典の通常の分類空間という対象の構成に一致）。HA の E₁ 代数の普遍的 Bar との比較宣言は含まれない。",

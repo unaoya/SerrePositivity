@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SpanFinalHornExtension
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SpanFinalHornExtension
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianEdge
 
 /-!
 概要：分母付き span 族の右脚が pullback 正方形なら、元の辺は cartesian。

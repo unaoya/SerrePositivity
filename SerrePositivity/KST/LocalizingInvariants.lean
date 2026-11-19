@@ -136,7 +136,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Ver
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSimplex
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.RelativeConeProductCurry
 public import SerrePositivity.KST.LocalizingInvariants.RelativeConeFunctorComparison
-public import SerrePositivity.KST.LocalizingInvariants.FiniteQuotientConeRecoveryCofinality
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FiniteQuotientConeRecoveryCofinality
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFirstRowSimplexLocalization
 public import SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierQuotientConeRefinement
@@ -355,7 +355,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SpanEndpointCocartesian
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge
 
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianEdge
 
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.ArrowPostcompositionSquare
 
@@ -365,7 +365,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
 
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianFibration
 
 public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.ArrowPrecompositionSquare
 
@@ -401,9 +401,9 @@ public import SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdg
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedTargetFinalHorn
 
-public import SerrePositivity.KST.LocalizingInvariants.SpanFinalHornExtension
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SpanFinalHornExtension
 
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCartesianEdge
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeOreCartesianSpanLift
 

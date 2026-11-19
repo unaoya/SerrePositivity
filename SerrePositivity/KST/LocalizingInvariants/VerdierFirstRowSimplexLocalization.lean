@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSimplex
 public import SerrePositivity.KST.LocalizingInvariants.RelativeConeFunctorComparison
-public import SerrePositivity.KST.LocalizingInvariants.FiniteQuotientConeRecoveryCofinality
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FiniteQuotientConeRecoveryCofinality
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierSimplexCompletionComparison
 
 /-!

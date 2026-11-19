@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.BarVertexInclusion
+public import SerrePositivity.InfinityCategories.HA.Section4_1_2.BarVertexInclusion
 public import SerrePositivity.KST.Comparison.GroupCompletionVertexEvaluation
 public import SerrePositivity.KST.Spectra.SphereMappingComponents
 

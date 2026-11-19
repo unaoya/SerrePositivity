@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakOreSpanLift
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCartesianEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCartesianEdge
 
 /-! # 元の W 分母上の Ore span lift の全外ホーンに関する cartesian 性 -/
 

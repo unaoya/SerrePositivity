@@ -381,7 +381,7 @@ run_cmd do
     `SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison,
     `SerrePositivity.KST.Fibration.ScaffoldPointedReconstruction,
 
-    `SerrePositivity.KST.Fibration.RelativeSectionBaseChangeBackwardPoint,
+    `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RelativeSectionBaseChangeBackwardPoint,
     `SerrePositivity.KST.Fibration.FirstVertexUnderBaseChange,
     `SerrePositivity.KST.Fibration.FirstVertexRestrictionChart,
     `SerrePositivity.KST.Fibration.FirstVertexStrictSection,
