@@ -5,7 +5,7 @@ public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinat
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeFunctorCoreRestriction
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction
-public import SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachment
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachment
 
 /-!
 概要：実貼合せ境界の相対図式と、元の全商図式を同時に保持する比較。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.ScaffoldStraighteningComparison
 public import SerrePositivity.KST.Fibration.FirstVertexTransportDiagramComponent
-public import SerrePositivity.KST.Fibration.ScaffoldNerveRepresentationPoint
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldNerveRepresentationPoint
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 
 /-! # 指定 scaffold 三角形を保持した実分類・相対表現比較

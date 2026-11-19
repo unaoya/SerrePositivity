@@ -40,7 +40,7 @@ public import SerrePositivity.KST.Spectra.D3DoubleEndpointPullbacks
 public import SerrePositivity.KST.Spectra.D3TensorEndpointZeros
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointModelComparison
-public import SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3DoubleEndpointJointFamily
 public import SerrePositivity.KST.Spectra.D3ParameterDiagramTransformation
 public import SerrePositivity.KST.Spectra.D3ParameterUnitComparison
 public import SerrePositivity.KST.Spectra.D3ParameterComparisonStage
@@ -50,7 +50,7 @@ public import SerrePositivity.KST.Spectra.D3JointModelStageComparison
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointLoopImageComparison
 public import SerrePositivity.KST.Spectra.D3LoopedSectionComparison
 public import SerrePositivity.KST.Spectra.D3CurryEvaluationProjection
-public import SerrePositivity.KST.Spectra.D3JointSourceStageComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3JointSourceStageComparison
 public import SerrePositivity.KST.Spectra.D3LoopImageComparisonCorners
 public import SerrePositivity.KST.Spectra.D3LoopedSectionComparisonCorners
 public import SerrePositivity.KST.Spectra.D3LoopedSectionUnitPasting

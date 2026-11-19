@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningBaseChangeSectionCharts
 import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningBaseChangeSectionCharts
-public import SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningDiagramBaseChangeComponent
 public import SerrePositivity.KST.Fibration.RelativeSectionJointVertices
 
 /-! # 元の大域底変換を、同じ切断空間への左右の指定比較で表示する -/

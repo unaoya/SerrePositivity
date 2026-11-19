@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationInitialPreservation
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationRightAdjunctionDescent
-public import SerrePositivity.KST.LocalizingInvariants.PointTerminalAdjunction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointTerminalAdjunction
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.Pointed
 
 /-!

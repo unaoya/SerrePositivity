@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.FirstVertexOppositeChart
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexOppositeChart
 
 /-! # 元の実分類図式の初頂点 transport 同型は、同じ反転点を追跡した指定成分 -/
 

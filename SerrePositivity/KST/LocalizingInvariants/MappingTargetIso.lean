@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetMapping
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveTargetMapping
 public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConstantFunctor
 
 /-!

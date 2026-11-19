@@ -24,7 +24,7 @@ import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctor
 import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Reflective
 import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveLocalization
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalObjects
-import SerrePositivity.KST.LocalizingInvariants.PointTerminalAdjunction
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointTerminalAdjunction
 
 open Verso.Genre
 open Verso.Genre.Manual

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberCoherentCube
-public import SerrePositivity.KST.LocalizingInvariants.SliceConeComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceConeComparison
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
 
 /-!

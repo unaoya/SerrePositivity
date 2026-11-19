@@ -18866,7 +18866,84 @@
       "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCartesianEdge": "Consumers",
       "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianEdge": "Consumers",
       "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.MarkedSpanFamilyCocartesianFibration": "Consumers",
-      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SpanFinalHornExtension": "Consumers"
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SpanFinalHornExtension": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.BaseChangeImageSectionValue": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.BaseChangeSectionFiberPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ChosenRepresentationPointHom": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexDiagramComponent": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexDiagramVertices": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexOppositeChart": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexRestrictionChart": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexSectionFiber": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexStrictSection": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FirstVertexUnderBaseChange": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.FixedFractionCosliceTransport": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionClassificationSimplexRestriction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionKanInitialInversion": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftCocartesianClassificationPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftCocartesianKanComparison": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftCocartesianKanPointHom": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NativeCoefficientResolutionPointHom": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NativeRepresentationComparisonPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NativeRepresentationPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedCosliceNativePoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PointedReconstructionRestriction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackStrictBilateralEdge": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackStrictConstantEdge": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackStrictEvaluation": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldBaseChangeCoefficientNaturality": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldBaseChangeLeftPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldBaseChangeRightPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCandidateClassification": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCandidateNativeComparison": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCandidateReconstruction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianBaseChange": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianClassification": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianPostBaseChange": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCosliceExtension": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldGlobalCoefficientPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldNerveRepresentationPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldPointedReconstruction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldReconstructionCoefficientPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldReconstructionFiberPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldReconstructionFiberTransport": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldRestrictionChart": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldStraighteningValue": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldTransportCoefficientFiber": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldTransportCoefficientPoints": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldTransportCoefficientTriangle": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldTransportPointedCoefficient": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldTransportRestriction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldVertexBaseChange": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldWeightedResolutionPoint": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SpanTransportPointedTriangle": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningBaseChangeChartComponents": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningBaseChangeVertex": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningDiagramBaseChangeComponent": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportEvaluationPrism": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportOppositePointHom": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportPostEvaluation": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TransportRepresentationFiberPointHom": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TransportSimplexConstantEdge": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.AdjunctInverseFormula": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ArrowTargetAdjunction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoconeFamilyCoreCriterion": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CurryIntervalNaturality": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointInitialAdjunction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointTerminalAdjunction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveIsoTargetMapping": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveMappingAdjunction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveTargetConstants": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveTargetHom": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveTargetMapping": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachment": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachmentHomotopy": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.RetractionHomotopyAdjunction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SimplexCoconeSquareComparison": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SliceConeComparison": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.TrivialFibrationSectionAdjunction": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3DoubleEndpointJointFamily": "Consumers",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.D3JointSourceStageComparison": "Consumers"
     },
     "external_prefixes": [
       "Lean",
@@ -19312,7 +19389,19 @@
       "SerrePositivity.Spectra.PointedSimplicialSet.InternalHom",
       "SerrePositivity.Spectra.PointedSimplicialSet.Monoidal",
       "SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlying",
-      "SerrePositivity.Spectra.PointedSimplicialSet.Spheres"
+      "SerrePositivity.Spectra.PointedSimplicialSet.Spheres",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.FixedFractionCosliceTransport",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionClassificationSimplexRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionKanInitialInversion",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackStrictBilateralEdge",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianBaseChange",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianPostBaseChange",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCosliceExtension",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldReconstructionFiberTransport",
+      "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportPostEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoconeFamilyCoreCriterion",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachment",
+      "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachmentHomotopy"
     ],
     "sections": {
       "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets": [
@@ -23758,7 +23847,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.SimplexAttachmentQuotientComparison",
-        "to": "SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachment",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachment",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.LocalizingInvariants.relativeSimplexAttachmentQuotient_square、SerrePositivity.KST.LocalizingInvariants.relativeSimplexAttachmentRestriction を提供する。"
       },
       {
@@ -24038,7 +24127,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionKanCosliceClassification",
-        "to": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianBaseChange",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso を提供する。"
       },
       {
@@ -24048,7 +24137,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionKanDescent",
-        "to": "SerrePositivity.KST.Fibration.FractionKanInitialInversion",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionKanInitialInversion",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.fractionSimplexKanMappingDiagram_inverts_initial を提供する。"
       },
       {
@@ -24063,12 +24152,12 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionNativeClassificationComponent",
-        "to": "SerrePositivity.KST.Fibration.FractionClassificationSimplexRestriction",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionClassificationSimplexRestriction",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.fractionKanSpaceDiagram_classificationIso_component を提供する。"
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionSimplexKanComparison",
-        "to": "SerrePositivity.KST.Fibration.StrictTransportPostEvaluation",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportPostEvaluation",
         "reason": "移動前の public import で公開していた実装を比較モジュールから引き続き再公開する。"
       },
       {
@@ -24153,7 +24242,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
-        "to": "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoconeFamilyCoreCriterion",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.LocalizingInvariants.coconeFamily_invertsAllEdges_of_prefix_apex を提供する。"
       },
       {
@@ -24348,7 +24437,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierRelativeInitialComparison",
-        "to": "SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachmentHomotopy",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.RelativeSimplexAttachmentHomotopy",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.LocalizingInvariants.exists_relative_simplexAttachmentHomotopy を提供する。"
       },
       {
@@ -24433,7 +24522,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierUniformCoconeImage",
-        "to": "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoconeFamilyCoreCriterion",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.LocalizingInvariants.coconeFamily_invertsAllEdges_of_prefix_apex を提供する。"
       },
       {
@@ -24463,7 +24552,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentityKanValue",
-        "to": "SerrePositivity.KST.Fibration.FixedFractionCosliceTransport",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.FixedFractionCosliceTransport",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation_transport_vertex を提供する。"
       },
       {
@@ -24473,12 +24562,12 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentityScaffoldClassification",
-        "to": "SerrePositivity.KST.Fibration.ScaffoldCosliceExtension",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCosliceExtension",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.scaffoldCosliceReconstructionPoint、SerrePositivity.KST.Fibration.scaffoldCosliceReconstructionPoint_fiberMap を提供する。"
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentityScaffoldClassification",
-        "to": "SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberTransport",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldReconstructionFiberTransport",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.scaffoldReconstructionFiberPoint_eqToHom_transport、SerrePositivity.KST.Fibration.scaffoldReconstructionFiberPoint_pointHom_eq_of_vertexIso を提供する。"
       },
       {
@@ -24488,12 +24577,12 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentityScaffoldImage",
-        "to": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianBaseChange",
         "reason": "移動前の public import で公開していた実装を比較モジュールから引き続き再公開する。"
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentityScaffoldImage",
-        "to": "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianPostBaseChange",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.scaffoldCocartesianPostBaseChangeClassification_pointHom を提供する。"
       },
       {
@@ -24588,7 +24677,7 @@
       },
       {
         "from": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakSpanKanWeakInversion",
-        "to": "SerrePositivity.KST.Fibration.PullbackStrictBilateralEdge",
+        "to": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackStrictBilateralEdge",
         "reason": "比較で使う実装の宣言 SerrePositivity.KST.Fibration.cocartesianKanDiagram_map_bilateralEdge_isQCatEquivalence を提供する。"
       },
       {

@@ -3,8 +3,8 @@ module
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldCocartesianPostBaseChange
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionIdentityClassificationComponent
-public import SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange
-public import SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianPostBaseChange
 
 /-! # K-6 の元の恒等 span 比較像を、同じ scaffold 分類成分で計算する -/
 

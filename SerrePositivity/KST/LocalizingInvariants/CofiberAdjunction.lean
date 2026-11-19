@@ -3,7 +3,7 @@ module
 
 public meta import SerrePositivity.Util.Citation
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationAdjunction
-public import SerrePositivity.KST.LocalizingInvariants.ArrowTargetAdjunction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ArrowTargetAdjunction
 
 /-!
 概要：元の選択された cofiber 関手の実右随伴を構成する。

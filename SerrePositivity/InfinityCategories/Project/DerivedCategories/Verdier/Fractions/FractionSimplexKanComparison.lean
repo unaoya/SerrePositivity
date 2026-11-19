@@ -2,7 +2,7 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FractionCosliceBaseChange
-public import SerrePositivity.KST.Fibration.StrictTransportPostEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StrictTransportPostEvaluation
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexFirstVertex
 
 /-! # 元の全分数評価による、全単体圏上の coherent な写像空間比較 -/

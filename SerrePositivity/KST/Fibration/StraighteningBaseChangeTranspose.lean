@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.StraighteningBaseChangeTranspose
-public import SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.StraighteningBaseChangeVertex
 public import SerrePositivity.KST.Fibration.DoubleEvaluationTranspose
 
 /-! # 実分類写像の底変換は、同じ共同底変換の転置成分を保持する -/

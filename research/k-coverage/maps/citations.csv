@@ -7671,9 +7671,9 @@ SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean,
 SerrePositivity/KST/LocalizingInvariants/LocalizationResolution.lean,10,Land–Tamme,
 SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/MarkedSpanFamilyCartesianEdge.lean,9,Tamme,
 SerrePositivity/KST/LocalizingInvariants/PullbackDifferenceVertices.lean,13,Tamme,12
-SerrePositivity/KST/LocalizingInvariants/ReflectiveMappingAdjunction.lean,11,Tamme,11
-SerrePositivity/KST/LocalizingInvariants/ReflectiveTargetHom.lean,11,Tamme,
-SerrePositivity/KST/LocalizingInvariants/ReflectiveTargetMapping.lean,9,Tamme,
+SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveMappingAdjunction.lean,11,Tamme,11
+SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveTargetHom.lean,11,Tamme,
+SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/ReflectiveTargetMapping.lean,9,Tamme,
 SerrePositivity/KST/LocalizingInvariants/RelativeFiberSequence.lean,9,Tamme,
 SerrePositivity/KST/LocalizingInvariants/SemiorthogonalInvariant.lean,10,Tamme,
 SerrePositivity/KST/LocalizingInvariants/SpectrumProductAxes.lean,9,Tamme,

@@ -1,7 +1,7 @@
 module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
-public import SerrePositivity.KST.Fibration.FractionKanInitialInversion
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionKanInitialInversion
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationUlift
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 

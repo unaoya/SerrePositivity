@@ -2,7 +2,7 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public import SerrePositivity.KST.LocalizingInvariants.ReflectiveIsoTargetMapping
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ReflectiveIsoTargetMapping
 public import SerrePositivity.KST.LocalizingInvariants.CofiberZeroSourceComparison
 
 /-!

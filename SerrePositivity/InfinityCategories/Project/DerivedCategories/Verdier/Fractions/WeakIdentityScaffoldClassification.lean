@@ -2,8 +2,8 @@ module
 
 public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakIdentityScaffoldFiber
-public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberTransport
-public import SerrePositivity.KST.Fibration.ScaffoldCosliceExtension
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldReconstructionFiberTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCosliceExtension
 
 /-! # 元の K-6 恒等点の分類像を、指定 scaffold 復元の同じ coslice 恒等点と同定する -/
 

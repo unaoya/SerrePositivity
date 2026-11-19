@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationAdjunctionDescent
-public import SerrePositivity.KST.LocalizingInvariants.PointInitialAdjunction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointInitialAdjunction
 
 /-!
 概要：任意の辺集合の局所化射は、元の始対象の頂点を始対象へ送る。

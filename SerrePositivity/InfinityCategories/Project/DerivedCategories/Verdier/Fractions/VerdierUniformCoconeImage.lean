@@ -4,7 +4,7 @@ public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinat
 
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierUniformSpanPrefixPath
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingCoconeExtension
-public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoconeFamilyCoreCriterion
 
 /-!
 概要：同じ実分数評価の全比較を、元の商余錐を終端に固定した全余錐比較へ延長する。
