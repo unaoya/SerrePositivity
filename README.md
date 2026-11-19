@@ -121,6 +121,9 @@ layers, and no KST, dg or E∞ code (one remaining model-category dependency, it
   role of the hypotheses, the proof idea and the use sites; mathematical structures document their
   laws and meaning; short compatibility entries name their replacement. This is a maintenance
   convention, not a claim that every existing declaration already satisfies it.
+  Since 2026-11-19 (cleanup): auxiliary declarations may carry a one-line docstring; the full form
+  is for declarations matching an item of the literature and for the main definitions. Lines are
+  at most 100 characters.
 
 ## Mathlib and in-repository foundations
 

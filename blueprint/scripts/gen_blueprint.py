@@ -15,7 +15,7 @@ def review_counts(pattern, col):
     return c
 p = json.load(open(f'{B}/Paper/paper-generated.json'))
 parts.append(('part-paper', '本論文', [f'Paper.{m}' for m in p['modules']], line(review_counts('research/paper-coverage/review/ch*.csv', 'status'))))
-for key in ['clmst', 'bs', 'vdescent']:
+for key in ['clmst', 'bs', 'vdescent', 'htt', 'ha']:
     d = [x for x in glob.glob(f'{B}/*/generated.json') if json.load(open(x))['key'] == key]
     if not d: continue
     g = json.load(open(d[0]))
@@ -43,6 +43,8 @@ GOALS = {'part-paper': '主定理（Theorem 1.1、Serre の交点重複度の正
          'part-clmst': '本論文が使う正規化長と perfectoid の重複度の結果（§2.2 ほか）。',
          'part-bs': '本論文と CLMST が使う perfectoid 化（§7・§8）と、その土台の δ 環・prism（§2・§3）。',
          'part-vdescent': 'BS17 Theorem 4.1 (i) と BM18 Proposition 4.8（BS Proposition 8.10 の arc 層性の入力）。',
+         'part-htt': '本体の ∞ 圏・∞ トポスの定義と定理の出どころ。この部には、対応表で本体か Mathlib に対応がある項目だけを載せる（全項目の表は `research/htt-coverage`）。',
+         'part-ha': '本体の安定 ∞ 圏・∞ operad・代数の定義と定理の出どころ。この部には、対応表で本体か Mathlib に対応がある項目だけを載せる（全項目の表は `research/ha-coverage`）。',
          'part-kerodon': '∞ 圏の基礎（本体の `InfinityCategories` の定義・定理の出どころ）。目標は章ごとには立てていない。'}
 out += [f'- {t}：' + GOALS.get(tag if not tag.startswith('part-kerodon') else 'part-kerodon', '') + f'{s}' for tag, t, _, s in parts] + ['']
 for tag, t, ms, _ in parts:
