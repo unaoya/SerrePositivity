@@ -50,11 +50,10 @@ example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] (F : J ⥤ GeneralSy
 example (E : SymmetricSpectrum.{u}) :
     GeneralSymmetricSpectrum PointedSimplicialSet.{u} PointedSimplicialSet.circle := E
 example {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) :
-    levelMap (C := PointedSimplicialSet.{u}) (K := PointedSimplicialSet.circle) f 0 =
-      SymmetricSpectrum.levelMap f 0 := rfl
+    levelMap f 0 = f.hom.app (FiniteBijection.of 0) := rfl
 example (n : ℕ) :
-    freeAtAdjunction (K := (PointedSimplicialSet.circle : PointedSimplicialSet.{u})) n =
-      SymmetricSpectrum.freeAtAdjunction n := simplicial_freeAtAdjunction n
+    SymmetricSpectrum.freeAt.{u} n ⊣ SymmetricSpectrum.evaluation n :=
+  freeAtAdjunction (K := PointedSimplicialSet.circle.{u}) n
 
 -- Old enrichment and suspension-loop APIs coexist with the generic entry.
 example (X : PointedSimplicialSet.{u}) :

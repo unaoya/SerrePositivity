@@ -18,6 +18,8 @@ noncomputable section
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level levelMap)
+
 open CategoryTheory CategoryTheory.Limits
 
 variable {J : Type w} [Category.{w'} J]
@@ -52,12 +54,12 @@ instance forget_preservesColimits : PreservesColimitsOfSize.{u, u} (forget.{u}) 
 
 instance evaluation_preservesLimitsOfShape [HasLimitsOfShape J PointedSimplicialSet.{u}]
     (n : ℕ) : PreservesLimitsOfShape J (evaluation.{u} n) := by
-  unfold evaluation
+  unfold evaluation GeneralSymmetricSpectrum.evaluation
   infer_instance
 
 instance evaluation_preservesColimitsOfShape [HasColimitsOfShape J PointedSimplicialSet.{u}]
     (n : ℕ) : PreservesColimitsOfShape J (evaluation.{u} n) := by
-  unfold evaluation
+  unfold evaluation GeneralSymmetricSpectrum.evaluation
   infer_instance
 
 instance evaluation_preservesLimits (n : ℕ) :
@@ -68,7 +70,8 @@ instance evaluation_preservesColimits (n : ℕ) :
 
 /-- 対称列を入力とする自由スペクトル関手は余極限を保存する。 -/
 instance free_preservesColimits : PreservesColimitsOfSize.{w', w} (freeFunctor.{u}) :=
-  freeForgetAdjunction.leftAdjoint_preservesColimits
+  (GeneralSymmetricSpectrum.freeForgetAdjunction
+    PointedSimplicialSet.circle.{u}).leftAdjoint_preservesColimits
 
 /-- 第n段を生成する自由スペクトル関手も余極限を保存する。 -/
 instance freeAt_preservesColimits (n : ℕ) :

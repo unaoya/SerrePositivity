@@ -17,6 +17,8 @@ noncomputable section
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (levelMap)
+
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 
@@ -76,7 +78,7 @@ def freeAtLevelBlockActionNatIsoInduction (n m : ℕ) :
 /-- 商と誘導表示の自然同型は、既存の基礎対象の比較同型を持ち上げる。 -/
 lemma freeAtLevelBlockActionNatIsoInduction_hom (n m : ℕ) (X : PointedSimplicialSet.{u}) :
     ((freeAtLevelBlockActionNatIsoInduction n m).app X).hom.hom =
-      (freeAtLevelBlockQuotientIsoInduction n X m).hom :=
+      (GeneralSymmetricSpectrum.freeAtLevelBlockQuotientIsoInduction (K := circle.{u}) n X m).hom :=
   SymmetricSequence.freeBlockQuotientActionIsoInduction_hom sphereSequence.{u} n X m
 
 /-- 商を経由した作用付き自然同型は、元の誘導表示との自然同型に一致する。 -/

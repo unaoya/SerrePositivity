@@ -17,6 +17,8 @@ noncomputable section
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level)
+
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 

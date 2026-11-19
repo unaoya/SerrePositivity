@@ -26,10 +26,10 @@ Kにはcofibrancy、Cにはモデル構造・基点・零対象・単体的豊�
 | Evaluation | evaluation (K := K) n, freeAt (K := K) n, freeAtAdjunction, freeAtHomEquiv, freeAtGenerator, freeAtLift。生成元の合成表示と延長の一意性 |
 | Limits | 忘却による極限創出、評価の極限保存、limitLevelIsoと射影法則。指定した形の極限をCから継承 |
 | Limitsの余極限 | Cの小さい極限を追加要求し、既存Day閉構造によるtensorの余極限保存から創出・保存を得る。指定した形の余極限をCから継承。colimitLevelIsoと包含法則 |
-| SimplicialComparison | C=PointedSimplicialSet、K=circleで、旧SymmetricSpectrumの型・忘却・level・作用・free/evaluation・両随伴と定義上で一致 |
+| SimplicialComparison | 円周を座標とする具体版と、テンソル・内部 Hom・余テンソル・写像対象などを比較する |
 
 比較入口は具体的PSSをimportする。一般入口は具体的圏をimportしない。
-旧namespace・宣言・import入口は変更していない。共有ルートimportにも追加していない。
+円周上の基本構成は一般版の特殊化を使う。具体版から一般版への宣言の対応は[段 1 の一覧](../../../research/cleanup-zero-base/spectra/stage1.csv)にある。
 
 ## 検証と後続
 

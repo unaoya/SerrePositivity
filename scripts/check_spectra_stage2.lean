@@ -11,6 +11,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity SerrePositivity.SymmetricSpectrum
+open SerrePositivity.GeneralSymmetricSpectrum (level)
 open scoped Simplicial
 
 -- 基点付きの作用の随伴、各段の比較、単位・結合の整合性。

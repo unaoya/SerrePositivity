@@ -62,14 +62,9 @@ lemma pointedSpectrumTensor_isQuillen :
     let := simplicialLevelModelCategory hCof hFib
     IsQuillenBifunctor pointedSpectrumTensor.{u} := by
   let : ModelCategory SymmetricSpectrum.{u} := simplicialLevelModelCategory hCof hFib
-  let : ModelCategory (GeneralSymmetricSpectrum PointedSimplicialSet.{u}
-      PointedSimplicialSet.circle) := simplicialLevelModelCategory hCof hFib
-  let : IsLeftQuillen (GeneralSymmetricSpectrum.freeAt (K := PointedSimplicialSet.circle.{u}) 0) :=
-    simplicialLevel_freeAt_isLeftQuillen hCof hFib 0
-  let : IsQuillenBifunctor (CategoryTheory.MonoidalCategory.curriedTensor
-      (GeneralSymmetricSpectrum PointedSimplicialSet.{u} PointedSimplicialSet.circle)) :=
-    simplicialLevelTensor_isQuillen hCof hFib
-  exact GeneralSymmetricSpectrum.pointwiseTensor_isQuillen
+  exact @GeneralSymmetricSpectrum.pointwiseTensor_isQuillen PointedSimplicialSet.{u}
+    _ _ _ _ _ _ PointedSimplicialSet.circle _ _
+    (simplicialLevel_freeAt_isLeftQuillen hCof hFib 0) (simplicialLevelTensor_isQuillen hCof hFib)
 
 lemma pointedSpectrumCotensor_SM7 :
     let := simplicialLevelModelCategory hCof hFib

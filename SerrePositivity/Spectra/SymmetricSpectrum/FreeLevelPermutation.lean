@@ -20,6 +20,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level)
+
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 
@@ -61,7 +63,8 @@ def freeAtLevelIsoPermutation (n : ℕ) (X : PointedSimplicialSet.{u}) (m : ℕ)
   change freeAtLevelGenerator n X m (FiniteBijection.of (m - n)) h ≫
     (freeAtLevelIsoBlockQuotient n X m).hom ≫
       SymmetricSequence.freeBlockToPermutationQuotient sphereSequence.{u} n X m hm = _
-  erw [freeAtLevelIsoBlockQuotient_generator_assoc n X m h]
+  erw [GeneralSymmetricSpectrum.freeAtLevelIsoBlockQuotient_generator_assoc
+    (K := circle.{u}) n X m h]
   exact SymmetricSequence.freeBlockToPermutationQuotient_generator sphereSequence.{u} n X m hm h
 
 /-- 入力の射を同変射へ送る、Σ_mで添字付けた誘導商の関手。 -/

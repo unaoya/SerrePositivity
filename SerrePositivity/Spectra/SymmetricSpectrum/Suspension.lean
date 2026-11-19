@@ -21,6 +21,8 @@ open CategoryTheory CategoryTheory.MonoidalCategory
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (hom_index_eq level structureMap structureMap_hom)
+
 open SerrePositivity.PointedSimplicialSet
 
 /-- 円のsmashによる標準の懸垂構造射。 -/
@@ -34,9 +36,12 @@ lemma suspensionMap_hom {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) (n : ℕ) :
       PointedObject.smashMap (𝟙 (circle : PointedSimplicialSet.{u}))
           (f.hom.app (FiniteBijection.of n)) ≫ suspensionMap F n := by
   have hc := hom_index_eq f (Nat.one_add n)
+  have hs : structureMap E 1 n ≫ f.hom.app (FiniteBijection.of (1 + n)) =
+      PointedObject.smashMap (𝟙 (spherePower 1)) (f.hom.app (FiniteBijection.of n)) ≫
+        structureMap F 1 n := structureMap_hom f 1 n
   simp only [suspensionMap, Category.assoc]
   rw [hc]
-  rw [← Category.assoc _ _ (eqToHom (congrArg (level F) (Nat.one_add n))), structureMap_hom]
+  rw [← Category.assoc _ _ (eqToHom (congrArg (level F) (Nat.one_add n))), hs]
   simp only [Category.assoc]
   simp only [← Category.assoc, PointedObject.smashMap_comp, Category.id_comp, Category.comp_id]
   erw [Category.comp_id]

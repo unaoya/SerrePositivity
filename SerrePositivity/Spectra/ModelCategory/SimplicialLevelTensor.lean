@@ -115,7 +115,8 @@ lemma simplicialLevelTensor_monoidalModel :
     let := simplicialLevelModelCategory hCof hFib
     MonoidalModelCategory SymmetricSpectrum.{u} := by
   let := simplicialLevelModelCategory hCof hFib
-  let : IsCofibrant (𝟙_ SymmetricSpectrum.{u}) := simplicialLevelTensor_unit_isCofibrant hCof hFib
-  exact ⟨simplicialLevelTensor_isQuillen hCof hFib, unitAxiom_of_cofibrant_unit _⟩
+  exact ⟨simplicialLevelTensor_isQuillen hCof hFib,
+    @unitAxiom_of_cofibrant_unit SymmetricSpectrum.{u} _ _ _
+      (simplicialLevelTensor_unit_isCofibrant hCof hFib)⟩
 
 end SerrePositivity.SimplicialModelInputs

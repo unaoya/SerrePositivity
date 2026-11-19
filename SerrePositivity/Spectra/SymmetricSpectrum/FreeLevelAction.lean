@@ -21,6 +21,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (levelMap)
+
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 

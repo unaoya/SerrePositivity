@@ -16,6 +16,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level structureMap_hom)
+
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity.PointedSimplicialSet
 
@@ -52,6 +54,8 @@ lemma shiftedHomStructureFormula_naturality (n p q : ℕ) {X Y : PointedSimplici
       PointedObject.smashMap (𝟙 (spherePower.{u} p)) (shiftedHomLevelMap n q f g) ≫
         shiftedHomStructureFormula n p q X F := by
   have h := structureMap_hom (shiftedHomMap n f g) p q
+  change _ = PointedObject.smashMap (𝟙 (spherePower.{u} p))
+    ((shiftedHomMap n f g).hom.app (FiniteBijection.of q)) ≫ _ at h
   simpa only [shiftedHom_structureMap_eq_formula, shiftedHomMap_app] using h
 
 /-- 値域の懸垂による直接公式も、通常の前合成・後合成と両立する。 -/

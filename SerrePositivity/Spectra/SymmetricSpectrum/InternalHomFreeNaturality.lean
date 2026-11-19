@@ -43,7 +43,9 @@ lemma internalHomFreeIso_naturality {X Y : PointedSymmetricSequence.{u}} (f : X 
 lemma internalHomFreeAtIso_naturality (n : ℕ) {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     {E F : SymmetricSpectrum.{u}} (g : E ⟶ F) :
     internalHomMap ((freeAt n).map f) g ≫ (internalHomFreeAtIso n X F).hom =
-      (internalHomFreeAtIso n Y E).hom ≫ homBySequenceMap ((SymmetricSequence.freeAt n).map f) g :=
-  internalHomFreeIso_naturality ((SymmetricSequence.freeAt n).map f) g
+      (internalHomFreeAtIso n Y E).hom ≫ homBySequenceMap ((SymmetricSequence.freeAt n).map f) g := by
+  unfold internalHomFreeAtIso
+  dsimp only [freeAt, GeneralSymmetricSpectrum.freeAt, Functor.comp_map, Functor.comp_obj]
+  apply internalHomFreeIso_naturality
 
 end SerrePositivity.SymmetricSpectrum
