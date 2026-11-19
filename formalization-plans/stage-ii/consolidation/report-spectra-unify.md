@@ -72,3 +72,92 @@ Lean を編集する前に `research/*-coverage/` 以下の CSV 178本の全列�
 01:28 頃から指示・基本宣言・文献表を読み、01:31 頃に利用箇所の抽出を終えた。初回の書き換えと表の作成は 01:31–01:38 の約7分。その後は検証と修正を交互に進めた。01:58–04:04 の約2時間6分は⑦の全体ビルドの鍵待ちで、この間に利用箇所の数え方と検証手順を点検した。04:04–04:49 の約45分は利用側の証明・型クラス引数の修正、再ビルド、監査と変更前診断との比較に使った。ビルド試行は 01:30–01:58 にも行ったので、この所要時間には重なりがある。
 
 対象と利用側の最終増分ビルドは14.5秒、変更後のカーネル目録採取は17.6秒。24本のスクリプトの順次実行は約3分。各ビルドと Lean による照合はすべて `--class bulk` で行った。
+
+## 段 2　残存宣言の分類
+
+段 1 のコミット `1b9299036` に指示書を含む `main` の `f3263792f` をマージした（`1452953f9`）。表は段 1 で残した15件を含む。ソースに名前を書く宣言は618件で、段 1 の集計との照合のため `Limits.lean` の無名インスタンス4件も収録した。後合成補題、等式補題、抽出された証明は元の宣言に含めた。[分類表](../../../research/cleanup-zero-base/spectra/stage2.csv)
+
+### 件数と行数
+
+`lines` はソースの各宣言範囲の行数。範囲内の宣言コメント・属性を含む。import、名前空間、共有変数宣言、宣言間の空行なども含めたディレクトリ全体は段 1 の集計で5,951行。
+
+| まとまり | 件数 | 行数 |
+|---|---:|---:|
+| 基本 | 9 | 33 |
+| 自由 | 60 | 338 |
+| 各段のテンソル | 91 | 517 |
+| テンソル積 | 126 | 565 |
+| 内部 Hom | 116 | 773 |
+| 余テンソル | 79 | 502 |
+| 写像対象 | 101 | 568 |
+| 懸垂とループ | 19 | 96 |
+| 極限と余極限 | 21 | 71 |
+| 合計 | 622 | 3463 |
+
+| 扱いの案 | 件数 | 現在の宣言範囲の行数 |
+|---|---:|---:|
+| 消す | 394 | 2183 |
+| 別名 | 57 | 220 |
+| B に一般版を足す | 137 | 896 |
+| 固有として残す | 26 | 115 |
+| 判断できない | 8 | 49 |
+
+見積もりでは、C の 531 宣言を除き、B に 137 宣言を足すので、B・C 合計で 394 宣言減る。C では削除と移設で 3,079 行減り、別名の定義をすべてコメント付きの一行にできればさらに最大約 106 行減る。移設する B の本体とコメントを現在と同じ長さと仮定すると、B・C 合計の減少は約 2,183〜2,289 行。利用側に追加する引数・型注釈、import の組み替え、B の証明の伸縮は見積もりに含めていない。
+
+### 利用の集計
+
+`Spectra/` 配下を起点に全追跡 Lean ファイルの逆向き import を調べ、そのうち C に届く91モジュール（C 78、B 2、その他11）と監査・検査24本を照合した。C に届くモジュールとスクリプトのソースは段 1 の採取時点と同じ。91モジュールの型と証明の定数参照、およびソース識別子の解決結果を統合し、同じ使用者からの重複参照を除いた。自動生成補題経由の参照は元の宣言に寄せた。
+
+直接の利用の合計は範囲内 3,028、範囲外 156、監査・検査 83。監査はスクリプトごとに数え、成功した13本では識別子を解決済みの索引を使った。段 1 から診断のある11本では、ソース上で名指しした参照を数えた。この11本について、精密化で入る暗黙の参照は未確認。公理依存をモジュール単位で総走査する監査は `bulk_audits` に記載した。`audit_spectra` は622件、`audit_stage4_contract` は import 閉包に入る445件。対応表の宣言名を記録する列に C の宣言を名指しした行は0件。
+
+### 依存関係と実施順
+
+基本型・忘却・評価と、自由関手・生成元の群が先行する。極限・余極限はその後に独立して扱える。各段テンソルの対象と射、釣り合い商・自由テンソル、内部 Hom の順に構成をそろえる。自由関手のモノイダル構造はテンソル積の登録に依存するので、自由関手そのものとは実施時期が異なる。
+
+内部 Hom と零次の自由対象から余テンソルへ進み、余テンソルの関手と各段テンソルの随伴の比較をそろえてから写像対象・豊穣化へ進む。各段テンソルと余テンソルの群は随伴の式を通じて相互に参照する。懸垂の対象と構造射は各段テンソル側で扱え、ループ・単位・余単位は余テンソルの自然同型を必要とする。内部 Hom のシフト公式も懸垂射を参照するため、宣言単位で分ける。具体例は `freeFunctorBraided` が `sphereTensorMonoidalCategory`、`pointwiseTensorCurry` が `cotensor`、`loopFunctor` が `cotensorFunctor` を利用する箇所。
+
+- **カーネルの時間切れ**。余テンソルの随伴、各段の結合子と射、シフトした内部 Hom では、輸送された加群射と座標特殊化を一度に展開すると型の照合が重くなる。既存の成分式で先に書き換えられる箇所は表に記した。
+- **インスタンス探索**。自由関手のモノイダル・組紐構造、閉構造、忘却と評価による（余）極限の保存で、具体版の登録と一般版の登録を照合する必要がある。段 1 で既に具体的な証明を渡したモデル構造側の利用もある。
+- **宇宙**。極限・余極限は係数圏の対象・射の宇宙と図式の宇宙を持つ。B の極限ファイルでは小さい極限の仮定と図式の宇宙に応じた仮定を区別する。対称列の次数・置換群の和を取る自由構成では、係数圏側の小余極限の仮定も確認する。
+
+### B に一般版を足す案
+
+表の `assumptions` が一般化の仮定、`destination` が足す先。ここでは同じファイルに置く候補をまとめた。宣言名は現在の C での短い名前。
+
+- Basic.lean（3件）　`sphere_action`、`sphere_underlying`、`structureMap_eq_convolutionComponent`。[B の配置先](../../../SerrePositivity/Spectra/General/Basic.lean)
+- Cotensor.lean（27件）　`cotensorBifunctor_obj`、`cotensorCurry_formula`、`cotensorCurry_pre`、`cotensorEvaluation_formula`、`cotensorEvaluation_level`、`cotensorFunctor_obj`、`cotensorLevelMap`、`cotensorMap`、`cotensorMap_id`、`cotensorMap_law`、`cotensorPre`、`cotensorPre_level`、`cotensorUncurry_formula`、`cotensor_permutation`、`cotensor_structureMap`、`cotensor_suspensionMap`、`internalHomCotensorBifunctorIso_hom_app`、`internalHomCotensorIso_hom_app`、`internalHomCotensorIso_hom_hom`、`internalHomCotensorIso_inv_app`、`internalHomCotensorIso_inv_freeHom`、`internalHomCotensorIso_inv_hom`、`internalHomCotensorIso_pre`、`internalHomCotensorNatIso_hom_app`、`internalHomCotensorNatIso_inv_app`、`shiftedHomCotensorIso_hom_app`、`shiftedHomCotensorIso_inv_app`。[B の配置先](../../../SerrePositivity/Spectra/General/Cotensor.lean)
+- Free.lean（3件）　`free_action`、`free_forget_eq_tensorLeft`、`lift_unique`。[B の配置先](../../../SerrePositivity/Spectra/General/Free.lean)
+- FreeLevelQuotient.lean（6件）　`freeAtLevelActionNatIsoBlockQuotient`、`freeAtLevelActionNatIsoBlockQuotient_trans`、`freeAtLevelActionNatIsoPermutation`、`freeAtLevelActionNatIsoPermutation_hom`、`freeAtLevelIsoPermutation`、`freeAtLevelIsoPermutation_generator`。[B の配置先](../../../SerrePositivity/Spectra/General/FreeLevelQuotient.lean)
+- Limits.lean（4件）　`evaluation_preservesColimits`、`evaluation_preservesLimits`、`forget_preservesColimits`、`forget_preservesLimits`。[B の配置先](../../../SerrePositivity/Spectra/General/Limits.lean)
+- MappingObject.lean（4件）　`mappingTensorFunctor_map`、`pointedMappingSpaceBifunctor_map`、`pointedMappingSpaceBifunctor_obj`、`pointedMappingSpacePre`。[B の配置先](../../../SerrePositivity/Spectra/General/MappingObject.lean)
+- PointwiseTensor.lean（11件）　`freeZeroTensorIso`、`pointwiseTensorBifunctor_obj`、`pointwiseTensorCurry_level`、`pointwiseTensorEvaluation_formula`、`pointwiseTensorEvaluation_pre`、`pointwiseTensorMap`、`pointwiseTensorUncurry_pre`、`pointwiseTensor_permutation`、`sphereTensorFreeZeroPointwiseBifunctorIso_app`、`sphereTensorFreeZeroPointwiseIso_post`、`sphereTensorFreeZeroPointwiseNatIso_app`。[B の配置先](../../../SerrePositivity/Spectra/General/PointwiseTensor.lean)
+- PointwiseTensorCoherence.lean（1件）　`pointwiseTensorAssociator_inv_level`。[B の配置先](../../../SerrePositivity/Spectra/General/PointwiseTensorCoherence.lean)
+- ShiftedHom.lean（40件）　`internalHomFreeAtLevelActionIso`、`internalHomFreeAtLevelActionIso_hom`、`internalHomFreeAtLevelIso`、`internalHomFreeAtLevelIso_eq`、`internalHomFreeAtLevelIso_permutation`、`internalHomFreeAtLevelIso_structureMap`、`internalHomFreeAtLevelIso_suspensionMap`、`internalHomFreeAtLevelZeroIso`、`internalHomFreeAt_structureMap_formula`、`internalHomFreeAt_suspensionMap_formula`、`internalHomFreeZeroLevelIso`、`internalHomFreeZeroLevelIso_structureMap`、`internalHomFreeZeroLevelIso_suspensionMap`、`internalHomShiftIso_hom_app`、`internalHomShiftIso_inv_app`、`shiftedHomLevelMap`、`shiftedHomMap_app`、`shiftedHomStructureFormula`、`shiftedHomStructureFormula_naturality`、`shiftedHomStructureFormula_zero`、`shiftedHomStructureFormula_zero_raw`、`shiftedHomSuspensionFormula_eq_structureFormula`、`shiftedHomSuspensionFormula_naturality`、`shiftedHomSuspensionFormula_zero`、`shiftedHomSuspensionFormula_zero_raw`、`shiftedHomSuspensionIndex_zero`、`shiftedHom_eq_freeShiftModule`、`shiftedHom_index_eq_ihom_map`、`shiftedHom_structureMap`、`shiftedHom_structureMap_eq_component`、`shiftedHom_structureMap_eq_formula`、`shiftedHom_suspensionMap`、`unshiftedHomLevelIso`、`unshiftedHomLevelIso_hom`、`unshiftedHomLevelIso_structureMap`、`unshiftedHomLevelIso_suspensionMap`、`unshiftedHomStructureFormula`、`unshiftedHomStructureFormula_index_eq`、`unshiftedHomSuspensionFormula`、`unshiftedHomSuspensionFormula_index_eq`。[B の配置先](../../../SerrePositivity/Spectra/General/ShiftedHom.lean)
+- TensorClosed.lean（23件）　`associator_eq_sphereTensorAssociator`、`homBySequence_underlying`、`internalHomBifunctor_obj`、`internalHomFreeAtIso`、`internalHomFreeAtIso_naturality`、`internalHomFreeIso_hom`、`internalHomFreeIso_inv`、`internalHomFunctor_obj`、`internalHomSphereIso_hom`、`internalHomSphereIso_inv`、`internalHom_underlying`、`leftUnitor_eq_sphereTensorLeftUnit`、`rightUnitor_eq_sphereTensorRightUnit`、`sphereTensorBifunctor_forget`、`sphereTensorDesc_unique`、`sphereTensorMap_hom`、`sphereTensorSymmetry_inv`、`sphereTensorUnit_agree`、`sphereTensor_hom_ext`、`tensorHom_eq_sphereTensorMap`、`tensorRelationLeft_eq`、`tensorRelationRight_eq`、`tensorUnit_eq_sphere`。[B の配置先](../../../SerrePositivity/Spectra/General/TensorClosed.lean)
+- TensorFreeAtSum.lean（15件）　`freeAtSmashBifunctor`、`sequenceTensor_underlying`、`sphereTensorFreeAtBifunctor`、`sphereTensorFreeAtLeft`、`sphereTensorFreeAtLeft_naturality`、`sphereTensorFreeAtPair`、`sphereTensorFreeAtPair_naturality`、`sphereTensorFreeAtRight`、`sphereTensorFreeAtRight_naturality`、`sphereTensorFreeAtSumNatIso`、`sphereTensorFreeAtSum_eq`、`sphereTensorFreeLeft_eq`、`sphereTensorFreePair_eq`、`tensorBySequence_action`、`tensorBySequence_underlying`。[B の配置先](../../../SerrePositivity/Spectra/General/TensorFreeAtSum.lean)
+
+### 未使用の宣言
+
+直接の利用と対応表の名指しがない227件では、言い換えの間の一致 58件、他所に同じ内容がある 131件、残す定義の基本補題 20件、理論の主張 18件。
+「使われていない途中の段」に入れた宣言は0件。たとえば `shiftedHomSuspensionFormula_eq_structureFormula` は直接の使用者がいないが、懸垂射と構造射の二つの表示の一致を述べる。
+
+### 判断できない宣言
+
+- `cotensorFunctor_map`。余テンソルの射を F₀ X からの内部 Hom との比較で共役した式。B の関手との自然同型だけでは、選んだ順射・逆射の表示まで一致するか決まらない。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/CotensorFunctor.lean#L75)
+- `cotensorMap_conjugate`。二変数の射を内部 Hom の反変射と共変射の合成に共役する。二変数比較の選択があるため、B の自然同型で両端の射を先に照合する必要がある。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/CotensorMapLevels.lean#L26)
+- `freeFunctor_unitIso`。選んだモノイダル関手構造の単位同型と手で作った同型を Iso.ext で比較している。インスタンスを移した場合の標準の向きの扱いを先に決める必要がある。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/FreeMonoidal.lean#L46)
+- `freeFunctor_tensorIso`。自由関手の登録済み tensorator と構成済みの自由比較との等式。B で登録するモノイダル関手構造の比較射を確定する必要がある。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/FreeMonoidal.lean#L51)
+- `pointwiseTensorCurry_naturality`。B の随伴を直接特殊化すると具体版の選んだ余テンソル関手への射と型が一致しない。simplicialCotensorNatIso による移送を確かめる必要がある。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAdjunction.lean#L71)
+- `pointwiseTensorCurry_naturality_right`。比較では余テンソル関手の射の表示に型の不一致が出た。simplicialCotensorNatIso で射を共役した式まで照合する必要がある。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAdjunction.lean#L78)
+- `pointwiseTensorAssociator_module_hom`。運んだ結合子と係数加群の結合子の基礎射を同定する。等号は rfl ではなく逆比較での消去を使い、どちらを標準にするかが利用側に影響する。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAssociatorLevels.lean#L25)
+- `loopFunctor`。円周での両右随伴の比較は simplicialLoopNatIso。指定した自然同型を除かずに単位と余単位まで置換する方法を決める必要がある。。[具体版](../../../SerrePositivity/Spectra/SymmetricSpectrum/SuspensionLoop.lean#L28)
+
+### 型と本体の抜き取り照合
+
+B の円周特殊化を用いた機械照合は150件。29定理で具体版の全引数を持つ型に一般定理を適用でき、47定義で全引数を持つ値の等式が `rfl` で通った。表の `kernel_sample` に記録した。この照合では72件がハートビート上限に達し、2件は余テンソル射の自然性で型が異なった。時間切れの判定には、構成の定義と既存の比較のソースを用いた。
+
+- `sphereTensor` は球面列上の釣り合いテンソルで、一般版も円周のテンソル冪の列上の同じ釣り合いテンソル。比較は `simplicial_tensor`。[`SimplicialComparison.lean`](../../../SerrePositivity/Spectra/General/SimplicialComparison.lean)
+- `freeAtLevelIsoBlockQuotient_input` の型は、生成元への入力射とブロック商の比較を合成した式。具体版は `freeAt` の基礎射の式で書き換え、`freeConvolutionLevelIsoBlockQuotient_input` を球面列に適用する。[`FreeLevelQuotientAction.lean`](../../../SerrePositivity/Spectra/SymmetricSpectrum/FreeLevelQuotientAction.lean#L55) [一般論](../../../SerrePositivity/Spectra/SymmetricSequence/FreeBlockQuotientMaps.lean#L151)
+- `simplicial_suspensionLoopUnit` の左辺は一般の単位に右随伴の自然同型の順射を後合成したもの。余単位では懸垂関手で写した比較の順射を前合成する。証明は右随伴の一意性を使う。[`SimplicialSuspensionComparison.lean`](../../../SerrePositivity/Spectra/General/SimplicialSuspensionComparison.lean#L46)
+
+この段の差分は分類表と本節の2ファイル。比較に使う一時ファイルと採取は bulk 鍵の下で実行し、作業ツリーに追跡対象を追加しなかった。
