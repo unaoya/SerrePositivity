@@ -1,0 +1,44 @@
+path,line,finding,labels,text
+SerrePositivity/BhattScholze/Almost/Lemma103.lean,121,工程ラベル候補,G2,G2 の同じ完備化関手を用い、p 正則性を仮定しない。
+SerrePositivity/BhattScholze/Almost/Lemma103.lean,282,工程ラベル候補,G2,G2 の元の完備導来テンソルと `derivedH0CommRing` を使う。零環と p ねじれを許す。
+SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean,192,工程ラベル候補,G2,G2 の元の完備化関手を degree zero の conormal 加群へ適用する。
+SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean,363,工程ラベル候補,G2,既存の perfectoidIdeal、IsAlmostZero、G2 の実完備導来 tensor を使う。
+SerrePositivity/BhattScholze/Delta/CompleteRegularity/RelativeCompleteRegularity.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Delta/DividedPower/PDivision/Injectivity.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Delta/Division/AdjoinResidue.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Delta/Extension/PDCompletionCoordinates.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/IntegralPerfectoidization/FiniteEtale/FiniteEtalePerfectoid.lean,24,工程ラベル候補,G-A8-6,整 perfectoid 環上の有限エタール代数は整 perfectoid（G-A8-6）。
+SerrePositivity/BhattScholze/IntegralPerfectoidization/FiniteEtale/FiniteEtalePerfectoid.lean,433,工程ラベル候補,G-A8-6,/-- 整 perfectoid 環上の有限エタール代数は整 perfectoid（G-A8-6）。 -/
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean,14,工程ラベル候補,G1,使われ方：CAlg_R 上の界面から既存 G1 の D(R) 版を導く。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Comparison.lean,30,工程ラベル候補,G1,/-- 概要：既存 G1 と同じ通常代数の CAlg_R 埋め込み。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean,8,工程ラベル候補,G1,概要：G1 の算術的データを保ち、指定極限と excision を CAlg_R で述べる。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean,46,工程ラベル候補,G1,/-- U 像と既存 G1 の指定錐の全関手比較。 -/
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/Definition.lean,58,工程ラベル候補,G1,/-- 概要：G1 の結論を既存の CAlg_R で述べた BS 界面。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean,8,工程ラベル候補,G1,概要：CAlg_R 界面から既存 G1 界面を構成する。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean,11,工程ラベル候補,G1,使われ方：既存 G1 の環の普遍性・excision の下流をそのまま使用できる。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean,30,工程ラベル候補,G1,使われ方：旧 G1 の limit_isLimit の欄。 -/
+SerrePositivity/BhattScholze/Perfectoidization/Interface/CAlg/DerivedCorollary.lean,38,工程ラベル候補,G1,/-- 概要：実 U と指定比較による旧 G1 界面の構成。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/Derived.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Perfectoidization/Interface/InitialBridge.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Perfectoidization/Interface/IntegralExistence.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean,122,工程ラベル候補,G1,/-- U 像と既存 G1 の指定錐の全関手比較。 -/
+SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean,134,工程ラベル候補,G1,/-- 概要：G1 の結論を既存の CAlg_R で述べた BS 界面。
+SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean,166,工程ラベル候補,G1,使われ方：旧 G1 の limit_isLimit の欄。 -/
+SerrePositivity/BhattScholze/Perfectoidization/Interface/TheoryInterface.lean,174,工程ラベル候補,G1,/-- 概要：実 U と指定比較による旧 G1 界面の構成。
+SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean,482,工程ラベル候補,G2,"/-- The comparison also applies to the actual new-base G2 H⁰ module, with its"
+SerrePositivity/BhattScholze/Prism/Basic/Bounded.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Prism/Basic/Category.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Prism/Basic/GeneratorRegularity.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Prism/Basic/PerfectBounded.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Prism/Perfectoid/FiniteProduct.lean,13,工程ラベル候補,G-A6-12,# perfectoid 環の有限直積は perfectoid（G-A6-12、E3 非依存の直接証明）
+SerrePositivity/BhattScholze/Prism/Perfectoid/FiniteProduct.lean,30,工程ラベル候補,G-A6-2,A6 §2.2（R → ∏R_i への置き換え、`PerfdSmall` の有限積）、G-A6-2、CLMST の `isIntegralPerfectoid_finPi` の利用側（名前を保つ）。
+SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean,23,工程ラベル候補,F7,F7（Fontaine 核進分離性）を仮定しない。
+SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean,526,工程ラベル候補,F4 F5,F4/F5/F6の接続。標準Fontaine比較射の全単射性から核を直接移す。
+SerrePositivity/BhattScholze/Prismatic/Crystalline/Comparison/HodgeTatePolynomialZp.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Prismatic/Site/PerfectSite.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Prismatic/Site/PrismOverSmall.lean,1,先頭モジュール文書に概要見出しなし,,
+SerrePositivity/BhattScholze/Semiperfectoid/Basic.lean,1,先頭モジュール文書に概要見出しなし,,
