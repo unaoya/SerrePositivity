@@ -41,13 +41,13 @@ lemma internalHom_action_evaluation (E F : SymmetricSpectrum.{u}) :
 
 /-- 球面上のテンソル積からのスペクトル射としての評価。 -/
 def internalHomEvaluationSpectrum (E F : SymmetricSpectrum.{u}) :
-    sphereTensor E (internalHom E F) ⟶ F :=
+    GeneralSymmetricSpectrum.tensor E (internalHom E F) ⟶ F :=
   MonoidalModuleInternalHom.evaluationModule sphereSequence.{u} E F
 
 /-- スペクトルの評価は商の標準射上で基礎対称列の評価に一致する。 -/
 @[reassoc (attr := simp)]
 lemma tensorProjection_internalHomEvaluation (E F : SymmetricSpectrum.{u}) :
-    tensorProjection E (internalHom E F) ≫
+    MonoidalBalancedTensor.projection sphereSequence.{u} E (internalHom E F) ≫
       (internalHomEvaluationSpectrum E F).hom = internalHomEvaluation E F :=
   MonoidalModuleInternalHom.projection_evaluationModule sphereSequence.{u} E F
 

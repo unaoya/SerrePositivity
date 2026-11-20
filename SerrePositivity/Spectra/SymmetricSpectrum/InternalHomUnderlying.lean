@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
+public import SerrePositivity.Spectra.General.TensorClosed
+public import SerrePositivity.Spectra.SymmetricSpectrum.Free
 public import SerrePositivity.Spectra.General.Limits
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 
@@ -52,7 +53,7 @@ lemma internalHomEvaluation_linear (E F : SymmetricSpectrum.{u}) :
 /-- 内部Homの基礎対称列への射と、右convolutionからのスペクトル射の全単射。 -/
 def internalHomUnderlyingEquiv (E F : SymmetricSpectrum.{u})
     (X : PointedSymmetricSequence.{u}) : (X ⟶ internalHomUnderlying E F) ≃
-      (tensorBySequence E X ⟶ F) :=
+      (MonoidalBalancedTensor.tensorRightObj sphereSequence.{u} E X ⟶ F) :=
   MonoidalModuleInternalHom.moduleHomEquiv sphereSequence.{u} E F X
 
 /-- Hom同値はパラメータとなる対称列の射に関して自然。 -/

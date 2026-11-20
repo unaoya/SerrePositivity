@@ -26,22 +26,22 @@ def freeZeroTensorCotensorAdjunction (X : PointedSimplicialSet.{u}) :
 
 /-- F_0とのテンソル積からの射とcotensorへの射の自然なHom同値。 -/
 def cotensorHomEquiv (X : PointedSimplicialSet.{u}) (A E : SymmetricSpectrum.{u}) :
-    (sphereTensor ((freeAt 0).obj X) A ⟶ E) ≃ (A ⟶ cotensor X E) :=
+    (GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E) ≃ (A ⟶ cotensor X E) :=
   (freeZeroTensorCotensorAdjunction X).homEquiv A E
 
 /-- F_0とのテンソル積からのスペクトル射のcotensorへの転置。 -/
 def cotensorCurry (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
-    (f : sphereTensor ((freeAt 0).obj X) A ⟶ E) : A ⟶ cotensor X E :=
+    (f : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E) : A ⟶ cotensor X E :=
   cotensorHomEquiv X A E f
 
 /-- cotensorへのスペクトル射のF_0とのテンソル積からの逆転置。 -/
 def cotensorUncurry (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
-    (f : A ⟶ cotensor X E) : sphereTensor ((freeAt 0).obj X) A ⟶ E :=
+    (f : A ⟶ cotensor X E) : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E :=
   (cotensorHomEquiv X A E).symm f
 
 /-- cotensorへの転置は既存の内部Homへの転置と比較の順射の合成。 -/
 lemma cotensorCurry_formula (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
-    (f : sphereTensor ((freeAt 0).obj X) A ⟶ E) :
+    (f : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E) :
     cotensorCurry X f = internalHomCurry f ≫ (internalHomCotensorIso X E).hom := by
   unfold cotensorCurry cotensorHomEquiv freeZeroTensorCotensorAdjunction
   erw [Adjunction.homEquiv_ofNatIsoRight_apply, internalHomCotensorNatIso_hom_app]
@@ -60,7 +60,7 @@ lemma cotensorUncurry_formula (X : PointedSimplicialSet.{u}) {A E : SymmetricSpe
 /-- 転置して逆転置すると元のスペクトル射になる。 -/
 @[simp]
 lemma cotensorUncurry_curry (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
-    (f : sphereTensor ((freeAt 0).obj X) A ⟶ E) :
+    (f : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E) :
     cotensorUncurry X (cotensorCurry X f) = f :=
   (cotensorHomEquiv X A E).left_inv f
 
@@ -72,19 +72,20 @@ lemma cotensorCurry_uncurry (X : PointedSimplicialSet.{u}) {A E : SymmetricSpect
 
 /-- 転置はパラメータスペクトルの射に関して自然。 -/
 lemma cotensorCurry_naturality (X : PointedSimplicialSet.{u}) {A B E : SymmetricSpectrum.{u}}
-    (g : A ⟶ B) (f : sphereTensor ((freeAt 0).obj X) B ⟶ E) :
+    (g : A ⟶ B) (f : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) B ⟶ E) :
     cotensorCurry X ((tensorLeft ((freeAt 0).obj X)).map g ≫ f) = g ≫ cotensorCurry X f :=
   (freeZeroTensorCotensorAdjunction X).homEquiv_naturality_left g f
 
 /-- 転置は値域スペクトルの射に関して自然。 -/
 lemma cotensorCurry_naturality_right (X : PointedSimplicialSet.{u})
-    {A E F : SymmetricSpectrum.{u}} (f : sphereTensor ((freeAt 0).obj X) A ⟶ E) (g : E ⟶ F) :
+    {A E F : SymmetricSpectrum.{u}}
+    (f : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E) (g : E ⟶ F) :
     cotensorCurry X (f ≫ g) = cotensorCurry X f ≫ (cotensorFunctor X).map g :=
   (freeZeroTensorCotensorAdjunction X).homEquiv_naturality_right f g
 
 /-- 随伴の余単位としてのcotensorのスペクトル評価。 -/
 def cotensorEvaluation (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
-    sphereTensor ((freeAt 0).obj X) (cotensor X E) ⟶ E :=
+    GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) (cotensor X E) ⟶ E :=
   (freeZeroTensorCotensorAdjunction X).counit.app E
 
 /-- cotensorの評価は全体の比較の逆射の逆転置。 -/

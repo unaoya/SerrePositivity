@@ -37,11 +37,12 @@ lemma internalHomCotensorIso_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 
 /-- F_0とのテンソル積の転置は生成対象の射に関して自然。 -/
 lemma cotensorCurry_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
-    {A E : SymmetricSpectrum.{u}} (g : sphereTensor ((freeAt 0).obj Y) A ⟶ E) :
+    {A E : SymmetricSpectrum.{u}} (g : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj Y) A ⟶ E) :
     cotensorCurry X (((freeAt 0).map f ▷ A) ≫ g) =
       cotensorCurry Y g ≫ cotensorPre f E := by
   have h := internalHomCurry_pre ((freeAt 0).map f) g
-  have ht : sphereTensorMap ((freeAt 0).map f) (𝟙 A) = (freeAt 0).map f ▷ A :=
+  have ht : MonoidalBalancedTensor.moduleMap sphereSequence.{u} ((freeAt 0).map f) (𝟙 A) =
+      (freeAt 0).map f ▷ A :=
     tensorHom_id ((freeAt 0).map f) A
   rw [ht] at h
   rw [cotensorCurry_formula, cotensorCurry_formula]

@@ -29,8 +29,7 @@ open SerrePositivity.PointedSimplicialSet
 /-- 基点付き写像対象の値域スペクトルに関する関手。 -/
 def pointedMappingSpaceFunctor (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.{u} ⥤ PointedSimplicialSet.{u} :=
-  (@CategoryTheory.ihom SymmetricSpectrum.{u} _ _ E
-    (spectrumMonoidalClosed.closed E)) ⋙ evaluation 0
+  ihom E ⋙ evaluation 0
 
 /-- 基点付き写像対象は内部Homスペクトルの第0段。 -/
 def pointedMappingSpace (E F : SymmetricSpectrum.{u}) : PointedSimplicialSet.{u} :=
@@ -39,8 +38,7 @@ def pointedMappingSpace (E F : SymmetricSpectrum.{u}) : PointedSimplicialSet.{u}
 /-- 基点付き写像対象は原変数に反変、値域に共変な二変数関手。 -/
 def pointedMappingSpaceBifunctor : SymmetricSpectrum.{u}ᵒᵖ ⥤
     SymmetricSpectrum.{u} ⥤ PointedSimplicialSet.{u} :=
-  (@CategoryTheory.MonoidalClosed.internalHom SymmetricSpectrum.{u} _ _
-    spectrumMonoidalClosed) ⋙
+  MonoidalClosed.internalHom (C := SymmetricSpectrum.{u}) ⋙
     (CategoryTheory.Functor.whiskeringRight _ _ _).obj (evaluation 0)
 
 /-- 二変数関手の対象は構成済みの基点付き写像対象。 -/
@@ -66,8 +64,8 @@ lemma mappingTensorFunctor_map {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 /-- 各段のsmashと写像対象の、スペクトル変数に関して自然な随伴。 -/
 def pointedMappingSpaceParametrizedAdjunction :
     pointwiseTensorBifunctor.{u}.flip ⊣₂ pointedMappingSpaceBifunctor.{u} :=
-  MonoidalMappingAdjunction.transportedParametrizedAdjunction (freeAtAdjunction 0)
-    pointwiseTensorBifunctor mappingTensorNatIso
+  MonoidalMappingAdjunction.transportedParametrizedAdjunction (freeAtAdjunction.{u} 0)
+    pointwiseTensorBifunctor.{u} mappingTensorNatIso
     (fun {_ _} f X ↦ (sphereTensorFreeZeroPointwiseNatIso X).hom.naturality f)
 
 /-- 各段のsmashと基点付き写像対象の随伴。 -/

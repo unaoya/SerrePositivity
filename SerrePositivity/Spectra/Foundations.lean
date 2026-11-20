@@ -24,19 +24,9 @@ public import SerrePositivity.Spectra.General.FreeLevels
 public import SerrePositivity.Spectra.General.FreeLevelInduction
 public import SerrePositivity.Spectra.General.FreeLevelNaturality
 public import SerrePositivity.Spectra.General.FreeLevelQuotient
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient
-public import SerrePositivity.Spectra.SymmetricSpectrum.Tensor
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorRightUnit
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreePair
+public import SerrePositivity.Spectra.General.TensorFreeAtSum
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorMonoidal
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetric
-public import SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
@@ -89,7 +79,6 @@ public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
 /-!
 # スペクトルの具体的基盤の入口

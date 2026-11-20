@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeZeroLevels
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.Cotensor
 
 /-! # 左自由因子の比較の下での逆転置とcotensorの逆比較 -/
@@ -23,12 +23,15 @@ open SerrePositivity.PointedSimplicialSet
 /-- 左自由因子の比較の下でのスペクトルの逆転置。 -/
 lemma sphereTensorFreeLeft_internalHomUncurry (X : PointedSymmetricSequence.{u})
     {A F : SymmetricSpectrum.{u}} (f : A ⟶ internalHom (freeObj X) F) :
-    (sphereTensorFreeLeft X A).inv.hom ≫ (internalHomUncurry f).hom =
+    (MonoidalBalancedTensor.freeLeftIso sphereSequence.{u} X A).inv.hom ≫ (internalHomUncurry f).hom =
       X ◁ (f.hom ≫ (internalHomFreeUnderlyingIso X F).hom) ≫
         (ihom.ev X).app F.X := by
-  rw [sphereTensorFreeLeft_inv, Category.assoc, tensorProjection_internalHomUncurry]
-  rw [← whisker_exchange_assoc, ← internalHomFreeUnderlyingIso_evaluation]
-  rw [← whiskerLeft_comp_assoc]
+  rw [MonoidalBalancedTensor.freeLeftIso_inv sphereSequence.{u}, Category.assoc,
+    tensorProjection_internalHomUncurry, ← whisker_exchange_assoc]
+  change X ◁ f.hom ≫
+    (generator X ▷ (internalHom (freeObj X) F).X ≫
+      internalHomEvaluation (freeObj X) F) = _
+  rw [← internalHomFreeUnderlyingIso_evaluation X F, ← whiskerLeft_comp_assoc]
 
 /-- F_0との全体の逆比較の基礎射を、通常の内部Homの逆比較へ分解する。 -/
 lemma internalHomCotensorIso_inv_hom (X : PointedSimplicialSet.{u})

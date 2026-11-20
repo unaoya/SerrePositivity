@@ -56,4 +56,23 @@ lemma uncurry_curry {E X F : GeneralSymmetricSpectrum C K} (f : tensor E X ⟶ F
 
 lemma curry_uncurry {E X F : GeneralSymmetricSpectrum C K} (f : X ⟶ internalHom E F) :
     curry (uncurry f) = f := (tensorHomEquiv E X F).apply_symm_apply f
+/-- Maps out of the balanced tensor are determined on the quotient projection. -/
+lemma tensor_hom_ext {E F H : GeneralSymmetricSpectrum C K} (f g : tensor E F ⟶ H)
+    (h : MonoidalBalancedTensor.projection (SymmetricSequence.tensorPowerSequence K) E F ≫ f.hom =
+      MonoidalBalancedTensor.projection (SymmetricSequence.tensorPowerSequence K) E F ≫ g.hom) :
+    f = g :=
+  Mod.hom_ext _ _ (MonoidalBalancedTensor.hom_ext _ f.hom g.hom h)
+
+/-- The module map descending a balanced map is unique. -/
+lemma tensorDesc_unique {E F H : GeneralSymmetricSpectrum C K}
+    (f : MonoidalBalancedTensor.BalancedMap (SymmetricSequence.tensorPowerSequence K) E F H.X)
+    (hf : (α_ (SymmetricSequence.tensorPowerSequence K) E.X F.X).inv ≫
+        action E ▷ F.X ≫ f.val =
+      SymmetricSequence.tensorPowerSequence K ◁ f.val ≫ action H)
+    (g : tensor E F ⟶ H)
+    (h : MonoidalBalancedTensor.projection (SymmetricSequence.tensorPowerSequence K) E F ≫
+      g.hom = f.val) :
+    g = MonoidalBalancedTensor.moduleDesc (SymmetricSequence.tensorPowerSequence K) f hf :=
+  Mod.hom_ext _ _ (MonoidalBalancedTensor.desc_unique _ f g.hom h)
+
 end SerrePositivity.GeneralSymmetricSpectrum

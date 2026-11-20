@@ -1,0 +1,8 @@
+stage,removed_name,expansion,expanded_uses
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorHomEquiv,(pointwiseTensorCotensorAdjunction X).homEquiv A E,1
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorCurry,(pointwiseTensorCotensorAdjunction X).homEquiv A E f,8
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorUncurry,((pointwiseTensorCotensorAdjunction X).homEquiv A E).symm f,6
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorEvaluation,(pointwiseTensorCotensorAdjunction X).counit.app E,6
+4,SerrePositivity.SymmetricSpectrum.simplicialTensorEvaluation,(simplicialTensorCotensorAdjunction K).counit.app E,1
+4,SerrePositivity.SymmetricSpectrum.simplicialTensorCoevaluation,(simplicialTensorCotensorAdjunction K).unit.app E,0
+5,SerrePositivity.SymmetricSpectrum.sphereTensorHomEquiv,MonoidalModuleInternalHom.tensorHomEquiv sphereSequence.{u} E X F,2

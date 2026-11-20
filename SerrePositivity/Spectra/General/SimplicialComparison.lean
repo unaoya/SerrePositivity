@@ -20,14 +20,14 @@ The comparison identifies the remaining tensor, internal Hom and enrichment cons
 @[expose] public section
 universe u
 noncomputable section
-open CategoryTheory
+open CategoryTheory CategoryTheory.MonoidalCategory
 
 namespace SerrePositivity.GeneralSymmetricSpectrum
 open PointedSimplicialSet
 
 lemma simplicial_tensor (E F : SymmetricSpectrum.{u}) :
     tensor (C := PointedSimplicialSet.{u}) (K := circle) E F =
-      SymmetricSpectrum.sphereTensor E F := rfl
+      E ⊗ F := rfl
 
 lemma simplicial_internalHom (E F : SymmetricSpectrum.{u}) :
     internalHom (C := PointedSimplicialSet.{u}) (K := circle) E F =

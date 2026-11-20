@@ -276,3 +276,66 @@ pointwiseTensor (adjoinBasepoint K) E
 削除した空ファイルは3本。`PointwiseTensorAssociatorLevels.lean`、`PointwiseTensorCoherence.lean`、`SimplicialTensorProductNaturality.lean`。
 
 所要時間は約44分（bulk 鍵の待ち時間を含む）。
+
+## 段 5　テンソル積
+
+main の `eac7d1e57` を `bf121b839` で取り込んだ。段 2 のテンソル積126件と、段 3 から回した自由関手の6件を照合した。[判定表](../../../research/cleanup-zero-base/spectra/stage5.csv)
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 93 | 126 |
+| 別名 | 9 | 1 |
+| B に一般版を足す | 28 | 5 |
+| 判断できない | 2 | 0 |
+| C に残す | 0 | 0 |
+
+段 2 の案の削減121件に対し、対象132件のうち C から 131 件を除いた。B への追加は案の28件に対し 5 件。一般の加群の補題に球面列を渡して足りるもの、既存の B の自由テンソル比較を使えるもの、定義展開で成立する等式は重複を除いた。自由テンソルの和次数比較は、二つの係数と次数から座標が決まらず、pushout-product で円周の指定を繰り返すため、一行の別名を使う。
+
+対象宣言の範囲で数えると、C の削除の見積もりは 544 行、実測は 581 行。B への追加候補だった元宣言は 121 行。下表の物理行数は import や空行も含む。
+
+段 2 で「内部 Hom」に入っていた `spectrumMonoidalClosed` は §6 の登録条件に従い別途削除した。C のモノイダル・対称・閉の登録と自由関手のモノイダル・組紐の登録の計5件は、一般の加群の登録を円周へ特殊化したものと定義的に一致した。C の登録を一時無効化してから `inferInstance` で得られた登録も `rfl` または `HEq.rfl` で照合した。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 68 → 52 | 482 → 350 | 4,822 → 3,743 |
+| B | 46 → 46 | 356 → 361 | 3,817 → 3,851 |
+| 利用側 | 18 → 18 | 83 → 83 | 1,957 → 1,951 |
+
+対象132件の書き換えは 42 箇所。閉構造の別途削除では写像対象の2箇所を型クラス探索で記述した。段 4 の7件はソースの宣言範囲を変更前と照合した。随伴の展開は段 4 の分も [expanded-names.csv](../../../research/cleanup-zero-base/spectra/expanded-names.csv) に記録した。展開数は差分に現れた式の位置を数え、一つの局所束縛で複数回使う場合は1箇所とした。
+
+逆転置の比較では、具体版の自由対象から加群の一般版に差し替えると従来の書き換えがマッチしなかった。射影と合成した後に生成元の表示を change で揃え、評価の補題を適用した。写像対象の二変数随伴では、変更後の表示で係数圏の宇宙が 0 に推論されたため、自由関手の随伴と作用の二変数関手に宇宙を明示した。上限設定はそのまま。
+
+### 利用箇所の前後
+
+短くなった箇所。基点付き写像対象の関手では、内部 Hom のインスタンスを型クラス探索で得る。
+
+```diff
+-  (@CategoryTheory.ihom SymmetricSpectrum.{u} _ _ E
+-    (spectrumMonoidalClosed.closed E)) ⋙ evaluation 0
++  ihom E ⋙ evaluation 0
+```
+
+同じ式を使う箇所。自由スペクトルの pushout-product の押し出しの頂点を移す比較は、一行の別名で引き続き書ける。
+
+```lean
+(sphereTensorFreeAtSum m n A X).symm
+```
+
+長くなった箇所。転置と逆転置が互いに逆になる証明で加群の Hom 同値を直接使う。この形の展開は 2 箇所。
+
+```diff
+-  (sphereTensorHomEquiv E X F).left_inv f
++  (MonoidalModuleInternalHom.tensorHomEquiv sphereSequence.{u} E X F).left_inv f
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 99 モジュールをビルドした。旧型の例は 133 件で通った。監査・検査 30 本は前後とも 15 本が成功し、従来の失敗 15 本の診断は変更前と一致した。影響範囲のカーネル宣言は 1296 → 1110 件。既存の宣言への公理依存の追加は0件、`sorryAx` に依存する宣言は変更前後とも同じ 9 件。対応表の対象宣言の名指しは0件。BS17 の検索候補1件は、旧モノイダル登録を明示した型に変更後の宣言を適用して照合した。
+
+既存の失敗のうち check_general_spectrum_level_monoidal は、同じ箇所で CofibrantlyGenerated の宇宙指定のエラーを出した。別途成功した公理監査の通知だけが、監査対象の追加に伴い26件から30件に変わった。
+
+変更箇所では FreeLeftUncurry.lean の1行に、100文字を超えるという linter の警告が出た。
+
+削除した空ファイルは16本。`FreeMonoidal.lean`、`Tensor.lean`、`TensorAssociator.lean`、`TensorFreeLeft.lean`、`TensorFreePair.lean`、`TensorFreeRight.lean`、`TensorFreeZeroLevels.lean`、`TensorHexagon.lean`、`TensorLeftUnit.lean`、`TensorMonoidal.lean`、`TensorPentagon.lean`、`TensorQuotient.lean`、`TensorRightUnit.lean`、`TensorSymmetric.lean`、`TensorSymmetry.lean`、`TensorTriangle.lean`。
+
+所要時間は約 65 分。bulk 鍵の待ち時間を含む。

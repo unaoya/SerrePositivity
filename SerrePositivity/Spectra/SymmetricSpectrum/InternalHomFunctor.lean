@@ -49,16 +49,18 @@ lemma internalHomPre_naturality {E E' F F' : SymmetricSpectrum.{u}}
 @[reassoc]
 lemma internalHomPre_evaluation {E E' : SymmetricSpectrum.{u}}
     (f : E' ⟶ E) (F : SymmetricSpectrum.{u}) :
-    sphereTensorMap (𝟙 E') (internalHomPre f F) ≫ internalHomEvaluationSpectrum E' F =
-      sphereTensorMap f (𝟙 (internalHom E F)) ≫ internalHomEvaluationSpectrum E F :=
+    MonoidalBalancedTensor.moduleMap sphereSequence.{u} (𝟙 E') (internalHomPre f F) ≫
+        internalHomEvaluationSpectrum E' F =
+      MonoidalBalancedTensor.moduleMap sphereSequence.{u} f (𝟙 (internalHom E F)) ≫
+        internalHomEvaluationSpectrum E F :=
   MonoidalModuleInternalHom.preMap_evaluation sphereSequence.{u} f F
 
 /-- 転置は原変数の前合成とも両立する。 -/
 @[reassoc]
 lemma internalHomCurry_pre {E E' X F : SymmetricSpectrum.{u}}
-    (f : E' ⟶ E) (g : sphereTensor E X ⟶ F) :
+    (f : E' ⟶ E) (g : GeneralSymmetricSpectrum.tensor E X ⟶ F) :
     internalHomCurry g ≫ internalHomPre f F =
-      internalHomCurry (sphereTensorMap f (𝟙 X) ≫ g) :=
+      internalHomCurry (MonoidalBalancedTensor.moduleMap sphereSequence.{u} f (𝟙 X) ≫ g) :=
   MonoidalModuleInternalHom.curryModule_preMap sphereSequence.{u} f g
 
 /-- 原変数に反変な内部Homの二変数関手。 -/
@@ -81,12 +83,13 @@ def internalHomSphereIso (F : SymmetricSpectrum.{u}) : internalHom sphere F ≅ 
 
 /-- 球面との比較の逆射は左単位射の転置。 -/
 lemma internalHomSphereIso_inv (F : SymmetricSpectrum.{u}) :
-    (internalHomSphereIso F).inv = internalHomCurry (sphereTensorLeftUnit F).hom := rfl
+    (internalHomSphereIso F).inv =
+      internalHomCurry (MonoidalBalancedTensor.leftUnitIso sphereSequence.{u} F).hom := rfl
 
 /-- 球面との比較の順射は単位の挿入後の評価。 -/
 lemma internalHomSphereIso_hom (F : SymmetricSpectrum.{u}) :
     (internalHomSphereIso F).hom =
-      (sphereTensorLeftUnit (internalHom sphere F)).inv ≫
+      (MonoidalBalancedTensor.leftUnitIso sphereSequence.{u} (internalHom sphere F)).inv ≫
         internalHomEvaluationSpectrum sphere F := rfl
 
 /-- 球面からの内部Homと元のスペクトルの比較は自然。 -/

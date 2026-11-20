@@ -5,7 +5,7 @@ public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnit
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleUnit
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
-public import SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal
+public import SerrePositivity.Spectra.General.TensorFreeAtSum
 
 /-! # 各段のsmashによる作用の単位比較 -/
 

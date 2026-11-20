@@ -2,7 +2,8 @@ module
 
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModule
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeZeroLevels
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation
+public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
 
 /-! # 各段が通常のsmashとなるテンソル・スペクトルとF_0との全体の比較 -/
 
