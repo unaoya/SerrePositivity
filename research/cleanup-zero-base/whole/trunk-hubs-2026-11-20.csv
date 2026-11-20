@@ -1,0 +1,321 @@
+concept,hub,type_users
+B 複体と dg 圏/複体,SerrePositivity.DifferentialGraded.Complex,29778
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.DGCategory,23691
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.RightModule,12069
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.DGFunctor,7117
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.ModuleCategory,6787
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedSimplicialSet,6447
+C 単体集合と ∞ 圏/dg 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve,6061
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex,5490
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity,5378
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.OmegaSpectrum,5189
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join,4323
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso,3751
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber,3670
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.StableModel,3569
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory,3372
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.GradedHom,3319
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnder,3171
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.moduleQuasiIso,3018
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject,3011
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.ClosedCategory,2910
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap,2871
+H K 理論/pro 切除の塔,SerrePositivity.KST.ProExcision.Tower,2790
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedObject.basedHom,2738
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaStructure,2736
+D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject,2713
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.Bimodule,2709
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.DerivedModuleCategory,2704
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace,2692
+H K 理論/pro 切除の塔,SerrePositivity.KST.ProExcision.LevelHom,2666
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.homObject,2654
+F オペラドと E∞/dg オペラドと代数,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra,2653
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver,2635
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone,2602
+C 単体集合と ∞ 圏/単体的圏と coherent 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex,2570
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nonpositiveProperty,2514
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveAlgebra,2514
+F オペラドと E∞/Barratt–Eccles と全射オペラド,SerrePositivity.EInfinity.BarrattEccles.operad,2459
+C 単体集合と ∞ 圏/dg 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData,2428
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word,2359
+C 単体集合と ∞ 圏/dg 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex,2213
+A 可換代数と数論幾何/プリズム,SerrePositivity.BhattScholze.OrientedPrism,2140
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.RelativeFreeDeltaRing,2139
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration,2124
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.PointedKanComplex,2111
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.Sp,2081
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.KanSequence,2026
+H K 理論/pro 切除の塔,SerrePositivity.KST.ProExcision.Tower.map,1937
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection,1872
+H K 理論/pro 切除の塔,SerrePositivity.KST.ProExcision.LevelHom.map,1868
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.PerfDGInput,1820
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikov,1818
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.NonpositiveInverseRoof,1708
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone,1704
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedSimplicialSet.circle,1701
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.DGOdotInput,1590
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone.vertex,1568
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.BimoduleCategory,1564
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.SquareZero.algebra,1561
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory,1553
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl,1504
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.moduleHom,1495
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.HomotopyFunctionComplex.ResolutionObject,1431
+E モデル圏/Reedy,SerrePositivity.Reedy.LatchingIndex,1428
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.relativeFreeDeltaStructure,1427
+E モデル圏/Reedy,SerrePositivity.Reedy.latchingProperty,1407
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone,1396
+A 可換代数と数論幾何/プリズム,SerrePositivity.BhattScholze.OrientedPrism.ideal,1390
+C 単体集合と ∞ 圏/dg 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex,1385
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaStructure.deltaClosure,1383
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.deltaDivisionRelationIdeal,1364
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.boundaryRelation,1349
+E モデル圏/Reedy,SerrePositivity.Reedy.simplexInverse,1343
+E モデル圏/Reedy,SerrePositivity.Reedy.simplexDirect,1342
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint,1333
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaAdjoinDivision,1322
+G スペクトル/対称列,SerrePositivity.SymmetricSequence,1321
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.DGFunctor.id,1312
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory,1309
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity,1308
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr,1304
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration,1300
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex,1291
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag,1283
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt,1241
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.DGFunctor.comp,1232
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom,1217
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovFunctor,1201
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence,1188
+E モデル圏/Reedy,SerrePositivity.Reedy.MatchingIndex,1175
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgHomGluingBimodule,1166
+C 単体集合と ∞ 圏/単体的圏と coherent 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge,1166
+E モデル圏/Reedy,SerrePositivity.Reedy.matchingProperty,1165
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.cellResolution,1163
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom,1144
+E モデル圏/Reedy,SerrePositivity.Reedy.simplex,1135
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence,1133
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.HomotopyFunctionComplex.FramedResolution,1125
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable,1124
+G スペクトル/対称列,SerrePositivity.TensorPowers.power,1116
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso,1086
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path.algebra,1075
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace,1074
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.modulePerfectProjectiveOver,1067
+D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence,1066
+B 複体と dg 圏/複体,SerrePositivity.DifferentialGraded.homComplex,1054
+H K 理論/K 空間と K スペクトル,SerrePositivity.KST.SConstruction.kOmegaSpectrum,1049
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat,1043
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift,1041
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.complexPinchedSpace,1040
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram,1031
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path.Witness,1025
+C 単体集合と ∞ 圏/dg 神経,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map,1024
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection,1024
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject,1021
+D 安定 ∞ 圏と導来 ∞ 圏/dg 代数（一対象 dg 圏）,SerrePositivity.InfinityCategories.HA.Section7_1_1.DGAlgebraPoint,1021
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.postnikovCommonClassBase,1014
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.RightModule.obj,1006
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity,1004
+D 安定 ∞ 圏と導来 ∞ 圏/dg 代数（一対象 dg 圏）,SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory,995
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.SurjectiveRoof,990
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.DGFunctor.onClosed,984
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.representable,975
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.CocartesianFibrationCategory,962
+C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity,960
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension,946
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.OmegaSpectrum.toKanSequence,945
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom,938
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι,920
+H K 理論/非連結 K,SerrePositivity.KST.NonConnective.DGKappaConeInput,916
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.SmallBundledDGCategory,913
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory,912
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty,906
+E モデル圏/単体的モデルと anodyne,SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ,904
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.BimoduleCategory.quasiIso,900
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge,896
+F オペラドと E∞/Barratt–Eccles と全射オペラド,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.BasisWord,894
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaceInfinity,894
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone,891
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex,883
+G スペクトル/対称列,SerrePositivity.SymmetricSequence.tensorPowerSequence,882
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.BimoduleCategory.underlying,881
+B 複体と dg 圏/複体,SerrePositivity.DifferentialGraded.zeroCycles,880
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaStructure.IsPerfect,845
+H K 理論/局所化不変量：lax 引き戻しと双加群,SerrePositivity.KST.LocalizingInvariants.bimoduleRestrict,841
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap,835
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedSimplicialSet.basepoint,834
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup,830
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction,812
+B 複体と dg 圏/dg 商と cell 分解,SerrePositivity.DifferentialGraded.DGQuotient.QuotientObject,811
+D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex,810
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.squareVertex,806
+F オペラドと E∞/Barratt–Eccles と全射オペラド,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.Nondegenerate,804
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedObject,796
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore,795
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated,790
+H K 理論/K 空間と K スペクトル,SerrePositivity.KST.SConstruction.kKanSequence,783
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraightening,780
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.BalancedTensor.restrictionComparison,778
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection,777
+B 複体と dg 圏/係数の取り替え,SerrePositivity.DifferentialGraded.ScalarExtension.sphereIso,775
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedObject.point,768
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.moduleEvaluation,768
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpace,760
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy,755
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.RawSpectrumMapping.pointedSpace,751
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomLeft,750
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.PerfectDGModule,743
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.SquareZero.RelativeWitness,735
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.lowerFunctor,734
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedObject.toPoint,730
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.PointedMapping.VerticalPath,718
+C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity,709
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgKInputStableValue,706
+H K 理論/局所化不変量：lax 引き戻しと双加群,SerrePositivity.KST.LocalizingInvariants.DGBimoduleShift.obj,705
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.OmegaSpectrum.mappingSpace,698
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.compose,696
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.modulePerfectOver,696
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration,696
+G スペクトル/対称列,SerrePositivity.FiniteBijection,689
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.ZeroTriangle,688
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve,683
+C 単体集合と ∞ 圏/基点付き対象,SerrePositivity.PointedObject.basedHomMap,683
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeDGModules,681
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom,681
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationObject,676
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.deltaAdjoinDivisionMap,668
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant,667
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.moduleToDerived,660
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path.map,656
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.DerivedBimoduleCategory,656
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.KanSequence.Hom,654
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraightening,654
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.BimoduleTensor.compose,653
+B 複体と dg 圏/係数の取り替え,SerrePositivity.DifferentialGraded.ScalarExtension.extension,651
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.cocartesianStrictTransportCoherentDiagram,651
+H K 理論/局所化不変量：lax 引き戻しと双加群,SerrePositivity.KST.LocalizingInvariants.laxCategory,651
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.Bimodule.value,651
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovLayerZeroBimodule,650
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory,648
+B 複体と dg 圏/複体,SerrePositivity.cochainTensor,645
+A 可換代数と数論幾何/Rees 代数と進完備,SerrePositivity.AlgebraicGeometry.reesAdicProjectiveSubmodule,639
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.moduleCone,634
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.PointedMapping.familyVertex,629
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaStructure.delta,629
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.deltaAdjoinDivisionStructure,629
+A 可換代数と数論幾何/パーフェクトイド,SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid,627
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap,626
+A 可換代数と数論幾何/パーフェクトイド,SerrePositivity.IsIntegralPerfectoid,622
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonLayerInverse,619
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.ModuleHomotopyCategory,619
+B 複体と dg 圏/dg 商と cell 分解,SerrePositivity.DifferentialGraded.DGCategoryCellResolution.candidate,618
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovShiftedLayerBimodule,618
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube,615
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.ZeroInverse,615
+B 複体と dg 圏/dg 加群,SerrePositivity.DifferentialGraded.LeftModule,611
+F オペラドと E∞/dg オペラドと代数,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad,611
+F オペラドと E∞/Barratt–Eccles と全射オペラド,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.Cut,609
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.LayerInverse,607
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.OmegaSpectrum.homotopyGroup,606
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.PreservesCofiberData,604
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.cellAugmentation,604
+D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram,598
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence,596
+A 可換代数と数論幾何/正規化長さ,SerrePositivity.NormalizedLength,595
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful,591
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append,589
+G スペクトル/対称スペクトル,SerrePositivity.SymmetricSpectrum,583
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.RawSpectrumMapping.space,578
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp,574
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString,572
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovMap,569
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgKInputInfinity,567
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.PointedSSetObject,564
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.cellPathNonpositiveSource,563
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj,563
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp,561
+A 可換代数と数論幾何/導来完備化,SerrePositivity.boundedAboveDerivedBaseChange,560
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism,559
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.HomotopyCategory,559
+B 複体と dg 圏/係数の取り替え,SerrePositivity.DifferentialGraded.ScalarExtension.DGBaseChange,556
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry,554
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.Bimodule.rightRelativeKFlat,553
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.PostnikovCommonLayerInverse,552
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.derivedFiniteCellOver,550
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovSuccessorClassInverseData,548
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan,547
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftUnstraighteningProjection,547
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.PointedKanObject,545
+H K 理論/K 空間と K スペクトル,SerrePositivity.KST.SConstruction.pointedKanProperty,543
+B 複体と dg 圏/dg 商と cell 分解,SerrePositivity.DifferentialGraded.DGCategoryCellResolution.Source,543
+B 複体と dg 圏/双加群とテンソル,SerrePositivity.DifferentialGraded.localHomKFlat,541
+A 可換代数と数論幾何/根の塔,SerrePositivity.Section2.towerRel,540
+A 可換代数と数論幾何/根の塔,SerrePositivity.Section2.TowerStage,538
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices,538
+F オペラドと E∞/Barratt–Eccles と全射オペラド,SerrePositivity.EInfinity.BarrattEccles.modelCategory,534
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope,533
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.perfectStableInfinity,528
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve,526
+A 可換代数と数論幾何/プリズム,SerrePositivity.BhattScholze.Prismatic.IsBoundedPrism,525
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom,524
+D 安定 ∞ 圏と導来 ∞ 圏/dg 代数（一対象 dg 圏）,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap,524
+G スペクトル/対称スペクトル,SerrePositivity.GeneralSymmetricSpectrum,523
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat,522
+C 単体集合と ∞ 圏/写像空間,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData,522
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph,520
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams,514
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.roofRefine,514
+E モデル圏/Reedy,SerrePositivity.Reedy.CofibrantResolution,511
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve,508
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge,498
+A 可換代数と数論幾何/パーフェクトイド,SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial,496
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.DGSmallPerfectArrowTarget,493
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram,493
+C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda,491
+D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree,491
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single,490
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.DGTensorCategory,490
+C 単体集合と ∞ 圏/ファイブレーションと straightening,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftFibrationInfinity,489
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.HomotopyFunctionComplex.ResolutionArrowDiagram.Index,487
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgSmallPerfectBaseFamily,487
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoin,485
+C 単体集合と ∞ 圏/冪等完備とモナド,SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPoint,484
+A 可換代数と数論幾何/プリズム,SerrePositivity.BhattScholze.OrientedPrism.Hom,484
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.CirclePower.space,483
+D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ZeroObjects.IsZeroVertex,482
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.HomotopyFunctionComplex.ResolutionArrowDiagram.pairs,482
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.postnikovCommonRightZeroGlueSource,481
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.HomotopyFunctionComplex.ResolutionArrowDiagram.baseMaps,480
+D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare,480
+E モデル圏/ホモトピー関数複体と分解,SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorResolutionObject,480
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionFamily,479
+A 可換代数と数論幾何/完全複体と K₀,SerrePositivity.perfectHomotopyProperty,471
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanShape,470
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerFamily,470
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath,469
+A 可換代数と数論幾何/δ 環,SerrePositivity.BhattScholze.polynomialRankOneDeltaStructure,466
+G スペクトル/Ω スペクトル（Bousfield–Friedlander）,SerrePositivity.KST.Spectra.KanSequence.signedLoopTail,462
+A 可換代数と数論幾何/完全複体と K₀,SerrePositivity.PerfectHomotopy,461
+A 可換代数と数論幾何/導来完備化,SerrePositivity.boundedAboveDerivedSingleFunctor,458
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.DGSmallPerfectSquareCorner,457
+H K 理論/局所化不変量：Postnikov と平方零拡大,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore.postnikovCommonClassStandardGlueSource,456
+A 可換代数と数論幾何/完全複体と K₀,SerrePositivity.triangulatedK0Relations,455
+B 複体と dg 圏/dg 圏と dg 関手,SerrePositivity.DifferentialGraded.EndomorphismObject,455
+A 可換代数と数論幾何/導来完備化,SerrePositivity.DerivedCompletion.PDCompletionH0,451
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightMap,449
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.dgSmallPerfectSquareLeftMap,449
+H K 理論/S 構成の入力（安定モデル・小さい Perf）,SerrePositivity.KST.SConstruction.PointedKanInfinity,448
+G スペクトル/対称列,SerrePositivity.FiniteBijection.of,448
+C 単体集合と ∞ 圏/極限と余極限,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight,447
+A 可換代数と数論幾何/導来完備化,SerrePositivity.DerivedCompletion.ConcreteDerivedCategory,445
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.TriaCategory,443
+C 単体集合と ∞ 圏/結とスライス,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex,443
+D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedCoefficient,439
+D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseDerivedYoneda,438
+A 可換代数と数論幾何/Rees 代数と進完備,SerrePositivity.AlgebraicGeometry.reesAdicProjectiveQuotient,437
+C 単体集合と ∞ 圏/関手単体集合と同値,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence,435
+B 複体と dg 圏/導来圏と Perf（dg 加群）,SerrePositivity.DifferentialGraded.PerfectModuleCategory,435
+C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion,435
+A 可換代数と数論幾何/スキーム,SerrePositivity.KST.Descent.FiniteTypeSchemes,434
+C 単体集合と ∞ 圏/Kan 複体とホモトピー群,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence,433
