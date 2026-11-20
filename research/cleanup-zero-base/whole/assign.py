@@ -2,15 +2,22 @@
 核は、読んだ定義（上位 320 個と、未割り当ての型に多い 260 個）だけ。割り当ては：核そのもの → 型に核が直接現れる（最も下流）→ 型に現れる本体の定義をたどる
 → 型に現れる Mathlib の定義（MATHLIB_ROOTS の順）→ 本体をたどる → 未割り当て。"""
 import pickle, re, sys, collections, csv, os
-sys.path.insert(0, os.path.dirname(__file__)); from trunk import RULES, RULES2, MATHLIB_ROOTS
+sys.path.insert(0, os.path.dirname(__file__)); from trunk import RULES, RULES2, RULES3, MATHLIB_ROOTS, MATHLIB_ROOTS3
 W = pickle.load(open(sys.argv[1], 'rb')); N = W['N']; cand, tus = pickle.load(open(sys.argv[2], 'rb')); xn, X = pickle.load(open(sys.argv[3], 'rb'))
 hubs = []
 for f in sys.argv[4].split(','): hubs += pickle.load(open(f, 'rb'))
-R = [(c, re.compile(p)) for c, p in RULES2 + RULES]; MR = [(c, re.compile(p)) for c, p in MATHLIB_ROOTS]
+R = [(c, re.compile(p)) for c, p in RULES3 + RULES2 + RULES]; MR = [(c, re.compile(p)) for c, p in MATHLIB_ROOTS3 + MATHLIB_ROOTS]
 def lab(n):
     for c, p in R:
         if p.search(n): return c
 L = {h: lab(N[h]['name']) for h in hubs}; nolab = [N[h]['name'] for h in hubs if L[h] is None]; L = {h: c for h, c in L.items() if c}
+# 名前で広げた核：読んでいないが、型に 15 回以上現れ、名前が規則に当たる定義
+read = set(L); ext_hubs = 0
+for h in cand:
+    if h not in L and tus[h] >= 15:
+        c = lab(N[h]['name'])
+        if c: L[h] = c; ext_hubs += 1
+print('read hubs', len(read), 'hubs extended by name', ext_hubs)
 xlab = {}
 for q, n in xn.items():
     for i, (c, p) in enumerate(MR):
@@ -34,6 +41,8 @@ for x in order:
         s = src.get(q)
         if s is not None and (best is None or depth[s] > depth[best]): best = s
     if best is not None: src[x] = best; con[x] = L[best]; how[x] = '型の定義をたどる'; continue
+    cs = [(depth[q], con[q]) for q in t if con.get(q) and q in cand]
+    if cs: src[x] = None; con[x] = max(cs)[1]; how[x] = '型の定義の概念'; continue
     xs = [xlab[q] for q in X.get(x, ()) if q in xlab]
     if xs: src[x] = None; con[x] = min(xs)[1]; how[x] = 'Mathlib の定義'; continue
     cs = [(depth[src[q]], con[q]) for q in t | v if src.get(q) is not None]
@@ -49,7 +58,7 @@ for x, d in N.items():
     k['decls'] += 1; k['lines'] += d['lines']; k['layer%d' % d['layer']] += 1; k[d['K']] += 1; k[how[x]] += 1
 pre = sys.argv[5]
 with open(pre + '.csv', 'w', encoding='utf-8') as f:
-    w = csv.writer(f); cols = ['decls', 'lines', 'layer1', 'layer2', 'layer3', 'layer4'] + KS + ['核', '型に核', '型の定義をたどる', 'Mathlib の定義', '本体をたどる']
+    w = csv.writer(f); cols = ['decls', 'lines', 'layer1', 'layer2', 'layer3', 'layer4'] + KS + ['核', '型に核', '型の定義をたどる', '型の定義の概念', 'Mathlib の定義', '本体をたどる']
     w.writerow(['group', 'concept'] + cols)
     for c in sorted(T): w.writerow(c.split('/', 1) + [T[c][k] for k in cols])
 pickle.dump(dict(L=L, src=src, con=con, how=how, depth=depth), open(sys.argv[6], 'wb'))

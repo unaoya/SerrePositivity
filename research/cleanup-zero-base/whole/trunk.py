@@ -117,3 +117,31 @@ MATHLIB_ROOTS = [
  ('Z 圏論一般/圏・関手・極限', r'^CategoryTheory\.'),
  ('Z 圏論一般/組合せと順序', r'^Fin(\.|$)|^Finset|^List|^Equiv\.Perm|^OrderHom|^Set(\.|$)|^Nat|^Int'),
 ]
+
+# 版 3（11-20）：受け皿（単体集合の基本、環と加群のその他、圏、組合せ）の中の定義を読んで足した概念。RULES2 より先に当てる。
+RULES3 = [
+ ('C 単体集合と ∞ 圏/表現可能 ∞ 圏とフィルター', r'PresentableI|FilteredI|PrLFunctor|PrRFunctor|Smith\.(Presentable|LocalPresentable)|FilteredExchange'),
+ ('C 単体集合と ∞ 圏/ねじれ矢と余スパン', r'TwistedArrows'),
+ ('C 単体集合と ∞ 圏/ファイブレーションと straightening', r'LeftAndRightFibrations|RightFibration|[aA]nodyneExtensions|cocartesianSections|transportSquare'),
+ ('C 単体集合と ∞ 圏/極限と余極限', r'Is(Initial|Terminal)Vertex|HomotopyPushoutSquares|doubleMappingCylinder|IsHomotopyPullback|[sS]trictDiagram|simplicialSections'),
+ ('C 単体集合と ∞ 圏/Kan 複体とホモトピー群', r'IsContractibleKan|TheExInfinityFunctor|KanHornFamily|continuousKanReplacement'),
+ ('C 単体集合と ∞ 圏/写像空間', r'laxPullback'),
+ ('C 単体集合と ∞ 圏/局所化（Dwyer–Kan）', r'AdjointFunctors\.Localization|InvertsEdges|MarkedSpine|UnmarkedGenerators'),
+ ('C 単体集合と ∞ 圏/随伴（2 圏）', r'AdjunctionsInTwoCategories|[bB]icategory'),
+ ('C 単体集合と ∞ 圏/冪等完備とモナド', r'Monads\.'),
+ ('A 可換代数と数論幾何/Čech 複体と被覆', r'^SerrePositivity\.Cosimplicial\.'),
+ ('A 可換代数と数論幾何/分冪包絡とクリスタリン', r'pdDeRham|Prismatic\.(pdRow|polynomialCech|crystalline|RelativePDEnvelope)|rankOneDP|pDivisionFactorial'),
+ ('A 可換代数と数論幾何/完備平坦と整閉（環の性質）', r'IsCompletely|IsAbsolutelyIntegrallyClosed|IsUniversalHomeomorphism|GenericEtale|adicQuotientAlgebra'),
+ ('A 可換代数と数論幾何/ほとんど数学とねじれ', r'Almost\.|IsPowTorsion|PowerTorsion'),
+ ('A 可換代数と数論幾何/付値と区間', r'Valuation|intervalPrime'),
+ ('A 可換代数と数論幾何/交点重複度と χ', r'^SerrePositivity\.chi$|IsSystemOfParameters|IntersectionMultiplicity'),
+ ('A 可換代数と数論幾何/δ 環', r'FreeDeltaRing'),
+ ('E モデル圏/図式と二重単体集合のモデル構造', r'DiagramModel\.'),
+]
+# Mathlib の根の追加（MATHLIB_ROOTS より先に当てる）
+MATHLIB_ROOTS3 = [
+ ('B 複体と dg 圏/三角圏', r'^CategoryTheory\.(Pretriangulated|Triangulated|HasShift)'),
+ ('C 単体集合と ∞ 圏/随伴（2 圏）', r'^CategoryTheory\.Bicategory'),
+ ('C 単体集合と ∞ 圏/単体的圏と coherent 神経', r'^CategoryTheory\.SimplicialThickening'),
+ ('B 複体と dg 圏/単体的鎖とシャッフル', r'^AlgebraicTopology\.'),
+]
