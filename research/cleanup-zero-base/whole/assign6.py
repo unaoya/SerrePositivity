@@ -1,5 +1,6 @@
 """概念の木 版 6 の割り当て（2026-11-20 の決定 decisions-2026-11-20.md による）。
-使い方：python3 assign6.py <W.pkl> <X.pkl> <trunk5.pkl> <出力の接頭辞> <出力の pickle>
+使い方：python3 assign6.py <W.pkl> <X.pkl> - <出力の接頭辞> <出力の pickle>
+（三番目の引数は - 。読んだ定義の正本 definitions.csv を使う。初回だけ、版 5 の pickle を渡して definitions.csv を作った）
 
 規則：
 - 核は本体の全ての定義（定理でない宣言。instance は除く）。読んだ定義は、読んだ結果を移し替えの表（remap/remap-*.csv）に通した概念・小概念。
@@ -9,9 +10,12 @@
   複数残れば、段の最も高い概念の下の小概念「〈相手〉との関係」。主張に本体の定義が現れなければ、Mathlib の定義の規則。
 - 印：補助（読む作業で足場とされた定義を主張に含む）、止めた経路（表の印、またはファイルの冒頭に「中断」とある）。"""
 import pickle, re, sys, collections, csv, os, json, glob
+# 結果を実行ごとに同じにする：集合の走査の順が実行ごとに変わると、上下に循環がある所の段や、同点の選び方が変わる（11-20 に二回の実行で関係の数が 466 と 501 に割れた）
+if os.environ.get('PYTHONHASHSEED') != '0':
+    os.environ['PYTHONHASHSEED'] = '0'; os.execv(sys.executable, [sys.executable] + sys.argv)
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from trunk import MATHLIB_ROOTS, MATHLIB_ROOTS3, RENAME
-W = pickle.load(open(sys.argv[1], 'rb')); N = W['N']; xn, X = pickle.load(open(sys.argv[2], 'rb')); T5 = pickle.load(open(sys.argv[3], 'rb'))
+W = pickle.load(open(sys.argv[1], 'rb')); N = W['N']; xn, X = pickle.load(open(sys.argv[2], 'rb')); T5 = pickle.load(open(sys.argv[3], 'rb')) if sys.argv[3] != '-' else None
 PRE, OUTP = sys.argv[4], sys.argv[5]
 A_ = 'A 可換代数と数論幾何/'
 # 調整役の上書き（2026-11-20）：Adams 作用素を概念に、Tor と対角線は交点重複度と χ へ、名前の直し
@@ -39,11 +43,26 @@ def remap(c_old, s_old):
     c_old = norm(c_old)
     if (c_old, s_old) in REMAP: return REMAP[(c_old, s_old)]
     return (CMAP.get(c_old, CREN.get(c_old, c_old)), '', False, '')
-# 読んだ定義
-READ = {}
-for h, s in T5['SUB'].items():
-    c, sb, aux, stp = remap(T5['L'][h], s)
-    READ[h] = (c, sb if not sb.startswith('（') else '', aux, stp)
+# 読んだ定義：正本は definitions.csv（定義の完全名 → 概念・小概念・補助・止めた経路）。なければ、読む作業の結果（trunk5 の pickle）と移し替えの表から作って書き出す
+READ = {}; DEFCSV = os.path.join(HERE, 'definitions.csv')
+strip = lambda n: re.sub(r'^_private\..*?\.0\.', '', n)
+if T5 is None:
+    byname = {}
+    for h, d in N.items(): byname.setdefault(strip(d['name']), h)
+    missing = []
+    for r in csv.DictReader(open(DEFCSV, encoding='utf-8')):
+        h = byname.get(r['definition'])
+        if h is None: missing.append(r['definition']); continue
+        READ[h] = (CREN.get(r['concept'], r['concept']), r['subconcept'], r['aux'] == '1', r['stopped'])
+    print('read definitions', len(READ), '| in definitions.csv but no longer in the code', len(missing))
+    with open(PRE + '-missing-definitions.txt', 'w', encoding='utf-8') as f: f.write('\n'.join(missing) + '\n')
+else:
+    for h, s0 in T5['SUB'].items():
+        c, sb, aux, stp = remap(T5['L'][h], s0)
+        READ[h] = (c, sb if not sb.startswith('（') else '', aux, stp)
+    with open(DEFCSV, 'w', encoding='utf-8') as f:
+        w = csv.writer(f); w.writerow(['definition', 'concept', 'subconcept', 'aux', 'stopped'])
+        for h in sorted(READ, key=lambda h: (READ[h][0], READ[h][1], N[h]['name'])): w.writerow([strip(N[h]['name']), READ[h][0], READ[h][1], int(READ[h][2]), READ[h][3]])
 # Mathlib の根と小概念の規則
 MR = [(c, re.compile(p)) for c, p in MATHLIB_ROOTS3 + MATHLIB_ROOTS]
 xroot = {}
@@ -75,10 +94,10 @@ def stopped_mod(m):
     return STOPMOD[m]
 # 位相順
 indeg = {h: len(d['tdeps']) + len(d['vdeps']) for h, d in N.items()}
-order = []; st = [h for h, k in indeg.items() if k == 0]
+order = []; st = sorted(h for h, k in indeg.items() if k == 0)
 while st:
     x = st.pop(); order.append(x)
-    for u in N[x]['users']:
+    for u in sorted(N[x]['users']):
         indeg[u] -= 1
         if indeg[u] == 0: st.append(u)
 depth = {}
@@ -129,8 +148,8 @@ def concept_order(con):
     def lv(a, stack=()):
         if a in LEVEL: return LEVEL[a]
         if a in stack: return 0
-        LEVEL[a] = 1 + max([lv(b, stack + (a,)) for b in up.get(a, ())], default=-1); return LEVEL[a]
-    for a in size: lv(a)
+        LEVEL[a] = 1 + max([lv(b, stack + (a,)) for b in sorted(up.get(a, ()))], default=-1); return LEVEL[a]
+    for a in sorted(size): lv(a)
     return UP, LEVEL, E, size
 # 一回目：読んだ定義だけから上下を出す → 全体を割り当て → 二回目：全ての定義から上下を出し直す
 con0 = {h: v[0] for h, v in READ.items()}
@@ -151,8 +170,8 @@ if not os.environ.get('ORDER_READ_ONLY'):
         def lvm(a1, stack=()):
             if a1 in LEVELm: return LEVELm[a1]
             if a1 in stack: return 0
-            LEVELm[a1] = 1 + max([lvm(b, stack + (a1,)) for b in UPm.get(a1, ())], default=-1); return LEVELm[a1]
-        for a1 in UPm: lvm(a1)
+            LEVELm[a1] = 1 + max([lvm(b, stack + (a1,)) for b in sorted(UPm.get(a1, ()))], default=-1); return LEVELm[a1]
+        for a1 in sorted(UPm): lvm(a1)
         UP, LEVEL = UPm, LEVELm
         con, sub, how, aux, cset = run(UP, LEVEL); ca = con
 _, _, E, size = concept_order(con0)
@@ -161,6 +180,7 @@ for x, d in N.items():
     s = READ[x][3] if x in READ else ''
     stopped[x] = s or stopped_mod(d['mod'])
 print(collections.Counter(re.sub(r'：.*', '', h) + ('：' + h.split('：')[1] if '：' in h else '') for h in how.values()))
+print('definitions', sum(1 for d in N.values() if ishub(d)), 'read', len(READ))
 print('concepts', len({c for c in con.values() if c}), 'aux', sum(aux.values()), 'stopped', sum(1 for v in stopped.values() if v), 'unassigned', sum(1 for c in con.values() if not c))
 KS = ['結果', '再利用', '分割', '言い換え', '未使用']
 T = collections.defaultdict(collections.Counter)
