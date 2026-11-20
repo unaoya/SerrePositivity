@@ -572,3 +572,116 @@ root 外は 4,387 モジュール。manifest の監査が届くのは 4,211 本�
 基準 root の計測からこの集計まで約 3.15 時間。ロック待ちを含む。
 証拠の場所は `/Users/sugakubunka/serre-evidence/ar-w1/eac7d1e57`。ソース位置、展開した宣言集合、実行結果と環境再試行のログを保存した。
 段 1 はこの表と報告で停止。
+
+## AR-W1 段3　全モジュールの採取と並行検証
+
+基準 main は `cc25cf900`。旧監査・manifest・本体は基準のまま検証した。再計算の次の設計は [再計算監査の設計案](recompute-audit-design.md)。
+
+### 母集団と成果物の鮮度
+
+追跡対象は Archive を除く本体34,250モジュール。Archive 1,802本、旧 `scripts/` 424本、blueprint 175本、研究・計画・証拠の Lean 103本は別集計。Lake の通常の build コマンドに全対象を渡した。長い引数を避けるため、新しい入口は対象一覧をファイルから読んで同じ CLI を呼び出す。
+
+読む前に Lake の `--no-build --rehash --no-cache` で入力 trace を照合し、対象ごとの `.trace` にある出力ハッシュを同じ Lake の実ハッシュ計算で確かめた。読む前後のソース、trace、成果物のファイル印も照合した。小さな独立プロジェクトの古いソース・不正な成果物ハッシュを用いた負例は後掲。前提は、Lake の依存記録と、同じ版の Lean・Mathlib・固定パッケージに従ってビルドした成果物。出力のハッシュは改ざんに対する署名ではない。
+
+| 集合 | モジュール | 差分 |
+| --- | --- | --- |
+| 追跡 | 34,250 | 0 |
+| Lake で確認済み | 34,250 | 0 |
+| 採取 | 34,250 | 0 |
+| 判定 | 34,250 | 0 |
+
+### G2 と Lean の公理
+
+表のキーは所有元とカーネル名。型と値を別々に指紋化し、型の辺・値の辺・コンストラクタ辺を別に保存した。公開性、private、内部名、位置の有無、保存された instance・実装属性、unsafe、partial を含む。位置のない生成宣言も行として保持した。
+
+**G2 合格**。本体 360,168 宣言。未判定 0、許可外の公理に依存する宣言 0、直接 sorry 4 件、推移的な sorry 依存（直接分も含む）164 件。
+
+由来の補助索引は source-command 163,044、kernel-generated 142,034、unclassified 55,090。由来の保留行にも公理判定を行った。
+
+種類は thm 251,569、def 105,695、rec 911、ctor 1,063、inductive 911、opaque 19。
+
+公理の取得経路は import 65,008、stored 295,160。
+
+属性・位置などは 公開側 295,160、private 名 66,410、内部名 182,046、位置あり 175,258、値あり 357,283、instance 登録あり 5,386、unsafe 0、partial 406、extern 0、implemented_by 0。
+
+| 許可入力 | 直接 | 依存する宣言（直接を含む） | 主定理へ到達 |
+| --- | --- | --- | --- |
+| `SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` | 1 | 131 | 有 |
+| `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillen_model_exists` | 1 | 18 | 無 |
+| `SerrePositivity.Section4.supportedRankK0_descent` | 1 | 17 | 有 |
+| `SerrePositivity.theorem_3_1_K0` | 1 | 16 | 有 |
+
+依存する宣言の領域別件数（領域や入力によって重複する）。
+
+| 領域 | 宣言数 |
+| --- | --- |
+| SerrePositivity.BhattScholze.Inputs | 1 |
+| SerrePositivity.BhattScholze.Perfectoidization | 39 |
+| SerrePositivity.CLMST.Algebra | 7 |
+| SerrePositivity.CLMST.KoszulAnnihilation | 27 |
+| SerrePositivity.CLMST.ParameterPowerLength | 9 |
+| SerrePositivity.CLMST.ParameterQuotientLength | 18 |
+| SerrePositivity.CLMST.PerfectoidizationIsogeny | 19 |
+| SerrePositivity.InfinityCategories.Project | 18 |
+| SerrePositivity.Inputs.Descent | 1 |
+| SerrePositivity.Paper.Section2 | 3 |
+| SerrePositivity.Paper.Section3 | 2 |
+| SerrePositivity.Paper.Section4 | 3 |
+| SerrePositivity.Paper.Section5 | 15 |
+| SerrePositivity.Paper.Statement | 2 |
+
+### 旧い領域監査との照合
+
+旧監査 76 本。所有元付きの一致は宣言の和集合で 261,830 件、延べ 327,755 判定。選択の欠落 0、追加 0、許可判定の差 0。
+
+旧の判定根拠は段1の実行ログと、選択式・所有元索引。各実行のソース SHA256 と対象の Lean ソース・依存の同一性を確認し、同じ入力として照合した。新しい表から対象と許可集合を再構成した。差の個別一覧は `legacy/region-differences.json`。
+
+表へ移した条件は、名指しの厳格な sorry、領域の型禁止辺、期待するモジュールの訪問、公理宣言の種類、直接 sorry の許可ファイル、主定理の旧入口と S-1 の import 境界、K-cofinality の証明経路。この実行の規則数は 119、違反 0。内訳は direct_sorry_file_rules 5、visited_module_rules 61、strict_sorry_keys 5,107、kind_rules 2、type_suffix_rules 2、type_predicates 22。
+
+公開性と所有元の個別条件は表の項目と規則の機能を用意した。指定型への適用、展開後の整合・実際の instance、F2 の互換属性、引用登録、旧監査固有の残りの構造条件とソース字面の直接 sorry 探索は旧検査を維持する。
+
+段1の名指し5,133命令のうち8件は同じスクリプト内で同じキーを再度検査する。F4〜F7 のスクリプト局所例に対する18命令は別の試験に残した。
+
+### 全宣言の再計算と版更新の自己試験
+
+鮮度を再確認した後に、環境を分けて Lean の `collectAxioms` を呼んだ。360,168/360,168 宣言、34,250 モジュール、欠落 0、差 0。結果は **合格**。
+
+Lean の通常の import で使える定数は、公開定数の保存拡張を Lean 自身が使う。同名で別の所有元が隠れたときは、そのレコードの型と値を一時の別名として核で検査し直し、その公理を採った。
+
+再計算の経路別内訳は import 358,655、owner-record 1,513。
+
+import は 7 塊。宣言のない import 専用 236 モジュールは、鮮度が通ったソース全文から宣言コマンドがないことを別に確かめた。ここに属する root の巨大な再読み込みを省いた。
+
+自己試験は試験用 28 宣言（保存なし 1）と規則の負例 10 件。異なる公理を持つ同名宣言の二つの所有元、ソースの変更後に古い成果物を読む試み、出力ハッシュが不正な成果物も検証した。
+
+Mathlib を import する Citation の 71 宣言も、衛生的マクロ名を含む未保存分 10 件まで別に照合した。
+
+| 塊 | 対象モジュール | 外部を含む import 閉包 | Lean 秒 | 最大 RSS (GiB) |
+| --- | --- | --- | --- | --- |
+| 0 | 17,013 | 23,000 | 164.4 | 6.74 |
+| 1 | 2,939 | 18,500 | 82.8 | 5.57 |
+| 2 | 3,124 | 18,500 | 82.8 | 5.74 |
+| 3 | 757 | 18,500 | 82.0 | 5.44 |
+| 4 | 1,800 | 18,500 | 84.7 | 5.57 |
+| 5 | 2,698 | 18,500 | 76.1 | 5.54 |
+| 6 | 5,683 | 17,980 | 94.2 | 6.20 |
+
+### 計測
+
+| 測定 | 鍵待ち（秒） | Lake（秒） | 成果物ハッシュ（秒） | 直接採取（秒） | Lean 取得（秒） | 実行全経過（秒） |
+| --- | --- | --- | --- | --- | --- | --- |
+| 全体の対象 build | 1.0 | 21.9 | 0.0 | 0.0 | 0.0 | 35.6 |
+| 全体の直接採取（再開前） | 0.5 | 24.3 | 38.3 | 95.8 | 0.0 | 401.5 |
+| 全体の公理補完（先の4塊） | 1.0 | 21.6 | 37.5 | 0.0 | 698.1 | 846.0 |
+| 全体の公理補完（残り） | 0.8 | 23.4 | 37.6 | 0.0 | 236.9 | 424.5 |
+| 全体の再計算 | 2.2 | 23.0 | 37.2 | 0.0 | 667.0 | 881.1 |
+| 差分（1 モジュール） | 0.2 | 21.6 | 43.8 | 0.036 | 5.6 | 168.3 |
+| 手元の部分（Citation） | 0.8 | 8.9 | 1.4 | 0.034 | 6.2 | 51.2 |
+
+G2 判定は全体 8.8秒、旧76本との照合は 14.8秒。全体の直接採取は95.8秒、未保存公理の補完はLeanの実行だけで935.0秒。全経過には道具のコンパイル、I/O、待機、集計が入る。再計算の全経過は最後の再開からで、Lean の秒数は完了した全塊の合計。差分は Lean ファイルを変えず、前回テーブルから1モジュールの行を抜いて再採取を誘発した。実際に更新した対象は 1 本。概念の木は旧入口で HTML まで生成した。畳み込み後の循環で旧割り当て器が止まったため、互換ビューに限って 155 本の後方辺を外した。元の全依存、折り畳み結果、変更した辺の一覧を保全した。
+
+資源限界の診断を調べた。最初の補完は採取を終えた後、起動前の vnode 余裕が大きな塊の見積もりを下回った。未起動の試行を保全し、より小さな塊と中断時のチェックポイントを入れた。
+
+`Too many open files in system` は段3の試行で 0 回。同診断による再試行は0回。最初の補完ではマクロ生成名の再パースにより一部の名前を照合できなかった。文字列をそのまま照合するように直し、保存公理だけを持つ直接採取済みのチェックポイントを鮮度の再検査後に再利用した。再計算の最初の大きな塊の一つでは既存成果物の探索に失敗した。現物3部とファイル印を確認し、完了済みの塊を保全して切り直した。
+
+ログ、対象一覧、表、個別比較は `~/serre-evidence/ar-w1/cc25cf900-stage3/`。手順は [audit2 の説明](../../../scripts/audit2/README.md)。
