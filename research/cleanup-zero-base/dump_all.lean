@@ -8,7 +8,8 @@ open Lean Meta
 出力：<接頭辞>.modules.tsv（モジュール名・import する `SerrePositivity` のモジュール名）、<接頭辞>.decls.tsv（ハッシュ・名前・モジュール・種類・
 instance・Prop・開始行・終了行・内部名か・docstring の長さ・値があるか・`SerrePositivity` の外の定数への依存数（型／値））、
 <接頭辞>.deps.tsv（ハッシュ・型が使う本体の定数のハッシュ・値が使う本体の定数のハッシュ）、
-<接頭辞>.xdeps.tsv（ハッシュ・型が使う本体の外の定数のハッシュ）、<接頭辞>.xnames.tsv（外の定数のハッシュと名前）。型の文字列は出さない。 -/
+<接頭辞>.xdeps.tsv（ハッシュ・型が使う本体の外の定数のハッシュ）、<接頭辞>.xnames.tsv（外の定数のハッシュと名前）、
+<接頭辞>.axioms.tsv（ハッシュ・型と値が直接使う公理の名前・種類。直接使うものがある宣言と、公理そのものだけ）。型の文字列は出さない。 -/
 
 unsafe def main (args : List String) : IO Unit := do
   let mods := (← IO.FS.lines args[0]!).toList.filter (· ≠ "") |>.map String.toName
@@ -34,6 +35,7 @@ unsafe def main (args : List String) : IO Unit := do
   let he ← IO.FS.Handle.mk (pre ++ ".deps.tsv") .write
   let hx ← IO.FS.Handle.mk (pre ++ ".xdeps.tsv") .write
   let hn ← IO.FS.Handle.mk (pre ++ ".xnames.tsv") .write
+  let ha ← IO.FS.Handle.mk (pre ++ ".axioms.tsv") .write
   let seen ← IO.mkRef (∅ : Std.HashSet UInt64)
   let ctx : Core.Context := { fileName := "<dump>", fileMap := default, maxHeartbeats := 0 }
   let st : Core.State := {env}
@@ -63,6 +65,12 @@ unsafe def main (args : List String) : IO Unit := do
       let hs (a : Array Name) := " ".intercalate (a.toList.map fun x => toString x.hash)
       hd.putStrLn s!"{n.hash}\t{n}\t{m}\t{kind}\t{b inst}\t{b isProp}\t{line}\t{endLine}\t{b n.isInternalDetail}\t{(doc.getD "").length}\t{b v?.isSome}\t{tdeps.size - tin.size}\t{vdeps.size - vin.size}"
       he.putStrLn s!"{n.hash}\t{hs tin}\t{hs vin}"
+      -- 型と値が直接使う公理（本体の外のものも含む）。推移的な依存は、deps の辺をたどって後で計算する
+      let isAx (x : Name) : Bool := match env.find? x with | some (.axiomInfo _) => true | _ => false
+      let axs := (tdeps ++ vdeps).filter isAx
+      -- 本体の外の定数（Mathlib の定理など）が公理に依るかどうかは Lean に聞く（外の定数は数が少なく、結果を覚えておく）
+      if !axs.isEmpty || kind == "axiom" then
+        ha.putStrLn s!"{n.hash}\t{" ".intercalate ((axs.toList.eraseDups).map toString)}\t{kind}"
       -- 型に現れる、本体の外（Mathlib など）の定数。名前は一度だけ xnames に出す
       let tout := tdeps.filter (fun x => !ownConst x)
       hx.putStrLn s!"{n.hash}\t{hs tout}"
@@ -71,4 +79,4 @@ unsafe def main (args : List String) : IO Unit := do
           seen.modify (·.insert x.hash)
           hn.putStrLn s!"{x.hash}\t{x}"
   let _ ← (work.run' {} {}).toIO ctx st
-  hd.flush; he.flush; hx.flush; hn.flush
+  hd.flush; he.flush; hx.flush; hn.flush; ha.flush
