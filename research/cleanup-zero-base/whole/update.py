@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """概念の木を作り直す（採取 → 畳む → 割り当て → 表 → ページ）。main の root で、main の .lake が建っている状態で実行する。
 
-  python3 research/cleanup-zero-base/whole/update.py <作業ディレクトリ> [--skip-dump] [--label <版の名前>] [--prev <前回の作業ディレクトリ>]
+  python3 research/cleanup-zero-base/whole/update.py <作業ディレクトリ> [--skip-dump] [--allow-missing] [--label <版の名前>] [--prev <前回の作業ディレクトリ>]
+
+成果物（.olean）のないモジュールが一つでもあれば、採取の前に止まる。
 
 - 採取（約 20 分、Lean を 5 回起動、鍵 coord）：全モジュールの宣言と依存を出す。一つのプロセスで全部読むと vnode の上限に届くので、root の閉包と残りの塊に分ける。
   `--skip-dump` を付けると、作業ディレクトリの dump/ にある前回の採取を使う（木だけ直したとき）。
@@ -24,7 +26,12 @@ def run(cmd, **kw):
 if not SKIP:
     files = [f for f in subprocess.run(['git', 'ls-files', 'SerrePositivity', 'SerrePositivity.lean'], capture_output=True, text=True).stdout.split() if f.endswith('.lean') and '/Archive/' not in f]
     built = [f[:-5].replace('/', '.') for f in files if os.path.exists('.lake/build/lib/lean/' + f[:-5] + '.olean')]
-    print(f'{len(files)} modules, {len(built)} built, {len(files) - len(built)} without artifacts (skipped)', flush=True)
+    missing = [f for f in files if not os.path.exists('.lake/build/lib/lean/' + f[:-5] + '.olean')]
+    print(f'{len(files)} modules, {len(built)} built, {len(missing)} without artifacts', flush=True)
+    open(WORK + '/modules-without-artifacts.txt', 'w').write('\n'.join(missing) + '\n')
+    if missing and '--allow-missing' not in args:
+        # 11-20：成果物のない 20 モジュールを黙って飛ばし、その中の sorry（Kan–Quillen の入力）を見落とした。欠けがあれば止まる
+        sys.exit(f'成果物のないモジュールが {len(missing)} 個ある（一覧は {WORK}/modules-without-artifacts.txt）。先に全モジュールを建てること。欠けたまま進めるなら --allow-missing（結果は「全宣言」ではない）')
     for f in glob.glob(DUMP + '/*'): os.remove(f)
     open(DUMP + '/root.list', 'w').write('SerrePositivity\n')
     lock = ['zsh', 'scripts/refactor/with_build_lock.sh', '--class', 'coord', '--wait', '7200', '--']

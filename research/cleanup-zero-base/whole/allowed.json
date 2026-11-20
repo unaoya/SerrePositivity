@@ -1,0 +1,25 @@
+{
+ "allowed_axioms": [
+  "propext",
+  "Classical.choice",
+  "Quot.sound"
+ ],
+ "allowed_unproved": [
+  {
+   "name": "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3",
+   "note": "主定理の入力。Bhatt–Scholze の導来パーフェクトイド化の界面"
+  },
+  {
+   "name": "SerrePositivity.theorem_3_1_K0",
+   "note": "主定理の入力。論文の定理 3.1（有理 K 理論の降下）の K₀ の水準"
+  },
+  {
+   "name": "SerrePositivity.Section4.supportedRankK0_descent",
+   "note": "主定理の入力。補題 4.6 の降下"
+  },
+  {
+   "name": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillen_model_exists",
+   "note": "主定理の経路の外。Kan–Quillen モデル構造の存在（Hovey 定理 3.6.5）の引用。root の閉包の外。Mathlib を上げるたびに置き換えられるかを確かめる（ユーザー決定 2026-11-20）"
+  }
+ ]
+}
