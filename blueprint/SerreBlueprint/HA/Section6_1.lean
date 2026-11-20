@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -72,7 +74,7 @@ KB-W2型再照合：仮定：n=1、C は零対象・有限余極限を持つ準�
 
 :::
 
-:::proposition "ha_6_1_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_edge")
+:::proposition "ha_6_1_1_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift_ι, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_edge")
 *HA 例 6.1.1.4*　n-Excisive Functors (p. 1015)（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=1015)）。対応表の状態：一部（component）。
 
 *主張*　$`0`-切除的関手は、すべての射を同値に送る関手、すなわち終域の最大 Kan 部分複体を経由する関手である。

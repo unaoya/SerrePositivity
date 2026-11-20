@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -8,6 +10,7 @@ import Mathlib.Algebra.Homology.SpectralObject.SpectralSequence
 import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 import Mathlib.AlgebraicTopology.DoldKan.Equivalence
 import Mathlib.AlgebraicTopology.DoldKan.EquivalencePseudoabelian
+import Mathlib.AlgebraicTopology.DoldKan.FunctorGamma
 import Mathlib.AlgebraicTopology.DoldKan.HomotopyEquivalence
 import Mathlib.AlgebraicTopology.DoldKan.Normalized
 import Mathlib.AlgebraicTopology.MooreComplex
@@ -263,7 +266,7 @@ KB-W2型再照合：仮定：アーベル圏の複体、下側の切断を与え
 
 :::
 
-:::definition "ha_1_2_3_5"
+:::definition "ha_1_2_3_5" (lean := "AlgebraicTopology.DoldKan.Γ₀, AlgebraicTopology.DoldKan.Γ₀.Obj.obj₂")
 *HA 構成 1.2.3.5*　鎖複体から作る Dold–Kan 単体的対象（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=55)）。対応表の状態：Mathlib にある。
 
 *主張*　Dold–Kan 構成は、非負鎖複体 $`A` を、次数 $`n` の項が全射 $`[n]\twoheadrightarrow[k]` にわたる $`A_k` の直和となる単体的対象へ送る。
@@ -271,8 +274,6 @@ KB-W2型再照合：仮定：アーベル圏の複体、下側の切断を与え
 仮定：前加法圏に有限余積がある（HA の加法圏の仮定から従う）。結論：非負鎖複体から単体的対象を作る関手で、各次数の項は全射 \[n\]→\[k\] に添字付けられた余積（一致）。
 
 単調写像による構造射は直和の成分の行列で与える。元の全射との合成が目的の全射そのものなら恒等射を取り、その合成が全射の後に始端を除く面を通る指定の成分なら微分を使う。その他の成分は零となる。
-
-宣言：`AlgebraicTopology.DoldKan.Γ₀`、`AlgebraicTopology.DoldKan.Γ₀.Obj.obj₂`
 
 :::
 
@@ -375,7 +376,7 @@ $`N_n(A)\to A_n` を通る射は、$`d_1,\ldots,d_n` との合成が全て零に
 
 :::
 
-:::proposition "ha_1_2_3_16" (lean := "AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex")
+:::proposition "ha_1_2_3_16" (lean := "AlgebraicTopology.DoldKan.Γ₀.splitting, AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex")
 *HA 注意 1.2.3.16*　退化写像と非正規化複体からの正規化（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=60)）。対応表の状態：一部（stronger-hyp）。
 
 *主張*　冪等完備な加法圏では、正規化の各項を、退化写像を並べた射の余核としても表せる。

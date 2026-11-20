@@ -1,11 +1,21 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.Algebra.Algebra.Basic
+import Mathlib.AlgebraicGeometry.Morphisms.FormallyUnramified
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.PrincipalIdealDomain
+import Mathlib.RingTheory.Spectrum.Prime.Topology
 import SerrePositivity.AlgebraicGeometry.AffineBaseVCoverRefinement
 import SerrePositivity.AlgebraicGeometry.CompactMinimalPrimeVCoverRefinement
+import SerrePositivity.AlgebraicGeometry.FiniteTypeFlatteningNoetherian
 import SerrePositivity.AlgebraicGeometry.GenericFlatness
 import SerrePositivity.AlgebraicGeometry.NoetherianVCoverRefinement
 import SerrePositivity.AlgebraicGeometry.SchemeBlowup
+import SerrePositivity.AlgebraicGeometry.SchemeBlowupAway
+import SerrePositivity.AlgebraicGeometry.SchemeBlowupProper
 import SerrePositivity.AlgebraicGeometry.SchemeVCoverFlatSurjective
 import SerrePositivity.AlgebraicGeometry.SchemeVCoverProper
 import SerrePositivity.AlgebraicGeometry.SchemeVCoverSpecializations
@@ -13,6 +23,7 @@ import SerrePositivity.AlgebraicGeometry.StrictTransform
 import SerrePositivity.AlgebraicGeometry.VCoverClosedRestrictionSpecializations
 import SerrePositivity.AlgebraicGeometry.ValuativeFppfBlowupRefinement
 import SerrePositivity.AlgebraicGeometry.ValuativeOpenImageGenerizations
+import SerrePositivity.AlgebraicGeometry.ValuativeStrictTransformSurjective
 import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.Basic
 
 open Verso.Genre
@@ -37,14 +48,12 @@ number := false
 tag := "vdescent-rydh-1"
 %%%
 
-:::proposition "rydh_1_3"
+:::proposition "rydh_1_3" (lean := "PrimeSpectrum.le_iff_specializes")
 *Rydh 注意 1.3*　素スペクトルの特殊化順序。対応表の状態：Mathlib にある。
 
 *主張*　アフィンスキームの点を、特殊化した点が小さくなるように順序づけると、素イデアルの包含の逆順になる。このため極大点は極小素イデアルに対応する。
 
 原典 PDF p.5, y=347.8。素イデアルの包含順序と specializes の同値。原典の点の ≤ は Lean の specializes の向きと逆で、極大な点は極小素イデアルになる。
-
-宣言：`PrimeSpectrum.le_iff_specializes`
 
 :::
 
@@ -84,14 +93,12 @@ tag := "vdescent-rydh-2"
 
 :::
 
-:::proposition "rydh_2_6"
+:::proposition "rydh_2_6" (lean := "IsBezout, Module.Flat.flat_iff_torsion_eq_bot_of_isBezout, Module.isTorsionFree_iff_algebraMap_injective")
 *Rydh 注意 2.6*　付値環での主イデアル性と平坦性。対応表の状態：Mathlib にある。
 
 *主張*　付値環の有限生成イデアルは単項であり、その上の加群が平坦であることと無ねじれであることは同値である。特に整域である付値環上の代数は、構造射が単射であるとき、かつそのときに限り平坦である。
 
 原典 PDF p.9, y=119.0。付値環には IsBezout のインスタンスがあり、有限生成イデアルは単項となる。平坦性は torsion 部分加群が零であることと同値で、整域への代数構造では構造射の単射性と同値になる。
-
-宣言：`IsBezout`、`Module.Flat.flat_iff_torsion_eq_bot_of_isBezout`、`Module.isTorsionFree_iff_algebraMap_injective`
 
 外の文献：bourbaki\_alg\_comm\_5\_6
 
@@ -113,7 +120,7 @@ tag := "vdescent-rydh-3"
 
 :::
 
-:::definition "rydh_3_3" (lean := "SerrePositivity.AlgebraicGeometry.blowup, SerrePositivity.AlgebraicGeometry.strictTransform")
+:::definition "rydh_3_3" (lean := "SerrePositivity.AlgebraicGeometry.blowup, SerrePositivity.AlgebraicGeometry.blowupπ, SerrePositivity.AlgebraicGeometry.blowupπ_isProper, SerrePositivity.AlgebraicGeometry.blowupπ_restrict_complement_isIso, SerrePositivity.AlgebraicGeometry.strictTransform, SerrePositivity.AlgebraicGeometry.strictTransformπ")
 *Rydh 定義 3.3*　爆発と狭義変換。対応表の状態：一部（component）。
 
 *主張*　有限生成イデアル層で定まる閉部分スキームを中心にとった爆発は固有で、中心の補集合で同型である。この爆発に関する $`X\to S` の狭義変換は、中心の外にある $`X` の部分の底変換のスキーム論的閉包を取り、そこから爆発後の底へ射影して得る。
@@ -124,14 +131,12 @@ tag := "vdescent-rydh-3"
 
 :::
 
-:::proposition "rydh_3_4" (uses := "bm18_eq_1, bm18_1_1, bs17_2_1, rydh_2_1, rydh_2_2, rydh_3_3")
+:::proposition "rydh_3_4" (lean := "SerrePositivity.AlgebraicGeometry.strictTransformπ_surjective_of_vCover") (uses := "bm18_eq_1, bm18_1_1, bs17_2_1, rydh_2_1, rydh_2_2, rydh_3_3")
 *Rydh 注意 3.4*　狭義変換の全射性。対応表の状態：一部（special）。
 
 *主張*　普遍的 subtrusive な射 $`X\to Y` は、$`Y` の爆発に関する狭義変換をとると、爆発後の底に全射する。
 
 原典 PDF p.12, y=403.4。Noether 基底・コンパクトな有限型の v 被覆・稠密開を入力とし、爆発の狭義変換が全射になる。一般の基底での結論は含まない。
-
-宣言：`SerrePositivity.AlgebraicGeometry.strictTransformπ_surjective_of_vCover`
 
 外の文献：lazard\_autour、olivier\_sem\_samuel
 
@@ -148,7 +153,7 @@ tag := "vdescent-rydh-3"
 
 :::
 
-:::proposition "rydh_3_6" (lean := "SerrePositivity.AlgebraicGeometry.exists_dense_open_flat_restrict_of_compactSpace, SerrePositivity.AlgebraicGeometry.exists_fppf_blowup_refinement_of_flat_strictTransform_vCover") (uses := "bm18_eq_1, bm18_1_1, bs17_2_1, rydh_2_1, rydh_2_2, rydh_3_3")
+:::proposition "rydh_3_6" (lean := "SerrePositivity.AlgebraicGeometry.exists_dense_open_flat_restrict_of_compactSpace, SerrePositivity.AlgebraicGeometry.exists_admissible_flat_strictTransformπ_of_finiteType, SerrePositivity.AlgebraicGeometry.strictTransformπ_surjective_of_vCover, SerrePositivity.AlgebraicGeometry.exists_fppf_blowup_refinement_of_flat_strictTransform_vCover") (uses := "bm18_eq_1, bm18_1_1, bs17_2_1, rydh_2_1, rydh_2_2, rydh_3_3")
 *Rydh 命題 3.6*　爆発による狭義変換の平坦化。対応表の状態：一部（special）。
 
 *主張*　$`Y` を極大点の集合が準コンパクトな被約 qcqs スキームとし、$`X\to Y` を有限表示な普遍的 subtrusive 射とする。$`Y` の全射な有限型爆発であって、この射の狭義変換が有限表示かつ忠実平坦になるものが存在する。
@@ -188,14 +193,12 @@ number := false
 tag := "vdescent-rydh-A"
 %%%
 
-:::proposition "rydh_A_2"
+:::proposition "rydh_A_2" (lean := "AlgebraicGeometry.FormallyUnramified.isOpenImmersion_diagonal")
 *Rydh 命題 A.2*　対角・切断・普遍単射での開埋め込み。対応表の状態：一部（component）。
 
 *主張*　代数空間のエタール射の対角射および任意の切断は開埋め込みである。その射が普遍的単射なら、射自体が開埋め込みである。
 
 原典 PDF p.35, y=119.0。エタール射は局所有限型かつ形式的不分岐なので、スキームの場合には (i) の対角射が開埋め込みになり、底変換で (ii) の切断も開埋め込みになる。代数空間の一般性を含まない。
-
-宣言：`AlgebraicGeometry.FormallyUnramified.isOpenImmersion_diagonal`
 
 :::
 

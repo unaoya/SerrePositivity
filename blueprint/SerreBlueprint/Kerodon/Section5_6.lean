@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -274,7 +276,7 @@ Mathlibの型は反変CoGrothendieckの選んだcartesian lift。原文の共変
 
 :::
 
-:::corollary "kerodon_5_6_1_17" (lean := "CategoryTheory.Pseudofunctor.CoGrothendieck.isStronglyCartesian_homCartesianLift")
+:::corollary "kerodon_5_6_1_17" (lean := "CategoryTheory.Pseudofunctor.CoGrothendieck.isStronglyCartesian_homCartesianLift, CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget")
 Kerodon Corollary 5.6.1.17（[Tag 025T](https://kerodon.net/tag/025T)）。対応表の状態：一部。
 
 *主張*　通常の圏 $`C` から圏の双圏への共変関手の元の圏の忘却関手は余デカルトファイブレーションである。反変関手の元の圏の忘却関手はデカルトファイブレーションである。

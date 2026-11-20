@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -28,7 +30,7 @@ number := false
 tag := "htt-6-4-2"
 %%%
 
-:::definition "htt_6_4_2_3" (lean := "Order.Frame, Locale.of")
+:::definition "htt_6_4_2_3" (lean := "Order.Frame, Order.Frame.ofMinimalAxioms, inf_sSup_eq, Locale.of")
 *HTT 定義 6.4.2.3*　ロケールの順序公理による定義（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=661)）。対応表の状態：Mathlib にある。
 
 *主張*　ロケールとは任意の上限を持つ半順序集合で、固定元との交わりが任意の上限に分配するものである。

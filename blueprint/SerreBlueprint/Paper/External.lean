@@ -1,6 +1,11 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.RingTheory.Invariant.Basic
+import Mathlib.RingTheory.Invariant.Galois
+import SerrePositivity.AlgebraicGeometry.FiniteTypeFlatteningNoetherian
 import SerrePositivity.AlgebraicGeometry.NoetherianFiniteModuleFlattening
 import SerrePositivity.CategoryTheory.Karoubi.Triangulated
 import SerrePositivity.CommutativeAlgebra.CohenGabber.Normalization
@@ -260,28 +265,24 @@ tag := "paper-external"
 
 :::
 
-:::proposition "ext_Stacks_0815" (lean := "SerrePositivity.AlgebraicGeometry.exists_noetherian_finite_flattening_center")
+:::proposition "ext_Stacks_0815" (lean := "SerrePositivity.AlgebraicGeometry.exists_noetherian_finite_flattening_center, SerrePositivity.AlgebraicGeometry.exists_admissible_flat_strictTransformπ_of_finiteType")
 *Stacks 0815*　qcqs 基底 S 上の準コンパクト・局所有限表示な X と有限型準連接加群 F が準コンパクト開 U 上で有限表示・平坦なら、U 許容ブローアップ後の狭義変換を有限表示・平坦にできる。。対応表の状態：一部。
 
 Noether アフィン基底上の有限加群・正則主開境界での純変換の平坦化と、Noether 基底上の有限型射の構造層の平坦化を確認。原典の非 Noether qcqs 基底・任意の有限型準連接 F とその有限表示性全体は含まない。 原典・使用主張の確認: https://stacks.math.columbia.edu/tag/0815; Theorem 38.30.7。ソースの静的照合のみで kernel 検査は再実行していない。
 
 :::
 
-:::proposition "ext_Stacks_0BRI"
+:::proposition "ext_Stacks_0BRI" (lean := "Algebra.IsInvariant.exists_smul_of_under_eq")
 *Stacks 0BRI*　有限群 G が可換環 R に作用するとき、不変環 R\^G の同じ素イデアル上にある R の二つの素イデアルは G で共役である。。対応表の状態：Mathlib にある。
 
 任意の有限群、可換環、同じ contraction を持つ素イデアルについて同じ推移性を持つ。Algebra.IsInvariant の基底 A に R\^G を選べば原典になる。有限な基底加群や分離性は追加しない。 原典・使用主張の確認: https://stacks.math.columbia.edu/tag/0BRI; Lemma 15.112.8。ソースの静的照合のみで kernel 検査は再実行していない。
 
-宣言：`Algebra.IsInvariant.exists_smul_of_under_eq`
-
 :::
 
-:::proposition "ext_Stacks_0BRJ"
+:::proposition "ext_Stacks_0BRJ" (lean := "Ideal.IsFractionRing.normal, IsFractionRing.stabilizerHom_surjective")
 *Stacks 0BRJ*　有限群作用の不変環の素イデアル p 上の q について、κ(q)/κ(p) は代数的正規拡大で、q の分解群からその自己同型群への写像は全射である。。対応表の状態：Mathlib にある。
 
 κ(q),κ(p) を R/q と R\^G/p の分数体として扱う一般形の正規性・安定化群写像の全射性を確認。極大イデアルや剰余体拡大の分離性に狭めた版ではない。 原典・使用主張の確認: https://stacks.math.columbia.edu/tag/0BRJ; Lemma 15.112.9。ソースの静的照合のみで kernel 検査は再実行していない。
-
-宣言：`Ideal.IsFractionRing.normal`、`IsFractionRing.stabilizerHom_surjective`
 
 :::
 

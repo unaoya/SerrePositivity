@@ -8,15 +8,12 @@
   "Section1_5"
  ],
  "stats": {
-  "nolink-mathlib": 9,
+  "linked": 130,
   "with-statement": 130,
-  "linked": 117,
   "with-note": 19,
   "nolink-unreviewed": 2,
   "nolink-none": 50,
-  "nolink-partial": 3,
   "with-uses": 27,
-  "with-note-intro": 8,
-  "nolink-own": 1
+  "with-note-intro": 8
  }
 }

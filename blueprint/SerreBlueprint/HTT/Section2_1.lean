@@ -1,7 +1,10 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 import Mathlib.AlgebraicTopology.SimplicialSet.Op
 import Mathlib.CategoryTheory.Comma.Over.Pullback
 import Mathlib.CategoryTheory.FiberedCategory.Cocartesian
@@ -168,7 +171,7 @@ KB-W2原文・型再照合：仮定：任意の単射 i と始端の包含（HTT
 
 :::
 
-:::proposition "htt_2_1_2_8"
+:::proposition "htt_2_1_2_8" (lean := "SSet.anodyneExtensions_pushoutObjObjι, SSet.anodyneExtensions_pushoutObjObjι'")
 *HTT 注意 2.1.2.8*　アノダイン射と単射の押し出し積（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=83)）。対応表の状態：Mathlib にある。
 
 *主張*　アノダイン射と余ファイブレーションの押し出し積はアノダインであり、これは左・右アノダインの二つの結果から従う。
@@ -177,11 +180,9 @@ KB-W2原文・型再照合：仮定：任意の単射 i と始端の包含（HTT
 
 すべての角包含は片方の向きの生成元に入る。したがって両向きで得た押し出し積の性質を弱飽和閉包に広げれば、通常のアノダイン射を扱える。
 
-宣言：`SSet.anodyneExtensions_pushoutObjObjι`、`SSet.anodyneExtensions_pushoutObjObjι'`
-
 :::
 
-:::corollary "htt_2_1_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.trivialKanFibration_relativeHom_of_leftAnodyne")
+:::corollary "htt_2_1_2_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_pullbackObjObjπ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.trivialKanFibration_relativeHom_of_leftAnodyne")
 *HTT 系 2.1.2.9*　左ファイブレーションの相対内部 Hom（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=83)）。対応表の状態：本体にある。
 
 *主張*　左ファイブレーション $`X\to S` と余ファイブレーション $`A\to B` に対し、比較 $`X^B\to X^A\times_{S^A}S^B` は左ファイブレーションで、$`A\to B` が左アノダインなら自明 Kan ファイブレーションである。

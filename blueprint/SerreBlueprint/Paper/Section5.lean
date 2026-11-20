@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -337,7 +339,7 @@ number := false
 tag := "paper-5-3"
 %%%
 
-:::definition "paper_eq_5_8" (lean := "SerrePositivity.Section5.paramTheta, SerrePositivity.Section5.paramTheta_comp_tower") (uses := "paper_2_3, paper_2_5")
+:::definition "paper_eq_5_8" (lean := "SerrePositivity.Section5.paramTheta, SerrePositivity.Section5.paramTheta_comp_tower, SerrePositivity.Section5.paramTheta_comp_ψU") (uses := "paper_2_3, paper_2_5")
 **式 (5.8)**　近似用のS\_jとSおよび二つの作用。対応表の状態：本体にある。
 
 *主張*　有限段の環を $`S_j=A_j\otimes_A(D'/I_\sigma)`、極限を $`S=\Lambda\otimes_A(D'/I_\sigma)` とおく。$`U` の塔とパラメータ商からの可換な二作用はこの $`S` の作用にまとまり、有限段へ降ろしたときも $`B` 作用を保つ。

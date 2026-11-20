@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -70,14 +72,12 @@ B6：Bicategory の unitor の場は原文の υ に依存する一意構成・�
 
 :::
 
-:::proposition "kerodon_2_2_1_13"
+:::proposition "kerodon_2_2_1_13" (lean := "CategoryTheory.Bicategory.triangle")
 Kerodon Proposition 2.2.1.13（[Tag 00EZ](https://kerodon.net/tag/00EZ)）。対応表の状態：Mathlib にある。
 
 *主張*　双圏の連続する $`f\colon X\to Y`、$`g\colon Y\to Z` について、$`g\circ(\mathrm{id}_Y\circ f)` から $`g\circ f` への 2 射は、直接左単位制約を適用しても、結合子の後に右単位制約を適用しても同じである。
 
 仮定：双圏 B と合成可能な 1 射 f : a ⟶ b、g : b ⟶ c（Kerodon と一致）。結論：間に 𝟙\_b を挟む結合子と左右の単位子でできる三角形の可換性（一致）。
-
-宣言：`CategoryTheory.Bicategory.triangle`
 
 :::
 
@@ -108,7 +108,7 @@ tag := "kerodon-2-2-2"
 
 Kerodon [Tag 0083](https://kerodon.net/tag/0083)
 
-:::definition "kerodon_2_2_2_2" (lean := "CategoryTheory.Span, CategoryTheory.Span.SpanBicat")
+:::definition "kerodon_2_2_2_2" (lean := "CategoryTheory.Span, CategoryTheory.Span.SpanBicat, CategoryTheory.Span.SpanBicat.instBicategory")
 Kerodon Variant 2.2.2.2（[Tag 03J5](https://kerodon.net/tag/03J5)）。対応表の状態：Mathlib にある。
 
 *主張*　圏の span は $`X\leftarrow M\to Y` という図式である。ファイバー積があれば $`\operatorname{Cospan}(\mathcal C^{\mathrm{op}})` の共役として、同じ対象と span を 1 射とする双圏 $`\operatorname{Span}(\mathcal C)` を得る。
@@ -169,14 +169,12 @@ Kerodon Definition 2.2.4.5（[Tag 008K](https://kerodon.net/tag/008K)）。対�
 
 :::
 
-:::definition "kerodon_2_2_4_15"
+:::definition "kerodon_2_2_4_15" (lean := "CategoryTheory.LaxFunctor.mapId, CategoryTheory.LaxFunctor.mapComp")
 Kerodon Notation 2.2.4.15（[Tag 008Q](https://kerodon.net/tag/008Q)）。対応表の状態：Mathlib にある。
 
 *主張*　lax 2 関手 $`F` に付随する恒等制約と合成制約を、必要に応じて $`\epsilon_X^F`、$`\mu_{g,f}^F` と関手を明示して記す。
 
 仮定：双圏間の lax 関手 F、対象 a または合成可能な 1 射 f, g（Kerodon と一致）。結論：mapId a が 𝟙\_(F a) ⇒ F(𝟙\_a)、mapComp f g が F(g)∘F(f) ⇒ F(g∘f) を与える（一致）。
-
-宣言：`CategoryTheory.LaxFunctor.mapId`、`CategoryTheory.LaxFunctor.mapComp`
 
 :::
 

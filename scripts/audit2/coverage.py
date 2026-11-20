@@ -84,7 +84,8 @@ def read_tables(root):
                                status=status, column=column, partial_kind=row.get("partial_kind", ""),
                                edition=row.get("edition") or edition or "版の記載なし",
                                reason=row.get("reason") or row.get("note") or "",
-                               reviewer=row.get("reviewer") or "過去の照合者は記録なし", raw=raw)
+                               reviewer=row.get("reviewer") or "過去の照合者は記録なし",
+                               reference_note=(row.get("reference_note") or "").strip(), raw=raw)
 
 
 def load_db(path):
@@ -278,11 +279,12 @@ def resolve(root, db_file, external_file, old=(), moves=None):
     prior = {identity(row):row for row in old}
     seen = set()
     for item in items:
+        reference_note = item.pop("reference_note")
         path = item["file"]
         if path not in inputs:
             inputs[path] = sha(root/path)
         raw_entries = entries(item["raw"])
-        if not raw_entries and item["status"] in LIVE:
+        if not raw_entries and item["status"] in LIVE and not reference_note:
             raw_entries = [""]
         for ordinal, raw in enumerate(raw_entries, 1):
             key = path, item["item"], ordinal

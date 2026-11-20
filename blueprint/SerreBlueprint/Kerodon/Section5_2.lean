@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -578,7 +580,7 @@ tag := "kerodon-5-2-6"
 
 Kerodon [Tag 01Q7](https://kerodon.net/tag/01Q7)
 
-:::definition "kerodon_5_2_6_1" (lean := "CategoryTheory.Functor.Elements")
+:::definition "kerodon_5_2_6_1" (lean := "CategoryTheory.Functor.Elements, CategoryTheory.Functor.Elements.π")
 Kerodon Construction 5.2.6.1（[Tag 01Q8](https://kerodon.net/tag/01Q8)）。対応表の状態：Mathlib にある。
 
 *主張*　通常の圏 $`C` の集合値共変関手 $`\mathscr F` の元の圏は、対象を $`(c,x\in\mathscr F(c))`、射を $`\mathscr F(f)(x)=x'` となる $`f:c\to c'` とする。合成は $`C` での合成で、$`x` を忘れると $`C` への関手を得る。

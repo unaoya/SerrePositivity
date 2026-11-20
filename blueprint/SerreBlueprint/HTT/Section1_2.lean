@@ -1,7 +1,10 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
@@ -242,7 +245,7 @@ tag := "htt-1-2-7"
 
 :::
 
-:::proposition "htt_1_2_7_3"
+:::proposition "htt_1_2_7_3" (lean := "SSet.instQuasicategoryObjIhom")
 *HTT 命題 1.2.7.3*　関手準圏と両変数の同値不変性（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=57)）。対応表の状態：一部（component）。
 
 *主張*　任意の単体的集合 $`K` について $`\operatorname{Fun}(K,\mathcal C)` は $`\mathcal C` が ∞ 圏なら ∞ 圏であり、値域の ∞ 圏または添字の単体的集合の圏同値で不変である。
@@ -250,8 +253,6 @@ tag := "htt-1-2-7"
 KB-W2原文・型再照合：仮定：任意の単体集合 K と準圏 C（HTT と一致）。結論：SSet.instQuasicategoryObjIhom により Fun(K,C) は準圏であり、(1) に一致。(2)(3) の HTT の H-enriched categorical equivalence と前合成同値述語の比較はこの検査には含まない。
 
 値域の比較は後合成、添字の比較は前合成なので、誘導される写像の向きは異なる。添字 $`K` 自体に内角充填条件は課されない。
-
-宣言：`SSet.instQuasicategoryObjIhom`
 
 :::
 

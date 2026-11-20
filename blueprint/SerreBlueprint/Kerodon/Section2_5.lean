@@ -1,8 +1,11 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.Algebra.Homology.HomologicalComplex
 import Mathlib.Algebra.Homology.Homotopy
+import Mathlib.Algebra.Homology.HomotopyCategory
 import Mathlib.Algebra.Homology.Monoidal
 import Mathlib.Algebra.Homology.QuasiIso
 import Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex
@@ -100,14 +103,12 @@ Kerodon Definition 2.5.0.5（[Tag 00NJ](https://kerodon.net/tag/00NJ)）。対�
 
 :::
 
-:::definition "kerodon_2_5_0_9"
+:::definition "kerodon_2_5_0_9" (lean := "HomotopyCategory")
 Kerodon Construction 2.5.0.9（[Tag 00NM](https://kerodon.net/tag/00NM)）。対応表の状態：Mathlib にある。
 
 *主張*　加法圏の鎖複体のホモトピー圏では、対象を鎖複体とし、射を鎖写像の鎖ホモトピー類とする。合成は鎖写像の合成から誘導される。
 
 仮定：加法圏 A（Lean が弱い：前加法圏と任意の shape で定義される）。結論：shape を down ℤ とすると、対象は鎖複体、射は鎖写像の鎖ホモトピー類となる商圏（一致）。
-
-宣言：`HomotopyCategory`
 
 :::
 
@@ -190,7 +191,7 @@ B6：現本体・固定Mathlibを再検索。各項射影かつ有界の複体�
 
 :::
 
-:::definition "kerodon_2_5_1_11" (lean := "HomologicalComplex.tensorObj")
+:::definition "kerodon_2_5_1_11" (lean := "HomologicalComplex.tensorObj, HomologicalComplex.ιTensorObj")
 Kerodon Notation 2.5.1.11（[Tag 00P1](https://kerodon.net/tag/00P1)）。対応表の状態：Mathlib にある。
 
 *主張*　次数付きアーベル群のテンソル積 $`C\boxtimes D` の次数 $`n` は、$`i+j=n` にわたる $`C_i\otimes D_j` の直和である。斉次元 $`x,y` の純テンソルの像を $`x\boxtimes y` と書く。

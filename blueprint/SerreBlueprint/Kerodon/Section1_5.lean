@@ -1,9 +1,12 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.Basic
 import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
@@ -19,6 +22,7 @@ import Mathlib.CategoryTheory.Retract
 import Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting
 import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeInternalHomTrivialFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.CompositionTriangleSpace
 import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
@@ -206,7 +210,7 @@ Kerodon Corollary 1.5.3.6（[Tag 0065](https://kerodon.net/tag/0065)）。対応
 
 :::
 
-:::theorem "kerodon_1_5_3_7"
+:::theorem "kerodon_1_5_3_7" (lean := "SSet.instQuasicategoryObjIhom")
 Kerodon Theorem 1.5.3.7（[Tag 0066](https://kerodon.net/tag/0066)）。対応表の状態：Mathlib にある。
 
 *主張*　任意の単体的集合 $`S` と任意の $`\infty` 圏 $`\mathcal D` に対し、指数対象 $`\operatorname{Fun}(S,\mathcal D)` は $`\infty` 圏である。
@@ -217,11 +221,9 @@ Kerodon Theorem 1.5.3.7（[Tag 0066](https://kerodon.net/tag/0066)）。対応�
 
 $`K` を単体的集合、$`D` を quasicategory とすると、$`\mathrm{Fun}(K,D)`（定義 2.2）は quasicategory である。
 
-宣言：`SSet.instQuasicategoryObjIhom`
-
 :::
 
-:::definition "kerodon_1_5_3_8"
+:::definition "kerodon_1_5_3_8" (lean := "SSet.instQuasicategoryObjIhom")
 Kerodon Definition 1.5.3.8（[Tag 0067](https://kerodon.net/tag/0067)）。対応表の状態：Mathlib にある。
 
 *主張*　$`\infty` 圏 $`\mathcal C` から $`\mathcal D` への関手 $`\infty` 圏とは、指数対象 $`\operatorname{Fun}(\mathcal C,\mathcal D)` である。
@@ -231,8 +233,6 @@ Kerodon Definition 1.5.3.8（[Tag 0067](https://kerodon.net/tag/0067)）。対�
 *定義 14.2 （前層の ∞ 圏）*
 
 小さい quasicategory $`C` について、$`\mathcal P(C)=\mathrm{Fun}(C^{\mathrm{op}},\mathcal S)` とおく（反対は定義 12.1、$`\mathcal S` は定義 3.7）。定理 14.1 により $`\mathcal P(C)` は quasicategory である。その頂点 $`F\colon C^{\mathrm{op}}\to\mathcal S` を前層という。
-
-宣言：`SSet.instQuasicategoryObjIhom`
 
 :::
 
@@ -389,14 +389,12 @@ Kerodon Corollary 1.5.5.5（[Tag 006Z](https://kerodon.net/tag/006Z)）。対応
 
 :::
 
-:::corollary "kerodon_1_5_5_6"
+:::corollary "kerodon_1_5_5_6" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pullbackObjObjπ")
 Kerodon Corollary 1.5.5.6（[Tag 0070](https://kerodon.net/tag/0070)）。対応表の状態：本体にある。
 
 *主張*　自明 Kan ファイブレーション $`X\to Y` と単射 $`A\hookrightarrow B` に対し、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,Y)\times_{\operatorname{Fun}(A,Y)}\operatorname{Fun}(A,X)` も自明 Kan ファイブレーションである。
 
 仮定：単射i:A→Bとtrivial Kan fibration p:E→Y（原文と一致）。結論：trivialKanFibration\_pullbackObjObjπ は internalHom.PullbackObjObj i p の標準比較射πがtrivial Kan fibration（原文のθと一致）。引き戻しの選択をデータとして明示し、A=空に限定しない。模型圏の追加仮定なし。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pullbackObjObjπ`
 
 :::
 
@@ -467,7 +465,7 @@ tag := "kerodon-1-5-6"
 
 Kerodon [Tag 0078](https://kerodon.net/tag/0078)
 
-:::theorem "kerodon_1_5_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_14, kerodon_1_5_6_7, kerodon_1_5_6_9")
+:::theorem "kerodon_1_5_6_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne, SSet.innerAnodyneExtensions.horn_ι") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_1_5_4_14, kerodon_1_5_6_7, kerodon_1_5_6_9")
 Kerodon Theorem 1.5.6.1（[Tag 0079](https://kerodon.net/tag/0079)）。対応表の状態：一部。
 
 *主張*　単体的集合 $`S` が $`\infty` 圏であることは、一つのホーン包含 $`\Lambda_1^2\hookrightarrow\Delta^2` に沿う制限 $`\operatorname{Fun}(\Delta^2,S)\to\operatorname{Fun}(\Lambda_1^2,S)` が自明 Kan ファイブレーションであることと同値である。
@@ -494,7 +492,7 @@ Kerodon Definition 1.5.6.4（[Tag 007C](https://kerodon.net/tag/007C)）。対�
 
 :::
 
-:::proposition "kerodon_1_5_6_7" (lean := "SSet.quasicategory_of_innerFibration, SerrePositivity.KST.Fibration.exists_extension_of_innerAnodyne")
+:::proposition "kerodon_1_5_6_7" (lean := "SSet.quasicategory_of_innerFibration, SSet.instInnerFibrationFromOfQuasicategory, SerrePositivity.KST.Fibration.exists_extension_of_innerAnodyne")
 Kerodon Proposition 1.5.6.7（[Tag 007E](https://kerodon.net/tag/007E)）。対応表の状態：本体と Mathlib にある。
 
 *主張*　単体的集合 $`S` が $`\infty` 圏であることと、任意の内アノダイン射 $`A\hookrightarrow B` に沿って $`A\to S` を延長できることは同値である。
@@ -510,14 +508,12 @@ Kerodon Variant 1.5.6.8（[Tag 00J2](https://kerodon.net/tag/00J2)）。対応�
 
 :::
 
-:::lemma_ "kerodon_1_5_6_9" (uses := "kerodon_1_1_0_6, kerodon_1_5_5_14")
+:::lemma_ "kerodon_1_5_6_9" (lean := "SSet.innerAnodyneExtensions_pushoutObjObjι, SSet.innerAnodyneExtensions.horn_ι") (uses := "kerodon_1_1_0_6, kerodon_1_5_5_14")
 Kerodon Lemma 1.5.6.9（[Tag 007F](https://kerodon.net/tag/007F)）。対応表の状態：一部。
 
 *主張*　任意の単射と $`\Lambda_1^2\hookrightarrow\Delta^2` の押し出し積は内アノダインである。その単射を標準境界の包含とした射だけで、内アノダイン射全体を弱飽和類として生成する。
 
 原文(a)の単射とΛ²₁包含のpushout-productのinner anodyne性は、innerAnodyneExtensions\_pushoutObjObjι に horn\_ι を渡した同じ比較射について直接得られる。(b)のこの生成系だけによる弱飽和生成は含めない。
-
-宣言：`SSet.innerAnodyneExtensions_pushoutObjObjι`、`SSet.innerAnodyneExtensions.horn_ι`
 
 :::
 
@@ -548,14 +544,12 @@ Kerodon Proposition 1.5.7.3（[Tag 00J6](https://kerodon.net/tag/00J6)）。対�
 
 :::
 
-:::lemma_ "kerodon_1_5_7_5"
+:::lemma_ "kerodon_1_5_7_5" (lean := "SSet.innerAnodyneExtensions_pushoutObjObjι', SSet.innerAnodyneExtensions_pushoutObjObjι")
 Kerodon Lemma 1.5.7.5（[Tag 00J8](https://kerodon.net/tag/00J8)）。対応表の状態：Mathlib にある。
 
 *主張*　単体的集合の二つの単射のうち一方が内アノダインなら、その押し出し積も内アノダインである。
 
 仮定：単体集合の単射 f,g と f の inner anodyne 性（Kerodon と一致）。結論：innerAnodyneExtensions\_pushoutObjObjι と双対順序の補題は (Y×X′) ⨿ (X×Y′) を X×X′ 上で貼った対象から Y×Y′ への pushout-product が inner anodyne であることを与える（一致）。
-
-宣言：`SSet.innerAnodyneExtensions_pushoutObjObjι'`、`SSet.innerAnodyneExtensions_pushoutObjObjι`
 
 :::
 

@@ -1,9 +1,12 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.Algebra.Homology.CochainComplexPlus
 import Mathlib.Algebra.Homology.DerivedCategory.KInjective
 import Mathlib.Algebra.Homology.HomotopyCategory.HomComplex
+import Mathlib.Algebra.Homology.HomotopyCategory.KInjective
 import Mathlib.AlgebraicTopology.SimplicialNerve
 import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives
 import Mathlib.CategoryTheory.Idempotents.Karoubi
@@ -350,7 +353,7 @@ $`D(S)` は、semifree 複体（K-射影的な模型）の充満 dg 部分圏の
 
 これで「∞ 圏としての D(S)」と「Mathlib の三角圏としての導来圏」が、三角構造まで含めて一致する。第 7 章の三角構造（cofiber 由来）と Mathlib の導来圏の三角構造（写像錐由来）が同じものであることが、ここで確かめられている。
 
-:::definition "ha_1_3_2_1" (lean := "CochainComplex.HomComplex, CochainComplex.HomComplex.Cochain.comp")
+:::definition "ha_1_3_2_1" (lean := "CochainComplex.HomComplex, CochainComplex.HomComplex.Cochain.comp, CochainComplex.HomComplex.δ_comp")
 *HA 定義 1.3.2.1*　鎖複体の dg 圏（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=88)）。対応表の状態：Mathlib にある。
 
 *主張*　加法圏の鎖複体全体は dg 圏をなし、次数 $`p` の写像は $`M_n\to N_{n+p}` の族、微分は $`d(f)=d_Nf-(-1)^pf d_M` である。
@@ -612,7 +615,7 @@ tag := "ha-1-3-5"
 
 :::
 
-:::lemma_ "ha_1_3_5_11" (lean := "SerrePositivity.KST.DerivedGeometry.isKInjective_of_rlp_mono_quasiIso")
+:::lemma_ "ha_1_3_5_11" (lean := "CochainComplex.IsKInjective.eq_δ_of_cocycle, SerrePositivity.KST.DerivedGeometry.isKInjective_of_rlp_mono_quasiIso")
 *HA 補題 1.3.5.11*　ホモロジーが消える複体からファイブラント複体への写像複体（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=126)）。対応表の状態：一部（stronger-hyp）。
 
 *主張*　Grothendieck アーベル圏の非輪状複体 $`M` とファイブラント複体 $`Q` の写像複体 $`\operatorname{Map}(M,Q)` は非輪状である。

@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -9,6 +11,7 @@ import Mathlib.CategoryTheory.Idempotents.Karoubi
 import Mathlib.CategoryTheory.Limits.Shapes.SplitCoequalizer
 import Mathlib.CategoryTheory.Limits.Shapes.SplitEqualizer
 import Mathlib.CategoryTheory.Retract
+import Mathlib.CategoryTheory.SmallObject.Basic
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.InnerAnodyneVertices
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalComposition
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
@@ -909,7 +912,7 @@ tag := "kerodon-8-5-9"
 
 Kerodon [Tag 042C](https://kerodon.net/tag/042C)
 
-:::theorem "kerodon_8_5_9_4" (lean := "SSet.innerAnodyneExtensions_eq_llp_rlp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.quasicategory_of_innerFibration")
+:::theorem "kerodon_8_5_9_4" (lean := "SSet.innerAnodyneExtensions_eq_llp_rlp, CategoryTheory.MorphismProperty.instHasFunctorialFactorizationLlpRlp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.quasicategory_of_innerFibration")
 Kerodon Theorem 8.5.9.4（[Tag 042G](https://kerodon.net/tag/042G)）。対応表の状態：一部。
 
 *主張*　$`n\geq3` で、冪等射の神経の $`n` 次骨格の包含は、無限圏 $`E` への内部無害射と $`E\to N(\operatorname{Idem})` に分解できる。前者は次元 $`<n` の単体で全単射であり、後者は右逆を持つ。
@@ -946,7 +949,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：単独の�
 
 :::
 
-:::lemma_ "kerodon_8_5_9_11" (lean := "SSet.innerAnodyneExtensions_eq_llp_rlp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.quasicategory_of_innerFibration")
+:::lemma_ "kerodon_8_5_9_11" (lean := "SSet.innerAnodyneExtensions_eq_llp_rlp, CategoryTheory.MorphismProperty.instHasFunctorialFactorizationLlpRlp, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.innerAnodyne_vertex_bijective, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.quasicategory_of_innerFibration")
 Kerodon Lemma 8.5.9.11（[Tag 042Q](https://kerodon.net/tag/042Q)）。対応表の状態：一部。
 
 *主張*　$`n\geq0` で、単体集合 $`K` の次元 $`\leq n` の内部角がすべて延長できるなら、無限圏への内部無害射 $`K\to E` で、次元 $`<n` の単体では全単射となるものが存在する。

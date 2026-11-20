@@ -52,13 +52,12 @@
  ],
  "stats": {
   "mathlib": 39,
-  "linked": 299,
+  "linked": 303,
   "with-statement": 303,
   "with-note": 303,
   "partial": 214,
   "with-note-intro": 17,
   "own": 50,
-  "with-uses": 19,
-  "nolink": 4
+  "with-uses": 19
  }
 }

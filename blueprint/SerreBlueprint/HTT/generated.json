@@ -38,11 +38,10 @@
  ],
  "stats": {
   "partial": 298,
-  "linked": 537,
+  "linked": 543,
   "with-statement": 543,
   "with-note": 543,
   "mathlib": 50,
-  "nolink": 6,
   "own": 195,
   "with-uses": 75,
   "with-note-intro": 12

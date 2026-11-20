@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -40,7 +42,7 @@ tag := "kerodon-8-1"
 
 Kerodon の 8.1 節（[Tag 03JB](https://kerodon.net/tag/03JB)）の項目と、SerrePositivity・Mathlib の宣言との対応。本文は対応表（research/kerodon-coverage）の判定の理由の要約で、Kerodon の本文の写しではない。
 
-:::definition "kerodon_8_1_0_1" (lean := "CategoryTheory.coyoneda, CategoryTheory.Functor.uncurry, CategoryTheory.Functor.Elements, CategoryTheory.Functor.Elements.Hom")
+:::definition "kerodon_8_1_0_1" (lean := "CategoryTheory.coyoneda, CategoryTheory.Functor.uncurry, CategoryTheory.Functor.Elements, CategoryTheory.Functor.Elements.Hom, CategoryTheory.Functor.Elements.instCategory")
 Kerodon Construction 8.1.0.1（[Tag 00AZ](https://kerodon.net/tag/00AZ)）。対応表の状態：Mathlib にある。
 
 *主張*　通常の圏 $`C` のねじれ矢印圏の対象は射 $`f:x\to y` であり、$`f` から $`f':x'\to y'` への射は $`f'=vfu` となる $`u:x'\to x,v:y\to y'` の組である。合成は始域側を逆順、終域側を順に合成する。

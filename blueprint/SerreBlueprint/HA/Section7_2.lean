@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -96,7 +98,7 @@ tag := "ha-7-2-3"
 
 :::
 
-:::proposition "ha_7_2_3_2"
+:::proposition "ha_7_2_3_2" (lean := "OreLocalization.oreSetComm")
 *HA 注意 7.2.3.2*　Localizations and Ore Conditions (p. 1248)（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=1248)）。対応表の状態：一部（special）。
 
 *主張*　分母の集合が環の中心に含まれれば、左 Ore 条件の共通倍と消滅に関する条件は自動的に成り立つ。
@@ -104,8 +106,6 @@ tag := "ha-7-2-3"
 KB-W2原文・型再照合：仮定：通常の可換環と任意の部分モノイド（Lean が強い：環全体が可換な場合）。結論：左 Ore 条件の instance を構成する（HA の可換環の場合に一致）。非可換環の中心に含まれる場合の一般化は含まれない。
 
 $`sx=xs` なので共通倍では $`t=s,y=x` を選べる。右から $`s` を掛けて零になる場合も、左から同じ $`s` を掛ければ零になる。
-
-宣言：`OreLocalization.oreSetComm`
 
 :::
 

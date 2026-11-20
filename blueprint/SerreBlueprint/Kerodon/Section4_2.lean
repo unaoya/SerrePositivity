@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -364,14 +366,12 @@ $`X` が quasicategory で $`x` が始対象なら $`\{x\}\hookrightarrow X` は
 
 逆向き（包含が left anodyne なら始対象）も成り立ち同値だが、直接の議論では示せず、left anodyne ⇒ left cofinal と Quillen の定理 A（$`\{x\}\times_XX_{/y}\simeq\mathrm{Hom}^R(x,y)` が弱可縮）を経由する。fibration 版 Yoneda に要るのは「始対象 ⇒ left anodyne」の向きだけで、スライスの場合は式で済む。
 
-:::proposition "kerodon_4_2_5_1"
+:::proposition "kerodon_4_2_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_pullbackObjObjπ, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalRightFibration_pullbackObjObjπ")
 Kerodon Proposition 4.2.5.1（[Tag 00TP](https://kerodon.net/tag/00TP)）。対応表の状態：本体にある。
 
 *主張*　単射 $`A\to B` と単体集合の射 $`X\to S` に対し、相対制限 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(A,X)` は、$`X\to S` が左ファイブレーションなら左ファイブレーションであり、右ファイブレーションなら右ファイブレーションである。
 
 仮定：単体集合の単射 i と左または右ファイブレーション p、内部 Hom の引き戻しの選択（Kerodon と一致）。結論：内部 Hom の制限比較射 π が p と同じ側のファイブレーション（一致）。
-
-宣言：`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibration_pullbackObjObjπ`、`SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.cofinalRightFibration_pullbackObjObjπ`
 
 :::
 

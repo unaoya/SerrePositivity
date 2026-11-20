@@ -1,12 +1,16 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.Basic
 import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated
+import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory
 import Mathlib.AlgebraicTopology.SimplexCategory.Rev
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated
 import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
+import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 import Mathlib.AlgebraicTopology.SimplicialSet.Op
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
@@ -126,14 +130,12 @@ Kerodon Proposition 1.4.2.6（[Tag 003S](https://kerodon.net/tag/003S)）。対�
 
 :::
 
-:::definition "kerodon_1_4_2_8"
+:::definition "kerodon_1_4_2_8" (lean := "SSet.instKanComplexOp")
 Kerodon Variant 1.4.2.8（[Tag 050H](https://kerodon.net/tag/050H)）。対応表の状態：Mathlib にある。
 
 *主張*　Kan 複体の反対単体的集合は Kan 複体である。
 
 仮定：Kan 複体 X（Kerodon と一致）。結論：instKanComplexOp は X.op の KanComplex インスタンスを与える（一致）。
-
-宣言：`SSet.instKanComplexOp`
 
 :::
 
@@ -155,7 +157,7 @@ Kerodon Definition 1.4.3.1（[Tag 003V](https://kerodon.net/tag/003V)）。対�
 
 :::
 
-:::proposition "kerodon_1_4_3_5" (lean := "SSet.Truncated.HomotopicL.refl, SSet.Truncated.HomotopicL.symm, SSet.Truncated.HomotopicL.trans")
+:::proposition "kerodon_1_4_3_5" (lean := "SSet.Truncated.HomotopicL.refl, SSet.Truncated.HomotopicL.symm, SSet.Truncated.HomotopicL.trans, SSet.instQuasicategory₂ObjTruncatedOfNatNatTruncationOfQuasicategory")
 Kerodon Proposition 1.4.3.5（[Tag 003Z](https://kerodon.net/tag/003Z)）。対応表の状態：Mathlib にある。
 
 *主張*　任意の $`\infty` 圏で、始点・終点を固定した射の集合上のホモトピーは同値関係である。
@@ -200,7 +202,7 @@ Kerodon Definition 1.4.4.1（[Tag 0042](https://kerodon.net/tag/0042)）。対�
 
 :::
 
-:::proposition "kerodon_1_4_4_2" (lean := "SSet.Truncated.Edge.CompStruct.comp_unique, SSet.Truncated.Edge.CompStruct.nonempty_iff")
+:::proposition "kerodon_1_4_4_2" (lean := "SSet.Truncated.Quasicategory₂.fill21, SSet.Truncated.Edge.CompStruct.comp_unique, SSet.instQuasicategory₂ObjTruncatedOfNatNatTruncationOfQuasicategory, SSet.Truncated.Edge.CompStruct.nonempty_iff")
 Kerodon Proposition 1.4.4.2（[Tag 0043](https://kerodon.net/tag/0043)）。対応表の状態：Mathlib にある。
 
 *主張*　$`\infty` 圏の連続する二射には合成が存在し、ある合成と平行な射も合成であることと、その合成とホモトピックであることは同値である。
@@ -251,14 +253,12 @@ Kerodon Construction 1.4.5.1（[Tag 004A](https://kerodon.net/tag/004A)）。対
 
 :::
 
-:::proposition "kerodon_1_4_5_2"
+:::proposition "kerodon_1_4_5_2" (lean := "SSet.Truncated.instCategoryHomotopyCategory₂")
 Kerodon Proposition 1.4.5.2（[Tag 004B](https://kerodon.net/tag/004B)）。対応表の状態：Mathlib にある。
 
 *主張*　$`\infty` 圏の射のホモトピー類の合成は結合的で、恒等射の類が両側単位元となる。
 
 仮定：準圏 X（Kerodon と一致。Lean は 2 切断で圏構造を作る）。結論：instCategoryHomotopyCategory₂ の assoc と id\_comp・comp\_id が、辺の類の合成の結合律と恒等辺の類の左右単位律を与える（一致）。
-
-宣言：`SSet.Truncated.instCategoryHomotopyCategory₂`
 
 :::
 

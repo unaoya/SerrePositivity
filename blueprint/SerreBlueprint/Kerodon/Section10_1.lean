@@ -1,9 +1,12 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Basic
 import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 import Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory
+import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -263,7 +266,7 @@ B6再照合：既成の単体的対象の面恒等式はある。次数 −1 を
 
 :::
 
-:::definition "kerodon_10_1_2_28" (lean := "AugmentedSimplexCategory")
+:::definition "kerodon_10_1_2_28" (lean := "AugmentedSimplexCategory, CategoryTheory.SimplicialObject.δ_comp_δ, CategoryTheory.SimplicialObject.σ_comp_σ, CategoryTheory.SimplicialObject.δ_comp_σ_of_le, CategoryTheory.SimplicialObject.δ_comp_σ_of_gt")
 Kerodon Variant 10.1.2.28（[Tag 04S3](https://kerodon.net/tag/04S3)）。対応表の状態：一部。
 
 *主張*　通常の圏で $`n\geq-1` の対象列 $`X_n` に面と退化の候補を与える。それらが増大単体対象を定めることは、面同士、退化同士、面と退化の標準単体恒等式を、増大写像 $`X_0\to X_{-1}` を含めて満たすことと同値であり、その増大単体対象は一意である。

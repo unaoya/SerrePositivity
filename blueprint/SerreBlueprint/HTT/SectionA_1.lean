@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -202,7 +204,7 @@ tag := "htt-A-1-3"
 
 :::
 
-:::proposition "htt_A_1_3_7" (lean := "CategoryTheory.Functor.OplaxMonoidal.ofChosenFiniteProducts")
+:::proposition "htt_A_1_3_7" (lean := "CategoryTheory.Functor.OplaxMonoidal.ofChosenFiniteProducts, CategoryTheory.Functor.Monoidal.nonempty_monoidal_iff_preservesFiniteProducts")
 *HTT 例 A.1.3.7*　有限積保存とモノイダル関手（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=813)）。対応表の状態：Mathlib にある。
 
 *主張*　デカルト・モノイダル構造を持つ圏の間の任意の関手は標準的な左 lax 構造を持ち、それがモノイダル関手となることは有限積保存と同値である。

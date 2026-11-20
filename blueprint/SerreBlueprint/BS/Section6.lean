@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -127,8 +129,6 @@ $`\widehat b^*\overline\Delta_{R/A}\simeq\widehat c^*\overline\Delta_{\mathbb F_
 
 D30：単体的可換環 $`E=A\widehat\otimes^L_{A_0}D_0` は作らず、$`\widehat b^*:=\widehat a^*\circ\mathrm{Res}_{A_0}`、$`\widehat c^*:=\widehat a^*\circ\mathrm{Res}_{A_0}\circ(-\otimes^L_{\mathbb Z_p}A)` と通常の環の底変換と制限の合成で書く。D5：Lean の対象は向き付き prism だけなので、最後の段（Lemma 3.7(4) による帰着）は要らない。Lean の主張は Čech–Alexander 模型のコホモロジーについてのもの（定理 6.1.3 の D27）。
 
-宣言：`hodgeTate_iso_of_construction61`、`affineLine_moduleComparison`、`hodgeTate_iso`、`bockstein_sq_zero'`
-
 :::
 
 :::theorem "bs_6_3"
@@ -160,7 +160,7 @@ $$`\eta:\bigoplus_{i=0}^n\Omega^i_{R/(A/I)}\{-i\}[-i]\to\overline\Delta_{R/A}`
 
 D29：主張は最初から $`r` 変数の完備多項式代数についてで、定理の範囲を多項式代数に絞る。D24：滑らかな代数・形式スキームへの延長（étale 局所化）は述べない。D27：$`H^*(\overline\Delta)` とその環構造は Čech–Alexander 模型の上で述べる（定義 4.2.1 から参照）。
 
-宣言：`hodgeTate_iso`、`SerrePositivity.BhattScholze.Prismatic.HodgeTateIsoStatement`、`SerrePositivity.BhattScholze.Prismatic.hodgeTateMap`
+宣言：`SerrePositivity.BhattScholze.Prismatic.HodgeTateIsoStatement`、`SerrePositivity.BhattScholze.Prismatic.hodgeTateMap`
 
 :::
 

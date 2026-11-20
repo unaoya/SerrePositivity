@@ -14,9 +14,9 @@
  ],
  "stats": {
   "none": 117,
-  "nolink": 118,
+  "nolink": 117,
   "own": 4,
-  "linked": 29,
+  "linked": 30,
   "with-statement": 30,
   "partial": 20,
   "interface": 6

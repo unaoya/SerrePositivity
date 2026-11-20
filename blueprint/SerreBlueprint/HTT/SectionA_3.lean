@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -175,7 +177,7 @@ number := false
 tag := "htt-A-3-7"
 %%%
 
-:::corollary "htt_A_3_7_2" (lean := "SerrePositivity.Quillen.isRightQuillen_of_isLeftQuillen, SerrePositivity.Quillen.isFibrant_obj")
+:::corollary "htt_A_3_7_2" (lean := "SerrePositivity.Quillen.IsLeftQuillen.map_cofibrations, SerrePositivity.Quillen.isRightQuillen_of_isLeftQuillen, SerrePositivity.Quillen.isFibrant_obj")
 *HTT 系 A.3.7.2*　キレン随伴からの cofibration と fibrant 保存（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=926)）。対応表の状態：一部（direction）。
 
 *主張*　終域が左固有な単体的モデル圏の間の単体的随伴は、左随伴が余ファイブレーションを保ち、右随伴がファイブラント対象を保つとき、かつそのときに限って Quillen 随伴である。

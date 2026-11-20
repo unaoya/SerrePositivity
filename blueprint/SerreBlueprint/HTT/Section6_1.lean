@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -113,7 +115,7 @@ $`\Delta^{\mathrm{op}}` も通常圏であるため、その nerve から $`N(\m
 
 :::
 
-:::definition "htt_6_1_2_5" (lean := "CategoryTheory.Functor.Elements, CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence")
+:::definition "htt_6_1_2_5" (lean := "CategoryTheory.Functor.Elements, CategoryTheory.Functor.Elements.π, CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence")
 *HTT 記法 6.1.2.5*　単体の圏と増大図式の記法（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=556)）。対応表の状態：一部（component）。
 
 *主張*　$`\Delta/K` は $`K` の単体とその間の単体写像の可換三角形からなる圏で、$`U[K]` は単体的対象 $`U` をこの添字圏の反対圏の nerve へ制限した図式である。
