@@ -4,7 +4,7 @@
   nohup python3 scripts/coord/merge_check.py <出力ディレクトリ> "<ラベル>" > <出力ディレクトリ>/merge.out 2>&1 &
 鍵 coord を短い塊で取り直しながら、root → 監査の対象 → 監査の束（並列 6）→ sorry の閉包。失敗したら STOP を書いて止まる。
 最後の行が MERGE-CHECKS-DONE なら全部通った。前回の束の結果（<出力ディレクトリ>/*-batch-*.json）があれば、所要時間の見積もりに使う。
-検証中は $TMPDIR/serre-lake-build.day-capacity を 1 に、終わったら 2 に戻す（手で）。"""
+検証中も $TMPDIR/serre-lake-build.day-capacity は 2 のまま（11-20 改め：レーンの対象を絞ったビルドは検証と並べてよい。64 GB・10 コアで、監査 2 本のとき空きは 77% だった）。1 に絞るのは、レーンが全体（約 3 万モジュール）を建て直す作業をしているときだけ。監査の組が時間切れ（1 組 25 分）になったら、その組だけやり直す。"""
 import json, os, re, subprocess, sys, time, pathlib
 MAIN = pathlib.Path(__file__).resolve().parents[2]; MERGE = MAIN
 S = pathlib.Path(sys.argv[1]).resolve(); S.mkdir(parents=True, exist_ok=True)

@@ -38,7 +38,7 @@
 
 ## 3. 道具（`scripts/coord/`、11-19 に main へ）
 
-- `merge_check.py <出力> "<ラベル>"`：未コミットの merge を作った後に nohup で。root → 監査の対象 → 全監査（並列 6）→ sorry の閉包。最後が `MERGE-CHECKS-DONE` なら通過。前回の束の所要時間は `~/serre-evidence/coord/a3-merge/run-batch-*.json` を出力ディレクトリに写すと見積もりに使う。検証中は `$TMPDIR/serre-lake-build.day-capacity` を 1、終わったら 2。実測：IC-1（場所の移動あり）約 6 時間、③-a（追加だけ）36 分。
+- `merge_check.py <出力> "<ラベル>"`：未コミットの merge を作った後に nohup で。root → 監査の対象 → 全監査（並列 6）→ sorry の閉包。最後が `MERGE-CHECKS-DONE` なら通過。前回の束の所要時間は `~/serre-evidence/coord/a3-merge/run-batch-*.json` を出力ディレクトリに写すと見積もりに使う。検証中も `$TMPDIR/serre-lake-build.day-capacity` は 2 のまま（11-20 改め：レーンの対象を絞ったビルドは検証と並べてよい。64 GB・10 コアで、監査 2 本のとき空きは 77% だった）。1 に絞るのは、レーンが全体（約 3 万モジュール）を建て直す作業をしているときだけ。監査の組が時間切れ（1 組 25 分）になったら、その組だけやり直す。実測：IC-1（場所の移動あり）約 6 時間、③-a（追加だけ）36 分。
 - `blueprint_build.py`：ブループリントの Lean を塊で建て、`lake exe vbp build`。その後 `rsync -a --delete blueprint/_out/site/html-multi/ ../SerrePositivity-blueprint-site/` と `python3 blueprint/scripts/style_site.py ../SerrePositivity-blueprint-site`。生成は `blueprint/scripts/gen_paper.py`、`gen_cited.py clmst bs vdescent`、`gen_kerodon.py 1`〜`10`、`gen_lurie.py htt ha`、`gen_blueprint.py` の順。
 - `serve_nocache.py <サイト>`：プレビュー（127.0.0.1:8790）。移動で止まるので、新しい場所で起動し直す。
 - 新しい模型の 75 モジュールのように、root から届かないモジュールが枝で増えたら、取り込みのときに入口（`InfinityCategories/Project/Entrypoints/…`）へ登録する。
