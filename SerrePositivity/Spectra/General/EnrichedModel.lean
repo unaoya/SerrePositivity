@@ -28,24 +28,8 @@ lemma pointwiseTensor_isQuillen : IsQuillenBifunctor (pointwiseTensorBifunctor (
       curriedTensor (GeneralSymmetricSpectrum C K)) := isQuillenBifunctor_restrict _
   exact isQuillenBifunctor_of_natIso tensorFreeZeroPointwiseBifunctorIso
 
-lemma cotensor_hasQuillenPullbackHom : HasQuillenPullbackHom (cotensorBifunctor (K := K)) :=
-  (isQuillenBifunctor_iff_pullbackHom pointwiseTensorCotensorParametrizedAdjunction).1
-    pointwiseTensor_isQuillen
-
-lemma mappingObject_hasQuillenPullbackHom :
-    HasQuillenPullbackHom (mappingObjectBifunctor (K := K)) := by
-  let : IsQuillenBifunctor (pointwiseTensorBifunctor (K := K)) := pointwiseTensor_isQuillen
-  exact (isQuillenBifunctor_iff_pullbackHom pointwiseTensorMappingParametrizedAdjunction).1
-    inferInstance
-
 local instance enrichedModelOrdinaryCategory : EnrichedOrdinaryCategory C
     (GeneralSymmetricSpectrum C K) :=
   mappingEnrichedOrdinaryCategory
-
-/-- SM7 for Mathlib's enriched Hom functor with the chosen ordinary category. -/
-lemma enrichedHom_hasQuillenPullbackHom :
-    HasQuillenPullbackHom (eHomFunctor C (GeneralSymmetricSpectrum C K)) :=
-  (Enriched.tensor_iff_mapping_model (spectrumTensorCotensor (K := K))).1
-    pointwiseTensor_isQuillen
 
 end SerrePositivity.GeneralSymmetricSpectrum

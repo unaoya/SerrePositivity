@@ -1,10 +1,7 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
+public import SerrePositivity.Spectra.SymmetricSpectrum.Basic
 public import SerrePositivity.Spectra.General.TensorClosed
-public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
-public import SerrePositivity.Spectra.SymmetricSpectrum.Free
-public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.PullbackObjObj
 public import Mathlib.CategoryTheory.Adjunction.Limits
 

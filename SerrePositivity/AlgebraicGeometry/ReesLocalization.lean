@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ReesMap
 public import Mathlib.RingTheory.Localization.Ideal
 public import Mathlib.RingTheory.Localization.Algebra

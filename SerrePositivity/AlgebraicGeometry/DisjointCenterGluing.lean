@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.DisjointOpenCenters
 public import SerrePositivity.AlgebraicGeometry.DisjointOpenCoverClosed
 public import SerrePositivity.AlgebraicGeometry.IdealComplementPullback

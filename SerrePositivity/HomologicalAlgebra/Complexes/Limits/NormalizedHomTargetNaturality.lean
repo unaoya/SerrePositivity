@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncationInclusionNaturality
+public import SerrePositivity.HomologicalAlgebra.ComplexLimits.TruncationInclusionNaturality
 public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.NormalizedSimplexTensorHom
 
 /-!

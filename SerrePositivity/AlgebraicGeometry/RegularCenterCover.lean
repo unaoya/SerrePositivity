@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ChartRegularLift
 public import Mathlib.RingTheory.Spectrum.Prime.Topology
 

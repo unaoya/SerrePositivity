@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction
 public import Mathlib.CategoryTheory.Opposites
 

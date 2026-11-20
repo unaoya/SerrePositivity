@@ -1,6 +1,8 @@
 -- lake build SerrePositivity.Spectra.StageTwo の後に実行する。
--- 段階2の入口だけから、計画の最終確認に指定したAPIを利用できることを検証する。
+-- 段階2の入口で公開する API を、一般の単体的豊穣構造と作用の比較を使って検証する。
 import SerrePositivity.Spectra.StageTwo
+import SerrePositivity.CategoryTheory.Enriched.Simplicial
+import SerrePositivity.CategoryTheory.Monoidal.Action
 
 universe u
 
@@ -14,8 +16,8 @@ open SerrePositivity SerrePositivity.SymmetricSpectrum
 open SerrePositivity.GeneralSymmetricSpectrum (level suspensionMap adjointStructureMap
   adjointStructureMap_naturality pointwiseTensorAssociator
   pointwiseTensorAssociator_level pointwiseTensorAssociator_parameter_naturality
-  pointwiseTensorUnitIso pointwiseTensorUnitIso_level
-  pointwiseTensorPentagonLaw pointwiseTensor_pentagon pointwiseTensorTriangleLaw
+  pointwiseTensorUnitIso
+  pointwiseTensorPentagonLaw pointwiseTensorTriangleLaw
   pointwiseTensor_triangle pointwiseTensorLeftUnitLaw pointwiseTensor_left_unit)
 open SerrePositivity.PointedSimplicialSet
   (adjoinBasepointFunctor adjoinBasepointProductIso adjoinBasepointProductIso_inv_naturality)
@@ -27,14 +29,26 @@ example (X : PointedSimplicialSet.{u}) : pointwiseTensorFunctor X ⊣ cotensorFu
 
 example (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorUnitIso E).hom.hom.app (FiniteBijection.of q) =
-      (λ_ (level E q)).hom := pointwiseTensorUnitIso_level E q
+      (λ_ (level E q)).hom := by
+  have unitAtLevel {D : Type (u + 1)} [Category.{u} D] [MonoidalCategory D]
+      [SymmetricCategory D] [MonoidalClosed D] [Limits.HasColimitsOfSize.{0, 0} D]
+      [Limits.HasLimitsOfSize.{0, 0} D] {K : D}
+      (F : GeneralSymmetricSpectrum D K) (j : ℕ) :
+      (pointwiseTensorUnitIso F).hom.hom.app (FiniteBijection.of j) = (λ_ (level F j)).hom :=
+    SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
+      (SymmetricSequence.tensorPowerSequence K) F j
+  exact unitAtLevel E q
 
 example (X Y : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorAssociator X Y E).hom.hom.app (FiniteBijection.of q) =
       (α_ X Y (level E q)).hom := pointwiseTensorAssociator_level X Y E q
 
 example (X Y Z : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
-    pointwiseTensorPentagonLaw X Y Z E := pointwiseTensor_pentagon X Y Z E
+    pointwiseTensorPentagonLaw X Y Z E :=
+  SymmetricSequence.pointwiseAction_pentagon
+    (SymmetricSequence.tensorPowerSequence PointedSimplicialSet.circle.{u})
+    pointwiseTensorAssociator GeneralSymmetricSpectrum.pointwiseTensorPost
+    pointwiseTensorAssociator_level GeneralSymmetricSpectrum.pointwiseTensorPost_level X Y Z E
 
 example (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     pointwiseTensorTriangleLaw X E := pointwiseTensor_triangle X E
@@ -127,7 +141,8 @@ example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpect
     (fun F => simplicialCotensorPre (f ⊗ₘ g) F)
     ?_ ?_ ?_ E
   · intro F G h
-    exact simplicialTensorCotensorHomEquiv_post (f ⊗ₘ g) h
+    exact GeneralSymmetricSpectrum.pointwiseTensorHomEquiv_naturality_parameter
+      (adjoinBasepointFunctor.map (f ⊗ₘ g)) _ _ h
   · intro F G h
     exact ActionComparisonNaturality.composite_pre
       (simplicialTensorCotensorAdjunction L) (simplicialTensorCotensorAdjunction L')
@@ -136,8 +151,10 @@ example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpect
       (pointwiseTensorBifunctor.map (adjoinBasepointFunctor.map f))
       (cotensorAction.map (adjoinBasepointFunctor.map g).op)
       (cotensorAction.map (adjoinBasepointFunctor.map f).op)
-      (fun _ _ h => simplicialTensorCotensorHomEquiv_post g h)
-      (fun _ _ h => simplicialTensorCotensorHomEquiv_post f h) F G h
+      (fun _ _ h => GeneralSymmetricSpectrum.pointwiseTensorHomEquiv_naturality_parameter
+        (adjoinBasepointFunctor.map g) _ _ h)
+      (fun _ _ h => GeneralSymmetricSpectrum.pointwiseTensorHomEquiv_naturality_parameter
+        (adjoinBasepointFunctor.map f) _ _ h) F G h
   · intro F
     exact ActionProductComparison.parameter adjoinBasepointFunctor.{u} pointwiseTensorBifunctor.{u}
       pointwiseTensorAssociatorNatIso.{u} adjoinBasepointProductIso.{u} f g F
@@ -147,8 +164,7 @@ example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpect
 
 -- 円による随伴は、転置・逆転置が互いに逆となる実際の随伴。
 example : suspensionFunctor.{u} ⊣
-    GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u})
-      PointedSimplicialSet.circle := suspensionLoopAdjunction
+    loopFunctor.{u} := suspensionLoopAdjunction
 
 example (E F : SymmetricSpectrum.{u}) (f : suspensionFunctor.obj E ⟶ F) :
     ((suspensionLoopAdjunction.homEquiv E F).symm
@@ -162,8 +178,7 @@ example (E : SymmetricSpectrum.{u}) :
   suspensionLoopAdjunction.left_triangle_components E
 
 example (E : SymmetricSpectrum.{u}) :
-    let R := GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u})
-      PointedSimplicialSet.circle
+    let R := loopFunctor.{u}
     suspensionLoopAdjunction.unit.app (R.obj E) ≫
       R.map (suspensionLoopAdjunction.counit.app E) = 𝟙 (R.obj E) :=
   suspensionLoopAdjunction.right_triangle_components E
@@ -181,7 +196,7 @@ example (E : SymmetricSpectrum.{u}) (q : ℕ) :
 -- 構造射の転置は同じ n+1 段の射へ戻り、スペクトル射とも両立する。
 example (E : SymmetricSpectrum.{u}) (n : ℕ) :
     uncurry (adjointStructureMap E n) = suspensionMap E n :=
-  GeneralSymmetricSpectrum.uncurry_adjointStructureMap E n
+  MonoidalClosed.uncurry_curry (suspensionMap E n)
 
 example (E : SymmetricSpectrum.{u}) (n : ℕ) :
     curry (uncurry (adjointStructureMap E n)) = adjointStructureMap E n :=

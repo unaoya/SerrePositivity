@@ -1903,7 +1903,7 @@ import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveHornW
 import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightComparison
 import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightRestriction
 import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightTensorLifting
-import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorConeUnitPoint
+import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.FrameConeClasses
 import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.WeightIntervalBoundary
 import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.WeightedSourceHomotopy
 import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockPinchedSimplexValue
@@ -4111,7 +4111,6 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightComparison,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightRestriction,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.ProjectiveWeightTensorLifting,
-    `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.TensorConeUnitPoint,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.WeightIntervalBoundary,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.WeightedSourceHomotopy,
     `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.SimplicialLocalization.KanHammockPinchedSimplexValue,

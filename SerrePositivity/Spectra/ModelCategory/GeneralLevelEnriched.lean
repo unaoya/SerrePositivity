@@ -35,8 +35,11 @@ lemma general_levelEnriched_model :
       HasQuillenPullbackHom (eHomFunctor C (GeneralSymmetricSpectrum C K)) ∧
       HasQuillenPullbackHom (spectrumTensorCotensor (K := K)).cotensor := by
   have := general_levelTensor_isQuillen K I J
-  exact ⟨pointwiseTensor_isQuillen, enrichedHom_hasQuillenPullbackHom,
-    cotensor_hasQuillenPullbackHom⟩
+  exact ⟨pointwiseTensor_isQuillen,
+    (Enriched.tensor_iff_mapping_model (spectrumTensorCotensor (K := K))).1
+      pointwiseTensor_isQuillen,
+    (isQuillenBifunctor_iff_pullbackHom pointwiseTensorCotensorParametrizedAdjunction).1
+      pointwiseTensor_isQuillen⟩
 
 omit [IsQuillenBifunctor (curriedTensor C)]
   [∀ n : ℕ, IsLeftQuillen (freeAt (K := K) n)] in

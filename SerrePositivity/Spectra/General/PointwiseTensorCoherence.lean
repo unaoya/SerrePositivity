@@ -20,19 +20,6 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
 abbrev pointwiseTensorPost {X Y : C} (f : X ⟶ Y) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensor X E ⟶ pointwiseTensor Y E := (pointwiseTensorBifunctor.map f).app E
 
-/-- The free-zero comparison is natural in the tensor parameter. -/
-@[reassoc] lemma tensorFreeZeroPointwiseIso_post {X Y : C} (f : X ⟶ Y)
-    (E : GeneralSymmetricSpectrum C K) :
-    ((freeAt (K := K) 0).map f ▷ E) ≫ (tensorFreeZeroPointwiseIso Y E).hom =
-      (tensorFreeZeroPointwiseIso X E).hom ≫ pointwiseTensorPost f E := by
-  exact congrArg (fun k => k.app E) (tensorFreeZeroPointwiseBifunctorIso.hom.naturality f)
-
-lemma pointwiseTensorAssociator_inv_level (X Y : C) (E : GeneralSymmetricSpectrum C K)
-    (n : ℕ) : (pointwiseTensorAssociator X Y E).inv.hom.app (FiniteBijection.of n) =
-      (α_ X Y (level E n)).inv :=
-  SymmetricSequence.pointwiseTensorModuleAssociator_inv_level
-    (SymmetricSequence.tensorPowerSequence K) X Y E n
-
 /-- The parameter map is the ordinary tensor map at every level. -/
 lemma pointwiseTensorPost_level {X Y : C} (f : X ⟶ Y)
     (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
@@ -80,30 +67,9 @@ lemma pointwiseTensorPost_level {X Y : C} (f : X ⟶ Y)
 abbrev pointwiseTensorUnitIso (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensor (𝟙_ C) E ≅ E := pointwiseTensorUnitNatIso.app E
 
-lemma pointwiseTensorUnitIso_level (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
-    (pointwiseTensorUnitIso E).hom.hom.app (FiniteBijection.of n) =
-      (λ_ (level E n)).hom :=
-  SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
-    (SymmetricSequence.tensorPowerSequence K) E n
-
 abbrev pointwiseTensorPentagonLaw (X Y Z : C) (E : GeneralSymmetricSpectrum C K) : Prop :=
   SymmetricSequence.pointwiseActionPentagonLaw (SymmetricSequence.tensorPowerSequence K)
     pointwiseTensorAssociator pointwiseTensorPost X Y Z E
-
-lemma pointwiseTensor_pentagon (X Y Z : C) (E : GeneralSymmetricSpectrum C K) :
-    pointwiseTensorPentagonLaw X Y Z E :=
-  SymmetricSequence.pointwiseAction_pentagon (SymmetricSequence.tensorPowerSequence K)
-    pointwiseTensorAssociator pointwiseTensorPost pointwiseTensorAssociator_level
-    pointwiseTensorPost_level X Y Z E
-
-/-- The action pentagon expressed using the bifunctor and its natural associator. -/
-lemma pointwiseTensorBifunctor_pentagon (X Y Z : C) (E : GeneralSymmetricSpectrum C K) :
-    (pointwiseTensorBifunctor.map (α_ X Y Z).hom).app E ≫
-      (pointwiseTensorAssociatorNatIso X (Y ⊗ Z)).hom.app E ≫
-        (pointwiseTensorBifunctor.obj X).map ((pointwiseTensorAssociatorNatIso Y Z).hom.app E) =
-    (pointwiseTensorAssociatorNatIso (X ⊗ Y) Z).hom.app E ≫
-      (pointwiseTensorAssociatorNatIso X Y).hom.app ((pointwiseTensorBifunctor.obj Z).obj E) :=
-  pointwiseTensor_pentagon X Y Z E
 
 abbrev pointwiseTensorTriangleLaw (X : C) (E : GeneralSymmetricSpectrum C K) : Prop :=
   SymmetricSequence.pointwiseActionTriangleLaw (SymmetricSequence.tensorPowerSequence K)
@@ -113,7 +79,9 @@ lemma pointwiseTensor_triangle (X : C) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensorTriangleLaw X E :=
   SymmetricSequence.pointwiseAction_triangle (SymmetricSequence.tensorPowerSequence K)
     pointwiseTensorAssociator pointwiseTensorUnitIso pointwiseTensorPost
-    pointwiseTensorAssociator_level pointwiseTensorUnitIso_level pointwiseTensorPost_level X E
+    pointwiseTensorAssociator_level
+    (SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
+      (SymmetricSequence.tensorPowerSequence K)) pointwiseTensorPost_level X E
 
 abbrev pointwiseTensorLeftUnitLaw (X : C) (E : GeneralSymmetricSpectrum C K) : Prop :=
   SymmetricSequence.pointwiseActionLeftUnitLaw (SymmetricSequence.tensorPowerSequence K)
@@ -123,21 +91,9 @@ lemma pointwiseTensor_left_unit (X : C) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensorLeftUnitLaw X E :=
   SymmetricSequence.pointwiseAction_left_unit (SymmetricSequence.tensorPowerSequence K)
     pointwiseTensorAssociator pointwiseTensorUnitIso pointwiseTensorPost
-    pointwiseTensorAssociator_level pointwiseTensorUnitIso_level pointwiseTensorPost_level X E
-
-/-- The action triangle expressed using the bifunctor and its unit and associator. -/
-lemma pointwiseTensorBifunctor_triangle (X : C) (E : GeneralSymmetricSpectrum C K) :
-    (pointwiseTensorAssociatorNatIso X (𝟙_ C)).hom.app E ≫
-      (pointwiseTensorBifunctor.obj X).map (pointwiseTensorUnitNatIso.hom.app E) =
-        (pointwiseTensorBifunctor.map (ρ_ X).hom).app E :=
-  pointwiseTensor_triangle X E
-
-/-- The left unit law expressed using the bifunctor and its unit and associator. -/
-lemma pointwiseTensorBifunctor_left_unit (X : C) (E : GeneralSymmetricSpectrum C K) :
-    (pointwiseTensorAssociatorNatIso (𝟙_ C) X).hom.app E ≫
-      pointwiseTensorUnitNatIso.hom.app ((pointwiseTensorBifunctor.obj X).obj E) =
-        (pointwiseTensorBifunctor.map (λ_ X).hom).app E :=
-  pointwiseTensor_left_unit X E
+    pointwiseTensorAssociator_level
+    (SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
+      (SymmetricSequence.tensorPowerSequence K)) pointwiseTensorPost_level X E
 
 lemma pointwiseTensorAssociator_parameter_naturality {X X' Y Y' : C}
     (f : X ⟶ X') (g : Y ⟶ Y') (E : GeneralSymmetricSpectrum C K) :

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.LocalPresentationKernel
 public import SerrePositivity.AlgebraicGeometry.SplitMatrixMinorIdeal
 public import Mathlib.LinearAlgebra.Matrix.ToLin

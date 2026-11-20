@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity
 public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence

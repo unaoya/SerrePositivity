@@ -28,11 +28,6 @@ def spectrumTensorCotensor : Enriched.TensorCotensor C (GeneralSymmetricSpectrum
   tensorHom := ParametrizedAdjunctionTransport.right
     pointwiseTensorMappingParametrizedAdjunction mappingEnrichedHomFunctorIso.symm
 
-/-- The receiver uses the previously constructed tensor/cotensor Hom equivalence. -/
-lemma spectrumTensorCotensor_tensorCotensorHomEquiv (X : C)
-    (E F : GeneralSymmetricSpectrum C K) :
-    spectrumTensorCotensor.tensorCotensorHomEquiv X E F = pointwiseTensorHomEquiv X E F := rfl
-
 /-- The enriched-Hom comparison has identity components, so generalized points
 use the previously constructed mapping-object Hom equivalence. -/
 lemma spectrumTensorCotensor_tensorHomEquiv (X : C)

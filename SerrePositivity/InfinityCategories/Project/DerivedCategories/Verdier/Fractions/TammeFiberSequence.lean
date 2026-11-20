@@ -2,7 +2,6 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.TammeSplitting

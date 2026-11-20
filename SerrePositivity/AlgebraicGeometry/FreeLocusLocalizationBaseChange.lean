@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FreeStalkRankBaseChange
 public import Mathlib.RingTheory.Localization.AtPrime.Extension
 

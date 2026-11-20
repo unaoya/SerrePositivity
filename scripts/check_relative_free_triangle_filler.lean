@@ -84,7 +84,7 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceBoundaryExt,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathDegeneracyImage,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleDegeneracyParameters,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.TriangleDegeneracyParameters,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeTriangleDegeneracy,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeTriangleFiller]
   let mut count : Nat := 0

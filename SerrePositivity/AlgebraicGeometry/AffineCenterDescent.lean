@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.IndexedNumeratorIdeal
 public import SerrePositivity.AlgebraicGeometry.BlowupChartIdeals
 public import SerrePositivity.AlgebraicGeometry.GeneratorChartCover

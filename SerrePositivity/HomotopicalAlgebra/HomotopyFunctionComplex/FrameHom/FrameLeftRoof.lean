@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofRightIdentity
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import Mathlib.CategoryTheory.Elements
 public import Mathlib.CategoryTheory.Category.ULift
 

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceSubsets
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Cubes.CubeVertexMaps
 

@@ -47,34 +47,6 @@ abbrev level (E : GeneralSymmetricSpectrum C K) (n : ℕ) : C :=
 def action (E : GeneralSymmetricSpectrum C K) :
     (tensorPowerSequence K) ⊗ E.X ⟶ E.X :=
   ModObj.smul (M := (tensorPowerSequence K)) (X := E.X)
-/-- 加群作用の単位則。 -/
-lemma action_unit (E : GeneralSymmetricSpectrum C K) :
-    (tensorPowerUnitHom K) ▷ E.X ≫ action E = (λ_ E.X).hom :=
-  ModObj.one_smul_self (tensorPowerSequence K) E.X
-/-- 加群作用の結合則。 -/
-lemma action_assoc (E : GeneralSymmetricSpectrum C K) :
-    (tensorPowerMultiplication K) ▷ E.X ≫ action E =
-      (α_ (tensorPowerSequence K) (tensorPowerSequence K) E.X).hom ≫
-        (tensorPowerSequence K) ◁ action E ≫ action E :=
-  ModObj.mul_smul_self (tensorPowerSequence K) E.X
-/-- スペクトルの射は球面の作用と両立する。 -/
-@[reassoc] lemma action_hom {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) :
-    action E ≫ f.hom = (tensorPowerSequence K) ◁ f.hom ≫ action F :=
-  IsModHom.smul_hom (A := (tensorPowerSequence K)) (f := f.hom)
-/-- 対称列・作用・単位則・結合則から対称スペクトルを作る。 -/
-def mk (F : SymmetricSequence C)
-    (a : (tensorPowerSequence K) ⊗ F ⟶ F)
-    (hu : (tensorPowerUnitHom K) ▷ F ≫ a = (λ_ F).hom)
-    (ha : (tensorPowerMultiplication K) ▷ F ≫ a =
-      (α_ (tensorPowerSequence K) (tensorPowerSequence K) F).hom ≫
-        (tensorPowerSequence K) ◁ a ≫ a) :
-    GeneralSymmetricSpectrum C K :=
-  letI : ModObj (tensorPowerSequence K) F := { smul := a, one_smul := hu, mul_smul := ha }
-  ⟨F⟩
-/-- 球面の作用と両立する対称列の射からスペクトルの射を作る。 -/
-def homMk {E F : GeneralSymmetricSpectrum C K} (f : E.X ⟶ F.X)
-    (h : action E ≫ f = (tensorPowerSequence K) ◁ f ≫ action F) : E ⟶ F :=
-  Mod.Hom.mk' f h
 /-- スペクトルの射の成分は、次数の等式による移送と両立する。 -/
 lemma hom_index_eq {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F)
     {m n : ℕ} (h : m = n) :
@@ -86,14 +58,6 @@ lemma hom_index_eq {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F)
 /-- スペクトルの射の第n段の成分。 -/
 def levelMap {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) (n : ℕ) : level E n ⟶ level F n :=
   f.hom.app (FiniteBijection.of n)
-
-/-- 恒等射の各段の成分は恒等射。 -/
-lemma levelMap_id (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
-    levelMap (𝟙 E) n = 𝟙 (level E n) := rfl
-
-/-- 合成の各段の成分は成分の合成。 -/
-lemma levelMap_comp {E F G : GeneralSymmetricSpectrum C K} (f : E ⟶ F) (g : F ⟶ G) (n : ℕ) :
-    levelMap (f ≫ g) n = levelMap f n ≫ levelMap g n := rfl
 
 /-- スペクトルの射は各段の成分で決まる。 -/
 lemma hom_ext {E F : GeneralSymmetricSpectrum C K} (f g : E ⟶ F)

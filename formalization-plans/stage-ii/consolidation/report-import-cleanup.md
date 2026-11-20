@@ -69,3 +69,29 @@ Archive を除く本体の追跡 Lean 34,208本をソースから読んだ。空
 調整役の11-20の import 候補集計に使われた `2026-11-20b` のダンプを再集計した。550本に入る `InfinityCategories/Models/EInfinity/BarrattEccles/SimplexCuts/OrderedPrefixCard.lean` は、現行では `card_filter_lt_orderEmbOfFin` を持ち、AR-W1 段3の所有元表にも宣言があるため表から外した。357本と207本の差150本には外部 import があり、うち144本の追加は `Mathlib.Data.ZMod.Basic`。本体という呼称から root を除いて逆辺を数える場合は549本中470本、238本中178本になる。
 
 所要は約20分。検証記録は Git 外の `~/serre-evidence/ic-w1/im-w1-0997952dc/`。段1はここの報告と表で停止する。
+
+## IM-W1 段2　承認分の適用
+
+適用の基準は依頼指定の `0f85ac6fe`。同じ Lean 入力に対する監査のハードリンク対応を含む `e9295c659` まで取り込んだ。ビルド開始前に通知し、bulk 鍵と共有の並列枠1を使った。
+
+| 本体（Archive を除く） | 前 | 後 | 差 |
+| --- | ---: | ---: | ---: |
+| ファイル | 34,208 | 34,071 | −137 |
+| 全行（空行・コメントを含む） | 3,034,413 | 3,030,169 | −4,244 |
+| 直接 import 行（外部を含む） | 128,099 | 126,883 | −1,216 |
+
+A は本体の `public meta import` を1,075行外し、`Util/DeprecatedAlias.lean` を削除。専用の直接 import の補充は0本。SimplicialCombinatorics 側の定義と回帰試験は保持した。B は承認済み124本、予約入口10本、局所設定だけの2本を削除。Spectra の2本・IC-2 の4本・残す案407本は削除0本。残す案のうち root、`EInfinity`、`Entrypoints/Derived`、`Checks/Morita/U16Checks` の4本には承認された import の追従だけを当てた。残存する本体の変更行はすべて import 行。
+
+B の53箇所を付け替え、直接 import を48行（本体31、スクリプト17）入れた。6箇所は重複または空の入口のため置換行0、1箇所は2行。外部への付け替えは `Mathlib.Algebra.Category.ModuleCat.ChangeOfRings` の2箇所（root と `scripts/audit/shared.lean`）で、旧 `IdealPowerTorsionBaseChange` の公開依存を維持するため。 `CompleteFaithfullyFlatDescent` は旧 `CompleteTwoCohomologyAnnihilator` 経由だった `DerivedPurity` と `ScalarConeAnnihilators` に直接接続した。二つの設定ファイルは削除前に旧入口と依存先を直接 import する環境を比較し、2オプションが `true false`、実在する `HasDerivedCategory.standard` の instance 優先度が `none` で一致した。
+
+旧 Rectification パス116件を台帳の `direct_relocations` に登録。旧パスの不在と各正本の存在を個別に確認した。正式監査や検査のモジュール名、配置の設定も追従した。現行の本体・スクリプト・blueprint・監査 manifest に削除したモジュールを解決しようとする参照は0件。台帳の移動元キーと過去記録は由来として残る。静的な到達差は root などから切り離した、回帰試験用の SimplicialCombinatorics 側の旧別名モジュールだけだった。
+
+全34,071モジュールを、root 外も含めて明示的に対象にした。Lake は38,846ジョブを終了コード0で完了（7,821.8秒、対象一覧を読む道具のコンパイルを含む全経過7,834.7秒）。
+
+変更前の記録監査は調整役の `e9295c659` の結果を用いた。変更後の追跡・freshness を確認したビルド・採取・判定の4集合は34,071本で一致した。root の閉包は29,852本、root 外は4,219本。成果物欠落は0。全対象の鮮度を確認した上で、Lake の記録が等しい20,118本を再利用し、13,953本を採取し直した。採取・判定の全経過706.9秒、前後比較12.2秒。変更後の成果物に削除済みのモジュールを import する記録は0件。
+
+宣言は359,531件から359,519件。減った12件はすべて削除した `Util/DeprecatedAlias` の構文・環境拡張と実装（3件の公開名、9件の private 補助）。残す所有元ごとに、private を含むカーネル名、新旧の構造指紋、種類、公理の集合を照合し、キーの追加・欠落・主張差・公理差はすべて0。残存ファイルの補助名差は0。G2 合格、未判定0・許可外の公理0・直接 sorry 4件・推移依存164件。sorry の所有元・カーネル名は直接・推移とも前後で同じ集合。
+
+正式監査108本と主定理の sorry 閉包が合格。監査ごとの終了判定は変更前と同じで、キャッシュを使わず直列で実行した。正式監査と閉包の全経過は5,126.0秒（閉包186.9秒）。変更前の比較には、同じ入力・監査ソース・manifest の SU-W1 取り込み時の108本と閉包の記録を使った。付随するレイヤー検査の構文読取エラーと配置検査の旧 A 一覧不一致は、変更前後で診断が同じ。レイヤー検査の読取に依存する一括入口を避け、既存の実行器で正式監査を個別に走らせた。ファイル数上限の診断は0件、正式監査の環境再試行は0件。全体ビルド開始から監査終了まで約3時間48分。
+
+ログ、監査ごとの成否、前後の差分、import 付け替え全行は Git 外の `~/serre-evidence/ic-w1/im-w1-stage2-0f85ac6fe/` に保存した。

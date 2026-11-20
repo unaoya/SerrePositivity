@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.MinorPivotFactorization
 public import Mathlib.RingTheory.Localization.Away.Basic
 public import Mathlib.Algebra.Ring.NonZeroDivisors

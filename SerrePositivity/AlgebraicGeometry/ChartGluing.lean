@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BlowupAway
 public import SerrePositivity.AlgebraicGeometry.Exceptional
 public import SerrePositivity.AlgebraicGeometry.SeparatedExt

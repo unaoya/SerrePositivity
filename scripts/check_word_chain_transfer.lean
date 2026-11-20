@@ -133,7 +133,7 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let modulePrefix := `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex
-  let expected := #[`SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractChainFamily,
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily,
     Name.str modulePrefix "OrdinaryBarWordChainFamily",
     Name.str modulePrefix "OrdinaryBarFreeWordChainTransfer",
     Name.str modulePrefix "OrdinaryBarSmallFreeWordChainTransfer"]

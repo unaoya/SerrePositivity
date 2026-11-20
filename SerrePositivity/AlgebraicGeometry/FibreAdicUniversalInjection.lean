@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.TensorFibreAssociatedPrimes
 public import SerrePositivity.AlgebraicGeometry.AdicCompletionUniversalInjection
 

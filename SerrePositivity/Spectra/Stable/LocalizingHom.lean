@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.Stable.LocalizingMaps
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 
 /-! # The simplicial Hom test of stabilization is the adjoint bonding map

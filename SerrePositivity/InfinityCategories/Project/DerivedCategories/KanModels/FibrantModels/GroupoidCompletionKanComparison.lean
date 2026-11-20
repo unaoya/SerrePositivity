@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
 public import SerrePositivity.KST.Fibration.GroupoidCompletionWeakUnit
 public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.StrictKanCompletion

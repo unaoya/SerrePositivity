@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanMaps
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakDenominatorSpanTransport
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.Ho

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.PureTransformPullbacks
 public import SerrePositivity.AlgebraicGeometry.BasicOpenCoverLifts
 public import SerrePositivity.AlgebraicGeometry.TensorCoefficientLocalization

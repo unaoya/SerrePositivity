@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NormalizedHornTargetComparison
 import Lean.Util.CollectAxioms
 
 universe v
@@ -68,7 +68,7 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputUnion,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NormalizedHornTargetComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

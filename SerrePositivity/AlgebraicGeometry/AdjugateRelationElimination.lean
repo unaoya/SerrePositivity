@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.PureTransformPivotElimination
 public import SerrePositivity.AlgebraicGeometry.MatrixMinorIdeal
 public import Mathlib.LinearAlgebra.Matrix.Adjugate

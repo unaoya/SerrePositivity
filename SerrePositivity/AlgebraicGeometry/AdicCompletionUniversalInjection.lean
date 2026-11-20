@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.AssociatedPrimeAdicSeparation
 public import SerrePositivity.AlgebraicGeometry.AdicTensorRightComparison
 public import SerrePositivity.AlgebraicGeometry.FiniteTensorTest

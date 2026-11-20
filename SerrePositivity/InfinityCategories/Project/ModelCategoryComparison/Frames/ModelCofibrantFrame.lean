@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.ModelCofibrantRelative
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 
 /-!
 概要：元の Reedy 解像を任意モデル圏の同じ cofibrant 相対圏へ持ち上げる。

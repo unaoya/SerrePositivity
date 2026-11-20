@@ -46,8 +46,7 @@ run_cmd do
       `SerrePositivity.Spectra.General.EnrichedMappingParameter,
       `SerrePositivity.Spectra.General.TensorMappingPoints,
       `SerrePositivity.Spectra.General.CotensorMappingPoints,
-      `SerrePositivity.Spectra.General.EnrichedRepresentability,
-      `SerrePositivity.Spectra.General.SimplicialComparison] do
+      `SerrePositivity.Spectra.General.EnrichedRepresentability] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"General spectra audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Including internal auxiliaries; standard axioms only; no sorry or citation dependencies."

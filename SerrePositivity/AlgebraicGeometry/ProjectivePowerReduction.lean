@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.QuotientModuleBaseChange
 public import SerrePositivity.AlgebraicGeometry.NilpotentProjectivity
 public import Mathlib.RingTheory.Ideal.Quotient.Operations

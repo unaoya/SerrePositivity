@@ -1,6 +1,5 @@
 module
 public import SerrePositivity.DifferentialGraded.Morita.U16
-public import SerrePositivity.DifferentialGraded.Checks.Morita.ScalarExtensionAcceptanceChecks
 public import SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionCoherenceChecks
 public import SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionSquareChecks
 public import SerrePositivity.DifferentialGraded.Checks.Morita.U16aChecks

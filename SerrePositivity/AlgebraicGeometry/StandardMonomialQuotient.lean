@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.RingTheory.MvPolynomial.Groebner
 public import Mathlib.LinearAlgebra.FreeModule.Basic
 public import Mathlib.RingTheory.MvPolynomial.Basic

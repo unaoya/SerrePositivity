@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.Algebra.Module.LocalizedModule.Basic
 public import Mathlib.LinearAlgebra.Isomorphisms
 public import Mathlib.RingTheory.Flat.TorsionFree

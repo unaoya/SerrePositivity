@@ -54,7 +54,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
     let W := weakEquivalences (GeneralSymmetricSpectrum PointedSimplicialSet.{u} (circle.{u}))
     ∃ (LSigma ROmega : W.Localization ⥤ W.Localization)
       (γ : W.Q ⋙ LSigma ⟶ SymmetricSpectrum.suspensionFunctor.{u} ⋙ W.Q)
-      (ρ : (GeneralSymmetricSpectrum.cotensorFunctor (K := circle.{u}) circle) ⋙ W.Q ⟶ W.Q ⋙ ROmega),
+      (ρ : SymmetricSpectrum.loopFunctor.{u} ⋙ W.Q ⟶ W.Q ⋙ ROmega),
       LSigma.IsLeftDerivedFunctor γ W ∧ ROmega.IsRightDerivedFunctor ρ W ∧
       ∃ e : W.Localization ≌ W.Localization,
         e.functor = HomotopySuspension.localizedFunctor
@@ -121,7 +121,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
   have : (SymmetricSpectrum.suspensionFunctor.{u} ⋙ W.Q).HasPointwiseLeftDerivedFunctor W :=
     @Quillen.hasPointwiseLeftDerivedFunctor _ _ nativeModel _ _ nativeModel _ _ W.Q
       inferInstance _ hL
-  have : ((GeneralSymmetricSpectrum.cotensorFunctor (K := circle.{u}) circle) ⋙
+  have : (SymmetricSpectrum.loopFunctor.{u} ⋙
       W.Q).HasPointwiseRightDerivedFunctor W :=
     @Quillen.hasPointwiseRightDerivedFunctor _ _ nativeModel _ _ nativeModel _ _ W.Q
       inferInstance _ hR
@@ -130,7 +130,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
   let β := Functor.totalLeftDerivedCounit
     (tensorLeft ((freeAt (K := (circle.{u})) 1).obj (𝟙_ PointedSimplicialSet.{u})) ⋙ W.Q) W.Q W
   let γ := (SymmetricSpectrum.suspensionFunctor.{u} ⋙ W.Q).totalLeftDerivedCounit W.Q W
-  let ρ := ((GeneralSymmetricSpectrum.cotensorFunctor (K := circle.{u}) circle) ⋙
+  let ρ := (SymmetricSpectrum.loopFunctor.{u} ⋙
     W.Q).totalRightDerivedUnit W.Q W
   have hSigma := p.derived_pointwiseTensor_isEquivalence (levelModel := original)
     (circle.{u}) pointedI pointedJ cofC cofSp fibSp hcof hfib
@@ -152,7 +152,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
     (hγ := inferInstanceAs (Functor.IsLeftDerivedFunctor
       ((SymmetricSpectrum.suspensionFunctor.{u} ⋙ W.Q).totalLeftDerived W.Q W) γ W))
     (hρ := inferInstanceAs (Functor.IsRightDerivedFunctor
-      (((GeneralSymmetricSpectrum.cotensorFunctor (K := circle.{u}) circle) ⋙
+      ((SymmetricSpectrum.loopFunctor.{u} ⋙
         W.Q).totalRightDerived W.Q W) ρ W))
   exact ⟨_, _, γ, ρ, inferInstance, inferInstance, e, rfl, rfl⟩
 

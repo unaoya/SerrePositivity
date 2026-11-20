@@ -32,12 +32,4 @@ def spectrumEnrichedRepresentability :
   tensor_points := tensorEnrichedMappingIso_points
   cotensor_points := cotensorEnrichedMappingIso_points
 
-/-- Comparing the two represented Hom objects is the chosen ordinary adjunction
-on ordinary points. -/
-lemma spectrumHomObjectComparison_points (X : C) (E F : GeneralSymmetricSpectrum C K)
-    (f : pointwiseTensor X E ⟶ F) :
-    eHomEquiv C f ≫ (spectrumEnrichedRepresentability.homObjectComparison X E F).hom =
-      eHomEquiv C (pointwiseTensorHomEquiv X E F f) :=
-  spectrumEnrichedRepresentability.homObjectComparison_points X E F f
-
 end SerrePositivity.GeneralSymmetricSpectrum

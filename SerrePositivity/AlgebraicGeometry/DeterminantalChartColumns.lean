@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.DeterminantalCenter
 public import SerrePositivity.AlgebraicGeometry.ChartCramer
 public import Mathlib.LinearAlgebra.Matrix.ToLin

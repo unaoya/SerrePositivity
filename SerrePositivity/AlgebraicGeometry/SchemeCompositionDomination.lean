@@ -2,7 +2,6 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BlowupOpenMap
 public import SerrePositivity.AlgebraicGeometry.AffineAdmissibleComposition
 public import SerrePositivity.AlgebraicGeometry.AffineLocalDominationGluing

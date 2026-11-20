@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 
 /-! # anodyne 局所化で等しい射の射対への挿入

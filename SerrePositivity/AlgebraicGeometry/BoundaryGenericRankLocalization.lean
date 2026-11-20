@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryGenericRankCharts
 public import SerrePositivity.AlgebraicGeometry.FreeLocusLocalizationBaseChange
 public import SerrePositivity.AlgebraicGeometry.GenericPrimeBaseChange

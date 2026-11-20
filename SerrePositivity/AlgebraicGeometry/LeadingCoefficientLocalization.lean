@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FiniteLeadingDegreeCover
 public import Mathlib.RingTheory.Localization.Away.Basic
 public import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise

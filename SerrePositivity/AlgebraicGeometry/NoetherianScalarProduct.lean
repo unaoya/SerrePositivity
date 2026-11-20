@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ScalarProductTensorComparison
 public import SerrePositivity.AlgebraicGeometry.ModuleMittagLeffler
 public import Mathlib.RingTheory.Flat.Tensor

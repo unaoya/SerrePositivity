@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.CompletedFreeFiniteTensor
 public import SerrePositivity.AlgebraicGeometry.FiniteTensorTest
 public import SerrePositivity.AlgebraicGeometry.NoetherianScalarProduct

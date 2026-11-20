@@ -59,13 +59,6 @@ lemma simplicialEndpoint_naturality {E F : GeneralSymmetricSpectrum PointedSimpl
       (SSet.stdSimplex.map (SimplexCategory.δ i)))).naturality f).symm
   rw [Category.assoc, hn, ← Category.assoc, ← hv, Category.assoc]
 
-lemma circleTensorQuotient_naturality
-    {E F : GeneralSymmetricSpectrum PointedSimplicialSet.{u} K} (f : E ⟶ F) :
-    circleTensorQuotient E ≫ (pointwiseTensorFunctor (K := K) PointedSimplicialSet.circle).map f =
-      simplicialIntervalMap f ≫ circleTensorQuotient F :=
-  (((pointwiseTensorBifunctor (K := K)).map
-    (PointedObject.cofiberProjection (SSet.boundary.{u} 1).ι)).naturality f).symm
-
 variable [ModelCategory SSet.{u}]
   [spectrumModel : ModelCategory (GeneralSymmetricSpectrum PointedSimplicialSet.{u} K)]
   [IsQuillenBifunctor (pointwiseTensorBifunctor (K := K))]
@@ -98,8 +91,12 @@ lemma circleHomotopySuspensionIso_naturality (f : E ⟶ F) :
       (circleHomotopySuspensionIso hcof hw F I J Q).hom =
         (circleHomotopySuspensionIso hcof hw E I J Q).hom ≫
           Q.map ((pointwiseTensorFunctor (K := K) PointedSimplicialSet.circle).map f) := by
-  have := simplicialCylinder_isGood hcof hw E
-  have := simplicialCylinder_isGood hcof hw F
+  have := simplicialIntervalCylinder_isGood hcof hw E
+  have : (simplicialCylinder hcof hw E).IsGood :=
+    ModelCylinder.changeBase_isGood (simplicialIntervalCylinder hcof hw E) (simplicialVertexIso E)
+  have := simplicialIntervalCylinder_isGood hcof hw F
+  have : (simplicialCylinder hcof hw F).IsGood :=
+    ModelCylinder.changeBase_isGood (simplicialIntervalCylinder hcof hw F) (simplicialVertexIso F)
   exact HomotopySuspension.cylinderQuotientIso_naturality I J
     (P := simplicialCylinder hcof hw E) (R := simplicialCylinder hcof hw F)
     (f := f) (k := simplicialIntervalMap f)
@@ -109,7 +106,8 @@ lemma circleHomotopySuspensionIso_naturality (f : E ⟶ F) :
     (sq := circleTensor_zeroCylinder_isPushout hcof hw E)
     (sr := circleTensor_zeroCylinder_isPushout hcof hw F)
     (z := (pointwiseTensorFunctor (K := K) PointedSimplicialSet.circle).map f)
-    (hz := circleTensorQuotient_naturality f)
+    (hz := (((pointwiseTensorBifunctor (K := K)).map
+      (PointedObject.cofiberProjection (SSet.boundary.{u} 1).ι)).naturality f).symm)
 
 def circleSuspensionCofibrantNatIso :
     CofibrantObject.ι ⋙ (HomotopySuspension.functor I J ⋙ Q) ≅

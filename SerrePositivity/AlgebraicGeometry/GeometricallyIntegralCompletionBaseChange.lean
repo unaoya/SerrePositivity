@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.GeometricallyIntegralCompleteProjective
 public import SerrePositivity.AlgebraicGeometry.ProjectiveReductionBaseChange
 public import SerrePositivity.AlgebraicGeometry.LocalizationCompletionProjectivity

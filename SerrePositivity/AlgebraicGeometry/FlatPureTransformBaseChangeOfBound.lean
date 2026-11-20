@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryPowerLift
 public import SerrePositivity.AlgebraicGeometry.ScalarInverseBaseChange
 public import SerrePositivity.AlgebraicGeometry.PureTransformImage

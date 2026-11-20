@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FlatOpenImmersion
 public import SerrePositivity.AlgebraicGeometry.BlowupSchemeDensity
 public import SerrePositivity.AlgebraicGeometry.StrictTransformDomination

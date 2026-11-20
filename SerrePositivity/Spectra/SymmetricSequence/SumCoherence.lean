@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSequence.DisjointUnion
+public import SerrePositivity.CategoryTheory.Limits
 public import Mathlib.Logic.Equiv.Fin.Rotate
 public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
 

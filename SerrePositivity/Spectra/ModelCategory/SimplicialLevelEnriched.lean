@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 public import SerrePositivity.Spectra.General.EnrichedModel
-public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorCotensor
+public import SerrePositivity.Spectra.SymmetricSpectrum.Simplicial
 
 /-! # The pointed simplicial action and mapping SM7 on the actual level model -/
 
@@ -51,8 +51,7 @@ lemma ordinarySpectrumTensor_obj (K : SSet.{u}) :
 
 lemma ordinarySpectrumCotensor_obj (K : SSet.{u}) (E : SymmetricSpectrum.{u}) :
     (ordinarySpectrumCotensor.obj (Opposite.op K)).obj E =
-      SymmetricSpectrum.simplicialCotensor K E :=
-  GeneralSymmetricSpectrum.simplicial_cotensor (PointedObject.adjoin K) E
+      SymmetricSpectrum.simplicialCotensor K E := rfl
 
 variable [ModelCategory SSet.{u}]
   (hCof : cofibrations SSet.{u} = MorphismProperty.monomorphisms SSet.{u})

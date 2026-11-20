@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.DeterminantalChartColumns
 public import SerrePositivity.AlgebraicGeometry.LinearMapTensorToPi
 public import SerrePositivity.AlgebraicGeometry.PureTransformImage

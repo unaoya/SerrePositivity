@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BlowupAffineOpenMap
 public import SerrePositivity.AlgebraicGeometry.IdealComplementPullback
 public import SerrePositivity.AlgebraicGeometry.PrincipalRegularLift

@@ -1,0 +1,24 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/spectra-unify/stage9",
+ "commit": "3ecc4edca1d0f7eeaf6e51abbf5adc5c0b0bda07",
+ "made_by": "bulk 鍵で保存環境と現行環境の型を照合し、前後の宣言採取から補助名を抽出して rg で照合",
+ "note": "段9作業差分を基準点 3ecc4edca と比較。コミット前の証拠。",
+ "files": [
+  {
+   "path": "generated-proof-reference-scan.txt",
+   "sha256": "e6d44b4d365fd03822a32df034dbe8bfcf24d09428509a09577007bf2127f7f2",
+   "bytes": 4794
+  },
+  {
+   "path": "kernel-type-comparison.log",
+   "sha256": "ee01b26920d2aa3fb31114f9ee1d876c98c76ad696147e78707f93178ef02918",
+   "bytes": 8529
+  },
+  {
+   "path": "removed-generated-proof-names.txt",
+   "sha256": "476a6169c7967832a06f48fcb0401862b1e385249491f5059aa8c4b23e487c9f",
+   "bytes": 9218
+  }
+ ],
+ "total_bytes": 22541
+}

@@ -19,13 +19,22 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
 example : IsQuillenBifunctor (GeneralSymmetricSpectrum.pointwiseTensorBifunctor (K := K)) :=
   GeneralSymmetricSpectrum.pointwiseTensor_isQuillen
 example : HasQuillenPullbackHom (GeneralSymmetricSpectrum.cotensorBifunctor (K := K)) :=
-  GeneralSymmetricSpectrum.cotensor_hasQuillenPullbackHom
-example : HasQuillenPullbackHom (GeneralSymmetricSpectrum.mappingObjectBifunctor (K := K)) :=
-  GeneralSymmetricSpectrum.mappingObject_hasQuillenPullbackHom
+  (SerrePositivity.Quillen.isQuillenBifunctor_iff_pullbackHom
+    GeneralSymmetricSpectrum.pointwiseTensorCotensorParametrizedAdjunction).1
+      GeneralSymmetricSpectrum.pointwiseTensor_isQuillen
+example : HasQuillenPullbackHom (GeneralSymmetricSpectrum.mappingObjectBifunctor (K := K)) := by
+  let : IsQuillenBifunctor (GeneralSymmetricSpectrum.pointwiseTensorBifunctor (K := K)) :=
+    GeneralSymmetricSpectrum.pointwiseTensor_isQuillen
+  exact (SerrePositivity.Quillen.isQuillenBifunctor_iff_pullbackHom
+    GeneralSymmetricSpectrum.pointwiseTensorMappingParametrizedAdjunction).1 inferInstance
 example : let : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
       GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory
-    HasQuillenPullbackHom (eHomFunctor C (GeneralSymmetricSpectrum C K)) :=
-  GeneralSymmetricSpectrum.enrichedHom_hasQuillenPullbackHom
+    HasQuillenPullbackHom (eHomFunctor C (GeneralSymmetricSpectrum C K)) := by
+  let : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
+    GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory
+  exact (SerrePositivity.Enriched.tensor_iff_mapping_model
+    (GeneralSymmetricSpectrum.spectrumTensorCotensor (K := K))).1
+      GeneralSymmetricSpectrum.pointwiseTensor_isQuillen
 end General
 
 section LegacyPointed

@@ -400,7 +400,6 @@ public import SerrePositivity.HomologicalAlgebra.ColimitLinearFunctor
 public import SerrePositivity.HomologicalAlgebra.CompatibleRootFamilyTor
 public import SerrePositivity.HomologicalAlgebra.CompatibleRootFiniteFamilyTor
 public import SerrePositivity.HomologicalAlgebra.CompatibleRootQuotientTor
-public import SerrePositivity.HomologicalAlgebra.CompleteTwoCohomologyAnnihilator
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
@@ -504,7 +503,7 @@ public import SerrePositivity.HomologicalAlgebra.FiniteCohomologyBaseChange
 public import SerrePositivity.HomologicalAlgebra.FiniteSupQuotientColimit
 public import SerrePositivity.HomologicalAlgebra.FlatDerivedPowerReductions
 public import SerrePositivity.HomologicalAlgebra.IdealPowerTorsion
-public import SerrePositivity.HomologicalAlgebra.IdealPowerTorsionBaseChange
+public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import SerrePositivity.HomologicalAlgebra.IdealPowerTorsionSupport
 public import SerrePositivity.HomologicalAlgebra.KProjectiveCohomologyLinear
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift

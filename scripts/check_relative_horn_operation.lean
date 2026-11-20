@@ -1,5 +1,5 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput
-import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.DegenerateHornInput
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonTriangleDegeneracy
 import Lean.Util.CollectAxioms
 
 universe v
@@ -66,8 +66,8 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeHornFillingOperation,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeHornFillingOperation,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.DegenerateHornInput]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.LocalFlatPureRefinement
 public import SerrePositivity.AlgebraicGeometry.BlowupPureTransformPullbacks
 public import SerrePositivity.AlgebraicGeometry.PureTransformRestrictBase

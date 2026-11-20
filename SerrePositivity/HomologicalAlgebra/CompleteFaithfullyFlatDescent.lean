@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedKoszulDescent
-public import SerrePositivity.HomologicalAlgebra.CompleteTwoCohomologyAnnihilator
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # 完備な導来対象のスカラーの零化の、完全忠実平坦な拡大に沿った降下
 

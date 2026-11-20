@@ -46,17 +46,6 @@ lemma cotensorEvaluation_level (X : C) (E : GeneralSymmetricSpectrum C K)
   simp only [Iso.refl_hom, Category.id_comp]
   exact internalHomCotensorIso_inv_freeHom X E
 
-/-- テンソルとcotensorの随伴の余単位は各段の通常の内部Homの評価法則を満たす。 -/
-lemma pointwiseTensorEvaluation_level (X : C)
-    (E : GeneralSymmetricSpectrum C K) (q : ℕ) :
-    SymmetricSequence.pointwiseTensorEvaluationLevelLaw (SymmetricSequence.tensorPowerSequence K) X
-      (Iso.refl (cotensor X E).X) q ((pointwiseTensorCotensorAdjunction X).counit.app E) :=
-  SymmetricSequence.pointwiseTensorEvaluationLevelLaw_of_freeZero
-    (SymmetricSequence.tensorPowerSequence K) X
-    (Iso.refl (cotensor X E).X) q ((freeZeroTensorCotensorAdjunction X).counit.app E)
-    ((pointwiseTensorCotensorAdjunction X).counit.app E)
-    rfl (cotensorEvaluation_level X E q)
-
 /-- スペクトルの逆転置は各段の通常の内部Homの逆転置の法則を満たす。 -/
 lemma pointwiseTensorUncurry_level (X : C)
     {A E : GeneralSymmetricSpectrum C K} (f : A ⟶ cotensor X E) (q : ℕ) :
@@ -67,7 +56,11 @@ lemma pointwiseTensorUncurry_level (X : C)
     (Iso.refl (cotensor X E).X) f (((pointwiseTensorCotensorAdjunction X).homEquiv _ _).symm f)
     ((pointwiseTensorCotensorAdjunction X).counit.app E) q
     ((pointwiseTensorCotensorAdjunction X).homEquiv_symm_apply A E f)
-    (pointwiseTensorEvaluation_level X E q)
+    (SymmetricSequence.pointwiseTensorEvaluationLevelLaw_of_freeZero
+      (SymmetricSequence.tensorPowerSequence K) X (Iso.refl (cotensor X E).X) q
+      ((freeZeroTensorCotensorAdjunction X).counit.app E)
+      ((pointwiseTensorCotensorAdjunction X).counit.app E)
+      rfl (cotensorEvaluation_level X E q))
 
 /-- スペクトルの転置は各段の通常の内部Homの転置の法則を満たす。 -/
 lemma pointwiseTensorCurry_level (X : C)

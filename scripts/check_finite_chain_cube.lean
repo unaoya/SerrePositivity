@@ -101,7 +101,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChainFamily]
   let mut count : Nat := 0

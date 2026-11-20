@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryGenericRankReduction
 public import SerrePositivity.AlgebraicGeometry.ConstantGenericRankFreeNeighborhoods
 public import SerrePositivity.AlgebraicGeometry.ChartBoundaryRegular

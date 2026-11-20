@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeComparisonTriangle
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeComparisonTriangle
 import Lean.Util.CollectAxioms
 
 universe v
@@ -50,8 +50,8 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeProductLifting,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBoundaryFilling,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeComparisonTriangle]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeBoundaryFilling,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeComparisonTriangle]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

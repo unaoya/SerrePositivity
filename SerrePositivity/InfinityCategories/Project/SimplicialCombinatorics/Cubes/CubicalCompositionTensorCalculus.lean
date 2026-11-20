@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.CategoryTheory.Monoidal.Category
 
 /-! # Cubical 合成の三生成射の tensor 計算

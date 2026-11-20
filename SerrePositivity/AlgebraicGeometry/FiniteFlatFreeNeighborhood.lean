@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.RingTheory.Flat.LocallyFree
 public import Mathlib.RingTheory.TensorProduct.IsBaseChangePi
 public import Mathlib.Algebra.Module.LocalizedModule.IsLocalization

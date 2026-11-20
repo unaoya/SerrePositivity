@@ -51,7 +51,9 @@ variable [IsLocallyPresentable.{w} (GeneralSymmetricSpectrum PointedSimplicialSe
 def circleHomotopySuspensionIso :
     Q.obj ((HomotopySuspension.functor I J).obj E) ≅
       Q.obj (pointwiseTensor PointedSimplicialSet.circle E) := by
-  have := simplicialCylinder_isGood hcof hw E
+  have := simplicialIntervalCylinder_isGood hcof hw E
+  have : (simplicialCylinder hcof hw E).IsGood :=
+    ModelCylinder.changeBase_isGood (simplicialIntervalCylinder hcof hw E) (simplicialVertexIso E)
   exact HomotopySuspension.cylinderQuotientIso I J Q (simplicialCylinder hcof hw E)
     (circleTensorQuotient E) (circleTensor_zeroCylinder_isPushout hcof hw E)
 

@@ -48,8 +48,8 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.HomotopicalAlgebra.Simplicial.SegmentWords,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegment,
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SegmentWords,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordSegment,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegmentComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

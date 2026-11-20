@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.CoefficientPrimeBoundaryGeneration
 public import SerrePositivity.AlgebraicGeometry.LocalRegularMinorPureFree
 

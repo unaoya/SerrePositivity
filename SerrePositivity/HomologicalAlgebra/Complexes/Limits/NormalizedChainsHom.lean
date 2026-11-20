@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.ExtendTruncationHomNaturality
+public import SerrePositivity.HomologicalAlgebra.ComplexLimits.ExtendTruncationHomNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.Normalized
 public import Mathlib.AlgebraicTopology.DoldKan.Equivalence
 

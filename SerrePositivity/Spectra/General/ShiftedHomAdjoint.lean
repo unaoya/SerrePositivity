@@ -34,7 +34,8 @@ lemma shiftedHom_adjointStructureMap_formula (n q : ℕ) (X : C)
     (ihom.ev X).app (level E (n + (q + 1))) = _
   rw [shiftedHom_suspensionMap_evaluation]
   rw [MonoidalClosed.uncurry_natural_right, MonoidalClosed.uncurry_natural_right,
-    InternalHomExchange.doubleUncurry_map_exchange, uncurry_adjointStructureMap]
+    InternalHomExchange.doubleUncurry_map_exchange, adjointStructureMap,
+    MonoidalClosed.uncurry_curry]
   simp only [Category.assoc]
   rfl
 

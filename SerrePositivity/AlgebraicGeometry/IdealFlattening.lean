@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.IdealPureTransform
 public import SerrePositivity.AlgebraicGeometry.ChartBoundaryRegular
 public import SerrePositivity.AlgebraicGeometry.Cartier

@@ -66,7 +66,7 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainUnits,
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainUnits,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainUnits]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

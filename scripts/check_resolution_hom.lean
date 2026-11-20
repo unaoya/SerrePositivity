@@ -39,7 +39,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom,
+    `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenResolutionHom]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

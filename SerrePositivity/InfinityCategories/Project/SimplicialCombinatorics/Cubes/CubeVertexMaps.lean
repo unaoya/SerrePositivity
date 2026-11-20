@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.Data.Fin.Tuple.Basic
 public import Mathlib.Data.Finset.Lattice.Fold
 

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Chains.NecklaceSimplexIntervalOrder
 
 /-! # 元の augmentation の区間標準単体への厳密な因数分解

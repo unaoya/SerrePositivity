@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.LinearAlgebra.Matrix.SchurComplement
 public import SerrePositivity.AlgebraicGeometry.MatrixMinorIdeal
 

@@ -31,19 +31,17 @@ variable {K : PointedSimplicialSet.{u}}
   (hw : weakEquivalences SSet.{u} = SimplicialHomotopy.weakEquivalences)
   (E : GeneralSymmetricSpectrum PointedSimplicialSet.{u} K) [IsCofibrant E]
 
-lemma mappingTensor_isLeftQuillen : IsLeftQuillen (mappingTensorFunctor E) := by
-  have : ∀ X : PointedSimplicialSet.{u},
-      ((pointwiseTensorBifunctor (K := K)).flip.flip.obj X).IsLeftAdjoint :=
-    fun X ↦ (pointwiseTensorCotensorAdjunction (K := K) X).isLeftAdjoint
-  exact isLeftQuillen_obj_of_cofibrant (pointwiseTensorBifunctor (K := K)).flip E
-
 abbrev simplicialParameterFunctor :
     SSet.{u} ⥤ GeneralSymmetricSpectrum PointedSimplicialSet.{u} K :=
   PointedObject.adjoinFunctor ⋙ mappingTensorFunctor E
 
 lemma simplicialParameter_isLeftQuillen : IsLeftQuillen (simplicialParameterFunctor E) := by
   have := PointedModel.adjoin_isLeftQuillen (C := SSet.{u})
-  have := mappingTensor_isLeftQuillen E
+  have : ∀ X : PointedSimplicialSet.{u},
+      ((pointwiseTensorBifunctor (K := K)).flip.flip.obj X).IsLeftAdjoint :=
+    fun X ↦ (pointwiseTensorCotensorAdjunction (K := K) X).isLeftAdjoint
+  have : IsLeftQuillen (mappingTensorFunctor E) :=
+    isLeftQuillen_obj_of_cofibrant (pointwiseTensorBifunctor (K := K)).flip E
   exact isLeftQuillen_comp _ _
 
 def simplicialVertexIso :
@@ -76,10 +74,6 @@ lemma intervalBoundaryTensorMap_cofibration : Cofibration (intervalBoundaryTenso
 
 def simplicialCylinder : Cylinder E :=
   ModelCylinder.changeBase (simplicialIntervalCylinder hcof hw E) (simplicialVertexIso E)
-
-lemma simplicialCylinder_isGood : (simplicialCylinder hcof hw E).IsGood := by
-  have := simplicialIntervalCylinder_isGood hcof hw E
-  exact ModelCylinder.changeBase_isGood _ _
 
 abbrev intervalBoundaryCofan : BinaryCofan E E :=
   BinaryCofan.mk
@@ -135,8 +129,8 @@ lemma circleTensor_cylinder_isPushout : IsPushout (simplicialCylinder hcof hw E)
     (Iso.refl _) (Iso.refl _) (Iso.refl _)
   · simp only [Iso.refl_hom, Category.comp_id, Iso.symm_hom]
     rw [← intervalBoundaryCoproductIso_inclusion hcof hw E, Iso.inv_hom_id_assoc]
-  · simp [intervalBoundaryCollapse_eq_zero]
+  · simp [(circleTensorPoint_isZero E).eq_of_tgt (intervalBoundaryCollapse E) 0]
   · simp
-  · simp [circleTensorBasepoint_eq_zero]
+  · simp [(circleTensorPoint_isZero E).eq_of_src (circleTensorBasepoint E) 0]
 
 end SerrePositivity.GeneralSymmetricSpectrum

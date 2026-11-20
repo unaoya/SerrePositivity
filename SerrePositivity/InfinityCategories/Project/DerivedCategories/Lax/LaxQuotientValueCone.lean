@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueSquare
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquare

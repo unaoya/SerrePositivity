@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FreeLocusLocalizationBaseChange
 public import Mathlib.RingTheory.Localization.BaseChange
 public import SerrePositivity.AlgebraicGeometry.TensorCoefficientLocalization

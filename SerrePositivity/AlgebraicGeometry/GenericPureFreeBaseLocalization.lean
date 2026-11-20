@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.TensorAlgebraBaseLocalization
 public import SerrePositivity.AlgebraicGeometry.FreeLocusLocalizedModule
 public import SerrePositivity.AlgebraicGeometry.GenericPrimePushout

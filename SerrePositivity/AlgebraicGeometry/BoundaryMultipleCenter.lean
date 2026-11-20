@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ProductCenter
 public import SerrePositivity.AlgebraicGeometry.IdealFlattening
 public import Mathlib.RingTheory.Finiteness.Ideal

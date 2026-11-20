@@ -1,5 +1,5 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare
-import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.KanComparisonSquare
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonTriangleBinary
 import Lean.Util.CollectAxioms
 
 universe v
@@ -51,9 +51,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.KanComparisonTetrahedron,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.KanComparisonSquare,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonTriangleBinary]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

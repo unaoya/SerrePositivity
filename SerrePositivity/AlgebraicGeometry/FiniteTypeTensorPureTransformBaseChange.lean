@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.TensorAlgebraBoundaryTorsion
 public import SerrePositivity.AlgebraicGeometry.TensorPureTransformBaseChange
 public import SerrePositivity.AlgebraicGeometry.FlatPureTransformBaseChangeOfBound

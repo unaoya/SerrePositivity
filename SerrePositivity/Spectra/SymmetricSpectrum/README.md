@@ -2,7 +2,9 @@
 
 `SymmetricSpectrum` は `GeneralSymmetricSpectrum PointedSimplicialSet PointedSimplicialSet.circle` の略記である。
 各段・作用・構造射には `GeneralSymmetricSpectrum.level`・`action`・`structureMap` を使う。
-円周に固定した自由関手・評価の別名と移動した宣言は[段 1 の対応表](../../../research/cleanup-zero-base/spectra/stage1.csv)にある。
+円周への特殊化は [Basic.lean](Basic.lean)、球面スペクトルは [Sphere.lean](Sphere.lean)、
+基点のない単体集合による作用と写像空間は [Simplicial.lean](Simplicial.lean) に置く。
+宣言の移動先は[段 9 の対応表](../../../research/cleanup-zero-base/spectra/stage9.csv)にある。
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
@@ -28,7 +30,7 @@ import SerrePositivity.Spectra.StageTwo
 | 単体的豊穣構造 | `simplicialMappingSpace`, `TransportOrdinaryEnrichment.ordinaryCategory` | `simplicialMappingVertexEquiv`、既存の圏構造との一致 |
 | 通常の単体的作用 | `simplicialTensorFunctor`, `simplicialCotensorFunctor` | 三つのHom同値の三変数の自然性、評価・余評価 |
 | 単位と反復作用 | `simplicialTensorUnitNatIso`, `simplicialTensorProductNatIso` | 右随伴側は `ActionUnitAdjunction.rightUnitIso` と `ActionComparisonAdjunction.rightIso` で比較する |
-| 懸垂・ループ | `suspensionFunctor`, 円周での `GeneralSymmetricSpectrum.cotensorFunctor`, `suspensionLoopAdjunction` | 自然なHom同値、単位・余単位・triangle、各段の公式 |
+| 懸垂・ループ | `suspensionFunctor`, `loopFunctor`, `suspensionLoopAdjunction` | 自然なHom同値、単位・余単位・triangle、各段の公式 |
 | 構造射の随伴表示 | `GeneralSymmetricSpectrum.adjointStructureMap` | `GeneralSymmetricSpectrum.uncurry_adjointStructureMap`、`MonoidalClosed.curry_uncurry`、自然性。添字の移送は `suspensionMap` の `Nat.one_add` |
 
 計画の最終検証例は [check_spectra_stage2](../../../scripts/check_spectra_stage2.lean)、

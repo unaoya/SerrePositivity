@@ -50,7 +50,7 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleTransport,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonTriangleTransport,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarCompositionReindex,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarCompositionReindexLaws]
   let mut count : Nat := 0

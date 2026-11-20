@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.Enriched.TensorCotensor
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence
 
 /-! # Hom on a tensor frame is Hom into the enriched mapping object

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.GenericPrimePushout
 public import SerrePositivity.AlgebraicGeometry.PureFreeStalkBaseChange
 public import SerrePositivity.AlgebraicGeometry.GenericBoundaryFreeNeighborhood

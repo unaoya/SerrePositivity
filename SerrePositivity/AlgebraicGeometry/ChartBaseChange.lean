@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ChartAlgebra
 public import SerrePositivity.AlgebraicGeometry.ReesLocalization
 public import SerrePositivity.AlgebraicGeometry.LocalizationCommute

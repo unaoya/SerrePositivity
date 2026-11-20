@@ -36,9 +36,6 @@ def suspensionMap (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
 def adjointStructureMap (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
     level E n ⟶ (ihom K).obj (level E (n + 1)) := curry (suspensionMap E n)
 
-lemma uncurry_adjointStructureMap (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
-    uncurry (adjointStructureMap E n) = suspensionMap E n := uncurry_curry _
-
 @[reassoc] lemma adjointStructureMap_naturality {E F : GeneralSymmetricSpectrum C K}
     (f : E ⟶ F) (n : ℕ) :
     levelMap f n ≫ adjointStructureMap F n =

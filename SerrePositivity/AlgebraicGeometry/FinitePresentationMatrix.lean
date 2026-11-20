@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.Algebra.Module.FinitePresentation
 public import Mathlib.RingTheory.Finiteness.Cardinality
 public import Mathlib.LinearAlgebra.Matrix.ToLin

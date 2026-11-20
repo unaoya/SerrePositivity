@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.CategoryTheory.Category.Basic
 public import Mathlib.CategoryTheory.EqToHom
 public import Mathlib.CategoryTheory.Iso

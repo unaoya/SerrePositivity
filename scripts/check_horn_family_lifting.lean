@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.KanHornFamilyLifting
 import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarUnitCoherence
 import Lean.Util.CollectAxioms
 
@@ -76,7 +76,7 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
-  let expected := `SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting
+  let expected := `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.KanHornFamilyLifting
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue

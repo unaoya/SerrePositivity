@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.GenericMinorCoefficientUnit
 public import SerrePositivity.AlgebraicGeometry.BoundaryHigherMinorVanishing
 public import SerrePositivity.AlgebraicGeometry.SplitAlgebraCoefficientBaseChange

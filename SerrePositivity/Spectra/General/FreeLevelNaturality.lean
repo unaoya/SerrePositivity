@@ -42,15 +42,6 @@ def freeAtLevelActionIsoInduction (n : ℕ) (X : C) (m : ℕ) :
   SymmetricSequence.freeConvolutionLevelActionIsoInduction
     (SymmetricSequence.tensorPowerSequence K) n X m
 
-/-- 出力の全単射に関する誘導表示の自然性。 -/
-@[reassoc] lemma freeAtLevelIsoInduction_output (n : ℕ) (X : C)
-    {m m' : ℕ} (k : FiniteBijection.of m ⟶ FiniteBijection.of m') :
-    ((freeAt (K := K) n).obj X).X.map k ≫ (freeAtLevelIsoInduction (K := K) n X m').hom =
-      (freeAtLevelIsoInduction (K := K) n X m).hom ≫
-        SymmetricSequence.freeInductionOutputMap (SymmetricSequence.tensorPowerSequence K) n X k :=
-  SymmetricSequence.freeConvolutionLevelIsoInduction_output
-    (SymmetricSequence.tensorPowerSequence K) n X k
-
 /-- 自由スペクトルの入力の射は、自由convolutionの入力の射と一致する。 -/
 lemma freeAt_map_underlying (n : ℕ) {X Y : C} (f : X ⟶ Y) :
     ((freeAt (K := K) n).map f).hom = SymmetricSequence.freeConvolutionInputMap
@@ -96,20 +87,6 @@ lemma freeAt_map_underlying (n : ℕ) {X Y : C} (f : X ⟶ Y) :
   rw [freeAt_map_underlying]
   exact SymmetricSequence.freeConvolutionLevelIsoInduction_input
     (SymmetricSequence.tensorPowerSequence K) n f m
-
-/-- 自由スペクトルの入力の射は生成元のXの因子に作用する。 -/
-@[reassoc] lemma freeAtLevelGenerator_input (n : ℕ) {X Y : C}
-    (f : X ⟶ Y) (m : ℕ) (a : FiniteBijection)
-    (h : FiniteBijection.sumObj a (FiniteBijection.of n) ⟶ FiniteBijection.of m) :
-    freeAtLevelGenerator (K := K) n X m a h ≫ levelMap ((freeAt (K := K) n).map f) m =
-      (SymmetricSequence.tensorPowerSequence K).obj a ◁ f ≫
-        freeAtLevelGenerator (K := K) n Y m a h := by
-  change SymmetricSequence.freeConvolutionGenerator
-    (SymmetricSequence.tensorPowerSequence K) n X m a h ≫
-    ((freeAt (K := K) n).map f).hom.app (FiniteBijection.of m) = _
-  rw [freeAt_map_underlying]
-  exact SymmetricSequence.freeConvolutionGenerator_input
-    (SymmetricSequence.tensorPowerSequence K) n f m a h
 
 /-- 自由スペクトルの作用付き各段と、誘導表示との自然同型。 -/
 def freeAtLevelActionNatIsoInduction (n m : ℕ) :

@@ -60,10 +60,4 @@ lemma cotensorMappingNatIso_homEquiv (X Z : C) (E F : GeneralSymmetricSpectrum C
   ActionComparisonAdjunction.rightIso_homEquiv (cotensorMappingAdjunction X E)
     (cotensorMappingPowerAdjunction X E) (cotensorMappingParameterIso X E).symm Z F f
 
-lemma cotensorMappingIso_naturality_target (X : C) (E : GeneralSymmetricSpectrum C K)
-    {F G : GeneralSymmetricSpectrum C K} (g : F ⟶ G) :
-    (mappingObjectFunctor E).map ((cotensorFunctor X).map g) ≫ (cotensorMappingIso X E G).hom =
-      (cotensorMappingIso X E F).hom ≫ (ihom X).map ((mappingObjectFunctor E).map g) :=
-  (cotensorMappingNatIso X E).hom.naturality g
-
 end SerrePositivity.GeneralSymmetricSpectrum

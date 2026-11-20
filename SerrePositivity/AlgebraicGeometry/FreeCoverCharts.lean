@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FreeCoverNumeratorCenter
 public import SerrePositivity.AlgebraicGeometry.ChartFreeBoundary
 public import SerrePositivity.AlgebraicGeometry.IdealFlattening

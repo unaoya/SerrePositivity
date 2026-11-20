@@ -60,8 +60,8 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterChoiceDiagram,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleParameterDiagram,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ParameterChoiceDiagram,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonTriangleParameterDiagram,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarCompositionParameterDiagram]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

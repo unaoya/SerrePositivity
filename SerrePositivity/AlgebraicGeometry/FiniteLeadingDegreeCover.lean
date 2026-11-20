@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.Data.Finsupp.PWO
 public import Mathlib.Order.Minimal
 public import Mathlib.RingTheory.MvPolynomial.MonomialOrder

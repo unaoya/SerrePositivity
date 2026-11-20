@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneGammaWeakEquivalence
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneTruncation
-public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncationInclusionNaturality
+public import SerrePositivity.HomologicalAlgebra.ComplexLimits.TruncationInclusionNaturality
 
 /-!
 # Γ の各段は準同型を全基点 π 同型へ送る

@@ -56,10 +56,4 @@ lemma tensorMappingNatIso_homEquiv (X Z : C) (E F : GeneralSymmetricSpectrum C K
     (mappingObjectAdjunction (pointwiseTensor X E)) (tensorMappingPowerAdjunction X E)
     (tensorMappingParameterIso X E).symm Z F f
 
-lemma tensorMappingIso_naturality_target (X : C) (E : GeneralSymmetricSpectrum C K)
-    {F G : GeneralSymmetricSpectrum C K} (g : F ⟶ G) :
-    (mappingObjectFunctor (pointwiseTensor X E)).map g ≫ (tensorMappingIso X E G).hom =
-      (tensorMappingIso X E F).hom ≫ (ihom X).map ((mappingObjectFunctor E).map g) :=
-  (tensorMappingNatIso X E).hom.naturality g
-
 end SerrePositivity.GeneralSymmetricSpectrum

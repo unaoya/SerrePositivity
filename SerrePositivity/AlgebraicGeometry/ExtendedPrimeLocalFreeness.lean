@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ExtendedIdealTensor
 public import SerrePositivity.AlgebraicGeometry.RelativeFlatTensor
 public import Mathlib.Algebra.Module.FinitePresentation

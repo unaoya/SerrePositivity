@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.LocalMinorPivot
 public import SerrePositivity.AlgebraicGeometry.FreeModuleRowPartition
 public import SerrePositivity.AlgebraicGeometry.MatrixMinorIdealRestriction

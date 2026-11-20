@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.Algebra.Module.Projective
 public import Mathlib.Algebra.DirectSum.Module
 public import Mathlib.Algebra.Algebra.RestrictScalars
