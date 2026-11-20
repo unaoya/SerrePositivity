@@ -1497,3 +1497,67 @@ lemma pairing_equivariance (F G : SymmetricSequence C) (p q : ℕ)
 ```lean
 lemma initial_isZero : IsZero (⊥_ (GeneralSymmetricSpectrum C K))
 ```
+
+## 段14a　作用から写像対象・豊穣化を組み立てる設計
+
+main `24eff0979` を取り込んだ `c7e3e6762` が調査の基準。現行の Lean、監査、文献対応表は編集せず、段14の設計を型までまとめた。 型案58件は既存の成果物を読み込んで標準入力から精査した。新しい主張は型だけを仮置きし、既存との定義的な一致に依存する3箇所は構成を展開して型を確認した。証明の実装と全体のビルドは後段の作業。[型の一覧](../../../research/cleanup-zero-base/spectra/stage14-types.md) · [宣言ごとの対応](../../../research/cleanup-zero-base/spectra/stage14.csv)
+
+### A が受け取るもの
+
+- モノイダル圏 `V` の通常圏 `M` への左作用を使う。基底の係数二つと対象の自然性、五角形、左右の単位の等式を Mathlib の作用に載せる。B の結合子は `(P ⊗ Q) • X ≅ P • (Q • X)` の順。B の次数別表示は作用を作る側で使う。
+- 同じ作用関手 `H` に対して `H.flip ⊣₂ R` と `H ⊣₂ Q` を用意する。写像対象 `R(X,Y)` は B では内部 Hom の第0段、`Q(P,Y)` は各段余テンソル。写像対象への随伴は `MonoidalMappingAdjunction.transportedParametrizedAdjunction` に第0自由対象の随伴と比較を渡す。余テンソル側は既存の `pointwiseTensorCotensorParametrizedAdjunction` を使う。[B の写像対象](../../../SerrePositivity/Spectra/General/MappingObject.lean#L25) · [B の余テンソル随伴](../../../SerrePositivity/Spectra/General/ParametrizedCotensor.lean#L31) · [随伴輸送](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L252)
+- 作用の結合子・単位子と `R` の余単位で評価、単位、合成を作る。後から適用する写像を合成の左因子に置き、組紐で Mathlib の因子順へ移す。`MappingUnitLaws` と `RepresentedMappingEnrichment` が既に評価後の単位律・結合律と豊穣圏の構成を持つ。新しい入口ではその仮定を作用の公理から渡す。`enriched_pre/post` と `homFunctorIso_ofParametrized` により、豊穣 Hom の射の作用と `R` を同定する。順射成分は恒等で、通常の射から単位点への同値も同じ選択を使う。[単位の評価](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L180) · [豊穣圏の構成](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L608) · [豊穣 Hom の射](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L804) · [二変数の比較](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L910)
+- `Enriched.TensorCotensor` に `H`、`Q`、二つの随伴を入れる。写像対象の随伴の右を上の Hom 関手同型で移す。閉性を使うのはここから先の `EnrichedRepresentability`。テンソルでは `S ⊗ P`、余テンソルでは `P ⊗ S` を作用させ、`ActionComparisonAdjunction.rightIso` で左随伴の比較を右に移す。変数ごとの自然性と `S = 𝟙` の単位点の式まで揃えて、元の随伴との互換性を確かめる。`FunctorTransport.transport/iso` は B の提示を作る箇所で再利用する。[表現データ](../../../SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean#L264) · [右随伴の比較](../../../SerrePositivity/CategoryTheory/Adjunction/Comparison.lean#L39) · [関手の輸送](../../../SerrePositivity/CategoryTheory/FunctorTransport.lean#L19)
+
+### 固定版 Mathlib のソース照合
+
+`lake-manifest.json` の rev と `.lake/packages/mathlib` の HEAD はともに `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。カテゴリ理論以下の Lean ソースを次の語で検索し、該当箇所のクラス・型と構成まで読んだ。
+
+| 検索語 | ソースで確認した構成と使い方 |
+|---|---|
+| `MonoidalLeftAction`, `MonoidalRightAction`, `curriedAction`, `actionAssocNatIso`, `actionUnitNatIso` | `Mathlib/CategoryTheory/Monoidal/Action/Basic.lean:49,120,325,345,355,434`。左作用の構造と自然性・五角形・左右単位がある。左作用の `curriedAction` と結合・単位の同型を使う。 |
+| `ParametrizedAdjunction`, `adjunction of two variables`, `homEquiv_naturality` | `CategoryTheory/Adjunction/Parametrized.lean:19–24,54–76,91–131`。一つのパラメータについての随伴と自然性。冒頭にも二変数の随伴には `F` と `F.flip` の二つが要るとある。二つの既存構造を使う。 |
+| `EnrichedCategory`, `EnrichedOrdinaryCategory`, `eHomFunctor`, `enrichedOrdinaryCategorySelf` | `CategoryTheory/Enriched/Basic.lean:59`、`Enriched/Ordinary/Basic.lean:42,164`。通常の Hom と単位点の同値まで定義済み。`Monoidal/Closed/Enrichment.lean` には閉モノイダル圏の自己豊穣化と whiskering の比較がある。 |
+| `HasTensors`, `HasCotensors`, `Tensored`, `Cotensored`, `TensorCotensor`, `EnrichedRepresentability`, `tensorHomEquiv`, `cotensorHomEquiv` | `CategoryTheory/Enriched/` と `CategoryTheory/` を検索。B で要る二つの豊穣表現、係数自然性、単位点の一致を束ねた構造は、この探索範囲では見つからなかった。部品は `Monoidal/Closed/Basic.lean:82,242,301,474` の `ihom.adjunction`、`pre`、`internalHomAdjunction₂`、`curryHomEquiv'`。表現を束ねる先は本体の `TensorCotensor` と `EnrichedRepresentability`。 |
+
+### 宣言の照合と B に固有の境界
+
+段10の「写像対象と豊穣化」102件、段12保持31件、段13保持27件、「A へ移す」39件の和集合は149件。段12・13の判断記録、現行ソース、段13のカーネル採取を照合した。写像対象と豊穣化では現行73件のうち51件が一般論の適用で消える候補、20件が一行の適用、2件が B に残る。そのほかは段11で20件、段13で9件が削除済み。C の3件も対象集合に含め、円周での適用として扱った。
+
+| B に残す入力や主張 | この設定で抽象化できない部分 |
+|---|---|
+| `mappingObjectBifunctor` | 写像対象をスペクトル内部 Hom に `evaluation 0` を後合成して実現する定義。一般論は選んだ `R` を受け取る。 |
+| `internalHomCotensorNatIso`、`internalHomCotensorBifunctorIso`、`freeZeroTensorCotensorAdjunction` | 自由第0段、スペクトル内部 Hom、各段余テンソルの具体的な比較。一般論に渡す `Q` とその随伴を作る部分。 |
+| `pointwiseTensor_isQuillen` | 左 Quillen な自由第0段とスペクトルの相対テンソルから各段作用の Quillen 性を得る。作用からの豊穣化とは別の仮定を使う。 |
+| `simplicialLoopNatIso` | 円周について選んだ二つの懸垂表示とその右随伴の比較。同型の構成には一般の右随伴の一意性を使う。 |
+
+### 見積もりと実装順の案
+
+現行の行数は段13の `.ilean` の宣言名から宣言末尾までを数えた。見出し、ファイルの共通部分、生成物を含まない。「B の行の減少余地」は消える候補の行数に、保持する適用を1行にできた場合の差分を加えた上限。A の行数は既存補題を呼ぶ際の引数と自然性の証明を含む概算。
+
+| まとまり | A の追加案 | B の削除候補・一行化候補 | B の行の減少余地 |
+|---|---:|---:|---:|
+| 作用と随伴。対称列加群の入力を整え、二つの随伴を揃える | 6型、約95–170行 | 14件・17件 | 163行 |
+| 豊穣化。既存の評価と作用の整合を接続する | 13型、約130–220行 | 12件・8件 | 170行 |
+| 表現比較。テンソルと余テンソルを一緒に入れる | 26型と局所補題最大10型、約240–420行 | 34件・4件 | 439行 |
+| 対称列の畳み込み生成射、零対象 | 3型、約15–35行 | 2件・1件 | 26行 |
+
+A は48型と局所補題最大10型、計約480–845行。B の理論上の上限は62件・798行の減少。段12・13では削除候補を実際に使う型と照合すると保持に回る例があった。今回も、既存の転置との一致や利用側の読みやすさのため半分程度を残す場合を見込み、約30–45宣言・400–600行減を作業時の目安とする。A と B を合算した総行数の純減は見積もりからは確定しない。
+
+段13で採取した本体9,059モジュールの型・本体の直接参照を、削除候補名とその `_assoc` について集計した。今回の取り込み前後で Lean ソースに差はない。範囲内の書き換え候補は `Spectra/ModelCategory` 0箇所、`Spectra/Stable` 0箇所、C 1箇所。`pointedMappingSpaceParametrizedAdjunction` で `GeneralSymmetricSpectrum.mappingTensorNatIso` を使っており、新しい比較の成分に切り替える。3領域のソースも短名と `_assoc` で検索し、この1箇所だけが一致した。削除候補の完全修飾名を現行の文献対応表と blueprint で検索した結果は0件。3領域には関連する B のファイルへの明示 import が5行あり、いずれも保持する入口のファイルを指す。入口の配置を維持する案では import の書き換えは0行。これは現在の直接参照による見積もりで、型クラス推論や透明性による証明の調整を含まない。[C の利用箇所](../../../SerrePositivity/Spectra/SymmetricSpectrum/Basic.lean#L106)
+
+実装は、作用と二つの随伴、豊穣化と Hom 関手、テンソル・余テンソルの表現比較の順に分ける。作用の段で既存の各段テンソルの関手と射が一致することを確かめる。豊穣化では通常 Hom と単位点の同値および Hom 関手比較の成分、表現比較では原変数・係数・単位点の型を検査する。畳み込み生成射と零対象の3件はこの依存順から切り離せる。
+
+### 本体の同形箇所
+
+概念の木の「Z 圏論一般／豊穣圏」と「テンソル・余テンソル」の参照先から、dg、単体的豊穣、モデル圏の豊穣化を追った。現行ソースで `EnrichedCategory`、`EnrichedOrdinaryCategory`、`TensorCotensor`、`cotensorHomEquiv`、`EnrichedRepresentability` の宣言・利用箇所を検索し、以下の型と構成を確認した。[概念の定義](../../../research/cleanup-zero-base/whole/concept-definitions-draft6.md#L1906)
+
+| 箇所 | 共通部分と個別の入力 |
+|---|---|
+| dg 複体の `complexEnrichment`、`complexEnrichedOrdinary` | Hom 複体、合成、単位点を独立に書いている。`complexEnrichment_eq_closed` が既に閉構造からの Mathlib 自己豊穣化と比較する。一般の作用の入口を試す例にはなる。既存の複体成分の計算と通常射の同値が揃うことの確認が要る。[dg の豊穣化](../../../SerrePositivity/DifferentialGraded/Category/Basic.lean#L555) · [自己豊穣化との一致](../../../SerrePositivity/DifferentialGraded/Complexes/HomLimits.lean#L121) |
+| dg 加群の `tensorHomEquiv` と `enrichedTensorHomEquiv` | dg 圏を添字とする相対テンソルを coend として作り、平衡化の条件から転置を作る。係数のテンソルと内部 Hom との随伴は共通部品。相対テンソル自身の普遍性はこの設計の入力としても別に要る。[dg 加群の通常の同値](../../../SerrePositivity/DifferentialGraded/Tensor/Enriched.lean#L314) · [豊穣同値](../../../SerrePositivity/DifferentialGraded/Tensor/Enriched.lean#L759) |
+| dg から作る単体的圏の `standardEnrichedCategory` | 単位と合成は Dold–Kan の Hom と Alexander–Whitney 合成で与え、次数ごとに法則を証明する。選んだ通常射を表す二つの作用随伴をこの定義は使っていない。今回の入口への直接の置換は確認できなかった。[単体的豊穣](../../../SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/Enrichment.lean#L30) |
+| Barratt–Eccles の `cotensorHomEquiv` と `algebraHammockEnrichedCategory` | 余テンソルの通常 Hom 同値は右 frame の反対圏での実現随伴。別に hammock colimit の写像空間から豊穣化を作る。右 frame の Hom と hammock Hom を同じ二変数随伴に載せる入力はこれらの定義には現れない。[余テンソルの同値](../../../SerrePositivity/EInfinity/BarrattEccles/Cotensor.lean#L42) · [hammock 豊穣化](../../../SerrePositivity/EInfinity/BarrattEccles/HammockEnrichedCategory.lean#L39) |
+| 単体的モデル圏の `simplexTensorHomEquiv` と `tensorHomBifunctorIso` | 既存 `TensorCotensor` の通常 Hom 同値を標準単体で使い、余単体分解の Hom と写像空間を比較する。今回提案した一般論の出力を既に受け取れる形で、標準単体の比較が固有の部分。[単体での評価](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorHom.lean#L27) · [二変数の比較](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorHom.lean#L67) |
+| 固定 Quillen 類の `fixedEnrichedHom_trivialKanFibration` | 既存 `TensorCotensor.tensorHom` の随伴で持ち上げを移す。一般の表現比較を証明し直す箇所はなく、境界・ホーンで Quillen 類を指定する部分が固有。[固定モデル構造との比較](../../../SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FixedSimplicialModelCompatibility.lean#L63) |
+| モデル圏の `tensor_iff_cotensor_model`、`tensor_iff_mapping_model`、`derivedHom` | 最初の二つが一般の pushout-product／pullback-Hom 同値を既に与える。B のモデル圏補題は適用で足りる。導来 Hom ではさらに余ファイブレーション・ファイブレーション置換が要る。[一般のモデル圏条件](../../../SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean#L30) · [導来 Hom](../../../SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean#L32) |
