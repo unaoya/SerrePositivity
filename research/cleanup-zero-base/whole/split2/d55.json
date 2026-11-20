@@ -1,0 +1,55 @@
+{
+ "key": "d55",
+ "concept": "H K 理論/pro 切除の塔",
+ "subconcepts": [
+  {
+   "name": "塔と pro 同型・pro 零",
+   "description": "ℕ 添字の逆系（Tower）、レベル射とその合成・関手による像、Artin–Mazur 型の pro 同型、pro 零",
+   "reference": "KST §4.1、Lemma 4.9・4.10"
+  },
+  {
+   "name": "相対ホモロジーの商模型",
+   "description": "加群の射の像による商（余核の模型）、その図式、半直積 bar の基底 bar による商、借用したホモロジー関手と自由整数複体のホモロジーの模型同型",
+   "reference": "KST Proposition 4.14、Appendix A、Lemma A.4"
+  },
+  {
+   "name": "（補助）整数鎖区間と鎖ホモトピーの正方形",
+   "description": "標準の整数鎖区間（二頂点と一辺）と、二つの鎖ホモトピーが作る自然な正方形の条件",
+   "reference": "KST A.3・A.5"
+  },
+  {
+   "name": "（補助）非可換な標的の検証例",
+   "description": "位数 8 の二面体群（A.5 の可換像の障害の検証用）",
+   "reference": "KST A.5"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.ProExcision.IsProIso": "塔と pro 同型・pro 零",
+  "SerrePositivity.KST.ProExcision.LevelHom": "塔と pro 同型・pro 零",
+  "SerrePositivity.KST.ProExcision.Tower": "塔と pro 同型・pro 零",
+  "SerrePositivity.KST.ProExcision.firstBlockMatrix": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.SimplicialHomologyModel": "相対ホモロジーの商模型",
+  "SerrePositivity.KST.ProExcision.IsProZero": "塔と pro 同型・pro 零",
+  "SerrePositivity.KST.ProExcision.integerIntervalX": "（補助）整数鎖区間と鎖ホモトピーの正方形",
+  "SerrePositivity.KST.ProExcision.ActionObject": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.obstructionDihedral": "（補助）非可換な標的の検証例",
+  "SerrePositivity.KST.ProExcision.setActionBar": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.blockColumn": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.integerChainInterval": "（補助）整数鎖区間と鎖ホモトピーの正方形",
+  "SerrePositivity.KST.ProExcision.ActionProduct": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.relativeModuleDiagram": "相対ホモロジーの商模型",
+  "SerrePositivity.KST.ProExcision.integerUnitizationMap": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.LevelHom.comp": "塔と pro 同型・pro 零",
+  "SerrePositivity.KST.ProExcision.integerUnitizationIdeal": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.relativeModule": "相対ホモロジーの商模型",
+  "SerrePositivity.KST.ProExcision.IsCentralElement": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.Tower.map": "塔と pro 同型・pro 零",
+  "SerrePositivity.KST.ProExcision.ChainHomotopySquare": "（補助）整数鎖区間と鎖ホモトピーの正方形",
+  "SerrePositivity.KST.ProExcision.SimplicialActionHom": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.SimplicialActionPairMap": "MOVE:H K 理論/pro 切除：非単位環と GL",
+  "SerrePositivity.KST.ProExcision.relativeBarModule": "相対ホモロジーの商模型",
+  "SerrePositivity.KST.ProExcision.LevelHom.map": "塔と pro 同型・pro 零"
+ },
+ "uncertain": [],
+ "notes": "幹の名前「pro 切除の塔」に厳密に合うのは Tower・LevelHom・IsProIso・IsProZero の 7 件だけ。KST 4.16 の行列と単位化（firstBlockMatrix・blockColumn・integerUnitizationMap・integerUnitizationIdeal・IsCentralElement）と、Appendix A のモノイド作用（ActionObject・ActionProduct・setActionBar・SimplicialActionHom・SimplicialActionPairMap）は、d56 側の SimplicialMonoidAction・simplicialActionProduct・SimplicialSetAction・triangularBlockGroup と同じ話なので d56 へ。Appendix A の相対ホモロジー（relativeModule・relativeBarModule・SimplicialHomologyModel）と鎖区間はここに残したが、d55 と d56 の境目は機械的で、「pro の塔（一般論）」と「KST §4・付録 A の群ホモロジー計算」に切り直すほうが自然。SimplicialHomologyModel は借用したホモロジー関手を入力に取る構造体（界面）。obstructionDihedral は DihedralGroup 4 の abbrev。"
+}

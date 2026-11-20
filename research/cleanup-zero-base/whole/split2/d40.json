@@ -1,0 +1,41 @@
+{
+ "key": "d40",
+ "concept": "E モデル圏/Quillen 関手と生成",
+ "subconcepts": [
+  {
+   "name": "Quillen 関手",
+   "description": "余ファイブレーション・自明余ファイブレーションを保つ左 Quillen 関手、双対の右 Quillen 関手（随伴は別に与える）",
+   "reference": ""
+  },
+  {
+   "name": "Quillen 双関手とモノイダルモデル圏",
+   "description": "pushout-product の条件による Quillen 双関手、引き戻し Hom の側の同値な条件、monoid axiom、相対セル複体",
+   "reference": ""
+  },
+  {
+   "name": "余ファイブラント生成",
+   "description": "生成類 I・J の小対象の議論の仮定と右持ち上げ性による（自明）ファイブレーションの特徴づけ",
+   "reference": ""
+  },
+  {
+   "name": "Smith の定理の入力（解集合・accessible な因子分解）",
+   "description": "弱同値の候補を矢の圏の対象の性質と見た充満部分圏とその包含（解集合）、正則基数での accessible な関手的因子分解と置換のデータ",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated": "余ファイブラント生成",
+  "SerrePositivity.ArrowFactorization": "MOVE:Z 圏論一般/圏・関手・極限",
+  "SerrePositivity.Smith.arrowInclusion": "Smith の定理の入力（解集合・accessible な因子分解）",
+  "SerrePositivity.Quillen.IsLeftQuillen": "Quillen 関手",
+  "SerrePositivity.Quillen.IsRightQuillen": "Quillen 関手",
+  "SerrePositivity.Quillen.IsQuillenBifunctor": "Quillen 双関手とモノイダルモデル圏",
+  "SerrePositivity.Quillen.HasMonoidAxiom": "Quillen 双関手とモノイダルモデル圏",
+  "SerrePositivity.Smith.AccessibleModelFactorizations": "Smith の定理の入力（解集合・accessible な因子分解）",
+  "SerrePositivity.Quillen.relativeCells": "Quillen 双関手とモノイダルモデル圏",
+  "SerrePositivity.Smith.arrowProperty": "Smith の定理の入力（解集合・accessible な因子分解）",
+  "SerrePositivity.Quillen.HasQuillenPullbackHom": "Quillen 双関手とモノイダルモデル圏"
+ },
+ "uncertain": [],
+ "notes": "ArrowFactorization は一般の圏の射の因子分解のデータ（モデル構造なし）で、Mathlib の MapFactorizationData と役割が重なる（言い換えの疑い）。ファイルの冒頭に「任意モデル源の厳密化から独立」とあり K 理論の一般化（中断）の跡。Smith.arrowProperty は MorphismProperty を Arrow の ObjectProperty と見るだけの言い換え。CofibrantlyGenerated の Basic.lean の冒頭に「分割で生成：docstring を書き直すこと」。"
+}

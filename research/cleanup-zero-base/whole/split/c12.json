@@ -1,0 +1,79 @@
+{
+ "key": "c12",
+ "concept": "B 複体と dg 圏/dg 加群",
+ "subconcepts": [
+  {
+   "name": "右・左 dg 加群（対象）",
+   "description": "dg 圏 D 上の右 dg 加群（Dᵒᵖ → Ch(A) の dg 関手）と左 dg 加群、値・作用の取り出し、左加群を Dᵒᵖ 上の右加群と読むこと",
+   "reference": "Keller, Deriving DG categories §1"
+  },
+  {
+   "name": "Hom 複体（豊穣 end）",
+   "description": "二つの dg 加群の間の Hom 複体（全次数の自然性を課す end）、評価への射影、普遍性、前合成・後合成、シフトとのブロック表示",
+   "reference": "Keller §1.2"
+  },
+  {
+   "name": "閉次数零の加群圏と評価",
+   "description": "閉次数零の射（dg 自然な鎖写像）による加群の通常の圏 Z⁰、対象での評価関手（通常版と dg 版）",
+   "reference": ""
+  },
+  {
+   "name": "写像錐",
+   "description": "加群の射の写像錐、包含・連結射・合成に対する錐の射、錐の成分を表す Hom の元",
+   "reference": "Keller §2"
+  },
+  {
+   "name": "ホモトピー圏 K(D) と擬同型・acyclic",
+   "description": "加群の dg 圏の H⁰ としての K(D)、objectwise な擬同型と acyclic 対象",
+   "reference": "Keller §2.2, §4.1"
+  },
+  {
+   "name": "ホモトピー射影的加群",
+   "description": "acyclic 加群への Hom 複体が acyclic になる加群（K-射影的）、その K(D) での充満部分圏",
+   "reference": "Keller §3.1; Spaltenstein"
+  },
+  {
+   "name": "表現可能加群と双対",
+   "description": "表現可能加群 Hom_D(−,x)、dg 関手に沿った制限との比較、左加群と複体から作る右加群 Hom_A(N(−),T)",
+   "reference": "Keller §1.2（米田）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DifferentialGraded.ModuleCategory": "閉次数零の加群圏と評価",
+  "SerrePositivity.DifferentialGraded.moduleEvaluation": "閉次数零の加群圏と評価",
+  "SerrePositivity.DifferentialGraded.RightModule": "右・左 dg 加群（対象）",
+  "SerrePositivity.DifferentialGraded.moduleCone": "写像錐",
+  "SerrePositivity.DifferentialGraded.moduleHom": "Hom 複体（豊穣 end）",
+  "SerrePositivity.DifferentialGraded.moduleHomotopicallyProjective": "ホモトピー射影的加群",
+  "SerrePositivity.DifferentialGraded.moduleConeInr": "写像錐",
+  "SerrePositivity.DifferentialGraded.ModuleHomotopyCategory": "ホモトピー圏 K(D) と擬同型・acyclic",
+  "SerrePositivity.DifferentialGraded.representable": "表現可能加群と双対",
+  "SerrePositivity.DifferentialGraded.LeftModuleCategory": "閉次数零の加群圏と評価",
+  "SerrePositivity.DifferentialGraded.moduleQuasiIso": "ホモトピー圏 K(D) と擬同型・acyclic",
+  "SerrePositivity.DifferentialGraded.moduleHomπ": "Hom 複体（豊穣 end）",
+  "SerrePositivity.DifferentialGraded.RightModule.obj": "右・左 dg 加群（対象）",
+  "SerrePositivity.DifferentialGraded.moduleHomotopyToDerivedClosed": "MOVE:B 複体と dg 圏/導来圏と Perf（dg 加群）",
+  "SerrePositivity.DifferentialGraded.RightModule.map": "右・左 dg 加群（対象）",
+  "SerrePositivity.DifferentialGraded.homRightModule": "表現可能加群と双対",
+  "SerrePositivity.DifferentialGraded.moduleConeConnecting": "写像錐",
+  "SerrePositivity.DifferentialGraded.moduleHomShiftBlock": "Hom 複体（豊穣 end）",
+  "SerrePositivity.DifferentialGraded.LeftModule": "右・左 dg 加群（対象）",
+  "SerrePositivity.DifferentialGraded.moduleHomotopyQuasiIso": "ホモトピー圏 K(D) と擬同型・acyclic",
+  "SerrePositivity.DifferentialGraded.moduleConeCompMap": "写像錐",
+  "SerrePositivity.DifferentialGraded.moduleConeInlElement": "写像錐",
+  "SerrePositivity.DifferentialGraded.moduleEvaluationDG": "閉次数零の加群圏と評価",
+  "SerrePositivity.DifferentialGraded.DerivedLeftModuleCategory": "MOVE:B 複体と dg 圏/導来圏と Perf（dg 加群）",
+  "SerrePositivity.DifferentialGraded.projectiveModuleHomotopyCategory": "ホモトピー射影的加群",
+  "SerrePositivity.DifferentialGraded.moduleConeSndElement": "写像錐",
+  "SerrePositivity.DifferentialGraded.moduleHomotopyAcyclic": "ホモトピー圏 K(D) と擬同型・acyclic",
+  "SerrePositivity.DifferentialGraded.moduleHomPostcompose": "Hom 複体（豊穣 end）",
+  "SerrePositivity.DifferentialGraded.representableRestrictionMap": "表現可能加群と双対",
+  "SerrePositivity.DifferentialGraded.moduleHomotopyProjectiveLocus": "ホモトピー射影的加群",
+  "SerrePositivity.DifferentialGraded.moduleHomPrecompose": "Hom 複体（豊穣 end）",
+  "SerrePositivity.DifferentialGraded.LeftModule.toRightOpposite": "右・左 dg 加群（対象）",
+  "SerrePositivity.DifferentialGraded.RightModule.toFunctor": "右・左 dg 加群（対象）",
+  "SerrePositivity.DifferentialGraded.moduleHomEquiv": "Hom 複体（豊穣 end）"
+ },
+ "mathlib_rules": [],
+ "notes": "核は 34 件と少なく、内容はそのまま Keller の順に分かれた。導来圏への局所化関手 moduleHomotopyToDerivedClosed と左加群の導来圏 DerivedLeftModuleCategory は「導来圏と Perf（dg 加群）」へ MOVE。 幹の区切りとして、K(D)・擬同型・ホモトピー射影性はこの概念、D(D) は c11 という線になっている（moduleQuasiIso はここ、その局所化は c11）。半自由加群・cell は「dg 商と cell 分解」にあると思われる（この核には無い）。"
+}

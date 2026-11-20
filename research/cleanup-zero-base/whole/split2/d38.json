@@ -1,0 +1,32 @@
+{
+ "key": "d38",
+ "concept": "D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列",
+ "subconcepts": [
+  {
+   "name": "Verdier 列（安定 ∞ 圏）",
+   "description": "完全関手の列 A → B → C が Verdier 列である条件（充満忠実・核の一致・商の普遍性）と、それを束ねた構造",
+   "reference": ""
+  },
+  {
+   "name": "Verdier 図式（coherent な四角形による提示）",
+   "description": "零合成を保持した coherent な四角形としての Verdier 列の提示、提示源 S 上の四角形でその像が Verdier となるもの",
+   "reference": ""
+  },
+  {
+   "name": "（補助）dg Verdier 商の分母図式の錐とホーン",
+   "description": "dg 神経の Verdier 商の over 圏で、有限の分母図式の全頂点への共通の錐、辺・二単体に沿う整合性のホーン",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence": "Verdier 列（安定 ∞ 圏）",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGVerdierDiagramVertexCone": "（補助）dg Verdier 商の分母図式の錐とホーン",
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram": "Verdier 図式（coherent な四角形による提示）",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgVerdierDiagramTriangleHorn": "（補助）dg Verdier 商の分母図式の錐とホーン",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgVerdierDiagramEdgeHorn": "（補助）dg Verdier 商の分母図式の錐とホーン",
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram": "Verdier 図式（coherent な四角形による提示）",
+  "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.VerdierSequence": "Verdier 列（安定 ∞ 圏）"
+ },
+ "uncertain": [],
+ "notes": "DGVerdierDiagramVertexCone・dgVerdierDiagramEdgeHorn・dgVerdierDiagramTriangleHorn は dg の Verdier 商の分母の圏がフィルター的であることを示す途中の部品（docstring に「最後の面の充填可能性は主張しない」「高次整合性はまだ構造に含めない」とあり、中断した経路の可能性）。RelativeInvariant.lean の冒頭に「分割で生成：docstring を書き直すこと」。"
+}

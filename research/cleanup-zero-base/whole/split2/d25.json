@@ -1,0 +1,65 @@
+{
+ "key": "d25",
+ "concept": "B 複体と dg 圏/dg 圏と dg 関手",
+ "subconcepts": [
+  {
+   "name": "dg 圏（Hom 複体・次数つき射・合成）",
+   "description": "非有界複体の圏 Ch(A) で豊穣された圏。Hom 複体、次数 n の射、Koszul 符号つきの合成、対象の写像に沿って引き戻した dg 圏",
+   "reference": ""
+  },
+  {
+   "name": "Z⁰ と H⁰",
+   "description": "閉じた次数 0 の射の圏、chain homotopy（境界）で割ったホモトピー圏",
+   "reference": ""
+  },
+  {
+   "name": "dg 関手",
+   "description": "Ch(A) 豊穣関手。恒等、合成、反対、Z⁰・H⁰ への制限、複体値 dg 関手の下部関手",
+   "reference": ""
+  },
+  {
+   "name": "dg 圏のテンソル積",
+   "description": "対象は組、Hom は Hom 複体のテンソル積",
+   "reference": ""
+  },
+  {
+   "name": "自由 dg 圏",
+   "description": "複体値 quiver から、path に沿った辺のテンソルの直和を Hom とする dg 圏",
+   "reference": ""
+  },
+  {
+   "name": "dg 圏の表示符号",
+   "description": "基数 κ で抑えた順序数を対象とし、Hom を複体の表示符号で与えた dg 圏のデータ（小さい dg 圏の集合を作るため）、その非連結和の Hom",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DifferentialGraded.DGCategory": "dg 圏（Hom 複体・次数つき射・合成）",
+  "SerrePositivity.DifferentialGraded.DGFunctor": "dg 関手",
+  "SerrePositivity.DifferentialGraded.DGTensorCategory": "dg 圏のテンソル積",
+  "SerrePositivity.DifferentialGraded.compose": "dg 圏（Hom 複体・次数つき射・合成）",
+  "SerrePositivity.DifferentialGraded.GradedHom": "dg 圏（Hom 複体・次数つき射・合成）",
+  "SerrePositivity.DifferentialGraded.ClosedCategory": "Z⁰ と H⁰",
+  "SerrePositivity.DifferentialGraded.homObject": "dg 圏（Hom 複体・次数つき射・合成）",
+  "SerrePositivity.DifferentialGraded.DGFunctor.comp": "dg 関手",
+  "SerrePositivity.DifferentialGraded.HomotopyCategory": "Z⁰ と H⁰",
+  "SerrePositivity.DifferentialGraded.DGFunctor.onClosed": "dg 関手",
+  "SerrePositivity.DifferentialGraded.DGFunctor.onHomotopy": "dg 関手",
+  "SerrePositivity.DifferentialGraded.DGCategoryPresentationCode.Objects": "dg 圏の表示符号",
+  "SerrePositivity.DifferentialGraded.FreeDGCategory.homComplex": "自由 dg 圏",
+  "SerrePositivity.DifferentialGraded.DGFunctor.op": "dg 関手",
+  "SerrePositivity.DifferentialGraded.DGCategoryCycleCover.Source": "MOVE:B 複体と dg 圏/dg 商と cell 分解",
+  "SerrePositivity.DifferentialGraded.FreeDGCategory.pathInclusion": "自由 dg 圏",
+  "SerrePositivity.DifferentialGraded.DGFunctor.id": "dg 関手",
+  "SerrePositivity.DifferentialGraded.DGCategoryPresentationData.sigmaHom": "dg 圏の表示符号",
+  "SerrePositivity.DifferentialGraded.boundaryRelation": "Z⁰ と H⁰",
+  "SerrePositivity.DifferentialGraded.DGCategoryPresentationCode": "dg 圏の表示符号",
+  "SerrePositivity.DifferentialGraded.FreeDGCategory.Objects": "自由 dg 圏",
+  "SerrePositivity.DifferentialGraded.FreeDGCategory.ComplexQuiver": "自由 dg 圏",
+  "SerrePositivity.DifferentialGraded.inducedDGCategory": "dg 圏（Hom 複体・次数つき射・合成）",
+  "SerrePositivity.DifferentialGraded.DGFunctor.toComplexFunctor": "dg 関手",
+  "SerrePositivity.DifferentialGraded.FreeDGCategory.pathTensor": "自由 dg 圏"
+ },
+ "uncertain": [],
+ "notes": "docstring のない 7 件は本体を読んだ。DGCategory・DGFunctor・DGTensorCategory・ClosedCategory は Mathlib の EnrichedCategory／EnrichedFunctor／TransportEnrichment／ForgetEnrichment の abbrev。DGCategoryCycleCover.Source は Hom の cycle cover を辺とする自由 dg 圏で、cell 分解の初段（DGCategoryCellResolution.initial が使う）なので「dg 商と cell 分解」へ。自由 dg 圏（FreeDGCategory）の path のテンソルの直和は、d24 の dg 商の path 複体・cell の貼り付けの語の複体と同じ形の三つ目の構成。DGCategoryPresentationCode は「サイズの条件」に近い（表示の符号で小ささを示す足場）。"
+}

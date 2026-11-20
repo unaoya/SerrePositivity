@@ -1,0 +1,31 @@
+{
+ "key": "d20",
+ "concept": "A 可換代数と数論幾何/根の塔",
+ "subconcepts": [
+  {
+   "name": "根の塔（段・遷移・順極限）",
+   "description": "A_n = A[t^{1/p^n}] の関係イデアルと段、遷移写像、順極限 Λ、段からの標準写像、イデアル m_A Λ",
+   "reference": "論文 §2（Lemma 2.3）"
+  },
+  {
+   "name": "（補助）塔の perfection への作用",
+   "description": "Tower から PerfectClosure への標準写像による代数構造の局所 instance",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.Section2.Tower": "根の塔（段・遷移・順極限）",
+  "SerrePositivity.Section2.TowerStage": "根の塔（段・遷移・順極限）",
+  "SerrePositivity.Section2.towerLengthFun": "MOVE:A 可換代数と数論幾何/正規化長さ",
+  "SerrePositivity.Section2.towerPerfectionAlgebra": "（補助）塔の perfection への作用",
+  "SerrePositivity.Section2.towerMap": "根の塔（段・遷移・順極限）",
+  "SerrePositivity.RootTowerLength.completedNormalizedLength": "MOVE:A 可換代数と数論幾何/正規化長さ",
+  "SerrePositivity.Section2.towerMaxIdeal": "根の塔（段・遷移・順極限）",
+  "SerrePositivity.Section2.towerLengthOn": "MOVE:A 可換代数と数論幾何/正規化長さ",
+  "SerrePositivity.Section2.towerOf": "根の塔（段・遷移・順極限）",
+  "SerrePositivity.Section2.towerMapRingHom": "根の塔（段・遷移・順極限）",
+  "SerrePositivity.Section2.towerRel": "根の塔（段・遷移・順極限）"
+ },
+ "uncertain": [],
+ "notes": "towerLengthFun（λ_∞、論文 (2.3)）・towerLengthOn（λ_D）・RootTowerLength.completedNormalizedLength は塔の上の正規化長さで、幹の 正規化長さ へ（NormalizedLength 構造の実例。ファイルも LengthAlgebra/RootTowerLength）。towerMap（代数射）と towerMapRingHom（環準同型）は同じ遷移の二つの形。完備化した塔 CompletedTower と d11 の Section2.MixedPerfectoid（C_D = (R∞ ⊗ D)_perfd）はここに来ていない。"
+}

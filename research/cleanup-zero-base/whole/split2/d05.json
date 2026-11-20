@@ -1,0 +1,43 @@
+{
+ "key": "d05",
+ "concept": "A 可換代数と数論幾何/de Rham 複体",
+ "subconcepts": [
+  {
+   "name": "多項式代数の微分形式と外積",
+   "description": "多項式環 k[T] の i 次微分形式 k[T] ⊗ ⋀ⁱ(k^T)、変数の 1 形式 dX、外積、次数 0 の同一視、単項式の基底。",
+   "reference": ""
+  },
+  {
+   "name": "多項式 de Rham 複体",
+   "description": "偏微分の和を微分とする多項式代数の de Rham 余鎖複体。",
+   "reference": ""
+  },
+  {
+   "name": "p 進完備化した多項式の微分形式",
+   "description": "多項式環の p 進完備化（一座標 Koszul 完備化の H⁰）と、係数をそこへ拡大した微分形式、完備化の単位。",
+   "reference": ""
+  },
+  {
+   "name": "次数付き可換微分代数",
+   "description": "自然数で次数付けた次数付き可換微分 k 代数の構造（de Rham 複体の普遍性の標的）。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DeRham.forms": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.Poly": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.dX": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.wedge": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.wedgeOne": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.formsZeroEquiv": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.polynomialFormsBasis": "多項式代数の微分形式と外積",
+  "SerrePositivity.DeRham.deRhamComplex": "多項式 de Rham 複体",
+  "SerrePositivity.DeRham.deRhamD": "多項式 de Rham 複体",
+  "SerrePositivity.DeRham.completedPoly": "p 進完備化した多項式の微分形式",
+  "SerrePositivity.DeRham.completedForms": "p 進完備化した多項式の微分形式",
+  "SerrePositivity.DeRham.completedFormsUnit": "p 進完備化した多項式の微分形式",
+  "SerrePositivity.DeRham.GradedCommDGAlgebra": "次数付き可換微分代数"
+ },
+ "uncertain": [],
+ "notes": "de Rham 複体は多項式代数 k[T]（T 有限）の場合だけを明示的に作っている（Kähler 微分の外冪による一般の定義ではない）。幹の名前は「多項式の de Rham 複体と Cartier」とすると範囲が正確。polynomialFormsBasis は Cartier 同型の代表形式の基底（CartierWeight.lean）に使う。GradedCommDGAlgebra は幹 F「dg オペラドと代数」や D「dg 代数」とは別の、ℕ 次数・可換の専用の構造（重複の疑いとして確認の価値あり）。Poly は MvPolynomial T k の別名。"
+}

@@ -1,0 +1,139 @@
+{
+ "key": "c24",
+ "concept": "Z 圏論一般/圏・関手・極限",
+ "subconcepts": [
+  {
+   "name": "加法圏・Abel 圏・三角圏",
+   "description": "前加法・Abel・Grothendieck Abel 圏、短い複体と完全性、部分対象、零対象、シフト・三角圏・t 構造",
+   "reference": ""
+  },
+  {
+   "name": "局所表示可能圏・到達可能性・基数の条件",
+   "description": "局所表示可能圏、κ 表示可能対象、到達可能関手、フィルター圏、正則基数・順序数で添字づけた構成",
+   "reference": "Adámek–Rosický; HTT A.1.2, 5.4"
+  },
+  {
+   "name": "射の類・充満部分圏・局所化・冪等完備",
+   "description": "MorphismProperty・ObjectProperty・充満部分圏、圏の局所化、Karoubi 包とレトラクト",
+   "reference": ""
+  },
+  {
+   "name": "箙・自由圏・群と一対象圏",
+   "description": "道の圏 Paths、自由亜群、商圏、SingleObj（群・モノイドを一対象圏とみる）、群準同型",
+   "reference": ""
+  },
+  {
+   "name": "位相空間・サイト・層",
+   "description": "TopCat、Grothendieck 位相・ふるい、層の条件、連続・余連続関手",
+   "reference": ""
+  },
+  {
+   "name": "モノイダル構造と豊穣",
+   "description": "モノイダル圏・組みひも・デカルト構造、モノイダル関手、豊穣圏",
+   "reference": ""
+  },
+  {
+   "name": "随伴・Kan 拡張・米田",
+   "description": "随伴と homEquiv、Kan 拡張、モナド、米田・表現可能関手、final/initial 関手",
+   "reference": ""
+  },
+  {
+   "name": "射の圏・スライス・コンマ圏・要素の圏",
+   "description": "Arrow、Over・Under、コンマ圏・(Co)StructuredArrow、要素の圏、Grothendieck 構成、WithInitial・WithTerminal",
+   "reference": ""
+  },
+  {
+   "name": "順序集合の圏・合成可能な射の列・神経",
+   "description": "半順序（Fin n など）を圏とみたもの、ComposableArrows、神経、単体圏の射",
+   "reference": ""
+  },
+  {
+   "name": "極限と余極限",
+   "description": "錐・余錐、引き戻し・押し出し、積・余積、end、極限の保存、mono・epi",
+   "reference": ""
+  },
+  {
+   "name": "サイズと宇宙の持ち上げ",
+   "description": "AsSmall・ShrinkHoms・ULift、Small・LocallySmall・UnivLE",
+   "reference": ""
+  },
+  {
+   "name": "関手・自然変換・同型と同値（基本）",
+   "description": "関手の合成・whisker、自然変換、同型、圏同値、eqToHom、Cat、Discrete、積圏、反対圏",
+   "reference": ""
+  },
+  {
+   "name": "（その他）",
+   "description": "Category と射の合成しか主張に現れない宣言（個別の構造体・補助の定義）",
+   "reference": ""
+  }
+ ],
+ "assign": {},
+ "mathlib_rules": [
+  [
+   "^CategoryTheory\\.(shiftFunctor|HasShift|Pretriangulated|Triangulated|Functor\\.(IsTriangulated|CommShift|ShiftSequence)|IsTriangulated|ObjectProperty\\.(trW|IsTriangulated)|shiftFunctorAdd|shiftFunctorZero|NatTrans\\.CommShift)",
+   "加法圏・Abel 圏・三角圏"
+  ],
+  [
+   "^(CategoryTheory\\.(Abelian|IsGrothendieckAbelian|ShortComplex|Preadditive|Linear|Functor\\.(Additive|preservesZeroMorphisms|mapHomologicalComplex|PreservesHomology)|NonPreadditiveAbelian|Subobject|small_subobject|instPartialOrderSubobject|categoryWithHomology|CategoryWithHomology|Projective|Injective|EnoughProjectives|EnoughInjectives|Limits\\.(HasZeroMorphisms|HasZeroObject|IsZero|cokernel|kernel|HasCokernels|HasKernels|biprod|HasBinaryBiproducts|HasFiniteBiproducts|HasBiproduct|biproduct|Bicone|BinaryBicone|instHasZeroMorphismsFunctor)|functorCategoryPreadditive|ComposableArrows\\.(Exact|IsComplex))|HomologicalComplex|CochainComplex|ChainComplex|ComplexShape|AddCommGrpCat|ModuleCat|Homotopy$|HomotopyEquiv)",
+   "加法圏・Abel 圏・三角圏"
+  ],
+  [
+   "^(CategoryTheory\\.(IsLocallyPresentable|IsCardinalLocallyPresentable|IsCardinalPresentable|IsPresentable|IsAccessibleCategory|IsCardinalAccessibleCategory|IsCardinalFiltered|IsCardinalFilteredGenerator|Functor\\.(IsCardinalAccessible|IsAccessible|IsWellOrderContinuous)|IsSeparator|IsSeparating|IsDetecting|IsDetector|IsCoseparator|instIsAccessibleCategory|instLocallySmallOfIsAccessibleCategory|IsFiltered|IsCofiltered|IsFilteredOrEmpty|Limits\\.(PreservesFilteredColimits|PreservesFilteredColimitsOfSize)|ObjectProperty\\.(IsStrongGenerator|IsCardinalFilteredGenerator|IsSeparating)|SmallObject|MorphismProperty\\.(HasSmallObjectArgument|transfiniteCompositions|TransfiniteCompositionOfShape))|Cardinal(\\.|$)|HasCardinalLT|Ordinal(\\.|$)|SuccOrder|WellFoundedLT|Order\\.IsSuccLimit)",
+   "局所表示可能圏・到達可能性・基数の条件"
+  ],
+  [
+   "^CategoryTheory\\.(Idempotents|IsIdempotentComplete|Retract|RetractArrow|IsSplitMono|IsSplitEpi|SplitMono|SplitEpi)",
+   "射の類・充満部分圏・局所化・冪等完備"
+  ],
+  [
+   "^(Quiver\\.(FreeGroupoid|Symmetrify|symmetrifyQuiver|IsThin|Path|Hom\\.toPath|Arborescence|root|Push)|WideSubquiver|Prefunctor|CategoryTheory\\.(Paths|SingleObj|Groupoid|FreeGroupoid|IsFreeGroupoid|IsGroupoid|Aut|Quotient|HomRel|Free|Cat\\.free|Quiv|ReflQuiv|Cat\\.freeRefl|FreeRefl|Zigzag)(\\.|$)|MonoidHom|Group$|Monoid$)",
+   "箙・自由圏・群と一対象圏"
+  ],
+  [
+   "^(TopCat|TopologicalSpace|Opens\\.|ContinuousMap|Continuous|CategoryTheory\\.(GrothendieckTopology|Sieve|Presieve|Sheaf|Presheaf\\.IsSheaf|Pretopology|Coverage|Functor\\.IsContinuous|Functor\\.IsCocontinuous|sheafification|Limits\\.(MulticospanIndex|WalkingMulticospan|Multiequalizer|multiequalizer)))",
+   "位相空間・サイト・層"
+  ],
+  [
+   "^CategoryTheory\\.(Monoidal|BraidedCategory|SymmetricCategory|CartesianMonoidalCategory|SemiCartesianMonoidalCategory|ChosenFiniteProducts|MonoidalClosed|ihom|Closed|Functor\\.(LaxMonoidal|Monoidal|OplaxMonoidal|Braided)|Mon_|Mon$|MonObj|Comon|Enriched|eComp|eId|EnrichedCategory|EnrichedFunctor|Center|typesCartesianMonoidalCategory)",
+   "モノイダル構造と豊穣"
+  ],
+  [
+   "^CategoryTheory\\.(Adjunction|Functor\\.(IsLeftAdjoint|IsRightAdjoint|leftAdjoint|rightAdjoint|LeftExtension|RightExtension|leftKanExtension|rightKanExtension|IsLeftKanExtension|IsRightKanExtension|lan|ran|HasLeftKanExtension|HasRightKanExtension|HasPointwiseLeftKanExtension|Final|Initial)|Reflective|Coreflective|Monad|Comonad|Functor\\.(lan|ran)|conjugateEquiv|mateEquiv|TwoSquare|yoneda|coyoneda|uliftYoneda|yonedaEquiv|Functor\\.(IsRepresentable|RepresentableBy|CorepresentableBy|IsCorepresentable))",
+   "随伴・Kan 拡張・米田"
+  ],
+  [
+   "^CategoryTheory\\.(Arrow|instCategoryArrow|instQuiverArrow|Over|Under|instCategoryOver|instCategoryUnder|Comma|commaCategory|StructuredArrow|CostructuredArrow|instCategoryStructuredArrow|instCategoryCostructuredArrow|Functor\\.Elements|CategoryOfElements|Grothendieck|WithInitial|WithTerminal|Join|TwistedArrow|Functor\\.(toOver|toUnder))",
+   "射の圏・スライス・コンマ圏・要素の圏"
+  ],
+  [
+   "^(CategoryTheory\\.(ComposableArrows|nerve|nerveMap|nerveFunctor|homOfLE|leOfHom|SimplicialObject|CosimplicialObject)|SimplexCategory\\.(?!smallCategory$)|AugmentedSimplexCategory|SSet|Monotone\\.functor|OrderHom(\\.|$)|OrderIso|OrderEmbedding|GaloisConnection|Set\\.(Iio|Iic|Ici|Ioi))",
+   "順序集合の圏・合成可能な射の列・神経"
+  ],
+  [
+   "^CategoryTheory\\.(Limits\\.|IsPullback|IsPushout|CommSq|Functor\\.(sections|CoconeTypes|ConeTypes|const)|Discrete\\.functor|Bicone|Mono$|Epi$|StrongEpi|RegularEpi|EffectiveEpi|IsKernelPair|GlueData|Functor\\.(PreservesMonomorphisms|PreservesEpimorphisms))",
+   "極限と余極限"
+  ],
+  [
+   "^CategoryTheory\\.(MorphismProperty|ObjectProperty|Localization|LocalizerMorphism|Functor\\.IsLocalization|HasLiftingProperty|FullSubcategory|InducedCategory|WeakEquivalence|Functor\\.EssImage|Functor\\.essImage|isoClosure|ClosedUnderIsomorphisms)|^HomotopicalAlgebra\\.",
+   "射の類・充満部分圏・局所化・冪等完備"
+  ],
+  [
+   "^(CategoryTheory\\.(AsSmall|instSmallCategoryAsSmall|ShrinkHoms|ULiftHom|ULift\\.|uliftFunctor|LocallySmall|EssentiallySmall|SmallModel|Shrink|uliftCategory|ULiftHomULiftCategory|Functor\\.sectionsEquiv)|Shrink|Small$|small_|UnivLE(\\.|$)|univLE|ULift(\\.|$))",
+   "サイズと宇宙の持ち上げ"
+  ],
+  [
+   "^(Preorder\\.smallCategory$|Fin\\.(castSucc|succ|last|succAbove))",
+   "順序集合の圏・合成可能な射の列・神経"
+  ],
+  [
+   "^(CategoryTheory\\.(Iso(\\.|$)|IsIso|inv$|asIso|Equivalence|Functor\\.(IsEquivalence|Faithful|Full|EssSurj|FullyFaithful|ReflectsIsomorphisms|comp|id|map|mapIso|op|unop|rightOp|leftOp|flip|whiskerLeft|whiskerRight|whiskeringLeft|whiskeringRight|prod|prod'|associator|leftUnitor|rightUnitor|category|curry|uncurry)|NatTrans|NatIso|eqToHom|eqToIso|Cat(\\.|$)|Bundled|Discrete|discreteCategory|prod'|uniformProd|pi$|pi'|Pi\\.|evaluation|Bicategory|Pseudofunctor|Prod\\.|Sum\\.|ConcreteCategory|forget|forget₂|types$|Category\\.opposite|CategoryStruct\\.opposite)|Opposite(\\.|$)|Quiver\\.Hom\\.(op|unop)|HEq$)",
+   "関手・自然変換・同型と同値（基本）"
+  ],
+  [
+   ".*",
+   "（その他）"
+  ]
+ ],
+ "notes": "規則の使い方は c07 と同じ想定。Category・Functor・Functor.obj/map・Quiver.Hom・CategoryStruct.comp・Functor.category は決め手にしない；Iso・Functor.comp・Opposite・Discrete・Cat は最後の小概念「基本」でだけ拾い、Preorder.smallCategory はその直前で「順序集合の圏」に入れる。「モノイダル構造と豊穣」は幹の Z「モノイダル圏」「豊穣圏」、「加法圏・Abel 圏・三角圏」は B「三角圏」「複体」、「局所表示可能圏…」は C「サイズの条件」や E「語による分解」、「箙・自由圏」は Z「組合せと順序」の「箙・道・全域木」と範囲が重なる。 確かめた件数：加法圏・Abel 圏・三角圏 263、局所表示可能圏・到達可能性・基数の条件 144、射の類・充満部分圏・局所化・冪等完備 45、箙・自由圏・群と一対象圏 151、位相空間・サイト・層 44、モノイダル構造と豊穣 56、随伴・Kan 拡張・米田 86、射の圏・スライス・コンマ圏・要素の圏 487、順序集合の圏・合成可能な射の列・神経 209、極限と余極限 244、サイズと宇宙の持ち上げ 54、関手・自然変換・同型と同値（基本） 352、（その他） 101。"
+}

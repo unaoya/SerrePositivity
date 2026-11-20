@@ -1,0 +1,78 @@
+{
+ "key": "d02",
+ "concept": "A 可換代数と数論幾何/Koszul 複体",
+ "subconcepts": [
+  {
+   "name": "Koszul 複体（反復錐による定義）",
+   "description": "列 x に対する K(x; R) を、元を一つ加えるごとにスカラー倍の写像錐をとって定める。係数複体・係数加群を変数とする関手版と Koszul ホモロジー。",
+   "reference": ""
+  },
+  {
+   "name": "Koszul 分解",
+   "description": "K(x; R) が R/(x) の分解であること（0 次以外で非輪状、H₀ ≅ R/(x)）。",
+   "reference": ""
+  },
+  {
+   "name": "外積による Koszul 複体",
+   "description": "線形写像 d : M → R の外冪と収縮微分による Koszul 複体（整数次数版）。",
+   "reference": "KST Def 3.1"
+  },
+  {
+   "name": "冪の Koszul 塔",
+   "description": "元の冪 aⁿ の Koszul 複体の逆系、その遷移写像、冪で生成されるイデアル。",
+   "reference": ""
+  },
+  {
+   "name": "双対 Koszul 複体（局所コホモロジーの計算）",
+   "description": "Koszul 複体から係数加群への Hom をとった余鎖複体の関手、係数代数上の版、冪に関する余極限。",
+   "reference": ""
+  },
+  {
+   "name": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+   "description": "一元の Koszul 複体 K(a)、そのシフト、テンソル二乗の写像錐模型、テンソル三乗の Fourier 模型（巡回群の作用の固有分解）。",
+   "reference": ""
+  },
+  {
+   "name": "次数付き Koszul 複体（Rees 環上）",
+   "description": "Rees 環上の加群の Koszul 複体を係数環に制限したもの。次数ごとの評価と高次での消滅に使う。",
+   "reference": ""
+  },
+  {
+   "name": "Koszul ホモロジーの長さと Euler 特性",
+   "description": "正規化長さについての Koszul ホモロジーの有限性と、長さの交代和としての Koszul Euler 特性。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.koszulComplex": "Koszul 複体（反復錐による定義）",
+  "SerrePositivity.koszulFunctor": "Koszul 複体（反復錐による定義）",
+  "SerrePositivity.koszulComplexOn": "Koszul 複体（反復錐による定義）",
+  "SerrePositivity.koszulModuleFunctor": "Koszul 複体（反復錐による定義）",
+  "SerrePositivity.koszulHomologySelf": "Koszul 複体（反復錐による定義）",
+  "SerrePositivity.IsKoszulResolution": "Koszul 分解",
+  "SerrePositivity.KST.DerivedBlowup.exteriorKoszulCochain": "外積による Koszul 複体",
+  "SerrePositivity.DerivedCompletion.powerKoszulTower": "冪の Koszul 塔",
+  "SerrePositivity.DerivedCompletion.powerKoszulTransition": "冪の Koszul 塔",
+  "SerrePositivity.DerivedCompletion.powerKoszulIdeal": "冪の Koszul 塔",
+  "SerrePositivity.koszulDualModuleFunctor": "双対 Koszul 複体（局所コホモロジーの計算）",
+  "SerrePositivity.algebraKoszulDualFunctor": "双対 Koszul 複体（局所コホモロジーの計算）",
+  "SerrePositivity.algebraKoszulDualColimitFunctor": "双対 Koszul 複体（局所コホモロジーの計算）",
+  "SerrePositivity.Adams.oneKoszulComplex": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+  "SerrePositivity.Adams.oneKoszulUnit": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+  "SerrePositivity.Adams.oneKoszulShiftOne": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+  "SerrePositivity.Adams.oneKoszulSquareCone": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+  "SerrePositivity.Adams.oneKoszulCubeFourierModel": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+  "SerrePositivity.Adams.oneKoszulCubeFourierModelMap": "一元 Koszul 複体のテンソル冪の模型（Adams 作用素）",
+  "SerrePositivity.GradedKoszul.underlyingComplex": "次数付き Koszul 複体（Rees 環上）",
+  "SerrePositivity.LengthAlgebra.KoszulFinite": "Koszul ホモロジーの長さと Euler 特性",
+  "SerrePositivity.LengthAlgebra.koszulEuler": "Koszul ホモロジーの長さと Euler 特性",
+  "SerrePositivity.DerivedCompletion.koszulCompletionComplex": "MOVE:A 可換代数と数論幾何/導来完備化",
+  "SerrePositivity.DerivedCompletion.complexPowerKoszulStage": "MOVE:A 可換代数と数論幾何/導来完備化",
+  "SerrePositivity.KST.DerivedBlowup.chartKoszulDifferential": "MOVE:H K 理論/導来 blowup",
+  "SerrePositivity.KST.DerivedBlowup.FiniteOverlapBaseKoszulObject": "MOVE:H K 理論/導来 blowup"
+ },
+ "uncertain": [
+  "SerrePositivity.Adams.oneKoszulCubeFourierModelMap"
+ ],
+ "notes": "Koszul 複体の模型が二つある：反復錐の koszulComplex と外積の exteriorKoszulCochain（KST、「既存 derivedChartComplex との比較」に使うと docstring にある）。Adams.oneKoszulComplex は koszulComplex (fun _ : Fin 1 => a) の略記で 202 宣言が使う；Adams.* は K 理論の Adams 作用素の計算（KTheory/Adams/）で、幹に「Adams 作用素」に当たる概念がないのでここに残した。Adams.oneKoszulUnit は R を 0 次に置いた複体で Koszul 固有ではない。koszulCompletionComplex（冪の Koszul 塔の holim）と complexPowerKoszulStage（Cone(aⁿ)）は完備化の模型なので導来完備化へ；塔そのもの（powerKoszulTower など）は Koszul に残した。LengthAlgebra.KoszulFinite・koszulEuler は幹「正規化長さ」に入れてもよい。koszulDualModuleFunctor（R 係数）と algebraKoszulDualFunctor（C 係数）は同じ構成の係数違い。"
+}

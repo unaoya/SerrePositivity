@@ -133,3 +133,37 @@ C の 660 宣言のうち 416 は、一行の言い換え（一行の定義 211�
 ### 段 5 の完了の条件
 
 段 3・段 4 と同じ（表は `research/cleanup-zero-base/spectra/stage5.csv`、報告は `report-spectra-unify.md` に節を足す）。以前から落ちている検査は直さず、落ち方が変わらないことだけ確かめる。コミットして止まる。
+
+## 7. 段 6：「内部 Hom」の実施
+
+段 5（74b1932c8）の結果：C は 482 → 350 宣言、4,822 → 3,743 行、16 ファイルを削除。B は 356 → 361。
+
+段 2 の表で `group` が「内部 Hom」の宣言のうち、まだ C に残っているもの（段 2 の時点で 116 件。案：消す 64、別名 2、B に一般版を足す 50。`spectrumMonoidalClosed` は段 5 で削除済み）を実施する。規則は §4 の 1〜6 と §6 の追加（随伴の成分の名前は消して `expanded-names.csv` に記録、instance は B の登録が探索で得られるなら消す）と同じ。加えて：
+
+- 「B に一般版を足す」の案が 50 件と多い（次数をずらした Hom、自由スペクトルからの内部 Hom の各段の式）。段 5 では、案の 28 件のうち実際に足したのは 5 件で、残りは一般論 A の補題や B の既存の宣言で足りた。足す前に、A・B に同じ内容がないかを一件ずつ確かめる。足すのは、畳み込みを段ごとにほどいた具体的な式のように、A には書けない内容だけ。
+- 段 4 で「C に残す」にした 7 件と、余テンソルの段に回した 2 件は、この段でも触らない。
+- 報告に、使う側の前後の例を三つ入れる。
+
+### 段 6 の完了の条件
+
+段 3〜5 と同じ（表は `research/cleanup-zero-base/spectra/stage6.csv`、`expanded-names.csv` に追記、報告は `report-spectra-unify.md` に節を足す）。以前から落ちている検査は直さず、落ち方が変わらないことだけ確かめる。コミットして止まる。
+
+## 8. 段 7：「余テンソル」の実施
+
+段 6（b09b31a73）の結果：C は 350 → 236 宣言、3,743 → 2,608 行、10 ファイルを削除。B は 361 → 386 宣言（一般版 25 件を追加）。
+
+段 2 の表で `group` が「余テンソル」の宣言のうち、まだ C に残っているもの（段 2 の時点で 79 件。案：消す 39、別名 6、B に一般版を足す 27、固有として残す 5、判断できない 2）と、これまでに余テンソルの段へ回したものを実施する：
+
+- 段 4 で「C に残す」にした 7 件（`pointwiseTensorCurry_post`、`pointwiseTensorUncurry_pre`、`pointwiseTensorEvaluation_pre`、`pointwiseTensorEvaluation_formula`、`pointwiseTensorEvaluation_level`、`pointwiseTensorUncurry_level`、`pointwiseTensorCurry_level`）。B の版は証明済みで、C の旧い型との照合が上限に達していた。C の余テンソルの関手の表示を B に揃えた後に、もう一度試す。
+- 段 4 から回した 2 件（`pointwiseTensorCurry_naturality`、`pointwiseTensorCurry_naturality_right`）。
+- 判断できない 2 件（`cotensorFunctor_map`、`cotensorMap_conjugate`）。
+
+規則は §4 の 1〜6 と §6・§7 の追加と同じ。加えて：
+
+- **C の余テンソルの定義を B に揃えるのが先。** C の `cotensor`・`cotensorFunctor` が B と別の表示（F₀ X からの内部 Hom との比較で共役した形）を選んでいるなら、C の定義を B の特殊化に置き換えてから、補題を片づける。定義として一致しない（`rfl` でない）場合は、どちらを標準にするかを決めずに止まって、二つの表示と、使う側がどちらに依っているかを一覧にする。
+- **固有として残す 5 件**（基点のない単体集合による余テンソル `simplicialCotensor` とその関手・前合成・テンソルとの随伴）は残す。
+- 報告に、使う側の前後の例を三つ入れる。
+
+### 段 7 の完了の条件
+
+段 3〜6 と同じ（表は `research/cleanup-zero-base/spectra/stage7.csv`、`expanded-names.csv` に追記、報告は `report-spectra-unify.md` に節を足す）。段 4 の 7 件がどうなったかを報告に一件ずつ書く。以前から落ちている検査は直さず、落ち方が変わらないことだけ確かめる。コミットして止まる。

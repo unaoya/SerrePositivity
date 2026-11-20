@@ -1,0 +1,70 @@
+{
+ "key": "d11",
+ "concept": "A 可換代数と数論幾何/パーフェクトイド",
+ "subconcepts": [
+  {
+   "name": "整パーフェクトイド環",
+   "description": "p 進完備、p が単元倍の p 乗、剰余 Frobenius 全射、Fontaine の写像の核が単項である環",
+   "reference": "CLMST Definition 2.4.1"
+  },
+  {
+   "name": "パーフェクトイド化（普遍性と存在）",
+   "description": "環からパーフェクトイド環への普遍射、その関手性、有限代数・全射商・塔との完備テンソルに対する選ばれた対象",
+   "reference": "BS 著者版 Corollary 7.3"
+  },
+  {
+   "name": "導来パーフェクトイド化の界面",
+   "description": "導来 ∞ 圏に値を持つパーフェクトイド化とその単位・H⁰ の環・極限表示・切除をまとめた構造と、標的の圏",
+   "reference": "BS 著者版 Definition 8.2、Lemma 8.4、Proposition 8.5、Corollary 8.12・8.14、Theorem 10.11"
+  },
+  {
+   "name": "p 冪根つきの多項式環と根の添加",
+   "description": "R[X^{1/p^∞}] の単項式表示とその δ 構造、有限変数の T_∞、全元に mod p で p 乗根を添加する一段、ℤ_p[p^{1/p^∞}]",
+   "reference": "BS 著者版 Remark 7.15、Proposition 8.5・Lemma 8.8 の証明"
+  },
+  {
+   "name": "完全プリズムの商としてのパーフェクトイド",
+   "description": "δ 環に根を添加して作った完全プリズム候補の標準商",
+   "reference": ""
+  },
+  {
+   "name": "（補助）導来パーフェクトイド化の界面の足場",
+   "description": "通常の R 代数の圏、可換正方形を Δ[1]⊗Δ[1] の写像にする構成",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.IsIntegralPerfectoid": "整パーフェクトイド環",
+  "SerrePositivity.IsPerfectoidization": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.Section2.MixedPerfectoid": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.completionRing": "MOVE:A 可換代数と数論幾何/導来完備化",
+  "SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialDelta": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.Semiperfectoid.PowerRootPolynomial": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.Semiperfectoid.powerRootExponentMonoid": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.A_R": "（補助）導来パーフェクトイド化の界面の足場",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3": "導来パーフェクトイド化の界面",
+  "SerrePositivity.BhattScholze.Semiperfectoid.DeltaRootPerfectoidCandidate": "完全プリズムの商としてのパーフェクトイド",
+  "SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseMap": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.Semiperfectoid.PowerRootFraction": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.completedTensorPerfectoidizationMap": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare": "（補助）導来パーフェクトイド化の界面の足場",
+  "SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialBaseAlgebra": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.IsPerfectoidization.map": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.BhattScholze.Semiperfectoid.powerRootPolynomialVariable": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData": "導来パーフェクトイド化の界面",
+  "SerrePositivity.Perfectoidization": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfUnder_u": "導来パーフェクトイド化の界面",
+  "SerrePositivity.BhattScholze.Perfectoidization.Construction.algebraicStepIdeal": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.Semiperfectoid.toQuotientPerfectoidization": "パーフェクトイド化（普遍性と存在）",
+  "SerrePositivity.BhattScholze.Perfectoidization.Arc.arcRootQuotient": "p 冪根つきの多項式環と根の添加",
+  "SerrePositivity.BhattScholze.Perfectoidization.Construction.polyRootIdeal": "p 冪根つきの多項式環と根の添加"
+ },
+ "uncertain": [
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.H0RingData",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfUnder_u",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.ordinarySquare",
+  "SerrePositivity.Section2.MixedPerfectoid"
+ ],
+ "notes": "PerfectoidizationInterface.completionRing は導来 p 完備化の H⁰ 環で、パーフェクトイドでなく導来完備化（ファイルも HomologicalAlgebra/DerivedCompletion）。「p 冪根つきの多項式環と根の添加」は幹の 根の添加（André）・根の塔 と境界が近い（PowerRootPolynomial は Semiperfectoid/Quasiregular/RootFamilies、algebraicStepIdeal・polyRootIdeal は Perfectoidization/Construction/RootAdjunction）。パーフェクトイド化の「選ばれた対象」が三つある：Perfectoidization（有限代数）、Semiperfectoid.QuotientPerfectoidization（全射商）、Section2.MixedPerfectoid（前者の特殊化）。PerfectoidizationInterfaceE3 は存在を公理にしない界面の型（BS §8 の結果を欄として受け取る）。"
+}

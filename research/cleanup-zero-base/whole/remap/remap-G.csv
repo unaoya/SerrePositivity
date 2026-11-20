@@ -1,0 +1,36 @@
+group,concept,subconcept,new_concept,new_subconcept,aux,stopped,split,note
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,cotensor,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,点つき単体集合による cotensor,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,fiber 列と homotopy fiber,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,スペクトルの fiber と homotopy fiber,0,,1,空間の水準の pointedConnectingHom・pointedConnectingZero は「C/基点付き空間」（点つき空間の fiber と連結準同型）へ。KanSequence.freePath は KanSequence.mapping の特殊化（言い換えの候補）
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,filtered 余極限と有理化,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,filtered 余極限と有理化,0,,0,H/非連結 K から来る「スペクトルの逐次余極限」と隣り合う（逐次は BF 置換つきなので別の小概念にした）
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,loop スペクトルと delooping,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,loop スペクトルと delooping,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,Ω スペクトルと Kan 列,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,Ω スペクトルと Kan 列,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,スペクトルのホモトピー群と π_* 同型,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,スペクトルのホモトピー群と π_* 同型,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,スペクトルの写像空間と Sp,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,スペクトルの写像空間と Sp,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,ホモトピー極限・Tot・homotopy fixed points,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,スペクトルのホモトピー極限・Tot・homotopy fixed points,0,,1,スペクトルの水準（OmegaSpectrum.homotopyLimit、KanSequence.homotopyLimit・totalizationSpectrum・TotalizationReedy・weightedDiagram、homotopyTotalization、homotopyFixedPoints、GroupAction、HomotopyTotalizationMilnor.coefficients）は残す。点つき単体集合の水準（PointedWeightedEnd.*、CosimplicialTotalization.obj、PointedTotalization.obj、CosimplicialKanReplacement.functor、CosimplicialTwoProjections.obj、PartialTotalizationTower.step、PointedFibrationTower.*、UnbasedPointedMapping.obj/tower、FreePointedHomRestriction.restrict、PointedActionCochains.obj、UnderlyingWeightedCochains.obj、weightedCochains、FreeActionFamily.weight、SimplexDensity.DiagramFamily）は「C/基点付き空間」の小概念「点つき空間の重みつき end・Tot・fibration の塔」へ（「C/極限と余極限」とする案もある：決定だけでは決まらない）。NormalizedValueCochains.complex は「B/単体的鎖・Dold–Kan・シャッフル」へ
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,点つき写像空間と区間族,C 単体集合と ∞ 圏/基点付き空間,点つき内部 Hom と区間族,0,,0,SkeletalCellAttachment.*（骨格のセルごとの係数）も空間の水準なので一緒に移す
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,点つき空間の loop・path・fiber・cofiber,C 単体集合と ∞ 圏/基点付き空間,点つき空間の loop・path・fiber・cofiber,0,,1,基点なしの path 対象 KanPath.evaluation は「C/Kan 複体とホモトピー群」へ（KanPath.object は既に移した）
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（その他）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（まだ読んでいない定義）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,0,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（補助）loop と随伴の比較（相対 BF 分解）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,loop 関手の随伴の比較（相対 BF 分解）,1,,0,AdjointLoopRelativeBF.* と RawSpectrumMapping.kanAdjoint* の三系統（Traced・Boundary・Parameter）は同じ比較の組み直しで、別経路の部品の疑い（読む担当の覚え書き）。止めた経路かどうかは未確認
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（補助）円の交換と符号,C 単体集合と ∞ 圏/基点付き空間,二重 loop の交換と符号,1,,1,中身は点つき単体集合の水準（CirclePower.space、LoopExchangePaths.*、TripleCircle.*、SignedAdjointPaths.*、LoopMappingClasses など）。単体集合の一般の組合せ PushoutCube.*・ThreeEdgeTransport.square・SquareAdjustment.* は「C/Kan 複体とホモトピー群」、CoherentPathCoordinates.triangleTrace（単体的神経の二単体の読み）は「C/単体的圏と coherent 神経」へ
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（補助）連結準同型の比較（隣接する持ち上げ）,C 単体集合と ∞ 圏/基点付き空間,fibration の連結準同型の比較（隣接する持ち上げ）,1,,0,
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（補助）重みつき end の比較（latching・loop の区間重み）,C 単体集合と ∞ 圏/基点付き空間,重みつき end の latching と loop の区間重み,1,,0,重み（WeightTensorLatching.diagram、WeightCornerPushout.corner）は基点なしの余単体的単体集合で、点つき重みつき end の行き先に合わせた（「E/Reedy」とする案もある）
+G スペクトル,Ω スペクトル（Bousfield–Friedlander）,（読んで移した定義）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,0,,0,
+G スペクトル,対称スペクトル,係数対象による tensor・cotensor,G スペクトル/対称スペクトル,係数対象による tensor・cotensor,0,,0,GeneralSymmetricSpectrum.* と SymmetricSpectrum.* の二層が並ぶ（特殊化の重複の候補）
+G スペクトル,対称スペクトル,内部 Hom スペクトル,G スペクトル/対称スペクトル,内部 Hom スペクトル,0,,0,
+G スペクトル,対称スペクトル,写像対象（豊穣 Hom）,G スペクトル/対称スペクトル,写像対象（豊穣 Hom）,0,,0,
+G スペクトル,対称スペクトル,対称スペクトルの定義・段・構造射,G スペクトル/対称スペクトル,対称スペクトルの定義・段・構造射,0,,0,
+G スペクトル,対称スペクトル,球面上のテンソル積（smash 積）,G スペクトル/対称スペクトル,球面上のテンソル積（smash 積）,0,,0,
+G スペクトル,対称スペクトル,自由スペクトル F_n,G スペクトル/対称スペクトル,自由スペクトル F_n,0,,0,
+G スペクトル,対称スペクトル,（その他）,G スペクトル/対称スペクトル,,0,,0,
+G スペクトル,対称スペクトル,（まだ読んでいない定義）,G スペクトル/対称スペクトル,,0,,0,
+G スペクトル,対称スペクトル,（読んで移した定義）,G スペクトル/対称スペクトル,,0,,0,
+G スペクトル,対称列,Day convolution,G スペクトル/対称列,Day convolution,0,,0,
+G スペクトル,対称列,反復テンソルの対称列 Sym(X),G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,,0,
+G スペクトル,対称列,対称列の内部 Hom,G スペクトル/対称列,対称列の内部 Hom,0,,0,
+G スペクトル,対称列,対称列の定義と段,G スペクトル/対称列,対称列の定義と段,0,,0,
+G スペクトル,対称列,有限集合と全単射の圏,G スペクトル/対称列,有限集合と全単射の圏,0,,0,主張に現れるのは有限集合と全単射だけなので、規則 3 では「Z/組合せと順序」の候補。対称列の添字の圏として残した（決定は「版 5 のまま」）
+G スペクトル,対称列,段ごとのテンソル,G スペクトル/対称列,段ごとのテンソル,0,,0,SymmetricSequence.pointwiseTensorModule は Mod を返すので「G/対称スペクトル」「Z/モノイダル圏の中の加群」との境目
+G スペクトル,対称列,自由対称列と誘導の商表示,G スペクトル/対称列,自由対称列と誘導の商表示,0,,0,
+G スペクトル,対称列,（まだ読んでいない定義）,G スペクトル/対称列,,0,,0,
+G スペクトル,対称列,（読んで移した定義）,G スペクトル/対称列,,0,,0,

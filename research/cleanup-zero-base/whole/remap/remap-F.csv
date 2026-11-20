@@ -1,0 +1,28 @@
+group,concept,subconcept,new_concept,new_subconcept,aux,stopped,split,note
+F オペラドと E∞,Barratt–Eccles と全射オペラド,Barratt–Eccles オペラド（E(n) と shuffle 合成）,F オペラドと E∞/Barratt–Eccles と全射オペラド,Barratt–Eccles オペラド（E(n) と shuffle 合成）,0,,0,ShufflePath は「B/単体的鎖・Dold–Kan・シャッフル」のシャッフルと重複の候補。
+F オペラドと E∞,Barratt–Eccles と全射オペラド,table reduction（E → χ）,F オペラドと E∞/Barratt–Eccles と全射オペラド,table reduction（E → χ）,0,,0,
+F オペラドと E∞,Barratt–Eccles と全射オペラド,全射オペラド χ（全射語・削除微分・部分合成）,F オペラドと E∞/Barratt–Eccles と全射オペラド,全射オペラド χ（全射語・削除微分・部分合成）,0,,0,
+F オペラドと E∞,Barratt–Eccles と全射オペラド,単体的鎖への χ の余作用（切断公式）,F オペラドと E∞/Barratt–Eccles と全射オペラド,単体的鎖への χ の余作用（切断公式）,0,,0,区間版（IntervalCuts）は一般版（SimplexCuts）の特別な場合（重複の候補）。
+F オペラドと E∞,Barratt–Eccles と全射オペラド,（まだ読んでいない定義）,F オペラドと E∞/Barratt–Eccles と全射オペラド,,0,,0,
+F オペラドと E∞,Barratt–Eccles と全射オペラド,（補助）shuffle 合成の微分両立の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,shuffle 合成と微分の両立,1,,0,
+F オペラドと E∞,Barratt–Eccles と全射オペラド,（補助）table reduction の微分保存・合成保存の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,table reduction の微分保存と合成保存,1,,0,
+F オペラドと E∞,Barratt–Eccles と全射オペラド,（補助）切断公式の微分両立・合成則の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,切断公式の微分両立と余代数の公理,1,,0,
+F オペラドと E∞,Barratt–Eccles と全射オペラド,（補助）止めた経路：BE 模型の Tot 比較（ISW2Tot）,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,BE 模型の Tot による CAlg の源と二変数 Hom の pairing,0,BE 模型の Tot 比較（IS-W2 の Tot 経路、D81 で止めた）,0,内容は CAlg の源と Hom の要素圏なので E∞ 代数の圏へ。到達点の保管で、一つの定理の足場ではないので aux=0。
+F オペラドと E∞,E∞ 代数の圏（CAlg と加群）,CAlg（E∞ 代数の ∞ 圏）：忘却・π₀・係数変更・余積,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,CAlg（E∞ 代数の ∞ 圏）：忘却・π₀・係数変更・余積,0,,0,BinaryTensorWord（二色のテンソル冪の分解）は一般のモノイダル圏の話（「Z/モノイダル圏」の候補）。
+F オペラドと E∞,E∞ 代数の圏（CAlg と加群）,E 代数のモデル構造・導来写像空間・ホモトピー極限,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,E 代数のモデル構造・導来写像空間・ホモトピー極限,0,,0,CarrierDiagram.*（複体の図式の射影モデルの上の同じ構成）は代数版と対の重複で、内容は「B/複体」の「複体の図式のホモトピー極限」。
+F オペラドと E∞,E∞ 代数の圏（CAlg と加群）,E 代数上の加群,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,E 代数上の加群,0,,0,
+F オペラドと E∞,E∞ 代数の圏（CAlg と加群）,（補助）加群のテンソルの余極限図式,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,E 代数上の加群のテンソルの余極限表示,1,,0,
+F オペラドと E∞,E∞ 代数の圏（CAlg と加群）,（補助）導来写像空間と hammock・DK の Hom の比較,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,E 代数の導来写像空間と hammock 局所化の Hom の比較,1,,0,hammock・zigzag の一般論は「C/局所化（Dwyer–Kan）」だが、ここの定義（algebraHammock*・cofibrantSourceRoof*・freeProbe*）は E 代数の圏に固有なので残した。
+F オペラドと E∞,E∞ 代数の圏（CAlg と加群）,（読んで移した定義）,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,,0,,0,
+F オペラドと E∞,dg オペラドと代数,Schur 関手と自由代数,F オペラドと E∞/dg オペラドと代数,Schur 関手と自由代数,0,,0,
+F オペラドと E∞,dg オペラドと代数,dg オペラド（対称列・部分合成・射）,F オペラドと E∞/dg オペラドと代数,dg オペラド（対称列・部分合成・射）,0,,0,
+F オペラドと E∞,dg オペラドと代数,オペラドの全合成（複数の入力への代入）,F オペラドと E∞/dg オペラドと代数,オペラドの全合成（複数の入力への代入）,0,,0,
+F オペラドと E∞,dg オペラドと代数,オペラド代数と余代数,F オペラドと E∞/dg オペラドと代数,オペラド代数と余代数,0,,0,
+F オペラドと E∞,dg オペラドと代数,セル代数の次数つき自由表示（微分の消去）,F オペラドと E∞/dg オペラドと代数,セル代数の次数つき自由表示（微分の消去）,0,,0,
+F オペラドと E∞,dg オペラドと代数,（まだ読んでいない定義）,F オペラドと E∞/dg オペラドと代数,,0,,0,
+F オペラドと E∞,dg オペラドと代数,（補助）有限族のテンソルと並べ替え,B 複体と dg 圏/複体,複体の有限族のテンソル積と並べ替え,0,,0,tensorFamily は Complex A の有限族の右括弧テンソルで、主張に現れるのは複体のテンソルだけ（規則 3）。合成と Schur 作用の両方で使う道具なので aux=0。対称モノイダル圏の一般論として「Z/モノイダル圏」に上げる候補。
+F オペラドと E∞,dg オペラドと代数,（読んで移した定義）,F オペラドと E∞/dg オペラドと代数,,0,,0,
+F オペラドと E∞,冪作用,Eilenberg–MacLane 空間（Dold–Kan の Γ）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,Eilenberg–MacLane 空間（複体の切断の Dold–Kan Γ）,0,,0,決定「Eilenberg–MacLane 空間は G スペクトルへ」。G の中の行き先は Ω スペクトルとした（各段の空間 levelSpaceFunctor と loop への比較）。
+F オペラドと E∞,冪作用,冪作用の入力（閉元と同次の作用）,F オペラドと E∞/冪作用の入力,冪作用の入力（閉元と同次の作用）,0,,0,
+F オペラドと E∞,冪作用,巡回部分群と BE の解像度（May の設定）,F オペラドと E∞/冪作用の入力,巡回部分群と BE の解像度（May の設定）,0,,0,PowerOperationCyclicGroup と MayCyclicGroup は同じ Z/p の二つの表示（重複の候補）。
+F オペラドと E∞,冪作用,（まだ読んでいない定義）,F オペラドと E∞/冪作用の入力,,0,,0,

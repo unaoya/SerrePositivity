@@ -1,0 +1,81 @@
+{
+ "key": "d61",
+ "concept": "H K 理論/降下",
+ "subconcepts": [
+  {
+   "name": "基底上有限型のスキームの圏と引き戻し",
+   "description": "Over S の有限型（局所有限型かつ準コンパクト）対象の充満部分圏、その中の引き戻しと射影、有限型 A 代数のアフィン対象",
+   "reference": "論文 §3 (3.5)、補題 3.2"
+  },
+  {
+   "name": "被約化と既約成分",
+   "description": "スキームと有限型対象の被約化、被約閉部分スキームを有限型対象にする構成、既約成分の添字と整な成分",
+   "reference": "論文 §3、定理 3.1"
+  },
+  {
+   "name": "抽象 blowup 正方形と閉中心",
+   "description": "抽象 blowup 正方形（Cartesian・固有・閉中心・補集合上同型）とその底変換、閉中心の引き戻しと正方形、有限型の圏内の blowup、strict transform のチャート",
+   "reference": "論文 §3、補題 3.3、定理 3.1"
+  },
+  {
+   "name": "次数付き前層と π_* 降下の主張",
+   "description": "係数と整数次数を持つ ℚ 加群値前層、射による引き戻し、群作用の不変部分との比較が全次数で同型という主張の型",
+   "reference": "論文 (3.5)、(3.7)、定理 3.1"
+  },
+  {
+   "name": "Mayer–Vietoris 型の長完全列",
+   "description": "全整数次数の Mayer–Vietoris 型完全列とその射、抽象 blowup に対する列と境界の自然性のデータ",
+   "reference": "論文 §3、補題 3.3、定理 3.1"
+  },
+  {
+   "name": "群作用と軌道正方形",
+   "description": "正方形への群作用（四頂点と辺の同変性）、切断の移動の添字、軌道射の始域",
+   "reference": "論文 定理 3.1"
+  },
+  {
+   "name": "有限平坦 transfer と底変換前層",
+   "description": "有限自由なアフィン底変換チャート、底変換後の前層と元の前層からの自然な pullback（transfer の始域と inclusion）",
+   "reference": "論文 補題 3.2"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.Descent.FiniteTypeSchemes": "基底上有限型のスキームの圏と引き戻し",
+  "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent.nativeFamily": "MOVE:E モデル圏/ホモトピー関数複体と分解",
+  "SerrePositivity.KST.Descent.GradedPresheaf.PiDescent": "次数付き前層と π_* 降下の主張",
+  "SerrePositivity.KST.Descent.GradedPresheaf": "次数付き前層と π_* 降下の主張",
+  "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent.choices": "MOVE:E モデル圏/ホモトピー関数複体と分解",
+  "SerrePositivity.KST.Descent.closedImmersionSquare": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.KST.Descent.integralComponent": "被約化と既約成分",
+  "SerrePositivity.KST.Descent.AbstractBlowupSquare": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.KST.Descent.orbitSource": "群作用と軌道正方形",
+  "SerrePositivity.KST.Descent.finiteTypeReduction": "被約化と既約成分",
+  "SerrePositivity.KST.Descent.schemeReduction": "被約化と既約成分",
+  "SerrePositivity.KST.Descent.FiniteFreeAffineChart": "有限平坦 transfer と底変換前層",
+  "SerrePositivity.KST.Descent.AbstractBlowupSquare.baseChange": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent.compositionComparison": "MOVE:E モデル圏/ホモトピー関数複体と分解",
+  "SerrePositivity.KST.Descent.finiteTypePullbackSnd": "基底上有限型のスキームの圏と引き戻し",
+  "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent.compositionChoices": "MOVE:E モデル圏/ホモトピー関数複体と分解",
+  "SerrePositivity.KST.Descent.reducedClosedAsFiniteType": "被約化と既約成分",
+  "SerrePositivity.KST.Descent.baseChangePresheafPullback": "有限平坦 transfer と底変換前層",
+  "SerrePositivity.KST.Descent.affineAlgebraOverProjection": "基底上有限型のスキームの圏と引き戻し",
+  "SerrePositivity.KST.Descent.GradedPresheaf.pullback": "次数付き前層と π_* 降下の主張",
+  "SerrePositivity.KST.Descent.strictTransformChartAmbient": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.KST.Descent.NaturalBlowupSequences": "Mayer–Vietoris 型の長完全列",
+  "SerrePositivity.KST.Descent.TranslatedSectionIndex": "群作用と軌道正方形",
+  "SerrePositivity.KST.Descent.GradedMayerVietoris.Hom": "Mayer–Vietoris 型の長完全列",
+  "SerrePositivity.KST.Descent.IrreducibleComponentIndex": "被約化と既約成分",
+  "SerrePositivity.KST.Descent.SquareAction": "群作用と軌道正方形",
+  "SerrePositivity.KST.Descent.closedCenterPullback": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.KST.Descent.finiteTypePullback": "基底上有限型のスキームの圏と引き戻し",
+  "SerrePositivity.KST.Descent.affineAlgebraOverObject": "基底上有限型のスキームの圏と引き戻し",
+  "SerrePositivity.KST.Descent.GradedMayerVietoris": "Mayer–Vietoris 型の長完全列",
+  "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent.nativeRestrictionComparison": "MOVE:E モデル圏/ホモトピー関数複体と分解",
+  "SerrePositivity.KST.Descent.finiteTypeBlowup": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.KST.Descent.closedImmersionPullback": "抽象 blowup 正方形と閉中心",
+  "SerrePositivity.KST.Descent.baseChangedPresheaf": "有限平坦 transfer と底変換前層"
+ },
+ "uncertain": [
+  "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent.compositionChoices"
+ ],
+ "notes": "OrdinaryBarRelativeHomDescent.* の 5 定義（nativeFamily, choices, compositionComparison, compositionChoices, nativeRestrictionComparison）は名前の descent に規則が当たっただけで、中身はホモトピー関数複体の bar 分解の相対選択空間。ファイル冒頭に「中断した任意モデル源への一般化（計画書§396、分類B）」とあり中断した経路の部品。E/ホモトピー関数複体と分解 へ。残り 29 はすべて論文 §3（定理 3.1、補題 3.2・3.3）の降下。幾何の部品（有限型スキームの圏、被約閉部分スキーム、blowup の底変換）は A/スキーム・A/blowup と射影スキーム に近いが、降下の定義域として作られているのでここに残した。schemeReduction は一般のスキームの被約化で A/スキーム へ移してよい。closedCenterPullback（被約閉中心）と closedImmersionPullback（任意の閉埋め込み）は同じ構成の二版で重複の疑い。NaturalBlowupSequences は docstring に「実降下と L9 の列から供給する接続データ」とある明示入力の構造。"
+}

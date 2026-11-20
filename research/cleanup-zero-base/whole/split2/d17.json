@@ -1,0 +1,31 @@
+{
+ "key": "d17",
+ "concept": "A 可換代数と数論幾何/完備平坦と整閉（環の性質）",
+ "subconcepts": [
+  {
+   "name": "I 完全平坦・I 完全忠実平坦",
+   "description": "I で消える加群との導来テンソルが次数 0 に集中すること、および mod I で忠実平坦であること",
+   "reference": "BS §1.2"
+  },
+  {
+   "name": "絶対整閉",
+   "description": "次数が正の任意のモニック多項式が根を持つ環",
+   "reference": "BS 著者版 Theorem 7.14"
+  },
+  {
+   "name": "普遍同相",
+   "description": "整・Spec で全射・radicial な環の射",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.IsCompletelyFaithfullyFlat": "I 完全平坦・I 完全忠実平坦",
+  "SerrePositivity.GenericEtale.awayAlgebra": "MOVE:A 可換代数と数論幾何/環と加群（その他）",
+  "SerrePositivity.IsCompletelyFlat": "I 完全平坦・I 完全忠実平坦",
+  "SerrePositivity.IsAbsolutelyIntegrallyClosed": "絶対整閉",
+  "SerrePositivity.CommutativeAlgebra.IsUniversalHomeomorphism": "普遍同相",
+  "SerrePositivity.adicQuotientAlgebra": "MOVE:A 可換代数と数論幾何/環と加群（その他）"
+ },
+ "uncertain": [],
+ "notes": "GenericEtale.awayAlgebra（局所化 A[1/g] → D[1/g] の代数構造）と adicQuotientAlgebra（R/I → S/IS の代数構造）は環の性質でなく instance の足場で、環と加群（その他）へ。幹の名前は三つの無関係な性質（完全平坦・絶対整閉・普遍同相）の寄せ集めで、「環と射の性質」としてまとめるのが実体。"
+}

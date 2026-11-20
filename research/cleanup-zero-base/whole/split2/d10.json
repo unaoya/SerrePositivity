@@ -1,0 +1,92 @@
+{
+ "key": "d10",
+ "concept": "A 可換代数と数論幾何/スキーム",
+ "subconcepts": [
+  {
+   "name": "有限表示模型の圏（極限による近似）",
+   "description": "一般の代数・環写像を有限型・有限表示（・有限・v 被覆）の模型で近似するための、模型の圏と小さい添字",
+   "reference": "B03・B04・C01（ファイル冒頭の作業番号）"
+  },
+  {
+   "name": "段への底変換図式とその極限",
+   "description": "係数の有限段へ模型・射を底変換する図式と、模型間の射・開包含を段へ移す構成（Noether 近似の極限論法）",
+   "reference": ""
+  },
+  {
+   "name": "貼り合わせデータの降下",
+   "description": "チャート・重なり・対角・反転・三重交叉からなる gluing の入力を有限段へ降ろすための構造",
+   "reference": ""
+  },
+  {
+   "name": "平坦化の加群論的入力",
+   "description": "Mittag-Leffler 加群、可算生成、生成点での拡大素点、分裂代数の係数イデアル、有限自由近似列の直極限",
+   "reference": "KST §5、Stacks 05DP・059X・0810・Lemma 38.30.2"
+  },
+  {
+   "name": "スキームの基本（イデアル層・大域スカラー・ファイバー成分）",
+   "description": "有限型イデアル層、Spec R 上のスキームの大域スカラー、切断を通るファイバー成分の集合",
+   "reference": ""
+  },
+  {
+   "name": "（補助）加群の順系・逆系",
+   "description": "線形な遷移写像に関する互換族、自然数の有向系の関手化、閉厚化の商加群の局所 instance",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.AlgebraicGeometry.CoefficientModelCategory": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.strictTransformπ": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.geometricallyIntegralGenericPrime": "平坦化の加群論的入力",
+  "SerrePositivity.AlgebraicGeometry.IsSchemeVCover": "MOVE:A 可換代数と数論幾何/Čech 複体と被覆",
+  "SerrePositivity.AlgebraicGeometry.OpenTransitionCandidate": "貼り合わせデータの降下",
+  "SerrePositivity.AlgebraicGeometry.FinitePresentationModelIndex": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.IsFiniteTypeIdealSheaf": "スキームの基本（イデアル層・大域スカラー・ファイバー成分）",
+  "SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelCategory": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.flatStageModelDiagram": "段への底変換図式とその極限",
+  "SerrePositivity.AlgebraicGeometry.IntegralModelIndex": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.compositeStageBaseChangeDiagram": "段への底変換図式とその極限",
+  "SerrePositivity.AlgebraicGeometry.compatibleLinearFamilies": "（補助）加群の順系・逆系",
+  "SerrePositivity.AlgebraicGeometry.baseChangedModelArrow": "段への底変換図式とその極限",
+  "SerrePositivity.AlgebraicGeometry.frobeniusAugmentedRingCoefficients": "MOVE:A 可換代数と数論幾何/Frobenius の順極限",
+  "SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelIndex": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.linearSequenceMap": "平坦化の加群論的入力",
+  "SerrePositivity.AlgebraicGeometry.stageBaseChangeDiagram": "段への底変換図式とその極限",
+  "SerrePositivity.AlgebraicGeometry.IsAffineVCover": "MOVE:A 可換代数と数論幾何/Čech 複体と被覆",
+  "SerrePositivity.AlgebraicGeometry.sectionComponentLocus": "スキームの基本（イデアル層・大域スカラー・ファイバー成分）",
+  "SerrePositivity.AlgebraicGeometry.IsModuleMittagLeffler": "平坦化の加群論的入力",
+  "SerrePositivity.AlgebraicGeometry.homogeneousDegreeOneNormalize": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.frobeniusArrowSmallDiagram": "MOVE:A 可換代数と数論幾何/Frobenius の順極限",
+  "SerrePositivity.AlgebraicGeometry.frobeniusArrowDiagram": "MOVE:A 可換代数と数論幾何/Frobenius の順極限",
+  "SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal": "平坦化の加群論的入力",
+  "SerrePositivity.AlgebraicGeometry.baseChangedOverlapMap": "段への底変換図式とその極限",
+  "SerrePositivity.AlgebraicGeometry.DegreeOneProjectiveModel": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.chartFraction": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.HasCountableGeneratingSet": "平坦化の加群論的入力",
+  "SerrePositivity.AlgebraicGeometry.HasFlatPurePullbacks": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.gradedScalarComponents": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.centerComplement": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.IntegralModelCategory": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.FinitePresentationModelCategory": "有限表示模型の圏（極限による近似）",
+  "SerrePositivity.AlgebraicGeometry.linearDirectSystemFunctor": "（補助）加群の順系・逆系",
+  "SerrePositivity.AlgebraicGeometry.schemeScalarHom": "スキームの基本（イデアル層・大域スカラー・ファイバー成分）",
+  "SerrePositivity.AlgebraicGeometry.determinantalCenter": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.quotientTransitionModule": "（補助）加群の順系・逆系",
+  "SerrePositivity.AlgebraicGeometry.ProjectiveLaurentDegreeExponents": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.projDenominator": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.strictTransformOpen": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.strictTransform": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.openCoverIntersectionPresheaf": "MOVE:A 可換代数と数論幾何/Čech 複体と被覆",
+  "SerrePositivity.AlgebraicGeometry.IsUAdmissibleCenter": "MOVE:A 可換代数と数論幾何/blowup と射影スキーム",
+  "SerrePositivity.AlgebraicGeometry.CartesianModelArrow.comparisonAt": "段への底変換図式とその極限"
+ },
+ "uncertain": [
+  "SerrePositivity.AlgebraicGeometry.flatStageModelDiagram",
+  "SerrePositivity.AlgebraicGeometry.compositeStageBaseChangeDiagram",
+  "SerrePositivity.AlgebraicGeometry.stageBaseChangeDiagram",
+  "SerrePositivity.AlgebraicGeometry.CartesianModelArrow.comparisonAt",
+  "SerrePositivity.AlgebraicGeometry.FinitePresentationModelIndex",
+  "SerrePositivity.AlgebraicGeometry.IntegralModelIndex",
+  "SerrePositivity.AlgebraicGeometry.CoefficientVCoverModelIndex"
+ ],
+ "notes": "今回の 44 定義のうち 19 は別の幹へ：strict transform・中心（centerComplement, IsUAdmissibleCenter, determinantalCenter, HasFlatPurePullbacks）・チャート分数・Proj の次数一表示と Laurent チャートは blowup と射影スキーム、v 被覆（IsSchemeVCover, IsAffineVCover）と開被覆の Čech 前層は Čech 複体と被覆、Frobenius 反復系は Frobenius の順極限。残りの中心は「有限表示模型による近似（極限論法）」で、幹の名前「スキーム」より「有限表示への近似と降下」が実体に近い。重複の疑い：AlgebraicGeometry.IsAffineVCover と BhattScholze.Perfectoidization.Arc.IsAffineVCover（ArcValuationProduct.lean、同じ BS17 Definition 2.1）。「平坦化の加群論的入力」はスキームでなく可換代数（Raynaud–Gruson の入力）で、blowup による平坦化とまとめる余地あり。模型の圏は三種（FinitePresentation・Integral・CoefficientVCover）が同じ型の構成で並ぶ。"
+}

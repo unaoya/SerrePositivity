@@ -1,0 +1,103 @@
+{
+ "key": "d15",
+ "concept": "A 可換代数と数論幾何/分冪包絡とクリスタリン",
+ "subconcepts": [
+  {
+   "name": "結晶サイト",
+   "description": "分冪基底上の p 冪零な affine 厚化と構造射からなる対象、pd 射、小さい圏としてのサイト",
+   "reference": "Berthelot III.4、Stacks 07HM"
+  },
+  {
+   "name": "分冪包絡（相対・p 完備）",
+   "description": "相対分冪包の台環と、台環・分冪イデアル・標準脚を備えた p 完備分冪包のデータ",
+   "reference": ""
+  },
+  {
+   "name": "一元の分冪表示（主分冪・階数一）",
+   "description": "一元 y に対する分冪表示環 D_A(A)/(γ₁(1)−y)、その生成元・正次数イデアル・切断多項式表示、階数一の分冪代数と切断多項式環の関係",
+   "reference": "BS 著者版 Remark 7.15(1)"
+  },
+  {
+   "name": "p 除算と階乗分母の部分環",
+   "description": "A[1/p] の中で y_s^n/n! が生成する部分環、そのイデアルと基底からの射",
+   "reference": ""
+  },
+  {
+   "name": "分冪 Čech 模型（多項式環）",
+   "description": "第 0 頂点の座標と頂点差の自由 pd 代数による Čech 余単体的模型、その p 完備化、δ 側模型との比較、枠の評価",
+   "reference": "BS 著者版 Theorems 5.2・6.4（PolynomialCategory.lean の冒頭）"
+  },
+  {
+   "name": "分冪 de Rham 複体（双複体）",
+   "description": "pd 係数つき微分形式の余単体的な行、分冪微分の列、双複体とその総複体",
+   "reference": ""
+  },
+  {
+   "name": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+   "description": "座標の添字型、頂点の copy の加群、多項式代数の小圏、mod p の環",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.BhattScholze.Prismatic.pdTerm": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.pdDeRhamColumn": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.CrysOver": "結晶サイト",
+  "SerrePositivity.BhattScholze.Prismatic.pdDeRhamTotal": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.PrincipalDPPresentation": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.Prismatic.pdDeltaRings": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.pdRaw": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.RelativePDEnvelope.Ring": "分冪包絡（相対・p 完備）",
+  "SerrePositivity.BhattScholze.Prismatic.pdRow": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.pDivisionFactorialSubring": "p 除算と階乗分母の部分環",
+  "SerrePositivity.BhattScholze.Prismatic.pdModel": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.rankOneDPPolynomialAlgebra": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.Andre.principalDPPositiveIdeal": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.Prismatic.Poly": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.Prismatic.pdDeRhamDoubleComplex": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.crystallineBase": "MOVE:A 可換代数と数論幾何/プリズム",
+  "SerrePositivity.BhattScholze.principalDPGenerator": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.rankOneDPTruncatedAlgebra": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.pDivisionFactorialIdeal": "p 除算と階乗分母の部分環",
+  "SerrePositivity.BhattScholze.pDivisionFactorialBase": "p 除算と階乗分母の部分環",
+  "SerrePositivity.BhattScholze.Prismatic.pdVerticalD": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.pdCoordinates": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.Prismatic.pdRawPartial": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.crystallinePDDifference": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.polynomialCech": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.pdRings": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.principalDPQuotientAlgebra": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.Prismatic.crystallineExtraRaw": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Andre.PrincipalDPTruncatedPresentation": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.Prismatic.crystallineRawPDDifference": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.CrystallineSite": "結晶サイト",
+  "SerrePositivity.BhattScholze.Prismatic.CopyModule": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.Prismatic.pdFrameEval": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.pdRawForms": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.pdCoordinateBasis": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeData": "分冪包絡（相対・p 完備）",
+  "SerrePositivity.BhattScholze.rankOneDPTruncatedMap": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.Prismatic.CrysOver.Hom": "結晶サイト",
+  "SerrePositivity.BhattScholze.Prismatic.Vars": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.Prismatic.pdRawCoefficients": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.crystallineModPrimeRing": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.Prismatic.pdUncompletedColumn": "分冪 de Rham 複体（双複体）",
+  "SerrePositivity.BhattScholze.Prismatic.crystallineBasePrism": "MOVE:A 可換代数と数論幾何/プリズム",
+  "SerrePositivity.BhattScholze.Prismatic.CrystallineExtraIndex": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.Prismatic.pdRawModel": "分冪 Čech 模型（多項式環）",
+  "SerrePositivity.BhattScholze.Prismatic.copyModules": "（補助）分冪 Čech・de Rham 模型の添字と足場",
+  "SerrePositivity.BhattScholze.principalDPRelationIdeal": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.rankOneDPEvaluationAlgebra": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.rankOneDPPolynomialQuotientAlgebra": "一元の分冪表示（主分冪・階数一）",
+  "SerrePositivity.BhattScholze.pDivisionFactorialValue": "p 除算と階乗分母の部分環",
+  "SerrePositivity.BhattScholze.Prismatic.pdFrame": "分冪 Čech 模型（多項式環）"
+ },
+ "uncertain": [
+  "SerrePositivity.BhattScholze.Prismatic.pdDeltaRings",
+  "SerrePositivity.BhattScholze.Prismatic.crystallineExtraRaw",
+  "SerrePositivity.BhattScholze.Prismatic.pdRings",
+  "SerrePositivity.BhattScholze.Prismatic.pdFrameEval",
+  "SerrePositivity.BhattScholze.rankOneDPEvaluationAlgebra",
+  "SerrePositivity.BhattScholze.principalDPQuotientAlgebra"
+ ],
+ "notes": "crystallineBasePrism（BS 著者版 Example 3.3 の結晶プリズム）と台環 crystallineBase = ULift ℤ_p はプリズムへ（d12 の cartierBase・wittCrystallinePrism と同じ小概念）。逆に d12 から wittPdStructure・residuePdStructure・wittBigPdModel がこちらへ来る。分冪 Čech 模型は未完備（pdRaw, pdRawModel）→ p 完備（pdTerm, pdModel, pdRings）→ δ 側（pdDeltaRings, crystallineExtraRaw）の三層で、同じ模型の台環の読み替えが並ぶ。分冪 de Rham は未完備の列が二つ（pdRawForms と pdUncompletedColumn：後者は HodgeTate/Comparison/Witt にあり「標数を仮定せず作った」版）で重複の疑い。Prismatic.Poly は多項式代数の小圏（CechAlexander/Comparison/PolynomialCategory）で、クリスタリンに固有でなくプリズム側でも使う（bigResidue）。代数構造の abbrev（rankOneDP*Algebra, principalDPQuotientAlgebra）は instance の足場に近い。"
+}

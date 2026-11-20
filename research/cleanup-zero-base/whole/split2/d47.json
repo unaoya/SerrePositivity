@@ -1,0 +1,53 @@
+{
+ "key": "d47",
+ "concept": "F オペラドと E∞/冪作用",
+ "subconcepts": [
+  {
+   "name": "巡回部分群と BE の解像度（May の設定）",
+   "description": "宇宙を揃えた p 巡回群 Z/p、BE の対称群 Σ_p の中の巡回部分群、BE の arity を自明表現の射影解像度としてその部分群へ制限したもの",
+   "reference": "DAG XIII Construction 2.2.6（CyclicTensorInput のファイル冒頭）"
+  },
+  {
+   "name": "冪作用の入力（閉元と同次の作用）",
+   "description": "整数次数の閉元の加群とそのホモロジー類、BE の作用を p 重テンソルの同次純テンソルで評価する写像、反復入力の全次数",
+   "reference": ""
+  },
+  {
+   "name": "Eilenberg–MacLane 空間（Dold–Kan の Γ）",
+   "description": "複体を切断して Dold–Kan の Γ で単体的加群にしたもの、その零基点つき単体集合、シフトした各段の空間、円からの基点つき内部 Hom（loop）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.EInfinity.PowerOperation.PowerOperationCyclicGroup": "巡回部分群と BE の解像度（May の設定）",
+  "SerrePositivity.Coxeter.adjacentTransposition": "MOVE:Z 圏論一般/組合せと順序",
+  "SerrePositivity.EInfinity.PowerOperation.MayCyclicGroup": "巡回部分群と BE の解像度（May の設定）",
+  "SerrePositivity.EInfinity.PowerOperation.gammaLoopFunctor": "Eilenberg–MacLane 空間（Dold–Kan の Γ）",
+  "SerrePositivity.EInfinity.PowerOperation.complexRelativeDerivedSource": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.EInfinity.PowerOperation.mayHomogeneousAction": "冪作用の入力（閉元と同次の作用）",
+  "SerrePositivity.EInfinity.PowerOperation.complexRelativeCategory": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.EInfinity.PowerOperation.mayClosedClass": "冪作用の入力（閉元と同次の作用）",
+  "SerrePositivity.EInfinity.PowerOperation.MayClosed": "冪作用の入力（閉元と同次の作用）",
+  "SerrePositivity.EInfinity.PowerOperation.mayArityResolution": "巡回部分群と BE の解像度（May の設定）",
+  "SerrePositivity.EInfinity.PowerOperation.mayRepeatedDegree": "冪作用の入力（閉元と同次の作用）",
+  "SerrePositivity.EInfinity.PowerOperation.gammaPointedFunctor": "Eilenberg–MacLane 空間（Dold–Kan の Γ）",
+  "SerrePositivity.EInfinity.PowerOperation.levelSpaceFunctor": "Eilenberg–MacLane 空間（Dold–Kan の Γ）",
+  "SerrePositivity.EInfinity.PowerOperation.gammaPointed": "Eilenberg–MacLane 空間（Dold–Kan の Γ）",
+  "SerrePositivity.EInfinity.PowerOperation.gammaModule": "Eilenberg–MacLane 空間（Dold–Kan の Γ）",
+  "SerrePositivity.EInfinity.PowerOperation.complexRelativeUp": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏"
+ },
+ "uncertain": [
+  "SerrePositivity.EInfinity.PowerOperation.mayHomogeneousAction",
+  "SerrePositivity.EInfinity.PowerOperation.mayClosedClass",
+  "SerrePositivity.EInfinity.PowerOperation.MayClosed",
+  "SerrePositivity.EInfinity.PowerOperation.mayRepeatedDegree",
+  "SerrePositivity.EInfinity.PowerOperation.mayArityResolution",
+  "SerrePositivity.EInfinity.PowerOperation.MayCyclicGroup",
+  "SerrePositivity.EInfinity.PowerOperation.gammaLoopFunctor",
+  "SerrePositivity.EInfinity.PowerOperation.gammaPointedFunctor",
+  "SerrePositivity.EInfinity.PowerOperation.levelSpaceFunctor",
+  "SerrePositivity.EInfinity.PowerOperation.gammaPointed",
+  "SerrePositivity.EInfinity.PowerOperation.gammaModule"
+ ],
+ "notes": "16 定義のうち冪作用そのもの（作用素 Pⁱ など）の定義はなく、入力の準備だけ。MOVE 4 件：complexRelativeCategory・complexRelativeUp・complexRelativeDerivedSource は全複体の相対圏（射影モデルの弱同値）と既存 D(A) への比較（ComplexHammockSource 冒頭「DAG XIII §2.2 の native な降下への前段」）で導来 ∞ 圏へ；Coxeter.adjacentTransposition（49 宣言）は型 A の隣接互換（GroupTheory/Coxeter/TypeA）で、冪作用とは無関係（名前の規則の誤り）、幹に群論の置き場がないので「組合せと順序」とした。Eilenberg–MacLane 空間（gamma*・levelSpaceFunctor）は複体から基点つき単体集合・スペクトルの段を作る構成で、「G スペクトル」または「C 基点付き対象」に移す案もある。PowerOperationCyclicGroup（ULift (Multiplicative (ZMod p))）と MayCyclicGroup（BE の対称群の中の巡回置換の像）は同じ Z/p の二つの表示。May* と gamma* は docstring と signature だけで判断した。"
+}

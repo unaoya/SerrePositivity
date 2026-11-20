@@ -1,0 +1,114 @@
+{
+ "key": "d33",
+ "concept": "C 単体集合と ∞ 圏/冪等完備とモナド",
+ "subconcepts": [
+  {
+   "name": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+   "description": "一つの冪等元を持つ一対象圏 Idem とその Karoubi 包 Split、それらの神経、包含、coherent な冪等図式（N(Idem) からの射）と強い分裂（N(Split) への延長）",
+   "reference": ""
+  },
+  {
+   "name": "retract",
+   "description": "頂点がホモトピー圏で別の頂点の retract であること、弱い retract の添字（二単体の長辺を潰したもの）",
+   "reference": ""
+  },
+  {
+   "name": "冪等完備と冪等完備化",
+   "description": "すべての coherent な冪等が強く分裂するという冪等完備性、冪等完備化の条件、前層圏の中の Yoneda 像の retract 閉包としての Idem(C)",
+   "reference": ""
+  },
+  {
+   "name": "（補助）分裂の添字の filtration（交互列の段階）",
+   "description": "N(Split) の中で、長さ 2m の交互列の単体の像として作る段階 Ret(m)",
+   "reference": ""
+  },
+  {
+   "name": "自由随伴 Adj の Hom 圏と水平合成",
+   "description": "二対象 +・− の自由随伴 Adj：四つの Hom 圏（増大単体圏・その反対・最大元を保つ射・最小元を保つ射の広部分圏）、八つの双関手による水平合成、Hom の神経、端点を保つ区間の圏",
+   "reference": "HA Proposition 4.7.3.3、Riehl–Verity Remark 3.3.8"
+  },
+  {
+   "name": "自己関手の空間",
+   "description": "単体集合 C の自己関手の単体集合 Fun(C, C)",
+   "reference": "HA §4.7.2–§4.7.3"
+  },
+  {
+   "name": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+   "description": "Adj の n 次元の射のなす圏が原子的な射の自由圏であること：原子的な射、長さ、原子の道からの比較関手、単体の水平分解と +・− の切れ目のデータ",
+   "reference": "Riehl–Verity Definition 2.1.4、Proposition 3.1.10、Example 3.1.11"
+  },
+  {
+   "name": "Adj の原子的な胞の親と充填条件",
+   "description": "原子的な単体の親（一つ高次の単体）の構成：生成射の前置、最初の併合の位置と細分、充填できる生成元の条件、順序の幅",
+   "reference": "Riehl–Verity Definition 4.1.1、Lemma 4.1.4、§4.1、Proposition 4.2.15"
+  },
+  {
+   "name": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+   "description": "Adj の四つの Hom の射を共通の有限単調射で表すための道具：点の個数、増大単体圏の射の単調射、順序和、端点を共有する貼り合わせ、区間双対、像の個数による変化量",
+   "reference": "Riehl–Verity Remark 3.3.8、Proposition 4.2.15"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionLevelIsAtomic": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrderHom": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Idem": "冪等完備と冪等完備化",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHorizontal": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.HA.Monads.TopSimplexCategory": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplitShape": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage": "（補助）分裂の添字の filtration（交互列の段階）",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPoint": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalWidth": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion": "冪等完備と冪等完備化",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingSplit": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.ordinalIntervalMap": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalCard": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.HA.Monads.finiteChainFace": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete": "冪等完備と冪等完備化",
+  "SerrePositivity.InfinityCategories.HA.Monads.IntervalSimplexCategory": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.HA.Monads.EndofunctorSpace": "自己関手の空間",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell.NativeFillable": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSource": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf": "retract",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionAtomicPathFunctor": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.BottomSimplexCategory": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.HA.Monads.ordinalGlue": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionHom": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell": "（補助）分裂の添字の filtration（交互列の段階）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutRank": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakShape": "retract",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionBottomMergeAt": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionTargetCut": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeRefinement": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionPlusCut": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutIntervalSize": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.ordinalAppend": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.HA.Monads.ordinalMapVariation": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingIdem": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionHomShape": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionLevel": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionMinusCut": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionLevelSize": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionWeight": "自由随伴 Adj の Hom 圏と水平合成",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionVertexLength": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.augmentedOrderHom": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingInclusion": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParentPrefix": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IdemShape": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstBottomMergeIndex": "Adj の原子的な胞の親と充填条件",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionCutCoordinate": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.HA.Monads.augmentedOrdinalCard": "（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）",
+  "SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicVertex": "Adj の各次数の自由性（原子的な射・水平分解・切れ目）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction": "retract",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingObject": "冪等元と分裂の添字（Idem・Split）と coherent な冪等",
+  "SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeObject": "Adj の原子的な胞の親と充填条件"
+ },
+ "uncertain": [],
+ "notes": "幹の名前「冪等完備とモナド」は二つの別の概念の合併：(a) 冪等と retract（Kerodon の Retracts and Idempotents、18+2 定義）、(b) HA §4.7 のモナドのための自由随伴 Adj（Riehl–Verity、39 定義）。今回の定義にモナドそのもの（代数、Eilenberg–Moore、Barr–Beck）はなく、(b) は全部 Adj の組合せ論。幹を「冪等完備」と「自由随伴 Adj（モナドの入力）」に分けるのがよい。未完の印：walkingAdjunctionOrdinalWidth の docstring に「文字列の幅との全比較は未完」、WalkingAdjunctionAtomicCell.NativeFillable に「原典の文字列の条件との全比較は未完」（Riehl–Verity §4 の経路が途中）。（補助）有限順序の単調射（ordinalAppend・ordinalGlue・ordinalIntervalMap など）は内容としては「Z 圏論一般/組合せと順序」でもよい。retract 関係の冪等完備化 Idem(C) は Kerodon の節の docstring に番号がない。"
+}

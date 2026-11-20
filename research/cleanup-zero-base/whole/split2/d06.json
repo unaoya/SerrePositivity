@@ -1,0 +1,29 @@
+{
+ "key": "d06",
+ "concept": "A 可換代数と数論幾何/p 基底",
+ "subconcepts": [
+  {
+   "name": "p 基底",
+   "description": "標数 p の体 K の p 乗部分体 K^p と、p 単項式が K^p 上の基底になる族（p 基底）。添字の有限性は要求しない。",
+   "reference": ""
+  },
+  {
+   "name": "p 指数と p 単項式",
+   "description": "各成分が p 未満の有限台の指数。p 単項式 Πb_i^{d_i} の添字。",
+   "reference": ""
+  },
+  {
+   "name": "p 基底の補有限中間体",
+   "description": "有限集合 e の外の p 基底元を K^p に添加した中間体 K_e（[K : K_e] = p^{|e|}）。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.IsPBasis": "p 基底",
+  "SerrePositivity.pPowerSubfield": "p 基底",
+  "SerrePositivity.PExponent": "p 指数と p 単項式",
+  "SerrePositivity.pBasisCofiniteField": "p 基底の補有限中間体"
+ },
+ "uncertain": [],
+ "notes": "名前どおりの概念で、誤って入った定義はない。pPowerSubfield は Frobenius の像（Mathlib の frobenius の fieldRange）。"
+}

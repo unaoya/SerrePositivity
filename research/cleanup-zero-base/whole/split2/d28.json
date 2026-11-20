@@ -1,0 +1,112 @@
+{
+ "key": "d28",
+ "concept": "C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+ "subconcepts": [
+  {
+   "name": "necklace の形と圏",
+   "description": "joint の集合で決まる有限 necklace（単体を端点で数珠つなぎにした単体集合）、頂点・非 joint 頂点、端点を保つ射の圏、頂点への作用",
+   "reference": ""
+  },
+  {
+   "name": "necklace の連結（wedge）",
+   "description": "二つの necklace を終点と始点で貼る操作、左右の包含、射の連結",
+   "reference": ""
+  },
+  {
+   "name": "単体集合の中の necklace",
+   "description": "K の二頂点を結ぶ necklace K 内の写像とその射、一点・区間・部分集合の bead、bead の連結語",
+   "reference": ""
+  },
+  {
+   "name": "立方体の頂点写像と connection",
+   "description": "Bool 値座標の立方体の頂点、座標の削除・max による結合、それらが生成する写像、max 正規形",
+   "reference": ""
+  },
+  {
+   "name": "necklace から立方体・cubical 集合へ",
+   "description": "necklace の非 joint 頂点を座標とする立方体への関手、表現可能 cubical 集合、K の写像対象を表す cubical 余極限とその生成射",
+   "reference": ""
+  },
+  {
+   "name": "単体集合としての立方体と path",
+   "description": "冪集合の神経としての立方体、区間の有限直積、指定点を通る path の列の部分単体集合",
+   "reference": "HTT 1.1.5.10"
+  },
+  {
+   "name": "旗による単体の解像（coherent resolution）",
+   "description": "最初の集合が一点の増大する旗を単体とする Δⁿ の解像 Φ、最大元による射影、押し出し・引き戻し、面、左 Kan 拡張と右随伴",
+   "reference": "Kerodon Construction 4.6.7.22（Tag 01LV）、Proposition 4.6.7.23、Example・Corollary 4.6.7 の周辺"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex": "立方体の頂点写像と connection",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornObj": "MOVE:C 単体集合と ∞ 圏/単体的圏と coherent 神経",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionSimplex": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn": "単体集合の中の necklace",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.NonjointVertex": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolution": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CoherentResolutionFlag": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated": "立方体の頂点写像と connection",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers": "MOVE:C 単体集合と ∞ 圏/Kan 複体とホモトピー群",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FiniteSpanIndex": "MOVE:C 単体集合と ∞ 圏/ねじれ矢と余スパン",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.Vertex": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough": "単体集合としての立方体と path",
+  "SerrePositivity.KST.SConstruction.necklaceCubicalMapping": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cube": "単体集合としての立方体と path",
+  "SerrePositivity.KST.SConstruction.necklaceCubicalCell": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CoherentResolutionFlag.maxAt": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.carrier": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge": "necklace の連結（wedge）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection": "立方体の頂点写像と connection",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionComparison": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CoherentResolutionFlag.pullback": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.KST.SConstruction.necklaceCubicalDayMapping": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionMap": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceBooleanMap": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.KST.SConstruction.necklaceLambdaCell": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.KST.SConstruction.necklaceConcreteCube": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.KST.SConstruction.necklaceConcreteCubeMap": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionFace": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder": "単体集合の中の necklace",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeInr": "necklace の連結（wedge）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge": "necklace の連結（wedge）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.nonjointCoordinate": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedgeMap": "necklace の連結（wedge）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionProjection": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.CoherentResolutionFlag.pushforward": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy": "立方体の頂点写像と connection",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionRightAdjoint": "旗による単体の解像（coherent resolution）",
+  "SerrePositivity.KST.SConstruction.necklaceBead": "necklace の形と圏",
+  "SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt": "単体集合の中の necklace",
+  "SerrePositivity.KST.SConstruction.necklaceCubicalSet": "necklace から立方体・cubical 集合へ",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedge": "necklace の連結（wedge）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.pointMap": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.obj": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertices": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj": "単体集合としての立方体と path",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.firstVertex": "necklace の形と圏",
+  "SerrePositivity.KST.SConstruction.necklaceInSimplexSubset": "単体集合の中の necklace",
+  "SerrePositivity.KST.SConstruction.necklaceInSimplexInterval": "単体集合の中の necklace",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInHom": "単体集合の中の necklace",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lastVertex": "necklace の形と圏",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeInl": "necklace の連結（wedge）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.HornBoundaryOver.horn": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint": "単体集合の中の necklace",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord": "単体集合の中の necklace",
+  "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeJoinNormalFormEval": "立方体の頂点写像と connection"
+ },
+ "uncertain": [],
+ "notes": "docstring のない 7 件と、docstring だけでは分からない数件（FiniteSpanIndex・HornBoundaryOver.horn・SimplexHABeadWord・cubeJoinNormalFormEval・sigma・simplicialSum）はファイル冒頭と本体を読んだ。この概念に属さないものが 13 件：UniverseLiftFillers.obj/map（uliftFunctor の abbrev）、VertexTuples.obj/vertices（n ↦ A^{n+1} の単体集合と定数単体集合）、interval・one（Δ¹ と端点への定数写像）、sigma（標準単体の退化）、standardSimplexVertex、simplicialSum（余積、Segal の telescope 用）、HornBoundaryOver.horn は「単体集合（基本）」へ。BoundaryFillers（全ての境界が埋まる＝自明ファイブレーション型の条件）は「Kan 複体とホモトピー群」へ。hornObj（coherent 神経へのホーンから対象を取り出す、HTT 1.1.5.10）は「単体的圏と coherent 神経」へ。FiniteSpanIndex（三点の半順序 span の添字）は「ねじれ矢と余スパン」としたが「組合せと順序」でもよい。中断した経路の部品：UniverseLiftFillers・VertexTuples・ParameterCube はファイル冒頭に「任意モデル源への一般化（中断、計画書 §396）」「stage 4 の完成部分からの利用はない」とある。重複の疑い：立方体が三通り（CubeVertex = Fin n → Bool、cube T = nerve (Set T)、ParameterCube.obj = (Δ¹)^n）。coherent resolution（Kerodon 4.6.7）と cube・pathThrough（HTT 1.1.5.10）は coherent 神経の Hom の計算の部品で、「単体的圏と coherent 神経」または「写像空間」に置く考えもある。necklaceLambdaCell は KST の S 構成（cubical Λ の Hom への Serre 鎖射）で、necklace から dg 側への橋。necklaceBead は NecklaceShape.single の宇宙つきの言い換え。"
+}

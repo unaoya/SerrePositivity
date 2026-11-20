@@ -1,0 +1,70 @@
+{
+ "key": "d23",
+ "concept": "A 可換代数と数論幾何/漸近的なランク",
+ "subconcepts": [
+  {
+   "name": "自由加群列（ランク O(s)）",
+   "description": "各段のランクが正規化列 s に対して O(s) の標準自由加群の列の圏 E_R、段ごとの評価、係数変更",
+   "reference": ""
+  },
+  {
+   "name": "共通有界ホモトピー圏",
+   "description": "自由加群列の一様に有界な複体のホモトピー圏 K^b(E_R)",
+   "reference": ""
+  },
+  {
+   "name": "ランク商とその冪等完備化",
+   "description": "ランクが小さい（o(s)）対象のなす三角部分圏による Verdier 商、論文の順序で作った P_S = Kar(D_S/N_S) とそこへの関手",
+   "reference": ""
+  },
+  {
+   "name": "台つき部分圏",
+   "description": "パラメータ列 z の共通の冪で消える対象のなす部分圏（商の前・商の後・完備化の後）と、それらの比較",
+   "reference": "論文 P_S^J"
+  },
+  {
+   "name": "ランク商の係数変更",
+   "description": "環準同型に沿って台つきランク商・論文の台つき圏に誘導される関手",
+   "reference": ""
+  },
+  {
+   "name": "加群列と長さによる Serre 商",
+   "description": "加群の列のアーベル圏、長さ O(s) の一様冪ねじれ列、零長さ・小さい長さで割った Serre 商",
+   "reference": ""
+  },
+  {
+   "name": "正規化極限と Euler 評価",
+   "description": "f(n)/s(n) の超フィルター極限、台つき圏の K₀ 上の Euler 特性の準同型（係数変更の後）",
+   "reference": "論文 §4"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.Asymptotic.SupportedSequenceRankQuotient": "台つき部分圏",
+  "SerrePositivity.Asymptotic.FreeSequence": "自由加群列（ランク O(s)）",
+  "SerrePositivity.Asymptotic.supportedCompletedRankQuotient": "台つき部分圏",
+  "SerrePositivity.Asymptotic.evaluateComplex": "自由加群列（ランク O(s)）",
+  "SerrePositivity.Asymptotic.paperSupportedRank": "台つき部分圏",
+  "SerrePositivity.Asymptotic.paperSequenceFunctor": "ランク商とその冪等完備化",
+  "SerrePositivity.Asymptotic.sequenceHomotopyObj": "共通有界ホモトピー圏",
+  "SerrePositivity.Asymptotic.paperBaseChangeEulerK0": "正規化極限と Euler 評価",
+  "SerrePositivity.Asymptotic.LengthSerreQuotient": "加群列と長さによる Serre 商",
+  "SerrePositivity.Asymptotic.supportedSequence": "台つき部分圏",
+  "SerrePositivity.Asymptotic.FreeSequence.changeRing": "自由加群列（ランク O(s)）",
+  "SerrePositivity.Asymptotic.SmallLengthSerreQuotient": "加群列と長さによる Serre 商",
+  "SerrePositivity.Asymptotic.ModuleSequence": "加群列と長さによる Serre 商",
+  "SerrePositivity.Asymptotic.supportedRankChangeRing": "ランク商の係数変更",
+  "SerrePositivity.Asymptotic.completedComplexObj": "台つき部分圏",
+  "SerrePositivity.Asymptotic.SequenceRankQuotient": "ランク商とその冪等完備化",
+  "SerrePositivity.Asymptotic.SequenceHomotopy": "共通有界ホモトピー圏",
+  "SerrePositivity.Asymptotic.normalizedLimit": "正規化極限と Euler 評価",
+  "SerrePositivity.Asymptotic.LengthBoundedSequence": "加群列と長さによる Serre 商",
+  "SerrePositivity.Asymptotic.rankSmallBounded": "ランク商とその冪等完備化",
+  "SerrePositivity.Asymptotic.paperSupportedChangeRing": "ランク商の係数変更",
+  "SerrePositivity.Asymptotic.lengthBoundedSequence": "加群列と長さによる Serre 商",
+  "SerrePositivity.Asymptotic.FreeSequence.rank": "自由加群列（ランク O(s)）",
+  "SerrePositivity.Asymptotic.paperSupportedToKaroubi": "台つき部分圏",
+  "SerrePositivity.Asymptotic.ordinaryLengthOnIdeal": "MOVE:A 可換代数と数論幾何/正規化長さ"
+ },
+ "uncertain": [],
+ "notes": "docstring のない paperSequenceFunctor・paperBaseChangeEulerK0 は本体とファイル冒頭を読んだ。幹の名前「漸近的なランク」はランク商の側だけを指すが、加群列の長さの Serre 商（LengthSerreQuotient など）も入っている。ランク商が二つの順序で作られている：Kar(K^b/N)（CompletedSequenceRankQuotient）と論文の順序 Kar(Kar(K^b)/N)（PaperRankQuotient）で、同値 paperRankEquivalence でつないでいる。台つき部分圏も supportedSequence／supportedCompletedRankQuotient／paperSupportedRank の三段がある。ordinaryLengthOnIdeal は「正規化長さ」へ。"
+}

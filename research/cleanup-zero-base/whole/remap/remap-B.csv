@@ -1,0 +1,81 @@
+group,concept,subconcept,new_concept,new_subconcept,aux,stopped,split,note
+B 複体と dg 圏,dg 加群,Hom 複体（豊穣 end）,B 複体と dg 圏/dg 加群,Hom 複体（豊穣 end）,0,,0,
+B 複体と dg 圏,dg 加群,ホモトピー圏 K(D) と擬同型・acyclic,B 複体と dg 圏/dg 加群,ホモトピー圏 K(D)・擬同型・acyclic 加群,0,,0,
+B 複体と dg 圏,dg 加群,ホモトピー射影的加群,B 複体と dg 圏/dg 加群,ホモトピー射影的加群,0,,0,
+B 複体と dg 圏,dg 加群,写像錐,B 複体と dg 圏/dg 加群,写像錐,0,,0,
+B 複体と dg 圏,dg 加群,右・左 dg 加群（対象）,B 複体と dg 圏/dg 加群,右 dg 加群と左 dg 加群,0,,0,
+B 複体と dg 圏,dg 加群,表現可能加群と双対,B 複体と dg 圏/dg 加群,表現可能加群と双対,0,,0,
+B 複体と dg 圏,dg 加群,閉次数零の加群圏と評価,B 複体と dg 圏/dg 加群,閉次数零の加群圏 Z⁰ と評価関手,0,,0,
+B 複体と dg 圏,dg 加群,（読んで移した定義）,B 複体と dg 圏/dg 加群,,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,cell の貼り付け,B 複体と dg 圏/dg 商と cell 分解,cell の貼り付け,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,cell 分解（Hom が K-flat な分解）,B 複体と dg 圏/dg 商と cell 分解,cell 分解（Hom が K-flat な分解）,0,,0,局所 K-flat な dg 圏による分解 KFlatDGResolution（今は「双加群とテンソル／K-flat 性と K-flat 分解」）と境目が近い。
+B 複体と dg 圏,dg 商と cell 分解,dg 商と Verdier 商の比較,B 複体と dg 圏/dg 商と cell 分解,dg 商と Verdier 商の比較,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,dg 商の path 複体,B 複体と dg 圏/dg 商と cell 分解,dg 商の path 複体,0,,0,cell の貼り付けの語の複体・自由 dg 圏の path のテンソルと同じ形（整理の候補として記録、決定どおりそのまま）。
+B 複体と dg 圏,dg 商と cell 分解,dg 商の係数変更,B 複体と dg 圏/係数の取り替え,dg 商の係数変更,0,,0,決定「底変換の関手が主語なら係数の取り替え」。quotientScalarTriaFunctor・scalarCompletedTriaFunctor・quotientScalarPerfectFunctor。
+B 複体と dg 圏,dg 商と cell 分解,dg 商の普遍性（収縮つき dg 関手）,B 複体と dg 圏/dg 商と cell 分解,dg 商の普遍性（収縮つき dg 関手）,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,dg 商圏（Hom 複体・包含関手・ε）,B 複体と dg 圏/dg 商と cell 分解,dg 商圏（Hom 複体・包含関手・収縮元 ε）,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,path 長のフィルトレーション,B 複体と dg 圏/dg 商と cell 分解,path 長のフィルトレーション,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,（その他）,B 複体と dg 圏/dg 商と cell 分解,,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,（まだ読んでいない定義）,B 複体と dg 圏/dg 商と cell 分解,,0,,0,
+B 複体と dg 圏,dg 商と cell 分解,（読んで移した定義）,B 複体と dg 圏/dg 商と cell 分解,,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,Z⁰ と H⁰,B 複体と dg 圏/dg 圏と dg 関手,Z⁰ と H⁰,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,dg 圏のテンソル積,B 複体と dg 圏/dg 圏と dg 関手,dg 圏のテンソル積,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,dg 圏の表示符号,B 複体と dg 圏/dg 圏と dg 関手,dg 圏の表示符号,0,,0,小さい dg 圏の集合を作るためのデータで、「C/サイズの条件」と境目が近い。主語は dg 圏のデータなのでここに残した。
+B 複体と dg 圏,dg 圏と dg 関手,dg 圏（Hom 複体・次数つき射・合成）,B 複体と dg 圏/dg 圏と dg 関手,dg 圏（Hom 複体・次数つき射・合成）,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,dg 関手,B 複体と dg 圏/dg 圏と dg 関手,dg 関手,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,一対象 dg 圏としての dg 代数,B 複体と dg 圏/dg 圏と dg 関手,一対象 dg 圏としての dg 代数,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,自由 dg 圏,B 複体と dg 圏/dg 圏と dg 関手,自由 dg 圏,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,（まだ読んでいない定義）,B 複体と dg 圏/dg 圏と dg 関手,,0,,0,
+B 複体と dg 圏,dg 圏と dg 関手,（読んで移した定義）,B 複体と dg 圏/dg 圏と dg 関手,,0,,0,
+B 複体と dg 圏,三角圏,（Mathlib の定義だけの主張）,B 複体と dg 圏/三角圏と t 構造,,0,,0,
+B 複体と dg 圏,三角圏,（その他）,B 複体と dg 圏/三角圏と t 構造,,0,,0,
+B 複体と dg 圏,三角圏,（読んで移した定義）,B 複体と dg 圏/三角圏と t 構造,,0,,0,
+B 複体と dg 圏,係数の取り替え,dg 加群の係数変更,B 複体と dg 圏/係数の取り替え,dg 加群の係数変更,0,,0,
+B 複体と dg 圏,係数の取り替え,dg 圏の係数変更,B 複体と dg 圏/係数の取り替え,dg 圏の係数変更,0,,0,
+B 複体と dg 圏,係数の取り替え,導来係数拡大,B 複体と dg 圏/係数の取り替え,導来係数拡大,0,,0,
+B 複体と dg 圏,係数の取り替え,複体の係数拡大と係数制限,B 複体と dg 圏/係数の取り替え,複体の係数拡大と係数制限,0,,0,
+B 複体と dg 圏,係数の取り替え,（まだ読んでいない定義）,B 複体と dg 圏/係数の取り替え,,0,,0,
+B 複体と dg 圏,単体的鎖とシャッフル,Alexander–Whitney 写像と余代数構造,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,Alexander–Whitney 写像と余代数構造,0,,0,C/dg 神経の「Alexander–Whitney 合成」と内容が重なる（読む担当の覚え書き c14）。
+B 複体と dg 圏,単体的鎖とシャッフル,シャッフル,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,シャッフル,0,,0,添字型が ShufflePath（格子経路）と ShuffleIndex（部分集合）の二系統（重複の候補）。
+B 複体と dg 圏,単体的鎖とシャッフル,整数加群・単体的加群・鎖複体のテンソル,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,整数加群・単体的加群・鎖複体のテンソル,0,,0,
+B 複体と dg 圏,単体的鎖とシャッフル,線形化した区間ホモトピーと厳密化,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,線形化した区間ホモトピーと厳密化,0,,0,LinearizedCylinderEquivariant・groupLinearizedMap は KST の pro 切除（GL の群ホモロジー）でだけ使うが、主張に現れるのは単体的鎖だけなのでここ（規則 3）。
+B 複体と dg 圏,単体的鎖とシャッフル,線形化と正規化鎖複体,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,線形化と正規化鎖複体,0,,0,
+B 複体と dg 圏,単体的鎖とシャッフル,（Mathlib の定義だけの主張）,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,,0,,0,
+B 複体と dg 圏,単体的鎖とシャッフル,（その他）,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,,0,,0,
+B 複体と dg 圏,単体的鎖とシャッフル,（まだ読んでいない定義）,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,,0,,0,
+B 複体と dg 圏,単体的鎖とシャッフル,（補助）宇宙を合わせた整数係数,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,単体的環の正規化コチェインの係数（ULift ℤ）,1,,0,simplicialRingCoefficient（ULift ℤ の abbrev）一つ。数学の概念ではない。
+B 複体と dg 圏,単体的鎖とシャッフル,（読んで移した定義）,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,,0,,0,
+B 複体と dg 圏,双加群とテンソル,Bᵒᵖ⊗C 上の加群としての双加群と半自由分解,B 複体と dg 圏/双加群とテンソル,Bᵒᵖ⊗C 上の加群としての双加群と半自由分解,0,,0,
+B 複体と dg 圏,双加群とテンソル,K-flat 性と K-flat 分解,B 複体と dg 圏/双加群とテンソル,K-flat 性と K-flat 分解,0,,0,複体・加群・dg 圏・双加群の四つの水準が一緒（整理の候補として記録、決定どおりそのまま）。
+B 複体と dg 圏,双加群とテンソル,balanced テンソル積 M ⊗_D N,B 複体と dg 圏/双加群とテンソル,balanced テンソル積 M ⊗_D N,0,,0,
+B 複体と dg 圏,双加群とテンソル,dg 双加群（対象・値・閉零圏）,B 複体と dg 圏/双加群とテンソル,dg 双加群（対象・値・閉零圏）,0,,0,
+B 複体と dg 圏,双加群とテンソル,kernel の導来作用と ∞ 圏版,B 複体と dg 圏/双加群とテンソル,kernel の導来作用,0,,1,決定「kernel の導来作用は双加群とテンソル」に従い主な行き先はここ（kernelDerivedTensorOnBimodule）。残り 8 件は ∞ 圏の側：dgRelativeKFlatModuleNerve・dgRelativeKFlatModuleInclusion・dgRelativeKFlatKernelNerve・dgRelativeKFlatResolution・dgSemifreeToRelativeKFlatNerve・dgRelativeKFlatKernelCompositionIso・dgKernelTensorIsoNerveOfBimoduleIso・dgKernelDerivedInfinity_compIso_of_rightRelativeKFlat は「D/導来 ∞ 圏」の小概念「kernel の作用の ∞ 圏版（相対 K-flat 加群の dg 神経）」へ（双加群と導来 ∞ 圏は互いに土台でないので、規則 4 の「関係」の小概念）。
+B 複体と dg 圏,双加群とテンソル,双加群の制限,B 複体と dg 圏/双加群とテンソル,双加群の制限,0,,0,
+B 複体と dg 圏,双加群とテンソル,双加群の合成（相対テンソル）,B 複体と dg 圏/双加群とテンソル,双加群の合成（相対テンソル）,0,,0,
+B 複体と dg 圏,双加群とテンソル,合成の結合同型と単位同型,B 複体と dg 圏/双加群とテンソル,合成の結合同型と単位同型,0,,0,
+B 複体と dg 圏,双加群とテンソル,導来双加群圏と導来合成,B 複体と dg 圏/双加群とテンソル,導来双加群圏と導来合成,0,,0,
+B 複体と dg 圏,双加群とテンソル,導来合成と制限の両立（中間圏の比較）,B 複体と dg 圏/双加群とテンソル,導来合成と制限の両立,0,,0,
+B 複体と dg 圏,双加群とテンソル,（読んで移した定義）,B 複体と dg 圏/双加群とテンソル,,0,,0,
+B 複体と dg 圏,導来圏と Perf（dg 加群）,Perf の Verdier 商と零対象,B 複体と dg 圏/導来圏と Perf（dg 加群）,Perf の Verdier 商,0,,0,三角圏の Verdier 商。∞ 圏の Verdier 列（D/Verdier 列）とは別。
+B 複体と dg 圏,導来圏と Perf（dg 加群）,Perf の dg 増強（射影的 perfect dg 加群）,B 複体と dg 圏/導来圏と Perf（dg 加群）,Perf の dg 増強（射影的 perfect dg 加群）,0,,0,
+B 複体と dg 圏,導来圏と Perf（dg 加群）,Perf の ∞ 圏模型（dg 神経）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,Perf の ∞ 圏模型（射影的 perfect dg 加群の dg 神経）,0,,0,決定「導来 ∞ 圏＝dg 神経による ∞ 圏の模型」。dgModulePerfectInfinityCategory・dgPerfectYoneda・dgPerfectInclusionInfinity。
+B 複体と dg 圏,導来圏と Perf（dg 加群）,Perf の関手性（kernel・準同値・係数拡大・自己準同型代数）,B 複体と dg 圏/導来圏と Perf（dg 加群）,Perf の関手性と Morita 同値（自己準同型 dg 代数）,0,,1,残る：quasiEquivalencePerfectExtension・Morita.perfectFunctorRestriction・endomorphismThickGeneratesPerfect・perfectEndomorphismDG・perfectEndomorphismTensorDG・perfectEndomorphismTensorToPerfect・perfectEndomorphismHomToPerfect。係数拡大（Morita.scalarExtensionPerfectFunctor・perfectScalarDerivedExtension・scalarPerfectGenerators）は「B/係数の取り替え」の「導来係数拡大」へ。kernel（Morita.perfectDerivedKernelAction・Morita.kernelColumnsPerfect・SupportedPerfectKernelCategory・supportedPerfectKernels・mainPerfectKernelActionCommShift）は「B/双加群とテンソル」の「kernel の導来作用」へ。
+B 複体と dg 圏,導来圏と Perf（dg 加群）,Perf(D)（perfect 対象）,B 複体と dg 圏/導来圏と Perf（dg 加群）,Perf(D)（perfect 対象）,0,,0,
+B 複体と dg 圏,導来圏と Perf（dg 加群）,導来圏 D(D)（擬同型による局所化）,B 複体と dg 圏/導来圏と Perf（dg 加群）,導来圏 D(D)（擬同型による局所化）,0,,0,
+B 複体と dg 圏,導来圏と Perf（dg 加群）,有限 cell 対象と tria(D),B 複体と dg 圏/導来圏と Perf（dg 加群）,有限 cell 対象と tria(D),0,,0,
+B 複体と dg 圏,導来圏と Perf（dg 加群）,（補助）κ コンパクト性・ε 整合関手・懸垂作用,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,coherent bar 構成の κ コンパクト性と懸垂作用,1,,1,名前空間は CoherentBar.Compact・SuspensionAction（非連結 K の段の提供者のため）。中身は三つに分かれる：dgBarCompactEvaluationPosetDiagram・dgBarCompactPiMap・dgKappaConeInput_unconditional'・dgSuspensionUnconditionalMapData は coherent bar（ここ）；NullPreservingFunctorsε・quotientEpsilonHom・dgSuspensionResolvedEpsilonCore は dg 商の収縮元 ε と整合する dg 関手で「B/dg 商と cell 分解」の「dg 商の普遍性（収縮つき dg 関手）」へ；DGBarCompactPiChart（Kan ホモトピー群のチャート）は「C/Kan 複体とホモトピー群」へ。
+B 複体と dg 圏,導来圏と Perf（dg 加群）,（読んで移した定義）,B 複体と dg 圏/導来圏と Perf（dg 加群）,,0,,0,
+B 複体と dg 圏,複体,Dold–Kan と正規化,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,Dold–Kan 対応と正規化,0,,0,決定「Dold–Kan と正規化は一本化」。
+B 複体と dg 圏,複体,テンソル積と積構造,B 複体と dg 圏/複体,複体のテンソル積と積構造,0,,0,
+B 複体と dg 圏,複体,ホモトピー極限の模型（frame・重みつき end/coend）,B 複体と dg 圏/複体,複体の図式のホモトピー極限（frame・重みつき end/coend）,0,,0,「E/図式のモデル構造とホモトピー余極限」「E/ホモトピー関数複体と分解」と境目が近い。主張に複体が現れるものだけここ。
+B 複体と dg 圏,複体,ホモロジー・分解・K-射影,B 複体と dg 圏/複体,ホモロジー・分解・K-射影的複体,0,,0,
+B 複体と dg 圏,複体,二重複体と全複体,B 複体と dg 圏/複体,二重複体と全複体,0,,0,
+B 複体と dg 圏,複体,係数拡大（複体の base change）,B 複体と dg 圏/係数の取り替え,複体の係数拡大と係数制限,0,,0,「係数の取り替え／複体の係数拡大と係数制限」と同じ内容なのでまとめる。
+B 複体と dg 圏,複体,写像錐・冪等射の像,B 複体と dg 圏/複体,写像錐と冪等な鎖写像の像,0,,0,scalarConeFunctor は Koszul 複体の構成要素（「A/Koszul 複体」と境目が近い）。
+B 複体と dg 圏,複体,導来圏・ホモトピー圏（通常の三角圏）,B 複体と dg 圏/複体,複体のホモトピー圏と導来圏,0,,0,決定「複体のホモトピー圏・導来圏は複体に残す」。
+B 複体と dg 圏,複体,複体の極限・余極限と図式,B 複体と dg 圏/複体,複体の極限・余極限と図式,0,,0,
+B 複体と dg 圏,複体,複体（基本）と Hom 複体,B 複体と dg 圏/複体,複体（基本）と Hom 複体,0,,0,
+B 複体と dg 圏,複体,鎖複体と添字の取り替え（埋め込み・切断）,B 複体と dg 圏/複体,鎖複体と添字の取り替え（埋め込み・切断）,0,,0,
+B 複体と dg 圏,複体,（その他）,B 複体と dg 圏/複体,,0,,0,
+B 複体と dg 圏,複体,（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,N_dg(Ch) の写像空間と錐の計算（正規化テンソルの要素圏）,1,,0,ComplexLimits.normalizedTensor*・ConeHeadIndex.*・doubleConeOrderHom・ComplexSimplexAugmentation。決定「複体の dg 神経での fiber・cofiber 四角形は導来 ∞ 圏」。
+B 複体と dg 圏,複体,（読んで移した定義）,B 複体と dg 圏/複体,,0,,0,

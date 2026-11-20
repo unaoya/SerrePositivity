@@ -1,0 +1,96 @@
+{
+ "key": "d57",
+ "concept": "H K 理論/導来 blowup",
+ "subconcepts": [
+  {
+   "name": "標準チャートと普遍チャート",
+   "description": "導来 blowup の i チャートの多項式環、規格化座標、普遍 blowup の基底 ℤ[T_j] と普遍チャート ℤ[T_i,S_j]、表示の代入射",
+   "reference": "KST Def 3.1、§3.1、Lemma 3.6"
+  },
+  {
+   "name": "チャートの重なりの環",
+   "description": "二重の重なり U_i∩U_k と有限重なりの Away 局所化、その分母、pivot 変更と拡大の環射、非空有限集合の添字",
+   "reference": "KST §3.1"
+  },
+  {
+   "name": "有限重なりの dg 代数図式",
+   "description": "全ての非空有限重なりを dg 代数へ送る関手（導来 blowup と例外因子）、局所の dg 遷移、例外因子の関係式の列",
+   "reference": "KST §3.1、Def 3.1、Lemma 3.6"
+  },
+  {
+   "name": "図式加群と係数 dg 圏",
+   "description": "dg 代数の図式から作る係数 dg 圏（Hom 複体・単位矢）、その上の全図式加群、objectwise 擬同型による導来圏、射影的な図式加群",
+   "reference": "KST §3.1"
+  },
+  {
+   "name": "図式加群の局所評価・導来制限・係数拡大",
+   "description": "図式加群の各頂点への評価、遷移に沿う導来制限と導来係数拡大、その比較射（一般の図式の正規表示版と有限重なり版・例外因子版）",
+   "reference": "KST §3.1、Lemma 3.6"
+  },
+  {
+   "name": "cartesian・perfect 条件と大域 Perf 模型",
+   "description": "係数拡大の比較が可逆（cartesian）かつ各頂点で perfect な導来図式加群の条件、それで切った射影的図式加群の dg 部分圏",
+   "reference": "KST §3.1"
+  },
+  {
+   "name": "捻り O(m)",
+   "description": "係数 dg 圏の Hom の重み付け（gauge）による自己関手と、それに沿う図式加群・導来圏上の整数捻りの作用",
+   "reference": "KST §3.1"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapDGAlgebraDiagram": "有限重なりの dg 代数図式",
+  "SerrePositivity.KST.DerivedBlowup.ChartRing": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalDGAlgebraDiagram": "有限重なりの dg 代数図式",
+  "SerrePositivity.KST.DerivedBlowup.FiniteOverlapRing": "チャートの重なりの環",
+  "SerrePositivity.KST.DerivedBlowup.UniversalChart": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.ChartIndex": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.exteriorCochainInclusion": "MOVE:A 可換代数と数論幾何/Koszul 複体",
+  "SerrePositivity.KST.DerivedBlowup.ProjectiveDiagramModules": "図式加群と係数 dg 圏",
+  "SerrePositivity.KST.DerivedBlowup.CartesianPerfectDiagramDGModel": "cartesian・perfect 条件と大域 Perf 模型",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraModuleEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraDerivedEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.OverlapRing": "チャートの重なりの環",
+  "SerrePositivity.KST.DerivedBlowup.chartCoordinate": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.universalPresentationMap": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapDerivedTwistAction": "捻り O(m)",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraDerivedExtensionComparison": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraDerivedRestrictionNatTrans": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraIteratedEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraCartesianPerfect": "cartesian・perfect 条件と大域 Perf 模型",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapTwistAction": "捻り O(m)",
+  "SerrePositivity.KST.DerivedBlowup.DerivedAllDiagramModules": "図式加群と係数 dg 圏",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapDerivedTransitionRestriction": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramModuleTransitionUnit": "図式加群と係数 dg 圏",
+  "SerrePositivity.KST.DerivedBlowup.normalizeCoordinates": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalDerivedTransitionRestriction": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramModuleHom": "図式加群と係数 dg 圏",
+  "SerrePositivity.KST.DerivedBlowup.LiftedUniversalBase": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapIteratedModuleEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraDerivedRestriction": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalModuleEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraDerivedExtension": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramGaugeDGFunctor": "捻り O(m)",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapDerivedModuleEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalDerivedModuleEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.AllDiagramModules": "図式加群と係数 dg 圏",
+  "SerrePositivity.KST.DerivedBlowup.BlowupDiagramCoefficientObject": "有限重なりの dg 代数図式",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapLocalDGTransition": "有限重なりの dg 代数図式",
+  "SerrePositivity.KST.DerivedBlowup.exteriorBaseChangeDifferential": "MOVE:A 可換代数と数論幾何/Koszul 複体",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapChartMap": "チャートの重なりの環",
+  "SerrePositivity.KST.DerivedBlowup.freeExteriorScalarMap": "MOVE:A 可換代数と数論幾何/Koszul 複体",
+  "SerrePositivity.KST.DerivedBlowup.DiagramHomGauge": "捻り O(m)",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapModuleEvaluation": "図式加群の局所評価・導来制限・係数拡大",
+  "SerrePositivity.KST.DerivedBlowup.diagramCartesianPerfect": "cartesian・perfect 条件と大域 Perf 模型",
+  "SerrePositivity.KST.DerivedBlowup.DiagramModuleCoefficientObject": "図式加群と係数 dg 圏",
+  "SerrePositivity.KST.DerivedBlowup.exteriorProductDifferential": "MOVE:A 可換代数と数論幾何/Koszul 複体",
+  "SerrePositivity.KST.DerivedBlowup.exceptionalRelationValue": "有限重なりの dg 代数図式",
+  "SerrePositivity.KST.DerivedBlowup.finiteOverlapDenominator": "チャートの重なりの環",
+  "SerrePositivity.KST.DerivedBlowup.diagramCartesian": "cartesian・perfect 条件と大域 Perf 模型",
+  "SerrePositivity.KST.DerivedBlowup.FiniteOverlapIndex": "チャートの重なりの環",
+  "SerrePositivity.KST.DerivedBlowup.UniversalBase": "標準チャートと普遍チャート",
+  "SerrePositivity.KST.DerivedBlowup.diagramAlgebraVertexTransition": "図式加群の局所評価・導来制限・係数拡大"
+ },
+ "uncertain": [],
+ "notes": "exteriorCochainInclusion・exteriorBaseChangeDifferential・exteriorProductDifferential・freeExteriorScalarMap は任意の d : M → R の外積 Koszul（総外積への包含、底変更、生成元の追加）で、blowup に固有でないので Koszul 複体へ。評価・制限・係数拡大は同じ構成が三系統ある：一般の図式の正規表示版 diagramAlgebra*（Evaluation・DerivedEvaluation・IteratedEvaluation・DerivedRestriction）、有限重なり版 finiteOverlap*（ModuleEvaluation・DerivedModuleEvaluation・IteratedModuleEvaluation・DerivedTransitionRestriction）、例外因子版 finiteOverlapExceptional*。条件も diagramAlgebraCartesianPerfect と diagramCartesianPerfect が並行で、重複の疑い（特殊化として一本にできるか要確認）。docstring に「候補模型」「層レベル Perf や dg 商との同値を主張しない」とあり、大域 Perf との比較は未完の経路。LiftedUniversalBase は宇宙の持ち上げ、FiniteOverlapIndex・ChartIndex は添字の型。"
+}

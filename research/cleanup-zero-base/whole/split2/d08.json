@@ -1,0 +1,107 @@
+{
+ "key": "d08",
+ "concept": "A 可換代数と数論幾何/δ 環",
+ "subconcepts": [
+  {
+   "name": "δ 構造（W₂ の切断）と Frobenius 持ち上げ",
+   "description": "δ 構造を長さ 2 の Witt ベクトル W₂(A) → A の環準同型切断として定め、δ 写像、Frobenius 持ち上げ φ、δ と可換な環準同型を取り出す。",
+   "reference": "BS 著者版 Definition 2.1、Remark 2.2、Remark 2.4"
+  },
+  {
+   "name": "distinguished 元と完全 δ 環",
+   "description": "δ(d) が単元である元、Frobenius 持ち上げが全単射である δ 構造、完全な標数 p 環の Witt 環の標準 δ 構造。",
+   "reference": "BS 著者版 Definition 2.19、Definition 2.26"
+  },
+  {
+   "name": "自由 δ 環",
+   "description": "変数 x_(s,n) = δⁿ(x_s) の多項式環としての自由 δ 環（整数上・基底 δ 環上）とその δ 構造、変数を rank 1 にした多項式 δ 構造、完備化した自由 δ 環の δ 構造。",
+   "reference": "BS 著者版 Notation 2.8、Lemma 2.11"
+  },
+  {
+   "name": "δ 安定イデアル・δ 閉包・δ 局所化",
+   "description": "δ で安定なイデアル、イデアルの δ 閉包（商 δ 環の構成）、局所化で使う分母の Frobenius 飽和。",
+   "reference": "BS 著者版 Lemma 2.9、Example 2.10、Remark 2.16"
+  },
+  {
+   "name": "δ 除算の添加 A{a/d}",
+   "description": "基底 δ 環に a_s/d を δ 環として添加した環（相対自由 δ 環を関係式 d·z_s − a_s の δ 閉包で割る）、その δ 構造・標準射・生成元、有限部分族についての余極限。",
+   "reference": ""
+  },
+  {
+   "name": "δ 除算の関係式と有限表示",
+   "description": "δ 除算の反復関係式 δⁿ(d z_s − a_s)、深さ N までの関係式のイデアル、x_s ↦ d z_s の自由 δ 射と評価、剰余での第一段のイデアル、Witt 座標で正規化したモニックな有限表示。",
+   "reference": ""
+  },
+  {
+   "name": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+   "description": "δ 除算の添加環の (p,d) 商、d 冪ねじれの δ 閉包による商（二段階商）とその δ 構造、古典的 (p,d) 完備化と導来完備化の H⁰ の環構造。",
+   "reference": ""
+  },
+  {
+   "name": "p 完備 δ 除算の完全化",
+   "description": "δ 除算の添加環に p 進完備な δ 完全化を施した環、その δ 構造と基底からの標準射。",
+   "reference": ""
+  },
+  {
+   "name": "δ 環と分冪",
+   "description": "φ(x) が p で割れる元のイデアル（δ 環での分冪 xᵖ/p の計算に使う）。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.BhattScholze.DeltaStructure": "δ 構造（W₂ の切断）と Frobenius 持ち上げ",
+  "SerrePositivity.BhattScholze.DeltaStructure.delta": "δ 構造（W₂ の切断）と Frobenius 持ち上げ",
+  "SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift": "δ 構造（W₂ の切断）と Frobenius 持ち上げ",
+  "SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom": "δ 構造（W₂ の切断）と Frobenius 持ち上げ",
+  "SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished": "distinguished 元と完全 δ 環",
+  "SerrePositivity.BhattScholze.DeltaStructure.IsPerfect": "distinguished 元と完全 δ 環",
+  "SerrePositivity.BhattScholze.DeltaStructure.frobeniusEquiv": "distinguished 元と完全 δ 環",
+  "SerrePositivity.BhattScholze.wittDeltaStructure": "distinguished 元と完全 δ 環",
+  "SerrePositivity.BhattScholze.FreeDeltaRing": "自由 δ 環",
+  "SerrePositivity.BhattScholze.freeDeltaStructure": "自由 δ 環",
+  "SerrePositivity.BhattScholze.RelativeFreeDeltaRing": "自由 δ 環",
+  "SerrePositivity.BhattScholze.relativeFreeDeltaStructure": "自由 δ 環",
+  "SerrePositivity.BhattScholze.polynomialRankOneDeltaStructure": "自由 δ 環",
+  "SerrePositivity.BhattScholze.Prismatic.completedFreeDeltaStructure": "自由 δ 環",
+  "SerrePositivity.BhattScholze.DeltaStructure.IsStable": "δ 安定イデアル・δ 閉包・δ 局所化",
+  "SerrePositivity.BhattScholze.DeltaStructure.deltaClosure": "δ 安定イデアル・δ 閉包・δ 局所化",
+  "SerrePositivity.BhattScholze.DeltaStructure.frobeniusDenominators": "δ 安定イデアル・δ 閉包・δ 局所化",
+  "SerrePositivity.BhattScholze.DeltaAdjoinDivision": "δ 除算の添加 A{a/d}",
+  "SerrePositivity.BhattScholze.deltaAdjoinDivisionMap": "δ 除算の添加 A{a/d}",
+  "SerrePositivity.BhattScholze.deltaAdjoinDivisionVariable": "δ 除算の添加 A{a/d}",
+  "SerrePositivity.BhattScholze.deltaAdjoinDivisionStructure": "δ 除算の添加 A{a/d}",
+  "SerrePositivity.BhattScholze.DeltaAdjoinDivisionFiniteColimit": "δ 除算の添加 A{a/d}",
+  "SerrePositivity.BhattScholze.deltaAdjoinDivisionFiniteMap": "δ 除算の添加 A{a/d}",
+  "SerrePositivity.BhattScholze.deltaDivisionFiniteRelationIdeal": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionIteratedRelation": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionEvaluationRelation": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionSourceMap": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionSourceEval": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionSourceTargetAlgebra": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionSourceEvaluationAlgebra": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionFirstResidueIdeal": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialIdeal": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionWittNormalizedPolynomial": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.deltaDivisionFiniteNormalizedPresentationIdeal": "δ 除算の関係式と有限表示",
+  "SerrePositivity.BhattScholze.DeltaAdjoinDivisionResidue": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueIdeal": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.DeltaDivisionTorsionQuotient": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.deltaDivisionTorsionMap": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.deltaDivisionTorsionStructure": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.ClassicalDeltaDivisionCompletion": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.classicalDeltaDivisionStructure": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.derivedDeltaDivisionCommRing": "δ 除算のねじれ除去・(p,d) 剰余・完備化",
+  "SerrePositivity.BhattScholze.Semiperfectoid.PCompletedDeltaDivision": "p 完備 δ 除算の完全化",
+  "SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionStructure": "p 完備 δ 除算の完全化",
+  "SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionMap": "p 完備 δ 除算の完全化",
+  "SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowerIdeal": "δ 環と分冪"
+ },
+ "uncertain": [
+  "SerrePositivity.BhattScholze.deltaDivisionWittNormalizedPolynomial",
+  "SerrePositivity.BhattScholze.deltaDivisionFiniteNormalizedPresentationIdeal",
+  "SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialIdeal",
+  "SerrePositivity.BhattScholze.derivedDeltaDivisionCommRing",
+  "SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowerIdeal"
+ ],
+ "notes": "46 件中 28 件が δ 除算 A{a/d}（prismatic envelope の構成部品、Delta/Division/）で、δ 環の基礎（18 件）とは別の塊。幹を「δ 環（基礎）」と「δ 除算と prismatic envelope」に分けるか、後者を「プリズム」の envelope の小概念に寄せる余地がある。δ 除算の環が段階ごとに多数ある：DeltaAdjoinDivision（raw）→ DeltaDivisionTorsionQuotient（ねじれ除去）→ ClassicalDeltaDivisionCompletion（古典完備化）／DerivedDeltaDivisionCompletion（導来完備化の H⁰、derivedDeltaDivisionCommRing の対象）／Semiperfectoid.PCompletedDeltaDivision（完全化）。古典完備化と導来完備化の二本があり、どちらが主経路かは確認が要る（docstring が「旧ねじれ除去」「候補の環構造」と書いており、古い経路が残っている疑い）。deltaDivisionIteratedRelation と deltaDivisionEvaluationRelation はどちらも深さ n の関係式で、定義の仕方が違う同じ元の疑い。Semiperfectoid.* の 3 件は幹「パーフェクトイド」（perfect prism）に入れてもよい。Prismatic.completedFreeDeltaStructure は envelope の始域で「プリズム」寄り。primeDividedPowerIdeal は「分冪包絡とクリスタリン」寄り（Delta/DividedPower/ の下）。"
+}

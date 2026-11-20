@@ -1,0 +1,104 @@
+{
+ "key": "d24",
+ "concept": "B 複体と dg 圏/dg 商と cell 分解",
+ "subconcepts": [
+  {
+   "name": "dg 商の path 複体",
+   "description": "零化する対象の有限語に沿って Hom と次数 −1 の記号 ε を交互にテンソルした項、その直和、先頭への合成・連結、ε を消す次数 +1 の作用素",
+   "reference": ""
+  },
+  {
+   "name": "dg 商圏（Hom 複体・包含関手・ε）",
+   "description": "内部微分に ε 消去を足した微分をもつ Hom 複体、元の dg 圏からの包含 dg 関手、次数 −1 の収縮元",
+   "reference": ""
+  },
+  {
+   "name": "dg 商の普遍性（収縮つき dg 関手）",
+   "description": "S の各対象の像に収縮元を選んだ dg 関手と、それが定める dg 商からの dg 関手、dg 商の間の関手",
+   "reference": ""
+  },
+  {
+   "name": "path 長のフィルトレーション",
+   "description": "長さ n 以下・ちょうど n・指定した語の path からなる部分複体と右 dg 加群、長さを増やす射、商の表現可能加群の制限",
+   "reference": ""
+  },
+  {
+   "name": "dg 商と Verdier 商の比較",
+   "description": "片側の Hom の K-flat 性の下で、dg 商の tria／Perf の H⁰ と（冪等完備化した）Verdier 商が同値",
+   "reference": ""
+  },
+  {
+   "name": "dg 商の係数変更",
+   "description": "環準同型に沿った導来係数変更を dg 商の tria・Perf・完備化した商の上に誘導する関手",
+   "reference": ""
+  },
+  {
+   "name": "cell の貼り付け",
+   "description": "指定した cycle を境界とする生成元（source→target、次数つき）の族を dg 圏に自由に貼る構成：語の項、直和、境界の置換による微分の摂動、合成、長さの切り捨て、貼った圏からの dg 関手のデータ",
+   "reference": ""
+  },
+  {
+   "name": "cell 分解（Hom が K-flat な分解）",
+   "description": "cycle cover から始めて cell の貼り付けを ℕ 段反復した余極限として得る dg 圏と、元の dg 圏への増大 dg 関手（Hom で擬同型）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DifferentialGraded.DGQuotient.inclusion": "dg 商圏（Hom 複体・包含関手・ε）",
+  "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.Source": "cell 分解（Hom が K-flat な分解）",
+  "SerrePositivity.DifferentialGraded.DGQuotient.internalHom": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.internalHom": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.augmentation": "cell 分解（Hom が K-flat な分解）",
+  "SerrePositivity.DifferentialGraded.DGQuotient.lengthComplex": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGQuotient.localPerfectQuotientEquivalence": "dg 商と Verdier 商の比較",
+  "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.candidateHom": "cell 分解（Hom が K-flat な分解）",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.attachedHom": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.ContractedFunctor": "dg 商の普遍性（収縮つき dg 関手）",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.term": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.quotientHom": "dg 商圏（Hom 複体・包含関手・ε）",
+  "SerrePositivity.DifferentialGraded.DGQuotient.ι": "dg 商の path 複体",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFunctor": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列",
+  "SerrePositivity.DifferentialGraded.DGQuotient.term": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.epsilonComplex": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.lengthSubmodule": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.selectedPathModule": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.stageHom": "cell 分解（Hom が K-flat な分解）",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.internalComposition": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.erasure": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.quotientRepresentableRestriction": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGQuotient.internalComposition": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.extension": "dg 商の普遍性（収縮つき dg 関手）",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.inclusion": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.appendRight": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.PrimitiveData": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.quotientScalarTriaFunctor": "dg 商の係数変更",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.generator": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.lengthHom": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.scalarCompletedTriaFunctor": "dg 商の係数変更",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.Objects": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.epsilonElement": "dg 商圏（Hom 複体・包含関手・ε）",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replacement": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.quotientDGFunctor": "dg 商の普遍性（収縮つき dg 関手）",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.prependMap": "cell の貼り付け",
+  "SerrePositivity.DifferentialGraded.DGQuotient.eraseMiddle": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.prependMap": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.localCompletedQuotientEquivalence": "dg 商と Verdier 商の比較",
+  "SerrePositivity.DifferentialGraded.DGCellAttachment.Family.lengthInternalHom": "cell の貼り付け",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列",
+  "SerrePositivity.DifferentialGraded.DGQuotient.fixedLengthHom": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGQuotient.lengthModule": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGQuotient.lengthModuleTransition": "path 長のフィルトレーション",
+  "SerrePositivity.DifferentialGraded.DGQuotient.quotientScalarPerfectFunctor": "dg 商の係数変更",
+  "SerrePositivity.DifferentialGraded.DGQuotient.internalPrepend": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGQuotient.selectedHom": "path 長のフィルトレーション",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernel": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列",
+  "SerrePositivity.DifferentialGraded.DGQuotient.originalHomInclusion": "dg 商圏（Hom 複体・包含関手・ε）",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientNerve": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列",
+  "SerrePositivity.DifferentialGraded.DGQuotient.Word": "dg 商の path 複体",
+  "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.stage": "cell 分解（Hom が K-flat な分解）",
+  "SerrePositivity.DifferentialGraded.DGQuotient.localKFlat": "dg 商と Verdier 商の比較"
+ },
+ "uncertain": [],
+ "notes": "docstring のない 15 件は本体を読んだ。重複の疑い（並行する構成）：DGQuotient の path 複体と DGCellAttachment.Family の語の複体は同じ形（term／internalHom／ι と inclusion／prependMap／internalComposition／erasure と replacement／quotientHom と attachedHom／lengthComplex と lengthHom）。dg 商は「次数 −1 の cell を恒等射を境界として貼る」場合に当たるので、cell の貼り付けの特別な場合として書ける見込み。resolvedDGQuotientNerve・…Functor・…Projection・…ThickFlatKernel は cell 分解した dg 圏の dg 商の神経と thick 閉包の核で、∞ 圏の Verdier 列の部品（ファイル冒頭に「D-16 の Sp 向け kernel 欄」）なので「Verdier 列」へ。dg 商の係数変更 3 件は「係数の取り替え」に置いてもよい。d25 の DGCategoryCycleCover.Source は cell 分解の初段（stage 0）でこの概念に属する。"
+}
