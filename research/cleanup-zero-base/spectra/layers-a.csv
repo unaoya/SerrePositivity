@@ -1,0 +1,1055 @@
+area,module,declaration,kind,statement_uses,lines,K,concept,sub,users_total,users_A1,users_A2,users_A3,users_B,users_C,users_利用側,users_基点付き,users_CT他,users_外
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.BalancedMap,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,11,11,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.action_middle,thm,圏論一般,15,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.bifunctor,def,圏論一般,6,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.desc,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,16,16,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.descLeft,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.descRight,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.desc_unique,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.homEquiv,def,圏論一般,7,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.hom_ext,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,12,12,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.map,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,34,34,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.map_comp,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.map_id,thm,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleBifunctor,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,7,6,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleDesc,def,圏論一般,11,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleDesc_hom,thm,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleDiagram,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleMap,def,圏論一般,17,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,36,34,0,1,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleObj,def,圏論一般,4,結果,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,130,117,0,11,2,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.moduleObj_underlying,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.obj,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,129,129,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,97,97,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projectionModuleHom,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_action,thm,圏論一般,14,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,7,7,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_condition,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,16,16,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_desc,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,13,13,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_descLeft,thm,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_descRight,thm,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_epi,thm,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_map,thm,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,24,24,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_rightAction,thm,圏論一般,16,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_whiskerLeft_epi,thm,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.projection_whiskerRight_epi,thm,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.relationLeft,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,57,57,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.relationLeftHom,def,圏論一般,11,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.relationLeft_naturality,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.relationRight,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,57,57,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.relationRightHom,def,圏論一般,13,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.relationRight_naturality,thm,圏論一般,10,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.rightActionHom,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.rightActionMap,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,40,40,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.rightActionMap_naturality,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tensorRightAction,def,圏論一般,23,再利用,Z 圏論一般/モノイダル圏,,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tensorRightAssociator,def,圏論一般,16,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tensorRightMap,def,圏論一般,11,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,15,15,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tensorRightObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,48,48,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tripleLeftProjection,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,29,29,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tripleLeftProjection_epi,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tripleLeftProjection_map,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tripleRightProjection,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,27,27,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tripleRightProjection_epi,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.tripleRightProjection_map,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.underlyingCocone,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.underlyingCoconeIsColimit,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.underlyingCocone_ι_one,thm,圏論一般,4,分割,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.BalancedTensor,SerrePositivity.MonoidalBalancedTensor.underlyingDiagramIso,def,圏論一般,9,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.freeAction,def,圏論一般,15,再利用,Z 圏論一般/モノイダル圏,,8,8,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.freeForgetAdjunction,def,圏論一般,13,結果,Z 圏論一般/モノイダル圏の中の加群,自由加群,8,2,0,0,2,0,0,0,0,4
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.freeFunctor,def,圏論一般,10,結果,Z 圏論一般/モノイダル圏の中の加群,自由加群,26,13,0,4,2,0,0,0,0,7
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.freeHomEquiv,def,圏論一般,7,結果,Z 圏論一般/モノイダル圏の中の加群,自由加群,7,6,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.freeMap,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,32,23,0,7,2,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.freeObj,def,圏論一般,4,結果,Z 圏論一般/モノイダル圏の中の加群,自由加群,117,83,0,26,6,0,2,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.free_counit,thm,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.free_unit,thm,圏論一般,4,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,0,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.generator,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,41,36,0,3,2,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.generator_action,thm,圏論一般,7,結果,Z 圏論一般/モノイダル圏の中の加群,自由加群,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.generator_lift,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,3,2,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.lift,def,圏論一般,8,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,9,8,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Free,SerrePositivity.MonoidalFreeModule.lift_generator,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeFunctorBraided,def,圏論一般,10,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeFunctorMonoidal,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftBifunctor,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftIso,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,19,10,0,8,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftIso_inv,thm,圏論一般,11,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftNatIso,def,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftPairAssociator,def,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,6,3,0,3,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftPairAssociator_hom,thm,圏論一般,27,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,2,1,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftPairAssociator_inv,thm,圏論一般,11,未使用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeftPairAssociator_transport,thm,圏論一般,21,分割,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,1,0,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeft_inv_naturality,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeft_naturality,thm,圏論一般,10,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,5,3,0,1,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeLeft_unit_comparison,thm,圏論一般,13,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,0,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeMonoidalCore,def,圏論一般,18,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePairBifunctor,def,圏論一般,4,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePairIso,def,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,18,16,0,1,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePairNatIso,def,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePair_associativity_inv,thm,圏論一般,17,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePair_braiding_inv,thm,圏論一般,10,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePair_inv_naturality,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePair_leftUnit_inv,thm,圏論一般,19,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePair_naturality,thm,圏論一般,12,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,2,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freePair_rightUnit_inv,thm,圏論一般,19,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeProductBifunctor,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightBalanced,def,圏論一般,18,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightBifunctor,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightHom,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightHom_inv,thm,圏論一般,17,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightInv,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightInv_hom,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightIso,def,圏論一般,14,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightIso_hom,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightIso_inv,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightModuleHom,def,圏論一般,23,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightNatIso,def,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRightUnderlyingIso,def,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeRight_naturality,thm,圏論一般,17,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeTensorIso,def,圏論一般,17,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,10,10,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeTensorIso_hom,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeTensorIso_inv,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeTensor_naturality,thm,圏論一般,9,結果,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeUnitFromIso,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,3,2,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeUnitIso,def,圏論一般,17,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,10,8,0,2,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeUnitIso_hom,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.freeUnitIso_inv,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_associator_inv,thm,圏論一般,10,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freeLeft_hom,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freeMap,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,7,6,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freePair_inv,thm,圏論一般,10,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,7,7,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freeTriple_left,thm,圏論一般,15,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freeTriple_right,thm,圏論一般,15,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freeUnit,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,4,3,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generator_freeUnitFromIso,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.generators_freePair_hom,thm,圏論一般,9,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.projection_freeRightHom,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftAction,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏,,5,2,0,3,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftBifunctor,def,圏論一般,13,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,3,1,0,2,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftIso,def,圏論一般,17,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftMap,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,11,6,0,4,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftMap_hom,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,4,1,0,2,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,31,17,0,13,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorLeftObj_action,thm,圏論一般,7,未使用,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.FreeTensor,SerrePositivity.MonoidalBalancedTensor.tensorRightBifunctor,def,圏論一般,13,分割,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.Linear,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,8,8,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.action,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.actionTranspose,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.action_evaluation,thm,圏論一般,10,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.action_mul,thm,圏論一般,21,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.action_one,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.adjunction_counit,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.adjunction_homEquiv,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,2,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.closed_curry,thm,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curryModule,def,圏論一般,14,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,8,7,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curryModule_naturality,thm,圏論一般,12,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curryModule_naturality_right,thm,圏論一般,5,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curryModule_preMap,thm,圏論一般,6,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curryUnderlying,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curryUnderlying_evaluation,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.curry_condition,thm,圏論一般,8,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.evaluation,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,24,24,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.evaluationBalanced,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.evaluationModule,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,11,11,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.evaluation_hom_ext,thm,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.evaluation_linear,thm,圏論一般,3,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.homBifunctor,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,3,1,0,0,1,1,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.homBifunctor_map,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.homEquiv,def,圏論一般,11,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.homMap,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,7,2,0,4,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.hom_ext,thm,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.ihom_ev,thm,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.ihom_obj,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.inclusion,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,17,17,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.inclusion_condition,thm,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.inclusion_mono,thm,圏論一般,1,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.internalHomAction,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.internalHomFunctor,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,15,13,0,0,2,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.lift,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,8,8,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.lift_evaluation,thm,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.lift_inclusion,thm,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleClosed,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,16,14,0,0,0,0,2,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleHomEquiv,def,圏論一般,14,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleLift,def,圏論一般,11,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleMonoidalClosed,def,圏論一般,3,再利用,Z 圏論一般/モノイダル圏,,15,1,0,0,3,1,9,0,0,1
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,48,33,0,10,5,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleUnlift,def,圏論一般,10,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.moduleUnlift_naturality,thm,圏論一般,9,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.obj,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,61,53,0,5,3,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.preMap,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,11,10,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.preMap_comp,thm,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.preMap_evaluation,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.preMap_id,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.preMap_naturality,thm,圏論一般,6,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.projection_evaluationModule,thm,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.projection_uncurryModule,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.regularHomHom,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.regularHomInv,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.regularHomIso,def,圏論一般,19,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.regularHomIso_naturality,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.regularHomNatIso,def,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.sourceAction,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.targetAction,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏,,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.tensorHomEquiv,def,圏論一般,14,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,7,5,0,0,2,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.tensorInternalHomAdjunction,def,圏論一般,4,結果,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,6,4,0,0,2,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.tensorRightAssociatorInv,def,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,加群と対象のテンソル,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.uncurryModule,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,10,3,0,4,3,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHom,SerrePositivity.MonoidalModuleInternalHom.uncurry_linear,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomAction,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomEquiv,def,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomEquiv_apply,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomEquiv_naturality,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomHom,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomHom_eq,thm,圏論一般,3,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomInv,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomInv_eq,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso,def,圏論一般,13,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,20,12,0,5,3,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso_evaluation,thm,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso_hom,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso_inv,thm,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso_inv_evaluation,thm,圏論一般,10,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso_naturality_left,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomIso_naturality_right,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomMap,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,6,2,0,4,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomMap_hom,thm,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,0,0,2,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomModuleIso,def,圏論一般,18,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,11,4,0,3,4,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomModuleIso_naturality,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,0,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,21,11,0,6,4,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomObj_action,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomObj_action_evaluation,thm,圏論一般,14,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeHomObj_action_formula,thm,圏論一般,8,未使用,Z 圏論一般/モノイダル圏の中の加群,自由加群,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeLeftIso_uncurry,thm,圏論一般,11,再利用,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,2,0,0,2,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.freeTensorHomEquiv,def,圏論一般,8,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.furtherTransportedIso,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,5,2,0,0,3,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.furtherTransportedIso_hom,thm,圏論一般,5,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,0,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.furtherTransportedIso_inv,thm,圏論一般,5,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,0,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.generator_rightAction,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.map_underlying_evaluation,thm,圏論一般,15,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.preMap_underlying_evaluation,thm,圏論一般,15,分割,Z 圏論一般/モノイダル圏の中の加群,加群の内部 Hom,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.transportedAction,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.transportedAction_evaluation,thm,圏論一般,13,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.transportedEvaluation,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,3,2,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.transportedIso,def,圏論一般,15,言い換え,Z 圏論一般/モノイダル圏の中の加群,自由加群,9,1,0,5,3,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.transportedObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,自由加群,21,5,0,12,4,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.InternalHomFree,SerrePositivity.MonoidalModuleInternalHom.transportedObj_action_evaluation,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,自由加群,1,0,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.actionCocone,def,圏論一般,11,再利用,Z 圏論一般/モノイダル圏,,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitAction,def,圏論一般,25,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitCocone,def,圏論一般,7,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitCoconeIsColimit,def,圏論一般,21,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitCoconeLiftsToColimit,def,圏論一般,5,結果,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitSmul,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.colimitSmul_ι,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏,,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.forgetColimitCoconeIso,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.forget_createsColimit,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,2,1,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.forget_createsColimitsOfShape,def,圏論一般,1,再利用,Z 圏論一般/モノイダル圏,,3,1,0,0,0,0,0,0,0,2
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleColimits.instHasColimitsOfShapeMod_serrePositivity,thm,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,5,0,0,0,1,0,0,0,0,4
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.actionCone,def,圏論一般,13,再利用,Z 圏論一般/モノイダル圏,,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.forgetLimitConeIso,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.forget_createsLimit,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfShape,def,圏論一般,1,結果,Z 圏論一般/モノイダル圏,,3,2,0,0,1,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.forget_createsLimitsOfSize,def,圏論一般,2,未使用,Z 圏論一般/モノイダル圏,,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.forget_reflectsIsomorphisms,thm,圏論一般,8,再利用,Z 圏論一般/モノイダル圏,,3,2,0,0,0,0,0,0,0,1
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.instHasLimitsOfShapeMod_serrePositivity,thm,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,5,1,0,0,1,0,0,0,0,3
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.instHasLimitsOfSizeMod_serrePositivity,thm,圏論一般,1,未使用,Z 圏論一般/モノイダル圏,,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.limitAction,def,圏論一般,20,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.limitAction_π,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.limitCone,def,圏論一般,7,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.limitConeIsLimit,def,圏論一般,18,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.limitConeLiftsToLimit,def,圏論一般,5,結果,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleLimits.limitObj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏,,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleTransport.action,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏,,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleTransport.iso,def,圏論一般,14,言い換え,Z 圏論一般/モノイダル圏,,3,2,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleTransport.iso_hom,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏,,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleTransport.iso_inv,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏,,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleTransport.obj,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏,,5,4,0,1,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Limits,SerrePositivity.MonoidalModuleTransport.obj_action,thm,圏論一般,4,未使用,Z 圏論一般/モノイダル圏,,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorHom,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,15,15,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorInv,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorInvSeed_balanced,thm,圏論一般,28,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorInvStep,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorInvStep_balanced,thm,圏論一般,28,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorIso,def,圏論一般,13,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,13,13,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorIso_hom,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorIso_inv,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorModuleHom,def,圏論一般,32,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorNatIso,def,圏論一般,4,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorSeed_balanced,thm,圏論一般,23,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorStep,def,圏論一般,4,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorStep_balanced,thm,圏論一般,30,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associatorUnderlyingIso,def,圏論一般,13,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.associator_naturality,thm,圏論一般,13,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitBalanced,def,圏論一般,7,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitHom,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitHom_inv,thm,圏論一般,25,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitInv,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitInv_hom,thm,圏論一般,4,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitIso,def,圏論一般,11,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitIso_hom,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitIso_inv,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitModuleHom,def,圏論一般,6,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitNatIso,def,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnitUnderlyingIso,def,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.leftUnit_naturality,thm,圏論一般,13,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.monoidalCategory,def,圏論一般,13,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,80,28,0,5,17,1,27,0,0,2
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.monoidalCategoryStruct,def,圏論一般,10,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,42,21,0,6,6,1,8,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.pentagon,thm,圏論一般,17,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.pentagonLowerProjection,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.pentagonLowerProjection_map_associator,thm,圏論一般,10,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.pentagonUpperProjection,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.pentagonUpperProjection_associator,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.projection_associatorInvStep,thm,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.projection_associatorStep,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.projection_leftUnitHom,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,6,6,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.projection_rightUnitHom,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleLeftProjection,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleLeftProjection_associator,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleLeftProjection_epi,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleLeftProjection_map_associator,thm,圏論一般,11,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleMiddleProjection,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleMiddleProjection_associator,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.quadrupleRightProjection,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.regularLeftTensorFunctor,def,圏論一般,11,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.regularRightTensorFunctor,def,圏論一般,11,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightActionMap_assoc,thm,圏論一般,13,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightActionMap_one,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏,,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightActionMap_regular,thm,圏論一般,4,再利用,Z 圏論一般/モノイダル圏,,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitBalanced,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitHom,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,8,8,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitHom_inv,thm,圏論一般,21,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitInv,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,5,5,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitInv_hom,thm,圏論一般,4,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitIso,def,圏論一般,11,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitIso_hom,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitIso_inv,thm,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitModuleHom,def,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitNatIso,def,圏論一般,3,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnitUnderlyingIso,def,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.rightUnit_naturality,thm,圏論一般,12,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.triangle,thm,圏論一般,20,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.triangle_inv,thm,圏論一般,6,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleLeftFunctor,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleLeftModuleHom,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleLeftModuleHom_hom,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleLeftProjection_associatorHom,thm,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,10,10,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleReassociate,def,圏論一般,4,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleRightFunctor,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleRightModuleHom,def,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleRightModuleHom_hom,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Monoidal,SerrePositivity.MonoidalBalancedTensor.tripleRightProjection_associatorInv,thm,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.braiding_eq_swapIso,thm,圏論一般,2,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.hexagon_forward,thm,圏論一般,16,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.hexagon_reverse,thm,圏論一般,16,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.projection_swapHom,thm,圏論一般,4,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,9,9,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapBalanced,def,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapHom,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,13,13,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapHom_swapHom,thm,圏論一般,5,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapIso,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,15,15,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapIso_rightUnit,thm,圏論一般,10,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapIso_symmetry,thm,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapModuleHom,def,圏論一般,20,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapNatIso,def,圏論一般,6,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapRelation,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,4,4,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapRelation_eq,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏,,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swapUnderlyingIso,def,圏論一般,6,未使用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,0,0,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swap_naturality,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,3,3,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swap_relationLeft,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.swap_relationRight,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.symmetricCategory,def,圏論一般,12,結果,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,11,2,0,0,2,1,6,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.tripleLeftProjection_map_swap,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.tripleLeftProjection_swap,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.tripleRightProjection_map_swap,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,2,2,0,0,0,0,0,0,0,0
+A1,CategoryTheory.Monoidal.Mod.Symmetric,SerrePositivity.MonoidalBalancedTensor.tripleRightProjection_swap,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏の中の加群,釣り合いテンソル積（モノイド上の相対テンソル積）,1,1,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingArrowComposition.arrowCompositionEvaluationLaw,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏,,3,0,2,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingArrowComposition.arrow_composition_evaluation,thm,圏論一般,22,分割,Z 圏論一般/モノイダル圏,,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingArrowComposition.representedArrowCompositionLaw,def,圏論一般,8,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,3,0,2,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingArrowComposition.represented_arrow_composition,thm,圏論一般,13,分割,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingAssociativity.associativityEvaluationLaw,def,圏論一般,9,再利用,Z 圏論一般/モノイダル圏,,3,0,3,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingAssociativity.associativity_evaluation,thm,圏論一般,26,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingAssociativity.compositionEvaluation,def,圏論一般,5,言い換え,Z 圏論一般/モノイダル圏,,13,0,13,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingAssociativity.representedAssociativityLaw,def,圏論一般,9,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingAssociativity.represented_associativity,thm,圏論一般,11,分割,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingUnitLaws.left_unit_evaluation,thm,圏論一般,15,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingUnitLaws.parameterFunctor,def,圏論一般,6,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,43,0,41,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingUnitLaws.right_unit_evaluation,thm,圏論一般,15,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingWhiskering.enriched_post,thm,圏論一般,15,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingWhiskering.enriched_pre,thm,圏論一般,16,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingWhiskering.post_composition,thm,圏論一般,39,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,2,0,1,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingWhiskering.post_evaluation,thm,圏論一般,14,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingWhiskering.pre_composition,thm,圏論一般,42,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,2,0,1,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MappingWhiskering.pre_evaluation,thm,圏論一般,15,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.adjunction,def,圏論一般,3,言い換え,Z 圏論一般/モノイダル圏,,13,0,12,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.compositeDerivedPreLaw,def,圏論一般,8,分割,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.compositeTransportedPreLaw,def,圏論一般,7,分割,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.composite_derived_pre,thm,圏論一般,12,未使用,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.composite_transported_pre,thm,圏論一般,10,分割,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.homEquiv_formula,thm,圏論一般,11,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.homEquiv_pre,thm,圏論一般,9,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.transportedParametrizedAdjunction,def,圏論一般,6,分割,Z 圏論一般/モノイダル圏,,1,0,0,0,0,1,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.transportedPreLaw,def,圏論一般,6,再利用,Z 圏論一般/モノイダル圏,,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.transportedUncurryPreLaw,def,圏論一般,7,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.transported_pre,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏,,4,0,3,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.transported_pre_bifunctor,thm,圏論一般,9,言い換え,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.MonoidalMappingAdjunction.transported_uncurry_pre,thm,圏論一般,14,未使用,Z 圏論一般/モノイダル圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedHomFunctor.homFunctorIso,def,圏論一般,23,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedHomFunctor.homFunctorIso_ofParametrized,def,圏論一般,19,未使用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.arrow,def,圏論一般,2,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,8,0,6,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.arrowCompositionLaw,def,圏論一般,5,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,6,0,5,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.arrowEquiv,def,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,3,0,2,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.arrowIdentityLaw,def,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,8,0,6,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.arrow_identity,thm,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.associativity,thm,圏論一般,7,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.associativityEvaluationLaw,def,圏論一般,6,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,3,0,2,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.associativityLaw,def,圏論一般,6,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,11,0,9,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.associativity_evaluation,thm,圏論一般,21,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.composition,def,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,14,0,12,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.compositionEvaluation,def,圏論一般,5,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,11,0,11,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.compositionEvaluationLaw,def,圏論一般,4,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,2,0,1,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.composition_evaluation,thm,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.enrichedCategory,def,圏論一般,15,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,4,0,3,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.enrichedCategory_comp,thm,圏論一般,6,未使用,Z 圏論一般/圏・関手・極限,〈モノイダル圏〉との関係,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.enrichedCategory_id,thm,圏論一般,5,未使用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.evaluation,def,圏論一般,2,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,18,0,16,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.hom,def,圏論一般,2,言い換え,Z 圏論一般/圏・関手・極限,,30,0,29,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.leftUnitEvaluationLaw,def,圏論一般,5,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,3,0,2,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.leftUnitLaw,def,圏論一般,4,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,11,0,9,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.left_unit,thm,圏論一般,5,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.left_unit_evaluation,thm,圏論一般,14,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.ordinaryCategory,def,圏論一般,15,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,5,0,4,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.rightUnitEvaluationLaw,def,圏論一般,5,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,3,0,2,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.rightUnitLaw,def,圏論一般,4,再利用,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,11,0,9,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.right_unit,thm,圏論一般,5,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.right_unit_evaluation,thm,圏論一般,14,分割,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,1,0,0,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.unit,def,圏論一般,2,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,12,0,11,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.unitEvaluationLaw,def,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,4,0,3,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.RepresentedMapping,SerrePositivity.RepresentedMappingEnrichment.unit_evaluation,thm,圏論一般,3,言い換え,Z 圏論一般/圏・関手・極限,関手・自然変換・同型と同値（基本）,2,0,0,0,2,0,0,0,0,0
+A2,CategoryTheory.Enriched.Simplicial,SerrePositivity.SimplicialHomLaws.composition,thm,圏論一般,5,未使用,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Simplicial,SerrePositivity.SimplicialHomLaws.compositionLaw,def,圏論一般,4,分割,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Simplicial,SerrePositivity.SimplicialHomLaws.identity,thm,圏論一般,5,未使用,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Simplicial,SerrePositivity.SimplicialHomLaws.identityLaw,def,圏論一般,3,言い換え,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.EnrichedRepresentability,inductive,圏論一般,21,再利用,Z 圏論一般/豊穣圏,,5,0,4,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.EnrichedRepresentability.cotensorHomIso,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.EnrichedRepresentability.homObjectComparison,def,圏論一般,4,言い換え,Z 圏論一般/豊穣圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.EnrichedRepresentability.homObjectComparison_points,thm,圏論一般,17,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.EnrichedRepresentability.tensorHomIso,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor,inductive,圏論一般,7,結果,Z 圏論一般/豊穣圏,,145,0,29,0,4,0,5,0,0,107
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.coevaluation,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.cotensorHomEquiv,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,7,0,6,0,1,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.cotensorHom_naturality_parameter,thm,圏論一般,10,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.cotensorHom_naturality_source,thm,圏論一般,9,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.cotensorHom_naturality_target,thm,圏論一般,10,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.cotensor_triangle,thm,圏論一般,4,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.evaluation,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.homEquiv_compatibility,thm,圏論一般,4,分割,Z 圏論一般/豊穣圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorCotensorHomEquiv,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,6,0,6,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorCotensor_naturality_parameter,thm,圏論一般,5,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorCotensor_naturality_source,thm,圏論一般,5,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorCotensor_naturality_target,thm,圏論一般,5,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorHomEquiv,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,21,0,14,0,3,0,0,0,0,4
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorHom_naturality_parameter,thm,圏論一般,5,言い換え,Z 圏論一般/豊穣圏,,2,0,1,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorHom_naturality_source,thm,圏論一般,5,言い換え,Z 圏論一般/豊穣圏,,3,0,2,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensorHom_naturality_target,thm,圏論一般,5,言い換え,Z 圏論一般/豊穣圏,,3,0,2,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.tensor_triangle,thm,圏論一般,3,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.unitIso,def,圏論一般,4,分割,Z 圏論一般/豊穣圏,,1,0,0,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.unitMap,def,圏論一般,2,言い換え,Z 圏論一般/豊穣圏,,9,0,4,0,0,0,0,0,0,5
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.unitMap_comp,thm,圏論一般,5,再利用,Z 圏論一般/豊穣圏,,2,0,2,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.unitMap_isIso,thm,圏論一般,9,再利用,Z 圏論一般/豊穣圏,,2,0,1,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.TensorCotensor.unitMap_naturality,thm,圏論一般,5,再利用,Z 圏論一般/豊穣圏,,2,0,1,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.cotensorEnrichedHom,def,圏論一般,2,言い換え,Z 圏論一般/豊穣圏,,7,0,3,0,4,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.eHomEquiv_postcomp,thm,圏論一般,4,再利用,Z 圏論一般/豊穣圏,,2,0,1,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.eHomEquiv_precomp,thm,圏論一般,4,分割,Z 圏論一般/豊穣圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.powerHom,def,圏論一般,2,言い換え,Z 圏論一般/豊穣圏,,12,0,4,0,8,0,0,0,0,0
+A2,CategoryTheory.Enriched.TensorCotensor,SerrePositivity.Enriched.tensorEnrichedHom,def,圏論一般,2,言い換え,Z 圏論一般/豊穣圏,,7,0,3,0,4,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.LaxPointHom.composition,thm,圏論一般,12,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.LaxPointHom.left_action,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.LaxPointHom.map,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,8,0,7,0,0,0,0,1,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.LaxPointHom.right_action,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.associativity,thm,圏論一般,10,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.enrichedCategory,def,圏論一般,28,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.left_unit,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.points,thm,圏論一般,8,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.reverse,def,圏論一般,2,言い換え,Z 圏論一般/モノイダル圏,,7,0,7,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.reverse_three,thm,圏論一般,7,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.ReverseComposition.right_unit,thm,圏論一般,6,分割,Z 圏論一般/モノイダル圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportEnrichmentComparisons.category,def,圏論一般,4,言い換え,Z 圏論一般/豊穣圏,,5,0,3,0,0,0,0,0,0,2
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportEnrichmentComparisons.identityLaw,def,圏論一般,3,言い換え,Z 圏論一般/豊穣圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportEnrichmentComparisons.identity_eq,thm,圏論一般,7,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportEnrichmentComparisons.reverseCompositionLaw,def,圏論一般,6,分割,Z 圏論一般/豊穣圏,,1,0,1,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportEnrichmentComparisons.reverse_composition,thm,圏論一般,8,未使用,Z 圏論一般/豊穣圏,,0,0,0,0,0,0,0,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportOrdinaryEnrichment.homFunctorIso,def,圏論一般,15,分割,Z 圏論一般/モノイダル圏,,1,0,0,0,0,0,1,0,0,0
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportOrdinaryEnrichment.ordinaryCategory,def,圏論一般,16,再利用,Z 圏論一般/モノイダル圏,,11,0,3,0,0,1,3,0,0,4
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportOrdinaryEnrichment.whiskerLeft_map,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏,,2,0,1,0,0,0,0,0,0,1
+A2,CategoryTheory.Enriched.Transport,SerrePositivity.TransportOrdinaryEnrichment.whiskerRight_map,thm,圏論一般,9,再利用,Z 圏論一般/モノイダル圏,,2,0,1,0,0,0,0,0,0,1
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence,def,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,943,0,0,406,274,37,145,0,0,81
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.fromFunctorCategory,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.hom_ext,thm,対称列,8,再利用,G スペクトル/対称列,有限集合と全単射の圏,8,0,0,4,4,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.instCategory,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,812,0,0,339,272,37,145,0,0,19
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.instFaithfulFunctorFiniteBijectionToFunctorCategory,thm,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.instFullFunctorFiniteBijectionToFunctorCategory,thm,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.level,def,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,338,0,0,129,15,0,0,0,0,194
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.levelAction,def,対称列,15,再利用,G スペクトル/対称列,対称列の定義と段,12,0,0,10,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.levelActionFunctor,def,対称列,8,再利用,G スペクトル/対称列,対称列の定義と段,5,0,0,0,5,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.levelAction_ρ,thm,対称列,3,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.permutation_map_isIso,thm,対称列,6,再利用,G スペクトル/対称列,有限集合と全単射の圏,3,0,0,0,0,0,0,0,0,3
+A3,Spectra.SymmetricSequence.Basic,SerrePositivity.SymmetricSequence.toFunctorCategory,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,51,0,0,45,5,0,1,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolution,def,対称列,3,言い換え,G スペクトル/対称列,Day convolution,127,0,0,117,10,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolutionFunctor,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolutionHomEquiv,def,対称列,4,言い換え,G スペクトル/対称列,Day convolution,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolutionIsPointwise,def,対称列,5,言い換え,G スペクトル/対称列,Day convolution,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolutionLevelIsoColimit,def,対称列,4,言い換え,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolutionUnit,def,対称列,4,言い換え,G スペクトル/対称列,Day convolution,63,0,0,57,6,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.convolution_isLeftKanExtension,thm,対称列,3,言い換え,G スペクトル/対称列,Day convolution,6,0,0,5,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.decompositionDiagram,def,対称列,4,言い換え,G スペクトル/対称列,有限集合と全単射の圏,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Convolution,SerrePositivity.SymmetricSequence.decomposition_card,thm,圏論一般,5,言い換え,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionActionEvaluation,SerrePositivity.SymmetricSequence.convolutionComponent,def,対称列,4,言い換え,G スペクトル/対称列,対称列の定義と段,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionActionEvaluation,SerrePositivity.SymmetricSequence.convolutionComponent_action_evaluation,thm,対称列,24,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchange,SerrePositivity.SymmetricSequence.middleExchange,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchange,SerrePositivity.SymmetricSequence.middleExchangeIndex,def,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,7,0,0,5,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchange,SerrePositivity.SymmetricSequence.tripleLeftGenerator,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchange,SerrePositivity.SymmetricSequence.tripleRightGenerator,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchange,SerrePositivity.SymmetricSequence.tripleRightGenerator_associator_inv,thm,対称列,17,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchange,SerrePositivity.SymmetricSequence.tripleRightGenerator_middleExchange,thm,対称列,34,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchangeUnit,SerrePositivity.FiniteBijection.homOfEquiv_finCongr,thm,圏論一般,6,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchangeUnit,SerrePositivity.FiniteBijection.leftUnitor_of_hom,thm,圏論一般,4,再利用,G スペクトル/対称列,有限集合と全単射の圏,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchangeUnit,SerrePositivity.FiniteBijection.leftUnitor_of_inv,thm,圏論一般,7,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchangeUnit,SerrePositivity.SymmetricSequence.middleExchangeIndex_tensorUnit,thm,圏論一般,9,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.ConvolutionMiddleExchangeUnit,SerrePositivity.SymmetricSequence.middleExchangeIndex_zero,thm,圏論一般,11,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,0,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.canonicalDayConvolution,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionCoevaluation,def,対称列,7,再利用,G スペクトル/対称列,対称列の内部 Hom,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionCoevaluation_evaluation,thm,対称列,16,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionCoevaluation_naturality,thm,対称列,16,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionEvaluation,def,対称列,6,言い換え,G スペクトル/対称列,対称列の内部 Hom,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionEvaluation_coevaluation,thm,対称列,13,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionEvaluation_naturality,thm,対称列,12,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionHomAdjunction,def,対称列,22,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.convolutionMonoidalClosed,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,132,0,0,57,38,3,32,0,0,2
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.dayEmbedding_map_coevaluation,thm,対称列,6,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.dayEmbedding_map_evaluation,thm,対称列,5,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.dayEmbedding_map_internalHomFunctor_map,thm,対称列,5,言い換え,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.ihom_coev_app_eq_convolutionCoevaluation,thm,対称列,3,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.ihom_ev_app_eq_convolutionEvaluation,thm,対称列,3,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.ihom_obj_obj_eq_end,thm,対称列,3,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAdjunction,SerrePositivity.SymmetricSequence.internalHomFunctor_map_eq_dayMap,thm,対称列,14,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAssociativityComparisons,SerrePositivity.SymmetricSequence.convolution_associator_generator,thm,対称列,14,再利用,G スペクトル/対称列,Day convolution,5,0,0,4,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAssociativityComparisons,SerrePositivity.SymmetricSequence.convolution_triple_hom_ext,thm,対称列,25,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayAssociativityComparisons,SerrePositivity.SymmetricSequence.indexAssociator_eq,thm,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayBraidingComparisons,SerrePositivity.SymmetricSequence.convolution_braiding_generator,thm,対称列,15,再利用,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayBraidingComparisons,SerrePositivity.SymmetricSequence.convolution_commutativity_iff,thm,対称列,23,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayBraidingComparisons,SerrePositivity.SymmetricSequence.indexBraiding_eq,thm,圏論一般,2,言い換え,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.dayInternalHom,def,対称列,13,再利用,G スペクトル/対称列,対称列の内部 Hom,14,0,0,14,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomCoevaluation,def,対称列,9,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomDiagram,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomEvaluation,def,対称列,7,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomFunctor,def,対称列,4,再利用,G スペクトル/対称列,対称列の内部 Hom,24,0,0,24,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomFunctor_obj_obj,thm,対称列,3,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomProjection,def,対称列,4,言い換え,G スペクトル/対称列,対称列の内部 Hom,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayInternalHom,SerrePositivity.SymmetricSequence.internalHomProjection_condition,thm,対称列,6,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayMonoidal,SerrePositivity.SymmetricSequence.convolutionLawfulDayStructure,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,27,0,0,27,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayMonoidal,SerrePositivity.SymmetricSequence.convolutionMonoidalCategory,def,対称列,3,再利用,G スペクトル/対称列,対称列の定義と段,601,0,0,140,271,37,144,0,0,9
+A3,Spectra.SymmetricSequence.DayMonoidal,SerrePositivity.SymmetricSequence.convolutionMonoidalCategoryStruct,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,100,0,0,89,11,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayMonoidal,SerrePositivity.SymmetricSequence.tensorObj_eq_convolution,thm,対称列,3,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayMonoidal,SerrePositivity.SymmetricSequence.tensorUnit_eq_convolutionTensorUnit,thm,対称列,3,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayStructure,SerrePositivity.SymmetricSequence.convolutionTensorUnit,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,27,0,0,26,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayStructure,SerrePositivity.SymmetricSequence.convolutionTensorUnit_isLeftKanExtension,thm,対称列,7,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayStructure,SerrePositivity.SymmetricSequence.convolutionUnitCan,def,対称列,6,再利用,G スペクトル/対称列,対称列の定義と段,22,0,0,21,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayStructure,SerrePositivity.SymmetricSequence.dayConvolution,def,対称列,7,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayStructure,SerrePositivity.SymmetricSequence.dayConvolutionUnit,def,対称列,10,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayStructure,SerrePositivity.SymmetricSequence.dayCore,def,対称列,11,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DaySymmetry,SerrePositivity.SymmetricSequence.convolutionBraiding,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DaySymmetry,SerrePositivity.SymmetricSequence.convolutionSymmetricCategory,def,対称列,33,再利用,G スペクトル/対称列,対称列の定義と段,130,0,0,56,38,3,31,0,0,2
+A3,Spectra.SymmetricSequence.DaySymmetry,SerrePositivity.SymmetricSequence.dayEmbedding,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,15,0,0,15,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DaySymmetry,SerrePositivity.SymmetricSequence.dayEmbedding_full,thm,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DaySymmetry,SerrePositivity.SymmetricSequence.dayEmbedding_map_associator_inv,thm,対称列,10,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DaySymmetry,SerrePositivity.SymmetricSequence.dayEmbedding_map_braiding,thm,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.convolutionUnit_whiskerLeft,thm,対称列,12,再利用,G スペクトル/対称列,Day convolution,10,0,0,7,3,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.convolutionUnit_whiskerRight,thm,対称列,12,再利用,G スペクトル/対称列,Day convolution,7,0,0,5,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.convolution_leftUnitor_generator,thm,対称列,12,再利用,G スペクトル/対称列,Day convolution,3,0,0,2,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.convolution_left_unit_hom_ext,thm,対称列,28,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.convolution_rightUnitor_generator,thm,対称列,12,再利用,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.convolution_right_unit_hom_ext,thm,対称列,28,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.indexLeftUnitor_eq,thm,圏論一般,2,言い換え,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.indexRightUnitor_eq,thm,圏論一般,2,言い換え,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.indexTensor_eq_sum,thm,圏論一般,2,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.indexUnit_eq_zero,thm,圏論一般,2,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.lawfulConvolutionExtensionUnit_app,thm,対称列,9,再利用,G スペクトル/対称列,Day convolution,9,0,0,9,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.lawfulEmbedding_eq,thm,対称列,4,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.DayUnitComparisons,SerrePositivity.SymmetricSequence.lawfulUnitUnit_eq,thm,対称列,4,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.evaluation,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,27,0,0,22,5,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAt,def,対称列,3,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,186,0,0,164,20,0,2,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtAdjunction,def,対称列,8,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,15,0,0,13,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtGenerator,def,対称列,3,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,35,0,0,33,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtGenerator_lift,thm,対称列,6,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtHomEquiv_apply,thm,対称列,8,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtLift,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,6,0,0,5,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtLift_app,thm,対称列,8,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAtLift_unique,thm,対称列,8,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAt_level,thm,対称列,4,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Evaluation,SerrePositivity.SymmetricSequence.freeAt_unit,thm,対称列,7,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.FreeBlockIndex,def,圏論一般,4,再利用,G スペクトル/対称列,有限集合と全単射の圏,43,0,0,41,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockCofork,def,対称列,4,言い換え,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockCoforkFamily,def,対称列,31,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockCoforkIsColimit,def,対称列,20,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockGenerators,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,18,0,0,18,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockIndexEquivPerm,def,圏論一般,9,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockProjection,def,対称列,4,言い換え,G スペクトル/対称列,Day convolution,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockProjection_condition,thm,対称列,10,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotient,def,対称列,3,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,36,0,0,34,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotientGenerator,def,対称列,6,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,25,0,0,24,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotientGenerator_relation,thm,対称列,13,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotientIsoInduction,def,対称列,5,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotientIsoInduction_generator,thm,対称列,12,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotient_hom_ext,thm,対称列,9,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,9,0,0,9,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockRelationLeft,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,15,0,0,15,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockRelationRight,def,対称列,6,再利用,G スペクトル/対称列,対称列の定義と段,15,0,0,15,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeBlockRelations,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,17,0,0,17,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoBlockQuotient,def,対称列,6,再利用,G スペクトル/対称列,Day convolution,8,0,0,7,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_generator,thm,対称列,16,再利用,G スペクトル/対称列,Day convolution,4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotient,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_inverse,thm,対称列,7,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientAction,def,対称列,16,再利用,G スペクトル/対称列,対称列の定義と段,9,0,0,8,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientActionFunctor,def,対称列,11,再利用,G スペクトル/対称列,対称列の定義と段,5,0,0,2,3,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientActionIsoInduction,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientActionIsoInduction_hom,thm,対称列,5,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientActionMap,def,対称列,5,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientActionNatIsoInduction,def,対称列,16,言い換え,G スペクトル/対称列,対称列の定義と段,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeBlockQuotientAction_generator,thm,対称列,6,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeConvolutionLevelActionIsoBlockQuotient,def,対称列,7,再利用,G スペクトル/対称列,対称列の定義と段,4,0,0,2,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientAction,SerrePositivity.SymmetricSequence.freeConvolutionLevelActionIsoBlockQuotient_trans,thm,対称列,9,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientDesc,def,対称列,13,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientGenerator_desc,thm,対称列,11,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientGenerator_input,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientGenerator_output,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientInputMap,def,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientInputMap_comp,thm,対称列,9,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientInputMap_id,thm,対称列,6,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientInputMap_output,thm,対称列,9,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientOutputMap,def,対称列,10,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,9,0,0,9,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientOutputMap_comp,thm,対称列,9,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeBlockQuotientOutputMap_id,thm,対称列,6,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_input,thm,対称列,13,分割,G スペクトル/対称列,Day convolution,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeBlockQuotientMaps,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_output,thm,対称列,15,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionDiagram,def,対称列,4,言い換え,G スペクトル/対称列,有限集合と全単射の圏,16,0,0,15,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionDiagramObjInitial,def,対称列,9,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionDiagram_obj,thm,対称列,5,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionGenerator,def,対称列,7,再利用,G スペクトル/対称列,Day convolution,25,0,0,24,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionGenerator_eq,thm,対称列,20,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionGenerator_left_relation,thm,対称列,18,再利用,G スペクトル/対称列,Day convolution,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionGenerator_map,thm,対称列,8,再利用,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionLevelInitial,def,対称列,6,分割,G スペクトル/対称列,Day convolution,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoColimit,def,対称列,4,言い換え,G スペクトル/対称列,有限集合と全単射の圏,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolution,SerrePositivity.SymmetricSequence.freeConvolutionLevel_hom_ext,thm,対称列,27,再利用,G スペクトル/対称列,Day convolution,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily,inductive,対称列,7,再利用,G スペクトル/対称列,対称列の定義と段,14,0,0,14,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.cocone,def,対称列,6,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.component,def,対称列,13,再利用,G スペクトル/対称列,有限集合と全単射の圏,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.component_fac,thm,対称列,9,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.component_naturality,thm,対称列,21,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.desc,def,対称列,4,再利用,G スペクトル/対称列,Day convolution,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.desc_fac,thm,対称列,20,再利用,G スペクトル/対称列,Day convolution,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.desc_unique,thm,対称列,7,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.ext,thm,対称列,8,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.ofHom,def,対称列,6,再利用,G スペクトル/対称列,Day convolution,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeConvolutionDesc,SerrePositivity.SymmetricSequence.freeConvolutionLevelHomEquiv,def,対称列,10,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoInduction,def,対称列,4,言い換え,G スペクトル/対称列,Day convolution,8,0,0,7,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoInduction_generator,thm,対称列,9,再利用,G スペクトル/対称列,Day convolution,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoInduction_inclusion,thm,対称列,9,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeConvolutionLevel_hom_ext_standard,thm,対称列,15,再利用,G スペクトル/対称列,Day convolution,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeInductionCocone,def,対称列,12,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeInductionCoconeIsColimit,def,対称列,10,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeInductionDiagram,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,34,0,0,28,2,0,4,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeInductionDiagram_obj,thm,対称列,8,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeInductionFamily,def,対称列,11,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInduction,SerrePositivity.SymmetricSequence.freeInduction_card,thm,圏論一般,6,再利用,G スペクトル/対称列,有限集合と全単射の圏,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionAction,SerrePositivity.SymmetricSequence.freeConvolutionLevelActionIsoInduction,def,対称列,6,再利用,G スペクトル/対称列,対称列の定義と段,5,0,0,3,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionAction,SerrePositivity.SymmetricSequence.freeConvolutionLevelActionIsoInduction_input,thm,対称列,8,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionAction,SerrePositivity.SymmetricSequence.freeInductionAction,def,対称列,16,再利用,G スペクトル/対称列,対称列の定義と段,10,0,0,8,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionAction,SerrePositivity.SymmetricSequence.freeInductionActionFunctor,def,対称列,11,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,1,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionAction,SerrePositivity.SymmetricSequence.freeInductionActionMap,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionAction,SerrePositivity.SymmetricSequence.freeInductionAction_inclusion,thm,対称列,9,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeConvolutionGenerator_input,thm,対称列,26,再利用,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeConvolutionInputMap,def,対称列,4,言い換え,G スペクトル/対称列,Day convolution,7,0,0,4,3,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoInduction_input,thm,対称列,14,再利用,G スペクトル/対称列,Day convolution,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeConvolutionLevelIsoInduction_output,thm,対称列,14,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionInputMap,def,対称列,5,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,12,0,0,7,1,0,4,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionInputMap_comp,thm,対称列,9,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionInputMap_id,thm,対称列,6,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionInputMap_inclusion,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionInputMap_output,thm,対称列,11,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionInputTransformation,def,対称列,5,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,6,0,0,2,0,0,4,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionOutputCocone,def,対称列,12,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionOutputMap,def,対称列,5,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionOutputMap_comp,thm,対称列,15,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionOutputMap_id,thm,対称列,11,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInductionNaturality,SerrePositivity.SymmetricSequence.freeInductionOutputMap_inclusion,thm,対称列,8,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freeInternalHomLevelEquiv,def,対称列,9,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freeInternalHomLevelEquiv_apply,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freeInternalHomLevelEquiv_naturality,thm,対称列,13,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freeInternalHomLevelEquiv_naturality_right,thm,対称列,18,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freeInternalHomLevelIso,def,対称列,12,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,11,0,0,11,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freeInternalHomLevelIso_naturality,thm,対称列,13,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freePairConvolutionIso_inv_naturality_right,thm,対称列,12,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHom,SerrePositivity.SymmetricSequence.freePairHomEquiv,def,対称列,8,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.convolutionUnit_evaluation,thm,対称列,14,再利用,G スペクトル/対称列,対称列の内部 Hom,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.freeInternalHomLevelActionIso,def,対称列,6,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.freeInternalHomLevelIso_hom_projection,thm,対称列,20,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.freeInternalHomLevelIso_permutation,thm,対称列,14,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.internalHomProjection_map,thm,対称列,7,言い換え,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.shiftedInternalHom,def,対称列,3,言い換え,G スペクトル/対称列,対称列の内部 Hom,35,0,0,29,6,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomAction,SerrePositivity.SymmetricSequence.shiftedInternalHom_level,thm,対称列,3,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomModuleNaturality,SerrePositivity.SymmetricSequence.freeShiftModuleIso,def,対称列,5,再利用,G スペクトル/対称列,対称列の内部 Hom,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomModuleNaturality,SerrePositivity.SymmetricSequence.freeShiftModuleIso_app_naturality,thm,対称列,19,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomModuleNaturality,SerrePositivity.SymmetricSequence.freeShiftModuleIso_naturality,thm,対称列,12,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomModuleNaturality,SerrePositivity.SymmetricSequence.freeShiftModuleMap,def,対称列,9,再利用,G スペクトル/対称列,対称列の定義と段,6,0,0,4,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomModuleNaturality,SerrePositivity.SymmetricSequence.freeShiftModuleMap_app,thm,対称列,7,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,1,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomModuleNaturality,SerrePositivity.SymmetricSequence.freeShiftModuleMap_hom,thm,対称列,12,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.freeInternalHomLevelEquiv_naturality_source,thm,対称列,17,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.freeInternalHomLevelIso_naturality_source,thm,対称列,12,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.freeInternalHomSequenceIso_conjugate,thm,対称列,8,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.freeInternalHomSequenceIso_naturality,thm,対称列,17,再利用,G スペクトル/対称列,対称列の内部 Hom,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.freePairConvolutionIso_inv_naturality_left,thm,対称列,12,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.shiftedInternalHomMap,def,対称列,9,再利用,G スペクトル/対称列,対称列の内部 Hom,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomNaturality,SerrePositivity.SymmetricSequence.shiftedInternalHomMap_app,thm,対称列,6,言い換え,G スペクトル/対称列,対称列の内部 Hom,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomSequenceIso,SerrePositivity.SymmetricSequence.freeInternalHomSequenceIso,def,対称列,16,再利用,G スペクトル/対称列,対称列の内部 Hom,23,0,0,17,6,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomSequenceIso,SerrePositivity.SymmetricSequence.freeInternalHomSequenceIso_hom_app,thm,対称列,4,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomSequenceIso,SerrePositivity.SymmetricSequence.freeInternalHomSequenceIso_inv_app,thm,対称列,4,言い換え,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation,SerrePositivity.SymmetricSequence.freeShiftEvaluation,def,対称列,5,再利用,G スペクトル/対称列,対称列の内部 Hom,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation,SerrePositivity.SymmetricSequence.freeShiftEvaluation_generator,thm,対称列,15,再利用,G スペクトル/対称列,対称列の内部 Hom,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation,SerrePositivity.SymmetricSequence.freeShiftModule,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,7,0,0,6,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation,SerrePositivity.SymmetricSequence.freeShiftModule_action_component_evaluation,thm,対称列,37,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairComponentDesc,def,対称列,19,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,12,0,0,12,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairComponentDesc_fac,thm,対称列,11,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairComponent_hom_ext,thm,対称列,15,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionGenerator,def,対称列,6,再利用,G スペクトル/対称列,Day convolution,10,0,0,10,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionGenerator_input,thm,対称列,17,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionGenerator_lift,thm,対称列,13,再利用,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionGenerator_transport,thm,対称列,20,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionIso,def,対称列,21,再利用,G スペクトル/対称列,Day convolution,21,0,0,19,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionIso_generator_hom,thm,対称列,5,言い換え,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionIso_generator_inv,thm,対称列,5,言い換え,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionIso_naturality,thm,対称列,14,再利用,G スペクトル/対称列,Day convolution,3,0,0,2,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionLift,def,対称列,5,言い換え,G スペクトル/対称列,Day convolution,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolutionLift_fac,thm,対称列,15,分割,G スペクトル/対称列,Day convolution,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairConvolution_hom_ext,thm,対称列,18,再利用,G スペクトル/対称列,Day convolution,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePairConvolution,SerrePositivity.SymmetricSequence.freePairExternalLift,def,対称列,22,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freeBlockActionIsoPermutation,def,対称列,15,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freeBlockActionNatIsoPermutation,def,対称列,14,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationAction,def,対称列,20,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationActionFunctor,def,対称列,20,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,1,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationActionMap,def,対称列,13,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationInputMap,def,対称列,8,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationOutputMap,def,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationQuotientGenerator_input,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationAction,SerrePositivity.SymmetricSequence.freePermutationQuotientGenerator_output,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freeBlockBaseIso,def,圏論一般,5,言い換え,G スペクトル/対称列,有限集合と全単射の圏,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freeBlockPermutation,def,圏論一般,6,再利用,G スペクトル/対称列,有限集合と全単射の圏,13,0,0,13,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freeBlockPermutationHom,def,圏論一般,6,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freeBlockPermutation_mul,thm,圏論一般,15,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freeBlockPermutation_one,thm,圏論一般,8,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freePermutationIndex,def,圏論一般,12,再利用,G スペクトル/対称列,有限集合と全単射の圏,11,0,0,10,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freePermutationIndex_block,thm,圏論一般,11,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.freePermutationIndex_output,thm,圏論一般,9,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.permutation_freeBlockPermutation,thm,圏論一般,8,言い換え,G スペクトル/対称列,有限集合と全単射の圏,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationIndex,SerrePositivity.SymmetricSequence.permutation_freePermutationIndex,thm,圏論一般,5,言い換え,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freeBlockQuotientIsoPermutation,def,対称列,15,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freeBlockToPermutationQuotient,def,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,5,0,0,4,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freeBlockToPermutationQuotient_generator,thm,対称列,6,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationGenerators,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationQuotient,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,22,0,0,19,3,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationQuotientDesc,def,対称列,12,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationQuotientGenerator,def,対称列,6,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,17,0,0,16,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationQuotientGenerator_desc,thm,対称列,10,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationQuotientGenerator_relation,thm,対称列,14,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationQuotient_hom_ext,thm,対称列,9,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationRelationLeft,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationRelationRight,def,対称列,6,再利用,G スペクトル/対称列,対称列の定義と段,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationRelations,def,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationToBlockQuotient,def,対称列,10,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreePermutationQuotient,SerrePositivity.SymmetricSequence.freePermutationToBlockQuotient_generator,thm,対称列,7,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtInclusion,def,対称列,3,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,19,0,0,19,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtInclusion_eq_generator,thm,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtInclusion_map,thm,対称列,8,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtInclusion_map_input,thm,対称列,8,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtLevelInitial,def,対称列,10,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtObjInitial,def,対称列,5,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtPermutationInclusion,def,対称列,3,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAtPermutationInclusion_action,thm,対称列,9,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeSupport,SerrePositivity.SymmetricSequence.freeAt_obj_hom_ext,thm,対称列,7,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroConvolutionAdjunction,def,対称列,4,言い換え,G スペクトル/対称列,対称列の内部 Hom,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroConvolutionLevelIso,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,14,0,0,13,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroConvolutionLevelIso_evaluation,thm,対称列,12,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroConvolutionLevelIso_inv_evaluation,thm,対称列,8,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroConvolutionNatIso,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,17,0,0,17,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroConvolutionNatIso_evaluation,thm,対称列,8,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolution,SerrePositivity.SymmetricSequence.freeZeroInternalHomNatIso,def,対称列,25,再利用,G スペクトル/対称列,対称列の内部 Hom,14,0,0,13,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroConvolutionAssociatorIso,def,対称列,9,再利用,G スペクトル/対称列,段ごとのテンソル,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroConvolutionAssociatorIso_hom,thm,対称列,8,言い換え,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroConvolutionAssociatorIso_level,thm,対称列,19,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroConvolutionGenerator_split,thm,対称列,46,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroConvolutionSplit,def,対称列,5,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroPairConvolutionGenerator,def,対称列,5,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.freeZeroPairConvolutionGenerator_comparison,thm,対称列,21,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionAssociator,SerrePositivity.SymmetricSequence.zero_zero_index_associator_inv,thm,圏論一般,11,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionNaturality,SerrePositivity.SymmetricSequence.freeZeroConvolutionGenerator_naturality,thm,対称列,21,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionNaturality,SerrePositivity.SymmetricSequence.freeZeroConvolutionLevelIso_inv_naturality,thm,対称列,9,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroConvolutionNaturality,SerrePositivity.SymmetricSequence.freeZeroConvolutionLevelIso_naturality,thm,対称列,10,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroConvolutionGenerator,def,対称列,6,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,11,0,0,11,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroConvolutionGenerator_comparison,thm,対称列,17,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroConvolutionGenerator_eq_inv,thm,対称列,6,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroConvolutionUncurry_eq,thm,対称列,9,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroConvolutionUncurry_generator,thm,対称列,25,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroEvaluation,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,9,0,0,9,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroEvaluation_eq,thm,対称列,7,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.freeZeroEvaluation_generator,thm,対称列,28,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroEvaluationGenerators,SerrePositivity.SymmetricSequence.pointwiseTensorHomAdjunction_unit_app,thm,対称列,5,言い換え,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroInternalHomNaturality,SerrePositivity.SymmetricSequence.freeZeroInternalHomNatIso_conjugate,thm,対称列,8,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroInternalHomNaturality,SerrePositivity.SymmetricSequence.freeZeroInternalHomNatIso_naturality,thm,対称列,12,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroInternalHomNaturality,SerrePositivity.SymmetricSequence.unshiftedInternalHomMap,def,対称列,6,再利用,G スペクトル/対称列,対称列の内部 Hom,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroInternalHomNaturality,SerrePositivity.SymmetricSequence.unshiftedInternalHomMap_app,thm,対称列,5,言い換え,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroInternalHomNaturality,SerrePositivity.SymmetricSequence.zeroShiftInternalHomIso_naturality,thm,対称列,17,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroCotensorModule,def,対称列,4,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroCotensorModuleEvaluation,def,対称列,5,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroCotensorModuleEvaluation_freeLeft,thm,対称列,15,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroCotensorModuleEvaluation_level,thm,対称列,15,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroCotensorModuleIso,def,対称列,6,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroModuleEvaluationLevelLaw,def,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,3,0,0,2,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroTensorModuleLevelIso,def,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroUncurryModule_level,thm,対称列,28,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleEvaluation,SerrePositivity.SymmetricSequence.freeZeroUncurryModule_levelLaw,thm,対称列,11,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleMap,SerrePositivity.SymmetricSequence.freeZeroModuleMap_hom,thm,対称列,23,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleMap,SerrePositivity.SymmetricSequence.freeZeroModuleMap_law,thm,対称列,30,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleMap,SerrePositivity.SymmetricSequence.unshiftedInternalHomMapLaw,def,対称列,5,言い換え,G スペクトル/対称列,対称列の内部 Hom,4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleMap,SerrePositivity.SymmetricSequence.unshiftedInternalHomMapLaw_app,thm,対称列,9,再利用,G スペクトル/対称列,対称列の内部 Hom,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleMap,SerrePositivity.SymmetricSequence.unshiftedInternalHomMapLaw_levelLaw,thm,対称列,7,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleMap,SerrePositivity.SymmetricSequence.unshiftedInternalHomMapLevelLaw,def,対称列,6,再利用,G スペクトル/対称列,対称列の内部 Hom,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleUnit,SerrePositivity.SymmetricSequence.freeZeroModuleUnitGeneratorLaw,def,対称列,6,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleUnit,SerrePositivity.SymmetricSequence.freeZeroModuleUnitGenerator_law,thm,対称列,10,未使用,G スペクトル/対称列,自由対称列と誘導の商表示,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleUnit,SerrePositivity.SymmetricSequence.freeZeroModuleUnitIso,def,対称列,5,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,10,0,0,6,0,0,4,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleUnit,SerrePositivity.SymmetricSequence.freeZeroModuleUnitIso_generator,thm,対称列,12,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroModuleUnit,SerrePositivity.SymmetricSequence.freeZeroModuleUnitIso_generator_level,thm,対称列,18,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroUnit,SerrePositivity.SymmetricSequence.freeZeroUnitIso,def,対称列,5,言い換え,G スペクトル/対称列,自由対称列と誘導の商表示,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroUnit,SerrePositivity.SymmetricSequence.pointwiseTensorUnitNatIso,def,対称列,9,再利用,G スペクトル/対称列,段ごとのテンソル,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroUnit,SerrePositivity.SymmetricSequence.pointwiseTensorUnitNatIso_app,thm,対称列,3,未使用,G スペクトル/対称列,段ごとのテンソル,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroUnitGenerators,SerrePositivity.SymmetricSequence.freeZeroUnitIso_generator_hom,thm,対称列,7,再利用,G スペクトル/対称列,自由対称列と誘導の商表示,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.FreeZeroUnitGenerators,SerrePositivity.SymmetricSequence.freeZeroUnitIso_generator_inv,thm,対称列,23,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.evaluation_preservesColimits,thm,対称列,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.evaluation_preservesColimitsOfShape,thm,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.evaluation_preservesLimits,thm,対称列,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.evaluation_preservesLimitsOfShape,thm,対称列,4,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.instHasColimitsOfShape,thm,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,67,0,0,1,30,3,31,0,0,2
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.instHasColimitsOfSize,thm,対称列,1,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.instHasLimitsOfShape,thm,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,32,0,0,1,19,2,9,0,0,1
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.instHasLimitsOfSize,thm,対称列,1,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.toFunctorCategory_preservesColimits,thm,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Limits,SerrePositivity.SymmetricSequence.toFunctorCategory_preservesLimits,thm,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Pointed,SerrePositivity.PointedSymmetricSequence,def,対称列,2,言い換え,G スペクトル/対称列,対称列の定義と段,26,0,0,24,0,2,0,0,0,0
+A3,Spectra.SymmetricSequence.Pointed,SerrePositivity.PointedSymmetricSequence.convolution,def,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Pointed,SerrePositivity.PointedSymmetricSequence.convolutionPairing,def,対称列,5,言い換え,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Pointed,SerrePositivity.PointedSymmetricSequence.convolutionPairing_equivariance,thm,対称列,18,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.Pointed,SerrePositivity.PointedSymmetricSequence.internalHomFunctor,def,対称列,4,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorCoherence,SerrePositivity.SymmetricSequence.pointwiseActionLeftUnitLaw,def,対称列,3,言い換え,G スペクトル/対称列,段ごとのテンソル,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorCoherence,SerrePositivity.SymmetricSequence.pointwiseActionPentagonLaw,def,対称列,5,再利用,G スペクトル/対称列,段ごとのテンソル,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorCoherence,SerrePositivity.SymmetricSequence.pointwiseActionTriangleLaw,def,対称列,4,再利用,G スペクトル/対称列,段ごとのテンソル,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorCoherence,SerrePositivity.SymmetricSequence.pointwiseAction_left_unit,thm,対称列,12,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorCoherence,SerrePositivity.SymmetricSequence.pointwiseAction_pentagon,thm,対称列,15,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorCoherence,SerrePositivity.SymmetricSequence.pointwiseAction_triangle,thm,対称列,12,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorEvaluation,SerrePositivity.SymmetricSequence.pointwiseTensorCurryLevelLaw,def,対称列,6,再利用,G スペクトル/対称列,段ごとのテンソル,3,0,0,2,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorEvaluation,SerrePositivity.SymmetricSequence.pointwiseTensorCurryLevelLaw_of_uncurry,thm,対称列,7,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorEvaluation,SerrePositivity.SymmetricSequence.pointwiseTensorEvaluationLevelLaw,def,対称列,6,再利用,G スペクトル/対称列,段ごとのテンソル,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorEvaluation,SerrePositivity.SymmetricSequence.pointwiseTensorEvaluationLevelLaw_of_freeZero,thm,対称列,18,分割,G スペクトル/対称列,自由対称列と誘導の商表示,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorEvaluation,SerrePositivity.SymmetricSequence.pointwiseTensorUncurryLevelLaw,def,対称列,6,再利用,G スペクトル/対称列,段ごとのテンソル,5,0,0,3,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorEvaluation,SerrePositivity.SymmetricSequence.pointwiseTensorUncurryLevelLaw_of_evaluation,thm,対称列,15,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorHom,SerrePositivity.SymmetricSequence.pointwiseTensorFunctor,def,対称列,4,再利用,G スペクトル/対称列,段ごとのテンソル,31,0,0,31,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorHom,SerrePositivity.SymmetricSequence.pointwiseTensorFunctor_level,thm,対称列,3,未使用,G スペクトル/対称列,段ごとのテンソル,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorHom,SerrePositivity.SymmetricSequence.pointwiseTensorHomAdjunction,def,対称列,4,言い換え,G スペクトル/対称列,対称列の内部 Hom,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorHom,SerrePositivity.SymmetricSequence.pointwiseTensorHomAdjunction_counit_app,thm,対称列,5,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorHom,SerrePositivity.SymmetricSequence.unshiftedInternalHomFunctor,def,対称列,4,再利用,G スペクトル/対称列,対称列の内部 Hom,20,0,0,19,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorBimapLevelLaw,def,対称列,5,言い換え,G スペクトル/対称列,段ごとのテンソル,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorBimapLevelLaw_of_post,thm,対称列,9,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorBimapModuleLevelLaw,def,対称列,5,言い換え,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorBimapModuleLevelLaw_of_post,thm,対称列,10,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorPostLevelLaw,def,対称列,5,言い換え,G スペクトル/対称列,段ごとのテンソル,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorPostLevelLaw_of_curry,thm,対称列,32,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorPostModuleLevelLaw,def,対称列,5,言い換え,G スペクトル/対称列,段ごとのテンソル,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorMapLevels,SerrePositivity.SymmetricSequence.pointwiseTensorPostModuleLevelLaw_of_curry,thm,対称列,16,未使用,G スペクトル/対称列,段ごとのテンソル,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.freeZeroConvolutionModuleFunctor,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,10,0,0,10,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.freeZeroTensorPointwiseModuleIso,def,対称列,5,言い換え,G スペクトル/対称列,段ごとのテンソル,6,0,0,5,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.freeZeroTensorPointwiseModuleIso_level,thm,対称列,7,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.freeZeroTensorPointwiseModuleIso_naturality,thm,対称列,27,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.freeZeroTensorPointwiseModuleNatIso,def,対称列,6,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,1,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorMapLevelLaw,def,対称列,5,言い換え,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModule,def,対称列,5,再利用,G スペクトル/対称列,段ごとのテンソル,33,0,0,29,4,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModuleFunctor,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,20,0,0,16,4,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModuleFunctor_map_app,thm,対称列,7,再利用,G スペクトル/対称列,対称列の定義と段,7,0,0,4,3,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModuleFunctor_map_hom,thm,対称列,12,再利用,G スペクトル/対称列,対称列の定義と段,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModuleFunctor_map_levelLaw,thm,対称列,5,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModuleIso,def,対称列,7,再利用,G スペクトル/対称列,段ごとのテンソル,8,0,0,7,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModuleNatIso,def,対称列,5,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModule,SerrePositivity.SymmetricSequence.pointwiseTensorModule_level,thm,対称列,3,未使用,G スペクトル/対称列,段ごとのテンソル,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleAssociator,SerrePositivity.SymmetricSequence.moduleTensorParameterFunctor,def,対称列,5,再利用,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleAssociator,SerrePositivity.SymmetricSequence.pointwiseTensorModuleAssociator,def,対称列,10,再利用,G スペクトル/対称列,段ごとのテンソル,6,0,0,4,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleAssociator,SerrePositivity.SymmetricSequence.pointwiseTensorModuleAssociator_free_hom,thm,対称列,33,未使用,G スペクトル/対称列,段ごとのテンソル,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleAssociator,SerrePositivity.SymmetricSequence.pointwiseTensorModuleAssociator_hom,thm,対称列,18,分割,G スペクトル/対称列,段ごとのテンソル,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleAssociator,SerrePositivity.SymmetricSequence.pointwiseTensorModuleAssociator_inv_level,thm,対称列,14,未使用,G スペクトル/対称列,段ごとのテンソル,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleAssociator,SerrePositivity.SymmetricSequence.pointwiseTensorModuleAssociator_level,thm,対称列,7,再利用,G スペクトル/対称列,段ごとのテンソル,3,0,0,1,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleUnit,SerrePositivity.SymmetricSequence.pointwiseTensorModuleUnitLevelLaw,def,対称列,4,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleUnit,SerrePositivity.SymmetricSequence.pointwiseTensorModuleUnitNatIso,def,対称列,6,再利用,G スペクトル/対称列,対称列の定義と段,4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleUnit,SerrePositivity.SymmetricSequence.pointwiseTensorModuleUnitNatIso_hom,thm,対称列,14,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleUnit,SerrePositivity.SymmetricSequence.pointwiseTensorModuleUnitNatIso_level,thm,対称列,19,分割,G スペクトル/対称列,対称列の定義と段,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PointwiseTensorModuleUnit,SerrePositivity.SymmetricSequence.pointwiseTensorModuleUnit_levelLaw,thm,対称列,3,言い換え,G スペクトル/対称列,対称列の定義と段,2,0,0,0,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctorCoreMonoidal,def,圏論一般,31,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctorMonoidal,def,圏論一般,3,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctor_map_associator,thm,圏論一般,6,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctor_map_leftUnitor,thm,圏論一般,6,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctor_map_rightUnitor,thm,圏論一般,5,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctor_δ,thm,圏論一般,3,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.bijectionFunctor_μ,thm,圏論一般,3,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.PowerBijectionMonoidal,SerrePositivity.TensorPowers.finCongr_trans_eq,thm,圏論一般,5,再利用,Z 圏論一般/組合せと順序,Fin の単調写像と単体圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphereCommMonoid,def,スペクトル用,2,言い換え,G スペクトル/対称列,対称列の定義と段,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphereCommMonoid_mul,thm,スペクトル用,3,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphereCommMonoid_obj,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphereCommMonoid_one,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphereCommMonoid_toMon,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphereSequenceIsCommMonObj,thm,スペクトル用,3,言い換え,G スペクトル/対称列,対称列の定義と段,2,0,0,1,0,1,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphere_block_swap,thm,スペクトル用,8,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommMonoid,SerrePositivity.PointedSimplicialSet.sphere_commutativity,thm,スペクトル用,5,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommutativity,SerrePositivity.PointedSimplicialSet.sphere_commutativity_iff,thm,スペクトル用,11,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommutativity,SerrePositivity.PointedSimplicialSet.sphere_commutativity_iff_positive,thm,スペクトル用,12,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommutativity,SerrePositivity.PointedSimplicialSet.sphere_swap_zero_left,thm,スペクトル用,8,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereCommutativity,SerrePositivity.PointedSimplicialSet.sphere_swap_zero_right,thm,スペクトル用,8,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereFirstCrossing,SerrePositivity.PointedSimplicialSet.sphereFirstCrossingIso,def,圏論一般,3,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereFirstCrossing,SerrePositivity.PointedSimplicialSet.sphereFirstCrossingIso_braiding,thm,圏論一般,7,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereFirstCrossing,SerrePositivity.PointedSimplicialSet.spherePermutationAction_firstToLast,thm,圏論一般,5,未使用,C 単体集合と ∞ 圏/基点付き空間,〈組合せと順序〉との関係,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereFirstCrossing,SerrePositivity.PointedSimplicialSet.spherePermutationAction_rotate_symm,thm,圏論一般,7,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMonoid,SerrePositivity.PointedSimplicialSet.sphereMonoid,def,スペクトル用,2,言い換え,G スペクトル/対称列,対称列の定義と段,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMonoid,SerrePositivity.PointedSimplicialSet.sphereMonoid_mul,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMonoid,SerrePositivity.PointedSimplicialSet.sphereMonoid_obj,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMonoid,SerrePositivity.PointedSimplicialSet.sphereMonoid_one,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMonoid,SerrePositivity.PointedSimplicialSet.sphereSequenceMonObj,def,スペクトル用,3,言い換え,G スペクトル/対称列,対称列の定義と段,6,0,0,3,0,2,1,0,0,0
+A3,Spectra.SymmetricSequence.SphereMonoid,SerrePositivity.PointedSimplicialSet.sphere_associativity,thm,スペクトル用,6,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMultiplication,SerrePositivity.PointedSimplicialSet.sphereAppend,def,スペクトル用,5,言い換え,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMultiplication,SerrePositivity.PointedSimplicialSet.sphereMultiplication,def,スペクトル用,4,言い換え,G スペクトル/対称列,Day convolution,10,0,0,10,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMultiplication,SerrePositivity.PointedSimplicialSet.sphereMultiplication_fac,thm,スペクトル用,6,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereMultiplication,SerrePositivity.PointedSimplicialSet.sphereMultiplication_fac_app,thm,スペクトル用,7,言い換え,G スペクトル/対称列,Day convolution,1,0,0,0,0,1,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePermutationAction,SerrePositivity.PointedSimplicialSet.spherePermutationAction,def,圏論一般,4,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,8,0,0,7,0,1,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePermutationAction,SerrePositivity.PointedSimplicialSet.spherePermutationAction_adjacent,thm,圏論一般,5,未使用,C 単体集合と ∞ 圏/基点付き空間,〈組合せと順序〉との関係,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePermutationAction,SerrePositivity.PointedSimplicialSet.spherePermutationAction_mul,thm,圏論一般,6,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowerCoherence,SerrePositivity.PointedSimplicialSet.spherePowerAppendIso_adjacent_left,thm,圏論一般,9,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowerCoherence,SerrePositivity.PointedSimplicialSet.spherePowerAppendIso_adjacent_right,thm,圏論一般,7,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowerCoherence,SerrePositivity.PointedSimplicialSet.spherePowerAppendIso_associativity,thm,圏論一般,9,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowerCoherence,SerrePositivity.PointedSimplicialSet.spherePowerAppendIso_block_permutation,thm,圏論一般,9,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowerCoherence,SerrePositivity.PointedSimplicialSet.spherePowerAppendIso_zero_right,thm,圏論一般,4,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePower,def,圏論一般,3,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,38,0,0,34,2,2,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerAdjacentIso,def,圏論一般,4,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerAdjacentIso_braid,thm,圏論一般,8,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerAdjacentIso_commute,thm,圏論一般,4,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerAdjacentIso_involutive,thm,圏論一般,4,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerAppendIso,def,圏論一般,4,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,16,0,0,15,0,1,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerOneIso,def,圏論一般,3,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,3,0,0,1,2,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerSwapFirstIso,def,圏論一般,4,言い換え,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerSwapFirstIso_involutive,thm,圏論一般,4,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePowerTwoIso,def,圏論一般,4,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePower_succ,thm,圏論一般,3,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SpherePowers,SerrePositivity.PointedSimplicialSet.spherePower_zero,thm,圏論一般,1,未使用,C 単体集合と ∞ 圏/基点付き空間,球面・懸垂・ループ,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereSequence,SerrePositivity.PointedSimplicialSet.sphereSequence,def,スペクトル用,3,言い換え,G スペクトル/対称列,,32,0,0,28,0,3,1,0,0,0
+A3,Spectra.SymmetricSequence.SphereSequence,SerrePositivity.PointedSimplicialSet.sphereSequence_level,thm,スペクトル用,3,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereSequence,SerrePositivity.PointedSimplicialSet.sphereSequence_levelAction,thm,スペクトル用,5,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereSequence,SerrePositivity.PointedSimplicialSet.sphereSequence_map_permutation,thm,スペクトル用,5,言い換え,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,1,0,1,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereSingleBlockSwap,SerrePositivity.PointedSimplicialSet.sphere_swap_one_left,thm,スペクトル用,8,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereSingleBlockSwap,SerrePositivity.PointedSimplicialSet.sphere_swap_one_right,thm,スペクトル用,8,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereUnit,SerrePositivity.PointedSimplicialSet.sphereUnit,def,スペクトル用,5,言い換え,G スペクトル/対称列,対称列の定義と段,3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereUnit,SerrePositivity.PointedSimplicialSet.sphereUnitHom,def,スペクトル用,3,言い換え,G スペクトル/対称列,対称列の定義と段,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereUnit,SerrePositivity.PointedSimplicialSet.sphereUnitHom_eq,thm,スペクトル用,2,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereUnit,SerrePositivity.PointedSimplicialSet.sphereUnit_fac_app,thm,スペクトル用,5,未使用,G スペクトル/対称列,対称列の定義と段,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereUnit,SerrePositivity.PointedSimplicialSet.sphere_left_unit,thm,スペクトル用,5,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SphereUnit,SerrePositivity.PointedSimplicialSet.sphere_right_unit,thm,スペクトル用,5,未使用,G スペクトル/対称列,Day convolution,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv,def,圏論一般,6,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,17,0,0,17,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_eq_finCongr,thm,圏論一般,11,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_first,thm,圏論一般,3,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_second,thm,圏論一般,3,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_symm_first,thm,圏論一般,4,分割,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_symm_second,thm,圏論一般,5,分割,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_symm_third,thm,圏論一般,4,分割,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.assocEquiv_third,thm,圏論一般,3,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.blockEquiv_first,thm,圏論一般,3,再利用,G スペクトル/対称列,有限集合と全単射の圏,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.blockEquiv_second,thm,圏論一般,3,再利用,G スペクトル/対称列,有限集合と全単射の圏,7,0,0,7,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.equivOfHom_sumAssociator,thm,圏論一般,3,言い換え,G スペクトル/対称列,〈組合せと順序〉との関係,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.equivOfHom_sumAssociator_inv,thm,圏論一般,3,言い換え,G スペクトル/対称列,〈組合せと順序〉との関係,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.equivOfHom_sumLeftUnitor,thm,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.equivOfHom_sumMap,thm,圏論一般,3,再利用,G スペクトル/対称列,有限集合と全単射の圏,8,0,0,8,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.equivOfHom_sumRightUnitor,thm,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.equivOfHom_sumSymmetry,thm,圏論一般,3,言い換え,G スペクトル/対称列,〈組合せと順序〉との関係,4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.hom_ext,thm,圏論一般,4,言い換え,G スペクトル/対称列,有限集合と全単射の圏,9,0,0,9,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.isoOfEquiv,def,圏論一般,10,再利用,G スペクトル/対称列,有限集合と全単射の圏,11,0,0,11,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumAssociator,def,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,18,0,0,17,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumAssociator_hexagon_forward,thm,圏論一般,13,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumAssociator_hexagon_reverse,thm,圏論一般,13,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumAssociator_naturality,thm,圏論一般,12,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumAssociator_pentagon,thm,圏論一般,17,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumAssociator_triangle,thm,圏論一般,23,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumLeftUnitor,def,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,12,0,0,11,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumLeftUnitor_naturality,thm,圏論一般,17,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumRightUnitor,def,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,11,0,0,11,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumRightUnitor_naturality,thm,圏論一般,17,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumSymmetry,def,圏論一般,3,言い換え,G スペクトル/対称列,有限集合と全単射の圏,29,0,0,29,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumSymmetry_comp,thm,圏論一般,7,再利用,G スペクトル/対称列,有限集合と全単射の圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.sumSymmetry_naturality,thm,圏論一般,7,分割,G スペクトル/対称列,有限集合と全単射の圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.swapEquiv,def,圏論一般,3,言い換え,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,14,0,0,14,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.swapEquiv_first,thm,圏論一般,2,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.swapEquiv_right_one,thm,圏論一般,17,分割,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.swapEquiv_second,thm,圏論一般,2,再利用,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.swapEquiv_zero_left,thm,圏論一般,7,分割,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumCoherence,SerrePositivity.FiniteBijection.swapEquiv_zero_right,thm,圏論一般,7,分割,Z 圏論一般/組合せと順序,有限集合・写像・数え上げ,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.sumMonoidalCategory,def,圏論一般,11,言い換え,G スペクトル/対称列,有限集合と全単射の圏,64,0,0,61,3,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.sumMonoidalCategoryStruct,def,圏論一般,9,再利用,G スペクトル/対称列,有限集合と全単射の圏,43,0,0,42,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.sumSymmetricCategory,def,圏論一般,11,結果,G スペクトル/対称列,有限集合と全単射の圏,12,0,0,12,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.tensorObj_eq_sumObj,thm,圏論一般,2,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.tensor_eq_sumFunctor,thm,圏論一般,2,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.whiskerLeft_eq_sumMap,thm,圏論一般,2,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.SumMonoidal,SerrePositivity.FiniteBijection.whiskerRight_eq_sumMap,thm,圏論一般,2,未使用,G スペクトル/対称列,有限集合と全単射の圏,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerAssociativity,SerrePositivity.SymmetricSequence.finCongr_trans_eq,thm,圏論一般,5,分割,Z 圏論一般/組合せと順序,Fin の単調写像と単体圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerAssociativity,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_sumAssociator_inv,thm,スペクトル用,8,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerAssociativity,SerrePositivity.SymmetricSequence.tensorPower_associativity,thm,スペクトル用,29,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerBraiding,SerrePositivity.SymmetricSequence.tensorPower_block_swap,thm,スペクトル用,11,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerBraiding,SerrePositivity.TensorPowers.bijectionFunctorBraided,def,圏論一般,7,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerBraiding,SerrePositivity.TensorPowers.bijectionFunctor_map_braiding,thm,圏論一般,18,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerBraiding,SerrePositivity.TensorPowers.bijectionFunctor_map_braiding_of_swap,thm,圏論一般,15,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommMonoid,SerrePositivity.SymmetricSequence.tensorPowerIsCommMonObj,thm,スペクトル用,3,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),85,0,0,1,49,2,31,0,0,2
+A3,Spectra.SymmetricSequence.TensorPowerCommMonoid,SerrePositivity.SymmetricSequence.tensorPower_commutativity,thm,スペクトル用,5,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.finCongr_trans_eq,thm,圏論一般,5,再利用,Z 圏論一般/組合せと順序,Fin の単調写像と単体圏,2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_swap_zero_left,thm,スペクトル用,7,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_swap_zero_right,thm,スペクトル用,7,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.tensorPower_commutativity_iff,thm,スペクトル用,25,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.tensorPower_commutativity_iff_positive,thm,スペクトル用,21,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.tensorPower_swap_zero_left,thm,スペクトル用,9,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerCommutativity,SerrePositivity.SymmetricSequence.tensorPower_swap_zero_right,thm,スペクトル用,10,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMonoid,SerrePositivity.SymmetricSequence.tensorPowerMonObj,def,スペクトル用,7,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),470,0,0,4,278,35,144,0,0,9
+A3,Spectra.SymmetricSequence.TensorPowerMonoid,SerrePositivity.SymmetricSequence.tensorPowerMonObj_mul,thm,スペクトル用,3,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMonoid,SerrePositivity.SymmetricSequence.tensorPowerMonObj_one,thm,スペクトル用,3,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMultiplication,SerrePositivity.SymmetricSequence.tensorPowerAppend,def,スペクトル用,4,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),5,0,0,5,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMultiplication,SerrePositivity.SymmetricSequence.tensorPowerMultiplication,def,スペクトル用,5,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),15,0,0,14,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMultiplication,SerrePositivity.SymmetricSequence.tensorPowerMultiplication_fac,thm,スペクトル用,7,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),3,0,0,3,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMultiplication,SerrePositivity.SymmetricSequence.tensorPowerMultiplication_fac_app,thm,スペクトル用,8,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),6,0,0,5,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerMultiplication,SerrePositivity.SymmetricSequence.tensorPowerMultiplication_unique,thm,スペクトル用,9,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSequence,SerrePositivity.SymmetricSequence.tensorPowerSequence,def,スペクトル用,2,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),515,0,0,39,284,35,146,0,0,11
+A3,Spectra.SymmetricSequence.TensorPowerSequence,SerrePositivity.SymmetricSequence.tensorPowerSequence_level,thm,スペクトル用,3,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSequence,SerrePositivity.SymmetricSequence.tensorPowerSequence_levelAction,thm,スペクトル用,5,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSequence,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_permutation,thm,スペクトル用,5,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSingleBlockSwap,SerrePositivity.SymmetricSequence.finCongr_trans_eq,thm,圏論一般,5,分割,Z 圏論一般/組合せと順序,Fin の単調写像と単体圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSingleBlockSwap,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_swap_right_one,thm,スペクトル用,9,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSingleBlockSwap,SerrePositivity.SymmetricSequence.tensorPower_swap_one_left,thm,スペクトル用,8,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerSingleBlockSwap,SerrePositivity.SymmetricSequence.tensorPower_swap_one_right,thm,スペクトル用,10,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnit,def,スペクトル用,4,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),9,0,0,8,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnitData,def,スペクトル用,10,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),4,0,0,4,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnitHom,def,スペクトル用,3,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),6,0,0,6,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnitHom_eq,thm,スペクトル用,2,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnit_fac,thm,スペクトル用,5,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnit_fac_app,thm,スペクトル用,4,言い換え,G スペクトル/対称列,反復テンソルの対称列 Sym(X),4,0,0,3,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnit_left_generator,thm,スペクトル用,13,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnit_right_generator,thm,スペクトル用,12,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnit,SerrePositivity.SymmetricSequence.tensorPowerUnit_unique,thm,スペクトル用,7,未使用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnitLaws,SerrePositivity.SymmetricSequence.finCongr_trans_eq,thm,圏論一般,5,分割,Z 圏論一般/組合せと順序,Fin の単調写像と単体圏,1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnitLaws,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_sumLeftUnitor_inv,thm,スペクトル用,7,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnitLaws,SerrePositivity.SymmetricSequence.tensorPowerSequence_map_sumRightUnitor_inv,thm,スペクトル用,7,分割,G スペクトル/対称列,反復テンソルの対称列 Sym(X),1,0,0,1,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnitLaws,SerrePositivity.SymmetricSequence.tensorPower_left_unit,thm,スペクトル用,10,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.TensorPowerUnitLaws,SerrePositivity.SymmetricSequence.tensorPower_right_unit,thm,スペクトル用,11,再利用,G スペクトル/対称列,反復テンソルの対称列 Sym(X),2,0,0,2,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.UnshiftedInternalHom,SerrePositivity.SymmetricSequence.unshiftedInternalHom,def,対称列,3,言い換え,G スペクトル/対称列,対称列の内部 Hom,52,0,0,41,11,0,0,0,0,0
+A3,Spectra.SymmetricSequence.UnshiftedInternalHom,SerrePositivity.SymmetricSequence.unshiftedInternalHom_level,thm,対称列,4,未使用,G スペクトル/対称列,対称列の内部 Hom,0,0,0,0,0,0,0,0,0,0
+A3,Spectra.SymmetricSequence.UnshiftedInternalHom,SerrePositivity.SymmetricSequence.zeroShiftInternalHomIso,def,対称列,12,再利用,G スペクトル/対称列,対称列の内部 Hom,13,0,0,9,4,0,0,0,0,0
+A3,Spectra.SymmetricSequence.UnshiftedInternalHom,SerrePositivity.SymmetricSequence.zeroShiftInternalHomIso_hom_app,thm,対称列,7,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,0,1,0,0,0,0,0
+A3,Spectra.SymmetricSequence.UnshiftedInternalHom,SerrePositivity.SymmetricSequence.zeroShiftInternalHomIso_inv_app,thm,対称列,7,分割,G スペクトル/対称列,対称列の内部 Hom,1,0,0,0,1,0,0,0,0,0
