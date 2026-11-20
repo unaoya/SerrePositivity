@@ -215,3 +215,405 @@ B の円周特殊化を用いた機械照合は150件。29定理で具体版の�
 - `after-inventory` は 11.3 秒。
 
 開始から検証完了まで約36分（bulk 鍵の待ち時間を含む）。
+
+## 段 4　各段のテンソル
+
+段 2 の「各段のテンソル」の91件を対象とした。main の `62c0d04b0` を `3951b47ae` で取り込んだ。[判定表](../../../research/cleanup-zero-base/spectra/stage4.csv)
+
+| 扱い | 段 2 の案 | 今回の扱い |
+|---|---:|---:|
+| 消す | 63 | 61 |
+| 別名 | 7 | 5 |
+| B に一般版を足す | 12 | 10 |
+| 固有として残す | 6 | 6 |
+| 判断できない | 3 | 0 |
+| 余テンソルの段へ | 0 | 2 |
+| C に残す | 0 | 7 |
+
+C の削減は、段 2 の案をこの範囲に当てはめた75件に対して実測 71 件。B の追加は見積もり12件に対して実測 10 件。座標を何度も指定する別名だけを残し、次数0の自由テンソルの積の比較は既存の一般版を特殊化した。宣言範囲では C から除く行の見積もりは 444 行、実際に除いた宣言は 396 行。B に足す元宣言の見積もりは 87 行。物理行数には import、モジュールの説明、空行を含む。
+
+| 範囲 | ソース宣言数 | 物理行数 |
+|---|---:|---:|
+| C | 553 → 482 | 5,328 → 4,822 |
+| B | 346 → 356 | 3,763 → 3,817 |
+| 利用側 | 74 → 74 | 1,684 → 1,685 |
+
+書き換えた参照は 97 箇所。名前解決済みの型・本体・検査の参照位置を数え、同じ位置の重複を除いた。
+
+### 型の照合
+
+写像対象の結合則と豊穣化の比較で、各段の結合子を展開しながら五角形と単位則を照合するとハートビート上限に達した。作用の二変数関手と自然変換の成分で述べる一般補題を用意し、同じ上限で利用側に適用した。
+
+余テンソルの右随伴の表示に依存する転置の自然性2件を余テンソルの段に回した。別の7件では一般版の証明が通っても旧版の型への適用がカーネルの上限に達した。円周版の証明を残し、試行の結果を判定表に記した。削除した71件は型の照合または利用側のビルドで確認した。
+
+### 利用箇所の前後
+
+短くなった例。一般版の結合子への切り替えで、`SimplicialComparison.lean` の順射比較を使った証明は定義的な等式になった。
+
+```diff
+-  apply CategoryTheory.Iso.ext
+-  exact (SymmetricSpectrum.pointwiseTensorAssociator_module_hom X Y E).symm
++  rfl
+```
+
+変わらない例。`simplicialTensor` は、各段の作用を一般版から開くことで、既存の自由基点追加を記す式がそのまま使える。
+
+```lean
+pointwiseTensor (adjoinBasepoint K) E
+```
+
+長くなった例。単体的作用の余単位では、随伴とその成分が明示される。
+
+```diff
+-  simplicialTensorEvaluation (Δ[0] : SSet.{u}) E
++  (simplicialTensorCotensorAdjunction (Δ[0] : SSet.{u})).counit.app E
+```
+
+### 判定
+
+対象と利用側 70 モジュールのビルドを bulk 鍵で確認した。監査・検査29本の成否は段 3 の結果と一致した。13本が成功し、既存の失敗16本は診断全文が一致した。変更した検査は `check_spectra_stage2.lean` の1本で、前後とも成功した。影響範囲のカーネル宣言は750件から712件になり、既存の宣言への公理依存の追加は0件。`sorryAx` に依存する宣言は前後で同じ9件。対象91件を直接名指しする対応表は0件。BS17 の検索候補の型は採取した前後のカーネル型が一致した。
+
+削除した空ファイルは3本。`PointwiseTensorAssociatorLevels.lean`、`PointwiseTensorCoherence.lean`、`SimplicialTensorProductNaturality.lean`。
+
+所要時間は約44分（bulk 鍵の待ち時間を含む）。
+
+## 段 5　テンソル積
+
+main の `eac7d1e57` を `bf121b839` で取り込んだ。段 2 のテンソル積126件と、段 3 から回した自由関手の6件を照合した。[判定表](../../../research/cleanup-zero-base/spectra/stage5.csv)
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 93 | 126 |
+| 別名 | 9 | 1 |
+| B に一般版を足す | 28 | 5 |
+| 判断できない | 2 | 0 |
+| C に残す | 0 | 0 |
+
+段 2 の案の削減121件に対し、対象132件のうち C から 131 件を除いた。B への追加は案の28件に対し 5 件。一般の加群の補題に球面列を渡して足りるもの、既存の B の自由テンソル比較を使えるもの、定義展開で成立する等式は重複を除いた。自由テンソルの和次数比較は、二つの係数と次数から座標が決まらず、pushout-product で円周の指定を繰り返すため、一行の別名を使う。
+
+対象宣言の範囲で数えると、C の削除の見積もりは 544 行、実測は 581 行。B への追加候補だった元宣言は 121 行。下表の物理行数は import や空行も含む。
+
+段 2 で「内部 Hom」に入っていた `spectrumMonoidalClosed` は §6 の登録条件に従い別途削除した。C のモノイダル・対称・閉の登録と自由関手のモノイダル・組紐の登録の計5件は、一般の加群の登録を円周へ特殊化したものと定義的に一致した。C の登録を一時無効化してから `inferInstance` で得られた登録も `rfl` または `HEq.rfl` で照合した。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 68 → 52 | 482 → 350 | 4,822 → 3,743 |
+| B | 46 → 46 | 356 → 361 | 3,817 → 3,851 |
+| 利用側 | 18 → 18 | 83 → 83 | 1,957 → 1,951 |
+
+対象132件の書き換えは 42 箇所。閉構造の別途削除では写像対象の2箇所を型クラス探索で記述した。段 4 の7件はソースの宣言範囲を変更前と照合した。随伴の展開は段 4 の分も [expanded-names.csv](../../../research/cleanup-zero-base/spectra/expanded-names.csv) に記録した。展開数は差分に現れた式の位置を数え、一つの局所束縛で複数回使う場合は1箇所とした。
+
+逆転置の比較では、具体版の自由対象から加群の一般版に差し替えると従来の書き換えがマッチしなかった。射影と合成した後に生成元の表示を change で揃え、評価の補題を適用した。写像対象の二変数随伴では、変更後の表示で係数圏の宇宙が 0 に推論されたため、自由関手の随伴と作用の二変数関手に宇宙を明示した。上限設定はそのまま。
+
+### 利用箇所の前後
+
+短くなった箇所。基点付き写像対象の関手では、内部 Hom のインスタンスを型クラス探索で得る。
+
+```diff
+-  (@CategoryTheory.ihom SymmetricSpectrum.{u} _ _ E
+-    (spectrumMonoidalClosed.closed E)) ⋙ evaluation 0
++  ihom E ⋙ evaluation 0
+```
+
+同じ式を使う箇所。自由スペクトルの pushout-product の押し出しの頂点を移す比較は、一行の別名で引き続き書ける。
+
+```lean
+(sphereTensorFreeAtSum m n A X).symm
+```
+
+長くなった箇所。転置と逆転置が互いに逆になる証明で加群の Hom 同値を直接使う。この形の展開は 2 箇所。
+
+```diff
+-  (sphereTensorHomEquiv E X F).left_inv f
++  (MonoidalModuleInternalHom.tensorHomEquiv sphereSequence.{u} E X F).left_inv f
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 99 モジュールをビルドした。旧型の例は 133 件で通った。監査・検査 30 本は前後とも 15 本が成功し、従来の失敗 15 本の診断は変更前と一致した。影響範囲のカーネル宣言は 1296 → 1110 件。既存の宣言への公理依存の追加は0件、`sorryAx` に依存する宣言は変更前後とも同じ 9 件。対応表の対象宣言の名指しは0件。BS17 の検索候補1件は、旧モノイダル登録を明示した型に変更後の宣言を適用して照合した。
+
+既存の失敗のうち check_general_spectrum_level_monoidal は、同じ箇所で CofibrantlyGenerated の宇宙指定のエラーを出した。別途成功した公理監査の通知だけが、監査対象の追加に伴い26件から30件に変わった。
+
+変更箇所では FreeLeftUncurry.lean の1行に、100文字を超えるという linter の警告が出た。
+
+削除した空ファイルは16本。`FreeMonoidal.lean`、`Tensor.lean`、`TensorAssociator.lean`、`TensorFreeLeft.lean`、`TensorFreePair.lean`、`TensorFreeRight.lean`、`TensorFreeZeroLevels.lean`、`TensorHexagon.lean`、`TensorLeftUnit.lean`、`TensorMonoidal.lean`、`TensorPentagon.lean`、`TensorQuotient.lean`、`TensorRightUnit.lean`、`TensorSymmetric.lean`、`TensorSymmetry.lean`、`TensorTriangle.lean`。
+
+所要時間は約 65 分。bulk 鍵の待ち時間を含む。
+
+## 段 6　内部 Hom
+
+main の `9e8eb98d3` を `7f2e7538b` で取り込んだ。段 2 の「内部 Hom」116件のうち、段 5 で閉構造の登録を削除した後に C に残る115件を対象とした。段 4 で保留した9件は宣言本文と型を照合した。[判定表](../../../research/cleanup-zero-base/spectra/stage6.csv)
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 64 | 89 |
+| 別名 | 1 | 1 |
+| B に一般版を足す | 50 | 25 |
+| C に残す | 0 | 0 |
+
+段 2 の案ではこの範囲の C の削減見込みは 114 件、一般版の追加は 50 件だった。実測では削減 114 件、B への追加 25 件。削除宣言の範囲で数えると、見積もり 766 行に対し実測 775 行。下表の物理行数は import と空行も含む。
+
+自由原変数の加群比較とその自然性は、A の `freeHomModuleIso` と `freeHomModuleIso_naturality` に自由対称列の対象と射を渡した。各段での置換と構造射との両立には、既存の自然性と構造射の補題を使った。B には、スペクトルの自由原変数に対する各段の比較、構造射・懸垂・次数零の式とその自然性を置いた。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 52 → 42 | 350 → 236 | 3,743 → 2,608 |
+| B | 46 → 49 | 361 → 386 | 3,851 → 4,217 |
+| 利用側 | 15 → 15 | 73 → 73 | 1,711 → 1,709 |
+
+円周の場合の二変数内部 Hom は、引数がなく係数列を余テンソルの関手と自然比較に繰り返し渡すため一行の別名とした。転置・逆転置・評価の名前を除き、[随伴成分の展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv) に追記した。
+
+### 利用箇所の前後
+
+余テンソルの全体比較を第 q 段で評価する書き換えでは、B の各段の比較をそのまま使える。合成同型の等式と各段の射の等式を分け、逆転置でも逆射の基礎射の等式を分けて、既定のカーネル上限で検査した。
+
+```diff
+-  rw [internalHomShiftIso_hom_app, shiftedHomCotensorIso_hom_app]
++  rw [shiftedHomCotensorIso_hom_app]
+```
+
+次数零の構造射と比較同型の両立では、一般版から同じ名前を開いて使う。
+
+```lean
+unshiftedHomLevelIso_structureMap
+```
+
+余テンソルへの転置公式では、加群の転置に球面列を渡した。この転置の展開は 1 箇所。
+
+```diff
+-  internalHomCurry f
++  MonoidalModuleInternalHom.curryModule sphereSequence.{u} _ f
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 54 モジュールをビルドした。旧型の例は 115 件で通った。監査・検査 28 本は前後とも 14 本が成功し、既存の失敗 14 本の落ち方を照合した。影響範囲のカーネル宣言は 753 → 582 件。既存の宣言への公理依存の追加は0件で、`sorryAx` に依存する宣言は 9 → 9 件。対応表の対象宣言の名指しは0件。BS17 の検索候補の型はカーネル型で一致した。
+
+削除した空ファイルは10本。`Closed.lean`、`InternalHom.lean`、`InternalHomFree.lean`、`InternalHomFreeLevels.lean`、`InternalHomFreeNaturality.lean`、`InternalHomFreePermutation.lean`、`InternalHomShift.lean`、`InternalHomShiftNaturality.lean`、`InternalHomShiftZero.lean`、`InternalHomUnderlying.lean`。
+
+自由原変数の評価と左自由因子の逆転置は、一般版を旧型にそのまま適用するとカーネルの既定の上限で照合しにくかった。自由比較の順射、転置と評価、逆転置の射影を個別に確認し、元の型をそれぞれ再構成した。段 2 の検査では構造射の転置に関する2つの式を、B と Mathlib の補題で証明した。
+
+余テンソルの変更箇所では、100文字を超える行の linter 警告が残った。
+
+所要は約81分。bulk 鍵の待ち時間を含む。
+
+## 段 7　余テンソル
+
+main の `629c2a3f0` を `b61f9db0f` で取り込んだ。段 2 の余テンソル79件と段 4 からの9件を対象とした。判断を保留していた余テンソルの2件は79件に含む。[判定表](../../../research/cleanup-zero-base/spectra/stage7.csv)
+
+C の `cotensor` と `cotensorFunctor` は、変更前に B を円周で特殊化した定義との等式を両方とも `rfl` で確認した。対象と関手の定義を先に揃え、構造・評価・射の補題を整理した。点ごとのテンソルとの随伴も B と `rfl` で一致した。
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 42 | 67 |
+| 別名 | 6 | 2 |
+| B に一般版を足す | 31 | 14 |
+| 固有として残す | 5 | 5 |
+| 判断できない | 4 | 0 |
+
+対象内で C から除く見込みは 73 件で、実測は 81 件。宣言の範囲で数えた見込みは 502 行、実測は 572 行。B の追加は見込み 31 件に対し 14 件。移送した関手の写像、二変数の共役、パラメータ付き随伴の自然性には既存の補題を使い、B にはスペクトルの構造射や各段での評価・転置・射の公式を置いた。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 42 → 33 | 236 → 155 | 2,608 → 1,728 |
+| B | 49 → 52 | 386 → 400 | 4,217 → 4,505 |
+| 利用側 | 10 → 10 | 50 → 50 | 1,122 → 1,119 |
+
+円周を繰り返し指定する余テンソル関手と随伴に別名を使う。基点のない単体集合による構成5件を維持した。[随伴成分の展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv)
+
+### 段 4 から持ち越した7件
+
+| 旧宣言 | 旧型の照合 |
+|---|---|
+| `pointwiseTensorCurry_post` | B の `pointwiseTensorHomEquiv_naturality_parameter` |
+| `pointwiseTensorUncurry_pre` | パラメータ付き随伴の `homEquiv_symm_naturality_one` |
+| `pointwiseTensorEvaluation_pre` | `whiskerLeft_map_counit` を対象で評価し、等式を反転 |
+| `pointwiseTensorEvaluation_formula` | 左随伴を移送した余単位の定義を `rfl` で照合 |
+| `pointwiseTensorEvaluation_level` | B の各段の評価公式 |
+| `pointwiseTensorUncurry_level` | B の各段の逆転置公式 |
+| `pointwiseTensorCurry_level` | B の各段の転置公式 |
+
+7件とも旧型で通り、C の宣言を削除した。保留していた値域の射は移送関手の写像の定義と一致し、両変数の共役は一般の自然同型の公式で得られた。
+
+### 利用箇所の前後
+
+各段の評価法則では、左随伴を移送した余単位の等式を定義から得る。
+
+```diff
+-    (pointwiseTensorEvaluation_formula X E) (cotensorEvaluation_level X E q)
++    rfl (cotensorEvaluation_level X E q)
+```
+
+円周によるループの定義は同じ式を使う。
+
+```lean
+cotensorFunctor (circle : PointedSimplicialSet.{u})
+```
+
+通常の単体集合による転置は随伴の Hom 同値を直接使う。この形の展開は 17 箇所。
+
+```diff
+-  simplicialTensorCotensorHomEquiv K E F f
++  ((simplicialTensorCotensorAdjunction K).homEquiv E F) f
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 34 モジュールをビルドした。旧型の例は 83 件で通った。監査・検査 24 本は前後とも 14 本が成功し、既存の失敗 10 本の診断も一致した。影響範囲のカーネル宣言は 441 → 344 件。既存宣言への公理依存の追加は0件で、`sorryAx` に依存する宣言は 9 → 9 件。対応表で対象宣言を名指しする行は0件。BS17 の検索候補1件はカーネル名と型が一致した。
+
+全体の比較の順射は、同型そのものの等式と各段の式を分けて旧型を照合した。上限設定は変更していない。`CotensorEvaluation.lean` の逆転置の型には行長の警告が1件残った。
+
+削除した空ファイルは 9 本。`Cotensor.lean`、`CotensorAdjunction.lean`、`CotensorCurryNaturality.lean`、`CotensorLevelEvaluation.lean`、`CotensorMapLevels.lean`、`FreeLeftUncurry.lean`、`PointwiseTensorLevelEvaluation.lean`、`PointwiseTensorMapLevels.lean`、`SimplicialCotensorProductNaturality.lean`。
+
+所要は約 23 分。bulk 鍵の待ち時間を含む。
+
+## 段 8　写像対象と懸垂・ループ
+
+main の `fbe3c52b8` を `2e65f1360` で取り込んだ。段 2 の写像対象101件、懸垂とループ19件の計120件を照合した。[判定表](../../../research/cleanup-zero-base/spectra/stage8.csv)
+
+基点付き写像対象とその関手・二変数関手・随伴、基点付きの二つの豊穣構造は、B の円周特殊化と `rfl` で一致した。これを確認して定義を揃えた後、補題と利用箇所を整理した。ループ関手と懸垂との随伴は単位・余単位も含めて `rfl` で一致し、ループ関手を B の `cotensorFunctor` に置き換えた。
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 95 | 106 |
+| 別名 | 6 | 5 |
+| B に一般版を足す | 4 | 0 |
+| 固有として残す | 14 | 9 |
+| 判断できない | 1 | 0 |
+
+段 2 の案で除く見込みは 99 件で、実測は 106 件。宣言の範囲で数えた見込みは 563 行、実測は 601 行。B の追加候補4件は、既存の写像対象の二変数関手と点ごとのテンソルの関手の定義で足りた。
+
+固有候補14件のうち、基点を忘れた写像対象・前合成とその合成、零次単体との比較、自由基点追加を使う随伴の9件を維持した。豊穣構造そのものと通常圏に接続した豊穣構造は忘却関手に沿う一般の移送を直接利用し、それぞれの定義展開で得られる比較を含めて5件を除いた。14件の帰結と理由は判定表に記録した。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 33 → 23 | 155 → 49 | 1,728 → 785 |
+| B | 52 → 52 | 400 → 400 | 4,505 → 4,507 |
+| 利用側 | 10 → 10 | 50 → 50 | 1,119 → 1,113 |
+
+転置・評価・単位・余単位などの展開式を追記した。[随伴成分の展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv)
+
+展開が10箇所を超えた名前は0件だった。
+
+### 利用箇所の前後
+
+懸垂とループの単位の比較では、円周へ特殊化した随伴の成分を直接使うので、展開する定義が減った。
+
+```diff
+-  simpa only [simplicialLoopNatIso, SymmetricSpectrum.suspensionLoopUnit,
+-    SymmetricSpectrum.suspension, simplicial_suspensionFunctor] using
++  simpa only [simplicialLoopNatIso] using
+```
+
+安定化の導来随伴では、円周での随伴の別名をそのまま使う。
+
+```lean
+let n := (derivedAdjunction Q Q suspensionLoopAdjunction γ ρ).toEquivalence
+```
+
+導来ループ関手の指定に B の余テンソル関手を使う。この名前の展開は 10 箇所。
+
+```diff
+-  SymmetricSpectrum.loopFunctor.{u} ⋙ W.Q
++  (GeneralSymmetricSpectrum.cotensorFunctor
++    (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle) ⋙ W.Q
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 22 モジュールをビルドした。削除した宣言は旧型の例 106 件で照合した。監査・検査 24 本は前後とも 14 本が成功し、既存の失敗 10 本のエラーは一致した。影響範囲のカーネル宣言は 324 → 181 件。既存宣言への公理依存の追加は0件で、`sorryAx` に依存する宣言は 9 → 9 件。対応表で対象宣言を名指しする行は0件。BS17 の検索候補1件はカーネル名と型が一致した。
+
+転置と前合成の旧型では、先に随伴と二変数関手を比較してから各成分を照合した。モデル側の Hom の比較では、B の豊穣構造を移送の引数に明示して二つの比較同型と SM7 の型を揃えた。リソースの上限設定は変更していない。更新した API を対称スペクトルの README に反映した。
+
+`check_kan_quillen_level` はソースとエラーが変更前と一致した。削除した `mappingSpaceSimplicialCategory` を候補に挙げる Lean のヒントだけが消えた。
+
+`check_ordinary_suspension_stability` では、既存のエラーのほかに出る正常な公理監査の採取件数が 87 → 88 件になった。
+
+`check_spectrum_suspension_geometry` では、既存のエラーのほかに出る正常な公理監査の採取件数が 97 → 93 件になった。
+
+削除した空ファイルは 10 本。`AdjointStructureMaps.lean`、`InternalHomShiftSuspension.lean`、`MappingSpaceArrowComposition.lean`、`MappingSpaceAssociativity.lean`、`MappingSpaceComposition.lean`、`MappingSpaceEnriched.lean`、`MappingSpaceNaturality.lean`、`MappingSpaceSimplicialEnriched.lean`、`MappingSpaceUnitLaws.lean`、`Suspension.lean`。
+
+所要は約 29 分。bulk 鍵の待ち時間を含む。
+
+### C の現状
+
+C は円周への特殊化を置くディレクトリ。行数は宣言の開始から終端までとし、宣言に付随する文書コメント・属性を含む。名前は完全修飾名。
+
+| ファイル | 宣言数 |
+|---|---:|
+| [Basic.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Basic.lean) | 2 |
+| [CotensorFunctor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/CotensorFunctor.lean) | 1 |
+| [Evaluation.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Evaluation.lean) | 4 |
+| [Free.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Free.lean) | 3 |
+| [InternalHomFunctor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/InternalHomFunctor.lean) | 1 |
+| [InternalHomShiftStructure.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/InternalHomShiftStructure.lean) | 1 |
+| [MappingSpace.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpace.lean) | 2 |
+| [MappingSpacePointedOrdinary.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpacePointedOrdinary.lean) | 1 |
+| [MappingSpaceSimplicial.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicial.lean) | 5 |
+| [MappingSpaceSimplicialOrdinary.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicialOrdinary.lean) | 1 |
+| [PointwiseTensor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensor.lean) | 2 |
+| [PointwiseTensorAdjunction.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAdjunction.lean) | 1 |
+| [PointwiseTensorAssociator.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAssociator.lean) | 1 |
+| [PointwiseTensorFunctor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorFunctor.lean) | 1 |
+| [PointwiseTensorUnit.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorUnit.lean) | 1 |
+| [SimplicialTensorCotensor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorCotensor.lean) | 8 |
+| [SimplicialTensorNaturality.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorNaturality.lean) | 4 |
+| [SimplicialTensorProduct.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorProduct.lean) | 1 |
+| [SimplicialTensorUnit.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorUnit.lean) | 1 |
+| [Sphere.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Sphere.lean) | 4 |
+| [StructureMaps.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/StructureMaps.lean) | 1 |
+| [SuspensionLoop.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SuspensionLoop.lean) | 2 |
+| [TensorFreeAtSum.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/TensorFreeAtSum.lean) | 1 |
+| 合計 | 49 |
+
+| ファイル | 宣言 | 種類 | 行数 | 残した理由の区分 |
+|---|---|---|---:|---|
+| Basic.lean | `SerrePositivity.SymmetricSpectrum` | `abbrev` | 3 | 型の略記 |
+| Basic.lean | `SerrePositivity.SymmetricSpectrum.forget` | `abbrev` | 2 | 別名 |
+| CotensorFunctor.lean | `SerrePositivity.SymmetricSpectrum.cotensorFunctor` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.evaluation` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.freeAt` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.freeAtAdjunction` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.freeAtGenerator` | `abbrev` | 2 | 別名 |
+| Free.lean | `SerrePositivity.SymmetricSpectrum.freeObj` | `abbrev` | 2 | 別名 |
+| Free.lean | `SerrePositivity.SymmetricSpectrum.freeFunctor` | `abbrev` | 2 | 別名 |
+| Free.lean | `SerrePositivity.SymmetricSpectrum.generator` | `abbrev` | 2 | 別名 |
+| InternalHomFunctor.lean | `SerrePositivity.SymmetricSpectrum.internalHomBifunctor` | `abbrev` | 2 | 別名 |
+| InternalHomShiftStructure.lean | `SerrePositivity.SymmetricSpectrum.structureMap_eq_convolutionComponent` | `lemma` | 6 | その他 |
+| MappingSpace.lean | `SerrePositivity.SymmetricSpectrum.pointedMappingSpaceBifunctor` | `abbrev` | 3 | 別名 |
+| MappingSpace.lean | `SerrePositivity.SymmetricSpectrum.pointedMappingSpaceParametrizedAdjunction` | `abbrev` | 5 | 別名 |
+| MappingSpacePointedOrdinary.lean | `SerrePositivity.SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory` | `abbrev` | 3 | 別名 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpace` | `def` | 3 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpaceBifunctor` | `def` | 5 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpaceBifunctor_obj` | `lemma` | 4 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingComposition` | `def` | 7 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingVertexEquiv` | `def` | 5 | 固有 |
+| MappingSpaceSimplicialOrdinary.lean | `SerrePositivity.SymmetricSpectrum.mappingSpaceSimplicialCategory_vertexEquiv` | `lemma` | 10 | 固有 |
+| PointwiseTensor.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorFunctor` | `abbrev` | 2 | 別名 |
+| PointwiseTensor.lean | `SerrePositivity.SymmetricSpectrum.sphereTensorFreeZeroPointwiseNatIso` | `abbrev` | 2 | 別名 |
+| PointwiseTensorAdjunction.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorCotensorAdjunction` | `abbrev` | 3 | 別名 |
+| PointwiseTensorAssociator.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorAssociatorNatIso` | `abbrev` | 2 | 別名 |
+| PointwiseTensorFunctor.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorBifunctor` | `abbrev` | 2 | 別名 |
+| PointwiseTensorUnit.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorUnitNatIso` | `abbrev` | 2 | 別名 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialCotensor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorFunctor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialCotensorFunctor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorParameterFunctor` | `def` | 4 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpaceFunctor` | `def` | 4 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorMappingAdjunction` | `def` | 4 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorCotensorAdjunction` | `def` | 4 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorPost` | `def` | 4 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialCotensorPre` | `def` | 5 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpacePre` | `def` | 4 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorCotensorHomEquiv_post` | `lemma` | 7 | 固有 |
+| SimplicialTensorProduct.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorProductNatIso` | `def` | 5 | 固有 |
+| SimplicialTensorUnit.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorUnitNatIso` | `def` | 4 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere` | `def` | 2 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere_underlying` | `lemma` | 2 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere_action` | `lemma` | 2 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere_structureMap` | `lemma` | 4 | 固有 |
+| StructureMaps.lean | `SerrePositivity.SymmetricSpectrum.structureMap_equivariance` | `lemma` | 10 | その他 |
+| SuspensionLoop.lean | `SerrePositivity.SymmetricSpectrum.suspensionFunctor` | `abbrev` | 3 | 別名 |
+| SuspensionLoop.lean | `SerrePositivity.SymmetricSpectrum.suspensionLoopAdjunction` | `abbrev` | 3 | 別名 |
+| TensorFreeAtSum.lean | `SerrePositivity.SymmetricSpectrum.sphereTensorFreeAtSum` | `abbrev` | 2 | 別名 |

@@ -1,0 +1,32 @@
+stage,removed_name,expansion,expanded_uses
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorHomEquiv,(pointwiseTensorCotensorAdjunction X).homEquiv A E,1
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorCurry,(pointwiseTensorCotensorAdjunction X).homEquiv A E f,8
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorUncurry,((pointwiseTensorCotensorAdjunction X).homEquiv A E).symm f,6
+4,SerrePositivity.SymmetricSpectrum.pointwiseTensorEvaluation,(pointwiseTensorCotensorAdjunction X).counit.app E,6
+4,SerrePositivity.SymmetricSpectrum.simplicialTensorEvaluation,(simplicialTensorCotensorAdjunction K).counit.app E,1
+4,SerrePositivity.SymmetricSpectrum.simplicialTensorCoevaluation,(simplicialTensorCotensorAdjunction K).unit.app E,0
+5,SerrePositivity.SymmetricSpectrum.sphereTensorHomEquiv,MonoidalModuleInternalHom.tensorHomEquiv sphereSequence.{u} E X F,2
+6,SerrePositivity.SymmetricSpectrum.internalHomCurry,MonoidalModuleInternalHom.curryModule sphereSequence.{u} E f,1
+6,SerrePositivity.SymmetricSpectrum.internalHomUncurry,MonoidalModuleInternalHom.uncurryModule sphereSequence.{u} E f,2
+6,SerrePositivity.SymmetricSpectrum.internalHomEvaluationSpectrum,MonoidalModuleInternalHom.evaluationModule sphereSequence.{u} E F,0
+6,SerrePositivity.SymmetricSpectrum.internalHomEvaluation,MonoidalModuleInternalHom.evaluation sphereSequence.{u} E F,0
+6,SerrePositivity.SymmetricSpectrum.internalHomUnderlyingEquiv,MonoidalModuleInternalHom.moduleHomEquiv sphereSequence.{u} E F X,0
+6,SerrePositivity.SymmetricSpectrum.shiftedHomEvaluation,MonoidalModuleInternalHom.transportedEvaluation sphereSequence.{u} ((SymmetricSequence.freeAt n).obj X) E (SymmetricSequence.freeInternalHomSequenceIso n X E.X),0
+7,SerrePositivity.SymmetricSpectrum.cotensorCurry,(GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).homEquiv A E f,0
+7,SerrePositivity.SymmetricSpectrum.cotensorUncurry,((GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).homEquiv A E).symm f,0
+7,SerrePositivity.SymmetricSpectrum.cotensorHomEquiv,(GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).homEquiv A E,0
+7,SerrePositivity.SymmetricSpectrum.cotensorEvaluation,(GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).counit.app E,3
+7,SerrePositivity.SymmetricSpectrum.simplicialTensorCotensorHomEquiv,(simplicialTensorCotensorAdjunction K).homEquiv E F,17
+8,SerrePositivity.SymmetricSpectrum.pointedMappingSpaceHomEquiv,(GeneralSymmetricSpectrum.mappingObjectAdjunction E).homEquiv X F,0
+8,SerrePositivity.SymmetricSpectrum.mappingSpaceCurry,(GeneralSymmetricSpectrum.mappingObjectAdjunction E).homEquiv X F f,0
+8,SerrePositivity.SymmetricSpectrum.mappingSpaceUncurry,((GeneralSymmetricSpectrum.mappingObjectAdjunction E).homEquiv X F).symm f,0
+8,SerrePositivity.SymmetricSpectrum.mappingSpaceEvaluation,(GeneralSymmetricSpectrum.mappingObjectAdjunction E).counit.app F,0
+8,SerrePositivity.SymmetricSpectrum.mappingSpaceArrowEquiv,GeneralSymmetricSpectrum.mappingObjectArrowEquiv E F,1
+8,SerrePositivity.SymmetricSpectrum.mappingSpaceCompositionEvaluation,GeneralSymmetricSpectrum.mappingObjectCompositionEvaluation E F G,0
+8,SerrePositivity.SymmetricSpectrum.simplicialTensorMappingHomEquiv,(simplicialTensorMappingAdjunction E).homEquiv K F,2
+8,SerrePositivity.SymmetricSpectrum.simplicialMappingCotensorHomEquiv,((simplicialTensorMappingAdjunction E).homEquiv K F).symm.trans ((simplicialTensorCotensorAdjunction K).homEquiv E F),1
+8,SerrePositivity.SymmetricSpectrum.simplicialMappingEvaluation,(simplicialTensorMappingAdjunction E).counit.app F,0
+8,SerrePositivity.SymmetricSpectrum.simplicialMappingCoevaluation,(simplicialTensorMappingAdjunction E).unit.app K,0
+8,SerrePositivity.SymmetricSpectrum.suspensionLoopHomEquiv,suspensionLoopAdjunction.homEquiv E F,3
+8,SerrePositivity.SymmetricSpectrum.suspensionLoopUnit,suspensionLoopAdjunction.unit.app E,4
+8,SerrePositivity.SymmetricSpectrum.suspensionLoopCounit,suspensionLoopAdjunction.counit.app E,4

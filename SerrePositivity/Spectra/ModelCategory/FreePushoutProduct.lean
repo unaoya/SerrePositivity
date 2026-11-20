@@ -1,7 +1,10 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
-public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
+public import SerrePositivity.Spectra.General.TensorClosed
+public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
+public import SerrePositivity.Spectra.SymmetricSpectrum.Free
+public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.PullbackObjObj
 public import Mathlib.CategoryTheory.Adjunction.Limits
 
@@ -19,6 +22,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (tensorFreeAtSum_naturality)
+open PointedSimplicialSet (circle)
 
 variable (m n : ℕ) {A B X Y : PointedSimplicialSet.{u}} (i : A ⟶ B) (j : X ⟶ Y)
   (sq : (curriedTensor PointedSimplicialSet.{u}).PushoutObjObj i j)
@@ -38,12 +44,12 @@ def freePushoutProductSquare : (curriedTensor SymmetricSpectrum.{u}).PushoutObjO
       (sphereTensorFreeAtSum m n A Y).symm (Iso.refl _) ?_ ?_ ?_ ?_
     · apply (cancel_epi (sphereTensorFreeAtSum m n A X).hom).1
       apply (cancel_mono (sphereTensorFreeAtSum m n B X).hom).1
-      simpa [← tensorHom_eq_sphereTensorMap] using
-        (sphereTensorFreeAtSum_naturality m n i (𝟙 X)).symm
+      simpa using
+        (tensorFreeAtSum_naturality (K := circle) m n i (𝟙 X)).symm
     · apply (cancel_epi (sphereTensorFreeAtSum m n A X).hom).1
       apply (cancel_mono (sphereTensorFreeAtSum m n A Y).hom).1
-      simpa [← tensorHom_eq_sphereTensorMap] using
-        (sphereTensorFreeAtSum_naturality m n (𝟙 A) j).symm
+      simpa using
+        (tensorFreeAtSum_naturality (K := circle) m n (𝟙 A) j).symm
     · simp
     · simp
   ι := (freeAt (m + n)).map sq.ι ≫ (sphereTensorFreeAtSum m n B Y).inv
@@ -51,12 +57,14 @@ def freePushoutProductSquare : (curriedTensor SymmetricSpectrum.{u}).PushoutObjO
     apply (cancel_mono (sphereTensorFreeAtSum m n B Y).hom).1
     simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
     rw [← (freeAt (m + n)).map_comp, sq.inl_ι]
-    simpa [← tensorHom_eq_sphereTensorMap] using (sphereTensorFreeAtSum_naturality m n (𝟙 B) j).symm
+    simpa using
+      (tensorFreeAtSum_naturality (K := circle) m n (𝟙 B) j).symm
   inr_ι := by
     apply (cancel_mono (sphereTensorFreeAtSum m n B Y).hom).1
     simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
     rw [← (freeAt (m + n)).map_comp, sq.inr_ι]
-    simpa [← tensorHom_eq_sphereTensorMap] using (sphereTensorFreeAtSum_naturality m n i (𝟙 Y)).symm
+    simpa using
+      (tensorFreeAtSum_naturality (K := circle) m n i (𝟙 Y)).symm
 
 /-- Compare an arbitrary spectrum pushout choice with the free image of an
 arbitrary pointed pushout choice, as an isomorphism of actual arrows. -/

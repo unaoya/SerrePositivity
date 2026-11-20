@@ -78,7 +78,11 @@ lemma circleSpectrumLevelModel_enrichedHom_SM7 :
     let : ModelCategory SSet.{u} := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillenModel
     let := circleSpectrumLevelModel.{u}
     let : EnrichedOrdinaryCategory SSet.{u} SymmetricSpectrum.{u} :=
-      SymmetricSpectrum.mappingSpaceSimplicialCategory
+      by
+        letI := SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory.{u}
+        exact TransportOrdinaryEnrichment.ordinaryCategory PointedSimplicialSet.forget.{u}
+          SymmetricSpectrum.{u} PointedSimplicialSet.forgetUnitHomEquiv.{u}
+          PointedSimplicialSet.forgetUnitHomEquiv_formula.{u}
     Quillen.HasQuillenPullbackHom (eHomFunctor SSet.{u} SymmetricSpectrum.{u}) := by
   let : ModelCategory SSet.{u} := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillenModel
   exact legacyOrdinaryHom_SM7 _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillenModel_cofibrations _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillenModel_fibrations

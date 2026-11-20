@@ -51,4 +51,19 @@ lemma tensorFreeAtSum_naturality (m n : ℕ) {X X' Y Y' : C} (f : X ⟶ X') (g :
     ← Functor.map_comp, SymmetricSequence.freePairConvolutionIso_naturality,
     Functor.map_comp, Category.assoc]
 
+/-- Tensor two spectra free in the indicated degrees. -/
+def tensorFreeAtBifunctor (m n : ℕ) : C × C ⥤ GeneralSymmetricSpectrum C K :=
+  (freeAt (K := K) m).prod (freeAt (K := K) n) ⋙
+    MonoidalBalancedTensor.moduleBifunctor (SymmetricSequence.tensorPowerSequence K)
+
+/-- Tensor the coefficients and take the spectrum free in the sum degree. -/
+def freeAtTensorBifunctor (m n : ℕ) : C × C ⥤ GeneralSymmetricSpectrum C K :=
+  CategoryTheory.MonoidalCategory.tensor C ⋙ freeAt (K := K) (m + n)
+
+/-- The free tensor comparison is natural in the two coefficient objects. -/
+def tensorFreeAtSumNatIso (m n : ℕ) :
+    tensorFreeAtBifunctor (K := K) m n ≅ freeAtTensorBifunctor m n :=
+  NatIso.ofComponents (fun XY => tensorFreeAtSum (K := K) m n XY.1 XY.2)
+    (fun fg => tensorFreeAtSum_naturality m n fg.1 fg.2)
+
 end SerrePositivity.GeneralSymmetricSpectrum

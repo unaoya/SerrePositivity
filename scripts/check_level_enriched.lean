@@ -29,15 +29,20 @@ example : let : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
 end General
 
 section LegacyPointed
-local instance : EnrichedOrdinaryCategory PointedSimplicialSet.{u} SymmetricSpectrum.{u} :=
-  SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory
-example : eHomFunctor PointedSimplicialSet.{u} SymmetricSpectrum.{u} ≅ pointedSpectrumMapping.{u} :=
+example :
+    let : EnrichedOrdinaryCategory PointedSimplicialSet.{u} SymmetricSpectrum.{u} :=
+      GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory (K := PointedSimplicialSet.circle.{u})
+    eHomFunctor PointedSimplicialSet.{u} SymmetricSpectrum.{u} ≅ pointedSpectrumMapping.{u} :=
   legacyPointedHomFunctorIso
 end LegacyPointed
 
 section LegacyOrdinary
 local instance : EnrichedOrdinaryCategory SSet.{u} SymmetricSpectrum.{u} :=
-  SymmetricSpectrum.mappingSpaceSimplicialCategory
+  by
+    letI := SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory.{u}
+    exact TransportOrdinaryEnrichment.ordinaryCategory PointedSimplicialSet.forget.{u}
+      SymmetricSpectrum.{u} PointedSimplicialSet.forgetUnitHomEquiv.{u}
+      PointedSimplicialSet.forgetUnitHomEquiv_formula.{u}
 example : eHomFunctor SSet.{u} SymmetricSpectrum.{u} ≅ ordinarySpectrumMapping.{u} :=
   legacyOrdinaryHomFunctorIso
 example [ModelCategory SSet.{u}]
