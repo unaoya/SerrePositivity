@@ -35,12 +35,6 @@ abbrev pointwiseTensorFunctor (X : C) :
 lemma pointwiseTensor_level (X : C) (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
     level (pointwiseTensor X E) n = X ⊗ level E n := rfl
 
-/-- Permutations act on the spectrum factor of the pointwise tensor. -/
-lemma pointwiseTensor_permutation (X : C) (E : GeneralSymmetricSpectrum C K)
-    (q : ℕ) (σ : Equiv.Perm (Fin q)) :
-    (pointwiseTensor X E).X.map (FiniteBijection.permutation q σ) =
-      X ◁ E.X.map (FiniteBijection.permutation q σ) := rfl
-
 abbrev tensorFreeZeroPointwiseIso (X : C) (E : GeneralSymmetricSpectrum C K) :
     tensor ((freeAt (K := K) 0).obj X) E ≅ pointwiseTensor X E :=
   SymmetricSequence.freeZeroTensorPointwiseModuleIso (SymmetricSequence.tensorPowerSequence K) X E
@@ -58,15 +52,6 @@ def tensorFreeZeroPointwiseBifunctorIso :
       pointwiseTensorBifunctor :=
   FunctorTransport.iso ((freeAt (K := K) 0) ⋙ curriedTensor (GeneralSymmetricSpectrum C K))
     pointwiseTensorFunctor tensorFreeZeroPointwiseNatIso
-
-lemma tensorFreeZeroPointwiseNatIso_app (X : C) (E : GeneralSymmetricSpectrum C K) :
-    (tensorFreeZeroPointwiseNatIso X).app E = tensorFreeZeroPointwiseIso X E := rfl
-
-lemma pointwiseTensorBifunctor_obj (X : C) :
-    (pointwiseTensorBifunctor (K := K)).obj X = pointwiseTensorFunctor X := rfl
-
-lemma tensorFreeZeroPointwiseBifunctorIso_app (X : C) (E : GeneralSymmetricSpectrum C K) :
-    (tensorFreeZeroPointwiseBifunctorIso.app X).app E = tensorFreeZeroPointwiseIso X E := rfl
 
 /-- The map of pointwise tensors induced by maps in both variables. -/
 def pointwiseTensorMap {X Y : C} (f : X ⟶ Y) {E F : GeneralSymmetricSpectrum C K}

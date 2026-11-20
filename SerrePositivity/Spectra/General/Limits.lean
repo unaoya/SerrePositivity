@@ -57,9 +57,6 @@ instance evaluation_preservesColimitsOfShape [HasLimitsOfSize.{0, 0} C]
   unfold evaluation
   infer_instance
 
-instance free_preservesColimits : PreservesColimitsOfSize.{w', w} (freeFunctor K) :=
-  (freeForgetAdjunction K).leftAdjoint_preservesColimits
-
 instance freeAt_preservesColimits (n : ℕ) :
     PreservesColimitsOfSize.{w', w} (freeAt (K := K) n) :=
   (freeAtAdjunction (K := K) n).leftAdjoint_preservesColimits
@@ -80,18 +77,8 @@ variable {K}
 def limitLevelIso [HasLimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) :
     level (limit F) n ≅ limit (F ⋙ evaluation n) := preservesLimitIso (evaluation n) F
 
-@[reassoc (attr := simp)] lemma limitLevelIso_hom_π [HasLimitsOfShape J C]
-    (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
-    (limitLevelIso F n).hom ≫ limit.π (F ⋙ evaluation n) j = levelMap (limit.π F j) n :=
-  preservesLimitIso_hom_π (evaluation n) F j
-
 def colimitLevelIso [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C]
     (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) :
     level (colimit F) n ≅ colimit (F ⋙ evaluation n) := preservesColimitIso (evaluation n) F
 
-@[reassoc (attr := simp)] lemma colimitLevelIso_ι_hom [HasLimitsOfSize.{0, 0} C]
-    [HasColimitsOfShape J C]
-    (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
-    levelMap (colimit.ι F j) n ≫ (colimitLevelIso F n).hom = colimit.ι (F ⋙ evaluation n) j :=
-  ι_preservesColimitIso_hom (evaluation n) F j
 end SerrePositivity.GeneralSymmetricSpectrum

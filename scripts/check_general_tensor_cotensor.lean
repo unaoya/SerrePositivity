@@ -45,14 +45,17 @@ example (X Y : C) : pointwiseTensorFunctor (K := K) (X ⊗ Y) ≅
 example (X : C) (E : GeneralSymmetricSpectrum C K) :
     (pointwiseTensorFunctor X).map ((pointwiseTensorCotensorAdjunction X).unit.app E) ≫
       (pointwiseTensorCotensorAdjunction X).counit.app ((pointwiseTensorFunctor X).obj E) =
-        𝟙 _ := tensorCotensor_triangle X E
+        𝟙 _ := (pointwiseTensorCotensorAdjunction X).left_triangle_components E
 
 example {X Y : C} (f : X ⟶ Y) (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
     (pointwiseTensorPost f E).hom.app (FiniteBijection.of n) = f ▷ level E n :=
   pointwiseTensorPost_level f E n
 
 example (X Y Z : C) (E : GeneralSymmetricSpectrum C K) :
-    pointwiseTensorPentagonLaw X Y Z E := pointwiseTensor_pentagon X Y Z E
+    pointwiseTensorPentagonLaw X Y Z E :=
+  SymmetricSequence.pointwiseAction_pentagon (SymmetricSequence.tensorPowerSequence K)
+    pointwiseTensorAssociator pointwiseTensorPost pointwiseTensorAssociator_level
+    pointwiseTensorPost_level X Y Z E
 
 example (X : C) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensorTriangleLaw X E := pointwiseTensor_triangle X E
@@ -65,16 +68,16 @@ example : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
 
 example (E F : GeneralSymmetricSpectrum C K) :
     mappingObjectArrowEquiv E F = ordinaryHomEquiv E F :=
-  mappingObjectArrowEquiv_eq_ordinaryHomEquiv E F
+  rfl
 
 example (E : GeneralSymmetricSpectrum C K) :
     (mappingEnrichedCategory (K := K)).id E = mappingObjectUnit E :=
-  mappingEnrichedCategory_id E
+  rfl
 
 example (E F G : GeneralSymmetricSpectrum C K) :
     (mappingEnrichedCategory (K := K)).comp E F G =
       ReverseComposition.reverse (mappingObjectComposition E F G) :=
-  mappingEnrichedCategory_comp E F G
+  rfl
 
 section
 local instance : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
@@ -85,7 +88,8 @@ example (E F : GeneralSymmetricSpectrum C K) :
 
 example (E : GeneralSymmetricSpectrum C K) :
     (EnrichedOrdinaryCategory.homEquiv (V := C) (𝟙 E)) = mappingObjectUnit E := by
-  exact mappingObjectArrow_identity E
+  exact RepresentedMappingEnrichment.arrow_identity pointwiseTensorBifunctor
+    pointwiseTensorUnitNatIso mappingObjectFunctor mappingObjectAdjunction E
 
 example (E : GeneralSymmetricSpectrum C K) {F G : GeneralSymmetricSpectrum C K} (g : F ⟶ G) :
     eHomWhiskerLeft C E g = (mappingObjectFunctor E).map g :=
@@ -147,7 +151,7 @@ example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : E ⟶ cotensor X F) :
 example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E ⟶ F) :
     eHomEquiv C f ≫ (spectrumEnrichedRepresentability.homObjectComparison X E F).hom =
       eHomEquiv C (pointwiseTensorHomEquiv X E F f) :=
-  spectrumHomObjectComparison_points X E F f
+  spectrumEnrichedRepresentability.homObjectComparison_points X E F f
 
 section ModelCompatibility
 variable [HomotopicalAlgebra.ModelCategory C]

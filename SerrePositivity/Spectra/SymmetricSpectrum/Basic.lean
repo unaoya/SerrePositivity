@@ -73,21 +73,11 @@ lemma structureMap_equivariance (E : SymmetricSpectrum.{u}) (p q : ℕ)
   rw [← sphereSequence_map_permutation]
   exact GeneralSymmetricSpectrum.structureMap_equivariance E p q σ τ
 
-/-- スペクトルの構造射は一般のconvolutionの次数成分に一致する。 -/
-lemma structureMap_eq_convolutionComponent (E : SymmetricSpectrum.{u}) (p q : ℕ) :
-    structureMap E p q =
-      SymmetricSequence.convolutionComponent (action E)
-        (FiniteBijection.of p) (FiniteBijection.of q) := by
-  rfl
-
 /-- F_m XとF_n Yの積は、和次数からXとYのsmashを生成する自由スペクトルと同型。 -/
 abbrev sphereTensorFreeAtSum := GeneralSymmetricSpectrum.tensorFreeAtSum (K := circle.{u})
 
 /-- 各段のsmashを持つテンソルの値域スペクトルに関する関手。 -/
 abbrev pointwiseTensorFunctor := GeneralSymmetricSpectrum.pointwiseTensorFunctor (K := circle.{u})
-
-/-- F_0 Xとの全体の比較は値域スペクトルに関する自然同型。 -/
-abbrev sphereTensorFreeZeroPointwiseNatIso := GeneralSymmetricSpectrum.tensorFreeZeroPointwiseNatIso (K := circle.{u})
 
 /-- 各段のsmashを持つテンソルは生成対象と値域スペクトルに共変な二変数関手。 -/
 abbrev pointwiseTensorBifunctor := GeneralSymmetricSpectrum.pointwiseTensorBifunctor (K := circle.{u})

@@ -55,35 +55,15 @@ lemma freeAtGenerator_eq (n : ℕ) (X : C) :
     freeAtGenerator (K := K) n X = SymmetricSequence.freeAtGenerator n X ≫
       (generator K ((SymmetricSequence.freeAt n).obj X)).app (FiniteBijection.of n) := by
   rw [freeAtGenerator, freeAtAdjunction, Adjunction.comp_unit_app,
-    SymmetricSequence.freeAt_unit, free_unit]
+    SymmetricSequence.freeAt_unit, MonoidalFreeModule.free_unit]
   rfl
-
-/-- Hom同値はスペクトルの射を生成元へ制限する。 -/
-lemma freeAtHomEquiv_apply (n : ℕ) (X : C)
-    (E : GeneralSymmetricSpectrum C K) (f : (freeAt (K := K) n).obj X ⟶ E) :
-    freeAtHomEquiv (K := K) n X E f = freeAtGenerator (K := K) n X ≫ levelMap f n :=
-  (freeAtAdjunction (K := K) n).homEquiv_unit X E f
-
-/-- 延長は第n段の生成元上で元の射に一致する。 -/
-lemma freeAtGenerator_lift (n : ℕ) {X : C}
-    (E : GeneralSymmetricSpectrum C K) (f : X ⟶ level E n) :
-    freeAtGenerator (K := K) n X ≫ levelMap (freeAtLift (K := K) n E f) n = f := by
-  rw [← freeAtHomEquiv_apply (K := K)]
-  exact (freeAtHomEquiv (K := K) n X E).apply_symm_apply f
-
-/-- 自由スペクトルの射は生成元での値からの延長に等しい。 -/
-lemma freeAtLift_generator (n : ℕ) {X : C}
-    (E : GeneralSymmetricSpectrum C K) (f : (freeAt (K := K) n).obj X ⟶ E) :
-    freeAtLift (K := K) n E (freeAtGenerator (K := K) n X ≫ levelMap f n) = f := by
-  rw [← freeAtHomEquiv_apply (K := K)]
-  exact (freeAtHomEquiv (K := K) n X E).symm_apply_apply f
 
 /-- 第n段で指定した値を持つ自由スペクトルの射は一意。 -/
 lemma freeAtLift_unique (n : ℕ) {X : C}
     (E : GeneralSymmetricSpectrum C K) (f : (freeAt (K := K) n).obj X ⟶ E) (g : X ⟶ level E n)
     (h : freeAtGenerator (K := K) n X ≫ levelMap f n = g) : f = freeAtLift (K := K) n E g := by
   apply (freeAtHomEquiv (K := K) n X E).injective
-  rw [freeAtHomEquiv_apply (K := K), h]
+  erw [(freeAtAdjunction (K := K) n).homEquiv_unit X E f, h]
   exact ((freeAtHomEquiv (K := K) n X E).apply_symm_apply g).symm
 
 /-- 延長は、自由対称列への延長と自由Sym(K)加群への延長を順に行う構成。 -/
@@ -97,10 +77,5 @@ lemma freeAtLift_eq (n : ℕ) {X : C}
   rw [freeAtGenerator_eq (K := K)]
   erw [Category.assoc, ← NatTrans.comp_app, generator_lift]
   exact SymmetricSequence.freeAtGenerator_lift n E.X f
-
-/-- F_n Xのunderlying対称列はSym(K)と自由対称列のconvolution。 -/
-lemma freeAt_underlying (n : ℕ) (X : C) :
-    ((freeAt (K := K) n).obj X).X =
-      (SymmetricSequence.tensorPowerSequence K) ⊗ (SymmetricSequence.freeAt n).obj X := rfl
 
 end SerrePositivity.GeneralSymmetricSpectrum

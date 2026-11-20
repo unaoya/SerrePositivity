@@ -19,7 +19,8 @@ example (n : ℕ) : freeAt (K := K) n ⊣ evaluation (K := K) n := freeAtAdjunct
 
 example (n : ℕ) {X : C} (E : GeneralSymmetricSpectrum C K) (f : X ⟶ level E n) :
     freeAtGenerator (K := K) n X ≫ levelMap (freeAtLift n E f) n = f :=
-  freeAtGenerator_lift n E f
+  ((freeAtAdjunction (K := K) n).homEquiv_unit X E (freeAtLift n E f)).symm.trans
+    ((freeAtHomEquiv (K := K) n X E).apply_symm_apply f)
 
 -- Naturality in the input and the output uses the actual selected adjunction.
 example (n : ℕ) {X X' : C} (a : X ⟶ X') (E : GeneralSymmetricSpectrum C K)
@@ -41,10 +42,10 @@ example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] : HasColimitsOfShape
   inferInstance
 example [HasLimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
     (limitLevelIso F n).hom ≫ limit.π (F ⋙ evaluation n) j = levelMap (limit.π F j) n :=
-  limitLevelIso_hom_π F n j
+  preservesLimitIso_hom_π (evaluation n) F j
 example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
     levelMap (colimit.ι F j) n ≫ (colimitLevelIso F n).hom = colimit.ι (F ⋙ evaluation n) j :=
-  colimitLevelIso_ι_hom F n j
+  ι_preservesColimitIso_hom (evaluation n) F j
 
 -- Coercion-free reuse of the old category, morphisms, free objects and adjunctions.
 example (E : SymmetricSpectrum.{u}) :
@@ -67,9 +68,9 @@ example : SymmetricCategory (GeneralSymmetricSpectrum C K) := inferInstance
 example (E X F : GeneralSymmetricSpectrum C K) :
     (tensor E X ⟶ F) ≃ (X ⟶ internalHom E F) := tensorHomEquiv E X F
 example {E X F : GeneralSymmetricSpectrum C K} (f : tensor E X ⟶ F) :
-    uncurry (curry f) = f := uncurry_curry f
+    uncurry (curry f) = f := (tensorHomEquiv _ _ _).symm_apply_apply f
 example {E X F : GeneralSymmetricSpectrum C K} (f : X ⟶ internalHom E F) :
-    curry (uncurry f) = f := curry_uncurry f
+    curry (uncurry f) = f := (tensorHomEquiv _ _ _).apply_symm_apply f
 end Closed
 
 section Structure

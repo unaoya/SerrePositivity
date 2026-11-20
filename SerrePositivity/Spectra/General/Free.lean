@@ -34,30 +34,9 @@ abbrev freeHomEquiv (F : SymmetricSequence C) (E : GeneralSymmetricSpectrum C K)
 abbrev freeForgetAdjunction : freeFunctor K ⊣ forget K :=
   MonoidalFreeModule.freeForgetAdjunction (SymmetricSequence.tensorPowerSequence K)
 
-lemma free_underlying (F : SymmetricSequence C) :
-    (freeObj K F).X = SymmetricSequence.tensorPowerSequence K ⊗ F := rfl
-
 lemma generator_lift {F : SymmetricSequence C} (E : GeneralSymmetricSpectrum C K)
     (f : F ⟶ E.X) : generator K F ≫ (lift K E f).hom = f :=
   MonoidalFreeModule.generator_lift _ F E f
-
-lemma lift_generator {F : SymmetricSequence C} (E : GeneralSymmetricSpectrum C K)
-    (f : freeObj K F ⟶ E) : lift K E (generator K F ≫ f.hom) = f :=
-  MonoidalFreeModule.lift_generator _ F E f
-
-lemma free_unit (F : SymmetricSequence C) :
-    (freeForgetAdjunction K).unit.app F = generator K F :=
-  MonoidalFreeModule.free_unit _ F
-
-lemma free_counit (E : GeneralSymmetricSpectrum C K) :
-    ((freeForgetAdjunction K).counit.app E).hom = action E :=
-  MonoidalFreeModule.free_counit _ E
-/-- The action on a free spectrum is induced by multiplication in the tensor-power monoid. -/
-lemma free_action (F : SymmetricSequence C) :
-    action (freeObj K F) =
-      (α_ (SymmetricSequence.tensorPowerSequence K)
-        (SymmetricSequence.tensorPowerSequence K) F).inv ≫
-        (MonObj.mul (X := SymmetricSequence.tensorPowerSequence K) ▷ F) := rfl
 
 /-- The value on the generators determines a map from a free spectrum. -/
 lemma lift_unique {F : SymmetricSequence C} (E : GeneralSymmetricSpectrum C K)

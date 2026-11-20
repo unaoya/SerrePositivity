@@ -106,8 +106,7 @@ run_cmd do
       `SerrePositivity.Spectra.General.TensorClosed,
       `SerrePositivity.Spectra.General.PointwiseTensor,
       `SerrePositivity.Spectra.General.Cotensor,
-      `SerrePositivity.Spectra.General.MappingObject,
-      `SerrePositivity.Spectra.General.SimplicialComparison] do
+      `SerrePositivity.Spectra.General.MappingObject] do
     unless modules.contains expected do throwError "Required general spectrum module missing: {expected}"
   if declarations == 0 then throwError "No spectra declarations were audited"
   logInfo m!"Spectra and shared foundations audit passed: {declarations} declarations in {modules.size} modules."

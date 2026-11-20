@@ -23,19 +23,6 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 
 namespace SerrePositivity.GeneralSymmetricSpectrum
-section ZeroTensor
-variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
-  [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] [HasLimitsOfSize.{0, 0} C]
-  [HasZeroObject C] {K : C}
-
-lemma pointwiseTensor_isZero_of_isZero (X : C) (hX : IsZero X)
-    (E : GeneralSymmetricSpectrum C K) : IsZero (pointwiseTensor X E) := by
-  let F := mappingTensorFunctor E
-  have := (mappingObjectAdjunction E).isLeftAdjoint
-  have hi := hX.isInitial.isInitialObj F X
-  exact (isZero_zero (GeneralSymmetricSpectrum C K)).of_iso
-    (hi.uniqueUpToIso (isZero_zero (GeneralSymmetricSpectrum C K)).isInitial)
-end ZeroTensor
 
 section Simplicial
 open scoped Simplicial
@@ -60,18 +47,16 @@ lemma circleTensor_isPushout : IsPushout (intervalBoundaryTensorMap E)
   exact PointedObject.map_cofiber_isPushout (SSet.boundary.{u} 1).ι (mappingTensorFunctor E)
 
 lemma circleTensorPoint_isZero :
-    IsZero ((mappingTensorFunctor E).obj PointedObject.point) :=
-  pointwiseTensor_isZero_of_isZero _ PointedObject.point_isZero E
-
-lemma intervalBoundaryCollapse_eq_zero : intervalBoundaryCollapse E = 0 :=
-  (circleTensorPoint_isZero E).eq_of_tgt _ _
-
-lemma circleTensorBasepoint_eq_zero : circleTensorBasepoint E = 0 :=
-  (circleTensorPoint_isZero E).eq_of_src _ _
+    IsZero ((mappingTensorFunctor E).obj PointedObject.point) := by
+  have := (mappingObjectAdjunction E).isLeftAdjoint
+  exact (PointedObject.point_isZero.isInitial.isInitialObj
+    (mappingTensorFunctor E) PointedObject.point).isZero
 
 lemma circleTensorQuotient_boundary :
     intervalBoundaryTensorMap E ≫ circleTensorQuotient E = 0 := by
-  rw [(circleTensor_isPushout E).w, intervalBoundaryCollapse_eq_zero, zero_comp]
+  have hzero : intervalBoundaryCollapse E = 0 :=
+    (circleTensorPoint_isZero E).eq_of_tgt _ _
+  rw [(circleTensor_isPushout E).w, hzero, zero_comp]
 
 end Simplicial
 end SerrePositivity.GeneralSymmetricSpectrum

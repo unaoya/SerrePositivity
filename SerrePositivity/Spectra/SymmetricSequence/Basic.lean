@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSequence.FiniteBijection
+public import SerrePositivity.CategoryTheory.Limits
 public import Mathlib.CategoryTheory.Action.Basic
 
 /-!

@@ -60,7 +60,10 @@ example [ModelCategory SSet.{u}] (K : PointedSimplicialSet.{u})
   let := p.localization.model
   have : IsCofibrant E := hE
   have : IsQuillenBifunctor (pointwiseTensorBifunctor (K := K)) := haction
-  refine ⟨simplicialCylinder hcof hw E, simplicialCylinder_isGood hcof hw E, Iso.refl _,
+  have := simplicialIntervalCylinder_isGood hcof hw E
+  have hgood := ModelCylinder.changeBase_isGood (simplicialIntervalCylinder hcof hw E)
+    (simplicialVertexIso E)
+  refine ⟨simplicialCylinder hcof hw E, hgood, Iso.refl _,
     intervalBoundaryTensorMap_cofibration hcof E, circleTensor_isPushout E,
     ?_⟩
   simpa only [Iso.refl_hom, Category.id_comp] using circleTensor_cylinder_isPushout hcof hw E
@@ -71,14 +74,23 @@ example (E : SymmetricSpectrum.{u}) :
     (pointwiseTensorCotensorAdjunction
       (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle).unit.app E ≫
       simplicialLoopNatIso.hom.app (SymmetricSpectrum.suspensionFunctor.obj E) =
-        SymmetricSpectrum.suspensionLoopAdjunction.unit.app E := simplicial_suspensionLoopUnit E
+        SymmetricSpectrum.suspensionLoopAdjunction.unit.app E := by
+  simpa only [simplicialLoopNatIso] using
+    Adjunction.unit_rightAdjointUniq_hom_app
+      (pointwiseTensorCotensorAdjunction
+        (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle)
+      SymmetricSpectrum.suspensionLoopAdjunction.{u} E
 
 example (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.suspensionFunctor.map (simplicialLoopNatIso.hom.app E) ≫
       SymmetricSpectrum.suspensionLoopAdjunction.counit.app E =
         (pointwiseTensorCotensorAdjunction
-          (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle).counit.app E :=
-  simplicial_suspensionLoopCounit E
+          (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle).counit.app E := by
+  simpa only [simplicialLoopNatIso] using
+    Adjunction.rightAdjointUniq_hom_app_counit
+      (pointwiseTensorCotensorAdjunction
+        (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle)
+      SymmetricSpectrum.suspensionLoopAdjunction.{u} E
 
 open Lean in
 run_cmd do

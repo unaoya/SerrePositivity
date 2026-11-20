@@ -80,11 +80,6 @@ def simplicialMappingSpaceBifunctor : SymmetricSpectrum.{u}ᵒᵖ ⥤
   pointedMappingSpaceBifunctor ⋙
     (CategoryTheory.Functor.whiskeringRight _ _ _).obj PointedSimplicialSet.forget
 
-/-- 二変数関手の対象は基点を忘れた写像対象。 -/
-lemma simplicialMappingSpaceBifunctor_obj (E F : SymmetricSpectrum.{u}) :
-    (simplicialMappingSpaceBifunctor.obj (Opposite.op E)).obj F =
-      simplicialMappingSpace E F := rfl
-
 /-- 通常の単体的写像対象の合成。最初に適用する射を第一因子に置く。 -/
 def simplicialMappingComposition (E F G : SymmetricSpectrum.{u}) :
     simplicialMappingSpace E F ⊗ simplicialMappingSpace F G ⟶ simplicialMappingSpace E G :=
@@ -125,14 +120,6 @@ def simplicialCotensorPre {K L : SSet.{u}} (f : K ⟶ L) (F : SymmetricSpectrum.
 def simplicialMappingSpacePre {E E' : SymmetricSpectrum.{u}} (f : E' ⟶ E)
     (F : SymmetricSpectrum.{u}) : simplicialMappingSpace E F ⟶ simplicialMappingSpace E' F :=
   PointedSimplicialSet.forget.map ((pointedMappingSpaceBifunctor.map f.op).app F)
-
-/-- cotensorへのHom同値の単体的集合に関する自然性。 -/
-lemma simplicialTensorCotensorHomEquiv_post {K L : SSet.{u}} (f : K ⟶ L)
-    {E F : SymmetricSpectrum.{u}} (g : simplicialTensor L E ⟶ F) :
-    ((simplicialTensorCotensorAdjunction K).homEquiv E F) (simplicialTensorPost f E ≫ g) =
-      ((simplicialTensorCotensorAdjunction L).homEquiv E F) g ≫ simplicialCotensorPre f F :=
-  GeneralSymmetricSpectrum.pointwiseTensorHomEquiv_naturality_parameter
-    (adjoinBasepointFunctor.map f) E F g
 
 /-- 零次標準単体によるtensorは恒等関手に自然に同型。 -/
 def simplicialTensorUnitNatIso :

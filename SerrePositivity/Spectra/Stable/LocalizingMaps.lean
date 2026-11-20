@@ -35,15 +35,24 @@ def localizingMap (n : ℕ) (A : C) :
 lemma localizingMap_generator (n : ℕ) (A : C) :
     freeAtGenerator (K := K) (n + 1) (A ⊗ K) ≫
       levelMap (localizingMap K n A) (n + 1) = localizingGenerator K n A :=
-  freeAtGenerator_lift (n + 1) _ _
+  ((freeAtAdjunction (K := K) (n + 1)).homEquiv_unit _ _
+    (localizingMap K n A)).symm.trans
+      ((freeAtHomEquiv (K := K) (n + 1) _ _).apply_symm_apply _)
 
 lemma localizingMap_hom {E : GeneralSymmetricSpectrum C K} (n : ℕ) (A : C)
     (f : (freeAt (K := K) n).obj A ⟶ E) :
     freeAtHomEquiv (n + 1) (A ⊗ K) E (localizingMap K n A ≫ f) =
       (β_ A K).hom ≫ K ◁ (freeAtHomEquiv n A E f) ≫ suspensionMap E n := by
-  rw [freeAtHomEquiv_apply, levelMap_comp, ← Category.assoc, localizingMap_generator]
+  have hunit : freeAtHomEquiv (n + 1) (A ⊗ K) E (localizingMap K n A ≫ f) =
+      freeAtGenerator (K := K) (n + 1) (A ⊗ K) ≫ levelMap (localizingMap K n A ≫ f) (n + 1) :=
+    (freeAtAdjunction (K := K) (n + 1)).homEquiv_unit _ _ _
+  have hlevel : levelMap (localizingMap K n A ≫ f) (n + 1) =
+      levelMap (localizingMap K n A) (n + 1) ≫ levelMap f (n + 1) := rfl
+  rw [hunit, hlevel, ← Category.assoc, localizingMap_generator]
   rw [localizingGenerator, Category.assoc, Category.assoc, suspensionMap_hom]
-  rw [← whiskerLeft_comp_assoc, ← freeAtHomEquiv_apply]
+  have hunit' : freeAtHomEquiv n A E f = freeAtGenerator (K := K) n A ≫ levelMap f n :=
+    (freeAtAdjunction (K := K) n).homEquiv_unit A E f
+  rw [← whiskerLeft_comp_assoc, ← hunit']
 
 lemma localizingMap_adjoint {E : GeneralSymmetricSpectrum C K} (n : ℕ) (A : C)
     (f : (freeAt (K := K) n).obj A ⟶ E) :
@@ -61,8 +70,13 @@ lemma localizingMap_adjoint {E : GeneralSymmetricSpectrum C K} (n : ℕ) (A : C)
   change (freeAtAdjunction (K := K) (n + 1)).homEquiv _ _ _ = _
   rw [(freeAtAdjunction (K := K) (n + 1)).homEquiv_naturality_left]
   change (f ▷ K) ≫ freeAtHomEquiv (n + 1) (B ⊗ K) _ (localizingMap K n B) = _
-  rw [freeAtHomEquiv_apply, localizingMap_generator, localizingMap_hom,
-    freeAtHomEquiv_apply]
+  have hunit : freeAtHomEquiv (n + 1) (B ⊗ K) _ (localizingMap K n B) =
+      freeAtGenerator (K := K) (n + 1) (B ⊗ K) ≫ levelMap (localizingMap K n B) (n + 1) :=
+    (freeAtAdjunction (K := K) (n + 1)).homEquiv_unit _ _ _
+  have hunit' : freeAtHomEquiv n A _ ((freeAt (K := K) n).map f) =
+      freeAtGenerator (K := K) n A ≫ levelMap ((freeAt (K := K) n).map f) n :=
+    (freeAtAdjunction (K := K) n).homEquiv_unit _ _ _
+  rw [hunit, localizingMap_generator, localizingMap_hom, hunit']
   have hn := (freeAtAdjunction (K := K) n).unit.naturality f
   change f ≫ freeAtGenerator (K := K) n B =
     freeAtGenerator (K := K) n A ≫ levelMap ((freeAt (K := K) n).map f) n at hn

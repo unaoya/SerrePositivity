@@ -76,18 +76,4 @@ lemma pointwiseTensorHomEquiv_naturality_source (X : C)
       a ≫ pointwiseTensorHomEquiv X E' F f :=
   (pointwiseTensorCotensorAdjunction X).homEquiv_naturality_left a f
 
-lemma pointwiseTensorHomEquiv_naturality_target (X : C) (E : GeneralSymmetricSpectrum C K)
-    {F F' : GeneralSymmetricSpectrum C K} (b : F ⟶ F') (f : pointwiseTensor X E ⟶ F) :
-    pointwiseTensorHomEquiv X E F' (f ≫ b) =
-      pointwiseTensorHomEquiv X E F f ≫ (cotensorFunctor X).map b :=
-  (pointwiseTensorCotensorAdjunction X).homEquiv_naturality_right f b
-
-lemma tensorCotensor_triangle (X : C) (E : GeneralSymmetricSpectrum C K) :
-    (pointwiseTensorFunctor X).map ((pointwiseTensorCotensorAdjunction X).unit.app E) ≫
-      (pointwiseTensorCotensorAdjunction X).counit.app ((pointwiseTensorFunctor X).obj E) =
-        𝟙 _ := (pointwiseTensorCotensorAdjunction X).left_triangle_components E
-lemma cotensorTensor_triangle (X : C) (F : GeneralSymmetricSpectrum C K) :
-    (pointwiseTensorCotensorAdjunction X).unit.app ((cotensorFunctor X).obj F) ≫
-      (cotensorFunctor X).map ((pointwiseTensorCotensorAdjunction X).counit.app F) =
-        𝟙 _ := (pointwiseTensorCotensorAdjunction X).right_triangle_components F
 end SerrePositivity.GeneralSymmetricSpectrum

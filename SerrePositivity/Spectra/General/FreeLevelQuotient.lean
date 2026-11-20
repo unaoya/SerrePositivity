@@ -36,51 +36,11 @@ def freeAtLevelBlockGenerator (n : ℕ) (X : C) (m : ℕ)
     TensorPowers.power K (m - n) ⊗ X ⟶ freeAtLevelBlockQuotient (K := K) n X m :=
   SymmetricSequence.freeBlockQuotientGenerator (SymmetricSequence.tensorPowerSequence K) n X m h
 
-omit [MonoidalClosed C] in
-/-- 商の関係式はSym(K)の置換作用と、添字へのブロック置換の前合成を同一視する。 -/
-@[reassoc] lemma freeAtLevelBlockGenerator_relation (n : ℕ) (X : C)
-    (m : ℕ) (σ : Equiv.Perm (Fin (m - n))) (h : SymmetricSequence.FreeBlockIndex n m) :
-    (SymmetricSequence.tensorPowerSequence K).map
-        (FiniteBijection.permutation (m - n) σ) ▷ X ≫
-        freeAtLevelBlockGenerator (K := K) n X m h =
-      freeAtLevelBlockGenerator (K := K) n X m
-        (FiniteBijection.sumMap (FiniteBijection.permutation (m - n) σ) (𝟙 _) ≫ h) := by
-  exact SymmetricSequence.freeBlockQuotientGenerator_relation
-    (SymmetricSequence.tensorPowerSequence K) n X m σ h
-
 /-- 自由スペクトルの第m段と、Sym(K)側のブロック作用で割った余等化子との比較。 -/
 def freeAtLevelIsoBlockQuotient (n : ℕ) (X : C) (m : ℕ) :
     level ((freeAt (K := K) n).obj X) m ≅ freeAtLevelBlockQuotient (K := K) n X m :=
   SymmetricSequence.freeConvolutionLevelIsoBlockQuotient
     (SymmetricSequence.tensorPowerSequence K) n X m
-
-/-- 比較同型は自由スペクトルの生成元を商の生成元へ送る。 -/
-@[reassoc] lemma freeAtLevelIsoBlockQuotient_generator (n : ℕ) (X : C)
-    (m : ℕ) (h : SymmetricSequence.FreeBlockIndex n m) :
-    freeAtLevelGenerator (K := K) n X m (FiniteBijection.of (m - n)) h ≫
-        (freeAtLevelIsoBlockQuotient (K := K) n X m).hom =
-        freeAtLevelBlockGenerator (K := K) n X m h :=
-  SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_generator
-    (SymmetricSequence.tensorPowerSequence K) n X m h
-
-/-- 比較同型の逆は商の生成元を自由スペクトルの生成元へ戻す。 -/
-@[reassoc] lemma freeAtLevelIsoBlockQuotient_inverse (n : ℕ) (X : C)
-    (m : ℕ) (h : SymmetricSequence.FreeBlockIndex n m) :
-    freeAtLevelBlockGenerator (K := K) n X m h ≫ (freeAtLevelIsoBlockQuotient (K := K) n X m).inv =
-      freeAtLevelGenerator (K := K) n X m (FiniteBijection.of (m - n)) h :=
-  SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_inverse
-    (SymmetricSequence.tensorPowerSequence K) n X m h
-
-/-- 明示的なブロック商と、既存の誘導図式の余極限との比較。 -/
-def freeAtLevelBlockQuotientIsoInduction (n : ℕ) (X : C) (m : ℕ) :
-    freeAtLevelBlockQuotient (K := K) n X m ≅
-      colimit (freeAtLevelInductionDiagram (K := K) n X m) :=
-  SymmetricSequence.freeBlockQuotientIsoInduction (SymmetricSequence.tensorPowerSequence K) n X m
-
-/-- n未満の段では、ブロック商も零対象となる。 -/
-lemma freeAtLevelBlockQuotient_isZero [HasZeroObject C] (n : ℕ) (X : C) (m : ℕ)
-    (hm : m < n) : IsZero (freeAtLevelBlockQuotient (K := K) n X m) :=
-  (freeAtLevel_isZero (K := K) n X m hm).of_iso (freeAtLevelIsoBlockQuotient (K := K) n X m).symm
 
 /-- 自由スペクトルの作用付き各段と明示的な商表示との自然同型。 -/
 def freeAtLevelActionNatIsoBlockQuotient (n m : ℕ) :
@@ -128,13 +88,17 @@ def freeAtLevelIsoPermutation (n : ℕ) (X : C) (m : ℕ) (hm : n ≤ m) :
       SymmetricSequence.freePermutationQuotientGenerator
         (SymmetricSequence.tensorPowerSequence K) n X m hm
         (SymmetricSequence.freePermutationIndex n m hm h) := by
-  change freeAtLevelGenerator (K := K) n X m (FiniteBijection.of (m - n)) h ≫
-    (freeAtLevelIsoBlockQuotient (K := K) n X m).hom ≫
-      SymmetricSequence.freeBlockToPermutationQuotient
-        (SymmetricSequence.tensorPowerSequence K) n X m hm = _
-  erw [freeAtLevelIsoBlockQuotient_generator_assoc (K := K) n X m h]
-  exact SymmetricSequence.freeBlockToPermutationQuotient_generator
+  let g := freeAtLevelGenerator (K := K) n X m (FiniteBijection.of (m - n)) h
+  let c := (freeAtLevelIsoBlockQuotient (K := K) n X m).hom
+  let p := SymmetricSequence.freeBlockToPermutationQuotient
+    (SymmetricSequence.tensorPowerSequence K) n X m hm
+  let b := freeAtLevelBlockGenerator (K := K) n X m h
+  have hgen : g ≫ c = b := SymmetricSequence.freeConvolutionLevelIsoBlockQuotient_generator
+    (SymmetricSequence.tensorPowerSequence K) n X m h
+  have hperm : b ≫ p = _ := SymmetricSequence.freeBlockToPermutationQuotient_generator
     (SymmetricSequence.tensorPowerSequence K) n X m hm h
+  change g ≫ c ≫ p = _
+  exact (Category.assoc g c p).symm.trans ((congrArg (fun k ↦ k ≫ p) hgen).trans hperm)
 
 /-- 自由スペクトルの作用付き各段と、対称群の誘導商との自然同型。 -/
 def freeAtLevelActionNatIsoPermutation (n m : ℕ) (hm : n ≤ m) :
