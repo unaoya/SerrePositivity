@@ -1,13 +1,14 @@
 """HTT・HA の部を Verso Blueprint の章モジュールとして生成する（2026-11-19、NB-W5）。
 正本は research/<key>-coverage/（items.csv の種類・題・節、review/ch*.csv の状態・宣言・理由、statements.csv の主張、notes/ の原稿、toc.md の見出し）。
-生成物を手で直さない。使い方（リポジトリの root で）：python3 blueprint/scripts/gen_lurie.py htt ha
+scripts/audit2/coverage_blueprint.py から実行する。
 - 載せるのは対応表の状態が none でない項目だけ（本体か Mathlib に対応があるもの、原稿もこの範囲で書いた）。全項目の表は research/<key>-coverage。
 - 一つの節（x.y）を一つのモジュールに、小節（x.y.z）を見出しに。ラベルは <key>_<番号>（点を _ に）。
 - 辺は P⁰ の項目の閉包（research/p0-lurie/item-closure/edges.csv）のうち、HTT・HA・Kerodon の載せた項目どうしのもの。
 - Lean の宣言に結ぶのは状態が none でないもの全部（gen_cited.py と同じ）。"""
 import csv, re, sys, os, glob, collections, json
 sys.path.insert(0, os.path.dirname(__file__))
-from common import Resolver, paths_of, esc
+from common import Resolver, esc
+res = Resolver()
 import notes_md
 KIND = {'Theorem': 'theorem', 'Lemma': 'lemma_', 'Proposition': 'proposition', 'Corollary': 'corollary', 'Definition': 'definition',
         'Notation': 'definition', 'Construction': 'definition', 'Convention': 'definition', 'Equation': 'definition', 'Example': 'proposition',
@@ -64,7 +65,6 @@ def gen(key):
     P, keep, rev, heads = DATA[key]; OUT = f'blueprint/SerreBlueprint/{dirname}'
     os.makedirs(OUT, exist_ok=True)
     for old in glob.glob(f'{OUT}/*.lean'): os.remove(old)
-    res = Resolver(paths_of(rev[r['number']].get('declarations', '') for r in keep))
     STMT = notes_md.statements(P)
     def pdf(n):
         fp = f'{P}/notes/{n}.md'
@@ -95,10 +95,7 @@ def gen(key):
                 if (nb := note(sub)): body.append(nb); stats['with-note-intro'] += 1
             for r in sorted(subs[sub], key=lambda r: skey(r['number'])):
                 n = r['number']; rv = rev[n]; st = rv.get('status') or 'none'
-                linked = []
-                for e in [x.strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]:
-                    x = res.resolve(e)
-                    if x: linked.append(x[0]); imports.add(x[1])
+                linked = res.links(label(key, n), rv.get('declarations', ''), imports, True)
                 stats[st] += 1; stats['linked' if linked else 'nolink'] += 1
                 opts = f' (lean := "{", ".join(linked)}")' if linked else ''
                 if (us := USES.get((abbr, n))): opts += f' (uses := "{", ".join(us)}")'; stats['with-uses'] += 1
@@ -123,7 +120,7 @@ def gen(key):
                f'#doc (Manual) "{abbr} {sec} {hd}" =>', '%%%', 'number := false', f'tag := "{key}-{slug(sec).replace("_", "-")}"', '%%%', '',
                f'{abbr} {sec} の項目のうち、本体か Mathlib に対応があるもの（対応表 `research/{key}-coverage` の状態が「なし」でないもの）。本文は日本語で独立に書いた要約と解説で、原典の本文の写しではない。\n']
         if (nb := note(sec)): hdr.append(nb); stats['with-note-intro'] += 1
-        open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+        res.write(f'{OUT}/{mod}.lean', '\n'.join(hdr + body) + '\n')
         modules.append(mod)
     json.dump({'key': key, 'dir': dirname, 'title': title, 'modules': modules, 'stats': dict(stats)},
               open(f'{OUT}/generated.json', 'w'), ensure_ascii=False, indent=1)

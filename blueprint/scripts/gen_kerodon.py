@@ -1,11 +1,13 @@
 """Kerodon の章を Verso Blueprint の章モジュールとして生成する（2026-11-16、試作）。
 正本は research/kerodon-coverage/（review/ch<N>.csv の状態・宣言・判定の理由、item-tags.csv の Tag、toc.md の見出し）。
 この生成物を手で直さない。表を直して生成し直す。
-使い方（リポジトリの root で）：python3 blueprint/scripts/gen_kerodon.py 1
+実行入口は scripts/audit2/coverage_blueprint.py。第1引数で章を指定する。
 - 各項目は一つのノード。ラベルは kerodon_<番号>（点を _ に）。
 - 状態が own・mathlib・both で、宣言が今のソースで一意に解決できるものだけ (lean := …) で結ぶ。partial は本文に宣言名を挙げるだけ（結ぶと形式化済みに数えられるため）。
 - 本文は対応表の判定の理由（日本語の要約）。Kerodon の本文は写さず、Tag へリンクする。"""
 import csv, re, os, sys, glob, collections, json
+from common import Resolver
+res = Resolver()
 ch = sys.argv[1]
 K = 'research/kerodon-coverage'
 OUT = 'blueprint/SerreBlueprint/Kerodon'
@@ -31,39 +33,6 @@ _have = {r['number'] for r in rows}
 for _n in sorted(kinds):
     if _n.split('.')[0] == str(ch) and _n not in _have and os.path.exists(f'{K}/notes/{_n}.md'):
         rows.append({'number': _n, 'status_new': 'unreviewed', 'declarations_new': '', 'reason': ''})
-# 宣言の完全な名前（名前空間つきの走査、refresh_by_source.py と同じ規則）
-DECL = re.compile(r'^\s*(?:@\[[^\]]*\]\s*)*(?:(?:private|protected|noncomputable|nonrec|public|scoped|local|partial|unsafe)\s+)*(theorem|lemma|def|abbrev|structure|class|instance|inductive|opaque|axiom)\s+([^\s:({\[]+)')
-NS = re.compile(r'^\s*namespace\s+(\S+)'); SEC = re.compile(r'^\s*(?:@\[[^\]]*\]\s*)*(?:noncomputable\s+|public\s+)*section(?:\s+(\S+))?\s*$'); END = re.compile(r'^\s*end(?:\s+(\S+))?\s*$')
-index = collections.defaultdict(list)
-def scan(path, rel, mod):
-    stack = []
-    for i, l in enumerate(open(path, encoding='utf-8', errors='ignore'), 1):
-        if (m := NS.match(l)): stack.append(m.group(1).split('.')); continue
-        if SEC.match(l): stack.append([]); continue
-        if END.match(l) and stack: stack.pop(); continue
-        if (m := DECL.match(l)):
-            n = m.group(2)
-            full = n[7:] if n.startswith('_root_.') else '.'.join([p for ps in stack for p in ps] + [n])
-            index[full].append(mod)
-paths = set()
-for r in rows:
-    for e in r['declarations_new'].split(' | '):
-        if ' @ ' in e: paths.add(e.split(' @ ', 1)[1].rsplit(':', 1)[0])
-for p in paths:
-    fp = p if p.startswith('SerrePositivity/') else '.lake/packages/mathlib/' + p
-    if os.path.exists(fp): scan(fp, p, p[:-5].replace('/', '.'))
-by_suffix = collections.defaultdict(set)
-for full in index:
-    parts = full.split('.')
-    for k in range(len(parts)): by_suffix['.'.join(parts[k:])].add(full)
-IDENT = re.compile(r"^[A-Za-z_][A-Za-z0-9_.'₀-₉!?]*$")
-def resolve(entry):
-    if ' @ ' not in entry: return None
-    name = entry.split(' @ ', 1)[0].split('（')[0].split(' (')[0].strip()
-    if not IDENT.match(name): return None
-    c = by_suffix.get(name, set())
-    if len(c) != 1: return None
-    full = next(iter(c)); return full, index[full][0]
 KIND = {'Definition': 'definition', 'Notation': 'definition', 'Construction': 'definition', 'Variant': 'definition',
         'Theorem': 'theorem', 'Proposition': 'proposition', 'Lemma': 'lemma_', 'Corollary': 'corollary'}
 def esc(s):
@@ -111,11 +80,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             directive = KIND.get(kind, 'proposition')
             label = 'kerodon_' + n.replace('.', '_')
             decls = [e.strip() for e in r['declarations_new'].split(' | ') if e.strip()]
-            linked = []
-            if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
-                for e in decls:
-                    x = resolve(e)
-                    if x: linked.append(x[0]); imports.add(x[1])
+            linked = res.links(label, r['declarations_new'], imports, st in ('own', 'mathlib', 'both', 'partial', 'interface'))
             stats['linked' if linked else ('nolink-' + st)] += 1
             opt = f' (lean := "{", ".join(linked)}")' if linked else ''
             us = [u for u in USES.get(n, []) if u != n]
@@ -141,7 +106,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
     if (nb := note_body(sec)):
         stats['with-note-intro'] += 1
         hdr.append(nb)
-    open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+    res.write(f'{OUT}/{mod}.lean', '\n'.join(hdr + body) + '\n')
     modules.append(mod)
 json.dump({'chapter': ch, 'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/ch{ch}-generated.json', 'w'), ensure_ascii=False, indent=1)
 print(modules, dict(stats))

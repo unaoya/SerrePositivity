@@ -1,4 +1,4 @@
 number,status,declarations,reason,axioms,check,partial_kind
-0.0.0.1,mathlib,SSet.Quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Basic.lean:41,仮定：単体集合 C（HA と一致）。結論：全内ホーン 0<i<n の充填条件で準圏を定義する（HA と一致。定義では n≥2 として空虚な低次を省く）。,,found,
-0.0.0.2,partial,CategoryTheory.Nerve.quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Nerve.lean:32,KB-W2型再照合：通常圏Eのnerveが準圏であるという原文の同じ数学的成分を、Nerve.quasicategoryの型が直接返す。weak Kanという歴史的呼称と文献紹介は含まない。,,found,component
+0.0.0.1,mathlib,SSet.Quasicategory @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/Quasicategory/Basic.lean:41,仮定：単体集合 C（HA と一致）。結論：全内ホーン 0<i<n の充填条件で準圏を定義する（HA と一致。定義では n≥2 として空虚な低次を省く）。,,found,
+0.0.0.2,partial,CategoryTheory.Nerve.quasicategory @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/Quasicategory/Nerve.lean:32,KB-W2型再照合：通常圏Eのnerveが準圏であるという原文の同じ数学的成分を、Nerve.quasicategoryの型が直接返す。weak Kanという歴史的呼称と文献紹介は含まない。,,found,component
 0.0.0.3,none,,KB-W2再検索：原文はJoyalらの文献案内と前提知識の説明。準圏・Kan複体の一般的な宣言はあるが、この文献案内を数学的主張の形式化と数えない。,,not_found,

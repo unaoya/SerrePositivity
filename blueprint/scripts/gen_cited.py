@@ -1,12 +1,13 @@
 """引用文献の章を Verso Blueprint の章モジュールとして生成する（2026-11-18）。gen_paper.py と同じ作りを文献の表ごとに回す。
 正本は research/<key>-coverage/（items.csv の種類・題、review/ch*.csv の状態・宣言・理由、edges.csv の引用の辺、toc.md の見出し）。
-生成物を手で直さない。使い方（リポジトリの root で）：python3 blueprint/scripts/gen_cited.py clmst bs vdescent（BS17・BM18・Rydh は目標つきの部 vdescent にまとめる、下の ROUTES）
+scripts/audit2/coverage_blueprint.py から実行する。BS17・BM18・Rydh は目標つきの部 vdescent にまとめる（ROUTES）。
 - 各項目は一つのノード。ラベルは <key>_<番号>（式は <key>_eq_…）。文献の中の辺（internal）は (uses := …) に、外の文献への辺は本文に並べる。
 - Lean の宣言に結ぶのは状態が none でないもの全部（11-18、ユーザー）。partial・interface は本文の「対応表の状態：」で見分け、serre.js がカードに札を付ける。
 - research/<key>-coverage/notes/<番号>.md の原稿があれば項目の本文に、<節>.md は節の頭に入れる（変換は notes_md.py）。"""
 import csv, re, sys, os, glob, collections, json
 sys.path.insert(0, os.path.dirname(__file__))
-from common import Resolver, paths_of, esc
+from common import Resolver, esc
+res = Resolver()
 import notes_md
 SOURCES = {
  'clmst': ('CLMST', 'CLMST（Cai–Lee–Ma–Schwede–Tucker, Perfectoid signature, perfectoid Hilbert–Kunz multiplicity, …, arXiv 2209.04046v4）'),
@@ -53,7 +54,6 @@ def gen(key):
         if e['kind'] == 'internal' and e['depends_on'] in known and e['depends_on'] != e['number']:
             if label(e['depends_on']) not in uses[e['number']]: uses[e['number']].append(label(e['depends_on']))
         elif e['kind'] == 'external' and e['depends_on'] not in ext[e['number']]: ext[e['number']].append(e['depends_on'])
-    res = Resolver(paths_of(r.get('declarations', '') for r in rev.values()))
     by_sec = collections.defaultdict(list)
     for r in items: by_sec[section(r).split('.')[0]].append(r)
     stats = collections.Counter(); modules = []; seen_labels = set()
@@ -72,11 +72,7 @@ def gen(key):
                 lab = label(n)
                 if lab in seen_labels: continue
                 seen_labels.add(lab)
-                linked = []
-                if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
-                    for e in [x.strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]:
-                        x = res.resolve(e)
-                        if x: linked.append(x[0]); imports.add(x[1])
+                linked = res.links(lab, rv.get('declarations', ''), imports, st in ('own', 'mathlib', 'both', 'partial', 'interface'))
                 stats[st] += 1; stats['linked' if linked else 'nolink'] += 1
                 opts = ''
                 if linked: opts += f' (lean := "{", ".join(linked)}")'
@@ -103,7 +99,7 @@ def gen(key):
                f'#doc (Manual) "§{sec} {re.sub(r"[][]", "", heads.get(sec, ""))}" =>', '%%%', 'number := false', f'tag := "{key}-{slug(sec)}"', '%%%', '',
                f'{dirname} §{sec} の項目と、本体の宣言との対応。本文は対応表（`research/{key}-coverage`）の照合の理由で、原典の本文の写しではない。\n']
         if (nb := notes_md.note_body(f'{P}/notes/{sec}.md', skip=('原典 ', '照合先'))): hdr.append(nb)
-        open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+        res.write(f'{OUT}/{mod}.lean', '\n'.join(hdr + body) + '\n')
         modules.append(mod)
     json.dump({'key': key, 'dir': dirname, 'title': title, 'modules': modules, 'stats': dict(stats)},
               open(f'{OUT}/generated.json', 'w'), ensure_ascii=False, indent=1)
@@ -157,7 +153,6 @@ def gen_route(rk):
                 m = re.match(r'(\S+) (\S+)$', d)
                 if m and m.group(1) in abbr and m.group(2) in included[abbr[m.group(1)]]: continue
                 elif d not in ext[n]: ext[n].append(d)
-        res = Resolver(paths_of(r.get('declarations', '') for r in rev.values()))
         imports = set(); body = []; cur = None; seen = set()
         for r in sorted(keep, key=lambda r: skey((r.get('section') or r['number'].strip('()')).split('.')[0])):
             n = r['number']; rv = rev.get(n, {}); st = rv.get('status', '') or 'none'; lab = label(key, n)
@@ -168,11 +163,7 @@ def gen_route(rk):
                 cur = sec
                 body.append(f'# §{sec} {esc(heads.get(sec, ""))}\n')
                 body.append('%%%\nnumber := false\ntag := "' + f'{rk}-{key}-{slug(sec)}' + '"\n%%%\n')
-            linked = []
-            if st in ('own', 'mathlib', 'both', 'partial', 'interface'):
-                for e in [x.strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]:
-                    x = res.resolve(e)
-                    if x: linked.append(x[0]); imports.add(x[1])
+            linked = res.links(lab, rv.get('declarations', ''), imports, st in ('own', 'mathlib', 'both', 'partial', 'interface'))
             stats[st] += 1
             opts = ''
             if linked: opts += f' (lean := "{", ".join(linked)}")'
@@ -193,7 +184,7 @@ def gen_route(rk):
               ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',
                f'#doc (Manual) "{SOURCES[key][1]}" =>', '%%%', 'number := false', f'tag := "{rk}-{key}"', '%%%', '',
                (R['intro'] + '\n') if key == R['sources'][0] else f'{dirname} の項目のうち、この経路で本体か Mathlib に対応があるもの。\n']
-        open(f'{OUT}/{dirname}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+        res.write(f'{OUT}/{dirname}.lean', '\n'.join(hdr + body) + '\n')
         modules.append(dirname)
     json.dump({'key': rk, 'dir': R['dir'], 'title': R['title'], 'modules': modules, 'stats': dict(stats)},
               open(f'{OUT}/generated.json', 'w'), ensure_ascii=False, indent=1)
