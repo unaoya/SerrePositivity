@@ -182,3 +182,86 @@ C の 660 宣言のうち 416 は、一行の言い換え（一行の定義 211�
 ### 段 8 の完了の条件
 
 段 3〜7 と同じ（表は `research/cleanup-zero-base/spectra/stage8.csv`、`expanded-names.csv` に追記、報告は `report-spectra-unify.md` に節を足す）。加えて、報告の最後に **C の現状の一覧**を書く：残っている全ての宣言（名前、種類、行数、残した理由の区分：型の略記／別名／固有／その他）と、ファイルごとの宣言数。次の段（C のファイルのまとめ直し）の材料にする。コミットして止まる。
+
+## 10. 段 9：`loopFunctor` を戻す、C のファイルをまとめ直す
+
+段 8（3ecc4edca）の結果：C は 155 → 49 宣言、1,728 → 785 行、ファイルは 33 → 23。段 1 からの通算で、C は 663 → 49 宣言、6,149 → 785 行、78 → 23 ファイル。B は 344 → 400 宣言、3,699 → 4,507 行。
+
+### 9-1. `loopFunctor` を戻す（ユーザー決定 11-20）
+
+段 8 で消した `SymmetricSpectrum.loopFunctor` を、`GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle) PointedSimplicialSet.circle` の `abbrev` 一行として C に戻す。文献で名前の付いた関手（Ω）で、展開後の式が長く円周を二度書くこと、対になる `suspensionFunctor` が別名として残っていることが理由。展開されていた 10 箇所を `loopFunctor` に戻す。`expanded-names.csv` の該当の行に「戻した」と書く。ほかの消した名前（`simplicialTensorCotensorHomEquiv` の 17 箇所など）は戻さない。
+
+### 9-2. C のファイルをまとめ直す
+
+C の 49（＋1）宣言は 23 ファイルに散っていて、宣言が 1〜2 個のファイルが 15 本ある。段 2 以降に消したファイルの名残で、今の分け方に内容の理由はない。内容でまとめ直す。案：
+
+| 新しいファイル | 入れるもの | 宣言の数（見込み） |
+|---|---|---:|
+| `Basic.lean` | 型の略記 `SymmetricSpectrum`、円周への特殊化の別名の全部（`forget`、`evaluation`、`freeAt`、`freeObj`、`freeFunctor`、`generator`、各段のテンソル・余テンソル・内部 Hom・写像対象・懸垂とループの別名）、構造射の二つの補題 | 約 27 |
+| `Sphere.lean` | 球面スペクトルとその補題 | 4 |
+| `Simplicial.lean` | 基点のない単体集合による係数：テンソル、余テンソル、写像空間、それらの関手・前合成・後合成・随伴・単位・直積の同型、零次単体と射の同値 | 約 19 |
+
+この案は目安。実際の依存（別名のうち、後の定義に依るもの）を見て、ファイルの切り方と中の順を決める。規則：
+
+- 一つのファイルは、読んで一つの話として通ること。ファイルの冒頭の説明（module docstring）に、何が入っているかと、B のどの宣言の特殊化かを書く。docstring の書き方は README の Conventions に従う（解説ノートを引かない）。
+- 宣言の名前・主張・本体は変えない（`loopFunctor` を戻す以外）。動かすだけ。
+- 使う側（`Spectra/ModelCategory`・`Spectra/Stable`・`InfinityCategories/Project/ModelCategoryComparison/Inputs`）と、検査・監査の import を追従する。C の README を更新する。
+- 消したファイルと新しいファイルの対応を表にする（旧ファイル → 新ファイル、宣言ごと）。概念の木の記録（`research/cleanup-zero-base/whole/definitions.csv`）は宣言の名前で持っているので、名前を変えなければ影響しない。
+- import は、実際に使うものだけにする。まとめた結果、不要になった import を残さない。
+
+### 段 9 の完了の条件
+
+- `research/cleanup-zero-base/spectra/stage9.csv`：宣言ごとに、旧ファイル、新ファイル。
+- 報告（`report-spectra-unify.md` に節を足す）：前後のファイル数・行数、新しいファイルごとの内容と宣言の数、案と違う切り方にしたならその理由、使う側の import の変化（前後の本数）、`loopFunctor` を戻した箇所の数。
+- 判定：対象と使う側のビルド、宣言の集合が前後で同じ（`loopFunctor` の追加を除き、カーネルの名前と主張が一致）、公理と `sorryAx` 依存が増えない、監査・検査の成否が前後で一致。
+- コミットして止まる。B のファイルには手を付けない（次の段）。
+
+## 11. 段 10：B（一般の対称スペクトル）の分類表（Lean は変えない）
+
+段 9（218af71a5）の結果：C は 23 → 3 ファイル（`Basic`・`Sphere`・`Simplicial`）、785 → 327 行、49 → 50 宣言（`loopFunctor` を戻した）。開始時からは 78 ファイル・6,149 行・663 宣言 → 3 ファイル・327 行・50 宣言。B は 52 ファイル・約 4,500 行・400 宣言。
+
+C が B の特殊化になったので、次は B そのもの。B（`Spectra/General/`）は、一般論 A（`CategoryTheory/Monoidal/Mod/`、`CategoryTheory/Enriched/`、`CategoryTheory/Adjunction/Comparison.lean`、`Spectra/SymmetricSequence/`）に、対称列の圏と可換モノイド Sym(K) を入れたもの。C が B の包みを多く含んでいたのと同じ理由で、B も A の包みを含むはず。この段では、B の全宣言の扱いの案を表にして止まる。規則は [cleanup-rules.md](cleanup-rules.md)。**Lean・監査・対応表は変えない。**
+
+### 対象
+
+1. `Spectra/General/` の、ソースに名前を書いてある宣言の全部（約 400。自動生成は親に含める）。
+2. C に残った 50 宣言の見直し（下の「C の残り」）。
+3. `Spectra/General/` にある円周専用の比較ファイル 2 本（`SimplicialComparison.lean`、`SimplicialSuspensionComparison.lean`）の全宣言。
+
+### 一件ごとに埋める項目（主張と本体を読んで）
+
+1. **まとまり**：中身から決める（基本と構造射、自由スペクトルと各段の表示、極限と余極限、各段のテンソル、テンソル積、内部 Hom と次数のずらし、余テンソル、写像対象と豊穣化、懸垂、その他）。
+2. **内容の種類**：
+   - **B に固有**：畳み込みを段ごとにほどいた具体的な式（構造射、自由スペクトルの各段、内部 Hom・余テンソルの各段、評価 Evₙ と Fₙ）。A には書けない内容。
+   - **A の包み**：A の宣言に対称列の圏と Sym(K) を入れただけ。相手の A の宣言の名前。
+   - **Mathlib にある**：Mathlib に同じ主張、または一行で導ける主張がある。相手の名前と、探した語（見つからなかった場合も）。
+   - **A に置くべき**：対称列・Sym(K) に固有の性質を使っておらず、一般の対称モノイダル閉圏と可換モノイドで成り立つ。A のどこに置くか。
+   - **円周・基点付き単体集合に固有**：一般の (C, K) では述べられない。
+3. **扱いの案**：消す（A か Mathlib の相手を使う）／別名（引数から決まらないものを何度も書くことになる）／A へ移す／そのまま／判断できない。理由。
+4. **使われ方**：範囲内の使用者の数、範囲外の使用者の数（C、`Spectra/ModelCategory`、`Spectra/Stable`、`InfinityCategories/Project/ModelCategoryComparison/Inputs`。監査・検査は別に数える）、対応表の名指しの有無。使用者は、`Spectra/` を import する全モジュールを読んで数える。
+5. **未使用のもの**は内容の種類（理論の主張／残す定義の基本補題／言い換えの間の一致／他所に同じ内容／使われていない途中の段）。
+6. **証拠**：判断の根拠にした場所（ファイルと行）。相手があるものは、主張を並べて同じであることを確かめたか（確かめた／名前と型から推定）。
+
+### C の残り（調整役が 11-20 に 3 ファイルを読んで気づいた点）
+
+- 使っている所が見つからないもの：`sphereTensorFreeZeroPointwiseNatIso`（別名）、`structureMap_eq_convolutionComponent`（`rfl`）、`sphere_structureMap`、`simplicialMappingSpaceBifunctor_obj`（`rfl`）。文字の検索によるので、依存で確かめること。
+- 本体が `rfl` の補題：`sphere_underlying`、`sphere_action`。
+- 一般版の補題の一行の適用：`simplicialTensorCotensorHomEquiv_post`。
+- `pointedMappingSpaceParametrizedAdjunction` は別名ではなく構成で、円周に固有の所がない。B に置くべきか。
+- **円周を使っていない内容**：`Simplicial.lean`（基点のない単体集合による係数）は、基礎の圏が基点付き単体集合であることを使うが、座標 K が円周であることは使っていない。`Sphere.lean` の球面スペクトルも、Sym(K) を自分自身の上の加群と見たもので、任意の K で作れる。それぞれ、「基礎の圏を基点付き単体集合にした一般の K」または「一般の (C, K)」の形で B に置けるか、置いた場合に C に何が残るか、使う側（モデル構造・安定性）がどう変わるかを、案として書く（実施はしない）。
+
+C の 50 宣言それぞれについて、上の 1〜6 と同じ項目を埋め、この見直しの結果を添える。
+
+### 段 10 の完了の条件
+
+- 表 `research/cleanup-zero-base/spectra/stage10.csv`（一件一行。B・C・比較ファイルの別の列）。行数が対象の宣言の数と一致する。
+- 報告（`report-spectra-unify.md` に節を足す）：
+  - まとまりごとの件数と行数、内容の種類ごとの件数、扱いの案ごとの件数、案どおりにしたときの B・A・C の宣言と行数の見積もり（C の段での経験から、「移す」「足す」の見積もりは実際の二倍になりがちだったことを踏まえて、根拠を書く）。
+  - まとまりの間の依存の順（どこから実施できるか）。下流の定義を先に揃える順にする。
+  - A へ移す候補の一覧と、移す先。A の側に同じ内容がすでにないかを確かめた結果。
+  - Mathlib にある候補の一覧。
+  - C の残りの見直しの結果と、「円周を使っていない内容」を B に置く案。
+  - 円周専用の比較ファイル 2 本の扱いの案（C へ移す、消す、そのまま）。
+  - 未使用で「使われていない途中の段」に入れたものの一覧。「判断できない」の一覧。
+  - 相手の主張を並べて確かめた件数と、推定のままの件数。
+- Lean のソース・監査・対応表の差分が 0。ビルドは数える道具に要る分だけ（bulk 鍵）。コミットして止まる。
