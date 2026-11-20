@@ -1,0 +1,52 @@
+{
+ "key": "d43",
+ "concept": "E モデル圏/図式と二重単体集合のモデル構造",
+ "subconcepts": [
+  {
+   "name": "図式圏の射影モデル構造",
+   "description": "小さい圏 K から余生成モデル圏への図式 K ⥤ C の射影モデル構造（自由図式の生成射）、順序つき図式に沿う部分的な持ち上げの系",
+   "reference": ""
+  },
+  {
+   "name": "ホモトピー余極限",
+   "description": "射影モデルの cofibrant 置換と余極限の合成としてのホモトピー余極限、Bousfield–Kan の自由セルの非退化な表示",
+   "reference": ""
+  },
+  {
+   "name": "frame と重みによる実現",
+   "description": "余単体的 frame の図式 A と単体的な重み W : Kᵒᵖ → SSet から対象を作る実現関手、その右随伴（Hom の図式）、frame の射に関する関手性、Bousfield–Kan の重みによるパラメータつき実現、定値の重みの各次数",
+   "reference": ""
+  },
+  {
+   "name": "重みつき錐の空間",
+   "description": "重み W との点ごとのテンソル SSet → (K ⥤ SSet) とその右随伴（重みつき錐の空間）",
+   "reference": ""
+  },
+  {
+   "name": "二重単体集合の対角",
+   "description": "二重単体集合の対角関手（右随伴つき）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DiagramModel.Projective.modelCategory": "図式圏の射影モデル構造",
+  "SerrePositivity.DiagramModel.FrameWeightRealization.functor": "frame と重みによる実現",
+  "SerrePositivity.DiagramModel.HomotopyColimit.functor": "ホモトピー余極限",
+  "SerrePositivity.BisimplicialModel.diagonal": "二重単体集合の対角",
+  "SerrePositivity.DiagramModel.WeightedCones.coneSpace": "重みつき錐の空間",
+  "SerrePositivity.DiagramModel.FrameWeightRealization.hom": "frame と重みによる実現",
+  "SerrePositivity.DiagramModel.FrameWeightRealization.map": "frame と重みによる実現",
+  "SerrePositivity.DiagramModel.ContinuousLifts.Partial": "図式圏の射影モデル構造",
+  "SerrePositivity.DiagramModel.WeightedCones.tensorDiagram": "重みつき錐の空間",
+  "SerrePositivity.DiagramModel.BousfieldKanCells.NondegenerateData": "ホモトピー余極限",
+  "SerrePositivity.DiagramModel.SmallHomFrameWeights.functor": "frame と重みによる実現",
+  "SerrePositivity.DiagramModel.FrameWeightRealization.adjunction": "frame と重みによる実現",
+  "SerrePositivity.DiagramModel.ConstantWeightHom.degree": "frame と重みによる実現",
+  "SerrePositivity.DiagramModel.FrameWeightRealization.bousfieldKanParameterRealization": "frame と重みによる実現"
+ },
+ "uncertain": [
+  "SerrePositivity.DiagramModel.ContinuousLifts.Partial",
+  "SerrePositivity.DiagramModel.BousfieldKanCells.NondegenerateData"
+ ],
+ "notes": "幹の名前は「図式のモデル構造とホモトピー（余）極限・重みつき実現」が中身に合う。二重単体集合は対角関手 BisimplicialModel.diagonal の 1 件だけ（41 宣言）で、d42 の BarConstruction.functor（rows ⋙ diagonal）の部品。SmallHomFrameWeights.functor は FrameWeightRealization.functor を SmallHomModel の同値で運んだ言い換えに近い。ContinuousLifts.Partial は順序つき図式に沿う超限的な持ち上げの足場（どの定理のためかは本体から確認していない）。"
+}

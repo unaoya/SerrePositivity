@@ -1,0 +1,88 @@
+{
+ "key": "d46",
+ "concept": "F オペラドと E∞/dg オペラドと代数",
+ "subconcepts": [
+  {
+   "name": "dg オペラド（対称列・部分合成・射）",
+   "description": "非有界複体の対称列の上の対称 dg オペラド（単位・部分合成・二種類の等変性）、arity の複体、有限全単射の作用、代入後の入力の外側・内側の置換、オペラドの射",
+   "reference": "Berger–Moerdijk §1"
+  },
+  {
+   "name": "オペラドの全合成（複数の入力への代入）",
+   "description": "部分合成の反復で全入力（または先頭の n 個）に演算を代入する合成射 P(n) ⊗ ⨂P(sᵢ) → P(Σsᵢ)",
+   "reference": "Berger–Moerdijk §1"
+  },
+  {
+   "name": "オペラド代数と余代数",
+   "description": "オペラド代数（各 arity の作用）と代数の射・忘却関手、オペラド余代数（余演算）、augmentation つきオペラドの余代数区間、一つの入力（出力）への演算（余演算）の代入、convolution の組み立て",
+   "reference": "Berger–Moerdijk §1、命題 4.1；Berger–Fresse §3.1"
+  },
+  {
+   "name": "Schur 関手と自由代数",
+   "description": "対称列の Schur 関手 ⨁ P(n) ⊗_{Σₙ} K^{⊗n}（図式・構造射）、その上の作用と自由代数、自由代数関手と忘却の随伴",
+   "reference": "Berger–Moerdijk §1"
+  },
+  {
+   "name": "（補助）有限族のテンソルと並べ替え",
+   "description": "異なる複体の有限族の右括弧テンソル tensorFamily とその射・分割・隣接交換・テンソル冪への連結、テンソル冪の全単射による移送と二列への分離など、合成と Schur 作用を書くための足場",
+   "reference": "Berger–Moerdijk §1；Berger–Fresse §3.1"
+  },
+  {
+   "name": "セル代数の次数つき自由表示（微分の消去）",
+   "description": "始対象からのセル代数の各段のセルとその次数・生成元の球、微分を消したオペラドの代数への移送（セル付加の pushout を次数つきの台で読む）",
+   "reference": "Berger–Moerdijk 命題 4.1"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arity": "dg オペラド（対称列・部分合成・射）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.CoalgebraInterval": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurFunctor": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamily": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.freeAlgebraFunctor": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.freeAlgebra": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.forget": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Coalgebra": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurι": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.composeFirstInputInsertion": "オペラドの全合成（複数の入力への代入）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.composeFirstInputs": "オペラドの全合成（複数の入力への代入）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.composition": "オペラドの全合成（複数の入力への代入）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.schurAction": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyGenerator": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyTensorIso": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadOuterPermutation": "dg オペラド（対称列・部分合成・射）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorSubstitutionStep": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.EInfinity.Operad.cellStageGeneratorSpheres": "セル代数の次数つき自由表示（微分の消去）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionAction": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad": "dg オペラド（対称列・部分合成・射）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerSeparation": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilySplitLast": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.arityBijectionMap": "dg オペラド（対称列・部分合成・射）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.freeAlgebraAdjunction": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerFamilyIso": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.EInfinity.Operad.cellDegree": "セル代数の次数つき自由表示（微分の消去）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPowerEquivMap": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.convolutionAssembly": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.schurDiagram": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilySplitAt": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyAdjacentIso": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.EInfinity.Operad.eraseAlgebra": "セル代数の次数つき自由表示（微分の消去）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadInnerPermutation": "dg オペラド（対称列・部分合成・射）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.schurInputGenerator": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.AlgebraHom": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorIndex": "Schur 関手と自由代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilyMap": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorCoInsertionAction": "オペラド代数と余代数",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.composeAheadOfInputs": "オペラドの全合成（複数の入力への代入）",
+  "SerrePositivity.EInfinity.Operad.CellsAt": "セル代数の次数つき自由表示（微分の消去）",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorFamilySplitLastTwo": "（補助）有限族のテンソルと並べ替え",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Hom": "dg オペラド（対称列・部分合成・射）"
+ },
+ "uncertain": [
+  "SerrePositivity.EInfinity.Operad.cellStageGeneratorSpheres",
+  "SerrePositivity.EInfinity.Operad.cellDegree",
+  "SerrePositivity.EInfinity.Operad.CellsAt",
+  "SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorIndex"
+ ],
+ "notes": "43 定義とも dg オペラドと代数に属し、MOVE はない。セル代数の 4 件（EInfinity.Operad.CellsAt・cellDegree・cellStageGeneratorSpheres・eraseAlgebra、場所は EInfinity/BarrattEccles/Theory/）は BE に固有ではなく一般のオペラド P の代数の話（BM 命題 4.1、cofibrant 代数の台の K 平坦性のため）なのでここに置いた；d45 の SchurWordIndex もこの小概念へ。有限族のテンソル（tensorFamily など 12 件）は対称モノイダル圏の一般論で、複体に固有ではない（「Z 圏論一般/モノイダル圏」か「G スペクトル/対称列」の道具に上げる候補）。tensorPowerEquivMap は既存の bijectionFunctor の評価の言い換え、Operad.arityBijectionMap も対称列の map の言い換え。合成は composeFirstInputs（再帰）→ composition（k=0）で、composeFirstInputInsertion・composeAheadOfInputs は arity の式を合わせるための移送つきの版。"
+}

@@ -1,0 +1,137 @@
+{
+ "key": "d04",
+ "concept": "A 可換代数と数論幾何/blowup と射影スキーム",
+ "subconcepts": [
+  {
+   "name": "Rees 代数の次数付けと関手性",
+   "description": "Rees 代数 ⊕Iⁿtⁿ の次数 n 成分、次数一の元 at、中心を保つ環準同型が誘導する Rees 代数の射。",
+   "reference": "KST §5"
+  },
+  {
+   "name": "アフィン blowup と標準チャート",
+   "description": "Spec R の I に沿う blowup = Proj(Rees)、構造射、標準開 D₊(at) とそのチャート環（Rees 代数の斉次局所化の零次）、中心の補開集合。",
+   "reference": "KST §5"
+  },
+  {
+   "name": "一般スキームの blowup（貼り合わせ）",
+   "description": "イデアル層に沿う blowup をアフィン局所模型の余極限として作り、構造射を降ろす。",
+   "reference": "KST §5"
+  },
+  {
+   "name": "加群の純変換と境界ねじれ",
+   "description": "境界元の冪で消える元の部分加群と、それで割った加群の純変換。",
+   "reference": "Stacks 0815"
+  },
+  {
+   "name": "小行列式イデアル",
+   "description": "行列の k 次小行列式が生成するイデアル（Fitting イデアルの計算の基礎）。",
+   "reference": "KST §5、Stacks 0810、Lemma 38.30.2"
+  },
+  {
+   "name": "次数付き加群の斉次局所化と標準開係数図式",
+   "description": "射影空間（多項式環上の次数付き加群）の標準開の有限交叉 D₊(∏X_i) ごとに、局所化の指定次数成分を並べた係数図式 Finset ι ⥤ Mod と、その関手性・基底変更・余極限・Frobenius 順極限版。",
+   "reference": ""
+  },
+  {
+   "name": "Laurent 単項式による標準開の表示",
+   "description": "変数の積を分母とする標準開の切断を、指定の変数にだけ負の指数を許す Laurent 単項式の自由加群で表す。",
+   "reference": ""
+  },
+  {
+   "name": "次数付けの操作（商・テンソル・余極限・整数次数への延長）",
+   "description": "次数成分を商環・基底変更・filtered 余極限・直和へ移す構成と、自然数次数を負で零として整数次数に延ばす構成。",
+   "reference": ""
+  },
+  {
+   "name": "I 進閉厚化と Rees 加群の Proj 次数",
+   "description": "多項式環上の次数付き加群 M の IⁿM と商 M/IⁿM（閉厚化）、拡大イデアルの Rees 加群、それらに入る Proj 次数の成分（係数環を取り替えた版、二重の閉厚化を含む）。形式関数の入力。",
+   "reference": ""
+  },
+  {
+   "name": "Proj の切断（大域切断と適合切断の代数）",
+   "description": "基底環から Proj の大域切断への写像と、標準開の斉次局所化の適合する切断のなす部分代数（Čech H⁰）およびその閉厚化への制限。",
+   "reference": ""
+  },
+  {
+   "name": "Segre 座標環",
+   "description": "二組の次数一座標の積 b_j ⊗ a_i への多項式環からの写像、その核による商環と次数分解。",
+   "reference": ""
+  },
+  {
+   "name": "（補助）多項式環の作用の局所インスタンス",
+   "description": "IⁿM・M/IⁿM・M ⊗ B への多項式環の加群構造や R[X] → B[X] の代数構造を、各ファイルで局所インスタンスとして置いたもの。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.AlgebraicGeometry.reesGrade": "Rees 代数の次数付けと関手性",
+  "SerrePositivity.AlgebraicGeometry.reesDegreeOne": "Rees 代数の次数付けと関手性",
+  "SerrePositivity.AlgebraicGeometry.reesMap": "Rees 代数の次数付けと関手性",
+  "SerrePositivity.AlgebraicGeometry.affineBlowup": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.affineBlowupπ": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.affineBlowupChart": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.affineBlowupChartι": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.BlowupChartRing": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.chartBaseMap": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.affineCenterComplement": "アフィン blowup と標準チャート",
+  "SerrePositivity.AlgebraicGeometry.blowup": "一般スキームの blowup（貼り合わせ）",
+  "SerrePositivity.AlgebraicGeometry.blowupπ": "一般スキームの blowup（貼り合わせ）",
+  "SerrePositivity.AlgebraicGeometry.affineBlowupModelMap": "一般スキームの blowup（貼り合わせ）",
+  "SerrePositivity.AlgebraicGeometry.modulePureTransform": "加群の純変換と境界ねじれ",
+  "SerrePositivity.AlgebraicGeometry.boundaryTorsion": "加群の純変換と境界ねじれ",
+  "SerrePositivity.AlgebraicGeometry.matrixMinorIdeal": "小行列式イデアル",
+  "SerrePositivity.AlgebraicGeometry.projectiveNatGradedModuleChartDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveGradedModuleChartDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveGradedAway": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveGradedAwayMap": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveHomogeneousChartDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveHomogeneousChartAlgebraDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveHomogeneousChartLinearEquiv": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveNatChartColimitDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveModuleAwayRestriction": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveNatGradedModuleChartMap": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveTensorGradedModuleChartDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveFrobeniusRingChartDiagram": "次数付き加群の斉次局所化と標準開係数図式",
+  "SerrePositivity.AlgebraicGeometry.projectiveLaurentDenominator": "Laurent 単項式による標準開の表示",
+  "SerrePositivity.AlgebraicGeometry.projectiveLaurentExponents": "Laurent 単項式による標準開の表示",
+  "SerrePositivity.AlgebraicGeometry.projectiveLaurentGradedChartDiagram": "Laurent 単項式による標準開の表示",
+  "SerrePositivity.AlgebraicGeometry.projectivePolynomialDegree": "Laurent 単項式による標準開の表示",
+  "SerrePositivity.AlgebraicGeometry.projectiveRingQuotientGrade": "次数付けの操作（商・テンソル・余極限・整数次数への延長）",
+  "SerrePositivity.AlgebraicGeometry.projectiveNatGradingInt": "次数付けの操作（商・テンソル・余極限・整数次数への延長）",
+  "SerrePositivity.AlgebraicGeometry.projectiveTensorPiece": "次数付けの操作（商・テンソル・余極限・整数次数への延長）",
+  "SerrePositivity.AlgebraicGeometry.projectiveGradedColimitGrade": "次数付けの操作（商・テンソル・余極限・整数次数への延長）",
+  "SerrePositivity.AlgebraicGeometry.projectiveDirectSumSubmodule": "次数付けの操作（商・テンソル・余極限・整数次数への延長）",
+  "SerrePositivity.AlgebraicGeometry.reesAdicProjectiveQuotient": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.ReesAdicTotalModule": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesAdicProjectiveSubmodule": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesAdicProjectiveQuotientPiece": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesProjectiveGrade": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesAdicProjectivePiece": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesClosedCoefficientPiece": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesCoefficientAdicPiece": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesIteratedClosedSumPiece": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.reesAdicProjectiveIntegerBaseGrade": "I 進閉厚化と Rees 加群の Proj 次数",
+  "SerrePositivity.AlgebraicGeometry.projectiveScalarToGlobalSections": "Proj の切断（大域切断と適合切断の代数）",
+  "SerrePositivity.AlgebraicGeometry.projectiveHomogeneousSectionAlgebra": "Proj の切断（大域切断と適合切断の代数）",
+  "SerrePositivity.AlgebraicGeometry.reesClosedHomogeneousSectionProjection": "Proj の切断（大域切断と適合切断の代数）",
+  "SerrePositivity.AlgebraicGeometry.SegreCoordinateRing": "Segre 座標環",
+  "SerrePositivity.AlgebraicGeometry.segreCoordinateGradedRing": "Segre 座標環",
+  "SerrePositivity.AlgebraicGeometry.segreCoordinateProjection": "Segre 座標環",
+  "SerrePositivity.AlgebraicGeometry.segreCoordinateGrade": "Segre 座標環",
+  "SerrePositivity.AlgebraicGeometry.segreCoordinateMap": "Segre 座標環",
+  "SerrePositivity.AlgebraicGeometry.reesTransitionPolynomialModule": "（補助）多項式環の作用の局所インスタンス",
+  "SerrePositivity.AlgebraicGeometry.projectiveTensorPolyLocalModule": "（補助）多項式環の作用の局所インスタンス",
+  "SerrePositivity.AlgebraicGeometry.reesQuotientPolynomialModule": "（補助）多項式環の作用の局所インスタンス",
+  "SerrePositivity.AlgebraicGeometry.reesCoefficientAdicPolynomialAlgebra": "（補助）多項式環の作用の局所インスタンス",
+  "SerrePositivity.AlgebraicGeometry.OpenAtlasModelData": "MOVE:A 可換代数と数論幾何/スキーム",
+  "SerrePositivity.AlgebraicGeometry.OpenAtlasModelData.atlasArrowFamily": "MOVE:A 可換代数と数論幾何/スキーム",
+  "SerrePositivity.AlgebraicGeometry.specIdealEquiv": "MOVE:A 可換代数と数論幾何/スキーム",
+  "SerrePositivity.AlgebraicGeometry.projectiveMonomialCochains": "MOVE:A 可換代数と数論幾何/Čech 複体と被覆"
+ },
+ "uncertain": [
+  "SerrePositivity.AlgebraicGeometry.reesAdicProjectiveIntegerBaseGrade",
+  "SerrePositivity.AlgebraicGeometry.projectiveNatChartColimitDiagram",
+  "SerrePositivity.AlgebraicGeometry.reesClosedHomogeneousSectionProjection"
+ ],
+ "notes": "この概念は実質三つの塊：(1) blowup（Rees・アフィン・貼り合わせ・純変換、KST §5）、(2) 射影空間の標準開の係数図式（Čech の係数、d07 の fullCechComplex に入れて使う）、(3) I 進閉厚化 M/IⁿM と Rees 加群の Proj 次数（形式関数、d07 の reesAdicProjective…Cech… と対）。(2)(3) は「blowup」ではなく「射影空間の連接コホモロジー（Čech）と形式関数」で、幹を分けるか「Čech 複体と被覆」側とまとめる余地がある。幹「Rees 代数と進完備」(d03) はこの (3) と d01 の Rees 加群に吸収できる。OpenAtlasModelData・atlasArrowFamily は有限表示スキームのチャートと交叉を有限生成部分代数上の模型に降ろすデータ（Noether 近似、ファイル冒頭の「G2」）で blowup でも Proj でもない；スキームへ（幹に「有限表示の極限・降下」があればそちら）。specIdealEquiv は Spec A のイデアル層と A のイデアルの順序同型（Stacks 080Y）でスキームの一般論。projectiveMonomialCochains は一つの Laurent 単項式に対応する Čech コチェインの部分加群で Čech 側。projectiveFrobeniusRingChartDiagram は d00 の FrobeniusDirectLimit を標準開に並べたもの。重複の疑い：projectiveGradedModuleChartDiagram（整数次数）と projectiveNatGradedModuleChartDiagram（自然数次数を延ばして前者に渡す）と projectiveHomogeneousChartDiagram（次数零、projectiveHomogeneousChartLinearEquiv で前者と同一視）は同じ図式の三つの表示。reesAdicProjectiveQuotientPiece / reesClosedCoefficientPiece / reesCoefficientAdicPiece は同じ商の次数成分を係数環だけ変えて表したもの。matrixMinorIdeal は幹「環と加群（その他）」でもよい。"
+}

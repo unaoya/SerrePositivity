@@ -1,7 +1,9 @@
-"""概念の木のページ（HTML）を作る。使い方：python3 page.py <trunk-…-sub.csv> <出力.html> <版の名前>"""
+"""概念の木のページ（HTML）を作る。使い方：python3 page.py <trunk-…-sub.csv> <出力.html> <版の名前> [concept_deps の pickle]"""
 import csv, sys, html, collections
 rows = list(csv.DictReader(open(sys.argv[1], encoding='utf-8'))); OUT = sys.argv[2]; VER = sys.argv[3]
 I = lambda r, k: int(r[k]); e = html.escape
+import pickle
+DEP = pickle.load(open(sys.argv[4], 'rb')) if len(sys.argv) > 4 else None
 G = collections.OrderedDict()
 for r in rows: G.setdefault(r['group'], collections.OrderedDict()).setdefault(r['concept'], []).append(r)
 def agg(rs):
@@ -29,6 +31,10 @@ for g, cs in G.items():
         if len(rs) == 1 and not named:
             H.append(f'<div class="c leaf"><span class="t">{e(cn)}</span>{nums(cc, MAXC)}</div>'); continue
         H.append(f'<details class="c"><summary><span class="t">{e(cn)}<small>{len(named)} 小概念</small></span>{nums(cc, MAXC)}</summary><div class="subs">')
+        if DEP:
+            full = g + '/' + cn; top = sorted(((k, b) for (a2, b), k in DEP['E'].items() if a2 == full), reverse=True)[:4]
+            top = [(k, b) for k, b in top if k / cc['decls'] >= 0.05]
+            if top: H.append('<div class="dep">主張に現れる他の概念：' + '、'.join(f"{e(b.split('/', 1)[1])} <span class='n dim'>{k / cc['decls'] * 100:.0f}%</span>" for k, b in top) + '</div>')
         for r in sorted(rs, key=lambda r: (kind(r['subconcept'])[0] not in ('read',), kind(r['subconcept'])[0] != 'aux', -I(r, 'decls'))):
             k, lab = kind(r['subconcept']); sc = agg([r])
             tag = f'<b class="tag {k}">{lab}</b>' if lab else ''
@@ -64,6 +70,7 @@ summary:hover, .leaf:hover, .s:hover {{ background:var(--band) }} summary:focus-
 .t small {{ color:var(--dim); font-size:11px; margin-left:8px; font-weight:400 }}
 .subs {{ margin:2px 0 8px 40px; border-left:2px solid var(--line); padding-left:10px }}
 .s {{ padding:4px 6px; border-radius:4px; font-size:13px }} .s .d {{ display:block; color:var(--dim); font-size:12px; line-height:1.5 }} cite {{ font-style:normal; color:var(--accent) }}
+.dep {{ font-size:12px; color:var(--dim); padding:2px 6px 6px }} .dep .n {{ display:inline }}
 .s.unread .t, .s.other .t, .s.moved .t {{ color:var(--dim) }}
 .tag {{ font:500 10px var(--sans); border:1px solid currentColor; border-radius:3px; padding:0 4px; margin-right:6px; vertical-align:1px }} .tag.aux {{ color:var(--aux) }} .tag.unread, .tag.other {{ color:var(--unread) }} .tag.moved {{ color:var(--moved) }}
 .n {{ font:400 12.5px var(--mono); font-variant-numeric:tabular-nums; text-align:right }} .dim {{ color:var(--dim) }}
@@ -71,14 +78,14 @@ summary:hover, .leaf:hover, .s:hover {{ background:var(--band) }} summary:focus-
 </style>
 <main>
 <h1>SerrePositivity 概念の木（{e(VER)}）</h1>
-<p>ソースの宣言 <b>{TOT["decls"]:,}</b> 件を、今のファイルとディレクトリを見ずに、主張に現れる定義から概念に分けたもの。大分類 → 概念 → 小概念の三段。小概念は、宣言の多い 26 の概念について中の定義を読んで付けた。行を押すと開く。</p>
+<p>ソースの宣言 <b>{TOT["decls"]:,}</b> 件を、今のファイルとディレクトリを見ずに、主張に現れる定義から概念に分けたもの。大分類 → 概念 → 小概念の三段。小概念は、主張に 5 回以上現れる定義 5,468 個を読んで付けた。行を押すと開く。</p>
 <div class="facts"><span><b>{len(G)}</b>大分類</span><span><b>{sum(len(c) for c in G.values())}</b>概念</span><span><b>{sum(1 for r in rows if kind(r["subconcept"])[0] in ("read","aux"))}</b>小概念</span>
 <span><b>{st["read"]:,}</b>読んで名前を付けた小概念に入る宣言</span><span><b>{st["aux"]:,}</b>証明の足場（補助）</span><span><b>{st["unread"]:,}</b>まだ読んでいない定義の下</span><span><b>{st["other"] + st["moved"]:,}</b>未分類・移動分</span></div>
 <div class="tree"><div class="inner">
 <div class="head"><span>概念</span><span>宣言</span><span>（概念の中での割合）</span><span>行</span><span>主定理が使う</span><span>言い換え</span><span>未使用</span></div>
 {"".join(H)}
 </div></div>
-<p>数の読み方：<b>宣言</b>はソースに書いた定理・定義・instance の数（自動生成は親に含める）。<b>主定理が使う</b>は <code>main_statement</code> の証明がたどる宣言の数で、未証明の入力 3 件の向こう側は含まない。<b>言い換え</b>と<b>未使用</b>は機械の判定による割合で、読んで確かめたものではない。<b>補助</b>は、概念というより一つの証明のための足場と判断した定義。文献の節は、定義の docstring にあったもののほか、読んだ担当が推定で添えたものを含む。</p>
+<p>数の読み方：<b>宣言</b>はソースに書いた定理・定義・instance の数（自動生成は親に含める）。<b>主定理が使う</b>は <code>main_statement</code> の証明がたどる宣言の数で、未証明の入力 3 件の向こう側は含まない。<b>言い換え</b>と<b>未使用</b>は機械の判定による割合で、読んで確かめたものではない。<b>補助</b>は、概念というより一つの証明のための足場と判断した定義。文献の節は、定義の docstring にあったもののほか、一回目の読みでは担当が推定で添えたものを含む。<b>主張に現れる他の概念</b>は、その概念の宣言のうち、主張に相手の概念の定義を含むものの割合。</p>
 </main>'''
 open(OUT, 'w', encoding='utf-8').write(page)
 print(len(page), dict(st))

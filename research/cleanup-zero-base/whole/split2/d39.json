@@ -1,0 +1,17 @@
+{
+ "key": "d39",
+ "concept": "D 安定 ∞ 圏と導来 ∞ 圏/dg 代数（一対象 dg 圏）",
+ "subconcepts": [
+  {
+   "name": "一対象 dg 圏としての dg 代数",
+   "description": "複体のモノイド対象（非可換 dg 代数）を右加群の向きに揃えた一対象 dg 圏にしたものと、dg 代数の射が定める dg 関手",
+   "reference": "HA §7.1.1（ファイルの場所による）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap": "一対象 dg 圏としての dg 代数",
+  "SerrePositivity.InfinityCategories.HA.Section7_1_1.dgAlgebraCategory": "一対象 dg 圏としての dg 代数"
+ },
+ "uncertain": [],
+ "notes": "二つだけの概念。内容は「B 複体と dg 圏/dg 圏と dg 関手」の例（一対象 dg 圏）で、幹として独立させず統合してよい。導来 ∞ 圏 D(A) と ⊗_A B の入力に使う。"
+}

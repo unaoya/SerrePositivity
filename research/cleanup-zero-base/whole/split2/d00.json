@@ -1,0 +1,25 @@
+{
+ "key": "d00",
+ "concept": "A 可換代数と数論幾何/Frobenius の順極限",
+ "subconcepts": [
+  {
+   "name": "Frobenius 順極限の環",
+   "description": "標数 p の環 A で p 乗写像の反復を有向系にした代数的順極限 colim(A →F A →F …)（余完全化）と、有限段からの標準射。零環も許す。",
+   "reference": "BST13 Lemma 3.5（FrobeniusDirectLimit.lean の冒頭）"
+  },
+  {
+   "name": "順極限の関手性と係数図式",
+   "description": "環の射が誘導する順極限の間の環準同型と、環の図式から作る整数加群の係数図式（Čech の係数に使う）。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimit": "Frobenius 順極限の環",
+  "SerrePositivity.AlgebraicGeometry.frobeniusDirectSystemMap": "Frobenius 順極限の環",
+  "SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitOf": "Frobenius 順極限の環",
+  "SerrePositivity.AlgebraicGeometry.frobeniusDirectLimitMap": "順極限の関手性と係数図式",
+  "SerrePositivity.AlgebraicGeometry.frobeniusRingDiagram": "順極限の関手性と係数図式"
+ },
+ "uncertain": [],
+ "notes": "幹の名前は「Frobenius の順極限（余完全化 A_perf）」とすると中身が分かる。Mathlib の Perfection（逆極限）とは別物と冒頭に明記。frobeniusRingDiagram は Čech 複体の係数図式として使われ（d07 の schemePerfectCech*、d04 の projectiveFrobeniusRingChartDiagram）、使い手は「Čech 複体と被覆」側にある。"
+}

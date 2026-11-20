@@ -1,0 +1,50 @@
+{
+ "key": "d34",
+ "concept": "C 単体集合と ∞ 圏/単体的圏と coherent 神経",
+ "subconcepts": [
+  {
+   "name": "coherent 神経の頂点・辺と通常の神経からの射",
+   "description": "単体的圏の対象・通常の射・合成が定める coherent 神経の頂点・辺・合成三角形、通常の神経からの標準射、頂点・辺からの対象・射の読み出し、豊穣関手の基礎の関手",
+   "reference": "Kerodon §2.4.3（Tag 00KM）、Remark 3.1.6.3（Tag 01YZ）"
+  },
+  {
+   "name": "豊穣 Hom と coherent 神経の写像空間の比較",
+   "description": "豊穣 Hom の n 単体から作る coherent 神経の (n+1) 単体、区間（pinched）Hom への比較、左右の比較、合成の prism の座標",
+   "reference": "Kerodon Construction 4.6.7.3（Tag 01LD）、Kerodon 2.4（Tag 00JN）"
+  },
+  {
+   "name": "simplicial thickening の Path と面・合成（ホーン充填）",
+   "description": "thickening の Hom（Path の半順序の神経＝立方体）の合成写像・面の写像、点を通る／避ける部分単体集合、ホーンの面から Hom 写像を回収する道具",
+   "reference": "HTT 1.1.5.10、Kerodon 2.4.5.4（Tag 00LM）・2.4.5.8（Tag 00LR）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentSpaceSectionsObject": "MOVE:C 単体集合と ∞ 圏/極限と余極限",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap": "simplicial thickening の Path と面・合成（ホーン充填）",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCutLastZeroMap": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornHomViaFace": "simplicial thickening の Path と面・合成（ホーン充填）",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentLeftHomInterval": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.spaceInfinityObject": "MOVE:C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentTransformationFamilyDiagram": "MOVE:C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionObj": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathFaceMap": "simplicial thickening の Path と面・合成（ホーン充填）",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram": "coherent 神経の頂点・辺と通常の神経からの射",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathHollowFace": "simplicial thickening の Path と面・合成（ホーン充填）",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonObj": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPrismCut": "豊穣 Hom と coherent 神経の写像空間の比較",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathAvoids": "simplicial thickening の Path と面・合成（ホーン充填）",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData": "coherent 神経の頂点・辺と通常の神経からの射"
+ },
+ "uncertain": [
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentTransformationFamilyDiagram"
+ ],
+ "notes": "coherentSpaceSectionsObject は空間値図式の切断の Kan 対象（極限頂点の候補）で、極限と余極限の「空間値の図式の極限と切断空間」の内容。spaceInfinityObject は 𝒮 の頂点の Kan 複体の読み出しで coherentNerveObject の 𝒮 への特殊化（言い換え）。coherentTransformationFamilyDiagram は leftUnstraightening の変換空間の図式で、空間値関手（または straightening）の側。pathAvoids・pathThrough による Path の境界の被覆は、局所化（d36）にあった pathCubeBoundaryFace と pathHollowFace が同じ内容を別の添字で持つ（重複の疑い）。"
+}

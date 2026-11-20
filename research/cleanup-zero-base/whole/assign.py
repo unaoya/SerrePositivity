@@ -30,10 +30,13 @@ strip = lambda n: re.sub(r'^_private\..*?\.0\.', '', n)
 byname = {}
 for h, d in N.items(): byname.setdefault(strip(d['name']), h)
 SUB = {}; MRULES = {}; DESC = {}; moved = 0; unknown = []
-for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__), 'split', 'c*.json'))):
+norm = lambda c: RENAME.get(c, c); UNC = set()
+for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__), 'split', 'c*.json'))) + sorted(glob.glob(os.path.join(os.path.dirname(__file__), 'split2', 'd*.json'))):
     j = json.load(open(f, encoding='utf-8')); c0 = j['concept']
     for sc in j['subconcepts']: DESC[(c0, sc['name'])] = sc
     if j.get('mathlib_rules'): MRULES[c0] = [(re.compile(r), n) for r, n in j['mathlib_rules']]
+    for n in j.get('uncertain', []):
+        if n in byname: UNC.add(byname[n])
     for n, v in j['assign'].items():
         h = byname.get(n)
         if h is None: unknown.append(n); continue
@@ -44,7 +47,7 @@ for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__), 'split', 'c*.j
         else:
             c = c0
             for a0, pre, b0 in PROMOTE:
-                if a0 == c0 and v.startswith(pre): c = b0
+                if norm(a0) == norm(c0) and v.startswith(pre): c = b0
             L[h] = c; SUB[h] = v
             if c != c0: DESC[(c, v)] = DESC[(c0, v)]
 print('read assignments applied', len(SUB), 'moved', moved, 'unknown names', len(unknown), unknown[:5])
@@ -97,14 +100,14 @@ for x in N:
 con = {x: (RENAME.get(c, c) if c else c) for x, c in con.items()}
 T2 = collections.defaultdict(collections.Counter)
 for x, d in N.items():
-    k = T2[(con[x] or '（未割り当て）/（未割り当て）', sub[x])]; k['decls'] += 1; k['lines'] += d['lines']; k['layer%d' % d['layer']] += 1; k[d['K']] += 1
+    k = T2[(con[x] or '（未割り当て）/（未割り当て）', sub[x])]; k['decls'] += 1; k['uncertain'] += (src.get(x) in UNC); k['lines'] += d['lines']; k['layer%d' % d['layer']] += 1; k[d['K']] += 1
 pre = sys.argv[5]
 with open(pre + '.csv', 'w', encoding='utf-8') as f:
     w = csv.writer(f); cols = ['decls', 'lines', 'layer1', 'layer2', 'layer3', 'layer4'] + KS + ['核', '型に核', '型の定義をたどる', '型の定義の概念', 'Mathlib の定義', '本体をたどる']
     w.writerow(['group', 'concept'] + cols)
     for c in sorted(T): w.writerow(c.split('/', 1) + [T[c][k] for k in cols])
 with open(pre + '-sub.csv', 'w', encoding='utf-8') as f:
-    w = csv.writer(f); cols2 = ['decls', 'lines', 'layer1', 'layer2', 'layer3', 'layer4'] + KS
+    w = csv.writer(f); cols2 = ['decls', 'lines', 'layer1', 'layer2', 'layer3', 'layer4'] + KS + ['uncertain']
     w.writerow(['group', 'concept', 'subconcept', 'description', 'reference'] + cols2)
     inv = {v: k for k, v in RENAME.items()}
     for (c, sb) in sorted(T2):

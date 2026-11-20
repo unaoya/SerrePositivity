@@ -1,0 +1,76 @@
+{
+ "key": "d50",
+ "concept": "G スペクトル/対称スペクトル",
+ "subconcepts": [
+  {
+   "name": "対称スペクトルの定義・段・構造射",
+   "description": "Sym(K)（反復テンソルの対称列）上の加群としての対称スペクトル、段と段ごとの射、作用と構造射、対称列への忘却と評価、球面スペクトル",
+   "reference": ""
+  },
+  {
+   "name": "自由スペクトル F_n",
+   "description": "第 n 段に対象を自由生成する関手 F_n、対称列からの自由スペクトル",
+   "reference": ""
+  },
+  {
+   "name": "球面上のテンソル積（smash 積）",
+   "description": "convolution を球面作用の釣り合いで割ったテンソル積、その基礎の対称列と射影、関手性、対称列との convolution",
+   "reference": ""
+  },
+  {
+   "name": "内部 Hom スペクトル",
+   "description": "球面上の内部 Hom スペクトルと次数をずらした内部 Hom",
+   "reference": ""
+  },
+  {
+   "name": "係数対象による tensor・cotensor",
+   "description": "段ごとのテンソル（点つき・基点なしの単体集合による tensor）、段ごとの内部 Hom による cotensor、二変数関手、tensor・cotensor の表現データ",
+   "reference": ""
+  },
+  {
+   "name": "写像対象（豊穣 Hom）",
+   "description": "内部 Hom スペクトルの第 0 段としての写像対象、点つき・基点を忘れた単体的写像空間",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.SymmetricSpectrum": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.level": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.structureMap": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.forget": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.action": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.evaluation": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.levelMap": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.SymmetricSpectrum.sphere": "対称スペクトルの定義・段・構造射",
+  "SerrePositivity.GeneralSymmetricSpectrum.freeAt": "自由スペクトル F_n",
+  "SerrePositivity.SymmetricSpectrum.freeAt": "自由スペクトル F_n",
+  "SerrePositivity.GeneralSymmetricSpectrum.freeObj": "自由スペクトル F_n",
+  "SerrePositivity.SymmetricSpectrum.sphereTensor": "球面上のテンソル積（smash 積）",
+  "SerrePositivity.SymmetricSpectrum.sphereTensorMap": "球面上のテンソル積（smash 積）",
+  "SerrePositivity.SymmetricSpectrum.tensorProjection": "球面上のテンソル積（smash 積）",
+  "SerrePositivity.SymmetricSpectrum.tensorSequence": "球面上のテンソル積（smash 積）",
+  "SerrePositivity.SymmetricSpectrum.tensorBySequence": "球面上のテンソル積（smash 積）",
+  "SerrePositivity.SymmetricSpectrum.internalHom": "内部 Hom スペクトル",
+  "SerrePositivity.SymmetricSpectrum.shiftedHom": "内部 Hom スペクトル",
+  "SerrePositivity.GeneralSymmetricSpectrum.mappingTensorFunctor": "係数対象による tensor・cotensor",
+  "SerrePositivity.SymmetricSpectrum.pointwiseTensor": "係数対象による tensor・cotensor",
+  "SerrePositivity.SymmetricSpectrum.cotensor": "係数対象による tensor・cotensor",
+  "SerrePositivity.GeneralSymmetricSpectrum.pointwiseTensorBifunctor": "係数対象による tensor・cotensor",
+  "SerrePositivity.GeneralSymmetricSpectrum.pointwiseTensorFunctor": "係数対象による tensor・cotensor",
+  "SerrePositivity.GeneralSymmetricSpectrum.spectrumTensorCotensor": "係数対象による tensor・cotensor",
+  "SerrePositivity.SymmetricSpectrum.simplicialTensor": "係数対象による tensor・cotensor",
+  "SerrePositivity.SymmetricSpectrum.simplicialCotensor": "係数対象による tensor・cotensor",
+  "SerrePositivity.GeneralSymmetricSpectrum.cotensorFunctor": "係数対象による tensor・cotensor",
+  "SerrePositivity.GeneralSymmetricSpectrum.pointwiseTensor": "係数対象による tensor・cotensor",
+  "SerrePositivity.GeneralSymmetricSpectrum.mappingObject": "写像対象（豊穣 Hom）",
+  "SerrePositivity.SymmetricSpectrum.simplicialMappingSpace": "写像対象（豊穣 Hom）",
+  "SerrePositivity.SymmetricSpectrum.pointedMappingSpace": "写像対象（豊穣 Hom）"
+ },
+ "uncertain": [
+  "SerrePositivity.SymmetricSpectrum.shiftedHom",
+  "SerrePositivity.SymmetricSpectrum.tensorBySequence",
+  "SerrePositivity.GeneralSymmetricSpectrum.cotensorFunctor"
+ ],
+ "notes": "全て対称スペクトルに属する（MOVE なし）。同じ構成が一般の対称モノイダル圏 C と対象 K（GeneralSymmetricSpectrum.*）と、点つき単体集合と円（SymmetricSpectrum.*）の二層にあり、後者は前者の特殊化か MonoidalBalancedTensor／MonoidalModuleInternalHom の直接の適用：freeAt（abbrev で一致）、pointwiseTensor（SymmetricSpectrum 側は SymmetricSequence.pointwiseTensorModule を直接呼び、General 側と並行）、cotensor／cotensorFunctor、mappingObject／pointedMappingSpace が重複の候補。SymmetricSpectrum.sphereTensor・internalHom は「モノイダル圏の中の加群」の moduleObj の言い換え。GeneralSymmetricSpectrum.level の docstring は「基点付き単体的集合」と書くが値は一般の C（docstring の古さ）。文献の記載は docstring にない（Hovey–Shipley–Smith に当たる内容だが書かれていない）。"
+}

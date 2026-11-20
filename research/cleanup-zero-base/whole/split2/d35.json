@@ -1,0 +1,76 @@
+{
+ "key": "d35",
+ "concept": "C 単体集合と ∞ 圏/基点付き対象",
+ "subconcepts": [
+  {
+   "name": "基点付き対象と基点付き単体集合（基本）",
+   "description": "直積モノイダル圏の終対象の下の対象、一点（零対象）とその出入りの射、基点付き単体集合・基点の頂点・忘却関手",
+   "reference": ""
+  },
+  {
+   "name": "直積と smash 積",
+   "description": "基点付き対象の直積と軸の包含、wedge を潰した smash 積、商の射、射の smash",
+   "reference": ""
+  },
+  {
+   "name": "基点付き内部 Hom",
+   "description": "基点を保つ射の内部 Hom（等化子）、行き先・源に関する関手性、基礎圏の内部 Hom への包含",
+   "reference": "BF 1978 §2、HTT A.3.3（prePointed）"
+  },
+  {
+   "name": "球面・懸垂・ループ",
+   "description": "単体的球面（Δⁿ/∂Δⁿ）・円・零次球面、円の smash 冪、reduced suspension と loop、その随伴",
+   "reference": "HA §1.4.2、BF 1978 §2"
+  },
+  {
+   "name": "path 空間と mapping path",
+   "description": "自由な基点を加えた区間からの path 空間、端点の評価、射の mapping path 対象（fibration 置換）",
+   "reference": "Goerss–Jardine I §7"
+  },
+  {
+   "name": "（補助）smash 積の pushout-product の角",
+   "description": "二つの射の smash・直積に関する pushout-product の始域（境界）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.PointedSimplicialSet": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.PointedObject.basedHom": "基点付き内部 Hom",
+  "SerrePositivity.PointedObject.smash": "直積と smash 積",
+  "SerrePositivity.PointedObject.basedHomMap": "基点付き内部 Hom",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed": "基点付き内部 Hom",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace": "球面・懸垂・ループ",
+  "SerrePositivity.PointedObject": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath": "path 空間と mapping path",
+  "SerrePositivity.PointedSimplicialSet.circle": "球面・懸垂・ループ",
+  "SerrePositivity.PointedSimplicialSet.basepoint": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension": "球面・懸垂・ループ",
+  "SerrePositivity.PointedObject.smashQuotient": "直積と smash 積",
+  "SerrePositivity.PointedObject.basedHomι": "基点付き内部 Hom",
+  "SerrePositivity.PointedObject.smashMap": "直積と smash 積",
+  "SerrePositivity.PointedSimplicialSet.forget": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.PointedSimplicialSet.sphereSequence": "MOVE:G スペクトル/対称列",
+  "SerrePositivity.PointedSimplicialSet.productToSmash": "直積と smash 積",
+  "SerrePositivity.PointedObject.prod": "直積と smash 積",
+  "SerrePositivity.PointedObject.smashBoundary": "（補助）smash 積の pushout-product の角",
+  "SerrePositivity.PointedSimplicialSet.sphere": "球面・懸垂・ループ",
+  "SerrePositivity.PointedObject.axisLeft": "直積と smash 積",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint": "path 空間と mapping path",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary": "path 空間と mapping path",
+  "SerrePositivity.PointedSimplicialSet.spherePower": "球面・懸垂・ループ",
+  "SerrePositivity.PointedObject.basedHomFunctor": "基点付き内部 Hom",
+  "SerrePositivity.PointedObject.prodMap": "直積と smash 積",
+  "SerrePositivity.PointedObject.axisRight": "直積と smash 積",
+  "SerrePositivity.PointedSimplicialSet.ofVertex": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.PointedObject.toPoint": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.PointedObject.productBoundary": "（補助）smash 積の pushout-product の角",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv": "球面・懸垂・ループ",
+  "SerrePositivity.PointedObject.sphereZero": "球面・懸垂・ループ",
+  "SerrePositivity.PointedSimplicialSet.spherePowerAppendIso": "球面・懸垂・ループ",
+  "SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathSpace": "path 空間と mapping path",
+  "SerrePositivity.PointedObject.point": "基点付き対象と基点付き単体集合（基本）",
+  "SerrePositivity.PointedObject.fromPoint": "基点付き対象と基点付き単体集合（基本）"
+ },
+ "uncertain": [],
+ "notes": "場所は Spectra/Pointed と InfinityCategories/HTT/PointedSimplicialSets の二か所に分かれているが内容は一続き。sphereSequence は球面の対称列で対称列の概念。sphere 1 = circle、spherePower（TensorPowers.power circle n）と sphere n は別の球面の模型（比較の有無は未確認）。sphereZero（一般の PointedObject）と smash の単位。"
+}

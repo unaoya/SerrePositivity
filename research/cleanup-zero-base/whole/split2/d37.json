@@ -1,0 +1,101 @@
+{
+ "key": "d37",
+ "concept": "C 単体集合と ∞ 圏/極限と余極限",
+ "subconcepts": [
+  {
+   "name": "Kan 拡張",
+   "description": "点ごとの左・右 Kan 拡張、写像円柱、comma の相対 join による候補、fiber ごとの図式の族、h Fun の Hom の比較による普遍性",
+   "reference": ""
+  },
+  {
+   "name": "simplicial replacement と strict な自然変換の空間",
+   "description": "通常の圏上の単体集合値図式の simplicial replacement の単体と行",
+   "reference": "Kerodon Construction 5.3.2.1（Tag 035V）"
+  },
+  {
+   "name": "strict な図式・通常の圏の極限との比較",
+   "description": "strict な錐に sHom(x,−) を適用した錐、表現可能な図式の比較射（反転版）、Cat∞ の引き戻しの path 置換した strict な図式と錐",
+   "reference": "Kerodon 7.5.4.6（Tag 03BB）、HTT 4.2.4.1"
+  },
+  {
+   "name": "ホモトピー引き戻し・押し出しと塔の極限（単体集合）",
+   "description": "二重写像円筒とその包含",
+   "reference": ""
+  },
+  {
+   "name": "余錐の空間と余極限の関手性",
+   "description": "終点固定の余錐の空間と余極限頂点の写像空間の比較、普遍錐・普遍余錐全体の部分単体集合とその射影",
+   "reference": ""
+  },
+  {
+   "name": "始対象・終対象と相対余極限",
+   "description": "辺が定める coslice の頂点、相対余錐制限の標的（引き戻し）、余錐の後合成",
+   "reference": "Kerodon 7.1（Tag 02H1）"
+  },
+  {
+   "name": "空間値の図式の極限と切断空間",
+   "description": "left fibration の錐上の切断の底図式への制限",
+   "reference": ""
+  },
+  {
+   "name": "複体の strict な図式とその ∞ 局所化",
+   "description": "Δ・Δᵒᵖ で添字づけた複体の strict 図式の Reedy モデル構造",
+   "reference": "Hovey §5.2"
+  },
+  {
+   "name": "重み付き切断と Bousfield–Kan のホモトピー極限",
+   "description": "重みとパラメーターの pushout-product、図式の宇宙の持ち上げ、反変な Hom 係数図式、線形化前の Bousfield–Kan 重み",
+   "reference": "Kerodon 7.5.3（Tag 03AP）、HA 1.2.4"
+  },
+  {
+   "name": "錐・余錐と極限・余極限",
+   "description": "余錐の頂点の点図式としての表示",
+   "reference": ""
+  },
+  {
+   "name": "（補助）極限・Kan 拡張の証明の足場",
+   "description": "𝒮 の中で内ホーン・合成端を固定した二胞体の族の空間（Ind-S (9)）、Hom 空間で動くホーンの族、二単体の path の同定とラベル、族の頂点での制限、頂点の離散単体集合",
+   "reference": "Kerodon 7.1（Tag 02H1）、Kerodon Proposition 7.1.8.7（Tag 06A5）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedDiagramUniverse": "重み付き切断と Bousfield–Kan のホモトピー極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.reflectedRepresentableComparison": "strict な図式・通常の圏の極限との比較",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right": "ホモトピー引き戻し・押し出しと塔の極限（単体集合）",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.leftFibrationConeRestriction": "空間値の図式の極限と切断空間",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.KanRightCylinder": "Kan 拡張",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KanRelativeCoconeTarget": "始対象・終対象と相対余極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanGlobalDiagramFamily": "Kan 拡張",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.composableHomHornMap": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleFamilySpace": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedColimitHomDiagram": "重み付き切断と Bousfield–Kan のホモトピー極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.edgeCosliceVertex": "始対象・終対象と相対余極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeVertexDiagram": "錐・余錐と極限・余極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCorner": "重み付き切断と Bousfield–Kan のホモトピー極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.innerTriangleExtensionUncurry": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleCompositeFamily": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementSimplex": "simplicial replacement と strict な自然変換の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomSpace": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone": "strict な図式・通常の圏の極限との比較",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.colimitCocones": "余錐の空間と余極限の関手性",
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.bousfieldKanSetWeight": "重み付き切断と Bousfield–Kan のホモトピー極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.leftKanHomMap": "Kan 拡張",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleZeroLabel": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanLeftCommaCandidate": "Kan 拡張",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleLongHomValue": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesZeroVertices": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.kanPostcomposeCocone": "始対象・終対象と相対余極限",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.vertexDiscreteι": "（補助）極限・Kan 拡張の証明の足場",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementRows": "simplicial replacement と strict な自然変換の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementDiagram": "strict な図式・通常の圏の極限との比較",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeProjection": "余錐の空間と余極限の関手性",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeMappingSpaceHomComparison": "余錐の空間と余極限の関手性",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.catPullbackReplacementCone": "strict な図式・通常の圏の極限との比較",
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso": "MOVE:C 単体集合と ∞ 圏/神経",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.strictDiagramReedyModelCategory": "複体の strict な図式とその ∞ 局所化"
+ },
+ "uncertain": [],
+ "notes": "controlledTriangle…（FamilySpace・LongHomSpace・LongHomValue・CompositeFamily）、composableHomHornMap、innerTriangleExtensionUncurry、triangleFullPath、triangleZeroLabel は「Ind-S (9)」と呼ぶ一つの証明（𝒮 の中の合成三角形の空間と全長 Hom の空間の比較）の足場で、極限そのものではなく写像空間・合成の内容。familyAtVertex は局所化（d36）にあった prismVertexEvaluation と同じ定義（重複）。PreservesZeroVertices は零対象を保つ関手の条件で安定 ∞ 圏（完全関手）の側。nerveAsSmallIso は神経の宇宙の持ち上げ。catPullbackReplacement… は Cat∞ の引き戻しで、空間・Cat∞ の側に置く手もある。vertexDiscreteι は一般の単体集合の構成（頂点の離散化）で、単体集合（基本）に置く手もある。"
+}

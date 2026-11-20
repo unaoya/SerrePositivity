@@ -1,0 +1,22 @@
+{
+ "key": "d14",
+ "concept": "A 可換代数と数論幾何/付値と区間",
+ "subconcepts": [
+  {
+   "name": "付値環のスペクトルの区間の環",
+   "description": "付値環の素点の区間 a ≤ b に対応する環（intervalPrime での局所化）",
+   "reference": "BM18 Definition 4.6"
+  },
+  {
+   "name": "（補助）arc 被覆の付値環の代表系",
+   "description": "素点ごとに固定した代数閉分数体の、基底環の像を含む付値部分環の添字",
+   "reference": "BM18 Lemma 3.29"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.ValuationIntervalRing": "付値環のスペクトルの区間の環",
+  "SerrePositivity.BhattScholze.Perfectoidization.Arc.ValuationProbeIndex": "（補助）arc 被覆の付値環の代表系"
+ },
+ "uncertain": [],
+ "notes": "ValuationProbeIndex は arc 被覆の Čech 完全性を絶対整閉付値環へ帰着する証明の添字（Perfectoidization/Arc/Valuations/ArcValuationProduct.lean）。同じファイルに Arc.IsAffineVCover があり、AlgebraicGeometry.IsAffineVCover（d10）と重複の疑い。"
+}

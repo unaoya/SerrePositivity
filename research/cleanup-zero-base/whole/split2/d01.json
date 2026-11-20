@@ -1,0 +1,34 @@
+{
+ "key": "d01",
+ "concept": "A 可換代数と数論幾何/Hilbert–Samuel と対角線",
+ "subconcepts": [
+  {
+   "name": "Samuel 関数と Hilbert–Samuel 重複度",
+   "description": "Samuel 関数 n ↦ ℓ(M/IⁿM) と、その多項式の最高次係数から定める重複度 e(I, M)。",
+   "reference": ""
+  },
+  {
+   "name": "随伴次数加群と Rees 加群",
+   "description": "I 進フィルトレーションの段 IⁿM、随伴次数加群の成分 IⁿM/Iⁿ⁺¹M、Rees 加群 ⊕IⁿMtⁿ とその商表示、随伴次数環。",
+   "reference": ""
+  },
+  {
+   "name": "対角線の環（対角線への帰着）",
+   "description": "R = k[[X]] 上の冪級数環 R[[Y]] を変数の取り替え X ↦ Y の代数構造で見た環と、その中のイデアル。Tor を対角線の列の Koszul ホモロジーに帰着する。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.HilbertSamuel.samuelFunction": "Samuel 関数と Hilbert–Samuel 重複度",
+  "SerrePositivity.HilbertSamuel.multiplicity": "Samuel 関数と Hilbert–Samuel 重複度",
+  "SerrePositivity.HilbertSamuel.GradedPiece": "随伴次数加群と Rees 加群",
+  "SerrePositivity.HilbertSamuel.ReesGraded": "随伴次数加群と Rees 加群",
+  "SerrePositivity.HilbertSamuel.ReesModule": "随伴次数加群と Rees 加群",
+  "SerrePositivity.HilbertSamuel.GradedReesRing": "随伴次数加群と Rees 加群",
+  "SerrePositivity.HilbertSamuel.adicSubmodule": "随伴次数加群と Rees 加群",
+  "SerrePositivity.DiagonalRing": "対角線の環（対角線への帰着）",
+  "SerrePositivity.DiagonalRing.varIdeal": "対角線の環（対角線への帰着）"
+ },
+ "uncertain": [],
+ "notes": "ReesModule・GradedReesRing は幹「Rees 代数と進完備」（今は中身がほぼ空）と重なる。DiagonalRing は等標数の交点重複度（Serre の対角線への帰着）の道具で、幹「交点重複度と χ」に入れてもよい。adicSubmodule は Mathlib の I.stableFiltration ⊤ の第 n 段の言い換え。"
+}

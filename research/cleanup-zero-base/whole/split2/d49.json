@@ -1,0 +1,46 @@
+{
+ "key": "d49",
+ "concept": "G スペクトル/モノイダル圏の中の加群（一般論）",
+ "subconcepts": [
+  {
+   "name": "釣り合いテンソル積（モノイド上の相対テンソル積）",
+   "description": "二つの加群のテンソル積を二つの作用の余等化子で割った対象、商への射影、降ろした作用による加群構造と関手性",
+   "reference": ""
+  },
+  {
+   "name": "加群の内部 Hom",
+   "description": "源と標的の作用の等化子としての内部 Hom とその加群構造",
+   "reference": ""
+  },
+  {
+   "name": "自由加群",
+   "description": "対象 X から M ⊗ X として得る自由加群と生成元の射",
+   "reference": ""
+  },
+  {
+   "name": "加群と対象のテンソル",
+   "description": "加群の右または左に対象をテンソルして得る加群（左は交換で作用を移す）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.MonoidalBalancedTensor.moduleObj": "釣り合いテンソル積（モノイド上の相対テンソル積）",
+  "SerrePositivity.MonoidalBalancedTensor.obj": "釣り合いテンソル積（モノイド上の相対テンソル積）",
+  "SerrePositivity.MonoidalBalancedTensor.moduleMap": "釣り合いテンソル積（モノイド上の相対テンソル積）",
+  "SerrePositivity.MonoidalBalancedTensor.projection": "釣り合いテンソル積（モノイド上の相対テンソル積）",
+  "SerrePositivity.MonoidalBalancedTensor.relationLeft": "釣り合いテンソル積（モノイド上の相対テンソル積）",
+  "SerrePositivity.MonoidalModuleInternalHom.moduleObj": "加群の内部 Hom",
+  "SerrePositivity.MonoidalModuleInternalHom.obj": "加群の内部 Hom",
+  "SerrePositivity.MonoidalFreeModule.freeObj": "自由加群",
+  "SerrePositivity.MonoidalFreeModule.generator": "自由加群",
+  "SerrePositivity.MonoidalBalancedTensor.tensorRightObj": "加群と対象のテンソル",
+  "SerrePositivity.MonoidalBalancedTensor.tensorLeftObj": "加群と対象のテンソル",
+  "SerrePositivity.Enriched.TensorCotensor": "MOVE:Z 圏論一般/豊穣圏"
+ },
+ "uncertain": [
+  "SerrePositivity.MonoidalBalancedTensor.relationLeft",
+  "SerrePositivity.MonoidalBalancedTensor.tensorLeftObj",
+  "SerrePositivity.MonoidalBalancedTensor.tensorRightObj"
+ ],
+ "notes": "中身は対称モノイダル圏のモノイド対象上の加群（Mathlib の Mod C M）の一般論で、スペクトルに固有のものはない。幹としては「Z 圏論一般/モノイダル圏」の下に置くのが自然（使い手は対称スペクトル＝球面対称列上の加群）。Enriched.TensorCotensor は豊穣圏の tensor・cotensor の表現データ（二つのパラメーター付き随伴）で加群ではないので「豊穣圏」へ MOVE。tensorLeftObj は名前空間 MonoidalBalancedTensor にあるがファイルは FreeTensor.lean で、tensorRightObj と対。文献の記載は docstring にない。"
+}

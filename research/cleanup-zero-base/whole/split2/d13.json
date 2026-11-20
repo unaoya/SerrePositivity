@@ -1,0 +1,22 @@
+{
+ "key": "d13",
+ "concept": "A 可換代数と数論幾何/交点重複度と χ",
+ "subconcepts": [
+  {
+   "name": "Serre の交点重複度 χ",
+   "description": "Tor の長さの交代和 χ^R(M,N)",
+   "reference": ""
+  },
+  {
+   "name": "パラメータ系",
+   "description": "局所環で h = dim D かつ (z) が極大イデアル準素である列",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.chi": "Serre の交点重複度 χ",
+  "SerrePositivity.IsSystemOfParameters": "パラメータ系"
+ },
+ "uncertain": [],
+ "notes": "IsSystemOfParameters は χ そのものでなく局所環の一般概念（CommutativeAlgebra/SystemOfParameters）。幹を「交点重複度と χ」に置くなら入力として残せるが、環と加群（その他）に置いてもよい。"
+}

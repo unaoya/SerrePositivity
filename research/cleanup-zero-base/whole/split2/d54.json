@@ -1,0 +1,79 @@
+{
+ "key": "d54",
+ "concept": "H K 理論/S 構成の入力（安定モデル・小さい Perf）",
+ "subconcepts": [
+  {
+   "name": "S 構成の安定な入力と cofiber を保つ射",
+   "description": "安定な quasicategory を束ねた S 構成の入力、その同値、零対象と cofiber 正方形を保つ射の条件",
+   "reference": ""
+  },
+  {
+   "name": "小さい dg 入力と固定した ν・K",
+   "description": "小さい dg 圏の束（PerfDGInput）のなす ∞ 圏 S と、その上の安定 ∞ 圏値関手 ν（Perf）・スペクトル値関手 K、対象ごとの値と射",
+   "reference": ""
+  },
+  {
+   "name": "Cat^perf",
+   "description": "冪等完備な安定 ∞ 圏と完全関手のなす ∞ 圏（安定 ∞ 圏の圏の全部分複体）と包含",
+   "reference": ""
+  },
+  {
+   "name": "Perf の小さい dg 模型（包絡）",
+   "description": "指定した像の族を含む Perf の充満 dg 部分圏（小さい包絡）、その包含、延長像の族と延長の終域",
+   "reference": ""
+  },
+  {
+   "name": "小さい Perf 模型の四角形",
+   "description": "左右の延長を共通の終域へ制限した二辺と、それらから作る dg の貼り合わせ（LT 四角形の入力）",
+   "reference": ""
+  },
+  {
+   "name": "（補助）単体集合のホモトピーの円柱と有限列",
+   "description": "端点を固定した辺の円柱、ホモトピーの有限列（BF の境界の補正を厳密に保つための足場）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.SConstruction.StableModel": "S 構成の安定な入力と cofiber を保つ射",
+  "SerrePositivity.KST.SConstruction.dgKInputStableValue": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.dgHomGluingBimodule": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.PerfDGInput": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.dgKInputSpectrum": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.dgKInputK": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.dgKInputPerfectNu": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.dgKInputInfinity": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.EnrichedFunctorCollageCategory": "MOVE:C 単体集合と ∞ 圏/単体的圏と coherent 神経",
+  "SerrePositivity.KST.SConstruction.PointedKanInfinity": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.KST.SConstruction.PointedSSetObject": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.KST.SConstruction.dgKInputNu": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinder": "（補助）単体集合のホモトピーの円柱と有限列",
+  "SerrePositivity.KST.SConstruction.dgKInputNuMap": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.PointedKanObject": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.KST.SConstruction.dgKInputSpectrumMap": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.DGOdotInput": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope": "Perf の小さい dg 模型（包絡）",
+  "SerrePositivity.KST.SConstruction.dgHomGluingTargetMap": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.FamilyHomotopyChain": "（補助）単体集合のホモトピーの円柱と有限列",
+  "SerrePositivity.KST.SConstruction.PointedDGQuotientEndObject": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.PointedSpanDiagram": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.KST.SConstruction.DGSmallPerfectArrowTarget": "Perf の小さい dg 模型（包絡）",
+  "SerrePositivity.KST.SConstruction.PreservesCofiberData": "S 構成の安定な入力と cofiber を保つ射",
+  "SerrePositivity.KST.SConstruction.DGSmallPerfectBase": "Perf の小さい dg 模型（包絡）",
+  "SerrePositivity.KST.SConstruction.dgHomGluingLoopConeShiftedTarget": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion": "Perf の小さい dg 模型（包絡）",
+  "SerrePositivity.KST.SConstruction.dgHomGluingLoopConeFunctor": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.perfectStableInfinity": "Cat^perf",
+  "SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightMap": "小さい Perf 模型の四角形",
+  "SerrePositivity.KST.SConstruction.SmallBundledDGCategory": "小さい dg 入力と固定した ν・K",
+  "SerrePositivity.KST.SConstruction.dgHomGluingTargetModuleMap": "MOVE:H K 理論/局所化不変量：lax 引き戻しと双加群",
+  "SerrePositivity.KST.SConstruction.EnrichedFunctorCollage": "MOVE:C 単体集合と ∞ 圏/単体的圏と coherent 神経",
+  "SerrePositivity.KST.SConstruction.dgSmallPerfectSquareLeftMap": "小さい Perf 模型の四角形",
+  "SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionFamily": "Perf の小さい dg 模型（包絡）",
+  "SerrePositivity.KST.SConstruction.StableModelEquivalence": "S 構成の安定な入力と cofiber を保つ射",
+  "SerrePositivity.KST.SConstruction.DGSmallPerfectSquareGluing": "小さい Perf 模型の四角形",
+  "SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion": "Cat^perf"
+ },
+ "uncertain": [],
+ "notes": "幹の名前「S 構成の入力（安定モデル・小さい Perf）」に合うのは 39 件中 25 件。dgHomGluing*（Hom_E(p(c),q(d)) の双加群、その cone 関手と逆 shift）6 件と DGOdotInput・PointedDGQuotientEndObject は Land–Tamme の ⊙（lax 引き戻し）の dg 模型の部品なので lax 引き戻しの概念へ。PointedKanObject・PointedKanInfinity・PointedSSetObject・PointedSpanDiagram は点つき単体集合の豊穣圏（BF の関手性の値域）で基点付き対象へ。EnrichedFunctorCollage は単体的豊穣関手の collage で単体的圏へ。dgKInputStableValue・dgKInputSpectrum・dgKInputSpectrumMap・dgKInputInfinity は presentedPerfectDG* / perfDGInputInfinity の別名（abbrev）で、言い換えの疑い。DGSmallPerfectBase・DGSmallPerfectArrowTarget も DGSmallPerfectEnvelope の特殊化の abbrev。dgSmallPerfectSquare*・DGSmallPerfectSquareGluing は LT 四角形用で、lax 引き戻し側に寄せる選択もある。"
+}
