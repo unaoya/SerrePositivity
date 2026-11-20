@@ -26,7 +26,7 @@ Everything else used by the main theorem is proved from the standard axioms (`pr
 In the whole repository there are exactly four declarations containing `sorry`: the three above and one
 off-path literature quotation, `InfinityCategories.Project.ModelCategoryComparison.Inputs.kanQuillen_model_exists`
 (existence of the Kan–Quillen model structure on simplicial sets, Hovey, *Model Categories*, Theorem 3.6.5).
-It is outside the import closure of the root and outside the closure of the main theorem; 18 declarations
+It is outside the import closure of the root and outside the closure of the main theorem; 17 kernel declarations
 depend on it (the level model structure on circle spectra). The Mathlib pinned here has no `ModelCategory SSet`;
 check again at each Mathlib bump whether the quotation can be replaced. No other axioms are used anywhere
 (checked over all declarations of all modules by `research/cleanup-zero-base/whole/axioms_check.py`, 2026-11-20;
