@@ -205,10 +205,29 @@ LI-W1（置き直し）は、監査の作り直しが終わった後に並行で
 
 注意：Riehl は Proposition 10.1.4 と 3.7.10 の証明を演習としている（「Lemma 3.5.12 を主に使う」）。証明は本体で書く。B4（二つの道の一致）は、Theorem 3.7.11 の証明の中の定義（テンソル F(v) ⊗ m、余テンソル）と、Proposition 10.1.4 の一意性から従う形で述べる。
 
-**副：**
-- G. M. Kelly, *Basic Concepts of Enriched Category Theory*（TAC Reprints 10, 2005）。C-軽（V 圏のテンソル、関手の圏と end、表現可能な V 関手、充満部分圏）の基準。**節の番号は、PDF を入手して本文で確かめてから引く**（11-21 の時点では取得できず、未確認）。
-- M. Hovey, *Model Categories*（AMS, 1999）第 4 章。加群（作用）と、モデル構造との両立。使う側（ホモトピー代数）の基準。番号は本文で確かめてから引く。
-- 対称スペクトルへの適用（段 4）：M. Hovey, "Spectra and symmetric spectra in general model categories"（JPAA 165, 2001）。番号は本文で確かめてから引く。
+**副：**（11-21、ユーザーが PDF を用意。調整役が本文から番号を読み出して確かめた）
+
+- **G. M. Kelly, *Basic Concepts of Enriched Category Theory***（Reprints in Theory and Applications of Categories 10, 2005）。C-軽の基準。
+
+  | 一般論 | 節 |
+  | --- | --- |
+  | V 圏、V 関手、V 自然変換 | §1.2 The 2-category V-CAT for a monoidal V |
+  | 通常の圏を取り出す | §1.3 The 2-functor ( )₀ : V-CAT → CAT |
+  | V 圏のテンソル（対）と反対圏 | §1.4 Symmetric monoidal categories: tensor product and duality |
+  | 自己豊穣化、表現可能な V 関手 | §1.6 V as a V-category; representable V-functors |
+  | 表現可能性、受け身の変数についての V 関手 | §1.10 |
+  | end | §2.1 Ends in V |
+  | 豊穣関手の圏 [A, B] と評価 | §2.2 The functor-category [A, B] for small A |
+  | [A ⊗ B, C] ≅ [A, [B, C]] | §2.3 |
+  | 米田（保留） | §1.9（弱い形）、§2.4（強い形） |
+  | 充満部分圏 | §3.5 Full subcategories and limits（充満部分圏そのものは §1.2 の中） |
+  | テンソルと余テンソル | §3.7 Tensor and cotensor products（式 (3.42) 以下） |
+
+- **M. Hovey, *Model Categories***（AMS Mathematical Surveys and Monographs 63, 1999）第 4 章。使う側（ホモトピー代数）の基準。§4.1 Closed monoidal categories and closed modules：Definition 4.1.6（C 加群の構造）、4.1.12（二変数の随伴）、4.1.13（閉モノイダル構造）、4.1.14（閉モノイダル関手）。§4.2 Monoidal model categories and modules over them：Definition 4.2.1（Quillen の二変数の随伴）、Lemma 4.2.2、Definition 4.2.6（モノイダルモデル圏）、Corollary 4.2.10（基点付き単体集合）、Definition 4.2.16（モノイダル Quillen 関手）、4.2.18（C モデル圏）。
+
+- **M. Hovey, "Spectra and symmetric spectra in general model categories"**（arXiv:math/0004051v3）。対称スペクトルへの適用（段 4）の基準。Definition 6.2（対称スペクトル＝対称列の圏の中の可換モノイド Sym(K) 上の加群。Sp^Σ(D, K) は閉対称モノイダル圏で、Sp^Σ(C, K) はその上で豊穣化されテンソルと余テンソルを持つ）、Definition 6.3（Evₙ と左随伴 Fₙ。Fₙ X ∧ Fₘ Y ≅ Fₙ₊ₘ(X ⊗ Y)、特に F₀ は対称モノイダル）、Theorem 7.3（射影モデル構造で Sp^Σ(D, K) は対称モノイダルモデル圏、Sp^Σ(C, K) はその上のモデル圏）、Theorem 7.11 の後の注意（F₀ : D → Sp^Σ(D, K) は対称モノイダルな Quillen 関手なので、Sp^Σ(C, K) は D モデル圏でもある）。**決定 4 の道（F₀ による基底の取り替え）は、この注意の書き方そのもの。**
+
+PDF と、読み出した本文は `~/serre-evidence/references/`（Git の外）。
 
 docstring での引き方は、本体の規約（`@[cite KEY "番号"]` と略号表）に従う。Riehl の略号を略号表に足す。記憶で番号を書かない。
 
