@@ -23,7 +23,7 @@ I.2.8,none,,原典 p.18 の「p 可逆対象の Tate 消滅」を照合。native
 I.2.9,none,,原典 p.18 の「有界下の Tate の p 完備性」を照合。native な Tate と残余作用の構成・比較が未構成。周期鎖複体の Tate 消滅は、指定したスペクトルの orbit/fixed point の消滅とは未比較。,,not_found,
 I.3.1,none,,原典 p.19 の「Tate の lax 対称モノイダル構造の一意性」を照合。一般安定 ∞ 圏の Verdier 商・Ind とモノイダル Tate の全比較が不足。指定した DG/反射的商の API や通常圏の lax 関手だけでは当該全関手の主張を与えない。,,not_found,
 I.3.2,none,,原典 p.19 の「安定部分圏とテンソルイデアル」を照合。StableCategory と ExactMap は安定圏と完全射を束ねるが、C 内の全部分圏の安定性とテンソルイデアル条件を組にする定義はない。,,not_found,
-I.3.3,partial,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.isVerdierSequence_of_adjoint @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/AdjointVerdier.lean:41,"仮定：安定圏の完全射 i,q と充満忠実 i、ker q=im i、完全な右随伴 j と可逆余単位を与える（Lean が強い：反射的商のデータを追加）。結論：q は cofiber が im i に入る辺の ∞ 局所化（(i) の普遍性のこの場合）。任意の小さい安定部分圏から商を作る存在・(ii) の filtered 写像公式・(iii) の全反射関手は含まれない。",,found,stronger-hyp
+I.3.3,partial,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.isVerdierSequence_of_adjoint @ SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/AdjointVerdier.lean:40,"仮定：安定圏の完全射 i,q と充満忠実 i、ker q=im i、完全な右随伴 j と可逆余単位を与える（Lean が強い：反射的商のデータを追加）。結論：q は cofiber が im i に入る辺の ∞ 局所化（(i) の普遍性のこの場合）。任意の小さい安定部分圏から商を作る存在・(ii) の filtered 写像公式・(iii) の全反射関手は含まれない。",,found,stronger-hyp
 I.3.4,none,,"原典 p.21 の「局所化後の写像空間と Yoneda」を照合。一般の Yoneda と局所化はあるが、局所化後の表現可能関手を presheaf 反射 L(Map_C(X,−)) と同定する指定比較は未確認。",,not_found,
 I.3.5,none,,原典 p.22 の「Verdier 商の Ind 表示と随伴」を照合。一般安定 ∞ 圏の Verdier 商・Ind とモノイダル Tate の全比較が不足。指定した DG/反射的商の API や通常圏の lax 関手だけでは当該全関手の主張を与えない。,,not_found,
 I.3.6,none,,原典 p.23 の「モノイダル Verdier 商と lax 関手の普遍性」を照合。一般安定 ∞ 圏の Verdier 商・Ind とモノイダル Tate の全比較が不足。指定した DG/反射的商の API や通常圏の lax 関手だけでは当該全関手の主張を与えない。,,not_found,
