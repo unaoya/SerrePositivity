@@ -105,33 +105,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_congr := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_congr
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_moving := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_moving
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_parameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_parameter
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_square := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianLeftFamilyEdge_square
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_congr := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_congr
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_moving := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_moving
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_parameter := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_parameter
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_square := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianRightFamilyEdge_square
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.mappedEdge_family_congr := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mappedEdge_family_congr
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.mappedEdge_square := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mappedEdge_square

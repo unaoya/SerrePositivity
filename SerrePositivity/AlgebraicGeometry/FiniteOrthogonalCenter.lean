@@ -84,9 +84,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finite_center_complement := _root_.SerrePositivity.AlgebraicGeometry.finite_center_complement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_fg_center_separating_boundary_idempotents := _root_.SerrePositivity.AlgebraicGeometry.exists_fg_center_separating_boundary_idempotents

@@ -87,18 +87,3 @@ end SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.loopSpace := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.suspension := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.suspensionLoopEquiv := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.loopSpace._proof_1 := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.suspension._proof_1 := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension._proof_1

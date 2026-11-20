@@ -86,24 +86,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionEquiv := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionEquiv_inl := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionEquiv_inl
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionEquiv_inr := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionEquiv_inr
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionLinearEquiv := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionLinearEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionLinearEquiv_comp_mulVecLin := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionLinearEquiv_comp_mulVecLin
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionLinearEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionLinearEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rowPartitionLinearEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.rowPartitionLinearEquiv._proof_2

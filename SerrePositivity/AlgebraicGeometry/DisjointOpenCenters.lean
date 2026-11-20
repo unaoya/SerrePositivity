@@ -84,12 +84,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_iInf_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_iInf_of_openImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_map_eq_top_of_disjoint_closed_image := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_map_eq_top_of_disjoint_closed_image
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_iInf_map_of_disjoint_closed_images := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_iInf_map_of_disjoint_closed_images

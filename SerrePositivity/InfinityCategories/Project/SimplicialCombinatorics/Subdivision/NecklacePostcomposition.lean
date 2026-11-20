@@ -55,36 +55,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose_forget := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose_forget
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose_map := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose_obj_map := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose_obj_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_5 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_5
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_6 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_6
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPostcompose._proof_7 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose._proof_7

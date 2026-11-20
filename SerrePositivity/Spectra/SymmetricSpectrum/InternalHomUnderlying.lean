@@ -2,7 +2,8 @@ module
 
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
-public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
+public import SerrePositivity.Spectra.General.Limits
+public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 
 /-! # 対称スペクトルの内部Homの基礎対称列
 
@@ -17,6 +18,8 @@ universe u
 noncomputable section
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (action)
 
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity.PointedSimplicialSet

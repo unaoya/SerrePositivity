@@ -103,12 +103,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.faithfullyFlat_of_residue_maps := _root_.SerrePositivity.AlgebraicGeometry.faithfullyFlat_of_residue_maps
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_residue_map_localization_completion := _root_.SerrePositivity.AlgebraicGeometry.exists_residue_map_localization_completion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.faithfullyFlat_localization_completion_product := _root_.SerrePositivity.AlgebraicGeometry.faithfullyFlat_localization_completion_product

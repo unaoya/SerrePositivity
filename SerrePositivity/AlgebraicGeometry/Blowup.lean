@@ -400,161 +400,57 @@ set_option linter.auxLemma false
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesProjection := _root_.SerrePositivity.AlgebraicGeometry.reesProjection
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGrade := _root_.SerrePositivity.AlgebraicGeometry.reesGrade
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesProjection_val := _root_.SerrePositivity.AlgebraicGeometry.reesProjection_val
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mem_reesGrade_iff := _root_.SerrePositivity.AlgebraicGeometry.mem_reesGrade_iff
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGradeGradedMonoid := _root_.SerrePositivity.AlgebraicGeometry.reesGradeGradedMonoid
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isInternal_reesGrade := _root_.SerrePositivity.AlgebraicGeometry.isInternal_reesGrade
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGradeGradedRing := _root_.SerrePositivity.AlgebraicGeometry.reesGradeGradedRing
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowup := _root_.SerrePositivity.AlgebraicGeometry.affineBlowup
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroAlgebra := _root_.SerrePositivity.AlgebraicGeometry.reesZeroAlgebra
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroScalarTower := _root_.SerrePositivity.AlgebraicGeometry.reesZeroScalarTower
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupπ := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupπ
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rees_finiteType_over_zero := _root_.SerrePositivity.AlgebraicGeometry.rees_finiteType_over_zero
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupπ_isProper := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupπ_isProper
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineCenterι := _root_.SerrePositivity.AlgebraicGeometry.affineCenterι
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineCenterι_isClosedImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineCenterι_isClosedImmersion
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptional := _root_.SerrePositivity.AlgebraicGeometry.affineExceptional
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptionalι := _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalι
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptionalToCenter := _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalToCenter
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptionalι_isClosedImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalι_isClosedImmersion
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptional_square := _root_.SerrePositivity.AlgebraicGeometry.affineExceptional_square
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptional_square_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineExceptional_square_assoc
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesMonomial := _root_.SerrePositivity.AlgebraicGeometry.reesMonomial
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesMonomial_mem := _root_.SerrePositivity.AlgebraicGeometry.reesMonomial_mem
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesDegreeOne := _root_.SerrePositivity.AlgebraicGeometry.reesDegreeOne
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesDegreeOne_mem := _root_.SerrePositivity.AlgebraicGeometry.reesDegreeOne_mem
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChart := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChart
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartIso := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartIso
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rees_adjoin_degreeOne := _root_.SerrePositivity.AlgebraicGeometry.rees_adjoin_degreeOne
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.rees_adjoin_zero_degreeOne := _root_.SerrePositivity.AlgebraicGeometry.rees_adjoin_zero_degreeOne
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iSup_affineBlowupChart := _root_.SerrePositivity.AlgebraicGeometry.iSup_affineBlowupChart
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowup._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowup._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupChartIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupChartIso._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupπ._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupπ._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptional._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineExceptional._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesDegreeOne._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesDegreeOne._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGrade._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesGrade._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGrade._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.reesGrade._proof_2
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGradeGradedRing._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesGradeGradedRing._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesGradeGradedRing._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.reesGradeGradedRing._proof_2
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesMonomial._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesMonomial._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesMonomial._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.reesMonomial._proof_2
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesMonomial.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.reesMonomial.eq_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesProjection._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesProjection._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroAlgebra._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroAlgebra._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroAlgebra._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroAlgebra._proof_2
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_1
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_2
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_3
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_4
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_5
 
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.reesZeroEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.reesZeroEquiv._proof_6
 
 /-! Literature correspondences from the reviewed coverage tables. -/
 

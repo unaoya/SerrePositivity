@@ -73,12 +73,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveCounitHom_isIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.reflectiveCounitHom_isIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.reflectiveTargetHomEquiv (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveTargetHomEquiv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.reflectiveTargetHomEquiv
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveTargetHomEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.reflectiveTargetHomEquiv._proof_1

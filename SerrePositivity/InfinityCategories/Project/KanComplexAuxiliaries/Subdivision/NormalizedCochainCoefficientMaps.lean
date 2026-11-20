@@ -81,24 +81,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complexMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexMap := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complexMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.differential_natural := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.differential_natural
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.extend_post := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.extend_post
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.post (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.post
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complexMap._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.post._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.post._proof_2

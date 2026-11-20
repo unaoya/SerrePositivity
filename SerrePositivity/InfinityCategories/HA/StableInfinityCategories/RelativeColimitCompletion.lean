@@ -56,9 +56,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.colimitCoconeFamily_relative_lifting
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_relative_colimitCoconeFamily

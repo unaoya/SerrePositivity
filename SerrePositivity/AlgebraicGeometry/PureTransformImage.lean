@@ -74,30 +74,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryTorsion_le_ker := _root_.SerrePositivity.AlgebraicGeometry.boundaryTorsion_le_ker
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryTorsion_eq_ker := _root_.SerrePositivity.AlgebraicGeometry.boundaryTorsion_eq_ker
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage_mk := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage_mk
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformEquivImage._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformEquivImage._proof_5

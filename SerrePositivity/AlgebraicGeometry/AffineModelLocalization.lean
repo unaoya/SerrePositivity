@@ -90,15 +90,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_basicOpen_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_basicOpen_isOpenImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_basicOpen_range := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_basicOpen_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_isOpenImmersion_of_eq_basicOpen := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_isOpenImmersion_of_eq_basicOpen
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_range_of_eq_basicOpen := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_range_of_eq_basicOpen

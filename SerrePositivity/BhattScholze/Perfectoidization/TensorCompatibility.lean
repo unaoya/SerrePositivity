@@ -51,7 +51,7 @@ variable {R S T P C D : Type u}
 /-- The ordinary tensor map of the original diagram into the tensor of its
 specified perfectoidizations, balanced over the specified new base. -/
 def perfectoidizationTensorDiagramMap : S ⊗[R] T →+* C ⊗[P] D :=
-  coefficientTensorLift
+  _root_.SerrePositivity.coefficientTensorLift
     ((Algebra.TensorProduct.includeLeft : C →ₐ[P] C ⊗[P] D).toRingHom.comp s)
     ((Algebra.TensorProduct.includeRight : D →ₐ[P] C ⊗[P] D).toRingHom.comp t)
     (fun x => by
@@ -99,7 +99,7 @@ lemma perfectoidizationTensorDiagramMap_isPerfectoidization
         (((Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).commutes x).trans
           ((Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T).commutes x).symm)
       _ = lC (s (algebraMap R S x)) := (RingHom.congr_fun hlC _).symm
-  let k : C ⊗[P] D →+* U := coefficientTensorLift lC lD (RingHom.congr_fun hbase)
+  let k : C ⊗[P] D →+* U := _root_.SerrePositivity.coefficientTensorLift lC lD (RingHom.congr_fun hbase)
   obtain ⟨l, hl, huniq⟩ := hf.2 U hU k
   have hlg : l.comp (f.comp (perfectoidizationTensorDiagramMap r s t hs ht)) = g := by
     apply RingHom.ext

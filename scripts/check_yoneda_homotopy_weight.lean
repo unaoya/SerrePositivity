@@ -23,7 +23,7 @@ end Ordinary
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- No projective cofibrancy of the constant diagram is assumed.
 example (X : C) : let := Projective.modelCategory Kᵒᵖ I J
@@ -37,7 +37,7 @@ example (X : C) [IsCofibrant X] : let := Projective.modelCategory Kᵒᵖ I J
 -- Source and target Hom universes need not coincide with the diagram universe.
 example {D : Type u'} [Category.{v'} D] [ModelCategory D] [IsLocallyPresentable.{w} D]
     (I' J' : MorphismProperty D)
-    [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I' J']
+    [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I' J']
     {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [SerrePositivity.Quillen.IsLeftQuillen L]
     (F : K ⥤ C) (hF : ∀ k, IsCofibrant (F.obj k))
     (hFL : let := Projective.modelCategory K I' J'; IsCofibrant (F ⋙ L)) :

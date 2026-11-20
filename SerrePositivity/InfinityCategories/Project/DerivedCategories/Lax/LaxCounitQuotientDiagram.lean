@@ -77,39 +77,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientDiagramComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientDiagramComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientDiagramComparison
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientDiagramComparison_bottom_arrow := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientDiagramComparison_bottom_arrow
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams_bottom := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams_bottom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams_sameBottom := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams_sameBottom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams_squares := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams_squares
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientSquareComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSquareComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientSquareComparison
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalDiagrams.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSquareComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientSquareComparison._proof_1

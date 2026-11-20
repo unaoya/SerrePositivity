@@ -51,6 +51,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry'_hom := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices.curry'_hom

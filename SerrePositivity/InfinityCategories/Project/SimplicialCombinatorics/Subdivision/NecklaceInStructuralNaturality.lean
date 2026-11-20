@@ -63,18 +63,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_naturality := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInAssociator_naturality
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_pentagon := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInAssociator_pentagon
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_triangle := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInAssociator_triangle
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInLeftUnitor_naturality
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInRightUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInRightUnitor_naturality

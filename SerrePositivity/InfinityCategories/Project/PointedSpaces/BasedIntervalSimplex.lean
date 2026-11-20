@@ -80,27 +80,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.homotopy_face := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.homotopy_face
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.relativeHomotopy (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.relativeHomotopy
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.simplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.simplex := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.simplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.relativeHomotopy._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.relativeHomotopy._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.relativeHomotopy._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.relativeHomotopy._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.simplex._proof_1

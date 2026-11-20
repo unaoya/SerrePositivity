@@ -96,27 +96,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry_strength := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.curry_strength
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.iso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.uncurry_uncurry_hom := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.uncurry_uncurry_hom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.iso.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.preIso.eq_1

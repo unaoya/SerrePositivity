@@ -20,6 +20,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level structureMap structureMap_hom)
+
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 
@@ -124,6 +126,8 @@ lemma cotensor_structureMap (X : PointedSimplicialSet.{u}) (E : SymmetricSpectru
     (p q : ℕ) :
     structureMap (cotensor X E) p q = unshiftedHomStructureFormula p q X E := by
   have h := structureMap_hom (shiftedHomCotensorIso X E).hom p q
+  change _ = PointedObject.smashMap (𝟙 (spherePower.{u} p))
+    ((shiftedHomCotensorIso X E).hom.hom.app (FiniteBijection.of q)) ≫ _ at h
   rw [shiftedHomCotensorIso_hom_app, shiftedHomCotensorIso_hom_app,
     unshiftedHomLevelIso_structureMap] at h
   apply (cancel_epi (spherePower.{u} p ◁ (unshiftedHomLevelIso q X E).hom)).mp

@@ -134,33 +134,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ideal_eq_span_of_regular_product := _root_.SerrePositivity.AlgebraicGeometry.ideal_eq_span_of_regular_product
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mulCenterElement := _root_.SerrePositivity.AlgebraicGeometry.mulCenterElement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productChart_left_regular := _root_.SerrePositivity.AlgebraicGeometry.productChart_left_regular
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productChart_left_image := _root_.SerrePositivity.AlgebraicGeometry.productChart_left_image
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productChart_right_regular := _root_.SerrePositivity.AlgebraicGeometry.productChart_right_regular
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productChart_right_image := _root_.SerrePositivity.AlgebraicGeometry.productChart_right_image
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ideal_regular_principal_of_regular_multiple := _root_.SerrePositivity.AlgebraicGeometry.ideal_regular_principal_of_regular_multiple
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mulCenterElement._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.mulCenterElement._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mulCenterElement._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.mulCenterElement._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mulCenterElement._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.mulCenterElement._proof_3

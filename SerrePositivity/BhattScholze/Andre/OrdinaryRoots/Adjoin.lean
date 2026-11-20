@@ -252,7 +252,7 @@ def monicPowerFamilyCoverMap (c : σ → R) {U : Type w} [CommRing U]
         MvPolynomial.eval₂Hom f b (MvPolynomial.expand n (MvPolynomial.X s))
       rw [MvPolynomial.aeval_X, MvPolynomial.expand_X, map_pow, MvPolynomial.eval₂Hom_X']
       exact (hb s).symm
-  exact coefficientTensorLift f g (RingHom.congr_fun he)
+  exact _root_.SerrePositivity.coefficientTensorLift f g (RingHom.congr_fun he)
 
 /-- 普遍射は係数射を保つ。 -/
 theorem monicPowerFamilyCoverMap_comp (c : σ → R) {U : Type w} [CommRing U]

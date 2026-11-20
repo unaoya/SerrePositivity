@@ -38,7 +38,7 @@ variable {S : Scheme.{u}} [IsNoetherian S] {X Y : FiniteTypeSchemes S}
 theorem exists_finiteFlat_cover_refining_blowup
     (c : IrreducibleComponentIndex X) (hc : Surjective (integralComponentMap f c).hom.left)
     (J : Y.obj.left.IdealSheafData)
-    [Flat (strictTransformπ (integralComponentMap f c).hom.left (centerComplement J) J)] :
+    [Flat (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (integralComponentMap f c).hom.left (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J)] :
     ∃ (T : FiniteTypeSchemes S) (p : T ⟶ finiteTypeBlowup Y J)
       (a : T ⟶ finiteTypePullback f (finiteTypeBlowupProjection Y J)),
       IsFinite p.hom.left ∧ Flat p.hom.left ∧ Surjective p.hom.left ∧
@@ -46,15 +46,15 @@ theorem exists_finiteFlat_cover_refining_blowup
         a ≫ finiteTypePullbackSnd f (finiteTypeBlowupProjection Y J) = p := by
   have : IsFinite (integralComponentMap f c).hom.left := integralComponentMap_isFinite f c
   have : Surjective (integralComponentMap f c).hom.left := hc
-  let T := finiteTypeStrictTransform (integralComponentMap f c) (centerComplement J) J
+  let T := finiteTypeStrictTransform (integralComponentMap f c) (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J
   let p : T ⟶ finiteTypeBlowup Y J :=
-    finiteTypeStrictTransformProjection (integralComponentMap f c) (centerComplement J) J
+    finiteTypeStrictTransformProjection (integralComponentMap f c) (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J
   let q : T ⟶ X :=
-    finiteTypeStrictTransformToOriginal (integralComponentMap f c) (centerComplement J) J ≫
+    finiteTypeStrictTransformToOriginal (integralComponentMap f c) (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J ≫
       integralComponentInclusion X c
   have hq : q ≫ f = p ≫ finiteTypeBlowupProjection Y J :=
     (Category.assoc _ _ _).trans
-      (finiteTypeStrictTransform_comm (integralComponentMap f c) (centerComplement J) J)
+      (finiteTypeStrictTransform_comm (integralComponentMap f c) (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J)
   let a : T ⟶ finiteTypePullback f (finiteTypeBlowupProjection Y J) :=
     (finiteTypePullback_isPullback f (finiteTypeBlowupProjection Y J)).lift q p hq
   obtain ⟨hfinite, hflat, hsurj, hfp⟩ :=

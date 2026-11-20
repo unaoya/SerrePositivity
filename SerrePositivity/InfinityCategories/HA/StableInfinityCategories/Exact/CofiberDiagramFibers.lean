@@ -54,21 +54,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquareAt (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquareAt
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.zero_source_of_right_invertible := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zero_source_of_right_invertible
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquareAt._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquareAt._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_3 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquareAt._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_4 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquareAt._proof_4

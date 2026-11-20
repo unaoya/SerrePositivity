@@ -77,18 +77,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqComparison := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqComparison
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqCone := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanIdentityEdge_isInvertible := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanIdentityEdge_isInvertible
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqComparison._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqCone._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanCommSqCone._proof_1

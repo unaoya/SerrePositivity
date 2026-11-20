@@ -73,27 +73,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransformEquiv := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransformEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransform_flat := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransform_flat
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.basicOpen_le_affineCenterComplement_of_pow_mem := _root_.SerrePositivity.AlgebraicGeometry.basicOpen_le_affineCenterComplement_of_pow_mem
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransformEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransformEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransformEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransformEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransformEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransformEquiv._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransformEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransformEquiv._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartIdealPureTransformEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.chartIdealPureTransformEquiv._proof_5

@@ -69,24 +69,3 @@ end SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.S
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.colimit_mono := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.colimit_mono
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.iso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.iso := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.iso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.iso_inclusion := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.iso_inclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.membership_iff := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.membership_iff
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.subfunctor (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.subfunctor := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.subfunctor
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.iso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.iso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.subfunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.subfunctor._proof_1

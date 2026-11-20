@@ -5,6 +5,8 @@ noncomputable section
 universe w v u
 open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.DiagramModel
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+  (cosimplicialHom cosimplicialHomMap)
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
 
@@ -30,7 +32,7 @@ example {A B : SimplexCategory ⥤ K ⥤ C} (a : A ⟶ B) (Y : C)
 
 open HomotopicalAlgebra
 variable [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
 -- This is the SAME frame diagram used by the pointwise RMap comparison.

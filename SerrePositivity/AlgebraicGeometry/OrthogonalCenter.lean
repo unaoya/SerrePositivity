@@ -101,18 +101,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pair_center_complement := _root_.SerrePositivity.AlgebraicGeometry.pair_center_complement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.disjoint_affineBlowupChart_of_mul_eq_zero := _root_.SerrePositivity.AlgebraicGeometry.disjoint_affineBlowupChart_of_mul_eq_zero
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pair_center_chart_sup_eq_top := _root_.SerrePositivity.AlgebraicGeometry.pair_center_chart_sup_eq_top
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pair_center_chart_sup_eq_top._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.pair_center_chart_sup_eq_top._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pair_center_chart_sup_eq_top._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.pair_center_chart_sup_eq_top._proof_2

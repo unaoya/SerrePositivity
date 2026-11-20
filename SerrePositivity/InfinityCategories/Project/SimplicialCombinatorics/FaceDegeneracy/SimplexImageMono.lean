@@ -98,21 +98,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexFactorThruImage_comp_mono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_comp_mono
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexFactorThruImage_of_epi := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_of_epi
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_comp_mono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_comp_mono_ι := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_of_epi := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_of_epi
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_ι_of_epi := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_ι_of_epi

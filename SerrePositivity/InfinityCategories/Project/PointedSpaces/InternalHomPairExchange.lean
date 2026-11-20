@@ -127,24 +127,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_hom := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso_hom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_post := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso_post
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_pre_inner := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso_pre_inner
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_pre_outer := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso_pre_outer
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_swap := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairIso_swap
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairNatIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairNatIso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.pairNatIso

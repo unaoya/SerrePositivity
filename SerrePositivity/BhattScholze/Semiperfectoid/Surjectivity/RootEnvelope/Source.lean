@@ -1845,9 +1845,9 @@ variable [CommRing R] [CommRing S] [CommRing C]
 theorem Semiperfectoid.surjective_of_isPerfectoidization_of_rootedPresentation
     (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
     (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    (hk : RingHom.ker q = _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ)
+    (hk : RingHom.ker q = _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ)
     (f : S →+* C) (hf : _root_.SerrePositivity.IsPerfectoidization p f) : Function.Surjective f := by
-  let e : R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ ≃+* S :=
+  let e : R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ ≃+* S :=
     (Ideal.quotEquivOfEq hk.symm).trans (RingHom.quotientKerEquivOfSurjective hq)
   have hfe : _root_.SerrePositivity.IsPerfectoidization p (f.comp e.toRingHom) := hf.precomp_ringEquiv e
   have hs := _root_.SerrePositivity.BhattScholze.Semiperfectoid.surjective_of_isPerfectoidization_of_compatibleRootFamily hR ρ hρ

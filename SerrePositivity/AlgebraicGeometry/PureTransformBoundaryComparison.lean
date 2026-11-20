@@ -74,18 +74,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryTorsion_le_of_dvd_pow := _root_.SerrePositivity.AlgebraicGeometry.boundaryTorsion_le_of_dvd_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformBoundaryMap := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformBoundaryMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformBoundaryMap_mk := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformBoundaryMap_mk
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformBoundaryMap_surjective := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformBoundaryMap_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformBoundaryMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformBoundaryMap._proof_1

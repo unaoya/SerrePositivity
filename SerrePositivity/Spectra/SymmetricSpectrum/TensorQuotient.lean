@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.BalancedTensor
-public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
+public import SerrePositivity.Spectra.General.Limits
+public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Equalizers
 
 /-! # 球面上のテンソル積の基礎となる釣り合い商
@@ -18,6 +19,8 @@ universe u
 noncomputable section
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (action)
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet

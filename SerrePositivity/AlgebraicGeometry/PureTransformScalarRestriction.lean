@@ -68,30 +68,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryTorsion_restrictScalars := _root_.SerrePositivity.AlgebraicGeometry.boundaryTorsion_restrictScalars
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv_mk := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv_mk
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransform_flat_iff_scalarRestriction := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransform_flat_iff_scalarRestriction
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.modulePureTransformScalarRestrictionEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.modulePureTransformScalarRestrictionEquiv._proof_5

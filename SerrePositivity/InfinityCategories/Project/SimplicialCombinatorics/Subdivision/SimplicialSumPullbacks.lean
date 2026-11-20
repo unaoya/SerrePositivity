@@ -135,18 +135,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_isPullback := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_reindex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_reindex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumReindex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumReindex_commSq := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumReindex_isPullback := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_isPullback

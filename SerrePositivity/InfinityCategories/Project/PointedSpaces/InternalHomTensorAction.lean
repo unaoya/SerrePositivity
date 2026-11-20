@@ -89,18 +89,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_evaluation := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorHom_evaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_evaluation_assoc := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorHom_evaluation_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_strength := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorHom_strength
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorSuspend (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorSuspend := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorSuspend

@@ -96,36 +96,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_id := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_id
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_comp := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_comp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_comp_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_comp_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_base := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_eq_baseMap := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_eq_baseMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap.congr_simp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_comp._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_comp._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenterMap_id._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenterMap_id._proof_1

@@ -13,12 +13,12 @@ attribute [local instance] Cardinal.fact_isRegular_aleph0 Cardinal.orderBotAleph
 
 -- No Kan-Quillen ModelCategory or weak-equivalence class is assumed.
 example {A B : SSet.{u}} (f : A ⟶ B) (hf : I f) :
-    IsCardinalPresentable A Cardinal.aleph0.{u} := boundaryGenerator_domain_presentable f hf
+    IsCardinalPresentable A Cardinal.aleph0.{u} := _root_.SerrePositivity.SimplicialModel.boundaryGenerator_domain_presentable f hf
 example {A B : SSet.{u}} (f : A ⟶ B) (hf : J f) :
-    IsCardinalPresentable A Cardinal.aleph0.{u} := hornGenerator_domain_presentable f hf
-example : I.{u}.HasSmallObjectArgument.{u} := boundaryGenerators_smallObjectArgument
-example : J.{u}.HasSmallObjectArgument.{u} := hornGenerators_smallObjectArgument
-example (X : SSet.{u}) : IsCofibrant X := simplicialSet_isCofibrant X
+    IsCardinalPresentable A Cardinal.aleph0.{u} := _root_.SerrePositivity.SimplicialModel.hornGenerator_domain_presentable f hf
+example : I.{u}.HasSmallObjectArgument.{u} := _root_.SerrePositivity.SimplicialModel.boundaryGenerators_smallObjectArgument
+example : J.{u}.HasSmallObjectArgument.{u} := _root_.SerrePositivity.SimplicialModel.hornGenerators_smallObjectArgument
+example (X : SSet.{u}) : IsCofibrant X := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.simplicialSet_isCofibrant X
 example (X : PointedSimplicialSet.{u}) : Mono X.hom := pointed_basepoint_mono X
 example (X : PointedSimplicialSet.{u}) : IsCofibrant X := pointedSimplicialSet_isCofibrant X
 example : IsCofibrant PointedSimplicialSet.circle.{u} := circle_isCofibrant
@@ -34,7 +34,7 @@ example : pointedI.{u}.rlp = I.rlp.inverseImage PointedSimplicialSet.forget :=
 example : pointedJ.{u}.rlp = fibrations PointedSimplicialSet.{u} := pointedJ_rlp
 
 example : I.{u}.rlp.llp = MorphismProperty.monomorphisms SSet.{u} :=
-  boundaryGenerators_leftClass
+  _root_.SerrePositivity.SimplicialModel.boundaryGenerators_leftClass
 example : pointedI.{u}.rlp.llp = cofibrations PointedSimplicialSet.{u} :=
   pointedI_leftClass
 example : MorphismProperty.IsWeakFactorizationSystem
@@ -55,7 +55,8 @@ run_cmd do
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
-    unless #[`SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
+    unless #[`SerrePositivity.HomotopicalAlgebra.Simplicial.Generators,
+        `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators,
         `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy,
         `SerrePositivity.Spectra.ModelCategory.PointedGenerators].contains
         env.header.modules[idx.toNat]!.module do continue

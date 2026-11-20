@@ -74,6 +74,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_free_away_boundary_of_free_localization := _root_.SerrePositivity.AlgebraicGeometry.chart_free_away_boundary_of_free_localization

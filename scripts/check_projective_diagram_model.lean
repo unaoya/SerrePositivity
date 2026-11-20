@@ -8,7 +8,7 @@ open SerrePositivity.DiagramModel
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- Final existence uses the original combinatorial model, not a diagram
 -- model axiom, transfer acyclicity input, or extra image smallness input.
@@ -26,7 +26,7 @@ example {F G : K ⥤ C} (f : F ⟶ G) :
 
 example :
     let := Projective.modelCategory K I J
-    SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w}
+    SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w}
       (Projective.generators K I) (Projective.generators K J) :=
   Projective.modelCategory_generated K I J
 

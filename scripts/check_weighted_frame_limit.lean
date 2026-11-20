@@ -20,7 +20,7 @@ end Ordinary
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (IC JC : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IC JC]
+  (IC JC : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IC JC]
   [ModelCategory SSet.{w}]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)

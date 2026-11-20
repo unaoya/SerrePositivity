@@ -87,24 +87,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplement_surjective := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplement_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplement_injective := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplement_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplementEquiv := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplementEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplementEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplementEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplementEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplementEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplementEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplementEquiv._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relationPivotComplementEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.relationPivotComplementEquiv._proof_4

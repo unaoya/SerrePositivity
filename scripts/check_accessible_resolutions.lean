@@ -20,7 +20,7 @@ example
     [fib.Z.IsAccessible.{w}] : (SerrePositivity.Reedy.simplicialResolutionFamily fib).obj.IsAccessible.{w} :=
   simplicialResolutionFamily_isAccessible fib
 
-variable (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+variable (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- The full F3 input: no accessible source resolution or mapping functor
 -- is assumed, and the input arrows have arbitrary endpoints.

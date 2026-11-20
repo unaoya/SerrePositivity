@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.Spectra.ModelCategory.SimplicialGenerators
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 public import SerrePositivity.Spectra.PointedSimplicialSet.Spheres
 public import SerrePositivity.HomotopicalAlgebra.Under.ModelCategory
 

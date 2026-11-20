@@ -72,18 +72,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCocartesianUnderMap_identity_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.kanCocartesianUnderMap_identity_vertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportUnderEdge (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportUnderEdge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge_projection := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportUnderEdge_projection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportUnderEdge._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictTransportUnderEdge.eq_1

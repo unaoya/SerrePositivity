@@ -22,6 +22,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level structureMap structureMap_hom)
+
 open CategoryTheory CategoryTheory.MonoidalCategory
 open scoped CategoryTheory.MonObj
 open SerrePositivity.PointedSimplicialSet
@@ -79,6 +81,8 @@ lemma internalHomFreeAtLevelIso_structureMap (n p q : ℕ) (X : PointedSimplicia
       PointedObject.smashMap (𝟙 (spherePower.{u} p))
         (internalHomFreeAtLevelIso n q X E).hom ≫ structureMap (shiftedHom n X E) p q := by
   have h := structureMap_hom (internalHomShiftIso n X E).hom p q
+  change _ = PointedObject.smashMap (𝟙 (spherePower.{u} p))
+    ((internalHomShiftIso n X E).hom.hom.app (FiniteBijection.of q)) ≫ _ at h
   simpa only [internalHomShiftIso_hom_app] using h
 
 /-- 各段の比較は円による懸垂構造射とも両立する。 -/
@@ -105,6 +109,8 @@ lemma shiftedHom_structureMap (n p q : ℕ) (X : PointedSimplicialSet.{u})
         structureMap (internalHom ((freeAt n).obj X) E) p q ≫
           (internalHomFreeAtLevelIso n (p + q) X E).hom := by
   have h := structureMap_hom (internalHomShiftIso n X E).inv p q
+  change _ = PointedObject.smashMap (𝟙 (spherePower.{u} p))
+    ((internalHomShiftIso n X E).inv.hom.app (FiniteBijection.of q)) ≫ _ at h
   rw [internalHomShiftIso_inv_app, internalHomShiftIso_inv_app] at h
   have h' := congrArg (fun k => k ≫ (internalHomFreeAtLevelIso n (p + q) X E).hom) h
   simpa only [Category.assoc, Iso.inv_hom_id, Category.comp_id] using h'

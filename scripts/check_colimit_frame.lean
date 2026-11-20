@@ -1,10 +1,13 @@
 import SerrePositivity.HomotopicalAlgebra.Diagram.ColimitMapComparison
+import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 import Lean.Util.CollectAxioms
 
 noncomputable section
 universe w v u vD uD
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+  (cosimplicialHom adjunctionHomIso)
 open SerrePositivity.DiagramModel
 
 -- Ordinary adjunctions with independent Hom universes induce actual
@@ -16,7 +19,7 @@ example {C : Type u} [Category.{v} C] {D : Type uD} [Category.{vD} D]
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- No enrichment or extra latching hypotheses are inputs to these consumers.
 example (F : K ⥤ C) :
@@ -86,8 +89,8 @@ example [ModelCategory SSet.{v}]
             (((ColimitMapComparison.left K I J cof₀ fib₀).app F).app Y) ∧
           weakEquivalences SSet.{v}
             (((ColimitMapComparison.right K I J cof₀ fib₀).app F).app Y) := by
-  have := SerrePositivity.ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration I J
-  have := SerrePositivity.ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration I J
+  have := SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration I J
+  have := SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration I J
   let cof₀ := MorphismProperty.functorialFactorizationData (cofibrations C) (trivialFibrations C)
   let fib₀ := MorphismProperty.functorialFactorizationData (trivialCofibrations C) (fibrations C)
   exact ⟨cof₀, fib₀, fun F Y =>
@@ -99,7 +102,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingPreservation,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom,
+    `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameOverFunctor,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ColimitFrame,

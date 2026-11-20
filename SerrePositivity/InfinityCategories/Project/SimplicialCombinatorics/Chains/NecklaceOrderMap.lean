@@ -63,18 +63,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_constant := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderMap_constant
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_vertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderMap_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderMap._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderMap._proof_2

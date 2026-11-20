@@ -24,7 +24,7 @@ end Categorical
 section Model
 variable {K : Type w} [PartialOrder K] [OrderBot K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- Arbitrary projectively cofibrant diagram: no continuity and no well-order assumption.
 example (R : K ⥤ C) (hR : let := Projective.modelCategory K I J; IsCofibrant R) :
@@ -51,7 +51,7 @@ end Model
 -- Arbitrary well-ordered continuous cofibration sequence; the initial object need not be cofibrant.
 example {K : Type w} [LinearOrder K] [OrderBot K] [SuccOrder K] [WellFoundedLT K]
     {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
     (D : K ⥤ C) [D.IsWellOrderContinuous]
     (hstep : ∀ k, ¬IsMax k → cofibrations C (D.map (homOfLE (Order.le_succ k)))) :

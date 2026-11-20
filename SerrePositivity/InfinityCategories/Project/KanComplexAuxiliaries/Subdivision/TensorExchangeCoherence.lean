@@ -66,15 +66,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_involution := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_involution
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_involution_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_involution_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_tensor_left := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_tensor_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_tensor_left_reordered := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_tensor_left_reordered

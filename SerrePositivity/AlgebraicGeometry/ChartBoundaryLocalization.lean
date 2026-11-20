@@ -106,33 +106,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryAway_center_isUnit := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryAway_center_isUnit
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryBaseLift := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryBaseLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryBaseLift_base := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryBaseLift_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryBaseLift_isUnit_of_numerator := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryBaseLift_isUnit_of_numerator
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryFreeOpenLift := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryFreeOpenLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryFreeOpenLift_base := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryFreeOpenLift_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryBaseLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryBaseLift._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryBaseLift._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryBaseLift._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryBaseLift._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryBaseLift._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartBoundaryFreeOpenLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartBoundaryFreeOpenLift._proof_1

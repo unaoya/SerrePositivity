@@ -119,39 +119,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.familyEquiv (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.familyEquiv
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.fromFunctions (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.fromFunctions := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.fromFunctions
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.homEquiv (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.homEquiv := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.homEquiv
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.homEquiv_pre := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.homEquiv_pre
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.iso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions_pre := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions_pre
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.familyEquiv._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.familyEquiv._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.fromFunctions._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.fromFunctions._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.iso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.iso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.DiscreteInternalHom.toFunctions._proof_1

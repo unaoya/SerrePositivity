@@ -110,15 +110,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasBoundaryFreeNeighborhoodCenter := _root_.SerrePositivity.AlgebraicGeometry.HasBoundaryFreeNeighborhoodCenter
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasBoundaryFreeNeighborhoodCenter_of_constant_boundaryGenericRank := _root_.SerrePositivity.AlgebraicGeometry.hasBoundaryFreeNeighborhoodCenter_of_constant_boundaryGenericRank
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_twoStage_boundaryFreeNeighborhood_centers := _root_.SerrePositivity.AlgebraicGeometry.exists_twoStage_boundaryFreeNeighborhood_centers
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasBoundaryFreeNeighborhoodCenter._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.HasBoundaryFreeNeighborhoodCenter._proof_1

@@ -5,6 +5,8 @@ noncomputable section
 universe w t v u
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra Opposite
 open SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+  (resolutionHom)
 
 variable {C : Type u} [Category.{v} C]
 
@@ -32,7 +34,7 @@ example (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C) (f : Arrow C)
       (Q.map f.hom).app n.unop ≫ h := rfl
 
 variable [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 -- The final input is just the original combinatorial model and a small
 -- arbitrary family of arrows, with no cofibrancy assumption on their ends.

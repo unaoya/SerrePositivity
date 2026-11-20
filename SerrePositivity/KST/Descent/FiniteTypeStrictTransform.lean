@@ -40,7 +40,7 @@ noncomputable def finiteTypeBlowup (Y : FiniteTypeSchemes S) (J : Y.obj.left.Ide
     FiniteTypeSchemes S := by
   have : LocallyOfFiniteType Y.obj.hom := Y.property.1
   have : QuasiCompact Y.obj.hom := Y.property.2
-  exact ⟨Over.mk (blowupπ J ≫ Y.obj.hom),
+  exact ⟨Over.mk (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J ≫ Y.obj.hom),
     locallyOfFiniteType_comp _ _, quasiCompact_comp _ _⟩
 
 /-- 概要：実際の blowup 構造射を同じ基底上へ持ち上げる（補題 3.3）。
@@ -49,7 +49,7 @@ noncomputable def finiteTypeBlowup (Y : FiniteTypeSchemes S) (J : Y.obj.left.Ide
 使われ方：元の有限射を底変換する幾何的な射。 -/
 noncomputable def finiteTypeBlowupProjection (Y : FiniteTypeSchemes S)
     (J : Y.obj.left.IdealSheafData) : finiteTypeBlowup Y J ⟶ Y :=
-  ObjectProperty.homMk (Over.homMk (blowupπ J))
+  ObjectProperty.homMk (Over.homMk (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J))
 
 variable {X Y : FiniteTypeSchemes S} (f : X ⟶ Y)
   (U : Y.obj.left.Opens) (J : Y.obj.left.IdealSheafData) [IsFinite f.hom.left]
@@ -65,7 +65,7 @@ noncomputable def finiteTypeStrictTransform : FiniteTypeSchemes S := by
     (finiteTypeBlowup Y J).property.1
   have : QuasiCompact (finiteTypeBlowup Y J).obj.hom :=
     (finiteTypeBlowup Y J).property.2
-  exact ⟨Over.mk (strictTransformπ f.hom.left U J ≫ (finiteTypeBlowup Y J).obj.hom),
+  exact ⟨Over.mk (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f.hom.left U J ≫ (finiteTypeBlowup Y J).obj.hom),
     locallyOfFiniteType_comp _ _, quasiCompact_comp _ _⟩
 
 /-- 概要：strict transform から blowup への指定射（補題 3.3）。
@@ -74,19 +74,19 @@ noncomputable def finiteTypeStrictTransform : FiniteTypeSchemes S := by
 使われ方：平坦化後の有限忠実平坦な被覆。 -/
 noncomputable def finiteTypeStrictTransformProjection :
     finiteTypeStrictTransform f U J ⟶ finiteTypeBlowup Y J :=
-  ObjectProperty.homMk (Over.homMk (strictTransformπ f.hom.left U J))
+  ObjectProperty.homMk (Over.homMk (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f.hom.left U J))
 
 /-- 概要：strict transform から元の始域への指定射（補題 3.3）。
 方針：実際の二射影の可換式と元の基底上の可換式を合成する。
 規約：全て同じ S 上の射。
 使われ方：平坦被覆から元の被覆への細分。 -/
 noncomputable def finiteTypeStrictTransformToOriginal : finiteTypeStrictTransform f U J ⟶ X :=
-  ObjectProperty.homMk (Over.homMk (strictTransformToOriginal f.hom.left U J) (by
-    change strictTransformToOriginal f.hom.left U J ≫ X.obj.hom =
-      strictTransformπ f.hom.left U J ≫ (blowupπ J ≫ Y.obj.hom)
+  ObjectProperty.homMk (Over.homMk (_root_.SerrePositivity.AlgebraicGeometry.strictTransformToOriginal f.hom.left U J) (by
+    change _root_.SerrePositivity.AlgebraicGeometry.strictTransformToOriginal f.hom.left U J ≫ X.obj.hom =
+      _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f.hom.left U J ≫ (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J ≫ Y.obj.hom)
     exact (congrArg (_ ≫ ·) f.hom.w.symm).trans
       ((Category.assoc _ _ _).symm.trans
-        ((congrArg (· ≫ Y.obj.hom) (strictTransform_square f.hom.left U J)).trans
+        ((congrArg (· ≫ Y.obj.hom) (_root_.SerrePositivity.AlgebraicGeometry.strictTransform_square f.hom.left U J)).trans
           (Category.assoc _ _ _)))))
 
 /-- 概要：strict transform の指定四辺は有限型の圏内で可換（補題 3.3）。
@@ -98,7 +98,7 @@ theorem finiteTypeStrictTransform_comm :
       finiteTypeStrictTransformProjection f U J ≫ finiteTypeBlowupProjection Y J := by
   apply ObjectProperty.hom_ext
   apply (Over.forget S).map_injective
-  exact strictTransform_square f.hom.left U J
+  exact _root_.SerrePositivity.AlgebraicGeometry.strictTransform_square f.hom.left U J
 
 /-- 概要：有限型の圏内の strict transform の構造射は有限（補題 3.3）。
 方針：underlying scheme の有限性をそのまま使う。
@@ -113,7 +113,7 @@ theorem finiteTypeStrictTransformProjection_isFinite :
 規約：元の有限射の全射性を要求する。
 使われ方：平坦化後の射を忠実平坦な被覆として使う。 -/
 theorem finiteTypeStrictTransformProjection_surjective [Surjective f.hom.left] :
-    Surjective (finiteTypeStrictTransformProjection f (centerComplement J) J).hom.left :=
+    Surjective (finiteTypeStrictTransformProjection f (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J).hom.left :=
   strictTransformπ_centerComplement_surjective f.hom.left J
 
 /-- 概要：strict transform を元の射の実際の底変換へ写す細分射（補題 3.3）。
@@ -169,14 +169,14 @@ theorem finiteTypeStrictTransformCechRefinement_augmentation :
 規約：平坦性は実際の strict transform についての入力で、中心の存在は別工程。
 使われ方：同じ前層と Čech 比較への有限平坦 transfer の適用。 -/
 theorem finiteTypeStrictTransform_flatCover [Surjective f.hom.left]
-    [Flat (strictTransformπ f.hom.left (centerComplement J) J)] :
-    IsFinite (finiteTypeStrictTransformProjection f (centerComplement J) J).hom.left ∧
-      Flat (finiteTypeStrictTransformProjection f (centerComplement J) J).hom.left ∧
-      Surjective (finiteTypeStrictTransformProjection f (centerComplement J) J).hom.left ∧
+    [Flat (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f.hom.left (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J)] :
+    IsFinite (finiteTypeStrictTransformProjection f (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J).hom.left ∧
+      Flat (finiteTypeStrictTransformProjection f (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J).hom.left ∧
+      Surjective (finiteTypeStrictTransformProjection f (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J).hom.left ∧
       LocallyOfFinitePresentation
-        (finiteTypeStrictTransformProjection f (centerComplement J) J).hom.left :=
+        (finiteTypeStrictTransformProjection f (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J).hom.left :=
   ⟨strictTransformπ_isFinite f.hom.left _ J,
-    (inferInstance : Flat (strictTransformπ f.hom.left (centerComplement J) J)),
+    (inferInstance : Flat (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f.hom.left (_root_.SerrePositivity.AlgebraicGeometry.centerComplement J) J)),
     strictTransformπ_centerComplement_surjective f.hom.left J,
     strictTransformπ_locallyOfFinitePresentation f.hom.left _ J⟩
 
@@ -187,8 +187,8 @@ theorem finiteTypeStrictTransform_flatCover [Surjective f.hom.left]
 noncomputable def finiteTypeBlowupSquare (Y : FiniteTypeSchemes S)
     (J : Y.obj.left.IdealSheafData) : AbstractBlowupSquare S := by
   have : IsProper (finiteTypeBlowupProjection Y J).hom.left :=
-    inferInstanceAs (IsProper (blowupπ J))
+    inferInstanceAs (IsProper (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J))
   exact abstractBlowupOfReducedCenter (finiteTypeBlowupProjection Y J) J.support
-    (blowupπ_restrict_complement_isIso J)
+    (_root_.SerrePositivity.AlgebraicGeometry.blowupπ_restrict_complement_isIso J)
 
 end SerrePositivity.KST.Descent

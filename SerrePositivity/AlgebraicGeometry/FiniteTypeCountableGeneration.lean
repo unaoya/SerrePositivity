@@ -142,24 +142,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasCountableGeneratingSet := _root_.SerrePositivity.AlgebraicGeometry.HasCountableGeneratingSet
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasCountableGeneratingSet_of_basis := _root_.SerrePositivity.AlgebraicGeometry.hasCountableGeneratingSet_of_basis
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasCountableGeneratingSet.of_surjective := _root_.SerrePositivity.AlgebraicGeometry.HasCountableGeneratingSet.of_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasCountableGeneratingSet_of_finiteType := _root_.SerrePositivity.AlgebraicGeometry.hasCountableGeneratingSet_of_finiteType
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasCountableGeneratingSet_restrictScalars_of_finite := _root_.SerrePositivity.AlgebraicGeometry.hasCountableGeneratingSet_restrictScalars_of_finite
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasCountableGeneratingSet_of_finiteType_finite := _root_.SerrePositivity.AlgebraicGeometry.hasCountableGeneratingSet_of_finiteType_finite
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasCountableGeneratingSet.exists_nat_spanning := _root_.SerrePositivity.AlgebraicGeometry.HasCountableGeneratingSet.exists_nat_spanning

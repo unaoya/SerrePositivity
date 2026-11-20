@@ -76,39 +76,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityFixedMarkedSpan (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityFixedMarkedSpan := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityFixedMarkedSpan
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityFixedMarkedSpan_inclusion := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityFixedMarkedSpan_inclusion
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpan (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpan
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamily (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamily := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamily
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamilyFiber (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamilyFiber := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamilyFiber
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamily_projection := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamily_projection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan_source := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpan_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan_target := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpan_target
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpan._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpan._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamily._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamily._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamilyFiber._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.identityMarkedSpanFamilyFiber._proof_1

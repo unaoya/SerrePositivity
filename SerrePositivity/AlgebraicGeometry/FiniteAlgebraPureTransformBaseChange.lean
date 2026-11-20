@@ -70,15 +70,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteAlgebraFlatPureTransformBaseChangeEquiv := _root_.SerrePositivity.AlgebraicGeometry.finiteAlgebraFlatPureTransformBaseChangeEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteAlgebraFlatPureTransform_baseChange := _root_.SerrePositivity.AlgebraicGeometry.finiteAlgebraFlatPureTransform_baseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteTypeFlatPureTransform_baseChange := _root_.SerrePositivity.AlgebraicGeometry.finiteTypeFlatPureTransform_baseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finiteAlgebraFlatPureTransformBaseChangeEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.finiteAlgebraFlatPureTransformBaseChangeEquiv._proof_1

@@ -60,12 +60,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraPureTransformEquiv := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraPureTransformEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraPureTransform_finitePresentation := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraPureTransform_finitePresentation
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraPureTransformEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraPureTransformEquiv._proof_1

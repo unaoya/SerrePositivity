@@ -64,33 +64,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotient
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cone (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cone := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cone
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.coneSimplicialCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.coneSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.coneSimplicialCategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cone_square := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cone_square
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cone_vertex := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cone_vertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cospan (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cospan := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cospan
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cospan_C := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cospan_C
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cospan_D := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cospan_D
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.square_source_vertex := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.square_source_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cone.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cone.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare.cospan.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientValueCone.cospan.eq_1

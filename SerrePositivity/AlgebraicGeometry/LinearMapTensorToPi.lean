@@ -67,30 +67,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi_tmul := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi_tmul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi_ker_annihilated := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi_ker_annihilated
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi._proof_5
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearMapTensorToPi.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.linearMapTensorToPi.eq_1

@@ -68,18 +68,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualFunctorIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualFunctorIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualFunctorIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualSquare_double := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualSquare_double
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.nonempty_functorIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.nonempty_functorIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualFunctorIso._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualFunctorIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualFunctorIso._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.dualFunctorIso._proof_2

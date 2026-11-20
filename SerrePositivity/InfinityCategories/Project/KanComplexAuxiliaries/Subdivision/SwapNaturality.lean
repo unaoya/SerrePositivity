@@ -55,9 +55,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.internalHomSwap_postcomp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_postcomp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.internalHomSwap_pre_left := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_pre_left

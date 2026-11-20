@@ -104,33 +104,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.hom_eq := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.hom_eq
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.iso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.iso_eq_ihomCurryIso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso_eq_ihomCurryIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natIso := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_post := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_post
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_post_assoc := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_post_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_swap := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_swap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_swap_assoc := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_swap_assoc
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.tensorAdjunction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.tensorAdjunction := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.tensorAdjunction
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.tensorAdjunction.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.tensorAdjunction.eq_1

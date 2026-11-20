@@ -35,7 +35,7 @@ def freeZeroUnitGeneratorLaw : Prop :=
 lemma freeZeroUnitIso_generator : freeZeroUnitGeneratorLaw.{u} :=
   SymmetricSequence.freeZeroModuleUnitGenerator_law sphereSequence.{u}
     (freeAtGenerator 0 (𝟙_ PointedSimplicialSet.{u}))
-    (freeAtGenerator_eq 0 (𝟙_ PointedSimplicialSet.{u}))
+    (GeneralSymmetricSpectrum.freeAtGenerator_eq (K := circle.{u}) 0 (𝟙_ PointedSimplicialSet.{u}))
 
 /-- 単位比較を値域スペクトルに関する自然同型へまとめる。 -/
 def pointwiseTensorUnitNatIso :

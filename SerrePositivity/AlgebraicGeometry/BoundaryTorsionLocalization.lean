@@ -61,9 +61,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localized_mem_boundaryTorsion_iff := _root_.SerrePositivity.AlgebraicGeometry.localized_mem_boundaryTorsion_iff
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mem_boundaryTorsion_algebraMap_iff := _root_.SerrePositivity.AlgebraicGeometry.mem_boundaryTorsion_algebraMap_iff

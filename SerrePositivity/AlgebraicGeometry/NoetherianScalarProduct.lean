@@ -103,36 +103,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom_tmul := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom_tmul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom_injective_of_noetherian := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom_injective_of_noetherian
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flat_pi_of_noetherian := _root_.SerrePositivity.AlgebraicGeometry.flat_pi_of_noetherian
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom_piRightHom_apply := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom_piRightHom_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_pi_of_noetherian := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_pi_of_noetherian
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.piScalarLeftHom.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.piScalarLeftHom.eq_1

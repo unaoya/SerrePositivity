@@ -105,18 +105,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularCenterCoefficients := _root_.SerrePositivity.AlgebraicGeometry.regularCenterCoefficients
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.span_regularCenterCoefficients := _root_.SerrePositivity.AlgebraicGeometry.span_regularCenterCoefficients
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iSup_regularCenterCoefficient_basicOpen := _root_.SerrePositivity.AlgebraicGeometry.iSup_regularCenterCoefficient_basicOpen
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularCenter_localized_regular := _root_.SerrePositivity.AlgebraicGeometry.regularCenter_localized_regular
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularCenter_localized_image := _root_.SerrePositivity.AlgebraicGeometry.regularCenter_localized_image

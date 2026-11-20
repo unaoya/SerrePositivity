@@ -7,6 +7,7 @@ universe u
 noncomputable section
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity SerrePositivity.Quillen SerrePositivity.ModelGeneration
+open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison (CofibrantlyGenerated)
 open SerrePositivity.SimplicialModelInputs
 variable [ModelCategory SSet.{u}]
   (hCof : cofibrations SSet.{u} = MorphismProperty.monomorphisms SSet.{u})
@@ -37,13 +38,13 @@ example : let := simplicialLevelModelCategory hCof hFib
 
 example {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) :
     let := simplicialLevelModelCategory hCof hFib
-    WeakEquivalence f ↔ ∀ n, WeakEquivalence (SymmetricSpectrum.levelMap f n) := by
+    WeakEquivalence f ↔ ∀ n, WeakEquivalence (GeneralSymmetricSpectrum.levelMap f n) := by
   let := simplicialLevelModelCategory hCof hFib
   simp only [weakEquivalence_iff]
   rfl
 example {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) :
     let := simplicialLevelModelCategory hCof hFib
-    Fibration f ↔ ∀ n, Fibration (SymmetricSpectrum.levelMap f n) := by
+    Fibration f ↔ ∀ n, Fibration (GeneralSymmetricSpectrum.levelMap f n) := by
   let := simplicialLevelModelCategory hCof hFib
   simp only [fibration_iff]
   rfl

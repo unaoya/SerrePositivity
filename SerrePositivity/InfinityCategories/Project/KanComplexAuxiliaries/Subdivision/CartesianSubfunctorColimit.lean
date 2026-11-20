@@ -85,24 +85,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.mono := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mono
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.split (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.split
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.splitCocone (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.splitCocone
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split_map := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.split_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split_ι := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.split_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.splitCocone._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.splitCocone._proof_2

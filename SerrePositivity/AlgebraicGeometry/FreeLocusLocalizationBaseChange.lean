@@ -63,9 +63,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mem_freeLocus_baseChange_iff_of_isLocalization := _root_.SerrePositivity.AlgebraicGeometry.mem_freeLocus_baseChange_iff_of_isLocalization
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeLocus_baseChange_of_isLocalization := _root_.SerrePositivity.AlgebraicGeometry.freeLocus_baseChange_of_isLocalization

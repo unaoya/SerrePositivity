@@ -79,9 +79,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasCountableGeneratingSet_of_iSup_fg := _root_.SerrePositivity.AlgebraicGeometry.hasCountableGeneratingSet_of_iSup_fg
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasCountableGeneratingSet.submodule := _root_.SerrePositivity.AlgebraicGeometry.HasCountableGeneratingSet.submodule

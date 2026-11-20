@@ -121,33 +121,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineCoverBaseRingMap := _root_.SerrePositivity.AlgebraicGeometry.affineCoverBaseRingMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineCoverBaseRingMap_spec := _root_.SerrePositivity.AlgebraicGeometry.affineCoverBaseRingMap_spec
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCoverLift := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCoverLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCoverLift_base := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCoverLift_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCoverLift_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCoverLift_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowup_cover_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.affineBlowup_cover_hom_ext
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.existsUnique_affineBlowup_cover_lift := _root_.SerrePositivity.AlgebraicGeometry.existsUnique_affineBlowup_cover_lift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCoverLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCoverLift._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCoverLift.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCoverLift.congr_simp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCoverLift.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCoverLift.eq_1

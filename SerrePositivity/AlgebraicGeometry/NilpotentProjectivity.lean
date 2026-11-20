@@ -79,9 +79,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_section_of_projective_nilpotent_reduction := _root_.SerrePositivity.AlgebraicGeometry.exists_section_of_projective_nilpotent_reduction
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_of_flat_of_projective_nilpotent_reduction := _root_.SerrePositivity.AlgebraicGeometry.projective_of_flat_of_projective_nilpotent_reduction

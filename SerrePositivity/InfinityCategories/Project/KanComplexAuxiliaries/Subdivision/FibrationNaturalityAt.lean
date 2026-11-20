@@ -80,24 +80,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.base_eqAt := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.base_eqAt
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.connecting_natural_at := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.connecting_natural_at
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt_point := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt_point
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt_ι := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt_ι_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt_ι_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt.congr_simp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt.congr_simp

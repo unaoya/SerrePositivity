@@ -68,12 +68,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.restrictBoth (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.restrictBoth
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth_exchange := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.restrictBoth_exchange
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth_post := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.restrictBoth_post

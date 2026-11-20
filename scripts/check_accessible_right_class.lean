@@ -16,7 +16,7 @@ example [IsLocallyPresentable.{w} C] (I : MorphismProperty C) [I.IsSmall.{w}] :
   exists_accessible_right_lifting_class I
 
 example [ModelCategory C] [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J] :
+    (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       IsCardinalAccessibleCategory (arrowProperty (trivialFibrations C)).FullSubcategory κ ∧
       (arrowInclusion (trivialFibrations C)).IsCardinalAccessible κ := by
@@ -25,7 +25,7 @@ example [ModelCategory C] [IsLocallyPresentable.{w} C]
     exact SmallObject.isSmall I μ
   have h := exists_accessible_right_lifting_class I
   have hI : I.rlp = trivialFibrations C :=
-    SerrePositivity.ModelGeneration.CofibrantlyGenerated.rlp_I (I := I) (J := J)
+    SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)
   rw [hI] at h
   exact h
 

@@ -38,18 +38,18 @@ variable (R B : Type u) [CommRing R] [IsDomain R] [IsNoetherianRing R]
 使われ方：公理 (6) の有限射の平坦化をスキームとして貼り合わせるための局所的な結論。 -/
 theorem exists_nonzero_finiteFlat_image_charts :
     ∃ (r : R) (J : Ideal R), r ≠ 0 ∧ J.FG ∧
-      PrimeSpectrum.basicOpen r ≤ affineCenterComplement J ∧
-      ∀ b : J, letI : Algebra R (BlowupChartRing J b) := (chartBaseMap J b).toAlgebra
-        Flat (algebraBoundaryImageπ (BlowupChartRing J b)
-          (BlowupChartRing J b ⊗[R] B) (chartBaseMap J b r)) ∧
-        IsFinite (algebraBoundaryImageπ (BlowupChartRing J b)
-          (BlowupChartRing J b ⊗[R] B) (chartBaseMap J b r)) := by
+      PrimeSpectrum.basicOpen r ≤ _root_.SerrePositivity.AlgebraicGeometry.affineCenterComplement J ∧
+      ∀ b : J, letI : Algebra R (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b) := (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap J b).toAlgebra
+        Flat (algebraBoundaryImageπ (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b)
+          (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b ⊗[R] B) (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap J b r)) ∧
+        IsFinite (algebraBoundaryImageπ (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b)
+          (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b ⊗[R] B) (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap J b r)) := by
   obtain ⟨r, J, hr, hJ, hU, hcharts⟩ := exists_nonzero_finite_module_flattening_center R B
   refine ⟨r, J, hr, hJ, hU, ?_⟩
   intro b
-  let : Algebra R (BlowupChartRing J b) := (chartBaseMap J b).toAlgebra
-  have : Module.Flat (BlowupChartRing J b)
-      (modulePureTransform (chartBaseMap J b r) (BlowupChartRing J b ⊗[R] B)) := hcharts b
+  let : Algebra R (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b) := (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap J b).toAlgebra
+  have : Module.Flat (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b)
+      (_root_.SerrePositivity.AlgebraicGeometry.modulePureTransform (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap J b r) (_root_.SerrePositivity.AlgebraicGeometry.BlowupChartRing J b ⊗[R] B)) := hcharts b
   exact ⟨algebraBoundaryOpen_image_flat _ _ _, algebraBoundaryOpen_image_isFinite _ _ _⟩
 
 end SerrePositivity.KST.Descent

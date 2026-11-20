@@ -68,18 +68,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specQuotientPullbackIso := _root_.SerrePositivity.AlgebraicGeometry.specQuotientPullbackIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specQuotientPullbackIso_inv_fst := _root_.SerrePositivity.AlgebraicGeometry.specQuotientPullbackIso_inv_fst
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specQuotientPullbackIso_inv_fst_assoc := _root_.SerrePositivity.AlgebraicGeometry.specQuotientPullbackIso_inv_fst_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specQuotientPullbackIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.specQuotientPullbackIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specQuotientPullbackIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.specQuotientPullbackIso._proof_2

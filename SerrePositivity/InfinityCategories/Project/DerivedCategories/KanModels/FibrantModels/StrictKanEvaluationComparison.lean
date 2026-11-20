@@ -60,21 +60,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletionUnit_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanCompletionUnit_isQCatEquivalence
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion_map_equivalence_iff_evaluation := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanCompletion_map_equivalence_iff_evaluation
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanEvaluationComparisonIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanEvaluationComparisonIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanEvaluationComparisonIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanEvaluationComparisonIso._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KanModels.strictKanEvaluationComparisonIso._proof_3

@@ -1,5 +1,6 @@
 module
 
+import SerrePositivity.Spectra.General.ShiftedHom
 public import SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShift
 
@@ -18,6 +19,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
+
+open GeneralSymmetricSpectrum (action level structureMap)
 
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
@@ -67,10 +70,7 @@ lemma shiftedHom_structureMap_evaluation (n p q : ℕ) (X : PointedSimplicialSet
           (α_ (spherePower.{u} p) X (level (shiftedHom n X E) q)).hom ≫
             spherePower.{u} p ◁ (ihom.ev X).app (level E (n + q)) ≫
               structureMap E p (n + q) ≫ E.X.map (shiftedHomStructureIndex n p q) := by
-  have h := SymmetricSequence.freeShiftModule_action_component_evaluation
-    (C := PointedSimplicialSet.{u}) sphereSequence.{u} n p q X E
-  rw [shiftedHom_structureMap_eq_component, structureMap_eq_convolutionComponent]
-  exact h
+  exact GeneralSymmetricSpectrum.shiftedHom_structureMap_evaluation (K := circle.{u}) n p q X E
 
 /-- 値域の構造射・評価・ブロック交換から直接作る内部Homの構造射。 -/
 def shiftedHomStructureFormula (n p q : ℕ) (X : PointedSimplicialSet.{u})

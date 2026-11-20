@@ -107,30 +107,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_connection := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeActive_connection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_connection_bounds := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeActive_connection_bounds
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_degeneracy := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeActive_degeneracy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_face := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeActive_face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_id := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeActive_id
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_connection := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOrdered_connection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_degeneracy := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOrdered_degeneracy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_face := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOrdered_face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_id := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOrdered_id

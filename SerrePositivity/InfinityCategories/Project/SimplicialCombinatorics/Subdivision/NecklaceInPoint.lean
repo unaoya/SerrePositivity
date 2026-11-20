@@ -64,30 +64,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPointPostcomposeHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPointPostcomposeHom := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPointPostcomposeHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint_map := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint_necklace := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint_necklace
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint_postcompose_map := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint_postcompose_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialConst_zero_apply := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialConst_zero_apply
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPointPostcomposeHom._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPointPostcomposeHom._proof_1

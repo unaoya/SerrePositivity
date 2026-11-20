@@ -32,14 +32,8 @@ universe u
 @[expose] public section PerfectCoefficientTensor
 
 namespace SerrePositivity.BhattScholze
-alias coefficientTensorLift := SerrePositivity.coefficientTensorLift
-alias coefficientTensorLift_tmul := SerrePositivity.coefficientTensorLift_tmul
-alias perfectCoefficientTensorRoot := SerrePositivity.perfectCoefficientTensorRoot
-alias perfectCoefficientTensorRoot_tmul := SerrePositivity.perfectCoefficientTensorRoot_tmul
-alias perfectCoefficientTensor_perfectRing := SerrePositivity.perfectCoefficientTensor_perfectRing
 
 -- Preserve rewriting through the former computational definitions.
-attribute [reducible] coefficientTensorLift perfectCoefficientTensorRoot
 end SerrePositivity.BhattScholze
 
 end PerfectCoefficientTensor
@@ -164,7 +158,7 @@ theorem existsUnique_wittCoefficientTensorLift
     have he := RingHom.congr_fun h (WittVector.teichmuller p r)
     simpa only [RingHom.comp_apply, WittVector.map_teichmuller] using
       congrArg (Ideal.Quotient.mk (Ideal.span {(p : D)})) he
-  let s := coefficientTensorLift sA sB hs
+  let s := _root_.SerrePositivity.coefficientTensorLift sA sB hs
   obtain ⟨L, hL, _⟩ := existsUnique_wittResidueLift_of_complete p D (A ⊗[R] B) s
   have hLA : L.comp (WittVector.map
       (Algebra.TensorProduct.includeLeft : A →ₐ[R] A ⊗[R] B).toRingHom) = f := by
@@ -176,7 +170,7 @@ theorem existsUnique_wittCoefficientTensorLift
     change Ideal.Quotient.mk _ (L (WittVector.map _ x)) = _ at hx ⊢
     rw [hx]
     change s (x.coeff 0 ⊗ₜ[R] (1 : B)) = _
-    rw [coefficientTensorLift_tmul, map_one, mul_one]
+    rw [_root_.SerrePositivity.coefficientTensorLift_tmul, map_one, mul_one]
     exact wittMapResidue_coeff p f x
   have hLB : L.comp (WittVector.map
       (Algebra.TensorProduct.includeRight : B →ₐ[R] A ⊗[R] B).toRingHom) = g := by
@@ -188,7 +182,7 @@ theorem existsUnique_wittCoefficientTensorLift
     change Ideal.Quotient.mk _ (L (WittVector.map _ x)) = _ at hx ⊢
     rw [hx]
     change s ((1 : A) ⊗ₜ[R] x.coeff 0) = _
-    rw [coefficientTensorLift_tmul, map_one, one_mul]
+    rw [_root_.SerrePositivity.coefficientTensorLift_tmul, map_one, one_mul]
     exact wittMapResidue_coeff p g x
   refine ⟨L, ⟨hLA, hLB⟩, ?_⟩
   intro M hM
@@ -217,7 +211,7 @@ theorem existsUnique_wittCoefficientTensorLift_of_perfect
       have he := RingHom.congr_fun h (WittVector.teichmuller p r)
       simpa only [RingHom.comp_apply, WittVector.map_teichmuller] using
         congrArg (Ideal.Quotient.mk (Ideal.span {(p : D)})) he
-    let s := coefficientTensorLift sA sB hs
+    let s := _root_.SerrePositivity.coefficientTensorLift sA sB hs
     have h01 : (1 : ModP D p) = 0 := by
       rw [← s.map_one, Subsingleton.elim (1 : K) 0, s.map_zero]
     have hu : IsUnit (p : D) := by
@@ -243,7 +237,7 @@ theorem existsUnique_wittCoefficientTensorLift_of_perfect
     have hp : (p : K) = 0 := by
       rw [← map_natCast (algebraMap R K), CharP.cast_eq_zero, map_zero]
     let : CharP K p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hp
-    let : PerfectRing K p := perfectCoefficientTensor_perfectRing p R A B
+    let : PerfectRing K p := _root_.SerrePositivity.perfectCoefficientTensor_perfectRing p R A B
     exact existsUnique_wittCoefficientTensorLift p f g h
 
 end SerrePositivity.BhattScholze
@@ -409,7 +403,7 @@ theorem wittCoefficientPushout_isIntegralPerfectoid (d : WittVector p R)
     have hp : (p : K) = 0 := by
       rw [← map_natCast (algebraMap R K), CharP.cast_eq_zero, map_zero]
     let : CharP K p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hp
-    let : PerfectRing K p := perfectCoefficientTensor_perfectRing p R A B
+    let : PerfectRing K p := _root_.SerrePositivity.perfectCoefficientTensor_perfectRing p R A B
     have hA := (wittDeltaStructure_map_isDeltaHom p R (algebraMap R A)).map_isDistinguished hd
     have hK := (wittDeltaStructure_map_isDeltaHom p A
       (Algebra.TensorProduct.includeLeft : A →ₐ[R] A ⊗[R] B).toRingHom).map_isDistinguished hA
@@ -491,7 +485,7 @@ def wittCoefficientPushoutModPEquiv (d : WittVector p R) :
       (A ⊗[R] B) ⧸ Ideal.span
         {((Algebra.TensorProduct.includeLeft : A →ₐ[R] A ⊗[R] B).toRingHom)
           (algebraMap R A (d.coeff 0))} := by
-  let : PerfectRing (A ⊗[R] B) p := perfectCoefficientTensor_perfectRing p R A B
+  let : PerfectRing (A ⊗[R] B) p := _root_.SerrePositivity.perfectCoefficientTensor_perfectRing p R A B
   exact wittQuotientModPEquiv p (A ⊗[R] B) _
 
 /-- 同型はWitt代表元の第0係数を標準商へ写す。 -/

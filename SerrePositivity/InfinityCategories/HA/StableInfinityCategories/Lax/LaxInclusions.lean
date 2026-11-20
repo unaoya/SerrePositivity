@@ -65,24 +65,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC_post := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC_post
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD_post := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD_post
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroD.eq_1

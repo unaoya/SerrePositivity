@@ -103,33 +103,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.LinearLift := _root_.SerrePositivity.AlgebraicGeometry.LinearLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftRestrict := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftRestrict
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftFunctor := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftFunctor
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nonempty_linearLift_of_projective := _root_.SerrePositivity.AlgebraicGeometry.nonempty_linearLift_of_projective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftFunctor_nonempty_of_basis := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftFunctor_nonempty_of_basis
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.LinearLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.LinearLift._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftFunctor._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftFunctor._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftFunctor._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftFunctor._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftFunctor._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftFunctor._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceLiftRestrict._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceLiftRestrict._proof_1

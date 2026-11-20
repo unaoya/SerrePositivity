@@ -1,5 +1,6 @@
 module
 
+import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociatorLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
@@ -18,6 +19,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (level)
+
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 
@@ -30,7 +33,10 @@ lemma pointwiseTensorPost_app {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 /-- 単位比較の各段の公式を等式として使う。 -/
 lemma pointwiseTensorUnitIso_app (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorUnitIso E).hom.hom.app (FiniteBijection.of q) =
-      (λ_ (level E q)).hom := pointwiseTensorUnitIso_level E q
+      (λ_ (level E q)).hom := by
+  have h : pointwiseTensorUnitIso E = GeneralSymmetricSpectrum.pointwiseTensorUnitIso E := rfl
+  rw [h]
+  exact GeneralSymmetricSpectrum.pointwiseTensorUnitIso_level E q
 
 /-- 作用の五角形の等式。 -/
 def pointwiseTensorPentagonLaw (X Y Z : PointedSimplicialSet.{u})

@@ -52,4 +52,22 @@ lemma free_unit (F : SymmetricSequence C) :
 lemma free_counit (E : GeneralSymmetricSpectrum C K) :
     ((freeForgetAdjunction K).counit.app E).hom = action E :=
   MonoidalFreeModule.free_counit _ E
+/-- The action on a free spectrum is induced by multiplication in the tensor-power monoid. -/
+lemma free_action (F : SymmetricSequence C) :
+    action (freeObj K F) =
+      (α_ (SymmetricSequence.tensorPowerSequence K)
+        (SymmetricSequence.tensorPowerSequence K) F).inv ≫
+        (MonObj.mul (X := SymmetricSequence.tensorPowerSequence K) ▷ F) := rfl
+
+/-- The value on the generators determines a map from a free spectrum. -/
+lemma lift_unique {F : SymmetricSequence C} (E : GeneralSymmetricSpectrum C K)
+    (f : freeObj K F ⟶ E) (g : F ⟶ E.X) (h : generator K F ≫ f.hom = g) :
+    f = lift K E g := by
+  apply (freeHomEquiv K F E).injective
+  exact h.trans (generator_lift K E g).symm
+
+/-- Forgetting the action on a free spectrum gives left convolution. -/
+lemma free_forget_eq_tensorLeft :
+    freeFunctor K ⋙ forget K = tensorLeft (SymmetricSequence.tensorPowerSequence K) := rfl
+
 end SerrePositivity.GeneralSymmetricSpectrum

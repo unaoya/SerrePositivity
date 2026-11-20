@@ -1,4 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
+import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.VertexTuples
 import Lean.Util.CollectAxioms
 
 universe v u
@@ -6,6 +7,8 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+  (cosimplicialHom cosimplicialHomMap)
 
 section ArbitrarySource
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
@@ -18,7 +21,7 @@ example (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) : Type v :=
 
 -- Every strict lift vertex is retained by the single higher interpolation map.
 example {X Y : ResolutionObject C} (g : X ⟶ Y) :
-    SerrePositivity.SimplicialModel.VertexTuples.simplex
+    SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.simplex
         (fun _ : Fin 1 => (⟨g, rfl⟩ : CoherentLiftTuples.StrictLift X Y g.base)) ≫
         CoherentLiftTuples.interpolation hcof X Y g.base = ResolutionLiftSpace.ofLift g :=
   CoherentLiftTuples.simplex_vertex hcof X Y g.base ⟨g, rfl⟩
@@ -87,7 +90,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuples,
+    `SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.VertexTuples,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftTuples]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

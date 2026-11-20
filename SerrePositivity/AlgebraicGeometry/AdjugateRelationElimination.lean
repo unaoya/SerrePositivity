@@ -137,15 +137,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mul_adjugate_entry_eq_updateRow_det := _root_.SerrePositivity.AlgebraicGeometry.mul_adjugate_entry_eq_updateRow_det
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adjugate_pureTransform_complement_surjective := _root_.SerrePositivity.AlgebraicGeometry.adjugate_pureTransform_complement_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adjugate_pureTransform_complement_surjective_of_minors_dvd := _root_.SerrePositivity.AlgebraicGeometry.adjugate_pureTransform_complement_surjective_of_minors_dvd
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.minorIdeal_pureTransform_complement_surjective := _root_.SerrePositivity.AlgebraicGeometry.minorIdeal_pureTransform_complement_surjective

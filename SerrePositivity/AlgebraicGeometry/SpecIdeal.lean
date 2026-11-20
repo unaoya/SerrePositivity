@@ -89,18 +89,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_apply := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_map := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_map
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv_comap := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv_comap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specIdealEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.specIdealEquiv._proof_1

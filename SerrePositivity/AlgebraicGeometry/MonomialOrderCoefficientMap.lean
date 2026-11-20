@@ -48,9 +48,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.monomialOrder_degree_map_of_injective := _root_.SerrePositivity.AlgebraicGeometry.monomialOrder_degree_map_of_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.monomialOrder_leadingCoeff_map_of_injective := _root_.SerrePositivity.AlgebraicGeometry.monomialOrder_leadingCoeff_map_of_injective

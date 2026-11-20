@@ -132,27 +132,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericPrime_preimage_basicOpen := _root_.SerrePositivity.AlgebraicGeometry.genericPrime_preimage_basicOpen
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.continuous_geometricallyIntegralGenericPrime := _root_.SerrePositivity.AlgebraicGeometry.continuous_geometricallyIntegralGenericPrime
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericPrime_mem_freeLocus := _root_.SerrePositivity.AlgebraicGeometry.genericPrime_mem_freeLocus
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isLocallyConstant_genericRank := _root_.SerrePositivity.AlgebraicGeometry.isLocallyConstant_genericRank
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isLocallyConstant_genericTensorRank := _root_.SerrePositivity.AlgebraicGeometry.isLocallyConstant_genericTensorRank
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isClopen_genericRank_fiber := _root_.SerrePositivity.AlgebraicGeometry.isClopen_genericRank_fiber
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericRank_range_finite := _root_.SerrePositivity.AlgebraicGeometry.genericRank_range_finite
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.geometricallyIntegralGenericPrime.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.geometricallyIntegralGenericPrime.congr_simp

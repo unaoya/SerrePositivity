@@ -74,30 +74,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_apply := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap_apply
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_first := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap_first
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_last := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap_last
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_mono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalMap_mono
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex_eta := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex_eta
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex_ext := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex_ext
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex_val := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex_val

@@ -7,10 +7,11 @@ universe u
 noncomputable section
 open CategoryTheory CategoryTheory.MonoidalCategory HomotopicalAlgebra
 open SerrePositivity SerrePositivity.Quillen SerrePositivity.SimplicialModelInputs
+open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison (CofibrantlyGenerated)
 
 example {A B X Y : SSet.{u}} (i : A ⟶ B) (j : X ⟶ Y) [Mono i] [Mono j]
     (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) : Mono sq.ι :=
-  simplicial_pushoutProduct_mono i j sq
+  _root_.SerrePositivity.SimplicialModel.simplicial_pushoutProduct_mono i j sq
 
 -- The model and its two class equalities are explicit inputs. No existence
 -- axiom, weak-equivalence definition, or monoidal-model hypothesis is assumed.
@@ -20,15 +21,15 @@ variable [ModelCategory SSet.{u}]
   (hFib : fibrations SSet.{u} = SSet.modelCategoryQuillen.J.{u}.rlp)
 
 example : SSet.anodyneExtensions.{u} = trivialCofibrations SSet.{u} :=
-  simplicial_anodyne_eq_trivialCofibrations hFib
-example : ModelGeneration.CofibrantlyGenerated.{u}
+  _root_.SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations hFib
+example : CofibrantlyGenerated.{u}
     SSet.modelCategoryQuillen.I.{u} SSet.modelCategoryQuillen.J.{u} :=
-  simplicial_cofibrantlyGenerated hCof hFib
+  _root_.SerrePositivity.SimplicialModel.simplicial_cofibrantlyGenerated hCof hFib
 example : IsQuillenBifunctor (curriedTensor SSet.{u}) :=
-  simplicial_isQuillenBifunctor hCof hFib
-example : MonoidalModelCategory SSet.{u} := simplicial_monoidalModel hCof hFib
+  _root_.SerrePositivity.SimplicialModel.simplicial_isQuillenBifunctor hCof hFib
+example : MonoidalModelCategory SSet.{u} := _root_.SerrePositivity.SimplicialModel.simplicial_monoidalModel hCof hFib
 example : HasQuillenPullbackHom (MonoidalClosed.internalHom (C := SSet.{u})) :=
-  simplicial_SM7 hCof hFib
+  _root_.SerrePositivity.SimplicialModel.simplicial_SM7 hCof hFib
 example : MonoidalModelCategory PointedSimplicialSet.{u} :=
   pointedSimplicial_monoidalModel hCof hFib
 example : HasQuillenPullbackHom

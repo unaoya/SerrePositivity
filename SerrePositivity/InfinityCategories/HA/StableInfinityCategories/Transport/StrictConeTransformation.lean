@@ -75,15 +75,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeShapeMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeShapeMap := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeShapeMap
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeTransformation (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeTransformation := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeTransformation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeTransformation._proof_3 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeTransformation._proof_3
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeTransformation.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeTransformation.match_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.strictConeTransformation.match_1

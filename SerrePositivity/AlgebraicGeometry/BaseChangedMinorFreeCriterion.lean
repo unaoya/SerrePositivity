@@ -67,9 +67,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensor_free_and_finrank_of_minorIdeal_images := _root_.SerrePositivity.AlgebraicGeometry.tensor_free_and_finrank_of_minorIdeal_images
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.minorIdeal_images_at_tensor_finrank := _root_.SerrePositivity.AlgebraicGeometry.minorIdeal_images_at_tensor_finrank

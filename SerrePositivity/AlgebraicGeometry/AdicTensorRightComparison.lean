@@ -77,33 +77,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finite_tensorProduct_over_left_algebra := _root_.SerrePositivity.AlgebraicGeometry.finite_tensorProduct_over_left_algebra
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison_comp_of := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison_comp_of
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_5
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_6
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletionTensorRightComparison._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.adicCompletionTensorRightComparison._proof_7

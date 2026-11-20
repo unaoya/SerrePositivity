@@ -1,6 +1,8 @@
 # 球面モノイド上の加群としての対称スペクトル
 
-Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用する。
+`SymmetricSpectrum` は `GeneralSymmetricSpectrum PointedSimplicialSet PointedSimplicialSet.circle` の略記である。
+各段・作用・構造射には `GeneralSymmetricSpectrum.level`・`action`・`structureMap` を使う。
+円周に固定した自由関手・評価の別名と移動した宣言は[段 1 の対応表](../../../research/cleanup-zero-base/spectra/stage1.csv)にある。
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 

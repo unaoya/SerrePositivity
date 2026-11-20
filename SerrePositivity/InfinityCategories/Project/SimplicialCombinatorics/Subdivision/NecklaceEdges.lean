@@ -69,36 +69,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.adjacentEdge (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.adjacentEdge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_one := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.adjacentEdge_one
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.adjacentEdge_zero
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edge (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edge
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edgeOrderHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edgeOrderHom := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edgeOrderHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge_one := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edge_one
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edge_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.adjacentEdge._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.adjacentEdge._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edge._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edgeOrderHom._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.edgeOrderHom._proof_2

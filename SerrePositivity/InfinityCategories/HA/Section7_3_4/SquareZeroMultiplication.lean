@@ -67,47 +67,19 @@ end SerrePositivity.InfinityCategories.HA.Section7_3_4
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_fst := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_fst
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_ll := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_ll_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_ll_assoc
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_lr := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_lr_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_lr_assoc
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rl := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rl_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rl_assoc
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rr := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rr_assoc := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_rr_assoc
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_snd := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul_snd
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.obj (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.obj := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.obj
 
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.one (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.one := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.one
 
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.Section7_3_4.mul.eq_1
 
 /-! Literature correspondences from the reviewed coverage tables. -/
 

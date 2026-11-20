@@ -20,6 +20,8 @@ open CategoryTheory CategoryTheory.MonoidalCategory
 
 namespace SerrePositivity.SymmetricSpectrum
 
+open GeneralSymmetricSpectrum (action structureMap underlying)
+
 open SerrePositivity.PointedSimplicialSet
 
 /-- 球面モノイドの正則加群としての球面スペクトル。 -/

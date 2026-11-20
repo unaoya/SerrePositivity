@@ -64,30 +64,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso_inv_fst := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso_inv_fst
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso_inv_fst_assoc := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso_inv_fst_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackCongrHom_inv_fst := _root_.SerrePositivity.AlgebraicGeometry.pullbackCongrHom_inv_fst
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackCongrHom_inv_fst_assoc := _root_.SerrePositivity.AlgebraicGeometry.pullbackCongrHom_inv_fst_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullbackRightIso.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.pullbackRightIso.congr_simp

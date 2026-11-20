@@ -127,24 +127,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.centerComplement := _root_.SerrePositivity.AlgebraicGeometry.centerComplement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.fromSpec_preimage_centerComplement := _root_.SerrePositivity.AlgebraicGeometry.fromSpec_preimage_centerComplement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isIso_restrict_of_iso_comparison := _root_.SerrePositivity.AlgebraicGeometry.isIso_restrict_of_iso_comparison
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupπ_restrict_complement_isIso := _root_.SerrePositivity.AlgebraicGeometry.blowupπ_restrict_complement_isIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAwayIso := _root_.SerrePositivity.AlgebraicGeometry.blowupAwayIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAwayIso_hom_ι := _root_.SerrePositivity.AlgebraicGeometry.blowupAwayIso_hom_ι
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAwayIso_hom_ι_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAwayIso_hom_ι_assoc

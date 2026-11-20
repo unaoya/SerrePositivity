@@ -13,15 +13,6 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory Homoto
 namespace SerrePositivity.SimplicialModelInputs
 open SSet SerrePositivity.Quillen
 
-alias simplicial_pushoutProduct_mono :=
-  SerrePositivity.SimplicialModel.simplicial_pushoutProduct_mono
-alias simplicial_anodyne_eq_trivialCofibrations :=
-  SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations
-alias simplicial_cofibrantlyGenerated :=
-  SerrePositivity.SimplicialModel.simplicial_cofibrantlyGenerated
-alias simplicial_isQuillenBifunctor := SerrePositivity.SimplicialModel.simplicial_isQuillenBifunctor
-alias simplicial_monoidalModel := SerrePositivity.SimplicialModel.simplicial_monoidalModel
-alias simplicial_SM7 := SerrePositivity.SimplicialModel.simplicial_SM7
 
 section Model
 variable [ModelCategory SSet.{u}]
@@ -30,7 +21,7 @@ variable [ModelCategory SSet.{u}]
 
 include hCof hFib in
 lemma pointedSimplicial_monoidalModel : MonoidalModelCategory PointedSimplicialSet.{u} := by
-  let : IsQuillenBifunctor (curriedTensor SSet.{u}) := simplicial_isQuillenBifunctor hCof hFib
+  let : IsQuillenBifunctor (curriedTensor SSet.{u}) := _root_.SerrePositivity.SimplicialModel.simplicial_isQuillenBifunctor hCof hFib
   let : IsCofibrant (𝟙_ SSet.{u}) := by
     constructor
     rw [hCof]
@@ -40,7 +31,7 @@ lemma pointedSimplicial_monoidalModel : MonoidalModelCategory PointedSimplicialS
 include hCof hFib in
 lemma pointedSimplicial_SM7 :
     HasQuillenPullbackHom (MonoidalClosed.internalHom (C := PointedSimplicialSet.{u})) := by
-  let : IsQuillenBifunctor (curriedTensor SSet.{u}) := simplicial_isQuillenBifunctor hCof hFib
+  let : IsQuillenBifunctor (curriedTensor SSet.{u}) := _root_.SerrePositivity.SimplicialModel.simplicial_isQuillenBifunctor hCof hFib
   exact SerrePositivity.PointedModel.smash_hasQuillenPullbackHom
 
 include hCof in
@@ -57,7 +48,7 @@ lemma pointedSimplicial_cofibrantlyGenerated :
     _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} := by
   let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       SSet.modelCategoryQuillen.I.{u} SSet.modelCategoryQuillen.J.{u} :=
-    simplicial_cofibrantlyGenerated hCof hFib
+    _root_.SerrePositivity.SimplicialModel.simplicial_cofibrantlyGenerated hCof hFib
   constructor
   · exact pointedI_smallObjectArgument
   · exact pointedJ_smallObjectArgument

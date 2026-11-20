@@ -99,15 +99,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cofiber_bottom_target_eq_right_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.cofiber_bottom_target_eq_right_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cofiber_diagram_bottom_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.cofiber_diagram_bottom_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cofiber_diagram_right_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.cofiber_diagram_right_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.identityArrow_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.identityArrow_source

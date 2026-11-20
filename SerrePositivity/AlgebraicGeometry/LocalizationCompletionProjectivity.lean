@@ -62,9 +62,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_of_countable_flat_of_localization_completion := _root_.SerrePositivity.AlgebraicGeometry.projective_of_countable_flat_of_localization_completion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_of_finiteType_finite_flat_of_localization_completion := _root_.SerrePositivity.AlgebraicGeometry.projective_of_finiteType_finite_flat_of_localization_completion

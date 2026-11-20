@@ -69,9 +69,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_le_of_columnSpan_le := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_le_of_columnSpan_le
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_eq_of_columnSpan_eq := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_eq_of_columnSpan_eq

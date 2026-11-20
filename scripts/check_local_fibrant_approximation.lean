@@ -31,7 +31,7 @@ example (S : MorphismProperty C) (Y : C) [IsFibrant Y] :
 
 -- Small-object and Hom universes remain independent; no SSet(w) model or enrichment is needed.
 example [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (S : MorphismProperty C) [S.IsSmall.{w}] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular) (R : C ⥤ C) (η : 𝟭 C ⟶ R),
       R.IsCardinalAccessible κ ∧

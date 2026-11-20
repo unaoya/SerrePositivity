@@ -84,21 +84,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeActive (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeActive := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeActive
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeSupportOrdered (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportOrdered := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeSupportOrdered
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_exists_active := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeJoinMap_exists_active
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeMapGenerated_active_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOrdered_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexAtom_le := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeVertexAtom_le

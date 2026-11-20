@@ -99,9 +99,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_boundaryPureTransform_complement_equiv_of_regular_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.exists_boundaryPureTransform_complement_equiv_of_regular_minorIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPureTransform_free_and_finrank_of_regular_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.boundaryPureTransform_free_and_finrank_of_regular_minorIdeal

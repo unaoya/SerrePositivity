@@ -25,19 +25,19 @@ variable {I : Type v} [DecidableEq I]
 方針：pivot を掛けた比の公式を移し、radial 座標の非零性で消去する。
 規約：KST Def3.1。使われ方：自由チャート上の逆写像の確認。 -/
 @[simp] theorem universalClassicalToChart_ratio (i j : I) :
-    universalClassicalToChart i (SchemeLemmas.chartRatio _
+    universalClassicalToChart i (_root_.SerrePositivity.AlgebraicGeometry.chartRatio _
       (universalCenterGenerator i) (universalCenterGenerator j)) = universalRatio i j := by
   apply mul_left_cancel₀ (MvPolynomial.X_ne_zero (R := ℤ) (none : Option (ChartIndex i)))
   have h := congrArg (universalClassicalToChart i)
-    (SchemeLemmas.chartBaseMap_mul_ratio (universalCenter (I := I))
+    (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap_mul_ratio (universalCenter (I := I))
       (universalCenterGenerator i) (universalCenterGenerator j))
   rw [map_mul] at h
   change universalClassicalToChart i
-      (SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X i)) *
-      universalClassicalToChart i (SchemeLemmas.chartRatio _
+      (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X i)) *
+      universalClassicalToChart i (_root_.SerrePositivity.AlgebraicGeometry.chartRatio _
         (universalCenterGenerator i) (universalCenterGenerator j)) =
     universalClassicalToChart i
-      (SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X j)) at h
+      (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X j)) at h
   rw [universalClassicalToChart_base, universalClassicalToChart_base,
     universalBaseMap_pivot, universalBaseMap_X] at h
   exact h
@@ -48,8 +48,8 @@ variable {I : Type v} [DecidableEq I]
 def universalChartToClassical (i : I) : UniversalChart i →+* UniversalClassicalChart i :=
   MvPolynomial.eval₂Hom (Int.castRingHom _)
     (fun j => match j with
-      | none => SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X i)
-      | some j => SchemeLemmas.chartRatio _ (universalCenterGenerator i)
+      | none => _root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X i)
+      | some j => _root_.SerrePositivity.AlgebraicGeometry.chartRatio _ (universalCenterGenerator i)
           (universalCenterGenerator j.val))
 
 omit [DecidableEq I] in
@@ -58,7 +58,7 @@ omit [DecidableEq I] in
 規約：KST Def3.1。使われ方：基底上の相互逆の確認。 -/
 @[simp] theorem universalChartToClassical_radial (i : I) :
     universalChartToClassical i (radialCoordinate i) =
-      SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X i) :=
+      _root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) (MvPolynomial.X i) :=
   MvPolynomial.eval₂Hom_X' _ _ none
 
 omit [DecidableEq I] in
@@ -67,7 +67,7 @@ omit [DecidableEq I] in
 規約：KST Def3.1。使われ方：基底上の相互逆の確認。 -/
 @[simp] theorem universalChartToClassical_ratio (i : I) (j : ChartIndex i) :
     universalChartToClassical i (MvPolynomial.X (some j)) =
-      SchemeLemmas.chartRatio _ (universalCenterGenerator i) (universalCenterGenerator j.val) :=
+      _root_.SerrePositivity.AlgebraicGeometry.chartRatio _ (universalCenterGenerator i) (universalCenterGenerator j.val) :=
   MvPolynomial.eval₂Hom_X' _ _ (some j)
 
 /-- 概要：逆代入と普遍構造射の合成は Rees チャートの基底構造射。
@@ -75,7 +75,7 @@ omit [DecidableEq I] in
 規約：KST Def3.1。使われ方：古典チャート上の逆元律と基底保存。 -/
 theorem universalChartToClassical_comp_base (i : I) :
     (universalChartToClassical i).comp (universalBaseMap i).toRingHom =
-      SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) := by
+      _root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) := by
   apply MvPolynomial.ringHom_ext'
   · exact Subsingleton.elim _ _
   · intro j
@@ -86,7 +86,7 @@ theorem universalChartToClassical_comp_base (i : I) :
       change universalChartToClassical i (universalBaseMap i (MvPolynomial.X j)) = _
       rw [universalBaseMap_X, hr, map_mul]
       rw [universalChartToClassical_radial, universalChartToClassical_ratio]
-      exact SchemeLemmas.chartBaseMap_mul_ratio (universalCenter (I := I))
+      exact _root_.SerrePositivity.AlgebraicGeometry.chartBaseMap_mul_ratio (universalCenter (I := I))
         (universalCenterGenerator i) (universalCenterGenerator j)
 
 /-- 概要：自由チャート上で古典チャートへの逆代入と比較射は互いに逆。
@@ -108,12 +108,12 @@ theorem universalClassicalToChart_comp_inverse (i : I) :
 theorem universalChartToClassical_comp_inverse (i : I) :
     (universalChartToClassical i).comp (universalClassicalToChart i) =
       RingHom.id (UniversalClassicalChart i) := by
-  apply SchemeLemmas.chart_hom_ext_of_regular (universalCenter (I := I))
-    (SchemeLemmas.chartBaseMap _ (universalCenterGenerator i)) (universalCenterGenerator i)
-    (SchemeLemmas.chartBaseMap_mem_nonZeroDivisors _ _)
+  apply _root_.SerrePositivity.AlgebraicGeometry.chart_hom_ext_of_regular (universalCenter (I := I))
+    (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i)) (universalCenterGenerator i)
+    (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap_mem_nonZeroDivisors _ _)
   · intro p
     change universalChartToClassical i (universalClassicalToChart i
-      (SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) p)) = _
+      (_root_.SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) p)) = _
     rw [universalClassicalToChart_base]
     exact RingHom.congr_fun (universalChartToClassical_comp_base i) p
   · intro p

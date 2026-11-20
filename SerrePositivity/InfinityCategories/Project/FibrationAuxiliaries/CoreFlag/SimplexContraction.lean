@@ -71,27 +71,3 @@ end SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContraction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContraction
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContractionOrder (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContractionOrder
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContraction._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContraction._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContraction._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContractionOrder._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContractionOrder._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.initialContractionOrder._proof_3

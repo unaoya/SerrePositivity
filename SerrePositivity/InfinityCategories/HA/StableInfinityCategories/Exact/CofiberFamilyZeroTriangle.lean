@@ -93,18 +93,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHasZeroVertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.functorHasZeroVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberFamilyFunctorZero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.cofiberFamilyFunctorZero
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroCorner := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroCorner_zero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroCorner._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberFamily.zeroCorner._proof_1

@@ -122,12 +122,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.alternatingClass_connecting := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.alternatingClass_connecting
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.alternatingClass_connecting_last := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.alternatingClass_connecting_last
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.alternatingClass_connecting_of_lower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.alternatingClass_connecting_of_lower

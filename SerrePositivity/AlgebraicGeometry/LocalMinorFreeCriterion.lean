@@ -74,9 +74,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_complement_equiv_of_unit_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.exists_complement_equiv_of_unit_minorIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.free_and_finrank_of_unit_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.free_and_finrank_of_unit_minorIdeal

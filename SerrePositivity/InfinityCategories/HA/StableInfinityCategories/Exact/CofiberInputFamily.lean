@@ -80,39 +80,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.span := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.span_hasColimit := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span_hasColimit
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.span_left := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.span_right := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span_right
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.span_vertex_zero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span_vertex_zero
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrow (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroArrow := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrow
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrowSection (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroArrowSection := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrowSection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroArrowSection_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrowSection_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroArrow_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrow_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.span._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.span._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroArrow._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrow._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroArrowSection._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroArrowSection._proof_1

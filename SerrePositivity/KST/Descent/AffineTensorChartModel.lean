@@ -34,8 +34,8 @@ variable (R B C : Type u) [CommRing R] [CommRing B] [CommRing C]
   [Algebra R B] [Algebra R C] {X Y : Scheme.{u}} (f : X ⟶ Y)
   (eX : Spec (.of B) ≅ X) (eY : Spec (.of R) ≅ Y)
   (hf : eX.hom ≫ f = Spec.map (CommRingCat.ofHom (algebraMap R B)) ≫ eY.hom)
-  (J : Y.IdealSheafData) (j : Spec (.of C) ⟶ blowup J)
-  (hj : j ≫ blowupπ J = Spec.map (CommRingCat.ofHom (algebraMap R C)) ≫ eY.hom)
+  (J : Y.IdealSheafData) (j : Spec (.of C) ⟶ _root_.SerrePositivity.AlgebraicGeometry.blowup J)
+  (hj : j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J = Spec.map (CommRingCat.ofHom (algebraMap R C)) ≫ eY.hom)
 
 include hf hj in
 /-- 概要：両端のアフィン同型を保ったテンソル積の Spec は実際の底変換を表す（補題 3.3）。
@@ -46,7 +46,7 @@ theorem affineTensorChartModel_isPullback :
     IsPullback
       (Spec.map (CommRingCat.ofHom (Algebra.TensorProduct.includeRight :
         B →ₐ[R] C ⊗[R] B).toRingHom) ≫ eX.hom)
-      (Spec.map (CommRingCat.ofHom (algebraMap C (C ⊗[R] B)))) f (j ≫ blowupπ J) := by
+      (Spec.map (CommRingCat.ofHom (algebraMap C (C ⊗[R] B)))) f (j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J) := by
   apply (tensorSpecSquare_isPullback R C B).flip.of_iso
     (Iso.refl _) eX (Iso.refl _) eY
   · exact (Category.id_comp _).symm
@@ -92,9 +92,9 @@ include hf hj in
 使われ方：実際の標準チャートの係数写像の公式をそのまま適用する。 -/
 theorem strictTransform_chart_flat_of_affineModel (U : Y.Opens) (r : R)
     (hU : eY.hom ⁻¹ᵁ U = PrimeSpectrum.basicOpen r)
-    [QuasiCompact (strictTransformOpen f U J).ι] [IsOpenImmersion j]
-    [Module.Flat C (modulePureTransform (algebraMap R C r) (C ⊗[R] B))] :
-    Flat (pullback.snd (strictTransformπ f U J) j) := by
+    [QuasiCompact (_root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen f U J).ι] [IsOpenImmersion j]
+    [Module.Flat C (_root_.SerrePositivity.AlgebraicGeometry.modulePureTransform (algebraMap R C r) (C ⊗[R] B))] :
+    Flat (pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f U J) j) := by
   apply strictTransform_chart_flat_of_modelImage f U J j _ _
     (affineTensorChartModel_isPullback R B C f eX eY hf J j hj)
   have he := affineTensorChartModel_boundary R B C f eX eY hf U r hU
