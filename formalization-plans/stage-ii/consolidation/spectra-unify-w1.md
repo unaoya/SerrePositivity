@@ -265,3 +265,24 @@ C の 50 宣言それぞれについて、上の 1〜6 と同じ項目を埋め�
   - 未使用で「使われていない途中の段」に入れたものの一覧。「判断できない」の一覧。
   - 相手の主張を並べて確かめた件数と、推定のままの件数。
 - Lean のソース・監査・対応表の差分が 0。ビルドは数える道具に要る分だけ（bulk 鍵）。コミットして止まる。
+
+## 12. 段 11：B の「消す」の実施（一回目：使われていないものと、一般の補題の当てはめ）
+
+段 10（30641b719）の表 `research/cleanup-zero-base/spectra/stage10.csv` に対する決定（ユーザー、11-20）：
+
+1. **文献で名前のある定義は、一行の名前として残す。** 内部 Hom（`internalHom`、`internalHomBifunctor`）、次数のずらし（`shiftedHom`）、Fₙ と Evₙ とその随伴・普遍性・生成元（`freeAt`、`evaluation`、`freeAtAdjunction`、`freeAtHomEquiv`、`freeAtGenerator`）、作用と構造射（`action`）、台と忘却（`underlying`、`forget`）、係数を動かすテンソル（`mappingTensorFunctor`）、球面スペクトル（`sphere`）、懸垂とループ、写像対象。段 10 で「消す」とした定義のうち、これに当たるもの（スペクトルの理論の用語として使う側が書く名前）は、`abbrev` か一行の定義として残す。残すものの一覧と理由を報告に書く。迷うものは残す側に入れて一覧にする。
+2. 残す定義についての、定義を開くだけの補題（`rfl`、`Iso.app`、成分の取り出し）と、一般の補題をそのまま当てはめただけの補題（随伴の Hom 同値の自然性、三角等式、極限・余極限の保存、零対象の補題など）は消す。使う側は一般の補題を直接使う。
+3. **円周を使っていない内容は一般化する**（基点のない単体集合による係数を、基礎の圏が基点付き単体集合で K が一般の形に。球面スペクトルを一般の (C, K) に）。これは後の段で行う（この段ではしない）。
+
+### この段ですること
+
+- 段 10 の「消す」207 件を、上の 1・2 で分け直す（表に列を足す：実施＝消す／名前として残す／後の段）。
+- そのうち、**どこからも使われていないもの**（段 10 で 76 件）と、**一般の補題の当てはめ**である補題を消す。使う側を一般の補題に書き換える。C の `rfl` 補題・使われていない別名（`sphere_underlying`、`sphere_action`、`structureMap_eq_convolutionComponent`、`simplicialMappingSpaceBifunctor_obj`、`sphereTensorFreeZeroPointwiseNatIso`、`simplicialTensorCotensorHomEquiv_post` など、段 10 で「消す」としたもの）も含める。ただし 1 に当たる名前は残す。
+- 未使用のうち「理論の主張」とした 5 件は消さずに一覧にする。「判断できない」39 件、「A へ移す」39 件、定義の統合を伴うものは、この段では触らない。
+- `Spectra/SymmetricSequence/DisjointUnion.lean` と `FiniteBijection.lean`（import だけのファイル、IM-W1 段 1 の削除案）を消し、使う側の import を `SerrePositivity.CategoryTheory.Limits` に付け替える。
+
+### 確かめること
+
+- 対象と使う側（`Spectra/` と、それを import する全モジュール）が建つ。bulk 鍵。
+- 残した宣言のカーネルの名前と主張が前後で一致。消した名前が現行の参照に残っていない（`cleanup-rules.md`）。公理と sorry が増えない。
+- 報告：消した件数（未使用／補題の当てはめ／C）、名前として残した定義の一覧、書き換えた使用箇所の数、前後のファイル数・行数・宣言数、次の段（まとまりの順）の案。コミットして止まる。
