@@ -37,3 +37,20 @@ python3 research/cleanup-zero-base/whole/update.py "$OUT/concepts" --skip-dump
 ```sh
 zsh scripts/refactor/with_build_lock.sh --class bulk -- python3 scripts/audit2/selftest.py "$OUT/selftest"
 ```
+
+## 段4　文献対応表とブループリント
+
+全対象を記録監査したコミットで実行する。本体の追跡ソースは先にコミットし、ビルドと記録監査を済ませる。固定 Mathlib は成果物を読み、参照の末尾名で絞った索引を作る。版や参照の末尾名が変わったら新しい出力先で索引を取り直す。
+
+```sh
+zsh scripts/refactor/with_build_lock.sh --class bulk -- python3 scripts/audit2/coverage.py external "$OUT/mathlib"
+python3 scripts/audit2/coverage.py check "$OUT/full/audit.sqlite" "$OUT/mathlib/external.json" "$OUT/coverage-check.json"
+python3 scripts/audit2/coverage.py resolve "$OUT/full/audit.sqlite" "$OUT/mathlib/external.json" "$OUT/coverage-plan.json"
+python3 scripts/audit2/coverage_blueprint.py "$OUT/coverage-plan.json" "$OUT/blueprint"
+python3 scripts/audit2/coverage_selftest.py
+```
+
+- 対応表の完全名を全母集団で引き、所有元とカーネル名を得る。一段の名前は `_root_.` でルートを明示する。短い名前の候補は一覧に残す。基準は `research/*-coverage/baseline.csv`。作成用の `baseline` は既存基準を置き換えるため、承認した基準採取時に使う。
+- `check` は追加・消失・未承認の移動・指紋の変化・新しい未解決を列挙する。承認済みの改名・移動は `--moves` に `[{"old":["所有モジュール","カーネル名"],"new":["所有モジュール","カーネル名"]}]` 形式の JSON を渡す。合格したときに限り `--apply-locations` で位置と承認済みの名前を書き戻せる。書き戻し後は差分を確認し、`resolve` をやり直す。指紋変化を警告として試すときは `--warn-fingerprints` を明示する。
+- 主張は Lean の型の構造指紋。意味は主張の型から到達する本体の定義・opaque の型と値、帰納型・構成子の型を集めた SHA-256。各定数名を含め、定理の証明はそこで止める。Mathlib の中は固定版を境界とする。
+- 生成の前に未解決と基準を検査し、生成の後に全カードのリンク配列を別に照合する。Git 外の新しい出力先へ生成し、公開用の反映は `--publish` を明示する。現行の未解決を調べる `--preview` は診断用。省いた参照は `unresolved.json` に出る。診断用の成果物は公開できない。
