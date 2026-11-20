@@ -1,0 +1,94 @@
+group,concept,subconcept,new_concept,new_subconcept,aux,stopped,split,note
+H K 理論,S 構成と K スペクトル,K スペクトル（BF Ω スペクトル）,H K 理論/S 構成と K スペクトル,K スペクトル（BF Ω スペクトル）,0,,0,
+H K 理論,S 構成と K スペクトル,Waldhausen S 構成（gapped 図式）,H K 理論/S 構成と K スペクトル,Waldhausen S 構成（gapped 図式）,0,,0,simplicialPath（単体的対象の décalage）は一般の圏論だが一件だけなので残した
+H K 理論,S 構成と K スペクトル,dg 入力上の K スペクトル（豊穣関手性）,H K 理論/S 構成と K スペクトル,dg 入力上の K スペクトル（豊穣関手性）,0,,0,
+H K 理論,S 構成と K スペクトル,π₀K と三角圏の K₀ の比較,H K 理論/S 構成と K スペクトル,π₀K と三角圏の K₀ の比較,0,,0,triangulatedKZeroSourceMap は「A/完全複体と K₀」の K₀ の関手性と重複の疑い
+H K 理論,S 構成と K スペクトル,加法性定理（cofiber 図式と左 fiber）,H K 理論/S 構成と K スペクトル,加法性定理（cofiber 図式と左 fiber）,0,,0,
+H K 理論,S 構成と K スペクトル,反復 S 構成と対角実現,H K 理論/S 構成と K スペクトル,反復 S 構成と対角実現,0,,0,
+H K 理論,S 構成と K スペクトル,相対 S 構成と弱い辺の列（fibration 定理）,H K 理論/S 構成と K スペクトル,相対 S 構成と弱い辺の列（fibration 定理）,0,,0,
+H K 理論,S 構成と K スペクトル,閉じた安定部分圏と cofinality,H K 理論/S 構成と K スペクトル,閉じた安定部分圏と cofinality,0,,1,主張に安定 ∞ 圏しか現れない ClosedStablePredicate・closedSubcategory・closedStableModel・closedStableInclusion は規則 3 で「D/安定 ∞ 圏」へ。Cofinality.*・sClosedPredicate は残す
+H K 理論,S 構成と K スペクトル,零境界の縮約と段の接続,H K 理論/S 構成と K スペクトル,零境界の縮約と段の接続,0,,0,
+H K 理論,S 構成と K スペクトル,（まだ読んでいない定義）,H K 理論/S 構成と K スペクトル,,0,,0,
+H K 理論,S 構成と K スペクトル,（補助）K スペクトルの関手性の coherent 化,H K 理論/S 構成と K スペクトル,K スペクトルの関手性の coherent 化,1,,1,coherent 神経の Hom の計算（coherentPathCutSplit、coherentDoubleInser… など Path の分割）は決定により「C/単体的圏と coherent 神経」へ。AssemblyInputArrow（Hom の要素の圏）は「C/ねじれ矢と edgewise subdivision」の候補。三角形・正方形の貼り合わせ（threeSquarePasting、outerBinaryPasting など）は単体集合の一般論の疑い
+H K 理論,S 構成と K スペクトル,（補助）Verdier 四角形の K 像の零ホモトピー,H K 理論/S 構成と K スペクトル,Verdier 四角形の K 像の零ホモトピー,1,,0,
+H K 理論,S 構成と K スペクトル,（補助）第一行制限のための零対角の枠,H K 理論/S 構成と K スペクトル,第一行制限の零対角の枠,1,,0,
+H K 理論,S 構成と K スペクトル,（読んで移した定義）,H K 理論/S 構成と K スペクトル,,0,,0,
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,Cat^perf,H K 理論/lax 引き戻しと局所化不変量,Cat^perf と局所化不変量の定義,0,,0,
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,Perf の小さい dg 模型（包絡）,H K 理論/S 構成の入力（安定モデル・小さい Perf）,Perf の小さい dg 模型（包絡）,0,,0,
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,S 構成の安定な入力と cofiber を保つ射,H K 理論/S 構成の入力（安定モデル・小さい Perf）,S 構成の安定な入力と cofiber を保つ射,0,,0,
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,小さい Perf 模型の四角形,H K 理論/S 構成の入力（安定モデル・小さい Perf）,小さい Perf 模型の四角形,0,,0,DGSmallPerfectSquareGluing は小さい Perf 模型から作る dg の貼り合わせ（LT 四角形の入力）。⊙ の dg 模型ではないので残したが、「D/dg の貼り合わせ」「H/lax 引き戻しと局所化不変量」との境目
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,小さい dg 入力と固定した ν・K,H K 理論/S 構成の入力（安定モデル・小さい Perf）,小さい dg 入力と固定した ν・K,0,,0,dgKInputStableValue・dgKInputSpectrum・dgKInputSpectrumMap・dgKInputInfinity は別名（言い換えの候補）
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,（まだ読んでいない定義）,H K 理論/S 構成の入力（安定モデル・小さい Perf）,,0,,0,
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,（補助）単体集合のホモトピーの円柱と有限列,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,端点を固定したホモトピーの円柱と有限列,1,,0,BF の境界の補正のための足場だが、中身は単体集合のホモトピー
+H K 理論,S 構成の入力（安定モデル・小さい Perf）,（読んで移した定義）,H K 理論/S 構成の入力（安定モデル・小さい Perf）,,0,,0,
+H K 理論,pro 切除の塔,塔と pro 同型・pro 零,H K 理論/塔と pro 対象,塔と pro 同型・pro 零,0,,0,
+H K 理論,pro 切除の塔,相対ホモロジーの商模型,H K 理論/ĜL・群完備化・plus 構成,相対ホモロジーの商模型,0,,0,KST Prop 4.14・付録 A の群ホモロジーの計算。relativeModule（加群の射の余核の模型）は一般の加群の構成
+H K 理論,pro 切除の塔,（補助）整数鎖区間と鎖ホモトピーの正方形,B 複体と dg 圏/複体,整数鎖区間と鎖ホモトピーの正方形,1,,0,
+H K 理論,pro 切除の塔,（補助）非可換な標的の検証例,H K 理論/ĜL・群完備化・plus 構成,可換像の障害の例（位数 8 の二面体群）,1,,0,中身は DihedralGroup 4 の abbrev だけ。群論の概念が木にないので使い先に置いた
+H K 理論,pro 切除の塔,（読んで移した定義）,H K 理論/塔と pro 対象,,0,,0,
+H K 理論,pro 切除：非単位環と GL,ĜL（π₀ で可逆な行列の単体的モノイド）,H K 理論/ĜL・群完備化・plus 構成,単体的環の π₀・行列・ĜL,0,,0,
+H K 理論,pro 切除：非単位環と GL,三角ブロック群・列群と行列の作用,H K 理論/ĜL・群完備化・plus 構成,三角ブロック群・列群と行列の作用,0,,0,
+H K 理論,pro 切除：非単位環と GL,単体的モノイドの作用と半直積,H K 理論/ĜL・群完備化・plus 構成,単体的モノイドの作用と半直積,0,,0,
+H K 理論,pro 切除：非単位環と GL,非単位単体環と単位化によるイデアル模型,H K 理論/ĜL・群完備化・plus 構成,非単位単体環と単位化によるイデアル模型,0,,0,
+H K 理論,pro 切除：非単位環と GL,（まだ読んでいない定義）,H K 理論/ĜL・群完備化・plus 構成,,0,,0,
+H K 理論,pro 切除：非単位環と GL,（読んで移した定義）,H K 理論/ĜL・群完備化・plus 構成,,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,アフィンの比較（tilde と大域切断）,H K 理論/係数環層つきスキームの加群層と D_qc,アフィンの比較（tilde と大域切断）,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,係数加群層と準連接性,H K 理論/係数環層つきスキームの加群層と D_qc,係数加群層と準連接性,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,係数加群層の複体の導来 dg 圏,H K 理論/係数環層つきスキームの加群層と D_qc,係数加群層の複体の導来 dg 圏,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,係数環層とテンソル係数層 H_X,H K 理論/係数環層つきスキームの加群層と D_qc,係数環層とテンソル係数層 H_X,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,開を表す自由加群層,H K 理論/係数環層つきスキームの加群層と D_qc,開を表す自由加群層,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,（まだ読んでいない定義）,H K 理論/係数環層つきスキームの加群層と D_qc,,0,,0,
+H K 理論,係数環層つきスキームの加群層と D_qc,（補助）Čech・K-injective の議論の足場,B 複体と dg 圏/複体,鎖複体の隣接二項の部分窓,1,,0,
+H K 理論,導来 blowup,cartesian・perfect 条件と大域 Perf 模型,H K 理論/導来 blowup,cartesian・perfect 条件と大域 Perf 模型,0,,0,
+H K 理論,導来 blowup,チャートの重なりの環,H K 理論/導来 blowup,チャートの重なりの環,0,,0,通常の可換環（Away 局所化）だけの主張。「A/blowup と射影スキーム」との境目
+H K 理論,導来 blowup,図式加群と係数 dg 圏,H K 理論/導来 blowup,図式加群と係数 dg 圏,0,,0,
+H K 理論,導来 blowup,図式加群の局所評価・導来制限・係数拡大,H K 理論/導来 blowup,図式加群の局所評価・導来制限・係数拡大,0,,0,底変換の関手が主語（diagramAlgebraDerivedExtension など）だが、図式加群に固有なので残した。決定「係数の取り替え」を厳密に当てれば「B/係数の取り替え」。三系統（一般の図式・有限重なり・例外因子）は重複の疑い
+H K 理論,導来 blowup,捻り O(m),H K 理論/導来 blowup,捻り O(m),0,,0,
+H K 理論,導来 blowup,有限重なりの dg 代数図式,H K 理論/導来 blowup,有限重なりの dg 代数図式,0,,0,
+H K 理論,導来 blowup,標準チャートと普遍チャート,H K 理論/導来 blowup,標準チャートと普遍チャート,0,,0,
+H K 理論,導来 blowup,（その他）,H K 理論/導来 blowup,,0,,0,
+H K 理論,導来 blowup,（まだ読んでいない定義）,H K 理論/導来 blowup,,0,,0,
+H K 理論,導来 blowup,（読んで移した定義）,H K 理論/導来 blowup,,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,Postnikov 塔と層,H K 理論/局所化不変量：Postnikov と平方零拡大,Postnikov 塔と層,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,Postnikov 段の平方零拡大としての表示（類）,H K 理論/局所化不変量：Postnikov と平方零拡大,Postnikov 段の平方零拡大としての表示（類）,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,dg 代数の写像空間と準同型の局所化,B 複体と dg 圏/dg 代数のホモトピー論,dg 代数の写像空間と準同型の局所化,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,dg 代数の胞体分解,B 複体と dg 圏/dg 代数のホモトピー論,dg 代数の胞体分解,0,,0,cellPathNonpositiveSource/Projection/Comparison は実質 Postnikov 帰納の共通核の足場（aux の印の候補）
+H K 理論,局所化不変量：Postnikov と平方零拡大,dg 代数上の局所化不変量の値と k 連結性,H K 理論/局所化不変量：Postnikov と平方零拡大,dg 代数上の局所化不変量の値と k 連結性,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,path 対象と dg 代数のホモトピー,B 複体と dg 圏/dg 代数のホモトピー論,path 対象と dg 代数のホモトピー,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,ホモトピー引き戻しの模型,B 複体と dg 圏/dg 代数のホモトピー論,dg 代数のホモトピー引き戻しの模型,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,塔の pro 同値と逆 roof,H K 理論/塔と pro 対象,dg 代数の塔の pro 逆 roof,0,,1,一般の roof（SurjectiveRoof.*、NonpositiveInverseRoof.*、NativeRightInverseRoof.*、InvertsConnectiveQuasiIsos）は決定により「塔と pro 対象」へ。Postnikov に固有の postnikovOneRoofRefine・postnikovTwoRoofRightCommon(Kernel)・PostnikovImagePro.middle/upperSource・postnikovStrictZeroBaseTower/Lift・postnikovUpperNonpositiveTower・postnikovFiniteDiagonalTarget・postnikovTwoDiagonalTarget は「H/局所化不変量：Postnikov と平方零拡大」の小概念「Postnikov 塔の pro 逆」に残す。roof は dg 代数の準同型の span なので「B/dg 代数のホモトピー論」とする案もある
+H K 理論,局所化不変量：Postnikov と平方零拡大,平方零拡大と導分,H K 理論/局所化不変量：Postnikov と平方零拡大,平方零拡大と導分,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,（まだ読んでいない定義）,H K 理論/局所化不変量：Postnikov と平方零拡大,,0,,0,
+H K 理論,局所化不変量：Postnikov と平方零拡大,（補助）Postnikov 帰納の共通核,H K 理論/局所化不変量：Postnikov と平方零拡大,Postnikov 帰納の共通核,1,,0,n=1 の包み（DGAlgebra.postnikovCommon*、postnikovOneRoof*・postnikovTwoRoof*）は一般の n の版の言い換え
+H K 理論,局所化不変量：Postnikov と平方零拡大,（補助）後続段の類の逆データ,H K 理論/局所化不変量：Postnikov と平方零拡大,後続段の類の逆データ,1,,0,PostnikovTwoClassInverseData.* は PostnikovSuccessorClassInverseData.* の n=1 の包み
+H K 理論,局所化不変量：Postnikov と平方零拡大,（読んで移した定義）,H K 理論/局所化不変量：Postnikov と平方零拡大,,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,dg 双加群の操作（制限・像・余核・shift）,B 複体と dg 圏/双加群とテンソル,dg 双加群の制限・像・余核・shift,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,lax 引き戻しの差の関手と Tamme 商,H K 理論/lax 引き戻しと局所化不変量,lax 引き戻しの差の関手と Tamme 商,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,lax 引き戻し（安定 ∞ 圏）と射影・包含,H K 理論/lax 引き戻しと局所化不変量,lax 引き戻し（安定 ∞ 圏）と射影・包含,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,局所化不変量の定義と値,H K 理論/lax 引き戻しと局所化不変量,Cat^perf と局所化不変量の定義,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,（その他）,H K 理論/lax 引き戻しと局所化不変量,,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,（まだ読んでいない定義）,H K 理論/lax 引き戻しと局所化不変量,,0,,0,
+H K 理論,局所化不変量：lax 引き戻しと双加群,（読んで移した定義）,H K 理論/lax 引き戻しと局所化不変量,,0,,0,
+H K 理論,群完備化と plus 構成,fat realization と対角,C 単体集合と ∞ 圏/単体集合（基本）,二重単体集合の fat realization と対角,0,,0,二重単体集合の一般論（Segal 1974 Prop 1.6）。規則 3 で H の外へ。「E/図式のモデル構造とホモトピー余極限」とする案もある
+H K 理論,群完備化と plus 構成,単体的モノイドの bar 構成と群完備化,H K 理論/ĜL・群完備化・plus 構成,単体的モノイドの bar 構成と群完備化,0,,0,
+H K 理論,群完備化と plus 構成,単体的環の π₀ と行列・ĜL,H K 理論/ĜL・群完備化・plus 構成,単体的環の π₀・行列・ĜL,0,,0,componentSubcomplex（π₀ の条件で切る部分単体集合）は一般の単体集合の構成で「C/Kan 複体とホモトピー群」の候補
+H K 理論,群完備化と plus 構成,局所係数と整数ホモロジー（plus 構成の acyclic 性）,B 複体と dg 圏/単体的鎖・Dold–Kan・シャッフル,単体集合の整数ホモロジーと局所係数,0,,0,主張に現れるのは単体集合と係数だけなので規則 3 で B へ。plus 構成の acyclic 性に使う
+H K 理論,群完備化と plus 構成,（まだ読んでいない定義）,H K 理論/ĜL・群完備化・plus 構成,,0,,0,
+H K 理論,群完備化と plus 構成,（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,単体集合のホモトピー引き戻しと写像円筒,1,,0,Segal 1974 Lemma 1.7・1.8 の厳密化の足場。中身は単体集合の一般論（「E/図式のモデル構造とホモトピー余極限」とする案もある）
+H K 理論,降下,Mayer–Vietoris 型の長完全列,H K 理論/降下,Mayer–Vietoris 型の長完全列,0,,0,
+H K 理論,降下,基底上有限型のスキームの圏と引き戻し,A 可換代数と数論幾何/スキーム,基底上有限型のスキームの圏と引き戻し,0,,0,主張に現れるのはスキームだけなので規則 3 で A へ（読む担当は降下の定義域として残していた）
+H K 理論,降下,抽象 blowup 正方形と閉中心,H K 理論/降下,抽象 blowup 正方形と閉中心,0,,0,closedCenterPullback と closedImmersionPullback は同じ構成の二版（重複の疑い）。closedImmersionSquare・closedImmersionPullback は一般の閉埋め込みで「A/スキーム」の候補
+H K 理論,降下,有限平坦 transfer と底変換前層,H K 理論/降下,有限平坦 transfer と底変換前層,0,,0,
+H K 理論,降下,次数付き前層と π_* 降下の主張,H K 理論/降下,次数付き前層と π_* 降下の主張,0,,0,
+H K 理論,降下,群作用と軌道正方形,H K 理論/降下,群作用と軌道正方形,0,,0,
+H K 理論,降下,被約化と既約成分,A 可換代数と数論幾何/スキーム,被約化と既約成分,0,,0,同上。schemeReduction は一般のスキームの被約化
+H K 理論,降下,（まだ読んでいない定義）,H K 理論/降下,,0,,0,
+H K 理論,降下,（読んで移した定義）,H K 理論/降下,,0,,0,
+H K 理論,非連結 K,Indω と compact 生成の比較,H K 理論/非連結 K,Indω と compact 生成の比較,0,,0,
+H K 理論,非連結 K,cone の自己 dg 関手の作用と分裂（swindle の K での零化）,H K 理論/非連結 K,cone の自己 dg 関手の作用と分裂（swindle の K での零化）,0,,0,
+H K 理論,非連結 K,dg 懸垂（cone の Perf による商）,H K 理論/非連結 K,dg 懸垂（cone の Perf による商）,0,,0,
+H K 理論,非連結 K,κ-compact な dg cone（可算和と swindle）,H K 理論/非連結 K,κ-compact な dg cone（可算和と swindle）,0,,0,dg 加群の充満部分 dg 圏と可算直和だけの主張（DGKappaCone、dgKappaConeCountableSum）は「B/dg 加群」の候補
+H K 理論,非連結 K,懸垂の Verdier 列と K の fiber 四角形,H K 理論/非連結 K,懸垂の Verdier 列と K の fiber 四角形,0,,0,
+H K 理論,非連結 K,懸垂の反復と非連結 K の対象,H K 理論/非連結 K,懸垂の反復と非連結 K の対象,0,,0,無条件版（dgKappaUnconditionalStageProvider、dgSuspensionUnconditionalIteration、dgNonconnectiveK）と条件付き版が二重の疑い
+H K 理論,非連結 K,逐次スペクトル列と逐次余極限,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,スペクトルの逐次余極限,0,,0,
+H K 理論,非連結 K,（まだ読んでいない定義）,H K 理論/非連結 K,,0,,0,
