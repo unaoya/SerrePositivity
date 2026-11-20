@@ -161,8 +161,15 @@ def describe(name):
 
 
 def file_stamp(path):
-    s = path.stat()
-    return s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns
+    # Another worktree can replace its link to this inode during a build.
+    # Compare the bytes available at this path through a single open handle.
+    digest = hashlib.sha256()
+    size = 0
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            size += len(block)
+            digest.update(block)
+    return size, digest.hexdigest()
 
 
 def preflight(run, selected, sources, worker):
