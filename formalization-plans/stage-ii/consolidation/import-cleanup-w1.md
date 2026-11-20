@@ -45,3 +45,24 @@
 ## 3. 段 2：承認された分を消す
 
 段 1 の一覧のうち、ユーザーが承認した分を消す。使う側を直し、対象と使う側を建て、全モジュールが建つこと（root の外も）、宣言の集合が前後で同じこと（消したファイルに宣言がないので、カーネルの名前と主張が全部一致するはず）、公理と sorry が増えないこと、監査の成否が変わらないことを確かめる。報告に、前後のファイル数・行数・import の本数を書く。
+
+### 段 2 の承認（ユーザー、11-20）と範囲
+
+段 1 の報告（`report-import-cleanup.md`、c9bd9fb64）に対する承認。これ以外は消さない。
+
+**A. 旧別名**
+- 本体の `Util/DeprecatedAlias.lean` と `InfinityCategories/Project/SimplicialCombinatorics/DeprecatedAlias.lean` への import 1,075 本を外す。
+- `Util/DeprecatedAlias.lean`（106 行）を消す。`…/SimplicialCombinatorics/DeprecatedAlias.lean` は、回帰試験（`scripts/refactor/tests/deprecated_alias.lean`）と移動の道具が使うので残す。
+- 外して届かなくなるもの（`Mathlib.Util.AliasIn` など）は、実際に要るファイルにだけ直接 import を足す。一律には足さない。足した本数と理由を報告する。
+
+**B. import 専用ファイル**
+- 削除案 126 本のうち、`Spectra/SymmetricSequence/DisjointUnion.lean` と `FiniteBijection.lean` の 2 本を除く **124 本**を消す（2 本は ⑧ の作業範囲と重なるので、SU-W1 の側で消す）。旧 Rectification パスの互換はここで終える。使う側と配置の台帳（`direct_relocations`）は報告の案どおりに直す。
+- 保留 16 本のうち **12 本**を消す：`InfinityCategories/Project/Entrypoints/` の 10 本（空の予約入口 8 本と `Kan`・`StablePresentable`）、局所設定だけが残った `HomologicalAlgebra/CompleteTwoCohomologyAnnihilator.lean` と `IdealPowerTorsionBaseChange.lean`。後の 2 本は、設定（局所 instance 属性を含む）がそのファイルの外に効いていないことを確かめてから消し、root と `scripts/audit/shared.lean` の import を付け替える。効いていたら消さずに報告する。予約入口の予約が計画の紙に書かれているなら、その記述はそのままでよい（ファイルは要るときに作る）。
+- IC-2 §14 の 4 本は触らない。残す案 407 本は触らない。
+
+**確かめること**
+- 全モジュールが建つ（root の外も。成果物のないモジュールが 0）。import を 1,000 ファイル以上変えるので全体の再ビルドになる。bulk 鍵。始める前に調整役に知らせる（並列の枠を 1 にする）。
+- 宣言の集合が前後で同じ：カーネルの名前と主張が全部一致（消すファイルに宣言はない）。補助名の差が出たら、`cleanup-rules.md` の規則で扱い、件数を報告する。
+- 公理と sorry が増えない。監査の成否が変わらない（正式監査 108 本の対象と import の変更は、消したモジュールの分だけ）。
+- 消したモジュールの名前が、本体・`scripts/`・blueprint・manifest の現行の参照に残っていない（過去の実行の記録と文書の言及は数えない）。
+- 報告（`report-import-cleanup.md` に節を足す）：前後のファイル数・行数・import の本数、足した直接 import、付け替えた箇所、所要時間。コミットして止まる。
