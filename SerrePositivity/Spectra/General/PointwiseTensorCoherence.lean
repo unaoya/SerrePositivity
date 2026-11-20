@@ -67,6 +67,12 @@ lemma pointwiseTensorPost_level {X Y : C} (f : X ⟶ Y)
 abbrev pointwiseTensorUnitIso (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensor (𝟙_ C) E ≅ E := pointwiseTensorUnitNatIso.app E
 
+lemma pointwiseTensorUnitIso_level (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    (pointwiseTensorUnitIso E).hom.hom.app (FiniteBijection.of n) =
+      (λ_ (level E n)).hom :=
+  SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
+    (SymmetricSequence.tensorPowerSequence K) E n
+
 abbrev pointwiseTensorPentagonLaw (X Y Z : C) (E : GeneralSymmetricSpectrum C K) : Prop :=
   SymmetricSequence.pointwiseActionPentagonLaw (SymmetricSequence.tensorPowerSequence K)
     pointwiseTensorAssociator pointwiseTensorPost X Y Z E
@@ -79,9 +85,7 @@ lemma pointwiseTensor_triangle (X : C) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensorTriangleLaw X E :=
   SymmetricSequence.pointwiseAction_triangle (SymmetricSequence.tensorPowerSequence K)
     pointwiseTensorAssociator pointwiseTensorUnitIso pointwiseTensorPost
-    pointwiseTensorAssociator_level
-    (SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
-      (SymmetricSequence.tensorPowerSequence K)) pointwiseTensorPost_level X E
+    pointwiseTensorAssociator_level pointwiseTensorUnitIso_level pointwiseTensorPost_level X E
 
 abbrev pointwiseTensorLeftUnitLaw (X : C) (E : GeneralSymmetricSpectrum C K) : Prop :=
   SymmetricSequence.pointwiseActionLeftUnitLaw (SymmetricSequence.tensorPowerSequence K)
@@ -91,9 +95,7 @@ lemma pointwiseTensor_left_unit (X : C) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensorLeftUnitLaw X E :=
   SymmetricSequence.pointwiseAction_left_unit (SymmetricSequence.tensorPowerSequence K)
     pointwiseTensorAssociator pointwiseTensorUnitIso pointwiseTensorPost
-    pointwiseTensorAssociator_level
-    (SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
-      (SymmetricSequence.tensorPowerSequence K)) pointwiseTensorPost_level X E
+    pointwiseTensorAssociator_level pointwiseTensorUnitIso_level pointwiseTensorPost_level X E
 
 lemma pointwiseTensorAssociator_parameter_naturality {X X' Y Y' : C}
     (f : X ⟶ X') (g : Y ⟶ Y') (E : GeneralSymmetricSpectrum C K) :

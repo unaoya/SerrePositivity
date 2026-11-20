@@ -66,10 +66,7 @@ lemma structureMap_equivariance (E : GeneralSymmetricSpectrum C K) (p q : ℕ)
 lemma structureMap_hom {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) (p q : ℕ) :
     structureMap E p q ≫ f.hom.app (FiniteBijection.of (p + q)) =
       (𝟙 (TensorPowers.power K p) ⊗ₘ f.hom.app (FiniteBijection.of q)) ≫ structureMap F p q := by
-  have haction : action E ≫ f.hom =
-      SymmetricSequence.tensorPowerSequence K ◁ f.hom ≫ action F :=
-    IsModHom.smul_hom (A := SymmetricSequence.tensorPowerSequence K) (f := f.hom)
-  have h := congrArg (fun η ↦ η.app (FiniteBijection.of (p + q))) haction
+  have h := congrArg (fun η ↦ η.app (FiniteBijection.of (p + q))) (action_hom f)
   erw [NatTrans.comp_app, NatTrans.comp_app] at h
   simp only [structureMap, Category.assoc]
   erw [h]
@@ -107,10 +104,6 @@ lemma structureMap_assoc (E : GeneralSymmetricSpectrum C K) (p q r : ℕ) :
         (TensorPowers.power K p ◁ structureMap E q r) ≫ structureMap E p (q + r) ≫
         E.X.map (FiniteBijection.sumAssociator
           (FiniteBijection.of p) (FiniteBijection.of q) (FiniteBijection.of r)).inv := by
-  have haction : SymmetricSequence.tensorPowerMultiplication K ▷ E.X ≫ action E =
-      (α_ (SymmetricSequence.tensorPowerSequence K) (SymmetricSequence.tensorPowerSequence K)
-        E.X).hom ≫ SymmetricSequence.tensorPowerSequence K ◁ action E ≫ action E :=
-    ModObj.mul_smul_self (SymmetricSequence.tensorPowerSequence K) E.X
   have h := congrArg (fun η ↦
     ((SymmetricSequence.convolutionUnit (SymmetricSequence.tensorPowerSequence K)
         (SymmetricSequence.tensorPowerSequence K)).app
@@ -119,7 +112,7 @@ lemma structureMap_assoc (E : GeneralSymmetricSpectrum C K) (p q r : ℕ) :
         (SymmetricSequence.convolution (SymmetricSequence.tensorPowerSequence K)
           (SymmetricSequence.tensorPowerSequence K)) E.X).app
         (FiniteBijection.of (p + q), FiniteBijection.of r) ≫
-      η.app (FiniteBijection.of ((p + q) + r))) haction
+      η.app (FiniteBijection.of ((p + q) + r))) (action_assoc E)
   erw [NatTrans.comp_app] at h
   erw [SymmetricSequence.convolutionUnit_whiskerRight_assoc] at h
   erw [← comp_whiskerRight_assoc, SymmetricSequence.tensorPowerMultiplication_fac_app] at h

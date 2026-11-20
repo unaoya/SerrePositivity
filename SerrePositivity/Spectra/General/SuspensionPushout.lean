@@ -52,11 +52,12 @@ lemma circleTensorPoint_isZero :
   exact (PointedObject.point_isZero.isInitial.isInitialObj
     (mappingTensorFunctor E) PointedObject.point).isZero
 
+lemma intervalBoundaryCollapse_eq_zero : intervalBoundaryCollapse E = 0 :=
+  (circleTensorPoint_isZero E).eq_of_tgt _ _
+
 lemma circleTensorQuotient_boundary :
     intervalBoundaryTensorMap E ≫ circleTensorQuotient E = 0 := by
-  have hzero : intervalBoundaryCollapse E = 0 :=
-    (circleTensorPoint_isZero E).eq_of_tgt _ _
-  rw [(circleTensor_isPushout E).w, hzero, zero_comp]
+  rw [(circleTensor_isPushout E).w, intervalBoundaryCollapse_eq_zero, zero_comp]
 
 end Simplicial
 end SerrePositivity.GeneralSymmetricSpectrum

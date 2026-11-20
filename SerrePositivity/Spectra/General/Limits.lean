@@ -73,12 +73,4 @@ instance evaluation_preservesLimits [HasLimitsOfSize.{w', w} C] (n : ℕ) :
 instance evaluation_preservesColimits [HasLimitsOfSize.{0, 0} C] [HasColimitsOfSize.{w', w} C]
     (n : ℕ) : PreservesColimitsOfSize.{w', w} (evaluation (K := K) n) where
 
-variable {K}
-def limitLevelIso [HasLimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) :
-    level (limit F) n ≅ limit (F ⋙ evaluation n) := preservesLimitIso (evaluation n) F
-
-def colimitLevelIso [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C]
-    (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) :
-    level (colimit F) n ≅ colimit (F ⋙ evaluation n) := preservesColimitIso (evaluation n) F
-
 end SerrePositivity.GeneralSymmetricSpectrum
