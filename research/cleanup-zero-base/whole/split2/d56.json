@@ -1,0 +1,45 @@
+{
+ "key": "d56",
+ "concept": "H K 理論/pro 切除：非単位環と GL",
+ "subconcepts": [
+  {
+   "name": "非単位単体環と単位化によるイデアル模型",
+   "description": "非単位環の単体図式と、整数単位化の核イデアルとして作る標準の単体的イデアル",
+   "reference": "KST 4.16"
+  },
+  {
+   "name": "ĜL（π₀ で可逆な行列の単体的モノイド）",
+   "description": "単体環・非単位単体環の、π₀ で可逆な行列のなす部分モノイドと単体的モノイド、その台の単体集合",
+   "reference": "KST 式 (2.2)、Claim 4.15"
+  },
+  {
+   "name": "三角ブロック群・列群と行列の作用",
+   "description": "イデアル係数の三角ブロック群 T_{n,m}(I)、列ベクトル群 M_{n,1}(I)、それらへの行列・ĜL の作用、行ベクトルとの半直積（アフィン群）",
+   "reference": "KST Lemma 4.16、Claim 4.15、SW92 §1.2"
+  },
+  {
+   "name": "単体的モノイドの作用と半直積",
+   "description": "単体的モノイドの単体的モノイド・単体的集合への作用、その半直積",
+   "reference": "KST Appendix A、Proposition A.1、Lemma A.2"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.ProExcision.triangularBlockGroup": "三角ブロック群・列群と行列の作用",
+  "SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLColumnAction": "三角ブロック群・列群と行列の作用",
+  "SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing": "非単位単体環と単位化によるイデアル模型",
+  "SerrePositivity.KST.ProExcision.SimplicialMonoidAction": "単体的モノイドの作用と半直積",
+  "SerrePositivity.KST.Comparison.hatGLSpace": "ĜL（π₀ で可逆な行列の単体的モノイド）",
+  "SerrePositivity.KST.ProExcision.simplicialActionProduct": "単体的モノイドの作用と半直積",
+  "SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL": "ĜL（π₀ で可逆な行列の単体的モノイド）",
+  "SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardIdeal": "非単位単体環と単位化によるイデアル模型",
+  "SerrePositivity.KST.ProExcision.triangularBlockMatrixAction": "三角ブロック群・列群と行列の作用",
+  "SerrePositivity.KST.ProExcision.SimplicialSetAction": "単体的モノイドの作用と半直積",
+  "SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.rowAffine": "三角ブロック群・列群と行列の作用",
+  "SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLSubmonoid": "ĜL（π₀ で可逆な行列の単体的モノイド）",
+  "SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularGroup": "三角ブロック群・列群と行列の作用",
+  "SerrePositivity.KST.Comparison.hatGLSubmonoid": "ĜL（π₀ で可逆な行列の単体的モノイド）",
+  "SerrePositivity.KST.ProExcision.SimplicialIdealData.columnGroup": "三角ブロック群・列群と行列の作用"
+ },
+ "uncertain": [],
+ "notes": "KST.Comparison.hatGLSpace・KST.Comparison.hatGLSubmonoid は単位的な単体環の ĜL_r（式 (2.2)）で、K 理論の模型の比較の側の定義だが、非単位版 NonUnitalSimplicialRing.hatGLSubmonoid と同じ概念なのでここに置いた（非単位版は単位版と整数成分の条件の交わり）。d55 にある ActionObject・ActionProduct・setActionBar・SimplicialActionHom・SimplicialActionPairMap・firstBlockMatrix・blockColumn・integerUnitization* はこちらへ移す案（d55 の notes）。受け入れ先は「単体的モノイドの作用と半直積」「三角ブロック群・列群と行列の作用」「非単位単体環と単位化によるイデアル模型」。"
+}

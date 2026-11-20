@@ -1,0 +1,129 @@
+{
+ "key": "c16",
+ "concept": "C 単体集合と ∞ 圏/関手単体集合と同値",
+ "subconcepts": [
+  {
+   "name": "関手単体集合の頂点・評価・転置",
+   "description": "射と関手単体集合 Fun(X,Y) の頂点の対応、頂点での評価、二変数の内部 Hom の交換・転置",
+   "reference": "Kerodon §1.5.3、§4.5"
+  },
+  {
+   "name": "自然変換と可逆二胞体（h Fun）",
+   "description": "関手単体集合のホモトピー圏の射 FunctorHom と同型 FunctorIso、前合成・後合成・成分・curry、単体的ホモトピーとの対応、関手正方形",
+   "reference": "Kerodon §4.5.1"
+  },
+  {
+   "name": "同型と ∞ 圏の同値",
+   "description": "頂点の同型、辺の可逆性、quasicategory の同値（逆データつき・性質）、前合成による同値の判定",
+   "reference": "HTT §1.2.4、Kerodon §4.5.1（Tag 01DE）"
+  },
+  {
+   "name": "充満忠実と本質的全射",
+   "description": "写像空間による充満忠実性、頂点の同型による本質的全射性",
+   "reference": "Kerodon §4.6.2"
+  },
+  {
+   "name": "core（最大部分 Kan 複体）",
+   "description": "全ての辺が可逆な単体のなす部分複体とその関手性",
+   "reference": "Kerodon §4.4.3"
+  },
+  {
+   "name": "可逆 path の空間と path 置換",
+   "description": "可逆な辺のなす path の単体集合 Isom(Y)、端点評価、定値 path、関手の path 置換（isofibration への置換）、相対 path、可逆三角形",
+   "reference": "Kerodon §4.5.3"
+  },
+  {
+   "name": "∞ 圏のホモトピー引き戻し",
+   "description": "path 置換を使った二関手の引き戻し（Cat∞ の引き戻しの模型）と射影",
+   "reference": "Kerodon §4.5.2"
+  },
+  {
+   "name": "相対関手空間と延長の空間",
+   "description": "底の図式に厳密に重なる関手の単体集合 Fun_{/B}(A,E)、その curry/uncurry、部分図式を固定した延長の空間",
+   "reference": "Kerodon §4.1.4・§4.5"
+  },
+  {
+   "name": "fiber ごとの関手の全空間",
+   "description": "底の単体ごとに逆像上の図式を並べた全空間（fiberwise Hom）、射影、curry、前合成",
+   "reference": ""
+  },
+  {
+   "name": "可逆な区間と円柱",
+   "description": "codiscrete な二点圏の nerve（可逆区間）、その円柱と写像円柱、区間の境界上の図式、prism の反転",
+   "reference": "Kerodon §4.5.3・§4.6.2"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt": "関手単体集合の頂点・評価・転置",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex": "関手単体集合の頂点・評価・転置",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv": "関手単体集合の頂点・評価・転置",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso": "関手単体集合の頂点・評価・転置",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.transposeFunctorFamily": "関手単体集合の頂点・評価・転置",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorIso.curry": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.toNatIso": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.simplicialHomotopy": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomSquare": "自然変換と可逆二胞体（h Fun）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsPrecompositionEquivalence": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.QCatEquivalence.coherentHomInvIso": "同型と ∞ 圏の同値",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful": "充満忠実と本質的全射",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective": "充満忠実と本質的全射",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore": "core（最大部分 Kan 複体）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap": "core（最大部分 Kan 複体）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor": "core（最大部分 Kan 複体）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathEndpoint": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacementMap": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePath": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacementProjection": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathι": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacement": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathMap": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.relativeEquivalencePathMapAt": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathRefl": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.relativeEquivalencePathTargetAt": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalencePathReplacementSection": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceTriangleEvaluation": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceTriangle": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceTriangleFace": "可逆 path の空間と path 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullback": "∞ 圏のホモトピー引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullbackFst": "∞ 圏のホモトピー引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullbackSnd": "∞ 圏のホモトピー引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.catPullbackObject": "∞ 圏のホモトピー引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace": "相対関手空間と延長の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry": "相対関手空間と延長の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorCurry": "相対関手空間と延長の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorExtensionSpace": "相対関手空間と延長の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorExtensionSpaceVertexEquiv": "相対関手空間と延長の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorExtensionSpaceι": "相対関手空間と延長の空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseFunctor": "fiber ごとの関手の全空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomProjection": "fiber ごとの関手の全空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomCurry": "fiber ごとの関手の全空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FiberwiseFunctorSimplex": "fiber ごとの関手の全空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomPre": "fiber ごとの関手の全空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHom": "fiber ごとの関手の全空間",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceMappingCylinder": "可逆な区間と円柱",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram": "可逆な区間と円柱",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceCylinderEndpoint": "可逆な区間と円柱",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.equivalenceInterval": "可逆な区間と円柱",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint": "可逆な区間と円柱",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.reversePrism": "可逆な区間と円柱",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelDerivedFunctorHomFunctor": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelTensorFunctorHomFunctor": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgBimoduleFunctorHomFunctor": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.strictKanCompletion": "MOVE:C 単体集合と ∞ 圏/Kan 複体とホモトピー群"
+ },
+ "mathlib_rules": [],
+ "notes": "MOVE 4 件：dg 双加群の射を dg 神経の間の h Fun の射へ送る関手 3 つ（dgKernelDerivedFunctorHomFunctor・dgKernelTensorFunctorHomFunctor・dgBimoduleFunctorHomFunctor；値が h Fun なのでここに来ているが内容は dg 双加群の導来作用。「D 導来 ∞ 圏」とした。「H 局所化不変量：lax 引き戻しと双加群」「B 双加群とテンソル」も候補）、strictKanCompletion（厳密に関手的な Kan 置換、Kan 複体の側）。迷った所：「fiber ごとの関手の全空間」は Kan 拡張の相対 join の証明で使う構成で、「極限と余極限」の Kan 拡張に寄せる案もある。「∞ 圏のホモトピー引き戻し」は「空間・Cat∞」寄りだが path 置換と一体なので残した。「可逆な区間と円柱」は同値の判定の道具。幹の名前について：この概念は「関手単体集合（Fun と h Fun）」と「同値（同型・core・path 置換）」の二つの塊からなる。"
+}

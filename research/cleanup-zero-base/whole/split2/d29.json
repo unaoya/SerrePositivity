@@ -1,0 +1,60 @@
+{
+ "key": "d29",
+ "concept": "C 単体集合と ∞ 圏/∞ 層",
+ "subconcepts": [
+  {
+   "name": "前層と前層の ∞ 圏",
+   "description": "小さい圏 𝒞 の神経の反対を添字とする E 値前層と、その関手準圏",
+   "reference": "HTT 1.2.7.3"
+  },
+  {
+   "name": "層条件（篩の上の制限錐）",
+   "description": "被覆篩 S の元の圏の上の制限図式の錐が極限錐であるという Čech 層の条件、層の性質、層の充満部分準圏",
+   "reference": "HTT 6.2.2.6"
+  },
+  {
+   "name": "層化（層への反射）",
+   "description": "前層の準圏から層の充満部分への反射（層化）のデータと、その自己関手",
+   "reference": ""
+  },
+  {
+   "name": "集合値前層の離散埋め込みと Yoneda",
+   "description": "集合値前層を離散空間値の前層と見る埋め込み（対象・射・神経からの射）と、反対 Yoneda との比較",
+   "reference": "HTT 5.1.5.6、Kerodon Definition 7.3.1.2（Tag 02Y9）"
+  },
+  {
+   "name": "集合値前層で重み付けた切断",
+   "description": "集合値前層 F の元の圏の上の極限としての切断 Γ(F, O)、および site と値を一段上の宇宙へ持ち上げた集合値前層",
+   "reference": "HTT 5.1.5.6、6.2.2.6、Kerodon §7.1（Tag 02H1）"
+  },
+  {
+   "name": "（補助）二つの篩の交叉の分解圏",
+   "description": "篩 R ⊓ S の射を R の射を通る二段の分解として表す comma 圏と、その射影・局所 comma（被覆生成の降下の極限の形状比較に使う）",
+   "reference": "HTT 6.2.2.6"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Sheaves.sieveCategory": "層条件（篩の上の制限錐）",
+  "SerrePositivity.InfinityCategories.Sheaves.IsSheaf": "層条件（篩の上の制限錐）",
+  "SerrePositivity.InfinityCategories.Sheaves.restrictionCone": "層条件（篩の上の制限錐）",
+  "SerrePositivity.InfinityCategories.Sheaves.Sheafification": "層化（層への反射）",
+  "SerrePositivity.InfinityCategories.Sheaves.Presheaf": "前層と前層の ∞ 圏",
+  "SerrePositivity.InfinityCategories.Sheaves.sieveDiagram": "層条件（篩の上の制限錐）",
+  "SerrePositivity.InfinityCategories.Sheaves.SheafCat": "層条件（篩の上の制限錐）",
+  "SerrePositivity.InfinityCategories.Sheaves.sheafificationFunctor": "層化（層への反射）",
+  "SerrePositivity.InfinityCategories.Sheaves.sieveFactorizationLocalComma": "（補助）二つの篩の交叉の分解圏",
+  "SerrePositivity.InfinityCategories.Sheaves.siteLiftPresheaf": "集合値前層で重み付けた切断",
+  "SerrePositivity.InfinityCategories.Sheaves.sieveFactorizationCategory": "（補助）二つの篩の交叉の分解圏",
+  "SerrePositivity.InfinityCategories.Sheaves.discretePresheafInclusion": "集合値前層の離散埋め込みと Yoneda",
+  "SerrePositivity.InfinityCategories.Sheaves.discretePresheaf": "集合値前層の離散埋め込みと Yoneda",
+  "SerrePositivity.InfinityCategories.Sheaves.discretePresheafHom": "集合値前層の離散埋め込みと Yoneda",
+  "SerrePositivity.InfinityCategories.Sheaves.sheafProperty": "層条件（篩の上の制限錐）",
+  "SerrePositivity.InfinityCategories.Sheaves.PresheafCat": "前層と前層の ∞ 圏",
+  "SerrePositivity.InfinityCategories.Sheaves.sectionsOf": "集合値前層で重み付けた切断",
+  "SerrePositivity.InfinityCategories.Sheaves.nativeSetShapeOppositeYoneda": "集合値前層の離散埋め込みと Yoneda",
+  "SerrePositivity.InfinityCategories.Sheaves.presheafShape": "前層と前層の ∞ 圏",
+  "SerrePositivity.InfinityCategories.Sheaves.sieveFactorizationOuter": "（補助）二つの篩の交叉の分解圏"
+ },
+ "uncertain": [],
+ "notes": "全 20 定義が Sheaves の下にあり、MOVE はなし。層は Čech 層（hypersheaf ではない）で、site は小さい通常の圏に限る。Sheafification は存在を仮定した Prop（IsReflectiveSubcategory）で、存在は別の定理 sheafification_exists。siteLiftPresheaf は宇宙の持ち上げだけの定義で、数学の内容は重み付き切断の係数移送。discretePresheafInclusion は部分型（射と評価仕様の組）で discretePresheaf と内容が重なる。"
+}

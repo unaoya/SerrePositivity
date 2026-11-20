@@ -1,0 +1,87 @@
+{
+ "key": "d51",
+ "concept": "G スペクトル/対称列",
+ "subconcepts": [
+  {
+   "name": "対称列の定義と段",
+   "description": "有限集合と全単射の圏からの関手としての対称列、第 n 段、点つき単体集合に値を取る場合",
+   "reference": ""
+  },
+  {
+   "name": "有限集合と全単射の圏",
+   "description": "標準有限集合の骨格の全単射の圏（添字の圏）、濃度、置換、直和（ブロック和）の関手と交換同型",
+   "reference": ""
+  },
+  {
+   "name": "Day convolution",
+   "description": "直和に沿う左 Kan 拡張としての対称列の convolution とその単位",
+   "reference": ""
+  },
+  {
+   "name": "対称列の内部 Hom",
+   "description": "end による convolution の内部 Hom、段ごとの内部 Hom、添字をずらした内部 Hom",
+   "reference": ""
+  },
+  {
+   "name": "自由対称列と誘導の商表示",
+   "description": "第 n 段に自由生成する関手と生成元、自由対称列との convolution を対称群の関係式で割った余等化子として表す誘導の図式と商",
+   "reference": ""
+  },
+  {
+   "name": "段ごとのテンソル",
+   "description": "対象を各段にテンソルする関手、それを加群に移したもの",
+   "reference": ""
+  },
+  {
+   "name": "反復テンソルの対称列 Sym(X)",
+   "description": "有限集合の濃度を反復テンソルへ、全単射を置換作用へ送る対称列",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.SymmetricSequence": "対称列の定義と段",
+  "SerrePositivity.SymmetricSequence.level": "対称列の定義と段",
+  "SerrePositivity.PointedSymmetricSequence": "対称列の定義と段",
+  "SerrePositivity.FiniteBijection": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.of": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.card": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.blockEquiv": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.sumFunctor": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.permutation": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.sumObj": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.sumMap": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.addRight": "有限集合と全単射の圏",
+  "SerrePositivity.FiniteBijection.sumSymmetry": "有限集合と全単射の圏",
+  "SerrePositivity.SymmetricSequence.convolution": "Day convolution",
+  "SerrePositivity.SymmetricSequence.convolutionUnit": "Day convolution",
+  "SerrePositivity.SymmetricSequence.internalHomFunctor": "対称列の内部 Hom",
+  "SerrePositivity.SymmetricSequence.shiftedInternalHom": "対称列の内部 Hom",
+  "SerrePositivity.SymmetricSequence.unshiftedInternalHomFunctor": "対称列の内部 Hom",
+  "SerrePositivity.SymmetricSequence.unshiftedInternalHom": "対称列の内部 Hom",
+  "SerrePositivity.SymmetricSequence.freeAt": "自由対称列と誘導の商表示",
+  "SerrePositivity.SymmetricSequence.freeAtGenerator": "自由対称列と誘導の商表示",
+  "SerrePositivity.SymmetricSequence.freeInductionDiagram": "自由対称列と誘導の商表示",
+  "SerrePositivity.SymmetricSequence.freeBlockQuotient": "自由対称列と誘導の商表示",
+  "SerrePositivity.SymmetricSequence.freePermutationQuotient": "自由対称列と誘導の商表示",
+  "SerrePositivity.SymmetricSequence.pointwiseTensorModule": "段ごとのテンソル",
+  "SerrePositivity.SymmetricSequence.pointwiseTensorFunctor": "段ごとのテンソル",
+  "SerrePositivity.SymmetricSequence.tensorPowerSequence": "反復テンソルの対称列 Sym(X)",
+  "SerrePositivity.TensorPowers.bijectionFunctor": "反復テンソルの対称列 Sym(X)",
+  "SerrePositivity.TensorPowers.permutationAction": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.TensorPowers.appendIso": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.TensorPowers.power": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.TensorPowers.map": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.TensorPowers.adjacentIso": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.TensorPowers.swapFirstIso": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.TensorPowers.oneIso": "MOVE:Z 圏論一般/モノイダル圏"
+ },
+ "uncertain": [
+  "SerrePositivity.SymmetricSequence.freeInductionDiagram",
+  "SerrePositivity.SymmetricSequence.freeBlockQuotient",
+  "SerrePositivity.SymmetricSequence.freePermutationQuotient",
+  "SerrePositivity.SymmetricSequence.convolutionUnit",
+  "SerrePositivity.FiniteBijection.sumSymmetry",
+  "SerrePositivity.TensorPowers.adjacentIso"
+ ],
+ "notes": "TensorPowers.power・map・appendIso・oneIso・swapFirstIso・adjacentIso・permutationAction は対称モノイダル圏の対象の反復テンソルと対称群の作用で、対称列を使わない一般論なので「モノイダル圏」へ MOVE（TensorPowers.bijectionFunctor は対称列 Sym(X) そのものなので残した。tensorPowerSequence はその言い換え＝重複の候補）。FiniteBijection.* は添字の圏として残したが、中身は有限集合の組合せ（ファイルは CategoryTheory/Limits.lean）で「Z 圏論一般/組合せと順序」に置く整理もありうる。freeBlockQuotient と freePermutationQuotient は同じ誘導（Σ_m ×_{Σ_{m-n}} …）の二つの余等化子表示で、freeInductionDiagram の余極限と合わせて三通りの表示が並ぶ。unshiftedInternalHom と shiftedInternalHom 0、unshiftedInternalHomFunctor は同じものの対象版・関手版。SymmetricSequence.pointwiseTensorModule は加群（Mod）を返すので「モノイダル圏の中の加群」「対称スペクトル」との境界にある。文献の記載は docstring にない。"
+}

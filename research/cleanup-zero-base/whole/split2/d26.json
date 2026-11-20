@@ -1,0 +1,45 @@
+{
+ "key": "d26",
+ "concept": "B 複体と dg 圏/係数の取り替え",
+ "subconcepts": [
+  {
+   "name": "複体の係数拡大と係数制限",
+   "description": "環準同型 A→A' に沿って各次数で A'⊗_A − を施す関手と制限関手、球・テンソル積との比較同型",
+   "reference": ""
+  },
+  {
+   "name": "dg 圏の係数変更",
+   "description": "対象はそのままで Hom 複体を係数拡大／係数制限した dg 圏、dg 関手の制限",
+   "reference": ""
+  },
+  {
+   "name": "dg 加群の係数変更",
+   "description": "右・左 dg 加群の係数拡大、加群圏の間の係数拡大関手と係数制限関手",
+   "reference": ""
+  },
+  {
+   "name": "導来係数拡大",
+   "description": "semifree 解像度による導来圏の間の係数拡大（dg 加群・非有界複体）と、underived な係数拡大への比較の自然変換",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DifferentialGraded.ScalarExtension.DGBaseChange": "dg 圏の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.rightModule": "dg 加群の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.complexDerivedExtension": "導来係数拡大",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.moduleExtension": "dg 加群の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.DGRestriction": "dg 圏の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.restriction": "複体の係数拡大と係数制限",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.extension": "複体の係数拡大と係数制限",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.derivedExtension": "導来係数拡大",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.complexDerivedExtensionAugmentation": "導来係数拡大",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.derivedExtensionAugmentation": "導来係数拡大",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.moduleRestriction": "dg 加群の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.leftModule": "dg 加群の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.restrictDGFunctor": "dg 圏の係数変更",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.sphereIso": "複体の係数拡大と係数制限",
+  "SerrePositivity.DifferentialGraded.ScalarExtension.tensorIso": "複体の係数拡大と係数制限"
+ },
+ "uncertain": [],
+ "notes": "docstring のない DGRestriction・restrictDGFunctor は本体を読んだ。全件が DifferentialGraded.ScalarExtension にあり内容も一致。d24 の dg 商の係数変更（quotientScalarTriaFunctor など）はこの概念の続き。"
+}

@@ -1,0 +1,26 @@
+{
+ "key": "d22",
+ "concept": "A 可換代数と数論幾何/正規化長さ",
+ "subconcepts": [
+  {
+   "name": "正規化長さ（公理）",
+   "description": "C 加群に ℝ≥0∞ の値を与える関数で、零で 0、同型不変、J 冪ねじれの短完全列で加法的なもの。上限の性質 (2.3)",
+   "reference": "論文 Lemma 2.3、(2.3)"
+  },
+  {
+   "name": "有限長の冪ねじれ加群と零長さによる Serre 商",
+   "description": "長さが有限の J 冪ねじれ加群の類、その実数値の長さ、零長さの対象で割ったアーベル圏",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.NormalizedLength": "正規化長さ（公理）",
+  "SerrePositivity.LengthAlgebra.FiniteLengthQuotient": "有限長の冪ねじれ加群と零長さによる Serre 商",
+  "SerrePositivity.NormalizedLength.HasSup": "正規化長さ（公理）",
+  "SerrePositivity.LengthAlgebra.torsionLength": "有限長の冪ねじれ加群と零長さによる Serre 商",
+  "SerrePositivity.LengthAlgebra.finiteLength": "有限長の冪ねじれ加群と零長さによる Serre 商",
+  "SerrePositivity.LengthAlgebra.finiteLengthTorsion": "有限長の冪ねじれ加群と零長さによる Serre 商"
+ },
+ "uncertain": [],
+ "notes": "6 件とも docstring で内容が言える。d23 の ordinaryLengthOnIdeal（通常の長さを NormalizedLength として与える）はこの概念に属する。"
+}

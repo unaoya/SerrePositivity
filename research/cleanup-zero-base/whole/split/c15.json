@@ -1,0 +1,196 @@
+{
+ "key": "c15",
+ "concept": "C 単体集合と ∞ 圏/Kan 複体とホモトピー群",
+ "subconcepts": [
+  {
+   "name": "ホモトピー群と基本亜群",
+   "description": "Kan 複体の π_n（境界定数単体のホモトピー類）、誘導写像、π₀ との比較、同型不変性、π_* 同型の条件、基本亜群",
+   "reference": "Kerodon §3.2（Goerss–Jardine I §7）"
+  },
+  {
+   "name": "Kan ファイブレーションの長完全列と lim¹",
+   "description": "射の fiber、連結写像、境界の持ち上げ、球面的な境界と交代和、群の塔の lim¹",
+   "reference": "Kerodon §3.2.5–3.2.6、Goerss–Jardine I §7・VI §2"
+  },
+  {
+   "name": "弱ホモトピー同値と可縮 Kan 複体",
+   "description": "弱ホモトピー同値、弱可縮性、可縮 Kan 複体（境界充填）、単体的ホモトピー同値",
+   "reference": "Kerodon §3.1.6・§3.2.7"
+  },
+  {
+   "name": "単体的ホモトピーと prism",
+   "description": "単体的ホモトピー、prism Δⁿ×Δ¹ の端点、正方形 Δ¹×Δ¹ の二つの三角形、関手単体集合の辺とホモトピー",
+   "reference": "Kerodon §3.1.5"
+  },
+  {
+   "name": "Ex∞ と Kan 置換",
+   "description": "Ex の反復の余極限 Ex∞、単位、Moss の pairing と複雑度、ホーンセル付加の可算反復による Kan 置換",
+   "reference": "Kerodon §3.3、Moss 2020 §3"
+  },
+  {
+   "name": "Kan 値の図式と空間の ∞ 圏への写像",
+   "description": "Kan 複体の圏の忘却、Kan 値（豊穣）図式とその比較・実現、coherent 神経を通した 𝒮 への写像、離散空間",
+   "reference": "Kerodon §5.5（𝒮 の定義）"
+  },
+  {
+   "name": "単体集合のホモトピー圏（Mathlib）",
+   "description": "Mathlib の SSet.HomotopyCategory・2 切断・hoFunctor についての補題（本体の定義なし）",
+   "reference": ""
+  },
+  {
+   "name": "（補助）Kan 複体の中の合成三角形と四面体",
+   "description": "合成の菱形、合成三重の四面体、三辺の輸送、直積の交換菱形、三角形の本、合成列とその精密化",
+   "reference": "BF 1978 の比較の足場"
+  },
+  {
+   "name": "（補助）単体的豊穣圏の円柱",
+   "description": "順序付きの段を持つ豊穣円柱、パラメータ付き円柱の Hom、一点豊穣圏",
+   "reference": ""
+  },
+  {
+   "name": "（補助）単体集合の図式と充填の道具",
+   "description": "離散族の直和、図式の商とテンソル、関数複体、ホーン制限、底つきの内ホーンの pushout など特定の証明の足場",
+   "reference": "Goerss–Jardine I §7・VIII §2（関数複体）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.point": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid": "ホモトピー群と基本亜群",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift.boundary": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SphericalFiberLift": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.alternatingClass": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SphericalBoundary": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point": "Kan ファイブレーションの長完全列と lim¹",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence": "弱ホモトピー同値と可縮 Kan 複体",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible": "弱ホモトピー同値と可縮 Kan 複体",
+  "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan": "弱ホモトピー同値と可縮 Kan 複体",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.IsContractibleKan.vertexIso": "弱ホモトピー同値と可縮 Kan 複体",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence": "弱ホモトピー同値と可縮 Kan 複体",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint": "単体的ホモトピーと prism",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge": "単体的ホモトピーと prism",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge": "単体的ホモトピーと prism",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower": "単体的ホモトピーと prism",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper": "単体的ホモトピーと prism",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SquareBoundaryComposition.corner": "単体的ホモトピーと prism",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset": "Ex∞ と Kan 置換",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram.realization": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramComparison": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram.edgewise": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagramComparison.realizationIso": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram.evaluate": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram.precompose": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram.toEnrichedFunctor": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanEnrichedDiagram.reindex": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanEnrichedDoubleEvaluation": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.discreteSpaceInclusion": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.setsToKan": "Kan 値の図式と空間の ∞ 圏への写像",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeFirstUpper": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeFirstLower": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeSecondLower": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeSecondUpper": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentStringRefinementPath": "（補助）Kan 複体の中の合成三角形と四面体",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object": "（補助）単体的豊穣圏の円柱",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object": "（補助）単体的豊穣圏の円柱",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.hom": "（補助）単体的豊穣圏の円柱",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point": "（補助）単体的豊穣圏の円柱",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.functor": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.SimplicialModel.KanHornFamilyLifting.restriction": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornOver.second": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornOver.toSecond": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornOver.first": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornOver.toFirst": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.InnerTwoHornOver.vertex": "（補助）単体集合の図式と充填の道具",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices": "MOVE:C 単体集合と ∞ 圏/単体集合（基本）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone": "MOVE:C 単体集合と ∞ 圏/結とスライス",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.cosliceIdentityCone": "MOVE:C 単体集合と ∞ 圏/結とスライス",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveOppositeIso": "MOVE:C 単体集合と ∞ 圏/神経",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeInterval": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint": "MOVE:C 単体集合と ∞ 圏/基点付き対象",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeNormalForm": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportNonemptyOutputs": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeNormalFormUsedInputs": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeSupportPartition": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeJoinNormalFormSupport": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace": "MOVE:C 単体集合と ∞ 圏/necklace と立方体（組合せ）",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map": "MOVE:Z 圏論一般/モノイダル圏",
+  "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential": "MOVE:B 複体と dg 圏/単体的鎖とシャッフル"
+ },
+ "mathlib_rules": [
+  [
+   "^SSet\\.PtSimplex",
+   "ホモトピー群と基本亜群"
+  ],
+  [
+   "^SSet\\.(Truncated|HomotopyCategory|hoFunctor|truncation)\\b|^SimplexCategory\\.Truncated",
+   "単体集合のホモトピー圏（Mathlib）"
+  ],
+  [
+   "^SSet\\.(modelCategoryQuillen|anodyneExtensions|horn)\\b|^CategoryTheory\\.MorphismProperty\\.rlp$",
+   "Kan ファイブレーションの長完全列と lim¹"
+  ],
+  [
+   "^SSet\\.(RelativeMorphism|Homotopy|ι₀|ι₁)\\b",
+   "単体的ホモトピーと prism"
+  ],
+  [
+   "^SSet\\.KanComplex\\b",
+   "弱ホモトピー同値と可縮 Kan 複体"
+  ],
+  [
+   ".*",
+   "（補助）単体集合の図式と充填の道具"
+  ]
+ ],
+ "notes": "この概念は寄せ集めに近い：本体は（ホモトピー群・長完全列・弱同値・Ex∞）で、残りは Project/KanComplexAuxiliaries の足場。立方体圏と生成語（ConcreteCube・CubeWords など 11 件、Serre 鎖立方体の表示非依存性のため）は necklace と立方体へ、点つき写像空間と区間（4 件）は基点付き対象へ、HomTensorStrength はモノイダル圏へ、NormalizedValueCochains は単体的鎖へ MOVE とした。「Kan 値の図式と空間の ∞ 圏への写像」は幹の「C/空間・Cat∞・前層・Ind」に丸ごと移してもよい。mathlib_rules は宣言の主張に現れる Mathlib の定数に上から順に当てる想定（mathlib.txt は定数ごとの集計だけなので、宣言ごとの共起は見ていない）。Mathlib だけの宣言の大半は SSet.Homotopy／RelativeMorphism（約 490 件）で「単体的ホモトピーと prism」に入る。HomotopyCategory・Truncated の補題（約 48 件）は本体の定義を持たない小概念「単体集合のホモトピー圏（Mathlib）」に受けたが、幹の「C/準圏（基本）」に移す方がよいかもしれない。ホーン・anodyne・rlp の補題は Kan ファイブレーションの側に入れた（「E/単体的モデルと anodyne」と境界が曖昧）。"
+}

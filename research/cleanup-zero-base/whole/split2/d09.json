@@ -1,0 +1,28 @@
+{
+ "key": "d09",
+ "concept": "A 可換代数と数論幾何/ほとんど数学とねじれ",
+ "subconcepts": [
+  {
+   "name": "almost zero と almost 加群の圏",
+   "description": "イデアル I の全ての元で消える加群（almost zero）、その対象の性質、Serre 商としての almost 加群の圏への局所化関手、零化されるイデアルによる商環上の加群構造。",
+   "reference": "BS 著者版 Definition 10.1"
+  },
+  {
+   "name": "イデアルの冪ねじれ",
+   "description": "加群がイデアルのある冪で消えること（J^n M = 0）と、イデアルの冪で消える元の部分加群 Γ_I をとる関手。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.Almost.IsAlmostZero": "almost zero と almost 加群の圏",
+  "SerrePositivity.Almost.zeroObjects": "almost zero と almost 加群の圏",
+  "SerrePositivity.Almost.localization": "almost zero と almost 加群の圏",
+  "SerrePositivity.Almost.quotientModule": "almost zero と almost 加群の圏",
+  "SerrePositivity.IsPowTorsion": "イデアルの冪ねじれ",
+  "SerrePositivity.idealPowerTorsionFunctor": "イデアルの冪ねじれ",
+  "SerrePositivity.BhattScholze.Almost.perfectoidIdeal": "MOVE:A 可換代数と数論幾何/パーフェクトイド",
+  "SerrePositivity.BhattScholze.Almost.DVertex": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏"
+ },
+ "uncertain": [],
+ "notes": "幹の名前は二つの別の概念をまとめている：almost 数学（Almost.*、BS §10）とイデアルの冪ねじれ（IsPowTorsion は正規化長さ・局所コホモロジー側で使う、idealPowerTorsionFunctor は Γ_I で局所コホモロジーの零次）。後者は「台つきの加群と Tor」か局所コホモロジー寄り。perfectoidIdeal（110 宣言）は R → (R/g)_perfd の核 (g)_perfd で、定義の中身は perfectoid 化なのでパーフェクトイドへ移したが、使い道は almost 数学の基準イデアル J_perfd（BS §10.1、Definition 10.1 の零化条件）なので、ここに小概念「perfectoid イデアル」として残す判断もありうる（名前空間は BhattScholze.Almost、ファイルは BhattScholze/PerfectoidIdeal/）。DVertex は導来 ∞ 圏の頂点（(derivedInfinityCategory R) _⦋0⦌）の略記で、almost の概念ではない（完備導来テンソルの模型比較の添字、BS Lemma 10.3〜Proposition 10.4）。Almost.IsAlmostZero は I ≤ Ann M で、Mathlib の Module.IsTorsionBySet の言い換え；IsPowTorsion も IsTorsionBySet を J^n に適用したもの（どちらも言い換えの候補）。"
+}

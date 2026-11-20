@@ -1,0 +1,157 @@
+{
+ "key": "c07",
+ "concept": "C 単体集合と ∞ 圏/単体集合（基本）",
+ "subconcepts": [
+  {
+   "name": "鎖複体と Dold–Kan 対応",
+   "description": "単体的加群・単体的 Abel 群の Moore 複体・正規化・交代面写像複体、Dold–Kan",
+   "reference": "Mathlib AlgebraicTopology（DoldKan）; Kerodon 2.5"
+  },
+  {
+   "name": "anodyne 射・リフト性・Kan–Quillen モデル構造",
+   "description": "anodyne 拡大・内 anodyne、リフト性（llp/rlp）、Kan 複体・内ファイブレーションの条件、小対象の議論、Kan–Quillen モデル構造",
+   "reference": "Kerodon 3.1; HTT 2.1–2.3"
+  },
+  {
+   "name": "単体的ホモトピー・π₀・ホモトピー圏",
+   "description": "単体的ホモトピー、相対射のホモトピー、基点付き単体、π₀、ホモトピー圏 hSSet と hoFunctor",
+   "reference": "Kerodon 3.1.5, 1.4.5"
+  },
+  {
+   "name": "非退化単体・骨格・切り詰め・細分",
+   "description": "非退化単体と退化単体、骨格と次元、有限性、n 切り詰め、細分 sd と Ex",
+   "reference": "Kerodon 1.1.3–1.1.4, 3.3"
+  },
+  {
+   "name": "関数複体（内部 Hom）と単体的豊穣",
+   "description": "SSet のデカルト閉構造（ihom・curry）と、SSet で豊穣した圏・豊穣関手",
+   "reference": "Kerodon 1.5.3（Fun）, 2.4"
+  },
+  {
+   "name": "反対単体集合と宇宙の持ち上げ",
+   "description": "X ↦ Xᵒᵖ と op の整合、宇宙の持ち上げ uliftFunctor との整合",
+   "reference": "Kerodon 1.4.2（反対）"
+  },
+  {
+   "name": "ホーン",
+   "description": "ホーン Λ[n,i] とその面・包含・ホーンの上の射の構成",
+   "reference": "Kerodon 1.2.4"
+  },
+  {
+   "name": "部分複体と境界",
+   "description": "部分複体の束、境界 ∂Δ[n]、像・逆像・包含",
+   "reference": "Kerodon 1.1.4"
+  },
+  {
+   "name": "積・柱・pushout-product",
+   "description": "直積 X × Y、Δ[1] との積（柱と端点 ι₀・ι₁）、Δ[m] × Δ[n] の単体、pushout-product と Leibniz 構成",
+   "reference": "Kerodon 3.1.2; HTT 2.3.2"
+  },
+  {
+   "name": "辺・合成・神経",
+   "description": "辺と 2 単体による合成の構造、準圏の条件、圏の神経と ComposableArrows",
+   "reference": "Kerodon 1.3, 1.4"
+  },
+  {
+   "name": "単体的対象・余単体的対象・Čech 神経",
+   "description": "一般の圏の単体的対象・余単体的対象、拡大と extra degeneracy、Čech 神経",
+   "reference": "Kerodon 1.1.1; Mathlib SimplicialObject"
+  },
+  {
+   "name": "極限・余極限・要素の圏",
+   "description": "SSet の引き戻し・押し出し・余積・余極限、スライス Over/Under、要素の圏（単体の圏）",
+   "reference": ""
+  },
+  {
+   "name": "標準単体と米田",
+   "description": "標準単体 Δ[n]、その頂点・面・余面写像 δ・σ、米田同値 Δ[n] → X ↔ Xₙ",
+   "reference": "Kerodon 1.1.2"
+  },
+  {
+   "name": "単体圏 Δ と単体の面・退化",
+   "description": "単体圏 Δ の射（δ・σ・単調写像）、生成元と関係式、単体 X_n の面・退化作用素",
+   "reference": "Kerodon 1.1.1"
+  },
+  {
+   "name": "（その他）",
+   "description": "SSet とその射しか主張に現れない宣言（個別の単体集合・射の定義など。主張からは内容が決まらない）",
+   "reference": ""
+  }
+ ],
+ "assign": {},
+ "mathlib_rules": [
+  [
+   "^(AlgebraicTopology\\.|CategoryTheory\\.Abelian\\.DoldKan|CategoryTheory\\.Idempotents\\.DoldKan|SSet\\.normalizedChainComplex|HomologicalComplex|ChainComplex|CochainComplex|ComplexShape|Homotopy(Equiv)?$|CategoryTheory\\.Functor\\.mapHomologicalComplex|CategoryTheory\\.ShortComplex)",
+   "鎖複体と Dold–Kan 対応"
+  ],
+  [
+   "^(SSet\\.(modelCategoryQuillen|anodyneExtensions|innerAnodyneExtensions|InnerFibration|KanComplex|relativeCellComplexOfMono|horn\\.IsCompatible)|HomotopicalAlgebra\\.|CategoryTheory\\.(HasLiftingProperty|CommSq\\.HasLift|MorphismProperty\\.(rlp|llp|HasSmallObjectArgument|IsStableUnder|transfiniteCompositions|pushouts|coproducts|saturation|retracts))|CategoryTheory\\.SmallObject|CategoryTheory\\.RetractArrow)",
+   "anodyne 射・リフト性・Kan–Quillen モデル構造"
+  ],
+  [
+   "^SSet\\.(Homotopy|RelativeMorphism|PtSimplex|π₀|mapπ₀|HomotopyCategory|hoFunctor|Truncated\\.(HomotopyCategory|instCategoryHomotopyCategory|hoFunctor)|KanComplex\\.π|FundamentalGroupoid)|^CategoryTheory\\.SimplicialObject\\.Homotopy",
+   "単体的ホモトピー・π₀・ホモトピー圏"
+  ],
+  [
+   "^(SSet\\.(sd|ex|nonDegenerate|degenerate|N$|N\\.|S$|S\\.|Subcomplex\\.N|skeleton|skeletonOfMono|HasDimensionLT|HasDimensionLE|Finite|Nonsingular|IsFinite|Truncated|truncation|coskeleton|cosk|sk$|sk\\.|iSup_skeleton|Subcomplex\\.Pairing|IsStrictSegal|StrictSegal)|SimplexCategory\\.(sd|Truncated|II))",
+   "非退化単体・骨格・切り詰め・細分"
+  ],
+  [
+   "^CategoryTheory\\.(Enriched|eComp|eId|eHom|GradedNatTrans|ForgetEnrichment|SimplicialCategory|Center\\.)|^SSet\\.(instSimplicialCategory|instEnriched)",
+   "関数複体（内部 Hom）と単体的豊穣"
+  ],
+  [
+   "^SSet\\.(op$|opFunctor|opObjEquiv|opEquivalence|stdSimplex\\.opIso|opIso)|^SimplexCategory\\.rev",
+   "反対単体集合と宇宙の持ち上げ"
+  ],
+  [
+   "^SSet\\.horn",
+   "ホーン"
+  ],
+  [
+   "^SSet\\.(boundary|Subcomplex)|^CategoryTheory\\.(Subfunctor|Subpresheaf|instCompleteLatticeSubfunctor|instPartialOrderSubfunctor)",
+   "部分複体と境界"
+  ],
+  [
+   "^(CategoryTheory\\.(ihom|MonoidalClosed|FunctorToTypes\\.(closed|monoidalClosed|functorHom|rightAdj)|Functor\\.functorHom|Closed)|SSet\\.(ihom|unitHomEquiv|hom$))",
+   "関数複体（内部 Hom）と単体的豊穣"
+  ],
+  [
+   "^(CategoryTheory\\.(Functor\\.(PullbackObjObj|PushoutObjObj)|MonoidalCategory\\.(curriedTensor|tensorLeft|tensorRight))|SSet\\.(ι₀|ι₁|prodStdSimplex|Subcomplex\\.unionProd|Subcomplex\\.prod))",
+   "積・柱・pushout-product"
+  ],
+  [
+   "^(SSet\\.(Edge|Quasicategory|Path|Triangle|hom₂|Truncated\\.(Edge|Path|Quasicategory))|CategoryTheory\\.(nerve|nerveMap|nerveFunctor|ComposableArrows|Nerve)|SimplexCategory\\.toCat)",
+   "辺・合成・神経"
+  ],
+  [
+   "^(CategoryTheory\\.((Simplicial|Cosimplicial)Object(?!\\.(δ|σ)$)|Arrow\\.(cechNerve|cechConerve|augmentedCechNerve|augmentedCechConerve|mapCechNerve|mapAugmentedCechNerve)|Limits\\.FormalCoproduct)|AugmentedSimplexCategory|SimplicialObject)",
+   "単体的対象・余単体的対象・Čech 神経"
+  ],
+  [
+   "^SSet\\.uliftFunctor|^CategoryTheory\\.(ULiftHom|uliftFunctor|ULift)",
+   "反対単体集合と宇宙の持ち上げ"
+  ],
+  [
+   "^CategoryTheory\\.(Limits\\.(WidePullback|WidePushout|widePullback|widePushout|hasFiniteWidePullbacks|hasLimitsOfShape_widePullbackShape|pullback|pushout|cospan|span|WalkingCospan|WalkingSpan|WalkingPair|pair|coprod|prod|colimit|limit|colim|lim|IsColimit|IsLimit|Cocone|Cone|terminal|initial|IsInitial|IsTerminal|sigmaObj|piObj|Sigma|Pi|Cofan|Fan|BinaryCofan|BinaryFan|PreservesColimit|PreservesLimit|PreservesFiltered|HasColimit|HasLimit|HasPullback|HasPushout|HasCoproducts|HasProducts|HasFinite|image|coequalizer|equalizer|WalkingParallelPair|parallelPair|Types\\.(Pushout|Colimit|Limit|Quot|binaryCoproduct|coproduct|colimit|limit|pushout))|IsPullback|IsPushout|Functor\\.Elements|IsFiltered|IsConnected|Over|Under|instCategoryOver|instCategoryUnder|CostructuredArrow|StructuredArrow|Comma)",
+   "極限・余極限・要素の圏"
+  ],
+  [
+   "^(CategoryTheory\\.(MonoidalCategoryStruct\\.(tensorObj|tensorHom|whiskerLeft|whiskerRight|associator|leftUnitor|rightUnitor)|SemiCartesianMonoidalCategory\\.(fst|snd)|CartesianMonoidalCategory\\.lift|BraidedCategory\\.braiding)|SSet\\.(Subcomplex\\.prod|prod))",
+   "積・柱・pushout-product"
+  ],
+  [
+   "^(SSet\\.(stdSimplex|yonedaEquiv|const)|CategoryTheory\\.CosimplicialObject\\.(δ|σ)$)",
+   "標準単体と米田"
+  ],
+  [
+   "^(SimplexCategory\\.(?!smallCategory$)|SimplexCategoryGenRel|instCategorySimplexCategoryGenRel|CategoryTheory\\.SimplicialObject\\.(δ|σ)$)",
+   "単体圏 Δ と単体の面・退化"
+  ],
+  [
+   ".*",
+   "（その他）"
+  ]
+ ],
+ "notes": "規則は assign.py の Mathlib の定義の段と同じ使い方を想定：宣言の主張に現れる各定数を上から当て、当たった規則の番号の最小のものに入れる。確かめは work/decls.pkl（trunk3.pkl と X.pkl から抜いた 6,103 宣言）で行い、件数は notes の末尾。SSet・SimplexCategory.smallCategory・Opposite・tensorObj より上の一般的な定数は決め手にしていない（tensorObj と直積の射影は下の方で「積」に入れる）。CosimplicialObject.δ/σ は stdSimplex の余面写像として現れるので「標準単体」に、WidePullbackShape は pullback の展開なので「極限」に入れた。受け皿の 933 は主張が SSet と射だけの定義で、本体（値）を見ないと分けられない。「鎖複体と Dold–Kan」は幹の B「単体的鎖とシャッフル」、「anodyne…」は E「単体的モデルと anodyne」、「単体的豊穣」は C「単体的圏と coherent 神経」、「辺・合成・神経」は C「準圏（基本）」「神経」と範囲が重なる（Mathlib の定義だけで書かれた補題がここに落ちている）。 確かめた件数：鎖複体と Dold–Kan 対応 192、anodyne 射・リフト性・Kan–Quillen モデル構造 391、単体的ホモトピー・π₀・ホモトピー圏 189、非退化単体・骨格・切り詰め・細分 245、関数複体（内部 Hom）と単体的豊穣 450、反対単体集合と宇宙の持ち上げ 341、ホーン 333、部分複体と境界 352、積・柱・pushout-product 653、辺・合成・神経 262、単体的対象・余単体的対象・Čech 神経 462、極限・余極限・要素の圏 558、標準単体と米田 306、単体圏 Δ と単体の面・退化 436、（その他） 933。"
+}

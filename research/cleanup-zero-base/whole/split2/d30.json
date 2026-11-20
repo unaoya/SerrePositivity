@@ -1,0 +1,53 @@
+{
+ "key": "d30",
+ "concept": "C 単体集合と ∞ 圏/ねじれ矢と余スパン",
+ "subconcepts": [
+  {
+   "name": "edgewise subdivision",
+   "description": "n 単体を Δ[n]op ⋆ Δ[n] からの射とする単体集合の edgewise subdivision、その重み（余単体的対象）と標準単体との同型、関手性、左右の半分への制限",
+   "reference": "Kerodon Construction 8.1.1.1、Remark 8.1.1.2（Tag 03JH）、Remark 8.1.1.4（Tag 00B3）、Notation 8.1.1.6（Tag 03JK）"
+  },
+  {
+   "name": "ねじれ矢の単体集合と両端への射影",
+   "description": "Tw(C)（edgewise subdivision と同じもの）と C^op × C への射影、両端を固定したファイバー（写像空間の模型）、始点を固定した全空間、coslice のファイバーとの比較",
+   "reference": "Kerodon §8.1（Tag 03JB）"
+  },
+  {
+   "name": "通常の圏のねじれ矢（Hom 関手の元の圏）",
+   "description": "通常の圏のねじれ矢の圏を Hom 二変数関手の元の圏として読む模型と、両端の関手と射の族から神経のねじれ矢への射",
+   "reference": "Kerodon Remark 8.1.0.3（Tag 03JC）、Proposition 8.1.1.10（Tag 03JN）"
+  },
+  {
+   "name": "（補助）edgewise の重みの頂点と延長領域",
+   "description": "重み Δ[n]op ⋆ Δ[n] ≅ Δ[2n+1] の左右の頂点の番号、右射影・ホーン充填の延長領域（部分複体）、面がその領域に入る条件、重みの添字変換の順序射",
+   "reference": "Kerodon Remark 8.1.1.2（Tag 03JH）、Corollary 8.1.1.13（Tag 048H）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.TwistedArrow": "ねじれ矢の単体集合と両端への射影",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.RightFibrationObject": "MOVE:C 単体集合と ∞ 圏/ファイブレーションと straightening",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowProjection": "ねじれ矢の単体集合と両端への射影",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowHomSpace": "ねじれ矢の単体集合と両端への射影",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.OrdinaryHomElements": "通常の圏のねじれ矢（Hom 関手の元の圏）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSourceProjection": "ねじれ矢の単体集合と両端への射影",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeightIso": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRightExtensionDomain": "（補助）edgewise の重みの頂点と延長領域",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowExtensionDomain": "（補助）edgewise の重みの頂点と延長領域",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap": "edgewise subdivision",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowSource": "ねじれ矢の単体集合と両端への射影",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeightReindexOrderHom": "（補助）edgewise の重みの頂点と延長領域",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedPairingNerveMap": "通常の圏のねじれ矢（Hom 関手の元の圏）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.EdgewiseSupportInDomain": "（補助）edgewise の重みの頂点と延長領域",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRightVertex": "（補助）edgewise の重みの頂点と延長領域",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceTwistedHomMap": "ねじれ矢の単体集合と両端への射影",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.RightFibrationInfinity": "MOVE:C 単体集合と ∞ 圏/ファイブレーションと straightening",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeftVertex": "（補助）edgewise の重みの頂点と延長領域"
+ },
+ "uncertain": [],
+ "notes": "幹の名前は「ねじれ矢と余スパン」だが、今回の 23 定義に余スパン（cospan）の定義は一つもない（全部 edgewise subdivision とねじれ矢）。RightFibrationObject・RightFibrationInfinity は Kerodon の節の場所でここに入っていただけで、中身は固定した底の上の右ファイブレーションの単体的圏と coherent 神経（LeftFibrationObject・LeftFibrationInfinity の右版）→ ファイブレーションへ。TwistedArrow は edgewiseSubdivision の abbrev（同じもの）。edgewiseRightExtensionDomain と twistedArrowExtensionDomain は別の延長領域（前者は右射影の持ち上げ、後者は i 番目のホーン）。"
+}

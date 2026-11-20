@@ -1,0 +1,16 @@
+{
+ "key": "d03",
+ "concept": "A 可換代数と数論幾何/Rees 代数と進完備",
+ "subconcepts": [
+  {
+   "name": "（補助）閉厚化 M/JM の商環係数多項式環上の加群構造",
+   "description": "M/JM を (R/J)[X] 加群と見る局所インスタンス（無名）。閉厚化の係数比較の自然性の証明で使う。",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.AlgebraicGeometry.instModuleMvPolynomialQuotientIdealReesAdicProjectiveQuotientOfNatNat_5": "（補助）閉厚化 M/JM の商環係数多項式環上の加群構造"
+ },
+ "uncertain": [],
+ "notes": "この概念に残っている定義は無名の局所インスタンス一つだけで、Rees 代数や進完備の定義そのものはここにない。同じ族（reesAdicProjective…、I 進閉厚化 M/IⁿM）は d04「blowup と射影スキーム」に入っており、Rees 加群・随伴次数は d01「Hilbert–Samuel」にある。幹の「Rees 代数と進完備」は独立の概念として立てず、d04 の小概念「I 進閉厚化と Rees 加群の Proj 次数」か d01 に吸収するのがよい。"
+}

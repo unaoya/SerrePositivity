@@ -1,0 +1,68 @@
+{
+ "key": "d52",
+ "concept": "H K 理論/K 理論の模型の比較",
+ "subconcepts": [
+  {
+   "name": "単体的モノイドの bar 構成と群完備化",
+   "description": "単体的モノイドの台、群状性、二重単体的 bar とその対角 BM、正則 bar（普遍束）、有限積と Segal 同型、ΩBM による群完備化",
+   "reference": "KST Lemma 2.13、Segal 1974 Proposition 1.5"
+  },
+  {
+   "name": "単体的環の π₀ と行列・ĜL",
+   "description": "単体的環の台単体集合と π₀ の環、行列の空間、π₀ の性質で切り出す成分の部分単体集合（ĜL）",
+   "reference": "KST §2.2、式 (2.2)"
+  },
+  {
+   "name": "局所係数と整数ホモロジー（plus 構成の acyclic 性）",
+   "description": "単体集合の正規化整数ホモロジー、元の圏上の局所係数系、その引き戻し・定数係数・係数の単体的アーベル群",
+   "reference": "Weibel K-book III・IV.1.6、Waldhausen LNM 1126 §1.7・§1.8・§2.3、Calvo–Cegarra–Quang AGT 12 (2012) Remark 2.1"
+  },
+  {
+   "name": "fat realization と対角",
+   "description": "二重単体集合の fat realization（面だけの余等化子）、標準形、骨格、行の包含、対角への評価、自由な退化",
+   "reference": "Segal 1974 Proposition 1.6"
+  },
+  {
+   "name": "（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）",
+   "description": "Kan 置換による固定したホモトピー引き戻し、写像円筒と span の二重写像円筒、スライスの積の右随伴と部分切断の対象（bar の四角形の比較の足場）",
+   "reference": "Segal 1974 Proposition 1.6、Lemma 1.7・1.8"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.Comparison.SimplicialMonoid.IsGrouplike": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.monoidSpace": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.monoidBar": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.regularBar": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.RegularAction": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.monoidGroupCompletionSpace": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.monoidBarKanPointed": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.monoidTupleSpace": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.monoidBarMap": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.bisimplicialBar": "単体的モノイドの bar 構成と群完備化",
+  "SerrePositivity.KST.Comparison.ringSpace": "単体的環の π₀ と行列・ĜL",
+  "SerrePositivity.KST.Comparison.matrixSpace": "単体的環の π₀ と行列・ĜL",
+  "SerrePositivity.KST.Comparison.componentSubcomplex": "単体的環の π₀ と行列・ĜL",
+  "SerrePositivity.KST.Comparison.LocalCoefficientSystem": "局所係数と整数ホモロジー（plus 構成の acyclic 性）",
+  "SerrePositivity.KST.Comparison.pullbackLocalCoefficients": "局所係数と整数ホモロジー（plus 構成の acyclic 性）",
+  "SerrePositivity.KST.Comparison.constantLocalCoefficients": "局所係数と整数ホモロジー（plus 構成の acyclic 性）",
+  "SerrePositivity.KST.Comparison.coefficientSimplicialFunctor": "局所係数と整数ホモロジー（plus 構成の acyclic 性）",
+  "SerrePositivity.KST.Comparison.integralHomology": "局所係数と整数ホモロジー（plus 構成の acyclic 性）",
+  "SerrePositivity.KST.Comparison.fatSkeleton": "fat realization と対角",
+  "SerrePositivity.KST.Comparison.fatRealization": "fat realization と対角",
+  "SerrePositivity.KST.Comparison.FatNormalForm": "fat realization と対角",
+  "SerrePositivity.KST.Comparison.fatRealizationInclusion": "fat realization と対角",
+  "SerrePositivity.KST.Comparison.freeDegeneracies": "fat realization と対角",
+  "SerrePositivity.KST.Comparison.diagonalRowEvaluation": "fat realization と対角",
+  "SerrePositivity.KST.Comparison.homotopyPullbackObject": "（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）",
+  "SerrePositivity.KST.Comparison.mappingCylinder": "（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）",
+  "SerrePositivity.KST.Comparison.spanCylinderFunctor": "（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）",
+  "SerrePositivity.KST.Comparison.sliceFiberFunctor": "（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）",
+  "SerrePositivity.KST.Comparison.partialSectionObject": "（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）"
+ },
+ "uncertain": [
+  "SerrePositivity.KST.Comparison.RegularAction",
+  "SerrePositivity.KST.Comparison.monoidTupleSpace",
+  "SerrePositivity.KST.Comparison.coefficientSimplicialFunctor"
+ ],
+ "notes": "幹の名前は「模型の比較」だが、今回の 29 件に比較そのもの（plus 構成と S 構成の同値など）はなく、中身は KST Lemma 2.13（BĜL と群完備化）へ向けた Segal 1974 §1 の単体集合での作り直しと、plus 構成の acyclic 性のためのホモロジー。名前は「群完備化と plus 構成（Segal・KST 2.13）」の方が合う。MOVE はしなかったが、一般の単体集合の道具がかなり混じる：fatRealization・fatSkeleton・FatNormalForm・diagonalRowEvaluation・freeDegeneracies（二重単体集合、「E モデル圏/図式と二重単体集合のモデル構造」または「単体集合（基本）」の候補）、mappingCylinder・spanCylinderFunctor・homotopyPullbackObject・sliceFiberFunctor・partialSectionObject（単体集合のホモトピー（余）極限とスライス）、integralHomology・LocalCoefficientSystem（単体集合のホモロジー、「B 複体と dg 圏/単体的鎖とシャッフル」の候補）、componentSubcomplex（π₀ による部分単体集合、「Kan 複体とホモトピー群」の候補）。monoidGroupCompletionSpace・regularBar・fatRealization の docstring は「同値性・収縮・対角との比較は別途」と書いており、経路が途中の可能性。G スペクトル側の NormalizedValueCochains.complex（正規化 cochain）と integralHomology（正規化鎖）は別々に作られている。"
+}

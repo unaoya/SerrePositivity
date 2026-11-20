@@ -1,0 +1,127 @@
+{
+ "key": "d21",
+ "concept": "A 可換代数と数論幾何/根の添加（André）",
+ "subconcepts": [
+  {
+   "name": "通常の根添加環（冪根・多項式関係の族）",
+   "description": "独立変数ごとに X_s^n=c_s や f_s(X_s)=0 を課した多項式環の商、標準根、有限部分族の有向系",
+   "reference": "BS 著者版 Theorem 7.14（p.61）、Remark 7.15（p.62）"
+  },
+  {
+   "name": "δ 根関係",
+   "description": "rank-one 多項式 δ 環に置く p 乗根の関係式とその部分族のイデアル",
+   "reference": ""
+  },
+  {
+   "name": "δ 除算包の有限正規化表示と塔",
+   "description": "δ 除算包（prismatic envelope）を有限段の正規化表示の商環で書き、段の射と直極限で全体を得る",
+   "reference": ""
+  },
+  {
+   "name": "多項式関係の prism 候補と perfectoid 候補",
+   "description": "関係族を δ 除算して完備化した完全 prism の候補、その d 商の perfectoid 候補と係数射",
+   "reference": "BS 著者版 Theorem 7.14（p.61）、Remark 7.15（p.62）、Proposition 3.13（pp.33–35）"
+  },
+  {
+   "name": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+   "description": "二因子導来テンソルで書いた prismatic envelope の源、その p 完備化→d 完備化、係数環への制限、A/(p,d) 上への基底変更",
+   "reference": "BS 著者版 Remark 7.15（p.62）"
+  },
+  {
+   "name": "冪根 prism の完備化と Hodge–Tate 剰余",
+   "description": "無限根環 A[Y^{1/p^∞}] と f(Y)=0、その pd 包の台環、実完備化への基底射、Hodge–Tate 商・ϖ 商の係数作用、二元剰余",
+   "reference": "BS 著者版 Remark 7.15（p.62）"
+  },
+  {
+   "name": "完全 prism の ϖ",
+   "description": "完全 prism の生成元 d の Frobenius 逆像の A/(d) への像 ϖ と、R/ϖ ≅ R/p の Frobenius 同型",
+   "reference": "BS 著者版 Remark 7.15（p.62）"
+  },
+  {
+   "name": "prismatic envelope の入力圏",
+   "description": "固定した基底 prism と入力環の上の有界 prism（向きつき・向きなし）を対象とする圏",
+   "reference": "BS 著者版 Remark 7.15（p.62）"
+  },
+  {
+   "name": "André の超限塔",
+   "description": "固定した R 上の perfectoid かつ p 完全忠実平坦な代数を束ねた対象（超限反復の段）",
+   "reference": "BS 著者版 Theorem 7.14（p.61）"
+  },
+  {
+   "name": "（補助）δ 除算包の平坦性計算の図式",
+   "description": "有限根族の δ 座標・残余関係のリスト、源の評価射による代数構造、有限段の加群図式・Koszul 図式",
+   "reference": ""
+  },
+  {
+   "name": "（補助）宇宙合わせの一元族",
+   "description": "一元添字型の上の定数族として入力を固定する",
+   "reference": "BS 著者版 Remark 7.15（p.62）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteNormalizedQuotient": "δ 除算包の有限正規化表示と塔",
+  "SerrePositivity.BhattScholze.Andre.perfectPrismVarpi": "完全 prism の ϖ",
+  "SerrePositivity.BhattScholze.Andre.DeltaRootSourceIteratedPDCompletion": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceIteratedPDCompletion": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionBaseMap": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.MonicPowerFamilyCover": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteNormalizedDirectLimit": "δ 除算包の有限正規化表示と塔",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionNormalizedStepSourceIdeal": "δ 除算包の有限正規化表示と塔",
+  "SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra": "André の超限塔",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteFamilyCoordinates": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.monicPowerFamilyRelationIdeal": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiAlgebra": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.BoundedPrismInput": "prismatic envelope の入力圏",
+  "SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.deltaRootRelationFamily": "δ 根関係",
+  "SerrePositivity.BhattScholze.Andre.DeltaRootSourceCoefficientObject": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSourceFiniteModuleDiagram": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.deltaPDivisionSourceTargetAlgebra": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.deltaPDivisionFiniteKoszulDiagram": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiBaseMap": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.PolynomialFamilyQuotient": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourceCoefficientObject_of_unconditional": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.polynomialPrismCoefficientMap": "多項式関係の prism 候補と perfectoid 候補",
+  "SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteMap": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceQuotientDerived": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateBaseMap": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionPairResidueBase": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.polynomialPerfectoidCandidateBaseMap": "多項式関係の prism 候補と perfectoid 候補",
+  "SerrePositivity.BhattScholze.Andre.monicRelation": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.DeltaDivisionFirstPowerCover": "δ 除算包の有限正規化表示と塔",
+  "SerrePositivity.BhattScholze.monicPowerFamilyRoot": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteResidueFamilyList": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientResidueMap": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.divisionPrism": "多項式関係の prism 候補と perfectoid 候補",
+  "SerrePositivity.BhattScholze.Andre.powerRootPrismMonicUnaryFamily": "（補助）宇宙合わせの一元族",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.DeltaDivisionPairResidue": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionFirstBaseIdeal": "δ 除算包の有限正規化表示と塔",
+  "SerrePositivity.BhattScholze.Andre.DeltaRootSourceQuotientDerived": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.polynomialPrismCommRing": "多項式関係の prism 候補と perfectoid 候補",
+  "SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientResidueMap": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.deltaRootSubsetRelationIdeal": "δ 根関係",
+  "SerrePositivity.BhattScholze.Andre.PowerRootEquationQuotient": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.polynomialFamilyRelationIdeal": "通常の根添加環（冪根・多項式関係の族）",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedTowerMap": "δ 除算包の有限正規化表示と塔",
+  "SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceCoefficientObject": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",
+  "SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift": "完全 prism の ϖ",
+  "SerrePositivity.BhattScholze.Andre.PolynomialPerfectoidCandidate": "多項式関係の prism 候補と perfectoid 候補",
+  "SerrePositivity.BhattScholze.Andre.perfectPrismVarpiFrobeniusQuotientEquiv": "完全 prism の ϖ",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionSourceGraphRelation": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.divisionPrismCommRing": "多項式関係の prism 候補と perfectoid 候補",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionSourceEvalAlgebra": "（補助）δ 除算包の平坦性計算の図式",
+  "SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented": "prismatic envelope の入力圏",
+  "SerrePositivity.BhattScholze.Andre.powerRootMonicPDInput": "冪根 prism の完備化と Hodge–Tate 剰余",
+  "SerrePositivity.BhattScholze.Andre.deltaRootSourceQuotientCoefficientMap": "根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余"
+ },
+ "uncertain": [
+  "SerrePositivity.BhattScholze.Andre.deltaPDivisionSourceTargetAlgebra",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionPairResidueBase",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionBoundedSupportModuleDiagram",
+  "SerrePositivity.BhattScholze.Andre.DeltaDivisionPairResidue",
+  "SerrePositivity.BhattScholze.Andre.deltaDivisionSourceEvalAlgebra"
+ ],
+ "notes": "全 56 件に docstring があり、本体は開かず docstring と signature で分けた。幹の名前は「根の添加（André）」だが、中身の大半は BS Remark 7.15 の prismatic envelope（δ 除算包）の平坦性計算で、通常の根添加環は一部。重複の疑い：源対象の三系統が同じ形（DeltaRootSourceIteratedPDCompletion／MonicPrismaticSourceIteratedPDCompletion／PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional はどれも (Cd).obj ((Cp).obj X₀)；DeltaRootSourceCoefficientObject／MonicPrismaticSourceCoefficientObject／…_of_unconditional；DeltaRootSourceQuotientDerived／MonicPrismaticSourceQuotientDerived；deltaRootSourceQuotientResidueMap／monicPrismaticSourceQuotientResidueMap は本体が同文）。p 乗根の特別な場合（DeltaRoot…）とモニック多項式の一般の場合（MonicPrismatic…）、仮定を外した版（_of_unconditional）の並行。monicPowerFamilyRelationIdeal（冪根）と polynomialFamilyRelationIdeal（一般多項式）も特別・一般の関係。divisionPrism は docstring に「別経路の一段候補」とある。perfectPrismVarpi 系は完全 prism 一般の事実で「パーフェクトイド」か「プリズム」に移してもよい。PowerRootCoefficientPDEnvelope は「分冪包絡とクリスタリン」に近い。BoundedPrismInput は「プリズム」に近い。monicRelation・polynomialFamilyRelationIdeal は名前に monic とあるが定義にモニック性はない（docstring に明記）。"
+}

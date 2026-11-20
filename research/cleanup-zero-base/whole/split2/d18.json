@@ -1,0 +1,59 @@
+{
+ "key": "d18",
+ "concept": "A 可換代数と数論幾何/完全複体と K₀",
+ "subconcepts": [
+  {
+   "name": "完全複体のホモトピー圏",
+   "description": "有界有限射影複体を代表とするホモトピー圏の充満部分圏",
+   "reference": ""
+  },
+  {
+   "name": "台つき完全複体",
+   "description": "スカラー列で支持される、または閉集合にホモロジーの台を持つ完全複体の部分圏",
+   "reference": ""
+  },
+  {
+   "name": "三角圏の K₀",
+   "description": "同型と完全三角形の関係による Grothendieck 群",
+   "reference": ""
+  },
+  {
+   "name": "台つき K₀",
+   "description": "台つき完全複体の K₀、類、台の拡大、カップ積、整数値 Euler 標数、係数つき版",
+   "reference": ""
+  },
+  {
+   "name": "台つき G₀",
+   "description": "閉集合に台を持つ有限生成加群の Grothendieck 群、類、係数つき版",
+   "reference": ""
+  },
+  {
+   "name": "dg Perf との比較",
+   "description": "完全複体のホモトピー圏から dg 加群の Perf・導来圏への比較関手",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.K0WithSupport": "台つき K₀",
+  "SerrePositivity.K0WithSupport.Coefficients": "台つき K₀",
+  "SerrePositivity.SupportedPerfectHomotopy": "台つき完全複体",
+  "SerrePositivity.G0WithSupport": "台つき G₀",
+  "SerrePositivity.K0WithSupport.mk": "台つき K₀",
+  "SerrePositivity.SupportedPerfectHomotopyOn": "台つき完全複体",
+  "SerrePositivity.G0WithSupport.mk": "台つき G₀",
+  "SerrePositivity.K0WithSupport.coefficientEnlarge": "台つき K₀",
+  "SerrePositivity.triangulatedK0Relations": "三角圏の K₀",
+  "SerrePositivity.PerfectHomotopy": "完全複体のホモトピー圏",
+  "SerrePositivity.DifferentialGraded.perfectHomotopyToDGPerfect": "dg Perf との比較",
+  "SerrePositivity.K0WithSupport.cup": "台つき K₀",
+  "SerrePositivity.G0WithSupport.Coefficients": "台つき G₀",
+  "SerrePositivity.K0WithSupport.enlarge": "台つき K₀",
+  "SerrePositivity.DifferentialGraded.scalarPerfectHomotopyExtension": "MOVE:B 複体と dg 圏/導来圏と Perf（dg 加群）",
+  "SerrePositivity.DifferentialGraded.perfectHomotopyToDGDerived": "dg Perf との比較",
+  "SerrePositivity.K0WithSupport.integerEuler": "台つき K₀",
+  "SerrePositivity.perfectHomotopySupportedOn": "台つき完全複体",
+  "SerrePositivity.perfectHomotopyProperty": "完全複体のホモトピー圏"
+ },
+ "uncertain": [],
+ "notes": "scalarPerfectHomotopyExtension は dg 加群の Perf のホモトピー圏（PerfectDGHomotopyCategoryOver）の間のスカラー拡大で、名前の PerfectHomotopy に当たっただけ（B の 導来圏と Perf（dg 加群）、または 係数の取り替え）。台つき完全複体が二系統：SupportedPerfectHomotopy（スカラー列 z、scalarSupported による）と SupportedPerfectHomotopyOn（閉集合 Z、K0WithSupport はこちら）。G0WithSupport は d16 の SupportedFGModuleOn・finiteModuleSupportedOn と一体で、G₀ の側にまとめるのがよい。"
+}

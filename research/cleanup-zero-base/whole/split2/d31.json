@@ -1,0 +1,29 @@
+{
+ "key": "d31",
+ "concept": "C 単体集合と ∞ 圏/サイズの条件",
+ "subconcepts": [
+  {
+   "name": "κ 小さい単体集合",
+   "description": "非退化単体の集合の濃度が κ 未満であること（有限は ℵ₀ 小）",
+   "reference": ""
+  },
+  {
+   "name": "局所小さい ∞ 圏",
+   "description": "任意の二対象の写像空間（pinched Hom）が宇宙 u の Kan 複体と同値であること",
+   "reference": ""
+  },
+  {
+   "name": "ファイバーが小さい射",
+   "description": "左ファイブレーションの各頂点上のファイバーが小さい Kan 模型を持つこと（本質的に小さい）と、射の各単体上のファイバー（集合）が小さいこと（厳密に小さい）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsKappaSmall": "κ 小さい単体集合",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsLocallySmall": "局所小さい ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasEssentiallySmallFibers": "ファイバーが小さい射",
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallSimplexFibers": "ファイバーが小さい射"
+ },
+ "uncertain": [],
+ "notes": "4 定義とも Kerodon §4.7 相当のディレクトリにあり、docstring に文献の節番号はない。HasEssentiallySmallFibers（同値まで）と HasSmallSimplexFibers（集合として）は別の条件。IsKappaSmall の使い道は κ-filtered の試験図式なので、「表現可能 ∞ 圏とフィルター」と接している。"
+}

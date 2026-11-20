@@ -1,0 +1,105 @@
+{
+ "key": "d62",
+ "concept": "H K 理論/非連結 K",
+ "subconcepts": [
+  {
+   "name": "逐次スペクトル列と逐次余極限",
+   "description": "ℕ 添字の厳密な BF スペクトル列、段ごとの余極限とその BF 置換、候補間の射、相対 cofibration の条件、filtered 図式との交換",
+   "reference": ""
+  },
+  {
+   "name": "κ-compact な dg cone（可算和と swindle）",
+   "description": "非可算正則基数 κ に対する dg 加群の充満部分 dg 圏（可算和・二項和で閉じる）、可算直和関手と id ⊕ T、perfect な対象の集合、導来 ∞ 圏・Perf との比較",
+   "reference": ""
+  },
+  {
+   "name": "dg 懸垂（cone の Perf による商）",
+   "description": "cone を perfect な対象で割った平坦 Drinfeld 商とその dg 神経、商関手、分解した核・cone・懸垂を固定 K の dg 入力に束ねたものとその間の射",
+   "reference": ""
+  },
+  {
+   "name": "懸垂の Verdier 列と K の fiber 四角形",
+   "description": "核→cone→懸垂の Verdier 四角形（完備化前）、固定 dg 入力内の零化四角形、K の値の coherent な BF 四角形とその極限錐",
+   "reference": ""
+  },
+  {
+   "name": "懸垂の反復と非連結 K の対象",
+   "description": "段の供給（cone と Perf の対）、懸垂の反復、各段の連結 K、構造辺と逐次列、その逐次余極限としての非連結 K",
+   "reference": ""
+  },
+  {
+   "name": "cone の自己 dg 関手の作用と分裂（swindle の K での零化）",
+   "description": "cone の自己 dg 関手圏、ラベル作用の加群への評価、分裂の cofiber 入力（swindle が K を零化する議論の部品）",
+   "reference": ""
+  },
+  {
+   "name": "Indω と compact 生成の比較",
+   "description": "固定 ν 値の Indω、その compact 部分との生成同値、native Hom の全族の移送",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.NonConnective.dgKappaResolvedKernelKInput": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgKInputIndCompletion": "Indω と compact 生成の比較",
+  "SerrePositivity.KST.NonConnective.SpectrumSequence": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.dgKappaUnconditionalStageProvider": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.DGKappaConeInput": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.DGKappaCone": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.dgKappaNativeBFSquare": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.dgSuspensionSuppliedBFStructureEdge": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgKappaNativeBFSquareComparison": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.dgConeModuleDerivedVertex": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.DGKappaPerfectInput": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.dgKappaConeCountableSum": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.dgKappaSuspensionInputMap": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgKappaConePerfectObjects": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.DGKappaSuspensionMapData": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgKappaSuspensionKInput": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.sequentialCandidateMap": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.dgKappaSuspensionInfinity": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgKappaSuppliedBFKLimitCone": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.dgSuspensionNativeCandidate": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.DGKappaSuspensionRelativeRoofInput": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.dgNonconnectiveK": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.sequentialSpectrum": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.DGKappaSplitCofiberInput": "cone の自己 dg 関手の作用と分裂（swindle の K での零化）",
+  "SerrePositivity.KST.NonConnective.DGKappaClosedFunctorCategory": "cone の自己 dg 関手の作用と分裂（swindle の K での零化）",
+  "SerrePositivity.KST.NonConnective.sequentialLevelColimitSpectrum": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.dgKappaNativeVerdierDiagram": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.DGSuspensionNativeActionInput": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgKappaModuleLabelAction": "cone の自己 dg 関手の作用と分裂（swindle の K での零化）",
+  "SerrePositivity.KST.NonConnective.dgKInputCompactNativeFamilyMap": "Indω と compact 生成の比較",
+  "SerrePositivity.KST.NonConnective.DGSuspensionStageProvider": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.sequentialFilteredLevelDiagram": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.dgKappaConeDerivedComparison": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.dgKappaResolvedConnectiveSquare": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.dgKInputCompactGenerationEquivalence": "Indω と compact 生成の比較",
+  "SerrePositivity.KST.NonConnective.dgKappaSuspensionProjection": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgSuspensionIteration": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgSuspensionNativeSequenceStage": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalIteration": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgKappaFullPerfParameter": "cone の自己 dg 関手の作用と分裂（swindle の K での零化）",
+  "SerrePositivity.KST.NonConnective.dgSuspensionNativeSequence": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.IsSequentialRelativeCofibration": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.SequentialIndex": "逐次スペクトル列と逐次余極限",
+  "SerrePositivity.KST.NonConnective.dgKappaResolvedKernelInputMap": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgKappaNativeQuotient": "懸垂の Verdier 列と K の fiber 四角形",
+  "SerrePositivity.KST.NonConnective.dgSuspensionIterationStage": "懸垂の反復と非連結 K の対象",
+  "SerrePositivity.KST.NonConnective.dgKappaResolvedSuspensionInputMap": "dg 懸垂（cone の Perf による商）",
+  "SerrePositivity.KST.NonConnective.dgKappaSwindleSource": "κ-compact な dg cone（可算和と swindle）",
+  "SerrePositivity.KST.NonConnective.sequentialCandidateSimplicialCategory": "MOVE:G スペクトル/Ω スペクトル（Bousfield–Friedlander）",
+  "SerrePositivity.KST.NonConnective.dgKappaConeKInput": "κ-compact な dg cone（可算和と swindle）"
+ },
+ "uncertain": [
+  "SerrePositivity.KST.NonConnective.dgKappaFullPerfParameter",
+  "SerrePositivity.KST.NonConnective.dgKappaModuleLabelAction",
+  "SerrePositivity.KST.NonConnective.DGKappaClosedFunctorCategory",
+  "SerrePositivity.KST.NonConnective.DGKappaSplitCofiberInput",
+  "SerrePositivity.KST.NonConnective.dgKInputCompactNativeFamilyMap",
+  "SerrePositivity.KST.NonConnective.dgKappaSuppliedBFKLimitCone",
+  "SerrePositivity.KST.NonConnective.dgKappaResolvedConnectiveSquare",
+  "SerrePositivity.KST.NonConnective.DGSuspensionNativeActionInput"
+ ],
+ "notes": "MOVE は sequentialCandidateSimplicialCategory の 1 件（`SimplicialCategory OmegaSpectrum := OmegaSpectrum.simplicialCategory` の局所インスタンスの重複、d60 に同種が 8 個）。明示入力（docstring に「未供給」「明示入力」「供給待ち」とある構造・命題）：DGKappaConeInput, DGKappaPerfectInput, DGKappaSuspensionRelativeRoofInput, DGKappaSplitCofiberInput, DGSuspensionNativeActionInput, dgKappaNativeBFSquareComparison（Prop）, DGSuspensionStageProvider（「未構成の関数の型」）。dgKappaUnconditionalStageProvider・dgSuspensionUnconditionalIteration・dgNonconnectiveK は無条件版で、条件付き版（dgSuspensionNativeCandidate, dgSuspensionNativeSequence, dgSuspensionNativeSequenceStage, dgSuspensionSuppliedBFStructureEdge）と二重になっている疑い。sequentialSpectrum と sequentialLevelColimitSpectrum は BF 置換の前後で同じ逐次余極限の二版。逐次余極限の 7 定義（SpectrumSequence ほか）は BF スペクトルの一般論で G/Ω スペクトル に置いてもよいが、非連結化の入力として作られているので残した。dgKInputIndCompletion ほか「Indω と compact 生成」の 3 定義は C/空間・Cat∞・前層・Ind の応用（K-7 d4）。"
+}

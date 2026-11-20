@@ -1,0 +1,140 @@
+{
+ "key": "d12",
+ "concept": "A 可換代数と数論幾何/プリズム",
+ "subconcepts": [
+  {
+   "name": "向き付きプリズム",
+   "description": "δ 環と正則な生成元・導来 (p,d) 完備性を持つ向き付きプリズム、その主イデアル、射と合成・商への誘導射、有界性、普遍向き付きプリズム",
+   "reference": "BS 著者版 Definition 3.2、Example 3.4、序論 Definition 1.1"
+  },
+  {
+   "name": "結晶プリズムと Witt プリズム",
+   "description": "(ℤ_p,(p)) に当たる結晶基底のプリズムの剰余環と、p 正則 p 進完備環上の Witt ベクトルのプリズム",
+   "reference": "BS 著者版 Example 3.3"
+  },
+  {
+   "name": "プリズマティックサイト",
+   "description": "(R/A)_Δ の対象（有界プリズムと R → B/dB）、射、(p,d) 完全忠実平坦な被覆",
+   "reference": "BS 著者版 Definition 4.1、Corollary 3.12 (a)"
+  },
+  {
+   "name": "プリズマティック包絡と完備自由 δ 環",
+   "description": "包絡の普遍性、完備化した自由 δ-A 代数 A{X_S}^∧ とその座標、包絡の存在の仮定",
+   "reference": "BS 著者版 Proposition 3.13、Construction 4.18"
+  },
+  {
+   "name": "Čech–Alexander 模型（affine）",
+   "description": "完備多項式環の Čech–Alexander 余単体的模型：各次数の包絡、座標、台の余単体的環、係数の取り替え、枠",
+   "reference": "BS 著者版 Remark 4.19、Theorems 5.2・6.4"
+  },
+  {
+   "name": "Hodge–Tate コホモロジーと比較写像（affine）",
+   "description": "affine 模型の mod d 還元のコホモロジー、その上の加群構造、完備微分形式からの HT 写像、積全複体での表示、基底上の複体としての読み替え",
+   "reference": "BS 著者版 Theorem 6.4"
+  },
+  {
+   "name": "結晶被覆（Construction 6.1）",
+   "description": "(p,p) 完備化による結晶被覆の環、Frobenius を合成したプリズム射 α、被覆への完備底変換の模型",
+   "reference": "BS 著者版 Construction 6.1、Proposition 6.2"
+  },
+  {
+   "name": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+   "description": "余単体的複体の積全複体、半自由分解によるスカラー拡大、行ごとのテンソル・完備化",
+   "reference": ""
+  },
+  {
+   "name": "（補助）Witt 基底での大きい模型の橋",
+   "description": "大きい枠の剰余環とその商写像",
+   "reference": "BS 著者版 Theorem 6.4"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.BhattScholze.OrientedPrism.ideal": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.OrientedPrism": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeTerm": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.total": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.hodgeTateCohomology'": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.OrientedPrism.Hom": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.Prismatic.IsBoundedPrism": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.Prismatic.completedFreeDelta": "プリズマティック包絡と完備自由 δ 環",
+  "SerrePositivity.BhattScholze.Prismatic.affineBaseModules": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.PrismOver": "プリズマティックサイト",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.resolvedCompletedBaseChange": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.reducedModel": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.tensorRows": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.bigResidue": "（補助）Witt 基底での大きい模型の橋",
+  "SerrePositivity.BhattScholze.Prismatic.affineEnvelopeTerm": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.PrismOver.IsFaithfullyFlat": "プリズマティックサイト",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.ScalarResolution": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.affineHTTotalComplex": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.ScalarResolution.tensorFunctor": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.finiteCompletionFunctor": "MOVE:A 可換代数と数論幾何/導来完備化",
+  "SerrePositivity.BhattScholze.Prismatic.completedFreeDeltaBase": "プリズマティック包絡と完備自由 δ 環",
+  "SerrePositivity.BhattScholze.Prismatic.polyCompletion": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affineHTTotalMap": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.Construction61.crystallineCoverRing": "結晶被覆（Construction 6.1）",
+  "SerrePositivity.BhattScholze.Prismatic.affineForms": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.universalOrientedPrism": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.Prismatic.cartierBase": "結晶プリズムと Witt プリズム",
+  "SerrePositivity.BhattScholze.Prismatic.WittBigBridge.largeFrame": "（補助）Witt 基底での大きい模型の橋",
+  "SerrePositivity.BhattScholze.Prismatic.HasEnvelopes": "プリズマティック包絡と完備自由 δ 環",
+  "SerrePositivity.BhattScholze.Prismatic.affineHTRawMap": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.wittBigPdModel": "MOVE:A 可換代数と数論幾何/分冪包絡とクリスタリン",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonResolution.complexResolutionFunctor": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.instModuleCarrierMvPolynomialFinQuotientIdealIdealAffineAlgebraHodgeTateCohomology'_1": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affineAlgebra": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.finiteDerivedCompletionFunctor": "MOVE:A 可換代数と数論幾何/導来完備化",
+  "SerrePositivity.BhattScholze.Prismatic.wittPdStructure": "MOVE:A 可換代数と数論幾何/分冪包絡とクリスタリン",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.resolvedCosimplicial": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison.affineLineFormalModel": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.htModule": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.finiteCompletedRows": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.htRings": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.PrismOverVertexFrame": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affineHTComplex": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.instModuleCarrierMvPolynomialFinQuotientIdealIdealAffineAlgebraHodgeTateCohomology'OfNatNat_2": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison.affineFullBaseModules": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalCrystallineInput.affineBaseComplex": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.prismPolynomialUnit": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.htGenerator": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.OrientedPrism.Hom.comp": "向き付きプリズム",
+  "SerrePositivity.BhattScholze.Prismatic.affineEnvelopeCoefficientMap": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.finiteCompletionUnit": "MOVE:A 可換代数と数論幾何/導来完備化",
+  "SerrePositivity.BhattScholze.Prismatic.completedFreeDeltaVariable": "プリズマティック包絡と完備自由 δ 環",
+  "SerrePositivity.BhattScholze.Prismatic.Construction61.crystallineCoverMap": "結晶被覆（Construction 6.1）",
+  "SerrePositivity.BhattScholze.Prismatic.Construction61.coverModPGenerator": "結晶被覆（Construction 6.1）",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison.affineBaseSingleRows": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.prismPolynomialCompletion": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.standardCompletedBaseChangeRows": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.Construction61.completedCoverModelFunctor": "結晶被覆（Construction 6.1）",
+  "SerrePositivity.BhattScholze.Prismatic.AffineIndex": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affineHTCoefficientReducedAny": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affinePolynomialCoefficientMap": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.cosimplicialTotal": "（補助）HT 比較の全複体・分解・完備底変換の厳密模型",
+  "SerrePositivity.BhattScholze.Prismatic.affineBaseToPolynomialMap": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.residuePdStructure": "MOVE:A 可換代数と数論幾何/分冪包絡とクリスタリン",
+  "SerrePositivity.BhattScholze.Prismatic.IsPrismaticEnvelope": "プリズマティック包絡と完備自由 δ 環",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalCrystallineInput.affineNativeBaseCohomologyEquiv": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affineVariable": "Čech–Alexander 模型（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.affineHTCoefficientReduced": "Hodge–Tate コホモロジーと比較写像（affine）",
+  "SerrePositivity.BhattScholze.Prismatic.PrismOver.Hom": "プリズマティックサイト",
+  "SerrePositivity.BhattScholze.Prismatic.wittCrystallinePrism": "結晶プリズムと Witt プリズム"
+ },
+ "uncertain": [
+  "SerrePositivity.BhattScholze.Prismatic.PrismOverVertexFrame",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison.affineLineFormalModel",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison.affineBaseSingleRows",
+  "SerrePositivity.BhattScholze.Prismatic.HTUniversalComparison.affineFullBaseModules",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.resolvedCompletedBaseChange",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.tensorRows",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.resolvedCosimplicial",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.finiteCompletedRows",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.standardCompletedBaseChangeRows",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.cosimplicialTotal",
+  "SerrePositivity.BhattScholze.Prismatic.HTComparisonResolution.complexResolutionFunctor",
+  "SerrePositivity.BhattScholze.Prismatic.Construction61.completedCoverModelFunctor",
+  "SerrePositivity.BhattScholze.Prismatic.affineEnvelopeCoefficientMap"
+ ],
+ "notes": "幹の「プリズム」は実際には (a) プリズムそのもの（Prism/Basic）と (b) プリズマティックコホモロジー（サイト・包絡・Čech–Alexander・Hodge–Tate 比較、71 定義中 約 55）に分かれる。(b) を別の幹「プリズマティックコホモロジーと Hodge–Tate 比較」に分ける案あり。HTComparisonTotal.* は内容が一般のホモロジー代数（積全複体、半自由分解、有限列に沿う主元完備化の反復）で、プリズムに固有でない：finiteCompletionFunctor・finiteDerivedCompletionFunctor・finiteCompletionUnit は導来完備化へ、total は既存の cochainProductTotalizationFunctor の abbrev。wittPdStructure・residuePdStructure（分冪構造）と wittBigPdModel（分冪 Čech 模型）は分冪包絡とクリスタリンへ。同じ環の別名：polyCompletion P r = affineAlgebra P r = prismPolynomialCompletion P (Fin r)（三つの abbrev）。同じ模型の読み替えが多い：reducedModel → affineBaseModules → affineBaseComplex / affineHTComplex / affineHTTotalComplex / affineBaseSingleRows。hodgeTateCohomology' 上の Module の local instance が二つ（HodgeTateCompletedMap.lean と HodgeTateOneDerivative.lean、どちらも htModule）。affineHTCoefficientReduced は affineHTCoefficientReducedAny の生成元を保つ場合。"
+}

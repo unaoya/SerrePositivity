@@ -1,0 +1,75 @@
+{
+ "key": "d27",
+ "concept": "B 複体と dg 圏/単体的鎖とシャッフル",
+ "subconcepts": [
+  {
+   "name": "線形化と正規化鎖複体",
+   "description": "集合・単体集合の自由加群化、正規化 Moore 複体（鎖・コチェインの次数づけ）、単体が定める生成元、誘導される射",
+   "reference": "Berger–Fresse §1.1.4；KST Appendix A、Definition A.3"
+  },
+  {
+   "name": "整数加群・単体的加群・鎖複体のテンソル",
+   "description": "ℤ 加群のテンソルの双関手、単体的加群の次数ごとのテンソル、ℕ 次数の鎖複体の全テンソル",
+   "reference": "KST Definition A.3、A.5"
+  },
+  {
+   "name": "Alexander–Whitney 写像と余代数構造",
+   "description": "単体の前面・後面への切断、AW 対角の (p,q) 成分、余単位、正規化コチェインの余代数、正規化複体の間の AW 鎖写像",
+   "reference": "Berger–Fresse §1.1.4；KST Construction A.5"
+  },
+  {
+   "name": "シャッフル",
+   "description": "(p,q) シャッフルの添字（水平ステップの選択・格子経路）、両因子への単体写像、符号、ステップの挿入、二つの単体のシャッフル積",
+   "reference": "Berger–Fresse §1.1.3；KST A.5"
+  },
+  {
+   "name": "線形化した区間ホモトピーと厳密化",
+   "description": "C(X)⊗ℤΔ¹ からの写像としての m 次までのホモトピー、端点、f−a₀+a₁ による厳密化、外部の群作用に関する同変性",
+   "reference": "KST Definition A.3、Construction A.5"
+  },
+  {
+   "name": "（補助）宇宙を合わせた整数係数",
+   "description": "ULift ℤ を係数環として使うための型",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.simplicialRingCoefficient": "（補助）宇宙を合わせた整数係数",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensor": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.chains": "線形化と正規化鎖複体",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.right": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy": "線形化した区間ホモトピーと厳密化",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.left": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex": "シャッフル",
+  "SerrePositivity.SimplicialChains.Shuffle.value": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace": "線形化と正規化鎖複体",
+  "SerrePositivity.SimplicialChains.Shuffle.simplex": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.generator": "線形化と正規化鎖複体",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.component": "Alexander–Whitney 写像と余代数構造",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.strictifiedMap": "線形化した区間ホモトピーと厳密化",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney": "Alexander–Whitney 写像と余代数構造",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁": "線形化した区間ホモトピーと厳密化",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.HomologicalAlgebra.linearizedSimplicialWeight": "線形化と正規化鎖複体",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.cochainCounit": "Alexander–Whitney 写像と余代数構造",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.cochainComon": "Alexander–Whitney 写像と余代数構造",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.cochains": "線形化と正規化鎖複体",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization": "線形化と正規化鎖複体",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap": "線形化と正規化鎖複体",
+  "SerrePositivity.SimplicialChains.AlexanderWhitney.cut": "Alexander–Whitney 写像と余代数構造",
+  "SerrePositivity.KST.ProExcision.groupLinearizedMap": "線形化と正規化鎖複体",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.insertHorizontal": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor": "整数加群・単体的加群・鎖複体のテンソル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀": "線形化した区間ホモトピーと厳密化",
+  "SerrePositivity.SimplicialChains.Shuffle.PathCutData": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.insertVertical": "シャッフル",
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.inversions": "シャッフル",
+  "SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant": "線形化した区間ホモトピーと厳密化"
+ },
+ "uncertain": [],
+ "notes": "docstring のない simplicialRingCoefficient は本体を読んだ（ULift ℤ の abbrev で、宣言 100 件がこれを主張に含むが、中身は「単体環の正規化 cochain を dg 複体へ移す」作業の係数型。数学の概念ではない）。重複の疑い：同じ内容が二系統ある。(1) SimplicialChains（Berger–Fresse、係数 A、SSet.{0}）：chains／cochains／AlexanderWhitney.component／Shuffle.value と ShufflePath。(2) Kerodon…DifferentialGradedCategories（KST Appendix A、ℤ 係数、任意の宇宙）：linearizedSpace と normalizedMooreComplex／normalizedAlexanderWhitney／ShuffleIndex。シャッフルの添字型も ShufflePath（格子経路）と ShuffleIndex（Fin n の p 元部分集合）の二つ。integerTensor・integerTensorBifunctor・chainIntegerTensor は Mathlib のモノイダル構造の明示的な写し（宇宙を独立にするため）。(2) の名前空間は Kerodon の「dg 圏」の節だが中身は KST Appendix A の群ホモロジーの鎖の議論で、置き場所と内容が合っていない。linearizedSimplicialWeight（HA 1.2.4、集合値の単体的重みの線形化）は重みつき余極限の文脈で、ここでは線形化に入れた。groupLinearizedMap・LinearizedCylinderEquivariant は KST の pro 切除（GL の群ホモロジー）で使う。"
+}

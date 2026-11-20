@@ -1,0 +1,30 @@
+{
+ "key": "d16",
+ "concept": "A 可換代数と数論幾何/台つきの加群と Tor",
+ "subconcepts": [
+  {
+   "name": "Tor 加群",
+   "description": "Tor_i^R(M,N) を R 加群の型として見たもの（Mathlib の左導来関手による）",
+   "reference": ""
+  },
+  {
+   "name": "閉集合に台を持つ有限生成加群",
+   "description": "Spec の閉集合 Z に台を持つ有限生成加群の性質と充満部分圏、閉な台の引き戻し",
+   "reference": ""
+  },
+  {
+   "name": "スカラーで支持される対象",
+   "description": "R 線形圏で、指定したスカラーの共通の冪が恒等射を零にする対象の性質",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.TorModule": "Tor 加群",
+  "SerrePositivity.scalarSupported": "スカラーで支持される対象",
+  "SerrePositivity.SupportedFGModuleOn": "閉集合に台を持つ有限生成加群",
+  "SerrePositivity.supportPullback": "閉集合に台を持つ有限生成加群",
+  "SerrePositivity.finiteModuleSupportedOn": "閉集合に台を持つ有限生成加群"
+ },
+ "uncertain": [],
+ "notes": "台の定式化が二通りある：閉集合 Z による台（finiteModuleSupportedOn、d18 の perfectHomotopySupportedOn）と、スカラー列の冪零による台（scalarSupported、d18 の SupportedPerfectHomotopy）。scalarSupported は一般の線形圏の ObjectProperty（CategoryTheory/ScalarSupport）で、加群に限らない。SupportedFGModuleOn は G₀ の入力（KTheory/G0/Basic）で、完全複体と K₀ の G0WithSupport と一体。"
+}

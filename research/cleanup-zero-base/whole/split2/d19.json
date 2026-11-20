@@ -1,0 +1,103 @@
+{
+ "key": "d19",
+ "concept": "A 可換代数と数論幾何/導来完備化",
+ "subconcepts": [
+  {
+   "name": "導来完備性",
+   "description": "R[1/f] からの全次数の射の消滅による導来 f 完備性（導来圏の対象・加群）と、完備加群への反映の普遍性による特徴づけ",
+   "reference": ""
+  },
+  {
+   "name": "導来完備化関手（主元）",
+   "description": "Koszul 冪塔の holim による主元完備化の複体関手・導来圏の関手・単位、有界上への制限、Koszul 還元（a 倍の錐）、局所化の二項分解、加群の H⁰ 完備化",
+   "reference": ""
+  },
+  {
+   "name": "塔のホモトピー極限",
+   "description": "可算逆系の holim の mapping cone による模型、その関手性、差分写像、両立する列の加群",
+   "reference": ""
+  },
+  {
+   "name": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+   "description": "完備化複体の零次ホモロジーとその可換環・代数構造、元の環からの単位の環準同型、環の圏での主完備化",
+   "reference": ""
+  },
+  {
+   "name": "完備化のモノイダル構造と完備テンソル",
+   "description": "完備化の lax モノイダル構造による可換代数対象の完備化、完備導来テンソル積の代数、単位",
+   "reference": ""
+  },
+  {
+   "name": "有界上導来圏の導来テンソルと底変換",
+   "description": "Mathlib の D⁻(Mod R) 上の導来テンソル双関手、導来底変換・制限、離散代数の可換代数対象、加群の埋め込みと augmentation、射影模型の選択",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DerivedCompletion.pdCompletionUnit": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.boundedAboveDerivedBaseChange": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.boundedAboveCompletedTensorAlgebra": "完備化のモノイダル構造と完備テンソル",
+  "SerrePositivity.DerivedCompletion.IsModuleComplete": "導来完備性",
+  "SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor": "導来完備化関手（主元）",
+  "SerrePositivity.boundedAboveDerivedTensor": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.derivedScalarConeFunctor": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionFunctor": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.CompletedRing": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.complexTowerHomotopyLimit": "塔のホモトピー極限",
+  "SerrePositivity.DerivedCompletion.IsComplete": "導来完備性",
+  "SerrePositivity.DerivedCompletion.ConcreteDerivedCategory": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.pdCompletionCommRing": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.boundedAboveDerivedTensorModuleFunctor": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.boundedAboveDerivedTensorAlgebra": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.complexCompletionFunctor": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.IsCompleteModuleReflection": "導来完備性",
+  "SerrePositivity.DerivedCompletion.PDCompletionH0": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.principalCompletionUnitRingHom": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionUnit": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.boundedAboveCompletionAlgebraUnit": "完備化のモノイダル構造と完備テンソル",
+  "SerrePositivity.DerivedCompletion.derivedComplexCompletionUnit": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.PrincipalReflectionModule": "導来完備性",
+  "SerrePositivity.DerivedCompletion.powerCokernelComplexTransition": "導来完備化関手（主元）",
+  "SerrePositivity.boundedAboveDerivedTensorModuleAugmentation": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.boundedAboveDerivedScalarCone": "導来完備化関手（主元）",
+  "SerrePositivity.boundedAboveDerivedAlgebra": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.localizationResolutionComplex": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.moduleTowerLimit": "塔のホモトピー極限",
+  "SerrePositivity.DerivedCompletion.completedUnitAlgebra": "完備化のモノイダル構造と完備テンソル",
+  "SerrePositivity.boundedAboveDerivedAlgebraMul": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.powerCokernelComplex": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.pairCompletionAlgebra": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.modulePowerReduction": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitMap": "塔のホモトピー極限",
+  "SerrePositivity.DerivedCompletion.pCompletedScalarExtensionFunctor": "導来完備化関手（主元）",
+  "SerrePositivity.DerivedCompletion.principalCompletionRingCatUnit": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.PrincipalCompletionH0": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.pairCompletionUnitRingHom": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.iteratedCompletionCommRing": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.completedAlgebra": "完備化のモノイダル構造と完備テンソル",
+  "SerrePositivity.DerivedCompletion.boundedAboveCompletionCommMonFunctor": "完備化のモノイダル構造と完備テンソル",
+  "SerrePositivity.DerivedCompletion.moduleCompletionH0Functor": "導来完備化関手（主元）",
+  "SerrePositivity.boundedAboveDerivedBaseChangeModuleAugmentation": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.boundedAboveDerivedSingleFunctor": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.principalCompletionAlgebra": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.principalCompletionCommRing": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.moduleCompletionH0Unit": "導来完備化関手（主元）",
+  "SerrePositivity.boundedAboveDerivedRestrictScalars": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.complexTowerDifference": "塔のホモトピー極限",
+  "SerrePositivity.DerivedCompletion.pairCompletionCommRing": "完備化の H⁰ の環（主元・二座標・(p,d)）",
+  "SerrePositivity.DerivedCompletion.complexTowerHomologyDifference": "塔のホモトピー極限",
+  "SerrePositivity.DerivedCompletion.moduleObjectFunctor": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.boundedAboveDerivedChosenModel": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.boundedAboveDerivedTensorUnit": "有界上導来圏の導来テンソルと底変換",
+  "SerrePositivity.DerivedCompletion.principalReflectionRelation": "導来完備性",
+  "SerrePositivity.DerivedCompletion.PairCompletionH0": "完備化の H⁰ の環（主元・二座標・(p,d)）"
+ },
+ "uncertain": [
+  "SerrePositivity.boundedAboveDerivedChosenModel",
+  "SerrePositivity.boundedAboveDerivedBaseChangeModuleAugmentation",
+  "SerrePositivity.boundedAboveDerivedTensorModuleAugmentation",
+  "SerrePositivity.DerivedCompletion.complexTowerHomologyDifference",
+  "SerrePositivity.DerivedCompletion.modulePowerReduction"
+ ],
+ "notes": "「有界上導来圏の導来テンソルと底変換」（14 定義、boundedAboveDerived*）は完備化でなく通常の環の導来圏 D⁻(Mod R) の一般論で、幹に合う場所がない（B は dg 加群の導来圏）。別の幹「加群の導来圏（導来テンソル・底変換）」を立てるか、幹の名前を「導来圏と導来完備化（通常の環）」にする案。ConcreteDerivedCategory は Mathlib の DerivedCategory (ModuleCat R) の abbrev、moduleObjectFunctor は singleFunctor 0 の別名で、boundedAboveDerivedSingleFunctor と役割が重なる。Koszul 還元が二つ：derivedScalarConeFunctor（D 全体）と boundedAboveDerivedScalarCone（D⁻）。H⁰ の環は Principal → Iterated → Pair → PD と積み上がり、PDCompletionH0 p d = PairCompletionH0 (p) d の abbrev、pdCompletionCommRing・pdCompletionUnit も pair 版の言い換え。CompletedRing は principalCompletionRingCat の p での abbrev。d12 から HTComparisonTotal.finiteCompletionFunctor・finiteDerivedCompletionFunctor・finiteCompletionUnit（有限列に沿う反復）、d11 から PerfectoidizationInterface.completionRing がこちらへ来る。"
+}

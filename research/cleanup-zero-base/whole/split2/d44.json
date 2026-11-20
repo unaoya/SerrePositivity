@@ -1,0 +1,62 @@
+{
+ "key": "d44",
+ "concept": "E モデル圏/語による分解（小対象の議論）",
+ "subconcepts": [
+  {
+   "name": "（補助）止めた経路：語で表示した圏",
+   "description": "圏 C の射・零つきモノイド M の語（各対象の自己射）・分裂レトラクト（small/ambient）で生成し関係で割った圏（AmbientWords・RetractWords）、その包含関手と (C, M) に関する関手性",
+   "reference": "計画書 §396「任意モデル源への一般化（中断、2026-10-17）」（ファイル冒頭）"
+  },
+  {
+   "name": "（補助）止めた経路：語の区間",
+   "description": "Δ¹ の各次数で内点の自由モノイドに零を付けた語のなす単体集合（WordSegment.obj）、端点・単位",
+   "reference": "計画書 §396（ファイル冒頭）"
+  },
+  {
+   "name": "（補助）止めた経路：nerve の単体上の整合的な族",
+   "description": "nerve D の単体の圏の上で、鎖の終点の値（または始点・終点の内部 Hom）への整合的な族（System）とその添字の取り替え",
+   "reference": "計画書 §396（ファイル冒頭）"
+  },
+  {
+   "name": "（補助）止めた経路：Kan 比較の三角形",
+   "description": "共通の終点を持つ二つの単体的ホモトピーを (T を冪にした) Kan 複体の 2 単体で比べるデータ、その Λ²₂ の写像と得られる比較ホモトピー",
+   "reference": "計画書 §396（ファイル冒頭）"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.SimplicialModel.RelativeChoiceSpace.obj": "MOVE:E モデル圏/単体的モデルと anodyne",
+  "SerrePositivity.AmbientWords.Obj": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.SimplicialModel.KanComparisonTriangle.Data": "（補助）止めた経路：Kan 比較の三角形",
+  "SerrePositivity.SimplicialModel.WordSegment.obj": "（補助）止めた経路：語の区間",
+  "SerrePositivity.SimplicialModel.NerveBiparameter.System": "（補助）止めた経路：nerve の単体上の整合的な族",
+  "SerrePositivity.SimplicialModel.NerveCoherentFamily.System": "（補助）止めた経路：nerve の単体上の整合的な族",
+  "SerrePositivity.SimplicialModel.RelativeChoiceSpace.family": "MOVE:E モデル圏/単体的モデルと anodyne",
+  "SerrePositivity.SimplicialModel.KanComparisonTriangle.comparison": "（補助）止めた経路：Kan 比較の三角形",
+  "SerrePositivity.NerveSimplexEndpoint.Index": "MOVE:C 単体集合と ∞ 圏/神経",
+  "SerrePositivity.RetractWords.quotient": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.RetractWords.map": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.RetractWords.Obj": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.AmbientWords.sourceFunctor": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.NerveSimplexEndpoint.endpoint": "MOVE:C 単体集合と ∞ 圏/神経",
+  "SerrePositivity.SimplicialModel.WordSegment.degree": "（補助）止めた経路：語の区間",
+  "SerrePositivity.SimplicialModel.SegmentWords.Interior": "（補助）止めた経路：語の区間",
+  "SerrePositivity.SimplicialModel.NerveCoherentFamily.values": "（補助）止めた経路：nerve の単体上の整合的な族",
+  "SerrePositivity.SimplicialModel.NerveBiparameterMaps.reindex": "（補助）止めた経路：nerve の単体上の整合的な族",
+  "SerrePositivity.RetractWords.Vertex": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.SimplicialModel.RelativeChoiceSpace.FixedBoundaryHomotopy": "MOVE:E モデル圏/単体的モデルと anodyne",
+  "SerrePositivity.NerveSimplexEndpoint.dimension": "MOVE:C 単体集合と ∞ 圏/神経",
+  "SerrePositivity.SimplicialModel.KanComparisonTriangle.hornMap": "（補助）止めた経路：Kan 比較の三角形",
+  "SerrePositivity.SimplicialModel.RelativeChoiceSpace.name": "MOVE:E モデル圏/単体的モデルと anodyne",
+  "SerrePositivity.SimplicialModel.WordSegment.interval": "（補助）止めた経路：語の区間",
+  "SerrePositivity.SimplicialModel.RelativeChoiceSpace.pointUnitIso": "MOVE:E モデル圏/単体的モデルと anodyne",
+  "SerrePositivity.AmbientWords.Vertex": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.AmbientWords.Rel": "（補助）止めた経路：語で表示した圏",
+  "SerrePositivity.SimplicialModel.WordSegment.unitAt": "（補助）止めた経路：語の区間",
+  "SerrePositivity.SimplicialModel.WordSegment.endpoint": "（補助）止めた経路：語の区間",
+  "SerrePositivity.SimplicialModel.NerveBiparameter.values": "（補助）止めた経路：nerve の単体上の整合的な族"
+ },
+ "uncertain": [
+  "SerrePositivity.SimplicialModel.NerveBiparameterMaps.reindex"
+ ],
+ "notes": "幹の名前が中身と合わない：ここにあるのは小対象の議論ではなく、止めた経路「任意モデル源への一般化」（計画書 §396、各ファイル冒頭に「中断」と明記、「stage 4 の完成部分からの利用はない」）の部品。「止めた経路：任意モデル源への一般化（語による表示と nerve 上の整合的な族）」と改名するのがよい。d42 に入っていた同じ経路の 37 定義もここへ MOVE とした（d42 の notes に対応表）。その受け皿として小概念「（補助）止めた経路：厳密化の障害の反例」（SmallSubdiagramObstruction・StrictValueObstruction）が別に要る。MOVE：RelativeChoiceSpace.*（obj・family・name・pointUnitIso・FixedBoundaryHomotopy、境界を固定した延長の空間＝内部 Hom の制限のファイバー、ファイルは中断の印なしの一般的な道具）は d42 へ（そこで新しい小概念「境界を固定した延長の空間」）；NerveSimplexEndpoint.*（Index＝nerve の要素の圏の反対、dimension、endpoint＝最後の頂点）は神経へ。重複：AmbientWords と RetractWords は同じ作りで後者が small 頂点と分裂を足したもの（Obj・quotient・Vertex・Rel が二組）。WordSegment.interval は interval の言い換え、RelativeChoiceSpace.pointUnitIso は Δ⁰ ≅ 𝟙 の言い換え。"
+}

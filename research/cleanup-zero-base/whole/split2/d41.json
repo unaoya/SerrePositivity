@@ -1,0 +1,81 @@
+{
+ "key": "d41",
+ "concept": "E モデル圏/Reedy",
+ "subconcepts": [
+  {
+   "name": "Reedy 構造の例と構成",
+   "description": "単体圏 Δ とその反対の Reedy 構造、図式の要素の圏・latching 添字圏・matching 添字圏の上の Reedy 構造",
+   "reference": ""
+  },
+  {
+   "name": "latching・matching の添字圏と対象",
+   "description": "恒等でない direct な射の over・inverse な射の under の充満部分圏、latching・matching 対象の関手、比較射、相対 latching・matching 射",
+   "reference": ""
+  },
+  {
+   "name": "Reedy の射の類（相対 latching・matching 条件）",
+   "description": "全ての対象で相対 latching 射（matching 射）が類 W に入る自然変換の類",
+   "reference": ""
+  },
+  {
+   "name": "Reedy 余ファイブラント解像（cosimplicial frame）",
+   "description": "定値図式への augmentation を持つ Reedy 余ファイブラントで自明な解像、その関手的な族、関手的因子分解から作る cosimplicial 解像の族",
+   "reference": ""
+  },
+  {
+   "name": "次数による切り詰めと一対象の付加",
+   "description": "次数が a 未満・以下の充満部分圏と包含、低次の部分に一対象を付けた圏、低次に制限した latching・matching、境界の延長データを持つ図式、次数ごとの図式の塔と貼り合わせ",
+   "reference": ""
+  },
+  {
+   "name": "（補助）Reedy の因子分解と持ち上げの次数帰納",
+   "description": "一対象での因子分解の問題、相対 latching の押し出しから相対 matching の引き戻しへの射、次数ごとの因子分解の段と塔、次数 n 未満の持ち上げ",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.Reedy.reedyLeft": "Reedy の射の類（相対 latching・matching 条件）",
+  "SerrePositivity.Reedy.CofibrantResolutionFamily": "Reedy 余ファイブラント解像（cosimplicial frame）",
+  "SerrePositivity.Reedy.CofibrantResolution": "Reedy 余ファイブラント解像（cosimplicial frame）",
+  "SerrePositivity.Reedy.relativeLatchingMap": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.simplexOp": "Reedy 構造の例と構成",
+  "SerrePositivity.Reedy.latchingComparison": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.FactorizationProblem": "（補助）Reedy の因子分解と持ち上げの次数帰納",
+  "SerrePositivity.Reedy.MatchingIndex": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.elementsReedy": "Reedy 構造の例と構成",
+  "SerrePositivity.Reedy.simplex": "Reedy 構造の例と構成",
+  "SerrePositivity.Reedy.DiagramTower": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.reedyRight": "Reedy の射の類（相対 latching・matching 条件）",
+  "SerrePositivity.Reedy.Adjoin": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.latchingEvaluation": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.FunctorFactorAt": "（補助）Reedy の因子分解と持ち上げの次数帰納",
+  "SerrePositivity.Reedy.RelativeExtension.map": "（補助）Reedy の因子分解と持ち上げの次数帰納",
+  "SerrePositivity.Reedy.LatchingIndex": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.cosimplicialResolutionFamily": "Reedy 余ファイブラント解像（cosimplicial frame）",
+  "SerrePositivity.Reedy.BoundaryDiagram": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.DiagramTower.toFunctor": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.relativeMatchingMap": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.BoundaryExtension.toFunctor": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.DegreeFactorizationStep.middle": "（補助）Reedy の因子分解と持ち上げの次数帰納",
+  "SerrePositivity.Reedy.lowerInclusion": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.latchingReedy": "Reedy 構造の例と構成",
+  "SerrePositivity.Reedy.matchingReedy": "Reedy 構造の例と構成",
+  "SerrePositivity.Reedy.matchingComparison": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.lowerMatchingEvaluation": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.Lower": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.matchingTargetLower": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.matchingEvaluation": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.lowerLatchingEvaluation": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.matchingTarget": "latching・matching の添字圏と対象",
+  "SerrePositivity.Reedy.latchingSourceLower": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.simplexInverse": "Reedy 構造の例と構成",
+  "SerrePositivity.Reedy.Upper": "次数による切り詰めと一対象の付加",
+  "SerrePositivity.Reedy.FactorizationTower": "（補助）Reedy の因子分解と持ち上げの次数帰納",
+  "SerrePositivity.Reedy.LiftBelow": "（補助）Reedy の因子分解と持ち上げの次数帰納"
+ },
+ "uncertain": [
+  "SerrePositivity.Reedy.BoundaryExtension.toFunctor",
+  "SerrePositivity.Reedy.Upper"
+ ],
+ "notes": "docstring のない定義が大半（38 中 34）。r5・r6 は Reedy モデル構造の因子分解・持ち上げを次数の帰納で作る一つの構成の部品。CofibrantResolution・CofibrantResolutionFamily は「E モデル圏/ホモトピー関数複体と分解」の frame と同じ内容で、そちらに置く手もある（ファイルも HomotopyFunctionComplex/Reedy）。Elements.lean の冒頭に「stage 4 の完成部分からの利用はない」「任意モデル源への一般化 中断 2026-10-17」とあり、elementsReedy は中断した経路の部品。Mathlib に AlgebraicTopology/Reedy/Basic（ReedyStructure）があり、それを土台にしている。simplexInverse は epimorphisms SimplexCategory の別名。"
+}

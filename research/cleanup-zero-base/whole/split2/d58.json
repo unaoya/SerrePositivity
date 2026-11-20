@@ -1,0 +1,71 @@
+{
+ "key": "d58",
+ "concept": "H K 理論/導来幾何と係数層",
+ "subconcepts": [
+  {
+   "name": "係数環層とテンソル係数層 H_X",
+   "description": "スキーム上の（非可換でよい）係数環層と構造層からの射、切断に H をテンソルした前層とその層化、開への制限、基礎環の作用",
+   "reference": "KST D4、Toën Derived Azumaya §3.2"
+  },
+  {
+   "name": "係数加群層と準連接性",
+   "description": "係数環層の加群層の圏、構造層加群への忘却、正則加群、準連接な基礎加群をもつ部分圏、コホモロジー層が準連接という条件（D_qc）",
+   "reference": "KST D4、Toën §3.2、Bondal–van den Bergh Thm 3.1.1"
+  },
+  {
+   "name": "アフィンの比較（tilde と大域切断）",
+   "description": "アフィンスキーム上で H 加群を係数加群層へ送る tilde、大域切断、それらの bounded below 導来版",
+   "reference": "KST D4・T1′、Toën §3.2、TT §3・§8、Bondal–van den Bergh Thm 3.1.1"
+  },
+  {
+   "name": "係数加群層の複体の導来 dg 圏",
+   "description": "宇宙を調整した係数加群層の非有界複体、その分解、acyclic を商した導来 dg 圏",
+   "reference": "Drinfeld Thm 3.4・§3.5・Lemma 13.5、KST D4・§13 決定 11"
+  },
+  {
+   "name": "開を表す自由加群層",
+   "description": "開の切断を表す自由加群層（定数環上と環層上）",
+   "reference": "TT §3・§8、Toën §3.2、Bondal–van den Bergh Thm 3.1.1"
+  },
+  {
+   "name": "（補助）Čech・K-injective の議論の足場",
+   "description": "鎖複体の中の隣接二項の部分窓（自然数方向の帰納用）",
+   "reference": "Stacks 19.12.2、TT §3"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.KST.DerivedGeometry.tensorCoefficientSheaf": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.coefficientTensorPresheaf": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.kInjectiveHomotopyObjects": "MOVE:B 複体と dg 圏/三角圏",
+  "SerrePositivity.KST.DerivedGeometry.moduleLocalizationR": "MOVE:A 可換代数と数論幾何/環と加群（その他）",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.Modules": "係数加群層と準連接性",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.restrict": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.EmbeddedChainWindow": "（補助）Čech・K-injective の議論の足場",
+  "SerrePositivity.KST.DerivedGeometry.affineDerivedTildePlus": "アフィンの比較（tilde と大域切断）",
+  "SerrePositivity.KST.DerivedGeometry.LinearComplex.enrichment": "MOVE:B 複体と dg 圏/dg 圏と dg 関手",
+  "SerrePositivity.KST.DerivedGeometry.tensorCoefficientComparison": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DerivedDG": "係数加群層の複体の導来 dg 圏",
+  "SerrePositivity.KST.DerivedGeometry.affineCoefficientTildeFunctor": "アフィンの比較（tilde と大域切断）",
+  "SerrePositivity.KST.DerivedGeometry.freeModuleSheafOnOpen": "開を表す自由加群層",
+  "SerrePositivity.KST.DerivedGeometry.DGResolution.Quotient": "MOVE:B 複体と dg 圏/dg 商と cell 分解",
+  "SerrePositivity.KST.DerivedGeometry.ringedFreeSheafOnOpen": "開を表す自由加群層",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.hasQuasicoherentCohomology": "係数加群層と準連接性",
+  "SerrePositivity.KST.DerivedGeometry.DGResolution.nullObjects": "MOVE:B 複体と dg 圏/dg 商と cell 分解",
+  "SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingPostcompose": "MOVE:B 複体と dg 圏/dg 圏と dg 関手",
+  "SerrePositivity.KST.DerivedGeometry.affineCoefficientΓ": "アフィンの比較（tilde と大域切断）",
+  "SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingComplex": "MOVE:B 複体と dg 圏/dg 圏と dg 関手",
+  "SerrePositivity.KST.DerivedGeometry.DGResolution.Objects": "MOVE:B 複体と dg 圏/dg 商と cell 分解",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.QCoh": "係数加群層と準連接性",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.LiftedModules": "係数加群層の複体の導来 dg 圏",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.regular": "係数加群層と準連接性",
+  "SerrePositivity.KST.DerivedGeometry.structureScalarAction": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget": "係数加群層と準連接性",
+  "SerrePositivity.KST.DerivedGeometry.sectionAlgebra": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.ResolvedComplexes": "係数加群層の複体の導来 dg 圏",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.Complexes": "係数加群層の複体の導来 dg 圏",
+  "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf": "係数環層とテンソル係数層 H_X",
+  "SerrePositivity.KST.DerivedGeometry.affineDerivedΓPlus": "アフィンの比較（tilde と大域切断）"
+ },
+ "uncertain": [],
+ "notes": "幹の名前は「導来幾何」より「係数環層つきスキームの加群層と D_qc（Toën §3.2）」が中身に合う。DGResolution.Objects・Quotient・nullObjects は任意の dg 圏の cell 分解の後に Drinfeld 商を取る一般論（Objects は DGCategoryCellResolution.Source の abbrev）で dg 商へ。LinearComplex.mappingComplex・enrichment・mappingPostcompose は任意の線形加法圏の複体の dg 増強（mappingComplex は Mathlib の linearHomComplex の abbrev）で dg 圏へ。kInjectiveHomotopyObjects はホモトピー圏での acyclic の右直交（一般の K-injective）、moduleLocalizationR は加群の局所化の自己関手で、どちらも層に固有でない。CoefficientSheaf.Modules は SheafOfModules の abbrev、ResolvedComplexes は DGResolution.Objects の特殊化。QCoh（基礎加群が準連接）と hasQuasicoherentCohomology（D_qc）は docstring で区別されている。"
+}
