@@ -396,3 +396,73 @@ bulk 鍵で対象と利用側 54 モジュールをビルドした。旧型の�
 余テンソルの変更箇所では、100文字を超える行の linter 警告が残った。
 
 所要は約81分。bulk 鍵の待ち時間を含む。
+
+## 段 7　余テンソル
+
+main の `629c2a3f0` を `b61f9db0f` で取り込んだ。段 2 の余テンソル79件と段 4 からの9件を対象とした。判断を保留していた余テンソルの2件は79件に含む。[判定表](../../../research/cleanup-zero-base/spectra/stage7.csv)
+
+C の `cotensor` と `cotensorFunctor` は、変更前に B を円周で特殊化した定義との等式を両方とも `rfl` で確認した。対象と関手の定義を先に揃え、構造・評価・射の補題を整理した。点ごとのテンソルとの随伴も B と `rfl` で一致した。
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 42 | 67 |
+| 別名 | 6 | 2 |
+| B に一般版を足す | 31 | 14 |
+| 固有として残す | 5 | 5 |
+| 判断できない | 4 | 0 |
+
+対象内で C から除く見込みは 73 件で、実測は 81 件。宣言の範囲で数えた見込みは 502 行、実測は 572 行。B の追加は見込み 31 件に対し 14 件。移送した関手の写像、二変数の共役、パラメータ付き随伴の自然性には既存の補題を使い、B にはスペクトルの構造射や各段での評価・転置・射の公式を置いた。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 42 → 33 | 236 → 155 | 2,608 → 1,728 |
+| B | 49 → 52 | 386 → 400 | 4,217 → 4,505 |
+| 利用側 | 10 → 10 | 50 → 50 | 1,122 → 1,119 |
+
+円周を繰り返し指定する余テンソル関手と随伴に別名を使う。基点のない単体集合による構成5件を維持した。[随伴成分の展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv)
+
+### 段 4 から持ち越した7件
+
+| 旧宣言 | 旧型の照合 |
+|---|---|
+| `pointwiseTensorCurry_post` | B の `pointwiseTensorHomEquiv_naturality_parameter` |
+| `pointwiseTensorUncurry_pre` | パラメータ付き随伴の `homEquiv_symm_naturality_one` |
+| `pointwiseTensorEvaluation_pre` | `whiskerLeft_map_counit` を対象で評価し、等式を反転 |
+| `pointwiseTensorEvaluation_formula` | 左随伴を移送した余単位の定義を `rfl` で照合 |
+| `pointwiseTensorEvaluation_level` | B の各段の評価公式 |
+| `pointwiseTensorUncurry_level` | B の各段の逆転置公式 |
+| `pointwiseTensorCurry_level` | B の各段の転置公式 |
+
+7件とも旧型で通り、C の宣言を削除した。保留していた値域の射は移送関手の写像の定義と一致し、両変数の共役は一般の自然同型の公式で得られた。
+
+### 利用箇所の前後
+
+各段の評価法則では、左随伴を移送した余単位の等式を定義から得る。
+
+```diff
+-    (pointwiseTensorEvaluation_formula X E) (cotensorEvaluation_level X E q)
++    rfl (cotensorEvaluation_level X E q)
+```
+
+円周によるループの定義は同じ式を使う。
+
+```lean
+cotensorFunctor (circle : PointedSimplicialSet.{u})
+```
+
+通常の単体集合による転置は随伴の Hom 同値を直接使う。この形の展開は 17 箇所。
+
+```diff
+-  simplicialTensorCotensorHomEquiv K E F f
++  ((simplicialTensorCotensorAdjunction K).homEquiv E F) f
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 34 モジュールをビルドした。旧型の例は 83 件で通った。監査・検査 24 本は前後とも 14 本が成功し、既存の失敗 10 本の診断も一致した。影響範囲のカーネル宣言は 441 → 344 件。既存宣言への公理依存の追加は0件で、`sorryAx` に依存する宣言は 9 → 9 件。対応表で対象宣言を名指しする行は0件。BS17 の検索候補1件はカーネル名と型が一致した。
+
+全体の比較の順射は、同型そのものの等式と各段の式を分けて旧型を照合した。上限設定は変更していない。`CotensorEvaluation.lean` の逆転置の型には行長の警告が1件残った。
+
+削除した空ファイルは 9 本。`Cotensor.lean`、`CotensorAdjunction.lean`、`CotensorCurryNaturality.lean`、`CotensorLevelEvaluation.lean`、`CotensorMapLevels.lean`、`FreeLeftUncurry.lean`、`PointwiseTensorLevelEvaluation.lean`、`PointwiseTensorMapLevels.lean`、`SimplicialCotensorProductNaturality.lean`。
+
+所要は約 23 分。bulk 鍵の待ち時間を含む。

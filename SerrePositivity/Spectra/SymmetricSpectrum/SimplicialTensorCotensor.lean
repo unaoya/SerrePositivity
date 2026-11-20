@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
-open GeneralSymmetricSpectrum (pointwiseTensor)
+open GeneralSymmetricSpectrum (pointwiseTensor cotensor)
 
 open CategoryTheory
 open SerrePositivity.PointedSimplicialSet
@@ -62,15 +62,11 @@ def simplicialTensorMappingHomEquiv (K : SSet.{u}) (E F : SymmetricSpectrum.{u})
     (simplicialTensor K E ⟶ F) ≃ (K ⟶ simplicialMappingSpace E F) :=
   (simplicialTensorMappingAdjunction E).homEquiv K F
 
-/-- tensorからの射とcotensorへの射のHom同値。 -/
-def simplicialTensorCotensorHomEquiv (K : SSet.{u}) (E F : SymmetricSpectrum.{u}) :
-    (simplicialTensor K E ⟶ F) ≃ (E ⟶ simplicialCotensor K F) :=
-  (simplicialTensorCotensorAdjunction K).homEquiv E F
-
 /-- 通常の写像対象への射とcotensorへの射のHom同値。 -/
 def simplicialMappingCotensorHomEquiv (K : SSet.{u}) (E F : SymmetricSpectrum.{u}) :
     (K ⟶ simplicialMappingSpace E F) ≃ (E ⟶ simplicialCotensor K F) :=
-  (simplicialTensorMappingHomEquiv K E F).symm.trans (simplicialTensorCotensorHomEquiv K E F)
+  (simplicialTensorMappingHomEquiv K E F).symm.trans
+    ((simplicialTensorCotensorAdjunction K).homEquiv E F)
 
 /-- 通常の単体的写像対象の評価。 -/
 def simplicialMappingEvaluation (E F : SymmetricSpectrum.{u}) :
@@ -94,24 +90,13 @@ lemma simplicialTensorMappingHomEquiv_naturality_right (K : SSet.{u})
     AdjunctionHomLaws.curryNaturalityRightLaw (simplicialTensorMappingAdjunction E) f g :=
   AdjunctionHomLaws.curry_naturality_right (simplicialTensorMappingAdjunction E) f g
 
-/-- cotensorへのHom同値は原変数スペクトルの射に関して自然。 -/
-lemma simplicialTensorCotensorHomEquiv_naturality_left (K : SSet.{u})
-    {E E' F : SymmetricSpectrum.{u}} (f : E ⟶ E') (g : simplicialTensor K E' ⟶ F) :
-    AdjunctionHomLaws.curryNaturalityLeftLaw (simplicialTensorCotensorAdjunction K) f g :=
-  AdjunctionHomLaws.curry_naturality_left (simplicialTensorCotensorAdjunction K) f g
-
-/-- cotensorへのHom同値は値域スペクトルの射に関して自然。 -/
-lemma simplicialTensorCotensorHomEquiv_naturality_right (K : SSet.{u})
-    {E F G : SymmetricSpectrum.{u}} (f : simplicialTensor K E ⟶ F) (g : F ⟶ G) :
-    AdjunctionHomLaws.curryNaturalityRightLaw (simplicialTensorCotensorAdjunction K) f g :=
-  AdjunctionHomLaws.curry_naturality_right (simplicialTensorCotensorAdjunction K) f g
-
 /-- 三つのHom同値の順写像は同じ転置に一致する。 -/
 lemma simplicialHomEquiv_compatibility (K : SSet.{u}) (E F : SymmetricSpectrum.{u})
     (f : simplicialTensor K E ⟶ F) :
     simplicialMappingCotensorHomEquiv K E F (simplicialTensorMappingHomEquiv K E F f) =
-      simplicialTensorCotensorHomEquiv K E F f := by
+      ((simplicialTensorCotensorAdjunction K).homEquiv E F) f := by
   unfold simplicialMappingCotensorHomEquiv
   rw [Equiv.trans_apply, Equiv.symm_apply_apply]
+  rfl
 
 end SerrePositivity.SymmetricSpectrum

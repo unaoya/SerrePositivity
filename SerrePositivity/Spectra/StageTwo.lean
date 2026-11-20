@@ -1,7 +1,9 @@
 module
 
+public import SerrePositivity.Spectra.General.CotensorEvaluation
+public import SerrePositivity.Spectra.General.CotensorMapLevels
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
-public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialCotensorProductNaturality
+public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct
 public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 
 /-!

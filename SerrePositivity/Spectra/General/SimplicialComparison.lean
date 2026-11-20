@@ -38,7 +38,9 @@ lemma simplicial_pointwiseTensor (X : PointedSimplicialSet.{u}) (E : SymmetricSp
     pointwiseTensor (K := circle) X E = pointwiseTensor X E := rfl
 
 lemma simplicial_cotensor (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
-    cotensor (K := circle) X E = SymmetricSpectrum.cotensor X E := rfl
+    cotensor (K := circle) X E =
+      MonoidalModuleInternalHom.transportedObj sphereSequence.{u}
+        ((SymmetricSequence.freeAt 0).obj X) E (homBySequenceCotensorIso X E) := rfl
 
 lemma simplicial_mappingObject (E F : SymmetricSpectrum.{u}) :
     mappingObject (K := (circle : PointedSimplicialSet.{u})) E F =

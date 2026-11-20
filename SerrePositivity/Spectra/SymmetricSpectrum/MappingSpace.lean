@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
-public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
+public import SerrePositivity.Spectra.General.ParametrizedCotensor
 public import Mathlib.CategoryTheory.Whiskering
 public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping

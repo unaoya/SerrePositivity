@@ -12,3 +12,8 @@ stage,removed_name,expansion,expanded_uses
 6,SerrePositivity.SymmetricSpectrum.internalHomEvaluation,MonoidalModuleInternalHom.evaluation sphereSequence.{u} E F,0
 6,SerrePositivity.SymmetricSpectrum.internalHomUnderlyingEquiv,MonoidalModuleInternalHom.moduleHomEquiv sphereSequence.{u} E F X,0
 6,SerrePositivity.SymmetricSpectrum.shiftedHomEvaluation,MonoidalModuleInternalHom.transportedEvaluation sphereSequence.{u} ((SymmetricSequence.freeAt n).obj X) E (SymmetricSequence.freeInternalHomSequenceIso n X E.X),0
+7,SerrePositivity.SymmetricSpectrum.cotensorCurry,(GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).homEquiv A E f,0
+7,SerrePositivity.SymmetricSpectrum.cotensorUncurry,((GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).homEquiv A E).symm f,0
+7,SerrePositivity.SymmetricSpectrum.cotensorHomEquiv,(GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).homEquiv A E,0
+7,SerrePositivity.SymmetricSpectrum.cotensorEvaluation,(GeneralSymmetricSpectrum.freeZeroTensorCotensorAdjunction X).counit.app E,3
+7,SerrePositivity.SymmetricSpectrum.simplicialTensorCotensorHomEquiv,(simplicialTensorCotensorAdjunction K).homEquiv E F,17

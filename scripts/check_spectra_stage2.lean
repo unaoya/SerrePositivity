@@ -57,14 +57,15 @@ example {E F G : SymmetricSpectrum.{u}} (f : E ⟶ F) (g : F ⟶ G) :
 -- 三つのHom同値の二つの経路が同じ転置を与える。
 example (K : SSet.{u}) (E F : SymmetricSpectrum.{u}) (f : simplicialTensor K E ⟶ F) :
     simplicialMappingCotensorHomEquiv K E F (simplicialTensorMappingHomEquiv K E F f) =
-      simplicialTensorCotensorHomEquiv K E F f := simplicialHomEquiv_compatibility K E F f
+      ((simplicialTensorCotensorAdjunction K).homEquiv E F) f := simplicialHomEquiv_compatibility K E F f
 
 -- Δ[0]はtensor・cotensorの両方の単位。
 example (E : SymmetricSpectrum.{u}) : simplicialTensor (Δ[0] : SSet.{u}) E ≅ E :=
   simplicialTensorUnitNatIso.app E
 
 example (E : SymmetricSpectrum.{u}) : simplicialCotensor (Δ[0] : SSet.{u}) E ≅ E :=
-  simplicialCotensorUnitIso E
+  (ActionUnitAdjunction.rightUnitIso
+    (simplicialTensorCotensorAdjunction (Δ[0] : SSet.{u})) simplicialTensorUnitNatIso).app E
 
 -- 直積による反復比較と、そのパラメータ自然性。
 example (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
@@ -73,7 +74,9 @@ example (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
 
 example (K L : SSet.{u}) (E : SymmetricSpectrum.{u}) :
     simplicialCotensor (K ⊗ L) E ≅ simplicialCotensor L (simplicialCotensor K E) :=
-  simplicialCotensorProductIso K L E
+  (ActionComparisonAdjunction.rightIso (simplicialTensorCotensorAdjunction (K ⊗ L))
+    ((simplicialTensorCotensorAdjunction L).comp (simplicialTensorCotensorAdjunction K))
+    (simplicialTensorProductNatIso K L)).app E
 
 example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpectrum.{u}) :
     ActionProductComparison.parameterLaw adjoinBasepointFunctor.{u} pointwiseTensorBifunctor.{u}
@@ -85,7 +88,47 @@ example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpect
         (adjoinBasepointFunctor.map f) (adjoinBasepointFunctor.map g) E)
 
 example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpectrum.{u}) :
-    simplicialCotensorProductParameterLaw f g E := simplicialCotensorProduct_parameter f g E
+    ActionComparisonNaturality.parameterLaw
+      (simplicialTensorCotensorAdjunction (K ⊗ L))
+      (simplicialTensorCotensorAdjunction (K' ⊗ L'))
+      ((simplicialTensorCotensorAdjunction L).comp (simplicialTensorCotensorAdjunction K))
+      ((simplicialTensorCotensorAdjunction L').comp (simplicialTensorCotensorAdjunction K'))
+      (simplicialTensorProductNatIso K L) (simplicialTensorProductNatIso K' L')
+      (fun F => simplicialCotensorPre (f ⊗ₘ g) F)
+      (fun F => (simplicialCotensorFunctor L').map (simplicialCotensorPre f F) ≫
+        simplicialCotensorPre g (simplicialCotensor K F)) E := by
+  let cotensorAction := GeneralSymmetricSpectrum.cotensorBifunctor (K := PointedSimplicialSet.circle.{u})
+  refine ActionComparisonNaturality.parameter_composite
+    (simplicialTensorCotensorAdjunction L) (simplicialTensorCotensorAdjunction L')
+    (simplicialTensorCotensorAdjunction K) (simplicialTensorCotensorAdjunction K')
+    (pointwiseTensorBifunctor.map (adjoinBasepointFunctor.map g))
+    (pointwiseTensorBifunctor.map (adjoinBasepointFunctor.map f))
+    (cotensorAction.map (adjoinBasepointFunctor.map g).op)
+    (cotensorAction.map (adjoinBasepointFunctor.map f).op)
+    (simplicialTensorCotensorAdjunction (K ⊗ L))
+    (simplicialTensorCotensorAdjunction (K' ⊗ L'))
+    (simplicialTensorProductNatIso K L) (simplicialTensorProductNatIso K' L')
+    (fun F => simplicialTensorPost (f ⊗ₘ g) F)
+    (fun F => simplicialCotensorPre (f ⊗ₘ g) F)
+    ?_ ?_ ?_ E
+  · intro F G h
+    exact simplicialTensorCotensorHomEquiv_post (f ⊗ₘ g) h
+  · intro F G h
+    exact ActionComparisonNaturality.composite_pre
+      (simplicialTensorCotensorAdjunction L) (simplicialTensorCotensorAdjunction L')
+      (simplicialTensorCotensorAdjunction K) (simplicialTensorCotensorAdjunction K')
+      (pointwiseTensorBifunctor.map (adjoinBasepointFunctor.map g))
+      (pointwiseTensorBifunctor.map (adjoinBasepointFunctor.map f))
+      (cotensorAction.map (adjoinBasepointFunctor.map g).op)
+      (cotensorAction.map (adjoinBasepointFunctor.map f).op)
+      (fun _ _ h => simplicialTensorCotensorHomEquiv_post g h)
+      (fun _ _ h => simplicialTensorCotensorHomEquiv_post f h) F G h
+  · intro F
+    exact ActionProductComparison.parameter adjoinBasepointFunctor.{u} pointwiseTensorBifunctor.{u}
+      pointwiseTensorAssociatorNatIso.{u} adjoinBasepointProductIso.{u} f g F
+      (adjoinBasepointProductIso_inv_naturality f g)
+      (GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_naturality
+        (adjoinBasepointFunctor.map f) (adjoinBasepointFunctor.map g) F)
 
 -- 円による随伴は、転置・逆転置が互いに逆となる実際の随伴。
 example : suspensionFunctor.{u} ⊣ loopFunctor.{u} := suspensionLoopAdjunction

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorLevelEvaluation
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
 
 /-! # 円によるスペクトルの懸垂・ループの随伴 -/
 

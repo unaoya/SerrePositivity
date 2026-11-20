@@ -35,16 +35,12 @@ public import SerrePositivity.Spectra.General.ShiftedHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftStructure
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftSuspension
 public import SerrePositivity.Spectra.General.ShiftedHomNaturality
-public import SerrePositivity.Spectra.SymmetricSpectrum.Cotensor
-public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorAdjunction
-public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLeftUncurry
-public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorLevelEvaluation
+public import SerrePositivity.Spectra.General.CotensorStructure
+public import SerrePositivity.Spectra.General.CotensorEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorLevelEvaluation
-public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
+public import SerrePositivity.Spectra.General.ParametrizedCotensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
@@ -64,7 +60,6 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturali
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct
 public import SerrePositivity.CategoryTheory.Monoidal.Action
-public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialCotensorProductNaturality
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
@@ -73,7 +68,7 @@ public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionAssoc
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleAssociator
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
-public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
+public import SerrePositivity.Spectra.General.CotensorMapLevels
 
 /-!
 # スペクトルの具体的基盤の入口
