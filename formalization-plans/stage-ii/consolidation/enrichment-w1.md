@@ -150,3 +150,32 @@ Archive を除く本体の全宣言。記録監査の宣言の表（`scripts/aud
 - 名前と名前空間は Mathlib の作法（`CategoryTheory` の下、Mathlib の命名）に揃える。経緯に由来する名前（`RepresentedMappingEnrichment`、`MappingUnitLaws` など）は数学の名前に改める。
 - docstring は本体の規約どおり（日本語、主張を言葉で）。文献は Kelly "Basic concepts of enriched category theory" と Hovey "Model categories" 第 4 章。
 - Mathlib に出せる形に揃えて書くが、出す作業は今回はしない。
+
+### 決定 6：適用の順番（ユーザー、11-21）
+
+| 段 | 内容 | Lean |
+| --- | --- | --- |
+| 2 | 設計：A3 の入口、B1、B2、B4、C-軽 の型の一覧。加群の圏の一般論に前提（閉モノイダル、F₀ が強モノイダル）が揃っているかの確認。SU-W1 段 14a の型の案 58 件のうち使えるものを引き継ぐ | 変えない |
+| 3 | 一般論 A・B を書く。`CategoryTheory/Enriched/` を決定 5 の形に分け直す。基点付き単体集合（単体集合での豊穣化）で試す | 一般論と試験の例 |
+| 4 | 対称スペクトルに適用（SU-W1 の段 14 に当たる）。写像対象と豊穣化の約 100 宣言を、B2 の適用と段ごとの表示に置き換える | `Spectra/` |
+| 5 | C-軽 を書き、dg と単体集合の両方に適用。充満部分圏 → 対 → 関手の圏と評価 → 表現可能な Hom | 一般論、dg、∞ 圏、S 構成 |
+| 6 | dg から単体的圏への移行（Dold–Kan と Alexander–Whitney）を、基底の取り替えの適用にする | Kerodon、S 構成 |
+| 7 | 残りの直接の構成を一件ずつ見る（Ω スペクトルを含む） | 各所 |
+
+LI-W1（置き直し）は、監査の作り直しが終わった後に並行で進める。段 2 は型の一覧までで止める。段 3 以降は一段ごとに止める。
+
+## 3. 段 2：一般論の設計（型の一覧まで。Lean は変えない）
+
+決定 1〜6 に従う。出力は `research/cleanup-zero-base/enrichment/stage2-types.md`（Lean の型の形で。証明は書かない。`sorry` を含む Lean ファイルは作らない。型は既存の成果物を読み込んで確かめる）と、報告 `report-enrichment.md` の節。
+
+1. **A3 の入口**：`MonoidalLeftAction V M` と、作用の関手 H についての `H.flip ⊣₂ R` から、`EnrichedOrdinaryCategory V M` を作る定義。写像対象・評価・単位・合成の式。既存の `RepresentedMapping` の 63 宣言のうち、この入口の下で要るもの・要らなくなるもの・名前を改めるもの。
+2. **B1**：`TensorCotensor V M` から `EnrichedRepresentability` を構成する定義（同型そのものを返す `def`。存在の主張にしない）と、いまの欄（係数の自然性二つ、点での一致二つ）を示す補題の型。一般に示せない欄があれば、どの仮定を足すか（作用の結合の同型など）。`TensorCotensor` の欄を変える必要があるか。
+3. **B2**：強モノイダルな左随伴 F ⊣ G（F : V → W）と対称モノイダル閉圏 W から、`EnrichedOrdinaryCategory V W`、`TensorCotensor V W`（テンソル F(P) ⊗ X、余テンソル Hom(F(P), X)）を得る定義。Mathlib の `Adjunction.rightAdjointLaxMonoidal`・`TransportEnrichment`（通常の圏を保つ版は単位からの射の全単射を要求する）の上にどう載せるか。対象の型を別名にせず元の型に登録する形にできるか。
+4. **B3・B4**：A3 で作ったものが持つ `TensorCotensor`。B2 で作ったものと、作用 P • X := F(P) ⊗ X から A3 で作ったものの一致を、どの形で述べるか（豊穣圏の構造の等式か、写像対象の同型と単位・合成・転置の両立か）。使う側に要るのはどの形か。
+5. **C-軽**：充満部分圏への制限、二つの豊穣圏の対（テンソル）と挿入、豊穣関手の圏と評価、表現可能な Hom 関手の、一般の V での型。Mathlib の `Enriched/FunctorCategory`・`Opposite`・`HomCongr`・`EnrichedCat`・充満部分圏の版との関係（使う／広げる／別に書く）。V に要る仮定（積、等化子、添字の大きさ）。dg と単体集合の、それぞれどの宣言が適用になるか。
+6. **前提の確認**：加群の圏の一般論（`CategoryTheory/Monoidal/Mod/`）に、「可換モノイド上の加群の圏は対称モノイダル閉」「自由加群の関手は強モノイダル」が、Mathlib の型クラスとして揃っているか。揃っていなければ、何を足すか。対称スペクトルで F₀ ⊣ Ev₀ に B2 を当てたときに出る型と、いまの `mappingObjectBifunctor`・`TensorCotensor` の値との関係。
+7. **試験の例**：基点付き単体集合を単体集合で豊穣化する場合に、B2 を当てたときの型と、いまの `PointedEnrichment.simplicialCategory` との関係。
+8. **ファイルの分け方**（決定 5）に沿った、宣言の置き場所の表。いまの 120 宣言の行き先（残す／改名／消える／移す）。
+9. **見積もり**：足す宣言と行、消える宣言と行、段 3 の分け方の案。
+
+型の一覧・表・報告を書いてコミットし、止まる。
