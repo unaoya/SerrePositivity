@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.FaceDegeneracy.SimplexHABeadWord
 
 /-! # 元の部分集合 bead の未処理の右側頂点

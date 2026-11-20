@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 public import Mathlib.Algebra.Module.Projective

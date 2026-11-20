@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.MonomialOrderCoefficientMap
 public import Mathlib.RingTheory.MvPolynomial.Localization
 public import Mathlib.RingTheory.Localization.Ideal

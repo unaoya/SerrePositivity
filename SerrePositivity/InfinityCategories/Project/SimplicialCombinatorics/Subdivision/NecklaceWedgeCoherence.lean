@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgeStructureNaturality
 
 /-! # 元の necklace の wedge の五角と三角

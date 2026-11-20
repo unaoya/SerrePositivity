@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeProjectionEquivalence
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxVerdierInvariantFiber

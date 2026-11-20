@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.GeneratorChartCover
 public import Mathlib.LinearAlgebra.Matrix.Adjugate
 public import Mathlib.RingTheory.Noetherian.Basic

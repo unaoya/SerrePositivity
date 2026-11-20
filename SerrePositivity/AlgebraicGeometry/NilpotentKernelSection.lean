@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.Algebra.Module.LinearMap.End
 public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.LinearAlgebra.Isomorphisms

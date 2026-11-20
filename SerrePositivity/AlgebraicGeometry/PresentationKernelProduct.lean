@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.LocalPresentationKernel
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 

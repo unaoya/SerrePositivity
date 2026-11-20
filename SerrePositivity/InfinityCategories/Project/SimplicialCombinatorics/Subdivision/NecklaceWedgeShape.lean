@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceShape
 
 /-! # necklace の連結と切断頂点

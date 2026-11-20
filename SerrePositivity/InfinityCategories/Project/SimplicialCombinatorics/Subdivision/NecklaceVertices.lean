@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceCategory
 
 /-! # 元の necklace の頂点と単体的写像の頂点作用

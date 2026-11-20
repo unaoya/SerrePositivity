@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CubeGeneratorWords
 
 /-! # 全ての具体的な cubical 射の生成語による実現

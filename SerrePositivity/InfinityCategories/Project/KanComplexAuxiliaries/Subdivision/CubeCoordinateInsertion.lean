@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CubeNormalFormRestriction
 
 /-! # 選択した入力を元の座標へ戻す零面挿入

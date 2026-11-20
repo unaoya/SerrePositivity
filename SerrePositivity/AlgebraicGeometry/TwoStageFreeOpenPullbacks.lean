@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryFreeOpenLocality
 public import SerrePositivity.AlgebraicGeometry.BlowupOpenChartCover
 public import SerrePositivity.AlgebraicGeometry.ChosenBlowupChartCover

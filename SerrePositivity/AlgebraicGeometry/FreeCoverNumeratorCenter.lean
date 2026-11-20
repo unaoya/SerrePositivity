@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FiniteFlatFreeNeighborhood
 public import Mathlib.RingTheory.Localization.Ideal
 

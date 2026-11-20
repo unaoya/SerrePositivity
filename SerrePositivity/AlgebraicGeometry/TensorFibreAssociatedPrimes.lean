@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.TensorAssociatedPrimeDevissage
 public import SerrePositivity.AlgebraicGeometry.FibreAssociatedPrimeContraction
 

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceWedgeFunctor
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Subdivision.NecklaceVertices
 

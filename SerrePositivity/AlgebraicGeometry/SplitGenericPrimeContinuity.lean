@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.GeometricallyIntegralGenericFreeness
 public import SerrePositivity.AlgebraicGeometry.SplitAlgebraCoefficientMembership
 public import Mathlib.RingTheory.Spectrum.Prime.FreeLocus

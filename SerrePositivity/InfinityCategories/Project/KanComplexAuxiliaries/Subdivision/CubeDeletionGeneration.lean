@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.CubeCoordinateSelection
 
 /-! # 順序を保つ座標選択の削除のみによる実現

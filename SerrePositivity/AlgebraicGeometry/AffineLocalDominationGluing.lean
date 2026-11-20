@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.LocalDominationRestriction
 public import SerrePositivity.AlgebraicGeometry.DenseOpenGluing
 public import SerrePositivity.AlgebraicGeometry.AdmissibleRefinement

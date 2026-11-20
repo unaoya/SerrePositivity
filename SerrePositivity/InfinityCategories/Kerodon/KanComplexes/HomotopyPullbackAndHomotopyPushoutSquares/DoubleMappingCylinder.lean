@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakSpanKanInitialInversion
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PullbackStrictBilateralEdge
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakDenominatorSpanTransport

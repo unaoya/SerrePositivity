@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.OrthogonalCenter
 public import Mathlib.RingTheory.Finiteness.Basic
 

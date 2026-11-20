@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.PureTransformScalarRestriction
 public import SerrePositivity.AlgebraicGeometry.TensorAlgebraModuleFinite
 public import Mathlib.RingTheory.FiniteStability

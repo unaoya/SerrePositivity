@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ProductLiftCenter
 public import SerrePositivity.AlgebraicGeometry.OpenChartUniversal
 public import SerrePositivity.AlgebraicGeometry.AffineCenterDescentSheaf

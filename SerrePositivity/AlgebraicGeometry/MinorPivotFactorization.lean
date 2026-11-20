@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BorderedPivotDeterminant
 public import Mathlib.LinearAlgebra.Matrix.ToLin
 

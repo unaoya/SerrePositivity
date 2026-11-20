@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ChartGluing
 public import SerrePositivity.AlgebraicGeometry.IdealComplementPullback
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowupProper

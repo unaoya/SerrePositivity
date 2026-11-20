@@ -2,7 +2,6 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCategory
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization

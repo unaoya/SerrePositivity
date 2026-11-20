@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices
 public import SerrePositivity.KST.LocalizingInvariants.DiagramVertexTransport

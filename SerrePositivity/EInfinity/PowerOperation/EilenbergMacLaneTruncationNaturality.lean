@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneTruncation
-public import SerrePositivity.HomologicalAlgebra.Complexes.Limits.TruncationInclusionNaturality
+public import SerrePositivity.HomologicalAlgebra.ComplexLimits.TruncationInclusionNaturality
 
 /-!
 # smart 切断の π/H 比較の元の複体射に対する自然性

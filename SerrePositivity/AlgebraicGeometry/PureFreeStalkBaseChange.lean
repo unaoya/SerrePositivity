@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.PureTransformStalkEquiv
 public import SerrePositivity.AlgebraicGeometry.PureTransformCongr
 public import SerrePositivity.AlgebraicGeometry.FlatPureTransformBaseChange

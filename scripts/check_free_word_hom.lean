@@ -56,7 +56,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WeightedWordHom,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.FreeWordHom,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.FreeWordHom,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.PowerCharts
 public import Mathlib.Algebra.Group.Pointwise.Set.BigOperators
 

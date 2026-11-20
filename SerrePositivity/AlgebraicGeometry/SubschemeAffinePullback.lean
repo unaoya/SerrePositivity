@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.AlgebraicGeometry.IdealSheaf.Subscheme
 public import SerrePositivity.AlgebraicGeometry.PullbackComparison
 public import SerrePositivity.AlgebraicGeometry.QuotientPullback

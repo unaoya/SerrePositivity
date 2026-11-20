@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.MatrixMinorIdealOperations
 public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
 

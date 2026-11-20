@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordPresentationDiagram
 import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordPresentation
 
 universe u v w u' v' w' uD vD
@@ -71,8 +71,8 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordPresentationRealization,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordPresentationDiagram,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordPresentation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

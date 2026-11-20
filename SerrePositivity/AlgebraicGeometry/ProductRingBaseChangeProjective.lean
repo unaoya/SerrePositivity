@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ProjectiveScalarRestriction
 public import Mathlib.LinearAlgebra.TensorProduct.Prod
 public import Mathlib.Algebra.Algebra.Prod

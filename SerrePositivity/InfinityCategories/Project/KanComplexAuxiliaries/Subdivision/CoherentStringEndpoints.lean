@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialNerve
 
 /-! # 合成列の二端点の標準再添字

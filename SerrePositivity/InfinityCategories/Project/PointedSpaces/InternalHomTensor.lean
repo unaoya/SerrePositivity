@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange
 public import Mathlib.CategoryTheory.Adjunction.Unique

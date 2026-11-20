@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.TransposeSimplex
 public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.Rows

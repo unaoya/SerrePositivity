@@ -2,7 +2,6 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.CategoryTheory.Preadditive.Biproducts
 public import Mathlib.CategoryTheory.Monoidal.Preadditive
 public import Mathlib.CategoryTheory.Monoidal.Mon

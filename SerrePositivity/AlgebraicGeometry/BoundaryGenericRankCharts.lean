@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryLocallyConstantCharts
 public import SerrePositivity.AlgebraicGeometry.SplitGenericPrimeContinuity
 public import SerrePositivity.AlgebraicGeometry.SplitAlgebraTensorCoefficients

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationAllBases

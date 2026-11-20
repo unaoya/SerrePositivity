@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.LeadingCoefficientLocalization
 public import SerrePositivity.AlgebraicGeometry.LocalizedLeadingDegreeCover
 public import SerrePositivity.AlgebraicGeometry.StandardMonomialQuotient

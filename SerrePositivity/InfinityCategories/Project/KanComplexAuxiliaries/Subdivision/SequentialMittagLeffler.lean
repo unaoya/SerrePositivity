@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import Mathlib.CategoryTheory.CofilteredSystem
 public import Mathlib.CategoryTheory.Functor.OfSequence

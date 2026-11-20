@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful

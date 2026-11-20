@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleColimits
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleFactorization
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness

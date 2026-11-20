@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryMinorCoefficientPower
 public import SerrePositivity.AlgebraicGeometry.CoefficientBlowupGenericFree
 public import SerrePositivity.AlgebraicGeometry.FinitePresentationMatrix

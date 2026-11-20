@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingPreservation
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 
 /-! # Left Quillen left adjoints preserve cosimplicial frames
 

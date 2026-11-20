@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryTorsionLocalization
 public import Mathlib.Algebra.Module.LocalizedModule.IsLocalization
 public import Mathlib.RingTheory.Flat.Localization

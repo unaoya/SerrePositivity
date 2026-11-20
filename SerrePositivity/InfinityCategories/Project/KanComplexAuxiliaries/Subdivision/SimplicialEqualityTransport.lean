@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 
 /-! # 単体集合の表示等号に沿う全単体と面の移送

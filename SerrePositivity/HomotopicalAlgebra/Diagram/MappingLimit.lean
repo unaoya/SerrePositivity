@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import Mathlib.CategoryTheory.Functor.Currying
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence
 
 /-! # Adjunction transports weak-equivalence tests on actual cosimplicial Hom

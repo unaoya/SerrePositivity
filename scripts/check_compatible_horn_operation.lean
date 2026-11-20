@@ -1,5 +1,5 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation
-import SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.CompatibleHornFillingOperation
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.DegenerateHornInput
 import Lean.Util.CollectAxioms
 
 universe v u
@@ -56,7 +56,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputUnion,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.CompatibleHornFillingOperation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

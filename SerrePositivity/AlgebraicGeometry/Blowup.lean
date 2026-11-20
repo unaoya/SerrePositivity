@@ -2,7 +2,6 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.RingTheory.ReesAlgebra
 public import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper
 public import Mathlib.AlgebraicGeometry.Morphisms.Proper

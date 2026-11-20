@@ -75,10 +75,10 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateTriangleOverlap,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.DegenerateTriangleOverlap,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NormalizedTriangleHorn,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NaturalHornFilling,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NormalizedComparisonTriangle,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

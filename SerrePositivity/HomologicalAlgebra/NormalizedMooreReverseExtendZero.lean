@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseZero
+public import SerrePositivity.HomologicalAlgebra.NormalizedMooreReverseEvaluation
 public import SerrePositivity.HomologicalAlgebra.ExtendedChainHomRows
 
 /-!

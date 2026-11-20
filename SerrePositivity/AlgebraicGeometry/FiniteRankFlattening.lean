@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FiniteRankIsogeny
 public import SerrePositivity.AlgebraicGeometry.DeterminantalChartImage
 public import SerrePositivity.AlgebraicGeometry.IdealFlattening

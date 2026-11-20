@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.PrincipalDetector
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowupProper
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowupAway

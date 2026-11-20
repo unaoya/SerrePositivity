@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction
+import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonCoherenceRestriction
 import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarAssociativityCoherence
 import Lean.Util.CollectAxioms
 
@@ -98,8 +98,8 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceTransport,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonCoherenceTransport,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.ComparisonCoherenceRestriction]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

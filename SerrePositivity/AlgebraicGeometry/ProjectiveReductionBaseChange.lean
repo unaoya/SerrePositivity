@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.QuotientModuleBaseChange
 public import Mathlib.Algebra.Module.Projective
 public import Mathlib.LinearAlgebra.TensorProduct.Tower

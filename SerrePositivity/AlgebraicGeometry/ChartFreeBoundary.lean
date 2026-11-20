@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ChartBoundaryLocalization
 public import SerrePositivity.AlgebraicGeometry.FreeTensorBaseChange
 public import Mathlib.RingTheory.Localization.BaseChange

@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BoundaryIdempotentNumerators
 public import Mathlib.RingTheory.Idempotents
 

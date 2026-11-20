@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 
 /-! # 元の恒等 span を、両端固定の実分数空間の点として保持する -/

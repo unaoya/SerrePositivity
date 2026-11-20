@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.WeakSpanSpaceMappingComparison
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
 public import SerrePositivity.KST.Fibration.SpaceLocalizationFactorizationHom

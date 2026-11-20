@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Subdivision.ConcreteCubicalCategory
 public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Cubes.CubeJoinDetection
 

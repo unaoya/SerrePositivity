@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.LinearAlgebra.Pi
 public import Mathlib.LinearAlgebra.Matrix.ToLin
 public import Mathlib.Logic.Equiv.Set

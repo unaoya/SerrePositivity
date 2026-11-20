@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import Mathlib.Algebra.Category.Grp.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs

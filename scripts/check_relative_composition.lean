@@ -56,7 +56,7 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyBinarySquare,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedHomotopyComposition,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.KanComparisonTriangle,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeComposition,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle]
   let mut count : Nat := 0

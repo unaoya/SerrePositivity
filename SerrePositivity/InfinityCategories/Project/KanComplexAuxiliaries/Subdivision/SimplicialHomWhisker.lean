@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 
 /-! # 元の通常射の豊穣表示と全 Hom の前後合成

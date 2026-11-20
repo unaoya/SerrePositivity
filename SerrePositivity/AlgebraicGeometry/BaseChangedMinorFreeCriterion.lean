@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.FiniteFreePresentationBaseChange
 public import SerrePositivity.AlgebraicGeometry.LocalMinorFreeCriterion
 public import SerrePositivity.AlgebraicGeometry.LocalPresentationMinorRank

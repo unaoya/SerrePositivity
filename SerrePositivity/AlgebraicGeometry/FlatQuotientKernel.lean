@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import Mathlib.RingTheory.Flat.Equalizer
 public import Mathlib.LinearAlgebra.TensorProduct.Quotient
 

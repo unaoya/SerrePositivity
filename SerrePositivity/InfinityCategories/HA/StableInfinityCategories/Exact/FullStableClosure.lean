@@ -2,7 +2,6 @@ module
 
 
 public meta import SerrePositivity.Util.Citation
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs

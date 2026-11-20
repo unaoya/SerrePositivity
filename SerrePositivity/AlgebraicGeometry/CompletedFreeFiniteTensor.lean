@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.CompletedFreeEmbedding
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 public import Mathlib.LinearAlgebra.TensorProduct.Basis

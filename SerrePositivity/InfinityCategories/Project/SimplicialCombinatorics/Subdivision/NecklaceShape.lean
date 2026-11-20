@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import Mathlib.Data.Finset.Range
 public import Mathlib.Data.Finset.Card
 public import Mathlib.Order.Hom.Basic

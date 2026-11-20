@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.BlowupDensity
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowupCharts
 public import SerrePositivity.AlgebraicGeometry.KernelLocality

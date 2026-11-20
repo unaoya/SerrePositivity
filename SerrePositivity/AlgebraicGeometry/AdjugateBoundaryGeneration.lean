@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.AdjugateRelationElimination
 public import SerrePositivity.AlgebraicGeometry.PureTransformBoundaryComparison
 public import SerrePositivity.AlgebraicGeometry.LocalMinorPureTransformGeneration

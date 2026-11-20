@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.ChartOverlapPureTransform
 public import SerrePositivity.AlgebraicGeometry.ChartRatioGeneratorCover
 public import SerrePositivity.AlgebraicGeometry.FlatLocalizationFamily

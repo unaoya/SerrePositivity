@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.Util.DeprecatedAlias
 public import SerrePositivity.AlgebraicGeometry.SplitAlgebraCoefficientScalar
 public import SerrePositivity.AlgebraicGeometry.SplitAlgebraCoefficientMembership
 public import Mathlib.RingTheory.Ideal.Colon

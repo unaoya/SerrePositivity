@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Homotopies.CommaComparisons.ArrowSpan
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import Mathlib.CategoryTheory.Elements
 
 /-!

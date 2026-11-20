@@ -1,6 +1,5 @@
 module
 
-public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FractionClassificationSimplexRestriction
 
 /-! # 指定分類成分を元の strict Kan 値で読むと、同じ section 比較の実成分を回収する -/

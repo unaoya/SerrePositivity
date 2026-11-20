@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.AdjunctionHom
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
