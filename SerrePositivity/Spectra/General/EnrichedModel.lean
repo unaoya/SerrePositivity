@@ -28,8 +28,4 @@ lemma pointwiseTensor_isQuillen : IsQuillenBifunctor (pointwiseTensorBifunctor (
       curriedTensor (GeneralSymmetricSpectrum C K)) := isQuillenBifunctor_restrict _
   exact isQuillenBifunctor_of_natIso tensorFreeZeroPointwiseBifunctorIso
 
-local instance enrichedModelOrdinaryCategory : EnrichedOrdinaryCategory C
-    (GeneralSymmetricSpectrum C K) :=
-  mappingEnrichedOrdinaryCategory
-
 end SerrePositivity.GeneralSymmetricSpectrum

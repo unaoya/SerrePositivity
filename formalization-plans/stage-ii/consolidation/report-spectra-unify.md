@@ -976,3 +976,524 @@ bulk 鍵で Spectra と現役本体の逆 import 閉包をビルドした。変�
 11月20日（日本時間）の bulk 鍵待ちは約3時間43分。変更前のビルドは26.9秒、変更後の全体ビルドは34分23秒。カーネルの採取は前43.1秒・後36.0秒。監査の直列再実行は変更前約40分、変更後約59分で、変更後の時間には環境エラーが出た変更前の公理監査1本の再実行を含む。その後、利用側で修正した検査を再実行した。
 
 ビルド、カーネル照合、監査のログは git の外に置いた。[証拠目録](../../../evidence/spectra-unify/stage11/manifest.json)
+
+## 段12・13　自由スペクトル・写像対象の重複を整理
+
+`main` の `ff254d593` を取り込んだ。自由スペクトルの作用付き自然同型の型に現れる `freeAtLevelInductionActionFunctor` は、11月21日の判断に従って名前を残した。以後の候補にも、残す型に現れる名前を保持する規則を適用した。
+
+段12は `199cabdb3` にコミットした。保護対象105件は両段でソースを照合した。両段の削除対象を名指しする文献対応表の行は0件。
+
+### 段11から復元した補題
+
+| ファイル | 復元した補題 |
+|---|---|
+| `General/Basic.lean` | `action_assoc`、`action_hom`、`levelMap_comp` |
+| `General/Evaluation.lean` | `freeAtHomEquiv_apply`、`freeAtGenerator_lift` |
+| `General/FreeLevelQuotient.lean` | `freeAtLevelIsoBlockQuotient_generator`（後合成補題を含む） |
+| `General/PointwiseTensorCoherence.lean` | `pointwiseTensorUnitIso_level` |
+| `General/SuspensionPushout.lean` | `intervalBoundaryCollapse_eq_zero` |
+| `General/TensorFreeAtSum.lean` | `tensorFreePair_naturality` |
+
+`Stable/LocalizingMaps.lean` では、段11で19行になった3つの変更箇所を計5行に戻した。作用の両立式、ブロック商、自由対象のテンソル、境界写像、各段テンソルの単位則を使う箇所でも、等式の書き直しを復元した補題への参照に戻した。
+
+
+### 段12
+
+37件を照合し、6件を削除、31件を保持した。
+
+Spectra のファイル数は 207 → 207 本、ソース行数は 19,037 → 19,019 行、成果物に記録されたカーネル宣言は 2,518 → 2,519 件。
+
+#### 削除した宣言
+
+| 宣言 | 理由 |
+|---|---|
+| `freeAtLevelInductionAction` | 利用側は同時に外す作用付き同型の型だけ。 |
+| `freeAtLevelActionIsoInduction` | 自然同型の成分に一般の freeConvolutionLevelActionIsoInduction を2行で指定した。 |
+| `freeAtLevelDiagram` | 現行の利用箇所がない。対称列に freeConvolutionDiagram がある。 |
+| `freeAtLevelInitial` | 匿名の検査1箇所で一般の freeConvolutionLevelInitial を使用。 |
+| `limitLevelIso` | 匿名の検査1箇所で preservesLimitIso を使用。 |
+| `colimitLevelIso` | 匿名の検査1箇所で preservesColimitIso を使用。 |
+
+#### 主張に現れるので残した定義
+
+| 宣言 | 理由 |
+|---|---|
+| `freeZeroTensorCotensorAdjunction` | cotensorEvaluation_formula と cotensorEvaluation_level の型に現れる。 |
+| `pointwiseTensorHomEquiv` | 保護対象の mappingHom_compatibility の型に現れ、随伴の自然性の式にも使う。 |
+| `freeAtLevelInductionDiagram` | freeAtLevelIsoInduction と freeAtLevelIsoInduction_input の型に現れる。 |
+| `freeAtLevelIsoInduction` | freeAtLevelIsoInduction_input の型に現れる。モデル構造側でも同じ同型を繰り返し使う。 |
+| `freeAtLevelInductionActionFunctor` | freeAtLevelActionNatIsoInduction の型の同型先。11月21日の判断を適用。 |
+| `freeAtLevelBlockQuotient` | freeAtLevelBlockGenerator と freeAtLevelIsoBlockQuotient の型に現れる。 |
+| `freeAtLevelBlockGenerator` | 今回復元した freeAtLevelIsoBlockQuotient_generator の型に現れる。 |
+| `freeAtLevelIsoBlockQuotient` | 今回復元した freeAtLevelIsoBlockQuotient_generator の型に現れる。 |
+| `pointwiseTensorAssociator` | pointwiseTensorAssociator_level や保護対象の pointwiseTensorAssociator_parameter_left・right の型に現れる。 |
+| `pointwiseTensorPost` | pointwiseTensorPost_level、各種自然性、余テンソルと写像対象の比較の型に現れる。 |
+| `pointwiseTensorUnitIso` | 復元した pointwiseTensorUnitIso_level の型に現れる。写像対象の単位と評価にも繰り返し使う。 |
+| `pointwiseTensorTriangleLaw` | pointwiseTensor_triangle の型に現れる。 |
+| `pointwiseTensorLeftUnitLaw` | pointwiseTensor_left_unit の型に現れる。 |
+
+#### 利用側の可読性または保護対象の証明のために残した宣言
+
+| 宣言 | 理由 |
+|---|---|
+| `internalHomCotensorNatIso` | 余テンソルの関手、随伴、二変数の自然同型の3箇所で展開が重複する。 |
+| `pointwiseTensorHomEquiv_naturality_source` | A へ移す cotensorMappingIso_arrow と cotensorMappingAdjunction_naturality_source の現行証明で使う。 |
+| `pointwiseTensorUncurry_level` | 未使用の理論の主張として保護した pointwiseTensorCurry_level の現行証明で使う。 |
+| `freeAtLift_unique` | freeAtLift_eq から呼ぶ。一般の単射性を使うには単位と Hom 同値の逆律を用いる証明を呼び出し元に3行以上書く。 |
+| `generator_lift` | 判断できない lift_unique の証明で使う。自由加群への延長を生成元で計算する等式を保存する。 |
+| `freeAtLevelIsoInduction_input` | 作用付き自然同型で1箇所、モデル構造側で2箇所の計3箇所で同じ自然性を使う。入力射を freeAt_map_underlying で書き換える証明が必要。 |
+| `forget_createsLimits` | 忘却関手 forget は定義に包まれている。forget_preservesLimits と initial_isZero の型クラス登録を保護する。 |
+| `forget_createsColimitsOfShape` | forget_createsColimits、forget_preservesColimits、initial_isZero の既存の型クラス登録を保護する。 |
+| `internalHomCotensorBifunctorIso` | 随伴の輸送と二変数の射の比較に現れる。関手と各成分の自然同型を明示すると展開が3行になる。 |
+| `pointwiseTensorHomEquiv_naturality_parameter` | A へ移す cotensorMappingAdjunction_naturality_parameter の現行証明に現れ、検査でも展開が3回重複する。 |
+| `pointwiseTensor_level` | 各段の作用を計算する等式。保護した結合子の自然性証明2箇所と匿名の検査2箇所で使う。 |
+| `tensorFreeZeroPointwiseIso` | 作用の比較で同じ成分同型を3箇所以上に展開することになる。 |
+| `tensorFreeZeroPointwiseNatIso` | 保護対象の二変数比較・作用のパラメータ射などで使い、同じ自然同型を3箇所以上に展開することになる。 |
+| `pointwiseTensorUnitNatIso` | 左右単位・写像対象など3箇所以上に展開することになり、保護した豊穣圏の別名の本体にも使う。 |
+| `pointwiseTensorAssociator_level` | 保護した結合子の自然性の計算で使う。3箇所以上に展開することになる。 |
+| `pointwiseTensorPentagonLaw` | 円周で検査する式には、一般の述語、Sym(K)、結合子と係数射を指定する3行の展開が必要。 |
+| `pointwiseTensor_triangle` | 保護した cotensorMappingIso_arrow の証明で使う。同じ計算式の展開も3箇所以上になる。 |
+| `pointwiseTensor_left_unit` | 保護した tensorMappingIso_arrow の証明で使う。同じ計算式の展開も3箇所以上になる。 |
+
+bulk 鍵で Spectra と利用側の本体 9,059 モジュールをビルドした。前後に共通する 87,191 件を採取し、残す宣言のカーネル名と型を照合した。内部の補助名は 0 件増え、0 件減った。削除した宣言に付随する生成物は 4 件。削除した名前の現行参照は0件で、公理・`sorryAx` 依存の増加は0件。監査・検査 36 本は成否とエラーの内容が前後で一致し、成功 16 本、既存の失敗 20 本。[証拠目録](../../../evidence/spectra-unify/stage12/manifest.json)
+
+過去の比較目録 `scripts/refactor/targets/w2a-2-v3b-comparison.json` には `limitLevelIso` と `colimitLevelIso` が各6回記録されている。この目録は履歴として保存した。
+
+分類対象のソース宣言は336 → 339件。復元した補題を呼ぶ利用側の参照17箇所を短くした。`open` の名前指定と復元した補題内の参照はこの数の外にある。
+
+段12で削除に伴って置き換えた使用箇所は4箇所。作用付き自然同型の成分1箇所と、始対象・極限・余極限の匿名の検査各1箇所。復元した9件は段11前の成果物にも照合した。
+
+
+### 段13
+
+37件を照合し、10件を削除、27件を保持した。
+
+Spectra のファイル数は 207 → 207 本、ソース行数は 19,019 → 18,960 行、成果物に記録されたカーネル宣言は 2,519 → 2,509 件。
+
+#### 削除した宣言
+
+| 宣言 | 理由 |
+|---|---|
+| `enrichedModelOrdinaryCategory` | 局所インスタンスの利用者が段11で消えている。 |
+| `mappingObjectCompositionEvaluationLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectUnitEvaluationLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectArrowIdentityLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectLeftUnitLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectRightUnitLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectAssociativityLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectArrowEvaluationLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `mappingObjectArrowCompositionLaw` | 段11の利用側の書き換えにより、現行の利用箇所がない。一般の法則を直接使っている。 |
+| `simplicialCotensorNatIso` | 現行の利用箇所がない。既存の随伴から Adjunction.rightAdjointUniq を作れる。 |
+
+#### 主張に現れるので残した定義
+
+| 宣言 | 理由 |
+|---|---|
+| `cotensorMappingAdjunction` | 保護対象の cotensorMappingAdjunction_naturality_parameter と _source の型に現れる。 |
+| `cotensorMappingPowerAdjunction` | 保護対象の cotensorMappingPowerAdjunction_naturality_parameter、_source、_unit の型に現れる。 |
+| `cotensorMappingIso` | 保護対象の cotensorMappingIso_arrow と _naturality_source などの型に現れる。 |
+| `mappingObjectLeftUnitEvaluationLaw` | mappingObject_left_unit_evaluation の型に現れる。 |
+| `mappingObjectRightUnitEvaluationLaw` | mappingObject_right_unit_evaluation の型に現れる。 |
+| `mappingObjectAssociativityEvaluationLaw` | mappingObject_associativity_evaluation の型に現れる。 |
+| `mappingObjectArrowCompositionEvaluationLaw` | mappingObjectArrow_composition_evaluation の型に現れる。 |
+| `shiftedHomStructureIndex` | shiftedHom_structureMap_evaluation や suspensionMap_shiftedIndex の型に現れる。 |
+| `intervalBoundaryCoproductIso` | intervalBoundaryCoproductIso_inclusion の型に現れる。 |
+| `tensorFreePair` | 復元した tensorFreePair_naturality の型に現れる。 |
+| `tensorMappingIso` | 保護対象の tensorMappingIso_arrow、tensorEnrichedMappingIso_hom_app などの型に現れる。 |
+
+#### 利用側の可読性または保護対象の証明のために残した宣言
+
+| 宣言 | 理由 |
+|---|---|
+| `cotensorMappingNatIso_homEquiv` | 保護対象の cotensorMappingIso_arrow の証明で使う。二つの随伴の同値と同型を明示すると3行以上になる。 |
+| `mappingObject_left_unit_evaluation` | 左右の自然性と単位の評価の証明を含む。豊穣圏と豊穣通常圏の証明に展開すると各3行以上になる。 |
+| `mappingObject_right_unit_evaluation` | 作用の三角則と評価を組み合わせる証明。豊穣圏と豊穣通常圏の証明に展開すると各3行以上になる。 |
+| `mappingObject_associativity_evaluation` | 作用の左右の自然性と五角形を使う。二つの使い手への展開は各3行以上になる。 |
+| `mappingObjectArrow_composition_evaluation` | 二つの評価とその自然性の証明を豊穣通常圏の構成に展開すると3行以上になる。 |
+| `mappingObjectComposition_post` | eHomWhiskerLeft_eq_mappingObjectMap の証明に主要な比較を展開すると3行以上になる。 |
+| `mappingObjectComposition_pre` | 保護対象 eHomWhiskerRight_eq_mappingObjectMap の証明で使う。 |
+| `eHomWhiskerLeft_eq_mappingObjectMap` | 保護対象 cotensorEnrichedMappingIso_parameter の証明で使う。 |
+| `mappingObjectHomEquiv_naturality_parameter` | 保護対象の余テンソルとテンソルの写像対象比較で、同じ自然性の展開が3箇所以上になる。 |
+| `mappingObjectHomEquiv_naturality_target` | 保護対象 cotensorMappingAdjunction_naturality_parameter の証明で使う。 |
+| `mappingObjectHomEquiv_naturality_source` | 保護対象の輸送した随伴・二変数の比較で、同じ自然性の展開が3箇所以上になる。 |
+| `simplicialLoopNatIso` | 懸垂とループの単位・余単位の検査で同じ右随伴比較を4箇所に使う。 |
+| `tensorMappingNatIso_homEquiv` | 保護対象 tensorMappingIso_arrow の証明で使う。写像対象の同値を展開すると3行以上になる。 |
+| `sphereTensorFreeAtSum` | モデル構造の自由スペクトルの押し出し積の証明で3箇所以上に現れる。 |
+| `pointwiseTensorAssociatorNatIso` | C の保護対象 simplicialTensorProductNatIso の証明で使う。 |
+| `pointwiseTensorUnitNatIso` | C の保護対象 simplicialTensorUnitNatIso の証明で使う。 |
+
+bulk 鍵で Spectra と利用側の本体 9,059 モジュールをビルドした。前後に共通する 87,188 件を採取し、残す宣言のカーネル名と型を照合した。内部の補助名は 4 件増え、0 件減った。削除した宣言に付随する生成物は 4 件。削除した名前の現行参照は0件で、公理・`sorryAx` 依存の増加は0件。監査・検査 28 本は成否とエラーの内容が前後で一致し、成功 14 本、既存の失敗 14 本。[証拠目録](../../../evidence/spectra-unify/stage13/manifest.json)
+
+分類対象のソース宣言は339 → 329件。段13で置き換えた使用箇所は0箇所。削除した10件は現行の利用箇所がない。
+
+### 所要時間と検証時の調整
+
+11月21日（日本時間）。段12は再開からコミットまで約21分。取り込み済みの成果物を再利用してビルドした。
+段13は 06:01:46 に鍵を申請し、時刻記録の書式エラーを修正して再投入した。検証開始 06:38:20、全体ビルド完了 06:39:51、監査・検査の照合完了 06:44:30。
+
+### 段14の型の一覧案（39件）
+
+型は現在の宣言ヘッダーから採った。名前空間と節変数はリンク先を参照。段14で A 側の相手と型・仮定を並べて照合する。
+
+#### 写像対象と豊穣化（30件）
+
+[cotensorMappingParameterIso](../../../SerrePositivity/Spectra/General/CotensorMappingObject.lean#L24)
+
+```lean
+def cotensorMappingParameterIso (X : C) (E : GeneralSymmetricSpectrum C K) :
+    tensorLeft X ⋙ mappingTensorFunctor E ≅ mappingTensorFunctor E ⋙ pointwiseTensorFunctor X
+```
+
+[cotensorMappingNatIso](../../../SerrePositivity/Spectra/General/CotensorMappingObject.lean#L45)
+
+```lean
+def cotensorMappingNatIso (X : C) (E : GeneralSymmetricSpectrum C K) :
+    cotensorFunctor X ⋙ mappingObjectFunctor E ≅ mappingObjectFunctor E ⋙ ihom X
+```
+
+[cotensorMappingAdjunction_naturality_parameter](../../../SerrePositivity/Spectra/General/CotensorMappingParameter.lean#L19)
+
+```lean
+lemma cotensorMappingAdjunction_naturality_parameter {X Y : C} (f : X ⟶ Y)
+    (Z : C) (E F : GeneralSymmetricSpectrum C K)
+    (g : pointwiseTensor Y (pointwiseTensor Z E) ⟶ F) :
+    (cotensorMappingAdjunction X E).homEquiv Z F
+        (pointwiseTensorPost f (pointwiseTensor Z E) ≫ g) =
+      (cotensorMappingAdjunction Y E).homEquiv Z F g ≫
+        (mappingObjectFunctor E).map ((cotensorBifunctor.map f.op).app F)
+```
+
+[cotensorMappingPowerAdjunction_naturality_parameter](../../../SerrePositivity/Spectra/General/CotensorMappingParameter.lean#L35)
+
+```lean
+lemma cotensorMappingPowerAdjunction_naturality_parameter {X Y : C} (f : X ⟶ Y)
+    (Z : C) (E F : GeneralSymmetricSpectrum C K) (g : pointwiseTensor (Y ⊗ Z) E ⟶ F) :
+    (cotensorMappingPowerAdjunction X E).homEquiv Z F (pointwiseTensorPost (f ▷ Z) E ≫ g) =
+      (cotensorMappingPowerAdjunction Y E).homEquiv Z F g ≫
+        (MonoidalClosed.pre f).app (mappingObject E F)
+```
+
+[cotensorMappingIso_naturality_parameter](../../../SerrePositivity/Spectra/General/CotensorMappingParameter.lean#L51)
+
+```lean
+lemma cotensorMappingIso_naturality_parameter {X Y : C} (f : X ⟶ Y)
+    (E F : GeneralSymmetricSpectrum C K) :
+    (mappingObjectFunctor E).map ((cotensorBifunctor.map f.op).app F) ≫
+        (cotensorMappingIso X E F).hom =
+      (cotensorMappingIso Y E F).hom ≫ (MonoidalClosed.pre f).app (mappingObject E F)
+```
+
+[cotensorMappingPowerAdjunction_unit](../../../SerrePositivity/Spectra/General/CotensorMappingPoints.lean#L18)
+
+```lean
+lemma cotensorMappingPowerAdjunction_unit (X : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : pointwiseTensor X E ⟶ F) :
+    (cotensorMappingPowerAdjunction X E).homEquiv (𝟙_ C) F
+        (pointwiseTensorPost (ρ_ X).hom E ≫ f) =
+      MonoidalClosed.curry' (mappingObjectHomEquiv X E F f)
+```
+
+[cotensorMappingIso_arrow](../../../SerrePositivity/Spectra/General/CotensorMappingPoints.lean#L31)
+
+```lean
+lemma cotensorMappingIso_arrow (X : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : E ⟶ cotensor X F) :
+    mappingObjectArrow f ≫ (cotensorMappingIso X E F).hom =
+      MonoidalClosed.curry' (cotensorMappingHomEquiv X E F f)
+```
+
+[cotensorEnrichedMappingIso_points](../../../SerrePositivity/Spectra/General/CotensorMappingPoints.lean#L68)
+
+```lean
+lemma cotensorEnrichedMappingIso_points (X : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : E ⟶ cotensor X F) :
+    (MonoidalClosed.curryHomEquiv' (X := X) (Y := E ⟶[C] F)).symm
+        (eHomEquiv C f ≫ ((cotensorEnrichedMappingIso X).hom.app (op E)).app F) =
+      spectrumTensorCotensor.cotensorHomEquiv X E F f
+```
+
+[cotensorMappingAdjunction_naturality_source](../../../SerrePositivity/Spectra/General/CotensorMappingSource.lean#L21)
+
+```lean
+lemma cotensorMappingAdjunction_naturality_source (X Z : C)
+    {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) (g : pointwiseTensor X (pointwiseTensor Z E') ⟶ F) :
+    (cotensorMappingAdjunction X E).homEquiv Z F
+        ((pointwiseTensorFunctor X).map ((pointwiseTensorFunctor Z).map f) ≫ g) =
+      (cotensorMappingAdjunction X E').homEquiv Z F g ≫
+        (mappingObjectBifunctor.map f.op).app ((cotensorFunctor X).obj F)
+```
+
+[cotensorMappingPowerAdjunction_naturality_source](../../../SerrePositivity/Spectra/General/CotensorMappingSource.lean#L36)
+
+```lean
+lemma cotensorMappingPowerAdjunction_naturality_source (X Z : C)
+    {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) (g : pointwiseTensor (X ⊗ Z) E' ⟶ F) :
+    (cotensorMappingPowerAdjunction X E).homEquiv Z F
+        ((pointwiseTensorFunctor (X ⊗ Z)).map f ≫ g) =
+      (cotensorMappingPowerAdjunction X E').homEquiv Z F g ≫
+        (ihom X).map ((mappingObjectBifunctor.map f.op).app F)
+```
+
+[cotensorMappingIso_naturality_source](../../../SerrePositivity/Spectra/General/CotensorMappingSource.lean#L54)
+
+```lean
+lemma cotensorMappingIso_naturality_source (X : C)
+    {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) :
+    (mappingObjectBifunctor.map f.op).app ((cotensorFunctor X).obj F) ≫
+        (cotensorMappingIso X E F).hom =
+      (cotensorMappingIso X E' F).hom ≫
+        (ihom X).map ((mappingObjectBifunctor.map f.op).app F)
+```
+
+[cotensorMappingBifunctorIso](../../../SerrePositivity/Spectra/General/CotensorMappingSource.lean#L83)
+
+```lean
+def cotensorMappingBifunctorIso (X : C) :
+    mappingObjectBifunctor (K := K) ⋙
+        (Functor.whiskeringLeft _ _ _).obj (cotensorFunctor X) ≅
+      mappingObjectBifunctor ⋙ (Functor.whiskeringRight _ _ _).obj (ihom X)
+```
+
+[tensorEnrichedMappingIso](../../../SerrePositivity/Spectra/General/EnrichedMappingObjects.lean#L29)
+
+```lean
+def tensorEnrichedMappingIso (X : C) :
+    Enriched.tensorEnrichedHom (spectrumTensorCotensor (K := K)) X ≅
+      Enriched.powerHom (C := GeneralSymmetricSpectrum C K) X
+```
+
+[cotensorEnrichedMappingIso](../../../SerrePositivity/Spectra/General/EnrichedMappingObjects.lean#L38)
+
+```lean
+def cotensorEnrichedMappingIso (X : C) :
+    Enriched.cotensorEnrichedHom (spectrumTensorCotensor (K := K)) X ≅
+      Enriched.powerHom (C := GeneralSymmetricSpectrum C K) X
+```
+
+[tensorEnrichedMappingIso_hom_app](../../../SerrePositivity/Spectra/General/EnrichedMappingParameter.lean#L23)
+
+```lean
+lemma tensorEnrichedMappingIso_hom_app (X : C) (E F : GeneralSymmetricSpectrum C K) :
+    ((tensorEnrichedMappingIso X).hom.app (op E)).app F = (tensorMappingIso X E F).hom
+```
+
+[cotensorEnrichedMappingIso_hom_app](../../../SerrePositivity/Spectra/General/EnrichedMappingParameter.lean#L28)
+
+```lean
+lemma cotensorEnrichedMappingIso_hom_app (X : C) (E F : GeneralSymmetricSpectrum C K) :
+    ((cotensorEnrichedMappingIso X).hom.app (op E)).app F = (cotensorMappingIso X E F).hom
+```
+
+[tensorEnrichedMappingIso_parameter](../../../SerrePositivity/Spectra/General/EnrichedMappingParameter.lean#L34)
+
+```lean
+lemma tensorEnrichedMappingIso_parameter {X Y : C} (f : X ⟶ Y)
+    (E F : GeneralSymmetricSpectrum C K) :
+    eHomWhiskerRight C ((pointwiseTensorBifunctor.map f).app E) F ≫
+        ((tensorEnrichedMappingIso X).hom.app (op E)).app F =
+      ((tensorEnrichedMappingIso Y).hom.app (op E)).app F ≫
+        (MonoidalClosed.pre f).app (E ⟶[C] F)
+```
+
+[cotensorEnrichedMappingIso_parameter](../../../SerrePositivity/Spectra/General/EnrichedMappingParameter.lean#L45)
+
+```lean
+lemma cotensorEnrichedMappingIso_parameter {X Y : C} (f : X ⟶ Y)
+    (E F : GeneralSymmetricSpectrum C K) :
+    eHomWhiskerLeft C E ((cotensorBifunctor.map f.op).app F) ≫
+        ((cotensorEnrichedMappingIso X).hom.app (op E)).app F =
+      ((cotensorEnrichedMappingIso Y).hom.app (op E)).app F ≫
+        (MonoidalClosed.pre f).app (E ⟶[C] F)
+```
+
+[pointwiseTensorMappingParametrizedAdjunction](../../../SerrePositivity/Spectra/General/ParametrizedMapping.lean#L31)
+
+```lean
+def pointwiseTensorMappingParametrizedAdjunction :
+    (pointwiseTensorBifunctor (K := K)).flip ⊣₂ mappingObjectBifunctor
+```
+
+[tensorMappingParameterIso](../../../SerrePositivity/Spectra/General/TensorMappingObject.lean#L24)
+
+```lean
+def tensorMappingParameterIso (X : C) (E : GeneralSymmetricSpectrum C K) :
+    tensorRight X ⋙ mappingTensorFunctor E ≅ mappingTensorFunctor (pointwiseTensor X E)
+```
+
+[tensorMappingPowerAdjunction](../../../SerrePositivity/Spectra/General/TensorMappingObject.lean#L33)
+
+```lean
+def tensorMappingPowerAdjunction (X : C) (E : GeneralSymmetricSpectrum C K) :
+    tensorRight X ⋙ mappingTensorFunctor E ⊣ mappingObjectFunctor E ⋙ ihom X
+```
+
+[tensorMappingNatIso](../../../SerrePositivity/Spectra/General/TensorMappingObject.lean#L39)
+
+```lean
+def tensorMappingNatIso (X : C) (E : GeneralSymmetricSpectrum C K) :
+    mappingObjectFunctor (pointwiseTensor X E) ≅ mappingObjectFunctor E ⋙ ihom X
+```
+
+[tensorMappingPowerAdjunction_naturality_parameter](../../../SerrePositivity/Spectra/General/TensorMappingParameter.lean#L19)
+
+```lean
+lemma tensorMappingPowerAdjunction_naturality_parameter {X Y : C} (f : X ⟶ Y)
+    (Z : C) (E F : GeneralSymmetricSpectrum C K) (g : pointwiseTensor (Z ⊗ Y) E ⟶ F) :
+    (tensorMappingPowerAdjunction X E).homEquiv Z F (pointwiseTensorPost (Z ◁ f) E ≫ g) =
+      (tensorMappingPowerAdjunction Y E).homEquiv Z F g ≫
+        (MonoidalClosed.pre f).app (mappingObject E F)
+```
+
+[tensorMappingIso_naturality_parameter](../../../SerrePositivity/Spectra/General/TensorMappingParameter.lean#L45)
+
+```lean
+lemma tensorMappingIso_naturality_parameter {X Y : C} (f : X ⟶ Y)
+    (E F : GeneralSymmetricSpectrum C K) :
+    (mappingObjectBifunctor.map (pointwiseTensorPost f E).op).app F ≫
+        (tensorMappingIso X E F).hom =
+      (tensorMappingIso Y E F).hom ≫ (MonoidalClosed.pre f).app (mappingObject E F)
+```
+
+[tensorMappingPowerAdjunction_unit](../../../SerrePositivity/Spectra/General/TensorMappingPoints.lean#L18)
+
+```lean
+lemma tensorMappingPowerAdjunction_unit (X : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : pointwiseTensor X E ⟶ F) :
+    (tensorMappingPowerAdjunction X E).homEquiv (𝟙_ C) F
+        (pointwiseTensorPost (λ_ X).hom E ≫ f) =
+      MonoidalClosed.curry' (mappingObjectHomEquiv X E F f)
+```
+
+[tensorMappingIso_arrow](../../../SerrePositivity/Spectra/General/TensorMappingPoints.lean#L36)
+
+```lean
+lemma tensorMappingIso_arrow (X : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : pointwiseTensor X E ⟶ F) :
+    mappingObjectArrow f ≫ (tensorMappingIso X E F).hom =
+      MonoidalClosed.curry' (mappingObjectHomEquiv X E F f)
+```
+
+[tensorEnrichedMappingIso_points](../../../SerrePositivity/Spectra/General/TensorMappingPoints.lean#L63)
+
+```lean
+lemma tensorEnrichedMappingIso_points (X : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : pointwiseTensor X E ⟶ F) :
+    (MonoidalClosed.curryHomEquiv' (X := X) (Y := E ⟶[C] F)).symm
+        (eHomEquiv C f ≫ ((tensorEnrichedMappingIso X).hom.app (op E)).app F) =
+      spectrumTensorCotensor.tensorHomEquiv X E F f
+```
+
+[tensorMappingPowerAdjunction_naturality_source](../../../SerrePositivity/Spectra/General/TensorMappingSource.lean#L20)
+
+```lean
+lemma tensorMappingPowerAdjunction_naturality_source (X Z : C)
+    {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) (g : pointwiseTensor (Z ⊗ X) E' ⟶ F) :
+    (tensorMappingPowerAdjunction X E).homEquiv Z F
+        ((pointwiseTensorFunctor (Z ⊗ X)).map f ≫ g) =
+      (tensorMappingPowerAdjunction X E').homEquiv Z F g ≫
+        (ihom X).map ((mappingObjectBifunctor.map f.op).app F)
+```
+
+[tensorMappingIso_naturality_source](../../../SerrePositivity/Spectra/General/TensorMappingSource.lean#L38)
+
+```lean
+lemma tensorMappingIso_naturality_source (X : C)
+    {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) :
+    (mappingObjectBifunctor.map ((pointwiseTensorFunctor X).map f).op).app F ≫
+        (tensorMappingIso X E F).hom =
+      (tensorMappingIso X E' F).hom ≫ (ihom X).map ((mappingObjectBifunctor.map f.op).app F)
+```
+
+[tensorMappingBifunctorIso](../../../SerrePositivity/Spectra/General/TensorMappingSource.lean#L67)
+
+```lean
+def tensorMappingBifunctorIso (X : C) :
+    (pointwiseTensorFunctor (K := K) X).op ⋙ mappingObjectBifunctor ≅
+      mappingObjectBifunctor ⋙ (Functor.whiskeringRight _ _ _).obj (ihom X)
+```
+
+#### 各段のテンソル（6件）
+
+[pointwiseTensorBifunctor](../../../SerrePositivity/Spectra/General/PointwiseTensor.lean#L46)
+
+```lean
+def pointwiseTensorBifunctor : C ⥤ GeneralSymmetricSpectrum C K ⥤ GeneralSymmetricSpectrum C K
+```
+
+[tensorFreeZeroPointwiseBifunctorIso](../../../SerrePositivity/Spectra/General/PointwiseTensor.lean#L50)
+
+```lean
+def tensorFreeZeroPointwiseBifunctorIso :
+    (freeAt (K := K) 0) ⋙ curriedTensor (GeneralSymmetricSpectrum C K) ≅
+      pointwiseTensorBifunctor
+```
+
+[pointwiseTensorAssociator_naturality](../../../SerrePositivity/Spectra/General/PointwiseTensor.lean#L75)
+
+```lean
+lemma pointwiseTensorAssociator_naturality (X Y : C)
+    {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) :
+    (pointwiseTensorFunctor (X ⊗ Y)).map f ≫ (pointwiseTensorAssociator X Y F).hom =
+      (pointwiseTensorAssociator X Y E).hom ≫
+        (pointwiseTensorFunctor X).map ((pointwiseTensorFunctor Y).map f)
+```
+
+[pointwiseTensorAssociatorNatIso](../../../SerrePositivity/Spectra/General/PointwiseTensor.lean#L92)
+
+```lean
+def pointwiseTensorAssociatorNatIso (X Y : C) :
+    pointwiseTensorFunctor (K := K) (X ⊗ Y) ≅
+      pointwiseTensorFunctor Y ⋙ pointwiseTensorFunctor X
+```
+
+[pointwiseTensorPost_level](../../../SerrePositivity/Spectra/General/PointwiseTensorCoherence.lean#L24)
+
+```lean
+lemma pointwiseTensorPost_level {X Y : C} (f : X ⟶ Y)
+    (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    (pointwiseTensorPost f E).hom.app (FiniteBijection.of n) = f ▷ level E n
+```
+
+[pointwiseTensorAssociator_parameter_naturality](../../../SerrePositivity/Spectra/General/PointwiseTensorCoherence.lean#L100)
+
+```lean
+lemma pointwiseTensorAssociator_parameter_naturality {X X' Y Y' : C}
+    (f : X ⟶ X') (g : Y ⟶ Y') (E : GeneralSymmetricSpectrum C K) :
+    pointwiseTensorPost (f ⊗ₘ g) E ≫ (pointwiseTensorAssociator X' Y' E).hom =
+      (pointwiseTensorAssociator X Y E).hom ≫ pointwiseTensorPost f (pointwiseTensor Y E) ≫
+        (pointwiseTensorFunctor X').map (pointwiseTensorPost g E)
+```
+
+#### 基本と構造射（2件）
+
+[pairing](../../../SerrePositivity/Spectra/General/StructureMaps.lean#L28)
+
+```lean
+def pairing (F G : SymmetricSequence C) (p q : ℕ) :
+    SymmetricSequence.level F p ⊗ SymmetricSequence.level G q ⟶
+      SymmetricSequence.level (SymmetricSequence.convolution F G) (p + q)
+```
+
+[pairing_equivariance](../../../SerrePositivity/Spectra/General/StructureMaps.lean#L34)
+
+```lean
+lemma pairing_equivariance (F G : SymmetricSequence C) (p q : ℕ)
+    (σ : Equiv.Perm (Fin p)) (τ : Equiv.Perm (Fin q)) :
+    (F.map (FiniteBijection.permutation p σ) ⊗ₘ G.map (FiniteBijection.permutation q τ)) ≫
+      pairing F G p q = pairing F G p q ≫ (SymmetricSequence.convolution F G).map
+        (FiniteBijection.sumMap (FiniteBijection.permutation p σ)
+          (FiniteBijection.permutation q τ))
+```
+
+#### 極限と余極限（1件）
+
+[initial_isZero](../../../SerrePositivity/Spectra/General/Zero.lean#L25)
+
+```lean
+lemma initial_isZero : IsZero (⊥_ (GeneralSymmetricSpectrum C K))
+```

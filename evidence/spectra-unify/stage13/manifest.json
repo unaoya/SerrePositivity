@@ -1,0 +1,228 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/spectra-unify/stage13",
+ "commit": "199cabdb35450fbd59538ce5356022cb602c14a8",
+ "made_by": "bulk 鍵で本体の逆 import 閉包をビルドし、カーネル宣言と監査・検査の結果を照合。",
+ "files": [
+  {
+   "path": "actual-removed.json",
+   "sha256": "c1350a61b53e6e697cf5f3dec61bccd33cc5521c5311d5d73b2ae073fb7fe859",
+   "bytes": 763
+  },
+  {
+   "path": "after-build.log.gz",
+   "sha256": "6c0c962c4b8bc752bcce891f892921e091cfec3b503f97dec0a60b5e357fb089",
+   "bytes": 1814532
+  },
+  {
+   "path": "after-checks.tar.gz",
+   "sha256": "90d964aea70da079ed54738a936dbd2e28bb66e9851fd45e27d8809c0c975102",
+   "bytes": 9455
+  },
+  {
+   "path": "after-headers.json.gz",
+   "sha256": "4f569925b8c09535c5aeb83c0faf95e787c361aa0b1dc9d0e73f5c57a041ef94",
+   "bytes": 624102
+  },
+  {
+   "path": "after-kernel.jsonl.gz",
+   "sha256": "174b392dc6261f50cefe179b24422004a0490a4c0fa08b8c1689a521ee95b047",
+   "bytes": 21281019
+  },
+  {
+   "path": "after-kernel.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "path": "after-leaves",
+   "sha256": "e03826329b8b41d49a1229e2429349dba10cd2e2083733e625275d56724e851d",
+   "bytes": 7845
+  },
+  {
+   "path": "after-production",
+   "sha256": "01d9c0a3f9a2cff653df3b224ee2880b3dabdae56b40c1af41de716cb8010133",
+   "bytes": 746940
+  },
+  {
+   "path": "after-req.tsv",
+   "sha256": "d3631bcfa72ef10e811dfa800270e1de10e109406a522746bc8d3e69dcef6398",
+   "bytes": 1738473
+  },
+  {
+   "path": "after-retry.log",
+   "sha256": "4f655b82fd55295033edf246763bdd0109ebdb4d72375b73e557bfeb554e3d61",
+   "bytes": 3355
+  },
+  {
+   "path": "after-spectra",
+   "sha256": "eeca57f655ea130cb61de53a94a8459ecadc5ec3a947f9ea9dae0f6e113cfbf8",
+   "bytes": 11403
+  },
+  {
+   "path": "after.log",
+   "sha256": "badb98e9a1a16c036bafc7cdbe269e023817cd0ee46bfd108af5f2a87a4922d9",
+   "bytes": 18515
+  },
+  {
+   "path": "before-checks.tar.gz",
+   "sha256": "d72fb6ab2635c6ec85d8fe611838d5b4486743b418d6bbbc1522414a5134994f",
+   "bytes": 10117
+  },
+  {
+   "path": "before-headers.json.gz",
+   "sha256": "278244f1a6497a988c2ad9f1aa1de98849e10549e0973eb7a7379641bcf21095",
+   "bytes": 624103
+  },
+  {
+   "path": "before-kernel.jsonl.gz",
+   "sha256": "42636549ec45221b5f36bef40c277ebf08965290f7d465f5d65b0cac2ea58160",
+   "bytes": 21281935
+  },
+  {
+   "path": "before-leaves",
+   "sha256": "e03826329b8b41d49a1229e2429349dba10cd2e2083733e625275d56724e851d",
+   "bytes": 7845
+  },
+  {
+   "path": "before-production",
+   "sha256": "01d9c0a3f9a2cff653df3b224ee2880b3dabdae56b40c1af41de716cb8010133",
+   "bytes": 746940
+  },
+  {
+   "path": "before-req.tsv",
+   "sha256": "d3631bcfa72ef10e811dfa800270e1de10e109406a522746bc8d3e69dcef6398",
+   "bytes": 1738473
+  },
+  {
+   "path": "before-spectra",
+   "sha256": "eeca57f655ea130cb61de53a94a8459ecadc5ec3a947f9ea9dae0f6e113cfbf8",
+   "bytes": 11403
+  },
+  {
+   "path": "built-at",
+   "sha256": "19952b7a64a1e37e574c7944bff96fbf10aefc3c2017d64373db03a6d143128d",
+   "bytes": 9
+  },
+  {
+   "path": "check-comparison.log",
+   "sha256": "4825816286a57879d511aa9965e462817470f223e3a77cefa123df95fec0a93f",
+   "bytes": 34
+  },
+  {
+   "path": "check-diagnostics.py",
+   "sha256": "adcd8770825697e945e2d67a65f966a2e7c3512d5697af5396a44edef1a8c3e1",
+   "bytes": 1603
+  },
+  {
+   "path": "checks.log",
+   "sha256": "e4b9d20148af2c9c2833e61b571d6907cdc8791823cb33ebcac15c205a20c280",
+   "bytes": 1249
+  },
+  {
+   "path": "checks.py",
+   "sha256": "d28789c0c2e17a5a409e8b8f2111deed7e069740b4c6de83690f4c313cb163b6",
+   "bytes": 1497
+  },
+  {
+   "path": "closure-audit.json",
+   "sha256": "2db8f6be5365d234d0bcf7e81c90d14da17e51e87aedcb4d79542f1a4ce8e7c5",
+   "bytes": 759096
+  },
+  {
+   "path": "closure-audit.py",
+   "sha256": "e7638e8e313f3a2bd2fc741dafa03a0ced143fb04640f1a6e1551ee1707a6f27",
+   "bytes": 2267
+  },
+  {
+   "path": "compare.py",
+   "sha256": "b21c334fbab8499c2e3edea9e90f9f1ddebda2c12a4f24f7e3354987903821c7",
+   "bytes": 4586
+  },
+  {
+   "path": "comparison.json",
+   "sha256": "86b56a48b53516a1a8a14c69561f0a84aac1e007b95d6913d96c132289a374ab",
+   "bytes": 3599
+  },
+  {
+   "path": "decisions.json",
+   "sha256": "2df1fb4d056cca5991e900b655fedec8daf28bc426a796dc965107c36a420d4c",
+   "bytes": 11651
+  },
+  {
+   "path": "finished-at",
+   "sha256": "a524da88a29ebf323dbcfe18d521e5ad637a1587f7355b3c29f22178ce3a3087",
+   "bytes": 9
+  },
+  {
+   "path": "focus-build.log.gz",
+   "sha256": "629a0a04326b432fc2ca21fe0fb242ff5906f0c84a93f2dfac023254737984ff",
+   "bytes": 1297
+  },
+  {
+   "path": "focus-modules",
+   "sha256": "2ba42f4fd801496a6bbd4aad6a188512d6c37820c2b13a901cb9a84ff89edd7f",
+   "bytes": 159
+  },
+  {
+   "path": "kernel-comparison.log",
+   "sha256": "5a32e1548483bcb6a7ac6c00f1ebabf9878f2c8d7826cc101e8dd2c652fe55a8",
+   "bytes": 251
+  },
+  {
+   "path": "queued-at",
+   "sha256": "6716b3fff914883af06cbd2636e469b6fad4990395a45ca7eb393a5815c813dc",
+   "bytes": 9
+  },
+  {
+   "path": "script-comparison.json",
+   "sha256": "0ba70a99633fac15bf6538d6eab958ad7418f3749f01bf0f90b1e347649e9060",
+   "bytes": 3227
+  },
+  {
+   "path": "source-check.json",
+   "sha256": "e4615450207003fffb7d05e95d71e557b6b07484af9d0eaca9961e2440597654",
+   "bytes": 180
+  },
+  {
+   "path": "source-check.py",
+   "sha256": "8215323929f61f903587c09b9e1bcd0100c12ccecde0cd5eb707c3c2b9903d92",
+   "bytes": 2779
+  },
+  {
+   "path": "source.diff",
+   "sha256": "0676a8031d8842a69fa29363dec8524bc0e808f0da570a4da6f5848bea833356",
+   "bytes": 7592
+  },
+  {
+   "path": "started-at",
+   "sha256": "3bb056fec9dc3cd79a1d18dd25ad9d547f6c90da665a4556ddb3050f7aecbfc3",
+   "bytes": 9
+  },
+  {
+   "path": "touched-scripts",
+   "sha256": "37bc4b33592678c460eeb5b2c5dbaf6e1c7a4a9fcfe4fd1abbe7180d70d1188c",
+   "bytes": 984
+  },
+  {
+   "path": "unused-kernel.json",
+   "sha256": "cb9e424c4f54643b3ee7d1a884a2e6d047e70fb6c469e588a22d281b333e9934",
+   "bytes": 1558
+  },
+  {
+   "path": "verification.log",
+   "sha256": "9754c4c3dafb5368c7610e3b578be90baaf5c308c7238b0b83113657041af240",
+   "bytes": 278
+  },
+  {
+   "path": "verify-after.zsh",
+   "sha256": "57caf7214426177a67ff19fdb25049d54a78a8053f8c8a56844542cd988c6e48",
+   "bytes": 1184
+  },
+  {
+   "path": "verify-result.py",
+   "sha256": "e9fe781b30d1c478f4c706f8e50acbf1d56b9726d46ed4a702dcddf6f7766ab3",
+   "bytes": 2235
+  }
+ ],
+ "total_bytes": 51484560
+}
