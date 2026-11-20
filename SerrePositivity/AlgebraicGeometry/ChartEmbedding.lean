@@ -98,18 +98,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToBaseLocalization := _root_.SerrePositivity.AlgebraicGeometry.chartToBaseLocalization
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToBaseLocalization_injective := _root_.SerrePositivity.AlgebraicGeometry.chartToBaseLocalization_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToBaseLocalization_base := _root_.SerrePositivity.AlgebraicGeometry.chartToBaseLocalization_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mem_chartToBaseLocalization_range_iff := _root_.SerrePositivity.AlgebraicGeometry.mem_chartToBaseLocalization_range_iff
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToBaseLocalization._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartToBaseLocalization._proof_1

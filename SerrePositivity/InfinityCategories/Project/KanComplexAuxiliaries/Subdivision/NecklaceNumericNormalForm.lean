@@ -87,24 +87,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_necklaceNumericNormalForm_support := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mem_necklaceNumericNormalForm_support
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceJointHits (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceJointHits := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceJointHits
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_generated := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceNumericMap_generated
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceNumericNormalForm (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceNumericNormalForm
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm_eval := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceNumericNormalForm_eval
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm_ordered := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceNumericNormalForm_ordered
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.necklaceNumericNormalForm.eq_1

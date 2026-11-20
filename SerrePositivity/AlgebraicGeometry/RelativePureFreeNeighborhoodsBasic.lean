@@ -108,15 +108,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPureFreeNeighborhoods_iff_relative := _root_.SerrePositivity.AlgebraicGeometry.boundaryPureFreeNeighborhoods_iff_relative
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoods.congr := _root_.SerrePositivity.AlgebraicGeometry.RelativePureFreeNeighborhoods.congr
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoods.cancelBaseChange := _root_.SerrePositivity.AlgebraicGeometry.RelativePureFreeNeighborhoods.cancelBaseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.relativePureFreeNeighborhoods_iff_genericPureFree := _root_.SerrePositivity.AlgebraicGeometry.relativePureFreeNeighborhoods_iff_genericPureFree

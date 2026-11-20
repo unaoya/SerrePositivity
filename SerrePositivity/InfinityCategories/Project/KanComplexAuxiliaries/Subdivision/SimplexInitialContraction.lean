@@ -100,30 +100,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction_firstVertex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction_firstVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction_one := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction_one
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction_zero := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction_zero
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialOrder (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialOrder
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialContraction._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialOrder._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialOrder._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder._proof_5 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplexInitialOrder._proof_5

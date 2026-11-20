@@ -59,27 +59,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fan (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fan := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fan
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fanIsLimit (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fanIsLimit := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fanIsLimit
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.productIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.productIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso_hom_eval := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.productIso_hom_eval
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso_hom_eval_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.productIso_hom_eval_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fanIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fanIsLimit._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fanIsLimit._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fanIsLimit._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.productIso._proof_1

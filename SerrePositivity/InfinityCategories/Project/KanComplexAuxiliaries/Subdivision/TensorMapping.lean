@@ -66,18 +66,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMappi
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.evaluation := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.evaluation
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.evaluation_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.evaluation_assoc
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.map (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.map := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.map.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TensorMapping.map.eq_1

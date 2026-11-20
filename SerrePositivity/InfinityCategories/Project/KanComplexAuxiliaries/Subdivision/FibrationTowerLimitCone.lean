@@ -52,24 +52,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialCone (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialCone := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialCone
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialConeIsLimit (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialConeIsLimit
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialCone_π := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialCone_π
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialCone._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialCone._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialConeIsLimit._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialConeIsLimit._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialConeIsLimit._proof_3

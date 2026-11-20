@@ -70,24 +70,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relativeRectangle (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relativeRectangle
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_comparison_image := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relative_comparison_image
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_comparison_isPullback := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relative_comparison_isPullback
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_id_comparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relative_id_comparison
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relativeRectangle._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relativeRectangle._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle.congr_simp := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.relativeRectangle.congr_simp

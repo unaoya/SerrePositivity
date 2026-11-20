@@ -137,33 +137,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal_le := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal_le
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal_map_le := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal_map_le
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumerator_represents_eventually := _root_.SerrePositivity.AlgebraicGeometry.indexedNumerator_represents_eventually
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal_map_eventually := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal_map_eventually
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.indexedNumeratorIdeal._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.indexedNumeratorIdeal._proof_5

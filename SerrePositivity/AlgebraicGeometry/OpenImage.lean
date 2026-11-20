@@ -64,9 +64,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.openImageι_restrict_isIso := _root_.SerrePositivity.AlgebraicGeometry.openImageι_restrict_isIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullback_snd_restrict_isIso := _root_.SerrePositivity.AlgebraicGeometry.pullback_snd_restrict_isIso

@@ -61,15 +61,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalFormCompressedPartition := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeOrderedNormalFormCompressedPartition
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeOrderedNormalFormHom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalFormHom := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeOrderedNormalFormHom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalFormHom_eval := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeOrderedNormalFormHom_eval
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalForm_generated := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeOrderedNormalForm_generated

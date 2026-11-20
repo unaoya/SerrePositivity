@@ -100,9 +100,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mul_eq_zero_of_regular_minor_selectedColumns := _root_.SerrePositivity.AlgebraicGeometry.mul_eq_zero_of_regular_minor_selectedColumns
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.kernel_le_ker_of_regular_minor_selectedColumns := _root_.SerrePositivity.AlgebraicGeometry.kernel_le_ker_of_regular_minor_selectedColumns

@@ -145,21 +145,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.centerComplement_mul := _root_.SerrePositivity.AlgebraicGeometry.centerComplement_mul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isUAdmissibleCenter_mul := _root_.SerrePositivity.AlgebraicGeometry.isUAdmissibleCenter_mul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productCenter_finiteGeneration := _root_.SerrePositivity.AlgebraicGeometry.productCenter_finiteGeneration
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_admissible_binary_refinement := _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_binary_refinement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_admissible_finite_refinement := _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_finite_refinement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_admissible_family_refinement := _root_.SerrePositivity.AlgebraicGeometry.exists_admissible_family_refinement

@@ -369,10 +369,10 @@ universe u
 section StandardMaps
 variable {R : Type u} [CommRing R] (p : ℕ) (ρ : ℕ → R)
 example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ =
-    AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootIdeal ρ)})
-      (R ⧸ compatibleRootIdeal ρ) := rfl
+    AdicCompletion (Ideal.span {(p : R ⧸ _root_.SerrePositivity.compatibleRootIdeal ρ)})
+      (R ⧸ _root_.SerrePositivity.compatibleRootIdeal ρ) := rfl
 example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ =
-    (algebraMap (R ⧸ compatibleRootIdeal ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ)).comp
+    (algebraMap (R ⧸ _root_.SerrePositivity.compatibleRootIdeal ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ)).comp
       (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootQuotientMap ρ) := rfl
 example (r : R) :
     _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
@@ -396,7 +396,7 @@ example :
       (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ).comp
         (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
   _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_comp_completionMap p ρ
-example (x : R ⧸ compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) :
+example (x : R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) :
     _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv p ρ (algebraMap _ _ x) =
       algebraMap _ (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv ρ x) :=
   _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap p ρ x
@@ -511,7 +511,7 @@ section GenericContract
 variable {p : ℕ} {R σ T : Type u} [CommRing R] [CommRing T]
 variable (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
 variable [IsReduced T] [IsAdicComplete (Ideal.span {(p : T)}) T]
-example (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
+example (g : R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ →+* T) :
     ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* T,
       l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ) = g :=
   _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift ρ hρ g
@@ -520,38 +520,38 @@ end GenericContract
 section OldStandardMaps
 variable {R σ : Type u} [CommRing R] (p : ℕ) (ρ : σ → ℕ → R)
 example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ =
-    AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootFamilyIdeal ρ)})
-      (R ⧸ compatibleRootFamilyIdeal ρ) := rfl
+    AdicCompletion (Ideal.span {(p : R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ)})
+      (R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ) := rfl
 example : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ =
-    (algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _).comp
+    (algebraMap (R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ) _).comp
       (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyQuotientMap ρ) := rfl
 example (r : R) : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyQuotientMap ρ
-    (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ) r) =
-      Ideal.Quotient.mk (compatibleRootFamilyIdeal ρ) r := rfl
+    (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ) r) =
+      Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyIdeal ρ) r := rfl
 example (r : R) : _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ
-    (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ) r) =
-      algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _
-        (Ideal.Quotient.mk (compatibleRootFamilyIdeal ρ) r) := rfl
+    (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ) r) =
+      algebraMap (R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ) _
+        (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyIdeal ρ) r) := rfl
 end OldStandardMaps
 
 section EmptyFamily
 variable {R T : Type u} [CommRing R] [CommRing T] (p : ℕ)
 variable [IsReduced T] [IsAdicComplete (Ideal.span {(p : T)}) T]
-example (ρ : PEmpty.{u+1} → ℕ → R) (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
+example (ρ : PEmpty.{u+1} → ℕ → R) (g : R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ →+* T) :
     ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* T,
       l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ) = g :=
   _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
-example (ρ : PEmpty.{u+1} → ℕ → R) : compatibleRootFamilyZeroIdeal ρ = ⊥ := by
+example (ρ : PEmpty.{u+1} → ℕ → R) : _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ = ⊥ := by
   change Ideal.span (Set.range (fun s => ρ s 0)) = ⊥
   simp
-example (ρ : PEmpty.{u+1} → ℕ → R) : compatibleRootFamilyIdeal ρ = ⊥ := by
+example (ρ : PEmpty.{u+1} → ℕ → R) : _root_.SerrePositivity.compatibleRootFamilyIdeal ρ = ⊥ := by
   change Ideal.span (Set.range (fun x : PEmpty.{u+1} × ℕ => ρ x.1 x.2)) = ⊥
   simp
 end EmptyFamily
 
 /- A composite completion parameter with a nontrivial reduced complete target.
    Fact 2.Prime is a target-ring fact; no Fact 4.Prime is introduced. -/
-example (g : ZMod 2 ⧸ compatibleRootFamilyZeroIdeal
+example (g : ZMod 2 ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal
     (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2)) →+* ZMod 2) :
     ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion 4
         (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2)) →+* ZMod 2,
@@ -567,7 +567,7 @@ example (g : ZMod 2 ⧸ compatibleRootFamilyZeroIdeal
 /- Parameter zero, empty family, and an ordinary reduced target: no source
    precompleteness or prime assumption is available. -/
 example {R : Type} [CommRing R] (ρ : PEmpty → ℕ → R)
-    (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* ℤ) :
+    (g : R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ →+* ℤ) :
     ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion 0 ρ →+* ℤ,
       l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap 0 ρ) = g := by
   let : IsAdicComplete (Ideal.span {(0 : ℤ)}) ℤ := by
@@ -577,7 +577,7 @@ example {R : Type} [CommRing R] (ρ : PEmpty → ℕ → R)
 
 /- A literal zero source and target with arbitrary p, including p = 1. -/
 example {σ : Type u} (p : ℕ) (ρ : σ → ℕ → PUnit.{u+1})
-    (g : PUnit.{u+1} ⧸ compatibleRootFamilyZeroIdeal ρ →+* PUnit.{u+1}) :
+    (g : PUnit.{u+1} ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ →+* PUnit.{u+1}) :
     ∃! l : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* PUnit.{u+1},
       l.comp (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ) = g := by
   let : IsReduced PUnit.{u+1} := ⟨fun _ _ => Subsingleton.elim _ _⟩

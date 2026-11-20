@@ -72,9 +72,3 @@ end SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Ex
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.post_arrow_source := _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.post_arrow_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.post_arrow_zero_target := _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.post_arrow_zero_target

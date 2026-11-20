@@ -59,12 +59,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakDenominatorInterval_edges_mem := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakDenominatorInterval_edges_mem
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakDenominatorSpanTransport_groupoidCompletion_isEquivalence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakDenominatorSpanTransport_groupoidCompletion_isEquivalence
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.weakEquivalences_eq_invertedEdges := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakEquivalences_eq_invertedEdges

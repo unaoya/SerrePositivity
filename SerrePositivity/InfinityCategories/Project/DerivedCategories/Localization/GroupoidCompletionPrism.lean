@@ -87,30 +87,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.functorHomOfPrism (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.functorHomOfPrism
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfPrismRetraction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfPrismRetraction := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfPrismRetraction
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfReversePrismRetraction (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfReversePrismRetraction := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfReversePrismRetraction
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.prismComparison_groupoidCompletion_isEquivalence := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.prismComparison_groupoidCompletion_isEquivalence
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.functorHomOfPrism._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.functorHomOfPrism._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.functorHomOfPrism._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.functorHomOfPrism._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfPrismRetraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.groupoidCompletionEquivalenceOfPrismRetraction._proof_1

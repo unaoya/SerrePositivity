@@ -84,12 +84,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequence_dual_range_antitone := _root_.SerrePositivity.AlgebraicGeometry.linearSequence_dual_range_antitone
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_stable_dual_ranges_of_mittagLeffler := _root_.SerrePositivity.AlgebraicGeometry.exists_stable_dual_ranges_of_mittagLeffler
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.linearSequenceMap.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.linearSequenceMap.congr_simp

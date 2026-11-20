@@ -119,15 +119,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_filler_of_lastSimplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_filler_of_lastSimplex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lastSimplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.lastSimplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lastSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.last_face_exchange := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.last_face_exchange
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.lastSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lastSimplex._proof_1

@@ -79,19 +79,19 @@ lemma pointedGenerators_smallObjectArgument (P : MorphismProperty SSet.{u}) [P.I
   simpa only [EvaluationFamily.generators, L, iSup_unique] using h
 
 lemma pointedI_smallObjectArgument : pointedI.{u}.HasSmallObjectArgument.{u} := by
-  have : I.{u}.IsSmall.{u} := boundaryGenerators_isSmall
-  exact pointedGenerators_smallObjectArgument I boundaryGenerator_domain_presentable
+  have : I.{u}.IsSmall.{u} := _root_.SerrePositivity.SimplicialModel.boundaryGenerators_isSmall
+  exact pointedGenerators_smallObjectArgument I _root_.SerrePositivity.SimplicialModel.boundaryGenerator_domain_presentable
 
 lemma pointedJ_smallObjectArgument : pointedJ.{u}.HasSmallObjectArgument.{u} :=
-  pointedGenerators_smallObjectArgument J hornGenerator_domain_presentable
+  pointedGenerators_smallObjectArgument J _root_.SerrePositivity.SimplicialModel.hornGenerator_domain_presentable
 
 lemma pointedI_domain_presentable {A B : PointedSimplicialSet.{u}} (f : A ⟶ B)
     (hf : pointedI f) : IsCardinalPresentable A Cardinal.aleph0.{u} :=
-  pointedGenerator_domain_presentable I boundaryGenerator_domain_presentable f hf
+  pointedGenerator_domain_presentable I _root_.SerrePositivity.SimplicialModel.boundaryGenerator_domain_presentable f hf
 
 lemma pointedJ_domain_presentable {A B : PointedSimplicialSet.{u}} (f : A ⟶ B)
     (hf : pointedJ f) : IsCardinalPresentable A Cardinal.aleph0.{u} :=
-  pointedGenerator_domain_presentable J hornGenerator_domain_presentable f hf
+  pointedGenerator_domain_presentable J _root_.SerrePositivity.SimplicialModel.hornGenerator_domain_presentable f hf
 
 /-- The actual pointed horn generators detect the inherited Kan fibrations. -/
 lemma pointedJ_rlp : pointedJ.{u}.rlp = fibrations PointedSimplicialSet.{u} := by
@@ -103,9 +103,9 @@ lemma pointedI_leftClass : pointedI.{u}.rlp.llp = cofibrations PointedSimplicial
   rw [pointedGenerators_rlp, cofibrations_under_def]
   change (I.{u}.rlp.under (X := 𝟙_ SSet.{u})).llp =
     (MorphismProperty.monomorphisms SSet.{u}).under
-  let : I.{u}.HasSmallObjectArgument.{u} := boundaryGenerators_smallObjectArgument
+  let : I.{u}.HasSmallObjectArgument.{u} := _root_.SerrePositivity.SimplicialModel.boundaryGenerators_smallObjectArgument
   have hfac : (MorphismProperty.monomorphisms SSet.{u}).HasFactorization I.rlp := by
-    rw [← boundaryGenerators_leftClass]
+    rw [← _root_.SerrePositivity.SimplicialModel.boundaryGenerators_leftClass]
     infer_instance
   let : (MorphismProperty.monomorphisms SSet.{u}).HasFactorization I.rlp := hfac
   have hret : ((MorphismProperty.monomorphisms SSet.{u}).under
@@ -117,7 +117,7 @@ lemma pointedI_leftClass : pointedI.{u}.rlp.llp = cofibrations PointedSimplicial
   apply MorphismProperty.llp_eq_of_le_llp_of_hasFactorization_of_isStableUnderRetracts
   intro A B i hi X Y p hp
   have hi' : I.rlp.llp i.right := by
-    rw [boundaryGenerators_leftClass]
+    rw [_root_.SerrePositivity.SimplicialModel.boundaryGenerators_leftClass]
     exact hi
   let : HasLiftingProperty i.right p.right := hi' _ hp
   exact HasLiftingProperty.under i p

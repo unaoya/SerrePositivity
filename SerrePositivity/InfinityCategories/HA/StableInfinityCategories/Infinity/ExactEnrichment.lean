@@ -105,36 +105,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactComposition (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactComposition := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactComposition
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactComposition_ι := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactComposition_ι
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactIdentity (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactIdentity := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactIdentity
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactIdentity_ι := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactIdentity_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.internalComp_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.internalComp_vertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableCategory_enrichedCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableCategory_enrichedCategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactComposition._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactComposition._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactIdentity._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactIdentity._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableCategory_enrichedCategory._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableCategory_enrichedCategory._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableCategory_enrichedCategory._proof_3

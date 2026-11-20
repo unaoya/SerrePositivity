@@ -118,15 +118,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.additiveClass_last_of_update := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.additiveClass_last_of_update
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.exists_horn_boundary := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_horn_boundary
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.exists_of_alternatingClass_eq_zero := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_of_alternatingClass_eq_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.nonempty_iff_alternatingClass_eq_zero := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.nonempty_iff_alternatingClass_eq_zero

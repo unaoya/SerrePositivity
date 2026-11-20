@@ -141,13 +141,13 @@ variable {R : Type u} [CommRing R]
 
 /-- 一元添字族の初期イデアルは、元の単一根の初期主イデアル。 -/
 theorem Semiperfectoid.compatibleRootFamilyZeroIdeal_singleton (ρ : ℕ → R) :
-    _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ) = Ideal.span {ρ 0} := by
+    _root_.SerrePositivity.compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ) = Ideal.span {ρ 0} := by
   change Ideal.span (Set.range (fun _ : PUnit.{u+1} ↦ ρ 0)) = Ideal.span {ρ 0}
   rw [Set.range_const]
 
 /-- 一元添字族の全根イデアルは、元の単一根イデアル。 -/
 theorem Semiperfectoid.compatibleRootFamilyIdeal_singleton (ρ : ℕ → R) :
-    _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ) = _root_.SerrePositivity.BhattScholze.compatibleRootIdeal ρ := by
+    _root_.SerrePositivity.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ) = _root_.SerrePositivity.compatibleRootIdeal ρ := by
   change Ideal.span (Set.range (fun x : PUnit.{u+1} × ℕ ↦ ρ x.2)) =
     Ideal.span (Set.range ρ)
   congr 1
@@ -160,7 +160,7 @@ theorem Semiperfectoid.compatibleRootFamilyIdeal_singleton (ρ : ℕ → R) :
 
 /-- 初期イデアルの一致による標準商比較。 -/
 def Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv (ρ : ℕ → R) :
-    R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ) ≃+* R ⧸ Ideal.span {ρ 0} :=
+    R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ) ≃+* R ⧸ Ideal.span {ρ 0} :=
   Ideal.quotEquivOfEq (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyZeroIdeal_singleton ρ)
 
 @[simp] theorem Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv_mk (ρ : ℕ → R) (r : R) :
@@ -169,7 +169,7 @@ def Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv (ρ : ℕ → R) :
 
 /-- 全根イデアルの一致による標準商比較。 -/
 def Semiperfectoid.compatibleRootSingletonQuotientEquiv (ρ : ℕ → R) :
-    R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ) ≃+* R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootIdeal ρ :=
+    R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ) ≃+* R ⧸ _root_.SerrePositivity.compatibleRootIdeal ρ :=
   Ideal.quotEquivOfEq (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyIdeal_singleton ρ)
 
 @[simp] theorem Semiperfectoid.compatibleRootSingletonQuotientEquiv_mk (ρ : ℕ → R) (r : R) :
@@ -201,7 +201,7 @@ private theorem Semiperfectoid.completionCast_algebraMap (p : ℕ) {I J : Ideal 
 
 /-- 完備化比較は、全根商からの元の標準単位を保つ。 -/
 @[simp] theorem Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap (p : ℕ) (ρ : ℕ → R)
-    (x : R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) :
+    (x : R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) :
     _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv p ρ (algebraMap _ _ x) =
       algebraMap _ (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ) (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv ρ x) :=
   _root_.SerrePositivity.BhattScholze.Semiperfectoid.completionCast_algebraMap p (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyIdeal_singleton ρ) x
@@ -216,11 +216,11 @@ theorem Semiperfectoid.compatibleRootSingletonCompletionEquiv_comp_completionMap
   apply RingHom.ext
   intro r
   change _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv p ρ
-      (algebraMap (R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) _
-        (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) r)) =
+      (algebraMap (R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) _
+        (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) r)) =
     _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootCompletionMap p ρ
       (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv ρ
-        (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ)) r))
+        (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ)) r))
   rw [_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonCompletionEquiv_algebraMap,
     _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonQuotientEquiv_mk, _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootSingletonZeroQuotientEquiv_mk]
   rfl
@@ -247,7 +247,7 @@ omit [Fact p.Prime] in
 theorem Semiperfectoid.compatibleRootCompletion_isAdicComplete (ρ : ℕ → R) :
     IsAdicComplete (Ideal.span {(p : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ)})
       (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootCompletion p ρ) := by
-  let Q := R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootIdeal ρ
+  let Q := R ⧸ _root_.SerrePositivity.compatibleRootIdeal ρ
   let I : Ideal Q := Ideal.span {(p : Q)}
   have h := AdicCompletion.isAdicComplete (M := Q) (Submodule.fg_span_singleton (p : Q))
   have hm : I.map (algebraMap Q (AdicCompletion I Q)) =
@@ -318,7 +318,7 @@ omit [Fact p.Prime] in
 theorem Semiperfectoid.compatibleRootFamilyCompletion_isAdicComplete (ρ : σ → ℕ → R) :
     IsAdicComplete (Ideal.span {(p : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ)})
       (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ) := by
-  let Q := R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal ρ
+  let Q := R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ
   let I : Ideal Q := Ideal.span {(p : Q)}
   have h := AdicCompletion.isAdicComplete (M := Q) (Submodule.fg_span_singleton (p : Q))
   have hm : I.map (algebraMap Q (AdicCompletion I Q)) =
@@ -336,13 +336,13 @@ theorem Semiperfectoid.exists_compatibleRootFamilyCompletionPDQuotientEquiv
     (w : A →+* B) (hw : Function.Surjective w) (hd : D.IsDistinguished (w d))
     (β : B →+* _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ)
     (hβ : β.comp w = ((_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ).comp
-      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ))).comp θ)
+      (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ))).comp θ)
     (a : σ → A) (ha : ∀ s, θ (a s) = ρ s 0) (hwa : ∀ s, w (a s) = 0) :
     letI := pdCompletionCommRing B p (w d)
     ∃ e : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ ≃+*
         PDCompletionH0 B p (w d) ⧸ Ideal.span {pdCompletionUnit B p (w d) (w d)},
       e.toRingHom.comp ((_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ).comp
-        (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ))) =
+        (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ))) =
         θ.liftOfSurjective hθ ⟨(Ideal.Quotient.mk _).comp
           ((pdCompletionUnit B p (w d)).comp w), by
             rw [hker, Ideal.span_singleton_le_iff_mem]
@@ -351,29 +351,29 @@ theorem Semiperfectoid.exists_compatibleRootFamilyCompletionPDQuotientEquiv
   let := hR.isAdicComplete R p
   let := _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletion_isAdicComplete (p := p) ρ
   let qR := (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ).comp
-    (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ))
+    (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ))
   have hqR : Function.Surjective qR :=
     (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap_surjective (p := p) ρ).comp Ideal.Quotient.mk_surjective
-  have hI : _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ ≤ (RingHom.ker w).map θ := by
+  have hI : _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ ≤ (RingHom.ker w).map θ := by
     apply Ideal.span_le.mpr
     rintro _ ⟨s, rfl⟩
     change ρ s 0 ∈ (RingHom.ker w).map θ
     rw [← ha s]
     exact Ideal.mem_map_of_mem θ (show a s ∈ RingHom.ker w from hwa s)
   have hExtend : ∀ (T : Type u) [CommRing T], _root_.SerrePositivity.IsIntegralPerfectoid T p →
-      ∀ i : R →+* T, _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ ≤ RingHom.ker i →
+      ∀ i : R →+* T, _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ ≤ RingHom.ker i →
         ∃ c : _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ →+* T, c.comp qR = i := by
     intro T _ hT i hi
-    let i0 := Ideal.Quotient.lift (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ) i hi
+    let i0 := Ideal.Quotient.lift (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ) i hi
     obtain ⟨c, hc, _⟩ := _root_.SerrePositivity.BhattScholze.Semiperfectoid.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
       ρ hρ hT i0
     refine ⟨c, ?_⟩
     change c.comp ((_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ).comp
-      (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ))) = i
+      (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ))) = i
     rw [← RingHom.comp_assoc, hc]
     rfl
   exact _root_.SerrePositivity.BhattScholze.Semiperfectoid.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension D hD d θ hθ hker
-    w hw hd (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ) hI qR hqR hExtend β hβ
+    w hw hd (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ) hI qR hqR hExtend β hβ
 
 end SerrePositivity.BhattScholze
 
@@ -400,7 +400,7 @@ theorem Semiperfectoid.compatibleRootFamilyCompletion_isIntegralPerfectoid
     _root_.SerrePositivity.IsIntegralPerfectoid (_root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ) p := by
   let C := _root_.SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootFamilyCompletion p ρ
   let qR := (_root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap p ρ).comp
-    (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ))
+    (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ))
   rcases subsingleton_or_nontrivial C with hsC | hnC
   · exact Or.inl hsC
   · let := hnC
@@ -419,15 +419,15 @@ theorem Semiperfectoid.compatibleRootFamilyCompletion_isIntegralPerfectoid
       let : Fact (¬ IsUnit (p : C)) := ⟨hpC⟩
       let k := PreTilt R p
       let κ := fun s ↦ _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootTilt (ρ s) (hρ s)
-      let K := _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal κ
+      let K := _root_.SerrePositivity.compatibleRootFamilyIdeal κ
       let Q := k ⧸ K
       let qk := Ideal.Quotient.mk K
       let L := Perfection.map p (_root_.SerrePositivity.modPMap p qR)
       have hqρ : ∀ s n, qR (ρ s n) = 0 := by
         intro s n
-        change algebraMap (R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal ρ) C
-          (Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal ρ) (ρ s n)) = 0
-        have hz : Ideal.Quotient.mk (_root_.SerrePositivity.BhattScholze.compatibleRootFamilyIdeal ρ) (ρ s n) = 0 :=
+        change algebraMap (R ⧸ _root_.SerrePositivity.compatibleRootFamilyIdeal ρ) C
+          (Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyIdeal ρ) (ρ s n)) = 0
+        have hz : Ideal.Quotient.mk (_root_.SerrePositivity.compatibleRootFamilyIdeal ρ) (ρ s n) = 0 :=
           Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span ⟨(s, n), rfl⟩)
         rw [hz, map_zero]
       have hKL : K ≤ RingHom.ker L := by
@@ -442,7 +442,7 @@ theorem Semiperfectoid.compatibleRootFamilyCompletion_isIntegralPerfectoid
       have hpQ : (p : Q) = 0 := by
         rw [← map_natCast qk, CharP.cast_eq_zero, map_zero]
       let : CharP Q p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hpQ
-      let : PerfectRing Q p := _root_.SerrePositivity.BhattScholze.compatibleRootFamilyQuotient_perfectRing κ
+      let : PerfectRing Q p := _root_.SerrePositivity.compatibleRootFamilyQuotient_perfectRing κ
         (fun s n ↦ _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootTilt_pow (ρ s) (hρ s) n)
       let w : WittVector p k →+* WittVector p Q := WittVector.map qk
       have hw : Function.Surjective w := WittVector.map_surjective _ Ideal.Quotient.mk_surjective
@@ -493,7 +493,7 @@ theorem Semiperfectoid.compatibleRootFamilyCompletionMap_isPerfectoidization
 theorem Semiperfectoid.surjective_of_isPerfectoidization_of_compatibleRootFamily
     (hR : _root_.SerrePositivity.IsIntegralPerfectoid R p) (ρ : σ → ℕ → R)
     (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    {C : Type u} [CommRing C] (f : R ⧸ _root_.SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal ρ →+* C)
+    {C : Type u} [CommRing C] (f : R ⧸ _root_.SerrePositivity.compatibleRootFamilyZeroIdeal ρ →+* C)
     (hf : _root_.SerrePositivity.IsPerfectoidization p f) : Function.Surjective f := by
   let := hR.isAdicComplete R p
   have h := _root_.SerrePositivity.BhattScholze.Semiperfectoid.compatibleRootFamilyCompletionMap_isPerfectoidization hR ρ hρ

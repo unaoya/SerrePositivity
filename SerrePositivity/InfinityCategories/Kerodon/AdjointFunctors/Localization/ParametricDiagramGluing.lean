@@ -86,39 +86,3 @@ end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coproductFamilyGlue (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coproductFamilyGlue
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue_restrict := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coproductFamilyGlue_restrict
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamily_hom_ext := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coproductFamily_hom_ext
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue_inl := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue_inl
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue_inr := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue_inr
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamily_hom_ext := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamily_hom_ext
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coproductFamilyGlue._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue.eq_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.coproductFamilyGlue.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue.eq_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pushoutFamilyGlue.eq_1

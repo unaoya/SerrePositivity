@@ -69,12 +69,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedOppositeComponentIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedOppositeComponentIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedOppositeComponentIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanEnrichedOppositeComponentIso._proof_2

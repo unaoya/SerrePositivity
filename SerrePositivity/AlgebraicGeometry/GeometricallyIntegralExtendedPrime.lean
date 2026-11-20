@@ -85,12 +85,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.geometricallyIntegral_tensorProjection := _root_.SerrePositivity.AlgebraicGeometry.geometricallyIntegral_tensorProjection
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ideal_map_isPrime_of_geometricallyIntegral := _root_.SerrePositivity.AlgebraicGeometry.ideal_map_isPrime_of_geometricallyIntegral
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ideal_map_tensor_isPrime_of_geometricallyIntegral := _root_.SerrePositivity.AlgebraicGeometry.ideal_map_tensor_isPrime_of_geometricallyIntegral

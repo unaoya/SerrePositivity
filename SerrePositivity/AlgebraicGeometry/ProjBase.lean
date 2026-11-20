@@ -92,15 +92,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.proj_basicOpenToSpec_forget := _root_.SerrePositivity.AlgebraicGeometry.proj_basicOpenToSpec_forget
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.proj_basicOpenToSpec_mk_mem := _root_.SerrePositivity.AlgebraicGeometry.proj_basicOpenToSpec_mk_mem
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.proj_toSpecZero_mem := _root_.SerrePositivity.AlgebraicGeometry.proj_toSpecZero_mem
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.proj_toSpecZero_preimage_basicOpen := _root_.SerrePositivity.AlgebraicGeometry.proj_toSpecZero_preimage_basicOpen

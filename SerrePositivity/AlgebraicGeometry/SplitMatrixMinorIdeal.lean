@@ -76,15 +76,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_antitone := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_antitone
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_one_top := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_one_top
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_eq_top_of_leftInverse := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_eq_top_of_leftInverse
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_of_split_columnSpan := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_of_split_columnSpan

@@ -69,9 +69,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanPointFiberComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanPointFiberComparison := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanPointFiberComparison
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanPointFiberComparison_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanPointFiberComparison_isFullyFaithful

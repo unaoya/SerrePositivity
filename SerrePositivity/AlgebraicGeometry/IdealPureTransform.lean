@@ -65,30 +65,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_ker_boundary_annihilated := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_ker_boundary_annihilated
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv_mk := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv_mk
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv._proof_5
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealPureTransformEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.idealPureTransformEquiv._proof_6

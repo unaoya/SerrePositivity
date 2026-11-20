@@ -185,36 +185,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_filler_of_homotopy := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_filler_of_homotopy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_normalization := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.exists_normalization
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.hornFace_inclusion := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.hornFace_inclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.hornFace_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.hornFace_inclusion_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.horn_le_boundary := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.horn_le_boundary
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_mono := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion_mono
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_ι := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion_ι
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion_ι_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.normalized_face := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.normalized_face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.inclusion._proof_1

@@ -114,24 +114,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptionalIdealSheaf := _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalIdealSheaf
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeal_base_comap := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeal_base_comap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeal_mul := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeal_mul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartIdeal_pow := _root_.SerrePositivity.AlgebraicGeometry.blowupChartIdeal_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptionalIdealSheaf_chart := _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalIdealSheaf_chart
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_affine_center_descent := _root_.SerrePositivity.AlgebraicGeometry.exists_affine_center_descent
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptionalIdealSheaf.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.affineExceptionalIdealSheaf.eq_1

@@ -72,21 +72,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.bottom (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.bottom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom_comp_right := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.bottom_comp_right
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.left := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.right (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.right := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.right
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.top_constant_edge := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.top_constant_edge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.bottom._proof_1

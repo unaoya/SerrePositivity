@@ -96,33 +96,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.exists_laxQuotientProductArrowIso_with_endpoints := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.exists_laxQuotientProductArrowIso_with_endpoints
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductArrowIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductArrowIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductArrowIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductArrowIso_source := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductArrowIso_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductArrowIso_target := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductArrowIso_target
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductMap := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductMap_hom := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap_hom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductMap_right_comm := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap_right_comm
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.nonempty_laxQuotientProductArrowIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.nonempty_laxQuotientProductArrowIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.productMapSimplicialCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.productMapSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.productMapSimplicialCategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductArrowIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductArrowIso._proof_1

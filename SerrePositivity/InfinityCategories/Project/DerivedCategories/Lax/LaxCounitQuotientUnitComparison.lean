@@ -56,27 +56,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientCUnitImage (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCUnitImage := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientCUnitImage
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalCImage (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalCImage := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalCImage
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalCImageIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalCImageIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalCImageIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalRightImage (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalRightImage := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalRightImage
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalRightImage_unit := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalRightImage_unit
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientSelectedCIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedCIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientSelectedCIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCUnitImage._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientCUnitImage._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalCImageIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientOriginalCImageIso._proof_1

@@ -70,30 +70,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransform_flat_cancelBaseChange := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransform_flat_cancelBaseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransform_flat_baseChange := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransform_flat_baseChange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange._proof_3
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange._proof_4
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange._proof_5
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPureTransformCancelBaseChange._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.tensorPureTransformCancelBaseChange._proof_6

@@ -61,12 +61,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.evaluateFunctorAt_as_ev := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluateFunctorAt_as_ev
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.ihomUncurry_pre_column := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ihomUncurry_pre_column
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.ihomUncurry_pre_row := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ihomUncurry_pre_row

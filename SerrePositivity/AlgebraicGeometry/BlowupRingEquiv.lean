@@ -77,24 +77,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.center_map_ringEquiv_symm := _root_.SerrePositivity.AlgebraicGeometry.center_map_ringEquiv_symm
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRingEquivIso := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRingEquivIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRingEquivIso_hom_base := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRingEquivIso_hom_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRingEquivIso_hom_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRingEquivIso_hom_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRingEquivIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRingEquivIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRingEquivIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRingEquivIso._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRingEquivIso.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRingEquivIso.congr_simp

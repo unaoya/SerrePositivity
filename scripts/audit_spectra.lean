@@ -16,6 +16,8 @@ import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
 import SerrePositivity.Spectra.ModelCategory.LevelRecognition
 import SerrePositivity.Spectra.ModelCategory.MonoidalLevel
+import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
+import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators
 import Lean.Util.CollectAxioms
 
 open Lean in
@@ -30,6 +32,8 @@ run_cmd do
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.Spectra, `SerrePositivity.CategoryTheory.FunctorTransport,
         `SerrePositivity.HomotopicalAlgebra.Topological,
+        `SerrePositivity.HomotopicalAlgebra.Simplicial.Generators,
+        `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators,
         `SerrePositivity.CategoryTheory.Adjunction.Comparison,
         `SerrePositivity.CategoryTheory.Adjunction.Comparison,
         `SerrePositivity.CategoryTheory.Monoidal, `SerrePositivity.CategoryTheory.Adjunction.Comparison, `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping, `SerrePositivity.CategoryTheory.Enriched.Simplicial, `SerrePositivity.CategoryTheory.Enriched.Transport,
@@ -59,7 +63,8 @@ run_cmd do
       `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
       `SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal,
       `SerrePositivity.Spectra.ModelCategory.PointedGenerators,
-      `SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
+      `SerrePositivity.HomotopicalAlgebra.Simplicial.Generators,
+      `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators,
       `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy,
       `SerrePositivity.Spectra.Pointed.SmashPushoutProduct,
       `SerrePositivity.CategoryTheory.Adjunction.Comparison,

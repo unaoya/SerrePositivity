@@ -53,15 +53,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_eval := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeJoinMap_eval
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_ext := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeJoinMap_ext
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_sup_atoms := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeJoinMap_sup_atoms
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_ext := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeMapGenerated_ext

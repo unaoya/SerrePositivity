@@ -24,7 +24,7 @@ example {P D : WalkingSpan ⥤ C} (i : P ⟶ D) (hP : IsInitial P)
 
 -- Independent universes, one cofibration leg, and no cofibrancy of objects.
 example [IsLocallyPresentable.{w} C] (I J : MorphismProperty C)
-    [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+    [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
     (K : Type w) [SmallCategory K] (e : K ≌ WalkingSpan) (D : K ⥤ C)
     (hD : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst))) :
@@ -35,10 +35,10 @@ open SerrePositivity.Bousfield
 variable [IsLocallyPresentable.{w} C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
   (IS JS : MorphismProperty SSet.{w})
-  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hw : weakEquivalences SSet.{w} = SerrePositivity.SimplicialHomotopy.weakEquivalences)

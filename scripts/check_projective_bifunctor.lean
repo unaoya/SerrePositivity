@@ -9,7 +9,7 @@ open SerrePositivity.Quillen SerrePositivity.PointwiseAdjunction
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   {V : Type uV} [Category.{vV} V] [ModelCategory V]
 
 -- The actual parametrized adjunction lifts to the ordinary diagram category.
@@ -41,7 +41,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.CategoryTheory.PointwiseAdjunction,
+    `SerrePositivity.CategoryTheory.Adjunction.Comparison,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveBifunctor]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

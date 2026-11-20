@@ -86,36 +86,3 @@ end SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.Funct
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.eval_simplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.eval_simplex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.relStruct := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.simplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.simplex := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.simplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.relStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.relStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.relStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.relStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.relStruct._proof_5 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.relStruct._proof_5
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.simplex._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.simplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.simplex._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.simplex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FunctionComplexPointedSimplex.simplex._proof_3

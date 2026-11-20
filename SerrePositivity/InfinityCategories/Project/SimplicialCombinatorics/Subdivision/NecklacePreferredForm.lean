@@ -97,39 +97,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.beads (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.beads := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.beads
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.beads_positive := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.beads_positive
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.exists_positive_beads := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.exists_positive_beads
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_beads := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads_beads
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_cons := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads_cons
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_nil := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads_nil
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_singleton := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads_singleton
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads._f (since := "2026-11-05")]
-noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._f := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads._f
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads._sunfold (since := "2026-11-05")]
-noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._sunfold := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads._sunfold
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads._unsafe_rec (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads._unsafe_rec
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads.match_1 (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads.match_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads.match_1

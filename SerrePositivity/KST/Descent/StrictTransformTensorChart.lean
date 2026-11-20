@@ -32,8 +32,8 @@ namespace SerrePositivity.KST.Descent
 
 variable (R B C : Type u) [CommRing R] [CommRing B] [CommRing C]
   [Algebra R B] [Algebra R C] (J : (Spec (.of R)).IdealSheafData)
-  (j : Spec (.of C) ⟶ blowup J)
-  (hj : j ≫ blowupπ J = Spec.map (CommRingCat.ofHom (algebraMap R C)))
+  (j : Spec (.of C) ⟶ _root_.SerrePositivity.AlgebraicGeometry.blowup J)
+  (hj : j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J = Spec.map (CommRingCat.ofHom (algebraMap R C)))
 
 include hj in
 /-- 概要：テンソル積の Spec は元のアフィン射とチャートの基底への合成の引き戻し（補題 3.3）。
@@ -45,7 +45,7 @@ theorem strictTransformTensorChart_isPullback :
       (Spec.map (CommRingCat.ofHom (Algebra.TensorProduct.includeRight :
         B →ₐ[R] C ⊗[R] B).toRingHom))
       (Spec.map (CommRingCat.ofHom (algebraMap C (C ⊗[R] B))))
-      (Spec.map (CommRingCat.ofHom (algebraMap R B))) (j ≫ blowupπ J) := by
+      (Spec.map (CommRingCat.ofHom (algebraMap R B))) (j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J) := by
   exact Eq.mpr (congrArg (fun k ↦ IsPullback
     (Spec.map (CommRingCat.ofHom (Algebra.TensorProduct.includeRight :
       B →ₐ[R] C ⊗[R] B).toRingHom))
@@ -61,15 +61,15 @@ omit [Algebra R C] in
 theorem strictTransformTensorChart_ambient_isPullback :
     IsPullback
       (pullback.fst
-        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j ≫
-        pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J))
+        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫
+        pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J))
       (pullback.snd
-        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j)
-      (Spec.map (CommRingCat.ofHom (algebraMap R B))) (j ≫ blowupπ J) :=
+        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j)
+      (Spec.map (CommRingCat.ofHom (algebraMap R B))) (j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J) :=
   ((IsPullback.of_hasPullback
-    (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j).flip.paste_vert
+    (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j).flip.paste_vert
       (IsPullback.of_hasPullback
-        (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)).flip).flip
+        (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)).flip).flip
 
 /-- 概要：テンソル積の Spec と実際の周辺チャートの標準同型（論文 補題 3.3）。
 方針：同じ実際の引き戻しを表す二つの Cartesian モデルの標準同型を合成する。
@@ -88,7 +88,7 @@ noncomputable def strictTransformTensorChartIso :
 theorem strictTransformTensorChartIso_hom_snd :
     (strictTransformTensorChartIso R B C J j hj).hom ≫
         pullback.snd
-          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j =
+          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j =
       Spec.map (CommRingCat.ofHom (algebraMap C (C ⊗[R] B))) :=
   (Category.assoc _ _ _).trans
     ((congrArg (_ ≫ ·)
@@ -102,29 +102,29 @@ theorem strictTransformTensorChartIso_hom_snd :
 theorem strictTransformTensorChartIso_hom_base :
     (strictTransformTensorChartIso R B C J j hj).hom ≫
         (pullback.fst
-          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j ≫
-          (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J) ≫
+          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫
+          (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J) ≫
             Spec.map (CommRingCat.ofHom (algebraMap R B)))) =
       Spec.map (CommRingCat.ofHom (algebraMap C (C ⊗[R] B))) ≫
         Spec.map (CommRingCat.ofHom (algebraMap R C)) := by
   have h₁ :
       pullback.fst
-          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j ≫
-        (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J) ≫
+          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫
+        (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J) ≫
           Spec.map (CommRingCat.ofHom (algebraMap R B))) =
       pullback.snd
-          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j ≫
-        (j ≫ blowupπ J) :=
+          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫
+        (j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J) :=
     (congrArg (_ ≫ ·) (pullback.condition (f :=
-      Spec.map (CommRingCat.ofHom (algebraMap R B))) (g := blowupπ J))).trans
+      Spec.map (CommRingCat.ofHom (algebraMap R B))) (g := _root_.SerrePositivity.AlgebraicGeometry.blowupπ J))).trans
         ((Category.assoc _ _ _).symm.trans
           ((congrArg (· ≫ _) (pullback.condition (f :=
-            pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J))
+            pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J))
               (g := j))).trans (Category.assoc _ _ _)))
   exact (congrArg (_ ≫ ·) h₁).trans
     ((congrArg (fun k ↦ (strictTransformTensorChartIso R B C J j hj).hom ≫
       (pullback.snd
-        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j ≫ k)) hj).trans
+        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫ k)) hj).trans
         ((Category.assoc _ _ _).symm.trans
           (congrArg (· ≫ _) (strictTransformTensorChartIso_hom_snd R B C J j hj))))
 
@@ -144,8 +144,8 @@ theorem strictTransformTensorChartIso_preimage_boundary (r : R) :
   have hleft :
       ((strictTransformTensorChartIso R B C J j hj).hom ≫
         (pullback.fst
-          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j ≫
-          (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J) ≫
+          (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫
+          (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J) ≫
             Spec.map (CommRingCat.ofHom (algebraMap R B))))) ⁻¹ᵁ
               (PrimeSpectrum.basicOpen r : (Spec (.of R)).Opens) =
       (strictTransformTensorChartIso R B C J j hj).hom ⁻¹ᵁ

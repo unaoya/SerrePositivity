@@ -77,15 +77,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding_lTensor_injective := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding_lTensor_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.completedFreeEmbedding_rTensor_injective := _root_.SerrePositivity.AlgebraicGeometry.completedFreeEmbedding_rTensor_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_completedFree := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_completedFree
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flat_completedFree := _root_.SerrePositivity.AlgebraicGeometry.flat_completedFree

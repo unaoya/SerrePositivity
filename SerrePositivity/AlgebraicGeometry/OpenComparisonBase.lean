@@ -60,12 +60,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.centerComparison_openMap_base := _root_.SerrePositivity.AlgebraicGeometry.centerComparison_openMap_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.centerComparison_id_openMap_base := _root_.SerrePositivity.AlgebraicGeometry.centerComparison_id_openMap_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.centerComparison_id_openMap_base._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.centerComparison_id_openMap_base._proof_1

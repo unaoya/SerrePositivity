@@ -84,33 +84,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupMapRestrictRange := _root_.SerrePositivity.AlgebraicGeometry.blowupMapRestrictRange
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupMapRestrictRange_ι := _root_.SerrePositivity.AlgebraicGeometry.blowupMapRestrictRange_ι
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupMapRestrictRange_ι_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupMapRestrictRange_ι_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localDominationRestriction := _root_.SerrePositivity.AlgebraicGeometry.localDominationRestriction
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localDominationRestriction_base := _root_.SerrePositivity.AlgebraicGeometry.localDominationRestriction_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localDominationRestriction_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.localDominationRestriction_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupMapRestrictRange._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupMapRestrictRange._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupMapRestrictRange._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.blowupMapRestrictRange._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupMapRestrictRange.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.blowupMapRestrictRange.congr_simp
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localDominationRestriction.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.localDominationRestriction.congr_simp

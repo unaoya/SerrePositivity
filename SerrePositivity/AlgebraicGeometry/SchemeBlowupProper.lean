@@ -85,15 +85,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupπ_isSeparated := _root_.SerrePositivity.AlgebraicGeometry.blowupπ_isSeparated
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupπ_isProper := _root_.SerrePositivity.AlgebraicGeometry.blowupπ_isProper
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupπ_isProper_of_isLocallyNoetherian := _root_.SerrePositivity.AlgebraicGeometry.blowupπ_isProper_of_isLocallyNoetherian
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowup_isNoetherian := _root_.SerrePositivity.AlgebraicGeometry.blowup_isNoetherian

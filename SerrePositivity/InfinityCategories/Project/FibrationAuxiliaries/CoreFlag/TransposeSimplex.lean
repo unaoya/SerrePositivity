@@ -123,24 +123,3 @@ end SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.functorSimplex_isInvertible_iff := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.functorSimplex_isInvertible_iff
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.functorVertexEquiv_symm_app := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.functorVertexEquiv_symm_app
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.transposeSimplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeSimplex := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.transposeSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeSimplex_transposeSimplex := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.transposeSimplex_transposeSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.transpose_mem_iff
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_vertex_edge := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.transpose_vertex_edge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.transposeSimplex._proof_1

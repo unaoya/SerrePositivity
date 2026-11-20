@@ -1,0 +1,14 @@
+file	line	name	reason
+scripts/refactor/tests/deprecated_alias.lean	18	IFDeprecatedAliasTests.Old.Box	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	20	IFDeprecatedAliasTests.Old.Box.mk	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	22	IFDeprecatedAliasTests.Old.Box.val	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	24	IFDeprecatedAliasTests.Old.Box.rec	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	26	IFDeprecatedAliasTests.Old.Choice	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	28	IFDeprecatedAliasTests.Old.Choice.one	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	30	IFDeprecatedAliasTests.Old.Choice.two	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	32	IFDeprecatedAliasTests.Old.ident	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	34	IFDeprecatedAliasTests.Old.ident.eq_1	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	36	IFDeprecatedAliasTests.Old.ident_eq	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	60	IFDeprecatedAliasTests.Old.boxInhabited	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	100	IFDeprecatedAliasTests.Old.choiceDepth	command regression fixture
+scripts/refactor/tests/deprecated_alias.lean	102	IFDeprecatedAliasTests.Old.choiceDepth._unsafe_rec	command regression fixture

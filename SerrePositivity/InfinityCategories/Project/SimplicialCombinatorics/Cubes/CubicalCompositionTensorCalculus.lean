@@ -50,12 +50,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubicalComposeTensor_left := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubicalComposeTensor_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubicalComposeTensor_postcompose_eq := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubicalComposeTensor_postcompose_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubicalComposeTensor_right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubicalComposeTensor_right

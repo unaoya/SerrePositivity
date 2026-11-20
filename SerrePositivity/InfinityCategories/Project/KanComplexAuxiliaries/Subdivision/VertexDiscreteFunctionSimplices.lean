@@ -84,27 +84,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteEvaluate (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteEvaluate
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate_functorVertex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteEvaluate_functorVertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteFunctionSimplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteFunctionSimplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_evaluate := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteFunctionSimplex_evaluate
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_map := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteFunctionSimplex_map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteFunctionSimplex_reconstruct
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteEvaluate._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteFunctionSimplex._proof_1

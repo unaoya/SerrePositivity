@@ -117,15 +117,3 @@ end SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_isPullback := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_kanComplex := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_fibration (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_snd_fibration := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_fibration
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_snd_rlp := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_rlp

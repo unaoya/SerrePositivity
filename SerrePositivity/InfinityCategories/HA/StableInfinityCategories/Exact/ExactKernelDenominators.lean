@@ -49,12 +49,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactKernel (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactKernel := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactKernel
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactKernel_stableClosure := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exactKernel_stableClosure
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.invertedEdges_eq_cofiber_exactKernel := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.invertedEdges_eq_cofiber_exactKernel

@@ -75,18 +75,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.presentationKernelProjection := _root_.SerrePositivity.AlgebraicGeometry.presentationKernelProjection
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.presentationKernelProjection_comp_subtype := _root_.SerrePositivity.AlgebraicGeometry.presentationKernelProjection_comp_subtype
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.presentationKernel_free_of_projective := _root_.SerrePositivity.AlgebraicGeometry.presentationKernel_free_of_projective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.presentationKernelProjection._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.presentationKernelProjection._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.presentationKernelProjection._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.presentationKernelProjection._proof_2

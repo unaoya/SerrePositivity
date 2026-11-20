@@ -54,27 +54,3 @@ end SerrePositivity.InfinityCategories.Project.PointedSpaces
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.edge (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.edge := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.edge
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left_comp_right
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.vertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.vertex := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left_comp_right._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left_comp_right._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left_comp_right._proof_3
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.left_comp_right._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.vertex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.vertex._proof_1

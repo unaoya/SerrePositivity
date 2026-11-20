@@ -121,18 +121,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.algebraMap_isRegular_of_split_coefficients := _root_.SerrePositivity.AlgebraicGeometry.algebraMap_isRegular_of_split_coefficients
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.normalizedCoefficientIdeal := _root_.SerrePositivity.AlgebraicGeometry.normalizedCoefficientIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.normalizedCoefficientIdeal_mul := _root_.SerrePositivity.AlgebraicGeometry.normalizedCoefficientIdeal_mul
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.normalizedCoefficientIdeal_coeff_eq_top := _root_.SerrePositivity.AlgebraicGeometry.normalizedCoefficientIdeal_coeff_eq_top
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.normalizedCoefficientIdeal_not_le_map := _root_.SerrePositivity.AlgebraicGeometry.normalizedCoefficientIdeal_not_le_map

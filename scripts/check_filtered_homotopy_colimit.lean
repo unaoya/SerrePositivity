@@ -7,7 +7,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.DiagramModel
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w, w} C :=
   SerrePositivity.Smith.locallyPresentable_hasColimits (C := C)

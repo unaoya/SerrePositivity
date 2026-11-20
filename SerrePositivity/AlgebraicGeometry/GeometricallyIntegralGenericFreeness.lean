@@ -88,18 +88,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.geometricallyIntegralGenericPrime := _root_.SerrePositivity.AlgebraicGeometry.geometricallyIntegralGenericPrime
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.geometricallyIntegralGenericPrime_comap := _root_.SerrePositivity.AlgebraicGeometry.geometricallyIntegralGenericPrime_comap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.free_at_geometricallyIntegralGenericPrime := _root_.SerrePositivity.AlgebraicGeometry.free_at_geometricallyIntegralGenericPrime
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.minor_pattern_at_geometricallyIntegralGenericPrime := _root_.SerrePositivity.AlgebraicGeometry.minor_pattern_at_geometricallyIntegralGenericPrime
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.geometricallyIntegralGenericPrime._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.geometricallyIntegralGenericPrime._proof_1

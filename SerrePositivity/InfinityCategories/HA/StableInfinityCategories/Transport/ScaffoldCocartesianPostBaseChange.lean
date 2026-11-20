@@ -49,6 +49,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.instLeftFibrationSndSSet_5

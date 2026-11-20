@@ -73,12 +73,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.point_normalize_both_inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.point_normalize_both_inv
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.straighteningBaseChangeImageSectionPoint (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningBaseChangeImageSectionPoint := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.straighteningBaseChangeImageSectionPoint
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningBaseChangeImageSectionPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.straighteningBaseChangeImageSectionPoint._proof_1

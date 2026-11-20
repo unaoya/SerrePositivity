@@ -133,36 +133,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialDegrees := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialDegrees
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientMap := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientMap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientMap_injective := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientMap_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientMap_surjective := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientMap_surjective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientEquiv := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientEquiv
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientBasis := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientBasis
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientEquiv._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientEquiv._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientMap._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientMap._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientMap._proof_2
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.standardMonomialQuotientMap._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.standardMonomialQuotientMap._proof_3

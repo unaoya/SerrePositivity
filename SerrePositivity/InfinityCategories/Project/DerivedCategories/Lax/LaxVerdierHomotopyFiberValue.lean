@@ -53,24 +53,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.homotopyFiberValueSimplicialCategory (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.homotopyFiberValueSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.homotopyFiberValueSimplicialCategory
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.homotopyFiberValueSquareQuasicategory := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.homotopyFiberValueSquareQuasicategory
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientHomotopyFiberValueIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientHomotopyFiberValueIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberBFComparison (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberBFComparison := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberBFComparison
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientHomotopyFiberValueIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientHomotopyFiberValueIso._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberBFComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductFiberBFComparison._proof_1

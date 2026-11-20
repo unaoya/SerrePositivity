@@ -76,24 +76,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrow (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrow := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrow
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrowSection (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrowSection := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrowSection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrowSection_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrowSection_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrow_source := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrow_source
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrow_zero_target := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrow_zero_target
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.map (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.map := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.map
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrowSection._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.arrowSection._proof_1

@@ -74,12 +74,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.comp_zero_of_arrowMk_eq := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.comp_zero_of_arrowMk_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceFunctorZero := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.laxDifferenceFunctorZero
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.laxDifferenceFunctorZeroMorphisms (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceFunctorZeroMorphisms := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.laxDifferenceFunctorZeroMorphisms

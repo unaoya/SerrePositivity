@@ -40,18 +40,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fundamentalNerveUntransposeHomotopy (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fundamentalNerveUntransposeHomotopy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_eq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fundamentalNerveUntranspose_eq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fundamentalNerveUntransposeHomotopy._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fundamentalNerveUntransposeHomotopy._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fundamentalNerveUntransposeHomotopy._proof_3

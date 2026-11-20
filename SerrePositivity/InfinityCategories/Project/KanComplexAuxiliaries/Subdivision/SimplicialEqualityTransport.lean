@@ -56,18 +56,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_heq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_app_heq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_of_heq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_app_of_heq
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_common_face := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_common_face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_face
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face_of_heq := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_face_of_heq

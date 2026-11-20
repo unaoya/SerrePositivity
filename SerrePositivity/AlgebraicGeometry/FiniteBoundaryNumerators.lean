@@ -68,6 +68,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finite_orthogonal_boundary_numerators := _root_.SerrePositivity.AlgebraicGeometry.exists_finite_orthogonal_boundary_numerators

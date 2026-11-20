@@ -25,7 +25,7 @@ example [ModelCategory C]
 
 -- This consumer assumes neither filtered-colimit closure nor accessibility of W.
 example [ModelCategory C] [IsLocallyPresentable.{w} C]
-    (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J] :
+    (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       HasCardinalFilteredColimits.{w} (arrowProperty (weakEquivalences C)).FullSubcategory κ ∧
       (arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ :=

@@ -87,18 +87,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexClosedInterval_card := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_card
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexClosedInterval_max := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_max
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexClosedInterval_min := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_min
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexClosedInterval_two := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClosedInterval_two
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_closedInterval_val := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder_closedInterval_val

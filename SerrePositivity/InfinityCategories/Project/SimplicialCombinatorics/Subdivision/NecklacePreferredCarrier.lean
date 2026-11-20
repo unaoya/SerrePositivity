@@ -109,33 +109,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.carrierCongr (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.carrierCongr := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.carrierCongr
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.carrierCongr_first := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.carrierCongr_first
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.carrierCongr_last := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.carrierCongr_last
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_cons_isPushout := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ofBeads_cons_isPushout
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.preferredCarrierIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.preferredCarrierIso := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.preferredCarrierIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.preferredCarrierIso_first := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.preferredCarrierIso_first
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.preferredCarrierIso_last := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.preferredCarrierIso_last
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.singleSimplexIso_hom_eq_inclusion := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.singleSimplexIso_hom_eq_inclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.singleWedgeStandard_isPushout := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.singleWedgeStandard_isPushout
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.preferredCarrierIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.preferredCarrierIso._proof_1

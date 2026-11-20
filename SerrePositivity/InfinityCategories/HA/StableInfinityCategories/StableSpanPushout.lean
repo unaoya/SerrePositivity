@@ -102,12 +102,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_stable_pushoutPresentation_of_span
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_stable_pushoutSquare_of_span
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.stable_hasColimit_span := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stable_hasColimit_span

@@ -35,21 +35,21 @@ set_option backward.isDefEq.respectTransparency false in
 使われ方：平坦化後の有限忠実平坦被覆の rank の一様性。 -/
 theorem blowup_irreducible_of_affine_boundary {Y : Scheme.{u}} [IsAffine Y] [IsIntegral Y]
     (J : Y.IdealSheafData) (r : Γ(Y, ⊤)) (hr : r ≠ 0)
-    (hadm : Y.basicOpen r ≤ centerComplement J) : IrreducibleSpace (blowup J) := by
-  let U := centerComplement J
-  let V := blowupπ J ⁻¹ᵁ U
+    (hadm : Y.basicOpen r ≤ _root_.SerrePositivity.AlgebraicGeometry.centerComplement J) : IrreducibleSpace (_root_.SerrePositivity.AlgebraicGeometry.blowup J) := by
+  let U := _root_.SerrePositivity.AlgebraicGeometry.centerComplement J
+  let V := _root_.SerrePositivity.AlgebraicGeometry.blowupπ J ⁻¹ᵁ U
   obtain ⟨y, hy⟩ := affine_basicOpen_nonempty_of_ne_zero Y r hr
   have : Nonempty U := ⟨⟨y, hadm hy⟩⟩
   have : IrreducibleSpace U := U.ι.isOpenEmbedding.irreducibleSpace
-  have : IsIso (blowupπ J ∣_ U) := blowupπ_restrict_complement_isIso J
-  have : IrreducibleSpace V := (blowupπ J ∣_ U).homeomorph.irreducibleSpace_iff.mpr
+  have : IsIso (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J ∣_ U) := _root_.SerrePositivity.AlgebraicGeometry.blowupπ_restrict_complement_isIso J
+  have : IrreducibleSpace V := (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J ∣_ U).homeomorph.irreducibleSpace_iff.mpr
     (inferInstance : IrreducibleSpace U)
   have hd : Dense V.carrier :=
     (blowup_boundary_dense_of_isAffine J r
       (mem_nonZeroDivisors_iff_ne_zero.mpr hr)).mono (fun _ hx ↦ hadm hx)
   have hi := (IrreducibleSpace.isIrreducible_univ V).image V.ι V.ι.continuous.continuousOn
   simp only [Set.image_univ, Scheme.Opens.range_ι] at hi
-  apply (irreducibleSpace_def (blowup J)).mpr
+  apply (irreducibleSpace_def (_root_.SerrePositivity.AlgebraicGeometry.blowup J)).mpr
   exact Eq.mp (congrArg IsIrreducible hd.closure_eq) hi.closure
 
 /-- 概要：既約基底上の有限忠実平坦有限表示射は正の定 rank（論文 補題 3.2）。

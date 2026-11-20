@@ -113,24 +113,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.IsMittagLeffler := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_isMittagLeffler := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.affineTower_isMittagLeffler
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_map_arrow := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.affineTower_map_arrow
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.exists_nullifier_of_mittagLeffler := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_nullifier_of_mittagLeffler
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk_eq_point_of_mittagLeffler := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mk_eq_point_of_mittagLeffler
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.subsingleton_of_mittagLeffler := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.subsingleton_of_mittagLeffler
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.translated_range_reverse := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.translated_range_reverse

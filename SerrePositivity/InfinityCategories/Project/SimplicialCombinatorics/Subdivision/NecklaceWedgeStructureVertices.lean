@@ -89,27 +89,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_left := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_vertex_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_middle := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_vertex_middle
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_vertex_right
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_val := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_vertex_val
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceLeftUnitor_vertex_right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceLeftUnitor_vertex_right
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklacePointWedge_vertex_surjective := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePointWedge_vertex_surjective
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceRightUnitor_vertex_left := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceRightUnitor_vertex_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgePoint_vertex_surjective := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedgePoint_vertex_surjective

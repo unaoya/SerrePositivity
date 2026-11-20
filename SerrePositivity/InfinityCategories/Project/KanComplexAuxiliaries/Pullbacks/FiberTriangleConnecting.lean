@@ -87,9 +87,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.alternating_connecting := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.alternating_connecting
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.connecting_product := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.connecting_product

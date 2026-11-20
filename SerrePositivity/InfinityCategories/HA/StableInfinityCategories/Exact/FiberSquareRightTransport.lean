@@ -79,12 +79,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_fiberSquare_right_transport := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.exists_fiberSquare_right_transport
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fiberSquare_source_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquare_source_vertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fiberSquare_target_vertex := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.fiberSquare_target_vertex

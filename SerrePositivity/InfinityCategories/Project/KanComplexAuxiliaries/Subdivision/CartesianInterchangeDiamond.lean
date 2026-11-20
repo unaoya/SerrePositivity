@@ -74,30 +74,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeDiamond (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeDiamond
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeDiamond_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_diagonal := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeDiamond_diagonal
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_first := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeDiamond_first
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_second := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeDiamond_second
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeFirstLower (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeFirstLower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeFirstLower
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeFirstUpper (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeFirstUpper := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeFirstUpper
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeSecondLower (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeSecondLower := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeSecondLower
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeSecondUpper (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeSecondUpper := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cartesianInterchangeSecondUpper

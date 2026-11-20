@@ -67,12 +67,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonalTransposeIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonalTransposeIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal_bisimplicialInclusion := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonal_bisimplicialInclusion
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonalTransposeIso._proof_1

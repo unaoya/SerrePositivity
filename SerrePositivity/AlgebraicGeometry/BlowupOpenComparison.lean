@@ -123,36 +123,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_bijective := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_bijective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageBlowupCenterMap_isIso := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageBlowupCenterMap_isIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap_isOpenImmersion
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap_range := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso_hom_ι := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso_hom_ι
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso_hom_ι_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso_hom_ι_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso_inv_base := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso_inv_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso_inv_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso_inv_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenIso._proof_2

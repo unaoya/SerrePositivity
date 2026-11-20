@@ -11,9 +11,9 @@ open SerrePositivity.Bousfield SerrePositivity.HomotopyFunctionComplex
 variable {C : Type u} [Category.{v} C] [original : ModelCategory C] [IsLocallyPresentable.{w} C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
-  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hw : weakEquivalences SSet.{w} = SerrePositivity.SimplicialHomotopy.weakEquivalences)
@@ -30,7 +30,7 @@ variable {V : Type uV} [Category.{vV} V] [MonoidalCategory V] [base : ModelCateg
   [EnrichedOrdinaryCategory V C]
   (P : SerrePositivity.Enriched.TensorCotensor V C)
   (hP : @SerrePositivity.Quillen.IsQuillenBifunctor V _ base C _ original C _ original P.tensor)
-  (IV JV : MorphismProperty V) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{wV} IV JV]
+  (IV JV : MorphismProperty V) [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wV} IV JV]
 
 -- Use the actual localized model's generated class, with no assumption on its domains.
 example {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S)

@@ -98,9 +98,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.normalizedAdjugate_mul_pivot := _root_.SerrePositivity.AlgebraicGeometry.normalizedAdjugate_mul_pivot
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.kernel_le_regularMinorGraph := _root_.SerrePositivity.AlgebraicGeometry.kernel_le_regularMinorGraph

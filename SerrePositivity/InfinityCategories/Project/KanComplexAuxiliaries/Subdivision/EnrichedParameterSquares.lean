@@ -65,18 +65,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_assoc_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_hom := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_assoc_hom
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_hom_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_assoc_hom_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_square_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_parameter_square_comp

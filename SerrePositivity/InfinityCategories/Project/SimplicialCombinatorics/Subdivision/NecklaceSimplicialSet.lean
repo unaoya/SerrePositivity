@@ -61,30 +61,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.carrier (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.carrier := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.carrier
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.constantSimplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.constantSimplex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.constantSimplex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.firstVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.firstVertex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.inclusion (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.inclusion := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.inclusion
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.inclusion_mono (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.inclusion_mono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.inclusion_mono
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lastVertex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lastVertex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.lastVertex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.single_subcomplex_top := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single_subcomplex_top
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.subcomplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.subcomplex := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.subcomplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.subcomplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.subcomplex._proof_1

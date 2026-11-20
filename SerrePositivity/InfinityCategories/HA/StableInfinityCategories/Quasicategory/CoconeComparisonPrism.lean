@@ -99,18 +99,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanComparisonPrism := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanComparisonPrism_pre_parameter := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism_pre_parameter
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanFunctorEdgeUnflipHomotopy (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflipHomotopy := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanFunctorEdgeUnflipHomotopy
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflipHomotopy_h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanFunctorEdgeUnflipHomotopy_h
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanComparisonPrism.eq_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.spanComparisonPrism.eq_1

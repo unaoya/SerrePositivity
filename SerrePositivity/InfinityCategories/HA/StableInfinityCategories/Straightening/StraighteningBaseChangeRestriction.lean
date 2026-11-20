@@ -79,12 +79,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRestrictionIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRestrictionIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRestrictionIso._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso._proof_2 := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Straightening.straighteningJointBaseChangeRestrictionIso._proof_2

@@ -91,15 +91,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finite_flat_exists_away_free := _root_.SerrePositivity.AlgebraicGeometry.finite_flat_exists_away_free
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeLocalizationElements := _root_.SerrePositivity.AlgebraicGeometry.freeLocalizationElements
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.span_freeLocalizationElements_eq_top := _root_.SerrePositivity.AlgebraicGeometry.span_freeLocalizationElements_eq_top
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finset_freeLocalizations := _root_.SerrePositivity.AlgebraicGeometry.exists_finset_freeLocalizations

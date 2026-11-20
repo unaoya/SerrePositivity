@@ -98,9 +98,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_pureTransform_complement_surjection_of_regular_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.exists_pureTransform_complement_surjection_of_regular_minorIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_fin_surjection_pureTransform_of_regular_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.exists_fin_surjection_pureTransform_of_regular_minorIdeal

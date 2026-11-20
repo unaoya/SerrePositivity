@@ -109,24 +109,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryMultipleCenter := _root_.SerrePositivity.AlgebraicGeometry.boundaryMultipleCenter
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryMultipleCenter_fg := _root_.SerrePositivity.AlgebraicGeometry.boundaryMultipleCenter_fg
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pow_mem_boundaryMultipleCenter := _root_.SerrePositivity.AlgebraicGeometry.pow_mem_boundaryMultipleCenter
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryMultipleCenter_complement := _root_.SerrePositivity.AlgebraicGeometry.boundaryMultipleCenter_complement
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryMultipleCenter_chart_regular_principal := _root_.SerrePositivity.AlgebraicGeometry.boundaryMultipleCenter_chart_regular_principal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryMultipleCenter_chart_regular_principal_dvd_pow := _root_.SerrePositivity.AlgebraicGeometry.boundaryMultipleCenter_chart_regular_principal_dvd_pow
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryMultipleCenter._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.boundaryMultipleCenter._proof_1

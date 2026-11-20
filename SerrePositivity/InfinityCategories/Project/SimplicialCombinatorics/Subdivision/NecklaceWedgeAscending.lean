@@ -99,27 +99,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingEquiv (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingEquiv
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv_left := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingEquiv_left
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv_right := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingEquiv_right
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv_strictMono := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingEquiv_strictMono
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingIso := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingIso
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingIso_index := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingIso_index
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingEquiv.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedgeAscendingIso._proof_1

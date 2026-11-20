@@ -52,8 +52,8 @@ example [ModelCategory C] (hF : fibrations C = J.rlp)
       (trivialCofibrations C).HasFunctorialFactorization (fibrations C) := by
   have := hasSmallObjectArgument I
   have := cofibrantlyGeneratedOfSquareFactor I J W hF hW hJ hIW hfactor
-  exact ⟨SerrePositivity.ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration I J,
-    SerrePositivity.ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration I J⟩
+  exact ⟨SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration I J,
+    SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration I J⟩
 
 example [W.IsStableUnderRetracts]
     [(I.rlp.llp ⊓ W).IsStableUnderCoproducts.{w}]

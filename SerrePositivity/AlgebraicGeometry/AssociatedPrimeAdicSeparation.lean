@@ -87,12 +87,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iInf_pow_smul_eq_bot_of_associatedPrimes := _root_.SerrePositivity.AlgebraicGeometry.iInf_pow_smul_eq_bot_of_associatedPrimes
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isHausdorff_of_associatedPrimes := _root_.SerrePositivity.AlgebraicGeometry.isHausdorff_of_associatedPrimes
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletion_of_injective_of_associatedPrimes := _root_.SerrePositivity.AlgebraicGeometry.adicCompletion_of_injective_of_associatedPrimes

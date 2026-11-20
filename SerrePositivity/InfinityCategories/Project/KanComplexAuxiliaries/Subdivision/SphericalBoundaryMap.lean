@@ -98,21 +98,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.boundaryMap (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.boundaryMap := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.boundaryMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.boundary_filler_iff := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.boundary_filler_iff
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.face_boundaryMap := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.face_boundaryMap
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.face_boundaryMap_assoc := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.face_boundaryMap_assoc
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.facesCompatible := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.facesCompatible
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.nonempty_iff_boundary_filler := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.nonempty_iff_boundary_filler

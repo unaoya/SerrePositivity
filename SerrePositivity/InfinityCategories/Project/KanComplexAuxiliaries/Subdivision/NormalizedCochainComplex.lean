@@ -81,30 +81,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complexIso (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexIso := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complexIso
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homComplex (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homComplex
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex.eq_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complexIso._proof_4
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homComplex._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homComplex._proof_2
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homComplex.eq_1

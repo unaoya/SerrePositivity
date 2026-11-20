@@ -29,19 +29,19 @@ open SerrePositivity.KST.SchemeLemmas
 namespace SerrePositivity.KST.Descent
 
 variable {X Y C M : Scheme.{u}} (f : X ⟶ Y) (U : Y.Opens) (J : Y.IdealSheafData)
-  (j : C ⟶ blowup J)
+  (j : C ⟶ _root_.SerrePositivity.AlgebraicGeometry.blowup J)
 
 /-- 概要：実際の周辺チャートは元の射とチャート構造射の合成の引き戻し（補題 3.3）。
 方針：二つの選択された Cartesian 正方形を縦に貼り合わせる。
 規約：元のスキームが特定の環の Spec に定義上等しいとは要求しない。
 使われ方：全切断環からの具体的モデルとの比較。 -/
 theorem strictTransformChartAmbient_isPullback :
-    IsPullback (pullback.fst (pullback.snd f (blowupπ J)) j ≫ pullback.fst f (blowupπ J))
-      (pullback.snd (pullback.snd f (blowupπ J)) j) f (j ≫ blowupπ J) :=
-  ((IsPullback.of_hasPullback (pullback.snd f (blowupπ J)) j).flip.paste_vert
-    (IsPullback.of_hasPullback f (blowupπ J)).flip).flip
+    IsPullback (pullback.fst (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫ pullback.fst f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J))
+      (pullback.snd (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j) f (j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J) :=
+  ((IsPullback.of_hasPullback (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j).flip.paste_vert
+    (IsPullback.of_hasPullback f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)).flip).flip
 
-variable (a : M ⟶ X) (b : M ⟶ C) (hmodel : IsPullback a b f (j ≫ blowupπ J))
+variable (a : M ⟶ X) (b : M ⟶ C) (hmodel : IsPullback a b f (j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J))
 
 /-- 概要：具体的な Cartesian モデルと実際の周辺チャートの標準同型（論文 補題 3.3）。
 方針：両者の同じ引き戻しへの標準同型を合成する。
@@ -56,7 +56,7 @@ noncomputable def strictTransformChartModelIso : M ≅ strictTransformChartAmbie
 使われ方：基底を固定した平坦性の移送。 -/
 theorem strictTransformChartModelIso_hom_snd :
     (strictTransformChartModelIso f J j a b hmodel).hom ≫
-      pullback.snd (pullback.snd f (blowupπ J)) j = b :=
+      pullback.snd (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j = b :=
   (Category.assoc _ _ _).trans
     ((congrArg (_ ≫ ·) (strictTransformChartAmbient_isPullback f J j).isoPullback_inv_snd).trans
       hmodel.isoPullback_hom_snd)
@@ -67,7 +67,7 @@ theorem strictTransformChartModelIso_hom_snd :
 使われ方：元の境界開部分のモデル側での逆像。 -/
 theorem strictTransformChartModelIso_hom_fst_fst :
     (strictTransformChartModelIso f J j a b hmodel).hom ≫
-      (pullback.fst (pullback.snd f (blowupπ J)) j ≫ pullback.fst f (blowupπ J)) = a :=
+      (pullback.fst (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫ pullback.fst f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) = a :=
   (Category.assoc _ _ _).trans
     ((congrArg (_ ≫ ·) (strictTransformChartAmbient_isPullback f J j).isoPullback_inv_fst).trans
       hmodel.isoPullback_hom_fst)
@@ -80,14 +80,14 @@ theorem strictTransformChartModelIso_preimage :
     (strictTransformChartModelIso f J j a b hmodel).hom ⁻¹ᵁ
       strictTransformChartOpen f U J j = (a ≫ f) ⁻¹ᵁ U := by
   have hbase : (strictTransformChartModelIso f J j a b hmodel).hom ≫
-      (pullback.fst (pullback.snd f (blowupπ J)) j ≫ (pullback.fst f (blowupπ J) ≫ f)) =
+      (pullback.fst (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫ (pullback.fst f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J) ≫ f)) =
         a ≫ f :=
     (congrArg (_ ≫ ·) (Category.assoc _ _ _).symm).trans
       ((Category.assoc _ _ _).symm.trans
         (congrArg (· ≫ f) (strictTransformChartModelIso_hom_fst_fst f J j a b hmodel)))
   have he := congrArg (fun k : M ⟶ Y ↦ k ⁻¹ᵁ U) hbase
   have hl : ((strictTransformChartModelIso f J j a b hmodel).hom ≫
-      (pullback.fst (pullback.snd f (blowupπ J)) j ≫ (pullback.fst f (blowupπ J) ≫ f))) ⁻¹ᵁ U =
+      (pullback.fst (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j ≫ (pullback.fst f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J) ≫ f))) ⁻¹ᵁ U =
       (strictTransformChartModelIso f J j a b hmodel).hom ⁻¹ᵁ
         strictTransformChartOpen f U J j :=
     (Scheme.Hom.comp_preimage _ _ _).trans
@@ -95,7 +95,7 @@ theorem strictTransformChartModelIso_preimage :
         (Scheme.Hom.comp_preimage _ _ _))
   exact hl.symm.trans he
 
-variable [QuasiCompact (strictTransformOpen f U J).ι]
+variable [QuasiCompact (_root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen f U J).ι]
 
 set_option backward.isDefEq.respectTransparency false in
 /-- 概要：元の開包含の準コンパクト性は任意の周辺チャートでも保たれる（論文 補題 3.3）。
@@ -105,8 +105,8 @@ set_option backward.isDefEq.respectTransparency false in
 theorem strictTransformChartOpen_quasiCompact_of_source :
     QuasiCompact (strictTransformChartOpen f U J j).ι :=
   MorphismProperty.of_isPullback
-    (isPullback_morphismRestrict (pullback.fst (pullback.snd f (blowupπ J)) j)
-      (strictTransformOpen f U J)) inferInstance
+    (isPullback_morphismRestrict (pullback.fst (pullback.snd f (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j)
+      (_root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen f U J)) inferInstance
 
 /-- 概要：Cartesian モデルの境界の像と実際の周辺チャートの境界の像の同型（補題 3.3）。
 方針：周辺同型と同じ境界開部分の保存で、構造層を持つ実際の像を移す。
@@ -138,7 +138,7 @@ variable [IsOpenImmersion j]
 規約：元の f・J・j を変更しない。
 使われ方：元のアフィンスキームを全切断環で表示した局所計算の接続。 -/
 noncomputable def strictTransformChartModelPullbackIso :
-    ((a ≫ f) ⁻¹ᵁ U).ι.image ≅ pullback (strictTransformπ f U J) j :=
+    ((a ≫ f) ⁻¹ᵁ U).ι.image ≅ pullback (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f U J) j :=
   strictTransformChartModelImageIso f U J j a b hmodel ≪≫ strictTransformOpenChartIso f U J j
 
 /-- 概要：モデルの像と元のチャートの同型は指定した基底への射 b を保つ（補題 3.3）。
@@ -147,7 +147,7 @@ noncomputable def strictTransformChartModelPullbackIso :
 使われ方：平坦性をチャート基底上で移す。 -/
 theorem strictTransformChartModelPullbackIso_hom_snd :
     (strictTransformChartModelPullbackIso f U J j a b hmodel).hom ≫
-      pullback.snd (strictTransformπ f U J) j = ((a ≫ f) ⁻¹ᵁ U).ι.imageι ≫ b :=
+      pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f U J) j = ((a ≫ f) ⁻¹ᵁ U).ι.imageι ≫ b :=
   (Category.assoc _ _ _).trans
     ((congrArg (_ ≫ ·) (strictTransformOpenChartIso_hom_snd f U J j)).trans
       ((Category.assoc _ _ _).symm.trans
@@ -162,10 +162,10 @@ include hmodel in
 使われ方：全切断環のテンソル積による平坦化を元のスキーム射へ渡す。 -/
 theorem strictTransform_chart_flat_of_modelImage
     (hflat : Flat (((a ≫ f) ⁻¹ᵁ U).ι.imageι ≫ b)) :
-    Flat (pullback.snd (strictTransformπ f U J) j) := by
+    Flat (pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f U J) j) := by
   let e := strictTransformChartModelPullbackIso f U J j a b hmodel
   have h : e.inv ≫ (((a ≫ f) ⁻¹ᵁ U).ι.imageι ≫ b) =
-      pullback.snd (strictTransformπ f U J) j :=
+      pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f U J) j :=
     e.inv_comp_eq.mpr (strictTransformChartModelPullbackIso_hom_snd f U J j a b hmodel).symm
   have : Flat (e.inv ≫ (((a ≫ f) ⁻¹ᵁ U).ι.imageι ≫ b)) := inferInstance
   exact h ▸ this

@@ -90,27 +90,3 @@ end SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractio
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierFiniteQuotientConeSpanFamily := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.exists_verdierFiniteQuotientConeSpanFamily
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.finiteQuotientConeSpan_original := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.finiteQuotientConeSpan_original
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCosliceDiagram (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCosliceDiagram
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram_projection := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCosliceDiagram_projection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram_uncurry := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCosliceDiagram_uncurry
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCoslicePoint (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCoslicePoint := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCoslicePoint
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCosliceDiagram._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram.eq_1 := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.quotientConeCosliceDiagram.eq_1

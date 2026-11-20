@@ -151,33 +151,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.IsModuleMittagLeffler := _root_.SerrePositivity.AlgebraicGeometry.IsModuleMittagLeffler
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPiRightHom_rTensor_apply := _root_.SerrePositivity.AlgebraicGeometry.tensorPiRightHom_rTensor_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPiRightHom_injective_of_rTensor_injective := _root_.SerrePositivity.AlgebraicGeometry.tensorPiRightHom_injective_of_rTensor_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_of_universally_injective := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_of_universally_injective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorPiRightHom_basis_apply := _root_.SerrePositivity.AlgebraicGeometry.tensorPiRightHom_basis_apply
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_of_free := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_of_free
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_of_split := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_of_split
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isModuleMittagLeffler_of_projective := _root_.SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_of_projective
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.IsModuleMittagLeffler._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.IsModuleMittagLeffler._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.IsModuleMittagLeffler._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.IsModuleMittagLeffler._proof_2

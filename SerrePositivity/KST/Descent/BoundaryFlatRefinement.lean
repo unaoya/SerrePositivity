@@ -35,7 +35,7 @@ namespace SerrePositivity.KST.Descent
 theorem strictTransformπ_boundary_surjective {X Y : Scheme.{u}} [IsAffine Y]
     (f : X ⟶ Y) [IsFinite f] [Surjective f] (J : Y.IdealSheafData)
     (r : Γ(Y, ⊤)) (hr : r ∈ nonZeroDivisors Γ(Y, ⊤)) :
-    Surjective (strictTransformπ f (Y.basicOpen r) J) :=
+    Surjective (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ f (Y.basicOpen r) J) :=
   strictTransformπ_surjective_of_dense f (Y.basicOpen r) J
     (blowup_boundary_dense_of_isAffine J r hr)
 
@@ -50,7 +50,7 @@ theorem exists_finiteFlat_cover_refining_boundary
     (c : IrreducibleComponentIndex X) (hc : Surjective (integralComponentMap f c).hom.left)
     (J : Y.obj.left.IdealSheafData) (r : Γ(Y.obj.left, ⊤))
     (hr : r ∈ nonZeroDivisors Γ(Y.obj.left, ⊤))
-    [Flat (strictTransformπ (integralComponentMap f c).hom.left (Y.obj.left.basicOpen r) J)] :
+    [Flat (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (integralComponentMap f c).hom.left (Y.obj.left.basicOpen r) J)] :
     ∃ (T : FiniteTypeSchemes S) (p : T ⟶ finiteTypeBlowup Y J)
       (a : T ⟶ finiteTypePullback f (finiteTypeBlowupProjection Y J)),
       IsFinite p.hom.left ∧ Flat p.hom.left ∧ Surjective p.hom.left ∧
@@ -70,7 +70,7 @@ theorem exists_finiteFlat_cover_refining_boundary
     (finiteTypePullback_isPullback f (finiteTypeBlowupProjection Y J)).lift q p hq
   exact ⟨T, p, a, strictTransformπ_isFinite (integralComponentMap f c).hom.left U J,
     (inferInstance : Flat
-      (strictTransformπ (integralComponentMap f c).hom.left (Y.obj.left.basicOpen r) J)),
+      (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (integralComponentMap f c).hom.left (Y.obj.left.basicOpen r) J)),
     strictTransformπ_boundary_surjective (integralComponentMap f c).hom.left J r hr,
     strictTransformπ_locallyOfFinitePresentation (integralComponentMap f c).hom.left U J,
     (finiteTypePullback_isPullback f (finiteTypeBlowupProjection Y J)).lift_snd _ _ _⟩

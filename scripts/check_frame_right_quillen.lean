@@ -5,6 +5,8 @@ noncomputable section
 universe v u vH uH
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.Reedy
+open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
+  (cosimplicialHom)
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
@@ -24,7 +26,7 @@ example {H : Type uH} [Category.{vH} H] (L : SSet.{v} ⥤ H)
   cosimplicialHom_hasPointwiseRightDerived hcof hfib A hA hconst L
 
 -- Fixed mono/Kan classes suffice; no concrete model existence is imported.
-example : SerrePositivity.ModelGeneration.CofibrantlyGenerated.{v}
+example : SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{v}
     SSet.modelCategoryQuillen.I.{v} SSet.modelCategoryQuillen.J.{v} :=
   SerrePositivity.SimplicialModel.simplicial_cofibrantlyGenerated hcof hfib
 

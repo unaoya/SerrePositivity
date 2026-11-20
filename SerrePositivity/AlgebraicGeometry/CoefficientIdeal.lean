@@ -120,21 +120,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finsupp_linearMap_coeff_mem := _root_.SerrePositivity.AlgebraicGeometry.finsupp_linearMap_coeff_mem
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finsuppCoefficientIdeal := _root_.SerrePositivity.AlgebraicGeometry.finsuppCoefficientIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mem_finsuppCoefficientIdeal := _root_.SerrePositivity.AlgebraicGeometry.mem_finsuppCoefficientIdeal
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finsuppCoefficientIdeal_le_iff := _root_.SerrePositivity.AlgebraicGeometry.finsuppCoefficientIdeal_le_iff
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finsuppCoefficientIdeal_image_le := _root_.SerrePositivity.AlgebraicGeometry.finsuppCoefficientIdeal_image_le
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.finsuppCoefficientIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.finsuppCoefficientIdeal_fg

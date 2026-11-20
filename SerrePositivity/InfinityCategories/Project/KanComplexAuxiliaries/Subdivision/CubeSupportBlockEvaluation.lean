@@ -76,27 +76,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeInputCompressedSupportPartition := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeInputCompressedSupportPartition
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_projection_connectionGenerated := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeInputCompressed_projection_connectionGenerated
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_eval := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportBlockMap_eval
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportMax (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportMax := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportMax
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportMax_eq_projection := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportMax_eq_projection
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOutputSelection (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSelection := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOutputSelection
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportMax._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportMax._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSelection._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeSupportOutputSelection._proof_1

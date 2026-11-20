@@ -90,6 +90,3 @@ end SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Fibration.kanVertex_isTerminal_of_localized_toPoint := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanVertex_isTerminal_of_localized_toPoint

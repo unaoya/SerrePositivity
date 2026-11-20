@@ -40,7 +40,7 @@ example (S : MorphismProperty C) (Y : C) [IsFibrant Y] :
   LocalBoundaryGenerators.localObjects_iff_rlp cof fib hcof hfib S Y
 
 example (I J : MorphismProperty C)
-    [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+    [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (S : MorphismProperty C) (Y : C) :
     localFibrantObjects cof fib S Y ↔
       (LocalFibrantApproximation.generators J cof S).rlp (terminal.from Y) :=
@@ -53,7 +53,7 @@ example (S : MorphismProperty C) {X Y : C} (f : X ⟶ Y)
 
 -- The local-unit condition is deliberately an explicit input; locality of R(X) alone is insufficient.
 example [IsLocallyPresentable.{w} C] (I J : MorphismProperty C)
-    [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+    [SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (S : MorphismProperty C) (R : C ⥤ C) [R.IsAccessible.{w}] (η : 𝟭 C ⟶ R)
     (hR : ∀ X, localObjects cof fib S (R.obj X))
     (hη : ∀ X, localEquivalences cof fib S (η.app X)) :

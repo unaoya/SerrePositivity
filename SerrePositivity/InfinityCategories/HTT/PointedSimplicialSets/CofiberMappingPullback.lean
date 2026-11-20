@@ -106,21 +106,3 @@ end SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor_map := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor_map
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor_preservesLimitsOfShape (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor_preservesLimitsOfShape := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor_preservesLimitsOfShape
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.instIsRightAdjointSSetPointedSimplicialSetForget := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.instIsRightAdjointSSetPointedSimplicialSetForget
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor._proof_2

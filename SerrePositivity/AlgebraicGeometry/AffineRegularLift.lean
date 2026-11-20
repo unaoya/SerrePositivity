@@ -111,24 +111,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRegularLift := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRegularLift
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRegularLift_base := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRegularLift_base
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRegularLift_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRegularLift_base_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowup_hom_ext_of_regular := _root_.SerrePositivity.AlgebraicGeometry.affineBlowup_hom_ext_of_regular
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowup_regular_overlap := _root_.SerrePositivity.AlgebraicGeometry.affineBlowup_regular_overlap
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRegularLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRegularLift._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupRegularLift.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupRegularLift.congr_simp

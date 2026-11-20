@@ -85,12 +85,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_cancel_includeRight := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_cancel_includeRight
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isPushout := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isPushout
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap.congr_simp

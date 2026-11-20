@@ -100,27 +100,3 @@ set_option linter.auxLemma false
 
 namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_range := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_range
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso_hom_ι := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso_hom_ι
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso_hom_ι_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso_hom_ι_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso_hom_restrict := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso_hom_restrict
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso_hom_restrict_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso_hom_restrict_assoc
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso._proof_1
-
-@[deprecated (since := "2026-11-07")]
-deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineIso._proof_2

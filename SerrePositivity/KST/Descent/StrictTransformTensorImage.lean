@@ -31,9 +31,9 @@ namespace SerrePositivity.KST.Descent
 
 variable (R B C : Type u) [CommRing R] [CommRing B] [CommRing C]
   [Algebra R B] [Algebra R C] (J : (Spec (.of R)).IdealSheafData)
-  (j : Spec (.of C) ⟶ blowup J)
-  (hj : j ≫ blowupπ J = Spec.map (CommRingCat.ofHom (algebraMap R C))) (r : R)
-  [QuasiCompact (strictTransformOpen (Spec.map (CommRingCat.ofHom (algebraMap R B)))
+  (j : Spec (.of C) ⟶ _root_.SerrePositivity.AlgebraicGeometry.blowup J)
+  (hj : j ≫ _root_.SerrePositivity.AlgebraicGeometry.blowupπ J = Spec.map (CommRingCat.ofHom (algebraMap R C))) (r : R)
+  [QuasiCompact (_root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen (Spec.map (CommRingCat.ofHom (algebraMap R B)))
     (PrimeSpectrum.basicOpen r) J).ι]
 
 set_option backward.isDefEq.respectTransparency false in
@@ -47,8 +47,8 @@ instance strictTransformTensorChartOpen_quasiCompact :
   MorphismProperty.of_isPullback
     (isPullback_morphismRestrict
       (pullback.fst
-        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (blowupπ J)) j)
-      (strictTransformOpen (Spec.map (CommRingCat.ofHom (algebraMap R B)))
+        (pullback.snd (Spec.map (CommRingCat.ofHom (algebraMap R B))) (_root_.SerrePositivity.AlgebraicGeometry.blowupπ J)) j)
+      (_root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen (Spec.map (CommRingCat.ofHom (algebraMap R B)))
         (PrimeSpectrum.basicOpen r) J)) inferInstance
 
 /-- 概要：テンソル積の基本開の実際の像と周辺チャートの実際の像の同型（論文 補題 3.3）。
@@ -82,7 +82,7 @@ variable [IsOpenImmersion j]
 使われ方：全 blowup チャートの純変換の平坦化を元の構造射のチャートへ渡す。 -/
 noncomputable def strictTransformTensorPullbackIso :
     (algebraBoundaryOpen C (C ⊗[R] B) (algebraMap R C r)).ι.image ≅
-      pullback (strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
+      pullback (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
         (PrimeSpectrum.basicOpen r) J) j :=
   strictTransformTensorImageIso R B C J j hj r ≪≫
     strictTransformOpenChartIso (Spec.map (CommRingCat.ofHom (algebraMap R B)))
@@ -94,7 +94,7 @@ noncomputable def strictTransformTensorPullbackIso :
 使われ方：C 上の加群平坦性を実際のチャートの平坦性へ移す。 -/
 theorem strictTransformTensorPullbackIso_hom_snd :
     (strictTransformTensorPullbackIso R B C J j hj r).hom ≫
-        pullback.snd (strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
+        pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
           (PrimeSpectrum.basicOpen r) J) j =
       algebraBoundaryImageπ C (C ⊗[R] B) (algebraMap R C r) :=
   (Category.assoc _ _ _).trans
@@ -111,14 +111,14 @@ include hj in
 規約：平坦性を調べる基礎環はチャート係数環 C。π_* や通常の点集合に弱めない。
 使われ方：実際の全チャートの加群平坦化を global な平坦性の貼り合わせに渡す。 -/
 theorem strictTransform_chart_flat_of_tensorPureTransform
-    [Module.Flat C (modulePureTransform (algebraMap R C r) (C ⊗[R] B))] :
-    Flat (pullback.snd (strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
+    [Module.Flat C (_root_.SerrePositivity.AlgebraicGeometry.modulePureTransform (algebraMap R C r) (C ⊗[R] B))] :
+    Flat (pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
       (PrimeSpectrum.basicOpen r) J) j) := by
   let e := strictTransformTensorPullbackIso R B C J j hj r
   have hp : Flat (algebraBoundaryImageπ C (C ⊗[R] B) (algebraMap R C r)) :=
     algebraBoundaryOpen_image_flat _ _ _
   have h : e.inv ≫ algebraBoundaryImageπ C (C ⊗[R] B) (algebraMap R C r) =
-      pullback.snd (strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
+      pullback.snd (_root_.SerrePositivity.AlgebraicGeometry.strictTransformπ (Spec.map (CommRingCat.ofHom (algebraMap R B)))
         (PrimeSpectrum.basicOpen r) J) j :=
     e.inv_comp_eq.mpr (strictTransformTensorPullbackIso_hom_snd R B C J j hj r).symm
   have : Flat (e.inv ≫ algebraBoundaryImageπ C (C ⊗[R] B) (algebraMap R C r)) := inferInstance

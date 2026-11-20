@@ -64,7 +64,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
   have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
     pointedSimplicial_cofibrantlyGenerated hcof hfib
   have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J :=
-    simplicial_cofibrantlyGenerated hcof hfib
+    _root_.SerrePositivity.SimplicialModel.simplicial_cofibrantlyGenerated hcof hfib
   have : MonoidalModelCategory PointedSimplicialSet.{u} :=
     pointedSimplicial_monoidalModel hcof hfib
   have : IsCofibrant circle.{u} := pointedSimplicial_isCofibrant hcof _

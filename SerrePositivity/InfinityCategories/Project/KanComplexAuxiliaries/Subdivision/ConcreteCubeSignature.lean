@@ -50,18 +50,3 @@ end SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeMap_eval := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeMap_eval
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeSignature (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeSignature
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature_comp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeSignature_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature_eq_iff := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeSignature_eq_iff
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature_injective := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeSignature_injective

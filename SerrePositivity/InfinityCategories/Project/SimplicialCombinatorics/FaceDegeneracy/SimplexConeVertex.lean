@@ -88,24 +88,3 @@ end SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics
 
 /-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
 public section
-
-@[deprecated _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_comp := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_comp
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_succ := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_succ
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_δ_zero := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_δ_zero
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero._proof_1 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero._proof_1
-
-@[deprecated (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero._proof_2 := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero._proof_2
