@@ -1,0 +1,144 @@
+{
+ "directory": "/Users/sugakubunka/serre-evidence/spectra-unify/stage10",
+ "commit": "4ac20dbd1ca932bf1a00270747f8cce3c830fe80",
+ "made_by": "bulk 鍵で既存の .olean と .ilean を読み、型・本体・Lean が解決した参照を採取。Mathlib は作業ツリーの固定版の宣言索引を検索。",
+ "note": "段10の分類と使用者の証拠。ソースの基準は main 17fdb6570 取り込み後。",
+ "files": [
+  {
+   "path": "a",
+   "sha256": "2c72390988272c0300512a5ef436d3a57efa081a45161cc3cd4b9bab56481182",
+   "bytes": 5625
+  },
+  {
+   "path": "capture.log",
+   "sha256": "48f689520a0e7f2a83c6d5e9754968faa5c90ab9c0ed9ea3ab9fb2e1f78d4403",
+   "bytes": 282
+  },
+  {
+   "path": "capture.py",
+   "sha256": "13a3353b27053a6dadbbb087ce7c9a31759e2278c0a3cb92c962992c85f220b8",
+   "bytes": 620
+  },
+  {
+   "path": "catalog.py",
+   "sha256": "283c1b3a33c06c7cc1a52b6f350e55b3fbc458ed7de10ed0a7eeeffc3fecc745",
+   "bytes": 1432
+  },
+  {
+   "path": "circle-paths.json.gz",
+   "sha256": "0aeda5cadfbf12f1805bff525f275ae10170f85cb1db7645580c402f35f6934d",
+   "bytes": 633
+  },
+  {
+   "path": "collector-build.log",
+   "sha256": "627c77a612b12fff25f098d33a956b8f893955a6b9db7b344429538d8b30d009",
+   "bytes": 7350
+  },
+  {
+   "path": "counterparts.lean",
+   "sha256": "8d1fa9e642ea43f6f0672923a2fbe567ffeb0cf14b4fea3e50a0caead8ae49f7",
+   "bytes": 1058
+  },
+  {
+   "path": "group-dependencies.json.gz",
+   "sha256": "831d348459670371aa83a71c8fd5c5c52c21c21ddd19c88a8ec62238245a9e38",
+   "bytes": 476
+  },
+  {
+   "path": "imports.json.gz",
+   "sha256": "47842787d22b40e9944befbbdf4d6e726aec06aca1b388b123530b91cd1d05df",
+   "bytes": 5216
+  },
+  {
+   "path": "inventory.lean",
+   "sha256": "2b9f8fb5acad98ed030c48229ee6de8f95d86d1329ec49f52baa7ed60ffc0f63",
+   "bytes": 1817
+  },
+  {
+   "path": "kernel.jsonl.gz",
+   "sha256": "0d2d894993c281c36a797dc5dc82d67b428d43d87120548e72bb776798832b41",
+   "bytes": 298768
+  },
+  {
+   "path": "mathlib-search.json.gz",
+   "sha256": "1d7bcda314d9e30e68bfa8f141aa857418c9fa14b1da8aee624c1c94c39c7a62",
+   "bytes": 8451
+  },
+  {
+   "path": "mathlib-search.py",
+   "sha256": "402322a698ccb137889e984299c146256ae9ab85be66ed75e7129a78cc222728",
+   "bytes": 2139
+  },
+  {
+   "path": "partner-types.jsonl",
+   "sha256": "232ceeff56ba9339c0c188ca45df0d050e983b502fa3a940d38d6398018a47af",
+   "bytes": 173963
+  },
+  {
+   "path": "production",
+   "sha256": "4804b89f7bcafb5bd172a9d32f7575aef88d09316624c98ce951ce4de3283c78",
+   "bytes": 4733
+  },
+  {
+   "path": "scope.py",
+   "sha256": "2a9a25cd4894752375bdd8bf9f9fd4d108265d8aa03a41e9f1f37f3140efee72",
+   "bytes": 2527
+  },
+  {
+   "path": "script-errors.json.gz",
+   "sha256": "6d0b41cddcae5ddfe62e0b14c255497822c69b6cbdf4ea479aa303cb68f9e713",
+   "bytes": 289
+  },
+  {
+   "path": "script-references.json.gz",
+   "sha256": "e0bcafaad3c8a64ba8b07b70784cccce995fff755d2586d111f4982efe0d19e6",
+   "bytes": 37248
+  },
+  {
+   "path": "script-refs.lean",
+   "sha256": "e945168f18a82813e80f46520c45d799a1e958f5f65ea60e7c75766492ab6680",
+   "bytes": 1026
+  },
+  {
+   "path": "scripts",
+   "sha256": "29698cb6c5b60cffa06210c2f03846b7c39d63039b8d9c0384a463138e96a29a",
+   "bytes": 1307
+  },
+  {
+   "path": "scripts.log",
+   "sha256": "004ca82f8b953c9640c09b03489d1c40da10ff4d9444439afd9f1525041e2629",
+   "bytes": 1559
+  },
+  {
+   "path": "scripts.py",
+   "sha256": "33adc712e35d8d150d9f2ab0a7429e43a6aaac9598db73cc575024464a991aac",
+   "bytes": 721
+  },
+  {
+   "path": "side-by-side.jsonl.gz",
+   "sha256": "c626ad2a51a383cefed312dd032bc1ae46c05d453c8ea30276dd625a425bc543",
+   "bytes": 110645
+  },
+  {
+   "path": "target",
+   "sha256": "8839cc652299142b497001544cbf5829417e24f99a52b00aa6cbc1e162ba8ea8",
+   "bytes": 2757
+  },
+  {
+   "path": "target.jsonl.gz",
+   "sha256": "6234bac5101196c748ea55abad3d104b43759ba6accf428b908e63579852dd30",
+   "bytes": 151219
+  },
+  {
+   "path": "usage.json.gz",
+   "sha256": "0df4a5143d92cef1b192075dfaae90f1518484bb405abffc0e5c00e969761f6c",
+   "bytes": 25514
+  },
+  {
+   "path": "usage.py",
+   "sha256": "f1d5c4f20998653e2d7176a3c77f56f4779c7980a5f8ea1d6e24dabc716a26b1",
+   "bytes": 7708
+  }
+ ],
+ "total_bytes": 855083
+}

@@ -686,3 +686,200 @@ bulk 鍵で、新しい C 3 本と逆向き import の閉包にある利用側 1
 完全修飾名と短い表記を検索し、本体、現行の監査・検査スクリプト、対応表、blueprint の生成器と生成物で、削除された補助名への文字参照は 0 件だった。過去の比較目録 `scripts/refactor/targets/w2a-2-v3b-comparison.json` には 9 件が計 18 行に残っている。たとえば 4535 行目の `SerrePositivity.SymmetricSpectrum.freeObj._proof_1`。この目録は W2a-2 当時の宣言一覧で、現行の実行や生成で使われていない。main の `0997952dc:formalization-plans/stage-ii/consolidation/cleanup-rules.md` に従い、履歴として保存した。
 
 [証拠目録](../../../evidence/spectra-unify/stage9/manifest.json)の基準点は `3ecc4edca`。外部証拠の `removed-generated-proof-names.txt` に旧名と旧所有ファイルを、`generated-proof-reference-scan.txt` に文字参照の検索結果を保存した。
+
+## 段 10　一般の対称スペクトルの分類
+
+main `17fdb6570` を取り込んだ `4ac20dbd1` を基準にした。[段 10 の分類表](../../../research/cleanup-zero-base/spectra/stage10.csv)は、B の一般側 373 件、円周専用の比較 14 件、C 50 件の計 437 件。比較 14 件は B の 52 ファイルに含まれる。ソースに名前があるコマンドをカーネルの宣言範囲と照合した。自動生成の補題は親へ寄せ、無名の instance は利用者として数えた。論文対応表が名指しする対象宣言は 0 件だった。
+
+### 件数と行数
+
+行数は宣言の先頭から本体の末尾までの空行を除いた行数。共有する import・節・説明・空行を含む実ファイルは、B と比較の合計が 52 本・4,502 行、C が 3 本・327 行。
+
+| まとまり | B | 比較 | C | 件数 | 宣言行 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 基本と構造射 | 23 | 0 | 8 | 31 | 168 |
+| 自由スペクトルと各段の表示 | 64 | 0 | 7 | 71 | 357 |
+| 極限と余極限 | 16 | 0 | 0 | 16 | 56 |
+| 各段のテンソル | 35 | 2 | 10 | 47 | 234 |
+| テンソル積 | 13 | 1 | 1 | 15 | 105 |
+| 内部 Hom と次数のずらし | 47 | 1 | 1 | 49 | 369 |
+| 余テンソル | 31 | 1 | 7 | 39 | 275 |
+| 写像対象と豊穣化 | 102 | 1 | 13 | 116 | 827 |
+| 懸垂 | 42 | 8 | 3 | 53 | 307 |
+
+| 内容 | B | 比較 | C | 合計 |
+| --- | ---: | ---: | ---: | ---: |
+| B に固有 | 100 | 0 | 0 | 100 |
+| A の包み | 137 | 0 | 2 | 139 |
+| Mathlib にある | 56 | 4 | 3 | 63 |
+| A に置くべき | 50 | 0 | 0 | 50 |
+| 円周・基点付き単体集合に固有 | 30 | 10 | 45 | 85 |
+
+| 扱いの案 | B | 比較 | C | 合計 |
+| --- | ---: | ---: | ---: | ---: |
+| そのまま | 129 | 0 | 1 | 130 |
+| 消す | 180 | 12 | 15 | 207 |
+| 別名 | 10 | 0 | 12 | 22 |
+| A へ移す | 39 | 0 | 0 | 39 |
+| 判断できない | 15 | 2 | 22 | 39 |
+
+既存の相手の主張を並べた結果、258 件を「確かめた」、13 件を「名前と型から推定」とした。個別の相手を指定した行は合計 271 件。「確かめた」には型と本体を読み、既存結果の適用または定義展開で得られることを確認したものを含む。将来の移動・削除を反映したビルドの判定は次の段で行う。
+
+### 案を適用した場合の規模
+
+| 範囲 | 現在の宣言・実ファイル行 | 案を適用した場合 |
+| --- | --- | --- |
+| B（比較込み） | 387 件・4,502 行 | 約 156 件・2,800〜3,200 行 |
+| A（指示書の4領域） | 1,092 件・14,083 行 | 約 1,112 件・14,338〜14,448 行 |
+| C | 50 件・327 行 | 35 件・250〜305 行 |
+
+B は「消す」の 192 件と「A へ移す」の 39 件を控除した。「判断できない」は現状の数に含めた。削除・移動案に当たる宣言本体は B と比較で 1,367 行。関連する説明・区切りの集約と新しい一般論を呼ぶ側の追従を幅に含めた。C は削除案 15 件の 26 宣言行と、隣接する宣言説明を整理した場合の概算。
+
+A は移動候補の 39 件・509 宣言行を一件ずつ移す上限と、既存の右随伴比較・輸送・豊穣 Hom の補題に寄せる場合を分けた。段 3〜8 では追加・移動の見積もりが実装時におおむね半分になったため、中心値は約 20 件、追加の宣言行を約 254 行とした。幅には新しい引数やモジュールの説明を含む。右随伴の比較・係数自然性・原変数自然性の三つを作用と余作用に共用できるかが、差の主因になる。
+
+C の基点なし係数と正則加群の案を採る場合は別計算になる。C の削除案を先に実施し、基点なし係数の残り 18 件と球面の残り 2 件を一般化し、C の二変数随伴の入口を B 側に統一すると、C の現行名の入口は概算 14 件になる。B には 20 件を逐一加える上限がある。既存の係数関手や A の正則加群を再利用する場合、8〜12 件程度を追加する見込み。C に互換別名を残す場合は、その別名の数を両端の見積もりに反映する。
+
+### 依存と実施順の案
+
+1. A の既存の内部加群・畳み込みを確認し、B の台・忘却・自由加群、次数評価を揃える。次数付きの自由表示は既存の対称列の余極限・誘導・商の三表示を先に揃える。
+2. 次数別の構造射と自由・評価の API を固めてから、極限・余極限、自由対象のテンソル、各段テンソルへ進む。自由第0段テンソルと各段テンソルの同型は係数作用の出発点。
+3. 内部 Hom の一般論、自由対象からのシフト表示、シフト0、余テンソルの順に揃える。次数1の懸垂とその転置は構造射に続けて扱う。シフトした懸垂の式がこれを使う。余テンソルの段別の式が揃ってから、各段作用の転置と二変数随伴を照合する。
+4. 第0段の写像対象、代表性と豊穣の通常圏、豊穣 Hom の関手比較、作用と余作用の写像対象比較、モデル登録の順に揃える。円周係数のシリンダーから導来懸垂までの比較と C の別名は最後に追従する。
+
+まとまり単位で見ると、写像対象の中に随伴・比較・登録があり、懸垂の中に次数1の定義と派生するモデル比較がある。共通のまとまりを一括で動かすより、宣言の依存で順序を指定する。カーネルで得た主要なまとまり間の辺は以下のとおり。
+
+| 利用側 | 参照先 | 相異なる宣言対 |
+| --- | --- | ---: |
+| 写像対象と豊穣化 | 各段のテンソル | 209 |
+| 写像対象と豊穣化 | 基本と構造射 | 122 |
+| 自由スペクトルと各段の表示 | 基本と構造射 | 116 |
+| 内部 Hom と次数のずらし | 基本と構造射 | 100 |
+| 懸垂 | 基本と構造射 | 73 |
+| 各段のテンソル | 基本と構造射 | 66 |
+| 余テンソル | 基本と構造射 | 54 |
+| 懸垂 | 各段のテンソル | 50 |
+| 写像対象と豊穣化 | 余テンソル | 48 |
+| 余テンソル | 内部 Hom と次数のずらし | 38 |
+| 懸垂 | 写像対象と豊穣化 | 34 |
+| 極限と余極限 | 基本と構造射 | 31 |
+| 余テンソル | 各段のテンソル | 25 |
+| 内部 Hom と次数のずらし | 懸垂 | 19 |
+
+### A へ移す候補と既存の A
+
+
+- **`CategoryTheory/Monoidal/Mod/Limits.lean`（1 件）**。忘却の極限・余極限の生成と同型の反映は既存。台の零対象から加群の始対象が零であることをまとめた同じ補題は確認できなかった。
+  `initial_isZero`（`Zero.lean:25`）。
+
+- **`Spectra/SymmetricSequence/Convolution.lean`（2 件）**。畳み込みの生成自然変換は既存。次数の対へ絞った成分と左右ブロック置換の式をその隣に置く案。
+  `pairing`（`StructureMaps.lean:28`）、`pairing_equivariance`（`StructureMaps.lean:34`）。
+
+- **`Spectra/SymmetricSequence/PointwiseTensorModule.lean`（2 件）**。固定係数の加群上の関手と自由第0段からの対象別同型が既存。FunctorTransport の一般の輸送を使い、係数も動かす比較をまとめる。
+  `pointwiseTensorBifunctor`（`PointwiseTensor.lean:52`）、`tensorFreeZeroPointwiseBifunctorIso`（`PointwiseTensor.lean:56`）。
+
+- **`Spectra/SymmetricSequence/PointwiseTensorModuleAssociator.lean`（2 件）**。対象別の結合同型と各段の順・逆成分は既存。スペクトル射の変数の自然性と自然同型の束ねを対象別比較の隣に置く。
+  `pointwiseTensorAssociator_naturality`（`PointwiseTensor.lean:90`）、`pointwiseTensorAssociatorNatIso`（`PointwiseTensor.lean:107`）。
+
+- **`Spectra/SymmetricSequence/PointwiseTensorMapLevels.lean`（1 件）**。台の成分に関する pointwiseTensorPostLevelLaw は既存。加群の輸送で選んだ係数射に対して同じ各段成分を得るには入力の同定が要る。
+  `pointwiseTensorPost_level`（`PointwiseTensorCoherence.lean:37`）。
+
+- **`Spectra/SymmetricSequence/PointwiseTensorCoherence.lean`（1 件）**。五角形と単位の一般式は既存。二つの係数射を同時に動かす結合子の自然性を候補にした。
+  `pointwiseTensorAssociator_parameter_naturality`（`PointwiseTensorCoherence.lean:142`）。
+
+- **`CategoryTheory/Enriched/RepresentedMapping.lean`（1 件）**。transportedParametrizedAdjunction、enriched_pre/post、homFunctorIso_ofParametrized が既存。固定した随伴の選び方が同じか照合が要る候補は推定として分けた。
+  `pointwiseTensorMappingParametrizedAdjunction`（`ParametrizedMapping.lean:31`）。
+
+- **`CategoryTheory/Enriched/TensorCotensor.lean`（29 件）**。EnrichedRepresentability は同型・自然性・点の両立をフィールドとして要求する。これらを作用の結合子と二変数随伴から組み立てる手順を移動候補にした。右随伴の比較とその自然性は CategoryTheory/Adjunction/Comparison.lean から再利用できる。
+  `cotensorMappingParameterIso`（`CotensorMappingObject.lean:24`）、`cotensorMappingNatIso`（`CotensorMappingObject.lean:45`）、`cotensorMappingAdjunction_naturality_parameter`（`CotensorMappingParameter.lean:19`）、`cotensorMappingPowerAdjunction_naturality_parameter`（`CotensorMappingParameter.lean:35`）、`cotensorMappingIso_naturality_parameter`（`CotensorMappingParameter.lean:51`）、`cotensorMappingPowerAdjunction_unit`（`CotensorMappingPoints.lean:18`）、`cotensorMappingIso_arrow`（`CotensorMappingPoints.lean:31`）、`cotensorEnrichedMappingIso_points`（`CotensorMappingPoints.lean:68`）、`cotensorMappingAdjunction_naturality_source`（`CotensorMappingSource.lean:21`）、`cotensorMappingPowerAdjunction_naturality_source`（`CotensorMappingSource.lean:36`）、`cotensorMappingIso_naturality_source`（`CotensorMappingSource.lean:54`）、`cotensorMappingBifunctorIso`（`CotensorMappingSource.lean:83`）、`tensorEnrichedMappingIso`（`EnrichedMappingObjects.lean:29`）、`cotensorEnrichedMappingIso`（`EnrichedMappingObjects.lean:38`）、`tensorEnrichedMappingIso_hom_app`（`EnrichedMappingParameter.lean:23`）、`cotensorEnrichedMappingIso_hom_app`（`EnrichedMappingParameter.lean:28`）、`tensorEnrichedMappingIso_parameter`（`EnrichedMappingParameter.lean:34`）、`cotensorEnrichedMappingIso_parameter`（`EnrichedMappingParameter.lean:45`）、`tensorMappingParameterIso`（`TensorMappingObject.lean:24`）、`tensorMappingPowerAdjunction`（`TensorMappingObject.lean:33`）、`tensorMappingNatIso`（`TensorMappingObject.lean:39`）、`tensorMappingPowerAdjunction_naturality_parameter`（`TensorMappingParameter.lean:19`）、`tensorMappingIso_naturality_parameter`（`TensorMappingParameter.lean:45`）、`tensorMappingPowerAdjunction_unit`（`TensorMappingPoints.lean:18`）、`tensorMappingIso_arrow`（`TensorMappingPoints.lean:36`）、`tensorEnrichedMappingIso_points`（`TensorMappingPoints.lean:63`）、`tensorMappingPowerAdjunction_naturality_source`（`TensorMappingSource.lean:20`）、`tensorMappingIso_naturality_source`（`TensorMappingSource.lean:38`）、`tensorMappingBifunctorIso`（`TensorMappingSource.lean:67`）。
+
+### Mathlib の相手
+
+表の Mathlib 候補は次のとおり。同じ Mathlib 宣言を使う行は一緒に示す。型または既存の式を照合したものと、置換をまだ判定できないものを分けた。
+
+#### 確かめた
+
+- `CategoryTheory.Adjunction.comp`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:563`）。`cotensorMappingAdjunction`（`CotensorMappingObject.lean:34`）、`cotensorMappingPowerAdjunction`（`CotensorMappingObject.lean:40`）。
+- `CategoryTheory.Adjunction.homEquiv`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:159`）。`pointwiseTensorHomEquiv`（`Cotensor.lean:69`）、`freeAtHomEquiv`（`Evaluation.lean:41`）、`freeAtLift`（`Evaluation.lean:50`）、`mappingObjectHomEquiv`（`MappingObject.lean:48`）。
+- `CategoryTheory.Adjunction.homEquiv_naturality_left`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:230`）。`pointwiseTensorHomEquiv_naturality_source`（`Cotensor.lean:72`）、`mappingObjectHomEquiv_naturality_parameter`（`MappingObject.lean:68`）。
+- `CategoryTheory.Adjunction.homEquiv_naturality_right`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:237`）。`pointwiseTensorHomEquiv_naturality_target`（`Cotensor.lean:79`）、`mappingObjectHomEquiv_naturality_target`（`MappingObject.lean:74`）。
+- `CategoryTheory.Adjunction.homEquiv_unit`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:180`）。`freeAtHomEquiv_apply`（`Evaluation.lean:62`）。
+- `CategoryTheory.Adjunction.leftAdjoint_preservesColimits`（`Mathlib/CategoryTheory/Adjunction/Limits.lean:90`）。`free_preservesColimits`（`Limits.lean:60`）、`freeAt_preservesColimits`（`Limits.lean:63`）。
+- `CategoryTheory.Adjunction.left_triangle_components`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:114`）。`tensorCotensor_triangle`（`Cotensor.lean:85`）。
+- `CategoryTheory.Adjunction.ofNatIsoRight`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:493`）。`freeZeroTensorCotensorAdjunction`（`Cotensor.lean:60`）。
+- `CategoryTheory.Adjunction.rightAdjointUniq`（`Mathlib/CategoryTheory/Adjunction/Unique.lean:102`）。`simplicialCotensorNatIso`（`SimplicialSuspensionComparison.lean:27`）、`simplicialLoopNatIso`（`SimplicialSuspensionComparison.lean:38`）。
+- `CategoryTheory.Adjunction.rightAdjointUniq_hom_app_counit`（`Mathlib/CategoryTheory/Adjunction/Unique.lean:127`）。`simplicial_suspensionLoopCounit`（`SimplicialSuspensionComparison.lean:55`）。
+- `CategoryTheory.Adjunction.right_triangle_components`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:117`）。`cotensorTensor_triangle`（`Cotensor.lean:89`）。
+- `CategoryTheory.Adjunction.unit`（`Mathlib/CategoryTheory/Adjunction/Basic.lean:110`）。`freeAtGenerator`（`Evaluation.lean:46`）。
+- `CategoryTheory.Adjunction.unit_rightAdjointUniq_hom_app`（`Mathlib/CategoryTheory/Adjunction/Unique.lean:112`）。`simplicial_suspensionLoopUnit`（`SimplicialSuspensionComparison.lean:45`）。
+- `CategoryTheory.IsModHom.smul_hom`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:188`）。`action_hom`（`Basic.lean:61`）。
+- `CategoryTheory.Iso.app`（`Mathlib/CategoryTheory/NatIso.lean:51`）。`cotensorMappingIso`（`CotensorMappingObject.lean:50`）、`pointwiseTensorUnitIso`（`PointwiseTensorCoherence.lean:80`）、`tensorMappingIso`（`TensorMappingObject.lean:45`）。
+- `CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso`（`Mathlib/CategoryTheory/Limits/IsLimit.lean:153`）。`intervalBoundaryCoproductIso`（`SimplicialCylinder.lean:99`）。
+- `CategoryTheory.Limits.IsInitial.isZero`（`Mathlib/CategoryTheory/Limits/Shapes/ZeroMorphisms.lean:569`）。`pointwiseTensor_isZero_of_isZero`（`SuspensionPushout.lean:31`）。
+- `CategoryTheory.Limits.IsZero.eq_of_src`（`Mathlib/CategoryTheory/Limits/Shapes/ZeroObjects.lean:79`）。`circleTensorBasepoint_eq_zero`（`SuspensionPushout.lean:69`）。
+- `CategoryTheory.Limits.IsZero.eq_of_tgt`（`Mathlib/CategoryTheory/Limits/Shapes/ZeroObjects.lean:78`）。`intervalBoundaryCollapse_eq_zero`（`SuspensionPushout.lean:66`）。
+- `CategoryTheory.Limits.IsZero.of_iso`（`Mathlib/CategoryTheory/Limits/Shapes/ZeroObjects.lean:107`）。`freeAtLevelBlockQuotient_isZero`（`FreeLevelQuotient.lean:81`）、`freeAtLevel_isZero`（`FreeLevels.lean:85`）。
+- `CategoryTheory.Mod`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:227`）。`GeneralSymmetricSpectrum`（`Basic.lean:28`）、`mk`（`Basic.lean:65`）。
+- `CategoryTheory.Mod.Hom.mk'`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:278`）。`homMk`（`Basic.lean:75`）。
+- `CategoryTheory.Mod.X`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:229`）。`underlying`（`Basic.lean:37`）。
+- `CategoryTheory.Mod.forget`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:347`）。`forget`（`Basic.lean:39`）。
+- `CategoryTheory.Mod.hom_ext`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:319`）。`forget_faithful`（`Basic.lean:41`）。
+- `CategoryTheory.Mod.regular`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:336`）。`sphere`（`Sphere.lean:29`）、`sphere_underlying`（`Sphere.lean:32`）、`sphere_action`（`Sphere.lean:35`）。
+- `CategoryTheory.ModObj.mul_smul_self`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:159`）。`action_assoc`（`Basic.lean:55`）。
+- `CategoryTheory.ModObj.one_smul_self`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:154`）。`action_unit`（`Basic.lean:51`）。
+- `CategoryTheory.ModObj.smul`（`Mathlib/CategoryTheory/Monoidal/Mod.lean:61`）。`action`（`Basic.lean:47`）。
+- `CategoryTheory.MonoidalClosed.uncurry_curry`（`Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:180`）。`uncurry_adjointStructureMap`（`Suspension.lean:39`）。
+- `CategoryTheory.NatTrans.app`（`Mathlib/CategoryTheory/NatTrans.lean:56`）。`pointwiseTensorPost`（`PointwiseTensorCoherence.lean:20`）。
+- `CategoryTheory.NatTrans.comp_app`（`Mathlib/CategoryTheory/Functor/Category.lean:76`）。`levelMap_comp`（`Basic.lean:95`）。
+- `CategoryTheory.NatTrans.id_app`（`Mathlib/CategoryTheory/Functor/Category.lean:73`）。`levelMap_id`（`Basic.lean:91`）。
+- `CategoryTheory.NatTrans.naturality`（`Mathlib/CategoryTheory/NatTrans.lean:58`）。`circleTensorQuotient_naturality`（`CircleSuspensionNaturality.lean:62`）、`cotensorMappingIso_naturality_target`（`CotensorMappingObject.lean:63`）、`tensorMappingIso_naturality_target`（`TensorMappingObject.lean:59`）。
+- `CategoryTheory.ParametrizedAdjunction.homEquiv_naturality_one`（`Mathlib/CategoryTheory/Adjunction/Parametrized.lean:98`）。`pointwiseTensorHomEquiv_naturality_parameter`（`ParametrizedCotensor.lean:41`）。
+- `CategoryTheory.preservesColimitIso`（`Mathlib/CategoryTheory/Limits/Preserves/Limits.lean:122`）。`colimitLevelIso`（`Limits.lean:88`）。
+- `CategoryTheory.preservesLimitIso`（`Mathlib/CategoryTheory/Limits/Preserves/Limits.lean:54`）。`limitLevelIso`（`Limits.lean:80`）。
+- `CategoryTheory.preservesLimitIso_hom_π`（`Mathlib/CategoryTheory/Limits/Preserves/Limits.lean:58`）。`limitLevelIso_hom_π`（`Limits.lean:83`）。
+- `CategoryTheory.ι_preservesColimitIso_hom`（`Mathlib/CategoryTheory/Limits/Preserves/Limits.lean:131`）。`colimitLevelIso_ι_hom`（`Limits.lean:92`）。
+- `Equiv.apply_symm_apply`（`Mathlib/Logic/Equiv/Defs.lean:247`）。`freeAtGenerator_lift`（`Evaluation.lean:68`）、`curry_uncurry`（`TensorClosed.lean:57`）。
+- `Equiv.injective`（`Mathlib/Logic/Equiv/Defs.lean:177`）。`freeAtLift_unique`（`Evaluation.lean:82`）。
+- `Equiv.symm`（`Mathlib/Logic/Equiv/Defs.lean:144`）。`mappingObjectArrowInverse`（`MappingEnrichment.lean:89`）。
+- `Equiv.symm_apply_apply`（`Mathlib/Logic/Equiv/Defs.lean:249`）。`freeAtLift_generator`（`Evaluation.lean:75`）、`uncurry_curry`（`TensorClosed.lean:54`）。
+
+#### 名前と型から推定
+
+- `CategoryTheory.Limits.PreservesColimitsOfSize`（`Mathlib/CategoryTheory/Limits/Preserves/Basic.lean:97`）。`forget_preservesColimits`（`Limits.lean:70`）。
+- `CategoryTheory.Limits.PreservesLimitsOfSize`（`Mathlib/CategoryTheory/Limits/Preserves/Basic.lean:84`）。`forget_preservesLimits`（`Limits.lean:67`）。
+
+### C の残り
+
+型と本体の定数参照を依存として追った。補助証明の参照は親へ寄せ、解決済みのソース参照も加えた。C 50 件について、円周への型・本体の最短経路を表の `coordinate_dependency` に記した。型略記 `SymmetricSpectrum` そのものは、本体で円周を選ぶ。単体係数や正則加群では、型に円周が現れる経路と、構成の引数として円周が必要かどうかを分けて判断した。
+
+- `sphereTensorFreeZeroPointwiseNatIso`、`structureMap_eq_convolutionComponent`、`sphere_structureMap`、`simplicialMappingSpaceBifunctor_obj` の使用者は、範囲内・範囲外・検査で計 0。最初は B の既存同型の別名、二番目と四番目は定義等式。三番目は正則加群の次数付き構造射の式なので、任意の K へ移せるかを判定するまで保留した。
+- `sphere_underlying` と `sphere_action` は `rfl`。台を取ることと正則加群の作用を展開することで再現できる。`simplicialTensorCotensorHomEquiv_post` は B の係数自然性へ自由基点追加の射を与える一行で、段 2 検査で参照される。
+- `pointedMappingSpaceParametrizedAdjunction` は、字面は `abbrev` だが、自由第0段の随伴を各段テンソル比較で輸送してレコードを構成する。B の `pointwiseTensorMappingParametrizedAdjunction` は同じ両端を `ParametrizedAdjunction.mk'` で結ぶ。円周は座標に入る。モデル側の `ordinarySpectrumMappingAdjunction` と `pointedSpectrumMapping_SM7` が C の構成を使うため、B で統一するなら成分の転置と原変数自然性が既存の利用型で揃うかを確認する。
+
+**基点付き単体集合上の任意の座標。** `Simplicial.lean` の対象の係数は `adjoinBasepoint` の像で、写像空間の側は基点忘却を使う。円周への直接参照は一般構成の座標引数などにある。C の型を `GeneralSymmetricSpectrum PointedSimplicialSet K₀` に置換し、B の作用・余作用・写像対象を引数 `K₀` で使う案。B の `SimplicialCylinder.lean` にある `simplicialParameterFunctor` は既に任意の座標を使う。汎用の係数関手をモデル仮定より前に共通化し、基点なしの写像空間・零次同値・係数の単位と直積の比較を同じ箇所から使う。モデル側の `SimplicialLevelEnriched` と `SimplicialHomComparison` は B の係数 API を直接 import して `K₀ := circle` を指定する。Inputs の豊穣通常圏はこのモデル側の登録を通じて受け取る。安定側では、円周そのものを作用係数とする懸垂・ループとその随伴を、引き続き C の専門名で書ける。
+
+**一般の正則スペクトル。** `sphere = Mod.regular sphereSequence` の台と作用は正則加群の一般式。一般の `(C,K)` では係数を `tensorPowerSequence K` にし、B の `structureMap` に `tensorPowerMultiplication_fac_app` を適用すれば、構造射を `TensorPowers.appendIso` の順射で表示する候補になる。現在の `sphere_structureMap` は球面固有の表示から証明しており、一般表示での置換は推定。球面 4 件には C の外の宣言使用者が見つからず、`sphere` の使用者は同じファイルの 3 補題。C には円周を固定する型、懸垂・ループの名前、球面の置換など円周に根拠がある表示が残る。モデル・安定側で正則加群を使うときは、一般の B の入口に座標を渡す。
+
+### 円周専用の比較ファイル
+
+- **`SimplicialComparison.lean`（6 件）**。6 件とも定義展開で同じ対象や射になる。比較を使う箇所を一般側の式か定義展開で置き換えたうえで、比較モジュールを消す案。`SimplicialLevel.lean` の直接 import を必要な宣言の提供元へ替え、監査が検査しているモジュール名も追従する。
+- **`SimplicialSuspensionComparison.lean`（8 件）**。関手の定義等式 2 件と右随伴一意性を使う 4 件は既存の構成で置換する案。単位・余単位は `check_spectrum_suspension_geometry` が参照する。残る構造射とその転置は球面の冪1の表示付きであり、展開で置換できるかを確かめる。独立した表示として残す場合は C の懸垂の隣に移す案。`OrdinarySuspension.lean` はその提供元と必要な一般論を直接 import する。
+
+### 未使用の途中の段と判断を保留した宣言
+
+- `pointwiseTensorMap`（`PointwiseTensor.lean:72`）。係数射からの成分と対象射の関手像を合成した二変数の射。uncurry 側の map に置き換わるかを確認する。
+
+次は「判断できない」の一覧。理由と相手候補は分類表の同じ行にある。
+
+- **B（15 件）**。`hom_index_eq`（`Basic.lean:79`）、`simplicialCylinder_i₀_naturality`（`CircleSuspensionNaturality.lean:76`）、`simplicialCylinder_i₁_naturality`（`CircleSuspensionNaturality.lean:81`）、`lift_unique`（`Free.lean:63`）、`free_forget_eq_tensorLeft`（`Free.lean:70`）、`forget_createsColimits`（`Limits.lean:31`）、`forget_preservesLimits`（`Limits.lean:67`）、`forget_preservesColimits`（`Limits.lean:70`）、`eHomWhiskerRight_eq_mappingObjectMap`（`MappingFunctorComparison.lean:67`）、`mappingEnrichedHomFunctorIso`（`MappingFunctorComparison.lean:77`）、`cotensorMappingHomEquiv`（`MappingObject.lean:59`）、`mappingHom_compatibility`（`MappingObject.lean:63`）、`pointwiseTensorMap`（`PointwiseTensor.lean:72`）、`pointwiseTensorAssociator_parameter_left`（`PointwiseTensorCoherence.lean:156`）、`pointwiseTensorAssociator_parameter_right`（`PointwiseTensorCoherence.lean:170`）。
+- **比較（2 件）**。`simplicial_suspensionMap`（`SimplicialSuspensionComparison.lean:65`）、`simplicial_adjointStructureMap`（`SimplicialSuspensionComparison.lean:70`）。
+- **C（22 件）**。`evaluation`（`Basic.lean:54`）、`pointedMappingSpaceParametrizedAdjunction`（`Basic.lean:116`）、`simplicialTensor`（`Simplicial.lean:38`）、`simplicialCotensor`（`Simplicial.lean:42`）、`simplicialTensorFunctor`（`Simplicial.lean:46`）、`simplicialCotensorFunctor`（`Simplicial.lean:50`）、`simplicialTensorParameterFunctor`（`Simplicial.lean:54`）、`simplicialMappingSpaceFunctor`（`Simplicial.lean:59`）、`simplicialTensorMappingAdjunction`（`Simplicial.lean:64`）、`simplicialTensorCotensorAdjunction`（`Simplicial.lean:69`）、`simplicialMappingSpace`（`Simplicial.lean:74`）、`simplicialMappingSpaceBifunctor`（`Simplicial.lean:78`）、`simplicialMappingComposition`（`Simplicial.lean:89`）、`simplicialMappingVertexEquiv`（`Simplicial.lean:97`）、`mappingSpaceSimplicialCategory_vertexEquiv`（`Simplicial.lean:103`）、`simplicialTensorPost`（`Simplicial.lean:114`）、`simplicialCotensorPre`（`Simplicial.lean:119`）、`simplicialMappingSpacePre`（`Simplicial.lean:125`）、`simplicialTensorUnitNatIso`（`Simplicial.lean:138`）、`simplicialTensorProductNatIso`（`Simplicial.lean:143`）、`sphere`（`Sphere.lean:29`）、`sphere_structureMap`（`Sphere.lean:38`）。
+
+### 採取範囲と照合
+
+main の取り込みから分類・照合・報告まで約 25 分。
+
+- `Spectra/` を起点に全追跡 Lean の import を読み、逆向きに到達する 9,954 モジュール・スクリプトを洗った。対象の B・C・比較まで import 経路がある現役の本体は 93 モジュール。型・本体のカーネル定数依存と `.ilean` の解決済み参照を合わせ、参照元ごとに一件と数えた。B の行では B と比較を範囲内、C の行では C を範囲内とした。C・ModelCategory・Stable・Inputs は範囲外の列でそれぞれ確認できる。対応表の名指しは宣言欄を照合した。
+- 監査・検査の列は宣言名を直接使うスクリプトの本数。名前解決した参照と監査の明示的な完全修飾名を用いた。モジュール全体を列挙する監査の対象指定はコードの利用数に加えていない。36 本から採取し、うち 20 本で採取時に elaboration エラーが出た。そこでは解決済みの参照と明示名までを採り、解決できなかった式の暗黙依存は計数の外にある。
+- bulk 鍵で、必要な既存アーティファクトのビルドと採取だけを行った。root 全体のビルドは実施せず、段 10 の差分は分類表・報告と証拠目録。Lean ソース・監査・文献対応表の差分は 0。
+
+[証拠目録](../../../evidence/spectra-unify/stage10/manifest.json)の基準点は `4ac20dbd1`。型・本体を並べた採取、使用者の一覧、依存経路、Mathlib の語と検索結果を外部証拠に保存した。
