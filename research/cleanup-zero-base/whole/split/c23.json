@@ -1,0 +1,52 @@
+{
+ "key": "c23",
+ "concept": "D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+ "subconcepts": [
+  {
+   "name": "複体の導来 ∞ 圏（semifree 複体の dg 神経）",
+   "description": "環上の semifree 複体のなす dg 圏の dg 神経としての D(R)、その頂点、semifree 性",
+   "reference": "HA Definition 1.3.5.8、§1.3.2"
+  },
+  {
+   "name": "dg 圏上の加群の導来 ∞ 圏",
+   "description": "小さい dg 圏上の右 dg 加群の dg 神経、半自由加群の充満 dg 部分圏とその dg 神経",
+   "reference": "HA §1.3.5 の dg 圏版（Keller の導来圏）"
+  },
+  {
+   "name": "semifree 分解",
+   "description": "複体の semifree 分解の値と、導来 ∞ 圏の頂点としての分解",
+   "reference": ""
+  },
+  {
+   "name": "dg 前三角性",
+   "description": "表現可能対象の同型閉包が零・シフト・cone で閉じるという dg 圏の条件（dg 神経の安定性の入力）",
+   "reference": "Bondal–Kapranov"
+  },
+  {
+   "name": "dg 関手の comma 圏",
+   "description": "比較射 replacement → F(source) を持つ対象のなす dg 圏（lax 引き戻しの dg 模型）",
+   "reference": ""
+  },
+  {
+   "name": "複体の pinched 写像空間模型",
+   "description": "任意の複体を単位 Hom の pinched 写像空間として実現する模型",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategory": "複体の導来 ∞ 圏（semifree 複体の dg 神経）",
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories.derivedInfinityCategoryVertexEquiv": "複体の導来 ∞ 圏（semifree 複体の dg 神経）",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree": "複体の導来 ∞ 圏（semifree 複体の dg 神経）",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory": "dg 圏上の加群の導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleNerve": "dg 圏上の加群の導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeDGModules": "dg 圏上の加群の導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty": "dg 圏上の加群の導来 ∞ 圏",
+  "SerrePositivity.ComplexLimits.complexSemifreeResolutionInfinity": "semifree 分解",
+  "SerrePositivity.ComplexLimits.complexSemifreeResolutionValue": "semifree 分解",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated": "dg 前三角性",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject": "dg 関手の comma 圏",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.complexPinchedSpace": "複体の pinched 写像空間模型"
+ },
+ "mathlib_rules": [],
+ "notes": "核の定義は 12 件しかなく（宣言は 2312）、少数の定義に補題が集中している。そのため小概念は 6 個で、うち 3 個は定義が 1 件。IsDGPretriangulated（575 宣言）は dg 圏の性質なので幹の「B/dg 圏と dg 関手」または「B/三角圏」に、DGFunctorCommaObject（170 宣言）は「D/dg の貼り合わせ」（c18 の comma 表示）に移す手もあるが、導来 ∞ 圏の安定性と lax 引き戻しの入力として使われているのでここに残した。complexPinchedSpace は「C/写像空間」と近い。"
+}

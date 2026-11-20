@@ -1,0 +1,108 @@
+{
+ "key": "c19",
+ "concept": "Z 圏論一般/組合せと順序",
+ "subconcepts": [
+  {
+   "name": "置換と Coxeter 群",
+   "description": "対称群の置換（Equiv.Perm）、A 型の Coxeter 群と語、群作用",
+   "reference": "Barratt–Eccles; Mathlib Coxeter"
+  },
+  {
+   "name": "箙・道・全域木",
+   "description": "箙、道、対称化、広い部分箙と全域木（Arborescence）",
+   "reference": "Mathlib Quiver（自由亜群の Nielsen–Schreier の道具）"
+  },
+  {
+   "name": "基数・順序数・整礎性",
+   "description": "基数・順序数（正則基数、HasCardinalLT、初期切片）、整礎性、可算性",
+   "reference": ""
+  },
+  {
+   "name": "Fin の単調写像と単体圏",
+   "description": "Fin n の間の単調写像・順序埋め込み、succAbove・predAbove・castSucc（面・退化の添字の組合せ）、単体圏の射",
+   "reference": "Kerodon 1.1.1"
+  },
+  {
+   "name": "符号・二項係数・有限和",
+   "description": "(-1)^n の符号、置換の符号、二項係数・階乗、有限和・有限積の等式",
+   "reference": ""
+  },
+  {
+   "name": "代数・解析の初等補題",
+   "description": "環・加群・群準同型・実数・ENNReal などが主張に現れる初等補題（組合せではなく代数の側）",
+   "reference": ""
+  },
+  {
+   "name": "リストと語",
+   "description": "List の操作（take・drop・append・filter・Nodup）、語と列の組合せ",
+   "reference": "Berger–Fresse（全射オペラドの列）"
+  },
+  {
+   "name": "半順序・鎖・区間・束",
+   "description": "半順序の有限鎖、辞書式順序、最大・最小、区間、Galois 接続、単調写像、線型順序・束",
+   "reference": "Kerodon 3.3.3（鎖と細分）"
+  },
+  {
+   "name": "有限集合・写像・数え上げ",
+   "description": "Finset の演算と濃度、Fintype、単射・全射・全単射、同値 Equiv、和・積型",
+   "reference": ""
+  },
+  {
+   "name": "（その他）",
+   "description": "自然数・整数・Fin の値の等式や不等式だけの宣言（添字の算術）",
+   "reference": ""
+  }
+ ],
+ "assign": {},
+ "mathlib_rules": [
+  [
+   "^(CoxeterMatrix|CoxeterSystem|Equiv\\.Perm|Equiv\\.(swap|permCongr|sumCongr|prodCongr)|MulAction|Subgroup|QuotientGroup|FreeGroup|PresentedGroup|alternatingGroup|List\\.(Perm|formPerm)|Fin\\.(cycleRange|finRotate|cycleType)|finRotate)",
+   "置換と Coxeter 群"
+  ],
+  [
+   "^(Quiver(\\.|$)|WideSubquiver|Prefunctor|CategoryTheory\\.(Paths|Groupoid|FreeGroupoid|IsFreeGroupoid))",
+   "箙・道・全域木"
+  ],
+  [
+   "^(Ordinal|Cardinal|HasCardinalLT|WellOrder|WellFounded|IsWellOrder|IsWellFounded|WellFoundedLT|WellFoundedGT|SuccOrder|Order\\.(succ|IsSuccLimit|IsSuccPrelimit|pred)|Small$|Countable|Set\\.Countable|Denumerable|Encodable|Infinite|Set\\.Infinite)",
+   "基数・順序数・整礎性"
+  ],
+  [
+   "^(SimplexCategory|AugmentedSimplexCategory|SSet|CategoryTheory\\.(nerve|ComposableArrows|SimplicialObject|CosimplicialObject))",
+   "Fin の単調写像と単体圏"
+  ],
+  [
+   "^(Int\\.negOnePow|Equiv\\.Perm\\.sign|Int\\.units|Int\\.natAbs|Even|Odd|Nat\\.(choose|factorial|multichoose|centralBinom|descFactorial|ascFactorial)|Nat\\.multinomial|Finset\\.(sum|prod|range)|finsum|finprod|BigOperators)",
+   "符号・二項係数・有限和"
+  ],
+  [
+   "^(CommRing$|CommSemiring$|Ring$|Semiring$|Field$|Ideal|MvPolynomial|MvPowerSeries|PowerSeries|Polynomial|TruncatedWittVector|WittVector|Module(\\.|$)|LinearMap|LinearEquiv|Submodule|Finsupp|RingHom|AlgHom|Algebra$|Real(\\.|$)|ENNReal|NNReal|Rat(\\.|$)|ENat|Matrix|AddCommGroup$|AddCommMonoid$|MonoidHom|AddMonoidHom|Group$|Monoid$|Units|ringKrullDim|TensorProduct|Filter|TopologicalSpace|DirectSum|CharP|ZMod|Nat\\.Prime|IsUnit|Dvd\\.dvd)",
+   "代数・解析の初等補題"
+  ],
+  [
+   "^(List(\\.|$)|Multiset|Array|Vector|List\\.Vector|GetElem|Sym|Sym2)",
+   "リストと語"
+  ],
+  [
+   "^(PartialOrder\\.NonemptyFiniteChains|IsChain|Flag|LTSeries|RelSeries|Lex$|toLex|ofLex|Prod\\.Lex|Sigma\\.Lex|Pi\\.Lex|OrderDual|GaloisConnection|GaloisInsertion|IsGreatest|IsLeast|IsLUB|IsGLB|upperBounds|lowerBounds|BddAbove|BddBelow|IsMax|IsMin|IsTop|IsBot|Set\\.(Iio|Iic|Ioi|Ici|Ioo|Icc|Ico|Ioc)|Finset\\.(Iio|Iic|Ioi|Ici|Ioo|Icc|Ico|Ioc|max'|min'|max|min|sup|inf)|OrderIso|IsDirected|Directed|DirectedOn|IsCofinal|CompleteLattice$|iSup|iInf|sSup|sInf|Monotone|StrictMono|Antitone|StrictAnti|IsUpperSet|IsLowerSet|UpperSet|LowerSet|WithBot|WithTop|Order\\.)",
+   "半順序・鎖・区間・束"
+  ],
+  [
+   "^(OrderHom(\\.|$)|OrderEmbedding|instFunLikeOrderEmbedding|RelEmbedding|RelIso|Fin\\.(succAbove|predAbove|castSucc|succ|castAdd|natAdd|castLE|addNat|rev|pred|castPred|castLT|last|succAboveOrderEmb|castSuccOrderEmb|predAboveOrderHom|cons|snoc|insertNth|removeNth|append|tail|init|addCases|lastCases|cases)|finCongr|finSumFinEquiv|finProdFinEquiv|Finset\\.orderEmbOfFin|Finset\\.orderIsoOfFin)",
+   "Fin の単調写像と単体圏"
+  ],
+  [
+   "^(Finset(\\.|$)|Fintype(\\.|$)|Set\\.(powersetCard|ncard|Finite|encard|InjOn|SurjOn|BijOn|MapsTo|range|image|preimage)|Nat\\.card|Finite$|Function\\.(Injective|Surjective|Bijective|Embedding)|Equiv$|Sum$|Sigma$|Option$)",
+   "有限集合・写像・数え上げ"
+  ],
+  [
+   "^(LinearOrder$|Lattice\\.|DistribLattice|LE\\.le|LT\\.lt|Max\\.max|Min\\.min)",
+   "半順序・鎖・区間・束"
+  ],
+  [
+   ".*",
+   "（その他）"
+  ]
+ ],
+ "notes": "規則の使い方は c07 と同じ想定。Nat・Fin・Eq・LE.le・Finset の instance は決め手にしない。OrderHom・Fin.succAbove などは代数・リスト・鎖より下、Finset より上に置いた。受け皿 244 は Nat・Int・Fin の算術だけ。「代数・解析の初等補題」（269）は幹の A「環と加群（その他）」に近く、「置換と Coxeter 群」「リストと語」は大半が F「Barratt–Eccles と全射オペラド」の足場、「Fin の単調写像と単体圏」は C「単体集合（基本）」「dg 神経」の足場（file で見ると EInfinity・Kerodon/Examples・DerivedCategories が多い）。 確かめた件数：置換と Coxeter 群 209、箙・道・全域木 87、基数・順序数・整礎性 72、Fin の単調写像と単体圏 575、符号・二項係数・有限和 137、代数・解析の初等補題 269、リストと語 161、半順序・鎖・区間・束 282、有限集合・写像・数え上げ 388、（その他） 244。"
+}

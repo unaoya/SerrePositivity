@@ -1,0 +1,190 @@
+{
+ "key": "c05",
+ "concept": "B 複体と dg 圏/複体",
+ "subconcepts": [
+  {
+   "name": "複体（基本）と Hom 複体",
+   "description": "整数添字の余鎖複体 Ch(A)、Hom 複体、次数零のサイクル、スカラー倍の鎖写像、閉零圏との比較",
+   "reference": "Mathlib CochainComplex / HomComplex"
+  },
+  {
+   "name": "テンソル積と積構造",
+   "description": "全複体としてのテンソル積 P⊗Q、単位・結合子・対称性（Koszul 符号）・シフトとの両立、次数ごとの写像、Leibniz 則を満たす余鎖積",
+   "reference": ""
+  },
+  {
+   "name": "二重複体と全複体",
+   "description": "二重複体の（直和・積）全複体、成分への射影と挿入、行、余鎖複体の複体の積全複体化",
+   "reference": ""
+  },
+  {
+   "name": "写像錐・冪等射の像",
+   "description": "スカラー倍の写像錐の関手（Koszul の構成要素）、冪等な鎖写像とその像（等化子）",
+   "reference": ""
+  },
+  {
+   "name": "ホモロジー・分解・K-射影",
+   "description": "加群の射影分解であること、K-射影的複体、境界 cell（擬同型の判定に使う cycle と原始元）",
+   "reference": "Spaltenstein; Mathlib ProjectiveResolution"
+  },
+  {
+   "name": "係数拡大（複体の base change）",
+   "description": "環準同型に沿った複体の係数拡大 P⊗_T C と、係数環を元の環の加群と見たもの",
+   "reference": ""
+  },
+  {
+   "name": "Dold–Kan と正規化",
+   "description": "切断と Dold–Kan の Γ による複体から単体集合への関手、正規化鎖と標準単体のテンソル、Moore 正規化の反転",
+   "reference": "Dold–Kan; HA 1.2.3"
+  },
+  {
+   "name": "ホモトピー極限の模型（frame・重みつき end/coend）",
+   "description": "射影モデル構造の右 frame による複体図式のホモトピー極限、加群重みの線形 end/coend、自由表現可能前層と bar 重み",
+   "reference": "Hovey §5"
+  },
+  {
+   "name": "導来圏・ホモトピー圏（通常の三角圏）",
+   "description": "Mathlib の導来圏 D(Mod_R)・ホモトピー圏 K についての補題、有界な代表をもつ対象",
+   "reference": "Mathlib DerivedCategory"
+  },
+  {
+   "name": "複体の極限・余極限と図式",
+   "description": "複体の圏の直和・積・余極限、複体値の図式と図式圏の複体の交換",
+   "reference": ""
+  },
+  {
+   "name": "鎖複体と添字の取り替え（埋め込み・切断）",
+   "description": "ℕ 添字の鎖複体、添字の形の埋め込みによる零延長・切断、延長した鎖複体からの Hom の行",
+   "reference": ""
+  },
+  {
+   "name": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+   "description": "N_dg(Ch(A)) の中で写像空間・錐を計算するための単体データ（正規化テンソルの元の圏、錐・三角形のデータ、添字の補助）",
+   "reference": ""
+  }
+ ],
+ "assign": {
+  "SerrePositivity.DifferentialGraded.Complex": "複体（基本）と Hom 複体",
+  "SerrePositivity.DifferentialGraded.homComplex": "複体（基本）と Hom 複体",
+  "SerrePositivity.cochainTensor": "テンソル積と積構造",
+  "SerrePositivity.DifferentialGraded.zeroCycles": "複体（基本）と Hom 複体",
+  "SerrePositivity.ComplexLimits.complexOrdinaryDerivedSource": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.cochainTensorMap": "テンソル積と積構造",
+  "SerrePositivity.baseChange": "係数拡大（複体の base change）",
+  "SerrePositivity.scalarConeFunctor": "写像錐・冪等射の像",
+  "SerrePositivity.CochainIdempotent": "写像錐・冪等射の像",
+  "SerrePositivity.ComplexLimits.normalizedTensorConeData": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.HomologicalAlgebra.functorToComplexOfFunctors": "複体の極限・余極限と図式",
+  "SerrePositivity.ComplexLimits.truncatedDoldKanFunctor": "Dold–Kan と正規化",
+  "SerrePositivity.CochainIdempotent.image": "写像錐・冪等射の像",
+  "SerrePositivity.cochainTensorUnit": "テンソル積と積構造",
+  "SerrePositivity.HomologicalAlgebra.ProductTotal.functor": "二重複体と全複体",
+  "SerrePositivity.CochainIdempotent.inclusion": "写像錐・冪等射の像",
+  "SerrePositivity.IsResolutionOf": "ホモロジー・分解・K-射影",
+  "SerrePositivity.smulId": "複体（基本）と Hom 複体",
+  "SerrePositivity.ComplexLimits.normalizedTensorConePoint": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.normalizedTensorTriangleData": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.HomologicalAlgebra.linearWeightEndTotalFunctor": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.ComplexLimits.complexToClosed": "複体（基本）と Hom 複体",
+  "SerrePositivity.ComplexLimits.framedLimitConeSpace": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.ComplexLimits.framedLimitFunctor": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.HomologicalAlgebra.linearWeightRealization": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.HomologicalAlgebra.copowerFunctor": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.cochainTensorTripleDegreeMap": "テンソル積と積構造",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementDiagram": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.DifferentialGraded.ComplexBoundaryCell": "ホモロジー・分解・K-射影",
+  "SerrePositivity.ComplexLimits.ComplexSimplexAugmentation": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.normalizedTensorTrianglePinched": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.cochainTensorTripleι": "テンソル積と積構造",
+  "SerrePositivity.ComplexLimits.kProjectiveDerivedSource": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.ComplexLimits.normalizedSimplexHomEquiv": "Dold–Kan と正規化",
+  "SerrePositivity.Cosimplicial.simplexChains": "MOVE:B 複体と dg 圏/単体的鎖とシャッフル",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementIndex": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.cochainTensorRotationIso": "テンソル積と積構造",
+  "SerrePositivity.ComplexLimits.normalizedProbeHomMiddle": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.boundedHomotopyProperty": "導来圏・ホモトピー圏（通常の三角圏）",
+  "SerrePositivity.cochainTensorTripleMap": "テンソル積と積構造",
+  "SerrePositivity.cochainTensorDegreeMap": "テンソル積と積構造",
+  "SerrePositivity.baseChangeScalarModule": "係数拡大（複体の base change）",
+  "SerrePositivity.HomologicalAlgebra.componentAt": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.cochainProductTotalizationFunctor": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.totalToRowZero": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.ProductTotal.π": "二重複体と全複体",
+  "SerrePositivity.ComplexLimits.ConeHeadIndex.second": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.ConeHeadIndex.penultimate": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.cochainTensorShiftLeft": "テンソル積と積構造",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementNerveDiagram": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementUniversalLinear": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.HomologicalAlgebra.standardSimplexWeight": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.cochainTensorAssociator": "テンソル積と積構造",
+  "SerrePositivity.ComplexLimits.normalizedSimplexTensor": "Dold–Kan と正規化",
+  "SerrePositivity.ComplexLimits.framedLimitProbeFunctor": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.ComplexLimits.normalizedProbeTensorHom": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.HomologicalAlgebra.extendedChainHomRows": "鎖複体と添字の取り替え（埋め込み・切断）",
+  "SerrePositivity.ComplexLimits.ConeHeadIndex.withoutFirst": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.HomologicalAlgebra.freePresheafFunctor": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.cochainTensorSymmetry": "テンソル積と積構造",
+  "SerrePositivity.HomologicalAlgebra.CochainProduct": "テンソル積と積構造",
+  "SerrePositivity.HomologicalAlgebra.CochainProductTotal.componentπ": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.bicomplexRow": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.insertAt": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.normalizedMooreReverse": "Dold–Kan と正規化",
+  "SerrePositivity.HomologicalAlgebra.coefficientBarWeight": "ホモトピー極限の模型（frame・重みつき end/coend）",
+  "SerrePositivity.ComplexLimits.gammaDegreeZeroIso": "Dold–Kan と正規化",
+  "SerrePositivity.ComplexLimits.doubleConeOrderHom": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementPinchedMap": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.HomologicalAlgebra.localCohomologyScalarEndomorphism": "MOVE:A 可換代数と数論幾何/台つきの加群と Tor",
+  "SerrePositivity.Cosimplicial.coeffs": "MOVE:B 複体と dg 圏/単体的鎖とシャッフル",
+  "SerrePositivity.ComplexLimits.KProjectiveComplex": "ホモロジー・分解・K-射影",
+  "SerrePositivity.HomologicalAlgebra.ProductTotal.instTensorSignsIntDown_serrePositivity": "二重複体と全複体",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementEvaluation": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.ComplexLimits.normalizedTensorElementAugmentation": "（補助）dg 神経 N_dg(Ch) の写像空間と正規化テンソルの錐",
+  "SerrePositivity.HomologicalAlgebra.totalIndex": "二重複体と全複体",
+  "SerrePositivity.HomologicalAlgebra.localCohomologyModule": "MOVE:A 可換代数と数論幾何/台つきの加群と Tor",
+  "SerrePositivity.ComplexLimits.complexKProjective": "ホモロジー・分解・K-射影"
+ },
+ "mathlib_rules": [
+  [
+   "DerivedCategory|^HomotopyCategory|\\.HomotopyCategory|Pretriangulated|Triangulated",
+   "導来圏・ホモトピー圏（通常の三角圏）"
+  ],
+  [
+   "DoldKan|AlgebraicTopology|SimplicialObject|CosimplicialObject|SimplexCategory|SSet|normalizedMooreComplex|[Aa]lternating(Face|Coface)MapComplex",
+   "Dold–Kan と正規化"
+  ],
+  [
+   "GradedObject|[Mm]onoidal|curriedTensor|tensoringLeft|tensoringRight|tensorObj|tensorHom|tensorUnit|TensorSigns|TensorProduct|mapBifunctor|ιTensorObj",
+   "テンソル積と積構造"
+  ],
+  [
+   "HomologicalComplex₂|\\.total\\b|totalFunctor|ιTotal|totalDesc",
+   "二重複体と全複体"
+  ],
+  [
+   "mappingCone|[Hh]omotopyCofiber|HasHomotopyCofiber|HasBinaryBiproducts|biprod|Idempotent|Karoubi",
+   "写像錐・冪等射の像"
+  ],
+  [
+   "extendScalars|restrictScalars|ModuleCat\\.ExtendRestrictScalarsAdj",
+   "係数拡大（複体の base change）"
+  ],
+  [
+   "IsKProjective|IsKInjective|ProjectiveResolution|InjectiveResolution|Projective\\b|\\.homology|homologyMap|homologyFunctor|ShortComplex|HomologicalComplex\\.sc\\b|CategoryWithHomology|QuasiIso|quasiIso|Acyclic|ExactAt|\\.cycles|\\.opcycles",
+   "ホモロジー・分解・K-射影"
+  ],
+  [
+   "ComplexShape\\.down|^ChainComplex|ComplexShape\\.Embedding|ComplexShape\\.embedding|\\.extend\\b|truncLE|truncGE|stupidTrunc",
+   "鎖複体と添字の取り替え（埋め込み・切断）"
+  ],
+  [
+   "Discrete|Limits\\.(Has|Is|Preserves|Cocone|Cone|colimit|limit|Sigma|Pi|equalizer|coequalizer)|HasColimit|HasLimit|AddCommGrpCat|forget₂|mapHomologicalComplex|HomologicalComplex\\.eval",
+   "複体の極限・余極限と図式"
+  ],
+  [
+   ".",
+   "複体（基本）と Hom 複体"
+  ]
+ ],
+ "notes": "mathlib_rules は「宣言の主張に現れる Mathlib 定数のどれかが正規表現に当たれば」という読みで書いた（上から順、最後は受け皿）。c05.mathlib.txt は出現 110 回以上の定数しか載っていないので、規則は見えている定数（DerivedCategory 195、GradedObject/curriedTensor 110〜134、HasHomotopyCofiber 123、Discrete/AddCommGrpCat/forget₂ 150〜200、ComplexShape.down 359、homology/ShortComplex 150〜300）と一般的な Mathlib の名前から作った。実際の全定数で当て直して受け皿の大きさを確かめるのがよい。 HasBinaryBiproducts は写像錐の instance 引数としてほぼ HasHomotopyCofiber と同数現れるので写像錐の側に入れた。 核 79 件のうち 17 件（ComplexLimits.normalizedTensor*・ConeHeadIndex など）は N_dg(Ch) の中の写像空間・錐の計算の足場で、複体そのものの概念ではないので（補助）にまとめた。幹では「C/dg 神経」か「D/導来 ∞ 圏」の下に置く方が自然かもしれない。 係数拡大（baseChange 73 宣言）は幹の「B/係数の取り替え」と重なる可能性がある（そちらの中身を見ていないので MOVE にせず小概念にした）。 complexOrdinaryDerivedSource・kProjectiveDerivedSource は導来 ∞ 圏への写像なので MOVE、局所コホモロジー 2 件は「台つきの加群と Tor」へ、Cosimplicial の private abbrev 2 件（chains Δ[N]）は「単体的鎖とシャッフル」へ MOVE。 c11 から余単体的・単体的複体の全複体（productTotalFunctor など 14 件）をこの概念へ MOVE しており、受け側の小概念は「二重複体と全複体」「ホモトピー極限の模型」になる。"
+}

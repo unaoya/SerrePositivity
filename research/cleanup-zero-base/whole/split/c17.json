@@ -1,0 +1,137 @@
+{
+ "key": "c17",
+ "concept": "C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind",
+ "subconcepts": [
+  {
+   "name": "空間の ∞ 圏 𝒮",
+   "description": "Kan 複体の単体的圏の coherent 神経 𝒮、その頂点、𝒮 値の関手 ∞ 圏",
+   "reference": "Kerodon 5.5.1（Construction 5.5.1.1）"
+  },
+  {
+   "name": "基点付き空間と普遍左ファイブレーション",
+   "description": "𝒮 の一点からの coslice 𝒮_*、射影 𝒮_* → 𝒮 とその fiber の同定",
+   "reference": "Kerodon 5.5.3、5.6.3"
+  },
+  {
+   "name": "Cat∞ と QCat",
+   "description": "小さい準圏の単体的圏 QCat、その coherent 神経 Cat∞、Cat∞ 値の関手 ∞ 圏",
+   "reference": "Kerodon 5.5.4"
+  },
+  {
+   "name": "（補助）coherent 神経の単体の読み戻し",
+   "description": "coherent 神経の頂点・辺・二単体・三単体を、元の単体的圏の射・関手同型として読む",
+   "reference": "Kerodon 2.4.3、5.5.4"
+  },
+  {
+   "name": "Cat∞ の引き戻し",
+   "description": "準圏の cospan の Cat∞ での引き戻し錐、その脚・対角・ホモトピー",
+   "reference": "Kerodon 7.1、HTT 3.3.3"
+  },
+  {
+   "name": "（補助）錐・余錐の輸送と変換",
+   "description": "join 錐の脚、錐の族の後合成、可逆 prism に沿う極限錐の輸送、余錐を定値への変換として読む",
+   "reference": "Kerodon 7.1"
+  },
+  {
+   "name": "前層の ∞ 圏",
+   "description": "空間値前層の ∞ 圏 Fun(Cᵒᵖ, 𝒮)、評価、余極限を極限へ送る前層",
+   "reference": "HTT 5.1.0.1、5.1.2"
+  },
+  {
+   "name": "米田埋め込み",
+   "description": "twisted arrow の分類による Hom 関手、米田写像、表現可能前層",
+   "reference": "Kerodon 8.3.3、HTT 5.1.3"
+  },
+  {
+   "name": "前層の密度（表現可能前層の余極限）",
+   "description": "前層の元の圏上の Yoneda 図式と、前層を頂点とする余錐（密度）",
+   "reference": "HTT 5.1.5.3"
+  },
+  {
+   "name": "Ind 完備化",
+   "description": "前層の中で Yoneda 像と κ-filtered 余極限で閉じた充満部分 ∞ 圏 Ind_κ(C)",
+   "reference": "HTT 5.3.5"
+  },
+  {
+   "name": "P_Σ（非アーベル導来圏）",
+   "description": "有限積を保つ前層の充満部分 ∞ 圏 P_Σ(C)",
+   "reference": "HTT 5.5.8.8"
+  }
+ ],
+ "assign": {
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda": "Ind 完備化",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndInfinity": "Ind 完備化",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity": "空間の ∞ 圏 𝒮",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representablePresheafInfinity": "米田埋め込み",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject": "空間の ∞ 圏 𝒮",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceProjection": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat": "Cat∞ と QCat",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.yonedaInfinityMap": "米田埋め込み",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafInfinity": "前層の ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.SigmaPresheafInfinity": "P_Σ（非アーベル導来圏）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedSourceElements": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafDensityEvaluationDiagram": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity": "Cat∞ と QCat",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinityFunctor": "Cat∞ と QCat",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafElementsYonedaDiagram": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafDensityCocone": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coconeFiberMap": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactProjectiveEvaluationSpaceInfinity": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.HTT.Section3_3_4.coherentDiagramTotalKanObject": "空間の ∞ 圏 𝒮",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.canonicalYonedaPointedIdentity": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgHomTargetUnderlyingSpaceInfinity": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinityFunctor": "空間の ∞ 圏 𝒮",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberValueEquivalence": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaceInfinity": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackConeTetrahedron": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsFunctorEqIso": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.spaceInfinityVertex": "空間の ∞ 圏 𝒮",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneFamilyPostcomp": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaPresheafInfinityInclusion": "P_Σ（非アーベル導来圏）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coconeTransformationMap": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackConeFunctorLeg": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowTarget": "米田埋め込み",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowHomInfinity": "米田埋め込み",
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.dgHomUnderlyingSpaceInfinity": "MOVE:D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedElementsReconstruction": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentEdgeHom": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coconeTransformationVertex": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.constantTransformationPrism": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackDiagramDiagonal": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinityTetrahedron23": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackConeDiagonal": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject": "Cat∞ と QCat",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedInfinityMap": "米田埋め込み",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.edgewiseEnrichedRight": "米田埋め込み",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.arrowBoundary": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentTetrahedronPath0123": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedElementsProjection": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.SendsSmallColimitsToLimits": "前層の ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackDiagram": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneHomotopyDiagramEdge": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpecifiedLimitConeTransport": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneLegInclusion": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackConeHomotopy": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinityTriangleIso": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafInfinityEvaluation": "前層の ∞ 圏",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentTetrahedronPath013": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.constantDiagram": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentVertex": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catPullbackReplacementNatTrans": "Cat∞ の引き戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedElementsHomDiagram": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentTetrahedronPath03": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinityTetrahedron01": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointSpaceVertex": "基点付き空間と普遍左ファイブレーション",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafTwistedElementsTargetDiagram": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafDensitySourceInclusion": "前層の密度（表現可能前層の余極限）",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coherentTetrahedronPath023": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.catInfinityTetrahedron12": "（補助）coherent 神経の単体の読み戻し",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coconeMappingPointAt": "（補助）錐・余錐の輸送と変換",
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafDensityEvaluationVertex": "前層の密度（表現可能前層の余極限）"
+ },
+ "mathlib_rules": [],
+ "notes": "dg 加群から 𝒮 への関手 3 件（dgBar…・dgHom…UnderlyingSpaceInfinity）は導来 ∞ 圏へ MOVE。「（補助）錐・余錐の輸送と変換」（12 件）は内容としては「極限と余極限」の道具で、Cat∞ の引き戻しと前層の密度の証明のために置かれている。arrowBoundary（区間の二端点、Tamme の lax pullback 用）もここに入れた。P_Σ はこの概念に 2 件、c25 に Yoneda・評価が 5 件あり、c25 の分はここへ MOVE とした。Ind は 2 定義だが宣言の数は最大（763）。"
+}

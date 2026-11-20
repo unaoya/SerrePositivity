@@ -39,7 +39,7 @@ RULES = [
  ('D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ', r'Gluing\.'),
  # C ∞ 圏
  ('C 単体集合と ∞ 圏/dg 神経', r'DifferentialGradedCategories\.|dgNerve|Simplex\.vertex|Functor\.map'),
- ('C 単体集合と ∞ 圏/結とスライス', r'SliceAndJoin|join|slice(Under|Over)|relativeJoin'),
+ ('C 単体集合と ∞ 圏/結とスライス', r'SliceAndJoin|(?<!d)[jJ]oin(?!t)|slice(Under|Over)'),
  ('C 単体集合と ∞ 圏/極限と余極限', r'LimitsAndColimits|Join(Cocone|Cone)|Is(Colimit|Limit)Cone|pullbackCospan|KanExtensions|bousfieldKan'),
  ('C 単体集合と ∞ 圏/ファイブレーションと straightening', r'Fibration|vertexFiber|[uU]nstraighten|[sS]traighten|TransportSimplex|CovariantTransport|weightedNer'),
  ('C 単体集合と ∞ 圏/写像空間', r'MorphismSpaces|[pP]inchedHom|intervalMapping'),
@@ -53,7 +53,7 @@ RULES = [
  # B dg
  ('B 複体と dg 圏/dg 商と cell 分解', r'DGQuotient|CellResolution|DGCellAttachment'),
  ('B 複体と dg 圏/双加群とテンソル', r'Bimodule|BalancedTensor|KFlat'),
- ('B 複体と dg 圏/導来圏と Perf（dg 加群）', r'Derived(Module)?Category|moduleToDerived|[pP]erfect|derivedFiniteCell|TriaCategory'),
+ ('B 複体と dg 圏/導来圏と Perf（dg 加群）', r'Derived(Module)?Category|moduleToDerived|PerfectDG|[pP]erfectOver|PerfectModule|derivedFiniteCell|TriaCategory|DifferentialGraded\..*[pP]erfect'),
  ('B 複体と dg 圏/dg 加群', r'RightModule|LeftModule|ModuleCategory|module(Hom|Cone|QuasiIso|Evaluation)|representable|ModuleHomotopyCategory'),
  ('B 複体と dg 圏/係数の取り替え', r'ScalarExtension'),
  ('B 複体と dg 圏/dg 圏と dg 関手', r'DGCategory|DGFunctor|GradedHom|homObject|ClosedCategory|DifferentialGraded\.(compose|HomotopyCategory|boundaryRelation|EndomorphismObject|DGTensorCategory)'),
@@ -144,4 +144,25 @@ MATHLIB_ROOTS3 = [
  ('C 単体集合と ∞ 圏/随伴（2 圏）', r'^CategoryTheory\.Bicategory'),
  ('C 単体集合と ∞ 圏/単体的圏と coherent 神経', r'^CategoryTheory\.SimplicialThickening'),
  ('B 複体と dg 圏/単体的鎖とシャッフル', r'^AlgebraicTopology\.'),
+]
+
+# 版 4（11-20）：読む作業（split/c*.json）で分かった名前の規則の誤りを直す。RULES3 より先に当てる。
+RULES4 = [
+ ('H K 理論/K 空間と K スペクトル', r'KST\.Fibration\.'),
+]
+# 概念の名前の改め（読む作業の指摘）
+RENAME = {
+ 'H K 理論/K 空間と K スペクトル': 'H K 理論/S 構成と K スペクトル',
+ 'C 単体集合と ∞ 圏/表現可能 ∞ 圏とフィルター': 'C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター',
+ 'C 単体集合と ∞ 圏/随伴（2 圏）': 'C 単体集合と ∞ 圏/随伴（∞ 圏）',
+}
+# 読む作業で、小概念を別の概念として立てるもの：(元の概念, 小概念の名前の先頭) → 新しい概念
+PROMOTE = [
+ ('B 複体と dg 圏/導来圏と Perf（dg 加群）', 'coherent bar', 'D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成'),
+ ('B 複体と dg 圏/導来圏と Perf（dg 加群）', '（補助）coherent bar', 'D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成'),
+ ('F オペラドと E∞/Barratt–Eccles と全射オペラド', 'E 代数のモデル構造', 'F オペラドと E∞/E∞ 代数の圏（CAlg と加群）'),
+ ('F オペラドと E∞/Barratt–Eccles と全射オペラド', '（補助）導来写像空間', 'F オペラドと E∞/E∞ 代数の圏（CAlg と加群）'),
+ ('F オペラドと E∞/Barratt–Eccles と全射オペラド', 'CAlg', 'F オペラドと E∞/E∞ 代数の圏（CAlg と加群）'),
+ ('F オペラドと E∞/Barratt–Eccles と全射オペラド', 'E 代数上の加群', 'F オペラドと E∞/E∞ 代数の圏（CAlg と加群）'),
+ ('F オペラドと E∞/Barratt–Eccles と全射オペラド', '（補助）加群のテンソル', 'F オペラドと E∞/E∞ 代数の圏（CAlg と加群）'),
 ]

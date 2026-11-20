@@ -1,0 +1,158 @@
+{
+ "key": "c08",
+ "concept": "A 可換代数と数論幾何/環と加群（その他）",
+ "subconcepts": [
+  {
+   "name": "分冪代数",
+   "description": "Mathlib の DividedPowerAlgebra・DividedPowers（分冪構造、dp、分冪射）についての補題",
+   "reference": "Berthelot–Ogus §3; Mathlib DividedPowers"
+  },
+  {
+   "name": "Witt ベクトル・tilt・Frobenius と標数 p",
+   "description": "Witt ベクトル、tilt（PreTilt）・Perfection、完全環、Frobenius、CharP・ZMod",
+   "reference": "BMS1 §3; Mathlib WittVector, Perfection"
+  },
+  {
+   "name": "導分・Kähler 微分・外積代数",
+   "description": "導分と Kähler 微分、形式的エタール・滑らか、外積代数・Clifford 代数・外冪",
+   "reference": "Stacks 00RM, 00UQ; Mathlib KaehlerDifferential, ExteriorAlgebra"
+  },
+  {
+   "name": "素スペクトル・Zariski 位相・層",
+   "description": "PrimeSpectrum、basicOpen・zeroLocus、極小素イデアル、開集合の上の層・加群の層",
+   "reference": ""
+  },
+  {
+   "name": "フィルター・次数付き環・I 進完備化",
+   "description": "I 進完備化 AdicCompletion・IsAdicComplete、イデアルのフィルター、Rees 代数、次数付き環と斉次局所化",
+   "reference": "Stacks 00M9, 05GG"
+  },
+  {
+   "name": "次元・長さ・正則列",
+   "description": "Krull 次元、加群の長さ、台と随伴素イデアル、正則列・正則局所環",
+   "reference": ""
+  },
+  {
+   "name": "加群の圏とホモロジー代数",
+   "description": "ModuleCat の中の完全列・Tor・射影分解・導来関手、群の表現 Rep",
+   "reference": ""
+  },
+  {
+   "name": "局所環・剰余体・体の拡大と整拡大",
+   "description": "局所環と極大イデアル・剰余体、付値環、体の拡大（中間体・最小多項式・分離性）、整拡大・根の添加 AdjoinRoot",
+   "reference": ""
+  },
+  {
+   "name": "局所化",
+   "description": "Localization（Away・AtPrime）、IsLocalization、加群の局所化、非零因子",
+   "reference": ""
+  },
+  {
+   "name": "テンソル積・底変換・平坦性",
+   "description": "加群・代数のテンソル積、底変換、平坦・忠実平坦",
+   "reference": ""
+  },
+  {
+   "name": "多項式環と冪級数環",
+   "description": "Polynomial・MvPolynomial・PolynomialModule、MvPowerSeries・PowerSeries",
+   "reference": ""
+  },
+  {
+   "name": "有限性・Noether 性・自由加群",
+   "description": "Noether 環、有限生成・有限表示、自由・射影加群と基底、行列",
+   "reference": ""
+  },
+  {
+   "name": "順極限・直和・環の圏の（余）極限",
+   "description": "DirectLimit・有向系、直和 DirectSum、CommRingCat などの圏での極限・フィルター余極限",
+   "reference": ""
+  },
+  {
+   "name": "イデアル・剰余環・環準同型",
+   "description": "イデアルの演算（span・map・comap・radical）、剰余環、素・極大イデアル、単元・冪零・整域、環同型・代数準同型",
+   "reference": ""
+  },
+  {
+   "name": "加群・部分加群・線型写像",
+   "description": "部分加群、線型写像・線型同値、Finsupp、商加群",
+   "reference": ""
+  },
+  {
+   "name": "（その他）",
+   "description": "CommRing と元の等式しか主張に現れない宣言（個別の環・元についての補題や定義）",
+   "reference": ""
+  }
+ ],
+ "assign": {},
+ "mathlib_rules": [
+  [
+   "^(DividedPowerAlgebra|DividedPowers|DividedPower)",
+   "分冪代数"
+  ],
+  [
+   "^(WittVector|TruncatedWittVector|WittPolynomial|wittPolynomial|PreTilt|Perfection|PerfectRing|PerfectField|PerfectClosure|ModP|frobenius|iterateFrobenius|frobeniusEquiv|ExpChar|expChar|CharP|charP|ringChar|ZMod|PadicInt|Padic|padicValNat|padicValInt)",
+   "Witt ベクトル・tilt・Frobenius と標数 p"
+  ],
+  [
+   "^(Derivation|KaehlerDifferential|Algebra\\.(Etale|FormallyEtale|FormallySmooth|FormallyUnramified|Smooth|Unramified|Extension|Generators|Presentation|H1Cotangent|CotangentComplex)|ExteriorAlgebra|CliffordAlgebra|QuadraticForm|QuadraticMap|exteriorPower|TensorAlgebra|SymmetricAlgebra|AlternatingMap|Polynomial\\.derivative|MvPolynomial\\.pderiv)",
+   "導分・Kähler 微分・外積代数"
+  ],
+  [
+   "^(PrimeSpectrum|TopologicalSpace\\.(Opens|Closeds)|TopCat|Opens\\.|CategoryTheory\\.(Sheaf|Presheaf|GrothendieckTopology|Sieve|instHasSheafify)|SheafOfModules|PresheafOfModules|AlgebraicGeometry\\.|minimalPrimes|Ideal\\.minimalPrimes|T2Space|IsOpen|IsClosed|Continuous)",
+   "素スペクトル・Zariski 位相・層"
+  ],
+  [
+   "^(AdicCompletion|IsAdicComplete|IsHausdorff|IsPrecomplete|Ideal\\.Filtration|reesAlgebra|GradedRing|GradedAlgebra|GradedModule|DirectSum\\.Decomposition|SetLike\\.(GradedSMul|GradedMonoid|GradedMul|GradedOne|IsHomogeneousElem)|HomogeneousLocalization|HomogeneousIdeal|Ideal\\.IsHomogeneous|MvPolynomial\\.(homogeneousSubmodule|IsHomogeneous|weightedHomogeneousSubmodule)|associatedGraded|Ideal\\.adic|IsAdic|UniformSpace\\.Completion)",
+   "フィルター・次数付き環・I 進完備化"
+  ],
+  [
+   "^(ringKrullDim|Order\\.(krullDim|height|coheight)|Ideal\\.(height|primeHeight)|Module\\.(length|supportDim|support|annihilator|depth)|IsFiniteLength|IsArtinian|IsRegularLocalRing|RingTheory\\.Sequence|IsSMulRegular|IsRegular$|associatedPrimes|IsAssociatedPrime|IsSimpleModule|CompositionSeries|JordanHolder|Ideal\\.spanFinrank|IsCohenMacaulay|Module\\.IsTorsion)",
+   "次元・長さ・正則列"
+  ],
+  [
+   "^(ModuleCat|FGModuleCat|CategoryTheory\\.(ShortComplex|Tor|Ext|Abelian\\.Ext|ProjectiveResolution|InjectiveResolution|Functor\\.leftDerived|Functor\\.rightDerived|Projective|Injective|Linear|Preadditive|Abelian)|HomologicalComplex|ChainComplex|CochainComplex|ComplexShape|Rep$|Rep\\.|Representation|Action(\\.|$)|groupCohomology|groupHomology)",
+   "加群の圏とホモロジー代数"
+  ],
+  [
+   "^(IsLocalRing|IsLocalHom|Ideal\\.ResidueField|ValuationRing|Valuation|IsDiscreteValuationRing|IsHenselian|HenselianLocalRing|IntermediateField|minpoly|Algebra\\.(IsSeparable|IsIntegral|IsAlgebraic|IsPurelyInseparable|adjoin|IsNormal)|IsPurelyInseparable|IsSeparable|IsIntegral|IsAlgebraic|IsIntegrallyClosed|IsIntegralClosure|integralClosure|AdjoinRoot|IsFractionRing|FractionRing|Polynomial\\.(Separable|Splits|IsSplittingField|SplittingField)|IsAlgClosed|AlgebraicClosure|IsGalois|Normal$|FiniteDimensional|IsDedekindDomain|Subfield)",
+   "局所環・剰余体・体の拡大と整拡大"
+  ],
+  [
+   "^(OreLocalization\\.(?!oreSetComm$)|Localization|IsLocalization|LocalizedModule|IsLocalizedModule|Submonoid\\.powers|nonZeroDivisors|Ideal\\.primeCompl|IsLocalizedModule|LocalizationMap)",
+   "局所化"
+  ],
+  [
+   "^(TensorProduct|Algebra\\.TensorProduct|LinearMap\\.(baseChange|lTensor|rTensor|liftBaseChange)|LinearEquiv\\.(baseChange|lTensor|rTensor)|Module\\.(Flat|FaithfullyFlat)|Algebra\\.(IsPushout|Flat)|RingHom\\.(Flat|FaithfullyFlat)|IsBaseChange|IsTensorProduct|PiTensorProduct)",
+   "テンソル積・底変換・平坦性"
+  ],
+  [
+   "^(MvPowerSeries|PowerSeries|LaurentSeries|HahnSeries)",
+   "多項式環と冪級数環"
+  ],
+  [
+   "^(MvPolynomial|Polynomial|PolynomialModule|AddMonoidAlgebra\\.(?!semiring$|algebra$|commSemiring$|commRing$|ring$)|MonoidAlgebra|LaurentPolynomial)",
+   "多項式環と冪級数環"
+  ],
+  [
+   "^(IsNoetherianRing|IsNoetherian|Module\\.(Finite|Free|Projective|FinitePresentation|Basis|finrank|rank|Dual)|Algebra\\.(FiniteType|FinitePresentation|EssFiniteType)|RingHom\\.(Finite|FiniteType|FinitePresentation)|AlgHom\\.Finite|Ideal\\.FG|Submodule\\.FG|LinearIndependent|Matrix|IsPrincipalIdealRing|Submodule\\.IsPrincipal|WellFoundedGT|WellFoundedLT)",
+   "有限性・Noether 性・自由加群"
+  ],
+  [
+   "^(CommRingCat|RingCat|AlgCat|CommAlgCat|AddCommGrpCat|Module\\.DirectLimit|Ring\\.DirectLimit|DirectLimit|DirectedSystem|Module\\.DirectLimit|CategoryTheory\\.(Limits\\.|IsFiltered|IsCofiltered|Functor\\.sections)|DirectSum|DFinsupp|IsDirectedOrder|IsDirected$)",
+   "順極限・直和・環の圏の（余）極限"
+  ],
+  [
+   "^(Ideal(\\.|$)|TwoSidedIdeal|RingHom\\.ker|RingCon|nilradical|IsReduced|IsNilpotent|IsDomain|IsUnit|Units|IsCoprime|Irreducible|Prime$|IsIdempotentElem|IsField|Ring\\.jacobson|Ideal\\.jacobson|HasQuotient\\.Quotient|Dvd\\.dvd|RingEquiv|RingHom\\.(comp|toAlgebra)|AlgEquiv|AlgHom|Subring|Subalgebra|Subsemiring)",
+   "イデアル・剰余環・環準同型"
+  ],
+  [
+   "^(Submodule|LinearMap|LinearEquiv|Finsupp|Module\\.End|Module$|Pi\\.(module|Function\\.module)|IsScalarTower$|Function\\.Exact|SMulCommClass$)",
+   "加群・部分加群・線型写像"
+  ],
+  [
+   ".*",
+   "（その他）"
+  ]
+ ],
+ "notes": "規則の使い方は c07 と同じ想定（当たった規則の番号の最小）。CommRing・Algebra・Ideal.Quotient の instance・Fact (Nat.Prime p)・AddMonoidAlgebra.semiring（MvPolynomial の展開）・OreLocalization.oreSetComm は決め手にしない。Ideal・Submodule・LinearMap は一番下の二つの規則でだけ拾う。順は「特殊な対象（分冪・Witt・微分・スペクトル・完備化・次元）→ ModuleCat → 局所環・体 → 局所化 → テンソル → 多項式 → 有限性 → イデアル → 加群」で、二つ以上に当たる宣言（例：Localization.Away のテンソル積）は上のものに入る。多くの小概念は幹の A の別の概念の Mathlib 側の補題（分冪代数→「分冪包絡とクリスタリン」、Witt・tilt→「パーフェクトイド」「δ 環」、完備化・Rees→「Rees 代数と進完備」「導来完備化」、外積代数→「Koszul 複体」、Kähler 微分→「de Rham 複体」、長さ→「正規化長さ」、根の添加→「根の添加（André）」）で、そちらへ移す候補。 確かめた件数：分冪代数 276、Witt ベクトル・tilt・Frobenius と標数 p 438、導分・Kähler 微分・外積代数 269、素スペクトル・Zariski 位相・層 321、フィルター・次数付き環・I 進完備化 520、次元・長さ・正則列 260、加群の圏とホモロジー代数 771、局所環・剰余体・体の拡大と整拡大 354、局所化 275、テンソル積・底変換・平坦性 379、多項式環と冪級数環 292、有限性・Noether 性・自由加群 154、順極限・直和・環の圏の（余）極限 185、イデアル・剰余環・環準同型 491、加群・部分加群・線型写像 191、（その他） 301。"
+}
