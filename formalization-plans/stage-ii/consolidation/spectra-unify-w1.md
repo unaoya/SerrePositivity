@@ -182,3 +182,36 @@ C の 660 宣言のうち 416 は、一行の言い換え（一行の定義 211�
 ### 段 8 の完了の条件
 
 段 3〜7 と同じ（表は `research/cleanup-zero-base/spectra/stage8.csv`、`expanded-names.csv` に追記、報告は `report-spectra-unify.md` に節を足す）。加えて、報告の最後に **C の現状の一覧**を書く：残っている全ての宣言（名前、種類、行数、残した理由の区分：型の略記／別名／固有／その他）と、ファイルごとの宣言数。次の段（C のファイルのまとめ直し）の材料にする。コミットして止まる。
+
+## 10. 段 9：`loopFunctor` を戻す、C のファイルをまとめ直す
+
+段 8（3ecc4edca）の結果：C は 155 → 49 宣言、1,728 → 785 行、ファイルは 33 → 23。段 1 からの通算で、C は 663 → 49 宣言、6,149 → 785 行、78 → 23 ファイル。B は 344 → 400 宣言、3,699 → 4,507 行。
+
+### 9-1. `loopFunctor` を戻す（ユーザー決定 11-20）
+
+段 8 で消した `SymmetricSpectrum.loopFunctor` を、`GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle) PointedSimplicialSet.circle` の `abbrev` 一行として C に戻す。文献で名前の付いた関手（Ω）で、展開後の式が長く円周を二度書くこと、対になる `suspensionFunctor` が別名として残っていることが理由。展開されていた 10 箇所を `loopFunctor` に戻す。`expanded-names.csv` の該当の行に「戻した」と書く。ほかの消した名前（`simplicialTensorCotensorHomEquiv` の 17 箇所など）は戻さない。
+
+### 9-2. C のファイルをまとめ直す
+
+C の 49（＋1）宣言は 23 ファイルに散っていて、宣言が 1〜2 個のファイルが 15 本ある。段 2 以降に消したファイルの名残で、今の分け方に内容の理由はない。内容でまとめ直す。案：
+
+| 新しいファイル | 入れるもの | 宣言の数（見込み） |
+|---|---|---:|
+| `Basic.lean` | 型の略記 `SymmetricSpectrum`、円周への特殊化の別名の全部（`forget`、`evaluation`、`freeAt`、`freeObj`、`freeFunctor`、`generator`、各段のテンソル・余テンソル・内部 Hom・写像対象・懸垂とループの別名）、構造射の二つの補題 | 約 27 |
+| `Sphere.lean` | 球面スペクトルとその補題 | 4 |
+| `Simplicial.lean` | 基点のない単体集合による係数：テンソル、余テンソル、写像空間、それらの関手・前合成・後合成・随伴・単位・直積の同型、零次単体と射の同値 | 約 19 |
+
+この案は目安。実際の依存（別名のうち、後の定義に依るもの）を見て、ファイルの切り方と中の順を決める。規則：
+
+- 一つのファイルは、読んで一つの話として通ること。ファイルの冒頭の説明（module docstring）に、何が入っているかと、B のどの宣言の特殊化かを書く。docstring の書き方は README の Conventions に従う（解説ノートを引かない）。
+- 宣言の名前・主張・本体は変えない（`loopFunctor` を戻す以外）。動かすだけ。
+- 使う側（`Spectra/ModelCategory`・`Spectra/Stable`・`InfinityCategories/Project/ModelCategoryComparison/Inputs`）と、検査・監査の import を追従する。C の README を更新する。
+- 消したファイルと新しいファイルの対応を表にする（旧ファイル → 新ファイル、宣言ごと）。概念の木の記録（`research/cleanup-zero-base/whole/definitions.csv`）は宣言の名前で持っているので、名前を変えなければ影響しない。
+- import は、実際に使うものだけにする。まとめた結果、不要になった import を残さない。
+
+### 段 9 の完了の条件
+
+- `research/cleanup-zero-base/spectra/stage9.csv`：宣言ごとに、旧ファイル、新ファイル。
+- 報告（`report-spectra-unify.md` に節を足す）：前後のファイル数・行数、新しいファイルごとの内容と宣言の数、案と違う切り方にしたならその理由、使う側の import の変化（前後の本数）、`loopFunctor` を戻した箇所の数。
+- 判定：対象と使う側のビルド、宣言の集合が前後で同じ（`loopFunctor` の追加を除き、カーネルの名前と主張が一致）、公理と `sorryAx` 依存が増えない、監査・検査の成否が前後で一致。
+- コミットして止まる。B のファイルには手を付けない（次の段）。
