@@ -128,3 +128,25 @@ Archive を除く本体の全宣言。記録監査の宣言の表（`scripts/aud
 - B4（二つの道の一致）は一般論として書き、対称スペクトルでは、段ごとの表示がテンソルと余テンソルの構造と両立することを言うために使う。
 
 確かめること（適用の設計で）：加群の圏の一般論に「可換モノイド上の加群の圏は対称モノイダル閉」「自由加群の関手は強モノイダル」が Mathlib の型クラス（`MonoidalClosed`、`Functor.Monoidal`）として揃っているか。使う側が使っている式が、段ごとの表示から過不足なく出るか。
+
+### 決定 5：置き場所と書き方（ユーザー、11-21）
+
+`CategoryTheory/Enriched/` の下を、数学の区分どおりに分ける。
+
+| ファイル | 中身 | 決定 3 の対応 |
+| --- | --- | --- |
+| `OfAction.lean` | 作用と二つの随伴から、通常の圏つきの豊穣圏を作る | A3、B3 |
+| `BaseChange.lean` | 基底の取り替えの補足（通常の圏を保つ版、合成の向き） | A2 |
+| `TensorCotensor.lean` | テンソルと余テンソルの構造と、随伴から写像対象の同型を構成する定義 | 決定 2、B1 |
+| `MonoidalAdjunction.lean` | 強モノイダルな左随伴から、豊穣化・テンソル・余テンソルを一度に得る | B2 |
+| `Comparison.lean` | 作用から作ったものと、基底の取り替えで作ったものの一致 | B4 |
+| `FullSubcategory.lean`・`Product.lean`・`FunctorCategory.lean`・`Representable.lean` | 充満部分圏、対（テンソル）、関手の圏と評価、表現可能な Hom | C-軽 |
+
+- `Simplicial.lean`（4 宣言）は、単体的圏を使う側の基礎へ移す。
+- 右随伴の比較（`Adjunction/Comparison.lean`）、関手の輸送（`FunctorTransport.lean`）は圏論の補題としていまの場所に残す。豊穣化のためだけに使われているものは上のファイルに寄せる。
+- ファイルの粒度は、書いてみて小さすぎれば（100 行未満など）隣とまとめる。
+
+書き方：
+- 名前と名前空間は Mathlib の作法（`CategoryTheory` の下、Mathlib の命名）に揃える。経緯に由来する名前（`RepresentedMappingEnrichment`、`MappingUnitLaws` など）は数学の名前に改める。
+- docstring は本体の規約どおり（日本語、主張を言葉で）。文献は Kelly "Basic concepts of enriched category theory" と Hovey "Model categories" 第 4 章。
+- Mathlib に出せる形に揃えて書くが、出す作業は今回はしない。
