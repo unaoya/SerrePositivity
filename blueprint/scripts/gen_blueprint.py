@@ -1,7 +1,9 @@
 """ブループリントの入口 SerreBlueprint/Blueprint.lean を、各部の生成結果（generated.json）から組み立てる（2026-11-18）。
-使い方（root で、各部の生成の後）：python3 blueprint/scripts/gen_blueprint.py
+scripts/audit2/coverage_blueprint.py が各部の生成後に実行する。
 部の見出しの tag は part-… に揃える（目次の見た目 serre.css が部を見分ける）。"""
 import json, re, os, csv, glob, collections
+from common import Resolver
+res = Resolver()
 B = 'blueprint/SerreBlueprint'
 parts = []   # (tag, 題, [モジュール], 集計の一行)
 def line(c):
@@ -50,5 +52,5 @@ out += [f'- {t}：' + GOALS.get(tag if not tag.startswith('part-kerodon') else '
 for tag, t, ms, _ in parts:
     out += [f'# {t}', '%%%', 'number := false', f'tag := "{tag}"', '%%%', ''] + [f'{{include 1 SerreBlueprint.{m}}}' for m in ms] + ['']
 out += ['{blueprint_graph}', '{blueprint_summary}', '']
-open(f'{B}/Blueprint.lean', 'w', encoding='utf-8').write('\n'.join(out))
+res.write(f'{B}/Blueprint.lean', '\n'.join(out))
 print(len(parts), 'parts,', sum(len(ms) for _, _, ms, _ in parts), 'modules')

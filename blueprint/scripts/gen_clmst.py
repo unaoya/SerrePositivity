@@ -1,12 +1,13 @@
 """CLMST の章を Verso Blueprint の章モジュールとして生成する（2026-11-17）。gen_paper.py と同じ作り。
 正本は research/clmst-coverage/（items.csv の種類・見出し、review/ch<N>.csv の状態・宣言・理由、edges.csv の引用の辺、toc.md の見出し）。
-生成物を手で直さない。表を直して生成し直す。使い方（リポジトリの root で）：python3 blueprint/scripts/gen_clmst.py
+通常の CLMST 生成は scripts/audit2/coverage_blueprint.py が gen_cited.py に渡す。
 - 各項目は一つのノード。ラベルは clmst_<番号>（式は clmst_eq_…）。
 - 論文の中の辺（edges.csv の internal）は (uses := …) に。外の文献への辺（external）は本文に文献と番号を並べる。
 - Lean の宣言に結ぶのは状態が own のものだけ（interface・partial は本文に宣言名と状態を書く。結ぶと形式化済みに数えられるため）。"""
 import csv, re, sys, os, collections, json
 sys.path.insert(0, os.path.dirname(__file__))
-from common import Resolver, paths_of, esc
+from common import Resolver, esc
+res = Resolver()
 P = 'research/clmst-coverage'; OUT = 'blueprint/SerreBlueprint/CLMST'
 os.makedirs(OUT, exist_ok=True)
 items = list(csv.DictReader(open(f'{P}/items.csv', encoding='utf-8')))
@@ -28,7 +29,6 @@ for e in edges:
         if label(e['depends_on']) not in uses[e['number']]: uses[e['number']].append(label(e['depends_on']))
     elif e['kind'] == 'external':
         if e['depends_on'] not in ext[e['number']]: ext[e['number']].append(e['depends_on'])
-res = Resolver(paths_of(r['declarations'] for r in rev.values()))
 KIND = {'Theorem': 'theorem', 'Lemma': 'lemma_', 'Proposition': 'proposition', 'Corollary': 'corollary', 'Remark': 'proposition', 'Equation': 'definition', 'Figure': 'definition', 'Definition': 'definition'}
 KINDJA = {'Theorem': '定理', 'Lemma': '補題', 'Proposition': '命題', 'Corollary': '系', 'Remark': '注意', 'Equation': '式', 'Figure': '図', 'Definition': '定義'}
 STATUS = {'own': '本体にある', 'mathlib': 'Mathlib にある', 'both': '本体と Mathlib にある', 'partial': '一部', 'interface': '未証明の入力に依存', 'none': 'なし'}
@@ -45,11 +45,7 @@ for sec in sorted(by_sec, key=int):
             body.append('%%%\nnumber := false\ntag := "clmst-' + sub.replace('.', '-') + '"\n%%%\n')
         for r in subs[sub]:
             n = r['number']; rv = rev.get(n, {}); st = rv.get('status', '')
-            linked = []
-            if st == 'own':
-                for e in [x.strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]:
-                    x = res.resolve(e)
-                    if x: linked.append(x[0]); imports.add(x[1])
+            linked = res.links(label(n), rv.get('declarations', ''), imports, st == 'own')
             stats['linked' if linked else 'nolink-' + (st or '?')] += 1
             opts = ''
             if linked: opts += f' (lean := "{", ".join(linked)}")'
@@ -69,7 +65,7 @@ for sec in sorted(by_sec, key=int):
           ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '',
            f'#doc (Manual) "§{sec} {heads.get(sec, "")}" =>', '%%%', 'number := false', f'tag := "clmst-{sec}"', '%%%', '',
            f'CLMST（Cai–Lee–Ma–Schwede–Tucker, arXiv 2209.04046v4）§{sec} の項目と、本体の宣言との対応。本文は対応表（`research/clmst-coverage`）の照合の理由で、論文の本文の写しではない。\n']
-    open(f'{OUT}/{mod}.lean', 'w', encoding='utf-8').write('\n'.join(hdr + body) + '\n')
+    res.write(f'{OUT}/{mod}.lean', '\n'.join(hdr + body) + '\n')
     modules.append(mod)
 json.dump({'modules': modules, 'stats': dict(stats)}, open(f'{OUT}/clmst-generated.json', 'w'), ensure_ascii=False, indent=1)
 print(modules, dict(stats))
