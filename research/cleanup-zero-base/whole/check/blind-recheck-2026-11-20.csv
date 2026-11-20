@@ -1,0 +1,961 @@
+id,declaration,assigned_concept,assigned_how,assigned_subconcept,reader_concept,reader_alt,result,reader_confidence,reader_note
+b0-000,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorYonedaUnit_post,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,Ind 完備化,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,一致,mid,Ind 反射の Yoneda 単位の両立
+b0-001,SerrePositivity.InfinityCategories.Sheaves.imageSieveCommaRestrictionCone_val,C 単体集合と ∞ 圏/∞ 層,型に核,層条件（篩の上の制限錐）,C 単体集合と ∞ 圏/∞ 層,,一致,high,像篩の制限錐
+b0-002,SerrePositivity.DerivedCompletion.modulePowerDerivedTensorIso_naturality,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/導来完備化,A 可換代数と数論幾何/台つきの加群と Tor,不一致,mid,加群の冪商と導来テンソルの比較の自然性
+b0-003,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseRightNerve_vertex,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,安定 ∞ 圏としての貼り合わせと lax 引き戻しとの比較,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/dg 神経,一致,high,dg 貼り合わせの右射影の神経の頂点
+b0-004,SerrePositivity.paddedOctahedron_first_inr,B 複体と dg 圏/三角圏,型の定義の概念,（その他）,B 複体と dg 圏/三角圏,,一致,high,八面体の padding
+b0-005,SerrePositivity.SimplicialModel.HomotopyBinarySquare.diagonal,E モデル圏/単体的モデルと anodyne,型に核,anodyne 射の局所化と単体的ホモトピー類,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,不一致,mid,T⊗区間の対角（柱の二重化）
+b0-006,SerrePositivity.KST.Descent.finiteTypeStrictTransform_flatCover,H K 理論/降下,型に核,抽象 blowup 正方形と閉中心,H K 理論/降下,A 可換代数と数論幾何/blowup と射影スキーム,一致,high,strict transform の有限平坦被覆
+b0-007,SerrePositivity.KST.SConstruction.enrichedFixedLeftComposition,C 単体集合と ∞ 圏/単体的圏と coherent 神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,Z 圏論一般/豊穣圏,一致,mid,単体的圏の sHom の固定射との合成
+b0-008,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.mateHomCategory,C 単体集合と ∞ 圏/準圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/関手単体集合と同値,不一致,mid,QCat の bicategory の Hom 圏
+b0-009,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeSliceCoconeMap_right,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,compact 対象による表示と濃度の取り替え,C 単体集合と ∞ 圏/結とスライス,C 単体集合と ∞ 圏/極限と余極限,不一致,high,相対 slice の余錐写像
+b0-010,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finiteCoherentFunctorCone_vertex,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,第二候補と一致,mid,関手圏の有限積の錐の頂点
+b0-011,SerrePositivity.InfinityCategories.Project.DerivedCategories.tensorArrowConjugate_leibniz_left,Z 圏論一般/モノイダル圏,型の定義の概念,（その他）,Z 圏論一般/モノイダル圏,B 複体と dg 圏/複体,一致,high,モノイダル圏でテンソル射を同型で共役したときの Leibniz 則
+b0-012,SerrePositivity.DifferentialGraded.moduleShiftMap,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,B 複体と dg 圏/dg 加群,,一致,high,dg 加群の射の shift
+b0-013,SerrePositivity.Reedy.matchingCompositionMap,E モデル圏/Reedy,型に核,latching・matching の添字圏と対象,E モデル圏/Reedy,,一致,high,matching 添字の合成
+b0-014,SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalProductBaseDGFunctor,B 複体と dg 圏/係数の取り替え,型に核,複体の係数拡大と係数制限,H K 理論/導来 blowup,A 可換代数と数論幾何/Koszul 複体,不一致,high,Koszul dg 模型から有限重なりへの dg 関手
+b0-015,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGenerators.FactorTarget.pasteNonempty_nonemptyCut,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,（補助）自由圏の hammock の計算（生成矢での切断・木の縮約）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,E モデル圏/ホモトピー関数複体と分解,一致,mid,hammock の語の貼り戻しと切断
+b0-016,SerrePositivity.BhattScholze.deltaPDivisionFrobeniusShiftTorsionEquiv_isDeltaHom,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,"δ 除算のねじれ除去・(p,d) 剰余・完備化",A 可換代数と数論幾何/δ 環,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,第二候補と一致,mid,φ(y)/p と y^p/p の商の同型が δ 準同型
+b0-017,SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalModuleComparisonToComposite,H K 理論/導来 blowup,型に核,図式加群の局所評価・導来制限・係数拡大,H K 理論/導来 blowup,,一致,high,有限重なりの図式加群の局所評価の比較射
+b0-018,SerrePositivity.DeRham.rawD_comp,A 可換代数と数論幾何/de Rham 複体,型に核,p 進完備化した多項式の微分形式,A 可換代数と数論幾何/de Rham 複体,,一致,high,完備化した多項式微分形式の d²=0
+b0-019,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerveCommonMap_comp,C 単体集合と ∞ 圏/dg 神経,型に核,dg 圏のテンソルと dg 神経,C 単体集合と ∞ 圏/dg 神経,,一致,high,dg 神経の写像の関手性
+b0-020,SerrePositivity.BhattScholze.Semiperfectoid.wittPreTiltEquivOfRingEquiv_fontaine,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,Witt ベクトル・tilt・Frobenius と標数 p,A 可換代数と数論幾何/環と加群（その他）,A 可換代数と数論幾何/パーフェクトイド,一致,mid,Witt–tilt 同型と Fontaine θ
+b0-021,SerrePositivity.KST.SConstruction.dgOdotMilnorSuppliedIdentityRightSquareDiagramIso,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,小さい dg 入力と固定した ν・K,H K 理論/S 構成の入力（安定モデル・小さい Perf）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,一致,low,dg ⊙ Milnor 四角形の Verdier 四角形の比較
+b0-022,SerrePositivity.KST.ProExcision.splitBoundary_connecting_eq_shiftMap,B 複体と dg 圏/複体,Mathlib の定義,ホモロジー・分解・K-射影,B 複体と dg 圏/複体,H K 理論/pro 切除の塔,一致,mid,複体の短完全列の連結写像と分裂境界
+b0-023,SerrePositivity.HilbertSamuel.samuelFunction_map_ringEquiv,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,Samuel 関数と Hilbert–Samuel 重複度,A 可換代数と数論幾何/Hilbert–Samuel と対角線,,一致,high,Samuel 関数の環同型不変性
+b0-024,SerrePositivity.DifferentialGraded.BimoduleTensor.bimoduleCanonicalResolutionLift_fac,B 複体と dg 圏/双加群とテンソル,型に核,Bᵒᵖ⊗C 上の加群としての双加群と半自由分解,B 複体と dg 圏/双加群とテンソル,,一致,high,双加群の半自由分解への持ち上げ
+b0-025,SerrePositivity.InfinityCategories.Sheaves.discreteRelativeCechCocone_leg_simplex,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,strict な Kan 値図式の ∞ 圏,C 単体集合と ∞ 圏/∞ 層,,不一致,mid,離散前層の相対 Čech 余錐の脚
+b0-026,SerrePositivity.EInfinity.PowerOperation.gammaSmashPair_naturality,C 単体集合と ∞ 圏/基点付き対象,型に核,直積と smash 積,F オペラドと E∞/冪作用,,不一致,high,Γ（Eilenberg–MacLane）の smash 対の自然性
+b0-027,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.dgCoherentBarHomFiltration_postcompose_zero,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,（補助）coherent bar の添字・座標・余錐の持ち上げ,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,coherent bar の Hom フィルトレーション
+b0-028,SerrePositivity.IsSystemOfParameters.map_mem_radical,A 可換代数と数論幾何/交点重複度と χ,型に核,パラメータ系,A 可換代数と数論幾何/交点重複度と χ,A 可換代数と数論幾何/環と加群（その他）,一致,high,パラメータ系の像の根基
+b0-029,SerrePositivity.HilbertSamuel.lengthSeries_reesGrade,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,随伴次数加群と Rees 加群,A 可換代数と数論幾何/Hilbert–Samuel と対角線,,一致,high,Rees 次数の長さ級数＝Hilbert 級数
+b0-030,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorGenerator,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,核,Milnor 四角形,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,high,Milnor 生成対象
+b0-031,SerrePositivity.SimplicialModel.SequentialFactorLift.hasLiftingProperty,E モデル圏/単体的モデルと anodyne,型に核,Kan 置換と関手的分解,E モデル圏/局所化と射の類（通常の圏）,E モデル圏/単体的モデルと anodyne,第二候補と一致,low,逐次図式の持ち上げ性
+b0-032,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.firstBlockFamilyAssembly,F オペラドと E∞/dg オペラドと代数,型に核,（補助）有限族のテンソルと並べ替え,F オペラドと E∞/dg オペラドと代数,,一致,high,オペラドの全合成のブロック組み込み
+b0-033,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.predAbove_injOn_of_not_left,Z 圏論一般/組合せと順序,Mathlib の定義,Fin の単調写像と単体圏,Z 圏論一般/組合せと順序,C 単体集合と ∞ 圏/dg 神経,一致,high,Fin の predAbove の単射性
+b0-034,SerrePositivity.DeRham.deRhamD_comp,A 可換代数と数論幾何/de Rham 複体,型に核,多項式 de Rham 複体,A 可換代数と数論幾何/de Rham 複体,,一致,high,多項式 de Rham の d²=0
+b0-035,SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/プリズム,第二候補と一致,mid,完全プリズムの商と Witt 商の同型
+b0-036,SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.cosimplicialNativeCompletedBaseChangeComparison,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,（補助）HT 比較の全複体・分解・完備底変換の厳密模型,A 可換代数と数論幾何/導来完備化,A 可換代数と数論幾何/プリズマティックコホモロジー,第二候補と一致,mid,余単体的 Tot の完備導来底変換の比較
+b0-037,SerrePositivity.KST.LocalizingInvariants.valueMap_fromD_difference,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,lax 引き戻しの差の関手と Tamme 商,H K 理論/局所化不変量：lax 引き戻しと双加群,,一致,high,局所化不変量の値と lax 差
+b0-038,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.OverlapPartition.twoCut_two,F オペラドと E∞/Barratt–Eccles と全射オペラド,型の定義をたどる,全射オペラド χ（全射語・削除微分・部分合成）,F オペラドと E∞/Barratt–Eccles と全射オペラド,Z 圏論一般/組合せと順序,一致,mid,全射オペラドの区間の二分割
+b0-039,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.derivedConeLegCompStruct,C 単体集合と ∞ 圏/極限と余極限,型に核,錐・余錐と極限・余極限,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/結とスライス,一致,high,錐の比較辺と脚の合成構造
+b0-040,SerrePositivity.KST.LocalizingInvariants.finalFiberInclusion_groupoidCompletion_isEquivalence,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,亜群化,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,第二候補と一致,mid,Δ[n] 上の cocartesian ファイブレーションの終ファイバーと亜群化
+b0-041,SerrePositivity.BhattScholze.Prismatic.instModuleCarrierMvPolynomialFinQuotientIdealIdealAffineAlgebraHodgeTateCohomology',A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Hodge–Tate コホモロジーと比較写像（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,,一致,high,Hodge–Tate コホモロジーの加群構造
+b0-042,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionDeformation,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,旗による単体の解像（coherent resolution）,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,一致,mid,旗による単体の解像の変形
+b0-043,SerrePositivity.KST.LocalizingInvariants.localizationComparisonInvHomIso,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,局所化の普遍性と反射的部分圏,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,C 単体集合と ∞ 圏/関手単体集合と同値,一致,mid,∞ 圏の局所化の一意性の比較同型
+b0-044,SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,Verdier 列（安定 ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/極限と余極限,一致,high,Verdier 商の有限錐の持ち上げ
+b0-045,SerrePositivity.BhattScholze.prismaticCoefficientCompletionPairIso_unit,A 可換代数と数論幾何/導来完備化,型に核,導来完備化関手（主元）,A 可換代数と数論幾何/導来完備化,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,一致,mid,"(a,d) 完備化比較の単位"
+b0-046,SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateReductionH0_faithfullyFlat_of_unconditional,A 可換代数と数論幾何/根の添加（André）,型に核,冪根 prism の完備化と Hodge–Tate 剰余,A 可換代数と数論幾何/根の添加（André）,,一致,high,冪根 prism の Hodge–Tate 還元の忠実平坦性
+b0-047,SerrePositivity.KST.SConstruction.arSquare_naturality,H K 理論/S 構成と K スペクトル,型に核,Waldhausen S 構成（gapped 図式）,H K 理論/S 構成と K スペクトル,C 単体集合と ∞ 圏/神経,一致,mid,Ar[n] の四角形の自然性
+b0-048,SerrePositivity.AlgebraicGeometry.projectiveProjNativeStandardCechHomology_finite,A 可換代数と数論幾何/Čech 複体と被覆,型に核,全タプル Čech 複体（有限交叉の係数図式）,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/blowup と射影スキーム,一致,mid,Proj の標準開 Čech コホモロジーの有限性
+b0-049,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cofinalLastHornContraction_zero,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,単体的ホモトピーと prism,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/ファイブレーションと straightening,不一致,mid,ホーンの終点収縮
+b0-050,SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDqc,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,係数加群層と準連接性,H K 理論/係数環層つきスキームの加群層と D_qc,,一致,high,Dqc の dg 模型から Dqc への関手
+b0-051,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.instQuasicategoryTensorObjSSet_serrePositivity_2,C 単体集合と ∞ 圏/準圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/準圏（基本）,C 単体集合と ∞ 圏/単体集合（基本）,一致,high,準圏の積は準圏
+b0-052,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_over_interval_of_endpoint_fibers_of_crossing,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,充満忠実と本質的全射,C 単体集合と ∞ 圏/関手単体集合と同値,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,high,区間上の射の充満忠実性の判定
+b0-053,SerrePositivity.DiagramModel.HomotopyCones.weightComparison,E モデル圏/Quillen 関手と生成,型に核,余ファイブラント生成,E モデル圏/図式のモデル構造とホモトピー余極限,,不一致,high,ホモトピー錐の重みの比較
+b0-054,SerrePositivity.NormalizedLength.len_eq_add_of_exact_of_surjective,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,イデアルの冪ねじれ,A 可換代数と数論幾何/正規化長さ,,不一致,high,正規化長さの加法性
+b0-055,SerrePositivity.pMonomial,A 可換代数と数論幾何/p 基底,型に核,p 指数と p 単項式,A 可換代数と数論幾何/p 基底,,一致,high,p 単項式
+b0-056,SerrePositivity.InfinityCategories.Sheaves.nativeLeftSectionsValue,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,表示可能 ∞ 圏の定義,C 単体集合と ∞ 圏/∞ 層,,不一致,high,重み付き切断の値
+b0-057,SerrePositivity.EInfinity.PowerOperation.cyclicOrbitProjectiveResolution,F オペラドと E∞/冪作用,型に核,巡回部分群と BE の解像度（May の設定）,F オペラドと E∞/冪作用,,一致,high,巡回群の射影解像
+b0-058,SerrePositivity.KST.SConstruction.monicKTracedTripleLastPairBinaryGlue,H K 理論/S 構成と K スペクトル,核,（まだ読んでいない定義）,H K 理論/S 構成と K スペクトル,,一致,low,K の関手性の三重合成の円柱の貼り合わせ
+b0-059,SerrePositivity.HomotopyFunctionComplex.FrameComparison.commonObj,E モデル圏/ホモトピー関数複体と分解,核,余単体的分解と frame,E モデル圏/ホモトピー関数複体と分解,,一致,mid,frame の比較の共通対象
+b0-060,SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_p_mul_injective_of_positive_unconditional,A 可換代数と数論幾何/パーフェクトイド,型に核,p 冪根つきの多項式環と根の添加,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,不一致,high,冪根 δ 包の p ねじれなし
+b0-061,SerrePositivity.AlgebraicGeometry.ArcRouteB.goodArcInterval_of_rank_le_one,A 可換代数と数論幾何/付値と区間,型に核,付値環のスペクトルの区間の環,A 可換代数と数論幾何/付値と区間,A 可換代数と数論幾何/Čech 複体と被覆,一致,mid,rank≤1 の付値区間の arc Čech 完全性
+b0-062,SerrePositivity.Reedy.Lifting.fac_right,E モデル圏/Reedy,型に核,latching・matching の添字圏と対象,E モデル圏/Reedy,,一致,high,Reedy 持ち上げの分解
+b0-063,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomTargetPreCollarSpanHomotopy,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,（補助）lax 写像空間の比較：合成対応と入力 fiber,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/写像空間,一致,high,貼り合わせの Hom の比較ホモトピー
+b0-064,SerrePositivity.PointedObject.leftTripleQuotient_assocHom,C 単体集合と ∞ 圏/基点付き対象,型に核,直積と smash 積,C 単体集合と ∞ 圏/基点付き対象,,一致,high,smash の結合
+b0-065,SerrePositivity.AlgebraicGeometry.projectivePerfCechSquareAugmentation_injective,A 可換代数と数論幾何/Frobenius の順極限,型に核,Frobenius 順極限の環,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/Frobenius の順極限,第二候補と一致,mid,射影 Čech 四角形の増大の単射性
+b0-066,SerrePositivity.KST.ProExcision.chainInterval_ι_D₂_zero,H K 理論/pro 切除の塔,型に核,（補助）整数鎖区間と鎖ホモトピーの正方形,B 複体と dg 圏/複体,B 複体と dg 圏/単体的鎖とシャッフル,不一致,mid,複体と鎖区間のテンソルの微分
+b0-067,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovConnectedLevel.rawMiddle,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,Postnikov 塔と層,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,Postnikov 段のホモトピー引き戻し模型の塔
+b0-068,SerrePositivity.DifferentialGraded.DGQuotient.functorAssoc,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 関手,B 複体と dg 圏/dg 圏と dg 関手,B 複体と dg 圏/dg 商と cell 分解,一致,high,dg 関手の合成の結合律
+b0-069,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.pointProjection_ulift_isRightCofinal,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,弱ホモトピー同値と可縮 Kan 複体,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/ファイブレーションと straightening,不一致,mid,弱可縮から一点への射の right cofinal 性
+b0-070,SerrePositivity.lambdaHomology_koszul_null_finite,A 可換代数と数論幾何/Koszul 複体,型に核,Koszul 複体（反復錐による定義）,A 可換代数と数論幾何/Koszul 複体,A 可換代数と数論幾何/正規化長さ,一致,mid,Koszul ホモロジーの長さの有限性
+b0-071,SerrePositivity.InfinityCategories.Sheaves.nativeLeftSectionsValueIso_hom_transportCone,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,表示可能 ∞ 圏の定義,C 単体集合と ∞ 圏/∞ 層,,不一致,high,重み付き切断の値比較
+b0-072,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.nonempty_diagramComma_cone_pushout_cocone,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,Ind 完備化,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,一致,mid,Ind の図式 comma の filtered 性
+b0-073,SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.simplexAttachmentBoundary_comm,C 単体集合と ∞ 圏/結とスライス,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/結とスライス,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,単体と次辺の貼り付け（join）の可換性
+b0-074,SerrePositivity.KST.DerivedBlowup.chartRestrictedExterior_kFlat,B 複体と dg 圏/双加群とテンソル,型に核,K-flat 性と K-flat 分解,H K 理論/導来 blowup,A 可換代数と数論幾何/Koszul 複体,不一致,mid,チャートの外積模型の K-flat 性
+b0-075,SerrePositivity.KST.SConstruction.enrichedHom_right_unit_composition,Z 圏論一般/豊穣圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/豊穣圏,,一致,high,豊穣 Hom 射と合成
+b0-076,SerrePositivity.DeRham.completedDeRhamD_comp,A 可換代数と数論幾何/de Rham 複体,型に核,p 進完備化した多項式の微分形式,A 可換代数と数論幾何/de Rham 複体,,一致,high,完備 de Rham の d²=0
+b0-077,SerrePositivity.KST.SConstruction.presentedPerfectDGMultiRealizationAction,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,小さい dg 入力と固定した ν・K,H K 理論/S 構成と K スペクトル,H K 理論/S 構成の入力（安定モデル・小さい Perf）,第二候補と一致,mid,反復実現への dg 入力の豊穣作用
+b0-078,SerrePositivity.HomotopyFunctionComplex.AllFactorizationPostRelative.transported_vertices,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）持ち上げの選択の整合化,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,第二候補と一致,mid,因子分解点の相対比較（中断した一般化、分類B）
+b0-079,SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftMap_base,A 可換代数と数論幾何/blowup と射影スキーム,型に核,アフィン blowup と標準チャート,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,アフィン blowup の積中心からの比較射
+b0-080,SerrePositivity.KST.LocalizingInvariants.tammeDenominatorCospans,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,完全関手,H K 理論/局所化不変量：lax 引き戻しと双加群,,不一致,high,Tamme 分母 cospan
+b0-081,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.rightAdjointUnitSpace_kanComplex,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,随伴の単位の空間（Pr^L と Pr^R の双対）,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,C 単体集合と ∞ 圏/随伴（∞ 圏）,一致,mid,右随伴の単位の空間は Kan
+b0-082,SerrePositivity.lambdaHomology_ne_top_of_retract,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,イデアルの冪ねじれ,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/完全複体と K₀,不一致,mid,retract のホモロジーの長さの有限性
+b0-083,SerrePositivity.KST.Fibration.dgKNormalizedEdge_eq,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,小さい dg 入力と固定した ν・K,H K 理論/S 構成と K スペクトル,,不一致,high,K スペクトル射の辺
+b0-084,SerrePositivity.EInfinity.BarrattEccles.freeStandardSource,F オペラドと E∞/dg オペラドと代数,型に核,Schur 関手と自由代数,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,F オペラドと E∞/dg オペラドと代数,第二候補と一致,mid,BE 自由代数への二色語の包含（HA 3.2.4.7）
+b0-085,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingIdentityCommaSourceIntervalFamily_chain,C 単体集合と ∞ 圏/写像空間,型に核,dg 神経の写像空間（線形模型）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/写像空間,第二候補と一致,mid,comma 源の区間族と pinched Hom
+b0-086,SerrePositivity.EInfinity.PowerOperation.cyclicTateComplex,B 複体と dg 圏/複体,Mathlib の定義,複体（基本）と Hom 複体,F オペラドと E∞/冪作用,,不一致,high,巡回群の Tate 複体
+b0-087,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rawUnitHom_comp,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,随伴の単位の空間（Pr^L と Pr^R の双対）,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,C 単体集合と ∞ 圏/随伴（∞ 圏）,一致,mid,随伴の単位の空間の辺と単位の三角形
+b0-088,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomTransportComp,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 圏（Hom 複体・次数つき射・合成）,B 複体と dg 圏/dg 圏と dg 関手,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,一致,mid,Hom の鎖同型に沿う dg 合成の移送
+b0-089,SerrePositivity.SimplicialModel.NerveBiparameterMaps.name_evaluate,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（読んで移した定義）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/単体的モデルと anodyne,一致,low,相対選択空間の評価（中断した一般化、分類B）
+b0-090,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.hornFillHom_full,C 単体集合と ∞ 圏/単体的圏と coherent 神経,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,一致,high,単体的神経のホーン充填の Hom
+b0-091,SerrePositivity.EInfinity.BarrattEccles.moduleUnitSection_projectionIso,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,型に核,CAlg（E∞ 代数の ∞ 圏）：忘却・π₀・係数変更・余積,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,,一致,high,CAlg 上の加群の単位 section と射影
+b0-092,SerrePositivity.KST.Fibration.relativeSQuotient_positive_stages_iff_firstRows,H K 理論/S 構成と K スペクトル,型に核,相対 S 構成と弱い辺の列（fibration 定理）,H K 理論/S 構成と K スペクトル,,一致,high,相対 S 構成の商比較
+b0-093,SerrePositivity.KST.DerivedGeometry.ringedFreeSheafOnOpenHomEquiv,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,開を表す自由加群層,H K 理論/係数環層つきスキームの加群層と D_qc,,一致,high,開を表す自由加群層の Hom 同値
+b0-094,SerrePositivity.KST.NonConnective.instSimplicialCategoryOmegaSpectrum_2,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,Ω スペクトルと Kan 列,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,一致,high,Ω スペクトルの単体的豊穣
+b0-095,SerrePositivity.AlgebraicGeometry.isIntegral_of_mul_self_eq,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,局所環・剰余体・体の拡大と整拡大,A 可換代数と数論幾何/環と加群（その他）,,一致,high,冪等元は整
+b0-096,SerrePositivity.HomotopyFunctionComplex.SimplicialMapComparison.fromMap_weakEquivalence,E モデル圏/Reedy,型に核,Reedy 余ファイブラント解像（cosimplicial frame）,E モデル圏/ホモトピー関数複体と分解,,不一致,high,豊穣写像空間との弱同値
+b0-097,SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenCfCollageObjects,C 単体集合と ∞ 圏/単体的圏と coherent 神経,型に核,（読んで移した定義）,E モデル圏/Quillen 関手と生成,C 単体集合と ∞ 圏/単体的圏と coherent 神経,第二候補と一致,mid,Quillen 随伴の collage の cf 対象
+b0-098,SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteNormalizedTower_scalarTower_succ,A 可換代数と数論幾何/根の添加（André）,型に核,δ 除算包の有限正規化表示と塔,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,一致,mid,δ 除算の有限正規化塔の係数塔
+b0-099,SerrePositivity.KST.NonConnective.dgSuspensionResolvedConnectiveSequence,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,小さい dg 入力と固定した ν・K,H K 理論/非連結 K,,不一致,high,dg 懸垂の逐次スペクトル列
+b0-100,SerrePositivity.GradedKoszul.isInternal_reesModuleGrade,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,随伴次数加群と Rees 加群,A 可換代数と数論幾何/Hilbert–Samuel と対角線,A 可換代数と数論幾何/Koszul 複体,一致,mid,Rees 加群の次数付けの内部性
+b0-101,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHomEquiv_app_down,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,非退化単体・骨格・切り詰め・細分,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,C 単体集合と ∞ 圏/単体集合（基本）,第二候補と一致,mid,sd ⊣ Ex の Hom 同値の計算
+b0-102,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.cofinalFunctorSpace_kanComplex,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,左・右ファイブレーションと anodyne 射,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/関手単体集合と同値,一致,mid,left fibration への相対関手空間は Kan
+b0-103,SerrePositivity.ThinGroupoid.colimitsOfShape_le,E モデル圏/局所化と射の類（通常の圏）,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/圏・関手・極限,,不一致,high,thin な亜群の形の余極限で閉じる
+b0-104,SerrePositivity.Section2.fwdT_lTensor,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/正規化長さ,一致,mid,根の塔の段の係数拡大と線形写像
+b0-105,SerrePositivity.KST.DerivedGeometry.affineDerivedTildePlusSquare,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,アフィンの比較（tilde と大域切断）,H K 理論/係数環層つきスキームの加群層と D_qc,,一致,high,アフィンの導来 tilde と有界性
+b0-106,SerrePositivity.BhattScholze.Perfectoidization.Arc.perfectoidBaseRing_cardinal_le,Z 圏論一般/組合せと順序,型の定義の概念,（その他）,A 可換代数と数論幾何/パーフェクトイド,Z 圏論一般/組合せと順序,第二候補と一致,mid,perfectoid 基底環の濃度
+b0-107,SerrePositivity.KST.DerivedGeometry.DGResolution.quotientTriaEquivalence,B 複体と dg 圏/dg 商と cell 分解,型に核,（読んで移した定義）,B 複体と dg 圏/dg 商と cell 分解,,一致,high,dg 商の前三角化と Verdier 商の同値
+b0-108,SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHom_comp_heq,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,自然変換と可逆二胞体（h Fun）,C 単体集合と ∞ 圏/関手単体集合と同値,,一致,mid,関手の射の合成の HEq
+b0-109,SerrePositivity.scalarSupported_fin_succ,A 可換代数と数論幾何/台つきの加群と Tor,型に核,スカラーで支持される対象,A 可換代数と数論幾何/台つきの加群と Tor,,一致,high,スカラーで支持される対象
+b0-110,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.ulift,C 単体集合と ∞ 圏/冪等完備,型に核,冪等完備と冪等完備化,C 単体集合と ∞ 圏/冪等完備,,一致,high,冪等完備性の宇宙持ち上げ
+b0-111,SerrePositivity.AlgebraicGeometry.perfectFrobeniusOriginalCechIso,A 可換代数と数論幾何/Frobenius の順極限,型に核,（読んで移した定義）,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/Frobenius の順極限,第二候補と一致,mid,完全環の Frobenius 係数 Čech 比較
+b0-112,SerrePositivity.KST.Spectra.PointedFibrationTower.nullHomotopyDifferenceFamily,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,ホモトピー群と基本亜群,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,ファイブレーションの塔の零ホモトピーの差（lim¹）
+b0-113,SerrePositivity.chi_of_finite_free_left,A 可換代数と数論幾何/交点重複度と χ,型に核,Serre の交点重複度 χ,A 可換代数と数論幾何/交点重複度と χ,,一致,high,有限自由加群の χ
+b0-114,SerrePositivity.KST.Spectra.PointedCosimplicialKanReplacement.map_id,C 単体集合と ∞ 圏/基点付き対象,型に核,基点付き対象と基点付き単体集合（基本）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,E モデル圏/Reedy,不一致,mid,点つき余単体的 Kan 置換の関手性（Tot）
+b0-115,SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameCommon_left_homotopyEquivalence,E モデル圏/ホモトピー関数複体と分解,型に核,余単体的分解と frame,E モデル圏/ホモトピー関数複体と分解,E モデル圏/Quillen 関手と生成,一致,mid,Quillen 左像 frame の Hom の比較
+b0-116,SerrePositivity.Reedy.elementsLatchingHom_finite,E モデル圏/Reedy,型に核,Reedy 構造の例と構成,E モデル圏/Reedy,,一致,high,latching 添字の Hom の有限性
+b0-117,SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_preservesColimits,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,係数加群層と準連接性,H K 理論/係数環層つきスキームの加群層と D_qc,,一致,high,係数加群層の忘却は余極限を保つ
+b0-118,SerrePositivity.CLMST.completedTensor_stage_cokernel_negative_length_ne_top,A 可換代数と数論幾何/パーフェクトイド,型に核,パーフェクトイド化（普遍性と存在）,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/Koszul 複体,不一致,low,完備テンソルの段の余核の負次数の長さの有限性
+b0-119,SerrePositivity.instIsTriangulatedClosed₃ScalarSupported,A 可換代数と数論幾何/台つきの加群と Tor,型に核,スカラーで支持される対象,A 可換代数と数論幾何/台つきの加群と Tor,B 複体と dg 圏/三角圏,一致,high,スカラー支持の三角閉性
+b0-120,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomTargetExitCollarInputPath_diagonal_evaluation,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,（補助）単位補正・正規化の三角形と cube の族,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,high,貼り合わせの Hom の評価
+b0-121,SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.orderIsoNerveIso,C 単体集合と ∞ 圏/神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/神経,,一致,high,順序同型の神経の同型
+b0-122,SerrePositivity.MonoidalModuleInternalHom.closed_curry,Z 圏論一般/モノイダル圏の中の加群,型の定義をたどる,加群の内部 Hom,Z 圏論一般/モノイダル圏の中の加群,,一致,high,加群の内部 Hom の curry
+b0-123,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplicialReplacementDiagonalIso_naturality,C 単体集合と ∞ 圏/極限と余極限,型に核,simplicial replacement と strict な自然変換の空間,C 単体集合と ∞ 圏/極限と余極限,E モデル圏/図式のモデル構造とホモトピー余極限,一致,mid,simplicial replacement と bar の対角
+b0-124,SerrePositivity.KST.NonConnective.dgKappaSuspensionChoiceSource_kills,H K 理論/非連結 K,型に核,dg 懸垂（cone の Perf による商）,H K 理論/非連結 K,,一致,high,κ cone の懸垂の零化
+b0-125,SerrePositivity.HomotopyFunctionComplex.OrdinaryBarSourceContraction.source_augmentation_isIso,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）bar の厳密化：選択の圏と自由図式の延長,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,第二候補と一致,mid,bar の源の増大が局所化で同型（中断した一般化、分類B）
+b0-126,SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardMovingFamilyPushout.pushoutRightInclusion_trivialCofibration,E モデル圏/モデル圏（基本）,型の定義の概念,（その他）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,E モデル圏/モデル圏（基本）,第二候補と一致,low,zigzag 図式の置換の pushout 包含が自明 cofibration
+b0-127,SerrePositivity.koszulComplex_last_pow_eq,A 可換代数と数論幾何/Koszul 複体,型に核,Koszul 複体（反復錐による定義）,A 可換代数と数論幾何/Koszul 複体,,一致,high,Koszul 複体と錐
+b0-128,SerrePositivity.KST.Descent.Main.HasTotDescent,C 単体集合と ∞ 圏/基点付き対象,型に核,基点付き対象と基点付き単体集合（基本）,H K 理論/降下,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,不一致,mid,Tot 降下の定義
+b0-129,SerrePositivity.EInfinity.BarrattEccles.simplicialSequence,G スペクトル/対称列,型に核,対称列の定義と段,F オペラドと E∞/Barratt–Eccles と全射オペラド,G スペクトル/対称列,第二候補と一致,high,EΣₙ の対称列
+b0-130,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.DegreePath.walkVertices_eq_blocks,Z 圏論一般/組合せと順序,型の定義の概念,（その他）,F オペラドと E∞/Barratt–Eccles と全射オペラド,Z 圏論一般/組合せと順序,第二候補と一致,mid,全射オペラドの次数経路
+b0-131,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedDenominatorHomotopy,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,dg 前三角性,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,B 複体と dg 圏/dg 商と cell 分解,不一致,low,dg Verdier 分母のホモトピー
+b0-132,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueAppendEdges.map_unop_heq,Z 圏論一般/圏・関手・極限,Mathlib の定義,関手・自然変換・同型と同値（基本）,Z 圏論一般/圏・関手・極限,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,high,関手の map と HEq
+b0-133,SerrePositivity.BhattScholze.Prismatic.BigCechFrameRetraction.liftAt,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Čech–Alexander 模型（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,,一致,high,Čech–Alexander の frame の持ち上げ
+b0-134,SerrePositivity.SimplicialModel.SimplexNerve.standardAugmentation_isIso,E モデル圏/単体的モデルと anodyne,型に核,単体的 bar 構成（相対 bar）,E モデル圏/単体的モデルと anodyne,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,単体の圏の神経の増大が局所化で同型
+b0-135,SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuotientActualRoof.compositionSimplex,B 複体と dg 圏/dg 商と cell 分解,型に核,dg 商圏（Hom 複体・包含関手・ε）,B 複体と dg 圏/dg 商と cell 分解,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,一致,mid,dg 商の神経の辺の roof 表示
+b0-136,SerrePositivity.InfinityCategories.Sheaves.is0Truncated_iff_pointwise,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,空間の ∞ 圏 𝒮,C 単体集合と ∞ 圏/∞ 層,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,第二候補と一致,mid,前層の 0 切り詰めの点ごとの判定
+b0-137,SerrePositivity.KST.LocalizingInvariants.LaxQuotientBFNormalization.boundaryHomotopy,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,lax 引き戻し（安定 ∞ 圏）と射影・包含,H K 理論/局所化不変量：lax 引き戻しと双加群,,一致,high,lax 商の BF 正規化
+b0-138,SerrePositivity.lambdaHomology_le_cone_prev_of_homologyMap_eq_zero,A 可換代数と数論幾何/正規化長さ,型に核,正規化長さ（公理）,A 可換代数と数論幾何/正規化長さ,B 複体と dg 圏/複体,一致,high,錐のホモロジーの長さの不等式
+b0-139,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGenerators.FirstFactor.nonemptyCut_graphInclusion,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,（補助）自由圏の hammock の計算（生成矢での切断・木の縮約）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,mid,hammock の語の切断
+b0-140,SerrePositivity.DiagramModel.SmallPointwiseMappingComparison.resolvedDiagram,E モデル圏/モデル圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/ホモトピー関数複体と分解,不一致,mid,点ごとの写像空間比較の分解図式
+b0-141,SerrePositivity.KST.NonConnective.sequentialHomLimitFamily,H K 理論/非連結 K,型に核,逐次スペクトル列と逐次余極限,H K 理論/非連結 K,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,逐次スペクトルの Hom の極限
+b0-142,SerrePositivity.InfinityCategories.Sheaves.weightedSectionsData,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,表示可能 ∞ 圏の定義,C 単体集合と ∞ 圏/∞ 層,,不一致,high,重み付き切断
+b0-143,SerrePositivity.EInfinity.Modules.moduleTensorHomRepresentable_augmentation,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,C 単体集合と ∞ 圏/写像空間,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,不一致,low,dg 加群の単体テンソルの表現可能 Hom 族（HA 1.3.1.13）
+b0-144,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLaxFixedInputVertex,C 単体集合と ∞ 圏/写像空間,型に核,矢印の空間と lax 引き戻し,C 単体集合と ∞ 圏/写像空間,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,一致,mid,lax 引き戻しの頂点
+b0-145,SerrePositivity.DifferentialGraded.leftModuleToRightOppositeDG,B 複体と dg 圏/dg 加群,型に核,右・左 dg 加群（対象）,B 複体と dg 圏/dg 加群,,一致,high,左 dg 加群から右加群への dg 関手
+b0-146,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgVerdierBoundaryRefinementSimplex,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,dg 前三角性,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,B 複体と dg 圏/dg 商と cell 分解,不一致,low,dg Verdier 分母圏の単体
+b0-147,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.cochainCompositionBilinear,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,全射オペラド χ（全射語・削除微分・部分合成）,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,全射オペラドの部分合成
+b0-148,SerrePositivity.KST.SConstruction.cubicalSerreCocone,C 単体集合と ∞ 圏/dg 神経,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,B 複体と dg 圏/複体,不一致,low,cubical Serre 鎖複体の余錐
+b0-149,SerrePositivity.KST.Spectra.OmegaSpectrum.circleEvaluationHorn_two,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,スペクトルの写像空間と Sp,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,C 単体集合と ∞ 圏/基点付き対象,一致,mid,円の評価のホーン
+b0-150,SerrePositivity.DerivedCompletion.isModuleComplete_of_isPowTorsion,A 可換代数と数論幾何/導来完備化,型に核,導来完備性,A 可換代数と数論幾何/導来完備化,,一致,high,冪ねじれ加群は導来完備
+b0-151,SerrePositivity.InfinityCategories.Project.DerivedCategories.complexConeDesc_isIso_of_eq,B 複体と dg 圏/複体,型に核,複体（基本）と Hom 複体,B 複体と dg 圏/複体,,一致,high,写像錐の desc の同型性
+b0-152,SerrePositivity.IsPBasis.ringEquiv,A 可換代数と数論幾何/p 基底,型に核,p 基底,A 可換代数と数論幾何/p 基底,,一致,high,p 基底の体同型不変性
+b0-153,SerrePositivity.DerivedCompletion.pairCompletionZeroPrincipalAlgEquiv_unit,A 可換代数と数論幾何/導来完備化,型に核,"完備化の H⁰ の環（主元・二座標・(p,d)）",A 可換代数と数論幾何/導来完備化,,一致,high,完備化環の比較
+b0-154,SerrePositivity.KST.LocalizingInvariants.exists_dgOdotFixedNullSquare,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,小さい dg 入力と固定した ν・K,H K 理論/S 構成の入力（安定モデル・小さい Perf）,H K 理論/局所化不変量：lax 引き戻しと双加群,一致,low,dg ⊙ の零化四角形
+b0-155,SerrePositivity.Section2.stageBaseChangeEquiv_algebraMap_D,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,,一致,high,段の底変換同型
+b0-156,SerrePositivity.KST.SConstruction.relativeKFamilyRectificationData,H K 理論/S 構成と K スペクトル,型に核,（補助）K スペクトルの関手性の coherent 化,H K 理論/S 構成と K スペクトル,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,K 写像族の厳密化
+b0-157,SerrePositivity.AlgebraicGeometry.frobeniusThickeningMap_projection,A 可換代数と数論幾何/Frobenius の順極限,型に核,Frobenius 順極限の環,A 可換代数と数論幾何/Frobenius の順極限,A 可換代数と数論幾何/Čech 複体と被覆,一致,mid,Frobenius と I 進厚化
+b0-158,SerrePositivity.EInfinity.Modules.functorIsoTransport,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,自然変換と可逆二胞体（h Fun）,C 単体集合と ∞ 圏/関手単体集合と同値,,一致,high,関手同型の等式による移送
+b0-159,SerrePositivity.Enriched.TensorCotensor.tensorCotensor_naturality_source,Z 圏論一般/豊穣圏,型に核,（読んで移した定義）,Z 圏論一般/豊穣圏,,一致,high,tensor–cotensor の自然性
+b1-000,SerrePositivity.NormalizedLength.len_eq_zero_of_exact,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,イデアルの冪ねじれ,A 可換代数と数論幾何/正規化長さ,,不一致,high,完全列での正規化長さの零性
+b1-001,SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaStrictModuleDiagram_vertex,H K 理論/非連結 K,型に核,κ-compact な dg cone（可算和と swindle）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,H K 理論/非連結 K,第二候補と一致,low,dg 加群の strict 図式の導来 ∞ 圏への像の頂点（D-bar/κ 被覆）
+b1-002,SerrePositivity.BhattScholze.Prismatic.etaZeroRaw,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/プリズマティックコホモロジー,,不一致,high,Hodge–Tate 比較写像の次数零の環準同型
+b1-003,SerrePositivity.DifferentialGraded.Morita.kernelDerivedColumnActionIso,B 複体と dg 圏/双加群とテンソル,型に核,導来双加群圏と導来合成,B 複体と dg 圏/双加群とテンソル,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,mid,kernel の導来テンソル作用の表現可能加群での計算
+b1-004,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovCommonRightGlueNaturalityCompositeHomotopy,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,（補助）Postnikov 帰納の共通核,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,Postnikov 段の平方零拡大の輸送の間のホモトピー
+b1-005,SerrePositivity.KST.Spectra.FreeActionFamily.pointedCoefficients,C 単体集合と ∞ 圏/基点付き対象,型に核,基点付き対象と基点付き単体集合（基本）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,C 単体集合と ∞ 圏/基点付き対象,第二候補と一致,mid,点つき単体集合の群作用の係数図式（homotopy fixed points 用）
+b1-006,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.mem_remainingLetters,Z 圏論一般/組合せと順序,Mathlib の定義,リストと語,F オペラドと E∞/Barratt–Eccles と全射オペラド,Z 圏論一般/組合せと順序,第二候補と一致,mid,全射語の合成で指定文字を除いたリストの所属
+b1-007,SerrePositivity.KST.Fibration.joinStdSimplexIso_inr_vertex,C 単体集合と ∞ 圏/結とスライス,型に核,結の計算（標準単体・部分複体・結合・反転）,C 単体集合と ∞ 圏/結とスライス,,一致,high,標準単体の join の同型の右因子頂点
+b1-008,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.pointedPrismFixedEndpoints_isContractibleKan,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,輸送表現（witness と prism）,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,一致,mid,普遍左ファイブレーションの fiber 間の prism lift 空間の可縮性
+b1-009,SerrePositivity.DerivedCompletion.completionCycleProjection,B 複体と dg 圏/複体,Mathlib の定義,複体（基本）と Hom 複体,A 可換代数と数論幾何/導来完備化,B 複体と dg 圏/複体,第二候補と一致,mid,導来完備化の点ごとの模型での複体の cycle への射影
+b1-010,SerrePositivity.KST.SConstruction.enrichedFunctorCollageTransportHomotopy,C 単体集合と ∞ 圏/単体的圏と coherent 神経,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,H K 理論/S 構成と K スペクトル,一致,mid,豊穣関手の collage の coherent 神経内でのホモトピー合成
+b1-011,SerrePositivity.InfinityCategories.Project.SetWeightedTensors.weightedKanLeftCutHead,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,strict な Kan 値図式の ∞ 圏,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/極限と余極限,一致,low,strict な Kan 値図式の sHom と重み付き係数から cone の head を作る
+b1-012,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData.pathModel,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,（補助）後続段の類の逆データ,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,Postnikov 段の path 模型
+b1-013,SerrePositivity.Section5.positivity_of_complete_residueCharP,A 可換代数と数論幾何/交点重複度と χ,型に核,Serre の交点重複度 χ,A 可換代数と数論幾何/交点重複度と χ,,一致,high,完備正則局所環での χ の正値性
+b1-014,SerrePositivity.EInfinity.BarrattEccles.ShufflePath.horizontalMap,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,Barratt–Eccles オペラド（E(n) と shuffle 合成）,B 複体と dg 圏/単体的鎖とシャッフル,F オペラドと E∞/Barratt–Eccles と全射オペラド,第二候補と一致,high,shuffle 経路の水平座標の単体圏の射
+b1-015,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_range,C 単体集合と ∞ 圏/冪等完備,型に核,冪等元と分裂の添字（Idem・Split）と coherent な冪等,C 単体集合と ∞ 圏/冪等完備,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,retract の弱比較の像（部分複体）
+b1-016,SerrePositivity.BhattScholze.Perfectoidization.Arc.valuationProbeMap,A 可換代数と数論幾何/付値と区間,型に核,（補助）arc 被覆の付値環の代表系,A 可換代数と数論幾何/付値と区間,A 可換代数と数論幾何/パーフェクトイド,一致,mid,基底環から付値環への射（arc 位相の付値 probe）
+b1-017,SerrePositivity.IsPBasis.cofiniteMonomialBasis,A 可換代数と数論幾何/p 基底,型に核,p 基底,A 可換代数と数論幾何/p 基底,,一致,high,p 基底の補有限中間体上の単項式基底
+b1-018,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorInsertionBlock,Z 圏論一般/モノイダル圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/モノイダル圏,F オペラドと E∞/dg オペラドと代数,一致,mid,対称モノイダル圏で中央ブロックへ演算を適用する射
+b1-019,SerrePositivity.InfinityCategories.Project.DerivedCategories.cofiberBoundaryJoinFiller_right,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,C 単体集合と ∞ 圏/極限と余極限,不一致,mid,cofiber 四角形の境界充填（join の押し出し）の右制限
+b1-020,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleAugmentationPrismMixedHom_differential_corrections,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,不一致,mid,dg 加群の関手的分解の augmentation の prism 成分の微分
+b1-021,SerrePositivity.DifferentialGraded.Morita.scalarKernelLeftValueIso,B 複体と dg 圏/係数の取り替え,型に核,dg 加群の係数変更,B 複体と dg 圏/係数の取り替え,B 複体と dg 圏/双加群とテンソル,一致,mid,係数拡大した kernel の左評価の同一視
+b1-022,SerrePositivity.Section2.towerLengthFun_perfectionApproximation_frobenius_quotient_le,A 可換代数と数論幾何/正規化長さ,型に核,（読んで移した定義）,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/根の塔,一致,mid,完全化の近似環の商の塔正規化長さの上界
+b1-023,SerrePositivity.DifferentialGraded.moduleResolutionCandidateι,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,B 複体と dg 圏/dg 加群,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,mid,dg 加群の分解候補（余極限）への段の包含
+b1-024,SerrePositivity.KST.SConstruction.enrichedHom_left_unit_composition,Z 圏論一般/豊穣圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/豊穣圏,,一致,high,豊穣 Hom の単位を保つ射は合成を保つ
+b1-025,SerrePositivity.ModelGeneration.relativeCells_map_le,E モデル圏/Quillen 関手と生成,型に核,Quillen 双関手とモノイダルモデル圏,E モデル圏/Quillen 関手と生成,E モデル圏/局所化と射の類（通常の圏）,一致,mid,相対胞体複体の類の余極限保存関手による像
+b1-026,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceProjection_isKappaAccessibleFunctor,C 単体集合と ∞ 圏/結とスライス,型に核,スライスと余スライス,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,C 単体集合と ∞ 圏/結とスライス,第二候補と一致,high,coslice の射影は κ-filtered 余極限を保つ（accessible）
+b1-027,SerrePositivity.DiagramModel.FrameWeightRealization.bousfieldKanCoconeDegree,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,frame と重みによる実現,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/ホモトピー関数複体と分解,一致,mid,Bousfield–Kan 実現の frame 余錐の次数ごとの脚
+b1-028,SerrePositivity.cubicCyclotomicAlgebra_finite,A 可換代数と数論幾何/環と加群（その他）,型の定義の概念,（その他）,A 可換代数と数論幾何/環と加群（その他）,,一致,high,三次円分代数の有限性
+b1-029,SerrePositivity.PExponent.splitOption_injective,A 可換代数と数論幾何/p 基底,型に核,p 指数と p 単項式,A 可換代数と数論幾何/p 基底,,一致,mid,p 指数の Option 分割の単射性
+b1-030,SerrePositivity.BhattScholze.Perfectoidization.Arc.arcTowerStageToQuotient_coeff,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/根の塔,第二候補と一致,mid,p 冪根を添加した多項式商と根の塔の段の比較
+b1-031,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.positionInversionCount_erase_balance_general,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,単体的鎖への χ の余作用（切断公式）,F オペラドと E∞/Barratt–Eccles と全射オペラド,Z 圏論一般/組合せと順序,一致,mid,逆転数の削除公式（切断の符号計算）
+b1-032,SerrePositivity.SimplicialChains.Shuffle.value_natural,B 複体と dg 圏/単体的鎖とシャッフル,型に核,シャッフル,B 複体と dg 圏/単体的鎖とシャッフル,,一致,high,shuffle 和の自然性
+b1-033,SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_completedRingDirectLimit_of_orderBot,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,I 完全平坦・I 完全忠実平坦,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,第二候補と一致,mid,perfectoid 環の有向系の完備余極限への p 完全忠実平坦性（超限塔の極限段）
+b1-034,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.unitCoaction_partialComposition,F オペラドと E∞/dg オペラドと代数,型に核,（まだ読んでいない定義）,F オペラドと E∞/dg オペラドと代数,,一致,high,単位余演算は部分合成を保つ（オペラド余代数）
+b1-035,SerrePositivity.BhattScholze.Prismatic.pdDelta_complete,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,分冪 Čech 模型（多項式環）,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,mid,結晶比較の分冪 δ 環の p 完備性
+b1-036,SerrePositivity.BhattScholze.classicalDeltaDivisionMap_isDeltaHom,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,"δ 除算のねじれ除去・(p,d) 剰余・完備化",A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,,一致,high,δ 除算の完備化への基底射は δ 射
+b1-037,SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.liftedDownHomotopy_essSurj,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,係数加群層の複体の導来 dg 圏,H K 理論/係数環層つきスキームの加群層と D_qc,B 複体と dg 圏/複体,一致,mid,係数加群層の複体の宇宙持ち上げのホモトピー圏での本質的全射
+b1-038,SerrePositivity.AlgebraicGeometry.schemePerfectCechTupleAugmentedGlobalDoubleMap_succ,A 可換代数と数論幾何/Čech 複体と被覆,型に核,完全化した構造層の Čech 降下（スキームの Čech 脈体上の二重複体）,A 可換代数と数論幾何/Čech 複体と被覆,,一致,high,スキームの完全化 Čech 二重複体の増大の成分
+b1-039,SerrePositivity.KST.SConstruction.dgIdentityHomGluingStrictConeInputComparison,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,mid,dg gluing の cone 入力の strict 自然変換
+b1-040,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,核,dg 圏上の加群の導来 ∞ 圏,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,B 複体と dg 圏/dg 加群,一致,mid,右 dg 加群の半自由条件
+b1-041,SerrePositivity.CommutativeAlgebra.isUniversalHomeomorphism_baseChange,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,普遍同相,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,,一致,high,普遍同相は底変換で安定
+b1-042,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.convolutionAction_uncurry,F オペラドと E∞/dg オペラドと代数,型に核,オペラド代数と余代数,F オペラドと E∞/dg オペラドと代数,,一致,high,convolution 代数の作用の転置
+b1-043,SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Simplicial.SimplicialOverComparison.jointTestComparison,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,左ファイブレーションの ∞ 圏,C 単体集合と ∞ 圏/ファイブレーションと straightening,Z 圏論一般/豊穣圏,一致,low,底上の単体的対象の豊穣比較から相対関手空間の前合成の比較
+b1-044,SerrePositivity.chi_congr,A 可換代数と数論幾何/交点重複度と χ,型に核,Serre の交点重複度 χ,A 可換代数と数論幾何/交点重複度と χ,,一致,high,χ の線形同値不変性
+b1-045,SerrePositivity.KST.LocalizingInvariants.fromZeroCategory,H K 理論/局所化不変量：lax 引き戻しと双加群,核,局所化不変量の定義と値,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,H K 理論/局所化不変量：lax 引き戻しと双加群,第二候補と一致,mid,零安定圏からの完全関手
+b1-046,SerrePositivity.InfinityCategories.Sheaves.LargeSheafCat,C 単体集合と ∞ 圏/準圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/∞ 層,,不一致,high,大きい site の層の全部分準圏
+b1-047,SerrePositivity.boundedAboveDerivedTensorModuleHomEquiv_symm_apply,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,,一致,high,有界上導来テンソルの普遍比較の逆
+b1-048,SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.cylinderSquare_terminal,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/極限と余極限,一致,mid,Verdier 分数の円柱四角形の終端評価
+b1-049,SerrePositivity.EInfinity.BarrattEccles.carrierFramedLimitHomPiZeroEquiv,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,型に核,E 代数のモデル構造・導来写像空間・ホモトピー極限,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,E モデル圏/ホモトピー関数複体と分解,一致,mid,E 代数の framed ホモトピー極限の底の錐空間の π₀
+b1-050,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.lifted_nerve,C 単体集合と ∞ 圏/神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/神経,C 単体集合と ∞ 圏/極限と余極限,一致,mid,神経の単体と標準単体の神経同型の整合
+b1-051,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCategory,C 単体集合と ∞ 圏/冪等完備,型に核,冪等元と分裂の添字（Idem・Split）と coherent な冪等,C 単体集合と ∞ 圏/冪等完備,,一致,high,walking idempotent の圏構造
+b1-052,SerrePositivity.DifferentialGraded.moduleDerivedResolutionComputation,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,導来圏 D(D)（擬同型による局所化）,B 複体と dg 圏/導来圏と Perf（dg 加群）,B 複体と dg 圏/dg 加群,一致,mid,導来圏から分解で定まる関手の計算同型
+b1-053,SerrePositivity.BhattScholze.Andre.deltaPDivisionSourceTorSwapIso,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,δ 除算の関係式と有限表示,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/台つきの加群と Tor,不一致,mid,δ p 除算の源対象の Tor の対称性
+b1-054,SerrePositivity.KST.SConstruction.PerfectVerdierSequence.leftVertex,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,Cat^perf,H K 理論/S 構成の入力（安定モデル・小さい Perf）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,一致,mid,Cat^perf の Verdier 列の左端頂点
+b1-055,SerrePositivity.BhattScholze.DeltaStructure.subring,A 可換代数と数論幾何/δ 環,型に核,δ 構造（W₂ の切断）と Frobenius 持ち上げ,A 可換代数と数論幾何/δ 環,,一致,high,δ 安定部分環の δ 構造
+b1-056,SerrePositivity.KST.LocalizingInvariants.pullbackSourcePrefixFamily_pre,C 単体集合と ∞ 圏/極限と余極限,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/極限と余極限,第二候補と一致,mid,Verdier 分数の引き戻し図式族の前合成
+b1-057,SerrePositivity.KST.SConstruction.dgHomIsoFunctorLiftOfEq_factor,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 関手,B 複体と dg 圏/dg 圏と dg 関手,H K 理論/S 構成の入力（安定モデル・小さい Perf）,一致,mid,Hom 同型に沿う dg 関手の持ち上げの因子分解
+b1-058,SerrePositivity.Reedy.RelativeLifting.tower_app_mono,E モデル圏/Reedy,型に核,latching・matching の添字圏と対象,E モデル圏/Reedy,E モデル圏/ホモトピー関数複体と分解,一致,mid,Reedy 持ち上げの塔の低次数保持
+b1-059,SerrePositivity.BhattScholze.Semiperfectoid.pCompletedDeltaDivisionComparisonMap_comp,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,p 完備 δ 除算の完全化,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,A 可換代数と数論幾何/パーフェクトイド,一致,mid,p 完備 δ 除算の比較射の合成
+b1-060,SerrePositivity.KST.LocalizingInvariants.ZeroCospan.targets,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,零対象と零角の四角形（点付き ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,C 単体集合と ∞ 圏/極限と余極限,一致,mid,零始点の辺をもつ cospan の制限の終点の一致
+b1-061,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleAugmentationHomotopyCut_erase_left,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,不一致,mid,dg 加群 augmentation のホモトピー切断の削除公式
+b1-062,SerrePositivity.karoubiFirstFromOriginal,B 複体と dg 圏/三角圏,型の定義の概念,（その他）,B 複体と dg 圏/三角圏,Z 圏論一般/圏・関手・極限,一致,mid,Verdier 商と Karoubi 包絡の比較関手
+b1-063,SerrePositivity.KST.Comparison.monoidNerveLoopMulStruct,C 単体集合と ∞ 圏/神経,型の定義の概念,（その他）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,C 単体集合と ∞ 圏/神経,第二候補と一致,mid,モノイドの神経の loop の積構造（基本群）
+b1-064,SerrePositivity.DerivedCompletion.iteratedTensorCartierLeftAlgHom_mk,A 可換代数と数論幾何/導来完備化,型に核,完備化のモノイダル構造と完備テンソル,A 可換代数と数論幾何/導来完備化,A 可換代数と数論幾何/パーフェクトイド,一致,mid,"反復 (p,d) 完備テンソルの H⁰ の Cartier 商への射"
+b1-065,SerrePositivity.EInfinity.PowerOperation.mayCoefficientAction_norm,F オペラドと E∞/冪作用,型に核,冪作用の入力（閉元と同次の作用）,F オペラドと E∞/冪作用,,一致,high,May の係数作用のノルムは p 倍
+b1-066,SerrePositivity.cubicCyclotomicPolynomial_eq,A 可換代数と数論幾何/環と加群（その他）,型の定義の概念,（その他）,A 可換代数と数論幾何/環と加群（その他）,,一致,high,三次円分多項式
+b1-067,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.constantPullbackFiberIso_snd,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,ファイバーと共変輸送,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/ファイブレーションと straightening,第二候補と一致,mid,定値射に沿う引き戻しと fiber×K の同型の射影
+b1-068,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.weightedTwistedPullbackIso_fst,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,edgewise subdivision,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,一致,mid,重み付きねじれ矢の引き戻し同型の射影
+b1-069,SerrePositivity.DifferentialGraded.DGQuotient.quotientTriaFunctorIsTriangulated,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,有限 cell 対象と tria(D),B 複体と dg 圏/dg 商と cell 分解,B 複体と dg 圏/導来圏と Perf（dg 加群）,第二候補と一致,mid,dg 商の tria 関手は三角関手
+b1-070,SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedFamilyHom_identity,C 単体集合と ∞ 圏/写像空間,型に核,写像空間の模型の比較,C 単体集合と ∞ 圏/写像空間,,一致,high,pinched 写像空間の恒等頂点の族
+b1-071,SerrePositivity.SimplicialModel.NerveDiagramExtension.System,C 単体集合と ∞ 圏/神経,型に核,（読んで移した定義）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/図式のモデル構造とホモトピー余極限,不一致,mid,神経値図式の coherent family の系（中断した一般化）
+b1-072,SerrePositivity.KST.SConstruction.simplexSubsetSplitNormalizedCoordinate_eq,C 単体集合と ∞ 圏/dg 神経,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,H K 理論/S 構成と K スペクトル,不一致,mid,単体部分集合の分割面と削除面の立方体座標
+b1-073,SerrePositivity.DifferentialGraded.BimoduleTensor.rightKFlatReplacementMap_comp,B 複体と dg 圏/双加群とテンソル,型に核,導来双加群圏と導来合成,B 複体と dg 圏/双加群とテンソル,,一致,high,双加群の K-flat 置換の関手性
+b1-074,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaCounitData.unitAlongG,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,,一致,high,随伴の単位の G に沿うホモトピー
+b1-075,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.IndexedSum.inclusion,C 単体集合と ∞ 圏/単体集合（基本）,型の定義の概念,（その他）,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,単体集合の族の依存和への包含
+b1-076,SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaSemifreeCellDegree,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,B 複体と dg 圏/dg 加群,第二候補と一致,low,dg 加群の semifree filtration の cell の次数
+b1-077,SerrePositivity.TriangulatedK0.map_natIso,A 可換代数と数論幾何/完全複体と K₀,型に核,三角圏の K₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,三角圏の K₀ の関手性
+b1-078,SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroTargetDiagrams_target,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,cofiber 列とホモトピー圏の三角構造,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,H K 理論/局所化不変量：lax 引き戻しと双加群,一致,mid,cofiber を与える零標的図式の評価
+b1-079,SerrePositivity.DifferentialGraded.FreeDGCategory.appendWord_cons,B 複体と dg 圏/dg 圏と dg 関手,型に核,自由 dg 圏,B 複体と dg 圏/dg 圏と dg 関手,B 複体と dg 圏/dg 商と cell 分解,一致,mid,自由 dg 圏の語テンソルの append
+b1-080,SerrePositivity.KST.SConstruction.tensorInterchangeMap_apply,B 複体と dg 圏/複体,型に核,複体（基本）と Hom 複体,B 複体と dg 圏/複体,,一致,high,複体のテンソルの交差 μ の値
+b1-081,SerrePositivity.SymmetricSequence.FreeConvolutionFamily.component_fac,G スペクトル/対称列,型に核,有限集合と全単射の圏,G スペクトル/対称列,,一致,high,自由対称列の Day convolution からの延長
+b1-082,SerrePositivity.SimplicialChains.Shuffle.simplex_map_comparison,B 複体と dg 圏/単体的鎖とシャッフル,型に核,シャッフル,B 複体と dg 圏/単体的鎖とシャッフル,,一致,high,shuffle 単体の面・退化による引き戻しの比較
+b1-083,SerrePositivity.HomotopyFunctionComplex.MixedResolutionLiftAction.instModelCategoryFunctorSimplexCategoryOpposite_serrePositivity,E モデル圏/モデル圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/Reedy,不一致,mid,余単体対象の Reedy モデル構造の局所 instance（中断した一般化のファイル）
+b1-084,SerrePositivity.Reedy.BoundaryExtension.directMap_id,E モデル圏/Reedy,型に核,次数による切り詰めと一対象の付加,E モデル圏/Reedy,,一致,mid,一対象付加した Reedy 添字圏への延長関手の恒等射
+b1-085,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.overPreJoint_comp_iso,C 単体集合と ∞ 圏/極限と余極限,型に核,空間値の図式の極限と切断空間,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/極限と余極限,第二候補と一致,mid,左ファイブレーションへの相対関手空間の前合成同値の合成
+b1-086,SerrePositivity.BhattScholze.universalOrientedPrism_regular,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/プリズム,,一致,high,"普遍向き付きプリズムの (p,d) 弱正則性"
+b1-087,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallRetractIndex,C 単体集合と ∞ 圏/サイズの条件,型に核,局所小さい ∞ 圏,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,C 単体集合と ∞ 圏/冪等完備,不一致,mid,compact 生成族の retract の小さい添字
+b1-088,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelTensorFunctorHomFunctor_postcomp_heq,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,（読んで移した定義）,B 複体と dg 圏/双加群とテンソル,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,第二候補と一致,mid,kernel テンソルの ∞ 圏版関手の射への作用
+b1-089,SerrePositivity.KST.SConstruction.pastingOuterRightVertexEdge_top,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,（補助）四角形の辺・対角とホモトピー圏への読み替え,C 単体集合と ∞ 圏/単体集合（基本）,H K 理論/S 構成と K スペクトル,不一致,mid,Δ[2]⊗Δ[1] の長方形のホモトピーの頂点辺
+b1-090,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasCardinalLT_simplexCategory,C 単体集合と ∞ 圏/サイズの条件,型に核,κ 小さい単体集合,C 単体集合と ∞ 圏/サイズの条件,,一致,high,κ 小さい単体集合の要素の圏の濃度
+b1-091,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingFactorIsZero_hom_target,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,因子の部分圏と引き戻し部分圏,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,mid,dg gluing の因子の零対象への Hom 複体は零
+b1-092,SerrePositivity.KST.Fibration.weakStringInitialPostSquare,H K 理論/S 構成と K スペクトル,型に核,相対 S 構成と弱い辺の列（fibration 定理）,H K 理論/S 構成と K スペクトル,,一致,mid,弱い辺の列の実現の可換四角形（fibration 定理）
+b1-093,SerrePositivity.ReverseComposition.enrichedCategory,Z 圏論一般/豊穣圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/豊穣圏,,一致,high,豊穣圏の構成子
+b1-094,SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,単体圏 Δ と単体の面・退化,C 単体集合と ∞ 圏/単体集合（基本）,Z 圏論一般/組合せと順序,一致,mid,単体圏の射の先頭に零頂点を追加
+b1-095,SerrePositivity.CochainCubicAction.characterProjector,B 複体と dg 圏/複体,型に核,写像錐・冪等射の像,B 複体と dg 圏/複体,A 可換代数と数論幾何/完全複体と K₀,一致,mid,複体の三次作用の指標の冪等射影
+b1-096,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex.insertHorizontal_last_right_face,B 複体と dg 圏/単体的鎖とシャッフル,型に核,シャッフル,B 複体と dg 圏/単体的鎖とシャッフル,C 単体集合と ∞ 圏/dg 神経,一致,mid,shuffle 添字の水平挿入の面
+b1-097,SerrePositivity.KST.NonConnective.sequentialCandidateMap_isInvertible,H K 理論/非連結 K,型に核,逐次スペクトル列と逐次余極限,H K 理論/非連結 K,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,逐次スペクトル列の候補比較は π 同型なら可逆
+b1-098,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.exists_edgewiseRight_weight_extension,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,edgewise subdivision,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,,一致,high,edgewise subdivision の右射影の境界充填
+b1-099,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheafElementsYonedaDiagram_vertex,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,前層の密度（表現可能前層の余極限）,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,前層の要素の圏上の米田図式の頂点（密度）
+b1-100,SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom_functorial,H K 理論/pro 切除：非単位環と GL,型に核,三角ブロック群・列群と行列の作用,H K 理論/pro 切除：非単位環と GL,,一致,high,三角ブロック群の補助列準同型の係数変更自然性
+b1-101,SerrePositivity.DeRham.dLinear,A 可換代数と数論幾何/de Rham 複体,型に核,p 進完備化した多項式の微分形式,A 可換代数と数論幾何/de Rham 複体,,一致,high,p 進完備化した微分形式の微分の線形写像
+b1-102,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCoherentHomComparisonHom_cast_cast,C 単体集合と ∞ 圏/dg 神経,型に核,Dold–Kan の Hom 空間（標準模型）,C 単体集合と ∞ 圏/dg 神経,C 単体集合と ∞ 圏/単体的圏と coherent 神経,一致,mid,dg 圏の coherent 神経との Hom 比較
+b1-103,SerrePositivity.AlgebraicGeometry.CechAugmentedSquare.rightInclusion_naturality,A 可換代数と数論幾何/Čech 複体と被覆,型に核,（補助）増大 Čech 四角形と全複体,A 可換代数と数論幾何/Čech 複体と被覆,,一致,mid,Čech 増大四角形の射と包含の自然性
+b1-104,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent_idem,C 単体集合と ∞ 圏/冪等完備,型に核,冪等元と分裂の添字（Idem・Split）と coherent な冪等,C 単体集合と ∞ 圏/冪等完備,,一致,high,walking idempotent は冪等
+b1-105,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeLeg,C 単体集合と ∞ 圏/単体的圏と coherent 神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/単体的圏と coherent 神経,第二候補と一致,mid,通常の錐から coherent な錐の脚
+b1-106,SerrePositivity.KST.Spectra.SkeletalEdgeCochain.zeroExtend,C 単体集合と ∞ 圏/基点付き対象,型に核,球面・懸垂・ループ,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,不一致,mid,loop 値の骨格射の次数一 cochain の零延長
+b1-107,SerrePositivity.KST.LocalizingInvariants.homotopyPathFamily,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,可逆 path の空間と path 置換,C 単体集合と ∞ 圏/関手単体集合と同値,,一致,mid,可逆なホモトピーから可逆 path の空間への族
+b1-108,SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.wedge_allows_leftClamp,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,necklace の連結（wedge）,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,,一致,high,necklace の wedge の左射影は bead 条件を保つ
+b1-109,SerrePositivity.Asymptotic.paperK0_smul_mk,A 可換代数と数論幾何/漸近的なランク,型に核,台つき部分圏,A 可換代数と数論幾何/漸近的なランク,A 可換代数と数論幾何/完全複体と K₀,一致,mid,ランク商の K₀ への群作用
+b1-110,SerrePositivity.KST.Spectra.TripleCircle.extensionSection,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,（補助）円の交換と符号,C 単体集合と ∞ 圏/基点付き対象,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,第二候補と一致,mid,基点付き内部 Hom の延長切断
+b1-111,SerrePositivity.MonoidalModuleInternalHom.preMap_evaluation,Z 圏論一般/モノイダル圏の中の加群,型に核,加群の内部 Hom,Z 圏論一般/モノイダル圏の中の加群,,一致,high,加群の内部 Hom の前合成と評価
+b1-112,SerrePositivity.BhattScholze.deltaPDivisionFirstRelation_pair_isWeaklyRegular,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,δ 除算の関係式と有限表示,A 可換代数と数論幾何/δ 環,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,第二候補と一致,mid,δ 環の p 除算（分冪）関係の弱正則性
+b1-113,SerrePositivity.BhattScholze.Perfectoidization.Arc.localizationToInterval_surjective,A 可換代数と数論幾何/付値と区間,型に核,付値環のスペクトルの区間の環,A 可換代数と数論幾何/付値と区間,,一致,high,付値環の局所化から区間の環への全射
+b1-114,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.MiddleBackward.Positions.middleColumn,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,向き付き語の圏,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,Z 圏論一般/組合せと順序,一致,mid,hammock の語の中央列の位置
+b1-115,SerrePositivity.HomotopyFunctionComplex.FreePathResolutionDegreeTwo.degeneracyOne_faceOne,Z 圏論一般/圏・関手・極限,型の定義の概念,（その他）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,不一致,mid,自由な道の圏の分解の次数二の面と退化（中断した一般化のファイル）
+b1-116,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.filler_face,C 単体集合と ∞ 圏/dg 神経,型に核,dg 神経の単体と単体的構造,C 単体集合と ∞ 圏/dg 神経,,一致,high,dg 神経のホーン充填の面
+b1-117,SerrePositivity.Section2.relStageFrom,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,,一致,high,根の塔の段から相対段への射
+b1-118,SerrePositivity.BhattScholze.pCompletedDeltaLift,A 可換代数と数論幾何/δ 環,型に核,（読んで移した定義）,A 可換代数と数論幾何/δ 環,A 可換代数と数論幾何/プリズム,一致,mid,p 完備 δ 完全化からの一意延長
+b1-119,SerrePositivity.InfinityCategories.HA.Monads.ordinalMapVariation_bottomMerge,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,Z 圏論一般/組合せと順序,一致,mid,順序写像の変化量（Riehl–Verity）
+b1-120,SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.denominatorSpanLeftContraction_one,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,関手単体集合の頂点・評価・転置,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,,不一致,mid,Verdier 分数の span の収縮の頂点
+b1-121,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.strictificationHomotopy,B 複体と dg 圏/単体的鎖とシャッフル,型に核,線形化した区間ホモトピーと厳密化,B 複体と dg 圏/単体的鎖とシャッフル,C 単体集合と ∞ 圏/dg 神経,一致,mid,線形化した区間ホモトピーの厳密化
+b1-122,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseNerveCostructuredPullback.lifted,Z 圏論一般/圏・関手・極限,Mathlib の定義,サイズと宇宙の持ち上げ,Z 圏論一般/圏・関手・極限,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,関手の ULift による持ち上げ
+b1-123,SerrePositivity.DifferentialGraded.karoubiComposition_whisker,Z 圏論一般/圏・関手・極限,Mathlib の定義,射の類・充満部分圏・局所化・冪等完備,Z 圏論一般/圏・関手・極限,B 複体と dg 圏/三角圏,一致,mid,Karoubi 包絡への関手延長の合成同型
+b1-124,SerrePositivity.KST.SConstruction.isLimitCone_fullSubcomplex_of_ambient,C 単体集合と ∞ 圏/極限と余極限,型に核,錐・余錐と極限・余極限,C 単体集合と ∞ 圏/極限と余極限,,一致,high,全部分複体での極限錐の反映
+b1-125,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.universalBoundaryValue_input,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,（補助）切断公式の微分両立・合成則の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,単体的鎖への余作用の境界値
+b1-126,SerrePositivity.KST.SConstruction.pointedLiftTransport_vertex,C 単体集合と ∞ 圏/基点付き対象,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/基点付き対象,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,点つき持ち上げ空間の移送の頂点
+b1-127,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.essentiallySmallLeftStraighteningComparison_isPrecompositionEquivalence,C 単体集合と ∞ 圏/サイズの条件,型に核,ファイバーが小さい射,C 単体集合と ∞ 圏/ファイブレーションと straightening,,不一致,high,本質的に小さい fiber の左ファイブレーションの straightening 比較
+b1-128,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomTargetLaxHomIntervalArrowProjection,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/写像空間,不一致,mid,dg gluing の Hom の lax 区間引き戻しの射影
+b1-129,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCoproductCocone,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,空間の ∞ 圏 𝒮,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,第二候補と一致,mid,Kan 複体の族の直和の余錐（𝒮 の余積）
+b1-130,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DifferentialGradedCategories.restrictScalars_unit,B 複体と dg 圏/係数の取り替え,型に核,複体の係数拡大と係数制限,B 複体と dg 圏/係数の取り替え,C 単体集合と ∞ 圏/dg 神経,一致,mid,dg 圏の係数制限後の単位元
+b1-131,SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor.substitution,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,（読んで移した定義）,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,mid,分冪多項式 frame の代入準同型
+b1-132,SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.tensorInsertSummand,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,（補助）HT 比較の全複体・分解・完備底変換の厳密模型,B 複体と dg 圏/複体,A 可換代数と数論幾何/プリズマティックコホモロジー,第二候補と一致,mid,複体と全複体のテンソルの成分の挿入
+b1-133,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cocartesianFibration_innerFibration,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,cartesian・cocartesian 辺とファイブレーション,C 単体集合と ∞ 圏/ファイブレーションと straightening,,一致,high,cocartesian fibration は inner fibration
+b1-134,SerrePositivity.EInfinity.BarrattEccles.binaryTensorInputAction_eq,G スペクトル/対称列,型に核,反復テンソルの対称列 Sym(X),F オペラドと E∞/dg オペラドと代数,G スペクトル/対称列,第二候補と一致,mid,Schur 関手側の対称群作用と二入力テンソル冪の作用の一致
+b1-135,SerrePositivity.KST.LocalizingInvariants.exists_completionComponentZeroSource,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,H K 理論/S 構成と K スペクトル,不一致,low,安定 ∞ 圏の完備化の cofiber の wide 部分圏の成分と零分母
+b1-136,SerrePositivity.KST.ProExcision.firstBlockMatrix_mul_columnInclusion,H K 理論/pro 切除：非単位環と GL,型に核,（読んで移した定義）,H K 理論/pro 切除：非単位環と GL,,一致,high,列のブロック包含と行列作用の可換性
+b1-137,SerrePositivity.Asymptotic.FreeSequence.rank_eq_of_iso,A 可換代数と数論幾何/漸近的なランク,型に核,自由加群列（ランク O(s)）,A 可換代数と数論幾何/漸近的なランク,,一致,high,自由加群列の同型はランクを保つ
+b1-138,HomotopicalAlgebra.trivialFibrations_under_eq,E モデル圏/モデル圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,E モデル圏/モデル圏（基本）,E モデル圏/局所化と射の類（通常の圏）,一致,mid,Under 圏のモデル構造の trivial fibration
+b1-139,SerrePositivity.BhattScholze.OrientedPrism.generatorLinearEquiv_apply,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/プリズム,,一致,high,向き付きプリズムの生成元による自明化
+b1-140,SerrePositivity.KST.Descent.AbstractBlowupSquare.baseChangeToOriginal,H K 理論/降下,型に核,抽象 blowup 正方形と閉中心,H K 理論/降下,,一致,high,抽象 blowup 正方形の底変換の比較立方体
+b1-141,SerrePositivity.ModelReplacement.CommonFibrant.right,E モデル圏/モデル圏（基本）,型の定義の概念,（その他）,E モデル圏/モデル圏（基本）,E モデル圏/Quillen 関手と生成,一致,mid,二つの trivial cofibration の下の共通 fibrant 置換への射
+b1-142,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indArrowInterpolationDiagram_old,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,Ind 完備化,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,,一致,mid,Ind 完備化の矢印の補間図式
+b1-143,SerrePositivity.ComplexLimits.normalizedTensorTriangleMap,C 単体集合と ∞ 圏/dg 神経,型に核,dg 神経の単体と単体的構造,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/dg 神経,第二候補と一致,low,複体の正規化テンソルの三角形の dg 神経への写像
+b1-144,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.partialComposition_d_positive,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,全射オペラド χ（全射語・削除微分・部分合成）,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,全射語の部分合成の Leibniz 則
+b1-145,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.isoOfSameIdempotent,C 単体集合と ∞ 圏/冪等完備,型に核,retract,C 単体集合と ∞ 圏/冪等完備,,一致,high,同じ冪等を分裂する二つの retract の同型
+b1-146,SerrePositivity.BhattScholze.pairDifferenceIdeal_delta,A 可換代数と数論幾何/δ 環,型に核,δ 構造（W₂ の切断）と Frobenius 持ち上げ,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,A 可換代数と数論幾何/δ 環,第二候補と一致,mid,δ 除算の源の差イデアルの δ 安定性
+b1-147,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.monochrome_eq_part,E モデル圏/局所化と射の類（通常の圏）,型の定義の概念,（その他）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,不一致,mid,局所化の生成語の色分け
+b1-148,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.first_split_square,E モデル圏/局所化と射の類（通常の圏）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,Z 圏論一般/組合せと順序,不一致,mid,W つき道の分割の四角形
+b1-149,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentTransformationTriangleAt,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,フィルター余極限と有限極限の交換,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/関手単体集合と同値,不一致,low,coherent な自然変換の合成三角形の一点評価
+b1-150,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.transportCylinderEndpointInclusion,C 単体集合と ∞ 圏/結とスライス,型に核,fat join と結の比較,C 単体集合と ∞ 圏/写像空間,C 単体集合と ∞ 圏/単体集合（基本）,不一致,mid,写像円柱の両端の包含
+b1-151,SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeValueEquivalence_native_postcomp,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,（読んで移した定義）,H K 理論/S 構成の入力（安定モデル・小さい Perf）,,一致,mid,小さい Perf 包絡の値の同値
+b1-152,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeightIso_inl_range,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,edgewise subdivision,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,,一致,high,edgewise の重みの左半分の像
+b1-153,SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionBottomMergeArrow_surjective,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,walking adjunction の底併合射の全射性
+b1-154,SerrePositivity.KST.SConstruction.enrichedFunctorTransport_obj,Z 圏論一般/豊穣圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/豊穣圏,,一致,high,豊穣関手の移送の対象作用
+b1-155,SerrePositivity.DifferentialGraded.leftModuleHom,B 複体と dg 圏/dg 加群,型に核,右・左 dg 加群（対象）,B 複体と dg 圏/dg 加群,,一致,high,左 dg 加群の Hom 複体
+b1-156,SerrePositivity.ordinary_koszul_finite_comp_equiv,A 可換代数と数論幾何/正規化長さ,型に核,（まだ読んでいない定義）,A 可換代数と数論幾何/Koszul 複体,A 可換代数と数論幾何/正規化長さ,第二候補と一致,high,Koszul ホモロジーの長さの有限性の自己同型不変性
+b1-157,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentConeProjection_leftFibration,C 単体集合と ∞ 圏/極限と余極限,型に核,空間値の図式の極限と切断空間,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/極限と余極限,第二候補と一致,mid,coslice 射影の引き戻しは左ファイブレーション
+b1-158,SerrePositivity.DifferentialGraded.DGQuotient.mainKernelQuotientPerfectHomotopyFunctorIsTriangulated,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,Perf の dg 増強（射影的 perfect dg 加群）,B 複体と dg 圏/導来圏と Perf（dg 加群）,B 複体と dg 圏/dg 商と cell 分解,一致,mid,kernel による Perf の Verdier 商の関手は三角関手
+b1-159,SerrePositivity.KST.NonConnective.sequentialNativeHomIsLimit,H K 理論/非連結 K,型に核,逐次スペクトル列と逐次余極限,H K 理論/非連結 K,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,逐次スペクトル余錐の豊穣 Hom の錐は極限
+b2-000,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCommaAugmentationHomotopyComponent_closed_zero,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 圏（Hom 複体・次数つき射・合成）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,,不一致,mid,dg関手のcomma圏のaugmentationホモトピー
+b2-001,SerrePositivity.DifferentialGraded.scalarPerfectHomotopyComparison_commShift,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,Perf の関手性（kernel・準同値・係数拡大・自己準同型代数）,B 複体と dg 圏/導来圏と Perf（dg 加群）,B 複体と dg 圏/係数の取り替え,一致,mid,Perfの係数拡大の比較がshiftと可換
+b2-002,SerrePositivity.InfinityCategories.Project.DerivedCategories.simplicialRingNormalizedDGAlgebraMap,B 複体と dg 圏/単体的鎖とシャッフル,型に核,（補助）宇宙を合わせた整数係数,B 複体と dg 圏/単体的鎖とシャッフル,H K 理論/局所化不変量：Postnikov と平方零拡大,一致,mid,単体的環の正規化dg代数の関手性
+b2-003,SerrePositivity.DifferentialGraded.BalancedTensor.rightParamMap_element,B 複体と dg 圏/双加群とテンソル,型に核,balanced テンソル積 M ⊗_D N,B 複体と dg 圏/双加群とテンソル,B 複体と dg 圏/dg 加群,一致,mid,dg加群のテンソル上のパラメータ写像の元での式
+b2-004,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.pointedPrismOfRestriction,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,基点付き空間と普遍左ファイブレーション,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,第二候補と一致,mid,基点付き空間への持ち上げのprism（straighteningの底変換）
+b2-005,SerrePositivity.Asymptotic.normalizedLimit_mono,A 可換代数と数論幾何/漸近的なランク,型に核,正規化極限と Euler 評価,A 可換代数と数論幾何/漸近的なランク,,一致,high,正規化超極限の単調性
+b2-006,SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict_eval,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,型に核,E 代数上の加群,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,,一致,high,E代数上の加群の制限
+b2-007,SerrePositivity.KST.SConstruction.monicKTracedNativeTripleFirstComparison_diagonal,H K 理論/S 構成と K スペクトル,型に核,（補助）K スペクトルの関手性の coherent 化,H K 理論/S 構成と K スペクトル,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,K（BF）比較の三辺移送の対角辺
+b2-008,SerrePositivity.isCompletelyFlat_principal_power,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,I 完全平坦・I 完全忠実平坦,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,,一致,high,主元の冪に関する完全平坦性
+b2-009,SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BaseExactness.exists_total_of_boundaryNullRel,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,ホモトピー群と基本亜群,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,,一致,high,Kanファイブレーションのホモトピー群の完全性
+b2-010,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.graphNormalization_augmentation,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,hammock 局所化（Hom 単体集合と単体的豊穣圏）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,E モデル圏/ホモトピー関数複体と分解,一致,mid,hammockの語の余極限と縮約hammock
+b2-011,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.countableFiniteStage,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,非退化単体・骨格・切り詰め・細分,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/サイズの条件,一致,mid,可算単体集合の有限部分複体の増大列
+b2-012,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.twistedArrowOutsideSimplexEquiv,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,（補助）edgewise の重みの頂点と延長領域,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,ねじれ矢の延長領域外の非退化単体
+b2-013,SerrePositivity.CLMST.toRPerfd_algebraMap_A,A 可換代数と数論幾何/パーフェクトイド,型に核,パーフェクトイド化（普遍性と存在）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/根の塔,一致,mid,塔の段からRPerfd（混合パーフェクトイド）への写像
+b2-014,SerrePositivity.SymmetricSequence.pointwiseAction_left_unit,G スペクトル/対称列,型に核,段ごとのテンソル,G スペクトル/対称列,Z 圏論一般/モノイダル圏の中の加群,一致,mid,対称列の加群への段ごとのテンソル作用の単位則
+b2-015,SerrePositivity.BhattScholze.Prismatic.wittFiniteCompletedBridge,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/分冪包絡とクリスタリン,不一致,mid,Hodge–Tate比較のWitt結晶への橋
+b2-016,SerrePositivity.KST.Fibration.finProduct_eq_of_anodyneQ_eq,E モデル圏/単体的モデルと anodyne,型に核,anodyne 射の局所化と単体的ホモトピー類,E モデル圏/単体的モデルと anodyne,C 単体集合と ∞ 圏/単体集合（基本）,一致,high,anodyne局所化で有限積への射の等式
+b2-017,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.prodStdSimplex_hom_ext_vertices,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,積・柱・pushout-product,C 単体集合と ∞ 圏/単体集合（基本）,,一致,high,標準単体の積への射は頂点で決まる
+b2-018,SerrePositivity.Asymptotic.completedRankBetti_iso,A 可換代数と数論幾何/漸近的なランク,型に核,台つき部分圏,A 可換代数と数論幾何/漸近的なランク,,一致,high,完備ランク商のBetti数の同型不変性
+b2-019,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.terminalCarrierRealization,C 単体集合と ∞ 圏/極限と余極限,型に核,始対象・終対象と相対余極限,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,不一致,low,終頂点付き部分複体のposetの神経の実現（フィルター圏へのcofinal写像）
+b2-020,SerrePositivity.DeRham.cartierExponent_empty,Z 圏論一般/組合せと順序,型の定義の概念,（その他）,A 可換代数と数論幾何/de Rham 複体,,不一致,mid,Cartier指数（多項式微分形式）
+b2-021,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovCellSource_homology_zero,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,dg 代数の胞体分解,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,Postnikov段のcell分解のホモロジー消滅
+b2-022,SerrePositivity.BhattScholze.Prismatic.HTComparisonTotal.ScalarResolution.completedRestrictedRows_lowerBound,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,（補助）HT 比較の全複体・分解・完備底変換の厳密模型,A 可換代数と数論幾何/導来完備化,A 可換代数と数論幾何/プリズマティックコホモロジー,第二候補と一致,mid,完備化した行のホモロジーの下界
+b2-023,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.limitConeDiagramVertex,C 単体集合と ∞ 圏/極限と余極限,型に核,錐・余錐と極限・余極限,C 単体集合と ∞ 圏/極限と余極限,,一致,high,極限錐を普遍錐の空間の頂点に
+b2-024,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.freeProductDiagramShuffle_naturality,B 複体と dg 圏/単体的鎖とシャッフル,型に核,（補助）宇宙を合わせた整数係数,B 複体と dg 圏/単体的鎖とシャッフル,C 単体集合と ∞ 圏/極限と余極限,一致,mid,自由鎖の図式のshuffleの自然性
+b2-025,SerrePositivity.EInfinity.Perfectoidization.theoryUnderlyingUnit,A 可換代数と数論幾何/パーフェクトイド,型に核,（まだ読んでいない定義）,A 可換代数と数論幾何/パーフェクトイド,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,一致,mid,導来パーフェクトイド化の界面でのCAlgの単位
+b2-026,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indArrowSourceSliceLift,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,Ind 完備化,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/結とスライス,一致,mid,Indの矢印のslice持ち上げ
+b2-027,SerrePositivity.KST.SConstruction.cofiberFamilySpace_isContractibleKan,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,安定 ∞ 圏の定義と安定 ∞ 圏の ∞ 圏,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,H K 理論/S 構成の入力（安定モデル・小さい Perf）,一致,mid,安定∞圏のcofiberの族の空間は可縮
+b2-028,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.down_up,E モデル圏/局所化と射の類（通常の圏）,型の定義の概念,（その他）,E モデル圏/局所化と射の類（通常の圏）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,ULiftした圏の局所化の往復
+b2-029,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.fatJoinTensorLeft_comparison,C 単体集合と ∞ 圏/結とスライス,型に核,fat join と結の比較,C 単体集合と ∞ 圏/結とスライス,,一致,high,fat joinとjoinの比較
+b2-030,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.cocartesianSectionsAction_assoc,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,相対関手空間と cocartesian 切断,C 単体集合と ∞ 圏/ファイブレーションと straightening,,一致,high,cocartesian切断への相対関手空間の作用の結合則
+b2-031,SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.GroupoidCompletionFiniteBoundary.family,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,亜群化,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,mid,亜群化への族
+b2-032,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.cocartesianBaseChangeSimplicialHomSpanOne_trivialKanFibration,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,cocartesian ファイブレーションの分類（Cat∞ 値）,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/写像空間,一致,mid,cocartesian底変換の単体的Hom spanの射影はtrivial Kan
+b2-033,SerrePositivity.InfinityCategories.Sheaves.sieveFactorizationComposite,C 単体集合と ∞ 圏/∞ 層,型に核,層条件（篩の上の制限錐）,C 単体集合と ∞ 圏/∞ 層,Z 圏論一般/圏・関手・極限,一致,mid,篩の分解の圏
+b2-034,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardFunctor_id,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,zigzag の圏と関手性,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,high,zigzagの圏の関手性
+b2-035,SerrePositivity.DifferentialGraded.DGCellAttachment.Family.exactLengthHom,B 複体と dg 圏/dg 商と cell 分解,型に核,cell の貼り付け,B 複体と dg 圏/dg 商と cell 分解,,一致,high,dg商の固定長pathのHom複体
+b2-036,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.weightedTwistedSourceBase_coefficient,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,edgewise subdivision,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,第二候補と一致,mid,weighted nerveとねじれ矢の係数包含
+b2-037,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.kanKernelPairLoopProduct_assoc,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,弱ホモトピー同値と可縮 Kan 複体,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,,一致,mid,Kan複体のkernel pairのπ0上のループ積
+b2-038,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.intervalTruncCycle_value,B 複体と dg 圏/複体,Mathlib の定義,ホモロジー・分解・K-射影,B 複体と dg 圏/複体,,一致,high,複体の切断とcycle
+b2-039,SerrePositivity.KST.LocalizingInvariants.snd_projection_fibration,E モデル圏/モデル圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,不一致,mid,Kan複体との積の射影はファイブレーション
+b2-040,SerrePositivity.DiagramModel.Projective.postcompose_isLeftQuillen,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,図式圏の射影モデル構造,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/Quillen 関手と生成,一致,mid,図式圏の射影モデル構造で後合成は左Quillen
+b2-041,SerrePositivity.DifferentialGraded.homRightModule_obj,B 複体と dg 圏/dg 加群,型に核,表現可能加群と双対,B 複体と dg 圏/dg 加群,,一致,high,Homによる右dg加群の対象
+b2-042,SerrePositivity.BhattScholze.Andre.deltaRootFamilySourceCoefficientPDResidue_homology_isZero,A 可換代数と数論幾何/根の添加（André）,型に核,"根添加の源対象：導来テンソル・逐次 (p,d) 完備化・剰余",A 可換代数と数論幾何/根の添加（André）,,一致,high,"André根族の源の(p,d)剰余のホモロジー"
+b2-043,SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionPlusParent_atomic,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,Adj の原子的な胞の親と充填条件,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,walking adjunctionの親の原子性
+b2-044,SerrePositivity.DifferentialGraded.BalancedTensor.paramPrecompose,B 複体と dg 圏/双加群とテンソル,型に核,balanced テンソル積 M ⊗_D N,B 複体と dg 圏/双加群とテンソル,B 複体と dg 圏/dg 加群,一致,mid,dg加群テンソルのパラメータ族の引き戻し
+b2-045,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgYonedaVerdierCone_derivedFiniteCell,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,dg 前三角性,B 複体と dg 圏/導来圏と Perf（dg 加群）,B 複体と dg 圏/dg 商と cell 分解,不一致,mid,Yoneda加群のconeは導来有限cell
+b2-046,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingKanPathInputTransport,C 単体集合と ∞ 圏/写像空間,型に核,矢印の空間と lax 引き戻し,C 単体集合と ∞ 圏/写像空間,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,一致,mid,矢印の端点の引き戻しの間の移送
+b2-047,SerrePositivity.CLMST.isFiniteLength_stage_quotient_of_maximalIdeal_map_le,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/正規化長さ,一致,mid,根の塔の段の商の有限長性
+b2-048,SerrePositivity.EInfinity.PowerOperation.gammaAdjointSuspension_kanPiIsomorphism,F オペラドと E∞/冪作用,型に核,Eilenberg–MacLane 空間（Dold–Kan の Γ）,F オペラドと E∞/冪作用,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,high,ΓによるEilenberg–MacLane空間の随伴構造射のπ同型
+b2-049,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.dgCoherentBarLayerCycleLift_boundary_eq_theta,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,coherent bar 構成（dg 加群の図式のホモトピー余極限）,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,coherent barの層の境界
+b2-050,SerrePositivity.KST.Comparison.regularBarRow_kanComplex,H K 理論/群完備化と plus 構成,型に核,単体的モノイドの bar 構成と群完備化,H K 理論/群完備化と plus 構成,,一致,high,Kanモノイドのbarの行はKan
+b2-051,SerrePositivity.Asymptotic.lengthFamily_isBigO_iff,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,イデアルの冪ねじれ,A 可換代数と数論幾何/漸近的なランク,A 可換代数と数論幾何/正規化長さ,不一致,high,長さの族のO(s)性の短完全列での同値
+b2-052,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalDiagramFamilyColimitLift,C 単体集合と ∞ 圏/写像空間,型に核,両端固定の区間模型,C 単体集合と ∞ 圏/写像空間,C 単体集合と ∞ 圏/極限と余極限,一致,mid,両端固定の区間写像空間への貼り合わせ
+b2-053,SerrePositivity.SymmetricSpectrum.pointedMappingComposition,G スペクトル/対称スペクトル,型に核,写像対象（豊穣 Hom）,G スペクトル/対称スペクトル,,一致,high,対称スペクトルの基点付き写像対象の合成
+b2-054,SerrePositivity.KST.DerivedBlowup.finiteOverlapTwistModule,H K 理論/導来 blowup,型に核,有限重なりの dg 代数図式,H K 理論/導来 blowup,,一致,high,導来blowupの捻りO(m)の図式加群
+b2-055,SerrePositivity.KST.Descent.tensorSpecSquare_right_equivariant,A 可換代数と数論幾何/スキーム,Mathlib の定義,（Mathlib の定義だけの主張）,H K 理論/降下,,不一致,high,Specの射影の群作用同変性
+b2-056,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.edgeUnderCocone_tip,C 単体集合と ∞ 圏/結とスライス,型に核,スライスと余スライス,C 単体集合と ∞ 圏/結とスライス,C 単体集合と ∞ 圏/極限と余極限,一致,mid,cosliceの辺から作る余錐の制限
+b2-057,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.strictDiagramMappingScaffoldMap_isQCatEquivalence,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,通常の圏の上のファイブレーション（weighted nerve と strict transport）,C 単体集合と ∞ 圏/ファイブレーションと straightening,,一致,high,strict transportのscaffold評価は同値
+b2-058,SerrePositivity.DerivedCompletion.iteratedTensorCartierRightAlgHom_mk,A 可換代数と数論幾何/導来完備化,型に核,完備化のモノイダル構造と完備テンソル,A 可換代数と数論幾何/導来完備化,A 可換代数と数論幾何/根の添加（André）,一致,mid,"反復(p,d)完備テンソルのH0のCartier商"
+b2-059,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.tensorPower_bijection_naturality,G スペクトル/対称列,型に核,反復テンソルの対称列 Sym(X),F オペラドと E∞/dg オペラドと代数,G スペクトル/対称列,第二候補と一致,mid,複体のテンソル冪の全単射に関する自然性
+b2-060,SerrePositivity.iInf_pPower_purelyInseparable_sameUniverse,A 可換代数と数論幾何/p 基底,型に核,p 基底,A 可換代数と数論幾何/環と加群（その他）,A 可換代数と数論幾何/p 基底,第二候補と一致,mid,純非分離拡大でのp冪部分体と中間体の交わり
+b2-061,SerrePositivity.AlgebraicGeometry.ArcRouteB.intervalRing_krullDim_le_one_of_no_prime_between,A 可換代数と数論幾何/付値と区間,型に核,付値環のスペクトルの区間の環,A 可換代数と数論幾何/付値と区間,,一致,high,付値環の区間環のKrull次元
+b2-062,SerrePositivity.KST.SConstruction.exInfinityPointedFamily_inclusion,C 単体集合と ∞ 圏/基点付き対象,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/基点付き対象,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,一致,mid,基点付き内部HomへのEx∞の作用
+b2-063,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.localizationRelativeFiberMap_eq,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,相対関手空間と cocartesian 切断,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,局所化に沿う相対関手空間のfiberへの作用
+b2-064,SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuComparison,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,（読んで移した定義）,H K 理論/S 構成の入力（安定モデル・小さい Perf）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,不一致,low,dgの⊙（Milnor）での固定ν辺との比較
+b2-065,SerrePositivity.KST.DerivedGeometry.affineQuasicoherentCech_exactAt,A 可換代数と数論幾何/スキーム,Mathlib の定義,（Mathlib の定義だけの主張）,A 可換代数と数論幾何/Čech 複体と被覆,H K 理論/係数環層つきスキームの加群層と D_qc,不一致,high,アフィン準連接層のČech複体の完全性
+b2-066,SerrePositivity.DifferentialGraded.DGQuotient.contractionAction_evaluate,B 複体と dg 圏/dg 商と cell 分解,型に核,dg 商の普遍性（収縮つき dg 関手）,B 複体と dg 圏/dg 商と cell 分解,,一致,high,dg商の収縮つきdg関手の作用
+b2-067,SerrePositivity.GeneralSymmetricSpectrum.mk,G スペクトル/対称スペクトル,型に核,対称スペクトルの定義・段・構造射,G スペクトル/対称スペクトル,G スペクトル/対称列,一致,high,対称列と作用から対称スペクトルを作る
+b2-068,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_strict_right,Z 圏論一般/組合せと順序,Mathlib の定義,半順序・鎖・区間・束,Z 圏論一般/組合せと順序,,一致,high,単調写像によるFinsetの像とfilter
+b2-069,SerrePositivity.AlgebraicGeometry.reesIteratedClosedSumTransition_preservesPiece,A 可換代数と数論幾何/blowup と射影スキーム,型に核,I 進閉厚化と Rees 加群の Proj 次数,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,Rees加群の閉厚化の遷移はProj次数を保つ
+b2-070,SerrePositivity.KST.Descent.reducedSectionOrbitMap_isFinite,H K 理論/降下,型に核,被約化と既約成分,H K 理論/降下,,一致,high,被約化への切断の軌道射は有限
+b2-071,SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison.replacedRightPresentation_canonical,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,（読んで移した定義）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,H K 理論/局所化不変量：lax 引き戻しと双加群,一致,mid,スペクトルの射のfibration置換とhomotopy fiberの表示
+b2-072,SerrePositivity.RootTowerLength.length_stage_coordinateQuotient_le,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/正規化長さ,一致,mid,根の塔の段の座標商の長さの上界
+b2-073,SerrePositivity.boundedAboveDerivedBaseChangeHomologyIso,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,,一致,high,有界上導来底変換のホモロジー
+b2-074,SerrePositivity.PointedObject.tensorCoprod_hom_ext,Z 圏論一般/モノイダル圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/モノイダル圏,C 単体集合と ∞ 圏/基点付き対象,一致,mid,余積のテンソルからの射の外延性
+b2-075,SerrePositivity.Section2.perfectBaseChangeEquiv,A 可換代数と数論幾何/根の塔,型に核,（補助）塔の perfection への作用,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/パーフェクトイド,一致,mid,近似環B_qと完全底変換の同型
+b2-076,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.dgCoherentBarStrictColimitAugmentation,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,coherent bar 構成（dg 加群の図式のホモトピー余極限）,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,strictなcoherent barの余極限へのaugmentation
+b2-077,SerrePositivity.BhattScholze.existsUnique_pDivisionFactorialDPMorphism,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,p 除算と階乗分母の部分環,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/δ 環,一致,high,p除算の階乗部分環から分冪環への射の一意存在
+b2-078,SerrePositivity.KST.Fibration.weakSpanKanMappingComparison,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,Verdier 列（安定 ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,H K 理論/S 構成と K スペクトル,一致,mid,Verdier分数のKan図式から商のcoslice図式へ
+b2-079,SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionOrdinalWidth_refinement_zero,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,Adj の原子的な胞の親と充填条件,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,Z 圏論一般/組合せと順序,一致,high,walking adjunctionの幅の細分での保存
+b2-080,SerrePositivity.InfinityCategories.HA.Monads.ordinalRecoverMap,Z 圏論一般/組合せと順序,Mathlib の定義,Fin の単調写像と単体圏,Z 圏論一般/組合せと順序,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,一致,mid,区間の順序射から有限順序の射を回収
+b2-081,SerrePositivity.Adams.oneKoszulCubeFourierOneEmbedding,A 可換代数と数論幾何/Koszul 複体,型に核,一元 Koszul 複体のテンソル冪の模型（Adams 作用素）,A 可換代数と数論幾何/Koszul 複体,,一致,high,一元Koszul複体の立方テンソルのFourier成分
+b2-082,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource_isQCatEquivalence,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,ねじれ矢の単体集合と両端への射影,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,C 単体集合と ∞ 圏/結とスライス,一致,high,cosliceとねじれ矢の始点固定fiberの同値
+b2-083,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactCoconeCandidate_family,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,（補助）coherent bar の添字・座標・余錐の持ち上げ,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,coherent barの余錐Homの候補
+b2-084,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.functorCellToNatTrans,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,関手単体集合の頂点・評価・転置,C 単体集合と ∞ 圏/関手単体集合と同値,C 単体集合と ∞ 圏/随伴（∞ 圏）,一致,high,h Funの二胞体からホモトピー圏の自然変換
+b2-085,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaPresentedFreeZero,Z 圏論一般/組合せと順序,本体をたどる,（その他）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,H K 理論/非連結 K,不一致,low,κ未満自由表示のdg対象の零
+b2-086,SerrePositivity.SymmetricSequence.tensorPowerUnit_fac,G スペクトル/対称列,型に核,反復テンソルの対称列 Sym(X),G スペクトル/対称列,,一致,high,テンソル冪対称列の単位
+b2-087,SerrePositivity.SymmetricSequence.freePermutationOutputMap,G スペクトル/対称列,型に核,自由対称列と誘導の商表示,G スペクトル/対称列,,一致,high,自由対称列の誘導商への置換作用
+b2-088,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.strictConeFamilyLimitMap,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,Kan 値の図式と空間の ∞ 圏への写像,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,不一致,mid,Kan値のstrictな錐族と通常の極限
+b2-089,SerrePositivity.AlgebraicGeometry.rectangularPerfectRowFunctorIso,A 可換代数と数論幾何/Frobenius の順極限,型に核,順極限の関手性と係数図式,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/Frobenius の順極限,第二候補と一致,mid,Frobenius係数図式とČechの行の同型
+b2-090,SerrePositivity.HilbertSamuel.gradedReesPresentation_map,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,随伴次数加群と Rees 加群,A 可換代数と数論幾何/Hilbert–Samuel と対角線,A 可換代数と数論幾何/blowup と射影スキーム,一致,mid,Rees代数の表示と随伴次数環の表示
+b2-091,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.strictDiagramDerivedEvaluation_endpointIso,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,複体の導来 ∞ 圏（semifree 複体の dg 神経）,C 単体集合と ∞ 圏/極限と余極限,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,第二候補と一致,mid,複体のstrictな図式の導来評価
+b2-092,SerrePositivity.KST.SConstruction.serreCubeFace_connection_right_far_zero,C 単体集合と ∞ 圏/dg 神経,型に核,（読んで移した定義）,B 複体と dg 圏/単体的鎖とシャッフル,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,不一致,low,鎖区間の余モノイドの立方体の面とconnection
+b2-093,SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.cone,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,lax 引き戻し（安定 ∞ 圏）と射影・包含,H K 理論/局所化不変量：lax 引き戻しと双加群,C 単体集合と ∞ 圏/極限と余極限,一致,mid,lax商の引き戻し四角形の錐
+b2-094,SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_delta,A 可換代数と数論幾何/δ 環,型に核,distinguished 元と完全 δ 環,A 可換代数と数論幾何/δ 環,A 可換代数と数論幾何/パーフェクトイド,一致,mid,A_infの写像はδ構造を保つ
+b2-095,SerrePositivity.DifferentialGraded.DGQuotient.erasure_empty,B 複体と dg 圏/dg 商と cell 分解,型に核,dg 商の path 複体,B 複体と dg 圏/dg 商と cell 分解,,一致,high,dg商のpath複体の消去作用素
+b2-096,SerrePositivity.KST.ProExcision.monoidBarReverseOppositeIso_natural,H K 理論/群完備化と plus 構成,型に核,単体的モノイドの bar 構成と群完備化,H K 理論/群完備化と plus 構成,H K 理論/pro 切除：非単位環と GL,一致,mid,単体的モノイドのbarの反転同型の自然性
+b2-097,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.commaSectionTargetFiberArrow_eq,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,C 単体集合と ∞ 圏/写像空間,一致,mid,随伴の単位のcommaの切断のfiber
+b2-098,SerrePositivity.BhattScholze.Prismatic.const_diffMap,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,（読んで移した定義）,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/de Rham 複体,一致,mid,分冪de Rhamの列のPoincaré補題
+b2-099,SerrePositivity.KST.NonConnective.sequentialLevelColimitInjection,H K 理論/非連結 K,型に核,逐次スペクトル列と逐次余極限,H K 理論/非連結 K,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,逐次余極限スペクトルへの注入
+b2-100,SerrePositivity.BhattScholze.Prismatic.pdDeRhamRowCollapse,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,分冪 de Rham 複体（双複体）,A 可換代数と数論幾何/分冪包絡とクリスタリン,,一致,mid,分冪de Rhamの行のcollapse
+b2-101,SerrePositivity.KST.NonConnective.sequentialBFHomDiagramIso,H K 理論/非連結 K,型に核,逐次スペクトル列と逐次余極限,H K 理論/非連結 K,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,逐次スペクトル列のHom図式の比較
+b2-102,SerrePositivity.InfinityCategories.Sheaves.UniversallyDescendingSieve,C 単体集合と ∞ 圏/∞ 層,型に核,前層と前層の ∞ 圏,C 単体集合と ∞ 圏/∞ 層,,一致,high,普遍的に降下する篩
+b2-103,SerrePositivity.InfinityCategories.HA.Monads.endofunctorComp_unit,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,自己関手の空間,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,自己関手の空間の合成の単位則
+b2-104,SerrePositivity.Smith.AccessibleModelFactorizations.atLarger,E モデル圏/Quillen 関手と生成,型に核,Smith の定理の入力（解集合・accessible な因子分解）,E モデル圏/Quillen 関手と生成,,一致,high,Smithのaccessibleな因子分解
+b2-105,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCornerInclusion_range_iff,C 単体集合と ∞ 圏/結とスライス,型に核,結の構成,C 単体集合と ∞ 圏/結とスライス,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,錐のテンソルの角の包含の像
+b2-106,SerrePositivity.BhattScholze.dpFamilyGenerator,A 可換代数と数論幾何/環と加群（その他）,型の定義の概念,（その他）,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/環と加群（その他）,第二候補と一致,mid,正則列の分冪表示の生成元
+b2-107,SerrePositivity.EInfinity.PowerOperation.mayClosedCyclesIso_π,F オペラドと E∞/冪作用,型に核,冪作用の入力（閉元と同次の作用）,F オペラドと E∞/冪作用,B 複体と dg 圏/複体,一致,mid,Mayの閉元のホモロジー類
+b2-108,SerrePositivity.KST.LocalizingInvariants.FiberPi.totalGroupIso,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,（読んで移した定義）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,H K 理論/局所化不変量：Postnikov と平方零拡大,一致,mid,スペクトルのfiberのホモトピー群の同型
+b2-109,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentConeSimplexOfHead_apex,C 単体集合と ∞ 圏/単体的圏と coherent 神経,型に核,coherent 神経の頂点・辺と通常の神経からの射,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,一致,high,coherent神経の錐単体の頂点
+b2-110,SerrePositivity.DifferentialGraded.Morita.scalarPerfectSquare_naturality,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,Perf の関手性（kernel・準同値・係数拡大・自己準同型代数）,B 複体と dg 圏/導来圏と Perf（dg 加群）,B 複体と dg 圏/係数の取り替え,一致,mid,Perfを保つ関手の係数拡大の四角形
+b2-111,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingKernelHomModuleShift_in_out,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,貼り合わせの cone とシフト,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,mid,dg貼り合わせのkernel Homのshift
+b2-112,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cosliceHomRestriction_isQCatEquivalence,C 単体集合と ∞ 圏/結とスライス,型に核,スライスと余スライス,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/結とスライス,第二候補と一致,mid,cosliceに沿う相対関手空間の制限は同値
+b2-113,SerrePositivity.ArrowFactorization.postTo,Z 圏論一般/圏・関手・極限,型に核,（読んで移した定義）,Z 圏論一般/圏・関手・極限,,一致,high,射の分解の圏の後合成
+b2-114,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgVerdierLegDegenerateTetrahedron_source,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,（補助）dg Verdier 商の分母図式の錐とホーン,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/dg 神経,一致,low,dg Verdierの分数（roof）の四面体の始対象
+b2-115,SerrePositivity.CLMST.RPerfd,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/根の塔,第二候補と一致,mid,RPerfd（混合パーフェクトイド）
+b2-116,SerrePositivity.BhattScholze.Andre.distinguishedWittResidueUnit_map_units,A 可換代数と数論幾何/δ 環,型に核,distinguished 元と完全 δ 環,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 環,第二候補と一致,mid,distinguished元のWitt剰余単元の自然性
+b2-117,SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.dgCellStageZeroRetraction,B 複体と dg 圏/dg 商と cell 分解,型に核,cell 分解（Hom が K-flat な分解）,B 複体と dg 圏/dg 商と cell 分解,,一致,mid,cell分解のHomの初期段への射影
+b2-118,SerrePositivity.KST.SConstruction.squareTriangleHomotopy,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,単体的ホモトピーと prism,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,第二候補と一致,mid,正方形の二つの三角形のホモトピーの貼り合わせ
+b2-119,SerrePositivity.DifferentialGraded.scalarModuleHomShortComplex,B 複体と dg 圏/係数の取り替え,型に核,dg 加群の係数変更,B 複体と dg 圏/係数の取り替え,B 複体と dg 圏/dg 加群,一致,mid,dg加群の係数拡大とHomの短複体
+b2-120,SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionFirstRefinement_first_index,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,Adj の各次数の自由性（原子的な射・水平分解・切れ目）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,walking adjunctionの細分の添字
+b2-121,SerrePositivity.Section5.positivity_of_residueCharZero,A 可換代数と数論幾何/交点重複度と χ,型に核,Serre の交点重複度 χ,A 可換代数と数論幾何/交点重複度と χ,,一致,high,剰余標数零でのχの正値性
+b2-122,SerrePositivity.KST.SConstruction.dgOdotQuotientRepresentation_naturality,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,H K 理論/局所化不変量：lax 引き戻しと双加群,第二候補と一致,low,⊙の商のEndのcone表現と代表加群
+b2-123,SerrePositivity.BhattScholze.deltaDivisionFirstResiduePolynomialEquiv_initial,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,δ 除算の関係式と有限表示,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,,一致,high,δ除算の剰余の多項式表示
+b2-124,SerrePositivity.Adams.oneKoszulCubeFourierOneOne,A 可換代数と数論幾何/Koszul 複体,型に核,一元 Koszul 複体のテンソル冪の模型（Adams 作用素）,A 可換代数と数論幾何/Koszul 複体,,一致,high,一元Koszul複体の立方のFourier元
+b2-125,SerrePositivity.DifferentialGraded.coneTriangleMapIso,B 複体と dg 圏/三角圏,Mathlib の定義,（Mathlib の定義だけの主張）,B 複体と dg 圏/三角圏,,一致,high,三角関手と三角形の同型
+b2-126,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.coverTowerCounit_groups_proIso,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,Postnikov 塔と層,H K 理論/局所化不変量：Postnikov と平方零拡大,H K 理論/pro 切除の塔,一致,mid,連結被覆の塔のpro同型
+b2-127,SerrePositivity.MonoidalBalancedTensor.associatorHom,Z 圏論一般/モノイダル圏の中の加群,型に核,釣り合いテンソル積（モノイド上の相対テンソル積）,Z 圏論一般/モノイダル圏の中の加群,,一致,high,加群の釣り合いテンソルの結合子
+b2-128,SerrePositivity.Reedy.BoundaryExtension.Map.latching_naturality,E モデル圏/Reedy,型に核,次数による切り詰めと一対象の付加,E モデル圏/Reedy,E モデル圏/ホモトピー関数複体と分解,一致,high,latching写像の自然性
+b2-129,SerrePositivity.SymmetricSpectrum.internalHomCotensorIso_pre,G スペクトル/対称スペクトル,型に核,自由スペクトル F_n,G スペクトル/対称スペクトル,,一致,high,対称スペクトルの内部Homとcotensor
+b2-130,SerrePositivity.BhattScholze.Andre.powerRootPolynomial_ringHom_ext,A 可換代数と数論幾何/パーフェクトイド,型に核,p 冪根つきの多項式環と根の添加,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/パーフェクトイド,第二候補と一致,mid,無限根多項式環の環射の外延性
+b2-131,SerrePositivity.KST.ProExcision.relativeModuleMap,H K 理論/pro 切除の塔,型に核,相対ホモロジーの商模型,H K 理論/pro 切除の塔,,一致,mid,相対ホモロジーの商模型の誘導射
+b2-132,SerrePositivity.DeRham.completedForms_linearMap_ext,A 可換代数と数論幾何/de Rham 複体,型に核,p 進完備化した多項式の微分形式,A 可換代数と数論幾何/de Rham 複体,,一致,high,p進完備化した微分形式からの線形写像の外延性
+b2-133,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.cubeUnsplit,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,単体集合としての立方体と path,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,一致,mid,単体集合の立方体の座標分解
+b2-134,SerrePositivity.DifferentialGraded.perfectHomotopyToDGPerfectFaithful,A 可換代数と数論幾何/完全複体と K₀,型に核,dg Perf との比較,A 可換代数と数論幾何/完全複体と K₀,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,mid,完全複体のホモトピー圏からdg Perfへの忠実性
+b2-135,SerrePositivity.GradedKoszul.reesModuleGrade,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,随伴次数加群と Rees 加群,A 可換代数と数論幾何/Hilbert–Samuel と対角線,A 可換代数と数論幾何/Koszul 複体,一致,mid,Rees加群の次数成分
+b2-136,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleCompact_equivalence,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,導来圏 D(D)（擬同型による局所化）,B 複体と dg 圏/導来圏と Perf（dg 加群）,H K 理論/非連結 K,一致,mid,導来加群圏の同値はcompact性を保つ
+b2-137,SerrePositivity.MonoidalBalancedTensor.freePair_leftUnit_inv,Z 圏論一般/モノイダル圏の中の加群,型に核,釣り合いテンソル積（モノイド上の相対テンソル積）,Z 圏論一般/モノイダル圏の中の加群,,一致,high,自由加群のテンソルと左単位
+b2-138,SerrePositivity.DerivedCompletion.seqMap,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,加群・部分加群・線型写像,A 可換代数と数論幾何/環と加群（その他）,A 可換代数と数論幾何/導来完備化,一致,mid,列の空間への線形写像
+b2-139,SerrePositivity.DifferentialGraded.Morita.scalarKernelLocalizedDerivedSquare_augmentation,B 複体と dg 圏/係数の取り替え,型に核,導来係数拡大,B 複体と dg 圏/係数の取り替え,B 複体と dg 圏/双加群とテンソル,一致,mid,kernelの導来作用と係数拡大の四角形
+b2-140,SerrePositivity.DifferentialGraded.BalancedTensor.resolvedRestrictionAugmentationComp_quasiIso,B 複体と dg 圏/dg 加群,型に核,ホモトピー圏 K(D) と擬同型・acyclic,B 複体と dg 圏/双加群とテンソル,B 複体と dg 圏/dg 加群,第二候補と一致,mid,分解した制限のaugmentationは擬同型
+b2-141,SerrePositivity.sourceLocalizationMap_kernel_torsion,A 可換代数と数論幾何/台つきの加群と Tor,型に核,閉集合に台を持つ有限生成加群,A 可換代数と数論幾何/台つきの加群と Tor,A 可換代数と数論幾何/完全複体と K₀,一致,mid,台つき有限生成加群の局所化の核はねじれ
+b2-142,SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.downVertexIso,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,同型と ∞ 圏の同値,C 単体集合と ∞ 圏/関手単体集合と同値,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,宇宙を下げた頂点の同型
+b2-143,SerrePositivity.InfinityCategories.HTT.ModelCategoryAdjunctions.quillenMixedHom_kanComplex,E モデル圏/Quillen 関手と生成,型に核,Quillen 関手,E モデル圏/単体的モデルと anodyne,E モデル圏/Quillen 関手と生成,第二候補と一致,low,単体的モデル圏でcofibrantからfibrantへのHomはKan
+b2-144,SerrePositivity.AlgebraicGeometry.LocalGenericRing,A 可換代数と数論幾何/スキーム,Mathlib の定義,（Mathlib の定義だけの主張）,A 可換代数と数論幾何/環と加群（その他）,H K 理論/降下,不一致,mid,閉ファイバーの一般点の局所環
+b2-145,SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientProjection_zero_iff_thickEssentialImage,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,B 複体と dg 圏/dg 商と cell 分解,一致,mid,dg商の射影の核はthick本質像
+b2-146,SerrePositivity.DifferentialGraded.leftRepresentable_action,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 圏（Hom 複体・次数つき射・合成）,B 複体と dg 圏/dg 加群,,不一致,high,表現可能左加群の作用
+b2-147,SerrePositivity.isCompletelyFaithfullyFlat_of_faithfullyFlat,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,I 完全平坦・I 完全忠実平坦,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,,一致,high,忠実平坦なら完全忠実平坦
+b2-148,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.hasSmallKappaFilteredColimits,C 単体集合と ∞ 圏/準圏（基本）,型の定義の概念,（その他）,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,,不一致,high,κ accessibleならκフィルター余極限を持つ
+b2-149,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_of_isTerminalHo,C 単体集合と ∞ 圏/極限と余極限,型に核,始対象・終対象と相対余極限,C 単体集合と ∞ 圏/極限と余極限,,一致,high,ホモトピー圏で終なら終対象
+b2-150,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.homMk_square_transport,C 単体集合と ∞ 圏/神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,不一致,mid,切り詰めの辺の正方形の輸送
+b2-151,SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_unit,H K 理論/群完備化と plus 構成,型に核,局所係数と整数ホモロジー（plus 構成の acyclic 性）,H K 理論/群完備化と plus 構成,,一致,high,局所係数のKan拡張の単位
+b2-152,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_evaluate,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,関手単体集合の頂点・評価・転置,C 単体集合と ∞ 圏/関手単体集合と同値,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,内部Homの交換と評価
+b2-153,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.Word.BackwardBounds.coreIndex,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,向き付き語の圏,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,Z 圏論一般/組合せと順序,一致,mid,hammockの語の核の添字
+b2-154,SerrePositivity.perfectPolynomial_flat,A 可換代数と数論幾何/Frobenius の順極限,型に核,（読んで移した定義）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/環と加群（その他）,不一致,mid,完全多項式代数の平坦性
+b2-155,SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_point_braided,Z 圏論一般/モノイダル圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/モノイダル圏,,一致,high,余モノイドとbraidingの式
+b2-156,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.HomotopyPullbackModel.sourceMap_primitive,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,ホモトピー引き戻しの模型,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,mid,dg代数のホモトピー引き戻しの模型のprimitive
+b2-157,SerrePositivity.finiteModuleSupportedOn.quotient,A 可換代数と数論幾何/台つきの加群と Tor,型に核,閉集合に台を持つ有限生成加群,A 可換代数と数論幾何/台つきの加群と Tor,A 可換代数と数論幾何/完全複体と K₀,一致,high,台つき有限生成加群の商
+b2-158,SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphInclusion,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,核,（補助）導来写像空間と hammock・DK の Hom の比較,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,E代数のhammockグラフの包含
+b2-159,SerrePositivity.InfinityCategories.Sheaves.functorVertex_sheafify,C 単体集合と ∞ 圏/∞ 層,型に核,層化（層への反射）,C 単体集合と ∞ 圏/∞ 層,,一致,high,層化の頂点の表示
+b3-000,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.functorCofiberSquare_nonempty_of_loopEquivalence,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,零対象と零角の四角形（点付き ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,,一致,high,関手圏での cofiber 四角形の存在（loop 同値から）
+b3-001,SerrePositivity.KST.SConstruction.specifiedTwoTriangleHomotopy_horn,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型の定義の概念,（その他）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,準圏の二つの三角形の間の単体的ホモトピー（prism）の内ホーンへの制限
+b3-002,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.dgCoherentBarCoconeFamilyHom,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,核,（補助）coherent bar の添字・座標・余錐の持ち上げ,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,coherent bar の余錐族から Hom 複体の元
+b3-003,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.essentiallySmallLeftStraighteningDiagram,C 単体集合と ∞ 圏/サイズの条件,型に核,ファイバーが小さい射,C 単体集合と ∞ 圏/ファイブレーションと straightening,,不一致,high,left fibration の空間値分類図式（straightening）
+b3-004,SerrePositivity.KST.DerivedGeometry.tensorCoefficientSheaf_structureMap,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,係数環層とテンソル係数層 H_X,H K 理論/係数環層つきスキームの加群層と D_qc,,一致,high,テンソル係数環層の構造射
+b3-005,SerrePositivity.BhattScholze.Semiperfectoid.deltaDivisionTorsionToCompletedQuotientMap,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,"δ 除算のねじれ除去・(p,d) 剰余・完備化",A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,A 可換代数と数論幾何/根の添加（André）,一致,high,δ 除算のねじれ除去商 mod d から p 完備 δ 完全化 mod d への射
+b3-006,SerrePositivity.Reedy.FunctorData.map_eq,E モデル圏/モデル圏（基本）,型の定義の概念,（その他）,E モデル圏/Reedy,,不一致,high,Reedy 構造上の関手データの map の因子分解公式
+b3-007,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCommaAugmentationUnliftedHomotopy_vertex_edge,C 単体集合と ∞ 圏/dg 神経,型に核,dg 関手と dg 自然変換の作用,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,,不一致,high,dg 関手の comma 圏の augmentation ホモトピー
+b3-008,SerrePositivity.SimplicialModel.NerveMovingIntervalBoundary.glue,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（補助）止めた経路：nerve の単体上の整合的な族,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/図式のモデル構造とホモトピー余極限,一致,mid,中断した一般化の足場：nerve の二パラメータ系の区間境界での貼り合わせ
+b3-009,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridSeed_past,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,安定性の判定（excision の比較格子）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,,一致,high,excision の比較格子の条件の含意
+b3-010,SerrePositivity.AlgebraicGeometry.openCoverCechConstantComplexAugmentation_apply,A 可換代数と数論幾何/Čech 複体と被覆,型に核,全タプル Čech 複体（有限交叉の係数図式）,A 可換代数と数論幾何/Čech 複体と被覆,,一致,high,開被覆の Čech 複体への augmentation の値
+b3-011,SerrePositivity.AlgebraicGeometry.chartFraction_add,A 可換代数と数論幾何/blowup と射影スキーム,型に核,（読んで移した定義）,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,アフィン blowup のチャートの分数の加法性
+b3-012,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.simplexSectionNativeTarget_eq,C 単体集合と ∞ 圏/極限と余極限,型に核,空間値の図式の極限と切断空間,C 単体集合と ∞ 圏/ファイブレーションと straightening,,不一致,high,left fibration の輸送・切断図式の底変換
+b3-013,SerrePositivity.DifferentialGraded.LocalizationHom.comparison_fac,E モデル圏/局所化と射の類（通常の圏）,型の定義の概念,（その他）,E モデル圏/局所化と射の類（通常の圏）,Z 圏論一般/圏・関手・極限,一致,mid,通常の圏の局所化と coyoneda の Hom の比較
+b3-014,SerrePositivity.BhattScholze.Andre.deltaDivisionEvaluationSourceFamilyEvalIsColimit,A 可換代数と数論幾何/δ 環,型に核,δ 構造（W₂ の切断）と Frobenius 持ち上げ,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,不一致,mid,δ 除算の評価環が有限商の逐次余極限
+b3-015,SerrePositivity.InfinityCategories.Sheaves.restrictionCone_vertex,C 単体集合と ∞ 圏/∞ 層,型に核,層条件（篩の上の制限錐）,C 単体集合と ∞ 圏/∞ 層,,一致,high,篩の上の制限錐の頂点
+b3-016,SerrePositivity.Enriched.TensorCotensor.unitMap_naturality,Z 圏論一般/豊穣圏,型に核,（読んで移した定義）,Z 圏論一般/豊穣圏,,一致,high,豊穣圏の tensor・cotensor の単位写像の自然性
+b3-017,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgVerdierDiagramTriangleOverFiller_face_cone,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,（補助）dg Verdier 商の分母図式の錐とホーン,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,,一致,high,Verdier 図式の三角形の充填の面
+b3-018,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingNativeRightProjectedStandardTriangle,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,dg 貼り合わせ圏（対象と Hom 複体）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,high,dg 貼り合わせ圏の標準三角形
+b3-019,SerrePositivity.torAlg_smul_eq_zero,A 可換代数と数論幾何/台つきの加群と Tor,型に核,Tor 加群,A 可換代数と数論幾何/台つきの加群と Tor,,一致,high,Tor のスカラー倍による零化
+b3-020,SerrePositivity.BhattScholze.Andre.deltaPDivisionSourcePrincipalDerivedModPIso,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,不一致,mid,p 除算の源対象の導来 mod p 還元の比較
+b3-021,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.multiplicativeCellMappingHammockCoherentIso,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,dg 代数の写像空間と準同型の局所化,H K 理論/局所化不変量：Postnikov と平方零拡大,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,dg 代数の胞体分解からの写像空間と hammock 図式の比較
+b3-022,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.cosliceToTwistedArrowSource,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,ねじれ矢の単体集合と両端への射影,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,C 単体集合と ∞ 圏/結とスライス,一致,high,coslice から始点固定のねじれ矢への比較
+b3-023,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgSuspensionResolved_obj_eq_iff_extensionIso,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,（補助）κ コンパクト性・ε 整合関手・懸垂作用,H K 理論/非連結 K,B 複体と dg 圏/係数の取り替え,不一致,mid,dg 懸垂の resolved 対象の等号と係数拡大の同型
+b3-024,SerrePositivity.SimplicialModel.NormalizedComparisonSquare.left_second,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（補助）止めた経路：Kan 比較の三角形,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,一致,mid,中断した一般化の足場：比較円板の面
+b3-025,SerrePositivity.BhattScholze.Prismatic.transport_primeRegular,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,δ 除算の添加 A{a/d},A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,high,δ 除算添加 A{a/p} での p の正則性の輸送
+b3-026,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityPreimageObjects.arrow_heq,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,zigzag の圏と関手性,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,high,zigzag の語の原像の列
+b3-027,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftPrismCutPath,C 単体集合と ∞ 圏/単体的圏と coherent 神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,simplicial thickening の Path の左 prism 切断
+b3-028,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomTargetToIdentity_left,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,dg 貼り合わせ圏（対象と Hom 複体）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,high,dg 貼り合わせ圏の間の dg 関手と左射影の両立
+b3-029,SerrePositivity.BhattScholze.Semiperfectoid.rootRelationSubsetRaw_torsion_bound,A 可換代数と数論幾何/パーフェクトイド,型に核,（読んで移した定義）,A 可換代数と数論幾何/根の添加（André）,,不一致,high,有限根関係商の p 冪ねじれの有界性（BS 7.10）
+b3-030,SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditional,A 可換代数と数論幾何/根の添加（André）,型に核,冪根 prism の完備化と Hodge–Tate 剰余,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/分冪包絡とクリスタリン,一致,mid,冪根 prism の Frobenius 比較が分冪射（BS Rem 7.15）
+b3-031,SerrePositivity.DiagonalRing.quotDiagCoeffEquiv,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,（まだ読んでいない定義）,A 可換代数と数論幾何/Hilbert–Samuel と対角線,A 可換代数と数論幾何/交点重複度と χ,一致,high,対角線の環の商と R/P の同型
+b3-032,SerrePositivity.EInfinity.PowerOperation.mooreDegreeZeroIso_eq,B 複体と dg 圏/単体的鎖とシャッフル,型の定義の概念,（その他）,B 複体と dg 圏/複体,B 複体と dg 圏/単体的鎖とシャッフル,第二候補と一致,mid,単体的加群の Moore 複体の零次の同型
+b3-033,SerrePositivity.KST.SConstruction.triangleCylinderPastingMap,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,（補助）単体集合のホモトピーの円柱と有限列,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,不一致,mid,三角形の族と円柱列を pushout で貼った単体集合からの写像
+b3-034,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.dgCoherentBarNativeCoconePoint_hom,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,（補助）coherent bar の添字・座標・余錐の持ち上げ,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,coherent bar の標準余錐点の Hom
+b3-035,SerrePositivity.KST.NonConnective.descentSuspensionStable,H K 理論/非連結 K,型に核,dg 懸垂（cone の Perf による商）,H K 理論/非連結 K,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,一致,high,dg κ 懸垂の ∞ 圏の安定性（instance）
+b3-036,SerrePositivity.KST.NonConnective.dgKappaSuspensionInputMap_id,H K 理論/非連結 K,型に核,dg 懸垂（cone の Perf による商）,H K 理論/非連結 K,,一致,high,dg κ 懸垂の入力射の恒等則
+b3-037,SerrePositivity.AlgebraicGeometry.schemePerfectCechTuplePullback_naturality,A 可換代数と数論幾何/Čech 複体と被覆,型に核,完全化した構造層の Čech 降下（スキームの Čech 脈体上の二重複体）,A 可換代数と数論幾何/Čech 複体と被覆,,一致,high,完全化した構造層の Čech タプルの引き戻しの自然性
+b3-038,SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_bar_localized_isIso,H K 理論/群完備化と plus 構成,型に核,単体的モノイドの bar 構成と群完備化,H K 理論/群完備化と plus 構成,,一致,high,単体的モノイドの Ex∞ 置換と bar 構成
+b3-039,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.ValueSupport.weak_of_singleton_restrictions,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,弱ホモトピー同値と可縮 Kan 複体,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,離散値上の fiber ごとの弱ホモトピー同値から全体の弱同値
+b3-040,SerrePositivity.HomologicalAlgebra.extendedChainHomRows,B 複体と dg 圏/複体,核,鎖複体と添字の取り替え（埋め込み・切断）,B 複体と dg 圏/複体,,一致,high,延長した鎖複体からの cochain の成分
+b3-041,SerrePositivity.KST.ProExcision.lastRightColumnHom_functorial,H K 理論/pro 切除：非単位環と GL,型に核,三角ブロック群・列群と行列の作用,H K 理論/pro 切除：非単位環と GL,,一致,high,三角ブロック群の列への右乗法の関手性（KST 4.16）
+b3-042,SerrePositivity.Almost.quotientLinearMap_restrictScalars,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,almost zero と almost 加群の圏,A 可換代数と数論幾何/ほとんど数学とねじれ,,一致,high,almost zero 加群の商環上の線形写像
+b3-043,SerrePositivity.KST.Spectra.closedUnitEvaluation_natural,Z 圏論一般/モノイダル圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/モノイダル圏,,一致,high,閉モノイダル圏の単位評価の自然性
+b3-044,SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphInclusion_colimitNormalization,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,型に核,（補助）導来写像空間と hammock・DK の Hom の比較,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,E 代数の hammock（zigzag）グラフの余極限の正規化
+b3-045,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelTensorYonedaStrict_general,B 複体と dg 圏/双加群とテンソル,型に核,dg 双加群（対象・値・閉零圏）,B 複体と dg 圏/双加群とテンソル,,一致,high,kernel のテンソルと米田の比較
+b3-046,SerrePositivity.DifferentialGraded.DGCellAttachment.Family.generator,B 複体と dg 圏/dg 商と cell 分解,核,cell の貼り付け,B 複体と dg 圏/dg 商と cell 分解,,一致,high,cell の貼り付けの生成元（球面複体）
+b3-047,SerrePositivity.KST.SConstruction.simplexLeftFiber_condition,H K 理論/S 構成と K スペクトル,型に核,加法性定理（cofiber 図式と左 fiber）,H K 理論/S 構成と K スペクトル,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,単体の上の左 fiber の pullback 条件
+b3-048,SerrePositivity.EInfinity.BarrattEccles.strictRawModuleTensorElementPinchedSimplex_augmentation_identity,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,型に核,（読んで移した定義）,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,,一致,mid,E 代数上の加群のテンソル元の augmentation
+b3-049,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.freeNegativeChainsDiagramAdjunction_symm_app,B 複体と dg 圏/複体,型に核,Dold–Kan と正規化,B 複体と dg 圏/単体的鎖とシャッフル,B 複体と dg 圏/複体,第二候補と一致,mid,自由鎖と Dold–Kan の随伴（図式版）
+b3-050,SerrePositivity.Section2.towerLengthFun_le_of_equiv,A 可換代数と数論幾何/正規化長さ,型に核,（読んで移した定義）,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/根の塔,一致,mid,根の塔上の長さ関数 λ_∞ の同型不変性
+b3-051,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.operadLastTwoInputSwap_transport,Z 圏論一般/組合せと順序,型の定義の概念,（その他）,F オペラドと E∞/dg オペラドと代数,Z 圏論一般/組合せと順序,第二候補と一致,mid,オペラドの末尾二入力の互換の移送（置換の等式）
+b3-052,SerrePositivity.EInfinity.PowerOperation.cyclicPositiveBoundedHomFunctor,F オペラドと E∞/冪作用,型に核,巡回部分群と BE の解像度（May の設定）,F オペラドと E∞/冪作用,,一致,high,巡回群の解像度の Hom 関手（May の設定）
+b3-053,SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderTargetTransformation,H K 理論/S 構成と K スペクトル,型に核,dg 入力上の K スペクトル（豊穣関手性）,H K 理論/S 構成と K スペクトル,H K 理論/S 構成の入力（安定モデル・小さい Perf）,一致,mid,Perf の dg 入力の K の assembly の写像円柱への豊穣自然変換
+b3-054,SerrePositivity.KST.DerivedBlowup.blowupTwistDGObject,H K 理論/導来 blowup,型に核,cartesian・perfect 条件と大域 Perf 模型,H K 理論/導来 blowup,,一致,high,導来 blowup の捻り O(m) の dg 対象
+b3-055,SerrePositivity.BhattScholze.Prismatic.bocksteinCoordinate,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Hodge–Tate コホモロジーと比較写像（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,,一致,high,Hodge–Tate の Bockstein の座標
+b3-056,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isWeaklyContractible_of_terminalRetract,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,充満忠実と本質的全射,C 単体集合と ∞ 圏/冪等完備,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,不一致,mid,終対象が retract なら弱可縮
+b3-057,SerrePositivity.BhattScholze.Perfectoidization.Arc.ValuationProbeIndex,A 可換代数と数論幾何/付値と区間,核,（補助）arc 被覆の付値環の代表系,A 可換代数と数論幾何/付値と区間,A 可換代数と数論幾何/パーフェクトイド,一致,mid,arc 被覆のための付値部分環の添字
+b3-058,SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoidBaseMap_isCompletelyFaithfullyFlat,A 可換代数と数論幾何/根の添加（André）,型に核,多項式関係の prism 候補と perfectoid 候補,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,一致,high,モニック族の perfectoid 候補の p 完全忠実平坦性（BS 7.14）
+b3-059,SerrePositivity.KST.SConstruction.kKanSequence,H K 理論/S 構成と K スペクトル,核,K スペクトル（BF Ω スペクトル）,H K 理論/S 構成と K スペクトル,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,high,K 空間の Kan 列
+b3-060,SerrePositivity.MonoidalBalancedTensor.swapBalanced,Z 圏論一般/モノイダル圏の中の加群,型に核,釣り合いテンソル積（モノイド上の相対テンソル積）,Z 圏論一般/モノイダル圏の中の加群,,一致,high,釣り合いテンソル積の交換
+b3-061,SerrePositivity.KST.LocalizingInvariants.TowerDiagram.sourceFactorRight,H K 理論/pro 切除の塔,型に核,塔と pro 同型・pro 零,H K 理論/pro 切除の塔,H K 理論/局所化不変量：Postnikov と平方零拡大,一致,mid,cospan 図式の塔の level 射
+b3-062,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isVertexRetractOf_iff_retractionTriangle,C 単体集合と ∞ 圏/冪等完備,型に核,retract,C 単体集合と ∞ 圏/冪等完備,,一致,high,retract と分裂三角形の同値
+b3-063,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.specifiedCoconeRightNativeUniversalRootSection_raw,C 単体集合と ∞ 圏/極限と余極限,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/結とスライス,一致,mid,余錐の空間の coslice 辺族の切断ホモトピー
+b3-064,SerrePositivity.SimplicialModel.NerveArrowComparison.left,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（補助）止めた経路：nerve の単体上の整合的な族,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/図式のモデル構造とホモトピー余極限,一致,mid,中断した一般化の足場：矢印に沿う比較の端点系
+b3-065,SerrePositivity.EInfinity.BarrattEccles.strictRawModuleRestrict,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,核,（読んで移した定義）,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,,一致,high,E 代数の射に沿う加群の制限
+b3-066,SerrePositivity.DifferentialGraded.BimoduleTensor.derivedComposeWithProjectiveIso_trans,B 複体と dg 圏/双加群とテンソル,型に核,導来双加群圏と導来合成,B 複体と dg 圏/双加群とテンソル,,一致,high,双加群の導来合成の比較同型の推移性
+b3-067,SerrePositivity.KST.LocalizingInvariants.ProFiberSequence.projection_piProEquivalence,H K 理論/pro 切除の塔,型に核,（読んで移した定義）,H K 理論/pro 切除の塔,H K 理論/局所化不変量：Postnikov と平方零拡大,一致,mid,スペクトルの pro fiber 列の射影が π-pro 同値
+b3-068,SerrePositivity.HilbertSamuel.reesModuleSelfEquiv,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,随伴次数加群と Rees 加群,A 可換代数と数論幾何/Hilbert–Samuel と対角線,A 可換代数と数論幾何/blowup と射影スキーム,一致,high,環の Rees 加群は Rees 代数
+b3-069,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.leftFibrationConeRestriction_baseChange_iff,C 単体集合と ∞ 圏/極限と余極限,型に核,空間値の図式の極限と切断空間,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,空間値図式の極限：left fibration の錐の切断制限と底変換
+b3-070,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_leftFibration,C 単体集合と ∞ 圏/冪等完備,型に核,冪等完備と冪等完備化,C 単体集合と ∞ 圏/冪等完備,,一致,high,left fibration と冪等完備
+b3-071,SerrePositivity.KST.SConstruction.cubeConnectionNormalVertex_keep,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,立方体の頂点写像と connection,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,,一致,high,立方体の connection の頂点写像
+b3-072,SerrePositivity.AlgebraicGeometry.basicOpen_le_affineCenterComplement_of_pow_mem,A 可換代数と数論幾何/blowup と射影スキーム,型に核,アフィン blowup と標準チャート,A 可換代数と数論幾何/スキーム,A 可換代数と数論幾何/blowup と射影スキーム,第二候補と一致,mid,平坦化の入力：境界の冪と中心の補開集合
+b3-073,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.cocartesianPostcompositionDiagonalVertex,C 単体集合と ∞ 圏/ファイブレーションと straightening,核,（補助）cocartesian 分類の Hom 比較,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/写像空間,一致,mid,cocartesian の分類の後合成 fiber の頂点
+b3-074,SerrePositivity.DifferentialGraded.DGCategoryCycleCover.map_composition,B 複体と dg 圏/dg 商と cell 分解,型に核,（読んで移した定義）,B 複体と dg 圏/dg 商と cell 分解,B 複体と dg 圏/dg 圏と dg 関手,一致,mid,dg 圏の cycle cover（自由 dg 圏による分解）の関手性
+b3-075,SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedSquareComparisonEdge_isIso,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,複体の導来 ∞ 圏（semifree 複体の dg 神経）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,C 単体集合と ∞ 圏/極限と余極限,一致,mid,導来 ∞ 圏の引き戻し四角形の比較辺が同型
+b3-076,SerrePositivity.IsPBasis.exists_independent_coefficient_perturbation,A 可換代数と数論幾何/p 基底,型に核,p 基底,A 可換代数と数論幾何/p 基底,,一致,high,p 基底と係数方向の独立な摂動
+b3-077,SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionMinusHom_target_card_one,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,（補助）有限順序の単調射の表示（順序和・区間双対・貼り合わせ）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,自由随伴の Hom 圏の射の保存則
+b3-078,SerrePositivity.BhattScholze.Andre.pdCompletionQuotientEquivOfKilledCoordinates_unit,A 可換代数と数論幾何/導来完備化,型に核,"完備化の H⁰ の環（主元・二座標・(p,d)）",A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/分冪包絡とクリスタリン,不一致,mid,pd 完備化の剰余比較同型（BS Rem 7.15）
+b3-079,SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardContextErasureComparison.graphMap_isWeakHomotopyEquivalence,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,hammock 局所化（Hom 単体集合と単体的豊穣圏）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,high,zigzag のグラフ図式の消去写像が弱同値
+b3-080,SerrePositivity.KST.LocalizingInvariants.simplexOreSquare_cospan,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,完全関手,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,H K 理論/局所化不変量：lax 引き戻しと双加群,不一致,mid,Verdier の Ore 四角形の cospan
+b3-081,SerrePositivity.DerivedCompletion.pairCompletionAlgebra_eq_toAlgebra,A 可換代数と数論幾何/導来完備化,型に核,"完備化の H⁰ の環（主元・二座標・(p,d)）",A 可換代数と数論幾何/導来完備化,,一致,high,二座標の完備化の代数構造
+b3-082,SerrePositivity.KST.Comparison.componentEdge,H K 理論/群完備化と plus 構成,型に核,単体的環の π₀ と行列・ĜL,C 単体集合と ∞ 圏/単体集合（基本）,H K 理論/群完備化と plus 構成,第二候補と一致,mid,π₀ の成分で切った部分単体集合への辺の持ち上げ
+b3-083,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coconeWithTerminalFunctor_recover,Z 圏論一般/圏・関手・極限,Mathlib の定義,射の圏・スライス・コンマ圏・要素の圏,Z 圏論一般/圏・関手・極限,C 単体集合と ∞ 圏/極限と余極限,一致,mid,通常の圏の余錐と WithTerminal からの関手
+b3-084,SerrePositivity.DifferentialGraded.graphRestrictionShift_hom_eval,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,B 複体と dg 圏/dg 加群,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,mid,dg 加群の制限関手と shift の交換同型
+b3-085,SerrePositivity.DeRham.finiteCartierLinearEquiv_class,A 可換代数と数論幾何/de Rham 複体,型に核,多項式 de Rham 複体,A 可換代数と数論幾何/de Rham 複体,,一致,high,Cartier 同型の代表
+b3-086,SerrePositivity.EInfinity.productCoinvariantsInv,A 可換代数と数論幾何/環と加群（その他）,型の定義の概念,（その他）,A 可換代数と数論幾何/環と加群（その他）,F オペラドと E∞/Barratt–Eccles と全射オペラド,一致,mid,表現の外部テンソルの余不変
+b3-087,SerrePositivity.Section4.nontrivial_of_section4_quotient,A 可換代数と数論幾何/正規化長さ,型に核,正規化長さ（公理）,A 可換代数と数論幾何/正規化長さ,,一致,high,正規化長さの仮定から環の非自明性
+b3-088,SerrePositivity.DifferentialGraded.shiftComparison_eq_isoAdd_of_square,B 複体と dg 圏/三角圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/圏・関手・極限,B 複体と dg 圏/三角圏,第二候補と一致,mid,shift と交換する関手の比較同型の加法性
+b3-089,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber,C 単体集合と ∞ 圏/随伴（∞ 圏）,核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,,一致,high,単位の comma の fiber
+b3-090,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.diagramForget_monadic,F オペラドと E∞/dg オペラドと代数,型に核,オペラド代数と余代数,F オペラドと E∞/dg オペラドと代数,,一致,high,オペラド代数の図式圏の忘却がモナド的
+b3-091,SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.pushoutRightBoundary,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,zigzag の圏と関手性,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,high,押し出しによる zigzag
+b3-092,SerrePositivity.BhattScholze.Semiperfectoid.aicPerfectoid_annihilatorPrincipalQuotient,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,絶対整閉,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,第二候補と一致,high,絶対整閉なパーフェクトイド環の商がパーフェクトイド
+b3-093,SerrePositivity.KST.Comparison.fatSkeletonStep_map,H K 理論/群完備化と plus 構成,型に核,fat realization と対角,H K 理論/群完備化と plus 構成,,一致,high,fat realization の骨格の包含の自然性
+b3-094,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.normalizedShuffleAWHomotopy,B 複体と dg 圏/単体的鎖とシャッフル,型に核,Alexander–Whitney 写像と余代数構造,B 複体と dg 圏/単体的鎖とシャッフル,,一致,high,shuffle と Alexander–Whitney のホモトピー
+b3-095,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.firstVertexNativeCoefficientIso_factorization,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,straightening（空間値）,C 単体集合と ∞ 圏/ファイブレーションと straightening,,一致,high,left straightening の底変換の係数同型
+b3-096,SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeData,A 可換代数と数論幾何/分冪包絡とクリスタリン,核,分冪包絡（相対・p 完備）,A 可換代数と数論幾何/分冪包絡とクリスタリン,,一致,high,p 完備分冪包のデータ
+b3-097,SerrePositivity.AlgebraicGeometry.frobeniusCenterDifference,A 可換代数と数論幾何/Frobenius の順極限,型に核,Frobenius 順極限の環,A 可換代数と数論幾何/Frobenius の順極限,,一致,high,Frobenius 順極限の有限変更四角形の差の写像
+b3-098,SerrePositivity.KST.Descent.closedCenterPullback,H K 理論/降下,核,抽象 blowup 正方形と閉中心,H K 理論/降下,,一致,high,被約閉中心の引き戻し（抽象 blowup 正方形）
+b3-099,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.twistedArrowRightSection,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,edgewise subdivision,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,,一致,high,ねじれ矢／edgewise subdivision の切断
+b3-100,SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer.unit_face,E モデル圏/ホモトピー関数複体と分解,型に核,分解の bar 構成,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,第二候補と一致,mid,中断した一般化の足場：bar の語鎖の単位面
+b3-101,SerrePositivity.ManyObjectModelTransfer.free_isLeftQuillen,E モデル圏/Quillen 関手と生成,型に核,Quillen 双関手とモノイダルモデル圏,E モデル圏/Quillen 関手と生成,,一致,high,転送モデル構造で自由関手が左 Quillen
+b3-102,SerrePositivity.KST.ProExcision.NonUnitalSimplicialRingHom,H K 理論/pro 切除：非単位環と GL,型に核,非単位単体環と単位化によるイデアル模型,H K 理論/pro 切除：非単位環と GL,,一致,high,非単位単体環の射
+b3-103,SerrePositivity.InfinityCategories.Sheaves.relativeCechDiagonal_op_composition,C 単体集合と ∞ 圏/∞ 層,型に核,集合値前層の離散埋め込みと Yoneda,C 単体集合と ∞ 圏/∞ 層,,一致,mid,相対 Čech 余錐と対角の合成（集合値前層の離散埋め込み）
+b3-104,SerrePositivity.BhattScholze.Prismatic.WittBigBridge.regularAt,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,（補助）Witt 基底での大きい模型の橋,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/分冪包絡とクリスタリン,一致,mid,Hodge–Tate 比較の Witt 模型の各項で p が正則
+b3-105,SerrePositivity.K0WithSupport.integerEuler_mk_real_of_rep,A 可換代数と数論幾何/完全複体と K₀,型に核,台つき K₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,台つき K₀ の整数 Euler 特性
+b3-106,SerrePositivity.nonempty_torModule_one_equiv_ker,A 可換代数と数論幾何/台つきの加群と Tor,型に核,Tor 加群,A 可換代数と数論幾何/台つきの加群と Tor,,一致,high,Tor の次元シフト
+b3-107,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.perfectNativeCompositionDownIso,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,（読んで移した定義）,B 複体と dg 圏/導来圏と Perf（dg 加群）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,一致,mid,Perf の係数拡大の合成の同型（∞ 圏版）
+b3-108,SerrePositivity.KST.DerivedBlowup.diagramCartesianPerfectClosedUnderIso,H K 理論/導来 blowup,型に核,cartesian・perfect 条件と大域 Perf 模型,H K 理論/導来 blowup,,一致,high,cartesian・perfect 条件の同型不変性
+b3-109,SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimePDEnvelope_quotient_free,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,一元の分冪表示（主分冪・階数一）,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/分冪包絡とクリスタリン,第二候補と一致,mid,無限根環上の mod p 分冪包の自由性（BS Rem 7.15）
+b3-110,SerrePositivity.pPowerSubfield_le_cofiniteFractionSubfield,A 可換代数と数論幾何/p 基底,型に核,p 基底,A 可換代数と数論幾何/p 基底,,一致,high,p 基底の補有限分数体と p 乗部分体
+b3-111,SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeDiagramHomotopy.boundaryMap_self,C 単体集合と ∞ 圏/単体集合（基本）,型の定義の概念,（その他）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,不一致,mid,中断した一般化の足場：パラメータつきホモトピーの境界写像
+b3-112,SerrePositivity.koszulEulerChar_eq_chi,A 可換代数と数論幾何/Koszul 複体,型に核,Koszul 分解,A 可換代数と数論幾何/交点重複度と χ,A 可換代数と数論幾何/Koszul 複体,第二候補と一致,mid,Koszul Euler 特性と χ の一致
+b3-113,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaFiberSquare.withFunctorSquare,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,,一致,high,単位の comma の fiber 正方形
+b3-114,SerrePositivity.KST.Spectra.TripleCircle.closed_pre_reversal,Z 圏論一般/モノイダル圏,型の定義の概念,（その他）,Z 圏論一般/モノイダル圏,,一致,high,閉モノイダル圏の pre の自然性
+b3-115,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoConst_map_arrow,C 単体集合と ∞ 圏/準圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/準圏（基本）,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,定値射がホモトピー圏で恒等射に行く
+b3-116,SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionAtomicCell,C 単体集合と ∞ 圏/冪等完備,核,（まだ読んでいない定義）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,不一致,high,自由随伴の原子的な胞
+b3-117,SerrePositivity.core_of_twistedEuler_pos,A 可換代数と数論幾何/交点重複度と χ,型に核,Serre の交点重複度 χ,A 可換代数と数論幾何/交点重複度と χ,,一致,high,交点数の正値性（核心）
+b3-118,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanShapeIso,C 単体集合と ∞ 圏/極限と余極限,型に核,Kan 拡張,C 単体集合と ∞ 圏/冪等完備,,不一致,high,Idem の像の Kan 拡張の添字と Idem の同型
+b3-119,SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierFixedLiftedConeProjection,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,Verdier 列の分数の持ち上げた錐の射影
+b3-120,SerrePositivity.KST.SConstruction.dgKInputPerfectNu_edge_diagram,H K 理論/S 構成の入力（安定モデル・小さい Perf）,型に核,小さい dg 入力と固定した ν・K,H K 理論/S 構成の入力（安定モデル・小さい Perf）,H K 理論/S 構成と K スペクトル,一致,mid,dg 入力の辺の Cat^perf 像
+b3-121,SerrePositivity.HomotopyFunctionComplex.OrdinaryBarChainFamily.smallFamily,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）bar の厳密化：選択の圏と自由図式の延長,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,第二候補と一致,mid,中断した一般化の足場：bar の鎖の族
+b3-122,SerrePositivity.EInfinity.BarrattEccles.algebraSpecialHammock,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,核,（読んで移した定義）,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,一致,mid,E 代数の特殊な三本矢の圏
+b3-123,SerrePositivity.DiagramModel.Projective.fibration_iff_objectwise,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,図式圏の射影モデル構造,E モデル圏/図式のモデル構造とホモトピー余極限,,一致,high,射影モデル構造の fibration は点ごと
+b3-124,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.toSymmetricSequence_faithful,F オペラドと E∞/dg オペラドと代数,型に核,dg オペラド（対称列・部分合成・射）,F オペラドと E∞/dg オペラドと代数,,一致,high,オペラドから対称列への忘却が忠実
+b3-125,SerrePositivity.cochainTensorTripleBaseChange_hom_ext,B 複体と dg 圏/複体,型に核,テンソル積と積構造,B 複体と dg 圏/複体,B 複体と dg 圏/係数の取り替え,一致,mid,複体の三重テンソルの底変換の hom_ext
+b3-126,SerrePositivity.InfinityCategories.Sheaves.nativeIsSheaf_reindex_equivalence_iff,C 単体集合と ∞ 圏/神経,型の定義の概念,（その他）,C 単体集合と ∞ 圏/∞ 層,,不一致,high,サイトの同値と層条件
+b3-127,SerrePositivity.SimplicialModelInputs.pointedSpectrumTensor,G スペクトル/対称スペクトル,型に核,対称スペクトルの定義・段・構造射,G スペクトル/対称スペクトル,,一致,high,基点付き単体集合による対称スペクトルの tensor
+b3-128,SerrePositivity.HomotopyFunctionComplex.AllFactorizationCoherentSquare.triangle_recover,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）持ち上げの選択の整合化,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,第二候補と一致,mid,中断した一般化の足場：全因子分解の coherent 四角形
+b3-129,SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.Allows,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,necklace の形と圏,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,,一致,high,necklace の bead 条件
+b3-130,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.finalHornFrontThroughIso,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,単体集合としての立方体と path,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,不一致,high,simplicial thickening の Path と合成面の同型
+b3-131,SerrePositivity.DifferentialGraded.DGGeneratedHomWord.codeEvaluation,B 複体と dg 圏/dg 圏と dg 関手,型に核,（読んで移した定義）,B 複体と dg 圏/dg 圏と dg 関手,,一致,high,dg 圏の表示符号の評価 dg 関手
+b3-132,SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.intervalPathHomIso,C 単体集合と ∞ 圏/単体的圏と coherent 神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,,一致,high,区間の Path の Hom 単体集合
+b3-133,SerrePositivity.Adams.coefficientK0LengthEquiv_apply_local,A 可換代数と数論幾何/完全複体と K₀,型に核,台つき K₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,係数つき台つき K₀ の長さ同型の局所での値
+b3-134,SerrePositivity.MonoidalBalancedTensor.projectionModuleHom,Z 圏論一般/モノイダル圏の中の加群,型に核,釣り合いテンソル積（モノイド上の相対テンソル積）,Z 圏論一般/モノイダル圏の中の加群,,一致,high,釣り合いテンソル積の標準射が加群の射
+b3-135,SerrePositivity.SimplicialModel.NerveCoherentReindex.endpoint_map,C 単体集合と ∞ 圏/神経,型に核,（読んで移した定義）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/図式のモデル構造とホモトピー余極限,不一致,mid,中断した一般化の足場：coherent 系の添字の取り替え
+b3-136,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFiberCofiberSectionFirst_closed,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,B 複体と dg 圏/dg 加群,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,一致,mid,dg 加群の fiber への Hom 複体の元が閉
+b3-137,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgSemifreeDerivedHomTensorValue,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,dg 圏上の加群の導来 ∞ 圏,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,B 複体と dg 圏/双加群とテンソル,一致,mid,半自由 dg 加群の Hom テンソルの半自由値
+b3-138,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.IsKConnective.nonpositiveMap_value_isProIso_of_oneBounded,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,dg 代数上の局所化不変量の値と k 連結性,H K 理論/局所化不変量：Postnikov と平方零拡大,H K 理論/pro 切除の塔,一致,high,k 連結な局所化不変量の値の pro 同型
+b3-139,SerrePositivity.InfinityCategories.Project.DerivedCategories.simplicialRingDGCochainNegativeProduct_right_unit,B 複体と dg 圏/単体的鎖とシャッフル,型に核,（補助）宇宙を合わせた整数係数,B 複体と dg 圏/単体的鎖とシャッフル,H K 理論/pro 切除：非単位環と GL,一致,mid,単体的環の正規化 dg 複体の積の右単位則
+b3-140,SerrePositivity.Section2.relStageEquiv,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,,一致,high,根の塔の相対的な段の同型
+b3-141,SerrePositivity.pureDerivedAlgebraSingleIso,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,,一致,high,有界上導来圏の可換代数対象と H⁰ の比較
+b3-142,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialRestrictionHomComparison_square,C 単体集合と ∞ 圏/極限と余極限,型に核,余錐の空間と余極限の関手性,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,始対象での Hom 比較の正方形
+b3-143,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.isAccessible,C 単体集合と ∞ 圏/準圏（基本）,型の定義の概念,（その他）,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,,不一致,high,κ-accessible なら accessible
+b3-144,SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_pre_left,C 単体集合と ∞ 圏/関手単体集合と同値,型に核,関手単体集合の頂点・評価・転置,C 単体集合と ∞ 圏/単体集合（基本）,,不一致,high,二重内部 Hom の交換の自然性
+b3-145,SerrePositivity.AlgebraicGeometry.exists_finiteType_ideal_model_of_isLimit,A 可換代数と数論幾何/スキーム,型に核,スキームの基本（イデアル層・大域スカラー・ファイバー成分）,A 可換代数と数論幾何/スキーム,,一致,high,逆極限上の有限型イデアル層の有限段の模型
+b3-146,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeJoinSliceOver_restrict,C 単体集合と ∞ 圏/結とスライス,型に核,スライスと余スライス,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/結とスライス,第二候補と一致,mid,左 Kan 拡張の相対 join 表示の制限
+b3-147,SerrePositivity.BhattScholze.Andre.deltaDivisionNormalizedModuleDirectLimitEquiv_of,A 可換代数と数論幾何/根の添加（André）,型に核,δ 除算包の有限正規化表示と塔,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,一致,mid,δ 除算包の有限正規化商の順極限
+b3-148,SerrePositivity.SimplicialModel.RetractChainUnits.interior_identity_after_zero,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（読んで移した定義）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/ホモトピー関数複体と分解,一致,mid,中断した一般化の足場：retract 鎖の単位則
+b3-149,SerrePositivity.BhattScholze.Prismatic.instCommRingTensorProductPdRaw,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,分冪 Čech 模型（多項式環）,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,mid,分冪環 pdRaw とのテンソルの可換環 instance
+b3-150,SerrePositivity.supportedFGModuleOnObj,A 可換代数と数論幾何/台つきの加群と Tor,型に核,閉集合に台を持つ有限生成加群,A 可換代数と数論幾何/台つきの加群と Tor,A 可換代数と数論幾何/完全複体と K₀,一致,mid,閉集合に台を持つ有限生成加群の束ね
+b3-151,SerrePositivity.KST.SConstruction.dgIdentityHomGluingDifference,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,（読んで移した定義）,H K 理論/S 構成の入力（安定モデル・小さい Perf）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,不一致,mid,Hom gluing から cone の全像の小さい Perf 模型への dg 関手
+b3-152,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.strictSemifreeRawDAApex_eq,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,複体の導来 ∞ 圏（semifree 複体の dg 神経）,C 単体集合と ∞ 圏/極限と余極限,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,不一致,mid,strict な半自由図式の余錐族の apex と正規化 bar
+b3-153,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.cellPathNonpositiveToCell_projection,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,dg 代数の胞体分解,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,dg 代数の cell path 対象の射影
+b3-154,SerrePositivity.KST.Spectra.UnbasedPointedMapping.freeHomIso_pre,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,点つき写像空間と区間族,C 単体集合と ∞ 圏/基点付き対象,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,第二候補と一致,mid,自由に基点を付けた対象からの基点付き内部 Hom
+b3-155,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolution_precompositionHom_injective,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,dg 圏上の加群の導来 ∞ 圏,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,,一致,high,dg 加群の導来 ∞ 圏：半自由分解に沿う前合成の単射性
+b3-156,SerrePositivity.K0WithSupport.cup_mk_mk,A 可換代数と数論幾何/完全複体と K₀,型に核,台つき K₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,台つき K₀ の cup 積
+b3-157,SerrePositivity.DeRham.exteriorLift_ι,A 可換代数と数論幾何/de Rham 複体,型に核,多項式代数の微分形式と外積,A 可換代数と数論幾何/de Rham 複体,,一致,high,微分形式の普遍性：外積代数からの持ち上げ
+b3-158,SerrePositivity.DeRham.coordinateFormWord_succ,A 可換代数と数論幾何/de Rham 複体,型に核,多項式代数の微分形式と外積,A 可換代数と数論幾何/de Rham 複体,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,high,多項式の座標微分形式の外積の漸化式
+b3-159,SerrePositivity.BhattScholze.Prismatic.crystallineBridgeModP,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Hodge–Tate コホモロジーと比較写像（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/分冪包絡とクリスタリン,一致,mid,結晶比較の橋の mod p
+b4-000,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentResolutionFaceIso_hom_ι,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,旗による単体の解像（coherent resolution）,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,一致,mid,coherent resolution の面の同型と包含
+b4-001,SerrePositivity.AlgebraicGeometry.cechRefinementCone_cycle_boundary,A 可換代数と数論幾何/Čech 複体と被覆,型に核,（補助）増大 Čech 四角形と全複体,A 可換代数と数論幾何/Čech 複体と被覆,,一致,high,Čech 細分の cone の非輪状性
+b4-002,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.joinInl_terminalJoinNerveIso,C 単体集合と ∞ 圏/結とスライス,型に核,結の構成,C 単体集合と ∞ 圏/結とスライス,C 単体集合と ∞ 圏/神経,一致,mid,神経と Δ0 の結＝WithTerminal の神経
+b4-003,SerrePositivity.MonoidalModuleInternalHom.evaluationModule,Z 圏論一般/モノイダル圏の中の加群,型に核,加群の内部 Hom,Z 圏論一般/モノイダル圏の中の加群,,一致,high,加群の内部 Hom の評価射
+b4-004,SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences,E モデル圏/Quillen 関手と生成,型に核,Quillen 双関手とモノイダルモデル圏,E モデル圏/Quillen 関手と生成,E モデル圏/モデル圏（基本）,一致,mid,monoid axiom（テンソルした cell の retract は弱同値）
+b4-005,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgBarCompactRepresentable_iff_hom_preserves,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,一致,mid,表現可能 dg 加群の κ-compact 性の判定
+b4-006,SerrePositivity.AlgebraicGeometry.nonempty_sections_of_surjective_nat_inverse_system,Z 圏論一般/圏・関手・極限,Mathlib の定義,順序集合の圏・合成可能な射の列・神経,Z 圏論一般/圏・関手・極限,Z 圏論一般/組合せと順序,一致,mid,全射な自然数逆系の切断の存在（集合の極限）
+b4-007,SerrePositivity.KST.DerivedGeometry.smallExactChainInclusion,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,（補助）Čech・K-injective の議論の足場,B 複体と dg 圏/複体,H K 理論/係数環層つきスキームの加群層と D_qc,第二候補と一致,mid,小さい完全部分鎖複体の包含
+b4-008,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,零対象と零角の四角形（点付き ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,C 単体集合と ∞ 圏/極限と余極限,一致,mid,自明 Kan fibration と零対象
+b4-009,SerrePositivity.BhattScholze.Prismatic.pdFrameEval,A 可換代数と数論幾何/分冪包絡とクリスタリン,核,分冪 Čech 模型（多項式環）,A 可換代数と数論幾何/分冪包絡とクリスタリン,,一致,high,分冪 Čech 模型の多項式枠の評価
+b4-010,SerrePositivity.BhattScholze.Prismatic.wittFiniteBridgeCrystallineFactor_frame,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Čech–Alexander 模型（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/分冪包絡とクリスタリン,一致,mid,Witt 比較が結晶 prism を通る分解（Thm 6.4）
+b4-011,SerrePositivity.Reedy.latchingEvaluation_mem_closed,E モデル圏/Reedy,型に核,latching・matching の添字圏と対象,E モデル圏/Reedy,E モデル圏/Quillen 関手と生成,一致,high,latching 評価の射の類での閉性
+b4-012,SerrePositivity.derivedQuotientModuleIso_homology,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,A 可換代数と数論幾何/台つきの加群と Tor,一致,mid,導来商 M⊗^L R/I の H⁰ 比較
+b4-013,SerrePositivity.RetractWords.Realization.functor_word,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（補助）止めた経路：語で表示した圏,E モデル圏/止めた経路：任意のモデル圏への一般化,Z 圏論一般/圏・関手・極限,一致,mid,retract 語の表示（自由圏の商）の実現関手；止めた経路のファイル
+b4-014,SerrePositivity.KST.SConstruction.absoluteDiagonalNormalize,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,安定 ∞ 圏の定義と安定 ∞ 圏の ∞ 圏,Z 圏論一般/圏・関手・極限,,不一致,mid,Σ 型の射を eqToHom で正規化
+b4-015,SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProjectionEquivalence_inv_inl,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,lax 引き戻し（安定 ∞ 圏）と射影・包含,H K 理論/局所化不変量：lax 引き戻しと双加群,,一致,high,Tamme の射影同値と包含
+b4-016,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeafDeletion.collapse_generator,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,（補助）自由圏の hammock の計算（生成矢での切断・木の縮約）,Z 圏論一般/組合せと順序,Z 圏論一般/圏・関手・極限,不一致,mid,箙の木の葉の削除と道の圏の collapse
+b4-017,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.tensor_cochainMap_arity,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,table reduction（E → χ）,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,table reduction と arity の等式
+b4-018,SerrePositivity.heart_hasFiniteProducts,B 複体と dg 圏/三角圏,Mathlib の定義,（Mathlib の定義だけの主張）,B 複体と dg 圏/三角圏,Z 圏論一般/圏・関手・極限,一致,mid,t 構造の heart の有限積
+b4-019,SerrePositivity.InfinityCategories.Project.DerivedCategories.roofPullbackEdge,C 単体集合と ∞ 圏/神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/極限と余極限,不一致,mid,引き戻し単体集合の辺の構成
+b4-020,SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameHom.FullyFaithfulNerveRetraction.of_counit,E モデル圏/単体的モデルと anodyne,型に核,anodyne 射の局所化と単体的ホモトピー類,E モデル圏/単体的モデルと anodyne,C 単体集合と ∞ 圏/神経,一致,mid,余単位つき包含の神経が anodyne 局所化で可逆
+b4-021,SerrePositivity.DifferentialGraded.functorEqIso_inv_app,Z 圏論一般/圏・関手・極限,Mathlib の定義,関手・自然変換・同型と同値（基本）,Z 圏論一般/圏・関手・極限,,一致,high,eqToIso の成分
+b4-022,SerrePositivity.BhattScholze.Semiperfectoid.lciRelation_generator_d,A 可換代数と数論幾何/Koszul 複体,型に核,Koszul 複体（反復錐による定義）,A 可換代数と数論幾何/Koszul 複体,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,mid,Koszul 複体の生成元の微分（lci 関係）
+b4-023,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUniverseHomCoefficientActions,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,dg 貼り合わせ圏（対象と Hom 複体）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,high,dg 貼り合わせの Hom の係数作用
+b4-024,SerrePositivity.KST.ProExcision.diagonal_cofinal,Z 圏論一般/組合せと順序,Mathlib の定義,半順序・鎖・区間・束,Z 圏論一般/組合せと順序,H K 理論/pro 切除の塔,一致,high,ℕ×ℕ の対角の共終性
+b4-025,SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourceRawModule_of_unconditional,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,不一致,mid,冪根 prism の源の raw 加群対象
+b4-026,SerrePositivity.DifferentialGraded.ComplexCoproduct.cochain_ext,B 複体と dg 圏/複体,型に核,複体（基本）と Hom 複体,B 複体と dg 圏/複体,,一致,high,複体の余積からの cochain の外延性
+b4-027,SerrePositivity.TensorActionTransport.comparison_inv_naturality,Z 圏論一般/モノイダル圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/モノイダル圏,Z 圏論一般/豊穣圏,一致,mid,モノイダル圏の作用の比較の自然性
+b4-028,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.spanSourceEvaluation_homMap_bijective,C 単体集合と ∞ 圏/極限と余極限,型に核,始対象・終対象と相対余極限,C 単体集合と ∞ 圏/極限と余極限,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,一致,mid,終対象を両端とする span への Hom
+b4-029,SerrePositivity.KST.SConstruction.kKanOriginalPrismLowerDirect_cell,H K 理論/S 構成と K スペクトル,型に核,（補助）K スペクトルの関手性の coherent 化,H K 理論/S 構成と K スペクトル,H K 理論/非連結 K,一致,low,K の Kan 模型の懸垂ホモトピーの prism の胞
+b4-030,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUnitCollarDiagonalTriangle_zero,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,（補助）単位補正・正規化の三角形と cube の族,C 単体集合と ∞ 圏/単体集合（基本）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,第二候補と一致,mid,Δ1×Δ3 の具体的な collar 写像の面（貼り合わせ用）
+b4-031,SerrePositivity.KST.DerivedBlowup.diagramModuleHom_isZero,H K 理論/導来 blowup,型に核,図式加群と係数 dg 圏,H K 理論/導来 blowup,,一致,high,diagram-module の Hom が零
+b4-032,SerrePositivity.BhattScholze.Prismatic.freeDeltaRename_isDeltaHom,A 可換代数と数論幾何/δ 環,型に核,自由 δ 環,A 可換代数と数論幾何/δ 環,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,high,自由 δ 環の変数の付け替えは δ 準同型
+b4-033,SerrePositivity.DifferentialGraded.LocalizationHom.comparison_inverseComparison,E モデル圏/局所化と射の類（通常の圏）,型の定義の概念,（その他）,Z 圏論一般/圏・関手・極限,E モデル圏/局所化と射の類（通常の圏）,第二候補と一致,mid,通常の圏の局所化の Hom の模型の比較
+b4-034,SerrePositivity.BhattScholze.Prismatic.PrismOverVertexFrame.mixedAt_mod,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Čech–Alexander 模型（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,,一致,mid,プリズマティック Čech 枠の頂点ホモトピーの剰余
+b4-035,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.dgBarRetract_correctedSection_projection,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,B 複体と dg 圏/dg 加群,第二候補と一致,mid,coherent bar の retract の切断と射影
+b4-036,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedRepresentableHomSpaceIso,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,C 単体集合と ∞ 圏/写像空間,一致,mid,分解した dg 加群の表現可能 Hom 空間の比較
+b4-037,SerrePositivity.Section4.theorem_4_7_K0,A 可換代数と数論幾何/漸近的なランク,型に核,正規化極限と Euler 評価,A 可換代数と数論幾何/漸近的なランク,A 可換代数と数論幾何/完全複体と K₀,一致,mid,論文 Thm 4.7 の K₀ 版（台つきランク商の Euler 評価）
+b4-038,SerrePositivity.KST.Fibration.replacedFiberCone_spaceEvaluation_isLimit,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,（読んで移した定義）,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,C 単体集合と ∞ 圏/極限と余極限,一致,mid,BF スペクトルの fiber 錐の段ごとの極限
+b4-039,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.intervalHomEndpoints_fibration,E モデル圏/モデル圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,C 単体集合と ∞ 圏/関手単体集合と同値,不一致,mid,Kan 複体の区間 Hom の両端点評価は Kan fibration
+b4-040,SerrePositivity.HomotopyFunctionComplex.ResolutionArrowCylinderBoundary.extend_restrict,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）持ち上げの選択の整合化,E モデル圏/ホモトピー関数複体と分解,E モデル圏/Reedy,一致,mid,分解の矢印柱の境界からの延長と制限
+b4-041,SerrePositivity.LengthAlgebra.quotient_isPowTorsion_of_span_le,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,イデアルの冪ねじれ,A 可換代数と数論幾何/ほとんど数学とねじれ,A 可換代数と数論幾何/正規化長さ,一致,mid,商が冪ねじれ
+b4-042,SerrePositivity.KST.Comparison.sliceFiberFunctor_localizedMono_isIso,H K 理論/群完備化と plus 構成,型に核,（補助）ホモトピー引き戻しと写像円筒（Segal の補題の厳密化）,E モデル圏/単体的モデルと anodyne,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,不一致,mid,Kan 基底上の引き戻しが局所化同型を保つ
+b4-043,SerrePositivity.boundedSubcategory_isIdempotentComplete,B 複体と dg 圏/三角圏,Mathlib の定義,（Mathlib の定義だけの主張）,B 複体と dg 圏/三角圏,Z 圏論一般/圏・関手・極限,一致,mid,t 構造の有界部分圏の冪等完備性
+b4-044,SerrePositivity.KST.SConstruction.dgOdotTargetMap,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,（読んで移した定義）,H K 理論/局所化不変量：lax 引き戻しと双加群,H K 理論/S 構成と K スペクトル,一致,low,Land–Tamme の ⊙ 代数から終域代数への射
+b4-045,SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.UnmarkedGenerators.AllMarked.nativeComposePoint,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,（補助）自由圏の hammock の計算（生成矢での切断・木の縮約）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,high,hammock の Hom 空間の点の合成
+b4-046,SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryEnrichedDiagramTriangle_face_long,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,（補助）準圏値の豊穣関手とその図式,C 単体集合と ∞ 圏/単体的圏と coherent 神経,C 単体集合と ∞ 圏/ファイブレーションと straightening,第二候補と一致,low,単体的圏の豊穣図式の比較三角形の面
+b4-047,SerrePositivity.DiagramModel.WeightedSourceComparison.comparison_weakEquivalence_iff,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,ホモトピー余極限,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/ホモトピー関数複体と分解,一致,high,重みつき実現の比較の弱同値性
+b4-048,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CanonicalYonedaUnstraighteningIdentity.instQuasicategoryTensorObjSSetOp_serrePositivity,C 単体集合と ∞ 圏/準圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/準圏（基本）,,一致,high,C.op×C は準圏
+b4-049,SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived_exists,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,型に核,（読んで移した定義）,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,一致,high,CAlg から導来 ∞ 圏への忘却
+b4-050,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallSimplexFibers.of_isPullback,C 単体集合と ∞ 圏/サイズの条件,型に核,ファイバーが小さい射,C 単体集合と ∞ 圏/サイズの条件,,一致,high,小さい fiber の条件と引き戻し
+b4-051,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.strictBarUnnormalizedMap_component,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,coherent bar 構成（dg 加群の図式のホモトピー余極限）,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,C 単体集合と ∞ 圏/極限と余極限,一致,mid,strict bar 構成の成分
+b4-052,SerrePositivity.KST.SConstruction.dgFunctorParamPost_naturality,B 複体と dg 圏/dg 圏と dg 関手,型に核,（読んで移した定義）,B 複体と dg 圏/dg 圏と dg 関手,Z 圏論一般/豊穣圏,一致,mid,dg 関手のパラメータ付き変換の自然性
+b4-053,SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.weakIdentityKanPoint_evaluate,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,Verdier 列（安定 ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,low,Verdier 分数の恒等 span の点
+b4-054,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingIdentityCommaPreNormalizeCube_source,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,（補助）単位補正・正規化の三角形と cube の族,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/写像空間,一致,mid,貼り合わせの comma 正規化の立方体
+b4-055,SerrePositivity.EInfinity.HomologyZero.restrictionUnitMap,B 複体と dg 圏/係数の取り替え,型に核,複体の係数拡大と係数制限,F オペラドと E∞/冪作用,B 複体と dg 圏/係数の取り替え,第二候補と一致,mid,単位からの射（閉元）の係数制限
+b4-056,SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDInput_compare,A 可換代数と数論幾何/根の添加（André）,型に核,（まだ読んでいない定義）,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/分冪包絡とクリスタリン,一致,mid,冪根の分冪入力の mod p 比較
+b4-057,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence_obj_vertex,C 単体集合と ∞ 圏/dg 神経,型に核,dg 神経の単体と単体的構造,C 単体集合と ∞ 圏/dg 神経,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,一致,mid,dg 神経のホモトピー圏と H⁰ の同値
+b4-058,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_obj,C 単体集合と ∞ 圏/冪等完備,型に核,（補助）分裂の添字の filtration（交互列の段階）,C 単体集合と ∞ 圏/冪等完備,,一致,mid,retract・冪等の交互単体
+b4-059,SerrePositivity.BhattScholze.regularPrincipalDPLift_value,A 可換代数と数論幾何/δ 環,型に核,δ 構造（W₂ の切断）と Frobenius 持ち上げ,A 可換代数と数論幾何/分冪包絡とクリスタリン,,不一致,high,主分冪包絡の普遍射の値
+b4-060,SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.zeroExtend_cochain,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,ホモトピー群と基本亜群,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,,一致,mid,ホモトピー群値の正規化 cochain
+b4-061,SerrePositivity.BhattScholze.Andre.deltaPDivisionRawTorsionEquiv_apply,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,"δ 除算のねじれ除去・(p,d) 剰余・完備化",A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,A 可換代数と数論幾何/根の添加（André）,一致,mid,δ p 除算のねじれ除去の同型
+b4-062,SerrePositivity.SymmetricSpectrum.sphereTensorFreePair_naturality,G スペクトル/対称スペクトル,型に核,球面上のテンソル積（smash 積）,G スペクトル/対称スペクトル,Z 圏論一般/モノイダル圏の中の加群,一致,high,自由球面加群のテンソルの自然性
+b4-063,SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_additive,H K 理論/係数環層つきスキームの加群層と D_qc,型に核,係数加群層と準連接性,H K 理論/係数環層つきスキームの加群層と D_qc,,一致,high,係数加群層の忘却の加法性
+b4-064,SerrePositivity.KST.Descent.algebraPureTransform,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,（その他）,A 可換代数と数論幾何/blowup と射影スキーム,H K 理論/降下,不一致,mid,代数の純変換（境界ねじれ商）
+b4-065,SerrePositivity.SimplicialModel.NormalizedHornTargetComparison.family,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（読んで移した定義）,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/単体的モデルと anodyne,一致,mid,正規化 horn 充填の比較ホモトピー；止めた経路のファイル
+b4-066,SerrePositivity.KST.Fibration.zeroMiddleFixedHornFamilyFunctorIso,H K 理論/S 構成と K スペクトル,型に核,（読んで移した定義）,H K 理論/S 構成と K スペクトル,,一致,mid,fibration 定理の S の Kan 四面体の族の比較
+b4-067,SerrePositivity.KST.Descent.strictTransformChartModelIso_preimage,H K 理論/降下,型に核,抽象 blowup 正方形と閉中心,A 可換代数と数論幾何/blowup と射影スキーム,H K 理論/降下,第二候補と一致,mid,strict transform のチャート模型と開集合
+b4-068,SerrePositivity.KST.ProExcision.cylinderAWTerm_constant_last,B 複体と dg 圏/単体的鎖とシャッフル,型に核,整数加群・単体的加群・鎖複体のテンソル,B 複体と dg 圏/単体的鎖とシャッフル,H K 理論/pro 切除の塔,一致,high,柱の AW 項の端点
+b4-069,SerrePositivity.HilbertSamuel.multiplicity_eq_koszulEulerChar_of_residue_surjective,A 可換代数と数論幾何/Hilbert–Samuel と対角線,型に核,Samuel 関数と Hilbert–Samuel 重複度,A 可換代数と数論幾何/Hilbert–Samuel と対角線,A 可換代数と数論幾何/Koszul 複体,一致,mid,Hilbert–Samuel 重複度＝Koszul Euler 標数
+b4-070,SerrePositivity.DifferentialGraded.FixedObjectAugmentation.attachedCategory,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 圏（Hom 複体・次数つき射・合成）,B 複体と dg 圏/dg 商と cell 分解,,不一致,mid,cell を貼った dg 圏
+b4-071,SerrePositivity.DifferentialGraded.scalarModuleExtensionHomotopyCommShift,B 複体と dg 圏/係数の取り替え,型に核,dg 圏の係数変更,B 複体と dg 圏/係数の取り替え,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,high,dg 加群の係数拡大のホモトピー関手の CommShift
+b4-072,SerrePositivity.DifferentialGraded.modulePerfect_le_iff_generators,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,Perf(D)（perfect 対象）,B 複体と dg 圏/導来圏と Perf（dg 加群）,,一致,high,perfect dg 加群の生成元による判定
+b4-073,SerrePositivity.SimplicialModel.WeightedWordHom.section_,C 単体集合と ∞ 圏/単体集合（基本）,型の定義の概念,（その他）,E モデル圏/止めた経路：任意のモデル圏への一般化,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,不一致,mid,語で重みつきの道の Hom の切断；止めた経路のファイル
+b4-074,SerrePositivity.Asymptotic.instIsClosedUnderSubobjectsModuleSequenceLengthBoundedSequence,A 可換代数と数論幾何/漸近的なランク,型に核,加群列と長さによる Serre 商,A 可換代数と数論幾何/漸近的なランク,,一致,high,長さ有界な加群列は部分対象で閉じる
+b4-075,SerrePositivity.HomotopyFunctionComplex.OrdinaryBarChoiceMappingSpace.vertex,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）bar の厳密化：選択の圏と自由図式の延長,E モデル圏/ホモトピー関数複体と分解,,一致,mid,bar choice の写像空間の頂点
+b4-076,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,（補助）自由圏の hammock の計算（生成矢での切断・木の縮約）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,Z 圏論一般/組合せと順序,一致,mid,局所化の語の列が非空
+b4-077,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingPreUnitCapTriangleFamily_zero,C 単体集合と ∞ 圏/写像空間,型に核,dg 神経の写像空間（線形模型）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,不一致,mid,貼り合わせの unit cap 三角形族
+b4-078,SerrePositivity.DerivedCompletion.complexTowerMilnorInclusion,A 可換代数と数論幾何/導来完備化,型に核,塔のホモトピー極限,A 可換代数と数論幾何/導来完備化,,一致,high,塔のホモトピー極限の Milnor 列
+b4-079,SerrePositivity.DerivedCompletion.derivedComplexCompletionComparison_naturality,A 可換代数と数論幾何/導来完備化,型に核,導来完備化関手（主元）,A 可換代数と数論幾何/導来完備化,,一致,high,導来完備化の比較の自然性
+b4-080,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.op_heq_of_endpoints,Z 圏論一般/圏・関手・極限,Mathlib の定義,関手・自然変換・同型と同値（基本）,Z 圏論一般/圏・関手・極限,,一致,high,op と HEq
+b4-081,SerrePositivity.BhattScholze.Prismatic.firstNonzero_exists,Z 圏論一般/組合せと順序,型の定義の概念,（その他）,Z 圏論一般/組合せと順序,,一致,high,最初の非零添字の存在
+b4-082,SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd,B 複体と dg 圏/複体,型の定義の概念,（その他）,B 複体と dg 圏/複体,,一致,high,複体の mapping cocone の射
+b4-083,SerrePositivity.MonoidalBalancedTensor.projection_associatorStep,Z 圏論一般/モノイダル圏の中の加群,型に核,釣り合いテンソル積（モノイド上の相対テンソル積）,Z 圏論一般/モノイダル圏の中の加群,,一致,high,釣り合いテンソルの結合比較
+b4-084,SerrePositivity.Section2.stageAlgebraScalarTowerStage,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/環と加群（その他）,一致,mid,根の塔の段の底変換のスカラー塔
+b4-085,SerrePositivity.PointedSimplicialSet.forget_laxBraided,C 単体集合と ∞ 圏/基点付き対象,型に核,基点付き対象と基点付き単体集合（基本）,C 単体集合と ∞ 圏/基点付き対象,,一致,high,基点付き単体集合の smash と忘却
+b4-086,SerrePositivity.NerveHomotopy.hom,C 単体集合と ∞ 圏/神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/神経,C 単体集合と ∞ 圏/単体集合（基本）,一致,mid,自然変換から神経のホモトピー
+b4-087,SerrePositivity.LengthAlgebra.cyclic_quotient_pow_length_eq_zero_of_first,A 可換代数と数論幾何/正規化長さ,型に核,正規化長さ（公理）,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/ほとんど数学とねじれ,一致,high,巡回商の長さ零
+b4-088,SerrePositivity.KST.NonConnective.dgSuspensionNativeSequenceStage,H K 理論/非連結 K,核,懸垂の反復と非連結 K の対象,H K 理論/非連結 K,,一致,high,dg 懸垂の列の段のスペクトル
+b4-089,SerrePositivity.SymmetricSpectrum.tensorBySequenceMap,G スペクトル/対称スペクトル,型に核,球面上のテンソル積（smash 積）,G スペクトル/対称スペクトル,,一致,high,スペクトルと対称列のテンソルの射
+b4-090,SerrePositivity.DerivedCompletion.completeReflector,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型に核,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/導来完備化,,不一致,high,導来完備対象への反射
+b4-091,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRepresentableProperty_cone,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,型に核,dg 前三角性,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,B 複体と dg 圏/三角圏,不一致,mid,貼り合わせの表現可能性は cone で閉じる
+b4-092,SerrePositivity.KST.SConstruction.pastingOuterRightVertexEdge_fixed,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,単体的ホモトピーと prism,H K 理論/S 構成と K スペクトル,C 単体集合と ∞ 圏/極限と余極限,不一致,low,貼り合わせ長方形のホモトピーの頂点辺
+b4-093,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinLastCellLiftSimplex,C 単体集合と ∞ 圏/結とスライス,型に核,結の構成,C 単体集合と ∞ 圏/結とスライス,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,relative join の最後の胞の持ち上げ
+b4-094,SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible.zeroTriangleTraceSpectrumSimplicialCategory,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,Ω スペクトルと Kan 列,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,一致,high,Ω スペクトルの単体的圏構造
+b4-095,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedValue_transportIso,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,基点付き空間と普遍左ファイブレーション,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,基点付き空間の普遍ファイブレーションの輸送
+b4-096,SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBasisFiltration.moduleTransition,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,B 複体と dg 圏/dg 加群,第二候補と一致,mid,semifree の基底フィルトレーションの遷移
+b4-097,SerrePositivity.KST.ProExcision.simplicialActionCategory,H K 理論/pro 切除：非単位環と GL,型に核,単体的モノイドの作用と半直積,H K 理論/pro 切除：非単位環と GL,H K 理論/群完備化と plus 構成,一致,mid,単体的モノイド作用の作用圏
+b4-098,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgSimplexInitialRefinement_degeneracy_positive,C 単体集合と ∞ 圏/dg 神経,型に核,dg 神経の単体と単体的構造,C 単体集合と ∞ 圏/dg 神経,,一致,high,dg 神経の単体の細分と退化
+b4-099,SerrePositivity.DiagramModel.ContinuousLifts.successorSquare,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,図式圏の射影モデル構造,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/Quillen 関手と生成,一致,low,整列順序に沿う図式の持ち上げの後続段
+b4-100,SerrePositivity.RootTowerLength.completedNormalizedLength,A 可換代数と数論幾何/正規化長さ,核,（読んで移した定義）,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/根の塔,一致,mid,完備化した根の塔の正規化長さ
+b4-101,SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.nonempty_squarePastingRectangle,C 単体集合と ∞ 圏/極限と余極限,型に核,引き戻し・押し出しの四角形,C 単体集合と ∞ 圏/準圏（基本）,C 単体集合と ∞ 圏/極限と余極限,第二候補と一致,mid,準圏での正方形の貼り合わせ
+b4-102,SerrePositivity.KST.SConstruction.spanPrisms_hom_ext,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,ホーン,C 単体集合と ∞ 圏/単体集合（基本）,,一致,high,horn×K からの射の外延性
+b4-103,SerrePositivity.K0WithSupport.coefficientEuler,A 可換代数と数論幾何/完全複体と K₀,型に核,台つき K₀,A 可換代数と数論幾何/完全複体と K₀,A 可換代数と数論幾何/交点重複度と χ,一致,mid,台つき G₀ の係数つき Euler 写像
+b4-104,SerrePositivity.Smith.AccessibleSquares.indexMap,Z 圏論一般/圏・関手・極限,Mathlib の定義,局所表示可能圏・到達可能性・基数の条件,E モデル圏/Quillen 関手と生成,,不一致,high,Smith の accessible な小対象論法の添字
+b4-105,SerrePositivity.MonoidalBalancedTensor.associatorNatIso,Z 圏論一般/モノイダル圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/モノイダル圏の中の加群,,不一致,high,釣り合いテンソルの結合自然同型
+b4-106,SerrePositivity.Asymptotic.supportedRankQuotient_retract,A 可換代数と数論幾何/漸近的なランク,型に核,ランク商とその冪等完備化,A 可換代数と数論幾何/漸近的なランク,,一致,high,ランク商の台つき対象は retract
+b4-107,SerrePositivity.HomotopyFunctionComplex.DualResolutionTargets.ofObject_base,E モデル圏/ホモトピー関数複体と分解,型に核,余単体的分解と frame,E モデル圏/ホモトピー関数複体と分解,,一致,mid,双対分解の標的の底
+b4-108,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallLeftKanShapeModel,C 単体集合と ∞ 圏/サイズの条件,型に核,局所小さい ∞ 圏,C 単体集合と ∞ 圏/サイズの条件,C 単体集合と ∞ 圏/極限と余極限,一致,mid,左 Kan の添字圏の小さい模型
+b4-109,SerrePositivity.AlgebraicGeometry.coefficientVCoverModelSmallArrowCocone,A 可換代数と数論幾何/スキーム,型に核,有限表示模型の圏（極限による近似）,A 可換代数と数論幾何/スキーム,,一致,low,v 被覆の係数模型の小さい図式の余錐
+b4-110,SerrePositivity.DeRham.completedDLinear,A 可換代数と数論幾何/de Rham 複体,型に核,p 進完備化した多項式の微分形式,A 可換代数と数論幾何/de Rham 複体,,一致,high,p 進完備化した微分形式の微分
+b4-111,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleAugmentationSuffixCorrection_sum_cancel,B 複体と dg 圏/導来圏と Perf（dg 加群）,型に核,（読んで移した定義）,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,C 単体集合と ∞ 圏/dg 神経,不一致,low,dg 加群の augmentation 補正の符号つき和の相殺
+b4-112,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.fatJoinEndpointInclusion,C 単体集合と ∞ 圏/結とスライス,型に核,fat join と結の比較,C 単体集合と ∞ 圏/結とスライス,,一致,high,fat join への端点の包含
+b4-113,SerrePositivity.CommutativeAlgebra.residueFieldMap_comp,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,素スペクトル・Zariski 位相・層,A 可換代数と数論幾何/環と加群（その他）,,一致,high,剰余体の射の合成
+b4-114,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.yonedaHomJointBaseMap_source,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,米田埋め込み,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,一致,mid,米田の Hom の底写像とねじれ矢
+b4-115,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedPrecompositionSlicePrism_naturality,C 単体集合と ∞ 圏/写像空間,型に核,dg 神経の写像空間（線形模型）,C 単体集合と ∞ 圏/dg 神経,C 単体集合と ∞ 圏/結とスライス,不一致,mid,dg 神経の slice の前合成 prism
+b4-116,SerrePositivity.BhattScholze.existsUnique_pCompletedDistinguishedPrismHom,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/プリズム,A 可換代数と数論幾何/δ 環,一致,mid,完全向き付き prism への射の一意延長
+b4-117,SerrePositivity.KST.Descent.localNoether_affineMorphism_dimension_bound,A 可換代数と数論幾何/スキーム,Mathlib の定義,（Mathlib の定義だけの主張）,A 可換代数と数論幾何/スキーム,H K 理論/降下,一致,mid,局所 Noether 上有限型アフィンの次元の有界性
+b4-118,SerrePositivity.KST.Spectra.PointedMapping.corner_rlp_monomorphisms,C 単体集合と ∞ 圏/基点付き対象,型に核,基点付き内部 Hom,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,C 単体集合と ∞ 圏/基点付き対象,第二候補と一致,mid,点つき mapping corner の RLP
+b4-119,SerrePositivity.KST.DerivedGeometry.derivedTriangleHomologyKernel,B 複体と dg 圏/三角圏,Mathlib の定義,（Mathlib の定義だけの主張）,B 複体と dg 圏/複体,B 複体と dg 圏/三角圏,第二候補と一致,mid,導来圏の三角形のホモロジーの核
+b4-120,SerrePositivity.LengthAlgebra.length_eq_zero_of_cyclic_quotient,A 可換代数と数論幾何/正規化長さ,型に核,正規化長さ（公理）,A 可換代数と数論幾何/正規化長さ,A 可換代数と数論幾何/ほとんど数学とねじれ,一致,mid,almost zero 加群の長さ零
+b4-121,SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanEvaluation,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,Verdier 列（安定 ∞ 圏）,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,C 単体集合と ∞ 圏/写像空間,一致,mid,Verdier 分数の分母 span の評価
+b4-122,SerrePositivity.DifferentialGraded.DGCellAttachment.Family.internalReplaceHead_inclusion,B 複体と dg 圏/dg 商と cell 分解,型に核,cell の貼り付け,B 複体と dg 圏/dg 商と cell 分解,,一致,high,cell 貼り付けの head 置換
+b4-123,SerrePositivity.KST.DerivedBlowup.radialCoordinate,H K 理論/導来 blowup,型に核,標準チャートと普遍チャート,H K 理論/導来 blowup,,一致,high,普遍チャートの radial 座標
+b4-124,SerrePositivity.DifferentialGraded.BimoduleTensor.derivedBimoduleAssociatorBaseIso_naturality,B 複体と dg 圏/双加群とテンソル,型に核,導来双加群圏と導来合成,B 複体と dg 圏/双加群とテンソル,,一致,high,導来双加群の結合同型の自然性
+b4-125,SerrePositivity.KST.Comparison.normalizedIntegralChains_map_mono,C 単体集合と ∞ 圏/単体集合（基本）,型の定義の概念,（その他）,B 複体と dg 圏/単体的鎖とシャッフル,C 単体集合と ∞ 圏/単体集合（基本）,第二候補と一致,mid,正規化整数鎖は単射を保つ
+b4-126,SerrePositivity.KST.SConstruction.enrichedClosedIsoConjugation_trans,Z 圏論一般/豊穣圏,型に核,（読んで移した定義）,Z 圏論一般/豊穣圏,,一致,high,豊穣 Hom の同型による共役
+b4-127,SerrePositivity.SimplicialModel.WordRetractChainFamily.contraction,E モデル圏/止めた経路：任意のモデル圏への一般化,型に核,（補助）止めた経路：語の区間,E モデル圏/止めた経路：任意のモデル圏への一般化,E モデル圏/単体的モデルと anodyne,一致,mid,語パラメータつき retract 鎖の収縮；止めた経路のファイル
+b4-128,SerrePositivity.BhattScholze.Prismatic.affineBaseCoefficients,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,Hodge–Tate コホモロジーと比較写像（affine）,A 可換代数と数論幾何/プリズマティックコホモロジー,,一致,mid,affine の Hodge–Tate 剰余模型の基底係数
+b4-129,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.simplexFirstVertex_component_naturality,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,単体的ホモトピー・π₀・ホモトピー圏,C 単体集合と ∞ 圏/単体集合（基本）,,一致,high,単体の最初の頂点の π₀ 成分
+b4-130,SerrePositivity.KST.SConstruction.cubicalDayPairCocone_ι,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,Z 圏論一般/モノイダル圏,一致,mid,cubical の Day テンソルと余極限
+b4-131,SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.doldKanHomSpaceChainMap_quasiIso_equivalence,C 単体集合と ∞ 圏/dg 神経,型に核,Dold–Kan の Hom 空間（標準模型）,C 単体集合と ∞ 圏/dg 神経,C 単体集合と ∞ 圏/写像空間,一致,mid,Dold–Kan の Hom 空間は擬同型をホモトピー同値に
+b4-132,SerrePositivity.AlgebraicGeometry.mul_eq_zero_of_regular_minor_selectedColumns,A 可換代数と数論幾何/blowup と射影スキーム,型に核,小行列式イデアル,A 可換代数と数論幾何/blowup と射影スキーム,A 可換代数と数論幾何/スキーム,一致,mid,小行列式の消滅と正則な小行列式による行列の消滅
+b4-133,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.RelativeHomotopyPullback.pathLiftRelative,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,path 対象と dg 代数のホモトピー,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,dg 代数の相対ホモトピー引き戻しの path 持ち上げ
+b4-134,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsExcisionCoreCospan,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,核,安定性の判定（excision の比較格子）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,,一致,high,excision の core の添字の条件
+b4-135,SerrePositivity.KST.ProExcision.conjugationEquivariantCylinderMap,H K 理論/pro 切除：非単位環と GL,型の定義をたどる,単体的モノイドの作用と半直積,H K 理論/pro 切除：非単位環と GL,B 複体と dg 圏/単体的鎖とシャッフル,一致,mid,共役の同変な線形化区間写像
+b4-136,SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeSourceComparison,H K 理論/S 構成と K スペクトル,型に核,（まだ読んでいない定義）,H K 理論/局所化不変量：lax 引き戻しと双加群,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,不一致,low,⊙ の Milnor 右軸と Perf 延長の比較
+b4-137,SerrePositivity.KST.SConstruction.Cofinality.completionRelativeSTranspose_relative,H K 理論/S 構成と K スペクトル,型に核,閉じた安定部分圏と cofinality,H K 理論/S 構成と K スペクトル,,一致,high,相対 S の転置と冪等完備化（cofinality）
+b4-138,SerrePositivity.AlgebraicGeometry.homogeneousIdealQuotientGradedRing,A 可換代数と数論幾何/blowup と射影スキーム,型に核,次数付けの操作（商・テンソル・余極限・整数次数への延長）,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,斉次イデアル商の次数付き環
+b4-139,SerrePositivity.Smith.DependentCopower.homEquiv,Z 圏論一般/圏・関手・極限,Mathlib の定義,極限と余極限,Z 圏論一般/圏・関手・極限,E モデル圏/Quillen 関手と生成,一致,mid,族による余冪と Hom の随伴
+b4-140,SerrePositivity.EInfinity.BarrattEccles.zeroDegreeComRestrictionIso,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,Barratt–Eccles オペラド（E(n) と shuffle 合成）,F オペラドと E∞/dg オペラドと代数,F オペラドと E∞/E∞ 代数の圏（CAlg と加群）,不一致,mid,可換代数を augmentation で制限した E 代数
+b4-141,SerrePositivity.KST.SConstruction.orientation_smul_heq,B 複体と dg 圏/dg 圏と dg 関手,型に核,dg 圏（Hom 複体・次数つき射・合成）,B 複体と dg 圏/dg 圏と dg 関手,Z 圏論一般/圏・関手・極限,一致,mid,次数つき Hom の符号倍と HEq
+b4-142,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovAlgebraPullback_isLimit,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,Postnikov 段の平方零拡大としての表示（類）,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,Postnikov 段の代数の引き戻し
+b4-143,SerrePositivity.EInfinity.PowerOperation.mayResolution_d,F オペラドと E∞/冪作用,型に核,巡回部分群と BE の解像度（May の設定）,F オペラドと E∞/冪作用,,一致,high,May の解像度の微分
+b4-144,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.Surjection.horizontalLabel_slot,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,（補助）table reduction の微分保存・合成保存の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,全射オペラドの水平ラベル
+b4-145,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.unitCommaSectionTargetFiberArrow_hom,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,,一致,mid,随伴の単位の comma 切断
+b4-146,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.activePositions,F オペラドと E∞/Barratt–Eccles と全射オペラド,核,単体的鎖への χ の余作用（切断公式）,F オペラドと E∞/Barratt–Eccles と全射オペラド,Z 圏論一般/組合せと順序,一致,mid,区間切断の active 位置
+b4-147,SerrePositivity.KST.Spectra.OrdinaryLoopSource.source,C 単体集合と ∞ 圏/基点付き対象,型に核,基点付き対象と基点付き単体集合（基本）,C 単体集合と ∞ 圏/基点付き対象,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,円の混合 smash
+b4-148,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.transport_mem,E モデル圏/局所化と射の類（通常の圏）,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/圏・関手・極限,E モデル圏/局所化と射の類（通常の圏）,第二候補と一致,mid,射の類と eqToHom
+b4-149,SerrePositivity.KST.Comparison.matrixSpace_kanComplex,H K 理論/群完備化と plus 構成,型に核,単体的環の π₀ と行列・ĜL,H K 理論/群完備化と plus 構成,H K 理論/pro 切除：非単位環と GL,一致,mid,単体的環の行列空間は Kan
+b4-150,SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInput_free,A 可換代数と数論幾何/根の添加（André）,型に核,完全 prism の ϖ,A 可換代数と数論幾何/根の添加（André）,,一致,mid,完全 prism の ϖ の根入力環の自由性
+b4-151,SerrePositivity.AlgebraicGeometry.reesClosedHomogeneousChartTransition,A 可換代数と数論幾何/blowup と射影スキーム,型に核,次数付けの操作（商・テンソル・余極限・整数次数への延長）,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,Rees の閉厚化の斉次局所化の遷移
+b4-152,SerrePositivity.EInfinity.PowerOperation.cyclicOrbitResolutionXIsoInt,F オペラドと E∞/冪作用,型に核,巡回部分群と BE の解像度（May の設定）,F オペラドと E∞/冪作用,,一致,high,巡回群の解像度の項
+b4-153,SerrePositivity.HomotopyFunctionComplex.BiresolutionRightAction.action_selectedPoint,E モデル圏/ホモトピー関数複体と分解,型に核,持ち上げの空間,E モデル圏/ホモトピー関数複体と分解,,一致,mid,双分解の右作用
+b4-154,SerrePositivity.BhattScholze.deltaDivisionWittNormalizedCoefficient_image,A 可換代数と数論幾何/δ 環,型に核,δ 構造（W₂ の切断）と Frobenius 持ち上げ,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,A 可換代数と数論幾何/根の添加（André）,不一致,mid,δ 除算の Witt 正規化係数
+b4-155,SerrePositivity.HomologyZero.representative_homotopy,B 複体と dg 圏/複体,型に核,複体（基本）と Hom 複体,F オペラドと E∞/冪作用,B 複体と dg 圏/複体,第二候補と一致,mid,H⁰ の類の代表とホモトピー
+b4-156,SerrePositivity.KST.Spectra.LoopExchangePaths.exchangePostComparisonSquare_start,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,（補助）円の交換と符号,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,一致,mid,loop の交換の貼り合わせ正方形
+b4-157,SerrePositivity.BhattScholze.Andre.deltaDivision_mod_pd_deltaClosure_baseMap_injective,A 可換代数と数論幾何/δ 環,型に核,自由 δ 環,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,不一致,mid,"δ 除算の mod (p,d) δ 閉包の係数射の単射性"
+b4-158,SerrePositivity.AlgebraicGeometry.pureTransformBaseLocalizationMap_isLocalizedModule,A 可換代数と数論幾何/blowup と射影スキーム,型に核,加群の純変換と境界ねじれ,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,純変換と局所化
+b4-159,SerrePositivity.KST.LocalizingInvariants.TowerDiagram.arrowTower,H K 理論/pro 切除の塔,型に核,塔と pro 同型・pro 零,H K 理論/pro 切除の塔,H K 理論/局所化不変量：Postnikov と平方零拡大,一致,mid,段ごとの射から矢印の塔
+b5-000,SerrePositivity.BhattScholze.Prismatic.y_base_scalar,A 可換代数と数論幾何/分冪包絡とクリスタリン,型に核,（読んで移した定義）,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/分冪包絡とクリスタリン,第二候補と一致,mid,結晶基底から Witt 比較の余単体環への基底射が p を送る先（Hodge–Tate/結晶比較）
+b5-001,SerrePositivity.MonoidalBalancedTensor.pentagonLowerProjection,Z 圏論一般/モノイダル圏の中の加群,型に核,釣り合いテンソル積（モノイド上の相対テンソル積）,Z 圏論一般/モノイダル圏の中の加群,,一致,high,釣り合いテンソルの pentagon の中間射
+b5-002,SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.quotientSelectedCIso,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,lax 引き戻し（安定 ∞ 圏）と射影・包含,H K 理論/局所化不変量：lax 引き戻しと双加群,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,一致,mid,lax 引き戻しの商の cofiber の関手同型
+b5-003,SerrePositivity.AlgebraicGeometry.finiteAffineOpenFamilyFrobeniusCech_exact,A 可換代数と数論幾何/Frobenius の順極限,型に核,（読んで移した定義）,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/Frobenius の順極限,第二候補と一致,high,有限アフィン開族の Frobenius 係数増大 Čech の完全性
+b5-004,SerrePositivity.Smith.smithGenerators_factor,E モデル圏/Quillen 関手と生成,型に核,Smith の定理の入力（解集合・accessible な因子分解）,E モデル圏/Quillen 関手と生成,,一致,high,Smith の生成自明余ファイブレーションによる因子化
+b5-005,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingAugmentationTriangle_cube_post_normalized,C 単体集合と ∞ 圏/写像空間,型に核,dg 神経の写像空間（線形模型）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/単体集合（基本）,不一致,mid,dg 貼り合わせの増強三角形と立方体の面の一致
+b5-006,SerrePositivity.AlgebraicGeometry.cartesianBaseChangeComparison_snd,A 可換代数と数論幾何/スキーム,型の定義の概念,（その他）,A 可換代数と数論幾何/スキーム,,一致,high,スキームの Cartesian 底変換比較の射影
+b5-007,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.QCatAdjunction.pinchedHomEquivalence_homEquiv,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,C 単体集合と ∞ 圏/写像空間,一致,mid,∞ 圏の随伴から得る pinched 写像空間同値と Hom 対応
+b5-008,SerrePositivity.DiagramModel.HomotopyColimit.replacementComparison_objectwiseWeakEquivalence,E モデル圏/Quillen 関手と生成,型に核,余ファイブラント生成,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/ホモトピー関数複体と分解,不一致,high,ホモトピー余極限の置換比較が対象ごと弱同値
+b5-009,SerrePositivity.Section2.isRegularLocalRing_towerStage,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,,一致,high,根の塔の各段は正則局所環
+b5-010,SerrePositivity.CommutativeAlgebra.isUniversalHomeomorphism_of_nil_diagonal,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,普遍同相,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,,一致,high,普遍同相の判定
+b5-011,SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.StrictComparison.dgCoherentBarCutGraded_decomposition,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,型に核,（補助）coherent bar の strict 比較とフィルター,D 安定 ∞ 圏と導来 ∞ 圏/coherent bar 構成,,一致,high,coherent bar の切断の次数つき分裂
+b5-012,SerrePositivity.BhattScholze.Andre.perfectPrismMonicLift_spec,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/プリズム,第二候補と一致,mid,完全 prism 上のモニック多項式の lift
+b5-013,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaElementsLeftKanComparison,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,一致,high,P_Σ の元の圏から左 Kan 添字への密度比較
+b5-014,SerrePositivity.Smith.AccessibleModelFactorizations.fibration_left_isCardinalAccessible,E モデル圏/Quillen 関手と生成,型に核,Smith の定理の入力（解集合・accessible な因子分解）,E モデル圏/Quillen 関手と生成,,一致,high,Smith の accessible な因子分解
+b5-015,SerrePositivity.AlgebraicGeometry.ArcRouteB.goodArcInterval_sub,A 可換代数と数論幾何/付値と区間,型に核,付値環のスペクトルの区間の環,A 可換代数と数論幾何/付値と区間,A 可換代数と数論幾何/Čech 複体と被覆,一致,mid,付値環の区間環の普遍 Čech 完全性の部分区間への制限
+b5-016,SerrePositivity.DeRham.exteriorPowerCoefficients_wedgeOne,A 可換代数と数論幾何/de Rham 複体,型に核,多項式代数の微分形式と外積,A 可換代数と数論幾何/de Rham 複体,A 可換代数と数論幾何/環と加群（その他）,一致,mid,自由加群の外冪の係数変換と外積（pd de Rham 用）
+b5-017,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingUnitTetrahedron_zero_degeneracy,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,標準単体と米田,C 単体集合と ∞ 圏/単体集合（基本）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,一致,high,標準単体の面と退化の恒等式
+b5-018,SerrePositivity.AlgebraicGeometry.fullCechTranspose_add,A 可換代数と数論幾何/Čech 複体と被覆,型に核,全タプル Čech 複体（有限交叉の係数図式）,A 可換代数と数論幾何/Čech 複体と被覆,,一致,high,全タプル Čech 鎖の転置の加法性
+b5-019,SerrePositivity.Section2.ψU,A 可換代数と数論幾何/根の塔,型に核,根の塔（段・遷移・順極限）,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/正規化長さ,一致,mid,B から塔 ⊗ T への環準同型
+b5-020,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservingLeftUnitVertex,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,随伴の単位の空間（Pr^L と Pr^R の双対）,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,C 単体集合と ∞ 圏/随伴（∞ 圏）,一致,high,Pr^L/Pr^R の随伴の単位の頂点
+b5-021,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.twistedArrowSourceEdgeSimplex_tgt,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,型に核,ねじれ矢の単体集合と両端への射影,C 単体集合と ∞ 圏/ねじれ矢と edgewise subdivision,,一致,high,ねじれ矢の単体集合の辺の終点
+b5-022,SerrePositivity.Smith.GeneratedWeakReflection.factor,E モデル圏/局所化と射の類（通常の圏）,Mathlib の定義,（Mathlib の定義だけの主張）,E モデル圏/Quillen 関手と生成,E モデル圏/局所化と射の類（通常の圏）,第二候補と一致,mid,Smith：生成された弱反射の因子化
+b5-023,SerrePositivity.KST.Spectra.d3GradedCompositionTriangleFamily_first,C 単体集合と ∞ 圏/単体的圏と coherent 神経,型の定義の概念,（その他）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,C 単体集合と ∞ 圏/関手単体集合と同値,一致,mid,厳密豊穣変換の合成を coherent 神経の三角形族に
+b5-024,SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution.rowModule,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,加群の圏とホモロジー代数,A 可換代数と数論幾何/分冪包絡とクリスタリン,A 可換代数と数論幾何/プリズマティックコホモロジー,不一致,mid,pd de Rham の行の加群
+b5-025,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,核,安定部分圏の閉包と半直交分解,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,,一致,high,安定閉包をホモトピー圏の対象条件として
+b5-026,SerrePositivity.HomotopyFunctionComplex.ResolutionLiftPostcomposition.instModelCategoryFunctorSimplexCategory_serrePositivity,E モデル圏/モデル圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,E モデル圏/Reedy,E モデル圏/止めた経路：任意のモデル圏への一般化,不一致,mid,余単体対象の Reedy モデル構造の instance（中断経路のファイル）
+b5-027,SerrePositivity.KST.Fibration.verdierOriginalNativeHomSquare_bottom,H K 理論/S 構成と K スペクトル,型に核,（補助）Verdier 四角形の K 像の零ホモトピー,H K 理論/S 構成と K スペクトル,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,一致,low,fibration 定理用の Verdier の Hom 比較四角形の下辺
+b5-028,SerrePositivity.KST.ProExcision.firstBlockMatrix_left_right,H K 理論/pro 切除：非単位環と GL,型に核,（読んで移した定義）,H K 理論/pro 切除：非単位環と GL,,一致,high,ブロック行列の成分
+b5-029,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.swapFirstIso_apply,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,単体的鎖への χ の余作用（切断公式）,F オペラドと E∞/Barratt–Eccles と全射オペラド,B 複体と dg 圏/複体,一致,mid,区間複体のテンソル冪の先頭交換の Koszul 符号
+b5-030,SerrePositivity.AlgebraicGeometry.nonempty_affineBlowupCechTermModel,A 可換代数と数論幾何/blowup と射影スキーム,型に核,アフィン blowup と標準チャート,A 可換代数と数論幾何/blowup と射影スキーム,A 可換代数と数論幾何/Čech 複体と被覆,一致,mid,アフィン blowup の Čech 脈体の各項の射影模型
+b5-031,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomTargetLastUnitPastingInputPath,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,（補助）lax 写像空間の比較：合成対応と入力 fiber,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,,一致,mid,貼り合わせ Hom の pasting の入力 path
+b5-032,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomEdge_compStruct,C 単体集合と ∞ 圏/写像空間,型に核,右 pinched 写像空間,C 単体集合と ∞ 圏/写像空間,,一致,high,右 pinched 写像空間の辺から合成三角形
+b5-033,SerrePositivity.ComplexLimits.mooreDegreeZeroIso_naturality,B 複体と dg 圏/単体的鎖とシャッフル,型の定義の概念,（その他）,B 複体と dg 圏/複体,B 複体と dg 圏/単体的鎖とシャッフル,第二候補と一致,mid,正規化 Moore 複体の次数 0 同型の自然性
+b5-034,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingKernelConeNullAction_source,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,comma 表示と代表加群,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,B 複体と dg 圏/dg 加群,一致,high,貼り合わせの kernel cone の作用
+b5-035,SerrePositivity.KST.ProExcision.simplicialActionProductMap_trivial,H K 理論/pro 切除：非単位環と GL,型に核,単体的モノイドの作用と半直積,H K 理論/pro 切除：非単位環と GL,,一致,high,単体的モノイド作用の半直積の射
+b5-036,SerrePositivity.InfinityCategories.HA.Monads.walkingAdjunctionTarget_minus_of_first_index_zero,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,Adj の各次数の自由性（原子的な射・水平分解・切れ目）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,walking adjunction の原子的な射の端点
+b5-037,SerrePositivity.KST.Spectra.KanSequence.signedLoopStructureReverse,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,（補助）円の交換と符号,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,一致,mid,Kan 列の loop 構造比較の三角形
+b5-038,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocallySmall.sliceOver_fiber_hasSmallKanModel,C 単体集合と ∞ 圏/サイズの条件,型に核,局所小さい ∞ 圏,C 単体集合と ∞ 圏/サイズの条件,C 単体集合と ∞ 圏/結とスライス,一致,mid,局所小さい ∞ 圏の slice 射影の fiber は小さい
+b5-039,SerrePositivity.cochainTensorCyclicSum_eigenK0Class,A 可換代数と数論幾何/完全複体と K₀,型に核,台つき K₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,台つき K₀ の巡回和テンソルの類
+b5-040,SerrePositivity.KST.ProExcision.IsProZero.of_levelwiseIso,H K 理論/pro 切除の塔,型に核,塔と pro 同型・pro 零,H K 理論/pro 切除の塔,,一致,high,pro 零の段ごと同型による移送
+b5-041,SerrePositivity.Almost.IsAlmostZero.iff_smul_eq_zero,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,almost zero と almost 加群の圏,A 可換代数と数論幾何/ほとんど数学とねじれ,,一致,high,almost zero の言い換え
+b5-042,SerrePositivity.perfectPolynomialStage_step,A 可換代数と数論幾何/Frobenius の順極限,型に核,（読んで移した定義）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/Frobenius の順極限,第二候補と一致,mid,p 冪根つき多項式環の段の射の両立
+b5-043,SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomFunctor,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,Ω スペクトルと Kan 列,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,,一致,high,スペクトルの段ごとの点つき Hom 図式
+b5-044,SerrePositivity.Asymptotic.paperRankBetti_hasFiniteSupport,A 可換代数と数論幾何/漸近的なランク,型に核,台つき部分圏,A 可換代数と数論幾何/漸近的なランク,,一致,high,ランク商の Betti 数の有限台
+b5-045,SerrePositivity.BhattScholze.Semiperfectoid.exists_prismCompletedTensor_relationResidue_faithful,A 可換代数と数論幾何/プリズム,型に核,向き付きプリズム,A 可換代数と数論幾何/プリズム,A 可換代数と数論幾何/プリズマティックコホモロジー,一致,mid,prism の完備テンソルの関係商剰余の完全忠実平坦な単位
+b5-046,SerrePositivity.BhattScholze.Prismatic.completedFreeDelta_generator_regular,A 可換代数と数論幾何/プリズマティックコホモロジー,型に核,プリズマティック包絡と完備自由 δ 環,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/プリズム,一致,high,完備自由 δ 環で prism の生成元が正則
+b5-047,SerrePositivity.KST.Descent.mixedCech_isPullback,H K 理論/降下,型に核,（読んで移した定義）,A 可換代数と数論幾何/Čech 複体と被覆,H K 理論/降下,第二候補と一致,mid,一般の圏の混合二重 Čech 脈体の段が引き戻し
+b5-048,SerrePositivity.EInfinity.PowerOperation.powerOperationCyclicGenerator_generates,F オペラドと E∞/冪作用,型に核,巡回部分群と BE の解像度（May の設定）,F オペラドと E∞/冪作用,,一致,high,巡回群の生成元
+b5-049,SerrePositivity.IsSystemOfParameters.map_aut,A 可換代数と数論幾何/交点重複度と χ,型に核,パラメータ系,A 可換代数と数論幾何/交点重複度と χ,,一致,high,パラメータ系の自己同型による保存
+b5-050,SerrePositivity.KST.SConstruction.lastVertexInvertible,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,（補助）四角形の辺・対角とホモトピー圏への読み替え,C 単体集合と ∞ 圏/関手単体集合と同値,H K 理論/S 構成と K スペクトル,不一致,mid,正方形 frame の三角形比較の辺の可逆性
+b5-051,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.HasSmallSimplexFibers.tensor,C 単体集合と ∞ 圏/サイズの条件,型に核,ファイバーが小さい射,C 単体集合と ∞ 圏/サイズの条件,,一致,high,ファイバーが小さい射は積で保たれる
+b5-052,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomotopyInverseTransportCounit,C 単体集合と ∞ 圏/準圏（基本）,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/関手単体集合と同値,C 単体集合と ∞ 圏/単体集合（基本）,不一致,mid,関手のホモトピーの合成（ホモトピー逆の移送）
+b5-053,SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.identityColumn_arrow_heq_id,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,（まだ読んでいない定義）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,,一致,high,zigzag の恒等列
+b5-054,SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization.oldFrame_eq,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,スペクトルの写像空間と Sp,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,C 単体集合と ∞ 圏/極限と余極限,一致,low,Sp の中の正方形 frame の正規化
+b5-055,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.repeatPairFiberMap_surjective,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,（補助）切断公式の微分両立・合成則の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,全射語の反復位置対と区切りの対応
+b5-056,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeBoundaryRhsAC_differential,B 複体と dg 圏/dg 加群,型に核,写像錐,B 複体と dg 圏/dg 加群,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,一致,mid,dg 加群の cone の境界の Hom 複体の微分
+b5-057,SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableSquareTriangle_bottomEdge,C 単体集合と ∞ 圏/極限と余極限,型に核,引き戻し・押し出しの四角形,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/極限と余極限,第二候補と一致,high,Δ1×Δ1 の三角形の面は下辺
+b5-058,SerrePositivity.InfinityCategories.Sheaves.representableElementsCone_sieve,C 単体集合と ∞ 圏/∞ 層,型に核,層条件（篩の上の制限錐）,C 単体集合と ∞ 圏/∞ 層,,一致,high,表現可能な錐の篩への制限
+b5-059,SerrePositivity.SymmetricSequence.freeAt,G スペクトル/対称列,核,自由対称列と誘導の商表示,G スペクトル/対称列,,一致,high,自由対称列の関手
+b5-060,SerrePositivity.SimplicialModelInputs.legacyOrdinaryCategory,G スペクトル/対称スペクトル,型に核,対称スペクトルの定義・段・構造射,G スペクトル/対称スペクトル,Z 圏論一般/豊穣圏,一致,high,対称スペクトルの単体的豊穣の instance
+b5-061,SerrePositivity.EInfinity.BarrattEccles.simplicialArityMap,F オペラドと E∞/Barratt–Eccles と全射オペラド,核,（まだ読んでいない定義）,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,BE の arity 移送
+b5-062,SerrePositivity.localizationComparison_tensorMap_bijective,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,局所化,A 可換代数と数論幾何/環と加群（その他）,,一致,high,局所化とテンソルの全単射
+b5-063,SerrePositivity.AlgebraicGeometry.projectiveLaurentChartMap_denominator,A 可換代数と数論幾何/blowup と射影スキーム,型に核,Laurent 単項式による標準開の表示,A 可換代数と数論幾何/blowup と射影スキーム,,一致,high,射影チャートの Laurent 単項式表示
+b5-064,SerrePositivity.AlgebraicGeometry.algebraCechEqualizer_primeCast,A 可換代数と数論幾何/Čech 複体と被覆,型に核,全タプル Čech 複体（有限交叉の係数図式）,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/blowup と射影スキーム,一致,mid,全タプル Čech の適合切断代数で p=0
+b5-065,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.fixedApexPointedConeDiagramFiberIso,C 単体集合と ∞ 圏/写像空間,型に核,錐の関手空間と太い slice,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/写像空間,第二候補と一致,mid,頂点固定の錐の空間の fiber の交換
+b5-066,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.postnikovCellImageToSecond,H K 理論/局所化不変量：Postnikov と平方零拡大,型に核,dg 代数の胞体分解,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,high,dg 代数の胞体分解の増大の合成
+b5-067,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCanonicalCoefficientDomainIso,B 複体と dg 圏/双加群とテンソル,型に核,dg 双加群（対象・値・閉零圏）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,C 単体集合と ∞ 圏/写像空間,不一致,mid,貼り合わせの係数と pinched 写像空間の比較
+b5-068,SerrePositivity.HilbertSamuel.coeff_equivPolynomialSelf,A 可換代数と数論幾何/環と加群（その他）,Mathlib の定義,多項式環と冪級数環,A 可換代数と数論幾何/環と加群（その他）,A 可換代数と数論幾何/Hilbert–Samuel と対角線,一致,mid,PolynomialModule R R と多項式環の係数
+b5-069,SerrePositivity.SimplicialModel.HomotopyBinarySquare.outer_one_second,E モデル圏/単体的モデルと anodyne,型に核,anodyne 射の局所化と単体的ホモトピー類,C 単体集合と ∞ 圏/単体集合（基本）,E モデル圏/単体的モデルと anodyne,第二候補と一致,mid,T×Δ1×Δ1 の端点包含と射影
+b5-070,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Algebra.commutativeBinary_ofMonoid,F オペラドと E∞/dg オペラドと代数,型に核,オペラド代数と余代数,F オペラドと E∞/dg オペラドと代数,Z 圏論一般/モノイダル圏,一致,high,可換モノイドから得る可換オペラド代数の二項演算
+b5-071,SerrePositivity.InfinityCategories.Models.EInfinity.DGOperads.Operad.Hadamard.separate_swap,Z 圏論一般/モノイダル圏,型の定義の概念,（その他）,Z 圏論一般/モノイダル圏,F オペラドと E∞/dg オペラドと代数,一致,mid,テンソルの入れ替え（tensorμ）と braiding の整合
+b5-072,SerrePositivity.KST.LocalizingInvariants.MonoidPullback.diagramMap_comp,Z 圏論一般/モノイダル圏,型の定義の概念,（その他）,Z 圏論一般/モノイダル圏,H K 理論/局所化不変量：Postnikov と平方零拡大,一致,mid,モノイド対象の引き戻しの関手性
+b5-073,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorOverPre_trivialKanFibration_of_cocartesian,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,相対関手空間と cocartesian 切断,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/関手単体集合と同値,一致,high,cocartesian ファイブレーションへの相対関手空間の制限が自明 Kan
+b5-074,SerrePositivity.KST.Descent.SquareMayerVietoris.comparison,H K 理論/降下,型に核,Mayer–Vietoris 型の長完全列,H K 理論/降下,,一致,high,正方形の Mayer–Vietoris 長完全列の比較
+b5-075,SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.productSquare_top,H K 理論/局所化不変量：lax 引き戻しと双加群,型に核,lax 引き戻し（安定 ∞ 圏）と射影・包含,H K 理論/局所化不変量：lax 引き戻しと双加群,C 単体集合と ∞ 圏/極限と余極限,一致,mid,lax 商の引き戻し入力の正方形の上辺
+b5-076,SerrePositivity.KST.Comparison.coprodMap_localized_isIso,E モデル圏/単体的モデルと anodyne,型に核,anodyne 射の局所化と単体的ホモトピー類,E モデル圏/単体的モデルと anodyne,C 単体集合と ∞ 圏/単体集合（基本）,一致,high,anodyne 局所化で可逆な射の余積
+b5-077,SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiResidueAlgEquiv,A 可換代数と数論幾何/導来完備化,型に核,"完備化の H⁰ の環（主元・二座標・(p,d)）",A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/分冪包絡とクリスタリン,不一致,high,冪根 prism の完備化剰余の代数同型
+b5-078,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.IntervalCuts.sum_repeatPair_factorBoundary,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,（補助）切断公式の微分両立・合成則の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,反復位置対の因子境界和
+b5-079,SerrePositivity.BhattScholze.Prismatic.affineBigCechTerm_completelyFlat,A 可換代数と数論幾何/プリズム,型に核,（読んで移した定義）,A 可換代数と数論幾何/プリズマティックコホモロジー,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,不一致,high,Čech–Alexander の affine 項の完全平坦性
+b5-080,SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.map,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,非退化単体・骨格・切り詰め・細分,C 単体集合と ∞ 圏/単体集合（基本）,,一致,high,骨格への射の制限
+b5-081,SerrePositivity.DiagramModel.FrameWeightRealization.zeroWeightCocone_post,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,frame と重みによる実現,E モデル圏/図式のモデル構造とホモトピー余極限,,一致,high,frame の重み実現と余錐の後合成
+b5-082,SerrePositivity.koszulModuleFunctor_bounded,A 可換代数と数論幾何/Koszul 複体,型に核,Koszul 複体（反復錐による定義）,A 可換代数と数論幾何/Koszul 複体,,一致,high,Koszul 複体の有界性
+b5-083,SerrePositivity.HomotopyFunctionComplex.ResolutionFrameRows.rowAugmentation_trivial,E モデル圏/ホモトピー関数複体と分解,型に核,余単体的分解と frame,E モデル圏/ホモトピー関数複体と分解,E モデル圏/止めた経路：任意のモデル圏への一般化,一致,mid,分解の frame の行の増大は自明ファイブレーション（中断経路のファイル）
+b5-084,SerrePositivity.InfinityCategories.Sheaves.fixedSetYoneda_nativeIso,C 単体集合と ∞ 圏/∞ 層,型に核,集合値前層の離散埋め込みと Yoneda,C 単体集合と ∞ 圏/∞ 層,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,一致,mid,集合値前層の離散埋め込みと Yoneda の比較
+b5-085,SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedComposition_target_parameter,Z 圏論一般/豊穣圏,Mathlib の定義,（Mathlib の定義だけの主張）,Z 圏論一般/豊穣圏,,一致,high,豊穣合成と後合成
+b5-086,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.pointedReverseKanCompositionTransport_parametrizedIso,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,ファイバーと共変輸送,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,一致,mid,pointed space の普遍輸送との関手同型
+b5-087,SerrePositivity.SymmetricSpectrum.mappingSpaceSimplicialCategory_hom,G スペクトル/対称スペクトル,型に核,写像対象（豊穣 Hom）,G スペクトル/対称スペクトル,,一致,high,対称スペクトルの写像対象
+b5-088,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.TableReduction.reductionColumn_position,F オペラドと E∞/Barratt–Eccles と全射オペラド,型に核,（補助）table reduction の微分保存・合成保存の証明,F オペラドと E∞/Barratt–Eccles と全射オペラド,,一致,high,table reduction の列位置
+b5-089,SerrePositivity.IsAbsolutelyIntegrallyClosed.standardEtale_hasMap_lift,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,絶対整閉,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,,一致,high,絶対整閉局所環での標準エタールの解の持ち上げ
+b5-090,SerrePositivity.SimplicialChains.AlexanderWhitney.cutDegreeEquiv,Z 圏論一般/組合せと順序,Mathlib の定義,有限集合・写像・数え上げ,Z 圏論一般/組合せと順序,B 複体と dg 圏/単体的鎖とシャッフル,一致,mid,Fin(n+1) と次数分割の全単射（AW の添字）
+b5-091,SerrePositivity.KST.LocalizingInvariants.CoherentComposition.tetrahedron,C 単体集合と ∞ 圏/単体的圏と coherent 神経,Mathlib の定義,（Mathlib の定義だけの主張）,C 単体集合と ∞ 圏/単体的圏と coherent 神経,C 単体集合と ∞ 圏/神経,一致,high,coherent 神経の 3 単体（通常の神経から）
+b5-092,SerrePositivity.AlgebraicGeometry.ArcRouteB.frobeniusDirectLimit_primeCast_eq_zero,A 可換代数と数論幾何/Frobenius の順極限,型に核,Frobenius 順極限の環,A 可換代数と数論幾何/Frobenius の順極限,,一致,high,Frobenius 順極限で p=0
+b5-093,SerrePositivity.InfinityCategories.HA.Monads.ordinalVal_eq_of_bottomMerge_comp_pure,Z 圏論一般/組合せと順序,Mathlib の定義,Fin の単調写像と単体圏,Z 圏論一般/組合せと順序,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,一致,mid,Fin の単調写像の値の補題
+b5-094,SerrePositivity.Section2.perfectBaseChangeMap_range,A 可換代数と数論幾何/根の塔,型に核,（補助）塔の perfection への作用,A 可換代数と数論幾何/根の塔,A 可換代数と数論幾何/パーフェクトイド,一致,mid,塔の完全化底変換の像
+b5-095,SerrePositivity.KST.Descent.refinementCechMap_comp,C 単体集合と ∞ 圏/単体集合（基本）,型の定義の概念,（その他）,A 可換代数と数論幾何/Čech 複体と被覆,H K 理論/降下,不一致,mid,一般の圏の Čech 脈体の細分比較の合成
+b5-096,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.scaffoldFiniteOneFiberComparison_ι,C 単体集合と ∞ 圏/極限と余極限,型に核,simplicial replacement と strict な自然変換の空間,C 単体集合と ∞ 圏/ファイブレーションと straightening,,不一致,high,通常の圏の神経の上の fiber 比較
+b5-097,SerrePositivity.karoubi_scalarSupported_retract_image,A 可換代数と数論幾何/台つきの加群と Tor,型に核,スカラーで支持される対象,A 可換代数と数論幾何/台つきの加群と Tor,A 可換代数と数論幾何/漸近的なランク,一致,high,スカラーで支持される対象の冪等完備化
+b5-098,SerrePositivity.DifferentialGraded.moduleShiftInElement,B 複体と dg 圏/dg 加群,型に核,Hom 複体（豊穣 end）,B 複体と dg 圏/dg 加群,,一致,high,dg 加群のシフトへの包含元
+b5-099,SerrePositivity.SymmetricSequence.freeInductionFamily,G スペクトル/対称列,型に核,自由対称列と誘導の商表示,G スペクトル/対称列,,一致,high,自由対称列の誘導図式の余錐
+b5-100,SerrePositivity.BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_aic_finiteComparison_excision,A 可換代数と数論幾何/パーフェクトイド,型に核,（読んで移した定義）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/ほとんど数学とねじれ,一致,mid,パーフェクトイド化のイデアルの冪ねじれ Tor 入力
+b5-101,SerrePositivity.HomotopyFunctionComplex.SmallHomRealization.frameIso,Z 圏論一般/圏・関手・極限,型の定義の概念,（その他）,E モデル圏/ホモトピー関数複体と分解,E モデル圏/図式のモデル構造とホモトピー余極限,不一致,mid,小さい Hom 模型の frame の復元
+b5-102,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.weightedTotalBoundedEvaluation_assembly,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,通常の圏の上のファイブレーション（weighted nerve と strict transport）,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,一致,mid,weighted nerve の全空間の余極限への評価（Ind 用）
+b5-103,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.UnitCommaFiberSquare.compositionSquare,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,C 単体集合と ∞ 圏/関手単体集合と同値,一致,mid,随伴の単位 comma fiber の合成正方形
+b5-104,SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingKernelHomModuleParam,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,型に核,dg 貼り合わせ圏（対象と Hom 複体）,D 安定 ∞ 圏と導来 ∞ 圏/dg の貼り合わせ,B 複体と dg 圏/双加群とテンソル,一致,mid,貼り合わせの kernel Hom 加群のパラメータ族
+b5-105,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.pointedRightIntervalEvaluate,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,型に核,基点付き空間と普遍左ファイブレーション,C 単体集合と ∞ 圏/空間・Cat∞・前層・Ind,C 単体集合と ∞ 圏/ファイブレーションと straightening,一致,mid,pointed space の射影の fiber への評価
+b5-106,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.normalizedPullbackProjection_naturality,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,型に核,モデル圏の局所化との比較（三本矢と frame）,C 単体集合と ∞ 圏/局所化（Dwyer–Kan）,Z 圏論一般/圏・関手・極限,一致,mid,局所化（Kerodon 6.3）の端点正規化の自然性
+b5-107,SerrePositivity.KST.LocalizingInvariants.TowerDiagram.inverse_left_eventually_unique,H K 理論/pro 切除の塔,型に核,塔と pro 同型・pro 零,H K 理論/局所化不変量：Postnikov と平方零拡大,H K 理論/pro 切除の塔,第二候補と一致,mid,塔の pro 同型の逆の最終的一意性
+b5-108,SerrePositivity.KST.DerivedGeometry.kInjectiveLocalizerMorphism_arrow_hasRightResolutions,B 複体と dg 圏/三角圏,型に核,（読んで移した定義）,B 複体と dg 圏/複体,Z 圏論一般/圏・関手・極限,不一致,mid,K-injective による右分解（Grothendieck Abel 圏の非有界導来）
+b5-109,SerrePositivity.KST.SConstruction.rawComparisonRectificationMap,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,スペクトルの写像空間と Sp,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,H K 理論/S 構成と K スペクトル,一致,mid,スペクトルの raw 写像空間への円柱
+b5-110,SerrePositivity.intervalRing_map_eq_zero,A 可換代数と数論幾何/付値と区間,型に核,付値環のスペクトルの区間の環,A 可換代数と数論幾何/付値と区間,,一致,high,区間環への写像の零化
+b5-111,SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegenerateBoundary.boundary_degeneracy,E モデル圏/ホモトピー関数複体と分解,型に核,（補助）bar の厳密化：選択の圏と自由図式の延長,E モデル圏/ホモトピー関数複体と分解,E モデル圏/止めた経路：任意のモデル圏への一般化,一致,mid,bar の自由分解の境界と退化（中断経路のファイル）
+b5-112,SerrePositivity.KST.DerivedBlowup.exteriorCochainZeroIso,A 可換代数と数論幾何/Koszul 複体,型に核,外積による Koszul 複体,A 可換代数と数論幾何/Koszul 複体,,一致,high,外積 Koszul 複体の次数 0
+b5-113,SerrePositivity.AlgebraicGeometry.OpenAtlasModelData.transitionCandidate,A 可換代数と数論幾何/スキーム,型に核,（読んで移した定義）,A 可換代数と数論幾何/スキーム,A 可換代数と数論幾何/blowup と射影スキーム,一致,mid,開 atlas の貼り合わせ入力
+b5-114,SerrePositivity.KST.SConstruction.max_assoc_002,C 単体集合と ∞ 圏/dg 神経,型に核,（読んで移した定義）,B 複体と dg 圏/複体,C 単体集合と ∞ 圏/necklace と立方体（組合せ）,不一致,low,鎖区間の三重テンソル上の max connection の結合則
+b5-115,SerrePositivity.GeneralSymmetricSpectrum.freeAtLevelIsoBlockQuotient_generator,G スペクトル/対称スペクトル,型に核,自由スペクトル F_n,G スペクトル/対称スペクトル,G スペクトル/対称列,一致,high,自由スペクトルの段の商表示の生成元
+b5-116,SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopy_naturality,B 複体と dg 圏/単体的鎖とシャッフル,型に核,整数加群・単体的加群・鎖複体のテンソル,B 複体と dg 圏/単体的鎖とシャッフル,B 複体と dg 圏/複体,一致,mid,整数鎖複体のテンソルのホモトピーの自然性
+b5-117,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_right_id_initialHorn_hasLift_of_mixed,C 単体集合と ∞ 圏/結とスライス,型に核,結の構成,C 単体集合と ∞ 圏/結とスライス,,一致,high,joinMap に沿うホーンの充填
+b5-118,SerrePositivity.KST.Descent.weightedCechFubiniIso_unit,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,重みつき錐の空間,E モデル圏/図式のモデル構造とホモトピー余極限,H K 理論/降下,一致,mid,重みつき錐の随伴と Čech の Fubini 同型の単位
+b5-119,SerrePositivity.KST.DerivedBlowup.finiteOverlapChartMap_comp,H K 理論/導来 blowup,型に核,チャートの重なりの環,H K 理論/導来 blowup,,一致,high,有限重なりのチャート環の射の合成
+b5-120,SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyWeight.coneComparisonArrow_isIso,E モデル圏/図式のモデル構造とホモトピー余極限,型に核,重みつき錐の空間,E モデル圏/図式のモデル構造とホモトピー余極限,E モデル圏/単体的モデルと anodyne,一致,high,Kan 錐の空間の比較が同型
+b5-121,SerrePositivity.KST.Descent.affineFiniteTypeBaseChangeAction,H K 理論/降下,型に核,基底上有限型のスキームの圏と引き戻し,H K 理論/降下,,一致,high,有限型のアフィン射の底変換への群作用
+b5-122,SerrePositivity.KST.Spectra.BoundaryLift.pointedFiberGroupEquiv_mk,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,型に核,Kan ファイブレーションの長完全列と lim¹,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,一致,mid,fiber のホモトピー群の連結準同型の代表
+b5-123,SerrePositivity.InfinityCategories.HA.Monads.WalkingAdjunctionFactorization.residual_square,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,型に核,Adj の各次数の自由性（原子的な射・水平分解・切れ目）,C 単体集合と ∞ 圏/自由随伴（HA §4.7 の組合せ論）,,一致,high,walking adjunction の因子分解の残りの正方形
+b5-124,SerrePositivity.BhattScholze.Andre.deltaRootPowerSubsetModP_remaining_isSMulRegular,A 可換代数と数論幾何/根の添加（André）,型に核,δ 根関係,A 可換代数と数論幾何/根の添加（André）,,一致,high,δ 根関係の正則性
+b5-125,SerrePositivity.DifferentialGraded.DGQuotient.localPerfectPaperSequenceComparison,B 複体と dg 圏/dg 商と cell 分解,型に核,dg 商と Verdier 商の比較,B 複体と dg 圏/dg 商と cell 分解,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,mid,dg 商と Verdier 商（tria・Karoubi）の比較
+b5-126,SerrePositivity.two_cohomology_scalar_pow_eq_zero_of_iso_homotopyLimit,A 可換代数と数論幾何/上に有界な導来圏と導来底変換,型の定義をたどる,有界上導来圏の導来テンソルと底変換,A 可換代数と数論幾何/導来完備化,B 複体と dg 圏/複体,不一致,mid,塔のホモトピー極限と同型な対象のスカラー冪の零化
+b5-127,SerrePositivity.DifferentialGraded.BimoduleTensor.composeMapComponent_rightAction_element,B 複体と dg 圏/双加群とテンソル,型に核,双加群の合成（相対テンソル）,B 複体と dg 圏/双加群とテンソル,,一致,high,双加群の合成の射と右作用
+b5-128,SerrePositivity.IsPBasis.cofiniteCoefficientBaseChangeCompletedDifferentialEquiv,A 可換代数と数論幾何/p 基底,型に核,p 基底,A 可換代数と数論幾何/p 基底,,一致,high,p 基底の補有限係数の完備微分
+b5-129,SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeCompact_presentation_section,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,compact 対象による表示と濃度の取り替え,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,,一致,high,compact な射の表示の一段での分裂
+b5-130,SerrePositivity.InfinityCategories.Models.EInfinity.BarrattEccles.SimplexCuts.tensorCoInsertionAction_vector_apply,F オペラドと E∞/dg オペラドと代数,型に核,オペラド代数と余代数,F オペラドと E∞/Barratt–Eccles と全射オペラド,B 複体と dg 圏/単体的鎖とシャッフル,不一致,mid,単体的鎖への余代入作用の評価
+b5-131,SerrePositivity.BhattScholze.Almost.perfectoidIdeal_conormal_smul_bijective,A 可換代数と数論幾何/パーフェクトイド,型に核,（読んで移した定義）,A 可換代数と数論幾何/パーフェクトイド,A 可換代数と数論幾何/ほとんど数学とねじれ,一致,mid,パーフェクトイド化の核の conormal への p 作用
+b5-132,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroSimplexUnique,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,型に核,安定 ∞ 圏の定義と安定 ∞ 圏の ∞ 圏,C 単体集合と ∞ 圏/単体集合（基本）,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,第二候補と一致,mid,零圏（終単体集合）の単体は一意
+b5-133,SerrePositivity.G0WithSupport.coefficientLocalize_away_kernel_range,A 可換代数と数論幾何/完全複体と K₀,型に核,台つき G₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,台つき G₀ の局所化完全列
+b5-134,SerrePositivity.K0WithSupport.cup,A 可換代数と数論幾何/完全複体と K₀,核,台つき K₀,A 可換代数と数論幾何/完全複体と K₀,,一致,high,台つき K₀ の cup 積
+b5-135,SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatLeftZigzag_hom,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,C 単体集合と ∞ 圏/関手単体集合と同値,一致,high,h Fun の zigzag（三角恒等式）
+b5-136,SerrePositivity.SimplicialModel.LocalizedRelativeChoice.boundary_rlp,E モデル圏/単体的モデルと anodyne,型に核,（読んで移した定義）,E モデル圏/単体的モデルと anodyne,E モデル圏/止めた経路：任意のモデル圏への一般化,一致,mid,相対延長の空間の終射が境界包含に rlp（中断経路のファイル）
+b5-137,SerrePositivity.DifferentialGraded.Morita.kernelHom_value,B 複体と dg 圏/双加群とテンソル,型に核,dg 双加群（対象・値・閉零圏）,B 複体と dg 圏/双加群とテンソル,B 複体と dg 圏/導来圏と Perf（dg 加群）,一致,mid,kernel の Hom 関手の値
+b5-138,SerrePositivity.Asymptotic.lengthFamily_isLittleO_iff,A 可換代数と数論幾何/ほとんど数学とねじれ,型に核,イデアルの冪ねじれ,A 可換代数と数論幾何/漸近的なランク,A 可換代数と数論幾何/正規化長さ,不一致,mid,短完全列の長さの o(s) 条件
+b5-139,SerrePositivity.KST.ProExcision.parameterQuotientComparison,H K 理論/pro 切除の塔,型に核,塔と pro 同型・pro 零,H K 理論/pro 切除の塔,A 可換代数と数論幾何/環と加群（その他）,一致,mid,パラメータ冪商の塔のレベル射
+b5-140,SerrePositivity.Reedy.latchingRestrictionPushoutMap_isIso,E モデル圏/Reedy,型に核,latching・matching の添字圏と対象,E モデル圏/Reedy,,一致,high,latching 制限の pushout 射は同型
+b5-141,SerrePositivity.KST.Fibration.Relative.connectiveFibrationSpectrumCategory,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,型に核,Ω スペクトルと Kan 列,G スペクトル/Ω スペクトル（Bousfield–Friedlander）,Z 圏論一般/豊穣圏,一致,high,Ω スペクトルの単体的豊穣 instance
+b5-142,SerrePositivity.heart_hom_shift_neg_eq_zero,B 複体と dg 圏/三角圏,Mathlib の定義,（Mathlib の定義だけの主張）,B 複体と dg 圏/三角圏,Z 圏論一般/圏・関手・極限,一致,high,t 構造の heart の負シフトへの射は零
+b5-143,SerrePositivity.InfinityCategories.HA.StableInfinityCategories.qcatAdjunctionOppositeHomEquiv_spec,C 単体集合と ∞ 圏/随伴（∞ 圏）,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/随伴（∞ 圏）,,一致,high,∞ 圏の随伴の反対
+b5-144,SerrePositivity.KST.DerivedBlowup.finiteOverlapExceptionalDerivedRestrictionNatTrans_app_Q_map,H K 理論/導来 blowup,型に核,図式加群の局所評価・導来制限・係数拡大,H K 理論/導来 blowup,,一致,high,有限重なりの導来制限の比較
+b5-145,SerrePositivity.BhattScholze.deltaAdjoinDivisionResidueSupEquiv_coeff,A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,型に核,"δ 除算のねじれ除去・(p,d) 剰余・完備化",A 可換代数と数論幾何/δ 除算（prismatic envelope の部品）,,一致,high,δ 除算の剰余同型の係数
+b5-146,SerrePositivity.KST.Fibration.quotientSKernelZeroFunctorParameter,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,型に核,Verdier 列（安定 ∞ 圏）,H K 理論/S 構成と K スペクトル,D 安定 ∞ 圏と導来 ∞ 圏/Verdier 列,第二候補と一致,mid,Verdier 列の合成が零な関手の S• 用パラメータ
+b5-147,SerrePositivity.intersectionVanishing_of_residue_two_ne_zero,A 可換代数と数論幾何/交点重複度と χ,型に核,Serre の交点重複度 χ,A 可換代数と数論幾何/交点重複度と χ,,一致,high,χ の消滅
+b5-148,SerrePositivity.SpectrumStabilization.localObjects_iff_replacement_omega,E モデル圏/Reedy,型に核,Reedy 余ファイブラント解像（cosimplicial frame）,G スペクトル/対称スペクトル,E モデル圏/局所化と射の類（通常の圏）,不一致,mid,安定化の局所対象と Ω スペクトル
+b5-149,SerrePositivity.InfinityCategories.Project.FilteredExchange.fiberwiseFunctorFiberIso_hom_ι,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,ファイバーと共変輸送,C 単体集合と ∞ 圏/関手単体集合と同値,C 単体集合と ∞ 圏/ファイブレーションと straightening,第二候補と一致,high,fiber ごとの関手空間の fiber
+b5-150,SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleConeBoundaryCells_compatible,B 複体と dg 圏/dg 加群,型に核,閉次数零の加群圏と評価,D 安定 ∞ 圏と導来 ∞ 圏/導来 ∞ 圏,D 安定 ∞ 圏と導来 ∞ 圏/安定 ∞ 圏,不一致,mid,dg 加群の cone の押し出し性の join のセルの整合
+b5-151,SerrePositivity.AlgebraicGeometry.ArcRouteB.probeChangeToTermIso,A 可換代数と数論幾何/付値と区間,型に核,（補助）arc 被覆の付値環の代表系,A 可換代数と数論幾何/Čech 複体と被覆,A 可換代数と数論幾何/付値と区間,第二候補と一致,mid,付値 probe の Čech 項の底変換比較
+b5-152,SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.mapTransportEndpointHomotopy_projection,C 単体集合と ∞ 圏/ファイブレーションと straightening,型に核,（読んで移した定義）,C 単体集合と ∞ 圏/ファイブレーションと straightening,C 単体集合と ∞ 圏/Kan 複体とホモトピー群,一致,mid,fiber の輸送の円柱の射影
+b5-153,SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_completedAlgebraRingDirectLimit,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,型に核,I 完全平坦・I 完全忠実平坦,A 可換代数と数論幾何/根の添加（André）,A 可換代数と数論幾何/完備平坦と整閉（環の性質）,第二候補と一致,mid,perfectoid 代数の有向系の完備余極限の完全忠実平坦性
+b5-154,SerrePositivity.DifferentialGraded.ScalarExtension.complexCounit_one,B 複体と dg 圏/係数の取り替え,型に核,複体の係数拡大と係数制限,B 複体と dg 圏/係数の取り替え,,一致,high,複体の係数拡大の余単位
+b5-155,SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.square_transpose_right,C 単体集合と ∞ 圏/極限と余極限,型に核,引き戻し・押し出しの四角形,C 単体集合と ∞ 圏/単体集合（基本）,C 単体集合と ∞ 圏/準圏（基本）,不一致,high,Δ1×Δ1 の正方形の転置の辺
+b5-156,SerrePositivity.SimplicialModel.CellularNaturalComparison.instPreservesColimitsOfSizeSSet_serrePositivity,C 単体集合と ∞ 圏/単体集合（基本）,Mathlib の定義,極限・余極限・要素の圏,Z 圏論一般/圏・関手・極限,E モデル圏/単体的モデルと anodyne,不一致,mid,SSet の自己関手の余極限保存の instance
+b5-157,SerrePositivity.KST.LocalizingInvariants.DGAlgebra.nativeCellChosenRightInfinityKanFunctor,H K 理論/局所化不変量：Postnikov と平方零拡大,核,dg 代数の写像空間と準同型の局所化,H K 理論/局所化不変量：Postnikov と平方零拡大,,一致,mid,dg 代数の写像空間の Kan 値関手
+b5-158,SerrePositivity.InfinityCategories.Project.FilteredExchange.relativePathValuePoint,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,型に核,（補助）path による引き戻しの模型,C 単体集合と ∞ 圏/極限と余極限,C 単体集合と ∞ 圏/表示可能 ∞ 圏とフィルター,第二候補と一致,low,単体集合の区間引き戻し（ホモトピー引き戻し）への持ち上げ
+b5-159,SerrePositivity.ComplexLimits.simplexData_equation_of_agreementOn,C 単体集合と ∞ 圏/dg 神経,型に核,dg 神経の単体と単体的構造,C 単体集合と ∞ 圏/dg 神経,B 複体と dg 圏/複体,一致,mid,dg 神経の単体データの方程式
