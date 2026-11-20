@@ -30,7 +30,7 @@ def cotensorPre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 @[reassoc]
 lemma internalHomCotensorIso_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     (E : SymmetricSpectrum.{u}) :
-    internalHomPre ((freeAt 0).map f) E ≫ (internalHomCotensorIso X E).hom =
+    MonoidalModuleInternalHom.preMap sphereSequence.{u} ((freeAt 0).map f) E ≫ (internalHomCotensorIso X E).hom =
       (internalHomCotensorIso Y E).hom ≫ cotensorPre f E := by
   have h := congrArg (fun k => k.app E) (internalHomCotensorBifunctorIso.hom.naturality f.op)
   exact h
@@ -40,11 +40,7 @@ lemma cotensorCurry_pre {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     {A E : SymmetricSpectrum.{u}} (g : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj Y) A ⟶ E) :
     cotensorCurry X (((freeAt 0).map f ▷ A) ≫ g) =
       cotensorCurry Y g ≫ cotensorPre f E := by
-  have h := internalHomCurry_pre ((freeAt 0).map f) g
-  have ht : MonoidalBalancedTensor.moduleMap sphereSequence.{u} ((freeAt 0).map f) (𝟙 A) =
-      (freeAt 0).map f ▷ A :=
-    tensorHom_id ((freeAt 0).map f) A
-  rw [ht] at h
+  have h := MonoidalModuleInternalHom.curryModule_preMap sphereSequence.{u} ((freeAt 0).map f) g
   rw [cotensorCurry_formula, cotensorCurry_formula]
   erw [← h, Category.assoc, internalHomCotensorIso_pre]
   exact (Category.assoc _ _ _).symm

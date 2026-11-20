@@ -27,18 +27,14 @@ public import SerrePositivity.Spectra.General.FreeLevelQuotient
 public import SerrePositivity.Spectra.General.TensorFreeAtSum
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHom
-public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
+public import SerrePositivity.Spectra.General.ShiftedHomZero
+public import SerrePositivity.Spectra.General.TensorClosed
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFree
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreeNaturality
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreeLevels
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreePermutation
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShift
+public import SerrePositivity.Spectra.General.FreeHomLevels
+public import SerrePositivity.Spectra.General.ShiftedHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftStructure
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftSuspension
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftNaturality
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftZero
+public import SerrePositivity.Spectra.General.ShiftedHomNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.Cotensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorAdjunction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLeftUncurry
@@ -78,7 +74,6 @@ public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleAss
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 
 /-!
 # スペクトルの具体的基盤の入口

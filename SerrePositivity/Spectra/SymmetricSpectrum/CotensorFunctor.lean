@@ -22,7 +22,7 @@ open SerrePositivity.PointedSimplicialSet
 /-- cotensorの値域スペクトルに関する関手。 -/
 def cotensorFunctor (X : PointedSimplicialSet.{u}) :
     SymmetricSpectrum.{u} ⥤ SymmetricSpectrum.{u} :=
-  FunctorTransport.transport (internalHomFunctor ((freeAt 0).obj X))
+  FunctorTransport.transport (GeneralSymmetricSpectrum.internalHomFunctor ((freeAt 0).obj X))
     (cotensor X) (internalHomCotensorIso X)
 
 /-- cotensor関手の対象は構成済みのcotensorスペクトル。 -/
@@ -31,8 +31,8 @@ lemma cotensorFunctor_obj (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.
 
 /-- F_0からの内部Homとの比較は値域に関する自然同型。 -/
 def internalHomCotensorNatIso (X : PointedSimplicialSet.{u}) :
-    internalHomFunctor ((freeAt 0).obj X) ≅ cotensorFunctor X :=
-  FunctorTransport.iso (internalHomFunctor ((freeAt 0).obj X))
+    GeneralSymmetricSpectrum.internalHomFunctor ((freeAt 0).obj X) ≅ cotensorFunctor X :=
+  FunctorTransport.iso (GeneralSymmetricSpectrum.internalHomFunctor ((freeAt 0).obj X))
     (cotensor X) (internalHomCotensorIso X)
 
 /-- 自然比較の順成分は構成済みのスペクトルの同型。 -/
@@ -75,7 +75,7 @@ def cotensorMap {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 lemma cotensorFunctor_map (X : PointedSimplicialSet.{u}) {E F : SymmetricSpectrum.{u}}
     (g : E ⟶ F) :
     (cotensorFunctor X).map g =
-      (internalHomCotensorIso X E).inv ≫ (internalHomFunctor ((freeAt 0).obj X)).map g ≫
+      (internalHomCotensorIso X E).inv ≫ (GeneralSymmetricSpectrum.internalHomFunctor ((freeAt 0).obj X)).map g ≫
         (internalHomCotensorIso X F).hom := rfl
 
 end SerrePositivity.SymmetricSpectrum

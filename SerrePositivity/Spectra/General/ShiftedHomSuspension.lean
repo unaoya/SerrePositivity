@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.General.ShiftedHom
+public import SerrePositivity.Spectra.General.FreeHomLevels
 
 /-! # The actual bonding map of a shifted internal Hom spectrum
 
@@ -84,5 +84,30 @@ lemma shiftedHom_suspensionMap_eq_formula (n q : ℕ) (X : C)
   unfold shiftedHomSuspensionFormula
   rw [MonoidalClosed.uncurry_curry, MonoidalClosed.uncurry_eq]
   exact shiftedHom_suspensionMap_evaluation n q X E
+
+/-- 懸垂の直接公式は第一球面の直接公式を円へ移し、値域の次数を後合成で移した射。 -/
+lemma shiftedHomSuspensionFormula_eq_structureFormula (n q : ℕ)
+    (X : C) (E : GeneralSymmetricSpectrum C K) :
+    shiftedHomSuspensionFormula n q X E =
+      (TensorPowers.oneIso K).inv ▷ (ihom X).obj (level E (n + q)) ≫
+        shiftedHomStructureFormula n 1 q X E ≫
+          (ihom X).map
+            (eqToHom (congrArg (level E) (congrArg (n + ·) (Nat.one_add q)))) := by
+  rw [← shiftedHom_suspensionMap_eq_formula]
+  unfold suspensionMap
+  rw [shiftedHom_structureMap_eq_formula]
+  erw [eqToHom_map]
+  rfl
+
+/-- F_nからの内部Homの懸垂も、各段の比較と値域の懸垂の直接公式で計算できる。 -/
+lemma internalHomFreeAt_suspensionMap_formula (n q : ℕ) (X : C)
+    (E : GeneralSymmetricSpectrum C K) :
+    suspensionMap (internalHom ((freeAt n).obj X) E) q =
+      K ◁ (internalHomFreeAtLevelIso n q X E).hom ≫
+          shiftedHomSuspensionFormula n q X E ≫ (internalHomFreeAtLevelIso n (q + 1) X E).inv := by
+  apply (cancel_mono (internalHomFreeAtLevelIso n (q + 1) X E).hom).mp
+  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  rw [← shiftedHom_suspensionMap_eq_formula]
+  exact suspensionMap_hom (internalHomShiftIso n X E).hom q
 
 end SerrePositivity.GeneralSymmetricSpectrum

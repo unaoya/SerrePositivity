@@ -21,14 +21,15 @@ open GeneralSymmetricSpectrum (level)
 
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity.PointedSimplicialSet
+open MonoidalModuleInternalHom (freeHomModuleIso)
 
 /-- cotensorの二変数の射は、内部Homの射を全体の比較の順逆で移した射。 -/
 lemma cotensorMap_conjugate {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     {E F : SymmetricSpectrum.{u}} (g : E ⟶ F) :
-    (internalHomCotensorIso Y E).inv ≫ internalHomMap ((freeAt 0).map f) g ≫
+    (internalHomCotensorIso Y E).inv ≫ MonoidalModuleInternalHom.homMap sphereSequence.{u} ((freeAt 0).map f) g ≫
         (internalHomCotensorIso X F).hom = cotensorMap f g := by
   change (internalHomCotensorIso Y E).inv ≫
-      (internalHomPre ((freeAt 0).map f) E ≫ (internalHomFunctor ((freeAt 0).obj X)).map g) ≫
+      (MonoidalModuleInternalHom.preMap sphereSequence.{u} ((freeAt 0).map f) E ≫ (GeneralSymmetricSpectrum.internalHomFunctor ((freeAt 0).obj X)).map g) ≫
         (internalHomCotensorIso X F).hom = _
   simp only [Category.assoc]
   exact FunctorTransport.bimap_conjugate internalHomCotensorBifunctorIso f.op g
@@ -37,7 +38,7 @@ lemma cotensorMap_conjugate {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 lemma internalHomCotensorIso_hom_hom (X : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) :
     (internalHomCotensorIso X E).hom.hom =
-      (internalHomFreeAtIso 0 X E).hom.hom ≫ (homBySequenceCotensorIso X E).hom := rfl
+      (freeHomModuleIso sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E).hom.hom ≫ (homBySequenceCotensorIso X E).hom := rfl
 
 /-- cotensorの基礎射が通常の内部Homの前合成・後合成になるという法則。 -/
 def cotensorMapLaw {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)

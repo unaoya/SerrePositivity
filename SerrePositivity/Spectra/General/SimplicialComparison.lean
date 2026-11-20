@@ -9,7 +9,8 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.General.StructureMaps
 public import SerrePositivity.Spectra.General.FreeLevelQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.StructureMaps
-public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
+public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
+public import SerrePositivity.Spectra.SymmetricSpectrum.Free
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 
 /-! # Compatibility with the existing circle-based simplicial spectra
@@ -31,7 +32,7 @@ lemma simplicial_tensor (E F : SymmetricSpectrum.{u}) :
 
 lemma simplicial_internalHom (E F : SymmetricSpectrum.{u}) :
     internalHom (C := PointedSimplicialSet.{u}) (K := circle) E F =
-      SymmetricSpectrum.internalHom E F := rfl
+      (ihom E).obj F := rfl
 
 lemma simplicial_pointwiseTensor (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     pointwiseTensor (K := circle) X E = pointwiseTensor X E := rfl

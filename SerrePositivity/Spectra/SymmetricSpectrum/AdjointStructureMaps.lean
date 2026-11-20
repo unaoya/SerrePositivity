@@ -26,14 +26,6 @@ def adjointStructureMap (E : SymmetricSpectrum.{u}) (n : ℕ) :
     level E n ⟶ (ihom (circle : PointedSimplicialSet.{u})).obj (level E (n + 1)) :=
   curry (suspensionMap E n)
 
-/-- 随伴表示を逆転置すると、既存の懸垂構造射に戻る。 -/
-lemma uncurry_adjointStructureMap (E : SymmetricSpectrum.{u}) (n : ℕ) :
-    uncurry (adjointStructureMap E n) = suspensionMap E n := uncurry_curry _
-
-/-- 懸垂構造射の逆転置・転置は相互に逆である。 -/
-lemma curry_uncurry_adjointStructureMap (E : SymmetricSpectrum.{u}) (n : ℕ) :
-    curry (uncurry (adjointStructureMap E n)) = adjointStructureMap E n := curry_uncurry _
-
 /-- スペクトル射は構造射の随伴表示とも両立する。 -/
 @[reassoc]
 lemma adjointStructureMap_naturality {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) (n : ℕ) :

@@ -21,7 +21,7 @@ open SerrePositivity.PointedSimplicialSet
 /-- F_0 Xとの球面上のテンソル積はcotensor関手の左随伴。 -/
 def freeZeroTensorCotensorAdjunction (X : PointedSimplicialSet.{u}) :
     tensorLeft ((freeAt 0).obj X) ⊣ cotensorFunctor X :=
-  (sphereTensorInternalHomAdjunction ((freeAt 0).obj X)).ofNatIsoRight
+  (GeneralSymmetricSpectrum.tensorInternalHomAdjunction ((freeAt 0).obj X)).ofNatIsoRight
     (internalHomCotensorNatIso X)
 
 /-- F_0とのテンソル積からの射とcotensorへの射の自然なHom同値。 -/
@@ -42,7 +42,7 @@ def cotensorUncurry (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
 /-- cotensorへの転置は既存の内部Homへの転置と比較の順射の合成。 -/
 lemma cotensorCurry_formula (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
     (f : GeneralSymmetricSpectrum.tensor ((freeAt 0).obj X) A ⟶ E) :
-    cotensorCurry X f = internalHomCurry f ≫ (internalHomCotensorIso X E).hom := by
+    cotensorCurry X f = MonoidalModuleInternalHom.curryModule sphereSequence.{u} _ f ≫ (internalHomCotensorIso X E).hom := by
   unfold cotensorCurry cotensorHomEquiv freeZeroTensorCotensorAdjunction
   erw [Adjunction.homEquiv_ofNatIsoRight_apply, internalHomCotensorNatIso_hom_app]
   erw [MonoidalModuleInternalHom.adjunction_homEquiv]
@@ -51,7 +51,7 @@ lemma cotensorCurry_formula (X : PointedSimplicialSet.{u}) {A E : SymmetricSpect
 /-- cotensorからの逆転置は比較の逆射との合成を既存の内部Homで逆転置する射。 -/
 lemma cotensorUncurry_formula (X : PointedSimplicialSet.{u}) {A E : SymmetricSpectrum.{u}}
     (f : A ⟶ cotensor X E) :
-    cotensorUncurry X f = internalHomUncurry (f ≫ (internalHomCotensorIso X E).inv) := by
+    cotensorUncurry X f = MonoidalModuleInternalHom.uncurryModule sphereSequence.{u} _ (f ≫ (internalHomCotensorIso X E).inv) := by
   unfold cotensorUncurry cotensorHomEquiv freeZeroTensorCotensorAdjunction
   erw [Adjunction.homEquiv_ofNatIsoRight_symm_apply, internalHomCotensorNatIso_inv_app]
   erw [MonoidalModuleInternalHom.adjunction_homEquiv]
@@ -90,7 +90,7 @@ def cotensorEvaluation (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}
 
 /-- cotensorの評価は全体の比較の逆射の逆転置。 -/
 lemma cotensorEvaluation_formula (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
-    cotensorEvaluation X E = internalHomUncurry (internalHomCotensorIso X E).inv := by
+    cotensorEvaluation X E = MonoidalModuleInternalHom.uncurryModule sphereSequence.{u} _ (internalHomCotensorIso X E).inv := by
   unfold cotensorEvaluation
   rw [← Adjunction.homEquiv_symm_id]
   change cotensorUncurry X (𝟙 (cotensor X E)) = _

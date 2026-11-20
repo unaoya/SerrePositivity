@@ -339,3 +339,60 @@ bulk 鍵で対象と利用側 99 モジュールをビルドした。旧型の�
 削除した空ファイルは16本。`FreeMonoidal.lean`、`Tensor.lean`、`TensorAssociator.lean`、`TensorFreeLeft.lean`、`TensorFreePair.lean`、`TensorFreeRight.lean`、`TensorFreeZeroLevels.lean`、`TensorHexagon.lean`、`TensorLeftUnit.lean`、`TensorMonoidal.lean`、`TensorPentagon.lean`、`TensorQuotient.lean`、`TensorRightUnit.lean`、`TensorSymmetric.lean`、`TensorSymmetry.lean`、`TensorTriangle.lean`。
 
 所要時間は約 65 分。bulk 鍵の待ち時間を含む。
+
+## 段 6　内部 Hom
+
+main の `9e8eb98d3` を `7f2e7538b` で取り込んだ。段 2 の「内部 Hom」116件のうち、段 5 で閉構造の登録を削除した後に C に残る115件を対象とした。段 4 で保留した9件は宣言本文と型を照合した。[判定表](../../../research/cleanup-zero-base/spectra/stage6.csv)
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 64 | 89 |
+| 別名 | 1 | 1 |
+| B に一般版を足す | 50 | 25 |
+| C に残す | 0 | 0 |
+
+段 2 の案ではこの範囲の C の削減見込みは 114 件、一般版の追加は 50 件だった。実測では削減 114 件、B への追加 25 件。削除宣言の範囲で数えると、見積もり 766 行に対し実測 775 行。下表の物理行数は import と空行も含む。
+
+自由原変数の加群比較とその自然性は、A の `freeHomModuleIso` と `freeHomModuleIso_naturality` に自由対称列の対象と射を渡した。各段での置換と構造射との両立には、既存の自然性と構造射の補題を使った。B には、スペクトルの自由原変数に対する各段の比較、構造射・懸垂・次数零の式とその自然性を置いた。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 52 → 42 | 350 → 236 | 3,743 → 2,608 |
+| B | 46 → 49 | 361 → 386 | 3,851 → 4,217 |
+| 利用側 | 15 → 15 | 73 → 73 | 1,711 → 1,709 |
+
+円周の場合の二変数内部 Hom は、引数がなく係数列を余テンソルの関手と自然比較に繰り返し渡すため一行の別名とした。転置・逆転置・評価の名前を除き、[随伴成分の展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv) に追記した。
+
+### 利用箇所の前後
+
+余テンソルの全体比較を第 q 段で評価する書き換えでは、B の各段の比較をそのまま使える。合成同型の等式と各段の射の等式を分け、逆転置でも逆射の基礎射の等式を分けて、既定のカーネル上限で検査した。
+
+```diff
+-  rw [internalHomShiftIso_hom_app, shiftedHomCotensorIso_hom_app]
++  rw [shiftedHomCotensorIso_hom_app]
+```
+
+次数零の構造射と比較同型の両立では、一般版から同じ名前を開いて使う。
+
+```lean
+unshiftedHomLevelIso_structureMap
+```
+
+余テンソルへの転置公式では、加群の転置に球面列を渡した。この転置の展開は 1 箇所。
+
+```diff
+-  internalHomCurry f
++  MonoidalModuleInternalHom.curryModule sphereSequence.{u} _ f
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 54 モジュールをビルドした。旧型の例は 115 件で通った。監査・検査 28 本は前後とも 14 本が成功し、既存の失敗 14 本の落ち方を照合した。影響範囲のカーネル宣言は 753 → 582 件。既存の宣言への公理依存の追加は0件で、`sorryAx` に依存する宣言は 9 → 9 件。対応表の対象宣言の名指しは0件。BS17 の検索候補の型はカーネル型で一致した。
+
+削除した空ファイルは10本。`Closed.lean`、`InternalHom.lean`、`InternalHomFree.lean`、`InternalHomFreeLevels.lean`、`InternalHomFreeNaturality.lean`、`InternalHomFreePermutation.lean`、`InternalHomShift.lean`、`InternalHomShiftNaturality.lean`、`InternalHomShiftZero.lean`、`InternalHomUnderlying.lean`。
+
+自由原変数の評価と左自由因子の逆転置は、一般版を旧型にそのまま適用するとカーネルの既定の上限で照合しにくかった。自由比較の順射、転置と評価、逆転置の射影を個別に確認し、元の型をそれぞれ再構成した。段 2 の検査では構造射の転置に関する2つの式を、B と Mathlib の補題で証明した。
+
+余テンソルの変更箇所では、100文字を超える行の linter 警告が残った。
+
+所要は約81分。bulk 鍵の待ち時間を含む。

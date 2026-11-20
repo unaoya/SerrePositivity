@@ -113,11 +113,12 @@ example (E : SymmetricSpectrum.{u}) (q : ℕ) :
 
 -- 構造射の転置は同じ n+1 段の射へ戻り、スペクトル射とも両立する。
 example (E : SymmetricSpectrum.{u}) (n : ℕ) :
-    uncurry (adjointStructureMap E n) = suspensionMap E n := uncurry_adjointStructureMap E n
+    uncurry (adjointStructureMap E n) = suspensionMap E n :=
+  GeneralSymmetricSpectrum.uncurry_adjointStructureMap E n
 
 example (E : SymmetricSpectrum.{u}) (n : ℕ) :
     curry (uncurry (adjointStructureMap E n)) = adjointStructureMap E n :=
-  curry_uncurry_adjointStructureMap E n
+  curry_uncurry _
 
 example {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) (n : ℕ) :
     f.hom.app (FiniteBijection.of n) ≫ adjointStructureMap F n =

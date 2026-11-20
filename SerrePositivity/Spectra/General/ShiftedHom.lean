@@ -54,4 +54,25 @@ def shiftedHomStructureIndex (n p q : ℕ) :
   SymmetricSequence.freeShiftModule_action_component_evaluation
     (SymmetricSequence.tensorPowerSequence K) n p q X E
 
+/-- 値域の構造射・評価・ブロック交換から直接作る内部Homの構造射。 -/
+def shiftedHomStructureFormula (n p q : ℕ) (X : C)
+    (E : GeneralSymmetricSpectrum C K) :
+    TensorPowers.power K p ⊗ (ihom X).obj (level E (n + q)) ⟶
+      (ihom X).obj (level E (n + (p + q))) :=
+  CategoryTheory.MonoidalClosed.curry
+    ((α_ X (TensorPowers.power K p) ((ihom X).obj (level E (n + q)))).inv ≫
+      (β_ X (TensorPowers.power K p)).hom ▷ (ihom X).obj (level E (n + q)) ≫
+        (α_ (TensorPowers.power K p) X ((ihom X).obj (level E (n + q)))).hom ≫
+          TensorPowers.power K p ◁ (ihom.ev X).app (level E (n + q)) ≫
+            structureMap E p (n + q) ≫ E.X.map (shiftedHomStructureIndex n p q))
+
+/-- 次数をずらした内部Homの構造射は値域の構造射から直接作った射に一致する。 -/
+lemma shiftedHom_structureMap_eq_formula (n p q : ℕ) (X : C)
+    (E : GeneralSymmetricSpectrum C K) :
+    structureMap (shiftedHom n X E) p q = shiftedHomStructureFormula n p q X E := by
+  apply CategoryTheory.MonoidalClosed.uncurry_injective
+  unfold shiftedHomStructureFormula
+  rw [CategoryTheory.MonoidalClosed.uncurry_curry, CategoryTheory.MonoidalClosed.uncurry_eq]
+  exact shiftedHom_structureMap_evaluation n p q X E
+
 end SerrePositivity.GeneralSymmetricSpectrum

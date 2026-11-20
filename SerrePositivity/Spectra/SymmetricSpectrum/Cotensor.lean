@@ -2,7 +2,11 @@ module
 
 public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSequence.UnshiftedInternalHom
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftZero
+public import SerrePositivity.Spectra.General.ShiftedHomZero
+public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
+public import SerrePositivity.Spectra.SymmetricSpectrum.Free
+public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
+public import SerrePositivity.Spectra.SymmetricSpectrum.Suspension
 
 /-! # 各段の通常の内部Homを持つ対称スペクトル
 
@@ -20,14 +24,18 @@ set_option backward.isDefEq.respectTransparency.types false
 
 namespace SerrePositivity.SymmetricSpectrum
 
-open GeneralSymmetricSpectrum (level structureMap structureMap_hom)
+open GeneralSymmetricSpectrum (level structureMap structureMap_hom
+  internalHom internalHomFreeZeroLevelIso internalHomShiftIso shiftedHom
+  unshiftedHomLevelIso unshiftedHomLevelIso_structureMap
+  unshiftedHomLevelIso_suspensionMap unshiftedHomStructureFormula unshiftedHomSuspensionFormula)
 
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
+open MonoidalModuleInternalHom (freeHomModuleIso)
 
 /-- 自由対称列からの内部Homを各段の通常の内部Homへ比較する。 -/
 abbrev homBySequenceCotensorIso (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :=
-  homBySequenceShiftIso 0 X E ≪≫ SymmetricSequence.zeroShiftInternalHomIso X E.X
+  SymmetricSequence.freeInternalHomSequenceIso 0 X E.X ≪≫ SymmetricSequence.zeroShiftInternalHomIso X E.X
 
 /-- 各段がXから値域の同じ段への通常の内部Homであるスペクトル。 -/
 def cotensor (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
@@ -52,7 +60,7 @@ def shiftedHomCotensorIso (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.
     shiftedHom 0 X E ≅ cotensor X E :=
   MonoidalModuleInternalHom.furtherTransportedIso (C := PointedSymmetricSequence.{u})
     sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E
-      (homBySequenceShiftIso 0 X E) (SymmetricSequence.zeroShiftInternalHomIso X E.X)
+      (SymmetricSequence.freeInternalHomSequenceIso 0 X E.X) (SymmetricSequence.zeroShiftInternalHomIso X E.X)
 
 /-- ずれを除くスペクトル比較の基礎射は対称列の比較の順射。 -/
 lemma shiftedHomCotensorIso_hom (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
@@ -60,7 +68,7 @@ lemma shiftedHomCotensorIso_hom (X : PointedSimplicialSet.{u}) (E : SymmetricSpe
       (SymmetricSequence.zeroShiftInternalHomIso X E.X).hom :=
   MonoidalModuleInternalHom.furtherTransportedIso_hom
     (C := PointedSymmetricSequence.{u}) sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E
-      (homBySequenceShiftIso 0 X E) (SymmetricSequence.zeroShiftInternalHomIso X E.X)
+      (SymmetricSequence.freeInternalHomSequenceIso 0 X E.X) (SymmetricSequence.zeroShiftInternalHomIso X E.X)
 
 /-- ずれを除くスペクトル比較の基礎逆射は対称列の比較の逆射。 -/
 lemma shiftedHomCotensorIso_inv (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
@@ -68,15 +76,15 @@ lemma shiftedHomCotensorIso_inv (X : PointedSimplicialSet.{u}) (E : SymmetricSpe
       (SymmetricSequence.zeroShiftInternalHomIso X E.X).inv :=
   MonoidalModuleInternalHom.furtherTransportedIso_inv
     (C := PointedSymmetricSequence.{u}) sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E
-      (homBySequenceShiftIso 0 X E) (SymmetricSequence.zeroShiftInternalHomIso X E.X)
+      (SymmetricSequence.freeInternalHomSequenceIso 0 X E.X) (SymmetricSequence.zeroShiftInternalHomIso X E.X)
 
 /-- スペクトル比較の第q成分は前段階の各段の比較。 -/
 lemma shiftedHomCotensorIso_hom_app (X : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (shiftedHomCotensorIso X E).hom.hom.app (FiniteBijection.of q) =
       (unshiftedHomLevelIso q X E).hom := by
-  rw [shiftedHomCotensorIso_hom, SymmetricSequence.zeroShiftInternalHomIso_hom_app,
-    unshiftedHomLevelIso_hom]
+  rw [shiftedHomCotensorIso_hom, SymmetricSequence.zeroShiftInternalHomIso_hom_app]
+  exact eqToHom_map (ihom X) (congrArg (level E) (Nat.zero_add q))
 
 /-- スペクトル逆比較の第q成分も前段階の各段の逆比較。 -/
 lemma shiftedHomCotensorIso_inv_app (X : PointedSimplicialSet.{u})
@@ -91,7 +99,7 @@ lemma shiftedHomCotensorIso_inv_app (X : PointedSimplicialSet.{u})
 /-- F_0からの内部Homとcotensorのスペクトル全体の比較。 -/
 def internalHomCotensorIso (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     internalHom ((freeAt 0).obj X) E ≅ cotensor X E :=
-  internalHomFreeAtIso 0 X E ≪≫
+  freeHomModuleIso sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E ≪≫
     MonoidalModuleInternalHom.transportedIso (C := PointedSymmetricSequence.{u})
       sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E (homBySequenceCotensorIso X E)
 
@@ -100,14 +108,21 @@ lemma internalHomCotensorIso_hom_app (X : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (internalHomCotensorIso X E).hom.hom.app (FiniteBijection.of q) =
       (internalHomFreeZeroLevelIso q X E).hom := by
-  change (internalHomFreeAtIso 0 X E).hom.hom.app (FiniteBijection.of q) ≫
-      ((homBySequenceShiftIso 0 X E).hom.app (FiniteBijection.of q) ≫
-        (SymmetricSequence.zeroShiftInternalHomIso X E.X).hom.app (FiniteBijection.of q)) = _
-  rw [← Category.assoc]
+  have hcomp :
+      internalHomCotensorIso X E = internalHomShiftIso 0 X E ≪≫ shiftedHomCotensorIso X E := by
+    as_aux_lemma =>
+      let freeComparison := freeHomModuleIso sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E
+      let shifted := MonoidalModuleInternalHom.transportedIso sphereSequence.{u}
+        ((SymmetricSequence.freeAt 0).obj X) E (SymmetricSequence.freeInternalHomSequenceIso 0 X E.X)
+      let unshifted := MonoidalModuleInternalHom.transportedIso sphereSequence.{u}
+        ((SymmetricSequence.freeAt 0).obj X) E (homBySequenceCotensorIso X E)
+      change freeComparison ≪≫ unshifted =
+        (freeComparison ≪≫ shifted) ≪≫ shifted.symm ≪≫ unshifted
+      rw [Iso.trans_assoc, Iso.self_symm_id_assoc]
+  rw [hcomp]
   change (internalHomShiftIso 0 X E).hom.hom.app (FiniteBijection.of q) ≫
-      (SymmetricSequence.zeroShiftInternalHomIso X E.X).hom.app (FiniteBijection.of q) = _
-  rw [← shiftedHomCotensorIso_hom]
-  rw [internalHomShiftIso_hom_app, shiftedHomCotensorIso_hom_app]
+      (shiftedHomCotensorIso X E).hom.hom.app (FiniteBijection.of q) = _
+  rw [shiftedHomCotensorIso_hom_app]
   rfl
 
 /-- F_0からの全体の逆比較の第q成分も既存の各段の逆比較。 -/
@@ -118,7 +133,7 @@ lemma internalHomCotensorIso_inv_app (X : PointedSimplicialSet.{u})
   change (SymmetricSequence.zeroShiftInternalHomIso X E.X).inv.app (FiniteBijection.of q) ≫
       (internalHomShiftIso 0 X E).inv.hom.app (FiniteBijection.of q) = _
   rw [← shiftedHomCotensorIso_inv]
-  rw [shiftedHomCotensorIso_inv_app, internalHomShiftIso_inv_app]
+  rw [shiftedHomCotensorIso_inv_app]
   rfl
 
 /-- cotensorの構造射は、値域の構造射と通常の評価による直接公式。 -/
@@ -126,10 +141,9 @@ lemma cotensor_structureMap (X : PointedSimplicialSet.{u}) (E : SymmetricSpectru
     (p q : ℕ) :
     structureMap (cotensor X E) p q = unshiftedHomStructureFormula p q X E := by
   have h := structureMap_hom (shiftedHomCotensorIso X E).hom p q
-  change _ = PointedObject.smashMap (𝟙 (spherePower.{u} p))
-    ((shiftedHomCotensorIso X E).hom.hom.app (FiniteBijection.of q)) ≫ _ at h
   rw [shiftedHomCotensorIso_hom_app, shiftedHomCotensorIso_hom_app,
     unshiftedHomLevelIso_structureMap] at h
+  simp only [id_tensorHom] at h
   apply (cancel_epi (spherePower.{u} p ◁ (unshiftedHomLevelIso q X E).hom)).mp
   exact h.symm
 
@@ -137,7 +151,8 @@ lemma cotensor_structureMap (X : PointedSimplicialSet.{u}) (E : SymmetricSpectru
 lemma cotensor_suspensionMap (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u})
     (q : ℕ) :
     suspensionMap (cotensor X E) q = unshiftedHomSuspensionFormula q X E := by
-  have h := suspensionMap_hom (shiftedHomCotensorIso X E).hom q
+  have h := GeneralSymmetricSpectrum.suspensionMap_hom (shiftedHomCotensorIso X E).hom q
+  simp only [GeneralSymmetricSpectrum.levelMap] at h
   rw [shiftedHomCotensorIso_hom_app, shiftedHomCotensorIso_hom_app,
     unshiftedHomLevelIso_suspensionMap] at h
   apply (cancel_epi ((circle : PointedSimplicialSet.{u}) ◁ (unshiftedHomLevelIso q X E).hom)).mp
