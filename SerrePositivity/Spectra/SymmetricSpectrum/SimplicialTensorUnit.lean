@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturality
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointUnit
 public import Mathlib.CategoryTheory.Adjunction.Unique
 public import SerrePositivity.CategoryTheory.Adjunction.Comparison

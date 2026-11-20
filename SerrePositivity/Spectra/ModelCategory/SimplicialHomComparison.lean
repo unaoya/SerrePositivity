@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
+public import SerrePositivity.Spectra.General.MappingFunctorComparison
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpacePointedOrdinary
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
 
@@ -19,39 +19,29 @@ local instance legacyPointedOrdinaryCategory :
   SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory
 
 /-- Comparison in both spectrum variables with the existing chosen enrichment. -/
-def legacyPointedHomFunctorIso : eHomFunctor PointedSimplicialSet.{u} SymmetricSpectrum.{u} ≅
-    SymmetricSpectrum.pointedMappingSpaceBifunctor.{u} :=
-  RepresentedHomFunctor.homFunctorIso_ofParametrized
-    (H := SymmetricSpectrum.pointwiseTensorBifunctor.{u})
-    (a := SymmetricSpectrum.pointwiseTensorAssociatorNatIso.{u})
-    (u := SymmetricSpectrum.pointwiseTensorUnitNatIso.{u})
-    (hL := fun p Q E ↦ GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_left p Q E)
-    (hR := fun P {_ _} q E ↦ GeneralSymmetricSpectrum.pointwiseTensorAssociator_parameter_right P q E)
-    (huL := GeneralSymmetricSpectrum.pointwiseTensorBifunctor_left_unit
-      (K := PointedSimplicialSet.circle.{u}))
-    (huR := GeneralSymmetricSpectrum.pointwiseTensorBifunctor_triangle
-      (K := PointedSimplicialSet.circle.{u}))
-    (B := SymmetricSpectrum.pointedMappingSpaceBifunctor.{u})
-    SymmetricSpectrum.pointedMappingSpaceParametrizedAdjunction.{u}
-    SymmetricSpectrum.mappingSpace_left_unit.{u}
-    SymmetricSpectrum.mappingSpace_right_unit.{u}
-    SymmetricSpectrum.mappingSpace_associativity.{u}
-    SymmetricSpectrum.mappingSpaceArrow_identity.{u}
-    (fun f g ↦ SymmetricSpectrum.mappingSpaceArrow_composition f g)
+def legacyPointedHomFunctorIso :=
+  GeneralSymmetricSpectrum.mappingEnrichedHomFunctorIso (K := PointedSimplicialSet.circle.{u})
 
 local instance legacyOrdinaryCategory :
     EnrichedOrdinaryCategory SSet.{u} SymmetricSpectrum.{u} :=
-  SymmetricSpectrum.mappingSpaceSimplicialCategory
+  @TransportOrdinaryEnrichment.ordinaryCategory
+    _ _ _ _ _ _ PointedSimplicialSet.forget.{u} _ SymmetricSpectrum.{u} _
+    (GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory (K := PointedSimplicialSet.circle.{u}))
+    PointedSimplicialSet.forgetUnitHomEquiv.{u}
+    PointedSimplicialSet.forgetUnitHomEquiv_formula.{u}
 
 /-- The ordinary simplicial enriched Hom is the actual model mapping bifunctor. -/
-def legacyOrdinaryHomFunctorIso : eHomFunctor SSet.{u} SymmetricSpectrum.{u} ≅
-    ordinarySpectrumMapping.{u} :=
-  (TransportOrdinaryEnrichment.homFunctorIso PointedSimplicialSet.forget.{u}
-    SymmetricSpectrum.{u} PointedSimplicialSet.forgetUnitHomEquiv.{u}
-    PointedSimplicialSet.forgetUnitHomEquiv_formula.{u}).symm ≪≫
-  Functor.isoWhiskerRight legacyPointedHomFunctorIso
+def legacyOrdinaryHomFunctorIso :=
+  let pointed := GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory
+    (K := PointedSimplicialSet.circle.{u})
+  let transported := @TransportOrdinaryEnrichment.homFunctorIso
+    _ _ _ _ _ _ PointedSimplicialSet.forget.{u} _ SymmetricSpectrum.{u} _ pointed
+    PointedSimplicialSet.forgetUnitHomEquiv.{u}
+    PointedSimplicialSet.forgetUnitHomEquiv_formula.{u}
+  let whiskered := Functor.isoWhiskerRight legacyPointedHomFunctorIso
     ((Functor.whiskeringRight SymmetricSpectrum.{u} PointedSimplicialSet.{u} SSet.{u}).obj
       PointedSimplicialSet.forget.{u})
+  transported.symm ≪≫ whiskered
 
 /-- SM7 for the original chosen simplicial enrichment, including both map actions. -/
 lemma legacyOrdinaryHom_SM7 [HomotopicalAlgebra.ModelCategory SSet.{u}]
@@ -62,8 +52,8 @@ lemma legacyOrdinaryHom_SM7 [HomotopicalAlgebra.ModelCategory SSet.{u}]
   let := simplicialLevelModelCategory hCof hFib
   let : Quillen.IsQuillenBifunctor ordinarySpectrumTensor.{u} :=
     ordinarySpectrumTensor_isQuillen hCof hFib
-  exact (Quillen.isQuillenBifunctor_iff_pullbackHom
-    (ParametrizedAdjunctionTransport.right ordinarySpectrumMappingAdjunction
-      legacyOrdinaryHomFunctorIso.symm)).1 inferInstance
+  let comparison := ParametrizedAdjunctionTransport.right ordinarySpectrumMappingAdjunction
+    legacyOrdinaryHomFunctorIso.symm
+  exact (Quillen.isQuillenBifunctor_iff_pullbackHom comparison).1 inferInstance
 
 end SerrePositivity.SimplicialModelInputs

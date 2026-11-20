@@ -11,7 +11,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
 open SerrePositivity SerrePositivity.SymmetricSpectrum
-open SerrePositivity.GeneralSymmetricSpectrum (level pointwiseTensorAssociator
+open SerrePositivity.GeneralSymmetricSpectrum (level suspensionMap adjointStructureMap
+  adjointStructureMap_naturality pointwiseTensorAssociator
   pointwiseTensorAssociator_level pointwiseTensorAssociator_parameter_naturality
   pointwiseTensorUnitIso pointwiseTensorUnitIso_level
   pointwiseTensorPentagonLaw pointwiseTensor_pentagon pointwiseTensorTriangleLaw
@@ -41,23 +42,37 @@ example (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
 example (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     pointwiseTensorLeftUnitLaw X E := pointwiseTensor_left_unit X E
 
--- 標準の単体的豊穣構造と通常の射の対応。
+-- 基点付きの豊穣構造を忘却関手で移送し、標準の射と零次単体を照合する。
+section
+
+local instance : EnrichedOrdinaryCategory PointedSimplicialSet.{u} SymmetricSpectrum.{u} :=
+  pointedMappingEnrichedOrdinaryCategory
+
+local instance : SimplicialCategory SymmetricSpectrum.{u} :=
+  TransportOrdinaryEnrichment.ordinaryCategory PointedSimplicialSet.forget.{u}
+    SymmetricSpectrum.{u} PointedSimplicialSet.forgetUnitHomEquiv.{u}
+    PointedSimplicialSet.forgetUnitHomEquiv_formula.{u}
+
 example (E F : SymmetricSpectrum.{u}) :
-    let : SimplicialCategory SymmetricSpectrum.{u} := mappingSpaceSimplicialCategory
     SimplicialCategory.homEquiv' E F = simplicialMappingVertexEquiv E F :=
   mappingSpaceSimplicialCategory_vertexEquiv E F
 
--- 通常の恒等射と合成が零次単体の単位・合成に対応する。
-example (E : SymmetricSpectrum.{u}) : simplicialMappingVertexIdentityLaw E :=
-  simplicialMappingVertex_identity E
+example (E : SymmetricSpectrum.{u}) : SimplicialHomLaws.identityLaw E :=
+  SimplicialHomLaws.identity E
 
 example {E F G : SymmetricSpectrum.{u}} (f : E ⟶ F) (g : F ⟶ G) :
-    simplicialMappingVertexCompositionLaw f g := simplicialMappingVertex_composition f g
+    SimplicialHomLaws.compositionLaw f g := SimplicialHomLaws.composition f g
 
--- 三つのHom同値の二つの経路が同じ転置を与える。
+end
+
+-- 写像対象を経由した転置は、余テンソルへの転置と一致する。
 example (K : SSet.{u}) (E F : SymmetricSpectrum.{u}) (f : simplicialTensor K E ⟶ F) :
-    simplicialMappingCotensorHomEquiv K E F (simplicialTensorMappingHomEquiv K E F f) =
-      ((simplicialTensorCotensorAdjunction K).homEquiv E F) f := simplicialHomEquiv_compatibility K E F f
+    (((simplicialTensorMappingAdjunction E).homEquiv K F).symm.trans
+      ((simplicialTensorCotensorAdjunction K).homEquiv E F))
+      ((simplicialTensorMappingAdjunction E).homEquiv K F f) =
+        (simplicialTensorCotensorAdjunction K).homEquiv E F f := by
+  rw [Equiv.trans_apply, Equiv.symm_apply_apply]
+  rfl
 
 -- Δ[0]はtensor・cotensorの両方の単位。
 example (E : SymmetricSpectrum.{u}) : simplicialTensor (Δ[0] : SSet.{u}) E ≅ E :=
@@ -131,28 +146,37 @@ example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpect
         (adjoinBasepointFunctor.map f) (adjoinBasepointFunctor.map g) F)
 
 -- 円による随伴は、転置・逆転置が互いに逆となる実際の随伴。
-example : suspensionFunctor.{u} ⊣ loopFunctor.{u} := suspensionLoopAdjunction
+example : suspensionFunctor.{u} ⊣
+    GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u})
+      PointedSimplicialSet.circle := suspensionLoopAdjunction
 
-example (E F : SymmetricSpectrum.{u}) (f : suspension E ⟶ F) :
-    (suspensionLoopHomEquiv E F).symm (suspensionLoopHomEquiv E F f) = f :=
-  (suspensionLoopHomEquiv E F).symm_apply_apply f
+example (E F : SymmetricSpectrum.{u}) (f : suspensionFunctor.obj E ⟶ F) :
+    ((suspensionLoopAdjunction.homEquiv E F).symm
+      (suspensionLoopAdjunction.homEquiv E F f)) = f :=
+  (suspensionLoopAdjunction.homEquiv E F).symm_apply_apply f
 
 example (E : SymmetricSpectrum.{u}) :
-    suspensionFunctor.map (suspensionLoopUnit E) ≫ suspensionLoopCounit (suspension E) =
-      𝟙 (suspension E) := suspensionLoop_left_triangle E
+    suspensionFunctor.map (suspensionLoopAdjunction.unit.app E) ≫
+      suspensionLoopAdjunction.counit.app (suspensionFunctor.obj E) =
+        𝟙 (suspensionFunctor.obj E) :=
+  suspensionLoopAdjunction.left_triangle_components E
 
 example (E : SymmetricSpectrum.{u}) :
-    suspensionLoopUnit (loops E) ≫ loopFunctor.map (suspensionLoopCounit E) = 𝟙 (loops E) :=
-  suspensionLoop_right_triangle E
+    let R := GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u})
+      PointedSimplicialSet.circle
+    suspensionLoopAdjunction.unit.app (R.obj E) ≫
+      R.map (suspensionLoopAdjunction.counit.app E) = 𝟙 (R.obj E) :=
+  suspensionLoopAdjunction.right_triangle_components E
 
 example (E : SymmetricSpectrum.{u}) (q : ℕ) :
-    level (suspension E) q = (PointedSimplicialSet.circle : PointedSimplicialSet.{u}) ⊗ level E q :=
-  suspension_level E q
+    level (suspensionFunctor.obj E) q =
+      (PointedSimplicialSet.circle : PointedSimplicialSet.{u}) ⊗ level E q :=
+  GeneralSymmetricSpectrum.pointwiseTensor_level PointedSimplicialSet.circle E q
 
 example (E : SymmetricSpectrum.{u}) (q : ℕ) :
-    level (loops E) q =
+    level (GeneralSymmetricSpectrum.cotensor PointedSimplicialSet.circle E) q =
       (ihom (PointedSimplicialSet.circle : PointedSimplicialSet.{u})).obj (level E q) :=
-  loops_level E q
+  GeneralSymmetricSpectrum.cotensor_level PointedSimplicialSet.circle E q
 
 -- 構造射の転置は同じ n+1 段の射へ戻り、スペクトル射とも両立する。
 example (E : SymmetricSpectrum.{u}) (n : ℕ) :

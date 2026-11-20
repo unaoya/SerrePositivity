@@ -3,7 +3,6 @@ module
 public import SerrePositivity.Spectra.General.SimplicialComparison
 public import SerrePositivity.Spectra.General.Suspension
 public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
-public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import Mathlib.CategoryTheory.Adjunction.Unique
 
 /-! # Actual suspension, loop and bonding-map compatibility for circle spectra
@@ -38,7 +37,7 @@ lemma simplicial_suspensionFunctor :
 
 def simplicialLoopNatIso :
     cotensorFunctor (K := (circle : PointedSimplicialSet.{u})) circle ≅
-      SymmetricSpectrum.loopFunctor :=
+      cotensorFunctor (K := circle.{u}) circle :=
   Adjunction.rightAdjointUniq
     (pointwiseTensorCotensorAdjunction (K := (circle : PointedSimplicialSet.{u})) circle)
     SymmetricSpectrum.suspensionLoopAdjunction.{u}
@@ -46,30 +45,33 @@ def simplicialLoopNatIso :
 lemma simplicial_suspensionLoopUnit (E : SymmetricSpectrum.{u}) :
     (pointwiseTensorCotensorAdjunction
       (K := (circle : PointedSimplicialSet.{u})) circle).unit.app E ≫
-      simplicialLoopNatIso.hom.app (SymmetricSpectrum.suspension E) =
-        SymmetricSpectrum.suspensionLoopUnit E := by
-  simpa only [simplicialLoopNatIso, SymmetricSpectrum.suspensionLoopUnit,
-    SymmetricSpectrum.suspension, simplicial_suspensionFunctor] using
+      simplicialLoopNatIso.hom.app (SymmetricSpectrum.suspensionFunctor.obj E) =
+        SymmetricSpectrum.suspensionLoopAdjunction.unit.app E := by
+  simpa only [simplicialLoopNatIso] using
     Adjunction.unit_rightAdjointUniq_hom_app
     (pointwiseTensorCotensorAdjunction (K := (circle : PointedSimplicialSet.{u})) circle)
     SymmetricSpectrum.suspensionLoopAdjunction.{u} E
 
 lemma simplicial_suspensionLoopCounit (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.suspensionFunctor.map (simplicialLoopNatIso.hom.app E) ≫
-      SymmetricSpectrum.suspensionLoopCounit E =
+      SymmetricSpectrum.suspensionLoopAdjunction.counit.app E =
         (pointwiseTensorCotensorAdjunction
           (K := (circle : PointedSimplicialSet.{u})) circle).counit.app E := by
-  simpa only [simplicialLoopNatIso, SymmetricSpectrum.suspensionLoopCounit,
-    simplicial_suspensionFunctor] using
+  simpa only [simplicialLoopNatIso] using
     Adjunction.rightAdjointUniq_hom_app_counit
     (pointwiseTensorCotensorAdjunction (K := (circle : PointedSimplicialSet.{u})) circle)
     SymmetricSpectrum.suspensionLoopAdjunction.{u} E
 
 lemma simplicial_suspensionMap (E : SymmetricSpectrum.{u}) (n : ℕ) :
-    suspensionMap (K := circle) E n = SymmetricSpectrum.suspensionMap E n := rfl
+    suspensionMap (K := circle) E n =
+      PointedObject.smashMap spherePowerOneIso.{u}.inv (𝟙 (level E n)) ≫
+        structureMap E 1 n ≫ eqToHom (congrArg (level E) (Nat.one_add n)) := rfl
 
 lemma simplicial_adjointStructureMap (E : SymmetricSpectrum.{u}) (n : ℕ) :
-    adjointStructureMap (K := circle) E n = SymmetricSpectrum.adjointStructureMap E n := by
-  rw [adjointStructureMap, SymmetricSpectrum.adjointStructureMap, simplicial_suspensionMap]
+    adjointStructureMap (K := circle) E n =
+      MonoidalClosed.curry
+        (PointedObject.smashMap spherePowerOneIso.{u}.inv (𝟙 (level E n)) ≫
+          structureMap E 1 n ≫ eqToHom (congrArg (level E) (Nat.one_add n))) := by
+  rw [adjointStructureMap, simplicial_suspensionMap]
 
 end SerrePositivity.GeneralSymmetricSpectrum

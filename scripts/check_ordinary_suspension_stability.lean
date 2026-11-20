@@ -45,7 +45,7 @@ example [ModelCategory SSet.{u}]
     let W := weakEquivalences (GeneralSymmetricSpectrum PointedSimplicialSet.{u} (PointedSimplicialSet.circle.{u}))
     ∃ (LSigma ROmega : W.Localization ⥤ W.Localization)
       (γ : W.Q ⋙ LSigma ⟶ SymmetricSpectrum.suspensionFunctor.{u} ⋙ W.Q)
-      (ρ : SymmetricSpectrum.loopFunctor.{u} ⋙ W.Q ⟶ W.Q ⋙ ROmega),
+      (ρ : (GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle) ⋙ W.Q ⟶ W.Q ⋙ ROmega),
       LSigma.IsLeftDerivedFunctor γ W ∧ ROmega.IsRightDerivedFunctor ρ W ∧
       ∃ e : W.Localization ≌ W.Localization,
         e.functor = HomotopySuspension.localizedFunctor (levelGenerators (PointedSimplicialSet.circle.{u}) pointedI) G W.Q ∧

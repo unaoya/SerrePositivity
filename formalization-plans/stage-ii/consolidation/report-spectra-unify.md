@@ -466,3 +466,154 @@ bulk 鍵で対象と利用側 34 モジュールをビルドした。旧型の�
 削除した空ファイルは 9 本。`Cotensor.lean`、`CotensorAdjunction.lean`、`CotensorCurryNaturality.lean`、`CotensorLevelEvaluation.lean`、`CotensorMapLevels.lean`、`FreeLeftUncurry.lean`、`PointwiseTensorLevelEvaluation.lean`、`PointwiseTensorMapLevels.lean`、`SimplicialCotensorProductNaturality.lean`。
 
 所要は約 23 分。bulk 鍵の待ち時間を含む。
+
+## 段 8　写像対象と懸垂・ループ
+
+main の `fbe3c52b8` を `2e65f1360` で取り込んだ。段 2 の写像対象101件、懸垂とループ19件の計120件を照合した。[判定表](../../../research/cleanup-zero-base/spectra/stage8.csv)
+
+基点付き写像対象とその関手・二変数関手・随伴、基点付きの二つの豊穣構造は、B の円周特殊化と `rfl` で一致した。これを確認して定義を揃えた後、補題と利用箇所を整理した。ループ関手と懸垂との随伴は単位・余単位も含めて `rfl` で一致し、ループ関手を B の `cotensorFunctor` に置き換えた。
+
+| 扱い | 段 2 の案 | 今回 |
+|---|---:|---:|
+| 消す | 95 | 106 |
+| 別名 | 6 | 5 |
+| B に一般版を足す | 4 | 0 |
+| 固有として残す | 14 | 9 |
+| 判断できない | 1 | 0 |
+
+段 2 の案で除く見込みは 99 件で、実測は 106 件。宣言の範囲で数えた見込みは 563 行、実測は 601 行。B の追加候補4件は、既存の写像対象の二変数関手と点ごとのテンソルの関手の定義で足りた。
+
+固有候補14件のうち、基点を忘れた写像対象・前合成とその合成、零次単体との比較、自由基点追加を使う随伴の9件を維持した。豊穣構造そのものと通常圏に接続した豊穣構造は忘却関手に沿う一般の移送を直接利用し、それぞれの定義展開で得られる比較を含めて5件を除いた。14件の帰結と理由は判定表に記録した。
+
+| 範囲 | Lean ファイル数 | ソース宣言数 | 物理行数 |
+|---|---:|---:|---:|
+| C | 33 → 23 | 155 → 49 | 1,728 → 785 |
+| B | 52 → 52 | 400 → 400 | 4,505 → 4,507 |
+| 利用側 | 10 → 10 | 50 → 50 | 1,119 → 1,113 |
+
+転置・評価・単位・余単位などの展開式を追記した。[随伴成分の展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv)
+
+展開が10箇所を超えた名前は0件だった。
+
+### 利用箇所の前後
+
+懸垂とループの単位の比較では、円周へ特殊化した随伴の成分を直接使うので、展開する定義が減った。
+
+```diff
+-  simpa only [simplicialLoopNatIso, SymmetricSpectrum.suspensionLoopUnit,
+-    SymmetricSpectrum.suspension, simplicial_suspensionFunctor] using
++  simpa only [simplicialLoopNatIso] using
+```
+
+安定化の導来随伴では、円周での随伴の別名をそのまま使う。
+
+```lean
+let n := (derivedAdjunction Q Q suspensionLoopAdjunction γ ρ).toEquivalence
+```
+
+導来ループ関手の指定に B の余テンソル関手を使う。この名前の展開は 10 箇所。
+
+```diff
+-  SymmetricSpectrum.loopFunctor.{u} ⋙ W.Q
++  (GeneralSymmetricSpectrum.cotensorFunctor
++    (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle) ⋙ W.Q
+```
+
+### 判定
+
+bulk 鍵で対象と利用側 22 モジュールをビルドした。削除した宣言は旧型の例 106 件で照合した。監査・検査 24 本は前後とも 14 本が成功し、既存の失敗 10 本のエラーは一致した。影響範囲のカーネル宣言は 324 → 181 件。既存宣言への公理依存の追加は0件で、`sorryAx` に依存する宣言は 9 → 9 件。対応表で対象宣言を名指しする行は0件。BS17 の検索候補1件はカーネル名と型が一致した。
+
+転置と前合成の旧型では、先に随伴と二変数関手を比較してから各成分を照合した。モデル側の Hom の比較では、B の豊穣構造を移送の引数に明示して二つの比較同型と SM7 の型を揃えた。リソースの上限設定は変更していない。更新した API を対称スペクトルの README に反映した。
+
+`check_kan_quillen_level` はソースとエラーが変更前と一致した。削除した `mappingSpaceSimplicialCategory` を候補に挙げる Lean のヒントだけが消えた。
+
+`check_ordinary_suspension_stability` では、既存のエラーのほかに出る正常な公理監査の採取件数が 87 → 88 件になった。
+
+`check_spectrum_suspension_geometry` では、既存のエラーのほかに出る正常な公理監査の採取件数が 97 → 93 件になった。
+
+削除した空ファイルは 10 本。`AdjointStructureMaps.lean`、`InternalHomShiftSuspension.lean`、`MappingSpaceArrowComposition.lean`、`MappingSpaceAssociativity.lean`、`MappingSpaceComposition.lean`、`MappingSpaceEnriched.lean`、`MappingSpaceNaturality.lean`、`MappingSpaceSimplicialEnriched.lean`、`MappingSpaceUnitLaws.lean`、`Suspension.lean`。
+
+所要は約 29 分。bulk 鍵の待ち時間を含む。
+
+### C の現状
+
+C は円周への特殊化を置くディレクトリ。行数は宣言の開始から終端までとし、宣言に付随する文書コメント・属性を含む。名前は完全修飾名。
+
+| ファイル | 宣言数 |
+|---|---:|
+| [Basic.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Basic.lean) | 2 |
+| [CotensorFunctor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/CotensorFunctor.lean) | 1 |
+| [Evaluation.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Evaluation.lean) | 4 |
+| [Free.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Free.lean) | 3 |
+| [InternalHomFunctor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/InternalHomFunctor.lean) | 1 |
+| [InternalHomShiftStructure.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/InternalHomShiftStructure.lean) | 1 |
+| [MappingSpace.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpace.lean) | 2 |
+| [MappingSpacePointedOrdinary.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpacePointedOrdinary.lean) | 1 |
+| [MappingSpaceSimplicial.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicial.lean) | 5 |
+| [MappingSpaceSimplicialOrdinary.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicialOrdinary.lean) | 1 |
+| [PointwiseTensor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensor.lean) | 2 |
+| [PointwiseTensorAdjunction.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAdjunction.lean) | 1 |
+| [PointwiseTensorAssociator.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAssociator.lean) | 1 |
+| [PointwiseTensorFunctor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorFunctor.lean) | 1 |
+| [PointwiseTensorUnit.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorUnit.lean) | 1 |
+| [SimplicialTensorCotensor.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorCotensor.lean) | 8 |
+| [SimplicialTensorNaturality.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorNaturality.lean) | 4 |
+| [SimplicialTensorProduct.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorProduct.lean) | 1 |
+| [SimplicialTensorUnit.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorUnit.lean) | 1 |
+| [Sphere.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/Sphere.lean) | 4 |
+| [StructureMaps.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/StructureMaps.lean) | 1 |
+| [SuspensionLoop.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/SuspensionLoop.lean) | 2 |
+| [TensorFreeAtSum.lean](../../../SerrePositivity/Spectra/SymmetricSpectrum/TensorFreeAtSum.lean) | 1 |
+| 合計 | 49 |
+
+| ファイル | 宣言 | 種類 | 行数 | 残した理由の区分 |
+|---|---|---|---:|---|
+| Basic.lean | `SerrePositivity.SymmetricSpectrum` | `abbrev` | 3 | 型の略記 |
+| Basic.lean | `SerrePositivity.SymmetricSpectrum.forget` | `abbrev` | 2 | 別名 |
+| CotensorFunctor.lean | `SerrePositivity.SymmetricSpectrum.cotensorFunctor` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.evaluation` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.freeAt` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.freeAtAdjunction` | `abbrev` | 2 | 別名 |
+| Evaluation.lean | `SerrePositivity.SymmetricSpectrum.freeAtGenerator` | `abbrev` | 2 | 別名 |
+| Free.lean | `SerrePositivity.SymmetricSpectrum.freeObj` | `abbrev` | 2 | 別名 |
+| Free.lean | `SerrePositivity.SymmetricSpectrum.freeFunctor` | `abbrev` | 2 | 別名 |
+| Free.lean | `SerrePositivity.SymmetricSpectrum.generator` | `abbrev` | 2 | 別名 |
+| InternalHomFunctor.lean | `SerrePositivity.SymmetricSpectrum.internalHomBifunctor` | `abbrev` | 2 | 別名 |
+| InternalHomShiftStructure.lean | `SerrePositivity.SymmetricSpectrum.structureMap_eq_convolutionComponent` | `lemma` | 6 | その他 |
+| MappingSpace.lean | `SerrePositivity.SymmetricSpectrum.pointedMappingSpaceBifunctor` | `abbrev` | 3 | 別名 |
+| MappingSpace.lean | `SerrePositivity.SymmetricSpectrum.pointedMappingSpaceParametrizedAdjunction` | `abbrev` | 5 | 別名 |
+| MappingSpacePointedOrdinary.lean | `SerrePositivity.SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory` | `abbrev` | 3 | 別名 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpace` | `def` | 3 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpaceBifunctor` | `def` | 5 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpaceBifunctor_obj` | `lemma` | 4 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingComposition` | `def` | 7 | 固有 |
+| MappingSpaceSimplicial.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingVertexEquiv` | `def` | 5 | 固有 |
+| MappingSpaceSimplicialOrdinary.lean | `SerrePositivity.SymmetricSpectrum.mappingSpaceSimplicialCategory_vertexEquiv` | `lemma` | 10 | 固有 |
+| PointwiseTensor.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorFunctor` | `abbrev` | 2 | 別名 |
+| PointwiseTensor.lean | `SerrePositivity.SymmetricSpectrum.sphereTensorFreeZeroPointwiseNatIso` | `abbrev` | 2 | 別名 |
+| PointwiseTensorAdjunction.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorCotensorAdjunction` | `abbrev` | 3 | 別名 |
+| PointwiseTensorAssociator.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorAssociatorNatIso` | `abbrev` | 2 | 別名 |
+| PointwiseTensorFunctor.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorBifunctor` | `abbrev` | 2 | 別名 |
+| PointwiseTensorUnit.lean | `SerrePositivity.SymmetricSpectrum.pointwiseTensorUnitNatIso` | `abbrev` | 2 | 別名 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialCotensor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorFunctor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialCotensorFunctor` | `def` | 3 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorParameterFunctor` | `def` | 4 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpaceFunctor` | `def` | 4 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorMappingAdjunction` | `def` | 4 | 固有 |
+| SimplicialTensorCotensor.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorCotensorAdjunction` | `def` | 4 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorPost` | `def` | 4 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialCotensorPre` | `def` | 5 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialMappingSpacePre` | `def` | 4 | 固有 |
+| SimplicialTensorNaturality.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorCotensorHomEquiv_post` | `lemma` | 7 | 固有 |
+| SimplicialTensorProduct.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorProductNatIso` | `def` | 5 | 固有 |
+| SimplicialTensorUnit.lean | `SerrePositivity.SymmetricSpectrum.simplicialTensorUnitNatIso` | `def` | 4 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere` | `def` | 2 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere_underlying` | `lemma` | 2 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere_action` | `lemma` | 2 | 固有 |
+| Sphere.lean | `SerrePositivity.SymmetricSpectrum.sphere_structureMap` | `lemma` | 4 | 固有 |
+| StructureMaps.lean | `SerrePositivity.SymmetricSpectrum.structureMap_equivariance` | `lemma` | 10 | その他 |
+| SuspensionLoop.lean | `SerrePositivity.SymmetricSpectrum.suspensionFunctor` | `abbrev` | 3 | 別名 |
+| SuspensionLoop.lean | `SerrePositivity.SymmetricSpectrum.suspensionLoopAdjunction` | `abbrev` | 3 | 別名 |
+| TensorFreeAtSum.lean | `SerrePositivity.SymmetricSpectrum.sphereTensorFreeAtSum` | `abbrev` | 2 | 別名 |

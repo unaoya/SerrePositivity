@@ -70,12 +70,12 @@ example [ModelCategory SSet.{u}] (K : PointedSimplicialSet.{u})
 example (E : SymmetricSpectrum.{u}) :
     (pointwiseTensorCotensorAdjunction
       (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle).unit.app E ≫
-      simplicialLoopNatIso.hom.app (SymmetricSpectrum.suspension E) =
-        SymmetricSpectrum.suspensionLoopUnit E := simplicial_suspensionLoopUnit E
+      simplicialLoopNatIso.hom.app (SymmetricSpectrum.suspensionFunctor.obj E) =
+        SymmetricSpectrum.suspensionLoopAdjunction.unit.app E := simplicial_suspensionLoopUnit E
 
 example (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.suspensionFunctor.map (simplicialLoopNatIso.hom.app E) ≫
-      SymmetricSpectrum.suspensionLoopCounit E =
+      SymmetricSpectrum.suspensionLoopAdjunction.counit.app E =
         (pointwiseTensorCotensorAdjunction
           (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle).counit.app E :=
   simplicial_suspensionLoopCounit E

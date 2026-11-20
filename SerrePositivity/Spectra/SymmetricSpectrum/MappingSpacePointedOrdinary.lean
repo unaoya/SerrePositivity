@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceEnriched
+public import SerrePositivity.Spectra.General.MappingEnrichment
+public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 
 /-! # 基点付き豊穣構造と既存のスペクトルの圏構造の一致 -/
 
@@ -18,13 +19,7 @@ namespace SerrePositivity.SymmetricSpectrum
 open CategoryTheory
 
 /-- 基点付き写像対象の豊穣構造を既存の通常の圏構造へ接続する。 -/
-@[instance_reducible]
-def pointedMappingEnrichedOrdinaryCategory :
-    EnrichedOrdinaryCategory PointedSimplicialSet.{u} SymmetricSpectrum.{u} :=
-  RepresentedMappingEnrichment.ordinaryCategory pointwiseTensorBifunctor.{u}
-    pointwiseTensorAssociatorNatIso.{u} pointwiseTensorUnitNatIso.{u}
-    pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u}
-    mappingSpace_left_unit.{u} mappingSpace_right_unit.{u} mappingSpace_associativity.{u}
-    mappingSpaceArrow_identity.{u} mappingSpaceArrow_composition.{u}
+abbrev pointedMappingEnrichedOrdinaryCategory :=
+  GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory (K := PointedSimplicialSet.circle.{u})
 
 end SerrePositivity.SymmetricSpectrum

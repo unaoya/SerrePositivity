@@ -15,7 +15,7 @@ public import SerrePositivity.Spectra.SymmetricSequence.SphereCommutativity
 public import SerrePositivity.Spectra.SymmetricSequence.SphereFirstCrossing
 public import SerrePositivity.Spectra.SymmetricSequence.SphereSingleBlockSwap
 public import SerrePositivity.Spectra.SymmetricSequence.SphereCommMonoid
-public import SerrePositivity.Spectra.SymmetricSpectrum.Suspension
+public import SerrePositivity.Spectra.General.Suspension
 public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
 public import SerrePositivity.Spectra.SymmetricSpectrum.Free
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
@@ -33,7 +33,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
 public import SerrePositivity.Spectra.General.FreeHomLevels
 public import SerrePositivity.Spectra.General.ShiftedHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftStructure
-public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftSuspension
+public import SerrePositivity.Spectra.General.ShiftedHomSuspension
 public import SerrePositivity.Spectra.General.ShiftedHomNaturality
 public import SerrePositivity.Spectra.General.CotensorStructure
 public import SerrePositivity.Spectra.General.CotensorEvaluation
@@ -45,14 +45,9 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
-public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceUnitLaws
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceAssociativity
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceArrowComposition
+public import SerrePositivity.Spectra.General.MappingEnrichment
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicial
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialEnriched
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpacePointedOrdinary
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialOrdinary
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorCotensor
@@ -61,7 +56,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct
 public import SerrePositivity.CategoryTheory.Monoidal.Action
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
+public import SerrePositivity.Spectra.General.ParametrizedMapping
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionAssociator

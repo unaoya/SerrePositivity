@@ -44,7 +44,7 @@ lemma simplicial_cotensor (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.
 
 lemma simplicial_mappingObject (E F : SymmetricSpectrum.{u}) :
     mappingObject (K := (circle : PointedSimplicialSet.{u})) E F =
-      SymmetricSpectrum.pointedMappingSpace E F := rfl
+      (ihom E ⋙ SymmetricSpectrum.evaluation 0).obj F := rfl
 
 lemma simplicial_pointwiseTensorAssociator (X Y : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) : pointwiseTensorAssociator (K := circle) X Y E =

@@ -14,21 +14,22 @@ tensor・cotensor、懸垂・ループ、構造射の随伴表示をこの一つ
 import SerrePositivity.Spectra.StageTwo
 ```
 
-豊穣構造は `mappingSpaceSimplicialCategory` に置く。mathlibの型クラスを利用するスコープで
-`let : SimplicialCategory SymmetricSpectrum := mappingSpaceSimplicialCategory` として使える。
+単体的豊穣構造は、`pointedMappingEnrichedOrdinaryCategory` を局所登録してから
+`TransportOrdinaryEnrichment.ordinaryCategory` に `PointedSimplicialSet.forget` と
+`PointedSimplicialSet.forgetUnitHomEquiv`、その式 `PointedSimplicialSet.forgetUnitHomEquiv_formula` を渡して得る。
 構成済みの対象・射・随伴と引継ぎAPIは次のとおり。
 
 | 用途 | 主なAPI | 法則・比較 |
 | --- | --- | --- |
 | 基点付きの作用 | `pointwiseTensorFunctor`, `cotensorFunctor` | `pointwiseTensorCotensorAdjunction`、各段のsmash・内部Homとの一致 |
 | 作用の単位・結合 | `pointwiseTensorUnitNatIso`, `pointwiseTensorAssociatorNatIso` | 各段の通常の比較、三変数の自然性、pentagon・triangle・左単位 |
-| 基点付き写像対象 | `pointedMappingSpace`, `pointedMappingSpaceHomEquiv` | 評価・転置・逆転置、三変数の自然性 |
-| 写像の合成・単位 | `mappingSpaceComposition`, `mappingSpaceUnit` | 結合・左右単位則、通常の射の恒等射・合成との一致 |
-| 単体的豊穣構造 | `simplicialMappingSpace`, `mappingSpaceSimplicialCategory` | `simplicialMappingVertexEquiv`、既存の圏構造との一致 |
+| 基点付き写像対象 | `GeneralSymmetricSpectrum.mappingObject`, `GeneralSymmetricSpectrum.mappingObjectAdjunction` | `homEquiv` による転置・逆転置、余単位による評価 |
+| 写像の合成・単位 | `GeneralSymmetricSpectrum.mappingObjectComposition`, `GeneralSymmetricSpectrum.mappingObjectUnit` | 結合・左右単位則、通常の射の恒等射・合成との一致 |
+| 単体的豊穣構造 | `simplicialMappingSpace`, `TransportOrdinaryEnrichment.ordinaryCategory` | `simplicialMappingVertexEquiv`、既存の圏構造との一致 |
 | 通常の単体的作用 | `simplicialTensorFunctor`, `simplicialCotensorFunctor` | 三つのHom同値の三変数の自然性、評価・余評価 |
-| 単位と反復作用 | `simplicialTensorUnitNatIso`, `simplicialCotensorUnitNatIso`, `simplicialTensorProductNatIso`, `simplicialCotensorProductNatIso` | Δ[0]の単位、直積による反復比較の三変数の自然性、評価・転置との両立 |
-| 懸垂・ループ | `suspensionFunctor`, `loopFunctor`, `suspensionLoopAdjunction` | 自然なHom同値、単位・余単位・triangle、各段の公式 |
-| 構造射の随伴表示 | `adjointStructureMap` | `uncurry_adjointStructureMap`、`curry_uncurry_adjointStructureMap`、自然性。添字の移送は `suspensionMap` の `Nat.one_add` |
+| 単位と反復作用 | `simplicialTensorUnitNatIso`, `simplicialTensorProductNatIso` | 右随伴側は `ActionUnitAdjunction.rightUnitIso` と `ActionComparisonAdjunction.rightIso` で比較する |
+| 懸垂・ループ | `suspensionFunctor`, 円周での `GeneralSymmetricSpectrum.cotensorFunctor`, `suspensionLoopAdjunction` | 自然なHom同値、単位・余単位・triangle、各段の公式 |
+| 構造射の随伴表示 | `GeneralSymmetricSpectrum.adjointStructureMap` | `GeneralSymmetricSpectrum.uncurry_adjointStructureMap`、`MonoidalClosed.curry_uncurry`、自然性。添字の移送は `suspensionMap` の `Nat.one_add` |
 
 計画の最終検証例は [check_spectra_stage2](../../../scripts/check_spectra_stage2.lean)、
 標準公理のみ・sorry依存なしの監査は [audit_spectra](../../../scripts/audit_spectra.lean) に置く。

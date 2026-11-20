@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.Spectra.General.ShiftedHom
-public import SerrePositivity.Spectra.SymmetricSpectrum.Suspension
+public import SerrePositivity.Spectra.General.Suspension
+public import SerrePositivity.Spectra.SymmetricSpectrum.StructureMaps
 public import SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation
 
 /-! # 円周を座標とする構造射の対称列表示 -/
