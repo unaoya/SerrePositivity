@@ -1,7 +1,9 @@
 """全宣言の公理と sorry の状態（監査のゼロからの設計の G2、試作）。使い方：python3 axioms_check.py <採取のディレクトリ dump/> [出力.csv]
 採取（dump_all.lean）の deps の辺をたどり、各定数が推移的に依る公理を計算する。本体の外の定数は、許可した公理だけに依ると仮定する。"""
 import sys, glob, collections, csv
-D = sys.argv[1]; ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
+import json, os
+D = sys.argv[1]; CFG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'allowed.json'), encoding='utf-8'))
+ALLOWED = set(CFG['allowed_axioms']); UNPROVED = {x['name'] for x in CFG['allowed_unproved']}
 C = {}; deps = {}; direct = collections.defaultdict(set); rootmods = set()
 for f in glob.glob(D + '/root.modules.tsv'):
     for l in open(f, encoding='utf-8'): rootmods.add(l.split('\t')[0])
@@ -45,8 +47,26 @@ for ax, seen in closure.items():
     print(f'\n{ax}: direct {len(bad[ax])}, transitive {len(seen)} (in root closure {sum(1 for h in seen if C[h][1] in rootmods)}, outside {sum(1 for h in seen if C[h][1] not in rootmods)})')
     for h in sorted(bad[ax], key=lambda h: C[h][0]): print('  direct:', C[h][0], '|', C[h][1], '| dependents', len({x for x in closure[ax]}) if len(bad[ax]) == 1 else '')
     top = collections.Counter('.'.join(C[h][1].split('.')[1:3]) for h in seen); print('  by area:', top.most_common(10))
+# 判定
+fail = []
+if notdumped: fail.append(f'採取されていないモジュールが {len(notdumped)} 個ある')
+for ax in closure:
+    if ax != 'sorryAx': fail.append(f'許可していない公理 {ax} に依る宣言が {len(closure[ax])} 個ある')
+ds = {C[h][0] for h in bad.get('sorryAx', ())}
+if ds - UNPROVED: fail.append('許可の一覧にない宣言が sorry を含む：' + '、'.join(sorted(ds - UNPROVED)))
+if UNPROVED - ds: fail.append('許可の一覧にあるが sorry を含まなくなった宣言（一覧から外すこと）：' + '、'.join(sorted(UNPROVED - ds)))
+# 入力ごとに、依る宣言の数
+for h in sorted(bad.get('sorryAx', ()), key=lambda h: C[h][0]):
+    seen = {h}; st = [h]
+    while st:
+        x = st.pop()
+        for u in users.get(x, ()):
+            if u not in seen: seen.add(u); st.append(u)
+    print(f'  {C[h][0]}: 依る宣言 {len(seen) - 1}（root の閉包の中 {sum(1 for x in seen if C[x][1] in rootmods) - (C[h][1] in rootmods)}）')
+print('\n判定：' + ('通過' if not fail else '不合格\n  ' + '\n  '.join(fail)))
 if len(sys.argv) > 2:
     with open(sys.argv[2], 'w', encoding='utf-8') as f:
         w = csv.writer(f); w.writerow(['axiom', 'constant', 'module', 'kind', 'direct'])
         for ax, seen in closure.items():
             for h in sorted(seen, key=lambda h: C[h][0]): w.writerow([ax, C[h][0], C[h][1], C[h][2], int(h in bad[ax])])
+sys.exit(1 if fail else 0)
