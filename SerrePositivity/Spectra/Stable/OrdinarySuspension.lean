@@ -49,8 +49,7 @@ variable
   {LSigma ROmega : H ⥤ H}
   (γ : Q ⋙ LSigma ⟶ suspensionFunctor ⋙ Q)
   [hγ : LSigma.IsLeftDerivedFunctor γ (weakEquivalences SymmetricSpectrum.{u})]
-  (ρ : (GeneralSymmetricSpectrum.cotensorFunctor
-    (K := PointedSimplicialSet.circle.{u}) PointedSimplicialSet.circle) ⋙ Q ⟶ Q ⋙ ROmega)
+  (ρ : loopFunctor ⋙ Q ⟶ Q ⋙ ROmega)
   [hρ : ROmega.IsRightDerivedFunctor ρ (weakEquivalences SymmetricSpectrum.{u})]
 
 def ordinarySuspensionLoopEquivalence (hSigma : LSigma.IsEquivalence) : H ≌ H := by

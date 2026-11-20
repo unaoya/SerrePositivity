@@ -617,3 +617,72 @@ C は円周への特殊化を置くディレクトリ。行数は宣言の開始
 | SuspensionLoop.lean | `SerrePositivity.SymmetricSpectrum.suspensionFunctor` | `abbrev` | 3 | 別名 |
 | SuspensionLoop.lean | `SerrePositivity.SymmetricSpectrum.suspensionLoopAdjunction` | `abbrev` | 3 | 別名 |
 | TensorFreeAtSum.lean | `SerrePositivity.SymmetricSpectrum.sphereTensorFreeAtSum` | `abbrev` | 2 | 別名 |
+
+## 段 9　円周への特殊化を3ファイルにまとめる
+
+基準は `refactor/spectra-unify` の `3ecc4edca`。C は Lean 23 本・785 行・49 宣言から、3 本・327 行・50 宣言になった。宣言数はソースで名を付けたものを数えた。旧ファイルと新ファイルは[段 9 の対応表](../../../research/cleanup-zero-base/spectra/stage9.csv)に記録した。`loopFunctor` は基準点に存在しないので旧ファイル欄を空欄とした。段 8 で削除する前は `SuspensionLoop.lean` にあった。
+
+| ファイル | 行 | 宣言 | 内容 |
+| --- | ---: | ---: | --- |
+| `Basic.lean` | 137 | 26 | 円周に固定した型、自由対象と評価、構造射、基点付き作用・内部 Hom・写像対象、懸垂とループ |
+| `Sphere.lean` | 42 | 4 | 円周の対称列の正則加群と、その台・対称群作用・構造射 |
+| `Simplicial.lean` | 148 | 20 | 基点のない単体集合による作用、写像空間と零次単体の比較、随伴、自然性、単位と直積 |
+
+3 ファイルの区分は案のとおり。写像空間から得た単体的豊穣圏の零次単体を比較する `mappingSpaceSimplicialCategory_vertexEquiv` は、基点のない写像空間の構成と合わせて読めるよう `Simplicial.lean` に置いた。
+
+### ループ関手
+
+`GeneralSymmetricSpectrum.cotensorFunctor` の円周での特殊化を一行の `abbrev loopFunctor` にした。段 8 で展開した 10 箇所のうち、Lean の 9 箇所は `Stable/OrdinarySuspension.lean` に 1、`Stable/SimplicialStability.lean` に 4、`General/SimplicialSuspensionComparison.lean` に 1、`check_ordinary_suspension_stability.lean` に 1、`check_spectra_stage2.lean` に 2 ある。残り 1 箇所は C の README の API 表。[展開記録](../../../research/cleanup-zero-base/spectra/expanded-names.csv)に「戻した」と記録した。
+
+### 使う側の import の変化
+
+- `Foundations.lean` の旧 C import 19 行を `Simplicial` の 1 行に整理した。球面の `Sphere` は従来どおり公開する。`StageTwo.lean` の旧 C import 2 行は `Simplicial` の 1 行にした。
+- `ModelCategory/FreePushoutProduct.lean` の旧 C import 4 行は `Basic` の 1 行にした。`ModelCategory/SimplicialHomComparison.lean` は `MappingSpacePointedOrdinary` を `Basic` に、`ModelCategory/SimplicialLevelEnriched.lean` は `SimplicialTensorCotensor` を `Simplicial` に置き換えた。
+- `scripts/check_spectra_stage2.lean` は直接使う `SimplicialHomLaws` と `ActionProductComparison` の import を加えた。`InfinityCategories/Project/ModelCategoryComparison/Inputs/SimplicialLevel.lean` には、レベルモデルの import を通じて新しい C が届く。
+
+#### B 側の追従
+
+| ファイル | import の変更 | その他の変更 |
+| --- | --- | --- |
+| `Spectra/General/SimplicialComparison.lean` | 旧 C の 6 行を `Basic` の 1 行に集約 | 0 行 |
+| `Spectra/General/SimplicialSuspensionComparison.lean` | `SuspensionLoop` の 1 行を `Basic` の 1 行に置換 | `loopFunctor` の参照 1 行 |
+
+この 2 本は円周に固有の比較を行い、現在は `Spectra/General` にある。C に移すかどうかは次の B の整理で判断する。段 9 での追従は上の行に限った。
+
+### 検証
+
+bulk 鍵で、新しい C 3 本と逆向き import の閉包にある利用側 13 本をビルドした。C の既存 49 宣言は、移動前後で宣言コマンドの型と本体のソースが一致した。保存した旧環境と変更後の環境を比較すると、ソース上の宣言および方程式補題の既存 117 件はすべて同じカーネル名を持つ。型は 83 件が同一の式で、34 件がカーネルで定義的に等しい。ここには `loopFunctor` を明示した利用側の型も含む。
+
+カーネルの全件数は影響範囲で 268 → 201、C 内で 135 → 70。`loopFunctor` が 1 件増え、Lean が抽出する内部の `_proof_*` 名が 68 件減った。うち 66 件は C 内、2 件は利用側。ファイルをまたいで作られていた補助証明を統合後のファイル内で共有した結果を含む。共通名への公理依存の追加は 0 件。新しい `loopFunctor` の依存は `propext`・`Classical.choice`・`Quot.sound`。影響範囲の `sorryAx` 依存は前後とも同じ 9 件。
+
+監査・検査 24 本の成否は前後で一致した。成功は 14 本、既存の失敗は 10 本。診断の差は `audit_spectra`、`audit_stage4_contract`、`check_level_enriched`、`check_ordinary_suspension_stability` が出力する集計件数で、エラーの内容は一致した。
+
+### 自動生成の補助名
+
+`loopFunctor` がソースで名を付けた宣言の唯一の追加。既存の方程式補題を含め、`_proof_*` 以外の生成物に追加・削除・改名は 0 件。減った 68 件の旧所有ファイルは以下のとおり。パスは `SerrePositivity/Spectra/` から。
+
+| 旧ファイル | 件数 |
+| --- | ---: |
+| `ModelCategory/SimplicialLevelEnriched.lean` | 1 |
+| `Stable/OrdinarySuspension.lean` | 1 |
+| `SymmetricSpectrum/CotensorFunctor.lean` | 4 |
+| `SymmetricSpectrum/Evaluation.lean` | 3 |
+| `SymmetricSpectrum/Free.lean` | 3 |
+| `SymmetricSpectrum/InternalHomFunctor.lean` | 4 |
+| `SymmetricSpectrum/MappingSpace.lean` | 10 |
+| `SymmetricSpectrum/MappingSpacePointedOrdinary.lean` | 4 |
+| `SymmetricSpectrum/MappingSpaceSimplicial.lean` | 1 |
+| `SymmetricSpectrum/PointwiseTensor.lean` | 4 |
+| `SymmetricSpectrum/PointwiseTensorAdjunction.lean` | 4 |
+| `SymmetricSpectrum/PointwiseTensorAssociator.lean` | 4 |
+| `SymmetricSpectrum/PointwiseTensorFunctor.lean` | 4 |
+| `SymmetricSpectrum/PointwiseTensorUnit.lean` | 4 |
+| `SymmetricSpectrum/SimplicialTensorNaturality.lean` | 4 |
+| `SymmetricSpectrum/SimplicialTensorProduct.lean` | 3 |
+| `SymmetricSpectrum/SimplicialTensorUnit.lean` | 3 |
+| `SymmetricSpectrum/SuspensionLoop.lean` | 4 |
+| `SymmetricSpectrum/TensorFreeAtSum.lean` | 3 |
+
+完全修飾名と短い表記を検索し、本体、現行の監査・検査スクリプト、対応表、blueprint の生成器と生成物で、削除された補助名への文字参照は 0 件だった。過去の比較目録 `scripts/refactor/targets/w2a-2-v3b-comparison.json` には 9 件が計 18 行に残っている。たとえば 4535 行目の `SerrePositivity.SymmetricSpectrum.freeObj._proof_1`。この目録は W2a-2 当時の宣言一覧で、現行の実行や生成で使われていない。main の `0997952dc:formalization-plans/stage-ii/consolidation/cleanup-rules.md` に従い、履歴として保存した。
+
+[証拠目録](../../../evidence/spectra-unify/stage9/manifest.json)の基準点は `3ecc4edca`。外部証拠の `removed-generated-proof-names.txt` に旧名と旧所有ファイルを、`generated-proof-reference-scan.txt` に文字参照の検索結果を保存した。

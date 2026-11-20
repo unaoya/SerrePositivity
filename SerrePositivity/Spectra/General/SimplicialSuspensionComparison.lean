@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.General.SimplicialComparison
 public import SerrePositivity.Spectra.General.Suspension
-public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
+public import SerrePositivity.Spectra.SymmetricSpectrum.Basic
 public import Mathlib.CategoryTheory.Adjunction.Unique
 
 /-! # Actual suspension, loop and bonding-map compatibility for circle spectra
@@ -37,7 +37,7 @@ lemma simplicial_suspensionFunctor :
 
 def simplicialLoopNatIso :
     cotensorFunctor (K := (circle : PointedSimplicialSet.{u})) circle ≅
-      cotensorFunctor (K := circle.{u}) circle :=
+      SymmetricSpectrum.loopFunctor.{u} :=
   Adjunction.rightAdjointUniq
     (pointwiseTensorCotensorAdjunction (K := (circle : PointedSimplicialSet.{u})) circle)
     SymmetricSpectrum.suspensionLoopAdjunction.{u}

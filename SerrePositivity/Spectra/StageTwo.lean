@@ -3,9 +3,8 @@ module
 public import SerrePositivity.Spectra.General.CotensorEvaluation
 public import SerrePositivity.Spectra.General.CotensorMapLevels
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
-public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct
+public import SerrePositivity.Spectra.SymmetricSpectrum.Simplicial
 public import SerrePositivity.Spectra.General.Suspension
-public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
 
 /-!
 # モデル構造を選ぶ前の対称スペクトルの基盤

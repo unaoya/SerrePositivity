@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 public import SerrePositivity.Spectra.General.EnrichedModel
-public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorCotensor
+public import SerrePositivity.Spectra.SymmetricSpectrum.Simplicial
 
 /-! # The pointed simplicial action and mapping SM7 on the actual level model -/
 

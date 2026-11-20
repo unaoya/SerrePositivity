@@ -3,15 +3,10 @@ module
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.Spectra.General.TensorClosed
 public import SerrePositivity.Spectra.General.MappingObject
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
-public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.General.StructureMaps
 public import SerrePositivity.Spectra.General.FreeLevelQuotient
-public import SerrePositivity.Spectra.SymmetricSpectrum.StructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
-public import SerrePositivity.Spectra.SymmetricSpectrum.Free
-public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
+public import SerrePositivity.Spectra.SymmetricSpectrum.Basic
 
 /-! # Compatibility with the existing circle-based simplicial spectra
 

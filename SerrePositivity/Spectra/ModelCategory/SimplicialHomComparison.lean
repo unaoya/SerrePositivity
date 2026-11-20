@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.MappingFunctorComparison
-public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpacePointedOrdinary
+public import SerrePositivity.Spectra.SymmetricSpectrum.Basic
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
 
 /-! # Comparing the existing spectrum enrichment with the mapping bifunctor -/

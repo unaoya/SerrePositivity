@@ -1,6 +1,8 @@
 -- lake build SerrePositivity.Spectra.StageTwo の後に実行する。
--- 段階2の入口だけから、計画の最終確認に指定したAPIを利用できることを検証する。
+-- 段階2の入口で公開する API を、一般の単体的豊穣構造と作用の比較を使って検証する。
 import SerrePositivity.Spectra.StageTwo
+import SerrePositivity.CategoryTheory.Enriched.Simplicial
+import SerrePositivity.CategoryTheory.Monoidal.Action
 
 universe u
 
@@ -147,8 +149,7 @@ example {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') (E : SymmetricSpect
 
 -- 円による随伴は、転置・逆転置が互いに逆となる実際の随伴。
 example : suspensionFunctor.{u} ⊣
-    GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u})
-      PointedSimplicialSet.circle := suspensionLoopAdjunction
+    loopFunctor.{u} := suspensionLoopAdjunction
 
 example (E F : SymmetricSpectrum.{u}) (f : suspensionFunctor.obj E ⟶ F) :
     ((suspensionLoopAdjunction.homEquiv E F).symm
@@ -162,8 +163,7 @@ example (E : SymmetricSpectrum.{u}) :
   suspensionLoopAdjunction.left_triangle_components E
 
 example (E : SymmetricSpectrum.{u}) :
-    let R := GeneralSymmetricSpectrum.cotensorFunctor (K := PointedSimplicialSet.circle.{u})
-      PointedSimplicialSet.circle
+    let R := loopFunctor.{u}
     suspensionLoopAdjunction.unit.app (R.obj E) ≫
       R.map (suspensionLoopAdjunction.counit.app E) = 𝟙 (R.obj E) :=
   suspensionLoopAdjunction.right_triangle_components E
