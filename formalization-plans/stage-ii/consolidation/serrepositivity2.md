@@ -107,7 +107,7 @@ docstring だけでなく、コードも Mathlib の基準に照らす。書く�
   - 最後の `simp` は絞らない（`simp only` に書き換えない）。途中の `simp` は絞る。
   - `simp` や `rw` の後に `erw` や `rfl` が要るのは、API の補題が足りない印。補題を足す。
   - `def` は既定のまま（`abbrev` や `irreducible` にするなら理由を書く）。
-  - 名前：定理は snake_case、型と Prop は UpperCamelCase、その他の項は lowerCamelCase。主張から名前を作る（記号の辞書、仮定は `_of_`、`_apply`・`map_`・`ext`・`_injective`・`_inj`、`left`/`right`）。名前空間つきの定義を補題の名前で引く時は名前空間を落とす。
+  - 名前：定理は `snake_case`、型と Prop は `UpperCamelCase`、その他の項は `lowerCamelCase`。主張から名前を作る（記号の辞書、仮定は `_of_`、`_apply`・`map_`・`ext`・`_injective`・`_inj`、`left`/`right`）。名前空間つきの定義を補題の名前で引く時は名前空間を落とす。
   - 新しい定義には補題を付ける（`@[simps]` で足りればそれで）。`@[simp]`・`@[ext]`・`@[reassoc]` を適切に。定義を開かずに書き換えられる補題を用意する。
   - import を広げない。ファイルは 1000 行を超えたら分ける（このプロジェクトの目安は 500 行）。
 
