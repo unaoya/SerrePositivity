@@ -12,13 +12,13 @@ import sys
 import time
 
 from audit import Failure, ROOT, command, write_json
-from coverage import LIVE, compare, digest, read_baselines, sha
+from coverage import compare, digest, read_baselines, sha
+from coverage_verso import BOOKS, is_link_row, name_only, name_only_report, verify_pin
 
 SCRIPTS = ROOT / "blueprint/scripts"
 sys.path.insert(0, str(SCRIPTS))
-from common import rendered_links
+from common import CARD, rendered_links
 
-BOOKS = {"paper", "clmst", "bs", "bs17", "bm18", "rydh", "kerodon", "htt", "ha"}
 BASE = Path("blueprint/SerreBlueprint")
 JOBS = [("gen_paper.py",), ("gen_cited.py", "clmst", "bs", "vdescent"),
         ("gen_lurie.py", "htt", "ha")] + [
@@ -37,6 +37,8 @@ def sources():
     if edge.is_file():
         yield edge
     yield from sorted(SCRIPTS.glob("*.py"))
+    yield Path(__file__).with_name("coverage_verso.py").resolve()
+    yield ROOT / "blueprint/lake-manifest.json"
 
 
 def status(plan):
@@ -49,15 +51,6 @@ def status(plan):
         if is_link_row(row) and (not row.get("name") or not row["public"]):
             problems.append(row)
     return links, problems
-
-
-def is_link_row(row):
-    if row["literature"] not in BOOKS or row["status"] not in LIVE:
-        return False
-    if row["file"].endswith("/external.csv"):
-        # Paper refers to CLMST cards in their own section.
-        return not row["item"].startswith("CLMST ")
-    return "/review/" in row["file"]
 
 
 def card_label(row):
@@ -80,7 +73,7 @@ def verify_output(rows, references):
     for ref in references:
         if is_link_row(ref):
             names = expected.setdefault(card_label(ref), [])
-            if ref.get("name") and ref["public"]:
+            if ref.get("name") and ref["public"] and not name_only(ref):
                 names.append(ref["name"])
     diffs = [label for label, names in expected.items()
              if label not in rows or rows[label][1] != names]
@@ -99,6 +92,31 @@ def cards(root):
     return rows
 
 
+def verify_names(root, references):
+    expected = {}
+    for ref in references:
+        if is_link_row(ref) and ref.get("name") and ref["public"] and name_only(ref):
+            expected.setdefault(card_label(ref), []).append(ref["name"])
+    found = {}
+    for file in root.rglob("*.lean"):
+        text = file.read_text()
+        starts = list(CARD.finditer(text))
+        for i, card in enumerate(starts):
+            end = starts[i + 1].start() if i + 1 < len(starts) else len(text)
+            names = re.findall(r"^宣言（リンクなし）：(.+)$", text[card.end():end], re.M)
+            if names:
+                found[card[1]] = re.findall(r"`([^`]+)`", "".join(names))
+    if expected != found:
+        raise Failure("planned and rendered name-only references differ")
+
+
+def lean_payload(file):
+    """Remove only the generator's provenance prefix when testing for an unchanged chapter."""
+    data = file.read_bytes()
+    return re.sub(rb"\A-- audit2: [0-9a-f]+ inputs sha256 [0-9a-f]{64}\n"
+                  rb"(?:-- audit2 baselines: [0-9a-f, ]+\n)?", b"", data, count=1)
+
+
 def diff_cards(before, after, plan):
     refs = {}
     for row in plan["references"]:
@@ -114,12 +132,15 @@ def diff_cards(before, after, plan):
 def generate(plan, folder, preview, publish):
     if plan["commit"] != command(["git","rev-parse","HEAD"]):
         raise Failure("blueprint plan is for a different base commit")
+    verify_pin(ROOT / "blueprint/lake-manifest.json")
     links, problems = status(plan)
     for file, expected in plan["inputs"].items():
         if sha(ROOT/file) != expected:
             raise Failure(f"stale declaration plan: {file}")
     folder.mkdir(parents=True, exist_ok=True)
     write_json(folder/"unresolved.json", problems)
+    shown = name_only_report(plan["references"])
+    write_json(folder/"name-only.json", shown)
     if problems and not preview:
         raise Failure(f"{len(problems)} unresolved or non-public blueprint references; see {folder/'unresolved.json'}")
     if preview and publish:
@@ -141,9 +162,11 @@ def generate(plan, folder, preview, publish):
     fingerprints = {p.relative_to(ROOT).as_posix():sha(p) for p in sources()}
     input_hash = digest([plan["commit"], fingerprints, sorted(links.items())])
     wire = folder/"link-plan.json"
+    name_only_raw = {r["raw"]: r["name"] for r in plan["references"]
+                     if r.get("name") and name_only(r)}
     write_json(wire, dict(root=str(tree.resolve()), commit=plan["commit"], input_hash=input_hash,
                           baseline_commits=baseline_commits, inputs=plan["inputs"], preview=preview,
-                          links=links))
+                          links=links, name_only=name_only_raw))
     start = time.monotonic()
     env = dict(os.environ, AUDIT2_BLUEPRINT_PLAN=str(wire.resolve()))
     with (folder/"generate.log").open("w") as log:
@@ -154,18 +177,28 @@ def generate(plan, folder, preview, publish):
         raise Failure("blueprint inputs changed during rendering")
     after = cards(tree/BASE)
     verify_output(after, plan["references"])
+    verify_names(tree/BASE, plan["references"])
     changes = diff_cards(before, after, plan)
     files = {}
+    retained = {}
     for f in sorted((tree/BASE).rglob("*")):
-        if f.is_file() and (not (ROOT/BASE/f.relative_to(tree/BASE)).is_file()
-                            or sha(f) != sha(ROOT/BASE/f.relative_to(tree/BASE))):
-            files[str(f.relative_to(tree/BASE))] = sha(f)
+        if not f.is_file():
+            continue
+        rel = f.relative_to(tree/BASE)
+        old = ROOT/BASE/rel
+        if old.is_file() and sha(f) == sha(old):
+            continue
+        if old.is_file() and f.suffix == ".lean" and lean_payload(old) == lean_payload(f):
+            retained[str(rel)] = sha(old)
+        else:
+            files[str(rel)] = sha(f)
     write_json(folder/"changes.json", changes)
     result = dict(commit=plan["commit"], preview=preview, input_hash=input_hash, files=files,
                   cards_before=len(before), cards_after=len(after), change_cards=len(changes),
                   linked_before=sum(bool(row[1]) for row in before.values()),
                   linked_after=sum(bool(row[1]) for row in after.values()),
-                  missing=len(problems), seconds=time.monotonic()-start)
+                  missing=len(problems), name_only=shown["count"], retained=retained,
+                  seconds=time.monotonic()-start)
     write_json(folder/"result.json", result)
     if publish:
         removed = {p.relative_to(ROOT/BASE) for p in (ROOT/BASE).rglob("*.lean")} - {
@@ -176,7 +209,8 @@ def generate(plan, folder, preview, publish):
             target = ROOT/BASE/file
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(tree/BASE/file, target)
-    print(result["change_cards"], "card changes;", result["missing"], "unresolved links")
+    print(result["change_cards"], "card changes;", result["missing"], "unresolved links;",
+          shown["count"], "displayed by name only")
 
 
 def main():

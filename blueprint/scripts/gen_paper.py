@@ -69,9 +69,7 @@ for sec in sorted(by_sec, key=int):
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
             if (nb := note_body(n)):
                 stats['with-note'] += 1; body.append(nb)
-            decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
-            if decls and not linked:
-                body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
+            if declaration_note := res.declaration_note(label(n), rv.get('declarations', ''), linked): body.append(declaration_note)
             if ext[n]:
                 body.append('外の文献：' + '、'.join(esc(x) for x in ext[n]) + '\n')
             body.append(':::\n')
@@ -95,8 +93,7 @@ for r in external:
     body.append(f':::proposition "{lab}"{opts}')
     body.append(f'*{esc((r["source"] + " " + r["number"]).strip())}*　{esc(r["statement_ja"])}。' + (f'対応表の状態：{STATUS.get(st, st)}。' if st else '状態はその文献の対応表を参照。') + '\n')
     if r.get('reason'): body.append(esc(r['reason']) + '\n')
-    decls = [x.split(' @ ', 1)[0].strip() for x in r['declarations'].split(' | ') if x.strip()]
-    if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
+    if declaration_note := res.declaration_note(lab, r['declarations'], linked): body.append(declaration_note)
     body.append(':::\n')
 hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \
       ['', 'open Verso.Genre', 'open Verso.Genre.Manual', 'open Informal', '', '-- 章が長いと既定の上限で時間切れになる（本論文 §5、11-18）', 'set_option maxHeartbeats 2000000', '',

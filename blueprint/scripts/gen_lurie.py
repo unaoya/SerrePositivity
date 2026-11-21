@@ -107,8 +107,7 @@ def gen(key):
                 if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
                 if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
                 if (nb := note(n)): body.append(nb); stats['with-note'] += 1
-                decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
-                if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
+                if declaration_note := res.declaration_note(label(key, n), rv.get('declarations', ''), linked): body.append(declaration_note)
                 body.append(':::\n')
         mod = f'Section{slug(sec)}'
         ch = sec.split('.')[0]

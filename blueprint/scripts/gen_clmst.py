@@ -54,9 +54,7 @@ for sec in sorted(by_sec, key=int):
             body.append(f':::{KIND.get(r["kind"], "proposition")} "{label(n)}"{opts}')
             body.append(f'**{KINDJA.get(r["kind"], r["kind"])} {esc(n)}**　{esc(title)}。対応表の状態：{STATUS.get(st, st)}。\n')
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
-            decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
-            if decls and not linked:
-                body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
+            if declaration_note := res.declaration_note(label(n), rv.get('declarations', ''), linked): body.append(declaration_note)
             if ext[n]:
                 body.append('外の文献：' + '、'.join(esc(x) for x in ext[n]) + '\n')
             body.append(':::\n')

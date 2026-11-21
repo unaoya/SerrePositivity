@@ -297,7 +297,7 @@ def resolve(root, db_file, external_file, old=(), moves=None):
                 if row:
                     verdict.update(module=row["module"], name=row["name"], type_hash=row["type_hash"],
                                    meaning_hash=index.meaning(row["module"],row["name"]),
-                                   location=location(row), public=row["public"])
+                                   location=location(row), public=row["public"], kind=row["kind"])
                 verdicts[raw] = verdict
             verdict = verdicts[raw]
             if moves and (previous := prior.get(key)) and previous["raw"] == raw:
@@ -309,7 +309,7 @@ def resolve(root, db_file, external_file, old=(), moves=None):
                         verdict = dict(resolution=state, candidates=json_line(candidates), module=owner,
                                        name=name, type_hash=row["type_hash"],
                                        meaning_hash=index.meaning(owner, name), location=location(row),
-                                       public=row["public"])
+                                       public=row["public"], kind=row["kind"])
                     else:
                         verdict = dict(resolution="missing", candidates=json_line(candidates))
             references.append(dict(item, raw=raw, ordinal=ordinal, **verdict))
@@ -323,7 +323,7 @@ def baseline(path, plan):
     for book in books(path):
         rows = grouped[book.name.removesuffix("-coverage")]
         with (book/"baseline.csv").open("w", encoding="utf8", newline="") as f:
-            writer = csv.DictWriter(f, FIELDS, lineterminator="\n")
+            writer = csv.DictWriter(f, FIELDS, lineterminator="\n", extrasaction="ignore")
             writer.writeheader()
             writer.writerows(dict(r, commit=plan["commit"], baseline_note=NOTE) for r in rows)
 
@@ -375,7 +375,7 @@ def update_locations(root, plan, old, changes):
             grouped[row["literature"]].append(row)
         for book in books(root):
             with (book/"baseline.csv").open("w", newline="", encoding="utf8") as stream:
-                writer = csv.DictWriter(stream, FIELDS, lineterminator="\n")
+                writer = csv.DictWriter(stream, FIELDS, lineterminator="\n", extrasaction="ignore")
                 writer.writeheader()
                 writer.writerows(grouped[book.name.removesuffix("-coverage")])
 

@@ -10,6 +10,7 @@ import sys
 
 from audit import Failure, ROOT, command, write_json
 from coverage import compare, identity, read_baselines, resolve
+from coverage_verso import name_only_report, verify_pin
 
 
 def baseline_at(ref):
@@ -71,8 +72,12 @@ def main():
         raise Failure("record audit failed")
     old = list(baseline_at(args.baseline_ref) if args.baseline_ref else read_baselines(ROOT))
     plan = resolve(ROOT, args.database, args.mathlib)
+    manifest = ROOT / "blueprint/lake-manifest.json"
+    if manifest.is_file():
+        verify_pin(manifest)
     result = gate(old, plan["references"], approved)
-    result.update(commit=plan["commit"], baseline_ref=args.baseline_ref)
+    result.update(commit=plan["commit"], baseline_ref=args.baseline_ref,
+                  blueprint_name_only=name_only_report(plan["references"]))
     write_json(args.receipt, result)
     print(f"hard failures {len(result['hard_failures'])}, pending meaning {len(result['meaning_review'])}, "
           f"approved meaning {result['meaning_approved']}; {args.receipt}")

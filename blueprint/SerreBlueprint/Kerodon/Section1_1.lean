@@ -1,4 +1,4 @@
--- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2: 98f6bd13c9b0b36c7c258e2659a40a43a405c04f inputs sha256 e8dca7c30ce1fca3351f4ddfc08dfa2ccc5f6617ecf7a8f8fcafba0d1c95df06
 -- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
@@ -45,12 +45,14 @@ Kerodon の 1.1 節（[Tag 0004](https://kerodon.net/tag/0004)）の項目と、
 
 第 III 部を通して、Grothendieck 宇宙 $`\mathbb U` を一つ固定する。$`\mathbb U` の元である集合を小さいという。単体的集合 $`X` が小さいとは、すべての $`[m]` について $`X([m])` が小さいことをいう。
 
-:::definition "kerodon_1_1_0_1" (lean := "SimplexCategory.mk")
+:::definition "kerodon_1_1_0_1"
 Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応表の状態：Mathlib にある。
 
 *主張*　非負整数 $`n` に対し、自然順序を入れた集合 $`\{0,\ldots,n\}` を $`[n]` と記す。
 
 仮定：非負整数 n（Kerodon と一致）。結論：SimplexCategory.mk n は長さ n の対象 ⦋n⦌、すなわち 0,…,n の順序集合を表す（一致）。
+
+宣言（リンクなし）：`SimplexCategory.mk`
 
 :::
 
