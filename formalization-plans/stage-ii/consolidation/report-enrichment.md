@@ -1,6 +1,6 @@
 # EN-W1 報告
 
-現在地は段2bの設計改訂完了。
+現在地は段3aの事前照合で停止。A3 の既存宣言5件の改名と、段2bの新しい型を同じ名前に割り当てる指定が衝突した。
 
 ## 段1　豊穣化の全体調査
 
@@ -162,3 +162,28 @@ main `bfc902136` を取り込んだ `abc86598b` で、Git 外の Riehl・Hovey�
 - 132件の署名を `lake env lean --stdin` で既存成果物に対して検査した。証明を省いた宣言に加え、制限作用、随伴二つの接続、二つの試験例への適用、四本の `Equiv.trans` の接続を stdin 上で照合した。実装の証明とビルドは後段。Lean ソースの変更は0。
 
 新しい入口と補助は125件、既存名の改名・置換は7件、実装の見積もりは1,670–3,100行。段3a は A2・A3・B3 と自己閉加群、3b は B1、3c は一般の B2 と B4、3d は B6、3e は基点付き単体集合。段3の実装と SU-W1 段14は引き続き監査の区切りを待つ。
+
+## 段3a　事前照合と停止箇所
+
+main `3ed0c1724` を取り込んだ。R Definition 10.1.3・Proposition 10.1.4 と H Definition 4.1.6・4.1.12 を Git 外の本文で確認した。R の閉じた加群は二変数随伴・結合・単位を取り、段2bの採用案はさらに H の四重結合と単位の整合を備える。H の右作用は左作用に読み替える。 [指示と停止条件](enrichment-w1.md) · [段2bの型と移行表](../../../research/cleanup-zero-base/enrichment/stage2-types.md)
+
+### 最初の二点
+
+- `ClosedModuleOn.tensor_eq` は `tensorIso : @MonoidalLeftAction.curriedAction V M _ _ _ action ≅ adjunctions.tensor` に替えられる。単位の比較は `tensorIso.hom` の単位での成分、旧 `unitIso.hom)、作用単位子の順射の三つで述べる。`ParametrizedAdjunctionTransport.left` に `tensorIso.symm` を渡して余テンソル随伴を移し、`CategoryTheory.flipFunctor` がその逆同型を写したものを渡して写像随伴を移す。この二つを束ねる `ClosedModuleOn.toClosedModule` は stdin 上の定義まで照合した。
+- 主張中のインスタンスは明示引数で渡せる。閉加群の二つの随伴の定義域に `@MonoidalLeftAction.curriedAction V M _ _ _ action` を使い、B3 の戻り型は `@TensorCotensor V _ _ M _ (ofAction L)` と書く。前者は構造欄、後者は同じ戻り型を使う例で検査した。型の意味は段2bの局所インスタンスによる指定と同じ。
+
+### 停止条件に当たった所
+
+段2bの行き先の表で「改名」とした A3 の下記5件は、旧宣言と、同じ表が改名先に指定する新宣言のカーネルの型が異なる。既存成果物に対する `#check @…` と、段2bの署名を照合した。新しい方はすべて `L : ClosedModule V M` を入口とする。
+
+| 旧名（`SerrePositivity.` を省略） | 表の改名先 | 旧宣言が受け取るもの |
+| --- | --- | --- |
+| `RepresentedMappingEnrichment.evaluation` | `actionEvaluation` | `H : V ⥤ M ⥤ M`、`R : M → M ⥤ V`、対象ごとの写像随伴。V のモノイダル構造も仮定しない |
+| `RepresentedMappingEnrichment.unit` | `actionUnit` | 上のデータに `H.obj (𝟙_ V) ≅ 𝟭 M` を加える |
+| `RepresentedMappingEnrichment.arrowEquiv` | `actionHomEquiv` | `unit` と同じ入力。通常射と点の同値を取る |
+| `RepresentedMappingEnrichment.ordinaryCategory` | `ofAction` | `H`、結合・単位の比較、対象ごとの写像随伴、豊穣化の法則を個別に受け取る |
+| `RepresentedHomFunctor.homFunctorIso_ofParametrized` | `ofActionHomIso` | `H`、結合と単位の比較・整合の一部、写像側のパラメータ付き随伴、個別の豊穣化の法則 |
+
+`evaluation` の旧入力の具体例として、V を終対象だけのモノイダル圏、M を二元鎖、H の値を最小元への定値関手にできる。固定した各 X について `H.flip.obj X` の値は初期対象なので写像側の右随伴がある。一方、最大元 X では単位の作用が X と同型にならず、この H を保った閉じた加群は作れない。従って旧署名を保つ改名と、表の同じ改名先で閉じた加群を受け取る新 API は、一つの宣言には収まらない。既存のスペクトルの利用側が、評価・単位・通常射の同値・通常豊穣化を現に旧署名で呼び出している。 [旧宣言](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L429) · [スペクトルでの呼出し](../../../SerrePositivity/Spectra/General/MappingEnrichment.lean#L24)
+
+型保存の改名と新 API を別の宣言名に配置するか、この5件を改名から置換に変更して利用側を移行するかで、表と前後監査の判定が変わる。段3aのこの指定を確定できるまで、略号登録・Lean 差分・利用側の変更は0件。従って新規宣言ごとの検査時間、制限対象の出現箇所、長い新規証明は該当なし。既存成果物を限定して読む `lake env lean --stdin` の事前照合は bulk 鍵の下で終了値0。全モジュールのビルド、linter・`#lint`、`scripts/audit2/premerge.py` は実装候補ができる段階の検査として未実行。
