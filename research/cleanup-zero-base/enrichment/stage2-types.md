@@ -1,279 +1,656 @@
-# EN-W1 段2　厳密な豊穣化の型案
+# EN-W1 段2b　閉じた加群からの豊穣化
 
-main `6fc90a31e` を取り込んだ `e991924fd` と固定 Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6` が基準。以下の `TensorCotensor` と `EnrichedRepresentability` は現在の `SerrePositivity.Enriched` の型を指す。新設する構成は `CategoryTheory` の下に置く。型ブロックは証明を省いたヘッダーで、各節の `variable` は同じ節のブロックで共用する。A1 の自己豊穣化は Mathlib の `MonoidalClosed.enrichedOrdinaryCategorySelf` を使う。右随伴の比較、関手輸送、通常の圏を取り出す操作は既存のものを使う。
+main `bfc902136` を取り込んだ `abc86598b` と固定 Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6` を基準にした型案。文献の略号、番号、実装の順は [文献対応表](../../../formalization-plans/stage-ii/consolidation/enrichment-literature-map.md) に従う。型ブロックは実装時の署名。文献番号のコメントは次の番号コメントまでの宣言にかかる。既存の `TensorCotensor` と `EnrichedRepresentability` は `SerrePositivity.Enriched` の型を指す。「補助」は原典に単独の宣言として対応する項目がないことを表す。
 
-## A3・B3　作用から作る `OfAction.lean`
+## 1. 基準の構造と A3・B3（OfAction.lean）
 
-豊穣化だけには `r` 一つを受け取り、余テンソルを選ぶ `q` は B3 で加える。作用の結合子は `T(P ⊗ Q) ≅ T Q ⋙ T P`。従って評価して得る合成では `R(Y,Z)` が左因子になり、Mathlib の `eComp` の順に揃えるときは基底の組紐を使う。単位・結合・通常射の法則は `MonoidalLeftAction` の自然性、左右単位・五角形、随伴の転置の単射性から示す。閉性はこの段階では不要。
+`ClosedModule V M` は既存の通常圏 M 上のデータ。左作用は H 4.1.6 の右作用を読み替え、二つの随伴は H 4.1.12 と同じデータを別々の `ParametrizedAdjunction` に分ける。基底の閉性は後の V 値の表現に課す。V での Hom を作る段は組紐で足りる。
 
 ```lean
-open CategoryTheory CategoryTheory.MonoidalCategory Opposite
-open CategoryTheory.BraidedCategory
+open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.BraidedCategory Opposite
 open SerrePositivity.Enriched
-universe u v u' v'
-variable {V : Type u} {M : Type u'} [Category.{v} V] [Category.{v'} M]
-  [MonoidalCategory V] [BraidedCategory V] [MonoidalLeftAction V M]
-local notation "H" => MonoidalLeftAction.curriedAction V M
-local notation "T" => Functor.obj H
-variable {R : Mᵒᵖ ⥤ M ⥤ V} {Q : Vᵒᵖ ⥤ M ⥤ M}
-local notation "R₁" => fun X : M => R.obj (op X)
-local notation "homV" => fun X Y : M => Functor.obj (R.obj (op X)) Y
+universe u v w z
+variable {V : Type u} {M : Type w} [Category.{v} V] [Category.{z} M]
+  [MonoidalCategory V]
 
-def actionAssoc (P Q : V) : T (P ⊗ Q) ≅ T Q ⋙ T P
-def actionEvaluation (r : (H).flip ⊣₂ R) (X Y : M) :
-    (T (homV X Y)).obj X ⟶ Y
-def actionUnit (r : (H).flip ⊣₂ R) (X : M) : 𝟙_ V ⟶ homV X X
-def actionComposition (r : (H).flip ⊣₂ R) (X Y Z : M) :
-    homV X Y ⊗ homV Y Z ⟶ homV X Z
-def actionHomEquiv (r : (H).flip ⊣₂ R) (X Y : M) :
-    (X ⟶ Y) ≃ (𝟙_ V ⟶ homV X Y)
-lemma actionEvaluation_eq (r : (H).flip ⊣₂ R) (X Y : M) :
-    actionEvaluation r X Y = (r.adj X).counit.app Y
-lemma actionUnit_eq (r : (H).flip ⊣₂ R) (X : M) :
-    actionUnit r X = (r.adj X).homEquiv (𝟙_ V) X
-      ((MonoidalLeftAction.actionUnitNatIso V M).hom.app X)
-lemma actionComposition_eq (r : (H).flip ⊣₂ R) (X Y Z : M) :
-    actionComposition r X Y Z =
-      (r.adj X).homEquiv (homV X Y ⊗ homV Y Z) Z
-        (((H).map (β_ (homV X Y) (homV Y Z)).hom).app X ≫
-          ((actionAssoc (M := M) (homV Y Z) (homV X Y)).hom.app X) ≫
-          (T (homV Y Z)).map (actionEvaluation r X Y) ≫ actionEvaluation r Y Z)
-lemma actionHomEquiv_apply (r : (H).flip ⊣₂ R) {X Y : M} (f : X ⟶ Y) :
-    actionHomEquiv r X Y f = (r.adj X).homEquiv (𝟙_ V) Y
-      (((MonoidalLeftAction.actionUnitNatIso V M).hom.app X) ≫ f)
-@[instance_reducible] def ofAction (r : (H).flip ⊣₂ R) :
-    EnrichedOrdinaryCategory V M
-def ofActionHomIso (r : (H).flip ⊣₂ R) :
-    let : EnrichedOrdinaryCategory V M := ofAction r
-    eHomFunctor V M ≅ R
-lemma ofActionHomIso_hom_app (r : (H).flip ⊣₂ R) (X Y : M) :
-    let : EnrichedOrdinaryCategory V M := ofAction r
-    ((ofActionHomIso r).hom.app (op X)).app Y = 𝟙 (homV X Y)
-def ofActionTensorCotensor (r : (H).flip ⊣₂ R) (q : H ⊣₂ Q) :
-    let : EnrichedOrdinaryCategory V M := ofAction r
+-- R 10.1.3、H 4.1.6・4.1.12。H は右作用。
+structure ClosedModule (V : Type u) (M : Type w) [Category.{v} V] [Category.{z} M]
+    [MonoidalCategory V] where
+  action : MonoidalLeftAction V M
+  cotensor : Vᵒᵖ ⥤ M ⥤ M
+  mapping : Mᵒᵖ ⥤ M ⥤ V
+  cotensorAdj : letI := action; MonoidalLeftAction.curriedAction V M ⊣₂ cotensor
+  mappingAdj : letI := action; (MonoidalLeftAction.curriedAction V M).flip ⊣₂ mapping
+
+variable (L : ClosedModule V M)
+local notation "T[" L "]" => @MonoidalLeftAction.curriedAction V M _ _ _ (ClosedModule.action L)
+local notation "R[" L "]" => ClosedModule.mapping L
+local notation "evHom[" L "]" => fun X Y : M => Functor.obj (Functor.obj (R[L]) (op X)) Y
+
+-- R 10.1.4 の余単位による構成。比較の値を固定する補助。
+def actionEvaluation (L : ClosedModule V M) (X Y : M) :
+    ((T[L]).obj (evHom[L] X Y)).obj X ⟶ Y
+-- R 10.1.4、3.4.9 の証明の単位式を作用に適用。
+def actionUnit (L : ClosedModule V M) (X : M) : 𝟙_ V ⟶ evHom[L] X X
+-- R 10.1.4、3.4.9 の証明の (3.4.11) を作用に適用。
+def actionHomEquiv (L : ClosedModule V M) (X Y : M) : (X ⟶ Y) ≃ (𝟙_ V ⟶ evHom[L] X Y)
+
+variable [BraidedCategory V]
+
+-- R 10.1.4、(3.3.8) と (3.4.6) の合成を図式順にする。
+def actionComposition (L : ClosedModule V M) (X Y Z : M) :
+    evHom[L] X Y ⊗ evHom[L] Y Z ⟶ evHom[L] X Z
+-- R 10.1.4、K (1.3)、H 4.1.6 の四重の整合。
+lemma actionComposition_assoc (L : ClosedModule V M) (W X Y Z : M) :
+    (actionComposition L W X Y ▷ evHom[L] Y Z) ≫ actionComposition L W Y Z =
+      (α_ (evHom[L] W X) (evHom[L] X Y) (evHom[L] Y Z)).hom ≫
+        (evHom[L] W X ◁ actionComposition L X Y Z) ≫ actionComposition L W X Z
+-- R 10.1.4 の前半。R 3.4.5 の通常射も固定。
+@[instance_reducible] def ofAction (L : ClosedModule V M) : EnrichedOrdinaryCategory V M
+-- 補助。R 10.1.4 の表示を現行 eHomFunctor に接続。
+def ofActionHomIso (L : ClosedModule V M) :
+    letI := ofAction L
+    eHomFunctor V M ≅ R[L]
+-- R 10.1.4、H 4.1.12。B3 の忘却。
+def ofActionTensorCotensor (L : ClosedModule V M) :
+    letI := ofAction L
     TensorCotensor V M
-lemma ofAction_tensorHomEquiv (r : (H).flip ⊣₂ R) (q : H ⊣₂ Q)
-    (P : V) (X Y : M) (f : (T P).obj X ⟶ Y) :
-    let : EnrichedOrdinaryCategory V M := ofAction r
-    (ofActionTensorCotensor r q).tensorHomEquiv P X Y f = (r.adj X).homEquiv P Y f
 ```
 
-`actionAssoc` は Mathlib の三変数同型の二つの成分。 `actionEvaluation` は `r.adj X` の余単位、`actionUnit` は `actionUnitNatIso.hom.app X` の転置、`actionHomEquiv` は同じ単位子による前合成と `r.adj X` の転置の合成。 `actionComposition` は `β_{R(X,Y),R(Y,Z)}`、作用結合子、`R(Y,Z)` による左作用が写す評価 $X\to Y$、評価 $Y\to Z$ を順に合成して転置する。構造の Hom、単位、合成、通常射との同値はこれらの値に定義的に還元する。
+評価は `(L.mappingAdj.adj X).counit.app Y`。作用の単位の順射を `L.mappingAdj.adj X` で転置して単位を作る。通常射の同値は、作用単位子の順射で前合成して同じ随伴で転置する。合成は $M(X,Y)⊗M(Y,Z)$ を $M(Y,Z)⊗M(X,Y)$ に組紐で交換し、作用に入れてから作用の結合子の順射で $T(M(Y,Z),T(M(X,Y),X))$ に移す。二つの評価を順に合成し、転置する。A3 の結合律は随伴で両辺を戻し、評価の自然性、組紐の六角形、作用の四重の整合を使う。この手順は現行の `ReverseComposition` と `RepresentedMapping` の評価則を再利用する。B3 のテンソルと余テンソルは L の値。Hom 側だけ、成分が恒等の `ofActionHomIso` の逆に沿って随伴を輸送する。点の転置の一致はこの恒等成分と上記の通常射の式で従う。
 
-`ofActionHomIso` の対象成分は恒等。終変数での自然性は評価の後合成、原変数では `r.homEquiv_naturality_one` を使う。B3 の `tensor=H`、`cotensor=Q` と `tensorCotensor=q` は選んだデータそのまま。 `tensorHom` は `ParametrizedAdjunctionTransport.right` で `r` を `ofActionHomIso.symm` に沿って輸送する。上の転置の式と `unitMap_comp` により、B3 の `unitIso` が元の作用単位子と成分ごとに一致する。
+### 五角形を使う範囲と忘却の選択
 
-既存 `RepresentedMapping` の法則は、一般の左作用の仮定から呼ぶ。評価後の補題、whiskering、右随伴の比較の中間命題をそれぞれ移すか局所化する。個別の63件の予定は末尾の表。A3 の型には基底変更（自由対象、評価関手、モデル圏）を持ち込まない。
+| 入力 | B1 の係数自然性二つ | B1 の単位点の一致二つ | A3 の結合律 |
+| --- | --- | --- | --- |
+| 既存の通常豊穣圏、`TensorCotensor`、自然な結合子と `unitIso` との左右の整合（段2 `TensorAssociativity`） | 示せる。結合子の係数自然性、組紐・閉随伴の自然性 | 示せる。列を単位で評価し、左右の単位図式と `unitMap_comp` を使う | 一般には示せない。作用の四重の整合がない |
+| `ClosedModule`（`MonoidalLeftAction` ＋随伴二つ） | 示せる。作用結合子は三変数に自然 | 示せる。作用単位子が B3 の `unitIso` と一致する | 示せる。評価後の二経路は作用の五角形 |
 
-## B1　テンソル・余テンソルの豊穣表現 `TensorCotensor.lean`
+五角形の差は、例えば整数次数付きの ℚ ベクトル空間の自己作用で見える。通常の結合子に、三つの純次数がすべて 1 の成分だけ係数 2 を掛ける。これは次数保存の射に自然で、単位が次数 0 なので左右単位を保つ。同じテンソル・余テンソル・通常随伴を使える。純次数 0、1、2、3 の一次元空間を順に取り、各隣接 Hom の次数 1 の生成元を合成する。最初の二射の合成を先に取る場合には、元の対象の次数が 0 で、さらに係数の一方が 2 次になってから第三の射を合成する。後の二射を先に取る場合には、二係数と作用先がすべて 1 次の箇所が一度現れる。得られる二つの合成は係数 2 だけ異なる。従って既存の豊穣圏を前提とする B1 の弱い仮定で、その作用から A3 の豊穣圏を新たに生成することはできない。結合子も無い場合は、三元鎖 $0<a<1$ を $a⊗a=0$、単位 $1$、ゼロ吸収の閉対称モノイダル圏にする。二元鎖を、順序が成り立つ Hom を 1、残りを 0 として豊穣化する。係数 0 のテンソルは最小元、余テンソルは最大元への定値関手。それ以外の係数は恒等関手。通常随伴は両方作れるが、$P=a$、$X=\mathrm{max}$、$Y=\mathrm{min}$ で二つの豊穣 Hom は 0、$[a,0]=a$。
 
-`TensorCotensor` の二つの通常随伴だけでは結合の同型は従わない。反例は閉対称モノイダルな三元鎖 $0<a<1$（単位 $1$、$a\otimes a=0$、ゼロは吸収元）と、通常圏としての二元鎖。豊穣 Hom は順序が成り立つとき (1)、それ以外は (0) とする。テンソルは係数 (0) で定値の最小元、それ以外で恒等。余テンソルは係数 (0) で定値の最大元、それ以外で恒等。二つの通常 Hom の対比そのものは、この設定で三変数に自然な随伴を与える。$P=a$、$X$ を最大元、$Y$ を最小元とすると、`Map(T P X,Y)` と `Map(X,Q P Y)` は $0$、内部 Hom $[a,0]$ は $a$。係数や通常点の欄を埋める以前に、二つの対象同型が存在しない。
-
-別の入力として、係数二変数と対象に自然な作用結合の同型を取り、単位には今ある `S.unitIso` を使用する。必要なのは、この単位との左右の整合。右随伴比較と点の計算に五角形は使わない。実際に作用を持つ場合は A3・B2 の結合子を渡せる。既存の `TensorCotensor`、`EnrichedRepresentability` の欄はそのままにできる。
+**提案**　閉じた加群を供給口にし、`TensorCotensor` は B3 で取り出せる随伴の部分として残す。既に選んだ豊穣化を保つ利用側には下記の兼ね合いを束ねる入口を使える。テンソルを二重に選ぶ API にはせず、作用からのテンソルと既存のテンソルを等式で固定する。単位子も B3 が決める単位と揃える。定義的に一致しない現行の作用の表示には、作用を自然同型に沿って輸送してからこの入口を使う。
 
 ```lean
-open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.Functor Opposite
-open SerrePositivity.Enriched
-universe u v u' v'
-variable {V : Type u} {M : Type u'} [Category.{v} V] [Category.{v'} M]
-  [MonoidalCategory V] [BraidedCategory V] [MonoidalClosed V]
-  [EnrichedOrdinaryCategory V M]
+-- OfAction の文脈。補助。既存の通常豊穣化を固定する移行口。
+structure ClosedModuleOn (V : Type u) (M : Type w) [Category.{v} V] [Category.{z} M]
+    [MonoidalCategory V] [EnrichedOrdinaryCategory V M] where
+  action : MonoidalLeftAction V M
+  adjunctions : TensorCotensor V M
+  tensor_eq : letI := action; MonoidalLeftAction.curriedAction V M = adjunctions.tensor
+  unit_eq : letI := action; ∀ X : M,
+    ((eqToIso tensor_eq).hom.app (𝟙_ V)).app X ≫ adjunctions.unitIso.hom.app X =
+      (MonoidalLeftAction.actionUnitNatIso V M).hom.app X
+
+-- 補助。二つの随伴を tensor_eq に沿って作用へ移す。
+def ClosedModuleOn.toClosedModule [EnrichedOrdinaryCategory V M] (L : ClosedModuleOn V M) :
+    ClosedModule V M
+-- 補助。A3・B3 の閉加群を、モデル圏を受ける入口へ渡す。
+def ofActionClosedModuleOn [BraidedCategory V] (L : ClosedModule V M) :
+    letI := ofAction L
+    ClosedModuleOn V M
+```
+
+`ClosedModuleOn` は既存の豊穣化との標準比較が別途確定している利用側の入口。ここから `ClosedModule` の随伴の右辺を `eHomFunctor` として取り出せる。逆方向は `ofAction` の局所 instance を使う。B6 へ既存の豊穣化を持ち込むときは、単位と二つの随伴の一致に加え、B4 と同じ全 Hom の合成の比較を別途示す。閉じた加群を受ける公開のモデル圏 API はこの入口を使い、pushout-product の三つの言い方を扱う小さい補題は随伴部分で共有できる。移行の行数と吸収案との差は末尾の表に示す。
+
+## 2. B1　Hom による全単射の列（TensorCotensor.lean）
+
+B1 の検査は五角形を使わない旧入力と閉じた加群を並べる。任意の試験対象 A に対し、テンソル側は次の列を取る。
+
+1. `V(A,Map(T P X,Y)) ≃ M(T A (T P X),Y)`（写像随伴の逆）。
+2. `≃ M(T(A ⊗ P) X,Y)`（作用結合子の順射で前合成）。
+3. `≃ V(A ⊗ P,Map(X,Y))`（写像随伴）。
+4. `≃ V(P ⊗ A,Map(X,Y))`（`β(P,A).hom` で前合成）。
+5. `≃ V(A,[P,Map(X,Y)])`（左テンソルの閉随伴）。
+
+余テンソル側は `V(A,Map(X,Q P Y)) ≃ M(T A X,Q P Y) ≃ M(T P (T A X),Y) ≃ M(T(P ⊗ A) X,Y) ≃ V(P ⊗ A,Map(X,Y)) ≃ V(A,[P,Map(X,Y)])`。二番目は余テンソルの随伴の逆。左右で異なる順を通るため、組紐はテンソルの列の第4段に入れる。自然性は A の前合成、P の反変自然性、X の反変自然性、Y の共変自然性を取る。A=単位では、テンソル側は A を外す作用の左単位、余テンソル側は内側の右単位を使う。閉随伴と単位の比較では `curryHomEquiv'` を使い、四つの欄を既存の構造に入れる。
+
+```lean
+open CategoryTheory CategoryTheory.Functor CategoryTheory.MonoidalCategory
+open CategoryTheory.BraidedCategory Opposite SerrePositivity.Enriched
+universe u v w z
+variable {V : Type u} {M : Type w} [Category.{v} V] [Category.{z} M]
+  [MonoidalCategory V] [BraidedCategory V] [MonoidalClosed V] [EnrichedOrdinaryCategory V M]
 variable (S : TensorCotensor V M)
-local notation "T" => S.tensor
+local notation "t" => S.tensor
+local notation "q" => S.cotensor
+local notation "aHom" => fun X Y : M => @EnrichedCategory.Hom V _ _ M _ X Y
 
+-- 補助。R 10.1.3 の結合と単位のうち B1 に要る部分。強い入口との比較専用。
 structure TensorAssociativity where
-  iso : bifunctorComp₁₂ (curriedTensor V) T ≅ bifunctorComp₂₃ T T
+  iso : bifunctorComp₁₂ (curriedTensor V) t ≅ bifunctorComp₂₃ t t
   leftUnit (P : V) (X : M) :
-    (((iso.hom.app (𝟙_ V)).app P).app X) ≫ (S.unitIso.hom.app (((T).obj P).obj X)) =
-      ((T).map (λ_ P).hom).app X
+    (((iso.hom.app (𝟙_ V)).app P).app X) ≫ S.unitIso.hom.app (((t).obj P).obj X) =
+      ((t).map (λ_ P).hom).app X
   rightUnit (P : V) (X : M) :
-    (((iso.hom.app P).app (𝟙_ V)).app X) ≫ ((T).obj P).map (S.unitIso.hom.app X) =
-      ((T).map (ρ_ P).hom).app X
+    (((iso.hom.app P).app (𝟙_ V)).app X) ≫ ((t).obj P).map (S.unitIso.hom.app X) =
+      ((t).map (ρ_ P).hom).app X
 
+-- R 10.1.4 の全単射の列。各 E の数字は上の列の段。
+def actionTensorEquiv1 (A P : V) (X Y : M) :
+    (A ⟶ aHom (((t).obj P).obj X) Y) ≃ ((((t).obj A).obj (((t).obj P).obj X)) ⟶ Y)
+def actionTensorEquiv2 (a : TensorAssociativity S) (A P : V) (X Y : M) :
+    ((((t).obj A).obj (((t).obj P).obj X)) ⟶ Y) ≃ (((t).obj (A ⊗ P)).obj X ⟶ Y)
+def actionTensorEquiv3 (A P : V) (X Y : M) :
+    (((t).obj (A ⊗ P)).obj X ⟶ Y) ≃ (A ⊗ P ⟶ aHom X Y)
+def actionTensorEquiv4 (A P Z : V) : (A ⊗ P ⟶ Z) ≃ (P ⊗ A ⟶ Z)
+def actionTensorEquiv5 (A P Z : V) : (P ⊗ A ⟶ Z) ≃ (A ⟶ (ihom P).obj Z)
+-- R 10.1.4、3.7.3・3.7.4。余テンソル列の 1–4。
+def actionCotensorEquiv1 (A P : V) (X Y : M) :
+    (A ⟶ aHom X (((q).obj (op P)).obj Y)) ≃ (((t).obj A).obj X ⟶ ((q).obj (op P)).obj Y)
+def actionCotensorEquiv2 (A P : V) (X Y : M) :
+    (((t).obj A).obj X ⟶ ((q).obj (op P)).obj Y) ≃ ((((t).obj P).obj (((t).obj A).obj X)) ⟶ Y)
+def actionCotensorEquiv3 (a : TensorAssociativity S) (A P : V) (X Y : M) :
+    ((((t).obj P).obj (((t).obj A).obj X)) ⟶ Y) ≃ (((t).obj (P ⊗ A)).obj X ⟶ Y)
+def actionCotensorEquiv4 (A P : V) (X Y : M) :
+    (((t).obj (P ⊗ A)).obj X ⟶ Y) ≃ (P ⊗ A ⟶ aHom X Y)
+
+-- R 3.5.12、10.1.4。各段で試験射 f の前合成と可換。
+lemma actionTensorEquiv1_test {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M)
+    (g : A ⟶ aHom (((t).obj P).obj X) Y) :
+    actionTensorEquiv1 S A' P X Y (f ≫ g) =
+      ((t).map f).app (((t).obj P).obj X) ≫ actionTensorEquiv1 S A P X Y g
+lemma actionTensorEquiv2_test (a : TensorAssociativity S) {A A' : V} (f : A' ⟶ A)
+    (P : V) (X Y : M) (g : ((t).obj A).obj (((t).obj P).obj X) ⟶ Y) :
+    actionTensorEquiv2 S a A' P X Y (((t).map f).app (((t).obj P).obj X) ≫ g) =
+      ((t).map (f ▷ P)).app X ≫ actionTensorEquiv2 S a A P X Y g
+lemma actionTensorEquiv3_test {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M)
+    (g : ((t).obj (A ⊗ P)).obj X ⟶ Y) :
+    actionTensorEquiv3 S A' P X Y (((t).map (f ▷ P)).app X ≫ g) =
+      (f ▷ P) ≫ actionTensorEquiv3 S A P X Y g
+lemma actionTensorEquiv4_test {A A' : V} (f : A' ⟶ A) (P Z : V) (g : A ⊗ P ⟶ Z) :
+    actionTensorEquiv4 A' P Z ((f ▷ P) ≫ g) = (P ◁ f) ≫ actionTensorEquiv4 A P Z g
+lemma actionTensorEquiv5_test {A A' : V} (f : A' ⟶ A) (P Z : V) (g : P ⊗ A ⟶ Z) :
+    actionTensorEquiv5 A' P Z ((P ◁ f) ≫ g) = f ≫ actionTensorEquiv5 A P Z g
+lemma actionCotensorEquiv1_test {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M)
+    (g : A ⟶ aHom X (((q).obj (op P)).obj Y)) :
+    actionCotensorEquiv1 S A' P X Y (f ≫ g) = ((t).map f).app X ≫ actionCotensorEquiv1 S A P X Y g
+lemma actionCotensorEquiv2_test {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M)
+    (g : ((t).obj A).obj X ⟶ ((q).obj (op P)).obj Y) :
+    actionCotensorEquiv2 S A' P X Y (((t).map f).app X ≫ g) =
+      ((t).obj P).map (((t).map f).app X) ≫ actionCotensorEquiv2 S A P X Y g
+lemma actionCotensorEquiv3_test (a : TensorAssociativity S) {A A' : V} (f : A' ⟶ A)
+    (P : V) (X Y : M) (g : ((t).obj P).obj (((t).obj A).obj X) ⟶ Y) :
+    actionCotensorEquiv3 S a A' P X Y (((t).obj P).map (((t).map f).app X) ≫ g) =
+      ((t).map (P ◁ f)).app X ≫ actionCotensorEquiv3 S a A P X Y g
+lemma actionCotensorEquiv4_test {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M)
+    (g : ((t).obj (P ⊗ A)).obj X ⟶ Y) :
+    actionCotensorEquiv4 S A' P X Y (((t).map (P ◁ f)).app X ≫ g) =
+      (P ◁ f) ≫ actionCotensorEquiv4 S A P X Y g
+
+-- R 10.1.4、R 3.5.12 の方法。試験対象 A を変えた二つの前層。
+def tensorHomEquivChain (a : TensorAssociativity S) (A P : V) (X Y : M) :
+    (A ⟶ aHom (((t).obj P).obj X) Y) ≃ (A ⟶ (ihom P).obj (aHom X Y))
+def cotensorHomEquivChain (a : TensorAssociativity S) (A P : V) (X Y : M) :
+    (A ⟶ aHom X (((q).obj (op P)).obj Y)) ≃ (A ⟶ (ihom P).obj (aHom X Y))
+
+-- R 3.5.12。各段の前合成についての等式を貼る。
+lemma tensorHomEquivChain_test (a : TensorAssociativity S) {A A' : V} (f : A' ⟶ A)
+    (P : V) (X Y : M) (g : A ⟶ aHom (((t).obj P).obj X) Y) :
+    tensorHomEquivChain S a A' P X Y (f ≫ g) = f ≫ tensorHomEquivChain S a A P X Y g
+lemma cotensorHomEquivChain_test (a : TensorAssociativity S) {A A' : V} (f : A' ⟶ A)
+    (P : V) (X Y : M) (g : A ⟶ aHom X (((q).obj (op P)).obj Y)) :
+    cotensorHomEquivChain S a A' P X Y (f ≫ g) = f ≫ cotensorHomEquivChain S a A P X Y g
+
+-- R 3.5.12 の通常米田。左の表現対象 D と右の表現対象 E の同型を返す。
+def isoOfHomEquivChain {D E : V} (hom : ∀ A : V, (A ⟶ D) ≃ (A ⟶ E))
+    (natural : ∀ {A A' : V} (f : A' ⟶ A) (g : A ⟶ D),
+      hom A' (f ≫ g) = f ≫ hom A g) : D ≅ E
+
+-- R 3.7.2・3.7.3、10.1.4、K (3.44)・(3.42)。米田で得る値。
 def tensorHomIsoOfAssoc (a : TensorAssociativity S) (P : V) :
     tensorEnrichedHom S P ≅ powerHom (C := M) P
 def cotensorHomIsoOfAssoc (a : TensorAssociativity S) (P : V) :
     cotensorEnrichedHom S P ≅ powerHom (C := M) P
 
-lemma tensorHomIsoOfAssoc_parameter (a : TensorAssociativity S)
-    {P P' : V} (p : P ⟶ P') (X Y : M) :
-    eHomWhiskerRight V (((T).map p).app X) Y ≫
-        ((tensorHomIsoOfAssoc S a P).hom.app (op X)).app Y =
-      ((tensorHomIsoOfAssoc S a P').hom.app (op X)).app Y ≫
-        (MonoidalClosed.pre p).app (X ⟶[V] Y)
-lemma cotensorHomIsoOfAssoc_parameter (a : TensorAssociativity S)
-    {P P' : V} (p : P ⟶ P') (X Y : M) :
-    eHomWhiskerLeft V X ((S.cotensor.map p.op).app Y) ≫
-        ((cotensorHomIsoOfAssoc S a P).hom.app (op X)).app Y =
-      ((cotensorHomIsoOfAssoc S a P').hom.app (op X)).app Y ≫
-        (MonoidalClosed.pre p).app (X ⟶[V] Y)
-lemma tensorHomIsoOfAssoc_points (a : TensorAssociativity S)
-    (P : V) (X Y : M) (f : ((T).obj P).obj X ⟶ Y) :
-    (MonoidalClosed.curryHomEquiv' (X := P) (Y := X ⟶[V] Y)).symm
-        (eHomEquiv V f ≫ ((tensorHomIsoOfAssoc S a P).hom.app (op X)).app Y) =
-      S.tensorHomEquiv P X Y f
-lemma cotensorHomIsoOfAssoc_points (a : TensorAssociativity S)
-    (P : V) (X Y : M) (f : X ⟶ (S.cotensor.obj (op P)).obj Y) :
-    (MonoidalClosed.curryHomEquiv' (X := P) (Y := X ⟶[V] Y)).symm
-        (eHomEquiv V f ≫ ((cotensorHomIsoOfAssoc S a P).hom.app (op X)).app Y) =
-      S.cotensorHomEquiv P X Y f
+-- R 3.7.2・3.7.3 の係数自然性。各列の P の自然性を米田で読む。
+lemma tensorHomIsoOfAssoc_parameter (a : TensorAssociativity S) {P P' : V} (p : P ⟶ P') (X Y : M) :
+    eHomWhiskerRight V (((t).map p).app X) Y ≫ ((tensorHomIsoOfAssoc S a P).hom.app (op X)).app Y =
+      ((tensorHomIsoOfAssoc S a P').hom.app (op X)).app Y ≫ (MonoidalClosed.pre p).app (aHom X Y)
+lemma cotensorHomIsoOfAssoc_parameter (a : TensorAssociativity S) {P P' : V} (p : P ⟶ P') (X Y : M) :
+    eHomWhiskerLeft V X (((q).map p.op).app Y) ≫ ((cotensorHomIsoOfAssoc S a P).hom.app (op X)).app Y =
+      ((cotensorHomIsoOfAssoc S a P').hom.app (op X)).app Y ≫ (MonoidalClosed.pre p).app (aHom X Y)
 
-def ofTensorCotensor (a : TensorAssociativity S) : EnrichedRepresentability S
+-- R 10.1.4 の随伴への制限。単位への評価。
+lemma tensorHomIsoOfAssoc_points (a : TensorAssociativity S) (P : V) (X Y : M)
+    (f : ((t).obj P).obj X ⟶ Y) :
+    (MonoidalClosed.curryHomEquiv' (X := P) (Y := aHom X Y)).symm
+      (eHomEquiv V f ≫ ((tensorHomIsoOfAssoc S a P).hom.app (op X)).app Y) = S.tensorHomEquiv P X Y f
+lemma cotensorHomIsoOfAssoc_points (a : TensorAssociativity S) (P : V) (X Y : M)
+    (f : X ⟶ ((q).obj (op P)).obj Y) :
+    (MonoidalClosed.curryHomEquiv' (X := P) (Y := aHom X Y)).symm
+      (eHomEquiv V f ≫ ((cotensorHomIsoOfAssoc S a P).hom.app (op X)).app Y) = S.cotensorHomEquiv P X Y f
 ```
 
-テンソル側は `tensorRight P ⋙ T.flip.obj X` と `T.flip.obj (((T).obj P).obj X)`、余テンソル側は `tensorLeft P ⋙ T.flip.obj X` と `T.flip.obj X ⋙ (T).obj P` を結合子で比較する。テンソル側の `tensorRight P` は組紐で `tensorLeft P` に移して閉随伴を使う。右随伴を `ActionComparisonAdjunction.rightIso` で比較すれば、任意のパラメータでの転置が揃う。係数自然性は `ParametrizedAdjunction` の自然性、閉構造の `pre`、結合子の二係数の自然性から示し、原変数の自然性も同じ右随伴比較で束ねる。点の二式は一般のパラメータを単位に取り、左右単位の整合と `unitMap_comp` で示す。余テンソル側は `q` の転置の逆を先に取る。 `ofTensorCotensor` は上の二つの実同型と四つの比較式をフィールドに入れる。
+```lean
+-- OfAction の文脈に戻る。
+variable [MonoidalClosed V]
 
-## A2・B2　モノイダル随伴による基底変更
+-- 補助。H 4.1.6 の作用から弱い B1 入力への比較。
+def ofActionTensorAssociativity (L : ClosedModule V M) :
+    letI := ofAction L
+    TensorAssociativity (ofActionTensorCotensor L)
+-- R 10.1.4 後半、3.7.4。上の実同型と四つの法則を返す。
+def ofClosedModuleRepresentability (L : ClosedModule V M) :
+    letI := ofAction L
+    EnrichedRepresentability (ofActionTensorCotensor L)
+```
 
-### `BaseChange.lean`
+段3b では、弱い入力を検証用の内側に置き、公開の `ofClosedModuleRepresentability` は閉じた加群を取る。 `Yoneda.fullyFaithful` により A を動かした前層同型から対象の同型を定義する。X・Y の自然性は写像随伴と余テンソル随伴の当該変数の自然性であり、構成した同型の自然性として束ねる。同型とその単位点での揃い方が、B4 で用いる一意性の比較を固定する。
 
-Mathlib の `TransportEnrichment.enrichedOrdinaryCategory` は型別名 `TransportEnrichment G W` を受け手とし、Hom 点 `𝟙 ⟶ A` の自然な全単射が `ε G ≫ G.map -` であることを要求する。元の通常圏の対象型のまま使う非大域の定義は現行 `TransportOrdinaryEnrichment.ordinaryCategory` と同じ形で保つ。以下では通常圏と単位点を揃えた後の `eHomFunctor` を自然同型で比較する。基底を変えたことで既存のカテゴリーの instance を選び直さない。固定版では型別名が定義的に透過で、`TransportEnrichment.enrichedOrdinaryCategory M G e he` を `EnrichedOrdinaryCategory V M` として受けられることを照合した。公開する型は元の対象型と通常圏を固定し、Mathlib の定義をその中で使える。
+## 3. A2・B2・B4　任意の閉じた U 加群の基底変更
+
+A2 は R 3.4.3 の lax モノイダル関手で Hom を運ぶ。元の通常圏を保つには、単位の lax 射で得る点の写像が全単射であることを要求する。固定版の `TransportEnrichment.enrichedOrdinaryCategory` は対象別名が定義的に透過で、同じ対象型・通常圏を返す入口に使える。
 
 ```lean
 open CategoryTheory CategoryTheory.MonoidalCategory Opposite
-universe u v u' v' u'' v''
-variable {U : Type u} {V : Type u'} {M : Type u''}
-  [Category.{v} U] [Category.{v'} V] [Category.{v''} M]
-  [MonoidalCategory U] [MonoidalCategory V] [EnrichedOrdinaryCategory U M]
+universe u v w z x y
+variable {V : Type u} {U : Type w} {M : Type x}
+  [Category.{v} V] [Category.{z} U] [Category.{y} M]
+  [MonoidalCategory V] [MonoidalCategory U] [EnrichedOrdinaryCategory U M]
 
-@[instance_reducible] def ordinaryBaseChange
-  (G : U ⥤ V) [G.LaxMonoidal]
+-- R 3.4.3・3.4.5 と通常圏を保つ点の条件。
+@[instance_reducible] def ordinaryBaseChange (G : U ⥤ V) [G.LaxMonoidal]
   (e : ∀ Z : U, (𝟙_ U ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z))
   (he : ∀ (Z : U) (f : 𝟙_ U ⟶ Z), e Z f = Functor.LaxMonoidal.ε G ≫ G.map f) :
     EnrichedOrdinaryCategory V M
+-- 補助。R 3.4.3 を通常の二変数関手として読む。
 def ordinaryBaseChangeHomIso (G : U ⥤ V) [G.LaxMonoidal]
-    (e : ∀ Z : U, (𝟙_ U ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z))
-    (he : ∀ (Z : U) (f : 𝟙_ U ⟶ Z), e Z f = Functor.LaxMonoidal.ε G ≫ G.map f) :
-    let : EnrichedOrdinaryCategory V M := ordinaryBaseChange G e he
+  (e : ∀ Z : U, (𝟙_ U ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z))
+  (he : ∀ (Z : U) (f : 𝟙_ U ⟶ Z), e Z f = Functor.LaxMonoidal.ε G ≫ G.map f) :
+    letI := ordinaryBaseChange (M := M) G e he
     eHomFunctor V M ≅ eHomFunctor U M ⋙ (Functor.whiskeringRight M U V).obj G
 ```
 
-`ordinaryBaseChange` には宣言の引数として `G e he` を残す。Hom は `G.obj`、単位は `ε G` と元の単位、合成は `μ G` と元の合成、単位点への同値は元の `eHomEquiv` と `e` の合成。Mathlib 版との比較は対象型の同型を新設する作業ではなく、同じ入力の構造を持つ値の型の照合になる。
+### 一般の B2（MonoidalAdjunction.lean）
 
-### `MonoidalAdjunction.lean`
-
-下の `F` の強モノイダル性は B2 で `η F : F(𝟙) ⟶ 𝟙` を反転するために使う。新しく選ぶ右随伴の lax 構造は `adj.rightAdjointLaxMonoidal`。単位点の同値は `η F` で前合成する同値の後の `adj.homEquiv`。この写像の式は `homEquiv_naturality_right` と mate による `ε G` の定義で得る。
+`L : ClosedModule U M` を取る。作用は `F ⋙ T`。その結合子は `δ F`（強モノイダルの逆向きの比較）と L の結合子を合成して得る。単位は `η F` と L の単位。 `curriedActionMop` へ F を合成し `actionOfMonoidalFunctorToEndofunctorMop` で束ねる。余テンソルは `F.op ⋙ L.cotensor`、写像対象は `L.mapping ⋙ whiskeringRight(G)`。 `restrict` と `composeSecond` で二つの通常随伴を作り、新しい作用の関手に自然同型に沿って移す。通常の圏を保つ A2 の入力は `η F` で前合成して `d.homEquiv` を取る全単射。 `rightAdjointLaxMonoidal` の単位の定義から `ε G ≫ G.map f` に一致する。
 
 ```lean
-open CategoryTheory CategoryTheory.MonoidalCategory Opposite
+open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.BraidedCategory Opposite
 open SerrePositivity.Enriched
-universe u v u' v'
-variable {V : Type u} {W : Type u'} [Category.{v} V] [Category.{v'} W]
-  [MonoidalCategory V] [MonoidalCategory W] [SymmetricCategory W] [MonoidalClosed W]
-  {F : V ⥤ W} {G : W ⥤ V} [F.Monoidal]
-local notation "Act" => F ⋙ curriedTensor W
-local notation "Cot" => F.op ⋙ MonoidalClosed.internalHom
-local notation "Map" => MonoidalClosed.internalHom ⋙ Functor.obj (Functor.whiskeringRight W W V) G
+universe u v w z x y
+variable {V : Type u} {U : Type w} {M : Type x}
+  [Category.{v} V] [Category.{z} U] [Category.{y} M]
+  [MonoidalCategory V] [MonoidalCategory U]
+  {F : V ⥤ U} {G : U ⥤ V} [F.Monoidal]
+local notation "T[" L "]" => @MonoidalLeftAction.curriedAction U M _ _ _ (ClosedModule.action L)
+local notation "Rm[" L "]" => fun X Y : M => Functor.obj (Functor.obj (ClosedModule.mapping L) (op X)) Y
+local notation "Qm[" L "]" => fun P : U => Functor.obj (ClosedModule.cotensor L) (op P)
+local notation "act[" L "]" => F ⋙ T[L]
+local notation "GM[" L "]" => ClosedModule.mapping L ⋙ Functor.obj (Functor.whiskeringRight M U V) G
 
-def adjunctionPointEquiv (d : F ⊣ G) (Z : W) :
-    (𝟙_ W ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z)
-lemma adjunctionPointEquiv_apply (d : F ⊣ G) (Z : W) (f : 𝟙_ W ⟶ Z) :
-    let : G.LaxMonoidal := d.rightAdjointLaxMonoidal
+-- R 3.7.11、H 4.1.14。閉加群の作用・随伴の制限。
+@[instance_reducible] def restrictedAction (F : V ⥤ U) [F.Monoidal] (L : ClosedModule U M) :
+    MonoidalLeftAction V M
+-- 補助。結合・単位は比較を通して制限作用のもの。
+def restrictedActionIso (F : V ⥤ U) [F.Monoidal] (L : ClosedModule U M) :
+    letI := restrictedAction F L
+    MonoidalLeftAction.curriedAction V M ≅ F ⋙ T[L]
+-- R 3.7.11 の通常随伴部分。U 側の閉加群 L は任意。
+def restrictedCotensorAdj (F : V ⥤ U) (L : ClosedModule U M) :
+    F ⋙ T[L] ⊣₂ F.op ⋙ L.cotensor
+def restrictedMappingAdj (d : F ⊣ G) (L : ClosedModule U M) :
+    (act[L]).flip ⊣₂ GM[L]
+-- R 3.7.11、R 10.1.3、H 4.1.6（左に読み替える）。
+def changeClosedModule (d : F ⊣ G) (L : ClosedModule U M) : ClosedModule V M
+
+-- 補助。R 3.7.11 の mate と R 3.4.5 の点の条件。
+def adjunctionPointEquiv (d : F ⊣ G) (Z : U) : (𝟙_ U ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z)
+lemma adjunctionPointEquiv_apply (d : F ⊣ G) (Z : U) (f : 𝟙_ U ⟶ Z) :
+    letI := d.rightAdjointLaxMonoidal
     adjunctionPointEquiv d Z f = Functor.LaxMonoidal.ε G ≫ G.map f
 
-def adjunctionCotensorAdjunction (F : V ⥤ W) :
-    F ⋙ curriedTensor W ⊣₂ F.op ⋙ MonoidalClosed.internalHom
-def adjunctionMappingAdjunction (d : F ⊣ G) : (Act).flip ⊣₂ Map
+variable [BraidedCategory U]
 
-@[instance_reducible] def ofMonoidalAdjunction (d : F ⊣ G) :
-    EnrichedOrdinaryCategory V W
-def ofMonoidalAdjunctionHomIso (d : F ⊣ G) :
-    let : EnrichedOrdinaryCategory V W := ofMonoidalAdjunction d
-    eHomFunctor V W ≅ Map
-def ofMonoidalAdjunctionTensorCotensor (d : F ⊣ G) :
-    let : EnrichedOrdinaryCategory V W := ofMonoidalAdjunction d
-    TensorCotensor V W
-lemma ofMonoidalAdjunction_tensorHomEquiv (d : F ⊣ G)
-    (P : V) (X Y : W) (f : F.obj P ⊗ X ⟶ Y) :
-    let : EnrichedOrdinaryCategory V W := ofMonoidalAdjunction d
-    (ofMonoidalAdjunctionTensorCotensor d).tensorHomEquiv P X Y f =
-      (adjunctionMappingAdjunction d).homEquiv f
+-- R 3.4.3・3.7.11。G を Hom・単位・合成に適用。
+@[instance_reducible] def changedOrdinary (d : F ⊣ G) (L : ClosedModule U M) :
+    EnrichedOrdinaryCategory V M
+-- 補助。R 3.7.11 の GM と Mathlib の関手の比較。各対象で恒等。
+def changedHomIso (d : F ⊣ G) (L : ClosedModule U M) :
+    letI := changedOrdinary d L
+    eHomFunctor V M ≅ GM[L]
+-- R 3.7.11、H 4.1.12。各随伴の値は F ⋙ T、F.op ⋙ Q、G R。
+def changedTensorCotensor (d : F ⊣ G) (L : ClosedModule U M) :
+    letI := changedOrdinary d L
+    TensorCotensor V M
 ```
 
-`adjunctionCotensorAdjunction` は `ParametrizedAdjunctionTransport.restrict` で `MonoidalClosed.internalHomAdjunction₂` を `F` に沿って制限。 `adjunctionMappingAdjunction` は `MonoidalMappingAdjunction.transportedParametrizedAdjunction` の現在の構成を利用し、(F(P)\otimes X\to Y) を組紐で (X\otimes F(P)\to Y) として閉転置してから `d` の転置を取る。 `ofMonoidalAdjunction` は W の `enrichedOrdinaryCategorySelf` を `ordinaryBaseChange` に渡す。 `ofMonoidalAdjunctionHomIso` の成分は恒等。 `tensor=Act`、`cotensor=Cot`、二つの随伴のうち Hom 側だけをこの同型の逆に沿って右輸送する。従って上の `f` が両方の転置の定義域に入る。テンソル・余テンソルの値は (F(P)\otimes X) と ([F(P),X])。
+`changedOrdinary` は `ofAction L` に A2 を適用する。`changedTensorCotensor` は上の二つの制限随伴に `changedHomIso.symm` を使う。以下の B2 の独立な列で、この側にも `EnrichedRepresentability` を得る。ここまでは F の組紐保存を要しない。文献順の合成と Mathlib 順の合成の両方を比較する B4 と、B4 経由で A2 版を使う B6 の出力では組紐保存を明示する。
 
-## B4　二通りの比較 `Comparison.lean`
+### B2 の全単射の列と米田
 
-B2 には `[F.Monoidal]` で足りる。B4 では `V` の組紐と **`[F.Braided]`** を取る。A3 から Mathlib の合成順に戻すときの (β_V) を B2 の (β_W) と照合するためで、強モノイダル性だけでこの照合を仮定しない。`F ⋙ MonoidalLeftAction.curriedActionMop W W` から作用を作り、対応する曲がった関手の比較をほどき、`actionTensorIso` を取る。A3 の右随伴は固定した `Map`、左はこの作用。`ParametrizedAdjunctionTransport.left` で B2 が使う随伴を `actionTensorIso.symm` に沿って移したものを選ぶ。
+R 3.7.11 の式を `Equiv.trans` でつなぐ。左端は $V(A,G R(T(FP)X,Y))$、右端は $V(A,[P,G R(X,Y)])$。各段は次の型。余テンソル列は左端 $V(A,G R(X,Q(FP)Y))$ から最後の三段へ合流する。
+
+| 段 | テンソルの表示と Lean の値 | 余テンソルの表示と Lean の値 | 自然性を与える法則 |
+| --- | --- | --- | --- |
+| 1 | $V(A,GZ) ≃ U(FA,Z)$、`changedHomAdjEquiv` | 同じ。Z の選び方が異なる | d の原変数・終変数の自然性 |
+| 2 | $U(FA,R(T(FP)X,Y)) ≃ M(T(FA)(T(FP)X),Y)$、`changedTensorEquiv2` | $U(FA,R(X,Q(FP)Y)) ≃ M(T(FA)X,Q(FP)Y)$、`changedCotensorEquiv2` | `mappingAdj.homEquiv_naturality_one` と各随伴の自然性 |
+| 3 | $M(T(FA)(T(FP)X),Y) ≃ M(T(FA⊗FP)X,Y)$、`changedTensorEquiv3` | $M(T(FA)X,Q(FP)Y) ≃ M(T(FP)(T(FA)X),Y)$、`changedCotensorEquiv3` | 作用結合子または `cotensorAdj` の自然性 |
+| 4 | $M(T(FA⊗FP)X,Y) ≃ U(FA⊗FP,R(X,Y))$、`changedActionEquiv` | 結合子で前合成する `changedCotensorEquiv4`、続けて $M(T(FP⊗FA)X,Y) ≃ U(FP⊗FA,R(X,Y))$、`changedActionEquiv` | U の三変数の結合の自然性、写像随伴 |
+| 5 | $U(FA⊗FP,Z) ≃ U(F(A⊗P),Z)$、`changedMonoidalEquiv` | $U(FP⊗FA,Z) ≃ U(F(P⊗A),Z)$、同じ関数の引数を交換 | `δ F` の二変数の自然性 |
+| 6 | $U(F(A⊗P),Z) ≃ V(A⊗P,GZ)$、`changedHomAdjEquiv.symm` | $U(F(P⊗A),Z) ≃ V(P⊗A,GZ)$ | d の自然性 |
+| 7 | V の組紐で前合成し $V(P⊗A,GZ)$ に移し、閉随伴で $V(A,[P,GZ])$ | $V(P⊗A,GZ)$ から閉随伴のみ | 組紐、閉随伴、`MonoidalClosed.pre` の自然性 |
+
+```lean
+-- 一般 B2 の文脈。
+local notation "tx[" L "]" => fun P : U => Functor.obj (T[L]) P
+
+-- R 3.7.11 の列の各段。
+def changedHomAdjEquiv (d : F ⊣ G) (A : V) (Z : U) :
+    (A ⟶ G.obj Z) ≃ (F.obj A ⟶ Z)
+def changedTensorEquiv2 (L : ClosedModule U M) (A P : U) (X Y : M) :
+    (A ⟶ Rm[L] ((tx[L] P).obj X) Y) ≃ ((tx[L] A).obj ((tx[L] P).obj X) ⟶ Y)
+def changedTensorEquiv3 (L : ClosedModule U M) (A P : U) (X Y : M) :
+    ((tx[L] A).obj ((tx[L] P).obj X) ⟶ Y) ≃ ((tx[L] (A ⊗ P)).obj X ⟶ Y)
+def changedActionEquiv (L : ClosedModule U M) (P : U) (X Y : M) :
+    ((tx[L] P).obj X ⟶ Y) ≃ (P ⟶ Rm[L] X Y)
+def changedCotensorEquiv2 (L : ClosedModule U M) (A P : U) (X Y : M) :
+    (A ⟶ Rm[L] X ((Qm[L] P).obj Y)) ≃ ((tx[L] A).obj X ⟶ (Qm[L] P).obj Y)
+def changedCotensorEquiv3 (L : ClosedModule U M) (A P : U) (X Y : M) :
+    ((tx[L] A).obj X ⟶ (Qm[L] P).obj Y) ≃ ((tx[L] P).obj ((tx[L] A).obj X) ⟶ Y)
+def changedCotensorEquiv4 (L : ClosedModule U M) (A P : U) (X Y : M) :
+    ((tx[L] P).obj ((tx[L] A).obj X) ⟶ Y) ≃ ((tx[L] (P ⊗ A)).obj X ⟶ Y)
+def changedMonoidalEquiv (F : V ⥤ U) [F.Monoidal] (A P : V) (Z : U) :
+    (F.obj A ⊗ F.obj P ⟶ Z) ≃ (F.obj (A ⊗ P) ⟶ Z)
+
+-- R 3.7.11 の各段の自然性。U 内の段は F.map f に適用する。
+lemma changedHomAdjEquiv_test (d : F ⊣ G) {A A' : V} (f : A' ⟶ A)
+    (Z : U) (g : A ⟶ G.obj Z) :
+    changedHomAdjEquiv d A' Z (f ≫ g) = F.map f ≫ changedHomAdjEquiv d A Z g
+lemma changedHomAdjEquiv_target (d : F ⊣ G) (A : V) {Z Z' : U} (f : Z ⟶ Z')
+    (g : A ⟶ G.obj Z) :
+    changedHomAdjEquiv d A Z' (g ≫ G.map f) = changedHomAdjEquiv d A Z g ≫ f
+lemma changedTensorEquiv2_test (L : ClosedModule U M) {A A' : U} (f : A' ⟶ A)
+    (P : U) (X Y : M) (g : A ⟶ Rm[L] ((tx[L] P).obj X) Y) :
+    changedTensorEquiv2 L A' P X Y (f ≫ g) =
+      ((T[L]).map f).app ((tx[L] P).obj X) ≫ changedTensorEquiv2 L A P X Y g
+lemma changedTensorEquiv3_test (L : ClosedModule U M) {A A' : U} (f : A' ⟶ A)
+    (P : U) (X Y : M) (g : (tx[L] A).obj ((tx[L] P).obj X) ⟶ Y) :
+    changedTensorEquiv3 L A' P X Y (((T[L]).map f).app ((tx[L] P).obj X) ≫ g) =
+      ((T[L]).map (f ▷ P)).app X ≫ changedTensorEquiv3 L A P X Y g
+lemma changedActionEquiv_test (L : ClosedModule U M) {P P' : U} (f : P' ⟶ P)
+    (X Y : M) (g : (tx[L] P).obj X ⟶ Y) :
+    changedActionEquiv L P' X Y (((T[L]).map f).app X ≫ g) = f ≫ changedActionEquiv L P X Y g
+lemma changedCotensorEquiv2_test (L : ClosedModule U M) {A A' : U} (f : A' ⟶ A)
+    (P : U) (X Y : M) (g : A ⟶ Rm[L] X ((Qm[L] P).obj Y)) :
+    changedCotensorEquiv2 L A' P X Y (f ≫ g) =
+      ((T[L]).map f).app X ≫ changedCotensorEquiv2 L A P X Y g
+lemma changedCotensorEquiv3_test (L : ClosedModule U M) {A A' : U} (f : A' ⟶ A)
+    (P : U) (X Y : M) (g : (tx[L] A).obj X ⟶ (Qm[L] P).obj Y) :
+    changedCotensorEquiv3 L A' P X Y (((T[L]).map f).app X ≫ g) =
+      (tx[L] P).map (((T[L]).map f).app X) ≫ changedCotensorEquiv3 L A P X Y g
+lemma changedCotensorEquiv4_test (L : ClosedModule U M) {A A' : U} (f : A' ⟶ A)
+    (P : U) (X Y : M) (g : (tx[L] P).obj ((tx[L] A).obj X) ⟶ Y) :
+    changedCotensorEquiv4 L A' P X Y ((tx[L] P).map (((T[L]).map f).app X) ≫ g) =
+      ((T[L]).map (P ◁ f)).app X ≫ changedCotensorEquiv4 L A P X Y g
+lemma changedMonoidalEquiv_left (F : V ⥤ U) [F.Monoidal] {A A' : V} (f : A' ⟶ A)
+    (P : V) (Z : U) (g : F.obj A ⊗ F.obj P ⟶ Z) :
+    changedMonoidalEquiv F A' P Z ((F.map f ▷ F.obj P) ≫ g) =
+      F.map (f ▷ P) ≫ changedMonoidalEquiv F A P Z g
+lemma changedMonoidalEquiv_right (F : V ⥤ U) [F.Monoidal] (A : V) {P P' : V} (f : P' ⟶ P)
+    (Z : U) (g : F.obj A ⊗ F.obj P ⟶ Z) :
+    changedMonoidalEquiv F A P' Z ((F.obj A ◁ F.map f) ≫ g) =
+      F.map (A ◁ f) ≫ changedMonoidalEquiv F A P Z g
+
+-- R 3.7.11 の自然な列。A を動かして R 3.5.12 を適用。
+variable [BraidedCategory V] [MonoidalClosed V]
+local notation "tm[" L "]" => fun P : V => tx[L] (F.obj P)
+local notation "cm[" L "]" => fun P : V => Qm[L] (F.obj P)
+local notation "gr[" L "]" => fun X Y : M => Functor.obj G (Rm[L] X Y)
+local notation "pw[" L "]" => fun P X Y => Functor.obj (ihom P) (gr[L] X Y)
+
+def changedTensorHomChain (d : F ⊣ G) (L : ClosedModule U M) (A P : V) (X Y : M) :
+    (A ⟶ gr[L] ((tm[L] P).obj X) Y) ≃ (A ⟶ pw[L] P X Y)
+def changedCotensorHomChain (d : F ⊣ G) (L : ClosedModule U M) (A P : V) (X Y : M) :
+    (A ⟶ gr[L] X ((cm[L] P).obj Y)) ≃ (A ⟶ pw[L] P X Y)
+lemma changedTensorHomChain_test (d : F ⊣ G) (L : ClosedModule U M)
+    {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M) (g : A ⟶ gr[L] ((tm[L] P).obj X) Y) :
+    changedTensorHomChain d L A' P X Y (f ≫ g) = f ≫ changedTensorHomChain d L A P X Y g
+lemma changedCotensorHomChain_test (d : F ⊣ G) (L : ClosedModule U M)
+    {A A' : V} (f : A' ⟶ A) (P : V) (X Y : M) (g : A ⟶ gr[L] X ((cm[L] P).obj Y)) :
+    changedCotensorHomChain d L A' P X Y (f ≫ g) = f ≫ changedCotensorHomChain d L A P X Y g
+
+-- R 3.7.11。米田で得る二つの Hom 関手の同型。
+def changedTensorHomIso (d : F ⊣ G) (L : ClosedModule U M) (P : V) :
+    letI := changedOrdinary d L
+    tensorEnrichedHom (changedTensorCotensor d L) P ≅ powerHom (C := M) P
+def changedCotensorHomIso (d : F ⊣ G) (L : ClosedModule U M) (P : V) :
+    letI := changedOrdinary d L
+    cotensorEnrichedHom (changedTensorCotensor d L) P ≅ powerHom (C := M) P
+
+-- R 3.7.11。米田の同型から二つの欄と自然性・点の法則を組む。
+def changedRepresentability (d : F ⊣ G) (L : ClosedModule U M) :
+    letI := changedOrdinary d L
+    EnrichedRepresentability (changedTensorCotensor d L)
+```
+
+A の自然性は各段の前合成に対する等式を順に連結する。P の自然性には F の合成保存・強モノイダル比較の二変数自然性を追加し、X・Y の自然性には L の随伴の二変数自然性と G の合成保存を使う。A を単位に取ったときは `η F` と `δ F` の左右単位図式を使い、それぞれ `restrictedMappingAdj` の転置と `restrictedCotensorAdj` の逆転置に一致させる。これで出力の四欄が固定される。 `changedTensorHomIso`・`changedCotensorHomIso` の成分は `isoOfHomEquivChain` に二つの列を入れて得る。これらを比較の四式とともに `changedRepresentability` に束ねる。
+
+### 自己作用と B4（Comparison.lean）
+
+U 自身への適用は `closedModuleSelf U` を L に入れる。写像随伴は Mathlib の閉随伴を組紐で右テンソルへ輸送する。A3 のこの自己作用の Hom 表示は、Mathlib の `MonoidalClosed.enrichedOrdinaryCategorySelf` と、対称な基底では単位・合成・点で一致する。自己作用での左テンソルと、右テンソルを左閉随伴に入れる組紐は向きを区別する。
+
+```lean
+-- 一般 B2 の文脈。
+-- R 3.7.5、3.4.9、K §1.6。U の自己作用とその随伴。
+def closedModuleSelf (U : Type w) [Category.{z} U] [MonoidalCategory U]
+    [BraidedCategory U] [MonoidalClosed U] : ClosedModule U U
+-- R 3.4.9、K (1.28)。自己作用と Mathlib の自己豊穣の比較。
+def closedModuleSelfHomIso (U : Type w) [Category.{z} U] [MonoidalCategory U]
+    [SymmetricCategory U] [MonoidalClosed U] :
+    @eHomFunctor U _ _ U _ (ofAction (closedModuleSelf U)) ≅
+      @eHomFunctor U _ _ U _ (MonoidalClosed.enrichedOrdinaryCategorySelf U)
+
+-- R 3.7.11 の U 自身への特殊化。
+def changeSelfClosedModule [MonoidalClosed U] (d : F ⊣ G) : ClosedModule V U
+
+```
+
+B4 ではこの同型を使い、A3 側の合成は最初に V の `β`、A2 側は U の合成に含まれる U の `β` を通ることを比較する。 `F.Braided` により F の二項比較で移した二つの組紐が一致する。強モノイダル構造だけからその式は出ない。H 4.1.5 の直後の例では、通常の交換と Koszul 符号付き交換を備えた二つの整数次数付きベクトル空間の間で、恒等関手は強モノイダルだが、奇数次同士の組紐の比較式は落ちる。A3 と A2 の比較に使う指定の Hom 同型を保つには、この差を見落とせない。
+
+B4 の補題は次の型。a と b はそれぞれ `ofActionTensorCotensor (changeClosedModule d L)` と `changedTensorCotensor d L`。T と Q の二つの比較は `restrictedActionIso` と余テンソルの定義。以下で `hXY` は豊穣 Hom に取った成分。
+
+```lean
+open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.BraidedCategory Opposite
+open SerrePositivity.Enriched
+universe u v w z x y
+variable {V : Type u} {U : Type w} {M : Type x}
+  [Category.{v} V] [Category.{z} U] [Category.{y} M]
+  [MonoidalCategory V] [MonoidalCategory U] [BraidedCategory V] [BraidedCategory U]
+  {F : V ⥤ U} {G : U ⥤ V} [F.Braided]
+
+-- R 3.7.11 の定義と 10.1.4 の一意性の実装。対応する組紐を固定。
+def changedActionHomIso (d : F ⊣ G) (L : ClosedModule U M) :
+    @eHomFunctor V _ _ M _ (ofAction (changeClosedModule d L)) ≅
+      @eHomFunctor V _ _ M _ (changedOrdinary d L)
+set_option backward.isDefEq.respectTransparency false
+local notation "EA[" d "," L "]" => ofAction (changeClosedModule d L)
+local notation "EB[" d "," L "]" => changedOrdinary d L
+local notation "SA[" d "," L "]" => ofActionTensorCotensor (changeClosedModule d L)
+local notation "SB[" d "," L "]" => changedTensorCotensor d L
+local notation "TA[" d "," L "]" => @TensorCotensor.tensor V _ _ M _ (EA[d,L]) (SA[d,L])
+local notation "TB[" d "," L "]" => @TensorCotensor.tensor V _ _ M _ (EB[d,L]) (SB[d,L])
+local notation "QA[" d "," L "]" => @TensorCotensor.cotensor V _ _ M _ (EA[d,L]) (SA[d,L])
+local notation "QB[" d "," L "]" => @TensorCotensor.cotensor V _ _ M _ (EB[d,L]) (SB[d,L])
+local notation "hXY[" d "," L "]" => fun X Y : M =>
+  NatTrans.app (NatTrans.app (Iso.hom (changedActionHomIso d L)) (op X)) Y
+
+-- R 10.1.4 の一意性の成分、R 3.4.5 の点。
+lemma changedActionHomIso_id (d : F ⊣ G) (L : ClosedModule U M) (X : M) :
+    @eId V _ _ M (EnrichedOrdinaryCategory.toEnrichedCategory (self := EA[d,L])) X ≫ hXY[d,L] X X =
+      @eId V _ _ M (EnrichedOrdinaryCategory.toEnrichedCategory (self := EB[d,L])) X
+lemma changedActionHomIso_comp (d : F ⊣ G) (L : ClosedModule U M) (X Y Z : M) :
+    @eComp V _ _ M (EnrichedOrdinaryCategory.toEnrichedCategory (self := EA[d,L])) X Y Z ≫
+        hXY[d,L] X Z =
+      (hXY[d,L] X Y ⊗ₘ hXY[d,L] Y Z) ≫
+        @eComp V _ _ M (EnrichedOrdinaryCategory.toEnrichedCategory (self := EB[d,L])) X Y Z
+lemma changedActionHomIso_points (d : F ⊣ G) (L : ClosedModule U M) {X Y : M} (f : X ⟶ Y) :
+    (@eHomEquiv V _ _ M _ EA[d,L] X Y) f ≫ hXY[d,L] X Y =
+      (@eHomEquiv V _ _ M _ EB[d,L] X Y) f
+
+-- 補助。R 3.7.11 の表示を比較用に束ねる。
+def changedActionTensorIso (d : F ⊣ G) (L : ClosedModule U M) : TA[d,L] ≅ TB[d,L]
+def changedActionCotensorIso (d : F ⊣ G) (L : ClosedModule U M) : QA[d,L] ≅ QB[d,L]
+-- R 10.1.4 の二つの転置、H 4.1.12。
+lemma changedAction_tensorHom (d : F ⊣ G) (L : ClosedModule U M) (P : V) (X Y : M)
+    (f : ((TB[d,L]).obj P).obj X ⟶ Y) :
+    (@TensorCotensor.tensorHomEquiv V _ _ M _ EA[d,L] SA[d,L]) P X Y
+        (((changedActionTensorIso d L).hom.app P).app X ≫ f) ≫ hXY[d,L] X Y =
+      (@TensorCotensor.tensorHomEquiv V _ _ M _ EB[d,L] SB[d,L]) P X Y f
+lemma changedAction_tensorCotensor (d : F ⊣ G) (L : ClosedModule U M) (P : V) (X Y : M)
+    (f : ((TB[d,L]).obj P).obj X ⟶ Y) :
+    (@TensorCotensor.tensorCotensorHomEquiv V _ _ M _ EA[d,L] SA[d,L]) P X Y
+        (((changedActionTensorIso d L).hom.app P).app X ≫ f) ≫
+      ((changedActionCotensorIso d L).hom.app (op P)).app Y =
+        (@TensorCotensor.tensorCotensorHomEquiv V _ _ M _ EB[d,L] SB[d,L]) P X Y f
+```
+
+B4 では豊穣構造の等式の代わりに、Hom の二変数自然同型を固定する。単位は `η F` の mate、合成は `δ F` と二つの評価の mate、点は作用の単位で転置して比較する。二つの転置は随伴の輸送で同じ全単射になり、余テンソルから写像対象への転置はその合成で比較できる。使う側の具体的なレベル表示はこの比較を使う。
+
+## 4. B6　閉じた加群の関手と V 随伴
+
+`LinearFunctor.lean` を豊穣関手と比較する入口、`EnrichedAdjunction.lean` を随伴の入口とする。Mathlib の `Functor.LaxLeftLinear` の向き $v⊙F x→F(v⊙x)$ は R 10.1.5。その比較が可逆の場合の `Functor.LeftLinear`（右作用版は `Functor.RightLinear`）が H 4.1.7 の関手。 `Functor.OplaxLeftLinear` はテンソル側で矢印が逆の別の条件で、余テンソル比較には随伴で写す。Mathlib の `EnrichedFunctor` は豊穣 Hom の射と単位・合成の保存を持つ。その通常の関手を固定した比較は、以下の `EnrichedLift` で与える。
+
+固定版の `EnrichedNatTrans.out` は `F.forget ⟶ G.forget` で、豊穣 Hom 全体の可換条件を課していない。 `GradedNatTrans` の単位中心対象での自然性が R 3.5.8、K §1.2 の条件に当たる。 `EnrichedCat.bicategory` と一般の `Bicategory.Adjunction` を組み合わせると単位点だけに自然な 2-セルを許す。そこで既存の通常圏で指定された単位・余単位に、豊穣 Hom 上の可換を陽に課す。通常の三角律は与えられた随伴が持つ。
 
 ```lean
 open CategoryTheory CategoryTheory.MonoidalCategory Opposite
-open SerrePositivity.Enriched
-universe u v u' v'
-variable {V : Type u} {W : Type u'} [Category.{v} V] [Category.{v'} W]
-  [MonoidalCategory V] [BraidedCategory V] [MonoidalCategory W]
-  [SymmetricCategory W] [MonoidalClosed W]
-  {F : V ⥤ W} {G : W ⥤ V} [F.Braided]
-local notation "Act" => F ⋙ curriedTensor W
-local notation "Cot" => F.op ⋙ MonoidalClosed.internalHom
-local notation "Map" => MonoidalClosed.internalHom ⋙ Functor.obj (Functor.whiskeringRight W W V) G
+universe u v w z x y
+variable {V : Type u} {M : Type w} {N : Type x}
+  [Category.{v} V] [Category.{z} M] [Category.{y} N] [MonoidalCategory V]
+  [EnrichedOrdinaryCategory V M] [EnrichedOrdinaryCategory V N]
 
-@[instance_reducible] def actionOfMonoidal (F : V ⥤ W) [F.Braided] :
-    MonoidalLeftAction V W
-def actionTensorIso (F : V ⥤ W) [F.Braided] :
-    let : MonoidalLeftAction V W := actionOfMonoidal F
-    MonoidalLeftAction.curriedAction V W ≅ F ⋙ curriedTensor W
-def adjunctionActionMapping (d : F ⊣ G) :
-    let : MonoidalLeftAction V W := actionOfMonoidal F
-    (MonoidalLeftAction.curriedAction V W).flip ⊣₂ Map
-def adjunctionActionCotensor (F : V ⥤ W) [F.Braided] :
-    let : MonoidalLeftAction V W := actionOfMonoidal F
-    MonoidalLeftAction.curriedAction V W ⊣₂ F.op ⋙ MonoidalClosed.internalHom
-def adjunctionActionOrdinary (d : F ⊣ G) : EnrichedOrdinaryCategory V W
-def adjunctionActionTensorCotensor (d : F ⊣ G) :
-    let : EnrichedOrdinaryCategory V W := adjunctionActionOrdinary d
-    TensorCotensor V W
-def adjunctionEnrichmentIso (d : F ⊣ G) :
-    @eHomFunctor V _ _ W _ (adjunctionActionOrdinary d) ≅
-      @eHomFunctor V _ _ W _ (ofMonoidalAdjunction d)
+-- R 3.5.1、K §1.2。補助の map_point で元の通常関手を固定する。
+structure EnrichedLift (F : M ⥤ N) where
+  map (X Y : M) : (X ⟶[V] Y) ⟶ (F.obj X ⟶[V] F.obj Y)
+  map_id (X : M) : eId V X ≫ map X X = eId V (F.obj X)
+  map_comp (X Y Z : M) :
+    eComp V X Y Z ≫ map X Z =
+      (map X Y ⊗ₘ map Y Z) ≫ eComp V (F.obj X) (F.obj Y) (F.obj Z)
+  map_point {X Y : M} (f : X ⟶ Y) : eHomEquiv V f ≫ map X Y = eHomEquiv V (F.map f)
+
+-- R 3.5.1。Mathlib の既存の V 関手へ。
+def EnrichedLift.toEnrichedFunctor {F : M ⥤ N} (l : EnrichedLift (V := V) F) :
+    EnrichedFunctor V M N
+
+-- 補助。V 関手の恒等と合成で通常関手も固定。
+def EnrichedLift.id (M : Type w) [Category.{z} M] [EnrichedOrdinaryCategory V M] :
+    EnrichedLift (V := V) (𝟭 M)
+def EnrichedLift.comp {P : Type*} [Category P] [EnrichedOrdinaryCategory V P]
+    {F : M ⥤ N} {G : N ⥤ P}
+    (l : EnrichedLift (V := V) F) (r : EnrichedLift (V := V) G) :
+    EnrichedLift (V := V) (F ⋙ G)
+
+-- R 3.5.8、K §1.2 (1.7)。全豊穣 Hom 上の条件。
+def IsEnrichedNat {F G : M ⥤ N} (l : EnrichedLift (V := V) F) (r : EnrichedLift (V := V) G)
+    (α : F ⟶ G) : Prop
+lemma isEnrichedNat_iff {F G : M ⥤ N} (l : EnrichedLift (V := V) F) (r : EnrichedLift (V := V) G)
+    (α : F ⟶ G) :
+    IsEnrichedNat l r α ↔ ∀ X Y : M,
+      l.map X Y ≫ eHomWhiskerLeft V (F.obj X) (α.app Y) =
+        r.map X Y ≫ eHomWhiskerRight V (α.app X) (G.obj Y)
+
+-- R 3.5.14、K §1.11。d.unit と d.counit を固定した V 随伴。
+structure EnrichedAdjunctionOver {F : M ⥤ N} {G : N ⥤ M} (d : F ⊣ G) where
+  leftLift : EnrichedLift (V := V) F
+  rightLift : EnrichedLift (V := V) G
+  unit_enriched : IsEnrichedNat (EnrichedLift.id (V := V) M) (leftLift.comp rightLift) d.unit
+  counit_enriched : IsEnrichedNat (rightLift.comp leftLift) (EnrichedLift.id (V := V) N) d.counit
+
+-- R 3.5.14、K (1.51)。Hom 側は二変数の普通の自然同型として表示。
+-- 豊穣自然性は上の厳密な単位・余単位から、全 Hom 上で従う。
+def enrichedAdjunctionHomIso {F : M ⥤ N} {G : N ⥤ M} {d : F ⊣ G}
+    (e : EnrichedAdjunctionOver (V := V) d) :
+    F.op ⋙ eHomFunctor V N ≅ eHomFunctor V M ⋙ (Functor.whiskeringLeft N M V).obj G
 ```
+
+Hom の順射は左の Hom に `rightLift.map` を適用し、通常の単位の豊穣点で前合成。逆射は `leftLift.map` を適用し余単位の点で後合成する。両辺が恒等になるのは全 Hom 自然性と通常の三角律による。通常射への制限は d の転置。左右の豊穣自然性は同じ四角と豊穣合成の結合律から得る。
 
 ```lean
-set_option backward.isDefEq.respectTransparency false
-local notation "EA[" d "]" => adjunctionActionOrdinary d
-local notation "EB[" d "]" => ofMonoidalAdjunction d
-local notation "SA[" d "]" => adjunctionActionTensorCotensor d
-local notation "SB[" d "]" => ofMonoidalAdjunctionTensorCotensor d
-local notation "TA[" d "]" => @TensorCotensor.tensor V _ _ W _ (EA[d]) (SA[d])
-local notation "TB[" d "]" => @TensorCotensor.tensor V _ _ W _ (EB[d]) (SB[d])
-local notation "QA[" d "]" => @TensorCotensor.cotensor V _ _ W _ (EA[d]) (SA[d])
-local notation "QB[" d "]" => @TensorCotensor.cotensor V _ _ W _ (EB[d]) (SB[d])
+open CategoryTheory CategoryTheory.MonoidalCategory Opposite
+universe u v w z x y
+variable {V : Type u} {M : Type w} {N : Type x} [Category.{v} V] [Category.{z} M] [Category.{y} N]
+  [MonoidalCategory V] [BraidedCategory V]
+  (L : ClosedModule V M) (K : ClosedModule V N)
 
-lemma adjunctionEnrichmentIso_id (d : F ⊣ G) (X : W) :
-    @eId V _ _ W (EnrichedOrdinaryCategory.toEnrichedCategory (self := EA[d])) X ≫
-      ((adjunctionEnrichmentIso d).hom.app (op X)).app X =
-      @eId V _ _ W (EnrichedOrdinaryCategory.toEnrichedCategory (self := EB[d])) X
-lemma adjunctionEnrichmentIso_comp (d : F ⊣ G) (X Y Z : W) :
-    @eComp V _ _ W (EnrichedOrdinaryCategory.toEnrichedCategory (self := EA[d])) X Y Z ≫
-      ((adjunctionEnrichmentIso d).hom.app (op X)).app Z =
-      (((adjunctionEnrichmentIso d).hom.app (op X)).app Y ⊗ₘ ((adjunctionEnrichmentIso d).hom.app (op Y)).app Z) ≫
-        @eComp V _ _ W (EnrichedOrdinaryCategory.toEnrichedCategory (self := EB[d])) X Y Z
-lemma adjunctionEnrichmentIso_points (d : F ⊣ G) {X Y : W} (f : X ⟶ Y) :
-    (@eHomEquiv V _ _ W _ EA[d] X Y) f ≫ ((adjunctionEnrichmentIso d).hom.app (op X)).app Y =
-      (@eHomEquiv V _ _ W _ EB[d] X Y) f
+-- R 10.1.5。H 4.1.7 は LeftLinear に限定した場合。
+def leftLinearEnrichedEquiv (L : ClosedModule V M) (K : ClosedModule V N) (F : M ⥤ N) :
+    letI := L.action
+    letI := K.action
+    letI := ofAction L
+    letI := ofAction K
+    F.LaxLeftLinear V ≃ EnrichedLift (V := V) F
 
-def adjunctionTensorIso (d : F ⊣ G) : TA[d] ≅ TB[d]
-def adjunctionCotensorIso (d : F ⊣ G) : QA[d] ≅ QB[d]
-lemma adjunctionEnrichmentIso_tensorHomEquiv (d : F ⊣ G) (P : V) (X Y : W)
-    (f : ((TB[d]).obj P).obj X ⟶ Y) :
-    (@TensorCotensor.tensorHomEquiv V _ _ W _ (EA[d]) (SA[d]))
-        P X Y (((adjunctionTensorIso d).hom.app P).app X ≫ f) ≫
-      ((adjunctionEnrichmentIso d).hom.app (op X)).app Y =
-      (@TensorCotensor.tensorHomEquiv V _ _ W _ (EB[d]) (SB[d])) P X Y f
-lemma adjunctionEnrichmentIso_tensorCotensorHomEquiv (d : F ⊣ G) (P : V) (X Y : W)
-    (f : ((TB[d]).obj P).obj X ⟶ Y) :
-    (@TensorCotensor.tensorCotensorHomEquiv V _ _ W _ (EA[d]) (SA[d]))
-        P X Y (((adjunctionTensorIso d).hom.app P).app X ≫ f) ≫
-      ((adjunctionCotensorIso d).hom.app (op P)).app Y =
-        (@TensorCotensor.tensorCotensorHomEquiv V _ _ W _ (EB[d]) (SB[d])) P X Y f
+-- R 3.7.10、10.1.6 の余テンソル比較。任意の V 関手では一般に射。
+def cotensorLineator (L : ClosedModule V M) (K : ClosedModule V N) (G : N ⥤ M) :
+    letI := ofAction L
+    letI := ofAction K
+    EnrichedLift (V := V) G →
+      (∀ (P : V) (Y : N), G.obj ((K.cotensor.obj (op P)).obj Y) ⟶
+        (L.cotensor.obj (op P)).obj (G.obj Y))
+
+-- R 3.7.10 (i)↔(ii)、H 4.1.7。比較は上の同値で定まるもの。
+def enrichedAdjunctionLeftEquiv (L : ClosedModule V M) (K : ClosedModule V N)
+    {F : M ⥤ N} {G : N ⥤ M} (d : F ⊣ G) :
+    letI := L.action
+    letI := K.action
+    letI := ofAction L
+    letI := ofAction K
+    EnrichedAdjunctionOver (V := V) d ≃ F.LeftLinear V
+
+-- R 3.7.10 (i)↔(iii)、10.1.6。右側は V 関手と指定の比較の可逆性。
+def enrichedAdjunctionRightEquiv (L : ClosedModule V M) (K : ClosedModule V N)
+    {F : M ⥤ N} {G : N ⥤ M} (d : F ⊣ G) :
+    letI := ofAction L
+    letI := ofAction K
+    EnrichedAdjunctionOver (V := V) d ≃
+      { r : EnrichedLift (V := V) G // ∀ (P : V) (Y : N), IsIso (cotensorLineator L K G r P Y) }
 ```
 
-`adjunctionActionOrdinary` は `ofAction` に `adjunctionActionMapping` を渡す。もう一方の通常豊穣化は B2。 `adjunctionEnrichmentIso` は両方の Hom 関手の `Map` への比較の合成。単位は `η F` の mate、合成では `δ F` と二つの余単位のテンソルの mate を使い、`F.Braided` で因子順を一致させる。通常射と単位点の等式は両構成の `adjunctionPointEquiv` との一致。最後の二式を合成すれば余テンソルから写像対象への転置の両立も得られる。使う側は自然な比較とこの転置の式を使って段ごとの評価・係数・原変数を移す。豊穣圏の構造レコード全体の等号を要求すると、選んだ作用・随伴の実装が違う場合に式が使いにくくなる。
+R 10.1.5 の順方向は $v→M(X,v⊙X)→N(FX,F(v⊙X))$ を転置する。逆方向は $M(X,Y)⊙FX→F(M(X,Y)⊙X)→FY$ を転置する。単位では `μₗ_unitality`、二つの合成では `μₗ_associativity` と評価の自然性を使い、随伴の三角律で互いに逆にする。H 4.1.7 の加群自然変換は、この比較を通常の自然変換で横切る正方形と `IsEnrichedNat` の同値として扱う。
+
+R 3.7.10 の左から作る方向では、任意の A に対する $V(A,N(FX,Y)) ≃ N(A⊙FX,Y) ≃ N(F(A⊙X),Y) ≃ M(A⊙X,GY) ≃ V(A,M(X,GY))$ を通常の米田で対象同型にする。可逆な比較は F の既存の豊穣関手から定まるものを使う。右から作る方向は余テンソルと同じ転置。単位点では d の同値に一致する。随伴の単位・余単位の豊穣自然性は、全 Hom 上の正方形を随伴で移して lineator の自然性・整合と三角律に帰着する。逆向きは対象同型を用いて同じ列を逆にたどり、通常の Hom の米田で指定の比較が可逆だと示す。余テンソル比較は対応する普遍評価の像で固定する。任意に選んだ対象同型だけではこの判定の入力にならない。
+
+```lean
+open CategoryTheory CategoryTheory.MonoidalCategory Opposite
+universe u v w z
+variable {V : Type u} {U : Type w} [Category.{v} V] [Category.{z} U]
+  [MonoidalCategory V] [MonoidalCategory U] [BraidedCategory V] [BraidedCategory U]
+  [MonoidalClosed V] [MonoidalClosed U] {F : V ⥤ U} {G : U ⥤ V} [F.Monoidal]
+
+-- R 3.7.12。F の左 lineator はモノイダル比較。
+def monoidalAdjunctionLeftLinear (d : F ⊣ G) :
+    letI := (closedModuleSelf V).action
+    letI := (changeSelfClosedModule d).action
+    F.LeftLinear V
+-- R 3.7.12、K §1.11。制限作用から作る豊穣化での V 随伴。
+def monoidalAdjunctionEnriched (d : F ⊣ G) :
+    letI := ofAction (closedModuleSelf V)
+    letI := ofAction (changeSelfClosedModule d)
+    EnrichedAdjunctionOver (V := V) d
+
+variable [SymmetricCategory V] [SymmetricCategory U]
+
+-- F.Monoidal の代わりに F.Braided からモノイダル構造も選ぶ。
+omit [F.Monoidal] in
+-- R 3.7.12 を右随伴による基底変更側で読む。B4 の組紐保存を使用。
+def monoidalAdjunctionEnrichedTransport [F.Braided] (d : F ⊣ G) :
+    letI := MonoidalClosed.enrichedOrdinaryCategorySelf V
+    letI := changedOrdinary d (closedModuleSelf U)
+    EnrichedAdjunctionOver (V := V) d
+```
+
+ここで F の比較は $F(v)⊗F(x)→F(v⊗x)$。強モノイダル性で可逆、自然性と整合は F の公理による。制限作用で作った豊穣化にはこの比較を直接使って R 3.7.10 を適用できる。G で U の豊穣化を輸送した表示では B4 の Hom の同型で単位・余単位ごと移す。さらに R 3.7.12 の列では、$[Fv,u]_U$ を使う B2 の写像随伴、F の二項比較、V の閉随伴の順にとれば、右側の写像対象が $[v,Gu]_V$ になる。
+
+### スペクトルの適用先
+
+[stage14.csv](../spectra/stage14.csv) の `b6` 欄に、全149行を照合して該当先を印した。通常射の前後合成の五行は、直ちに任意の豊穣射の自然性を主張するものではなく、R 10.1.5 で構成した関手を既存の通常関手と照合する B6 の点での式である。加えて写像随伴と転置の六行に、B6 の固定原対象での V 随伴の通常の式になることを記した。 `simplicialLoopNatIso` は今は通常の右随伴の一意性。B6 で比較まで運ぶには、選んだ二つの懸垂の左 lineator と比較の整合を先に示す。表にない `suspensionLoopAdjunction`、`simplicialSuspensionNatIso`、`freeAtAdjunction n` は行を追加せず、次の適用の入口として扱う。 `F₀` は R 3.7.12。 `Fₙ`（任意の n）は強モノイダル性から推論せず、$P⊙FₙX≅Fₙ(P⊗X)$ を自由生成子で、`Evₙ` の余テンソルとの両立は段の表示で確認する。懸垂では係数と円周の順を組紐で移す線形性が必要で、導来随伴の比較には別に Quillen 条件が要る。
 
 ## C-軽　部分圏・対・関手圏・表現可能な Hom
 
 ### `FullSubcategory.lean` と `Product.lean`
 
-部分圏の Hom は元の Hom。通常圏がある場合は Mathlib の `ObjectProperty.FullSubcategory` の既存の構造を使う。別の Hom 表示との比較は `HomCongr` を使う。対は成分ごとの `V × V` 豊穣を `MonoidalCategory.tensor V` に沿って輸送する。固定対象を入れる挿入は、固定側の単位射と対象ごとの単位子で作る。通常の直積圏の射との比較は、単位からの射が二つの点に分かれる場合に使える。SSet のデカルト構造ではこの条件が成立する。 `EnrichedCat` の双圏構造を使え、ここでそのモノイダル構造を登録する必要はない。
+部分圏の Hom は元の Hom。通常圏がある場合は Mathlib の `ObjectProperty.FullSubcategory` の既存の構造を使う。別の Hom 表示との比較は `Iso.eHomCongr` を使う。対は成分ごとの `V × V` 豊穣を `MonoidalCategory.tensor V` に沿って輸送する。固定対象を入れる挿入は、固定側の単位射と対象ごとの単位子で作る。通常の直積圏の射との比較は、単位からの射が二つの点に分かれる場合に使える。SSet のデカルト構造ではこの条件が成立する。 `EnrichedCat` の双圏構造を使え、ここでそのモノイダル構造を登録する必要はない。
 
 ```lean
 open CategoryTheory CategoryTheory.MonoidalCategory
@@ -281,6 +658,7 @@ universe u v w z
 variable {V : Type u} [Category.{v} V] [MonoidalCategory V]
   {D : Type w} {E : Type z} [EnrichedCategory V D] [EnrichedCategory V E]
 
+-- K §1.2。
 @[instance_reducible] def enrichedFullSubcategory (p : D → Prop) :
     EnrichedCategory V {X : D // p X}
 def enrichedFullSubcategoryInclusion (p : D → Prop) :
@@ -289,8 +667,10 @@ def enrichedFullSubcategoryInclusion (p : D → Prop) :
 
 variable [BraidedCategory V]
 
+-- K §1.4 の対。二つの挿入は同じ対を使う補助。
 @[instance_reducible] def tensorEnrichedCategory (D : Type w) (E : Type z)
     [EnrichedCategory V D] [EnrichedCategory V E] : EnrichedCategory V (D × E)
+-- 補助。K §1.4 の対の片側を固定。
 def tensorEnrichedIncludeFirst (Y : E) :
     let : EnrichedCategory V (D × E) := tensorEnrichedCategory (V := V) D E
     EnrichedFunctor V D (D × E)
@@ -311,18 +691,22 @@ variable {V : Type u} [Category.{v} V] [MonoidalCategory V]
   {D : Type w} {E : Type z} [EnrichedCategory V D] [EnrichedCategory V E]
   [HasProductsOfShape D V] [HasProductsOfShape (D × D) V] [HasEqualizers V]
 
+-- K §2.1 (2.2)、§2.2 (2.10)–(2.12)。
 def enrichedFunctorHom (F G : EnrichedFunctor V D E) : V
 def enrichedFunctorHomπ (F G : EnrichedFunctor V D E) (X : D) :
     enrichedFunctorHom F G ⟶ F.obj X ⟶[V] G.obj X
 def enrichedFunctorHomEquiv (F G : EnrichedFunctor V D E) (P : V) :
     (P ⟶ enrichedFunctorHom F G) ≃ GradedNatTrans ((Center.ofBraided V).obj P) F G
+-- K §2.2。[A, B] と評価。enrichedFunctorEvaluateAt は固定対象の補助。
 @[instance_reducible] def enrichedFunctorEnrichment (D : Type w) (E : Type z)
     [EnrichedCategory V D] [EnrichedCategory V E]
     [HasProductsOfShape D V] [HasProductsOfShape (D × D) V] :
     EnrichedCategory V (EnrichedFunctor V D E)
+-- 補助。K §2.2 の評価の対象を固定。
 def enrichedFunctorEvaluateAt (X : D) :
     let : EnrichedCategory V (EnrichedFunctor V D E) := enrichedFunctorEnrichment (V := V) D E
     EnrichedFunctor V (EnrichedFunctor V D E) E
+-- K §2.2 の同時評価。
 def enrichedFunctorEvaluation (D : Type w) (E : Type z)
     [EnrichedCategory V D] [EnrichedCategory V E]
     [HasProductsOfShape D V] [HasProductsOfShape (D × D) V] :
@@ -342,9 +726,11 @@ universe u v w
 variable {V : Type u} [Category.{v} V] [MonoidalCategory V]
   [BraidedCategory V] [MonoidalClosed V] {D : Type w} [EnrichedCategory V D]
 
+-- R 3.5.4、K §1.6 (1.29)。
 def enrichedRepresentableCovariant (X : D) :
     let : EnrichedOrdinaryCategory V V := MonoidalClosed.enrichedOrdinaryCategorySelf V
     EnrichedFunctor V D V
+-- K §1.6 の可表 Hom に §1.4 の反対を適用（§1.10 の反変表示）。
 def enrichedRepresentable (X : D) :
     let : EnrichedOrdinaryCategory V V := MonoidalClosed.enrichedOrdinaryCategorySelf V
     EnrichedFunctor V Dᵒᵖ V
@@ -359,35 +745,11 @@ def enrichedRepresentable (X : D) :
 
 dg 領域の対象と段1の照合結果は [構成別の表 D](general-theory.md#d-dg-で実装されている-v-に一般な構成) にある。前層・双加群の構造比較、米田・余米田の同型、双加群の合成と Dold–Kan の適用はここでは設計を広げない。
 
-## B1 の作用への適用
-
-A3 側は作用結合子の比較を B3 のテンソルに入れ、左右の単位則は `ofActionTensorCotensor` の単位が作用単位子と一致することから示す。B2 側は `F` の二項比較と W の結合子を使うので、この適用にも基底 V の組紐以外に `F.Braided` は要らない。各節に `[MonoidalClosed V]` を追加すると、`ofTensorCotensor` に以下の構造を渡せる。
-
-```lean
--- OfAction の文脈
-variable [MonoidalClosed V]
-
-def ofActionTensorAssociativity (r : (H).flip ⊣₂ R) (q : H ⊣₂ Q) :
-    let : EnrichedOrdinaryCategory V M := ofAction r
-    TensorAssociativity (ofActionTensorCotensor r q)
-```
-
-```lean
--- MonoidalAdjunction の文脈
-variable [BraidedCategory V] [MonoidalClosed V]
-
-def ofMonoidalAdjunctionTensorAssociativity (d : F ⊣ G) :
-    let : EnrichedOrdinaryCategory V W := ofMonoidalAdjunction d
-    TensorAssociativity (ofMonoidalAdjunctionTensorCotensor d)
-```
-
 ## 対称スペクトルと基点付き単体集合
 
 ### 対称スペクトル（段4）
 
-固定 Mathlib の `Mod` に対し、本体の `MonoidalBalancedTensor.symmetricCategory`、`MonoidalModuleInternalHom.moduleMonoidalClosed`、`MonoidalBalancedTensor.freeFunctorMonoidal`、`MonoidalBalancedTensor.freeFunctorBraided` を使う。可換モノイドと、相対テンソル・内部 Hom の構成に必要な余等化子・等化子のもとで型クラスを推論できる。スペクトルの対称性と閉性にもこれらの instance が使われる。
-
-`freeAtAdjunction 0` は存在し、左辺は `SymmetricSequence.freeAt 0 ⋙ GeneralSymmetricSpectrum.freeFunctor K`、右辺は `GeneralSymmetricSpectrum.forget K ⋙ SymmetricSequence.evaluation 0`。列側の `freeAt 0` の `Monoidal` が欠けている。 単位に `freeZeroUnitIso` の逆、二項に `freePairConvolutionIso 0 0` を取り、自然性、単位、結合、B4 用の組紐を自由生成子で照合する。加群側の自由関手と合成すれば F₀ の `Monoidal` と `Braided` を組める。B2 を先に使う場合は `Monoidal` までで足りる。
+現行で確認したのは HS 6.2 の $C=D$ に当たる形。係数は C、旧基底 U と加群 M はともにスペクトル。HS 6.2–6.3 の右加群の表示と本体の左 `Mod` は区別する。次の LeftAction で係数が左にあるのは R と本体の規約。右表示との具体的な照合と、HS の $C\ne D$ を本体に持つかは段4の未決。自由加群の対称性・閉性、自由加群関手の `Monoidal` と `Braided` は本体で推論できる。自由第0段全体の `Monoidal` は列の自由第0段の `CoreMonoidal` を組んで得る。単位は `freeZeroUnitIso.symm`、二項は `freePairConvolutionIso 0 0`。自然性と整合を生成子で比較した後、自由加群と合成する。
 
 ```lean
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.Limits Opposite
@@ -397,53 +759,64 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   [MonoidalClosed C] [HasColimitsOfSize.{0,0} C] [HasLimitsOfSize.{0,0} C] (K : C)
 local notation "Sp" => GeneralSymmetricSpectrum C K
 local notation "F₀" => GeneralSymmetricSpectrum.freeAt (K := K) 0
-local notation "Ev₀" => GeneralSymmetricSpectrum.evaluation (K := K) 0
 local notation "d₀" => GeneralSymmetricSpectrum.freeAtAdjunction (K := K) 0
 
+-- HS 6.3 の比較を自由列の段階で組む補助。
 def freeZeroSequenceMonoidalCore (C : Type u) [Category.{v} C] [MonoidalCategory C]
     [HasColimitsOfSize.{0,0} C] [MonoidalClosed C] [SymmetricCategory C] :
     (SymmetricSequence.freeAt (C := C) 0).CoreMonoidal
-@[instance_reducible] def spectrumOrdinaryOfAdjunction (hF : (F₀).Monoidal) : EnrichedOrdinaryCategory C Sp
-def spectrumTensorCotensorOfAdjunction (hF : (F₀).Monoidal) :
-    let : EnrichedOrdinaryCategory C Sp := spectrumOrdinaryOfAdjunction K hF
-    TensorCotensor C Sp
+-- R 3.7.11、HS 6.2・6.3。
+def spectrumClosedModule (hF : (F₀).Monoidal) : ClosedModule C Sp
+@[instance_reducible] def spectrumOrdinaryOfAdjunction (hF : (F₀).Monoidal) :
+    EnrichedOrdinaryCategory C Sp
 def spectrumMappingObjectIso (hF : (F₀).Monoidal) :
-    let : EnrichedOrdinaryCategory C Sp := spectrumOrdinaryOfAdjunction K hF
+    letI := spectrumOrdinaryOfAdjunction K hF
     eHomFunctor C Sp ≅ GeneralSymmetricSpectrum.mappingObjectBifunctor (K := K)
+def spectrumTensorCotensorOfAdjunction (hF : (F₀).Monoidal) :
+    letI := spectrumOrdinaryOfAdjunction K hF
+    TensorCotensor C Sp
+-- HS 6.3 の各段での具体化。旧 TensorCotensor は比較の対象。
 def spectrumTensorIso (hF : (F₀).Monoidal) :
-    let : EnrichedOrdinaryCategory C Sp := spectrumOrdinaryOfAdjunction K hF
+    letI := spectrumOrdinaryOfAdjunction K hF
     (spectrumTensorCotensorOfAdjunction K hF).tensor ≅
       @TensorCotensor.tensor C _ _ Sp _ (GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory
         (K := K)) (GeneralSymmetricSpectrum.spectrumTensorCotensor (K := K))
 def spectrumCotensorIso (hF : (F₀).Monoidal) :
-    let : EnrichedOrdinaryCategory C Sp := spectrumOrdinaryOfAdjunction K hF
+    letI := spectrumOrdinaryOfAdjunction K hF
     (spectrumTensorCotensorOfAdjunction K hF).cotensor ≅
       @TensorCotensor.cotensor C _ _ Sp _ (GeneralSymmetricSpectrum.mappingEnrichedOrdinaryCategory
         (K := K)) (GeneralSymmetricSpectrum.spectrumTensorCotensor (K := K))
 ```
 
-`spectrumOrdinaryOfAdjunction` は `letI := hF` のもとで `ofMonoidalAdjunction d₀`。テンソル・余テンソルの表示には、既存の `tensorFreeZeroPointwiseBifunctorIso` と `internalHomCotensorBifunctorIso` を使う。写像対象は両方 `Ev₀ [X,Y]`。自己豊穣化の `internalHom` と本体の `internalHomBifunctor` は定義的に一致する。既存の `spectrumTensorCotensor_tensorHomEquiv` により、テンソルの転置は `mappingObjectHomEquiv` で計算できる。二つの通常随伴を既存の輸送と照合すると、余テンソルから写像対象への転置も比較できる。利用側には `pointwiseTensor_level`、`cotensor_level` と射・単位の各段の計算を残す。旧豊穣化の単位と合成は旧作用の `pointwiseTensorAssociatorNatIso` と新しい作用結合子の生成子での一致を通して比べる。
+`letI := hF` の下でそれぞれ `changeSelfClosedModule d₀`、`changedOrdinary d₀ (closedModuleSelf Sp)`、`changedTensorCotensor d₀ (closedModuleSelf Sp)`。写像対象は `Ev₀ [X,Y]`。閉構造の `internalHom` と本体の `internalHomBifunctor` は定義的に一致する。二つの随伴の各段表示は既存の `tensorFreeZeroPointwiseBifunctorIso` と `internalHomCotensorBifunctorIso`。旧 `spectrumTensorCotensor_tensorHomEquiv` の転置を用い、単位、合成、余テンソルと Hom への転置を B4 で比較する。HS 7.3 と 7.11 の後の注意はモデル圏に進んだ後の適用。ここではその弱同値と単位条件を含めない。
 
-### 基点付き単体集合（段3の試験）
+### 基点付き単体集合（段3e）
 
-`adjoinBasepointAdjunction` があり、smash の `SymmetricCategory` と `MonoidalClosed` を推論できる。 `adjoinBasepointFunctor.Monoidal` は推論できない。 `adjoinBasepointUnitIso` の逆と `adjoinBasepointProductIso` の組で、左右単位と結合を対の元・基点の像で確認する。B4 まで試すなら同じ表示で組紐も照合する。
+R 3.3.14 の smash の閉性と R 3.7.13 の基点付加随伴を使う。既存の `adjoinBasepointUnitIso.symm` と `adjoinBasepointProductIso` を組み、左右単位・結合・組紐を対の元と基点で比較する。基点付加関手が強モノイダルであることは、これらの比較を束ねて示す。
 
 ```lean
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity SerrePositivity.Enriched
 universe u
 
+-- R 3.7.13。
 def adjoinBasepointMonoidalCore : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).CoreMonoidal
-@[instance_reducible] def pointedOrdinaryOfAdjunction (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).Monoidal) : EnrichedOrdinaryCategory SSet.{u} PointedSimplicialSet.{u}
-def pointedTensorCotensorOfAdjunction (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).Monoidal) :
-    let : EnrichedOrdinaryCategory SSet.{u} PointedSimplicialSet.{u} := pointedOrdinaryOfAdjunction hF
+def pointedClosedModule (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).Monoidal) :
+    ClosedModule SSet.{u} PointedSimplicialSet.{u}
+@[instance_reducible] def pointedOrdinaryOfAdjunction
+    (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).Monoidal) :
+    EnrichedOrdinaryCategory SSet.{u} PointedSimplicialSet.{u}
+def pointedTensorCotensorOfAdjunction
+    (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).Monoidal) :
+    letI := pointedOrdinaryOfAdjunction hF
     TensorCotensor SSet.{u} PointedSimplicialSet.{u}
+-- 補助。R 3.7.13 の忘却した内部 Hom を現行の値と比較。
 def pointedAdjunctionHomIso (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{u}).Monoidal) :
     @eHomFunctor SSet.{u} _ _ PointedSimplicialSet.{u} _ (pointedOrdinaryOfAdjunction hF) ≅
       @eHomFunctor SSet.{u} _ _ PointedSimplicialSet.{u} _ KST.Spectra.PointedEnrichment.simplicialCategory
 ```
 
-`letI := hF` のもとで `ofMonoidalAdjunction adjoinBasepointAdjunction` を取る。テンソルは基点付加との smash、余テンソルは基点付き内部 Hom。現行 `PointedEnrichment.simplicialCategory` も忘却した基点付き内部 Hom が写像対象。単位点は `forgetUnitHomEquiv_formula` と `adjunctionPointEquiv_apply` で比べる。忘却関手の既存の lax 比較と随伴の mate が、積の対および単位点で一致することを別に示せば、現行の合成・単位とも両立する。局所 Kan 性はあとで付ける性質として残る。
+`letI := hF` の下で `changeSelfClosedModule adjoinBasepointAdjunction` を取る。同じ自己閉加群から `changedOrdinary` と `changedTensorCotensor` を取る。前者は忘却した基点付き内部 Hom、後者は $P_+∧X$ と $[P_+,Y]$。既存の単位点は `forgetUnitHomEquiv_formula` と比較する。忘却関手の既存の lax 比較と随伴の mate が単位と対の元で一致すれば、現行の単位・合成との比較を取れる。
 
 ## 現行 120 宣言の行き先
 
@@ -601,26 +974,126 @@ def pointedAdjunctionHomIso (hF : (PointedSimplicialSet.adjoinBasepointFunctor.{
 | Simplicial | 0／0 | 0／0 | 4／17 | 0／0 |
 | 合計 | 33／179 | 7／72 | 37／442 | 43／296 |
 
-型案は71宣言（一般論 A・B 48、C-軽13、試験とスペクトル10）。このうち7は表にある改名・置換先なので、改名を除く追加の入口は64件。証明行は、既存補題を使える部分と、転置の自然性・モノイダル整合・等化子を新たに証明する部分を分けて見積もった。下表の行には型と証明を含む。局所補題を数え上げる前の幅で、移す既存の442行は含めない。
+## 利用側の書き換え量
 
-| 次段以降の作業 | 型案の件数（改名を含む） | 実装行の見込み |
-| --- | ---: | ---: |
-| 段3a　A2・A3・B3。元の通常圏上の基底変更、作用からの豊穣化、随伴つきテンソル・余テンソル。一般補題の移動と単体的補題の分離 | 16 | 150–260 |
-| 段3b　B1。結合・単位の入力と二つの右随伴比較、係数自然性と単位点、A3 側の適用 | 9 | 220–400 |
-| 段3c　B2・B4、B2 側の B1 の入力。右随伴の mate、作用との比較と二つの転置 | 23 | 210–400 |
-| 段3d　基点付き単体集合。基点付加のモノイダル整合と現行の忘却による豊穣化との照合 | 4 | 90–180 |
-| 段4　スペクトルの自由第0段、相対テンソルと各段の表示 | 6 | 100–230 |
-| 段5　C-軽。充満部分圏、対と挿入、等化子と評価、可表 Hom | 13 | 220–420 |
+[consumers.md](consumers.md) の8構成を、非 Archive の追跡済み Lean ソースで照合した。型欄の「箇所」は `TensorCotensor` を型として明記した宣言・セクションの引数行、または供給元の戻り型。コメント、引用属性の文字列、import、一般論自身の `CategoryTheory/Enriched/TensorCotensor.lean` は集計外。射影欄はその引数に対するテンソル・余テンソル・評価・単位の明示的なドット参照の物理行を数える。一般論の再利用と、個々に書き換える場合の差を、同じ受け口で比べた。
 
-合計は990–1,890行の設計見積もり。上表で消える旧宣言は43件・296行。一般論の中の新しい整合の証明を一度置き、段4の利用側から移せるスペクトル固有でない宣言は、実装時に旧転置・生成子の照合を経て取り除く。この行数にはスペクトル利用側の削減を加算していない。
+| consumers.md の構成 | 型の箇所／ファイル | 射影行 | 随伴を残す案で直接編集する既存行 | 吸収案で既存の射影を直書きにする場合の既存行 |
+| --- | ---: | ---: | ---: | ---: |
+| 通常の Hom・豊穣 Hom の関手 | 0 | 0 | 0 | 0 |
+| テンソル・余テンソル・モデル圏適合性 | 4／4 | 40 | 4 | 44 |
+| ホモトピー関数複体・豊穣局所化 | 58／37 | 92 | 58 | 147 |
+| 豊穣関手と図式の圏 | 0 | 0 | 0 | 0 |
+| Coherent 神経 | 0 | 0 | 0 | 0 |
+| dg 神経、H⁰、dg 商と完備化 | 0 | 0 | 0 | 0 |
+| 単体的局所化とモデル圏比較の hammock・神経の入口 | 0 | 0 | 0 | 0 |
+| K 理論の S 構成とスペクトル | 1／1 | — | 供給元の1行とモデル側の呼出し | 供給元と下記の名前付き参照23行（供給元を含む） |
 
-[SU-W1 段14a の58件](../spectra/stage14-types.md) は次の単位で引き継ぐ。
+残す案は、閉じた加群を取る型へ明示引数62行を替え、`ClosedModuleOn` から取る `adjunctions` の共用射影・転置を少数の前方定義で現行のドット名に揃える見積もり。モデル・局所化を横切って加群の値を受け渡す箇所には同じ値を渡せる。既存の弱い型を使う計算補題は `S.adjunctions` を渡す。吸収案でも同名の前方定義を作れば利用側の直接変更量は近づくが、現行の33宣言のうち二つの随伴から導出する API と引用を新構造上へ移す必要がある。射影を個別に展開する吸収案は、二つの構成だけで重複を除き191行。残す案の62行は型と射影の既知の範囲での比較で、前方定義・供給側の整合・他ファイルからの位置引数の調整、import 改名の行を含まない。スペクトル側では旧名を随伴を返す互換入口にできるため、23行を一括で置換する必要はない。どちらの案でも、旧来は自由だった `TensorCotensor` の値の供給側に作用の整合が必要になる。
 
-| 旧案 | 件数 | EN-W1 での置き方 |
-| --- | ---: | --- |
-| 作用の結合、評価則、通常圏の組立て、Hom の両変数の射 | 13 | A3 に継承。評価則と whiskering は `ofAction` と `ofActionHomIso` の証明に使う |
-| テンソル・余テンソルの構造と写像対象への転置 | 2 | B3 の二つの型に継承 |
-| 比較随伴・右随伴比較、係数・原変数・単位の転置則、Hom の二変数同型と `EnrichedRepresentability` | 34 | B1 に継承。作用のデータで直接書いていた式は `TensorAssociativity` と `TensorCotensor` で述べ、必要な補題を内部で使う |
-| 各段の加群テンソルの表示6件、列の pairing 2件、零対象1件 | 9 | 各段の表示は段4の資料。列の pairing と零対象の配置は一般の豊穣化の入口から独立 |
+### モデル・単位置換・固定単体的条件
 
-段3の最後は基点付き単体集合の写像対象、通常射・単位・合成と二つの転置の照合。スペクトルの利用側切り替えは段4、dg と SSet の C-軽の適用は段5。SU-W1 段14の実装保留をこの設計で解除しない。
+| ファイルと最初の型の行 | 型の行 | 射影行数 | 個別に直す場合の行数 |
+| --- | --- | ---: | ---: |
+| [TensorCotensor](../../../SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean#L27) | 27 | 17 | 18 |
+| [UnitAxiom](../../../SerrePositivity/HomotopicalAlgebra/Enriched/UnitAxiom.lean#L24) | 24 | 3 | 4 |
+| [UnitChangeModel](../../../SerrePositivity/HomotopicalAlgebra/Enriched/UnitChangeModel.lean#L20) | 20 | 1 | 2 |
+| [FixedSimplicialModelCompatibility](../../../SerrePositivity/InfinityCategories/Project/ModelCategoryComparison/Replacements/FixedSimplicialModelCompatibility.lean#L39) | 39 | 19 | 20 |
+
+### 関数複体、置換、局所化、HTT/Kerodon の Quillen 比較
+
+| ファイルと最初の型の行 | 型の行 | 射影行数 | 個別に直す場合の行数 |
+| --- | --- | ---: | ---: |
+| [DerivedMapping](../../../SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean#L42) | 42 | 3 | 3 |
+| [UnitFrame](../../../SerrePositivity/HomotopicalAlgebra/Enriched/UnitFrame.lean#L27) | 27 | 18 | 19 |
+| [ChosenMapComparison](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/ChosenMapComparison.lean#L42) | 42 | 1 | 2 |
+| [EnrichedTensorFrameHom](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/EnrichedTensorFrameHom.lean#L22) | 22 | 3 | 4 |
+| [SimplicialMapComparison](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialMapComparison.lean#L24) | 24 | 1 | 2 |
+| [SimplicialTensorAugmentation](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorAugmentation.lean#L20) | 20 | 6 | 7 |
+| [SimplicialTensorCofibrant](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorCofibrant.lean#L24) | 24 | 4 | 4 |
+| [SimplicialTensorConstant](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorConstant.lean#L45) | 45 | 3 | 3 |
+| [SimplicialTensorHom](../../../SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorHom.lean#L22) | 22 | 8 | 9 |
+| [Enriched](../../../SerrePositivity/HomotopicalAlgebra/Localization/Enriched.lean#L31) | 31 | 6 | 7 |
+| [EnrichedDetection](../../../SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean#L30) | 30 | 4 | 5 |
+| [EnrichedExistence](../../../SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean#L38) | 38 | 5 | 6 |
+| [EnrichedLocalObjects](../../../SerrePositivity/HomotopicalAlgebra/Localization/EnrichedLocalObjects.lean#L29) | 29 | 3 | 4 |
+| [EnrichedTestComparison](../../../SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean#L24) | 24 | 1 | 2 |
+| [QuillenCfCollage](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfCollage.lean#L40) | 40, 41 | 1 | 3 |
+| [QuillenCfCollageInclusions](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfCollageInclusions.lean#L38) | 38, 44 | 2 | 4 |
+| [QuillenCfCollageProjection](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfCollageProjection.lean#L96) | 96, 97 | 1 | 3 |
+| [QuillenCfDerivedComparison](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfDerivedComparison.lean#L34) | 34, 35 | 1 | 3 |
+| [QuillenCfDerivedLimits](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfDerivedLimits.lean#L30) | 30, 31 | 1 | 3 |
+| [QuillenCfDerivedTransport](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfDerivedTransport.lean#L32) | 32, 33 | 1 | 3 |
+| [QuillenCfFinalHornFixedEdge](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfFinalHornFixedEdge.lean#L31) | 31, 32 | 1 | 3 |
+| [QuillenCfFinalHornHollow](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfFinalHornHollow.lean#L26) | 26, 27 | 1 | 3 |
+| [QuillenCfFinalHornUnknownHom](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfFinalHornUnknownHom.lean#L31) | 31, 32 | 1 | 3 |
+| [QuillenCfFullyFaithful](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfFullyFaithful.lean#L38) | 38, 39 | 1 | 3 |
+| [QuillenCfLeftCocartesian](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfLeftCocartesian.lean#L34) | 34, 35 | 1 | 3 |
+| [QuillenCfLeftLift](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfLeftLift.lean#L75) | 75 | 1 | 2 |
+| [QuillenCfLeftOrdinaryComparison](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfLeftOrdinaryComparison.lean#L34) | 34, 35 | 1 | 3 |
+| [QuillenCfLeftReplacement](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfLeftReplacement.lean#L33) | 33, 34 | 1 | 3 |
+| [QuillenCfOuterHomFilling](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfOuterHomFilling.lean#L26) | 26, 57 | 2 | 4 |
+| [QuillenCfReplacementHom](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfReplacementHom.lean#L51) | 51, 75 | 2 | 4 |
+| [QuillenCfRightCartesian](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfRightCartesian.lean#L32) | 32, 33 | 1 | 3 |
+| [QuillenCfRightLift](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfRightLift.lean#L59) | 59 | 1 | 2 |
+| [QuillenCfRightOrdinaryComparison](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfRightOrdinaryComparison.lean#L29) | 29, 30 | 1 | 3 |
+| [QuillenCfRightReplacement](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfRightReplacement.lean#L31) | 31, 32 | 1 | 3 |
+| [QuillenCfUnitPrism](../../../SerrePositivity/InfinityCategories/HTT/ModelCategoryAdjunctions/QuillenCfUnitPrism.lean#L30) | 30, 31 | 1 | 3 |
+| [QuillenCfBifibration](../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/QuillenCfBifibration.lean#L33) | 33, 34 | 1 | 3 |
+| [QuillenCfDerivedAdjunction](../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/QuillenCfDerivedAdjunction.lean#L36) | 36, 37 | 1 | 3 |
+
+### スペクトルの名前付き供給・受け取り
+
+| ファイル | `spectrumTensorCotensor` の行 |
+| --- | --- |
+| [General/CotensorMappingPoints](../../../SerrePositivity/Spectra/General/CotensorMappingPoints.lean#L72) | 72 |
+| [General/EnrichedMappingObjects](../../../SerrePositivity/Spectra/General/EnrichedMappingObjects.lean#L30) | 30, 39 |
+| [General/EnrichedRepresentability](../../../SerrePositivity/Spectra/General/EnrichedRepresentability.lean#L27) | 27 |
+| [General/TensorCotensorEnriched](../../../SerrePositivity/Spectra/General/TensorCotensorEnriched.lean#L24) | 24, 35 |
+| [General/TensorMappingPoints](../../../SerrePositivity/Spectra/General/TensorMappingPoints.lean#L67) | 67 |
+| [ModelCategory/GeneralLevelEnriched](../../../SerrePositivity/Spectra/ModelCategory/GeneralLevelEnriched.lean#L34) | 34, 36, 39, 47 |
+| [Stable/EnrichedModel](../../../SerrePositivity/Spectra/Stable/EnrichedModel.lean#L54) | 54, 60, 62, 67, 122, 124, 130, 137 |
+| [Stable/TensorCompatibility](../../../SerrePositivity/Spectra/Stable/TensorCompatibility.lean#L54) | 54, 57, 92, 95 |
+
+## 原典との突合
+
+| 部分 | 合成と作用の規約の確認 |
+| --- | --- |
+| A1・A3・B3 | 作用は `curriedAction V M`、係数が先。写像随伴だけ `.flip`。A3 の合成は $M(X,Y)⊗M(Y,Z)$ が入力で、R 3.3.1 の順に戻す組紐は評価を始める直前の一回。H 4.1.6 は右を左に読み替え、結合の同型の向きも上の順射に合わせた |
+| B1 | テンソルの列で $A⊗P$ を $P⊗A$ からの前合成に移す。余テンソルの列は第3段ですでに $P⊗A$。Mathlib の閉随伴は `tensorLeft P`。R の記号 $×$ はここで直積に限らない |
+| A2・B2・B4 | G の比較は Mathlib 順の因子に適用。`F ⋙ T` の係数を $F(P)$ にする。R の文献順で輸送した後に交換する経路との一致は、B4 で F の組紐保存を明示。強モノイダル性だけで作る B2 の通常随伴と米田の列にはこの比較を仮定しない |
+| B6 | `LaxLeftLinear.μₗ` は $P⊙FX→F(P⊙X)$、余テンソルの比較は $G(Y^P)→(GY)^P$。豊穣関手の合成法則と自然変換は `eComp V X Y Z` の図式順 |
+| C-軽 | K §1.4 の対を `tensor V` の二項比較で運び、成分ごとの単位と合成を図式順に保つ。関手圏の同時評価は図式順で射を合成し、組紐の逆の照合に対称性を使う。反対と反変可表関手は Mathlib の反対の組紐を使う |
+| スペクトル・基点付き単体集合 | 現行のスペクトルは HS 6.2 の右加群と逆の左加群。段4では係数を左に置く型と、右側の原典の各段式の照合が必要。基点付き単体集合は R 3.7.13 の左作用 $P_+∧X$ |
+
+### 対応表にあって独立の型を置かない項目
+
+| 文献対応表 §2 の項目 | 段2bでの扱い |
+| --- | --- |
+| R 3.3.1・3.3.6・(3.3.7)・3.3.9、3.4.1、3.4.5、3.5.1、H 4.1.1–4.1.5・4.1.13 | Mathlib の既存構造と閉随伴を使用。R 3.3.9 の閉構造の内部 curry は `MonoidalClosed.ihomCurryIso` を使用可。H 4.1.5 の組紐保存は B4 の入力 |
+| R 3.3.14 | smash の閉構造は既存、試験例は R 3.7.13 を型にした |
+| R 3.5.10、K §1.3 | 2 関手として束ねる宣言は置かず、Mathlib の `ForgetEnrichment` と `EnrichedFunctor.forget` を使う |
+| R 3.7.4 の全 V 二変数随伴、10.1.2、10.1.6 の末尾 | B1 は二つの V 値の同型、通常の二変数自然性・係数自然性・点での一致を束ねる。豊穣二変数関手とその全豊穣自然性を一体化した随伴レコードは今回の型に置かない。B6 では一変数の余テンソルの比較を具体化 |
+| R 3.7.7 | 豊穣表現から作用を復元する B5 は保留。単位と結合子は今回の入力 |
+| R (10.1.1)、H 4.1.6・4.1.12 | `ClosedModule` のフィールドには既存の `MonoidalLeftAction` と `ParametrizedAdjunction` を使う |
+| H 4.1.7 の加群自然変換、4.1.8、§4.1 末尾の閉じた代数と双対 2 関手 | B6 で全 Hom の自然性と lineator の比較四角を使う。加群自然変換圏の独立の型、代数側の言い換え、2 圏の双対全体は対象外 |
+| H 4.2.1・4.2.2・4.2.6・4.2.10・4.2.16・4.2.18 | モデル圏側の既存の Quillen・単位条件を使う。4.2.18 に合わせる利用側の受け口と書き換え量は上に記録。4.2.16 の単位の置換の弱同値は試験例の型に含めない |
+| K §1.4 の反対、§1.6 の自己豊穣、§1.10 の受け身変数の一般定理 | 反対と自己豊穣は Mathlib。§1.10 は表現可能な Hom を作るのに使う範囲まで |
+| K §2.3、§2.6、§3.11、§3.12 | 指数法則と宇宙拡大は段5で判断。型案では二つの添字の積があることを仮定 |
+| K §3.5、§1.9、§2.4 | 充満部分圏と極限、豊穣米田・余米田は保留。B1・B2 の同型を取るのは通常米田（R 3.5.12） |
+| HS 6.1、6.2 の $C\ne D$、7.3、7.11 の後の注意 | 対称列の畳み込みは既存。一般の C と D、射影・安定モデル圏での結論は段4で設計。HS 6.3 の自由第0段の強モノイダル性は型案に置いた |
+
+## 改訂後の実装見積もり
+
+| 段 | 宣言署名 | 実装行の見込み | 作業 |
+| --- | ---: | ---: | --- |
+| 3a | 16 | 200–360 | A2・A3・B3、自己閉加群、作用と随伴の受け口、物理ファイルの配置と文献略号 |
+| 3b | 32 | 300–520 | B1 の列、米田、四欄と作用を使う入口。弱い入力でできる箇所を個別に確認 |
+| 3c | 44 | 400–700 | 任意 M の B2。随伴の制限と変換、B2 自身の列、B4 の全 Hom 比較と転置 |
+| 3d | 15 | 320–630 | B6 の lax lineator、指定した通常関手の V 関手化、単位・余単位と随伴、F ⊣ G 自身の適用 |
+| 3e | 5 | 100–190 | 基点付き単体集合でモノイダル整合を作り、現行 Hom・単位・合成・二つの転置を照合 |
+| 4 | 7 | 130–280 | スペクトル。自由第0段の比較と各段での表示。HS の向きと C、D の範囲を先に決める |
+| 5 | 13 | 220–420 | C-軽を dg と SSet に適用。添字宇宙を先に照合 |
+| 合計 | 132 | 1,670–3,100 | うち既存名の改名・置換7。新しい入口・補助は125 |
+
+宣言は、文献との照合のため型を独立に書いた各段の同値・自然性も含めた数。行数は型と証明の合計の概算で、旧宣言43件・296行の削減候補、移動分、利用側の移行行、略号表は別。段3以降は監査の区切りを待つ。SU-W1 段14a の作用の評価則と二重転置を継承し、実装保留は継続する。
