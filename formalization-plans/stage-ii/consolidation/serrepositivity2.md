@@ -1,5 +1,7 @@
 # SerrePositivity2：新しいプロジェクトの決定の記録
 
+> **2026-11-21 夜から、正本は新しいプロジェクトの blueprint。** 場所は `~/LEAN_Projects/SerrePositivity2`（決定は `blueprint/chapters/decisions.md`、目標と道は `blueprint/chapters/goals.md`）。この紙は、そこまでの経緯の記録として残す。以後の決定は blueprint の側に書く。
+
 2026-11-21 開始。場所は隣の `SerrePositivity2`（git は手元のみ）。経緯は [enrichment-w1.md](enrichment-w1.md) の決定 10 と [cleanup-log.md](cleanup-log.md) §26。プロジェクトの規則は、その README が正。ここには、決定とその理由を足していく。
 
 ## 決定 1：Mathlib だけに乗せて、下から作る（ユーザー、11-21）
