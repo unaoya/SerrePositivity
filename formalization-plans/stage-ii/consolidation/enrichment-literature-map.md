@@ -1,6 +1,6 @@
 # EN-W1　豊穣化の一般論：文献との対応と、それに基づく計画
 
-2026-11-21。調整役が、四つの文献の本文（`~/serre-evidence/references/`、Git の外）を読んで作った。番号と主張は本文から読み出したもので、記憶で書いたものは無い。決定の正本は [enrichment-w1.md](enrichment-w1.md)。この紙は、実装（段 3 以降）で「どの宣言が文献のどれに当たるか」を引くための対応表と、文献を読んで計画を直した所の記録。
+2026-11-21。調整役が、四つの文献の本文（`~/serre-evidence/references/`、Git の外）を読んで作った。番号と主張は本文から読み出したもので、記憶で書いたものは無い。決定の正本は [enrichment-w1.md](enrichment-w1.md)。この紙は、実装（段 3 以降）で「どの宣言が文献のどれに当たるか」を引くための対応表と、文献を読んで計画を直した所の記録。段2bで Mathlib の照合と型案への対応を更新した。
 
 ## 0. 文献と略号
 
@@ -19,7 +19,7 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 
 | 事柄 | R・K | H・HS | Mathlib | 本体の決め方 |
 | --- | --- | --- | --- | --- |
-| 合成の順 | M(y, z) ⊗ M(x, y) → M(x, z)（R (3.4.6)、K §1.2） | 同左 | `eComp X Y Z : (X ⟶[V] Y) ⊗ (Y ⟶[V] Z) ⟶ (X ⟶[V] Z)`（図式の順） | Mathlib の順。文献の順との行き来は組紐で行う（本体の `ReverseComposition`。段 3a で `BaseChange` に置く）。docstring には文献の式を、順が逆であることを断って書く |
+| 合成の順 | M(y, z) ⊗ M(x, y) → M(x, z)（R Definition 3.3.1 と (3.4.6)、K §1.2） | 同左 | `eComp X Y Z : (X ⟶[V] Y) ⊗ (Y ⟶[V] Z) ⟶ (X ⟶[V] Z)`（図式の順） | Mathlib の順。文献の順との行き来は組紐で行う（本体の `ReverseComposition`。段 3a で `BaseChange` に置く）。docstring には文献の式を、順が逆であることを断って書く |
 | 作用の向き | 左：v ⊗ m（R Definition 3.7.2、10.1.3） | 右：X ⊗ K（H Definition 4.1.6 は右 C 加群。「左加群も定義できる」と断っている） | `MonoidalLeftAction`（左）。右は `MonoidalRightAction` | 左（R と Mathlib の左作用）。H を引くときは、左右を読み替えていることを docstring に書く。V は対称なので数学として同値 |
 | 対称スペクトルの加群の向き | — | HS Definition 6.2 は右加群（Xₙ ⊗ K → Xₙ₊₁）。「[HSS] は左加群」と断っている | `Mod` は左加群 | 段 4 の設計で決める（§6 の未決 1） |
 | 基底の圏への仮定 | 閉対称モノイダル圏 (V, ×, ∗)（記号は直積だが一般の対称モノイダル） | 閉対称モノイダル圏 | `MonoidalCategory`・`SymmetricCategory`・`MonoidalClosed` | 主張ごとに要る分だけ仮定する（対称性が要るのは、合成の順の行き来、反対圏、V 圏のテンソル）。文献より弱い仮定で示せるときは弱くし、その旨を書く |
@@ -29,7 +29,7 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 
 ## 2. 対応表
 
-「Lean」の欄：**M**＝Mathlib にある（名前は ⑧ がソースで確かめたもの）、**本**＝本体にある、**書**＝新しく書く（ファイルは決定 5）、**要確認**＝Mathlib にあるかを段 2 の改訂で確かめる。
+「Lean」の欄：**M**＝Mathlib にある（名前は ⑧ がソースで確かめたもの）、**本**＝本体にある、**書**＝新しく書く（ファイルは決定 5）、固定版の照合は段2bで実施。名前を挙げる際は既存の宣言と、対応する条件の差を明記した。
 
 ### 2.1 Riehl 第 3 章
 
@@ -37,28 +37,28 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 | --- | --- | --- | --- |
 | Definition 3.3.1 | V 圏 | 土台 | M `EnrichedCategory` |
 | Definition 3.3.6、(3.3.7) | 閉モノイダル圏 | 土台 | M `MonoidalClosed` |
-| Remark 3.3.9 | (3.3.7) は V の中の同型に持ち上がる | A1 の部品 | M（`MonoidalClosed` の内部 Hom の随伴。要確認） |
-| Construction 3.3.14 | 基点付きの対象の圏の閉モノイダル構造（スマッシュ積） | 試験の例の前提 | 本 `Spectra/Pointed/` |
+| Remark 3.3.9 | (3.3.7) は V の中の同型に持ち上がる | A1 の部品 | M `MonoidalClosed.ihomCurryIso`（`Monoidal/Closed/InternalCurrying.lean`）。`[u⊗v,w] ≅ [v,[u,w]]` を得て、対称性で u と v を交換すると原典の順になる |
+| Construction 3.3.14 | 基点付きの対象の圏の閉モノイダル構造（スマッシュ積） | 試験の例の前提 | 本 `PointedObject.smashMonoidalClosed`、`PointedObject.smashSymmetricCategory`（`Spectra/PointedSimplicialSet/` から適用） |
 | Definition 3.4.1 | 緩いモノイダル関手 | 土台 | M `Functor.LaxMonoidal` |
 | Lemma 3.4.3 | 基底の取り替え | A2 | M `TransportEnrichment`。本 `Transport`（元の対象の型に載せる版） |
-| (3.4.4) の後の注意 | 取り替えると通常の圏が変わりうる（(3.4.4) が全単射なら変わらない） | A2 | M `TransportEnrichment.enrichedOrdinaryCategory`（単位からの射の全単射を要求）。同じ条件 |
+| Lemma 3.4.3 と Definition 3.4.5 の組合せ | 新旧の点の写像が全単射なら通常の圏を保つ。(3.4.4) は単位点関手の二項 lax 比較であり、この全単射とは別の条件 | A2 | M `TransportEnrichment.enrichedOrdinaryCategory` |
 | Definition 3.4.5 | 通常の圏 C₀ | 土台 | M `ForgetEnrichment`、`EnrichedOrdinaryCategory` |
 | Lemma 3.4.9 | 閉対称モノイダル圏の、自己豊穣化の通常の圏はもとの圏 | A1 | M `enrichedOrdinaryCategorySelf` |
-| Definition 3.5.1 | V 関手 | 土台 | M `EnrichedFunctor` |
+| Definition 3.5.1 | V 関手 | 土台 | M `EnrichedFunctor`。既存の通常関手を固定する入口は書 `EnrichedLift` |
 | Example 3.5.4 | 表現可能な V 関手 | C-軽 | 書 `Representable`（M に一部。K §1.6） |
-| Definition 3.5.8 | V 自然変換 | B6 の土台 | 要確認 |
-| Proposition 3.5.10 | 通常の圏を取る操作は 2 関手 | 土台 | 要確認 |
+| Definition 3.5.8 | V 自然変換 | B6 の土台 | M `GradedNatTrans` を `𝟙_ (Center V)` で評価した条件。M `EnrichedNatTrans.out` は通常圏に忘れた自然変換。書 `IsEnrichedNat` は全 Hom の条件を持つ |
+| Proposition 3.5.10 | 通常の圏を取る操作は 2 関手 | 土台 | M `ForgetEnrichment`、`EnrichedFunctor.forget`・`forgetId`・`forgetComp`、`EnrichedNatTrans.out` に部品がある。固定版の `EnrichedCat` に束ねた `Pseudofunctor` は見当たらない |
 | Lemma 3.5.12 | 同型の判定（表現可能関手が同型なら対象が同型。通常・V 値・V 関手のどの意味でも同じ） | B1・B2 の証明の道具 | M の米田（`Yoneda`・`Coyoneda` の忠実充満性）。**R の証明はすべてこれで同型を作る。§5 の証明の方針** |
-| Definition 3.5.14 | V 随伴 | B6 | 書（要確認） |
+| Definition 3.5.14 | V 随伴 | B6 | M `EnrichedCat.bicategory` 上の `CategoryTheory.Bicategory.Adjunction` は作れるが、2-セルの条件は `EnrichedNatTrans.out`。書 `EnrichedAdjunctionOver` は全 Hom に自然な単位・余単位を課す |
 | Definition 3.7.2 | テンソルを持つ：M(v ⊗ m, n) ≅ V(v, M(m, n)) | 基準の構造の豊穣圏の側 | 本 `EnrichedRepresentability` の `tensorIso` |
 | Definition 3.7.3 | 余テンソルを持つ：M(m, nᵛ) ≅ V(v, M(m, n)) | 同上 | 本 `EnrichedRepresentability` の `cotensorIso` |
-| Remark 3.7.4 | テンソル・余テンソル・Hom は二変数の V 随伴をなす | B1 の出力 | 書 `TensorCotensor` |
+| Remark 3.7.4 | テンソル・余テンソル・Hom は二変数の V 随伴をなす | B1 の出力 | `ofClosedModuleRepresentability` は V 値の同型と指定の比較。全 V 二変数随伴のレコードは今回の型の範囲外 |
 | Example 3.7.5 | 閉対称モノイダル圏は自分自身の上でテンソルと余テンソルを持つ | A1 の続き。B2 の出発点 | 書 `TensorCotensor`（自己作用 M `selfLeftAction` から） |
 | Lemma 3.7.7 | テンソルを持つ V 圏では、∗ ⊗ m ≅ m、(v × w) ⊗ m ≅ v ⊗ (w ⊗ m) | B5（逆向き）。決定：書かない | — |
-| Proposition 3.7.10 | テンソルと余テンソルを持つ V 圏の間の随伴 F ⊣ G について、V 随伴であること／F が V 関手で F(v ⊗ m) ≅ v ⊗ Fm／G が V 関手で G(nᵛ) ≅ (Gn)ᵛ、は互いに他を定める | B6 | 書 `Comparison` か新しいファイル（段 2 の改訂で決める） |
+| Proposition 3.7.10 | テンソルと余テンソルを持つ V 圏の間の随伴 F ⊣ G について、V 随伴であること／F が V 関手で F(v ⊗ m) ≅ v ⊗ Fm／G が V 関手で G(nᵛ) ≅ (Gn)ᵛ、は互いに他を定める | B6 | 書 `EnrichedAdjunction`。左 lineator と右余テンソルの指定比較 |
 | Theorem 3.7.11 | 閉対称モノイダル圏の間の随伴 F : V ⇄ U : G で F が強モノイダルなら、**U でテンソルと余テンソルを持つ任意の豊穣圏 M** は、V で豊穣化されテンソルと余テンソルを持つ。v ⋆ m := Fv ⊗ m、{v, m} := m^{Fv}、M_V(m, n) := G M_U(m, n) | B2 | 書 `MonoidalAdjunction`。G が緩いモノイダルになることは M `Adjunction.rightAdjointLaxMonoidal` |
-| Corollary 3.7.12 | F ⊣ G は、U に誘導された V 圏の構造について V 随伴 | B6 | 書 |
-| Example 3.7.13 | (−)₊ : sSet ⇄ sSet∗ : U により、基点付き単体集合は単体集合で豊穣化され、K ⊗ X = K₊ ∧ X、余テンソル Y^K = sSet∗(K₊, Y)。写像空間は内部 Hom の基点を忘れたもの | 段 3d の試験 | 本 `PointedEnrichment.simplicialCategory`（いまは基底の取り替え。102 回置き直されている） |
+| Corollary 3.7.12 | F ⊣ G は、U に誘導された V 圏の構造について V 随伴 | B6 | 書 `monoidalAdjunctionEnriched`。Mathlib 順で G を適用した輸送版との照合は B4 の組紐保存を使用 |
+| Example 3.7.13 | (−)₊ : sSet ⇄ sSet∗ : U により、基点付き単体集合は単体集合で豊穣化され、K ⊗ X = K₊ ∧ X、余テンソル Y^K = sSet∗(K₊, Y)。写像空間は内部 Hom の基点を忘れたもの | 段 3e の試験 | 本 `PointedEnrichment.simplicialCategory`（いまは基底の取り替え。102 回置き直されている） |
 
 ### 2.2 Riehl §10.1
 
@@ -68,38 +68,38 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 | Remark 10.1.2 | 二変数の随伴が V の中の同型に持ち上がることは仮定しない。加群の構造の整合から従う | 決定 2′ の根拠 | — |
 | Definition 10.1.3 | 閉じた V 加群：二変数の随伴 (⊗, {}, hom)、結合の同型 v ⊗ (w ⊗ m) ≅ (v × w) ⊗ m、単位の同型 ∗ ⊗ m ≅ m | **基準の構造** | 書 `OfAction`（M `MonoidalLeftAction` と二つの `ParametrizedAdjunction`。整合は H 4.1.6 に従う） |
 | Proposition 10.1.4 | 閉じた V 加群は、与えた二変数の随伴がテンソル・余テンソル・Hom の随伴の下にあるような仕方で、**一意に**、テンソルと余テンソルを持つ V 圏になる。証明は演習 | A3・B1・B3 | 書 `OfAction`（豊穣圏を作る）、`TensorCotensor`（V の中の同型を構成する）。一意性は B4 で使う |
-| Proposition 10.1.5 | 閉じた V 加群の間の関手 F について、V 関手であること／結合的で単位的な比較 v ⊗ Fm → F(v ⊗ m) を持つこと、は同値 | B6 | 書 |
+| Proposition 10.1.5 | 閉じた V 加群の間の関手 F について、V 関手であること／結合的で単位的な比較 v ⊗ Fm → F(v ⊗ m) を持つこと、は同値 | B6 | M `Functor.LaxLeftLinear`、書 `leftLinearEnrichedEquiv`。比較の可逆性は H 4.1.7 と B6 の随伴判定で用いる |
 | Remark 10.1.6 | 双対に、余テンソルの側の加群の構造でも書ける | 余テンソルの側 | B6 の中で必要な分だけ |
 
 ### 2.3 Hovey 第 4 章
 
 | 番号 | 内容 | 一般論 | Lean |
 | --- | --- | --- | --- |
-| Definition 4.1.1〜4.1.5 | モノイダル圏、モノイダル関手、対称モノイダル | 土台 | M |
+| Definition 4.1.1〜4.1.5 | モノイダル圏、モノイダル関手とその自然変換、対称モノイダル | 土台 | M `MonoidalCategory`、`Functor.Monoidal`、`NatTrans.IsMonoidal`、`SymmetricCategory`、`Functor.Braided` |
 | Definition 4.1.6 | （右）C 加群：⊗ : D × C → D、結合 a、単位 r、三つの整合の図式 | 基準の構造の「作用」の部分 | M `MonoidalLeftAction`（左右を読み替える） |
-| Definition 4.1.7 | C 加群の関手：F と自然な同型 FX ⊗ K → F(X ⊗ K)、二つの整合。加群の自然変換 | B6 | M（作用と両立する関手。`Monoidal/Action/LinearFunctor`。要確認） |
+| Definition 4.1.7 | C 加群の関手：F と自然な同型 FX ⊗ K → F(X ⊗ K)、二つの整合。加群の自然変換 | B6 | M `Functor.RightLinear`、左作用へ読み替えて `Functor.LeftLinear`。R 10.1.5 の射の向きには `Functor.LaxLeftLinear`。H の加群自然変換の比較四角は書く |
 | Definition 4.1.8 | C 代数（C からの関手を持つモノイダル圏） | B2 の言い換え | — |
 | Definition 4.1.12 | 二変数の随伴 (⊗, Hom_r, Hom_ℓ, φ_r, φ_ℓ) | 土台 | M `ParametrizedAdjunction` を二つ |
 | Definition 4.1.13 | 閉モノイダル構造 | 土台 | M `MonoidalClosed` |
-| Definition 4.1.14 | 閉モノイダル関手＝モノイダル関手であって随伴の左 | B2 の入力 | M `Functor.Monoidal`＋`Adjunction`（＋`Adjunction.IsMonoidal`） |
+| Definition 4.1.14 | 閉モノイダル関手＝モノイダル関手であって随伴の左 | B2 の入力 | M `Functor.Monoidal` と `Adjunction`。右 lax 構造も選んだ場合の mate との整合に `Adjunction.IsMonoidal` |
 | §4.1 の末尾 | 閉じた加群、閉じた代数。加群の 2 圏の上の双対（余テンソルの側） | 基準の構造、B6 | 書 |
 | Definition 4.2.1、Lemma 4.2.2 | Quillen の二変数の随伴（押し出し積）と、その三つの同値な言い方 | 使う側 | 本 `HomotopicalAlgebra/Enriched/TensorCotensor.lean`（`tensor_iff_cotensor_model`、`tensor_iff_mapping_model`） |
 | Definition 4.2.6 | モノイダルモデル圏 | 使う側 | 本 |
 | Corollary 4.2.10 | 基点付き単体集合は対称モノイダルモデル圏 | 使う側 | 本 |
-| Definition 4.2.16 | モノイダル Quillen 随伴 | 使う側（段 4 の F₀） | 本（要確認） |
+| Definition 4.2.16 | モノイダル Quillen 随伴 | 使う側（段 4 の F₀） | M `Functor.Monoidal`、`Adjunction`。本 `Quillen.IsLeftQuillen`、`SpectrumLevelModel.freeAt_isLeftQuillen`。原典の $F(q:\mathrm{Q}1→1)$ の弱同値条件まで束ねる専用型は照合範囲では見当たらない。F₀ の強モノイダル構造も組み立てが要る |
 | Definition 4.2.18 | C モデル圏＝**C 加群**であって、作用が Quillen の二変数関手、単位の条件。sSet モデル圏＝単体的モデル圏。C-Quillen 関手＝加群の関手でもある Quillen 関手 | **使う側が受け取る構造** | 本（いまは結合を持たない `TensorCotensor` を受け取っている。決定 2′ で直す） |
 
 ### 2.4 Kelly（C-軽）
 
 | 節 | 内容 | 一般論 | Lean |
 | --- | --- | --- | --- |
-| §1.2 | V 圏、V 関手、V 自然変換。充満部分圏 | 土台、`FullSubcategory` | M（充満部分圏は通常の圏つきの版がある）。書（通常の圏を指定しない版） |
-| §1.3 | 通常の圏を取る 2 関手 | 土台 | M |
+| §1.2 | V 圏、V 関手、V 自然変換。充満部分圏 | 土台、`FullSubcategory` | M `EnrichedOrdinaryCategory V (ObjectProperty.FullSubcategory P)` の instance。書 `enrichedFullSubcategory` は通常の圏を指定しない版 |
+| §1.3 | 通常の圏を取る 2 関手 | 土台 | R 3.5.10 と同じ。M に部品 |
 | §1.4 | V が対称のときの、V 圏のテンソル A ⊗ B と反対圏 | `Product`、反対圏 | 書 `Product`。反対圏は M `Enriched/Opposite` |
 | §1.6 | V を V 圏と見る。表現可能な V 関手 | A1、`Representable` | M（自己豊穣化）。書 |
 | §1.10 | 表現可能性。受け身の変数についての V 関手 | `Representable` | 書 |
 | §1.11 | V 圏の随伴と同値 | B6 | 書 |
-| §2.1 | V の中の end | `FunctorCategory` の前提 | M（`Enriched/FunctorCategory` が end を使う。要確認） |
+| §2.1 | V の中の end | `FunctorCategory` の前提 | M `Limits.end_`・`Limits.end_.π`・`Limits.end_.lift`、`Enriched.FunctorCategory.enrichedHom` は通常の添字圏の end。K (2.1)–(2.2) の全豊穣 Hom の等化には `GradedNatTrans` と積・等化子を使う |
 | §2.2 | 関手の圏 [A, B]（**A が小さいとき**）と評価 | `FunctorCategory` | M（通常の関手圏の版）。書（豊穣関手の版） |
 | §2.3 | [A ⊗ B, C] ≅ [A, [B, C]] | `Product` と `FunctorCategory` の関係 | 段 5 で要るかを決める |
 | §2.6、§3.11、§3.12 | 宇宙を広げて、大きい A についても [A, B] を扱う | `FunctorCategory` の大きさの扱い | 段 5 の設計で、本体の dg 関手の圏（`dgFunctorHom`。全対象についての積）がどの仮定で書かれているかと照らす |
@@ -158,7 +158,7 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 | B3 | A3 で作った豊穣圏が、もとの加群のテンソルと余テンソルを持つこと | R Proposition 10.1.4 | 書 | `OfAction` |
 | B4 | B2 で作った豊穣圏（G を写像対象に当てたもの）と、取り替えた加群から A3 で作った豊穣圏の一致 | R Theorem 3.7.11 の証明の定義と、Proposition 10.1.4 の一意性 | 書 | `Comparison` |
 | B5 | テンソルを持つ豊穣圏から作用を復元する | R Lemma 3.7.7 | 書かない | — |
-| B6 | 関手と随伴が豊穣化と両立すること | R Proposition 3.7.10、10.1.5、Corollary 3.7.12、H Definition 4.1.7 | 書 | 段 2 の改訂で決める |
+| B6 | 関手と随伴が豊穣化と両立すること | R Proposition 3.7.10、10.1.5、Corollary 3.7.12、H Definition 4.1.7 | 書 | `LinearFunctor`、`EnrichedAdjunction` |
 | C-軽 | 充満部分圏、対（テンソル）と挿入、関手の圏と評価、表現可能な Hom | K §1.2、§1.4、§2.2、§1.6・§1.10 | 書（M に一部） | `FullSubcategory`・`Product`・`FunctorCategory`・`Representable` |
 | C-重、米田 | 双加群の合成、米田 | K §2.4 ほか | 保留 | — |
 
@@ -174,7 +174,7 @@ Lean でも同じ形で書く：全単射の列を `Equiv` の合成として定
 
 注意する点：
 - R は Proposition 10.1.4 と 3.7.10 の証明を演習にしている。本体で書く。
-- R の全単射の列は、結合の同型を一回使う。豊穣圏の結合律（A3）を示すときには、作用の五角形が要るはず。R の定義は五角形を要求していないので、ここは H の定義（整合つき）で示す。⑧ の段 2 の型の案の `TensorAssociativity`（五角形なし）で B1 の欄が全部示せるかは、段 3b の最初に確かめる。示せない欄があれば、入力を `MonoidalLeftAction` に替える。
+- B1 の各列は作用の結合子を一度使う。係数自然性二つと点での一致二つは、結合子の三変数自然性と作用の左右単位で示す。A3 の結合律には H 4.1.6 の四重の整合を使う。段2bの型案に、五角形を落とした場合の反例と弱い入力からの B1 の列を記した。
 - 合成の順が文献と逆なので、列の途中で組紐が入る。どこで入るかを docstring に書く。
 
 ## 6. 未決（段 4 の設計で相談する）
@@ -189,11 +189,11 @@ Lean でも同じ形で書く：全単射の列を `Equiv` の合成として定
 | --- | --- | --- |
 | 1 | 全体の調査 | 済（cdaac1a39） |
 | 2 | 設計（型の一覧） | 済（4bfe03a3f）。**下の 2b で改訂する** |
-| 2b | **設計の改訂**：決定 2′・3′ に合わせて型の一覧を直す。この紙の対応表の「要確認」を Mathlib のソースで埋める。各宣言に文献の番号を付ける | 次 |
-| 3a | A2、A3、B3。`CategoryTheory/Enriched/` を分け直す。略号の登録 | |
-| 3b | B1。最初に、五角形なしで欄が示せるかを確かめる | |
-| 3c | B2（一般の形）、B4 | |
-| 3d | B6 | |
+| 2b | 決定 2′・3′ に沿った型の一覧、Mathlib の照合、宣言の文献番号 | 済。型と実装の見積もりは [段2b](../../../research/cleanup-zero-base/enrichment/stage2-types.md) |
+| 3a | A2、A3、B3、自己閉加群、閉加群を受ける移行口。`CategoryTheory/Enriched/` の配置と略号 | |
+| 3b | B1。弱い結合と左右単位で四つの欄を作り、閉じた加群から取り出す。米田で Hom の同型を得る | |
+| 3c | 任意の閉じた U 加群の B2、二つの米田の列、B4 の組紐と転置の比較 | |
+| 3d | B6。lax lineator、全 Hom 上の自然変換・V 随伴、強モノイダル随伴自身 | |
 | 3e | 試験：基点付き単体集合（R Example 3.7.13） | |
 | 4 | 対称スペクトル（HS）。先に未決 1・2 を相談 | |
 | 5 | C-軽（K）。先に未決 3 を確かめる | |

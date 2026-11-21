@@ -71,3 +71,56 @@ python3 scripts/audit2/coverage_merge.py "$OUT/full/audit.sqlite" "$OUT/mathlib/
 終了0は合格。終了1は未解決、消失、未承認の改名、主張の型の変更、新しい基準を要する行などの不合格。終了2は記録監査の未合格、索引の不足などの前提エラー。終了3は意味の指紋だけの変化があり、レビューを待つ状態。指紋が変わった行と変更前後の値は `meaning_review` に出る。担当者が意味の変化を承認した行は、`file`、`item`、`ordinal`、`module`、`name`、`old_meaning`、`new_meaning` を持つ JSON オブジェクトの配列にし、`--accept-meaning FILE` を付けて再実行する。承認はその差分にだけ適用され、未使用の承認があれば不合格になる。基準値を承認し直す操作は別途行う。
 
 実際の Lake ビルドと記録監査を経由する改名・型変更・意味変更の試験は、bulk 鍵で `python3 scripts/audit2/coverage_merge_selftest.py "$OUT/coverage-merge-selftest"` を実行する。
+
+## 段7の残存条件と環境を読む検査
+
+`residual.py BEFORE.sqlite AFTER.sqlite OUT` は、段2で残っていた条件を一覧にし、
+旧書式で完全修飾名を一意に解決できた宣言の所有元、公開性、旧監査の import
+閉包を記録と照合する。指定された移動先・import 境界・禁止型参照も検査する。
+指定型での適用、局所的な推論、引用登録、deprecated 属性は旧 Lean 検査を引き続き実行する。
+出力は `residual-summary.json`、条件ごとの `residual-classification.json`、
+実際の述語と対象位置。基準表は取り込み前のものを指定する。
+
+読み手1本の bulk 枠で、
+`inspect_lean.py AUDIT.sqlite OUT` は宣言の型と値の telescope、
+本体および Lake の依存パッケージに保存された instance 登録を照合する。
+型の後続引数・結論だけが使う変数、値も使う変数、値の関数引数が取り出せない場合を区別する。
+Lean の class 登録にある頭部を instance 登録と照合し、略記などの未展開の頭部と区別する。
+候補表では引数に局所変数が現れるかも記録する。
+一般の型に登録があることだけで、具体的 carrier に instance が供給されるとは判定しない。
+
+`inspect_lean.py AUDIT.sqlite OUT --walk MODULE [--walk MODULE...]` は小規模な
+独立公理照合。import した核定数の型、値、帰納型のコンストラクタをたどり、
+保存された公理拡張を介さず、指定した全所有元の公理を記録と比べる。
+同名の宣言が隠れる塊は、所有元を混同しないよう試作ではエラーにする。
+
+## 段8の取り込み前の比較
+
+前後の表が揃っているときは、Lean を起動せず比較できる。
+
+```sh
+python3 scripts/audit2/diff.py "$BEFORE/audit.sqlite" "$AFTER/audit.sqlite" "$OUT/diff"
+```
+
+`diff.json` に削除、追加、型の指紋、公理、instance 登録、位置だけの変更を
+所有元と名前付きで出す。ファイルを統合・分割した場合は `--layout` を付ける。
+前後の Git コミットの本体、現行スクリプト、対応表、blueprint を検索し、参照が
+見つからない内部 `_proof_*` の増減を区別する。決まった生成名も通常の名前として扱う。
+無名の instance は両側のソースで無名と確認でき、同じモジュール・開始位置の組が
+一意のときに対応させる。残った名前と型の全行は `retained.jsonl`、その SHA-256 は
+`diff.json`。完全な Git コミットを指す記録を用意し、同じ採取シグネチャの表を比べる。
+
+候補を対象ビルドした後は、調整役の広い読み込みと時間を分け、一つの bulk 枠で
+記録監査、前後の比較、対応表の基準比較を実行する。
+
+```sh
+zsh scripts/refactor/with_build_lock.sh --class bulk -- \
+  python3 scripts/audit2/premerge.py "$BEFORE/audit.sqlite" "$MATHLIB_INDEX" "$OUT/premerge"
+```
+
+対応表は既定で前側の表の記録コミットを基準にする。
+`premerge.json` に各段の終了値、時間、ログを保存する。接続できる完全な表があれば
+G2 の不合格でも差を記録し、文献比較まで進む条件は G2 と差分採取の成功。
+前後の差に対する承認は `diff.json` の各行で判断する。
+実際の一時作業木を用いた試験は bulk 枠で
+`python3 scripts/audit2/coverage_merge_selftest.py OUT --declaration-diff`。
