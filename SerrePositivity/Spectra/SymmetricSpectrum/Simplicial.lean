@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
-public import SerrePositivity.CategoryTheory.Enriched.BaseChange
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 public import SerrePositivity.Spectra.General.ParametrizedCotensor
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointProduct
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointUnit

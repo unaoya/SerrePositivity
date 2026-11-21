@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleLaws
-public import SerrePositivity.CategoryTheory.Enriched.BaseChange
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 
 /-!
 概要：cotensor の評価と可換な射の組からなる局所 Kan な単体的圏。

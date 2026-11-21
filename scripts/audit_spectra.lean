@@ -1,9 +1,7 @@
 -- lake build SerrePositivity.Spectra.Foundations の後に実行する。
 -- スペクトルと、そのための共通圏論・群論の公開宣言を標準公理のみで監査する。
 import SerrePositivity.Spectra.Foundations
-import SerrePositivity.CategoryTheory.Enriched.MonoidalAdjunction
-import SerrePositivity.CategoryTheory.Enriched.OfAction
-import SerrePositivity.CategoryTheory.Enriched.AdjunctionDataHomFunctor
+import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.ModelCategory.PointedGenerators
@@ -38,7 +36,7 @@ run_cmd do
         `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators,
         `SerrePositivity.CategoryTheory.Adjunction.Comparison,
         `SerrePositivity.CategoryTheory.Adjunction.Comparison,
-        `SerrePositivity.CategoryTheory.Monoidal, `SerrePositivity.CategoryTheory.Adjunction.Comparison, `SerrePositivity.CategoryTheory.Enriched.MonoidalAdjunction, `SerrePositivity.CategoryTheory.Enriched.ActionEvaluation, `SerrePositivity.CategoryTheory.Enriched.OfAdjunctionData, `SerrePositivity.CategoryTheory.Enriched.AdjunctionDataHomFunctor, `SerrePositivity.CategoryTheory.Enriched.OfAction, `SerrePositivity.CategoryTheory.Simplicial.EnrichedHomLaws, `SerrePositivity.CategoryTheory.Enriched.BaseChange,
+        `SerrePositivity.CategoryTheory.Monoidal, `SerrePositivity.CategoryTheory.Adjunction.Comparison, `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping, `SerrePositivity.CategoryTheory.Enriched.Simplicial, `SerrePositivity.CategoryTheory.Enriched.Transport,
         `SerrePositivity.CategoryTheory.Limits,
         `SerrePositivity.GroupTheory.Coxeter, `SerrePositivity.CategoryTheory.Limits,
         `SerrePositivity.CategoryTheory.Limits,
@@ -72,9 +70,9 @@ run_cmd do
       `SerrePositivity.CategoryTheory.Adjunction.Comparison,
       `SerrePositivity.Spectra.General.ParametrizedCotensor,
       `SerrePositivity.Spectra.General.ParametrizedMapping,
-      `SerrePositivity.CategoryTheory.Enriched.MonoidalAdjunction, `SerrePositivity.CategoryTheory.Enriched.ActionEvaluation, `SerrePositivity.CategoryTheory.Enriched.OfAdjunctionData, `SerrePositivity.CategoryTheory.Enriched.AdjunctionDataHomFunctor, `SerrePositivity.CategoryTheory.Enriched.OfAction,
-      `SerrePositivity.CategoryTheory.Enriched.MonoidalAdjunction, `SerrePositivity.CategoryTheory.Enriched.ActionEvaluation, `SerrePositivity.CategoryTheory.Enriched.OfAdjunctionData, `SerrePositivity.CategoryTheory.Enriched.AdjunctionDataHomFunctor, `SerrePositivity.CategoryTheory.Enriched.OfAction,
-      `SerrePositivity.CategoryTheory.Enriched.MonoidalAdjunction, `SerrePositivity.CategoryTheory.Enriched.ActionEvaluation, `SerrePositivity.CategoryTheory.Enriched.OfAdjunctionData, `SerrePositivity.CategoryTheory.Enriched.AdjunctionDataHomFunctor, `SerrePositivity.CategoryTheory.Enriched.OfAction,
+      `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping,
+      `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping,
+      `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping,
       `SerrePositivity.Spectra.General.MappingFunctorComparison,
       `SerrePositivity.Spectra.General.TensorCotensorEnriched,
       `SerrePositivity.Spectra.General.TensorMappingObject,

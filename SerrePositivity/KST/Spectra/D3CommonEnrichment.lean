@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CommonHomLaws
-public import SerrePositivity.CategoryTheory.Enriched.BaseChange
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 
 /-!
 概要：比較射を保持する共通 Hom の局所 Kan な単体的圏と実射影関手。

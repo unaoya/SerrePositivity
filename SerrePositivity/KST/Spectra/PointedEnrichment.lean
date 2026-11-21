@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumMorphisms
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence
-public import SerrePositivity.CategoryTheory.Enriched.BaseChange
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 public import Mathlib.CategoryTheory.Monoidal.Closed.Enrichment
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 

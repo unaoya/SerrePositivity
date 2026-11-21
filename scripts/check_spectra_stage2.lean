@@ -1,7 +1,7 @@
 -- lake build SerrePositivity.Spectra.StageTwo の後に実行する。
 -- 段階2の入口で公開する API を、一般の単体的豊穣構造と作用の比較を使って検証する。
 import SerrePositivity.Spectra.StageTwo
-import SerrePositivity.CategoryTheory.Simplicial.EnrichedHomLaws
+import SerrePositivity.CategoryTheory.Enriched.Simplicial
 import SerrePositivity.CategoryTheory.Monoidal.Action
 
 universe u

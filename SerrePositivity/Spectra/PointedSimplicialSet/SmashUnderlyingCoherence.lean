@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlying
 public import Mathlib.CategoryTheory.Monoidal.Functor
-public import SerrePositivity.CategoryTheory.Enriched.BaseChange
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 
 /-! # 基点を忘れたsmashの標準射と結合・交換の両立 -/
 

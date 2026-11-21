@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.General.MappingObject
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
-public import SerrePositivity.CategoryTheory.Enriched.OfAdjunctionData
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 /-! # Composition and enrichment of general spectrum mapping objects
 

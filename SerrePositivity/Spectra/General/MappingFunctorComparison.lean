@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.MappingEnrichment
-public import SerrePositivity.CategoryTheory.Enriched.AdjunctionDataHomFunctor
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 public import SerrePositivity.Spectra.General.ParametrizedMapping
 
 /-! # Functoriality of the general enriched mapping objects -/
