@@ -323,3 +323,29 @@ docstring での引き方は、本体の規約（`@[cite KEY "番号"]` と略�
 最初の二点（等式を自然同型に替える、主張の中の instance を明示の引数で渡す）は、報告のとおり採用する。
 
 この判断を受けて、段 3a の実装に進んでよい。
+
+### 決定 8：`ClosedModule` はクラス。作った豊穣圏は一般の instance にしない（ユーザー、11-21）
+
+**クラスにする。** Mathlib の関連する概念（`MonoidalLeftAction`、`MonoidalClosed`・`Closed`、`EnrichedCategory`、`EnrichedOrdinaryCategory`）はクラスで、`MonoidalClosed` は「テンソルの右随伴とその随伴を持つ」データつきのクラス。閉じた V 加群はそれと同じ形なので、同じ作法にする。段 2b の設計（構造にして、欄に `action : MonoidalLeftAction V M` を包み、欄の型の中で `letI := action` とする）は改める。
+
+    class ClosedModule (V M) [Category V] [Category M] [MonoidalCategory V]
+        [MonoidalLeftAction V M] where
+      cotensor    : Vᵒᵖ ⥤ M ⥤ M
+      mapping     : Mᵒᵖ ⥤ M ⥤ V
+      cotensorAdj : curriedAction V M ⊣₂ cotensor
+      mappingAdj  : (curriedAction V M).flip ⊣₂ mapping
+
+- 作用は Mathlib のクラスとして外に出す（`[MonoidalLeftAction V M]`）。欄の型の中の `letI` を無くす。
+- 基底の取り替え（強モノイダルな関手 F による）の結果は F に依存し、型から決まらないので、作用と `ClosedModule` の値を返す**定義**にする（Mathlib の `actionOfMonoidalFunctorToEndofunctorMop` と同じ扱い）。
+
+**作った豊穣圏 `ofAction` は、一般の instance にしない。** 同じ (V, M) に、定義として等しくない豊穣化が複数届くのを避けるため。例：単体集合には、Mathlib の単体的圏の instance（全体で有効）、閉モノイダル圏の自己豊穣化（Mathlib では `scoped instance`）、自分自身への作用から作る `ofAction` の三つが書け、自然に同型だが定義は別。一般の instance にすると、主張の中の写像対象 `X ⟶[V] Y` がどの豊穣化のものかが、Lean の選んだ instance で決まってしまう。
+
+| 場合 | 扱い |
+| --- | --- |
+| 一般の定理として | 定義（`def ofAction`） |
+| 具体的な圏で、豊穣化がこれ一つしか無い | その圏について、全体の instance として一度だけ登録する |
+| 具体的な圏で、ほかの作り方の豊穣化もある | 名前空間つきの instance にし、使う側が選ぶ。二つの間の比較（B4）を用意する |
+
+具体的な圏での登録（対称スペクトル、基点付き単体集合）は、段 3e・段 4 で、全体か名前空間つきかを決める。LI-W1 の規則と同じ線引き。
+
+確かめること：自分自身への作用（Mathlib の `selfLeftAction` は全体の instance）に対して `ClosedModule` の instance を登録したとき、型クラスの探索が遅くならないか。対称スペクトルで、C の作用が二通り（段ごとのテンソルと、F₀(P) ∧ E）に書かれていること。どちらを登録するかは段 4（決定 4 に従えば F₀ による側）。
