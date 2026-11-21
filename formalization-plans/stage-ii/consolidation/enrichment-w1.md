@@ -179,3 +179,82 @@ LI-W1（置き直し）は、監査の作り直しが終わった後に並行で
 9. **見積もり**：足す宣言と行、消える宣言と行、段 3 の分け方の案。
 
 型の一覧・表・報告を書いてコミットし、止まる。
+
+### 決定 2 の修正（ユーザー、11-21。段 2 の設計 4bfe03a3f を受けて）
+
+写像対象の同型は、二つの二変数の随伴だけからは構成できない（⑧ の反例）。**テンソルの結合の同型 (P ⊗ Q) ⊗ X ≅ P ⊗ (Q ⊗ X) と、左右の単位との整合を、追加の入力として受け取り、そこから同型を構成する。** 同型そのものを返す定義であること、`TensorCotensor` と `EnrichedRepresentability` の欄がいまの形のままであることは変わらない。追加の入力は使う側が手で作らず、作用から作る場合は作用の公理から、基底の取り替えの場合はモノイダル圏の結合の同型から、一般論の中で供給する。
+
+これは下の基準の文献の定義と一致する：Riehl の「閉じた V 加群」（Definition 10.1.3）は、二変数の随伴に加えて、結合の同型と単位の同型を持つ。
+
+### 決定 7：基準にする文献（11-21）
+
+実装は文献を参照しながら進める。番号は、調整役が PDF の本文から読み出して確かめたもの（`~/serre-evidence/references/riehl-categorical-homotopy-theory.pdf`、著者が公開している版）。
+
+**主：E. Riehl, *Categorical Homotopy Theory*, Cambridge University Press, 2014。第 3 章 "Basic concepts of enriched category theory" と §10.1 "Enrichments encoded as module structures"。**
+
+| 一般論 | 文献の箇所 | 内容 |
+| --- | --- | --- |
+| A1 自己豊穣化 | Lemma 3.4.9 | 閉対称モノイダル圏 V を V 圏と見たとき、その通常の圏は V |
+| A2 基底の取り替え | Lemma 3.4.3 | 緩いモノイダル関手 F : V → U があれば、V 圏から同じ対象の U 圏が得られる |
+| テンソルと余テンソルの定義 | Definition 3.7.2、3.7.3 | M(v ⊗ m, n) ≅ V(v, M(m, n))、M(m, nᵛ) ≅ V(v, M(m, n)) |
+| テンソルの結合と単位 | Lemma 3.7.7 | テンソルを持つ V 圏では、∗ ⊗ m ≅ m、(v × w) ⊗ m ≅ v ⊗ (w ⊗ m) |
+| A3・B1・B3 作用から | Definition 10.1.3、Proposition 10.1.4 | 閉じた V 加群（二変数の随伴＋結合の同型＋単位の同型）は、与えた二変数の随伴がテンソル・余テンソル・Hom の随伴の下にあるような仕方で、一意に、テンソルと余テンソルを持つ V 圏になる |
+| B2 強モノイダルな左随伴 | Theorem 3.7.11、Corollary 3.7.12 | 閉対称モノイダル圏の間の随伴 F ⊣ G で F が強モノイダルなら、テンソル・余テンソルを持つ U 圏は、標準的に V で豊穣化され、テンソルと余テンソルを持つ。F ⊣ G は V 随伴 |
+| 試験の例 | Example 3.7.13 | (−)₊ ⊣ U により、基点付き単体集合は単体集合で豊穣化され、テンソル K ⊗ X = K₊ ∧ X と余テンソルを持つ |
+| 豊穣関手とテンソルの両立 | Proposition 3.7.10、10.1.5 | 随伴・関手が V で豊穣化されることと、テンソル（余テンソル）との自然な同型を持つことの対応 |
+
+注意：Riehl は Proposition 10.1.4 と 3.7.10 の証明を演習としている（「Lemma 3.5.12 を主に使う」）。証明は本体で書く。B4（二つの道の一致）は、Theorem 3.7.11 の証明の中の定義（テンソル F(v) ⊗ m、余テンソル）と、Proposition 10.1.4 の一意性から従う形で述べる。
+
+**副：**（11-21、ユーザーが PDF を用意。調整役が本文から番号を読み出して確かめた）
+
+- **G. M. Kelly, *Basic Concepts of Enriched Category Theory***（Reprints in Theory and Applications of Categories 10, 2005）。C-軽の基準。
+
+  | 一般論 | 節 |
+  | --- | --- |
+  | V 圏、V 関手、V 自然変換 | §1.2 The 2-category V-CAT for a monoidal V |
+  | 通常の圏を取り出す | §1.3 The 2-functor ( )₀ : V-CAT → CAT |
+  | V 圏のテンソル（対）と反対圏 | §1.4 Symmetric monoidal categories: tensor product and duality |
+  | 自己豊穣化、表現可能な V 関手 | §1.6 V as a V-category; representable V-functors |
+  | 表現可能性、受け身の変数についての V 関手 | §1.10 |
+  | end | §2.1 Ends in V |
+  | 豊穣関手の圏 [A, B] と評価 | §2.2 The functor-category [A, B] for small A |
+  | [A ⊗ B, C] ≅ [A, [B, C]] | §2.3 |
+  | 米田（保留） | §1.9（弱い形）、§2.4（強い形） |
+  | 充満部分圏 | §3.5 Full subcategories and limits（充満部分圏そのものは §1.2 の中） |
+  | テンソルと余テンソル | §3.7 Tensor and cotensor products（式 (3.42) 以下） |
+
+- **M. Hovey, *Model Categories***（AMS Mathematical Surveys and Monographs 63, 1999）第 4 章。使う側（ホモトピー代数）の基準。§4.1 Closed monoidal categories and closed modules：Definition 4.1.6（C 加群の構造）、4.1.12（二変数の随伴）、4.1.13（閉モノイダル構造）、4.1.14（閉モノイダル関手）。§4.2 Monoidal model categories and modules over them：Definition 4.2.1（Quillen の二変数の随伴）、Lemma 4.2.2、Definition 4.2.6（モノイダルモデル圏）、Corollary 4.2.10（基点付き単体集合）、Definition 4.2.16（モノイダル Quillen 関手）、4.2.18（C モデル圏）。
+
+- **M. Hovey, "Spectra and symmetric spectra in general model categories"**（arXiv:math/0004051v3）。対称スペクトルへの適用（段 4）の基準。Definition 6.2（対称スペクトル＝対称列の圏の中の可換モノイド Sym(K) 上の加群。Sp^Σ(D, K) は閉対称モノイダル圏で、Sp^Σ(C, K) はその上で豊穣化されテンソルと余テンソルを持つ）、Definition 6.3（Evₙ と左随伴 Fₙ。Fₙ X ∧ Fₘ Y ≅ Fₙ₊ₘ(X ⊗ Y)、特に F₀ は対称モノイダル）、Theorem 7.3（射影モデル構造で Sp^Σ(D, K) は対称モノイダルモデル圏、Sp^Σ(C, K) はその上のモデル圏）、Theorem 7.11 の後の注意（F₀ : D → Sp^Σ(D, K) は対称モノイダルな Quillen 関手なので、Sp^Σ(C, K) は D モデル圏でもある）。**決定 4 の道（F₀ による基底の取り替え）は、この注意の書き方そのもの。**
+
+PDF と、読み出した本文は `~/serre-evidence/references/`（Git の外）。
+
+docstring での引き方は、本体の規約（`@[cite KEY "番号"]` と略号表）に従う。Riehl の略号を略号表に足す。記憶で番号を書かない。
+
+### 進め方（ユーザー、11-21）
+
+段 3 の実装と、⑧ の枝の main への取り込みは、⑦（監査）の区切りを待ってから行う。
+
+### 文献を読んでの修正（ユーザー承認、11-21）
+
+四つの文献の本文を読み直し、決定を次のように直した。**詳しい内容と、文献の番号ごとの対応表は [enrichment-literature-map.md](enrichment-literature-map.md)。そちらが、段 2b 以降の実装で引く正本。**
+
+- **決定 2′**（決定 2 とその修正を置き換える）：基準の構造は、閉じた V 加群（Riehl Definition 10.1.3。整合は Hovey Definition 4.1.6 に従い、Lean では `MonoidalLeftAction` と二つの二変数の随伴）。作る側はこれを出し、使う側（Hovey Definition 4.2.18 の C モデル圏）はこれを受け取る。V の中の同型（`EnrichedRepresentability`）は、そこから一般論の定義として構成する。二つの随伴だけの `TensorCotensor` は、文献のどちらの定義よりも弱いので、単独では基準にしない。
+- **決定 3′**：B2 は文献の一般の形（Riehl Theorem 3.7.11。任意の閉じた U 加群 M について）で書く。B6（関手と随伴が豊穣化と両立すること。Riehl Proposition 3.7.10、10.1.5、Corollary 3.7.12、Hovey Definition 4.1.7）を足す。
+- **決定 7′**：定理の主張は Riehl、加群の定義と整合は Hovey §4.1（Riehl の定義は整合を省いている）、豊穣圏どうしの構成は Kelly、対称スペクトルは Hovey の論文。
+- **段 4 の設計で相談する未決**：対称スペクトルの加群の向き（本体は左、Hovey の論文は右）、C と D を分けるか（本体は C＝D だけ）、関手の圏の大きさ（Kelly §2.2 は添字が小さいことを仮定）。
+
+## 4. 段 2b：設計の改訂（Lean は変えない）
+
+[enrichment-literature-map.md](enrichment-literature-map.md) に従って、段 2 の型の一覧（`research/cleanup-zero-base/enrichment/stage2-types.md`）を直す。文献の本文は `~/serre-evidence/references/`（Git の外。PDF と、読み出したテキスト）。**番号と主張は本文で確かめて書く。記憶で書かない。読めない場合は、止まって知らせる。**
+
+1. **基準の構造を閉じた V 加群にする**：`MonoidalLeftAction V M` と、作用の関手についての二つの二変数の随伴を束ねた構造（または組）の型。いまの `TensorCotensor` との関係（閉じた V 加群の随伴の部分として残すか、吸収するか）を、使う側の書き換えの量（`consumers.md` の構成ごとに、何箇所・何行）を出して、案を付ける。段 2 の `TensorAssociativity` は、`MonoidalLeftAction` に置き換えた形と並べて、どちらで B1 の欄（係数の自然性二つ、点での一致二つ）と A3 の結合律が示せるかを、型と証明の筋で書く。
+2. **B2 を一般の形にする**：任意の閉じた U 加群 M について。U 自身の場合を特別な場合として出す型。対称スペクトル（M = U = スペクトル、V = C）と基点付き単体集合（M = U = 基点付き単体集合、V = 単体集合）への当てはめの型を、直した形で書き直す。
+3. **B6 を足す**：加群の関手と V 関手の対応、V 随伴の判定、強モノイダルな随伴自身が V 随伴であること。Mathlib の `Monoidal/Action/LinearFunctor`・`EnrichedFunctor`・V 自然変換・V 随伴に当たるものの有無をソースで確かめる。対称スペクトルの「写像対象と豊穣化」の宣言（`stage14.csv`）のうち、どれが B6 の適用になるかを印す。
+4. **対応表の「要確認」を埋める**：`enrichment-literature-map.md` §2 の Lean の欄で「要確認」としたものを、固定した Mathlib のソースで確かめ、名前を入れる（この紙を直してよい）。
+5. **文献の番号を付ける**：型の一覧の各宣言に、対応する文献の番号（R・H・K・HS）を付ける。文献に相手の無い宣言（本体の補助）は、そうと分かるように印す。逆に、対応表にあって型の一覧に無い文献の項目があれば挙げる。
+6. **書き方の違いの表**（`enrichment-literature-map.md` §1）に沿って、各型の合成の順・作用の向きが決めたとおりになっているかを確かめる。
+7. **証明の方針**（同 §5）に沿って、B1・B2 の同型を、全単射の列と米田で作る形の型（列の各段の `Equiv` と、その自然性の補題）に直す。
+8. 見積もり（足す宣言と行）と、段 3a〜3e の分け方を直す。
+
+型は既存の成果物を読み込んで確かめる。型の一覧・表・報告を直してコミットし、止まる。
