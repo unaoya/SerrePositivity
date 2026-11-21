@@ -297,24 +297,26 @@ namespace CategoryTheory
 open MonoidalCategory Opposite Functor.LaxMonoidal
 open SerrePositivity
 
-universe u v w z x y
+universe u₁ v₁ u₂ v₂ u₃ v₃
 
-variable {V : Type u} {U : Type w} {M : Type x}
-  [Category.{v} V] [Category.{z} U] [Category.{y} M]
-  [MonoidalCategory V] [MonoidalCategory U] [EnrichedOrdinaryCategory U M]
-  (G : U ⥤ V) [G.LaxMonoidal]
+variable {U : Type u₁} {V : Type u₂}
+  [Category.{v₁} U] [Category.{v₂} V] [MonoidalCategory U] [MonoidalCategory V]
+  (G : U ⥤ V) [G.LaxMonoidal] (M : Type u₃) [Category.{v₃} M]
+  [EnrichedOrdinaryCategory U M]
   (e : ∀ Z : U, (𝟙_ U ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z))
   (he : ∀ (Z : U) (f : 𝟙_ U ⟶ Z), e Z f = Functor.LaxMonoidal.ε G ≫ G.map f)
 
 /-- 単位点の同値が与えられれば、lax モノイダル関手で元の通常圏を保って豊穣化を移せる。
-合成には Mathlib の図式順を使う。 -/
+Mathlib の `TransportEnrichment.enrichedOrdinaryCategory` を、型の別名
+`TransportEnrichment G M` を開いて元の圏 `M` に使う。 -/
 @[cite R"3.4.3"(partial:=special) "通常圏を保つため単位点の全単射を仮定する。", instance_reducible]
 def ordinaryBaseChange : EnrichedOrdinaryCategory V M :=
   TransportEnrichment.enrichedOrdinaryCategory M G e he
 
 /-- 基底変更後の前合成は、元の前合成に係数関手を適用したもの。 -/
-private lemma ordinaryBaseChange_whiskerRight {X X' : M} (f : X ⟶ X') (Y : M) :
-    @eHomWhiskerRight V _ _ M _ (ordinaryBaseChange G e he) X X' f Y =
+@[simp]
+lemma ordinaryBaseChange_whiskerRight {X X' : M} (f : X ⟶ X') (Y : M) :
+    @eHomWhiskerRight V _ _ M _ (ordinaryBaseChange G M e he) X X' f Y =
       G.map (eHomWhiskerRight U f Y) := by
   -- 基底変更の合成を lax モノイダル関手の二項比較で展開する。
   change (λ_ (G.obj (X' ⟶[U] Y))).inv ≫
@@ -324,8 +326,9 @@ private lemma ordinaryBaseChange_whiskerRight {X X' : M} (f : X ⟶ X') (Y : M) 
   exact LaxPointHom.left_action G _ _
 
 /-- 基底変更後の後合成は、元の後合成に係数関手を適用したもの。 -/
-private lemma ordinaryBaseChange_whiskerLeft (X : M) {Y Y' : M} (g : Y ⟶ Y') :
-    @eHomWhiskerLeft V _ _ M _ (ordinaryBaseChange G e he) X Y Y' g =
+@[simp]
+lemma ordinaryBaseChange_whiskerLeft (X : M) {Y Y' : M} (g : Y ⟶ Y') :
+    @eHomWhiskerLeft V _ _ M _ (ordinaryBaseChange G M e he) X Y Y' g =
       G.map (eHomWhiskerLeft U X g) := by
   -- 基底変更の合成を lax モノイダル関手の二項比較で展開する。
   change (ρ_ (G.obj (X ⟶[U] Y))).inv ≫
@@ -338,34 +341,32 @@ private lemma ordinaryBaseChange_whiskerLeft (X : M) {Y Y' : M} (g : Y ⟶ Y') :
 合成には Mathlib の図式順を使う。 -/
 @[cite R"3.4.3"(partial:=component) "基底変更した豊穣 Hom の二変数関手としての比較。"]
 def ordinaryBaseChangeHomIso :
-    @eHomFunctor V _ _ M _ (ordinaryBaseChange G e he) ≅
+    @eHomFunctor V _ _ M _ (ordinaryBaseChange G M e he) ≅
       eHomFunctor U M ⋙ (Functor.whiskeringRight M U V).obj G :=
   NatIso.ofComponents (fun X ↦
     NatIso.ofComponents (fun Y ↦ Iso.refl (G.obj (X.unop ⟶[U] Y))) (fun {Y Y'} g ↦ by
-      -- 通常射による後合成の式に、比較の恒等成分を入れる。
-      change @eHomWhiskerLeft V _ _ M _ (ordinaryBaseChange G e he) X.unop Y Y' g ≫ 𝟙 _ =
-        𝟙 _ ≫ G.map (eHomWhiskerLeft U X.unop g)
-      rw [Category.comp_id, Category.id_comp]
-      exact ordinaryBaseChange_whiskerLeft G e he X.unop g))
+      have h := ordinaryBaseChange_whiskerLeft G M e he X.unop g
+      simpa only [eHomFunctor_obj_map, Functor.comp_obj, Functor.whiskeringRight_obj_obj,
+        Functor.comp_map, Iso.refl_hom] using!
+        (Category.comp_id _).trans (h.trans (Category.id_comp _).symm)))
     (fun {X X'} f ↦ by
       apply NatTrans.ext
       funext Y
-      -- 通常射による前合成の式に、比較の恒等成分を入れる。
-      change @eHomWhiskerRight V _ _ M _ (ordinaryBaseChange G e he) X'.unop X.unop f.unop Y ≫ 𝟙 _ =
-        𝟙 _ ≫ G.map (eHomWhiskerRight U f.unop Y)
-      rw [Category.comp_id, Category.id_comp]
-      exact ordinaryBaseChange_whiskerRight G e he f.unop Y)
+      have h := ordinaryBaseChange_whiskerRight G M e he f.unop Y
+      simpa only [NatTrans.comp_app, NatIso.ofComponents_hom_app, Iso.refl_hom,
+        eHomFunctor_map_app, Functor.comp_map, Functor.whiskeringRight, Functor.whiskerRight_app]
+        using! (Category.comp_id _).trans (h.trans (Category.id_comp _).symm))
 
 /-- 基底変更の Hom 比較の順射は、各対象対で恒等射。 -/
-@[reassoc]
-lemma ordinaryBaseChangeHomIso_hom_app (X Y : M) :
-    ((ordinaryBaseChangeHomIso G e he).hom.app (op X)).app Y = 𝟙 (G.obj (X ⟶[U] Y)) :=
+@[reassoc (attr := simp)]
+lemma ordinaryBaseChangeHomIso_hom_app_app (X : Mᵒᵖ) (Y : M) :
+    ((ordinaryBaseChangeHomIso G M e he).hom.app X).app Y = 𝟙 (G.obj (X.unop ⟶[U] Y)) :=
   rfl
 
 /-- 基底変更の Hom 比較の逆射も、各対象対で恒等射。 -/
-@[reassoc]
-lemma ordinaryBaseChangeHomIso_inv_app (X Y : M) :
-    ((ordinaryBaseChangeHomIso G e he).inv.app (op X)).app Y = 𝟙 (G.obj (X ⟶[U] Y)) :=
+@[reassoc (attr := simp)]
+lemma ordinaryBaseChangeHomIso_inv_app_app (X : Mᵒᵖ) (Y : M) :
+    ((ordinaryBaseChangeHomIso G M e he).inv.app X).app Y = 𝟙 (G.obj (X.unop ⟶[U] Y)) :=
   rfl
 
 end CategoryTheory

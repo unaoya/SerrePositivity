@@ -1,6 +1,6 @@
 # EN-W1 報告
 
-現在地は段3aの完了。閉加群の型と実装、利用側のビルド、記録監査、文献対応表の照合を終えた。
+現在地は決定9に沿った段3aの修正完了。下流ビルド、記録監査、文献対応表の照合を終えた。
 
 ## 段1　豊穣化の全体調査
 
@@ -287,3 +287,90 @@ main `fcc76cdcd` の決定8と基準9aを取り込んだ。[型の一覧と移�
 - 11-21 の鍵の区分変更に合わせ、再開後の下流ビルドと少数の検査は `impl`、記録監査と監査スクリプトの一括実行は `bulk`。最初の記録監査は Lake の事前照合で `AffineBlowupFlatness.trace` の内容が変わり停止した。依存・成果物ハッシュは基準と一致し、再採取が成功した。最終の記録監査は実装候補 `1e9186c1c` に対して行い、その後はこの報告だけを更新した。
 
 証拠は Git 外の `~/serre-evidence/enrichment/fcc76cdcd-stage3a/` に保存した。最初の診断は `premerge-first/`、成功した再採取と照合は `premerge/`。閉加群の型と自己作用の試験、前提検査、ビルドおよび linter のログも同じ場所に置いた。
+
+## 段3aの修正　決定9の右作用
+
+main `853174381` を取り込んだ。 `ClosedModule` は `MonoidalRightAction` 上のデータ付きクラスとして保持し、利用側で `[ClosedModule V M]` から引く。 `ClosedModule.enrichedOrdinaryCategory` は値として選ぶ定義。 `ClosedModuleOn` とその構成・補題は段4の設計に移し、既存の豊穣化との一致には単位・結合の両立を求める。
+
+- 合成は右作用の結合子 `αᵣ` で係数を分け、二つの評価の合成を転置する。そのまま Mathlib の図式順になる。単位律は前後合成と写像対象の関手性、結合律は評価後の右作用の五角形、通常射の合成は写像随伴のパラメータ自然性から従う。いずれも組紐を仮定しない。
+- 評価の転置とその単射性、通常射の前合成・後合成を公開した。 `transpose` は作用の記法で写像随伴の転置を使う略記。以前の公開 `actionComposition_assoc` に当たる定理には Mathlib の `e_assoc`、`e_assoc'` を使えるため、定義を構成する内部の証明だけを置いた。
+- 豊穣化と二つの随伴の射影を `@[simps]` で出す。豊穣 Hom の対象等式は出さない。二重の Hom 同型の恒等成分は `X : Mᵒᵖ` で述べ、`@[reassoc (attr := simp)]` を使う。
+- `MonoidalClosed.closedModuleSelf` は `selfRightAction` 上で作る。余テンソル随伴の右テンソルを左テンソルから移す欄にだけ組紐を使う。自己作用の試験で、単位・合成は Mathlib の `MonoidalClosed.id`・`comp` と定義的に一致し、通常射の点は `curry'` と一致した。段3cの型案では、その単位・合成を持つ `enrichedCategorySelf` と、通常の点を持つ `enrichedOrdinaryCategorySelf` を比較する。
+- `OfAction` の `BaseChange` と `Closed.Braided` の import を外した。 `Braided.Basic` は自己作用の余テンソル随伴の比較、`Adjunction.Comparison` はパラメータ付き随伴を自然同型で輸送するために使う。
+- `BaseChange` 前半はバイト単位で据え置いた。新設の `ordinaryBaseChange` は Mathlib の対象別名を開いて使い、圏を明示引数にした。二つの前後合成則は公開の simp 補題。正方向と逆方向の成分は `@[reassoc (attr := simp)]`。前半の旧 docstring にある「圏を暗黙引数にする」は初版の記述で、新設側の現在の引数は明示。
+- 後続の型の差は [型の一覧](../../../research/cleanup-zero-base/enrichment/stage2-types.md#決定9で変わる今後の型) と [文献対応表](enrichment-literature-map.md#1-文献と-lean-の間の書き方の違い) を更新した。一般の構成を組紐なしで使う型と、変更の及ぶB1・B2・B4・B6の型見本を Lean で照合した。B1・B2の余テンソル列では、既存の左内部 Hom に表示をそろえる箇所に組紐を置く。
+
+### 自己点検
+
+新しく書いた右作用の宣言25件と BaseChange の修正6件を下表に示す。行数は docstring・属性込み。Lean を同期実行した宣言コマンドの最大時間は `OfAction` が約65 ms、`BaseChange` が約73 ms。30行を超える証明は0件。右作用の API を補うための一般補題の追加は0件。
+
+- `OfAction` では `change`、裸の `simp`、`congrArg`、`by exact`、局所記法は0件。`letI` は `OfAction.lean:241` の随伴レコードの本体の1件。戻り型と同じ豊穣化を写像随伴に渡す。 `BaseChange.lean:322,334` の `change` は二つの前後合成を lax モノイダル関手の比較式に展開する箇所。
+- 新規の `sorry`、公理、`erw`、`backward.*`、heartbeat の増加、等式による型の輸送は0件。対象モジュールの標準 linter と Batteries `#lint` はいずれも警告・エラー0件。
+- 実際の定義を自己作用の一時入力に登録して照合した。 `MonoidalRightAction C C` の候補は登録前後とも `selfRightAction` 1件、閉加群の試験登録は循環なく解決した。40回ずつのコマンド時間の中央値は作用が1.47 ms → 1.57 ms、閉加群が1.81 ms。探索の経路に変化はなかった。
+
+#### `OfAction.lean`
+
+| 宣言 | 種類 | 範囲 | 文献 | ms | 仮定 |
+| --- | --- | ---: | --- | ---: | --- |
+| `ClosedModule` | class | 36–50（15行） | R 10.1.3, H 4.1.6, H 4.1.12 | 25.1 | 右作用 |
+| `ClosedModule.hom` | abbrev | 56–57（2行） | 補助 | 8.8 | 右作用・閉加群 |
+| `ClosedModule.ev` | def | 59–62（4行） | R 10.1.4 | 13.3 | 右作用・閉加群 |
+| `ClosedModule.transpose` | abbrev | 64–66（3行） | 補助 | 12.2 | 右作用・閉加群 |
+| `ClosedModule.homEquiv_symm_eq_action_ev` | lemma | 68–71（4行） | 補助 | 12.9 | 右作用・閉加群 |
+| `ClosedModule.hom_ext` | lemma | 73–78（6行） | 補助 | 15.5 | 右作用・閉加群 |
+| `ClosedModule.eId` | def | 80–83（4行） | R 10.1.4 | 15.5 | 右作用・閉加群 |
+| `ClosedModule.homEquiv` | def | 85–95（11行） | R 3.4.9 | 34.6 | 右作用・閉加群 |
+| `ClosedModule.homEquiv_apply` | lemma | 97–100（4行） | 補助 | 11.1 | 右作用・閉加群 |
+| `ClosedModule.homEquiv_ev` | lemma | 102–107（6行） | 補助 | 65.3 | 右作用・閉加群 |
+| `ClosedModule.homEquiv_id` | lemma | 109–112（4行） | 補助 | 13.9 | 右作用・閉加群 |
+| `ClosedModule.comp` | def | 114–118（5行） | R 10.1.4 | 19.5 | 右作用・閉加群 |
+| `ClosedModule.comp_ev` | lemma | 120–126（7行） | 補助 | 24.3 | 右作用・閉加群 |
+| `ClosedModule.precomp_ev` | lemma | 128–135（8行） | 補助 | 33.5 | 右作用・閉加群 |
+| `ClosedModule.postcomp_ev` | lemma | 137–144（8行） | 補助 | 33.6 | 右作用・閉加群 |
+| `ClosedModule.homEquiv_whiskerRight_comp` | lemma | 146–156（11行） | 補助 | 47.8 | 右作用・閉加群 |
+| `ClosedModule.whiskerLeft_homEquiv_comp` | lemma | 158–165（8行） | 補助 | 30.8 | 右作用・閉加群 |
+| `ClosedModule.comp_assoc_hom` | lemma | 167–178（12行） | 補助 | 46.6 | 右作用・閉加群 |
+| `ClosedModule.homEquiv_comp` | lemma | 180–188（9行） | R 3.4.5 | 28.6 | 右作用・閉加群 |
+| `ClosedModule.enrichedOrdinaryCategory` | def | 190–205（16行） | R 10.1.4 | 44.2 | 右作用・閉加群 |
+| `ClosedModule.eHomFunctorIso` | def | 207–224（18行） | R 10.1.4 | 55.5 | 右作用・閉加群 |
+| `ClosedModule.eHomFunctorIso_hom_app_app` | lemma | 226–229（4行） | 補助 | 20.5 | 右作用・閉加群 |
+| `ClosedModule.eHomFunctorIso_inv_app_app` | lemma | 231–234（4行） | 補助 | 18.5 | 右作用・閉加群 |
+| `ClosedModule.tensorCotensor` | def | 236–246（11行） | R 10.1.4 | 18.9 | 右作用・閉加群 |
+| `MonoidalClosed.closedModuleSelf` | def | 252–264（13行） | R 3.7.5 | 31.1 | 自己右作用・基底の閉性・余テンソル随伴の組紐 |
+
+#### `BaseChange.lean`
+
+| 宣言 | 種類 | 範囲 | 文献 | ms | 仮定 |
+| --- | --- | ---: | --- | ---: | --- |
+| `ordinaryBaseChange` | def | 309–314（6行） | R 3.4.3 | 14.2 | 元の豊穣通常圏・lax モノイダル構造・単位点の同値 |
+| `ordinaryBaseChange_whiskerRight` | lemma | 316–326（11行） | 補助 | 27.9 | 元の豊穣通常圏・lax モノイダル構造・単位点の同値 |
+| `ordinaryBaseChange_whiskerLeft` | lemma | 328–338（11行） | 補助 | 28.1 | 元の豊穣通常圏・lax モノイダル構造・単位点の同値 |
+| `ordinaryBaseChangeHomIso` | def | 340–358（19行） | R 3.4.3 | 70.7 | 元の豊穣通常圏・lax モノイダル構造・単位点の同値 |
+| `ordinaryBaseChangeHomIso_hom_app_app` | lemma | 360–364（5行） | 補助 | 73.4 | 元の豊穣通常圏・lax モノイダル構造・単位点の同値 |
+| `ordinaryBaseChangeHomIso_inv_app_app` | lemma | 366–370（5行） | 補助 | 31.1 | 元の豊穣通常圏・lax モノイダル構造・単位点の同値 |
+
+
+### BaseChange 前半で、新しい構成から使わなくなった宣言
+
+カーネルの型・値の参照をたどると、新しい `OfAction` から前半へ至る経路は0件。旧 `OfAction` で使っていた以下の宣言は前半に据え置いた。接頭辞はすべて `SerrePositivity.ReverseComposition`。
+
+| 宣言 | 旧経路での役割 |
+| --- | --- |
+| `reverse` | 合成の因子を組紐で交換 |
+| `reverse_three` | 三因子の交換と結合を比較 |
+| `left_unit` | 因子の交換後に左単位律を供給 |
+| `right_unit` | 因子の交換後に右単位律を供給 |
+| `associativity` | 因子の交換後に結合律を供給 |
+| `points` | 交換後の合成と通常射の点を比較 |
+| `enrichedCategory` | 逆順のデータを Mathlib 順の豊穣圏に組む |
+
+旧経路が参照した生成名 `reverse.eq_1` と `enrichedCategory._proof_1`・`_proof_2`・`_proof_3` も、新しい豊穣化からの参照は0件。基底変更の新設部分は引き続き `LaxPointHom.left_action`・`right_action` と、その先の `LaxPointHom.map` を使う。
+
+### 下流と記録監査
+
+- `OfAction.lean` は477行から268行になった。変更元と推移的な利用側4,334モジュールを88の末端ターゲットで指定した。時間枠を返すたびに成果物を再利用し、root を含む37,139ジョブと `scripts/check_spectra_stage2.lean` が成功した。旧利用側のソースと import の変更は0件。
+- 2モジュールの前提検査で、新設・修正31宣言のインスタンス引数165個を照合した。値を持つ宣言の161個は値で使われ、残る4個はクラスの型に属する引数だった。
+- `premerge.py` の記録監査・前後比較・文献対応表検査はすべて終了値0。対象は34,053モジュール、359,415カーネル宣言。段3a以前の基準 `b6d03e4fe` と比較して、従来の359,335カーネル宣言の名前と型が一致した。前回の段3a実装との比較で型変更は18件で、すべて `OfAction` の閉加群とその生成物、または `BaseChange` 後半。追加62件・削除107件には生成物を含む。削除した instance 登録1件は `ClosedModuleOn._sizeOf_inst`。
+- 公理の追加と依存の増減は0件。直接の `sorry` 4件と `sorryAx` 推移依存164件は同じ集合だった。旧スペクトル監査は199モジュール・2,475宣言、共有基盤の監査は678モジュール・17,679宣言で成功した。
+
+記録監査は実装候補 `66c9cd573` に対して行い、その後にこの報告を確定した。Git 外の `~/serre-evidence/enrichment/853174381-stage3a-right/` に、ビルド・lint・型見本・自己作用・前提検査のログ、`premerge/`、段3a以前との `prior-api-diff/`、前半の依存比較 `base-change-dependencies.json` を置いた。

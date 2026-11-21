@@ -19,13 +19,13 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 
 | 事柄 | R・K | H・HS | Mathlib | 本体の決め方 |
 | --- | --- | --- | --- | --- |
-| 合成の順 | M(y, z) ⊗ M(x, y) → M(x, z)（R Definition 3.3.1 と (3.4.6)、K §1.2） | 同左 | `eComp X Y Z : (X ⟶[V] Y) ⊗ (Y ⟶[V] Z) ⟶ (X ⟶[V] Z)`（図式の順） | Mathlib の順。文献の順との行き来は組紐で行う（本体の `ReverseComposition`。段 3a で `BaseChange` に置く）。docstring には文献の式を、順が逆であることを断って書く |
-| 作用の向き | 左：v ⊗ m（R Definition 3.7.2、10.1.3） | 右：X ⊗ K（H Definition 4.1.6 は右 C 加群。「左加群も定義できる」と断っている） | `MonoidalLeftAction`（左）。右は `MonoidalRightAction` | 左（R と Mathlib の左作用）。H を引くときは、左右を読み替えていることを docstring に書く。V は対称なので数学として同値 |
-| 対称スペクトルの加群の向き | — | HS Definition 6.2 は右加群（Xₙ ⊗ K → Xₙ₊₁）。「[HSS] は左加群」と断っている | `Mod` は左加群 | 段 4 の設計で決める（§6 の未決 1） |
+| 合成の順 | M(y, z) ⊗ M(x, y) → M(x, z)（R Definition 3.3.1 と (3.4.6)、K §1.2） | 同左 | `eComp V X Y Z : (X ⟶[V] Y) ⊗ (Y ⟶[V] Z) ⟶ (X ⟶[V] Z)` | 右作用の結合子と二つの評価で Mathlib の順を直接作る。既存の `ReverseComposition` は旧来の入口で使う |
+| 作用の向き | 左：v ⊗ m（R Definition 3.7.2、10.1.3） | 右：X ⊗ K（H Definition 4.1.6） | `MonoidalRightAction`、`X ⊙ᵣ P` | 右（決定9）。R の左作用からの式を引用するときは左右と因子順の違いを記す |
+| 対称スペクトルの加群の向き | — | HS Definition 6.2 は $Xₙ ⊗ K → Xₙ₊₁$ の右加群 | 既存の `Mod` は左加群 | 段4の一般論への適用は右作用を供給し、既存の左表示と比較する |
 | 基底の圏への仮定 | 閉対称モノイダル圏 (V, ×, ∗)（記号は直積だが一般の対称モノイダル） | 閉対称モノイダル圏 | `MonoidalCategory`・`SymmetricCategory`・`MonoidalClosed` | 主張ごとに要る分だけ仮定する（対称性が要るのは、合成の順の行き来、反対圏、V 圏のテンソル）。文献より弱い仮定で示せるときは弱くし、その旨を書く |
 | 通常の圏 | 豊穣圏から取り出す：C₀(x, y) := V(∗, C(x, y))（R Definition 3.4.5、K §1.3） | — | `ForgetEnrichment`。もとから圏があるときは `EnrichedOrdinaryCategory`（同値 `eHomEquiv` を持つ） | 決定 2：もとから圏である M は `EnrichedOrdinaryCategory` |
 | テンソルの定義 | V の中の同型 M(v ⊗ m, n) ≅ V(v, M(m, n))（R Definition 3.7.2、K (3.42) の双対） | 加群＋二変数の随伴（H Definition 4.1.6、4.1.12） | 無い | 決定 2′（§3）：加群の側を基準の構造にし、V の中の同型を構成する |
-| 整合の条件 | R Definition 10.1.3 は結合・単位の同型を「自然な同型」とだけ書き、整合を要求しない | H Definition 4.1.6 は三つの整合の図式（四重の結合、単位二つ）を要求 | `MonoidalLeftAction` は五角形と単位の整合を持つ | H に従う（整合つき）。R の定義は、そのままでは豊穣圏の結合律を示すのに足りない恐れがある |
+| 整合の条件 | R Definition 10.1.3 は結合・単位の同型を「自然な同型」とだけ書き、整合を要求しない | H Definition 4.1.6 は三つの整合の図式（四重の結合、単位二つ）を要求 | `MonoidalRightAction` は五角形と単位の整合を持つ | H に従う（整合つき）。R の定義は、そのままでは豊穣圏の結合律を示すのに足りない恐れがある |
 
 ## 2. 対応表
 
@@ -53,11 +53,11 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 | Definition 3.7.2 | テンソルを持つ：M(v ⊗ m, n) ≅ V(v, M(m, n)) | 基準の構造の豊穣圏の側 | 本 `EnrichedRepresentability` の `tensorIso` |
 | Definition 3.7.3 | 余テンソルを持つ：M(m, nᵛ) ≅ V(v, M(m, n)) | 同上 | 本 `EnrichedRepresentability` の `cotensorIso` |
 | Remark 3.7.4 | テンソル・余テンソル・Hom は二変数の V 随伴をなす | B1 の出力 | `ofClosedModuleRepresentability` は V 値の同型と指定の比較。全 V 二変数随伴のレコードは今回の型の範囲外 |
-| Example 3.7.5 | 閉対称モノイダル圏は自分自身の上でテンソルと余テンソルを持つ | A1 の続き。B2 の出発点 | 書 `TensorCotensor`（自己作用 M `selfLeftAction` から） |
+| Example 3.7.5 | 閉対称モノイダル圏は自分自身の上でテンソルと余テンソルを持つ | A1 の続き。B2 の出発点 | 書 `MonoidalClosed.closedModuleSelf`（自己右作用 `selfRightAction` から。組紐は余テンソル随伴の欄） |
 | Lemma 3.7.7 | テンソルを持つ V 圏では、∗ ⊗ m ≅ m、(v × w) ⊗ m ≅ v ⊗ (w ⊗ m) | B5（逆向き）。決定：書かない | — |
-| Proposition 3.7.10 | テンソルと余テンソルを持つ V 圏の間の随伴 F ⊣ G について、V 随伴であること／F が V 関手で F(v ⊗ m) ≅ v ⊗ Fm／G が V 関手で G(nᵛ) ≅ (Gn)ᵛ、は互いに他を定める | B6 | 書 `EnrichedAdjunction`。左 lineator と右余テンソルの指定比較 |
+| Proposition 3.7.10 | テンソルと余テンソルを持つ V 圏の間の随伴 F ⊣ G について、V 随伴であること／F が V 関手で F(v ⊗ m) ≅ v ⊗ Fm／G が V 関手で G(nᵛ) ≅ (Gn)ᵛ、は互いに他を定める | B6 | 書 `EnrichedAdjunction`。右 lineator と右余テンソルの指定比較 |
 | Theorem 3.7.11 | 閉対称モノイダル圏の間の随伴 F : V ⇄ U : G で F が強モノイダルなら、**U でテンソルと余テンソルを持つ任意の豊穣圏 M** は、V で豊穣化されテンソルと余テンソルを持つ。v ⋆ m := Fv ⊗ m、{v, m} := m^{Fv}、M_V(m, n) := G M_U(m, n) | B2 | 書 `MonoidalAdjunction`。G が緩いモノイダルになることは M `Adjunction.rightAdjointLaxMonoidal` |
-| Corollary 3.7.12 | F ⊣ G は、U に誘導された V 圏の構造について V 随伴 | B6 | 書 `monoidalAdjunctionEnriched`。Mathlib 順で G を適用した輸送版との照合は B4 の組紐保存を使用 |
+| Corollary 3.7.12 | F ⊣ G は、U に誘導された V 圏の構造について V 随伴 | B6 | 書 `monoidalAdjunctionEnriched`。Mathlib 順で G を適用した輸送版との照合は B4 の合成と単位の比較を使用 |
 | Example 3.7.13 | (−)₊ : sSet ⇄ sSet∗ : U により、基点付き単体集合は単体集合で豊穣化され、K ⊗ X = K₊ ∧ X、余テンソル Y^K = sSet∗(K₊, Y)。写像空間は内部 Hom の基点を忘れたもの | 段 3e の試験 | 本 `PointedEnrichment.simplicialCategory`（いまは基底の取り替え。102 回置き直されている） |
 
 ### 2.2 Riehl §10.1
@@ -66,9 +66,9 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 | --- | --- | --- | --- |
 | (10.1.1) | 二変数の随伴 | 土台 | M `ParametrizedAdjunction`（片側ずつ。二つ組にする） |
 | Remark 10.1.2 | 二変数の随伴が V の中の同型に持ち上がることは仮定しない。加群の構造の整合から従う | 決定 2′ の根拠 | — |
-| Definition 10.1.3 | 閉じた V 加群：二変数の随伴 (⊗, {}, hom)、結合の同型 v ⊗ (w ⊗ m) ≅ (v × w) ⊗ m、単位の同型 ∗ ⊗ m ≅ m | **基準の構造** | 書 `OfAction`（M `MonoidalLeftAction` と二つの `ParametrizedAdjunction`。整合は H 4.1.6 に従う） |
-| Proposition 10.1.4 | 閉じた V 加群は、与えた二変数の随伴がテンソル・余テンソル・Hom の随伴の下にあるような仕方で、**一意に**、テンソルと余テンソルを持つ V 圏になる。証明は演習 | A3・B1・B3 | 書 `OfAction`（豊穣圏を作る）、`TensorCotensor`（V の中の同型を構成する）。一意性は B4 で使う |
-| Proposition 10.1.5 | 閉じた V 加群の間の関手 F について、V 関手であること／結合的で単位的な比較 v ⊗ Fm → F(v ⊗ m) を持つこと、は同値 | B6 | M `Functor.LaxLeftLinear`、書 `leftLinearEnrichedEquiv`。比較の可逆性は H 4.1.7 と B6 の随伴判定で用いる |
+| Definition 10.1.3 | 閉じた V 加群：二変数の随伴 (⊗, {}, hom)、結合の同型 v ⊗ (w ⊗ m) ≅ (v × w) ⊗ m、単位の同型 ∗ ⊗ m ≅ m | **基準の構造** | 書 `OfAction`（M `MonoidalRightAction` と二つの `ParametrizedAdjunction`。整合は H 4.1.6 に従う） |
+| Proposition 10.1.4 | 閉じた V 加群は、与えた二変数の随伴がテンソル・余テンソル・Hom の随伴の下にあるような仕方で、**一意に**、テンソルと余テンソルを持つ V 圏になる。証明は演習 | A3・B1・B3 | 書 `OfAction`（豊穣圏を作る）、`TensorCotensor`（V の中の同型を構成する）。一意性は B4 で使い、既存の豊穣化を受ける入口は段4で結合の両立とともに設計する |
+| Proposition 10.1.5 | 閉じた V 加群の間の関手 F について、V 関手であること／結合的で単位的な比較 v ⊗ Fm → F(v ⊗ m) を持つこと、は同値 | B6 | 右作用に移し、M `Functor.LaxRightLinear`、書 `rightLinearEnrichedEquiv`。比較の可逆性は H 4.1.7 と B6 の随伴判定で用いる |
 | Remark 10.1.6 | 双対に、余テンソルの側の加群の構造でも書ける | 余テンソルの側 | B6 の中で必要な分だけ |
 
 ### 2.3 Hovey 第 4 章
@@ -76,8 +76,8 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 | 番号 | 内容 | 一般論 | Lean |
 | --- | --- | --- | --- |
 | Definition 4.1.1〜4.1.5 | モノイダル圏、モノイダル関手とその自然変換、対称モノイダル | 土台 | M `MonoidalCategory`、`Functor.Monoidal`、`NatTrans.IsMonoidal`、`SymmetricCategory`、`Functor.Braided` |
-| Definition 4.1.6 | （右）C 加群：⊗ : D × C → D、結合 a、単位 r、三つの整合の図式 | 基準の構造の「作用」の部分 | M `MonoidalLeftAction`（左右を読み替える） |
-| Definition 4.1.7 | C 加群の関手：F と自然な同型 FX ⊗ K → F(X ⊗ K)、二つの整合。加群の自然変換 | B6 | M `Functor.RightLinear`、左作用へ読み替えて `Functor.LeftLinear`。R 10.1.5 の射の向きには `Functor.LaxLeftLinear`。H の加群自然変換の比較四角は書く |
+| Definition 4.1.6 | （右）C 加群：⊗ : D × C → D、結合 a、単位 r、三つの整合の図式 | 基準の構造の「作用」の部分 | M `MonoidalRightAction` |
+| Definition 4.1.7 | C 加群の関手：F と自然な同型 FX ⊗ K → F(X ⊗ K)、二つの整合。加群の自然変換 | B6 | M `Functor.RightLinear`。R 10.1.5 を右作用に移した射は `Functor.LaxRightLinear`。H の加群自然変換の比較四角は書く |
 | Definition 4.1.8 | C 代数（C からの関手を持つモノイダル圏） | B2 の言い換え | — |
 | Definition 4.1.12 | 二変数の随伴 (⊗, Hom_r, Hom_ℓ, φ_r, φ_ℓ) | 土台 | M `ParametrizedAdjunction` を二つ |
 | Definition 4.1.13 | 閉モノイダル構造 | 土台 | M `MonoidalClosed` |
@@ -123,7 +123,7 @@ Lean の docstring では、本体の規約（`@[cite KEY "番号"]` と略号�
 
 決定 2 と、その最初の修正を、次で置き換える。
 
-- **基準の構造**は、R Definition 10.1.3 の閉じた V 加群（二変数の随伴＋テンソルの結合の同型＋単位の同型）。整合の条件は H Definition 4.1.6 に従い、Lean では Mathlib の `MonoidalLeftAction V M` と、作用の関手 H についての二つの二変数の随伴（H ⊣₂ 余テンソル、H.flip ⊣₂ 写像対象）で表す。作る側はこれを出し、使う側（H Definition 4.2.18 の C モデル圏）はこれを受け取る。
+- **基準の構造**は、R Definition 10.1.3 の閉じた V 加群（二変数の随伴＋テンソルの結合の同型＋単位の同型）。整合の条件は H Definition 4.1.6 に従い、Lean では Mathlib の `MonoidalRightAction V M` と、作用の関手 H についての二つの二変数の随伴（H ⊣₂ 余テンソル、H.flip ⊣₂ 写像対象）で表す。作る側はこれを出し、使う側（H Definition 4.2.18 の C モデル圏）はこれを受け取る。
 - **豊穣圏の側の定義**（R Definition 3.7.2・3.7.3、K §3.7。V の中の同型）は、本体の `EnrichedRepresentability` として残し、その値は閉じた V 加群から一般論の定義として一度だけ構成する（R Proposition 10.1.4。同型そのものを返す定義。存在の主張にしない）。
 - 本体の `TensorCotensor`（二つの二変数の随伴だけ）は、文献のどちらの定義よりも弱い。これ単独を受け取っている使う側は、閉じた V 加群を受け取る形に直す。`TensorCotensor` を「閉じた V 加群の、随伴の部分」として残すか、閉じた V 加群の構造に吸収するかは、段 2 の改訂で、使う側の書き換えの量を見て決める。
 - もとから圏である M の豊穣化は `EnrichedOrdinaryCategory`、写像対象が定義である豊穣圏は `EnrichedCategory`、二つの行き来は Mathlib のものだけ（決定 2 のまま）。
@@ -175,11 +175,11 @@ Lean でも同じ形で書く：全単射の列を `Equiv` の合成として定
 注意する点：
 - R は Proposition 10.1.4 と 3.7.10 の証明を演習にしている。本体で書く。
 - B1 の各列は作用の結合子を一度使う。係数自然性二つと点での一致二つは、結合子の三変数自然性と作用の左右単位で示す。A3 の結合律には H 4.1.6 の四重の整合を使う。段2bの型案に、五角形を落とした場合の反例と弱い入力からの B1 の列を記した。
-- 合成の順が文献と逆なので、列の途中で組紐が入る。どこで入るかを docstring に書く。
+- 右作用では B1・B2 のテンソル列が $P⊗A$ を与える。余テンソル列が与える $A⊗P$ を同じ内部 Hom に表示する箇所に組紐が入る。A3 の合成・B4 の Hom の合成比較には組紐が要らない。
 
 ## 6. 未決（段 4 の設計で相談する）
 
-1. **対称スペクトルの加群の向き**：本体は左加群（[HSS] の向き）。HS は右加群。原典どおりの方針に照らして、どちらに揃えるか。
+1. **対称スペクトルの表示の比較**：段4で右作用を供給する。既存の左加群の表示との比較に、単位・結合・写像対象・余テンソルの両立を示す。
 2. **C と D を分けるか**：HS は、D が対称モノイダル圏、C が D の上の加群、という二つの圏で書く。本体は C＝D だけ。「文献に忠実に、一般性も」の方針に照らして、二つに分けた形にするか。B2 を一般の形（任意の閉じた U 加群 M）で書くので、分けた場合も一般論はそのまま当てはまる。
 3. **関手の圏の大きさ**：K §2.2 は A が小さいことを仮定し、大きい場合は宇宙を広げる。本体の dg 関手の圏の書き方と照らす（段 5 の設計）。
 
@@ -190,9 +190,9 @@ Lean でも同じ形で書く：全単射の列を `Equiv` の合成として定
 | 1 | 全体の調査 | 済（cdaac1a39） |
 | 2 | 設計（型の一覧） | 済（4bfe03a3f）。**下の 2b で改訂する** |
 | 2b | 決定 2′・3′ に沿った型の一覧、Mathlib の照合、宣言の文献番号 | 済。型と実装の見積もりは [段2b](../../../research/cleanup-zero-base/enrichment/stage2-types.md) |
-| 3a | A2、A3、B3、自己閉加群、閉加群を受ける移行口。`CategoryTheory/Enriched/` の配置と略号 | |
+| 3a | A2、A3、B3、自己閉加群。`CategoryTheory/Enriched/` の配置と略号 | |
 | 3b | B1。弱い結合と左右単位で四つの欄を作り、閉じた加群から取り出す。米田で Hom の同型を得る | |
-| 3c | 任意の閉じた U 加群の B2、二つの米田の列、B4 の組紐と転置の比較 | |
+| 3c | 任意の閉じた U 加群の B2、二つの米田の列、B4 の単位・合成と転置の比較 | |
 | 3d | B6。lax lineator、全 Hom 上の自然変換・V 随伴、強モノイダル随伴自身 | |
 | 3e | 試験：基点付き単体集合（R Example 3.7.13） | |
 | 4 | 対称スペクトル（HS）。先に未決 1・2 を相談 | |
