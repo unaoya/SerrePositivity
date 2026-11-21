@@ -1,7 +1,10 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 import Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.ThinNerveInnerFibration
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.EquivalenceTerminal
@@ -60,7 +63,7 @@ number := false
 tag := "htt-2-3-2"
 %%%
 
-:::proposition "htt_2_3_2_1"
+:::proposition "htt_2_3_2_1" (lean := "SSet.innerAnodyneExtensions_pushoutObjObjι, SSet.prodStdSimplex.innerAnodyneExtensions_unionProd_ι")
 *HTT 命題 2.3.2.1*　内アノダイン射の三つの生成系（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=117)）。対応表の状態：一部（direction）。
 
 *主張*　内アノダイン射の弱飽和類は、内角包含全部でも、$`\Lambda^2_1\hookrightarrow\Delta^2` と境界包含の押し出し積でも、同じ二次元内角と任意の単射の押し出し積でも生成される。
@@ -68,8 +71,6 @@ tag := "htt-2-3-2"
 KB-W2原文・型再照合：仮定：boundary×inner horn、または mono×inner-anodyne の pushout-product（HTT の A2/A3 と一致）。結論：第二・第三の生成射は inner anodyne、したがってそれらの閉包⊆第一の閉包という方向に一致。逆包含と二次元ホーンから全 inner horns を生成する比較は含まない。
 
 任意の高次内角を直接試験する条件を、二射の合成を表す二次元角と、その変形のパラメータに分けて検査できる。
-
-宣言：`SSet.innerAnodyneExtensions_pushoutObjObjι`、`SSet.prodStdSimplex.innerAnodyneExtensions_unionProd_ι`
 
 :::
 
@@ -95,7 +96,7 @@ KB-W2原文・型再照合：仮定：C が準圏、制限射を二次元 inner 
 
 :::
 
-:::corollary "htt_2_3_2_4"
+:::corollary "htt_2_3_2_4" (lean := "SSet.innerAnodyneExtensions_pushoutObjObjι'")
 *HTT 系 2.3.2.4*　内アノダイン射の押し出し積（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=118)）。対応表の状態：Mathlib にある。
 
 *主張*　内アノダイン射と単体的集合の余ファイブレーションの押し出し積は内アノダインである。
@@ -104,11 +105,9 @@ KB-W2原文・型再照合：仮定：C が準圏、制限射を二次元 inner 
 
 パラメータ方向に指定しておいた境界と、内角方向に指定したデータを合わせて延長する問題である。両方向を一緒にしても、延長条件は内アノダインの範囲に収まる。
 
-宣言：`SSet.innerAnodyneExtensions_pushoutObjObjι'`
-
 :::
 
-:::corollary "htt_2_3_2_5"
+:::corollary "htt_2_3_2_5" (lean := "SSet.innerFibration_pullbackObjObjπ")
 *HTT 系 2.3.2.5*　内ファイブレーションの相対内部 Hom（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=119)）。対応表の状態：一部（component）。
 
 *主張*　内ファイブレーション $`X\to S` と余ファイブレーション $`A\to B` に対し、比較 $`X^B\to X^A\times_{S^A}S^B` は内ファイブレーションで、$`A\to B` が内アノダインなら自明になる。
@@ -116,8 +115,6 @@ KB-W2原文・型再照合：仮定：C が準圏、制限射を二次元 inner 
 KB-W2原文・型再照合：仮定：任意の inner fibration p と monomorphism i（HTT と一致）。結論：innerFibration\_pullbackObjObjπ は任意の指定 pullback-Hom square の角射 q を InnerFibration とし、最初の assertion に一致。一般の底で i が inner anodyne のときの q の triviality は含まない。
 
 $`A` における値と底での図式を同時に固定すると相対内部 Hom が出る。底を終対象へ取り、$`A` を空にすれば、任意の形 $`B` から ∞ 圏への関手圏が ∞ 圏であることも従う。
-
-宣言：`SSet.innerFibration_pullbackObjObjπ`
 
 :::
 

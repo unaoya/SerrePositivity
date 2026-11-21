@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -34,7 +36,7 @@ number := false
 tag := "htt-6-2-1"
 %%%
 
-:::proposition "htt_6_2_1_3" (lean := "CategoryTheory.Subobject, CategoryTheory.small_subobject")
+:::proposition "htt_6_2_1_3" (lean := "CategoryTheory.Subobject, CategoryTheory.small_subobject, CategoryTheory.wellPowered_of_smallCategory")
 *HTT 命題 6.2.1.3*　対象の部分対象が小さい半順序となること（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=594)）。対応表の状態：一部（special）。
 
 *主張*　可提示な ∞ 圏 $`\mathcal X` の対象 $`X` に対し、単射 $`U\to X` の同値類を因子分解で順序づけた $`\operatorname{Sub}(X)` は小さい半順序集合である。

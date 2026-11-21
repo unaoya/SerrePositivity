@@ -129,7 +129,7 @@ lemma circleTensor_cylinder_isPushout : IsPushout (simplicialCylinder hcof hw E)
     (Iso.refl _) (Iso.refl _) (Iso.refl _)
   · simp only [Iso.refl_hom, Category.comp_id, Iso.symm_hom]
     rw [← intervalBoundaryCoproductIso_inclusion hcof hw E, Iso.inv_hom_id_assoc]
-  · simp [(circleTensorPoint_isZero E).eq_of_tgt (intervalBoundaryCollapse E) 0]
+  · simp [intervalBoundaryCollapse_eq_zero]
   · simp
   · simp [(circleTensorPoint_isZero E).eq_of_src (circleTensorBasepoint E) 0]
 

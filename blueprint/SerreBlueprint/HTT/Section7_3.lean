@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -7,6 +9,7 @@ import Mathlib.Topology.Compactness.LocallyCompact
 import Mathlib.Topology.Defs.Filter
 import Mathlib.Topology.Maps.Proper.Basic
 import Mathlib.Topology.Maps.Proper.UniversallyClosed
+import Mathlib.Topology.Separation.Basic
 import Mathlib.Topology.Separation.CompletelyRegular
 import Mathlib.Topology.Sheaves.Presheaf
 import Mathlib.Topology.Sheaves.Sheaf
@@ -47,7 +50,7 @@ Hausdorff 性は仮定しないため、このコンパクト集合は閉であ�
 
 :::
 
-:::proposition "htt_7_3_1_8" (lean := "LocallyCompactSpace")
+:::proposition "htt_7_3_1_8" (lean := "LocallyCompactSpace, WeaklyLocallyCompactSpace.locallyCompactSpace")
 *HTT 例 7.3.1.8*　Hausdorff 空間の局所コンパクト性（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=771)）。対応表の状態：Mathlib にある。
 
 *主張*　Hausdorff 空間では第7.3.1.7項の局所コンパクト性は通常の局所コンパクト性と一致する。
@@ -80,7 +83,7 @@ KB-W2原文・型再照合：仮定：局所コンパクト X と任意の Y,Z�
 
 :::
 
-:::definition "htt_7_3_1_12" (lean := "T35Space")
+:::definition "htt_7_3_1_12" (lean := "T35Space, completelyRegularSpace_iff")
 *HTT 定義 7.3.1.12*　点と閉集合を分離する完全正則性（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=772)）。対応表の状態：Mathlib にある。
 
 *主張*　各点が閉である位相空間が完全正則であるとは、閉集合とその外の点を、点で $`0`、閉集合上で $`1` の連続区間値関数で分離できることをいう。

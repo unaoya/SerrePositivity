@@ -79,7 +79,6 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             n = r['number']; kind = kinds.get(n, 'Proposition'); st = r['status_new']
             directive = KIND.get(kind, 'proposition')
             label = 'kerodon_' + n.replace('.', '_')
-            decls = [e.strip() for e in r['declarations_new'].split(' | ') if e.strip()]
             linked = res.links(label, r['declarations_new'], imports, st in ('own', 'mathlib', 'both', 'partial', 'interface'))
             stats['linked' if linked else ('nolink-' + st)] += 1
             opt = f' (lean := "{", ".join(linked)}")' if linked else ''
@@ -94,8 +93,7 @@ for sec in sorted(by_sec, key=lambda s: [int(x) for x in s.split('.')]):
             if (nb := note_body(n)):
                 stats['with-note'] += 1
                 body.append(nb)
-            if decls and not linked:
-                body.append('宣言：' + '、'.join('`' + e.split(' @ ', 1)[0].replace('`', '') + '`' for e in decls) + '\n')
+            if note := res.declaration_note(label, r['declarations_new'], linked): body.append(note)
             body.append(':::\n')
     t = toc.get(sec)
     mod = 'Section' + sec.replace('.', '_')

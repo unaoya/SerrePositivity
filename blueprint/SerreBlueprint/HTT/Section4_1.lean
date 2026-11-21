@@ -1,6 +1,9 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.MorphismProperty.Limits
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceTriangleFiber
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationFiberReflection
@@ -173,7 +176,7 @@ KB-W2原文・型再照合：仮定：Kan 複体を終域とする射（Lean が
 
 :::
 
-:::corollary "htt_4_1_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.rightAnodyneExtensions_iff_mono_and_isRightCofinal")
+:::corollary "htt_4_1_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.rightAnodyneExtensions_iff_mono_and_isRightCofinal, CategoryTheory.MorphismProperty.of_isPushout")
 *HTT 系 4.1.2.7*　押し出しによる共終性の保存（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=248)）。対応表の状態：一部（special）。
 
 *主張*　共終な写像の押し出しは、その写像または押し出しに使う写像のどちらかが単射なら共終である。

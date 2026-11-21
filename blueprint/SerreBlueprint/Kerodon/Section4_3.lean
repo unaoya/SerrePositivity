@@ -1,10 +1,12 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Comma.Over.Basic
 import Mathlib.CategoryTheory.Join.Basic
 import Mathlib.CategoryTheory.Limits.Cones
-import Mathlib.Topology.Order.UpperLowerSetTopology
+import Mathlib.Order.Defs.Unbundled
 import SerrePositivity.InfinityCategories.HTT.Section1_2_9.OverIso
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.JoinQuasicategory
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanFibrationTools
@@ -180,7 +182,7 @@ $$`(K\star L)([n])=L([n])\ \sqcup\bigsqcup_{p+1+q=n}K([p])\times L([q])\ \sqcup\
 
 となる（Kerodon Remark 4.3.3.19）。$`I=\varnothing` の成分が $`L([n])`、$`I=\{0,\dots,p\}` の成分が $`K([p])\times L([q])`、$`I=[n]` の成分が $`K([n])` である。この表示で $`\theta` の作用を書くと、$`\theta` の像が $`I` と $`[n]\setminus I` のどちらに入るかで場合分けが要る。
 
-:::definition "kerodon_4_3_3_1" (lean := "Topology.IsLowerSet")
+:::definition "kerodon_4_3_3_1" (lean := "IsLowerSet")
 Kerodon Notation 4.3.3.1（[Tag 016L](https://kerodon.net/tag/016L)）。対応表の状態：Mathlib にある。
 
 *主張*　全順序集合 $`J` の始切片 $`I\sqsubseteq J` は、$`j\in I` かつ $`i\leq j` なら $`i\in I` となる部分集合である。

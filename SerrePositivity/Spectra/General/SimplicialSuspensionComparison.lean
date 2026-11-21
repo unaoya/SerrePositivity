@@ -21,13 +21,6 @@ open CategoryTheory
 namespace SerrePositivity.GeneralSymmetricSpectrum
 open PointedSimplicialSet
 
-def simplicialCotensorNatIso (X : PointedSimplicialSet.{u}) :
-    cotensorFunctor (K := (circle : PointedSimplicialSet.{u})) X ≅
-      SymmetricSpectrum.cotensorFunctor.{u} X :=
-  Adjunction.rightAdjointUniq
-    (pointwiseTensorCotensorAdjunction (K := (circle : PointedSimplicialSet.{u})) X)
-    (SymmetricSpectrum.pointwiseTensorCotensorAdjunction.{u} X)
-
 def simplicialLoopNatIso :
     cotensorFunctor (K := (circle : PointedSimplicialSet.{u})) circle ≅
       SymmetricSpectrum.loopFunctor.{u} :=

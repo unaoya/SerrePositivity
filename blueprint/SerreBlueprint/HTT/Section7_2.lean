@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -59,7 +61,7 @@ number := false
 tag := "htt-7-2-3"
 %%%
 
-:::proposition "htt_7_2_3_4" (lean := "HasSmallInductiveDimensionLE")
+:::proposition "htt_7_2_3_4" (lean := "HasSmallInductiveDimensionLT, HasSmallInductiveDimensionLE")
 *HTT 注意 7.2.3.4*　小帰納次元の再帰的な定義（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=756)）。対応表の状態：一部（component）。
 
 *主張*　小・大帰納次元は、それぞれ点・閉集合の開近傍の境界を低次元とする再帰的な次元で、可分距離空間では被覆次元とも一致する。

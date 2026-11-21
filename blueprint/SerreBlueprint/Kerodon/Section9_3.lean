@@ -1,7 +1,10 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.CategoryTheory.Limits.ExactFunctor
+import Mathlib.CategoryTheory.Limits.Indization.LocallySmall
 import Mathlib.CategoryTheory.Limits.Preserves.Finite
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.TerminalFiltered
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.CompactGeneration
@@ -319,7 +322,7 @@ Kerodon Proposition 9.3.3.1（[Tag 06FY](https://kerodon.net/tag/06FY)）。対�
 
 :::
 
-:::corollary "kerodon_9_3_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_hasSmallFixedVertexMaps")
+:::corollary "kerodon_9_3_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ind_hasSmallFixedVertexMaps, CategoryTheory.instLocallySmallFullSubcategoryFunctorOppositeTypeIsIndObject")
 Kerodon Corollary 9.3.3.2（[Tag 06FZ](https://kerodon.net/tag/06FZ)）。対応表の状態：一部。
 
 *主張*　局所小さい無限圏 $`C` の $`\operatorname{Ind}`-完備化も局所小さい。

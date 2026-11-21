@@ -25,6 +25,12 @@ def tensorFreePair (X Y : SymmetricSequence C) :
     freeObj K X ⊗ freeObj K Y ≅ freeObj K (X ⊗ Y) :=
   MonoidalBalancedTensor.freePairIso (SymmetricSequence.tensorPowerSequence K) X Y
 
+lemma tensorFreePair_naturality {X X' Y Y' : SymmetricSequence C}
+    (f : X ⟶ X') (g : Y ⟶ Y') :
+    ((freeFunctor K).map f ⊗ₘ (freeFunctor K).map g) ≫ (tensorFreePair X' Y').hom =
+      (tensorFreePair (K := K) X Y).hom ≫ (freeFunctor K).map (f ⊗ₘ g) :=
+  MonoidalBalancedTensor.freePair_naturality (SymmetricSequence.tensorPowerSequence K) f g
+
 def tensorFreeAtSum (m n : ℕ) (X Y : C) :
     (freeAt (K := K) m).obj X ⊗ (freeAt (K := K) n).obj Y ≅
       (freeAt (K := K) (m + n)).obj (X ⊗ Y) :=
@@ -41,16 +47,7 @@ lemma tensorFreeAtSum_naturality (m n : ℕ) {X X' Y Y' : C} (f : X ⟶ X') (g :
       (freeFunctor K).map (SymmetricSequence.freePairConvolutionIso m n X Y).hom) ≫
         (freeFunctor K).map ((SymmetricSequence.freeAt (m + n)).map (f ⊗ₘ g))
   simp only [freeAt, Functor.comp_map]
-  have hpair :
-      ((freeFunctor K).map ((SymmetricSequence.freeAt m).map f) ⊗ₘ
-        (freeFunctor K).map ((SymmetricSequence.freeAt n).map g)) ≫
-          (tensorFreePair _ _).hom =
-        (tensorFreePair (K := K) _ _).hom ≫
-          (freeFunctor K).map
-            ((SymmetricSequence.freeAt m).map f ⊗ₘ (SymmetricSequence.freeAt n).map g) :=
-    MonoidalBalancedTensor.freePair_naturality (SymmetricSequence.tensorPowerSequence K)
-      ((SymmetricSequence.freeAt m).map f) ((SymmetricSequence.freeAt n).map g)
-  rw [← Category.assoc, hpair, Category.assoc,
+  rw [← Category.assoc, tensorFreePair_naturality, Category.assoc,
     ← Functor.map_comp, SymmetricSequence.freePairConvolutionIso_naturality,
     Functor.map_comp, Category.assoc]
 

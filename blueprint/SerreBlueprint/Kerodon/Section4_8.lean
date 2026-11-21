@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -687,7 +689,7 @@ tag := "kerodon-4-8-7"
 
 Kerodon [Tag 05CP](https://kerodon.net/tag/05CP)
 
-:::proposition "kerodon_4_8_7_1" (lean := "CategoryTheory.Functor.homRel, CategoryTheory.Quotient.functor, CategoryTheory.Quotient.full_functor, CategoryTheory.Quotient.essSurj_functor, CategoryTheory.Quotient.lift, CategoryTheory.Quotient.lift_spec")
+:::proposition "kerodon_4_8_7_1" (lean := "CategoryTheory.Functor.homRel, CategoryTheory.Quotient.functor, CategoryTheory.Quotient.full_functor, CategoryTheory.Quotient.essSurj_functor, CategoryTheory.Quotient.lift, CategoryTheory.Quotient.lift_spec, CategoryTheory.Functor.instFaithfulQuotientHomRelLift")
 Kerodon Proposition 4.8.7.1（[Tag 05CQ](https://kerodon.net/tag/05CQ)）。対応表の状態：Mathlib にある。
 
 *主張*　通常の圏の任意の関手は、充満かつ本質的全射な関手に続いて忠実な関手を合成したものに分解できる。

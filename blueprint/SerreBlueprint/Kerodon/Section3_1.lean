@@ -1,9 +1,13 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
+import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
 import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Hammock.WeakTensor
@@ -18,6 +22,7 @@ import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheory
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PrismCellPushout
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorExtensionSpace
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorSpace
+import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeInternalHomTrivialFibration
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeJoinPrismCell
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeJoinPrismCoverage
 import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeJoinPrismInitialPushout
@@ -150,14 +155,12 @@ Kerodon Definition 3.1.2.1（[Tag 00UH](https://kerodon.net/tag/00UH)）。対�
 
 :::
 
-:::proposition "kerodon_3_1_2_9"
+:::proposition "kerodon_3_1_2_9" (lean := "SSet.anodyneExtensions_pushoutObjObjι, SSet.anodyneExtensions_pushoutObjObjι', SSet.anodyneExtensions_unionProd_ι")
 Kerodon Proposition 3.1.2.9（[Tag 014D](https://kerodon.net/tag/014D)）。対応表の状態：Mathlib にある。
 
 *主張*　単体集合の二つの単射の少なくとも一方が無害射なら、それらの押し出し積も無害射である。
 
 仮定：単体集合の二単射と、少なくとも片方が anodyne であること（Kerodon と一致）。結論：二つの積を共通部分上で貼った押し出しから終域の積への比較包含が anodyne。左右の二通りを別の補題で与える（一致）。
-
-宣言：`SSet.anodyneExtensions_pushoutObjObjι`、`SSet.anodyneExtensions_pushoutObjObjι'`、`SSet.anodyneExtensions_unionProd_ι`
 
 :::
 
@@ -197,40 +200,34 @@ tag := "kerodon-3-1-3"
 
 Kerodon [Tag 00TJ](https://kerodon.net/tag/00TJ)
 
-:::theorem "kerodon_3_1_3_1"
+:::theorem "kerodon_3_1_3_1" (lean := "SSet.fibration_pullbackObjObjπ")
 Kerodon Theorem 3.1.3.1（[Tag 00TK](https://kerodon.net/tag/00TK)）。対応表の状態：Mathlib にある。
 
 *主張*　Kan ファイブレーション $`X\to S` と単射 $`A\to B` に対し、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(A,X)` は Kan ファイブレーションである。
 
 仮定：単射 i : A ⟶ B、Kan fibration p : X ⟶ S と内部 Hom の指定の引き戻し（Kerodon と一致。Lean は普遍性を持つ引き戻しの選択を明示）。結論：Xᴮ から Sᴮ ×\_(Sᴬ) Xᴬ への比較射が Fibration（一致）。
 
-宣言：`SSet.fibration_pullbackObjObjπ`
-
 :::
 
-:::corollary "kerodon_3_1_3_2"
+:::corollary "kerodon_3_1_3_2" (lean := "SSet.instFibrationMapIhom")
 Kerodon Corollary 3.1.3.2（[Tag 00TL](https://kerodon.net/tag/00TL)）。対応表の状態：Mathlib にある。
 
 *主張*　Kan ファイブレーション $`X\to S` と任意の単体集合 $`B` に対し、後合成 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)` は Kan ファイブレーションである。
 
 仮定：任意の単体集合 B と Kan fibration p : X ⟶ S（Kerodon と一致）。結論：p による後合成 (ihom B).map p は Fibration（一致）。
 
-宣言：`SSet.instFibrationMapIhom`
-
 :::
 
-:::corollary "kerodon_3_1_3_3"
+:::corollary "kerodon_3_1_3_3" (lean := "SSet.instFibrationAppPreOfMonoOfKanComplex")
 Kerodon Corollary 3.1.3.3（[Tag 00TM](https://kerodon.net/tag/00TM)）。対応表の状態：Mathlib にある。
 
 *主張*　Kan 複体 $`X` と単射 $`A\to B` に対し、制限 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(A,X)` は Kan ファイブレーションである。
 
 仮定：単射 i : A ⟶ B、Kan 複体 X（Kerodon と一致）。結論：前合成 (MonoidalClosed.pre i).app X は Fibration（一致）。
 
-宣言：`SSet.instFibrationAppPreOfMonoOfKanComplex`
-
 :::
 
-:::corollary "kerodon_3_1_3_4"
+:::corollary "kerodon_3_1_3_4" (lean := "SSet.instKanComplexObjIhom")
 Kerodon Corollary 3.1.3.4（[Tag 00TN](https://kerodon.net/tag/00TN)）。対応表の状態：Mathlib にある。
 
 *主張*　$`X` が Kan 複体なら、任意の単体集合 $`B` に対して $`\operatorname{Fun}(B,X)` も Kan 複体である。
@@ -241,11 +238,9 @@ Kerodon Corollary 3.1.3.4（[Tag 00TN](https://kerodon.net/tag/00TN)）。対応
 
 Kan 複体 $`X,Y` について、$`\mathcal Kan(X,Y)=\mathrm{Fun}(X,Y)` は Kan 複体である。
 
-宣言：`SSet.instKanComplexObjIhom`
-
 :::
 
-:::theorem "kerodon_3_1_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pre_of_anodyne")
+:::theorem "kerodon_3_1_3_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pre_of_anodyne, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pullbackObjObjπ")
 Kerodon Theorem 3.1.3.5（[Tag 014E](https://kerodon.net/tag/014E)）。対応表の状態：一部。
 
 *主張*　無害射 $`A\to B` と Kan ファイブレーション $`X\to S` に対し、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(A,X)` は自明な Kan ファイブレーションである。
@@ -373,7 +368,7 @@ Kerodon [Tag 00TR](https://kerodon.net/tag/00TR)
 ホモトピー同値 \`IsSimplicialHomotopyEquivalence f\`（InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/SimplicialHomotopyEquivalence.lean:52）は、逆向きの写像と両側のホモトピーがあることをいう。
 prism $`\Delta^1 \times \Delta^n` の shuffle による分割は Mathlib にあり、端の包含 \`prismEndpoint\` は InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/PrismContraction.lean にある。
 
-:::definition "kerodon_3_1_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex")
+:::definition "kerodon_3_1_5_1" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex, SSet.π₀.mk")
 Kerodon Definition 3.1.5.1（[Tag 00TS](https://kerodon.net/tag/00TS)）。対応表の状態：本体にある。
 
 *主張*　単体集合の二つの射 $`X\to Y` は、$`\operatorname{Fun}(X,Y)` の同じ連結成分に属するときホモトピックである。
@@ -391,7 +386,7 @@ Kerodon Definition 3.1.5.2（[Tag 00TT](https://kerodon.net/tag/00TT)）。対�
 
 :::
 
-:::proposition "kerodon_3_1_5_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge")
+:::proposition "kerodon_3_1_5_4" (lean := "SSet.π₀.mk_eq_mk_iff, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy, SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge")
 Kerodon Proposition 3.1.5.4（[Tag 00TU](https://kerodon.net/tag/00TU)）。対応表の状態：本体にある。
 
 *主張*　単体集合の二つの射がホモトピックであることは、向きを問わずホモトピーを有限回つないで結べることと同値である。標的が Kan 複体なら、始点から終点へのひとつのホモトピーの存在と同値である。
@@ -400,7 +395,7 @@ Kerodon Proposition 3.1.5.4（[Tag 00TU](https://kerodon.net/tag/00TU)）。対�
 
 :::
 
-:::definition "kerodon_3_1_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex")
+:::definition "kerodon_3_1_5_9" (lean := "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex, SSet.π₀.mk")
 Kerodon Notation 3.1.5.9（[Tag 00TX](https://kerodon.net/tag/00TX)）。対応表の状態：本体にある。
 
 *主張*　単体集合の射 $`f:X\to Y` のホモトピー類を、$`\pi_0\operatorname{Fun}(X,Y)` の元 $`[f]` と書く。

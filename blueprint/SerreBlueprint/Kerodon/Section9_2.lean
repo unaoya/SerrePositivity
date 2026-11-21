@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -5,6 +7,7 @@ import Mathlib.Algebra.Category.ModuleCat.Adjunctions
 import Mathlib.Algebra.Category.ModuleCat.FilteredColimits
 import Mathlib.Algebra.Module.FinitePresentation
 import Mathlib.AlgebraicTopology.SimplicialSet.Finite
+import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 import Mathlib.CategoryTheory.Adjunction.Basic
 import Mathlib.CategoryTheory.Presentable.Finite
 import Mathlib.CategoryTheory.Yoneda
@@ -65,7 +68,7 @@ Kerodon Definition 9.2.0.2（[Tag 063B](https://kerodon.net/tag/063B)）。対�
 
 :::
 
-:::definition "kerodon_9_2_0_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_3_6_1_1, kerodon_3_6_1_7")
+:::definition "kerodon_9_2_0_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall, SSet.Finite.instIsFinitelyPresentable") (uses := "kerodon_1_1_0_6, kerodon_3_6_1_1, kerodon_3_6_1_7")
 Kerodon Variant 9.2.0.5（[Tag 063E](https://kerodon.net/tag/063E)）。対応表の状態：一部。
 
 *主張*　通常の単体集合の圏において、コンパクト対象であることは有限単体集合であることと同値である。
@@ -482,7 +485,7 @@ Kerodon Definition 9.2.5.6（[Tag 064F](https://kerodon.net/tag/064F)）。対�
 
 :::
 
-:::definition "kerodon_9_2_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall") (uses := "kerodon_1_1_0_6, kerodon_1_1_3_9, kerodon_1_1_3_11, kerodon_4_9_4_1, kerodon_4_9_4_10, kerodon_8_4_2_1, kerodon_9_2_0_5, kerodon_9_2_5_24")
+:::definition "kerodon_9_2_5_10" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isCardinalPresentable_of_isKappaSmall, SSet.Finite.instIsFinitelyPresentable") (uses := "kerodon_1_1_0_6, kerodon_1_1_3_9, kerodon_1_1_3_11, kerodon_4_9_4_1, kerodon_4_9_4_10, kerodon_8_4_2_1, kerodon_9_2_0_5, kerodon_9_2_5_24")
 Kerodon Variant 9.2.5.10（[Tag 064K](https://kerodon.net/tag/064K)）。対応表の状態：一部。
 
 *主張*　小さい正則基数 $`\kappa` と小さい単体集合 $`X` に対し、通常の単体集合の圏で $`X` が $`\kappa`-コンパクトであることは $`X` が $`\kappa`-小さいことと同値である。

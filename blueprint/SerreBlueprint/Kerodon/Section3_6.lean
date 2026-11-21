@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -26,8 +28,6 @@ Kerodon の 3.6 節（[Tag 012Y](https://kerodon.net/tag/012Y)）の項目と、
 Kerodon Theorem 3.6.0.1（[Tag 012Z](https://kerodon.net/tag/012Z)）。対応表の状態：なし。
 
 B6：普通の実現/特異の随伴は原文のCW型を持つ空間のホモトピー圏との同値の部品。 候補：幾何学的実現 SSet.toTop と特異単体集合 TopCat.toSSet の随伴はある。両方の弱ホモトピー同値を反転した圏の同値は未確認。
-
-宣言：`sSetTopAdj`
 
 :::
 
@@ -58,14 +58,12 @@ Kerodon Proposition 3.6.1.7（[Tag 0137](https://kerodon.net/tag/0137)）。対�
 
 :::
 
-:::proposition "kerodon_3_6_1_9" (uses := "kerodon_1_1_0_6, kerodon_1_1_0_12, kerodon_3_6_1_7, kerodon_9_2_0_2")
+:::proposition "kerodon_3_6_1_9" (lean := "SSet.Finite.instIsFinitelyPresentable") (uses := "kerodon_1_1_0_6, kerodon_1_1_0_12, kerodon_3_6_1_7, kerodon_9_2_0_2")
 Kerodon Proposition 3.6.1.9（[Tag 02LG](https://kerodon.net/tag/02LG)）。対応表の状態：一部。
 
 *主張*　単体集合 $`X` が有限であることは、$`\operatorname{Hom}(X,-)` がフィルター付き余極限を保つことと同値である。
 
 B6：Finite.instIsFinitelyPresentable は X.Finite から Hom(X,−) が filtered colimit を保つという原文の向きを直接与える。逆向きの有限性は含まない。
-
-宣言：`SSet.Finite.instIsFinitelyPresentable`
 
 :::
 
@@ -198,16 +196,12 @@ Kerodon Theorem 3.6.4.1（[Tag 0142](https://kerodon.net/tag/0142)）。対応�
 
 B6：随伴のunitの存在は原文のunitの弱同値性の直接の部分結論ではなく、その対象射の構成だけ。 候補：実現と特異単体集合の随伴の単位 u\_X を確認。u\_X の弱ホモトピー同値性を述べる Milnor の定理は未確認。
 
-宣言：`sSetTopAdj`
-
 :::
 
 :::corollary "kerodon_3_6_4_2"
 Kerodon Corollary 3.6.4.2（[Tag 0143](https://kerodon.net/tag/0143)）。対応表の状態：なし。
 
 B6：随伴のcounitの存在はその弱同値性を結論しない。 候補：実現と特異単体集合の随伴の余単位 v\_X はある。位相空間での v\_X の弱ホモトピー同値性は未確認。
-
-宣言：`sSetTopAdj`
 
 :::
 

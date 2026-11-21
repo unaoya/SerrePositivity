@@ -47,6 +47,16 @@ abbrev level (E : GeneralSymmetricSpectrum C K) (n : ℕ) : C :=
 def action (E : GeneralSymmetricSpectrum C K) :
     (tensorPowerSequence K) ⊗ E.X ⟶ E.X :=
   ModObj.smul (M := (tensorPowerSequence K)) (X := E.X)
+/-- 加群作用の結合則。 -/
+lemma action_assoc (E : GeneralSymmetricSpectrum C K) :
+    (tensorPowerMultiplication K) ▷ E.X ≫ action E =
+      (α_ (tensorPowerSequence K) (tensorPowerSequence K) E.X).hom ≫
+        (tensorPowerSequence K) ◁ action E ≫ action E :=
+  ModObj.mul_smul_self (tensorPowerSequence K) E.X
+/-- スペクトルの射は球面の作用と両立する。 -/
+@[reassoc] lemma action_hom {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) :
+    action E ≫ f.hom = (tensorPowerSequence K) ◁ f.hom ≫ action F :=
+  IsModHom.smul_hom (A := (tensorPowerSequence K)) (f := f.hom)
 /-- スペクトルの射の成分は、次数の等式による移送と両立する。 -/
 lemma hom_index_eq {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F)
     {m n : ℕ} (h : m = n) :
@@ -58,6 +68,10 @@ lemma hom_index_eq {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F)
 /-- スペクトルの射の第n段の成分。 -/
 def levelMap {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) (n : ℕ) : level E n ⟶ level F n :=
   f.hom.app (FiniteBijection.of n)
+
+/-- 合成の各段の成分は成分の合成。 -/
+lemma levelMap_comp {E F G : GeneralSymmetricSpectrum C K} (f : E ⟶ F) (g : F ⟶ G) (n : ℕ) :
+    levelMap (f ≫ g) n = levelMap f n ≫ levelMap g n := rfl
 
 /-- スペクトルの射は各段の成分で決まる。 -/
 lemma hom_ext {E F : GeneralSymmetricSpectrum C K} (f g : E ⟶ F)

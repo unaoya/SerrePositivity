@@ -1,6 +1,9 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.GroupTheory.MonoidLocalization.GrothendieckGroup
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -166,14 +169,12 @@ tag := "clmst-5-3"
 
 :::
 
-:::definition "clmst_5_3_3"
+:::definition "clmst_5_3_3" (lean := "Algebra.GrothendieckGroup")
 *定義 5.3.3*　モノイドの単元群と群完備化。対応表の状態：一部（part）。
 
 *主張*　加法モノイド $`M` に対し、加法逆元をもつ元の部分を $`M^*` と記す。差 $`v-w`（$`v,w\in M`）からなる群化を $`M^{\mathrm{gp}}` と記す。
 
 原典 PDF p.52; layout L2908。Mathlib の可換モノイドの群完備化を局所化として確認（加法版は to\_additive）。原典の M\* の集合と Mgp の両記号のうち群完備化側のみを採用し、モノイドを明示的に可換に限る。強凸・正規性など次項の条件は含まない。
-
-宣言：`Algebra.GrothendieckGroup`
 
 :::
 

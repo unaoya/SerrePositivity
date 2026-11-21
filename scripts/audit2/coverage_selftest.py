@@ -10,7 +10,8 @@ from unittest.mock import patch
 
 from audit import Failure, SCHEMA, command
 from coverage import Index, compare, location, update_locations
-from coverage_blueprint import generate, verify_output
+from coverage_blueprint import cards, generate, verify_names, verify_output
+from coverage_verso import name_only, name_only_report
 from common import Resolver
 
 
@@ -142,7 +143,7 @@ def main():
         else:
             raise AssertionError("generation started with an unresolved reference")
         assert not (root/"preflight/tree").exists()
-        expected = dict(old, literature="paper", file="research/paper-coverage/review/ch1.csv")
+        expected = dict(old, literature="paper", kind="thm", file="research/paper-coverage/review/ch1.csv")
         for wrong in ({}, {"paper_1":["Section1.lean",[]]}):
             try:
                 verify_output(wrong, [expected])
@@ -150,8 +151,30 @@ def main():
                 pass
             else:
                 raise AssertionError("missing planned card or planned link was accepted")
+        constructor = dict(expected, ordinal=2, name="Demo.Box.mk", kind="ctor")
+        assert name_only_report([expected, constructor])["references"][0]["name"] == "Demo.Box.mk"
+        assert all(name_only({"kind": k}) for k in ("ctor", "rec", "quot"))
+        assert not any(name_only({"kind": k}) for k in ("def", "thm", "inductive", "opaque", "axiom"))
+        wire = json.loads(plan.read_text())
+        wire["links"]["Demo.Box.mk"] = ["Demo.Box.mk", "Mathlib.Box"]
+        wire["name_only"] = {"Demo.Box.mk": "Demo.Box.mk"}
+        plan.write_text(json.dumps(wire))
+        try:
+            os.chdir(root)
+            with patch.dict(os.environ, AUDIT2_BLUEPRINT_PLAN=str(plan)):
+                writer = Resolver()
+                imports = set()
+                linked = writer.links("paper_1", "Demo.statement | Demo.Box.mk", imports, True)
+                assert linked == ["Demo.statement"] and imports == {a[0]}
+                note = writer.declaration_note("paper_1", "Demo.statement | Demo.Box.mk", linked)
+                writer.write("output.lean", ':::theorem "paper_1" (lean := "Demo.statement")\n' + note + ":::\n")
+        finally:
+            os.chdir(cwd)
+        verify_output(cards(root), [expected, constructor])
+        verify_names(root, [expected, constructor])
     print("PASS: approved/unapproved move and rename, deletion, statement/body, proof stop, "
-          "short name and owner ambiguity, pinned name, one lost link, pre-generation rejection")
+          "short name and owner ambiguity, pinned name, one lost link, pre-generation rejection, "
+          "constructor rendered by name only")
 
 
 if __name__=="__main__":

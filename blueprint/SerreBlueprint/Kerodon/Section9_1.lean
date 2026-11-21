@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -156,8 +158,6 @@ Kerodon Corollary 9.1.1.19（[Tag 02PK](https://kerodon.net/tag/02PK)）。対�
 Kerodon Corollary 9.1.1.20（[Tag 02PL](https://kerodon.net/tag/02PL)）。対応表の状態：なし。
 
 原文と一致するiffの候補はArchiveにあり対象外。本体のfiltered⇒弱可縮だけではKanの可縮性を返す型と同じiffをここで確認できていない。
-
-宣言：`SerrePositivity.InfinityCategories.F2.isFilteredInfinity_iff_isContractibleKan`
 
 :::
 

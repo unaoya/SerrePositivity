@@ -1,6 +1,9 @@
+-- audit2: 98f6bd13c9b0b36c7c258e2659a40a43a405c04f inputs sha256 e8dca7c30ce1fca3351f4ddfc08dfa2ccc5f6617ecf7a8f8fcafba0d1c95df06
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 import Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic
 import Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory
@@ -16,6 +19,7 @@ import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
 import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 import Mathlib.CategoryTheory.Elements
 import Mathlib.CategoryTheory.Functor.Const
+import Mathlib.CategoryTheory.IsConnected
 import Mathlib.CategoryTheory.Limits.IsConnected
 import Mathlib.Combinatorics.Quiver.Basic
 import SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence
@@ -48,7 +52,7 @@ Kerodon Notation 1.1.0.1（[Tag 0009](https://kerodon.net/tag/0009)）。対応�
 
 仮定：非負整数 n（Kerodon と一致）。結論：SimplexCategory.mk n は長さ n の対象 ⦋n⦌、すなわち 0,…,n の順序集合を表す（一致）。
 
-宣言：`SimplexCategory.mk`
+宣言（リンクなし）：`SimplexCategory.mk`
 
 :::
 
@@ -187,18 +191,14 @@ Kerodon Definition 1.1.1.2（[Tag 04ZD](https://kerodon.net/tag/04ZD)）。対�
 
 原文は任意圏 C の半単体対象 SemiSimplexCategoryᵒᵖ⥤C を定義する。候補の型は半単体圏そのものの構造だけで、対象関手の定義・成分を直接与えない。圏の材料だけを partial に数えない。
 
-宣言：`SemiSimplexCategory`
-
 :::
 
-:::definition "kerodon_1_1_1_4"
+:::definition "kerodon_1_1_1_4" (lean := "SimplexCategory.δ, CategoryTheory.SimplicialObject.δ")
 Kerodon Construction 1.1.1.4（[Tag 04ZE](https://kerodon.net/tag/04ZE)）。対応表の状態：一部。
 
 *主張*　$`n>0`、$`0\le i\le n` に対して、$`i` を飛ばす狭義増加写像 $`[n-1]\to[n]` に半単体的対象を評価すると第 $`i` 面作用素 $`d_i^n\colon C_n\to C_{n-1}` が得られる。
 
 原文は δ と (semi)simplicial object の面作用素を構成する。SimplexCategory.δ は Fin.succAboveOrderEmb による同じ δ、SimplicialObject.δ は X.map δ.op そのものなので、単体対象側の構成を直接与える。半単体対象側は含まない。
-
-宣言：`SimplexCategory.δ`、`CategoryTheory.SimplicialObject.δ`
 
 :::
 
@@ -218,14 +218,12 @@ tag := "kerodon-1-1-2"
 
 Kerodon [Tag 04ZJ](https://kerodon.net/tag/04ZJ)
 
-:::definition "kerodon_1_1_2_1"
+:::definition "kerodon_1_1_2_1" (lean := "SimplexCategory.σ, CategoryTheory.SimplicialObject.σ")
 Kerodon Construction 1.1.2.1（[Tag 04ZK](https://kerodon.net/tag/04ZK)）。対応表の状態：Mathlib にある。
 
 *主張*　$`0\le i\le n` について、隣り合う $`i,i+1` を同一視する単調全射 $`[n+1]\to[n]` に単体的対象を評価して、第 $`i` 退化作用素 $`s_i^n\colon C_n\to C_{n+1}` を得る。
 
 仮定：非負整数 n、i : Fin (n+1)、圏 C の単体対象（Kerodon と一致）。結論：SimplexCategory.σ は \[n+1\] → \[n\] で i と i+1 を同一視し、SimplicialObject.σ は反変評価 Cₙ ⟶ Cₙ₊₁（一致）。
-
-宣言：`SimplexCategory.σ`、`CategoryTheory.SimplicialObject.σ`
 
 :::
 
@@ -247,7 +245,7 @@ Kerodon Definition 1.1.2.3（[Tag 0012](https://kerodon.net/tag/0012)）。対�
 
 :::
 
-:::proposition "kerodon_1_1_2_10" (lean := "SSet.mem_degenerate_iff") (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
+:::proposition "kerodon_1_1_2_10" (lean := "SSet.mem_degenerate_iff, SSet.degenerate_eq_iUnion_range_σ") (uses := "kerodon_1_1_0_6, kerodon_1_1_2_1")
 Kerodon Proposition 1.1.2.10（[Tag 0011](https://kerodon.net/tag/0011)）。対応表の状態：一部。
 
 *主張*　$`n>0` の単体 $`\tau\colon\Delta^n\to S` が退化することは、一つの退化作用素の像に入ること、標準全射で $`\Delta^{n-1}` または次元 $`m<n` の $`\Delta^m` を経ること、任意の射でより低次元の標準単体を経ること、頂点に関して非単射な射で標準単体を経ることのいずれとも同値である。
@@ -468,7 +466,7 @@ Kerodon Corollary 1.1.5.8（[Tag 00FX](https://kerodon.net/tag/00FX)）。対応
 
 :::
 
-:::corollary "kerodon_1_1_5_9" (lean := "CategoryTheory.isConnected_of_isInitial")
+:::corollary "kerodon_1_1_5_9" (lean := "CategoryTheory.instFullFunctorConstOfIsConnected, CategoryTheory.isConnected_of_isInitial")
 Kerodon Corollary 1.1.5.9（[Tag 00FY](https://kerodon.net/tag/00FY)）。対応表の状態：Mathlib にある。
 
 *主張*　任意の圏からその単体的対象の圏への定値対象関手は充満忠実である。
@@ -486,14 +484,12 @@ Kerodon Definition 1.1.5.10（[Tag 00FZ](https://kerodon.net/tag/00FZ)）。対�
 
 :::
 
-:::corollary "kerodon_1_1_5_11"
+:::corollary "kerodon_1_1_5_11" (lean := "CategoryTheory.instFullFunctorConstOfIsConnected")
 Kerodon Corollary 1.1.5.11（[Tag 00G0](https://kerodon.net/tag/00G0)）。対応表の状態：一部。
 
 *主張*　集合を定値単体的集合へ送る関手は充満忠実で、本質像は離散単体的集合の充満部分圏である。
 
 原文の結論の一つは const:Set→SSet の充満忠実性。IsConnected J の下の const の Full/Faithful は J=SimplexCategoryᵒᵖ へ直接適用でき、その結論成分に対応する。本質的像を離散対象とする結論は引用に含めない。
-
-宣言：`CategoryTheory.instFullFunctorConstOfIsConnected`
 
 :::
 
@@ -536,7 +532,7 @@ Kerodon Definition 1.1.6.5（[Tag 001J](https://kerodon.net/tag/001J)）。対�
 
 原文の Graph の射は辺を頂点へ潰す場合を含む。Prefunctor の型は二つの quiver の頂点写像と辺から辺への写像、ReflQuiver は恒等辺のデータであり、原文の非退化辺と頂点の直和上の射ではない。反射的quiverとの対応を別に構成せず同じ主張と認めない。
 
-宣言：`Prefunctor`、`CategoryTheory.ReflQuiver`
+宣言：`CategoryTheory.ReflQuiver`
 
 :::
 

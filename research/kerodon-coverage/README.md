@@ -5,6 +5,8 @@
 
 ## 集計
 
+AR-W1 段6以降、照合表の宣言欄には現行本体・固定 Mathlib に実在する宣言の `完全名 @ パス:行` を書く。ルート直下は `_root_.` を付ける。計画、却下した候補、Archive の参照は備考列 `reference_note` に置く。
+
 | 章 | Subsection | あり | 一部 | なし | 主な出どころ |
 | --- | --- | --- | --- | --- | --- |
 | 1 The Language of ∞-Categories | 31 | 20 | 10 | 1 | ほぼ Mathlib |

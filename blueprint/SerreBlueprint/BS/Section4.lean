@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -169,8 +171,6 @@ $$`\eta:=(\mathrm{Spf}(B)\leftarrow\mathrm{Spf}(B/IB)\to X)\in(X/A)_\Delta\ \map
 
 （補った）Zariski・Nisnevich・étale の被覆は（$`(p,I)` 完全な意味で）平坦被覆なので、位相は $`\tau_{\mathrm{Zar}}\le\tau_{\mathrm{Nis}}\le\tau_{\mathrm{et}}\le\tau_{\mathrm{fl}}` と並び、恒等関手が比較の topos の射を与える。その順像は層を（粗い位相の層として）そのまま見る関手。導来順像が $`\mathcal O_\Delta` を保つことは、$`\mathcal O_\Delta` の高次コホモロジーが各対象の上でどの位相でも消えることと同じ。系 3.4.3 は、平坦被覆の Čech 余脈体に沿って $`B\to C^\bullet` が極限図式（高次 Čech コホモロジーが消える）であることを示す。これは粗い位相の被覆（特別な平坦被覆）にも当てはまり、被覆の族は押し出しで閉じているので、Cartan の判定（全対象のすべての被覆で高次 Čech コホモロジーが消えれば層コホモロジーも消える）から、どの位相でも $`H^i(B,\mathcal O_\Delta)=0`（$`i>0`）。よって比較の射に沿った $`R\pi_*\mathcal O_\Delta=\mathcal O_\Delta`。$`\overline{\mathcal O}_\Delta` も同じ。crystal 係数の場合は、系 3.4.3 の証明の $`\mathrm{Kos}(-;p^n,I^n)` の忠実平坦降下を $`D_{(p,I)\text{-comp}}` の降下に置き換えて同じ議論をする。注意 4.1.3 の見方は、$`X` の site を $`(\ast/A)_\Delta` の slice とみて、$`(\ast/A)_\Delta` での主張から $`X` の場合を得るのに使う。
 
-宣言：`derivedGlobalSections_of_le`
-
 :::
 
 :::proposition "bs_4_6"
@@ -191,8 +191,6 @@ perfect prismatic site と perfectoid-under category の比較は drafts。通�
 *注意 4.1.6（原典 Rem 4.6：完全 prismatic site） — 原典との差（D5・D16）*
 
 drafts の完全 site は、定義 4.1.1 の Lean の site（affine・向き付き・濃度 $`\le\kappa`）の充満部分圏で、perfectoid 環の圏との同値は完全な基底の上でだけ述べる。原典は一般の $`Y` と一般の基底で述べる。
-
-宣言：`PerfectPrismaticSite`、`perfectSite`、`perfectFlatTopology`、`perfectSiteEquivPerfectoidUnder`
 
 :::
 
@@ -349,7 +347,7 @@ bockstein\_sq\_zero は同じ多項式 reducedModel 上の BetaSquareZero を証
 
 D27：$`H^*(\overline\Delta)` とその環構造は Čech–Alexander 模型の上で述べる。D29：原典は Prop 6.2（r = 1）から Lemma 4.21 で一般へ進むが、本体の主張は最初から一般の r の多項式代数で、定理の範囲を多項式代数に絞る。
 
-宣言：`SerrePositivity.BhattScholze.Prismatic.HodgeTateIsoStatement`、`SerrePositivity.BhattScholze.Prismatic.hodgeTate_iso_polynomial_Zp`、`hodgeTate_iso`、`SerrePositivity.BhattScholze.Prismatic.hodgeTate_of_deRham_cartier`
+宣言：`SerrePositivity.BhattScholze.Prismatic.HodgeTateIsoStatement`、`SerrePositivity.BhattScholze.Prismatic.hodgeTate_iso_polynomial_Zp`、`SerrePositivity.BhattScholze.Prismatic.hodgeTate_of_deRham_cartier`
 
 :::
 
@@ -371,8 +369,6 @@ $`\Delta_{X/A}\in D(X_{\mathrm{\acute et}},A)` の形成は有界 prism の射 $
 比較写像は、$`(X_B/B)_\Delta` の対象を $`X_B\to X` との合成で $`(X/A)_\Delta` の対象とみなす関手から得る $`g^*\Delta_{X/A}\to\Delta_{X_B/B}` を完備化したもの。両辺は導来 $`(p,I)` 完備なので、導来 Nakayama（\[Sta, Tag 0G1U\]）により mod I で同型を示せば足りる。定義 4.2.1 の証明の (a) により mod I の主張は $`(g^*\overline\Delta_{X/A})^\wedge\cong\overline\Delta_{X_B/B}`（完備化は導来 p 完備化）。これは HT 比較と、微分形式 $`\Omega^*` が底変換と可換であることから出る。
 
 省かれた点の要点（補った）：Thm 4.11 により $`\overline\Delta_{X/A}` は有限の Postnikov フィルトレーションを持ち、その次数部分 $`\Omega^i_{X/(A/I)}\{-i\}[-i]` は局所自由 $`\mathcal O_X` 加群。$`g^*` と p 完備化はこれらの三角形を保ち、局所自由加群の p 完備な底変換は $`\Omega^i_{X_B/(B/IB)}\{-i\}` を与える。比較写像は Construction 4.9 の関手性で $`\eta^*` と両立するので、各次数部分で同型。
-
-宣言：`prismaticCohomology_baseChange'`、`PrismaticCohomologyBaseChangeStatement`
 
 :::
 
@@ -453,8 +449,6 @@ $$`\Delta_{R/A}:=R\Gamma(\mathrm{Spec}(R),\Delta_{\mathrm{Spec}(R)/A}),\qquad \o
 *定義 4.3.1（原典 Notation 4.16：affine の場合の記号と $`\Delta_{R/A}`） — 原典との差（D17・D18）*
 
 $`R\Gamma` は古典的な層係数コホモロジーではなく、Čech 層（被覆篩に沿う降下）としての層化と極限で定義する（D17）。$`\mathcal O_\Delta` は離散な層なので両者は一致する。値はまず $`D(A)` の対象で、可換代数対象としての構造（原典 Construction 7.6）は別に作って結ぶ（D18）。
-
-宣言：`prismaticCohomology`、`hodgeTateCohomology`、`prismaticCohomologyFrobenius`、`prismaticCohomology_cutoff_invariant`
 
 :::
 
@@ -590,8 +584,6 @@ $`R` を $`p` 完全に滑らかな $`A/I` 代数とし、$`(A,I)\to(A',I')` を
 
 drafts の主張は有限変数の完備多項式代数の場合だけ（使う場面、原典 Construction 6.1(3)・Prop 6.2・Thm 6.4 の帰着はどれも多項式代数）で、「自然な射が同型」ではなく可逆な辺の存在を述べる。Tor 振幅は Koszul 複体で測る（補題 4.3.7 の囲み）。
 
-宣言：`prismaticCohomology_baseChange`、`hodgeTateCohomology_baseChange`、`crystallineCoverMap_prismaticCohomology`
-
 :::
 
 :::lemma_ "bs_4_21"
@@ -644,7 +636,7 @@ $$`(K\otimes^L_CC')\otimes^L_{C'}\mathrm{Kos}(C';x_1,\dots,x_r)\simeq\bigl(K\oti
 
 Lean の Tor 振幅は標的の Koszul 複体 $`\mathrm{Kos}(C';x)` で測る（a0-design §2.9 の注意 D4-04）。商 $`C/J` で測る版とは、$`x` が標的で正則列でないとき最大 $`r` だけずれるが、有限であることは同時に成り立ち、主張は同じ。原典の証明が実際に使うのも Koszul 複体の形。
 
-宣言：`completedBaseChange_tot_comm`、`SerrePositivity.HasCochainCompleteTorAmplitude`
+宣言：`SerrePositivity.HasCochainCompleteTorAmplitude`
 
 :::
 

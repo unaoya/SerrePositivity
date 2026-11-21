@@ -1,6 +1,9 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.CategoryTheory.Limits.Indization.Category
 import Mathlib.Order.CompleteLattice.Defs
 import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.AdjointRepresentability
 import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
@@ -567,7 +570,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：コンパ�
 
 :::
 
-:::corollary "kerodon_9_5_5_8" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects")
+:::corollary "kerodon_9_5_5_8" (lean := "CategoryTheory.instHasColimitsIndOfHasFiniteColimits, SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasFiniteColimits_kappaCompactObjects")
 Kerodon Corollary 9.5.5.8（[Tag 06NS](https://kerodon.net/tag/06NS)）。対応表の状態：一部。
 
 *主張*　小さい正則基数 $`\kappa` に関して $`\kappa`-コンパクト生成される無限圏 $`C` では、$`C` が余完備であること、$`\kappa`-余完備であること、$`\kappa`-コンパクト対象の充満部分圏が $`\kappa`-余完備であることは同値である。

@@ -1,7 +1,10 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
+import Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular
 import Mathlib.AlgebraicTopology.SimplicialSet.Subdivision
 import Mathlib.Order.NonemptyFiniteChains
 import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
@@ -62,18 +65,16 @@ tag := "kerodon-3-3-1"
 
 Kerodon [Tag 00XT](https://kerodon.net/tag/00XT)
 
-:::definition "kerodon_3_3_1_1"
+:::definition "kerodon_3_3_1_1" (lean := "SSet.nonDegenerate_δ")
 Kerodon Definition 3.3.1.1（[Tag 00XU](https://kerodon.net/tag/00XU)）。対応表の状態：一部。
 
 *主張*　単体集合が braced であるとは、正次元の非退化単体の面がすべて非退化であることをいう。
 
 B6：nonDegenerate\_δ は Nonsingular X の非退化単体の各面も非退化と直接述べるので、原文の braced 条件を返す。単体の写像自体が Mono という強い仮定に限る。
 
-宣言：`SSet.nonDegenerate_δ`
-
 :::
 
-:::definition "kerodon_3_3_1_4" (lean := "SSet.nonDegenerate")
+:::definition "kerodon_3_3_1_4" (lean := "SSet.nonDegenerate, SSet.nonDegenerate_δ")
 Kerodon Notation 3.3.1.4（[Tag 00XX](https://kerodon.net/tag/00XX)）。対応表の状態：一部。
 
 *主張*　単体集合 $`X` の非退化 $`n`-単体の集合を $`X_n^{\mathrm{nd}}` と書く。$`X` が braced なら面写像がこれらの集合を保つので、半単体集合 $`X^{\mathrm{nd}}` が得られる。

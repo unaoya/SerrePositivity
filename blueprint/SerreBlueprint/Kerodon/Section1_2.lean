@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -116,14 +118,12 @@ Kerodon Proposition 1.2.1.13（[Tag 00GJ](https://kerodon.net/tag/00GJ)）。対
 
 :::
 
-:::corollary "kerodon_1_2_1_14"
+:::corollary "kerodon_1_2_1_14" (lean := "SSet.π₀.nonempty_iff")
 Kerodon Corollary 1.2.1.14（[Tag 00GK](https://kerodon.net/tag/00GK)）。対応表の状態：Mathlib にある。
 
 *主張*　単体的集合 $`S` が空であることと、連結成分集合 $`\pi_0(S)` が空であることは同値である。
 
 仮定：単体集合 S（Kerodon と一致）。結論：π₀.nonempty\_iff は成分集合の非空性と頂点集合の非空性の同値であり、空性の同値を逆に表す（一致）。
-
-宣言：`SSet.π₀.nonempty_iff`
 
 :::
 
@@ -163,14 +163,12 @@ Kerodon Corollary 1.2.1.21（[Tag 00GS](https://kerodon.net/tag/00GS)）。対�
 
 :::
 
-:::proposition "kerodon_1_2_1_22"
+:::proposition "kerodon_1_2_1_22" (lean := "SSet.isColimitCoforkπ₀")
 Kerodon Proposition 1.2.1.22（[Tag 00GT](https://kerodon.net/tag/00GT)）。対応表の状態：Mathlib にある。
 
 *主張*　頂点をその連結成分へ送る $`S_0\to\pi_0(S)` は、辺から両端点をとる二つの面作用素 $`S_1\rightrightarrows S_0` の余等化子である。
 
 仮定：単体集合 S（Kerodon と一致）。結論：isColimitCoforkπ₀ は S.π₀ を 1 単体の二つの面 d₀,d₁ : S₁ → S₀ の余等化子として与える（一致）。
-
-宣言：`SSet.isColimitCoforkπ₀`
 
 :::
 
@@ -252,7 +250,7 @@ Kerodon Definition 1.2.3.1（[Tag 001Y](https://kerodon.net/tag/001Y)）。対�
 
 原文は指定u:S→Sing(Y)が全Xへの合成写像の全単射を満たすという任意Y,uの普遍性の述語。toTop と sSetTopAdj は標準の実現関手と随伴で、任意の指定uに対するその条件の定義ではない。標準単位の例と任意のuの述語を同一視しない。
 
-宣言：`SSet.toTop`、`sSetTopAdj`
+宣言：`SSet.toTop`
 
 :::
 

@@ -88,8 +88,7 @@ def gen(key):
                 if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
                 if (nb := notes_md.note_body(f'{P}/notes/{n}.md', skip=('原典 ', '照合先'))):
                     stats['with-note'] += 1; body.append(nb)
-                decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
-                if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
+                if declaration_note := res.declaration_note(lab, rv.get('declarations', ''), linked): body.append(declaration_note)
                 if ext[n]: body.append('外の文献：' + '、'.join(esc(x) for x in ext[n]) + '\n')
                 body.append(':::\n')
         mod = f'Section{slug(sec)}'
@@ -176,8 +175,7 @@ def gen_route(rk):
             body.append(f'*{dirname} {KINDJA.get(r["kind"], esc(r["kind"]))} {esc(n)}*　{goal}{esc(ttl)}。対応表の状態：{state}。\n')
             if n in STMT: body.append(STMT[n]); stats['with-statement'] += 1
             if rv.get('reason'): body.append(esc(rv['reason']) + '\n')
-            decls = [x.split(' @ ', 1)[0].strip() for x in rv.get('declarations', '').split(' | ') if x.strip()]
-            if decls and not linked: body.append('宣言：' + '、'.join('`' + d.replace('`', '') + '`' for d in decls) + '\n')
+            if declaration_note := res.declaration_note(lab, rv.get('declarations', ''), linked): body.append(declaration_note)
             if ext[n]: body.append('外の文献：' + '、'.join(esc(x) for x in ext[n]) + '\n')
             body.append(':::\n')
         hdr = ['import Verso', 'import VersoManual', 'import VersoBlueprint'] + [f'import {m}' for m in sorted(imports)] + \

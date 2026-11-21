@@ -33,23 +33,11 @@ def mappingObjectComposition (E F G : GeneralSymmetricSpectrum C K) :
     pointwiseTensorAssociatorNatIso mappingObjectFunctor
     mappingObjectAdjunction E F G
 
-/-- 合成を作用へ送って評価すると二回の評価に一致するという法則。 -/
-def mappingObjectCompositionEvaluationLaw (E F G : GeneralSymmetricSpectrum C K) : Prop :=
-  RepresentedMappingEnrichment.compositionEvaluationLaw pointwiseTensorBifunctor
-    pointwiseTensorAssociatorNatIso mappingObjectFunctor
-    mappingObjectAdjunction E F G
-
 /-- 作用の単位比較を転置して得る写像対象の単位。 -/
 def mappingObjectUnit (E : GeneralSymmetricSpectrum C K) :
     𝟙_ C ⟶ mappingObject E E :=
   RepresentedMappingEnrichment.unit pointwiseTensorBifunctor pointwiseTensorUnitNatIso
     mappingObjectFunctor mappingObjectAdjunction E
-
-/-- 写像対象の単位を作用へ送って評価すると作用の単位比較になるという法則。 -/
-def mappingObjectUnitEvaluationLaw (E : GeneralSymmetricSpectrum C K) : Prop :=
-  RepresentedMappingEnrichment.unitEvaluationLaw pointwiseTensorBifunctor
-    pointwiseTensorUnitNatIso mappingObjectFunctor
-    mappingObjectAdjunction E
 
 /-- 通常のスペクトル射と写像対象の単位からの射の同値。 -/
 def mappingObjectArrowEquiv (E F : GeneralSymmetricSpectrum C K) :
@@ -63,12 +51,6 @@ def mappingObjectArrow {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) :
     𝟙_ C ⟶ mappingObject E F :=
   RepresentedMappingEnrichment.arrow pointwiseTensorBifunctor pointwiseTensorUnitNatIso
     mappingObjectFunctor mappingObjectAdjunction f
-
-/-- 恒等射の対応先は作用の単位比較の転置という法則。 -/
-def mappingObjectArrowIdentityLaw (E : GeneralSymmetricSpectrum C K) : Prop :=
-  RepresentedMappingEnrichment.arrowIdentityLaw pointwiseTensorBifunctor
-    pointwiseTensorUnitNatIso mappingObjectFunctor
-    mappingObjectAdjunction E
 
 
 /-- 単位を左因子へ入れた合成の評価が通常の左単位からの評価に一致するという法則。 -/
@@ -89,12 +71,6 @@ lemma mappingObject_left_unit_evaluation (E F : GeneralSymmetricSpectrum C K) :
       pointwiseTensorUnitNatIso mappingObjectFunctor mappingObjectAdjunction F
   · exact pointwiseTensor_left_unit (mappingObject E F) E
 
-/-- 写像対象の左単位則の等式。 -/
-def mappingObjectLeftUnitLaw (E F : GeneralSymmetricSpectrum C K) : Prop :=
-  RepresentedMappingEnrichment.leftUnitLaw pointwiseTensorBifunctor
-    pointwiseTensorAssociatorNatIso pointwiseTensorUnitNatIso
-    mappingObjectFunctor mappingObjectAdjunction E F
-
 /-- 単位を右因子へ入れた合成の評価が通常の右単位からの評価に一致するという法則。 -/
 def mappingObjectRightUnitEvaluationLaw (E F : GeneralSymmetricSpectrum C K) : Prop :=
   RepresentedMappingEnrichment.rightUnitEvaluationLaw pointwiseTensorBifunctor
@@ -112,12 +88,6 @@ lemma mappingObject_right_unit_evaluation (E F : GeneralSymmetricSpectrum C K) :
   · exact RepresentedMappingEnrichment.unit_evaluation pointwiseTensorBifunctor
       pointwiseTensorUnitNatIso mappingObjectFunctor mappingObjectAdjunction E
   · exact pointwiseTensor_triangle (mappingObject E F) E
-
-/-- 写像対象の右単位則の等式。 -/
-def mappingObjectRightUnitLaw (E F : GeneralSymmetricSpectrum C K) : Prop :=
-  RepresentedMappingEnrichment.rightUnitLaw pointwiseTensorBifunctor
-    pointwiseTensorAssociatorNatIso pointwiseTensorUnitNatIso
-    mappingObjectFunctor mappingObjectAdjunction E F
 
 
 /-- 三つの写像対象の反復合成を評価した射が等しいという法則。 -/
@@ -140,17 +110,6 @@ lemma mappingObject_associativity_evaluation (E F G T : GeneralSymmetricSpectrum
       pointwiseTensorAssociator pointwiseTensorPost pointwiseTensorAssociator_level
       pointwiseTensorPost_level (mappingObject G T) (mappingObject F G) (mappingObject E F) E
 
-/-- C値写像対象の合成の結合則の等式。 -/
-def mappingObjectAssociativityLaw (E F G T : GeneralSymmetricSpectrum C K) : Prop :=
-  RepresentedMappingEnrichment.associativityLaw pointwiseTensorBifunctor
-    pointwiseTensorAssociatorNatIso mappingObjectFunctor
-    mappingObjectAdjunction E F G T
-
-
-/-- 通常の射を写像対象の点へ送った後の評価の法則。 -/
-def mappingObjectArrowEvaluationLaw {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) : Prop :=
-  AdjunctionHomLaws.comparisonEvaluationLaw (mappingObjectAdjunction E)
-    (pointwiseTensorUnitIso E) f
 
 /-- 通常の二つの射に対応する点の合成の評価の法則。 -/
 def mappingObjectArrowCompositionEvaluationLaw {E F G : GeneralSymmetricSpectrum C K}
@@ -174,13 +133,6 @@ lemma mappingObjectArrow_composition_evaluation {E F G : GeneralSymmetricSpectru
   · exact pointwiseTensorAssociator_parameter_naturality (mappingObjectArrow g)
       (mappingObjectArrow f) E
   · exact pointwiseTensor_triangle (𝟙_ C) E
-
-/-- 通常の射の合成と写像対象の点の合成が一致するという法則。 -/
-def mappingObjectArrowCompositionLaw {E F G : GeneralSymmetricSpectrum C K}
-    (f : E ⟶ F) (g : F ⟶ G) : Prop :=
-  RepresentedMappingEnrichment.arrowCompositionLaw pointwiseTensorBifunctor
-    pointwiseTensorAssociatorNatIso pointwiseTensorUnitNatIso
-    mappingObjectFunctor mappingObjectAdjunction f g
 
 /-- C-valued enrichment, with the ordinary order of composition factors. -/
 @[instance_reducible]

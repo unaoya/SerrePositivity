@@ -54,3 +54,20 @@ python3 scripts/audit2/coverage_selftest.py
 - `check` は追加・消失・未承認の移動・指紋の変化・新しい未解決を列挙する。承認済みの改名・移動は `--moves` に `[{"old":["所有モジュール","カーネル名"],"new":["所有モジュール","カーネル名"]}]` 形式の JSON を渡す。合格したときに限り `--apply-locations` で位置と承認済みの名前を書き戻せる。書き戻し後は差分を確認し、`resolve` をやり直す。指紋変化を警告として試すときは `--warn-fingerprints` を明示する。
 - 主張は Lean の型の構造指紋。意味は主張の型から到達する本体の定義・opaque の型と値、帰納型・構成子の型を集めた SHA-256。各定数名を含め、定理の証明はそこで止める。Mathlib の中は固定版を境界とする。
 - 生成の前に未解決と基準を検査し、生成の後に全カードのリンク配列を別に照合する。Git 外の新しい出力先へ生成し、公開用の反映は `--publish` を明示する。現行の未解決を調べる `--preview` は診断用。省いた参照は `unresolved.json` に出る。診断用の成果物は公開できない。
+
+固定版の VersoBlueprint `7bd0c10` が外部リンクとして受け付けないのは、コンストラクタ、再帰子、商型のカーネル組み込み宣言。該当する参照はカードに宣言名を表示し、生成先の `name-only.json` と取り込み検査の `blueprint_name_only` に載せる。判定の根拠は固定版の `Data.lean` と `ExternalRefSnapshot.lean`。公理と opaque 宣言は後者で受け付ける。来歴コメントを除くコード・本文がバイト単位で等しい Lean 生成物は、反映時に従来のファイルを使う。生成結果の `retained` にそのファイルとハッシュを記録する。
+
+## 取り込み時の文献対応表の検査
+
+対応表の宣言欄には、現行本体と固定 Mathlib に実在する宣言の `完全名 @ パス:行` を書く。ルート直下の名前は `_root_.` を明示する。未実装の計画、却下した候補、Archive の参照、原典番号の対応が未確認の候補は、備考列 `reference_note` に記録する。対応状態は照合の結果に従う。備考で参照が空になった理由を示した行は、宣言索引の対象行を持たない。ブループリントでリンクが必要な項目は生成器が引き続き検査する。
+
+調整役は取り込み候補をコミットし、候補の記録監査に合格してから次を実行する。`BEFORE` には取り込み前の main のコミットを指定し、そのコミットの文献基準と比較する。手元で同じ版の基準を検査するときは `--baseline-ref` を省略できる。
+
+```sh
+python3 scripts/audit2/coverage_merge.py "$OUT/full/audit.sqlite" "$OUT/mathlib/external.json" \
+  "$OUT/coverage-merge.json" --baseline-ref "$BEFORE"
+```
+
+終了0は合格。終了1は未解決、消失、未承認の改名、主張の型の変更、新しい基準を要する行などの不合格。終了2は記録監査の未合格、索引の不足などの前提エラー。終了3は意味の指紋だけの変化があり、レビューを待つ状態。指紋が変わった行と変更前後の値は `meaning_review` に出る。担当者が意味の変化を承認した行は、`file`、`item`、`ordinal`、`module`、`name`、`old_meaning`、`new_meaning` を持つ JSON オブジェクトの配列にし、`--accept-meaning FILE` を付けて再実行する。承認はその差分にだけ適用され、未使用の承認があれば不合格になる。基準値を承認し直す操作は別途行う。
+
+実際の Lake ビルドと記録監査を経由する改名・型変更・意味変更の試験は、bulk 鍵で `python3 scripts/audit2/coverage_merge_selftest.py "$OUT/coverage-merge-selftest"` を実行する。

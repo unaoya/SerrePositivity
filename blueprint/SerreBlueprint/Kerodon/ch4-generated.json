@@ -12,14 +12,12 @@
   "Section4_9"
  ],
  "stats": {
-  "linked": 266,
+  "linked": 270,
   "with-statement": 270,
   "with-note": 26,
   "with-uses": 205,
   "nolink-none": 318,
   "with-note-intro": 17,
-  "nolink-mathlib": 3,
-  "nolink-own": 1,
   "nolink-unreviewed": 2
  }
 }

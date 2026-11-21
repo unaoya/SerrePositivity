@@ -1,6 +1,12 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicGeometry.Morphisms.Constructors
+import Mathlib.CategoryTheory.MorphismProperty.Limits
+import Mathlib.Topology.Compactification.StoneCech
+import Mathlib.Topology.Defs.Induced
 import SerrePositivity.AlgebraicGeometry.AffineVCover
 import SerrePositivity.AlgebraicGeometry.ArcRouteB.AicValuationArc
 import SerrePositivity.AlgebraicGeometry.ArcRouteB.ArcCoverCech
@@ -99,14 +105,12 @@ tag := "vdescent-bm18-2"
 
 :::
 
-:::definition "bm18_2_12"
+:::definition "bm18_2_12" (lean := "Topology.IsQuotientMap, AlgebraicGeometry.topologically, CategoryTheory.MorphismProperty.universally")
 *BM18 定義 2.12*　submersion の定義。対応表の状態：Mathlib にある。
 
 *主張*　qcqs スキームの射が submersive であるとは、台の位相空間上で全射であり、標的が商位相を持つことをいう。任意の qcqs スキームによる底変換後もそうであるとき、普遍的に submersive という。
 
 原典 PDF p.11, y=431.9。スキームの台位相写像に IsQuotientMap を課し、普遍版はすべての引き戻しで同じ性質を課す。原典の qcqs の範囲に制限して一致する。
-
-宣言：`Topology.IsQuotientMap`、`AlgebraicGeometry.topologically`、`CategoryTheory.MorphismProperty.universally`
 
 :::
 
@@ -146,14 +150,12 @@ tag := "vdescent-bm18-3"
 
 :::
 
-:::definition "bm18_3_13"
+:::definition "bm18_3_13" (lean := "StoneCech, stoneCechUnit")
 *BM18 構成 3.13*　Stone–Čech コンパクト化。対応表の状態：一部（component）。
 
 *主張*　離散集合 $`T` の Stone–Čech コンパクト化 $`\beta T` は $`T` 上の超フィルター全体からなる副有限空間で、主超フィルターは $`T` の稠密開埋め込みを与える。$`\beta T` の開閉集合は $`T` の部分集合と対応し、その開閉集合上の層の超フィルター $`\mathcal U` における茎は $`\mathcal U` に属する部分集合に沿ったフィルター余極限で計算できる。
 
 原典 PDF p.19, y=325.1。離散空間の Stone–Čech コンパクト化を与える。原典の超フィルターでの表示は、この二つの宣言の型に現れない。
-
-宣言：`StoneCech`、`stoneCechUnit`
 
 外の文献：GJ60
 

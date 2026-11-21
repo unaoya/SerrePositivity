@@ -34,15 +34,18 @@ class Resolver:
             if hashlib.sha256(Path(file).read_bytes()).hexdigest() != expected:
                 raise SystemExit(f"Stale blueprint input: {file}")
         self.references = plan["links"]
+        self.name_only = plan.get("name_only", {})
         self.provenance = (f"-- audit2: {plan['commit']} inputs sha256 {plan['input_hash']}"
                            + (" (diagnostic preview)" if self.preview else ""))
         baseline_commits = plan.get("baseline_commits", [plan["commit"]])
         if baseline_commits != [plan["commit"]]:
             self.provenance += "\n-- audit2 baselines: " + ", ".join(baseline_commits)
         self.expected = {}
+        self.shown = {}
 
     def links(self, label, raw, imports, enabled):
         names = []
+        shown = []
         if enabled:
             parts = [e.strip() for e in raw.split(" | ") if e.strip()]
             if not parts and not self.preview:
@@ -53,10 +56,24 @@ class Resolver:
                     if self.preview:
                         continue
                     raise SystemExit(f"Unresolved blueprint link at {label}: {entry}")
+                if entry in self.name_only:
+                    shown.append(self.name_only[entry])
+                    continue
                 names.append(x[0])
                 imports.add(x[1])
         self.expected[label] = names
+        self.shown[label] = shown
         return names
+
+    def declaration_note(self, label, raw, linked):
+        entries = [e.strip() for e in raw.split(" | ") if e.strip()]
+        shown = self.shown[label]
+        if shown:
+            return "宣言（リンクなし）：" + "、".join(f"`{d}`" for d in shown) + "\n"
+        if entries and not linked:
+            names = [e.split(" @ ", 1)[0].strip().replace("`", "") for e in entries]
+            return "宣言：" + "、".join(f"`{d}`" for d in names) + "\n"
+        return ""
 
     def write(self, path, text):
         actual = rendered_links(text)
@@ -66,6 +83,7 @@ class Resolver:
             raise SystemExit(f"Wrong blueprint links in {path}: {keys[:12]}")
         Path(path).write_text(self.provenance + "\n" + text, encoding="utf-8")
         self.expected.clear()
+        self.shown.clear()
 
 
 def esc(s):

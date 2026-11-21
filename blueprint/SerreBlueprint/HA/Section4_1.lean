@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -52,7 +54,7 @@ KB-W2型再照合：仮定：単位付き乗法と連続な乗法（Lean は結�
 
 :::
 
-:::proposition "ha_4_1_0_2"
+:::proposition "ha_4_1_0_2" (lean := "Path.instHSpace")
 *HA 例 4.1.0.2*　Associative Algebras (p. 452)（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=452)）。対応表の状態：Mathlib にある。
 
 *主張*　点付き位相空間の基点付きループ空間は、定値ループを単位とし連結を積とする H 空間である。
@@ -60,8 +62,6 @@ KB-W2型再照合：仮定：単位付き乗法と連続な乗法（Lean は結�
 仮定：位相空間 X と基点 x（HA と一致）。結論：ループ空間 Path x x が定値ループを単位、区間を二等分した Path.trans を積とする H-space となる（一致）。
 
 前半で第一のループ、後半で第二のループを走る。連結する区間の取り方を連続的に変えると、単位則や結合則に必要なホモトピーが得られる。
-
-宣言：`Path.instHSpace`
 
 :::
 

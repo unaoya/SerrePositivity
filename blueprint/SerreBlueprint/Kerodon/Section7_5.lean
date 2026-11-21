@@ -1,7 +1,10 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.CocartesianSections
+import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.LeftFibrationInitialEvaluation
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveCocartesianFibration
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.WeightedTransportUnit
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.WeightedTransportUnitEquivalence
@@ -169,7 +172,7 @@ cocartesianStrictTransportDiagramの定義は図式を構成するだけで、�
 
 :::
 
-:::definition "kerodon_7_5_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnit, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_3_3_1, kerodon_5_3_4_7, kerodon_5_3_4_11")
+:::definition "kerodon_7_5_3_3" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnit, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_1_0_6, kerodon_1_4_0_1, kerodon_5_3_3_1, kerodon_5_3_4_7, kerodon_5_3_4_11")
 Kerodon Construction 7.5.3.3（[Tag 03AS](https://kerodon.net/tag/03AS)）。対応表の状態：一部。
 
 *主張*　小さい通常の圏 $`C` 上の厳密な無限圏値図式 $`\mathscr F` に対し、重み付き神経の $`N(C)` への射影の厳密移送表現を $`\mathscr F^+` とする。taut scaffold と普遍 scaffold とが整合する一意の自然変換 $`\mathscr F\to\mathscr F^+` があり、$`\mathscr F^+` を同型ファイブレーションに関する置換と呼ぶ。
@@ -178,7 +181,7 @@ FをKan値に限るとweightedTransportUnitは同じweighted nerveの全切断�
 
 :::
 
-:::proposition "kerodon_7_5_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnitComponent_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_4_0_1, kerodon_5_3_1_7, kerodon_7_5_3_2, kerodon_7_5_3_3")
+:::proposition "kerodon_7_5_3_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedTransportUnitComponent_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_4_0_1, kerodon_5_3_1_7, kerodon_7_5_3_2, kerodon_7_5_3_3")
 Kerodon Proposition 7.5.3.4（[Tag 03AT](https://kerodon.net/tag/03AT)）。対応表の状態：一部。
 
 *主張*　小さい通常の圏上の無限圏値図式に対し、7.5.3.3 の置換 $`\mathscr F^+` は isofibrant であり、$`\mathscr F\to\mathscr F^+` は単射かつ成分ごとに圏同値である。
@@ -226,7 +229,7 @@ B6再検索（現本体・ロックMathlib、移動後を含む）：全切断�
 
 :::
 
-:::proposition "kerodon_7_5_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_homotopyEquivalence_of_extensions, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_cospan_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_tower_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_4_0_1, kerodon_4_5_7_17, kerodon_7_5_3_3, kerodon_7_5_3_4, kerodon_7_5_3_7")
+:::proposition "kerodon_7_5_3_12" (lean := "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_homotopyEquivalence_of_extensions, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_isQCatEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_cospan_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanLimitComparison_tower_homotopyEquivalence, SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.kanCocartesianSectionsι_isIso_of_leftFibration, SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsIso") (uses := "kerodon_1_4_0_1, kerodon_4_5_7_17, kerodon_7_5_3_3, kerodon_7_5_3_4, kerodon_7_5_3_7")
 Kerodon Proposition 7.5.3.12（[Tag 03B1](https://kerodon.net/tag/03B1)）。対応表の状態：一部。
 
 *主張*　通常の圏上の無限圏値図式が isofibrant なら、厳密な極限からホモトピー極限への包含は無限圏の同値である。

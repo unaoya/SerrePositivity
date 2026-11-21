@@ -9,7 +9,7 @@ BT-W1（2026-11-17）。対象は Bhatt–Scholze, *Prisms and prismatic cohomol
 - `items.csv` は目録。番号・種類・題・日本語題・goal・design を保存した。旧 `status,declarations,note,confidence` は空にし、二重管理しない。goal は以前の目標への必要性の記録で、今回再判定していない。
 - `own` は同じ対象・射の主張を本体の宣言の型から得るもの。`partial` は直接得られる限定部分があり、`special,direction,stronger-hyp,component` の差を reason に明記する。証明の部品・類似の定理・比較未供給の別模型は `none`。
 - `interface` は **E3 の存在の sorry に依存する界面・公開定理**。原文の全範囲が実装済みという意味ではない。離散入力、D(R)への忘却、Type u の標的等の差を理由に書く。単に参考文献として名前が挙がるだけでは interface にしない。
-- `declarations` は現在の `名前 @ パス:行`。正の根拠は現本体のみ。none 行では、採用しなかった本体の候補や drafts の所在を記録することがある。
+- `declarations` は現行本体・固定 Mathlib の実在する宣言の `完全名 @ パス:行`。ルート直下の宣言は `_root_.` を付ける。計画、drafts の所在、却下した候補、Archive の参照は備考列 `reference_note` に置き、状態は元の照合結果を継承する。
 - `axioms` は空。`check=found/not_found` は今回の静的な型・所在照合の記録であり、kernel 実行や `#print axioms` の結果ではない。Lean変更・ビルド・鍵の使用はない。
 
 凍結中の `exposition/ja/bs/build_items.py` は **動かしていない**。勉強ノート・`map/data.json`・`doc1-check.csv` は以前の調査・表示の記録であり、今回の状態の正本ではない。生成器や表示の追随は別作業とする。

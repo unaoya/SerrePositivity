@@ -25,22 +25,10 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] {K : C}
 
-/-- 自由スペクトルの誘導表示上の、出力の対称群作用。 -/
-def freeAtLevelInductionAction (n : ℕ) (X : C) (m : ℕ) :
-    Action C (Equiv.Perm (Fin m)) :=
-  SymmetricSequence.freeInductionAction (SymmetricSequence.tensorPowerSequence K) n X m
-
 /-- 固定した出力次数の、作用付き誘導表示の関手。 -/
 def freeAtLevelInductionActionFunctor (n m : ℕ) :
     C ⥤ Action C (Equiv.Perm (Fin m)) :=
   SymmetricSequence.freeInductionActionFunctor (SymmetricSequence.tensorPowerSequence K) n m
-
-/-- 自由スペクトルの各段と誘導表示との、対称群作用を備えた同型。 -/
-def freeAtLevelActionIsoInduction (n : ℕ) (X : C) (m : ℕ) :
-    SymmetricSequence.levelAction ((freeAt (K := K) n).obj X).X m ≅
-      freeAtLevelInductionAction (K := K) n X m :=
-  SymmetricSequence.freeConvolutionLevelActionIsoInduction
-    (SymmetricSequence.tensorPowerSequence K) n X m
 
 /-- 自由スペクトルの入力の射は、自由convolutionの入力の射と一致する。 -/
 lemma freeAt_map_underlying (n : ℕ) {X Y : C} (f : X ⟶ Y) :
@@ -92,7 +80,8 @@ lemma freeAt_map_underlying (n : ℕ) {X Y : C} (f : X ⟶ Y) :
 def freeAtLevelActionNatIsoInduction (n m : ℕ) :
     freeAt (K := K) n ⋙ forget K ⋙ SymmetricSequence.levelActionFunctor m ≅
       freeAtLevelInductionActionFunctor (K := K) n m :=
-  NatIso.ofComponents (fun X => freeAtLevelActionIsoInduction (K := K) n X m) (by
+  NatIso.ofComponents (fun X => SymmetricSequence.freeConvolutionLevelActionIsoInduction
+    (SymmetricSequence.tensorPowerSequence K) n X m) (by
     intro X Y f
     apply Action.hom_ext
     exact freeAtLevelIsoInduction_input n f m)

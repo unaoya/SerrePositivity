@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -95,7 +97,7 @@ I=(d) に生成元と正則性を指定し、古典的な p,d 完備性を持つ
 
 一般の比較定理の宣言は drafts にのみある。本体の結晶基底の HodgeTateIsoStatement は reducedModel のコホモロジーに関する定理で、原文の site RΓ との同一視を伴わないため部品として記録する。
 
-宣言：`hodgeTate_iso`、`SerrePositivity.BhattScholze.Prismatic.hodgeTate_of_deRham_cartier`、`deRham_iso_rootAlgebra_modP`
+宣言：`SerrePositivity.BhattScholze.Prismatic.hodgeTate_of_deRham_cartier`
 
 :::
 
@@ -142,8 +144,6 @@ affine 比較から一般の形式的スキーム・stack への拡張の説明�
 *定理 1.14*　。対応表の状態：なし。
 
 qrsp の離散性・flatness・始性は drafts。Nygaard・TP 比較も未同定。本体の δ/envelope の部品だけでは原文の Δ\_S の主張を得ない。
-
-宣言：`qrsp_isDiscretePrismatic`、`qrsp_completelyFaithfullyFlat`、`qrsp_initial`
 
 :::
 

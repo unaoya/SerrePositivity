@@ -1,8 +1,11 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
 import Mathlib.AlgebraicTopology.Quasicategory.InnerFibration
 import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
+import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
 import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoreKan
 import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.FullSubcomplexFibration
@@ -186,7 +189,7 @@ Kerodon Proposition 4.1.3.1（[Tag 01BN](https://kerodon.net/tag/01BN)）。対�
 
 :::
 
-:::proposition "kerodon_4_1_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization") (uses := "kerodon_1_1_0_6, kerodon_3_1_8_1")
+:::proposition "kerodon_4_1_3_2" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.exists_innerAnodyne_innerFibration_factorization, SSet.instHasSmallObjectArgumentInnerHornInclusions") (uses := "kerodon_1_1_0_6, kerodon_3_1_8_1")
 Kerodon Proposition 4.1.3.2（[Tag 01BP](https://kerodon.net/tag/01BP)）。対応表の状態：一部。
 
 *主張*　任意の単体集合の射は、内部無害射に続く内部ファイブレーションに分解できる。分解を関手的に、かつ中間対象の関手がフィルター付き余極限を保つように選べる。
@@ -222,40 +225,34 @@ tag := "kerodon-4-1-4"
 
 Kerodon [Tag 01BS](https://kerodon.net/tag/01BS)
 
-:::proposition "kerodon_4_1_4_1"
+:::proposition "kerodon_4_1_4_1" (lean := "SSet.innerFibration_pullbackObjObjπ")
 Kerodon Proposition 4.1.4.1（[Tag 01BT](https://kerodon.net/tag/01BT)）。対応表の状態：Mathlib にある。
 
 *主張*　内部ファイブレーション $`X\to S` と単射 $`A\to B` に対し、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(A,X)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(B,S)` は内部ファイブレーションである。
 
 仮定：単体集合の単射 i:A→B と内ファイブレーション p:X→S、比較先の引き戻しの選択（Kerodon と一致）。結論：Fun(B,X)→Fun(A,X)×\_\{Fun(A,S)\}Fun(B,S) に当たる π が InnerFibration（一致）。
 
-宣言：`SSet.innerFibration_pullbackObjObjπ`
-
 :::
 
-:::corollary "kerodon_4_1_4_2"
+:::corollary "kerodon_4_1_4_2" (lean := "SSet.instInnerFibrationAppPreOfMonoOfQuasicategory")
 Kerodon Corollary 4.1.4.2（[Tag 01BU](https://kerodon.net/tag/01BU)）。対応表の状態：Mathlib にある。
 
 *主張*　無限圏 $`C` と単体集合の単射 $`A\to B` に対し、制限 $`\operatorname{Fun}(B,C)\to\operatorname{Fun}(A,C)` は内部ファイブレーションである。
 
 仮定：単体集合の単射 i:A→B と Quasicategory X（Kerodon と一致）。結論：(pre i).app X すなわち Fun(B,X)→Fun(A,X) が InnerFibration（一致）。
 
-宣言：`SSet.instInnerFibrationAppPreOfMonoOfQuasicategory`
-
 :::
 
-:::corollary "kerodon_4_1_4_3"
+:::corollary "kerodon_4_1_4_3" (lean := "SSet.instInnerFibrationMapIhom")
 Kerodon Corollary 4.1.4.3（[Tag 01BV](https://kerodon.net/tag/01BV)）。対応表の状態：Mathlib にある。
 
 *主張*　内部ファイブレーション $`X\to S` と任意の単体集合 $`B` に対し、後合成 $`\operatorname{Fun}(B,X)\to\operatorname{Fun}(B,S)` は内部ファイブレーションである。
 
 仮定：内ファイブレーション p:E→B と任意の単体集合 X（Kerodon と一致）。結論：(ihom X).map p すなわち Fun(X,E)→Fun(X,B) が InnerFibration（一致）。
 
-宣言：`SSet.instInnerFibrationMapIhom`
-
 :::
 
-:::proposition "kerodon_4_1_4_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne") (uses := "kerodon_1_1_0_6, kerodon_1_5_7_5, kerodon_4_1_3_1")
+:::proposition "kerodon_4_1_4_4" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne, SSet.innerAnodyneExtensions_pushoutObjObjι'") (uses := "kerodon_1_1_0_6, kerodon_1_5_7_5, kerodon_4_1_3_1")
 Kerodon Proposition 4.1.4.4（[Tag 01BW](https://kerodon.net/tag/01BW)）。対応表の状態：一部。
 
 *主張*　内部ファイブレーション $`X\to S` と内部無害射 $`A\to B` に対し、$`\operatorname{Fun}(B,X)\to\operatorname{Fun}(A,X)\times_{\operatorname{Fun}(A,S)}\operatorname{Fun}(B,S)` は自明な Kan ファイブレーションである。
@@ -264,7 +261,7 @@ trivialKanFibration\_pre\_of\_innerAnodyne は底が終対象の場合に同じ�
 
 :::
 
-:::proposition "kerodon_4_1_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceFirst_trivialKanFibration")
+:::proposition "kerodon_4_1_4_5" (lean := "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne, SSet.innerAnodyneExtensions.horn_ι, SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceFirst_trivialKanFibration")
 Kerodon Proposition 4.1.4.5（[Tag 01BX](https://kerodon.net/tag/01BX)）。対応表の状態：一部。
 
 *主張*　単体集合の射 $`X\to S` が内部ファイブレーションであることは、$`\Lambda^2_1\to\Delta^2` による相対制限 $`\operatorname{Fun}(\Delta^2,X)\to\operatorname{Fun}(\Lambda^2_1,X)\times_{\operatorname{Fun}(\Lambda^2_1,S)}\operatorname{Fun}(\Delta^2,S)` が自明な Kan ファイブレーションであることと同値である。

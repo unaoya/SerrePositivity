@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -79,8 +81,6 @@ perfectoid 環 $`R` と、それに対応する完全 prism $`(A,I)`（$`A/I\con
 
 原典は $`R` に対応する完全 prism を一つ取るだけで、具体的な形を指定しない。Lean の drafts は $`A=W(R^\flat)` と $`\ker\theta` の生成元を選んで固定し、零環の場合を別の枝として含める。別の完全 prism を取っても結果が変わらないことは、命題 8.2.1 の系として述べる（そこの Lean の囲みの \`perfectoidization\_indep\`）。
 
-宣言：`perfectPrism`、`perfectPrismRing`
-
 :::
 
 :::definition "bs_8_2" (lean := "SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3, SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3")
@@ -145,8 +145,6 @@ $`S_{\mathrm{perfd}}` は基底によらない（命題 8.2.1）ので、$`A=\ma
 
 原典の $`S` は（導来 p 完備な単体的）$`R` 代数で、$`R` は任意の perfectoid 環。drafts の主張は $`R` 自身が標数 p で $`S` が離散の場合。原典の $`S` が $`p=0` なら $`S` は $`R/p` 代数で、命題 8.2.1 で基底を取り替えれば同じ形になる。
 
-宣言：`perfectoidization_charP`
-
 :::
 
 :::lemma_ "bs_8_4"
@@ -179,8 +177,6 @@ $`X:=\Delta_{S/A,\mathrm{perf}}` とおく。
 *命題 8.1.4（原典 Lemma 8.4：perfectoid 化の coconnective 性） — 原典との差（D44・D43）*
 
 E3 の界面にこの補題の欄は置かない。命題 8.2.1、Cor 8.14、Thm 10.11 の証明の中で使う定理として置く（D44）。原典は $`P^0` の性質を \[Lur11, Rem 2.2.7\] から引用する。Lean では $`P^0` を E∞ の界面の欄（Barratt–Eccles 模型で与える）とし、正の $`\pi_n` で零になることをその欄の主張として持つ（D43）。$`P^0` は原典どおり台のスペクトルの自己準同型で、$`D(k)` の射としては述べない。
-
-宣言：`prismaticPerfection_coconnective`、`perfectoidization_coconnective`、`prismaticPerfection_h0_perfectDelta`
 
 :::
 
@@ -269,8 +265,6 @@ $$`\cdots\to\Omega[-3]\to\Omega[-2]\to\Omega[-1]\xrightarrow{\sim}T[-1]`
 *命題 8.2.2（原典 Lemma 8.6：完全化への移行の強い降下） — 原典との差（D49・D50・D69）*
 
 descendable：原典は \[Mat16\] を引用する。Lean では \[Mat16, Def 3.18\] の thick ⊗-ideal で定義し、index の判定（\[BS17, Lemma 11.22\] を含む）は定理として置く（D49）。de Rham 比較：原典は一般の de Rham 比較（Thm 6.4）を使う。Lean では多項式・mod p の特別な場合を定理として置き（D50）、その証明は普遍向き付き prism 上で行って完全 prism へ底変換する（D69）。
-
-宣言：`prismaticCohomology_rootMap_descendable`、`prismaticPerfection_rootMap_descendable'`、`rootMap_modP_eq_deRham`
 
 :::
 
@@ -406,7 +400,7 @@ $$`0\to R^\flat\to S^\flat\to S^\flat\widehat\otimes_{R^\flat}S^\flat\to\cdots`
 
 原典は \[BS17, Thm 4.1\]・\[BM18, Thm 1.6\]・\[BS17, Lemma 6.3\] を引用する。Lean では \[BM18\] の一般の判定（任意の finitary 関手の arc 層性）を使わず、構造層 $`\mathcal O` の場合だけを \[BM18, Prop 4.8\] の議論で 1 圏の Čech 完全性として直接示す（Rydh の結果と hypercomplete 性は使わない）。\[BS17, Thm 4.1 (i)\] は原典どおりに証明する対象とし、\[BS17, Lemma 6.3\] は任意の付値環についての初等補題 \`valuationRing\_milnorSquare\` にする。site と被覆は affine・有限族の形で述べる（D53・D54）。
 
-宣言：`SerrePositivity.BhattScholze.Perfectoidization.Arc.cechExact_of_milnorTensor`、`SerrePositivity.BhattScholze.Perfectoidization.Arc.tilt_rankOneValuationRing`、`SerrePositivity.Cech.cechConerve_perfectRing`、`structurePresheaf_isArcSheaf`、`homPresheaf_isArcSheaf`
+宣言：`SerrePositivity.BhattScholze.Perfectoidization.Arc.cechExact_of_milnorTensor`、`SerrePositivity.BhattScholze.Perfectoidization.Arc.tilt_rankOneValuationRing`、`SerrePositivity.Cech.cechConerve_perfectRing`
 
 :::
 
@@ -436,8 +430,6 @@ $$`R\Gamma_{\mathrm{arc}}(\mathrm{Spf}S,\mathcal O)=\lim_{S\to R'}R'=S_{\mathrm{
 *系 8.3.5（原典 Cor 8.11） — 原典との差（D55）*
 
 原典は fSch 上の層コホモロジー $`R\Gamma_{\mathrm{arc}}(\mathrm{Spf}S,\mathcal O)` で述べる。Lean（drafts）は affine 版「$`S_{\mathrm{perfd}}\simeq R\Gamma_{\mathrm{arc}}(\mathrm{affPerfd}_\kappa/S,\mathcal O)`」だけを述べ、fSch や $`\mathrm{AffCompl}` 上の $`R\Gamma` との比較はしない。Lemma 8.8 の affine 版は cover-dense の形で証明の中で使う。
-
-宣言：`perfectoidization_eq_arcCohomology`
 
 :::
 

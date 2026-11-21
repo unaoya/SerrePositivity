@@ -1,6 +1,9 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
+import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -24,7 +27,7 @@ number := false
 tag := "ha-4-4-3"
 %%%
 
-:::definition "ha_4_4_3_7"
+:::definition "ha_4_4_3_7" (lean := "SimplexCategory.δ, SimplexCategory.coe_δ")
 *HA 記法 4.4.3.7*　Associativity of the Tensor Product (p. 582)（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=582)）。対応表の状態：一部（component）。
 
 *主張*　面写像 $`\alpha^i:[m-1]\hookrightarrow[m]` は $`i` を飛ばし、内側の面では隣接する二頂点を三頂点の区間に入れる図式が一般化 ∞ オペラッドの比較を定める。
@@ -32,8 +35,6 @@ tag := "ha-4-4-3"
 KB-W2型再照合：仮定：有限順序集合 \[m\] と省く添字 i（Lean が強い：単体圏の部分に限る）。結論：i を飛ばす単調単射を i 番目の面写像として構成する（αᵢ の成分に一致）。Tens 間の ξ は含まれない。
 
 $`0<i<m` のとき、$`[m-1]` の区間 $`\{i-1,i\}` の像は $`[m]` の区間 $`\{i-1,i,i+1\}` の両端である。この同定による可換四角形から原典の $`\xi` を得る。
-
-宣言：`SimplexCategory.δ`、`SimplexCategory.coe_δ`
 
 :::
 

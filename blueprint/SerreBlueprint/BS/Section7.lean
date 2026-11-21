@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -68,8 +70,6 @@ qrsp は本体にない。drafts に原典どおりの定義 \`IsQuasiregularSem
 確かめることは最後の一文（補った）。導来 $`p` 完備な加群 $`M` について、$`M[p^\infty]=M[p^N]` と有界なら、導来 $`p` 完備化は古典的 $`p` 進完備化と一致する：$`\mathrm{R}\lim_n(M\otimes^L\mathbb Z/p^n)` の $`H^{-1}` 側の項 $`\lim_n M[p^n]` は、推移写像が $`p` 倍で $`N` 回合成すると $`M[p^N]` 上で零になるので Mittag-Leffler 零で、$`\lim` も $`\lim^1` も消える。よって $`M\simeq \lim_n M/p^n`。
 
 注意（補った）：「$`p` 進完備で $`S/p` が semiperfect」だけでは semiperfectoid にならない。たとえば $`\mathbb Z_p` は $`p` 進完備で $`\mathbb Z_p/p=\mathbb F_p` は完全だが、perfectoid 環 $`R` から $`\mathbb Z_p` への環準同型はない（$`R\ne0` は $`p=u\varpi^p`、$`u` 単元となる $`\varpi` を持ち、像では $`v_p` が $`1=p\,v_p(\varpi)` となって矛盾）。逆に perfectoid 環 $`R` 上の代数 $`S` なら、$`p` 完備で $`S/p` が semiperfect のとき $`\theta\colon W(S^\flat)\to S` は全射で、その核は $`R` の $`\ker\theta_R` の生成元 $`\xi`（distinguished）の像を含むので、$`S` は perfectoid 環 $`W(S^\flat)/\xi` の商になる。
-
-宣言：`IsQuasiregularSemiperfectoid`、`BoundedPTorsion`、`CotangentPCompletelyFlat`
 
 :::
 
@@ -241,8 +241,6 @@ HT 比較により、$`\overline{\Delta}_{R/A}:=\Delta_{R/A}\otimes^L_AA/I` は 
 *定義 7.2.1（原典 Construction 7.6） — 原典との差（D31〜D35）*
 
 (D31) 単体的可換 $`A/I` 代数の ∞ 圏を $`P_\Sigma(\mathrm{Poly}_{A/I})`（animated 環）として扱う。同じ ∞ 圏である。(D32) 原典の始域は導来 p 完備な単体的代数で、生成系は p 完備化した多項式代数。drafts の始域は $`P_\Sigma(\mathrm{Poly})` 全体、生成系は完備化しない多項式代数で、$`\Delta` の導来 p 完備化に対する不変性を定理にする（\`derivedPrismaticCohomology\_completion\_animated\`、BaseChangeAndTensor:176）。値は $`(p,I)` 完備なので同じものになる。(D33) $`\wedge^iL` の p 完備化を $`\widehat\Omega^i` の p 完備な $`D(k)` での Kan 延長として定義する（Mathlib に余接複体がない）。(D34) (1) は p 完全 smooth ではなく多項式代数で述べる。(2)(3) は述べない。(D35) 値は $`(p,I)` 完備な $`E_\infty` 代数（$`\mathrm{CAlg}_A` の対象）で、$`D(A)` 値の版は忘却で得る。
-
-宣言：`derivedPrismaticCohomology`、`hodgeTateFiltration`、`derivedPrismaticCohomology_baseChange`、`derivedPrismaticCohomology_tensor`
 
 :::
 

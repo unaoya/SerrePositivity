@@ -19,8 +19,7 @@ example (n : ℕ) : freeAt (K := K) n ⊣ evaluation (K := K) n := freeAtAdjunct
 
 example (n : ℕ) {X : C} (E : GeneralSymmetricSpectrum C K) (f : X ⟶ level E n) :
     freeAtGenerator (K := K) n X ≫ levelMap (freeAtLift n E f) n = f :=
-  ((freeAtAdjunction (K := K) n).homEquiv_unit X E (freeAtLift n E f)).symm.trans
-    ((freeAtHomEquiv (K := K) n X E).apply_symm_apply f)
+  freeAtGenerator_lift n E f
 
 -- Naturality in the input and the output uses the actual selected adjunction.
 example (n : ℕ) {X X' : C} (a : X ⟶ X') (E : GeneralSymmetricSpectrum C K)
@@ -41,10 +40,12 @@ example [HasLimitsOfShape J C] : HasLimitsOfShape J (GeneralSymmetricSpectrum C 
 example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] : HasColimitsOfShape J (GeneralSymmetricSpectrum C K) :=
   inferInstance
 example [HasLimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
-    (limitLevelIso F n).hom ≫ limit.π (F ⋙ evaluation n) j = levelMap (limit.π F j) n :=
+    (preservesLimitIso (evaluation n) F).hom ≫ limit.π (F ⋙ evaluation n) j =
+      levelMap (limit.π F j) n :=
   preservesLimitIso_hom_π (evaluation n) F j
 example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
-    levelMap (colimit.ι F j) n ≫ (colimitLevelIso F n).hom = colimit.ι (F ⋙ evaluation n) j :=
+    levelMap (colimit.ι F j) n ≫ (preservesColimitIso (evaluation n) F).hom =
+      colimit.ι (F ⋙ evaluation n) j :=
   ι_preservesColimitIso_hom (evaluation n) F j
 
 -- Coercion-free reuse of the old category, morphisms, free objects and adjunctions.
@@ -87,7 +88,8 @@ example (E : GeneralSymmetricSpectrum C K) (p q r : ℕ) :
           (FiniteBijection.of p) (FiniteBijection.of q) (FiniteBijection.of r)).inv :=
   structureMap_assoc E p q r
 example (n m : ℕ) (X : C) (h : m < n) :
-    IsInitial (level ((freeAt (K := K) n).obj X) m) := freeAtLevelInitial n X m h
+    IsInitial (level ((freeAt (K := K) n).obj X) m) :=
+  SymmetricSequence.freeConvolutionLevelInitial (SymmetricSequence.tensorPowerSequence K) n X m h
 example (n m : ℕ) (X : C) :
     level ((freeAt (K := K) n).obj X) m ≅ freeAtLevelBlockQuotient (K := K) n X m :=
   freeAtLevelIsoBlockQuotient n X m

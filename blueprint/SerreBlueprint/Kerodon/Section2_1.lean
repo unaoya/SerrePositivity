@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -102,14 +104,12 @@ B6：MonoidalCategory の tensorObj・tensorHom と associator の逆同型・pe
 
 :::
 
-:::definition "kerodon_2_1_2_13"
+:::definition "kerodon_2_1_2_13" (lean := "CategoryTheory.MonoidalCategoryStruct.tensorUnit")
 Kerodon Notation 2.1.2.13（[Tag 00CF](https://kerodon.net/tag/00CF)）。対応表の状態：Mathlib にある。
 
 *主張*　モノイダル圏の単位対象を $`\mathbf1` と書き、複数の圏を区別するときは $`\mathbf1_{\mathcal C}` とする。
 
 仮定：単位を持つモノイダル圏 C（Lean が弱い：射影には MonoidalCategoryStruct で足り、整合公理を要求しない）。結論：tensorUnit は C の対象を返し、原文の 𝟙\_C と同じ単位対象を指定する（一致）。
-
-宣言：`CategoryTheory.MonoidalCategoryStruct.tensorUnit`
 
 :::
 
@@ -122,14 +122,12 @@ B6：leftUnitor/rightUnitor は選ばれた構造の場。原文は与えられ�
 
 :::
 
-:::proposition "kerodon_2_1_2_19"
+:::proposition "kerodon_2_1_2_19" (lean := "CategoryTheory.MonoidalCategory.triangle")
 Kerodon Proposition 2.1.2.19（[Tag 00CK](https://kerodon.net/tag/00CK)）。対応表の状態：Mathlib にある。
 
 *主張*　モノイダル圏の任意の $`X,Y` について、$`X\otimes(\mathbf1\otimes Y)\to X\otimes Y` は、左単位制約を直接使っても、結合子の後に右単位制約を使っても同じになる。
 
 仮定：モノイダル圏 C と対象 X, Y（Kerodon と一致）。結論：(X ⊗ 𝟙) ⊗ Y から X ⊗ Y への二経路について、結合子を原文と逆向きに書いた三角恒等式を与える（一致）。
-
-宣言：`CategoryTheory.MonoidalCategory.triangle`
 
 :::
 
@@ -237,14 +235,12 @@ B6：MonObj の one\_mul・mul\_one は選ばれた m=mul、ε=one について�
 
 :::
 
-:::definition "kerodon_2_1_5_2"
+:::definition "kerodon_2_1_5_2" (lean := "CategoryTheory.Functor.LaxMonoidal.left_unitality, CategoryTheory.Functor.LaxMonoidal.right_unitality")
 Kerodon Definition 2.1.5.2（[Tag 00DG](https://kerodon.net/tag/00DG)）。対応表の状態：一部。
 
 *主張*　非単位的 lax モノイダル関手 $`F` の左・右単位とは、$`\epsilon\colon\mathbf1_{\mathcal D}\to F(\mathbf1_{\mathcal C})` を該当側へ挿入し、テンソル制約と $`F` による単位制約を合成すると、標的圏の単位制約になるものをいう。両側を満たせば $`F` の単位である。
 
 B6：LaxMonoidal の left/right\_unitality は ε=ε F として原文の左右の単位式を直接与える。独立に指定する任意の ε を特徴づける定義ではない。
-
-宣言：`CategoryTheory.Functor.LaxMonoidal.left_unitality`、`CategoryTheory.Functor.LaxMonoidal.right_unitality`
 
 :::
 

@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -190,7 +192,7 @@ Kerodon Proposition 9.7.2.6（[Tag 02QK](https://kerodon.net/tag/02QK)）。対�
 
 :::
 
-:::proposition "kerodon_9_7_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isWeaklyContractible_of_sifted")
+:::proposition "kerodon_9_7_2_7" (lean := "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.isWeaklyContractible_of_sifted, CategoryTheory.IsSifted.instIsConnected")
 Kerodon Proposition 9.7.2.7（[Tag 02QL](https://kerodon.net/tag/02QL)）。対応表の状態：本体にある。
 
 *主張*　sifted な単体集合はすべて弱可縮である。

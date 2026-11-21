@@ -16,7 +16,7 @@ open SerrePositivity SerrePositivity.SymmetricSpectrum
 open SerrePositivity.GeneralSymmetricSpectrum (level suspensionMap adjointStructureMap
   adjointStructureMap_naturality pointwiseTensorAssociator
   pointwiseTensorAssociator_level pointwiseTensorAssociator_parameter_naturality
-  pointwiseTensorUnitIso
+  pointwiseTensorUnitIso pointwiseTensorUnitIso_level
   pointwiseTensorPentagonLaw pointwiseTensorTriangleLaw
   pointwiseTensor_triangle pointwiseTensorLeftUnitLaw pointwiseTensor_left_unit)
 open SerrePositivity.PointedSimplicialSet
@@ -29,15 +29,7 @@ example (X : PointedSimplicialSet.{u}) : pointwiseTensorFunctor X ⊣ cotensorFu
 
 example (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorUnitIso E).hom.hom.app (FiniteBijection.of q) =
-      (λ_ (level E q)).hom := by
-  have unitAtLevel {D : Type (u + 1)} [Category.{u} D] [MonoidalCategory D]
-      [SymmetricCategory D] [MonoidalClosed D] [Limits.HasColimitsOfSize.{0, 0} D]
-      [Limits.HasLimitsOfSize.{0, 0} D] {K : D}
-      (F : GeneralSymmetricSpectrum D K) (j : ℕ) :
-      (pointwiseTensorUnitIso F).hom.hom.app (FiniteBijection.of j) = (λ_ (level F j)).hom :=
-    SymmetricSequence.pointwiseTensorModuleUnit_levelLaw
-      (SymmetricSequence.tensorPowerSequence K) F j
-  exact unitAtLevel E q
+      (λ_ (level E q)).hom := pointwiseTensorUnitIso_level E q
 
 example (X Y : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (pointwiseTensorAssociator X Y E).hom.hom.app (FiniteBijection.of q) =

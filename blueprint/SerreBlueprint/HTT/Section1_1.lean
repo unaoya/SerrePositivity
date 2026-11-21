@@ -1,3 +1,5 @@
+-- audit2: 7d0968dad3e8672a6213dc0e508983c17f14eaaa inputs sha256 b3e2631992a041109ef8ab3a4836cc24453830556fb4a9c55f9a166f68e2cde1
+-- audit2 baselines: 23cbebdfe9d75717f3f248bb0069ebd9dc9bbef6, cddf4d2dac6a409e64204686cf743e703350a6f6
 import Verso
 import VersoManual
 import VersoBlueprint
@@ -113,7 +115,7 @@ KB-W2原文・型再照合：仮定：K が通常圏の nerve である、すな
 
 :::
 
-:::proposition "htt_1_1_2_5"
+:::proposition "htt_1_1_2_5" (lean := "SSet.instQuasicategoryOfKanComplex")
 *HTT 例 1.1.2.5*　Kan 複体と特異複体の準圏性（[原典 PDF](https://www.math.ias.edu/~lurie/papers/HTT.pdf#page=32)）。対応表の状態：一部（component）。
 
 *主張*　Kan 複体は ∞ 圏であり、特に空間 $`X` の特異複体をその基本 ∞ 亜群として使える。
@@ -121,8 +123,6 @@ KB-W2原文・型再照合：仮定：K が通常圏の nerve である、すな
 KB-W2原文・型再照合：仮定：任意の Kan 複体 S（HTT と一致）。結論：Quasicategory S を得るので「Any Kan complex is an ∞-category」という最初の assertion に一致。一般の X の singular complex の Kan 性と π≤∞X の同定は含まない。
 
 内角を含むすべての角を埋められるため、特異複体は ∞ 圏として扱える。外角が埋まることは、道の逆向きも使えるという亜群の側面に対応する。
-
-宣言：`SSet.instQuasicategoryOfKanComplex`
 
 :::
 
