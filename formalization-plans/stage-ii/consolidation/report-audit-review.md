@@ -1,6 +1,6 @@
-# AR-W1 段 1 の報告
+# AR-W1 の報告
 
-現在地は段 1 の調査完了。基準は main `eac7d1e57`、調査枝は `refactor/audit-review`。
+現在地は段8の完了、段9の切り替え前。作業枝は `refactor/audit-review`。段1の調査基準は main `eac7d1e57`。
 現行 Lean 423 本を一行ずつ、Python の構造検査と回帰試験 61 本を別表に収めた。
 `scripts/archive/` の Lean は 1 本。数だけを記録した。
 ソースと監査 manifest を基準のまま使った。[Lean の調査表](../../../research/audit-review/stage1.csv)と[Python の構造検査](../../../research/audit-review/python.csv)。
@@ -816,3 +816,106 @@ bulk 鍵で `lake --dir blueprint build SerreBlueprint` を実行した。実行
 失敗した `SerreBlueprint.Kerodon.Section1_1` の48行は、カード `kerodon_1_1_0_1` から `SimplexCategory.mk` を参照する。記録監査では実在する公開コンストラクタに解決する。固定 VersoBlueprint `7bd0c10` の `ExternalRefSnapshot` は、外部参照のコンストラクタをサポート対象外として拒否した。生成物の全リンクを宣言種別と照合したところ、同じ条件で拒否される参照はこの1件・1モジュールのみだった。未実行のモジュールに別要因がないことは確認していない。
 
 段6の試行で `Too many open files in system` は0本、同診断によるやり直しは0本。証跡は `~/serre-evidence/ar-w1/7d0968dad-stage6/`。生成照合は `generation-verified.json`、ビルドの失敗、静的な種別照合、時間は `verso-result.json`、各枠の生ログは `verso/` に置いた。
+
+## AR-W1 段6の続き　Verso が受け付けない宣言の表示
+
+段6の続きは `ef3a7bf93`。VersoBlueprint `7bd0c10f0b77d75ab81fe2a2005f6a6428983d27` の `Data.lean` にある `ConstantInfo.blueprintNodeKind?` と `ExternalRefSnapshot.lean` の `externalRefSnapshotWithStatus` で確認した。外部参照として扱える種類は `def`、`thm`、`inductive`、`axiom`、`opaque`。リンクを作れない `ctor`、`rec`、`quot` は宣言名を本文に表示する。生成時の `name-only.json` と取り込み検査の `blueprint_name_only` に文献・項目・宣言・所有元・種類を載せた。
+
+対応表に差分0。4,925カード中で表示を変更したのは Kerodon 1.1.0.1 の `SimplexCategory.mk` 1件。混在カードの自己試験を通し、実際の HTML でも同宣言がリンクなしのコード表記で出ることを確認した。取り込み検査は hard failure 0、確認待ちの主張変更 0。
+
+bulk 枠で `lake --dir blueprint --fail-fast build SerreBlueprint` が172本と最上位まで成功した。最初の枠は1,750.01秒の時間上限で終了し、集約モジュールまでの成果物を次枠に引き継いだ。次枠は156.24秒で終了0。実行時間の和は1,906.25秒。別原因のビルド不合格は0本。続く `lake exe vbp build --verbose` は258.19秒で終了0、`blueprint/_out/site/html-multi/index.html` を確認した。ファイル上限診断0件、同診断による再試行0件。記録は `~/serre-evidence/ar-w1/ef3a7bf93-stage6-followup/`。
+
+## AR-W1 段7　旧監査の残存条件と独立照合
+
+段7は `47efac822`。段1の manifest 108本を対象に、段2の残存条件291行と段3の119移植規則を照合した。一つの条件に複数の処置を付けた場合がある。個別の対象・判定理由・旧ソース位置は `residual-classification.json`、`residual-placements.json`、`residual-predicates.json` に出した。
+
+| 処置 | 条件行 | 実行・扱い |
+| --- | ---: | --- |
+| (a) 記録で検査 | 93 | 所有元・公開性・旧監査からの import 到達性を43,709キー、66,959箇所で照合。移動先の選択14、GeneralTools の推移境界1、Ind-S (8) の直接 import 境界と型参照2。F2 C3 の互換名と正規名10名の存在も検査。削除と到達性喪失の負例を検出。 |
+| (b) Lean とソースの検査に保持 | 126 | 指定型への適用、短名・局所例・外部の解決、instance 探索、引用登録、互換の deprecated 属性とメッセージ、ソース直接 sorry を維持。完全修飾の単一定数候補でも一意に解決できなかった55箇所を保持。 |
+| (c) 判定から外す候補 | 76 | 記録から取得できる単一定数の型・公理の印字文字列。名前の存在と記録の公理集合は照合する。 |
+| 段3で移植済みの判定を利用 | 154 | 公理・strict sorry、型禁止、訪問集合、依存境界。旧監査に残るソース・環境条件は上の (b) で引き続き扱う。 |
+
+基準表で (a) の違反0、16.92秒。旧いスクリプトと manifest は保持して並行実行できる。
+
+### R5 の測定
+
+本体34,049モジュール359,344宣言と、Lean・Mathlib 等の依存11,570モジュールを直列で読んだ。型の外から順に binder を開き、対応する値の lambda の残りに束縛変数が現れるか、後続の型と結論に現れるかを測った。型・値のいずれにも現れない binder、型だけに現れる binder、値側を読めない binder を別々に記録した。局所 instance の推論への影響や証明から実際に仮定を除けるかは個別レビューの対象とする。
+
+| 対象 | 宣言 | 値で使用 | 型のみ | 型と値で未使用 | 値側未判定 | 経過 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 全本体 | 359,344 | 2,186,763 | 2,474 | 2,836 | 46,566 | 120.63秒 |
+| 主定理の依存（999モジュール） | 21,818 | 157,119 | 140 | 147 | 2,087 | 29.08秒 |
+
+全体の最初の採取は1,031.14秒。直接読み取りをバッチごとに Lake 経由で起動する部分を外し、確定版では作業時間が120.63秒になった。全本体の数と、主定理の依存だけを別に読んだ数は一致した。取り込み時は主定理の依存を先に確認し、全本体での候補確認は週次の案とする。binder の位置と所有元付き一覧は `unused-binders.jsonl`。記録上の依存は `propext` 314,158宣言、`Classical.choice` 281,241宣言、`Quot.sound` 301,642宣言で、主定理は3つに依存する。許可公理を使った各証明での数学的な必要性は、代替証明を検査して判断する。
+
+Lean の class 登録は2,523名、instance 登録は51,887件。仮定の頭部と照合し、登録済み class で instance の登録が現れないものは8件、774 binder。印の付いた774件はいずれも引数に局所変数を含む。略記など78頭部と、定数頭部を採れなかった6,780 binder は候補一覧で別に保持した。具体例では本体と Mathlib に `HomotopicalAlgebra.ModelCategory` の instance 登録が4件あり、Kan–Quillen の入力モジュールを import した `#synth HomotopicalAlgebra.ModelCategory SSet` は指定の型を合成できなかった。
+
+| 登録の見つからなかった class | binder |
+| --- | ---: |
+| `CategoryTheory.Triangulated.TStructure.Heart` | 7 |
+| `SerrePositivity.Enriched.HasTensorUnitAxiom` | 4 |
+| `SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated` | 623 |
+| `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FixedSimplicialPushoutProduct` | 84 |
+| `SerrePositivity.KST.Descent.Nilinvariant` | 23 |
+| `SerrePositivity.Quillen.HasMonoidAxiom` | 23 |
+| `SerrePositivity.Quillen.HasQuillenPullbackHom` | 7 |
+| `SerrePositivity.Quillen.MonoidalModelCategory` | 3 |
+
+指定10入力は所有元を一意に確認し、型と値の直接参照を別々に採った。件数には生成宣言や部分構成も入る。利用側の一覧は `unsupplied-interfaces.json`。入力自体の変更は0。
+
+| 入力 | 型で参照 | 値で参照 |
+| --- | ---: | ---: |
+| `StableWideCofinalitySupply` | 40 | 38 |
+| `DGOdotMilnorIdentityLaxComparisonInput` | 75 | 69 |
+| `SingleRelativeComparison` | 33 | 22 |
+| `DGKappaConeInput` | 1,481 | 1,447 |
+| `DGKappaPerfectInput` | 199 | 192 |
+| `DGKappaSuspensionRelativeRoofInput` | 59 | 54 |
+| `DGKappaSplitCofiberInput` | 30 | 25 |
+| `DGSuspensionNativeActionInput` | 54 | 48 |
+| `dgKappaNativeBFSquareComparison` | 92 | 92 |
+| `DGSuspensionStageProvider` | 400 | 383 |
+
+### 保存した公理を使わない照合
+
+`Inspection.lean` は核の定数の型・値・帰納型のコンストラクタを起点ごとにたどる。訪問集合で循環を処理し、公理の保存拡張や `collectAxioms` を呼ばずに公理集合を作る。まず Citation と Kan–Quillen 入力の76宣言が8.98秒・差0。Paper.Statement を加えた78宣言でも差0。後者は7,267モジュール、環境構築21.23秒、走査13.61秒、プロセス39.37秒、最大 RSS 3.97 GiB。最大の起点から102,468定数を訪問した。
+
+後者の走査平均を359,344宣言に単純外挿すると約17.4時間かかる。塊ごとの import 時間は別で、探索の大きさにばらつきがある。版更新時と週次は段3の全公理照合を維持し、独立な走査は版更新時の代表と、週次で所有元を替える代表試験から始める案。全宣言へ広げる前に依存グラフの閉包を循環単位で共有し、同名の別所有元の扱いを実装して再計測する。塊は登録済みの import 閉包で分け、外部依存込み18,500モジュール（約55,500〜74,000ファイル）を初期上限の目安にし、1読み手で順に動かす。
+
+ファイル上限診断0件、同診断による再試行0件。調整役の root と時間を分けて広い読み込みを行った。結果と個別一覧は `~/serre-evidence/ar-w1/ef3a7bf93-stage7/`。
+
+## AR-W1 段8　前後の比較と取り込み前の一括実行
+
+`python3 scripts/audit2/diff.py BEFORE.sqlite AFTER.sqlite OUT` は、所有モジュール・カーネル名で前後を照合し、消失・追加、主張の指紋、公理集合、instance 登録、位置のみの差を領域別件数と個別行に出す。値の指紋も別欄に保持する。名前が前後で一意のときは同名の所有元移動を記録し、同名・同型の全キーを `retained.jsonl` に出して SHA-256 を添える。宣言公理、直接・推移 sorry の前後の集合、増えた依存公理名を G2 の差として報告する。instance の欄は保存済み登録の比較。別モジュールからの属性操作を含む実効の探索は段7 (b) の検査に残す。
+
+統合・分割のときの `--layout` は前後コミットの現行本体、スクリプト、対応表、blueprint を検索する。位置のない内部 `_proof_*` で参照の見つからないものを補助名として別集計する。決定的な方程式補題なども宣言名の比較を行う。無名 instance は前後のソースと登録を確認し、同じモジュール・開始位置に一意の組があれば対応させる。補助名の参照、決定的な方程式補題、無名 instance の位置を小さな表と Git リビジョンで個別に検査した。
+
+候補の対象ビルド後に、広い読み込みを調整役の root・全監査と分けて実行する。
+
+```sh
+zsh scripts/refactor/with_build_lock.sh --class bulk -- \
+  python3 scripts/audit2/premerge.py "$BEFORE/audit.sqlite" "$MATHLIB_INDEX" "$OUT/premerge"
+```
+
+前側の表のコミットが対応表の既定基準。命令は記録監査、前後の比較、対応表の基準比較の順に実行する。G2 が不合格でも完全な表ができていれば差分を報告し、文献比較の開始は G2 と差分採取の成功を条件とする。
+
+全モジュールで `98f6bd13c` から候補 `47efac822` を比較した。34,049モジュール・359,344宣言を対象に、未判定0、名前・型の一致359,344、宣言・公理・instance・位置の差0。G2 は直接 sorry 4、sorry 依存164、公理宣言0で前後一致。対応表の不合格0、確認待ち0。記録監査293.41秒、比較12.47秒、対応表4.28秒、全経過310.17秒で終了0。
+
+独立した Git 作業木で実際に Lean をビルドし、記録採取からの手順を検証した。合計71.15秒で、各ケースの経過は8.55〜8.87秒。
+
+| 作業木の変更 | 検出結果 | 手順の終了値 |
+| --- | --- | ---: |
+| 宣言を1件削除 | `Fixture.named` の消失1、文献基準の消失 | 1 |
+| 主張を1件変更 | 同名定理の型指紋差1、文献基準の主張変更 | 1 |
+| 公理を1件追加 | `Fixture.newAxiom` の追加と許可外公理、G2 不合格。完全な表から前後差を採取 | 1 |
+| instance を追加 | 新規 instance 1、既存宣言への登録差1 | 0 |
+| 空行を追加 | 位置のみ4、名前・型と G2 は一致 | 0 |
+
+ファイル上限診断 0 件、同診断による再試行 0 件。本体 Lean、旧監査、監査 manifest、対応表、`scripts/coord/merge_check.py` の差分は0。証拠は `~/serre-evidence/ar-w1/ef3a7bf93-stage8/`。
+
+### 段9で調整役が判断する切り替え案
+
+- 旧108本と新手順を最低2週間かつ10回の取り込みで併走させる。同じコミットで追跡・ビルド・採取・判定の母集団、旧領域76本の所有元付き選択と許可判定、移植した個別条件、G2 の入力・到達経路、文献対応の結果を照合する。週次の全公理照合を2回通し、旧監査が検出する意図的な違反を移行先でも検出する。合意済み例外、ファイル上限による再試行、未説明差を別に記録し、移行条件を未説明差0とする。
+- 先に結果表で取得できる印字を外す。続いて対象集合と条件が一致した名前・公開性・import 規則と、公理・strict sorry だけの領域監査を旧 manifest から一件ずつ引退させる。指定型での適用、実効の instance、引用登録、deprecated 属性などの固有条件は Lean の独立した試験として保持する。複合スクリプトは全条件の移行先を確認した後に扱う。
+- 未説明差が出たら新判定を取り込み条件から外して旧108本の経路に戻し、同一コミット・成果物・ログを保全する。修正した塊と全体の照合を行い、未説明差0と負例の検出を確かめてから再開する。切り替えと manifest の編集は段9の承認で行う。

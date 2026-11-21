@@ -93,3 +93,34 @@ Lean の class 登録にある頭部を instance 登録と照合し、略記な�
 独立公理照合。import した核定数の型、値、帰納型のコンストラクタをたどり、
 保存された公理拡張を介さず、指定した全所有元の公理を記録と比べる。
 同名の宣言が隠れる塊は、所有元を混同しないよう試作ではエラーにする。
+
+## 段8の取り込み前の比較
+
+前後の表が揃っているときは、Lean を起動せず比較できる。
+
+```sh
+python3 scripts/audit2/diff.py "$BEFORE/audit.sqlite" "$AFTER/audit.sqlite" "$OUT/diff"
+```
+
+`diff.json` に削除、追加、型の指紋、公理、instance 登録、位置だけの変更を
+所有元と名前付きで出す。ファイルを統合・分割した場合は `--layout` を付ける。
+前後の Git コミットの本体、現行スクリプト、対応表、blueprint を検索し、参照が
+見つからない内部 `_proof_*` の増減を区別する。決まった生成名も通常の名前として扱う。
+無名の instance は両側のソースで無名と確認でき、同じモジュール・開始位置の組が
+一意のときに対応させる。残った名前と型の全行は `retained.jsonl`、その SHA-256 は
+`diff.json`。完全な Git コミットを指す記録を用意し、同じ採取シグネチャの表を比べる。
+
+候補を対象ビルドした後は、調整役の広い読み込みと時間を分け、一つの bulk 枠で
+記録監査、前後の比較、対応表の基準比較を実行する。
+
+```sh
+zsh scripts/refactor/with_build_lock.sh --class bulk -- \
+  python3 scripts/audit2/premerge.py "$BEFORE/audit.sqlite" "$MATHLIB_INDEX" "$OUT/premerge"
+```
+
+対応表は既定で前側の表の記録コミットを基準にする。
+`premerge.json` に各段の終了値、時間、ログを保存する。接続できる完全な表があれば
+G2 の不合格でも差を記録し、文献比較まで進む条件は G2 と差分採取の成功。
+前後の差に対する承認は `diff.json` の各行で判断する。
+実際の一時作業木を用いた試験は bulk 枠で
+`python3 scripts/audit2/coverage_merge_selftest.py OUT --declaration-diff`。
