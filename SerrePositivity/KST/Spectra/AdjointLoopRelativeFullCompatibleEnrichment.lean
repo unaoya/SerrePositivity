@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeFullCompatibleLaws
-public import SerrePositivity.CategoryTheory.Enriched.Transport
+public import SerrePositivity.CategoryTheory.Enriched.BaseChange
 
 /-!
 概要：相対 BF 左右因子と厳密可換な全 Hom の組の局所 Kan な単体的圏。

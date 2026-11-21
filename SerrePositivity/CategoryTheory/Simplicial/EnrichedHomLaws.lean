@@ -3,22 +3,8 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 
 /-!
-# Enriched.Simplicial
-
-## 概要
-関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。
-
-## 方針
-元の宣言と証明を保持し、依存順に section を分けて配置する。
-
-## 規約
-公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。
-
-## 使われ方
-旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.Simplicial` を直接 import する。
+# 単体的写像対象の単位と合成
 -/
-
-/-! ## SimplicialHomLaws（旧 SerrePositivity/CategoryTheory/Monoidal/SimplicialHomLaws.lean） -/
 
 /-! # 単体的豊穣圏の零次単体と通常の射の法則 -/
 

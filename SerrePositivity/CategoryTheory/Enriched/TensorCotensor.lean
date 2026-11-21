@@ -8,24 +8,6 @@ public import Mathlib.CategoryTheory.Monoidal.CoherenceLemmas
 public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
 
 /-!
-# Enriched.TensorCotensor
-
-## 概要
-関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。
-
-## 方針
-元の宣言と証明を保持し、依存順に section を分けて配置する。
-
-## 規約
-公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。
-
-## 使われ方
-旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.TensorCotensor` を直接 import する。
--/
-
-/-! ## TensorCotensor（旧 SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean） -/
-
-/-!
 # Represented tensor and cotensor for an existing enriched ordinary category
 
 The mapping objects and their functoriality are Mathlib's `eHomFunctor`.
@@ -48,23 +30,30 @@ variable (V : Type u) [Category.{v} V] [MonoidalCategory V]
 /-- Representability data on the existing enriched category, with no new
 Hom object, ordinary category or adjunction type. -/
 structure TensorCotensor where
+  /-- 係数を固定したテンソル関手。 -/
   tensor : V ⥤ C ⥤ C
+  /-- 係数に反変な余テンソル関手。 -/
   cotensor : Vᵒᵖ ⥤ C ⥤ C
+  /-- 係数ごとのテンソルと余テンソルの随伴。 -/
   tensorCotensor : tensor ⊣₂ cotensor
+  /-- 原対象ごとのテンソルと豊穣 Hom の随伴。 -/
   tensorHom : tensor.flip ⊣₂ eHomFunctor V C
 
 namespace TensorCotensor
 
 variable {V C} (S : TensorCotensor V C)
 
+/-- テンソルから出る射を、係数から豊穣 Hom への射に転置する。 -/
 def tensorHomEquiv (K : V) (X Y : C) :
     ((S.tensor.obj K).obj X ⟶ Y) ≃ (K ⟶ (X ⟶[V] Y)) :=
   (S.tensorHom.adj X).homEquiv K Y
 
+/-- テンソルから出る射を、余テンソルへの射に転置する。 -/
 def tensorCotensorHomEquiv (K : V) (X Y : C) :
     ((S.tensor.obj K).obj X ⟶ Y) ≃ (X ⟶ (S.cotensor.obj (op K)).obj Y) :=
   (S.tensorCotensor.adj K).homEquiv X Y
 
+/-- 余テンソルへの射を、係数から豊穣 Hom への射に転置する。 -/
 def cotensorHomEquiv (K : V) (X Y : C) :
     (X ⟶ (S.cotensor.obj (op K)).obj Y) ≃ (K ⟶ (X ⟶[V] Y)) :=
   (S.tensorCotensorHomEquiv K X Y).symm.trans (S.tensorHomEquiv K X Y)
@@ -142,10 +131,12 @@ lemma cotensorHom_naturality_target (K : V) (X : C) {Y Y' : C} (b : Y ⟶ Y')
     ((S.tensorCotensor.adj K).homEquiv X Y).symm f ≫ b at h
   rw [h, tensorHom_naturality_target]
 
+/-- テンソル・余テンソル随伴の余単位。 -/
 def evaluation (K : V) (Y : C) :
     (S.tensor.obj K).obj ((S.cotensor.obj (op K)).obj Y) ⟶ Y :=
   (S.tensorCotensor.adj K).counit.app Y
 
+/-- テンソル・余テンソル随伴の単位。 -/
 def coevaluation (K : V) (X : C) :
     X ⟶ (S.cotensor.obj (op K)).obj ((S.tensor.obj K).obj X) :=
   (S.tensorCotensor.adj K).unit.app X
@@ -164,8 +155,6 @@ end TensorCotensor
 end SerrePositivity.Enriched
 
 end TensorCotensor
-
-/-! ## TensorUnit（旧 SerrePositivity/CategoryTheory/Enriched/TensorUnit.lean） -/
 
 /-! # The represented enriched tensor unit is naturally the identity -/
 
@@ -192,6 +181,7 @@ lemma eHomEquiv_precomp {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
 namespace TensorCotensor
 variable (S : TensorCotensor V C)
 
+/-- 恒等射の点を、単位によるテンソルからの射に転置する。 -/
 def unitMap (X : C) : (S.tensor.obj (𝟙_ V)).obj X ⟶ X :=
   (S.tensorHomEquiv (𝟙_ V) X X).symm (eHomEquiv V (𝟙 X))
 
@@ -217,6 +207,7 @@ lemma unitMap_naturality {X Y : C} (f : X ⟶ Y) :
   rw [S.tensorHom_naturality_source, unitMap, Equiv.apply_symm_apply,
     ← eHomEquiv_precomp, Category.comp_id, unitMap_comp, Equiv.apply_symm_apply]
 
+/-- 単位係数でテンソルする関手と恒等関手の自然同型。 -/
 def unitIso : S.tensor.obj (𝟙_ V) ≅ 𝟭 C :=
   NatIso.ofComponents (fun X ↦ by
     let e := asIso (unitMap S X)
@@ -227,8 +218,6 @@ end SerrePositivity.Enriched
 end
 
 end TensorUnit
-
-/-! ## EnrichedRepresentability（旧 SerrePositivity/CategoryTheory/Enriched/EnrichedRepresentability.lean） -/
 
 /-!
 # Enriched Hom-object representability of tensor and cotensor
@@ -250,19 +239,24 @@ variable {V : Type u} [Category.{v} V] [MonoidalCategory V] [MonoidalClosed V]
   {C : Type u'} [Category.{v'} C] [EnrichedOrdinaryCategory V C]
   (S : TensorCotensor V C)
 
+/-- 豊穣 Hom を係数 K による内部 Hom に入れた二変数関手。 -/
 def powerHom (K : V) : Cᵒᵖ ⥤ C ⥤ V :=
   eHomFunctor V C ⋙ (Functor.whiskeringRight C V V).obj (ihom K)
 
+/-- 原対象を K でテンソルしたときの豊穣 Hom 関手。 -/
 def tensorEnrichedHom (K : V) : Cᵒᵖ ⥤ C ⥤ V :=
   (S.tensor.obj K).op ⋙ eHomFunctor V C
 
+/-- 終対象を K で余テンソルしたときの豊穣 Hom 関手。 -/
 def cotensorEnrichedHom (K : V) : Cᵒᵖ ⥤ C ⥤ V :=
   eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (S.cotensor.obj (op K))
 
 /-- Full V-valued representability, with all variance and the compatibility of
 generalized points with the three ordinary Hom equivalences fixed explicitly. -/
 structure EnrichedRepresentability where
+  /-- 原対象をテンソルしたときの豊穣 Hom の表示。 -/
   tensorIso (K : V) : tensorEnrichedHom S K ≅ powerHom (C := C) K
+  /-- 終対象を余テンソルしたときの豊穣 Hom の表示。 -/
   cotensorIso (K : V) : cotensorEnrichedHom S K ≅ powerHom (C := C) K
   tensor_parameter {K L : V} (a : K ⟶ L) (X Y : C) :
     eHomWhiskerRight V ((S.tensor.map a).app X) Y ≫
@@ -285,10 +279,12 @@ namespace EnrichedRepresentability
 
 variable {S} (E : EnrichedRepresentability S)
 
+/-- テンソル側の豊穣 Hom の比較を対象対で評価する。 -/
 def tensorHomIso (K : V) (X Y : C) :
     ((S.tensor.obj K).obj X ⟶[V] Y) ≅ (ihom K).obj (X ⟶[V] Y) :=
   (E.tensorIso K).app (op X) |>.app Y
 
+/-- 余テンソル側の豊穣 Hom の比較を対象対で評価する。 -/
 def cotensorHomIso (K : V) (X Y : C) :
     (X ⟶[V] (S.cotensor.obj (op K)).obj Y) ≅ (ihom K).obj (X ⟶[V] Y) :=
   (E.cotensorIso K).app (op X) |>.app Y

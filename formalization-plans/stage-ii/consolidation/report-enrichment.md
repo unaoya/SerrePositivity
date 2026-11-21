@@ -1,6 +1,6 @@
 # EN-W1 報告
 
-現在地は段3aの事前照合で停止。A3 の既存宣言5件の改名と、段2bの新しい型を同じ名前に割り当てる指定が衝突した。
+現在地は段3aの完了。閉加群の型と実装、利用側のビルド、記録監査、文献対応表の照合を終えた。
 
 ## 段1　豊穣化の全体調査
 
@@ -184,6 +184,106 @@ main `3ed0c1724` を取り込んだ。R Definition 10.1.3・Proposition 10.1.4 �
 | `RepresentedMappingEnrichment.ordinaryCategory` | `ofAction` | `H`、結合・単位の比較、対象ごとの写像随伴、豊穣化の法則を個別に受け取る |
 | `RepresentedHomFunctor.homFunctorIso_ofParametrized` | `ofActionHomIso` | `H`、結合と単位の比較・整合の一部、写像側のパラメータ付き随伴、個別の豊穣化の法則 |
 
-`evaluation` の旧入力の具体例として、V を終対象だけのモノイダル圏、M を二元鎖、H の値を最小元への定値関手にできる。固定した各 X について `H.flip.obj X` の値は初期対象なので写像側の右随伴がある。一方、最大元 X では単位の作用が X と同型にならず、この H を保った閉じた加群は作れない。従って旧署名を保つ改名と、表の同じ改名先で閉じた加群を受け取る新 API は、一つの宣言には収まらない。既存のスペクトルの利用側が、評価・単位・通常射の同値・通常豊穣化を現に旧署名で呼び出している。 [旧宣言](../../../SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean#L429) · [スペクトルでの呼出し](../../../SerrePositivity/Spectra/General/MappingEnrichment.lean#L24)
+`evaluation` の旧入力の具体例として、V を終対象だけのモノイダル圏、M を二元鎖、H の値を最小元への定値関手にできる。固定した各 X について `H.flip.obj X` の値は初期対象なので写像側の右随伴がある。一方、最大元 X では単位の作用が X と同型にならず、この H を保った閉じた加群は作れない。従って旧署名を保つ改名と、表の同じ改名先で閉じた加群を受け取る新 API は、一つの宣言には収まらない。既存のスペクトルの利用側が、評価・単位・通常射の同値・通常豊穣化を現に旧署名で呼び出している。 [事前照合時の旧宣言](../../../SerrePositivity/CategoryTheory/Enriched/OfAdjunctionData.lean) · [スペクトルでの呼出し](../../../SerrePositivity/Spectra/General/MappingEnrichment.lean#L24)
 
 型保存の改名と新 API を別の宣言名に配置するか、この5件を改名から置換に変更して利用側を移行するかで、表と前後監査の判定が変わる。段3aのこの指定を確定できるまで、略号登録・Lean 差分・利用側の変更は0件。従って新規宣言ごとの検査時間、制限対象の出現箇所、長い新規証明は該当なし。既存成果物を限定して読む `lake env lean --stdin` の事前照合は bulk 鍵の下で終了値0。全モジュールのビルド、linter・`#lint`、`scripts/audit2/premerge.py` は実装候補ができる段階の検査として未実行。
+
+## 段3a　閉加群から通常豊穣化を作る
+
+main `fcc76cdcd` の決定8と基準9aを取り込んだ。[型の一覧と移行表](../../../research/cleanup-zero-base/enrichment/stage2-types.md)
+
+- `ClosedModule V M` は選んだ `MonoidalLeftAction V M` 上のクラス。欄は余テンソル、写像対象、二つのパラメータ付き随伴。既存の豊穣化を固定する `ClosedModuleOn` も作用を外から受け、テンソルを自然同型で比較する。豊穣化は `ofAction L` という値で選ぶ。段3aの本体で豊穣化や閉加群の instance 登録は0件。
+- 二つの評価を随伴で転置して合成を作り、文献順から Mathlib の図式順へ組紐で移す。単位、合成、通常射の点の計算は、随伴の逆転置と作用の単位・四重結合図式に帰着する。B3では余テンソル随伴を直接渡し、写像随伴を各成分が恒等射である Hom 比較で輸送する。B3の単位子と作用単位子が一致する。
+- 段3cの基底変更の戻り型は `Σ a : MonoidalLeftAction V M, @ClosedModule V M _ _ _ a`。型の一覧を更新し、実装前の試験では制限作用、両随伴、依存対を合わせて Lean に通した。段3aで導入した実際のクラスでも試験を再実行した。実際の `OfAction` を使い、B1・B2・B4・B6 のうち作用の外出しに関わる型見本も Lean の一時入力で確認した。Mathlib の自己豊穣化との比較 `closedModuleSelfHomIso` は比較の段3cに置く。
+- A3の旧入口5件に加え、A2の `TransportOrdinaryEnrichment.ordinaryCategory` と `homFunctorIso` も据え置いた。前者は旧型で圏が明示引数、新型で暗黙引数。後者は旧型で `G` と合成した Hom から基底変更後の Hom への同型、新型は逆向き。A2の新しい比較は `LaxPointHom` の前後合成から証明した。これで型案から旧名に割り当てた改名は0件。
+- 旧 `RepresentedMapping` の自由係数の随伴を `MonoidalAdjunction`、作用の評価則を `ActionEvaluation`、対象ごとの随伴による豊穣化を `OfAdjunctionData`、その Hom 比較を `AdjunctionDataHomFunctor` に置いた。単体的 Hom の4宣言は `Simplicial/EnrichedHomLaws` へ、旧 `Transport` は `BaseChange` へ移した。監査の所有モジュール一覧と HTT A.3.1.5 の宣言位置を追従した。
+- 段4では、作用の係数を左に置く。対称スペクトル自体への適用は `F₀` に沿った制限作用と `Ev₀` を使い、閉加群の写像対象を `Ev₀ [X,Y]` と読む。B6の左線形比較は `F₀(P) ⊗ F₀(X) ⟶ F₀(P ⊗ X)`。HS 6.2 の右加群と照合するときは、組紐で作用順を移す。別々の圏として扱う場合にも、基底 V と加群 M の宇宙・圏構造は独立に取れる。段4の具体的な構成の選定は型案の末尾に残した。
+
+### 自己作用に対する探索
+
+実際の `closedModuleSelf` を別入力で読み込み、一般の組紐つき閉モノイダル圏で試験用に局所登録した。登録前後とも `MonoidalLeftAction C C` に対して候補は `selfLeftAction` だけ。登録後の `ClosedModule C C` は試験用の候補1件から閉性と組紐を得て成功した。探索が `ClosedModule` に戻る枝はなかった。40回ずつの `#synth` の中央値は、作用が登録前2.13 ms・登録後1.11 ms、閉加群が3.95 ms。コマンドの処理時間込みで、探索の比較には候補のトレースも照合した。
+
+### コードの自己点検
+
+新規の名前付き宣言は56件。新しい `OfAction.lean` は477行。従来の4ファイルの120宣言のうち、87件は所有ファイルを移し、33件は `TensorCotensor.lean` に据え置いた。以下の行数は docstring と属性を含む。公理、`sorry`、`erw`、`backward.*`、heartbeat の引き上げ、等式による型の移し替え、引数なしの `simp` は新規コードで各0件。30行を超える新規証明は0件。Lean を同期実行して宣言コマンドの前後を測った。最大は `OfAction` で約145 ms、`BaseChange` で約107 ms。
+
+- `OfAction.lean:304,317,340,348,433` の `change` 5箇所は、豊穣 Hom の前後合成を評価へ戻す2箇所、Hom 比較の恒等成分を出す2箇所、テンソルの単位子を逆転置で読む1箇所。`OfAction.lean:369,448` の `letI` 2箇所は B3 とその比較の定義本体で、戻り型で指定した豊穣化を構造欄にも渡す。型に `letI` を含む新規宣言は0件。
+- `BaseChange.lean:320,331,346,354` の `change` 4箇所は、lax 関手の二項比較で前後合成を展開する2箇所と、Hom 比較の恒等成分を取り出す2箇所。
+- 既存の証明から `ActionEvaluation.lean:47,49,50,65,67` の `erw` と `AdjunctionDataHomFunctor.lean:20,21,205,206` の `backward.*` が移動した。Batteries の残る警告は旧名 `homFunctorIso_ofParametrized` のアンダースコア1件。旧名・旧型を保持する指定により名前は据え置いた。
+
+#### `OfAction.lean`
+
+| 宣言 | 種類 | 範囲 | 文献 | ms | 仮定 |
+| --- | --- | ---: | --- | ---: | --- |
+| `ClosedModule` | class | 28–42（15行） | R 10.1.3, H 4.1.6, H 4.1.12 | 35.1 | 左作用 |
+| `ClosedModule.hom` | abbrev | 48–50（3行） | R 10.1.3 | 24.2 | 左作用・閉加群 |
+| `actionEvaluation` | def | 58–61（4行） | R 10.1.4 | 22.1 | 左作用・閉加群 |
+| `actionUnit` | def | 63–67（5行） | R 10.1.4 | 48.1 | 左作用・閉加群 |
+| `actionHomEquiv` | def | 69–73（5行） | R 3.4.9 | 28.8 | 左作用・閉加群 |
+| `compositionEvaluation` | def | 80–85（6行） | R 3.3.8 | 45.2 | 左作用・閉加群 |
+| `reverseComposition` | def | 87–90（4行） | R 10.1.4 | 15.2 | 左作用・閉加群 |
+| `untranspose_eval` | lemma | 92–96（5行） | 補助 | 17.0 | 左作用・閉加群 |
+| `reverseComposition_eval` | lemma | 98–103（6行） | 補助 | 134.9 | 左作用・閉加群 |
+| `actionHomEquiv_eval` | lemma | 105–111（7行） | 補助 | 32.4 | 左作用・閉加群 |
+| `actionHomEquiv_id` | lemma | 113–118（6行） | 補助 | 27.6 | 左作用・閉加群 |
+| `eval_injective` | lemma | 120–125（6行） | 補助 | 23.1 | 左作用・閉加群 |
+| `assoc_map_left` | lemma | 127–134（8行） | 補助 | 72.3 | 左作用 |
+| `assoc_map_right` | lemma | 136–143（8行） | 補助 | 67.3 | 左作用 |
+| `unit_map` | lemma | 145–149（5行） | 補助 | 28.5 | 左作用 |
+| `action_leftUnitor` | lemma | 151–156（6行） | 補助 | 50.1 | 左作用 |
+| `action_rightUnitor` | lemma | 158–162（5行） | 補助 | 51.1 | 左作用 |
+| `action_assoc_naturality` | lemma | 164–169（6行） | 補助 | 44.5 | 左作用 |
+| `action_pentagon` | lemma | 171–177（7行） | 補助 | 99.4 | 左作用 |
+| `reverseComposition_post_eval` | lemma | 179–187（9行） | 補助 | 81.4 | 左作用・閉加群 |
+| `reverseComposition_pre_eval` | lemma | 189–197（9行） | 補助 | 92.7 | 左作用・閉加群 |
+| `reverseComposition_left_unit` | lemma | 199–204（6行） | 補助 | 61.6 | 左作用・閉加群 |
+| `reverseComposition_right_unit` | lemma | 206–212（7行） | 補助 | 63.9 | 左作用・閉加群 |
+| `reverseComposition_assoc` | lemma | 214–227（14行） | 補助 | 145.1 | 左作用・閉加群 |
+| `reverseComposition_points` | lemma | 229–240（12行） | 補助 | 77.0 | 左作用・閉加群 |
+| `actionComposition` | def | 246–250（5行） | R 10.1.4 | 15.5 | 左作用・閉加群・組紐 |
+| `actionEnrichedCategory` | def | 252–258（7行） | 補助 | 26.8 | 左作用・閉加群・組紐 |
+| `actionComposition_assoc` | lemma | 260–269（10行） | R 10.1.4 | 41.9 | 左作用・閉加群・組紐 |
+| `ofAction` | def | 271–279（9行） | R 10.1.4 | 26.7 | 左作用・閉加群・組紐 |
+| `ofAction_hom` | lemma | 281–284（4行） | 補助 | 14.7 | 左作用・閉加群・組紐 |
+| `ofAction_id` | lemma | 286–288（3行） | 補助 | 21.6 | 左作用・閉加群・組紐 |
+| `ofAction_comp` | lemma | 290–293（4行） | 補助 | 13.8 | 左作用・閉加群・組紐 |
+| `ofAction_homEquiv_apply` | lemma | 295–298（4行） | 補助 | 30.7 | 左作用・閉加群・組紐 |
+| `ofAction_whiskerLeft` | lemma | 300–311（12行） | 補助 | 82.0 | 左作用・閉加群・組紐 |
+| `ofAction_whiskerRight` | lemma | 313–331（19行） | 補助 | 129.9 | 左作用・閉加群・組紐 |
+| `ofActionHomIso` | def | 333–351（19行） | R 10.1.4 | 64.1 | 左作用・閉加群・組紐 |
+| `ofActionHomIso_hom_app` | lemma | 353–357（5行） | 補助 | 29.7 | 左作用・閉加群・組紐 |
+| `ofActionHomIso_inv_app` | lemma | 359–363（5行） | 補助 | 19.8 | 左作用・閉加群・組紐 |
+| `ofActionTensorCotensor` | def | 365–374（10行） | R 10.1.4 | 19.5 | 左作用・閉加群・組紐 |
+| `ofActionTensorCotensor_tensor` | lemma | 376–379（4行） | 補助 | 7.3 | 左作用・閉加群・組紐 |
+| `ofActionTensorCotensor_cotensor` | lemma | 381–384（4行） | 補助 | 22.7 | 左作用・閉加群・組紐 |
+| `ofActionTensorCotensor_tensorCotensor` | lemma | 386–390（5行） | 補助 | 36.2 | 左作用・閉加群・組紐 |
+| `ofActionTensorCotensor_tensorHom` | lemma | 392–397（6行） | 補助 | 22.6 | 左作用・閉加群・組紐 |
+| `ClosedModuleOn` | structure | 399–411（13行） | H 4.1.12 | 89.9 | 左作用・既存の豊穣通常圏 |
+| `ClosedModuleOn.toClosedModule` | def | 413–423（11行） | H 4.1.12 | 34.1 | 左作用・既存の豊穣通常圏 |
+| `ofAction_unitIso_hom_app` | lemma | 425–442（18行） | 補助 | 81.2 | 左作用・閉加群・組紐 |
+| `ofActionClosedModuleOn` | def | 444–451（8行） | R 10.1.4 | 24.2 | 左作用・閉加群・組紐 |
+| `ofActionClosedModuleOn_adjunctions` | lemma | 453–457（5行） | 補助 | 16.5 | 左作用・閉加群・組紐 |
+| `ofActionClosedModuleOn_tensorIso` | lemma | 459–463（5行） | 補助 | 16.5 | 左作用・閉加群・組紐 |
+| `closedModuleSelf` | def | 465–474（10行） | R 3.7.5 | 25.9 | 自己作用・組紐・閉性 |
+
+#### `BaseChange.lean`
+
+| 宣言 | 種類 | 範囲 | 文献 | ms | 仮定 |
+| --- | --- | ---: | --- | ---: | --- |
+| `ordinaryBaseChange` | def | 309–313（5行） | R 3.4.3 | 18.4 | 元の豊穣通常圏・lax 構造・単位点の同値 |
+| `ordinaryBaseChange_whiskerRight` | lemma | 315–324（10行） | 補助 | 34.5 | 元の豊穣通常圏・lax 構造・単位点の同値 |
+| `ordinaryBaseChange_whiskerLeft` | lemma | 326–335（10行） | 補助 | 32.0 | 元の豊穣通常圏・lax 構造・単位点の同値 |
+| `ordinaryBaseChangeHomIso` | def | 337–357（21行） | R 3.4.3 | 92.4 | 元の豊穣通常圏・lax 構造・単位点の同値 |
+| `ordinaryBaseChangeHomIso_hom_app` | lemma | 359–363（5行） | 補助 | 107.5 | 元の豊穣通常圏・lax 構造・単位点の同値 |
+| `ordinaryBaseChangeHomIso_inv_app` | lemma | 365–369（5行） | 補助 | 45.4 | 元の豊穣通常圏・lax 構造・単位点の同値 |
+
+
+### ビルドと前後比較
+
+- 変更元と非 Archive の推移的利用側4,463モジュールを92の末端ターゲットで指定した。root を含めて Lake の37,723ジョブが成功し、`scripts/check_spectra_stage2.lean` も成功した。決定8後の `OfAction` 単体は4.2秒、`BaseChange` は1.9秒。新設・移動先モジュールの Mathlib linter 警告は0件。import だけを追従した `PointedEnrichment.lean:62,67` と `D3CommonEnrichment.lean:29` には、基準と同じ長行警告があった。
+- 段7の前提検査を新設宣言のある2ファイルに適用した。表の56宣言のインスタンス引数266個のうち、値のある257個はいずれも値で使われていた。残り9個は構造・クラスの型に属する引数だった。
+- `premerge.py --layout` の記録監査、型の前後比較、文献対応表の照合がすべて終了値0。監査対象は本体34,053モジュール・359,460カーネル宣言。旧記録の `b6d03e4fe` は基準 `fcc76cdcd` と本体の Lean ソースが同じ。既存359,335カーネル宣言の名前と型が一致し、所有元の変更は108件。削除0件、型の変更0件、既存の instance 登録の変更0件。値の変更2件は引用レジストリの略号と版のリスト。追加125件のうち56件は表の宣言、69件は生成物。後者には参照のない内部 `_proof_*` 4件と、`ClosedModuleOn` が生成する `SizeOf` の登録1件を含む。HTT A.3.1.5 は `TensorCotensor` の位置だけが変わった。
+- 新規公理0件、公理依存の増減0件、`sorryAx` 依存の増減0件。直接の `sorry` 4件、推移依存164件は同じ集合だった。旧監査も成功した。スペクトル側では199モジュールの2,482宣言、共有側では678モジュールの17,724宣言を検査した。
+- 11-21 の鍵の区分変更に合わせ、再開後の下流ビルドと少数の検査は `impl`、記録監査と監査スクリプトの一括実行は `bulk`。最初の記録監査は Lake の事前照合で `AffineBlowupFlatness.trace` の内容が変わり停止した。依存・成果物ハッシュは基準と一致し、再採取が成功した。最終の記録監査は実装候補 `1e9186c1c` に対して行い、その後はこの報告だけを更新した。
+
+証拠は Git 外の `~/serre-evidence/enrichment/fcc76cdcd-stage3a/` に保存した。最初の診断は `premerge-first/`、成功した再採取と照合は `premerge/`。閉加群の型と自己作用の試験、前提検査、ビルドおよび linter のログも同じ場所に置いた。

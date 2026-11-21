@@ -6,24 +6,11 @@ public import Mathlib.CategoryTheory.Monoidal.CoherenceLemmas
 public import Mathlib.CategoryTheory.Enriched.Basic
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 public import Mathlib.CategoryTheory.Whiskering
+public meta import SerrePositivity.Util.Citation
 
 /-!
-# Enriched.Transport
-
-## 概要
-関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。
-
-## 方針
-元の宣言と証明を保持し、依存順に section を分けて配置する。
-
-## 規約
-公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。
-
-## 使われ方
-旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.Transport` を直接 import する。
+# モノイダル関手による豊穣化の基底変更
 -/
-
-/-! ## LaxPointHom（旧 SerrePositivity/CategoryTheory/Monoidal/LaxPointHom.lean） -/
 
 /-! # lax monoidal関手による単位からの射の移送 -/
 
@@ -74,8 +61,6 @@ lemma composition {X Y Z : V} (f : 𝟙_ V ⟶ X) (g : 𝟙_ V ⟶ Y) (m : X ⊗
 end SerrePositivity.LaxPointHom
 
 end LaxPointHom
-
-/-! ## ReverseComposition（旧 SerrePositivity/CategoryTheory/Monoidal/ReverseComposition.lean） -/
 
 /-! # 交換で因子の順序を逆にした合成の法則 -/
 
@@ -166,8 +151,6 @@ end SerrePositivity.ReverseComposition
 
 end ReverseComposition
 
-/-! ## TransportEnrichmentComparisons（旧 SerrePositivity/CategoryTheory/Monoidal/TransportEnrichmentComparisons.lean） -/
-
 /-! # 豊穣構造の移送の合成と単位の比較 -/
 
 @[expose] public section TransportEnrichmentComparisons
@@ -229,8 +212,6 @@ end
 
 end TransportEnrichmentComparisons
 
-/-! ## TransportOrdinaryEnrichment（旧 SerrePositivity/CategoryTheory/Monoidal/TransportOrdinaryEnrichment.lean） -/
-
 /-! # 単位からの射の同値による通常の豊穣圏の移送 -/
 
 @[expose] public section TransportOrdinaryEnrichment
@@ -248,7 +229,8 @@ variable {V : Type u₁} {W : Type u₂} [Category.{v₁} V] [Category.{v₂} W]
   (t : ∀ X : V, (𝟙_ V ⟶ X) ≃ (𝟙_ W ⟶ F.obj X))
   (ht : ∀ X (f : 𝟙_ V ⟶ X), t X f = LaxPointHom.map F f)
 
-/-- 単位からの射の同値を使って既存の圏構造も豊穣構造とともに移す。 -/
+/-- 単位からの射の同値を使って既存の圏構造も豊穣構造とともに移す。
+利用側の移行後は、圏を暗黙引数にする `CategoryTheory.ordinaryBaseChange` に移行する。 -/
 @[instance_reducible]
 def ordinaryCategory : EnrichedOrdinaryCategory W C where
   toEnrichedCategory := TransportEnrichmentComparisons.category F C
@@ -285,6 +267,8 @@ lemma whiskerLeft_map (X : C) {Y Y' : C} (g : Y ⟶ Y') :
   rw [ht]
   exact LaxPointHom.right_action F _ _
 
+/-- 係数関手を後合成した元の Hom から、基底変更後の Hom への自然同型。
+利用側の移行後は `CategoryTheory.ordinaryBaseChangeHomIso` の逆射を使う。 -/
 def homFunctorIso :
     let : EnrichedOrdinaryCategory W C := ordinaryCategory F C t ht
     eHomFunctor V C ⋙ (CategoryTheory.Functor.whiskeringRight C V W).obj F ≅
@@ -305,3 +289,84 @@ end SerrePositivity.TransportOrdinaryEnrichment
 end
 
 end TransportOrdinaryEnrichment
+
+@[expose] public section
+
+namespace CategoryTheory
+
+open MonoidalCategory Opposite Functor.LaxMonoidal
+open SerrePositivity
+
+universe u v w z x y
+
+variable {V : Type u} {U : Type w} {M : Type x}
+  [Category.{v} V] [Category.{z} U] [Category.{y} M]
+  [MonoidalCategory V] [MonoidalCategory U] [EnrichedOrdinaryCategory U M]
+  (G : U ⥤ V) [G.LaxMonoidal]
+  (e : ∀ Z : U, (𝟙_ U ⟶ Z) ≃ (𝟙_ V ⟶ G.obj Z))
+  (he : ∀ (Z : U) (f : 𝟙_ U ⟶ Z), e Z f = Functor.LaxMonoidal.ε G ≫ G.map f)
+
+/-- 単位点の同値が与えられれば、lax モノイダル関手で元の通常圏を保って豊穣化を移せる。
+合成には Mathlib の図式順を使う。 -/
+@[cite R"3.4.3"(partial:=special) "通常圏を保つため単位点の全単射を仮定する。", instance_reducible]
+def ordinaryBaseChange : EnrichedOrdinaryCategory V M :=
+  TransportEnrichment.enrichedOrdinaryCategory M G e he
+
+/-- 基底変更後の前合成は、元の前合成に係数関手を適用したもの。 -/
+private lemma ordinaryBaseChange_whiskerRight {X X' : M} (f : X ⟶ X') (Y : M) :
+    @eHomWhiskerRight V _ _ M _ (ordinaryBaseChange G e he) X X' f Y =
+      G.map (eHomWhiskerRight U f Y) := by
+  -- 基底変更の合成を lax モノイダル関手の二項比較で展開する。
+  change (λ_ (G.obj (X' ⟶[U] Y))).inv ≫
+    e (X ⟶[U] X') (eHomEquiv U f) ▷ G.obj (X' ⟶[U] Y) ≫
+      μ G _ _ ≫ G.map (eComp U X X' Y) = _
+  rw [he]
+  exact LaxPointHom.left_action G _ _
+
+/-- 基底変更後の後合成は、元の後合成に係数関手を適用したもの。 -/
+private lemma ordinaryBaseChange_whiskerLeft (X : M) {Y Y' : M} (g : Y ⟶ Y') :
+    @eHomWhiskerLeft V _ _ M _ (ordinaryBaseChange G e he) X Y Y' g =
+      G.map (eHomWhiskerLeft U X g) := by
+  -- 基底変更の合成を lax モノイダル関手の二項比較で展開する。
+  change (ρ_ (G.obj (X ⟶[U] Y))).inv ≫
+    G.obj (X ⟶[U] Y) ◁ e (Y ⟶[U] Y') (eHomEquiv U g) ≫
+      μ G _ _ ≫ G.map (eComp U X Y Y') = _
+  rw [he]
+  exact LaxPointHom.right_action G _ _
+
+/-- 基底変更後の Hom は G を後合成した元の Hom で、比較は各対象で恒等射。
+合成には Mathlib の図式順を使う。 -/
+@[cite R"3.4.3"(partial:=component) "基底変更した豊穣 Hom の二変数関手としての比較。"]
+def ordinaryBaseChangeHomIso :
+    @eHomFunctor V _ _ M _ (ordinaryBaseChange G e he) ≅
+      eHomFunctor U M ⋙ (Functor.whiskeringRight M U V).obj G :=
+  NatIso.ofComponents (fun X ↦
+    NatIso.ofComponents (fun Y ↦ Iso.refl (G.obj (X.unop ⟶[U] Y))) (fun {Y Y'} g ↦ by
+      -- 通常射による後合成の式に、比較の恒等成分を入れる。
+      change @eHomWhiskerLeft V _ _ M _ (ordinaryBaseChange G e he) X.unop Y Y' g ≫ 𝟙 _ =
+        𝟙 _ ≫ G.map (eHomWhiskerLeft U X.unop g)
+      rw [Category.comp_id, Category.id_comp]
+      exact ordinaryBaseChange_whiskerLeft G e he X.unop g))
+    (fun {X X'} f ↦ by
+      apply NatTrans.ext
+      funext Y
+      -- 通常射による前合成の式に、比較の恒等成分を入れる。
+      change @eHomWhiskerRight V _ _ M _ (ordinaryBaseChange G e he) X'.unop X.unop f.unop Y ≫ 𝟙 _ =
+        𝟙 _ ≫ G.map (eHomWhiskerRight U f.unop Y)
+      rw [Category.comp_id, Category.id_comp]
+      exact ordinaryBaseChange_whiskerRight G e he f.unop Y)
+
+/-- 基底変更の Hom 比較の順射は、各対象対で恒等射。 -/
+@[reassoc]
+lemma ordinaryBaseChangeHomIso_hom_app (X Y : M) :
+    ((ordinaryBaseChangeHomIso G e he).hom.app (op X)).app Y = 𝟙 (G.obj (X ⟶[U] Y)) :=
+  rfl
+
+/-- 基底変更の Hom 比較の逆射も、各対象対で恒等射。 -/
+@[reassoc]
+lemma ordinaryBaseChangeHomIso_inv_app (X Y : M) :
+    ((ordinaryBaseChangeHomIso G e he).inv.app (op X)).app Y = 𝟙 (G.obj (X ⟶[U] Y)) :=
+  rfl
+
+end CategoryTheory
+end

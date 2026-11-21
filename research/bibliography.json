@@ -269,6 +269,19 @@
       }
     },
     {
+      "key": "H",
+      "title": "Model Categories",
+      "edition": "American Mathematical Society, Mathematical Surveys and Monographs 63, 1999",
+      "source": "https://doi.org/10.1090/surv/063",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "authors": [
+        "Mark Hovey"
+      ],
+      "edition_provenance": "Title and edition checked against the primary text and the publisher or version record (2026-11-21)."
+    },
+    {
       "key": "HA",
       "title": "Higher Algebra",
       "edition": "2017-09-18",
@@ -288,6 +301,19 @@
         "url": "https://www.math.ias.edu/~lurie/papers/HA.pdf",
         "note": "Author website identifies this as Lurie’s book; PDF first page says September 18, 2017. No arXiv number assigned."
       }
+    },
+    {
+      "key": "HS",
+      "title": "Spectra and symmetric spectra in general model categories",
+      "edition": "arXiv:math/0004051v3",
+      "source": "https://arxiv.org/abs/math/0004051v3",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "authors": [
+        "Mark Hovey"
+      ],
+      "edition_provenance": "Title and edition checked against the primary text and the publisher or version record (2026-11-21)."
     },
     {
       "key": "HTT",
@@ -312,6 +338,19 @@
       },
       "related_arxiv_id": "math/0608040",
       "arxiv_edition_is_not_locator_edition": true
+    },
+    {
+      "key": "K",
+      "title": "Basic Concepts of Enriched Category Theory",
+      "edition": "Reprints in Theory and Applications of Categories 10, 2005",
+      "source": "https://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "authors": [
+        "G. M. Kelly"
+      ],
+      "edition_provenance": "Title and edition checked against the primary text and the publisher or version record (2026-11-21)."
     },
     {
       "key": "KL",
@@ -471,6 +510,19 @@
         "note": "Local paper first page and SOURCE.md checked: OpenAI, September 23, 2026, fixed upstream commit; no arXiv number assigned.",
         "local_pdf_sha256": "7985cfbc11547cf659efdd6abc076a0c0371e9a38e8026aa09b23cbb042af917"
       }
+    },
+    {
+      "key": "R",
+      "title": "Categorical Homotopy Theory",
+      "edition": "Cambridge University Press, 2014",
+      "source": "https://doi.org/10.1017/CBO9781107261457",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "authors": [
+        "Emily Riehl"
+      ],
+      "edition_provenance": "Title and edition checked against the primary text and the publisher or version record (2026-11-21)."
     },
     {
       "key": "Rydh",

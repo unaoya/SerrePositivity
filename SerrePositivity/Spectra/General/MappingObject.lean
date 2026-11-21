@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.Spectra.General.Cotensor
-public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
+public import SerrePositivity.CategoryTheory.Enriched.MonoidalAdjunction
+public import SerrePositivity.CategoryTheory.Enriched.ActionEvaluation
 
 
 /-! # C-valued mapping objects of general symmetric spectra
